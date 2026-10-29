@@ -1,22 +1,22 @@
 # Usage ledger (everyone)
 
-Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py. 8 runs across 1 person: vs-githjk.
+Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py. 10 runs across 1 person: vs-githjk.
 
 ## By person
 
 | Who | Runs | Output tokens | Apify | Bright Data | Web | GitHub | Codex | Last updated (UTC) |
 |---|---|---|---|---|---|---|---|---|
-| vs-githjk | 8 | 384,343 | 7 | 7 | 43 | 25 | 8 | 2026-10-29T07:58:48Z |
+| vs-githjk | 10 | 424,527 | 7 | 7 | 46 | 31 | 8 | 2026-10-29T08:27:12Z |
 
 ## Totals by service
 
 | Service | Calls |
 |---|---|
-| Shell | 193 |
-| Claude Code tools | 86 |
-| Other HTTP | 80 |
-| Web search and fetch | 43 |
-| GitHub (gh) | 25 |
+| Shell | 212 |
+| Claude Code tools | 97 |
+| Other HTTP | 82 |
+| Web search and fetch | 46 |
+| GitHub (gh) | 31 |
 | Codex | 8 |
 | Bright Data | 7 |
 | Apify | 7 |
@@ -27,16 +27,16 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 
 | Kind | Tokens |
 |---|---|
-| input_tokens | 756 |
-| cache_creation_input_tokens | 1,388,060 |
-| cache_read_input_tokens | 55,105,625 |
-| output_tokens | 384,343 |
+| input_tokens | 838 |
+| cache_creation_input_tokens | 1,570,968 |
+| cache_read_input_tokens | 61,806,130 |
+| output_tokens | 424,527 |
 
 ## Per run
 
 | Who | Started (UTC) | Agent | Model | Output tokens | Apify | Bright Data | Browser | Web | GitHub | Codex | Nebius Token Factory | Tavily API | Other HTTP |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| vs-githjk | 2026-10-29T05:59 | main session | claude-opus-5-5 | 140,487 | 0 | 0 | 0 | 2 | 4 | 8 | 0 | 0 | 6 |
+| vs-githjk | 2026-10-29T05:59 | main session | claude-opus-5-5 | 150,954 | 0 | 0 | 0 | 2 | 10 | 8 | 0 | 0 | 6 |
 | vs-githjk | 2026-10-29T06:00 | master-finder: Research ODSC x Nebius hackathon | claude-opus-5-5 | 68,707 | 0 | 5 | 3 | 3 | 2 | 0 | 3 | 0 | 55 |
 | vs-githjk | 2026-10-29T06:24 | master-planner: Rank ideas for ODSC x Nebius | claude-opus-5-5 | 43,512 | 0 | 0 | 0 | 4 | 2 | 0 | 0 | 0 | 0 |
 | vs-githjk | 2026-10-29T06:31 | master-auditor: Oversight red-team of ideas | claude-opus-5-5 | 19,287 | 0 | 0 | 0 | 2 | 2 | 0 | 0 | 0 | 4 |
@@ -44,6 +44,8 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 | vs-githjk | 2026-10-29T06:52 | master-xo: GitHub team setup | claude-opus-5-5 | 18,683 | 0 | 0 | 0 | 0 | 11 | 0 | 0 | 0 | 0 |
 | vs-githjk | 2026-10-29T06:58 | master-auditor: Oversight r3 with ambition gate | claude-opus-5-5 | 22,598 | 0 | 0 | 0 | 3 | 3 | 0 | 0 | 0 | 4 |
 | vs-githjk | 2026-10-29T07:46 | master-finder: Market validation for Patient Zero | claude-opus-5-5 | 40,009 | 7 | 2 | 0 | 25 | 0 | 0 | 0 | 0 | 11 |
+| vs-githjk | 2026-10-29T08:19 | master-planner: Refine Patient Zero, round 1 | claude-opus-5-5 | 29,492 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 | 2 |
+| vs-githjk | 2026-10-29T08:27 | master-auditor: Red-team Patient Zero brief, round 2 | claude-opus-5-5 | 225 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 
 ## Detail (service: tool or host)
 
@@ -57,7 +59,7 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 - Browser (Playwright): browser_navigate: 1
 - Browser (Playwright): browser_snapshot: 1
 - Codex: codex: 8
-- GitHub (gh): gh: 25
+- GitHub (gh): gh: 31
 - Nebius Token Factory: api.tokenfactory.nebius.com: 2
 - Nebius Token Factory: tokenfactory.nebius.com: 1
 - Other HTTP: api.apify.com: 5
@@ -84,13 +86,14 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 - Other HTTP: reporterslab.org: 2
 - Other HTTP: share.hsforms.com: 1
 - Other HTTP: static.nebius.com: 1
+- Other HTTP: web.archive.org: 2
 - Other HTTP: www.cjr.org: 1
 - Other HTTP: www.damiencharlotin.com: 1
 - Other HTTP: www.poynter.org: 1
 - Other HTTP: www.tavily.com: 2
 - Other HTTP: www.w3: 1
 - Other HTTP: www.wwno.org: 1
-- Web search and fetch: WebFetch: 5
-- Web search and fetch: WebSearch: 38
+- Web search and fetch: WebFetch: 6
+- Web search and fetch: WebSearch: 40
 
 Not covered: other people's machines until they run this and commit plan/usage/<who>.*; calls the project's own app makes at runtime (the app logs those itself); Codex's own token use (logged by master-codex).
