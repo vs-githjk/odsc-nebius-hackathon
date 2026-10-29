@@ -6,10 +6,10 @@ Counted from Claude Code transcripts by plan/tools/usage.py. 6 runs.
 
 | Service | Calls |
 |---|---|
-| Shell | 98 |
-| Claude Code tools | 49 |
+| Shell | 109 |
+| Claude Code tools | 50 |
 | Other HTTP | 47 |
-| GitHub (gh) | 17 |
+| GitHub (gh) | 19 |
 | Web search and fetch | 15 |
 | Bright Data | 5 |
 | Browser (Playwright) | 3 |
@@ -19,21 +19,21 @@ Counted from Claude Code transcripts by plan/tools/usage.py. 6 runs.
 
 | Kind | Tokens |
 |---|---|
-| input_tokens | 814 |
-| cache_creation_input_tokens | 1,853,454 |
-| cache_read_input_tokens | 43,995,713 |
-| output_tokens | 414,261 |
+| input_tokens | 884 |
+| cache_creation_input_tokens | 1,917,701 |
+| cache_read_input_tokens | 47,630,744 |
+| output_tokens | 457,024 |
 
 ## Per run
 
 | Started (UTC) | Agent | Model | Output tokens | Apify | Bright Data | Browser | Web | GitHub | Sponsor APIs | Other HTTP |
 |---|---|---|---|---|---|---|---|---|---|---|
-| 2026-10-29T05:59 | main session | claude-opus-5-5 | 114,119 | 0 | 0 | 0 | 2 | 1 | 0 | 3 |
+| 2026-10-29T05:59 | main session | claude-opus-5-5 | 126,455 | 0 | 0 | 0 | 2 | 1 | 0 | 3 |
 | 2026-10-29T06:00 | master-finder: Research ODSC x Nebius hackathon | claude-opus-5-5 | 143,195 | 0 | 5 | 3 | 3 | 2 | 3 | 41 |
 | 2026-10-29T06:24 | master-planner: Rank ideas for ODSC x Nebius | claude-opus-5-5 | 83,677 | 0 | 0 | 0 | 4 | 2 | 0 | 0 |
 | 2026-10-29T06:31 | master-auditor: Oversight red-team of ideas | claude-opus-5-5 | 35,891 | 0 | 0 | 0 | 2 | 2 | 0 | 3 |
-| 2026-10-29T06:52 | master-planner: Ambitious idea round r3 | claude-opus-5-5 | 15,904 | 0 | 0 | 0 | 4 | 1 | 0 | 0 |
-| 2026-10-29T06:52 | master-xo: GitHub team setup | claude-opus-5-5 | 21,475 | 0 | 0 | 0 | 0 | 9 | 0 | 0 |
+| 2026-10-29T06:52 | master-planner: Ambitious idea round r3 | claude-opus-5-5 | 33,622 | 0 | 0 | 0 | 4 | 1 | 0 | 0 |
+| 2026-10-29T06:52 | master-xo: GitHub team setup | claude-opus-5-5 | 34,184 | 0 | 0 | 0 | 0 | 11 | 0 | 0 |
 
 ## Detail (service: tool or host)
 
@@ -42,7 +42,7 @@ Counted from Claude Code transcripts by plan/tools/usage.py. 6 runs.
 - Browser (Playwright): browser_close: 1
 - Browser (Playwright): browser_navigate: 1
 - Browser (Playwright): browser_snapshot: 1
-- GitHub (gh): gh: 17
+- GitHub (gh): gh: 19
 - Nebius Token Factory: api.tokenfactory.nebius.com: 2
 - Nebius Token Factory: tokenfactory.nebius.com: 1
 - Other HTTP: cerebralvalley.ai: 1
