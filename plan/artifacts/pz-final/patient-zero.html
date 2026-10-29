@@ -440,7 +440,10 @@ function Morph(host, withTips){
   function hideTip(){ if(tip) tip.classList.remove('on'); }
   if(withTips) document.addEventListener('click',hideTip);
   var heights=[]; var fitHeight=!withTips; // the story host follows the current hop's height (it is centred in its row); the product keeps the tallest so the band never jumps
-  function measure(){ layout=[]; var maxH=0; measures.forEach(function(m,h){ var spans=m.querySelectorAll('span:not(.row)'); var L=[]; var mr=m.getBoundingClientRect(); spans.forEach(function(s){ var r=s.getBoundingClientRect(); L.push({x:r.left-mr.left, y:r.top-mr.top}); }); layout[h]=L; heights[h]=m.offsetHeight; maxH=Math.max(maxH,m.offsetHeight); }); host.style.height=maxH+'px'; }
+  // story only: on desktop, step the size down until every one-row hop sits on one line, so survivors travel along one baseline in reading order
+  function fitOneLine(){ if(!fitHeight) return; host.style.fontSize=''; if(host.clientWidth<900) return; var size=parseFloat(getComputedStyle(host).fontSize);
+    for(var k=0;k<12;k++){ var lh=parseFloat(getComputedStyle(host).lineHeight); var wraps=false; measures.forEach(function(m,h){ if(HOPS[h].rows.length===1 && m.offsetHeight>lh*1.5) wraps=true; }); if(!wraps||size<=30) break; size-=2; host.style.fontSize=size+'px'; } }
+  function measure(){ fitOneLine(); layout=[]; var maxH=0; measures.forEach(function(m,h){ var spans=m.querySelectorAll('span:not(.row)'); var L=[]; var mr=m.getBoundingClientRect(); spans.forEach(function(s){ var r=s.getBoundingClientRect(); L.push({x:r.left-mr.left, y:r.top-mr.top}); }); layout[h]=L; heights[h]=m.offsetHeight; maxH=Math.max(maxH,m.offsetHeight); }); host.style.height=maxH+'px'; }
   // one segment: words leaving fade over the first 38 percent, kept words travel over the middle 24, words arriving fade in over the last 38; nothing overlaps
   function render(s){ var f=clamp(s,0,1)*(N-1); var i=Math.min(Math.floor(f),N-2); var p=f-i; var pe=smooth((p-.38)/.24);
     if(fitHeight && heights.length) host.style.height=lerp(heights[i],heights[i+1],pe)+'px';
@@ -503,7 +506,7 @@ function drawDots(){ if(!DW) sizeDots(); dctx.clearRect(0,0,DW,DH); var p=dotsSt
     dctx.fillStyle=rgba(col,.92*alpha); dctx.beginPath(); dctx.arc(x,y,R,0,6.283); dctx.fill(); });
   dctx.font='600 12px '+T.font; dctx.textAlign='center'; dctx.textBaseline='middle';
   if(!small && a>.85 && b<.5){ var la=smooth((a-.85)/.15)*(1-smooth(b/.5)); CLUSTERS.forEach(function(c,k){ var cc=centers[k]; var r=step*Math.sqrt(c.n)+10; dctx.fillStyle=rgba(T.ink,.85*la); dctx.fillText(c.n+' copies',cc.x,cc.y+(k%2?r:-r)); }); }
-  if(b>.2){ var lb=smooth((b-.2)/.4); dctx.fillStyle=rgba(T.ink,.95*lb); dctx.font='600 '+(small?12:14)+'px '+T.font; dctx.textAlign='left'; dctx.fillText('1 root we could link',rootX+rootR+14,rootY-9); dctx.fillStyle=rgba(T.ink3,lb); dctx.font='500 '+(small?11:13)+'px '+T.font; dctx.fillText('statisticbrain.com, 2012',rootX+rootR+14,rootY+9);
+  if(b>.88){ var lb=smooth((b-.88)/.12); dctx.fillStyle=rgba(T.ink,.95*lb); dctx.font='600 '+(small?12:14)+'px '+T.font; dctx.textAlign='left'; dctx.fillText('1 root we could link',rootX+rootR+14,rootY-9); dctx.fillStyle=rgba(T.ink3,lb); dctx.font='500 '+(small?11:13)+'px '+T.font; dctx.fillText('statisticbrain.com, 2012',rootX+rootR+14,rootY+9);
     var ux=centers[7].x, uy=centers[7].y; var r7=step*Math.sqrt(CLUSTERS[7].n)+10; if(!small){ dctx.fillStyle=rgba(T.ink3,lb); dctx.font='500 12px '+T.font; dctx.textAlign='center'; dctx.fillText('2 clusters we could not link',(ux+centers[8].x)/2,Math.max(uy,centers[8].y)+r7+4); } } }
 
 /* ---------- product: the time machine ---------- */

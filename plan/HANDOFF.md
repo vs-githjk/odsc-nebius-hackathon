@@ -55,6 +55,8 @@ Done this session (Oct 29, 01:37 to 02:00 PDT):
 - THEN: conductor checks both; XO posts the issues from plan/issues-oct29.md, shares the final design with Rohan and Rishit (NOT Anoop until his head-to-head PR is open), and drafts a WhatsApp line for Vidyut.
 - Overnight build: tomorrow at the earliest, on Vidyut's own words "use a workflow, start the overnight build".
 
+- DONE (12:28 PDT after a network drop): final design https://claude.ai/artifact/8JXR8hNEhEEk23Zfbjf7To (private to Vidyut; source and DESIGN.md in plan/artifacts/pz-final/). Build plan done: plan/PRD.md, plan/plan.md (20 Run-1 tasks, 12 Run-2), plan/issues-oct29.md, plan/progress.md. XO posting issues; finder picking claims 5 and 6 (plan/spike-claims-5-6.md, Part A postable, Part B never). Open for Vidyut: package allowlist OK, Run 2 owner (rec: his overnight build from Nov 2, Anoop second).
+
 Next, in order (when Vidyut says "go"):
 0. Discuss plan/rerunlab-inspo.md with Vidyut first.
 1. Conductor picks claims 5 (a Wikipedia citogenesis case) and 6 (a fresh viral stat from the last 60 days) and has a non-runner write blind targets; XO posts the claims on #5 (never the targets).
