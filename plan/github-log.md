@@ -7,3 +7,5 @@
 - 23:55 focus issues #1 Teammate 4 (TBD), #2 Vidyut, #3 Rohan, #4 Anoop (Rohan and Anoop unassigned until they accept; @mentioned in body)
 - 23:56 main protection: block force-push and deletion (admins exempt)
 - 23:57 pushed c329ef4 (conductor's usage-ledger commit, made concurrently on local main) along with 45691e3; scanned: no keys or emails; it carries a Co-Authored-By trailer
+- 01:46 refreshed state: Anoop accepted (collaborator), assigned to #4; Rohan and Rishit invites still pending; teammate 4 = RishitRai on #1
+- 01:46 label spike; task issues #5 Anoop head-to-head (assigned), #6 Rohan Token Factory smoke test, #7 Rishit Tavily probe (both unassigned until invite accepted); kickoff #8 "Start here" pinned; pointer comments on #1-#4 (per Vidyut's LOCKED GitHub-kickoff decision)

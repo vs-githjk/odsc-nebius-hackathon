@@ -4,15 +4,85 @@
  "default_branch": "main",
  "deadline": "2026-11-20 (internal D: 2026-11-19 23:59 PT)",
  "teammates": [
-  {"name": "Vidyut", "login": "vs-githjk", "focus_issue": 2, "lane": null, "plan": null, "models": null, "usage_left": null, "invite": "owner"},
-  {"name": "Rohan", "login": "rohanrastogi311", "focus_issue": 3, "lane": null, "plan": null, "models": null, "usage_left": null, "invite": "pending (write), id 340308040", "assigned": false},
-  {"name": "Anoop", "login": "AnoopIbrampur", "focus_issue": 4, "lane": null, "plan": null, "models": null, "usage_left": null, "invite": "pending (write), id 340308044", "assigned": false},
-  {"name": "Teammate 4 (TBD)", "login": null, "focus_issue": 1, "lane": null, "plan": null, "models": null, "usage_left": null, "invite": "not sent"}
+  {
+   "name": "Vidyut",
+   "login": "vs-githjk",
+   "focus_issue": 2,
+   "kickoff_task": null,
+   "lane": null,
+   "plan": null,
+   "models": null,
+   "usage_left": null,
+   "invite": "owner",
+   "assigned": true
+  },
+  {
+   "name": "Rohan",
+   "login": "rohanrastogi311",
+   "focus_issue": 3,
+   "kickoff_task": 6,
+   "lane": null,
+   "plan": null,
+   "models": null,
+   "usage_left": null,
+   "invite": "pending (write), id 340308040, sent 2026-10-28",
+   "assigned": false,
+   "assign_on_accept": [
+    3,
+    6
+   ]
+  },
+  {
+   "name": "Anoop",
+   "login": "AnoopIbrampur",
+   "focus_issue": 4,
+   "kickoff_task": 5,
+   "lane": null,
+   "plan": null,
+   "models": null,
+   "usage_left": null,
+   "invite": "accepted (collaborator)",
+   "assigned": true
+  },
+  {
+   "name": "Rishit",
+   "login": "RishitRai",
+   "focus_issue": 1,
+   "kickoff_task": 7,
+   "lane": null,
+   "plan": null,
+   "models": null,
+   "usage_left": null,
+   "invite": "pending (write), id 340323616, sent 2026-10-29",
+   "assigned": false,
+   "assign_on_accept": [
+    1,
+    7
+   ]
+  }
  ],
- "labels": ["lane:agent-core", "lane:verification", "lane:ui", "lane:eval-demo-repo", "focus", "onboarding", "needs-vidyut"],
+ "labels": [
+  "lane:agent-core",
+  "lane:verification",
+  "lane:ui",
+  "lane:eval-demo-repo",
+  "focus",
+  "onboarding",
+  "needs-vidyut",
+  "spike"
+ ],
  "reviewed_heads": [],
- "last_seen_comment_at": "2026-10-28T23:55:00-07:00",
+ "last_seen_comment_at": "2026-10-29T01:46:00-07:00",
  "held_prs": [],
  "merge_command": "gh pr merge <n> --squash --match-head-commit <sha> --subject \"<clean subject> (#n)\" --body \"\"",
- "watch_loop": "not started (after idea and plan approval)"
+ "watch_loop": "not started (after idea and plan approval)",
+ "kickoff_issue": 8,
+ "kickoff_issue_pinned": true,
+ "task_issues": {
+  "5": "Anoop: head-to-head vs ChatGPT, Claude, Perplexity (due 2026-11-01 23:59 PT); claims 5 and 6 still to be posted as a comment",
+  "6": "Rohan: Token Factory smoke test (due 2026-11-01 23:59 PT)",
+  "7": "Rishit: Tavily capability probe (due 2026-11-01 23:59 PT)"
+ },
+ "comms": "All teammate comms on GitHub issues via master-xo (LOCKED 2026-10-29)",
+ "refreshed_at": "2026-10-29T01:46:05-07:00"
 }
