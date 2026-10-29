@@ -1,0 +1,698 @@
+<title>Patient Zero</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Inter+Tight:wght@500;600&display=swap">
+<style>
+/* Layout: one left-aligned hero over one stage. The stage is the product: the sentence, the tree, the time machine. Dark first. */
+:root{
+  color-scheme:dark;
+  --bg:#09090b; --bg2:#0e0e11; --bg3:#141418;
+  --fg:#f4f4f5; --fg2:#9a9ca6; --fg3:#5f626d;
+  --hair:rgba(255,255,255,.08); --hair2:rgba(255,255,255,.16);
+  --coral:#ff7b66; --mint:#4ade9a; --amber:#f0b64d;
+  --glow:255,255,255;
+  --btn-bg:#f4f4f5; --btn-fg:#09090b;
+  --display:"Inter Tight",ui-sans-serif,system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --ui:"Geist",ui-sans-serif,system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    color-scheme:light;
+    --bg:#fafafb; --bg2:#ffffff; --bg3:#f1f1f4;
+    --fg:#0b0b0e; --fg2:#62656f; --fg3:#a0a3ad;
+    --hair:rgba(10,10,14,.09); --hair2:rgba(10,10,14,.18);
+    --coral:#d9503b; --mint:#15905a; --amber:#b27a12;
+    --glow:10,10,14;
+    --btn-bg:#0b0b0e; --btn-fg:#fafafb;
+  }
+}
+:root[data-theme="light"]{
+  color-scheme:light;
+  --bg:#fafafb; --bg2:#ffffff; --bg3:#f1f1f4;
+  --fg:#0b0b0e; --fg2:#62656f; --fg3:#a0a3ad;
+  --hair:rgba(10,10,14,.09); --hair2:rgba(10,10,14,.18);
+  --coral:#d9503b; --mint:#15905a; --amber:#b27a12;
+  --glow:10,10,14;
+  --btn-bg:#0b0b0e; --btn-fg:#fafafb;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{
+  background:var(--bg); color:var(--fg); font-family:var(--ui); font-size:15px; line-height:1.5;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  padding-left:max(16px,env(safe-area-inset-left,0px)); padding-right:max(16px,env(safe-area-inset-right,0px));
+  overflow-x:hidden;
+}
+::selection{background:rgba(var(--glow),.22)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--fg); outline-offset:3px; border-radius:6px}
+.wrap{max-width:1200px; margin:0 auto}
+
+/* nav */
+.nav{display:flex; align-items:center; justify-content:space-between; height:64px}
+.mark{display:inline-flex; align-items:center; gap:10px; font-weight:600; letter-spacing:-.01em; text-decoration:none; font-size:15px}
+.mark svg{width:18px;height:18px}
+.nav-links{display:flex; gap:28px; color:var(--fg2); font-size:14px}
+.nav-links a{text-decoration:none; transition:color .15s}
+.nav-links a:hover{color:var(--fg)}
+.btn{display:inline-flex; align-items:center; gap:8px; height:40px; padding:0 18px; border-radius:999px; background:var(--btn-bg); color:var(--btn-fg); font-weight:500; font-size:14px; text-decoration:none; border:0; cursor:pointer; transition:transform .18s cubic-bezier(.2,0,0,1), opacity .15s}
+.btn:hover{opacity:.9}
+.btn:active{transform:scale(.97)}
+.btn.ghost{background:transparent; color:var(--fg); box-shadow:inset 0 0 0 1px var(--hair2)}
+.btn.ghost:hover{background:var(--bg3); opacity:1}
+.kbd{display:inline-flex; align-items:center; gap:6px; color:var(--fg2); font-size:13px}
+.kbd b{font-weight:500; color:var(--fg); border:1px solid var(--hair2); border-radius:6px; padding:1px 7px; font-size:12px}
+@media (max-width:720px){ .nav-links{display:none} .nav{height:56px} }
+
+/* hero */
+.hero{padding-block:88px 56px; position:relative}
+.facts{list-style:none; margin:0; padding:0; position:absolute; right:0; bottom:56px; display:flex; flex-direction:column; gap:10px; font-size:16px; color:var(--fg2)}
+.facts li{display:flex; align-items:center; gap:12px}
+.facts li::before{content:""; width:6px; height:6px; border-radius:50%; background:var(--fg3)}
+@media (max-width:1040px){ .facts{display:none} }
+.hero h1{
+  font-family:var(--display); font-weight:600; letter-spacing:-.035em; line-height:.98; margin:0;
+  font-size:clamp(44px,7.2vw,96px); max-width:14ch; text-wrap:balance;
+}
+.hero .lede{font-size:clamp(16px,1.35vw,19px); color:var(--fg2); max-width:52ch; margin:28px 0 0; line-height:1.55}
+.hero .actions{display:flex; align-items:center; gap:18px; margin-top:34px; flex-wrap:wrap}
+@media (max-width:720px){ .hero{padding-block:48px 36px} .hero .lede{margin-top:20px} .hero .actions{margin-top:26px} }
+
+/* stage */
+.stage{
+  position:relative; border:1px solid var(--hair); border-radius:18px; background:var(--bg2);
+  padding:22px 28px 26px; overflow:hidden;
+}
+.stage::before{content:""; position:absolute; inset:0 0 auto; height:1px; background:linear-gradient(90deg,transparent,rgba(var(--glow),.35),transparent); pointer-events:none}
+.stage-top{display:flex; align-items:center; justify-content:space-between; gap:16px; font-size:13px; color:var(--fg2); min-height:28px}
+.stage-top .left{display:flex; align-items:center; gap:14px; flex-wrap:wrap}
+.badge{display:inline-flex; align-items:center; gap:6px; height:24px; padding:0 10px; border-radius:999px; border:1px solid var(--hair2); color:var(--fg); font-size:12px; font-weight:500; letter-spacing:.01em}
+.badge i{width:6px;height:6px;border-radius:50%;background:var(--fg2)}
+.counter{display:inline-flex; gap:0; align-items:center; flex-wrap:wrap}
+.counter span{display:inline-flex; align-items:center}
+.counter span + span::before{content:""; width:14px; height:1px; background:var(--hair2); margin:0 10px}
+.counter b{font-weight:500; color:var(--fg); font-variant-numeric:tabular-nums; margin-right:5px}
+.stop-meta{display:inline-flex; align-items:center; gap:10px; white-space:nowrap; font-variant-numeric:tabular-nums}
+.stop-meta .tier{border:1px solid var(--hair2); border-radius:6px; padding:1px 7px; font-size:12px; color:var(--fg)}
+.stop-meta .v{color:var(--mint)} .stop-meta .c{color:var(--coral)} .stop-meta .cold{color:var(--fg2)}
+@media (max-width:900px){ .stop-meta{display:none} }
+
+.sentence-wrap{position:relative; margin:40px 0 8px; min-height:2.2em}
+.sentence{
+  font-family:var(--display); font-weight:500; letter-spacing:-.025em; line-height:1.12;
+  font-size:clamp(26px,3.4vw,46px); margin:0; max-width:24ch; position:relative;
+}
+.sentence .w{display:inline-block; position:relative; will-change:transform,opacity; white-space:pre}
+.sentence .w.b{cursor:default; border-radius:4px}
+.sentence .w.b:hover, .sentence .w.b.on{color:var(--fg); background:rgba(var(--glow),.07)}
+.sentence .w.chg{text-decoration:underline; text-decoration-style:dotted; text-decoration-color:var(--coral); text-decoration-thickness:2px; text-underline-offset:.16em}
+.sentence .ghostlayer{position:absolute; inset:0; pointer-events:none}
+.sentence .ghost{position:absolute; display:inline-block; pointer-events:none; white-space:pre; color:var(--fg)}
+.sentence.rows{font-size:clamp(22px,2.7vw,37px); max-width:none}
+.sentence .row{display:block}
+.sentence .row + .row{margin-top:.18em}
+.sentence.cold .w{color:var(--fg2)}
+.src{font-size:13px; color:var(--fg2); margin:12px 0 0; min-height:20px; transition:opacity .2s}
+.src b{color:var(--fg); font-weight:500}
+.src .v{color:var(--mint); font-weight:500}
+.tip{
+  position:absolute; z-index:5; pointer-events:none; opacity:0; transform:translateY(4px);
+  background:var(--fg); color:var(--bg); font-size:12.5px; line-height:1.35; padding:8px 11px; border-radius:9px;
+  box-shadow:0 8px 24px -8px rgba(0,0,0,.5); max-width:320px; transition:opacity .14s, transform .18s cubic-bezier(.2,0,0,1);
+}
+.tip.on{opacity:1; transform:translateY(0)}
+.tip b{font-weight:600}
+.tip small{display:block; opacity:.7; margin-top:2px}
+
+.tree-wrap{position:relative; margin-top:10px; height:290px}
+canvas{display:block; width:100%; height:100%}
+.readout{
+  position:absolute; z-index:3; width:264px; padding:12px 14px; border-radius:12px;
+  background:var(--bg3); border:1px solid var(--hair2); box-shadow:0 12px 32px -12px rgba(0,0,0,.6);
+  font-size:12.5px; opacity:0; transform:translateY(6px) scale(.98); transform-origin:bottom left;
+  transition:opacity .2s, transform .28s cubic-bezier(.2,0,0,1); pointer-events:none;
+}
+.readout.on{opacity:1; transform:none; pointer-events:auto}
+.readout h3{margin:0 0 8px; font-size:12.5px; font-weight:500; color:var(--fg); display:flex; align-items:center; gap:7px}
+.readout h3 i{width:7px;height:7px;border-radius:50%;background:var(--coral)}
+.readout ul{list-style:none; margin:0; padding:0}
+.readout li{display:flex; justify-content:space-between; gap:10px; padding:5px 0; border-top:1px solid var(--hair); color:var(--fg)}
+.readout li span:last-child{color:var(--fg2); font-variant-numeric:tabular-nums; white-space:nowrap}
+.readout li span:last-child.m{color:var(--mint)} .readout li span:last-child.i{color:var(--amber)}
+.coldcard{
+  position:absolute; z-index:3; left:0; top:0; max-width:300px; font-size:12.5px; color:var(--fg2);
+  opacity:0; transform:translateY(6px); transition:opacity .2s, transform .28s cubic-bezier(.2,0,0,1); pointer-events:none;
+}
+.coldcard.on{opacity:1; transform:none; pointer-events:auto}
+.coldcard b{display:block; color:var(--fg); font-weight:500; font-size:13px; margin-bottom:2px}
+.coldcard a{color:var(--fg); text-decoration:underline; text-underline-offset:3px; text-decoration-color:var(--hair2)}
+
+/* scrubber */
+.scrub{position:relative; margin-top:6px; padding:18px 0 30px}
+.track{position:relative; height:44px; touch-action:none; cursor:ew-resize; border-radius:8px; outline-offset:6px}
+.rail{position:absolute; left:0; right:0; top:50%; height:1px; background:var(--hair2); transform:translateY(-.5px)}
+.rail-fill{position:absolute; top:50%; height:1px; background:var(--fg); transform:translateY(-.5px); opacity:.5}
+.rail-dash{position:absolute; top:50%; height:1px; transform:translateY(-.5px); background:repeating-linear-gradient(90deg,var(--fg2) 0 4px,transparent 4px 9px); opacity:.7}
+.stop{position:absolute; top:50%; width:9px; height:9px; margin:-4.5px 0 0 -4.5px; border-radius:50%; background:var(--bg2); border:1.5px solid var(--fg2); transition:transform .18s cubic-bezier(.2,0,0,1), background .15s}
+.stop.chg{border-color:var(--coral)} .stop.v{border-color:var(--mint); background:var(--mint)} .stop.cold{border-style:dashed}
+.stop.on{transform:scale(1.35)}
+.tick{position:absolute; top:100%; margin-top:6px; transform:translateX(-50%); font-size:11.5px; color:var(--fg2); font-variant-numeric:tabular-nums; letter-spacing:.01em}
+.tick::before{content:""; position:absolute; left:50%; top:-9px; width:1px; height:5px; background:var(--hair2)}
+.tick.cold{font-style:normal}
+.handle{
+  position:absolute; top:50%; left:0; width:22px; height:22px; margin:-11px 0 0 -11px; border-radius:50%;
+  background:var(--fg); box-shadow:0 0 0 4px var(--bg2), 0 0 0 5px var(--hair2); will-change:transform;
+  transition:box-shadow .2s;
+}
+.handle::before{content:""; position:absolute; inset:-14px; border-radius:50%}
+.track.drag .handle, .track:focus-visible .handle{box-shadow:0 0 0 4px var(--bg2), 0 0 0 5px var(--fg), 0 0 28px 2px rgba(var(--glow),.35)}
+.handle-label{
+  position:absolute; bottom:100%; left:50%; transform:translate(-50%,-14px); white-space:nowrap; font-size:12px; font-weight:500;
+  color:var(--fg); font-variant-numeric:tabular-nums; background:var(--bg2); padding:2px 8px; border-radius:6px; border:1px solid var(--hair2);
+}
+.hint{position:absolute; left:0; top:-6px; font-size:12.5px; color:var(--fg2); transition:opacity .4s; display:flex; align-items:center; gap:6px}
+.hint.off{opacity:0}
+.stage-note{margin:10px 0 0; font-size:12px; color:var(--fg2); display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap}
+.stage-note span{color:var(--fg2)}
+
+@media (max-width:720px){
+  .stage{padding:16px 16px 18px; border-radius:14px}
+  .stage-top{font-size:12px}
+  .counter{gap:2px 14px} .counter span + span::before{display:none}
+  .sentence-wrap{margin:26px 0 6px}
+  .sentence{max-width:none}
+  .tree-wrap{height:auto; margin-top:8px} .tree-wrap canvas{height:190px}
+  .readout{position:static; width:auto; margin-top:12px; display:none}
+  .readout.on{display:block}
+  .coldcard{position:static; max-width:none; margin-top:10px; display:none}
+  .coldcard.on{display:block}
+  .scrub{padding:26px 0 30px}
+  .track{height:56px}
+  .handle{width:30px; height:30px; margin:-15px 0 0 -15px}
+  .handle::before{inset:-16px}
+  .handle-label{transform:translate(-50%,-18px)}
+  .hint{top:-14px}
+}
+
+/* input band */
+.band{padding-block:96px 40px; max-width:720px}
+.band h2{font-family:var(--display); font-weight:600; letter-spacing:-.03em; line-height:1.02; font-size:clamp(30px,4vw,48px); margin:0 0 22px; text-wrap:balance}
+.field{display:flex; align-items:center; gap:8px; border:1px solid var(--hair2); border-radius:14px; background:var(--bg2); padding:6px 6px 6px 16px; transition:box-shadow .2s, border-color .2s}
+.field:focus-within{border-color:var(--fg2); box-shadow:0 0 0 4px rgba(var(--glow),.06)}
+.field input{flex:1; min-width:0; background:transparent; border:0; color:var(--fg); font:inherit; font-size:15px; height:40px; outline:none}
+.field input::placeholder{color:var(--fg2)}
+.band p{color:var(--fg2); margin:14px 0 0; font-size:14px}
+.band p b{color:var(--fg); font-weight:500}
+.states{display:flex; flex-wrap:wrap; gap:8px 18px; margin-top:22px; font-size:13px; color:var(--fg2)}
+.states span{display:inline-flex; align-items:center; gap:7px}
+.states i{width:7px; height:7px; border-radius:50%; background:var(--fg2)}
+.states i.v{background:var(--mint)} .states i.c{background:var(--amber)} .states i.x{background:transparent; border:1.5px dashed var(--fg2)}
+@media (max-width:720px){ .band{padding-block:64px 28px} .field{flex-wrap:wrap; padding:8px} .field input{width:100%; padding:0 8px} .field .btn{width:100%; justify-content:center} }
+
+footer{display:flex; justify-content:space-between; align-items:center; gap:16px; padding-block:28px 36px; border-top:1px solid var(--hair); color:var(--fg2); font-size:13px; flex-wrap:wrap}
+footer .mark{color:var(--fg)}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{transition-duration:.01ms !important; animation:none !important}
+}
+</style>
+
+<div class="wrap">
+<header class="nav">
+  <a class="mark" href="#top" aria-label="Patient Zero home">
+    <svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="7.5" stroke="currentColor" stroke-width="1.5"/><circle cx="9" cy="9" r="2.5" fill="currentColor"/></svg>
+    Patient Zero
+  </a>
+  <nav class="nav-links" aria-label="Site">
+    <a href="#trace">Trace</a><a href="#trace">Atlas</a><a href="#trace">How it decides</a>
+  </nav>
+  <a class="btn" href="#paste">Trace a stat</a>
+</header>
+
+<main id="top">
+<section class="hero">
+  <h1>Every stat has a patient zero.</h1>
+  <p class="lede">Paste a number you are about to repeat. Patient Zero walks it back through time to the earliest page it can find, collapses the copies into their roots, and marks the page where the words changed.</p>
+  <div class="actions">
+    <a class="btn" href="#paste">Trace a stat</a>
+    <span class="kbd">or drag the time machine below</span>
+  </div>
+  <ul class="facts" aria-label="What a trace gives you">
+    <li>For a reporter with one viral stat</li>
+    <li>For anyone pasting an AI answer</li>
+    <li>Every link backed by two quoted spans</li>
+    <li>Re-checkable with one command</li>
+  </ul>
+</section>
+
+<section class="stage" id="trace" aria-label="Example trace of the goldfish attention span statistic">
+  <div class="stage-top">
+    <div class="left">
+      <span class="badge"><i></i>Replay</span>
+      <span class="counter" id="counter">
+        <span><b data-n="142">0</b>pages</span>
+        <span><b data-n="9">0</b>clusters</span>
+        <span><b data-n="1">0</b>root we could link</span>
+        <span><b data-n="0">0</b>studies found in what we searched</span>
+      </span>
+    </div>
+    <div class="stop-meta" id="stopMeta"></div>
+  </div>
+
+  <div class="sentence-wrap">
+    <p class="sentence" id="sentence" aria-live="polite"></p>
+    <p class="src" id="src"></p>
+    <div class="tip" id="tip" role="tooltip"></div>
+  </div>
+
+  <div class="tree-wrap">
+    <canvas id="tree" aria-label="Family tree of the claim on a time axis, 2012 to 2026" role="img"></canvas>
+    <div class="readout" id="readout">
+      <h3><i></i>Earliest page we found with the new wording</h3>
+      <ul>
+        <li><span>Comparison added</span><span class="m">measured</span></li>
+        <li><span>Hedge dropped</span><span class="i">inferred 0.74</span></li>
+        <li><span>Number kept, 8 seconds</span><span class="m">measured</span></li>
+      </ul>
+    </div>
+    <div class="coldcard" id="coldcard">
+      <b>Trail goes cold</b>
+      We tried the named source, The Associated Press, and found no linked page. <a href="#trace">How this was decided: row 6</a>
+    </div>
+  </div>
+
+  <div class="scrub">
+    <div class="hint" id="hint"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M9 2 4 7l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Drag back to 2012, or use the arrow keys</div>
+    <div class="track" id="track" role="slider" tabindex="0" aria-label="Time machine: step back through earlier wordings" aria-valuemin="0" aria-valuemax="5" aria-valuenow="5" aria-valuetext="March 2026, the viral wording">
+      <div class="rail"></div>
+      <div class="rail-fill" id="railFill"></div>
+      <div class="rail-dash" id="railDash"></div>
+      <div id="stops"></div>
+      <div id="ticks"></div>
+      <div class="handle" id="handle"><div class="handle-label" id="handleLabel">Mar 2026</div></div>
+    </div>
+  </div>
+  <p class="stage-note"><span>Hover a word to see the earliest page we found it on.</span>Example trace: the 2012 rows are verified Wayback text, the later hops are example data.</p>
+</section>
+
+<section class="band" id="paste">
+  <h2>Paste a number, a quote or an AI answer.</h2>
+  <form class="field" id="form">
+    <input id="claim" type="text" placeholder="Humans have an attention span of 8 seconds, less than a goldfish" aria-label="A number, a quote or an AI answer to trace" autocomplete="off">
+    <button class="btn" type="submit">Trace</button>
+  </form>
+  <p>Every number gets a quick look. One click runs the full trace: <b>the first node lands within 20 seconds</b>, and the walk ends in one of six states decided by code, never by the model.</p>
+  <div class="states" aria-label="Stop states">
+    <span><i class="v"></i>Origin found</span><span><i class="c"></i>Conflicting</span><span><i class="x"></i>Trail goes cold</span><span><i></i>Partial</span><span><i></i>Tool failed</span><span><i></i>No pages found</span>
+  </div>
+</section>
+</main>
+
+<footer>
+  <a class="mark" href="#top"><svg viewBox="0 0 18 18" fill="none" aria-hidden="true" width="18" height="18"><circle cx="9" cy="9" r="7.5" stroke="currentColor" stroke-width="1.5"/><circle cx="9" cy="9" r="2.5" fill="currentColor"/></svg>Patient Zero</a>
+  <span>Team Says Who · ODSC x Nebius hackathon · design direction 1, Lineage</span>
+</footer>
+</div>
+
+<script>
+(() => {
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $ = s => document.querySelector(s);
+
+/* ---------- springs ---------- */
+class Spring {
+  constructor(v, k = 170, d = 22) { this.x = v; this.v = 0; this.t = v; this.k = k; this.d = d; this.done = true; }
+  set(t, k, d) { if (k) this.k = k; if (d) this.d = d; this.t = t; if (RM) { this.x = t; this.v = 0; this.done = true; } else this.done = false; }
+  jump(v) { this.x = v; this.t = v; this.v = 0; this.done = true; }
+  step(dt) {
+    if (this.done) return;
+    const a = -this.k * (this.x - this.t) - this.d * this.v;
+    this.v += a * dt; this.x += this.v * dt;
+    if (Math.abs(this.v) < 0.004 && Math.abs(this.x - this.t) < 0.0015) { this.x = this.t; this.v = 0; this.done = true; }
+  }
+}
+const springs = [];
+const sp = (v, k, d) => { const s = new Spring(v, k, d); springs.push(s); return s; };
+
+/* ---------- data (example trace; the 2012 rows are verified Wayback text) ---------- */
+const STOPS = [
+  { year: 2010.3, kind: 'cold', date: 'before 2012', page: 'The Associated Press', tier: 'no linked page', label: 'Cold',
+    words: null },
+  { year: 2012.1, kind: 'origin', date: 'Feb 2012', page: 'statisticbrain.com', tier: 'verified', label: 'Feb 2012',
+    rows: ['The average attention span in 2012 8 seconds', 'The average attention span of a gold fish 9 seconds'] },
+  { year: 2013.9, kind: 'chg', date: 'Nov 2013', page: 'example-blog.net', tier: 'exact', label: 'Nov 2013',
+    words: 'Attention spans are now 8 seconds, one second shorter than a goldfish’s.' },
+  { year: 2015.4, kind: 'hop', date: 'May 2015', page: 'example-news.com', tier: 'exact', label: 'May 2015',
+    words: 'You now have a shorter attention span than a goldfish.' },
+  { year: 2019.5, kind: 'hop', date: 'Jun 2019', page: 'example-magazine.com', tier: 'normalised', label: 'Jun 2019',
+    words: 'Humans now have a shorter attention span than a goldfish.' },
+  { year: 2026.2, kind: 'viral', date: 'Mar 2026', page: 'example-viral.post', tier: 'exact', label: 'Mar 2026',
+    words: 'Your attention span is now shorter than a goldfish’s.' },
+];
+const BLAME = {
+  your: { page: 'example-viral.post', year: 2026, stop: 5 },
+  is: { page: 'example-viral.post', year: 2026, stop: 5 },
+  now: { page: 'example-blog.net', year: 2013, stop: 2, chg: true },
+  shorter: { page: 'example-blog.net', year: 2013, stop: 2, chg: true },
+  than: { page: 'example-blog.net', year: 2013, stop: 2, chg: true },
+  attention: { page: 'statisticbrain.com', year: 2012, stop: 1 },
+  span: { page: 'statisticbrain.com', year: 2012, stop: 1 },
+  spans: { page: 'statisticbrain.com', year: 2012, stop: 1 },
+  a: { page: 'statisticbrain.com', year: 2012, stop: 1 },
+  "goldfish's": { page: 'statisticbrain.com', year: 2012, stop: 1, norm: true },
+  goldfish: { page: 'statisticbrain.com', year: 2012, stop: 1, norm: true },
+};
+const Y0 = 2009.4, Y1 = 2026.9;
+
+/* ---------- tree nodes ---------- */
+const nodes = [];
+const byId = {};
+function addNode(n) { n.px = sp(0, 120, 16); n.py = sp(0, 120, 16); n.sc = sp(0.2, 140, 15); n.al = sp(0, 120, 20); n.ox = sp(0, 110, 14); n.oy = sp(0, 110, 14); n.halo = sp(0, 90, 14); nodes.push(n); byId[n.id] = n; return n; }
+addNode({ id: 'cold', year: 2010.3, kind: 'cold', parent: null, stop: 0, r: 5, label: 'Associated Press', sub: 'no linked page' });
+addNode({ id: 'origin', year: 2012.1, kind: 'origin', parent: 'cold', stop: 1, r: 6, label: 'statisticbrain.com', sub: 'Feb 2012 · verified', edge: 'tried' });
+addNode({ id: 'v2', year: 2012.25, kind: 'version', parent: 'origin', stop: 1, r: 3, dy: -24 });
+addNode({ id: 'v3', year: 2012.4, kind: 'version', parent: 'v2', stop: 1, r: 3, dy: -44 });
+addNode({ id: 'h3', year: 2013.9, kind: 'chg', parent: 'origin', stop: 2, r: 6, label: 'example-blog.net', sub: 'Nov 2013 · new wording', edge: 'link' });
+addNode({ id: 'h2', year: 2015.4, kind: 'hop', parent: 'h3', stop: 3, r: 5, label: 'example-news.com', sub: 'May 2015', edge: 'link', row: 2 });
+addNode({ id: 'h1', year: 2019.5, kind: 'hop', parent: 'h2', stop: 4, r: 5, label: 'example-magazine.com', sub: 'Jun 2019 · inferred link', edge: 'inferred' });
+addNode({ id: 'viral', year: 2026.2, kind: 'viral', parent: 'h1', stop: 5, r: 7, label: 'example-viral.post', sub: 'Mar 2026 · 37 copies', edge: 'link' });
+let seed = 7; const rnd = () => (seed = (seed * 16807) % 2147483647) / 2147483647;
+function ring(parent, count, yMin, yMax, rMin, rMax) {
+  for (let i = 0; i < count; i++) {
+    const a = rnd() * Math.PI * 2, rr = rMin + rnd() * (rMax - rMin);
+    addNode({ id: parent + '_c' + i, year: yMin + rnd() * (yMax - yMin), kind: 'copy', parent, stop: byId[parent].stop, r: 1.6 + rnd() * 1.2, ang: a, rad: rr });
+  }
+}
+ring('viral', 37, 2024.6, 2026.5, 30, 50);
+ring('h1', 9, 2019.6, 2021.5, 18, 28);
+ring('h2', 6, 2015.5, 2016.8, 16, 24);
+const CHAIN = ['viral', 'h1', 'h2', 'h3', 'origin', 'cold'];
+
+/* ---------- canvas ---------- */
+const canvas = $('#tree'), ctx = canvas.getContext('2d');
+let W = 0, H = 0, DPR = 1, PAD = 44, BASE = 0, phone = false;
+function layout() {
+  const r = canvas.getBoundingClientRect();
+  W = r.width; H = r.height; DPR = Math.min(2, devicePixelRatio || 1);
+  canvas.width = W * DPR; canvas.height = H * DPR; ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+  phone = W < 640; PAD = phone ? 22 : 44; BASE = phone ? H * 0.5 : H * 0.6;
+  for (const n of nodes) {
+    if (n.kind === 'copy') { const p = byId[n.parent]; const k = phone ? 0.62 : 1; n.tx = xFor(p.year) + Math.cos(n.ang) * n.rad * k; n.ty = BASE + Math.sin(n.ang) * n.rad * k * 0.78; }
+    else { n.tx = xFor(n.year); n.ty = BASE + (n.dy || 0); }
+  }
+  placeTrack();
+}
+const xFor = y => PAD + (y - Y0) / (Y1 - Y0) * (W - 2 * PAD);
+const yearFor = x => Y0 + (x - PAD) / (W - 2 * PAD) * (Y1 - Y0);
+
+const css = () => getComputedStyle(document.documentElement);
+let tok = {};
+function readTokens() { const c = css(); tok = { fg: c.getPropertyValue('--fg').trim(), fg2: c.getPropertyValue('--fg2').trim(), fg3: c.getPropertyValue('--fg3').trim(), bg2: c.getPropertyValue('--bg2').trim(), coral: c.getPropertyValue('--coral').trim(), mint: c.getPropertyValue('--mint').trim(), amber: c.getPropertyValue('--amber').trim(), glow: c.getPropertyValue('--glow').trim(), hair: c.getPropertyValue('--hair2').trim(), ui: '"Geist", system-ui, sans-serif' }; }
+
+const t0 = performance.now();
+const revealAt = {};
+(() => { // nodes stream in right to left, as the search walks back
+  let i = 0;
+  for (const id of CHAIN) { revealAt[id] = RM ? 0 : 500 + i * 520; i++; }
+  revealAt.v2 = revealAt.origin + 180; revealAt.v3 = revealAt.origin + 320;
+  for (const n of nodes) if (n.kind === 'copy') revealAt[n.id] = RM ? 0 : revealAt[n.parent] + 120 + rnd() * 700;
+})();
+
+let blameStop = -1, blameOn = false, pointer = null, activeStop = 5;
+const handle = sp(2026.2, 170, 20);
+
+function nodeVisible(n, now) { return now - t0 >= revealAt[n.id] && n.year <= handle.x + 0.05; }
+function update(now, dt) {
+  for (const n of nodes) {
+    const vis = nodeVisible(n, now);
+    const p = n.parent ? byId[n.parent] : null;
+    if (vis) { n.px.set(n.tx); n.py.set(n.ty); n.sc.set(1); n.al.set(n.kind === 'copy' ? 0.55 : 1); }
+    else { if (p) { n.px.set(p.px.x); n.py.set(p.py.x); } else { n.px.set(n.tx); n.py.set(n.ty); } n.sc.set(0.2); n.al.set(0); }
+    if (n.kind !== 'copy') n.halo.set(n.stop === activeStop && vis ? 1 : 0);
+    if (pointer && vis && !RM) {
+      const dx = n.px.x - pointer.x, dy = n.py.x - pointer.y, d = Math.hypot(dx, dy) || 1;
+      if (d < 110) { const f = (110 - d) * 0.22; n.ox.set(dx / d * f); n.oy.set(dy / d * f); } else { n.ox.set(0); n.oy.set(0); }
+    } else { n.ox.set(0); n.oy.set(0); }
+  }
+}
+function draw() {
+  ctx.clearRect(0, 0, W, H);
+  const hiSet = blameOn ? new Set(CHAIN.slice(0, CHAIN.indexOf(CHAIN.find(id => byId[id].stop === blameStop)) + 1)) : null;
+  // edges
+  for (const n of nodes) {
+    if (!n.parent) continue;
+    const p = byId[n.parent];
+    const a = Math.min(n.al.x, p.al.x); if (a <= 0.01) continue;
+    const x1 = n.px.x + n.ox.x, y1 = n.py.x + n.oy.x, x2 = p.px.x + p.ox.x, y2 = p.py.x + p.oy.x;
+    ctx.beginPath();
+    if (n.kind === 'copy') { ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.strokeStyle = tok.fg2; ctx.globalAlpha = a * 0.25; ctx.lineWidth = 1; ctx.setLineDash([]); }
+    else if (n.kind === 'version') { ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.strokeStyle = tok.fg2; ctx.globalAlpha = a * 0.6; ctx.lineWidth = 1; ctx.setLineDash([]); }
+    else {
+      const hi = hiSet && hiSet.has(n.id) && hiSet.has(p.id);
+      const mx = (x1 + x2) / 2;
+      ctx.moveTo(x1, y1); ctx.bezierCurveTo(mx, y1, mx, y2, x2, y2);
+      ctx.strokeStyle = hi ? tok.fg : (n.edge === 'tried' ? tok.fg3 : tok.fg2);
+      ctx.globalAlpha = a * (hi ? 1 : (blameOn ? 0.35 : 0.8)); ctx.lineWidth = hi ? 1.6 : 1.1;
+      ctx.setLineDash(n.edge === 'link' ? [] : [4, 5]);
+    }
+    ctx.stroke();
+  }
+  ctx.setLineDash([]); ctx.globalAlpha = 1;
+  // halos
+  for (const n of nodes) {
+    if (n.halo.x <= 0.01) continue;
+    const x = n.px.x + n.ox.x, y = n.py.x + n.oy.x, R = 34 * n.halo.x;
+    const g = ctx.createRadialGradient(x, y, 0, x, y, R);
+    const col = n.kind === 'chg' ? tok.coral : n.kind === 'origin' ? tok.mint : `rgb(${tok.glow})`;
+    g.addColorStop(0, col); g.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.globalAlpha = 0.28 * n.halo.x; ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, R, 0, 7); ctx.fill();
+  }
+  ctx.globalAlpha = 1;
+  // ghost rings where rewound hops will return
+  const nowT = performance.now();
+  for (const id of CHAIN) { const n = byId[id]; if (n.al.x > 0.5 || nowT - t0 < revealAt[id]) continue; ctx.beginPath(); ctx.arc(n.tx, n.ty, n.r, 0, 7); ctx.strokeStyle = tok.fg2; ctx.globalAlpha = 0.22 * (1 - n.al.x); ctx.lineWidth = 1; ctx.setLineDash([2, 3]); ctx.stroke(); }
+  ctx.setLineDash([]); ctx.globalAlpha = 1;
+  // nodes
+  ctx.font = `500 12px ${tok.ui}`;
+  for (const n of nodes) {
+    if (n.al.x <= 0.01) continue;
+    const x = n.px.x + n.ox.x, y = n.py.x + n.oy.x, r = n.r * n.sc.x;
+    const dim = blameOn && hiSet && !hiSet.has(n.id) && n.kind !== 'copy';
+    ctx.globalAlpha = n.al.x * (dim ? 0.35 : 1);
+    ctx.beginPath(); ctx.arc(x, y, r, 0, 7);
+    if (n.kind === 'cold') { ctx.strokeStyle = tok.fg2; ctx.lineWidth = 1.2; ctx.setLineDash([2.5, 2.5]); ctx.stroke(); ctx.setLineDash([]); }
+    else if (n.kind === 'chg') { ctx.fillStyle = tok.bg2; ctx.fill(); ctx.strokeStyle = tok.coral; ctx.lineWidth = 2; ctx.stroke(); }
+    else if (n.kind === 'origin') { ctx.fillStyle = tok.mint; ctx.fill(); }
+    else if (n.kind === 'copy') { ctx.fillStyle = tok.fg2; ctx.fill(); }
+    else if (n.kind === 'version') { ctx.fillStyle = tok.bg2; ctx.fill(); ctx.strokeStyle = tok.fg2; ctx.lineWidth = 1.2; ctx.stroke(); }
+    else { ctx.fillStyle = tok.fg; ctx.fill(); }
+    if (n.label && n.sc.x > 0.85) {
+      const lift = n.kind === 'viral' ? (phone ? 40 : 64) : 21;
+      ctx.fillStyle = n.stop === activeStop ? tok.fg : tok.fg2;
+      ctx.globalAlpha = n.al.x * Math.max(0, (n.sc.x - 0.85) / 0.15) * (dim ? 0.4 : 1);
+      ctx.textAlign = 'center';
+      const rowLift = lift + (n.row === 2 && phone ? 15 : 0);
+      if (!phone && n.stop === activeStop) {
+        ctx.fillText(n.label, x, y + lift);
+        ctx.fillStyle = tok.fg2; ctx.font = `400 11.5px ${tok.ui}`; ctx.fillText(n.sub, x, y + lift + 15); ctx.font = `500 12px ${tok.ui}`;
+      } else if (!phone) {
+        ctx.fillStyle = tok.fg2; ctx.font = `500 11.5px ${tok.ui}`; ctx.fillText(n.kind === 'cold' ? 'AP' : String(Math.floor(n.year)), x, y + lift); ctx.font = `500 12px ${tok.ui}`;
+      } else {
+        ctx.font = `500 11px ${tok.ui}`; ctx.fillText(n.kind === 'cold' ? 'AP' : String(Math.floor(n.year)), x, y + rowLift); ctx.font = `500 12px ${tok.ui}`;
+      }
+    }
+  }
+  ctx.globalAlpha = 1;
+}
+
+/* ---------- sentence (FLIP with springs) ---------- */
+const sentenceEl = $('#sentence'), srcEl = $('#src'), tipEl = $('#tip');
+let wordSprings = []; let currentWording = -1;
+const key = w => w.toLowerCase().replace(/[^a-z0-9’']/g, '');
+function renderWording(idx) {
+  if (idx === currentWording) return;
+  const box = sentenceEl.getBoundingClientRect();
+  const oldWords = [...sentenceEl.querySelectorAll('.w')].map(el => ({ k: el.dataset.k, text: el.textContent, r: el.getBoundingClientRect(), chg: el.classList.contains('chg') }));
+  for (const s of wordSprings) { const i = springs.indexOf(s); if (i >= 0) springs.splice(i, 1); }
+  wordSprings = [];
+  sentenceEl.querySelectorAll('.ghostlayer').forEach(g => g.remove());
+  const stop = STOPS[idx];
+  const rows = stop.rows ? stop.rows : stop.words ? [stop.words] : STOPS[1].rows;
+  sentenceEl.classList.toggle('cold', stop.kind === 'cold'); sentenceEl.classList.toggle('rows', !!stop.rows || stop.kind === 'cold');
+  sentenceEl.innerHTML = '';
+  const seen2 = {};
+  rows.forEach(row => {
+    const rowEl = document.createElement('span'); rowEl.className = 'row';
+    row.split(' ').forEach((w, wi, arr) => {
+      const el = document.createElement('span'); el.className = 'w'; el.textContent = w + (wi < arr.length - 1 ? ' ' : '');
+      const k = key(w); seen2[k] = (seen2[k] || 0) + 1; el.dataset.k = k + '#' + seen2[k];
+      const b = BLAME[k];
+      if (b) { el.classList.add('b'); el.dataset.blame = k; el.tabIndex = 0; if (b.chg && idx >= 2) el.classList.add('chg'); el.setAttribute('aria-label', w + ', first seen on ' + b.page + ', ' + b.year); }
+      rowEl.appendChild(el);
+    });
+    sentenceEl.appendChild(rowEl);
+  });
+  const dirLeft = idx < currentWording;
+  const matched = new Set();
+  let i = 0;
+  for (const el of sentenceEl.querySelectorAll('.w')) {
+    const nr = el.getBoundingClientRect();
+    const sx = sp(0, 160, 26), sy = sp(0, 200, 28), so = sp(1, 200, 28);
+    const old = oldWords.find(o => o.k === el.dataset.k && !matched.has(o.k) && Math.abs(o.r.top - nr.top) < 4 && Math.abs(o.r.left - nr.left) < 28);
+    if (old) { matched.add(old.k); }
+    else if (currentWording >= 0) { sy.jump(dirLeft ? 10 : -10); so.jump(0); sy.set(0); so.set(1); if (!RM) { sy.done = so.done = true; setTimeout(() => { sy.done = so.done = false; }, 230 + i * 26); } }
+    wordSprings.push(sx, sy, so);
+    el._s = { sx, sy, so }; i++;
+  }
+  if (currentWording >= 0 && !RM) {
+    const layer = document.createElement('span'); layer.className = 'ghostlayer';
+    let j = 0;
+    for (const o of oldWords) {
+      if (matched.has(o.k)) continue;
+      const gh = document.createElement('span'); gh.className = 'ghost' + (o.chg ? ' chg' : ''); gh.textContent = o.text;
+      gh.style.left = (o.r.left - box.left) + 'px'; gh.style.top = (o.r.top - box.top) + 'px';
+      const sy = sp(0, 340, 38), so = sp(1, 340, 38);
+      sy.done = so.done = true; setTimeout(() => { sy.set(dirLeft ? -8 : 8); so.set(0); }, j * 14);
+      gh._s = { sy, so }; wordSprings.push(sy, so); layer.appendChild(gh); j++;
+    }
+    sentenceEl.appendChild(layer);
+    setTimeout(() => layer.remove(), 500);
+  }
+  currentWording = idx;
+  renderSource(idx);
+}
+function renderSource(idx) {
+  const s = STOPS[idx];
+  if (s.kind === 'origin') srcEl.innerHTML = 'Source line on the page: <b>The Associated Press</b> · statisticbrain.com · Wayback capture 2012-02-08 · <span class="v">verified text</span> · 3 captures Feb to Apr 2012';
+  else if (s.kind === 'cold') srcEl.innerHTML = 'The 2012 page names its source. We searched for a linked page and found none.';
+  else if (s.kind === 'chg') srcEl.innerHTML = '<b>' + s.page + '</b> · ' + s.date + ' · two 2012 rows joined into one comparison · match: ' + s.tier;
+  else if (s.kind === 'viral') srcEl.innerHTML = '<b>' + s.page + '</b> · ' + s.date + ' · 37 copies of this wording collapsed into one cluster · match: ' + s.tier;
+  else srcEl.innerHTML = '<b>' + s.page + '</b> · ' + s.date + ' · match: ' + s.tier;
+}
+function paintWords() {
+  for (const el of sentenceEl.querySelectorAll('.w')) { const s = el._s; if (!s) continue; el.style.transform = `translate(${s.sx.x}px,${s.sy.x}px)`; el.style.opacity = s.so.x; }
+  for (const el of sentenceEl.querySelectorAll('.ghost')) { const s = el._s; el.style.transform = `translateY(${s.sy.x}px)`; el.style.opacity = s.so.x; }
+  for (const el of sentenceEl.querySelectorAll('.w.b')) { if (el._s && el._s.so.x < 0.6) el.classList.add('entering'); else el.classList.remove('entering'); }
+}
+
+/* blame */
+function showTip(el) {
+  const b = BLAME[el.dataset.blame]; if (!b) return;
+  const r = el.getBoundingClientRect(), box = sentenceEl.parentElement.getBoundingClientRect();
+  tipEl.innerHTML = `<b>${el.textContent.trim()}</b> · first seen on ${b.page}, ${b.year}<small>${b.chg ? 'comparison added on this page' : b.norm ? 'normalised match: written as two words in 2012' : 'in what we found'}</small>`;
+  tipEl.style.left = Math.max(0, Math.min(r.left - box.left, box.width - 330)) + 'px';
+  tipEl.style.top = (r.bottom - box.top + 8) + 'px';
+  tipEl.classList.add('on'); el.classList.add('on');
+  blameStop = b.stop; blameOn = true;
+}
+function hideTip() { tipEl.classList.remove('on'); sentenceEl.querySelectorAll('.w.on').forEach(e => e.classList.remove('on')); blameOn = false; }
+sentenceEl.addEventListener('pointerover', e => { const el = e.target.closest('.w.b'); if (el) showTip(el); });
+sentenceEl.addEventListener('pointerout', e => { if (e.target.closest('.w.b')) hideTip(); });
+sentenceEl.addEventListener('focusin', e => { const el = e.target.closest('.w.b'); if (el) showTip(el); });
+sentenceEl.addEventListener('focusout', hideTip);
+sentenceEl.addEventListener('click', e => { const el = e.target.closest('.w.b'); if (!el) return hideTip(); if (el.classList.contains('on') && tipEl.classList.contains('on') && e.pointerType === 'touch') hideTip(); else showTip(el); });
+
+/* ---------- scrubber ---------- */
+const track = $('#track'), handleEl = $('#handle'), handleLabel = $('#handleLabel'), stopsEl = $('#stops'), ticksEl = $('#ticks');
+const railFill = $('#railFill'), railDash = $('#railDash'), hint = $('#hint'), readout = $('#readout'), coldcard = $('#coldcard'), stopMeta = $('#stopMeta');
+let TW = 0;
+const txFor = y => PAD + (y - Y0) / (Y1 - Y0) * (TW - 2 * PAD);
+function placeTrack() {
+  TW = track.getBoundingClientRect().width;
+  stopsEl.innerHTML = ''; ticksEl.innerHTML = '';
+  STOPS.forEach((s, i) => { const d = document.createElement('div'); d.className = 'stop ' + (s.kind === 'chg' ? 'chg' : s.kind === 'origin' ? 'v' : s.kind === 'cold' ? 'cold' : ''); d.style.left = txFor(s.year) + 'px'; d.dataset.i = i; stopsEl.appendChild(d); });
+  const years = phone ? [2012, 2016, 2020, 2026] : [2012, 2014, 2016, 2018, 2020, 2022, 2024, 2026];
+  years.forEach(y => { const d = document.createElement('div'); d.className = 'tick'; d.style.left = txFor(y + 0.1) + 'px'; d.textContent = y; ticksEl.appendChild(d); });
+  railDash.style.left = txFor(STOPS[3].year) + 'px'; railDash.style.width = (txFor(STOPS[4].year) - txFor(STOPS[3].year)) + 'px';
+  const cx = txFor(STOPS[0].year), ox = txFor(STOPS[1].year);
+  railDash2.style.left = cx + 'px'; railDash2.style.width = (ox - cx) + 'px';
+}
+const railDash2 = railDash.cloneNode(); railDash2.id = ''; track.insertBefore(railDash2, stopsEl);
+function nearestStop(y) { let best = 0, bd = 1e9; STOPS.forEach((s, i) => { const d = Math.abs(s.year - y); if (d < bd) { bd = d; best = i; } }); return best; }
+function setStop(i, k, d) { i = Math.max(0, Math.min(5, i)); handle.set(STOPS[i].year, k || 170, d || 19); markStop(i); hint.classList.add('off'); }
+function markStop(i) {
+  if (i === activeStop && currentWording === i) return;
+  activeStop = i;
+  renderWording(i);
+  const s = STOPS[i];
+  track.setAttribute('aria-valuenow', i); track.setAttribute('aria-valuetext', s.date + ', ' + s.page + (s.kind === 'chg' ? ', earliest page we found with the new wording' : s.kind === 'cold' ? ', trail goes cold' : ''));
+  stopsEl.querySelectorAll('.stop').forEach(d => d.classList.toggle('on', +d.dataset.i === i));
+  readout.classList.toggle('on', s.kind === 'chg');
+  coldcard.classList.toggle('on', s.kind === 'cold');
+  const tier = s.kind === 'origin' ? '<span class="tier v">verified</span>' : s.kind === 'chg' ? '<span class="tier c">new wording</span>' : s.kind === 'cold' ? '<span class="tier cold">trail goes cold</span>' : `<span class="tier">${s.tier}</span>`;
+  stopMeta.innerHTML = `<span>${s.date}</span><span>${s.page}</span>${tier}`;
+  handleLabel.textContent = s.kind === 'cold' ? 'Cold' : s.date;
+}
+let dragging = false;
+track.addEventListener('pointerdown', e => {
+  if (e.button !== 0 && e.pointerType === 'mouse') return;
+  dragging = true; track.classList.add('drag'); track.setPointerCapture(e.pointerId); hint.classList.add('off');
+  const r = track.getBoundingClientRect(); const y = Math.max(STOPS[0].year, Math.min(STOPS[5].year, yearFor2(e.clientX - r.left)));
+  handle.set(y, 420, 32); markStop(nearestStop(y)); e.preventDefault();
+});
+const yearFor2 = x => Y0 + (x - PAD) / (TW - 2 * PAD) * (Y1 - Y0);
+track.addEventListener('pointermove', e => {
+  if (!dragging) return;
+  const r = track.getBoundingClientRect(); const y = Math.max(STOPS[0].year - 0.3, Math.min(STOPS[5].year + 0.3, yearFor2(e.clientX - r.left)));
+  handle.set(y, 520, 34); markStop(nearestStop(y));
+});
+const endDrag = () => { if (!dragging) return; dragging = false; track.classList.remove('drag'); setStop(nearestStop(handle.t), 170, 17); };
+track.addEventListener('pointerup', endDrag); track.addEventListener('pointercancel', endDrag);
+track.addEventListener('keydown', e => {
+  const m = { ArrowLeft: activeStop - 1, ArrowDown: activeStop - 1, ArrowRight: activeStop + 1, ArrowUp: activeStop + 1, Home: 0, End: 5 };
+  if (e.key in m) { e.preventDefault(); hint.classList.add('off'); setStop(m[e.key]); }
+});
+stopsEl.addEventListener('click', e => { const d = e.target.closest('.stop'); if (d) setStop(+d.dataset.i); });
+
+/* readout placement (desktop: anchored to the changed hop node) */
+function placeCards() {
+  if (phone) return;
+  const n = byId.h3; readout.style.left = Math.max(0, n.tx - 24) + 'px'; readout.style.top = '4px';
+  coldcard.style.left = Math.max(0, byId.cold.tx - 6) + 'px'; coldcard.style.top = Math.max(0, BASE - 128) + 'px';
+}
+
+/* counter count-up */
+const counters = [...$('#counter').querySelectorAll('b')].map(b => ({ el: b, s: sp(0, 40, 12), n: +b.dataset.n }));
+setTimeout(() => counters.forEach(c => c.s.set(c.n)), RM ? 0 : 2600);
+
+/* canvas pointer */
+canvas.addEventListener('pointermove', e => { const r = canvas.getBoundingClientRect(); pointer = { x: e.clientX - r.left, y: e.clientY - r.top }; });
+canvas.addEventListener('pointerleave', () => { pointer = null; });
+
+/* form */
+$('#form').addEventListener('submit', e => { e.preventDefault(); $('#claim').blur(); document.getElementById('trace').scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'start' }); });
+
+/* ---------- loop ---------- */
+let last = performance.now();
+function frame(now) {
+  let dt = Math.min(0.05, (now - last) / 1000); last = now;
+  const sub = 1 / 240; let acc = dt;
+  while (acc > 0) { const h = Math.min(sub, acc); for (const s of springs) s.step(h); acc -= h; }
+  update(now, dt);
+  // handle
+  const hx = txFor(handle.x);
+  handleEl.style.transform = `translateX(${hx}px)`;
+  railFill.style.left = hx + 'px'; railFill.style.width = Math.max(0, txFor(STOPS[5].year) - hx) + 'px';
+  for (const c of counters) c.el.textContent = Math.round(c.s.x);
+  paintWords();
+  draw();
+  requestAnimationFrame(frame);
+}
+function init() {
+  readTokens(); layout(); placeCards();
+  for (const n of nodes) { const p = n.parent ? byId[n.parent] : null; n.px.jump(p ? p.tx : n.tx); n.py.jump(p ? p.ty : n.ty); }
+  if (RM) for (const n of nodes) { n.px.jump(n.tx); n.py.jump(n.ty); n.sc.jump(1); n.al.jump(n.kind === 'copy' ? 0.55 : 1); }
+  handle.jump(STOPS[5].year);
+  markStop(5);
+  requestAnimationFrame(frame);
+}
+addEventListener('resize', () => { layout(); placeCards(); });
+matchMedia('(prefers-color-scheme: light)').addEventListener('change', readTokens);
+new MutationObserver(readTokens).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { layout(); placeCards(); });
+init();
+
+/* screenshot helpers */
+window.pz = { goto: i => setStop(i), settle: () => { for (const s of springs) { s.x = s.t; s.v = 0; s.done = true; } for (const id in revealAt) revealAt[id] = 0; }, blame: k => { const el = sentenceEl.querySelector(`.w[data-blame="${k}"]`); if (el) showTip(el); } };
+})();
+</script>

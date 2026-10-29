@@ -20,3 +20,6 @@
 {"ts":"2026-10-29T04:17-07:00","stage":"H4.6-r3","agent":"master-planner","model":"opus","effort":"default","minutes":12,"tokens":197048,"result":"met"}
 {"ts":"2026-10-29T04:27-07:00","stage":"H4.6-blind","agent":"master-xo","model":"opus","effort":"default","minutes":1,"tokens":65244,"result":"met"}
 {"ts":"2026-10-29T04:28-07:00","stage":"H5-design","agent":"master-designer","model":"opus","effort":"default","minutes":16,"tokens":195942,"result":"met"}
+{"ts":"2026-10-29T04:51-07:00","stage":"H5-design-redo","agent":"master-designer","model":"opus","effort":"default","minutes":17,"tokens":222664,"result":"met after 1 fix round","note":"d2 Apple Rewind"}
+{"ts":"2026-10-29T04:55-07:00","stage":"H5-design-redo","agent":"master-designer","model":"opus","effort":"default","minutes":21,"tokens":250592,"result":"met after 1 fix round","note":"d1 Linear Lineage"}
+{"ts":"2026-10-29T04:55-07:00","stage":"H5-design-redo","agent":"master-designer","model":"opus","effort":"default","minutes":22,"tokens":250658,"result":"met after 1 fix round","note":"d3 Stripe Time Machine"}
