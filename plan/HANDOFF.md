@@ -44,7 +44,7 @@ Done this session (Oct 29, 01:37 to 02:00 PDT):
 
 - DONE (04:17): idea brief round 3 (all borrowings, typed decision layer, 10 gap items, 6 cooler features by layer, blind-target hash commit, RerunLab in Why us, judge pass). Projected about 96 (94 to 98), single-judge estimate. Open questions in the planner's report: new private product repo before Rohan's hash commit (rec yes, by Oct 31); judge pass 20 traces a day, $100 cap; researcher mode only if done by Nov 16; spike runner Rishit; Jev ablation skip.
 - Organizer email sent by Vidyut (paula.m@odsc.com); watch for the reply and update plan/submission.md.
-- IN FLIGHT (about 03:30): master-designer, 3 dynamic directions with the six features (goal odsc-pz-design-3dir). Conductor opens its screenshots before relaying.
+- DONE (04:28): 3 dynamic directions https://claude.ai/artifact/3of3mtRgffDZzqYuNvsujG : A Case File (microfilm-reel scrubber), B Instrument (seismograph strip chart, mono tiles), C Telephone (poster-size claim, chain of speech cards, tangerine drag pill). Designer picks A with C's giant claim; conductor leans C for the video. Screens in plan/artifacts/pz-directions/. Waiting on Vidyut's pick (GATE 2 with the r3 plan).
 
 - Decided 04:30: keep plan/ public (no separate repo) and make it a strength for judges' agents (README section on plan/, an index, agent-readable entry points: planner adds this to the brief's README plan); Jev runs as an ablation row (Vidyut has a key; it goes in .env as TYPESAFE_API_KEY, he adds it); judge allowance yes; researcher mode stays; Rishit runs the spike. XO is posting Anoop's full do-not-open list on #5 and in docs/AGENTS.md.
 

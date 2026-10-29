@@ -1,0 +1,1160 @@
+<title>Patient Zero Directions</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Schibsted+Grotesk:wght@400;500;700;800&display=swap">
+<style>
+/* Layout: three worlds as tabs; inside each, the time-machine scrubber is the poster and every other screen is a fragment hung around it. */
+:root{
+  --bg:#f3f3f1; --fg:#17191c; --fg2:#5a5f66; --fg3:#858a92; --ln:#dcdbd6; --ln2:#c4c3bc; --chip:#e7e7e3; --acc:#1d5c4a;
+  /* direction A: Case File */
+  --a-paper:#f7f6f2; --a-sheet:#ffffff; --a-ink:#15181c; --a-ink2:#4b5159; --a-ink3:#7c838c; --a-line:#e3e1db; --a-line2:#cfccc4; --a-act:#1d5c4a; --a-actink:#ffffff; --a-red:#b4261b; --a-redsoft:#f9e7e4; --a-amber:#8a5a00; --a-ambersoft:#f8eed5; --a-mint:#1f6b4e; --a-mintsoft:#e1f0e8; --a-slate:#e9e9ec;
+  /* direction B: Instrument */
+  --b-ground:#e9edf1; --b-panel:#ffffff; --b-ink:#0e1a24; --b-ink2:#44515d; --b-ink3:#76838f; --b-line:#d3dae1; --b-line2:#b9c3cd; --b-sig:#b4530a; --b-sigsoft:#fbe9dc; --b-red:#c02a21; --b-redsoft:#fae3e1; --b-ok:#1b6e4e; --b-oksoft:#dcefe6; --b-grid:#dde3e9;
+  /* direction C: Telephone */
+  --c-canvas:#ffffff; --c-ink:#111111; --c-ink2:#4a4a4a; --c-ink3:#7a7a7a; --c-line:#e4e4e2; --c-line2:#c9c9c6; --c-tang:#f24a12; --c-tangsoft:#ffe6dd; --c-blue:#2341ff; --c-bluesoft:#e4e8ff; --c-mint:#1f8a5a; --c-mintsoft:#def3e8; --c-amber:#9a5b00; --c-ambersoft:#fbeed2; --c-grey:#ededeb;
+}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){
+  --bg:#0f1113; --fg:#ecebe6; --fg2:#b4b8be; --fg3:#848993; --ln:#272b31; --ln2:#383d45; --chip:#20242a; --acc:#5fc3a0;
+  --a-paper:#111316; --a-sheet:#181b1f; --a-ink:#ecebe6; --a-ink2:#b9bcc2; --a-ink3:#858a92; --a-line:#2a2e34; --a-line2:#3a3f46; --a-act:#5fc3a0; --a-actink:#0f1512; --a-red:#ff7a6c; --a-redsoft:#3a1e1b; --a-amber:#e3b25c; --a-ambersoft:#3a2d12; --a-mint:#7fd4b0; --a-mintsoft:#1b3129; --a-slate:#262a30;
+  --b-ground:#0a1017; --b-panel:#111923; --b-ink:#e4ecf3; --b-ink2:#aab6c2; --b-ink3:#76838f; --b-line:#1f2a36; --b-line2:#30404f; --b-sig:#f59e0b; --b-sigsoft:#3a2708; --b-red:#ff6b61; --b-redsoft:#3b1a17; --b-ok:#5fd4a2; --b-oksoft:#13302a; --b-grid:#182330;
+  --c-canvas:#131313; --c-ink:#f2f2f0; --c-ink2:#c2c2bf; --c-ink3:#8c8c89; --c-line:#2a2a28; --c-line2:#3d3d3a; --c-tang:#ff6a3d; --c-tangsoft:#3a1d13; --c-blue:#8292ff; --c-bluesoft:#1d2350; --c-mint:#6fd3a0; --c-mintsoft:#143326; --c-amber:#e8b45a; --c-ambersoft:#3a2a0f; --c-grey:#222221;
+  color-scheme:dark } }
+:root[data-theme="dark"]{
+  --bg:#0f1113; --fg:#ecebe6; --fg2:#b4b8be; --fg3:#848993; --ln:#272b31; --ln2:#383d45; --chip:#20242a; --acc:#5fc3a0;
+  --a-paper:#111316; --a-sheet:#181b1f; --a-ink:#ecebe6; --a-ink2:#b9bcc2; --a-ink3:#858a92; --a-line:#2a2e34; --a-line2:#3a3f46; --a-act:#5fc3a0; --a-actink:#0f1512; --a-red:#ff7a6c; --a-redsoft:#3a1e1b; --a-amber:#e3b25c; --a-ambersoft:#3a2d12; --a-mint:#7fd4b0; --a-mintsoft:#1b3129; --a-slate:#262a30;
+  --b-ground:#0a1017; --b-panel:#111923; --b-ink:#e4ecf3; --b-ink2:#aab6c2; --b-ink3:#76838f; --b-line:#1f2a36; --b-line2:#30404f; --b-sig:#f59e0b; --b-sigsoft:#3a2708; --b-red:#ff6b61; --b-redsoft:#3b1a17; --b-ok:#5fd4a2; --b-oksoft:#13302a; --b-grid:#182330;
+  --c-canvas:#131313; --c-ink:#f2f2f0; --c-ink2:#c2c2bf; --c-ink3:#8c8c89; --c-line:#2a2a28; --c-line2:#3d3d3a; --c-tang:#ff6a3d; --c-tangsoft:#3a1d13; --c-blue:#8292ff; --c-bluesoft:#1d2350; --c-mint:#6fd3a0; --c-mintsoft:#143326; --c-amber:#e8b45a; --c-ambersoft:#3a2a0f; --c-grey:#222221;
+  color-scheme:dark }
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 "Geist","Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1380px;margin:0 auto;padding-block:24px 80px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3,h4{margin:0;text-wrap:balance}
+p{margin:0}
+button{font:inherit}
+.tnum{font-variant-numeric:tabular-nums}
+.vis-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* page chrome */
+.head{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:20px 48px;align-items:end;padding-bottom:20px;border-bottom:1px solid var(--ln2);margin-bottom:20px}
+.head h1{font-size:clamp(26px,3vw,38px);font-weight:600;letter-spacing:-.02em;line-height:1.05}
+.head .lede{color:var(--fg2);margin-top:10px;max-width:64ch;font-size:15px}
+.head .facts{font-size:13px;color:var(--fg2);display:grid;gap:4px}
+.head .facts b{color:var(--fg);font-weight:600}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding:10px 0;border-bottom:1px solid var(--ln);margin-bottom:28px}
+.tab{min-height:44px;padding:8px 16px;border-radius:999px;border:1px solid var(--ln2);background:transparent;color:var(--fg);cursor:pointer;display:inline-flex;align-items:center;gap:10px;font-weight:500}
+.tab small{color:var(--fg3);font-weight:400}
+.tab[aria-selected="true"]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.tab[aria-selected="true"] small{color:inherit;opacity:.7}
+.tab:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.dir{display:none}.dir.on{display:block}
+.ex{display:inline-flex;align-items:center;gap:6px;padding:2px 8px;border-radius:4px;font-size:12px;font-weight:600;background:var(--chip);color:var(--fg2);letter-spacing:.02em}
+.shead{display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin:44px 0 14px;flex-wrap:wrap}
+.shead h2{font-size:22px;font-weight:600;letter-spacing:-.01em}
+.shead .note{font-size:13px;color:var(--fg3)}
+.spec{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px 28px;padding:22px 0 26px;border-bottom:1px solid var(--ln);font-size:14px}
+.spec>div{min-width:0}
+.spec h4{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--fg3);margin-bottom:6px;font-weight:600}
+.spec .idea{grid-column:1/-1;font-size:17px;color:var(--fg);max-width:78ch;text-wrap:pretty}
+.sw{display:inline-block;width:20px;height:20px;border-radius:50%;border:1px solid var(--ln2);vertical-align:middle;margin-right:2px}
+.row2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;align-items:start}
+.row3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;align-items:start}
+.cap{font-size:13px;color:var(--fg3);margin-top:8px}
+.cmp{width:100%;border-collapse:collapse;font-size:14px;margin-top:14px}
+.cmp th,.cmp td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--ln);vertical-align:top;min-width:0}
+.cmp th{font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--fg3);font-weight:600}
+.cmp td:first-child{color:var(--fg2)}
+.cmpwrap{overflow-x:auto}
+.reco{margin-top:22px;padding:18px 20px;border:1px solid var(--ln2);border-radius:12px;max-width:80ch;font-size:15px}
+.reco b{font-weight:600}
+.foot{margin-top:56px;padding-top:18px;border-top:1px solid var(--ln2);font-size:13px;color:var(--fg3);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* shared scrubber engine (styled per direction) */
+.sc{position:relative}
+.sentence{display:flex;flex-wrap:wrap;gap:0 .28em;align-items:baseline;position:relative;min-height:1.4em}
+.sentence .w{display:inline-block;position:relative;cursor:default;border-radius:4px;white-space:nowrap}
+.sentence .brk{flex-basis:100%;height:0}
+.sentence .w.leave{position:absolute;pointer-events:none}
+.sentence .w.src{font-size:.5em;letter-spacing:.02em;opacity:.75}
+.tip{position:absolute;z-index:4;max-width:280px;padding:10px 12px;border-radius:8px;font-size:13px;line-height:1.35;pointer-events:none;opacity:0;transform:translateY(4px);transition:opacity .18s ease-out,transform .18s ease-out}
+.tip.show{opacity:1;transform:none}
+.tip b{display:block;font-weight:600}
+.range{-webkit-appearance:none;appearance:none;width:100%;height:44px;background:transparent;margin:0;cursor:ew-resize;display:block}
+.range:focus-visible{outline:2px solid var(--acc);outline-offset:4px;border-radius:6px}
+.range::-webkit-slider-runnable-track{height:2px;background:var(--ln2)}
+.range::-moz-range-track{height:2px;background:var(--ln2)}
+.range::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:22px;height:22px;border-radius:50%;background:var(--fg);border:3px solid var(--bg);box-shadow:0 0 0 1px var(--fg);margin-top:-10px}
+.range::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--fg);border:3px solid var(--bg);box-shadow:0 0 0 1px var(--fg)}
+.yrs{display:flex;justify-content:space-between;font-size:12px;color:var(--fg3);padding:0 4px}
+.playbtn{min-height:44px;padding:8px 14px;border-radius:8px;border:1px solid var(--ln2);background:transparent;color:inherit;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.playbtn:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+
+/* ========== A. CASE FILE ========== */
+.dA{--P:var(--a-paper);--S:var(--a-sheet);--I:var(--a-ink);--I2:var(--a-ink2);--I3:var(--a-ink3);--L:var(--a-line);--L2:var(--a-line2);--ACT:var(--a-act);--ACTI:var(--a-actink);--R:var(--a-red);--RS:var(--a-redsoft);--AM:var(--a-amber);--AMS:var(--a-ambersoft);--M:var(--a-mint);--MS:var(--a-mintsoft);--SL:var(--a-slate);--disp:"Newsreader","Iowan Old Style",Georgia,serif;--ui:"Geist","Helvetica Neue",Arial,sans-serif;--ease:cubic-bezier(.3,.7,.3,1);--acc:var(--a-act)}
+.dA .ui{background:var(--S);border:1px solid var(--L);border-radius:14px;overflow:hidden;color:var(--I);font-family:var(--ui)}
+.dA .bar{display:flex;align-items:center;gap:16px;padding:12px 18px;border-bottom:1px solid var(--L);flex-wrap:wrap;font-size:13px;color:var(--I2)}
+.dA .mark{font-family:var(--disp);font-size:19px;font-weight:500;color:var(--I);display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
+.dA .mark i{width:12px;height:12px;border-radius:50%;border:2.5px solid var(--I);display:inline-block}
+.dA .mark i::after{content:"";display:block;width:4px;height:4px;background:var(--I);border-radius:50%;margin:1.5px}
+.dA .counter b{font-weight:600;color:var(--I)}.dA .counter .gt{color:var(--I3)}.dA .counter .zero{color:var(--R)}
+.dA .live{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;letter-spacing:.04em;padding:3px 9px;border-radius:4px;border:1px solid var(--L2);color:var(--I2);margin-left:auto}
+.dA .live.on{color:var(--ACT);border-color:var(--ACT)}
+.dA .btn{font-weight:500;font-size:14px;padding:10px 16px;border-radius:8px;border:1px solid var(--L2);background:transparent;color:var(--I);cursor:pointer;min-height:44px;display:inline-flex;align-items:center;gap:8px}
+.dA .btn.primary{background:var(--ACT);color:var(--ACTI);border-color:var(--ACT)}
+.dA .btn:focus-visible{outline:2px solid var(--ACT);outline-offset:2px}
+.dA .state{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.05em;padding:4px 10px;border-radius:4px}
+.dA .state.cold{background:var(--SL);color:var(--I2)}.dA .state.found{background:var(--MS);color:var(--M)}
+/* A hero */
+.dA .hero{display:grid;grid-template-columns:minmax(0,1fr) 300px}
+.dA .stage{padding:22px 24px 10px;min-width:0}
+.dA .sentence{font-family:var(--disp);font-size:clamp(26px,3.4vw,44px);line-height:1.15;letter-spacing:-.012em;color:var(--I);min-height:2.3em}
+.dA .sentence .w.src{font-family:var(--ui);color:var(--I2);font-size:14px}
+.dA .sentence .w.new{color:var(--R)}
+.dA .sentence .w:hover,.dA .sentence .w:focus-visible{background:var(--RS);outline:none}
+.dA .tip{background:var(--I);color:var(--S)}
+.dA .readline{display:flex;gap:18px;align-items:center;flex-wrap:wrap;font-size:13px;color:var(--I2);margin-top:12px;min-height:24px}
+.dA .readline .yr{font-family:var(--disp);font-size:28px;color:var(--I);line-height:1;min-width:3.2ch}
+.dA .readline .vf{color:var(--M);font-weight:600}
+.dA .readline .nc{color:var(--I3)}
+.dA .treewrap{margin-top:8px;overflow-x:auto}
+.dA svg{display:block;width:100%;min-width:720px;height:auto}
+.dA svg text{font-family:var(--ui);fill:var(--I);font-size:12.5px}
+.dA .yr-t{fill:var(--I3);font-size:12px}
+.dA .node{fill:var(--S);stroke:var(--I);stroke-width:1.6}
+.dA .node.cold{stroke:var(--I3);stroke-dasharray:3 3;fill:var(--SL)}
+.dA .cnt{font-size:12px;font-weight:600;text-anchor:middle;dominant-baseline:central;fill:var(--I)}
+.dA .edge{fill:none;stroke:var(--I);stroke-width:1.6}
+.dA .edge.inf{stroke:var(--I3);stroke-dasharray:5 5;stroke-width:1.4}
+.dA .edge.mut{stroke:var(--R);stroke-width:2.2}
+.dA .ring{fill:none;stroke:var(--R);stroke-width:2}
+.dA .redtag{fill:var(--R);font-weight:600}
+.dA .axis{stroke:var(--L2)}
+.dA .head-ln{stroke:var(--R);stroke-width:1.5;stroke-dasharray:3 4}
+.dA .g,.dA .edge,.dA .ring{transition:opacity .52s var(--ease),transform .52s var(--ease);transform-box:fill-box;transform-origin:center}
+.dA .g.off,.dA .ring.off{opacity:0;transform:scale(.6)}
+.dA .edge.off{opacity:0}
+.dA .scrub{padding:4px 24px 14px;border-top:1px solid var(--L)}
+.dA .scrub .lab{display:flex;justify-content:space-between;font-size:12px;color:var(--I3);margin-bottom:2px}
+.dA .range::-webkit-slider-thumb{background:var(--I);border-color:var(--S);box-shadow:0 0 0 1px var(--I)}
+.dA .range::-moz-range-thumb{background:var(--I);border-color:var(--S);box-shadow:0 0 0 1px var(--I)}
+.dA .rail{border-left:1px solid var(--L);display:flex;flex-direction:column;min-width:0;font-size:13px}
+.dA .rail h3{font-size:13px;font-weight:600;padding:12px 16px;border-bottom:1px solid var(--L);color:var(--I2)}
+.dA .log{list-style:none;margin:0;padding:8px 0}
+.dA .log li{display:grid;grid-template-columns:40px 1fr;gap:8px;padding:5px 16px;line-height:1.35;color:var(--I2)}
+.dA .log li .t{color:var(--I3)}.dA .log li.hit{color:var(--I)}.dA .log li.stop{color:var(--I);font-weight:500}.dA .log li.stop .t{color:var(--R)}
+.dA .already{margin-top:auto;border-top:1px solid var(--L);padding:12px 16px;color:var(--I2)}
+.dA .already b{display:block;color:var(--I3);font-size:12px;font-weight:600;margin-bottom:4px}
+.dA .banner{display:flex;align-items:center;gap:16px;padding:14px 18px;border-top:1px solid var(--L);flex-wrap:wrap;font-size:14px;color:var(--I2)}
+.dA .banner .sp{flex:1}
+.dA .usage{padding:9px 18px;border-top:1px solid var(--L);font-size:12px;color:var(--I3);display:flex;gap:18px;flex-wrap:wrap}
+/* A meter */
+.dA .meter{padding:6px 0}
+.dA .hop{display:grid;grid-template-columns:110px minmax(0,1fr) 84px;gap:14px;align-items:center;padding:12px 18px;border-bottom:1px solid var(--L);font-size:14px}
+.dA .hop:last-child{border-bottom:0}
+.dA .hop .yrs2{font-family:var(--disp);font-size:17px;color:var(--I);white-space:nowrap}
+.dA .hop .lbl{color:var(--I)}.dA .hop .lbl small{display:block;color:var(--I3);font-size:12.5px}
+.dA .hop .lbl.red{color:var(--R)}
+.dA .conf{display:grid;gap:3px;font-size:12px;color:var(--I2);text-align:right}
+.dA .conf i{display:block;height:4px;background:var(--L);border-radius:2px;overflow:hidden}
+.dA .conf i::after{content:"";display:block;height:100%;width:var(--v);background:var(--I);transition:width .6s var(--ease)}
+.dA .hop.unsure .conf i::after{background:var(--I3)}
+.dA .hop.unsure .lbl{color:var(--I2)}
+/* A popover */
+.dA .page{background:var(--P);padding:22px 24px;border-radius:14px;border:1px solid var(--L);font-family:Georgia,serif;color:var(--I2);line-height:1.6;position:relative;min-height:230px}
+.dA .page h3{font-family:Georgia,serif;font-size:19px;color:var(--I);margin-bottom:8px}
+.dA .page mark{background:var(--AMS);color:var(--I);padding:0 2px}
+.dA .pop{position:absolute;left:24px;right:24px;top:120px;max-width:340px;background:var(--S);border:1px solid var(--L2);border-radius:10px;padding:12px 14px;font-family:var(--ui);font-size:13px;color:var(--I2);box-shadow:0 8px 24px rgba(0,0,0,.08)}
+.dA .pop .pm{display:flex;align-items:center;gap:8px;font-weight:600;color:var(--I);margin-bottom:6px}
+.dA .pop .pm i{width:10px;height:10px;border-radius:50%;border:2px solid var(--I)}
+.dA .pop .big{font-family:var(--disp);font-size:22px;color:var(--I);line-height:1.1;margin:4px 0}
+.dA .pop .big span{color:var(--I3);font-size:13px;font-family:var(--ui);margin-left:6px}
+/* A atlas */
+.dA .atlas{padding:0}
+.dA .week{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);border-bottom:1px solid var(--L)}
+.dA .week>div{padding:20px 22px;min-width:0}
+.dA .week>div+div{border-left:1px solid var(--L)}
+.dA .week h4{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--I3);font-weight:600;margin-bottom:8px}
+.dA .week .q{font-family:var(--disp);font-size:clamp(22px,2.4vw,30px);line-height:1.2;color:var(--I)}
+.dA .week .big{font-family:var(--disp);font-size:44px;line-height:1;color:var(--I)}
+.dA .week .big span{font-family:var(--ui);font-size:13px;color:var(--I3);margin-left:8px}
+.dA .list{list-style:none;margin:0;padding:0}
+.dA .list li{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:14px;align-items:center;padding:12px 22px;border-bottom:1px solid var(--L);font-size:14px}
+.dA .list li:last-child{border-bottom:0}
+.dA .list .q{font-family:var(--disp);font-size:18px;color:var(--I)}
+.dA .list .q small{display:block;font-family:var(--ui);font-size:12.5px;color:var(--I3)}
+.dA .list .st{font-size:12px;font-weight:600;white-space:nowrap}
+.dA .st.one{color:var(--R)}.dA .st.cold{color:var(--I2)}.dA .st.ok{color:var(--M)}
+/* A researcher */
+.dA .fwd{padding:18px 22px}
+.dA .fwd .seed{font-family:var(--disp);font-size:20px;color:var(--I);line-height:1.3}
+.dA .fwd .seed small{display:block;font-family:var(--ui);font-size:13px;color:var(--I2);margin-top:4px}
+.dA .steps{list-style:none;margin:16px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;position:relative}
+.dA .steps::before{content:"";position:absolute;left:12px;right:12px;top:10px;border-top:1.6px solid var(--I)}
+.dA .steps li{padding:22px 10px 0 0;position:relative;font-size:13px;color:var(--I2);min-width:0}
+.dA .steps li::before{content:"";position:absolute;left:4px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--S);border:1.6px solid var(--I)}
+.dA .steps li.red::before{border-color:var(--R);box-shadow:0 0 0 3px var(--RS)}
+.dA .steps li b{display:block;color:var(--I);font-weight:500}
+.dA .steps li q{font-family:var(--disp);color:var(--I);display:block;margin-top:4px;font-size:15px;quotes:"\201C" "\201D"}
+/* A scan + card compact */
+.dA .scan .text{padding:18px 22px;font-family:var(--disp);font-size:18px;line-height:1.5;border-bottom:1px solid var(--L)}
+.dA .hl{border-radius:4px;padding:1px 4px;border-bottom:2px solid;background:transparent;color:inherit;font:inherit;cursor:pointer}
+.dA .hl.one{background:var(--RS);border-color:var(--R)}.dA .hl.ok{background:var(--MS);border-color:var(--M)}.dA .hl.none{background:var(--AMS);border-color:var(--AM)}
+.dA .ql{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;padding:10px 22px;border-bottom:1px solid var(--L);font-size:13.5px}
+.dA .ql small{display:block;color:var(--I3);font-size:12px}
+.dA .card .num{font-family:var(--disp);font-size:clamp(34px,4vw,52px);line-height:1;letter-spacing:-.02em;padding:22px 22px 6px}
+.dA .card .num span{color:var(--I3);font-size:.4em;font-family:var(--ui);margin-left:8px;letter-spacing:0}
+.dA .card .sum{padding:0 22px 16px;color:var(--I2);font-size:14.5px;max-width:60ch}
+.dA .card .sum b{color:var(--I);font-weight:600}
+.dA .card .facts{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--L)}
+.dA .card .facts>div{padding:12px 22px;font-size:13.5px;min-width:0}
+.dA .card .facts>div+div{border-left:1px solid var(--L)}
+.dA .card .facts h4{font-size:12px;color:var(--I3);font-weight:600;margin-bottom:3px}
+.dA .card .acts{display:flex;gap:8px;padding:14px 22px;flex-wrap:wrap;border-top:1px solid var(--L)}
+/* A phone */
+.phone{width:390px;max-width:100%;border:1px solid var(--ln2);border-radius:28px;padding:10px;flex:none}
+.phone .scr{border-radius:20px;overflow:hidden}
+.phonewrap{display:flex;gap:36px;align-items:flex-start;flex-wrap:wrap}
+.phonewrap .notes{flex:1;min-width:260px;max-width:52ch;font-size:15px;color:var(--fg2);display:grid;gap:12px;align-content:start}
+.phonewrap .notes b{color:var(--fg);font-weight:600}
+.dA .phone{background:var(--P)}
+.dA .phone .scr{background:var(--S);border:1px solid var(--L)}
+.dA .phone .stage{padding:16px 16px 8px}
+.dA .phone .sentence{font-size:26px;min-height:3.4em}
+.dA .phone .readline .yr{font-size:22px}
+.dA .phone .scrub{padding:4px 16px 10px}
+.dA .vt{list-style:none;margin:0;padding:6px 16px 12px;position:relative;font-size:13px}
+.dA .vt li{display:grid;grid-template-columns:34px 1fr;gap:8px;padding:5px 0;color:var(--I2);transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.dA .vt li.off{opacity:.25;transform:translateX(6px)}
+.dA .vt li i{width:26px;height:26px;border-radius:50%;border:1.6px solid var(--I);display:grid;place-items:center;font-style:normal;font-size:10.5px;font-weight:600;color:var(--I);background:var(--S)}
+.dA .vt li.red i{box-shadow:0 0 0 3px var(--S),0 0 0 5px var(--R)}
+.dA .vt li.cold i{border-style:dashed;border-color:var(--I3);background:var(--SL)}
+.dA .vt li b{color:var(--I);font-weight:500;display:block}
+
+/* ========== B. INSTRUMENT ========== */
+.dB{--G:var(--b-ground);--PN:var(--b-panel);--I:var(--b-ink);--I2:var(--b-ink2);--I3:var(--b-ink3);--L:var(--b-line);--L2:var(--b-line2);--SIG:var(--b-sig);--SIGS:var(--b-sigsoft);--R:var(--b-red);--RS:var(--b-redsoft);--OK:var(--b-ok);--OKS:var(--b-oksoft);--GR:var(--b-grid);--mono:"IBM Plex Mono","SFMono-Regular",Menlo,monospace;--sans:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;--acc:var(--b-sig)}
+.dB .ui{background:var(--PN);border:1px solid var(--L);border-radius:6px;color:var(--I);font-family:var(--sans);overflow:hidden}
+.dB .bar{display:flex;align-items:center;gap:14px;padding:10px 16px;border-bottom:1px solid var(--L);font-family:var(--mono);font-size:12px;color:var(--I2);flex-wrap:wrap;text-transform:uppercase;letter-spacing:.06em}
+.dB .mark{color:var(--I);font-weight:600;display:inline-flex;align-items:center;gap:8px}
+.dB .mark i{width:14px;height:14px;border:1.5px solid var(--I);display:inline-block;position:relative}
+.dB .mark i::after{content:"";position:absolute;left:3px;top:3px;width:4px;height:4px;background:var(--SIG)}
+.dB .counter b{color:var(--I)}.dB .counter .zero{color:var(--R)}
+.dB .live{margin-left:auto;padding:2px 8px;border:1px solid var(--L2);color:var(--I2)}
+.dB .live.on{color:var(--SIG);border-color:var(--SIG)}
+.dB .btn{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:10px 14px;border:1px solid var(--L2);background:transparent;color:var(--I);cursor:pointer;min-height:44px;display:inline-flex;align-items:center;gap:8px}
+.dB .btn.primary{background:var(--I);color:var(--PN);border-color:var(--I)}
+.dB .btn:focus-visible{outline:2px solid var(--SIG);outline-offset:2px}
+.dB .state{font-family:var(--mono);font-size:12px;letter-spacing:.06em;padding:4px 10px;display:inline-flex;gap:8px;align-items:center}
+.dB .state.cold{background:var(--GR);color:var(--I)}.dB .state.found{background:var(--OKS);color:var(--OK)}
+/* B hero */
+.dB .hero{display:grid;grid-template-columns:minmax(0,1fr) 320px}
+.dB .stage{padding:18px 20px 8px;min-width:0;background:
+  linear-gradient(var(--GR) 1px,transparent 1px) 0 0/100% 28px,
+  linear-gradient(90deg,var(--GR) 1px,transparent 1px) 0 0/28px 100%}
+.dB .sentence{font-family:var(--mono);font-size:clamp(20px,2.5vw,30px);line-height:1.35;color:var(--I);font-weight:500;min-height:2.8em}
+.dB .sentence .w{padding:1px 3px;background:var(--PN);border:1px solid var(--L);border-radius:2px}
+.dB .sentence .w.new{color:var(--SIG);border-color:var(--SIG)}
+.dB .sentence .w.src{font-size:12px;border:0;background:transparent;color:var(--I2)}
+.dB .sentence .w:hover,.dB .sentence .w:focus-visible{background:var(--SIGS);outline:none}
+.dB .tip{background:var(--I);color:var(--PN);font-family:var(--mono);font-size:12px;border-radius:2px}
+.dB .readouts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-top:14px}
+.dB .ro{background:var(--PN);border:1px solid var(--L);padding:8px 10px;min-width:0}
+.dB .ro small{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--I3)}
+.dB .ro b{display:block;font-family:var(--mono);font-size:22px;font-weight:500;color:var(--I);line-height:1.2;white-space:nowrap}
+.dB .ro b.sig{color:var(--SIG)}.dB .ro b.ok{color:var(--OK)}
+.dB .chart{margin-top:14px;position:relative;height:170px;background:var(--PN);border:1px solid var(--L)}
+.dB .chart::after{content:"";position:absolute;left:0;right:0;bottom:22px;border-top:1px solid var(--L2)}
+.dB .chart .bar{all:unset;position:absolute;bottom:22px;width:7px;background:var(--I2);transition:transform .32s linear,opacity .32s linear;transform-origin:bottom}
+.dB .chart .bar.off{transform:scaleY(0);opacity:0}
+.dB .chart .bar.red{background:var(--R)}
+.dB .chart .bar.cold{background:var(--I3);opacity:.5}
+.dB .chart .ph{position:absolute;top:0;bottom:22px;width:2px;background:var(--SIG);transition:left .08s linear}
+.dB .chart .ph::after{content:attr(data-y);position:absolute;top:6px;left:8px;font-family:var(--mono);font-size:12px;color:var(--SIG);background:var(--PN);padding:1px 4px}
+.dB .chart .lbl{position:absolute;bottom:4px;font-family:var(--mono);font-size:10.5px;color:var(--I3);transform:translateX(-50%);white-space:nowrap}
+.dB .chart .lbl.first{transform:none;left:4px!important}
+.dB .chart .lbl.last{transform:translateX(-100%);left:calc(100% - 4px)!important}
+.dB .chart .gridy{position:absolute;left:0;right:0;border-top:1px dashed var(--GR);font-family:var(--mono);font-size:10px;color:var(--I3);padding-left:4px}
+.dB .scrub{padding:8px 20px 12px;border-top:1px solid var(--L);display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center}
+.dB .scrub .lab{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--I3)}
+.dB .range::-webkit-slider-runnable-track{height:8px;background:repeating-linear-gradient(90deg,var(--L2) 0 1px,transparent 1px 10px);border-top:1px solid var(--L2);border-bottom:1px solid var(--L2)}
+.dB .range::-moz-range-track{height:8px;background:repeating-linear-gradient(90deg,var(--L2) 0 1px,transparent 1px 10px)}
+.dB .range::-webkit-slider-thumb{width:16px;height:30px;border-radius:2px;background:var(--SIG);border:0;box-shadow:none;margin-top:-11px}
+.dB .range::-moz-range-thumb{width:16px;height:30px;border-radius:2px;background:var(--SIG);border:0;box-shadow:none}
+.dB .rail{border-left:1px solid var(--L);font-family:var(--mono);font-size:12px;min-width:0;display:flex;flex-direction:column}
+.dB .rail h3{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--I3);padding:10px 14px;border-bottom:1px solid var(--L);font-weight:600}
+.dB .log{list-style:none;margin:0;padding:6px 0}
+.dB .log li{display:grid;grid-template-columns:38px 1fr;gap:8px;padding:4px 14px;line-height:1.4;color:var(--I2)}
+.dB .log li .t{color:var(--I3)}.dB .log li.hit{color:var(--I)}.dB .log li.stop{color:var(--SIG)}
+.dB .already{margin-top:auto;border-top:1px solid var(--L);padding:10px 14px;color:var(--I2);font-family:var(--sans);font-size:13px}
+.dB .already b{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--I3);margin-bottom:4px}
+.dB .banner{display:flex;align-items:center;gap:14px;padding:12px 16px;border-top:1px solid var(--L);flex-wrap:wrap;font-size:14px;color:var(--I2)}
+.dB .banner .sp{flex:1}
+.dB .usage{padding:8px 16px;border-top:1px solid var(--L);font-family:var(--mono);font-size:11.5px;color:var(--I3);display:flex;gap:16px;flex-wrap:wrap}
+/* B meter: gauges */
+.dB .gauges{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.dB .gauge{padding:16px 14px;border-right:1px solid var(--L);min-width:0;font-size:13px}
+.dB .gauge:last-child{border-right:0}
+.dB .gauge small{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--I3);display:block}
+.dB .gauge svg{display:block;width:100%;max-width:150px;height:auto;margin:8px 0 2px}
+.dB .gauge .arc{fill:none;stroke:var(--GR);stroke-width:10;stroke-linecap:butt}
+.dB .gauge .fill{fill:none;stroke:var(--I);stroke-width:10;stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--v));transition:stroke-dashoffset .6s cubic-bezier(.2,.8,.2,1)}
+.dB .gauge.red .fill{stroke:var(--R)}
+.dB .gauge.unsure .fill{stroke:var(--I3)}
+.dB .gauge .nd{stroke:var(--SIG);stroke-width:2;transform-origin:75px 70px;transform:rotate(calc(-90deg + var(--v)*180deg));transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.dB .gauge b{display:block;font-family:var(--mono);font-size:20px;font-weight:500;color:var(--I)}
+.dB .gauge.red b{color:var(--R)}.dB .gauge.unsure b{color:var(--I2)}
+.dB .gauge p{color:var(--I2);line-height:1.35}
+.dB .gauge p.red{color:var(--R);font-weight:500}
+/* B popover */
+.dB .page{background:var(--G);padding:22px 24px;border-radius:6px;border:1px solid var(--L);font-family:Georgia,serif;color:var(--I2);line-height:1.6;position:relative;min-height:230px}
+.dB .page h3{font-family:Georgia,serif;font-size:19px;color:var(--I);margin-bottom:8px}
+.dB .page mark{background:var(--SIGS);color:var(--I);padding:0 2px;outline:1px solid var(--SIG)}
+.dB .pop{position:absolute;left:24px;right:24px;top:118px;max-width:360px;background:var(--PN);border:1px solid var(--I);padding:10px 12px;font-family:var(--mono);font-size:12px;color:var(--I2);box-shadow:4px 4px 0 var(--I)}
+.dB .pop .pm{display:flex;align-items:center;gap:8px;font-weight:600;color:var(--I);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.dB .pop .row{display:grid;grid-template-columns:auto 1fr;gap:4px 12px}
+.dB .pop .row b{color:var(--I);font-weight:500}
+.dB .pop .sig{color:var(--SIG)}
+/* B atlas: data table */
+.dB .week{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-bottom:1px solid var(--L)}
+.dB .week>div{padding:16px 18px;min-width:0;border-right:1px solid var(--L)}
+.dB .week>div:last-child{border-right:0}
+.dB .week small{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--I3);display:block;margin-bottom:6px}
+.dB .week .q{font-size:17px;color:var(--I);line-height:1.3;font-weight:500}
+.dB .week .big{font-family:var(--mono);font-size:36px;color:var(--I);line-height:1}
+.dB .week .big i{font-style:normal;font-size:12px;color:var(--I3);margin-left:6px}
+.dB table{width:100%;border-collapse:collapse;font-size:13px}
+.dB th{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--I3);text-align:left;padding:8px 14px;border-bottom:1px solid var(--L);font-weight:600}
+.dB td{padding:10px 14px;border-bottom:1px solid var(--L);vertical-align:top;color:var(--I2)}
+.dB td.q{color:var(--I);font-weight:500}
+.dB td.n{font-family:var(--mono);white-space:nowrap}
+.dB td .st{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.dB .st.one{color:var(--R)}.dB .st.cold{color:var(--I2)}.dB .st.ok{color:var(--OK)}
+.dB .spark{display:inline-block;vertical-align:middle;width:72px;height:18px}
+.dB .spark path{fill:none;stroke:var(--I2);stroke-width:1.5}
+/* B researcher: forward strip */
+.dB .fwd{padding:16px 18px}
+.dB .fwd .seed{font-size:16px;color:var(--I);font-weight:500}
+.dB .fwd .seed small{display:block;font-family:var(--mono);font-size:11.5px;color:var(--I2);margin-top:4px;font-weight:400}
+.dB .strip{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:14px;border:1px solid var(--L)}
+.dB .strip>div{padding:10px 12px;border-right:1px solid var(--L);min-width:0;font-size:12.5px;color:var(--I2)}
+.dB .strip>div:last-child{border-right:0}
+.dB .strip small{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--I3)}
+.dB .strip b{display:block;font-family:var(--mono);font-size:18px;color:var(--I);font-weight:500;margin:2px 0}
+.dB .strip .red b{color:var(--R)}
+/* B scan+card */
+.dB .scan .text{padding:16px 18px;font-size:15px;line-height:1.55;border-bottom:1px solid var(--L);color:var(--I)}
+.dB .hl{font:inherit;padding:0 3px;border:1px solid;background:transparent;color:inherit;cursor:pointer;border-radius:2px}
+.dB .hl.one{border-color:var(--R);background:var(--RS)}.dB .hl.ok{border-color:var(--OK);background:var(--OKS)}.dB .hl.none{border-color:var(--L2);background:var(--GR)}
+.dB .card .num{font-family:var(--mono);font-size:clamp(28px,3.4vw,42px);line-height:1.1;padding:18px 18px 4px;color:var(--I)}
+.dB .card .num span{font-size:.38em;color:var(--I3);margin-left:6px}
+.dB .card .sum{padding:0 18px 14px;font-size:14px;color:var(--I2);max-width:60ch}
+.dB .card .facts{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--L)}
+.dB .card .facts>div{padding:10px 18px;font-size:13px;min-width:0;border-right:1px solid var(--L)}
+.dB .card .facts>div:last-child{border-right:0}
+.dB .card .facts small{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--I3)}
+.dB .card .acts{display:flex;gap:8px;padding:12px 18px;flex-wrap:wrap;border-top:1px solid var(--L)}
+/* B phone */
+.dB .phone{background:var(--G)}
+.dB .phone .scr{background:var(--PN);border:1px solid var(--L);border-radius:6px}
+.dB .phone{border-radius:14px}
+.dB .phone .stage{padding:14px 14px 8px}
+.dB .phone .sentence{font-size:19px;min-height:4em}
+.dB .phone .readouts{grid-template-columns:1fr 1fr}
+.dB .phone .scrub{padding:8px 14px 10px;grid-template-columns:1fr;gap:4px}
+.dB .phone .chart{height:110px}
+.dB .vt{list-style:none;margin:0;padding:6px 14px 12px;font-family:var(--mono);font-size:12px}
+.dB .vt li{display:grid;grid-template-columns:48px 1fr;gap:8px;padding:5px 0;color:var(--I2);transition:opacity .32s linear}
+.dB .vt li.off{opacity:.25}
+.dB .vt li i{font-style:normal;color:var(--I3)}
+.dB .vt li.red i{color:var(--R)}
+.dB .vt li b{color:var(--I);font-weight:500;display:block;font-family:var(--sans)}
+
+/* ========== C. TELEPHONE ========== */
+.dC{--CV:var(--c-canvas);--I:var(--c-ink);--I2:var(--c-ink2);--I3:var(--c-ink3);--L:var(--c-line);--L2:var(--c-line2);--T:var(--c-tang);--TS:var(--c-tangsoft);--B:var(--c-blue);--BS:var(--c-bluesoft);--M:var(--c-mint);--MS:var(--c-mintsoft);--AM:var(--c-amber);--AMS:var(--c-ambersoft);--GY:var(--c-grey);--sg:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;--gm:"Geist Mono","SFMono-Regular",Menlo,monospace;--spring:cubic-bezier(.22,1,.36,1);--acc:var(--c-blue)}
+.dC .ui{background:var(--CV);border:1.5px solid var(--I);border-radius:22px;color:var(--I);font-family:var(--sg);overflow:hidden}
+.dC .bar{display:flex;align-items:center;gap:14px;padding:14px 20px;border-bottom:1.5px solid var(--I);font-size:14px;color:var(--I2);flex-wrap:wrap}
+.dC .mark{font-weight:800;font-size:18px;letter-spacing:-.02em;color:var(--I);display:inline-flex;align-items:center;gap:8px}
+.dC .mark i{width:14px;height:14px;border-radius:50%;background:var(--T);display:inline-block}
+.dC .counter b{color:var(--I);font-weight:700}.dC .counter .zero{color:var(--T)}
+.dC .live{margin-left:auto;font-family:var(--gm);font-size:12px;padding:4px 10px;border-radius:999px;border:1.5px solid var(--I);color:var(--I)}
+.dC .live.on{background:var(--T);border-color:var(--T);color:#fff}
+.dC .btn{font-weight:700;font-size:14px;padding:10px 18px;border-radius:999px;border:1.5px solid var(--I);background:transparent;color:var(--I);cursor:pointer;min-height:44px;display:inline-flex;align-items:center;gap:8px}
+.dC .btn.primary{background:var(--I);color:var(--CV)}
+.dC .btn:focus-visible{outline:2px solid var(--B);outline-offset:2px}
+.dC .state{font-family:var(--gm);font-size:12px;padding:5px 12px;border-radius:999px;display:inline-flex;gap:8px;align-items:center;font-weight:600}
+.dC .state.cold{background:var(--GY);color:var(--I)}.dC .state.found{background:var(--MS);color:var(--M)}
+/* C hero: the chain */
+.dC .stage{padding:26px 22px 6px;min-width:0}
+.dC .sentence{font-size:clamp(28px,4vw,54px);font-weight:800;letter-spacing:-.035em;line-height:1.02;color:var(--I);min-height:2.1em;gap:0 .22em}
+.dC .sentence .w.new{color:var(--T)}
+.dC .sentence .w.src{font-family:var(--gm);font-weight:500;letter-spacing:0;font-size:14px;color:var(--I2)}
+.dC .sentence .w:hover,.dC .sentence .w:focus-visible{background:var(--BS);outline:none;color:var(--B)}
+.dC .tip{background:var(--B);color:#fff;font-family:var(--sg);border-radius:10px}
+.dC .readline{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:16px;font-size:14px;color:var(--I2)}
+.dC .readline .yr{font-family:var(--gm);font-size:15px;padding:4px 12px;border-radius:999px;border:1.5px solid var(--I);color:var(--I);font-weight:600}
+.dC .readline .vf{color:var(--M);font-weight:700}
+.dC .chain{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;padding:18px 22px 8px;align-items:stretch}
+.dC .ch{border:1.5px solid var(--I);border-radius:16px;padding:12px 12px 10px;min-width:0;font-size:13px;color:var(--I2);transition:transform .48s var(--spring),opacity .48s var(--spring);background:var(--CV);position:relative}
+.dC .ch.off{opacity:.18;transform:translateY(10px) rotate(1.5deg)}
+.dC .ch.cur{box-shadow:0 0 0 3px var(--BS);border-color:var(--B)}
+.dC .ch.red{border-color:var(--T);background:var(--TS)}
+.dC .ch .yr{font-family:var(--gm);font-size:12px;color:var(--I3)}
+.dC .ch.red .yr{color:var(--T)}
+.dC .ch b{display:block;color:var(--I);font-size:15px;font-weight:700;line-height:1.2;margin:4px 0 2px}
+.dC .ch .n{font-family:var(--gm);font-size:24px;color:var(--I);font-weight:600;line-height:1.1;margin-top:8px}
+.dC .ch .n span{font-size:12px;color:var(--I3);font-family:var(--sg);margin-left:4px}
+.dC .ch .tag{position:absolute;top:-10px;left:12px;background:var(--T);color:#fff;font-family:var(--gm);font-size:10.5px;padding:2px 8px;border-radius:999px;font-weight:600}
+.dC .scrub{padding:10px 22px 18px}
+.dC .scrub .lab{display:flex;justify-content:space-between;font-family:var(--gm);font-size:12px;color:var(--I3)}
+.dC .range::-webkit-slider-runnable-track{height:14px;border-radius:999px;background:var(--GY);border:1.5px solid var(--I)}
+.dC .range::-moz-range-track{height:14px;border-radius:999px;background:var(--GY);border:1.5px solid var(--I)}
+.dC .range::-webkit-slider-thumb{width:34px;height:34px;border-radius:50%;background:var(--T);border:3px solid var(--CV);box-shadow:0 0 0 1.5px var(--I);margin-top:-12px}
+.dC .range::-moz-range-thumb{width:34px;height:34px;border-radius:50%;background:var(--T);border:3px solid var(--CV);box-shadow:0 0 0 1.5px var(--I)}
+.dC .logrow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border-top:1.5px solid var(--I)}
+.dC .logrow>div{padding:14px 20px;min-width:0}
+.dC .logrow>div+div{border-left:1.5px solid var(--I)}
+.dC .logrow h3{font-size:12px;font-family:var(--gm);color:var(--I3);margin-bottom:6px;font-weight:500}
+.dC .log{list-style:none;margin:0;padding:0;font-size:13.5px}
+.dC .log li{display:grid;grid-template-columns:40px 1fr;gap:8px;padding:3px 0;color:var(--I2)}
+.dC .log li .t{font-family:var(--gm);color:var(--I3);font-size:12px;font-variant-numeric:tabular-nums}
+.dC .log li.hit{color:var(--I)}.dC .log li.stop{color:var(--I);font-weight:700}.dC .log li.stop .t{color:var(--T)}
+.dC .already{font-size:13.5px;color:var(--I2)}
+.dC .banner{display:flex;align-items:center;gap:14px;padding:14px 20px;border-top:1.5px solid var(--I);flex-wrap:wrap;font-size:14px;color:var(--I2)}
+.dC .banner .sp{flex:1}
+.dC .usage{padding:8px 20px;border-top:1.5px solid var(--I);font-family:var(--gm);font-size:12px;color:var(--I3);display:flex;gap:16px;flex-wrap:wrap}
+/* C meter: big tiles */
+.dC .tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;padding:16px}
+.dC .tile{border-radius:16px;padding:14px;background:var(--GY);min-width:0;font-size:13px;color:var(--I2);display:grid;gap:4px;align-content:start}
+.dC .tile.red{background:var(--TS)}
+.dC .tile.unsure{background:transparent;border:1.5px dashed var(--L2)}
+.dC .tile .yr{font-family:var(--gm);font-size:12px;color:var(--I3)}
+.dC .tile b{font-size:17px;font-weight:700;color:var(--I);line-height:1.15}
+.dC .tile.red b{color:var(--T)}
+.dC .tile .pct{font-family:var(--gm);font-size:34px;color:var(--I);font-weight:600;line-height:1;margin-top:6px}
+.dC .tile.unsure .pct{color:var(--I3)}
+.dC .tile .barv{height:8px;border-radius:999px;background:var(--CV);overflow:hidden;margin-top:6px;border:1px solid var(--L2)}
+.dC .tile .barv i{display:block;height:100%;width:var(--v);background:var(--I);transition:width .6s var(--spring)}
+.dC .tile.red .barv i{background:var(--T)}.dC .tile.unsure .barv i{background:var(--I3)}
+/* C popover */
+.dC .page{background:var(--GY);padding:22px 24px;border-radius:22px;font-family:Georgia,serif;color:var(--I2);line-height:1.6;position:relative;min-height:230px}
+.dC .page h3{font-family:Georgia,serif;font-size:19px;color:var(--I);margin-bottom:8px}
+.dC .page mark{background:var(--BS);color:var(--I);padding:0 2px}
+.dC .pop{position:absolute;left:24px;right:24px;top:116px;max-width:330px;background:var(--I);color:var(--CV);border-radius:16px;padding:14px 16px;font-family:var(--sg);font-size:13px;box-shadow:0 12px 30px rgba(0,0,0,.18)}
+.dC .pop .pm{display:flex;align-items:center;gap:8px;font-weight:800;margin-bottom:4px}
+.dC .pop .pm i{width:10px;height:10px;border-radius:50%;background:var(--T)}
+.dC .pop .big{font-size:26px;font-weight:800;letter-spacing:-.02em;line-height:1.05;margin:4px 0 2px}
+.dC .pop .big span{font-size:13px;font-weight:500;opacity:.7;margin-left:6px}
+.dC .pop .pb{display:inline-block;margin-top:8px;background:var(--T);color:#fff;padding:7px 12px;border-radius:999px;font-weight:700;font-size:13px}
+/* C atlas: tiles */
+.dC .week{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:0;border-bottom:1.5px solid var(--I)}
+.dC .week>div{padding:22px;min-width:0}
+.dC .week>div+div{border-left:1.5px solid var(--I)}
+.dC .week small{font-family:var(--gm);font-size:12px;color:var(--T);display:block;margin-bottom:8px;font-weight:600}
+.dC .week .q{font-size:clamp(24px,2.8vw,36px);font-weight:800;letter-spacing:-.03em;line-height:1.05;color:var(--I)}
+.dC .week .big{font-family:var(--gm);font-size:46px;color:var(--I);line-height:1;font-weight:600}
+.dC .week .big span{font-family:var(--sg);font-size:13px;color:var(--I3);margin-left:8px;font-weight:500}
+.dC .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;padding:14px}
+.dC .gc{border-radius:16px;background:var(--GY);padding:14px;min-width:0;display:grid;gap:6px;align-content:start;font-size:13px;color:var(--I2);transition:transform .3s var(--spring)}
+.dC .gc:hover{transform:translateY(-3px)}
+.dC .gc .q{font-size:17px;font-weight:700;color:var(--I);line-height:1.15;letter-spacing:-.01em}
+.dC .gc .st{font-family:var(--gm);font-size:11.5px;font-weight:600}
+.dC .st.one{color:var(--T)}.dC .st.cold{color:var(--I2)}.dC .st.ok{color:var(--M)}
+/* C researcher */
+.dC .fwd{padding:18px 20px}
+.dC .fwd .seed{font-size:22px;font-weight:800;letter-spacing:-.02em;line-height:1.1;color:var(--I)}
+.dC .fwd .seed small{display:block;font-family:var(--gm);font-size:12.5px;color:var(--I2);margin-top:6px;font-weight:500;letter-spacing:0}
+.dC .bubbles{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.dC .bb{border-radius:18px;padding:10px 14px;background:var(--GY);font-size:14px;color:var(--I);max-width:100%;min-width:0;position:relative}
+.dC .bb small{display:block;font-family:var(--gm);font-size:11px;color:var(--I3)}
+.dC .bb.red{background:var(--TS)}.dC .bb.red small{color:var(--T)}
+.dC .bb.seed{background:var(--I);color:var(--CV)}.dC .bb.seed small{color:var(--CV);opacity:.7}
+/* C scan+card */
+.dC .scan .text{padding:18px 20px;font-size:17px;line-height:1.5;border-bottom:1.5px solid var(--I);color:var(--I)}
+.dC .hl{font:inherit;font-weight:700;padding:1px 6px;border-radius:999px;background:transparent;color:inherit;cursor:pointer;border:0}
+.dC .hl.one{background:var(--TS);color:var(--T)}.dC .hl.ok{background:var(--MS);color:var(--M)}.dC .hl.none{background:var(--AMS);color:var(--AM)}
+.dC .ql{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;padding:10px 20px;border-bottom:1px solid var(--L);font-size:14px;color:var(--I)}
+.dC .ql small{display:block;color:var(--I3);font-size:12px;font-family:var(--gm)}
+.dC .card .num{font-size:clamp(34px,4.2vw,56px);font-weight:800;letter-spacing:-.04em;line-height:1;padding:22px 20px 6px;color:var(--I)}
+.dC .card .num span{font-size:.32em;color:var(--I3);font-weight:500;letter-spacing:0;margin-left:6px}
+.dC .card .sum{padding:0 20px 16px;color:var(--I2);font-size:15px;max-width:60ch}
+.dC .card .sum b{color:var(--I);font-weight:700}
+.dC .card .facts{display:grid;grid-template-columns:1fr 1fr;border-top:1.5px solid var(--I)}
+.dC .card .facts>div{padding:12px 20px;font-size:13.5px;min-width:0;color:var(--I2)}
+.dC .card .facts>div+div{border-left:1.5px solid var(--I)}
+.dC .card .facts small{display:block;font-family:var(--gm);font-size:11.5px;color:var(--I3)}
+.dC .card .acts{display:flex;gap:8px;padding:14px 20px;flex-wrap:wrap;border-top:1.5px solid var(--I)}
+/* C phone */
+.dC .phone{background:var(--GY);border-color:var(--I)}
+.dC .phone .scr{background:var(--CV);border:1.5px solid var(--I);border-radius:20px}
+.dC .phone .stage{padding:18px 16px 6px}
+.dC .phone .sentence{font-size:30px;min-height:3.3em}
+.dC .phone .scrub{padding:8px 16px 14px}
+.dC .vt{list-style:none;margin:0;padding:0 16px 12px;display:grid;gap:8px}
+.dC .vt li{border-radius:14px;padding:10px 12px;background:var(--GY);font-size:13px;color:var(--I2);display:grid;grid-template-columns:1fr auto;gap:8px;transition:opacity .4s var(--spring),transform .4s var(--spring)}
+.dC .vt li.off{opacity:.2;transform:translateX(8px)}
+.dC .vt li.red{background:var(--TS)}
+.dC .vt li b{color:var(--I);font-weight:700;display:block}
+.dC .vt li i{font-style:normal;font-family:var(--gm);font-size:12px;color:var(--I3);align-self:start}
+.dC .vt li.red i{color:var(--T)}
+
+/* reduced motion: every end state is the base style; transitions off */
+@media (prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+}
+/* responsive */
+@media (max-width:1100px){
+  .spec{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .row3{grid-template-columns:1fr}
+  .dB .gauges{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .dC .tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:900px){
+  .head{grid-template-columns:1fr}
+  .row2{grid-template-columns:1fr}
+  .dA .hero,.dB .hero{grid-template-columns:1fr}
+  .dA .rail,.dB .rail{border-left:0;border-top:1px solid var(--L)}
+  .dA .week,.dC .week{grid-template-columns:1fr}
+  .dA .week>div+div,.dC .week>div+div{border-left:0;border-top:1px solid var(--L)}
+  .dC .week>div+div{border-top-width:1.5px;border-top-color:var(--I)}
+  .dC .chain{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .dC .logrow{grid-template-columns:1fr}
+  .dC .logrow>div+div{border-left:0;border-top:1.5px solid var(--I)}
+  .dA .steps{grid-template-columns:1fr 1fr}
+  .dB .strip,.dB .week{grid-template-columns:1fr 1fr}
+  .dC .grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:600px){
+  .spec{grid-template-columns:1fr}
+  .dA .hop{grid-template-columns:1fr;gap:6px}
+  .dA .conf{text-align:left}
+  .dB .gauges,.dB .readouts,.dB .strip,.dB .week,.dC .tiles,.dC .grid,.dC .chain,.dA .steps,.dA .card .facts,.dB .card .facts,.dC .card .facts{grid-template-columns:1fr}
+  .dA .card .facts>div+div,.dC .card .facts>div+div{border-left:0;border-top:1px solid var(--L)}
+  .dB .card .facts>div{border-right:0;border-bottom:1px solid var(--L)}
+  .dA .list li{grid-template-columns:1fr;gap:4px}
+  .dB table{display:block;overflow-x:auto}
+  .dA .pop,.dB .pop,.dC .pop{left:12px;right:12px}
+  .tab small{display:none}
+}
+</style>
+
+<div class="wrap">
+<header class="head">
+  <div>
+    <h1>Patient Zero, three directions</h1>
+    <p class="lede">Surface: the web app a reporter opens with a viral number. The one feeling: the floor drops as the sentence you trusted rewinds into something else. Six signature features in every direction: the time-machine scrubber (drag the handle, the sentence morphs word by word while the tree rewinds), blame for a sentence (hover any word), the distortion meter (typed readouts with confidence and an "unsure" floor), trace from any page, the Zombie Stat Atlas, and researcher mode.</p>
+  </div>
+  <div class="facts">
+    <span><b>Constraints held in all three.</b> Counter wording "traced to N roots we could link"; the red hop reads "earliest page we found with the new wording"; five stop states; LIVE and REPLAY badges with every example as REPLAY; red never alone (icon plus text); no private individuals.</span>
+    <span><b>Example data.</b> Only the 2012 rows are VERIFIED Wayback text. Every other wording, count, date and confidence on this page is an example for layout.</span>
+    <span><b>Scrubber.</b> Drag it in every direction; keyboard arrows work; with reduced motion each state snaps to its end frame.</span>
+  </div>
+</header>
+
+<div class="tabs" role="tablist" aria-label="Directions">
+  <button class="tab" role="tab" aria-selected="true" aria-controls="dirA" id="tabA">A. Case File <small>archive, paper, the safe push</small></button>
+  <button class="tab" role="tab" aria-selected="false" aria-controls="dirB" id="tabB">B. Instrument <small>strip chart, readouts, mono</small></button>
+  <button class="tab" role="tab" aria-selected="false" aria-controls="dirC" id="tabC">C. Telephone <small>giant words, the risk</small></button>
+</div>
+
+<!-- ================= A ================= -->
+<section class="dir dA on" id="dirA" role="tabpanel" aria-labelledby="tabA">
+  <div class="spec">
+    <p class="idea"><b>Case File.</b> A research instrument on paper: one deep ink, one forest action, red reserved for the hop where the words changed. The scrubber is a microfilm reel: drag it and the viral line reflows into the 2012 rows in a text serif while the tree's branches withdraw into the archive.</p>
+    <div><h4>Palette</h4><span class="sw" style="background:#f7f6f2"></span><span class="sw" style="background:#15181c"></span><span class="sw" style="background:#1d5c4a"></span><span class="sw" style="background:#b4261b"></span><span class="sw" style="background:#1f6b4e"></span><span class="sw" style="background:#8a5a00"></span><br>paper, ink, forest action, mutation red, mint good, amber caution; dark theme on soot with mint action</div>
+    <div><h4>Type</h4>Newsreader (quoted wordings, hero numbers, headings) with Geist (interface, log, labels). Serif only where words are evidence.</div>
+    <div><h4>Motion language</h4>Archival: cubic-bezier(.3,.7,.3,1); words slide 320 ms and fade 220 ms; nodes fade and shrink 520 ms; edges draw 700 ms. Only evidence moves (words, nodes, edges, meter bars); chrome never does. Reduced motion: same end state, no transitions.</div>
+    <div><h4>Draws on</h4>Wayback Machine and Bloomberg time rails for the axis; the Pudding and Reuters Graphics for annotated trees; court exhibit sheets for the origin card; the quick look Vidyut liked, pushed to a full instrument.</div>
+  </div>
+
+  <div class="shead"><h2>Time-machine scrubber and trace view, desktop</h2><p class="note"><span class="ex">example data</span> &nbsp; Drag the reel or press the arrow keys. <button class="playbtn" data-play="A">Rewind to 2012</button></p></div>
+  <div class="ui" data-sc="A">
+    <div class="bar">
+      <span class="mark"><i></i>Patient Zero</span>
+      <span class="counter tnum"><b>142</b> pages <span class="gt">&gt;</span> <b>9</b> clusters <span class="gt">&gt;</span> traced to <b>1</b> root we could link (2 clusters unlinked) <span class="gt">&gt;</span> <b class="zero">0</b> studies found in what we searched</span>
+      <span class="live">REPLAY · recorded 29 Oct 2026</span>
+    </div>
+    <div class="hero">
+      <div class="stage">
+        <div class="sentence" data-sentence aria-live="polite"></div>
+        <div class="tip" data-tip role="tooltip"></div>
+        <div class="readline"><span class="yr tnum" data-year>2026</span><span data-stagelabel>AI answers and posts · 41 copies</span><span data-vf></span></div>
+        <div class="treewrap">
+        <svg viewBox="0 0 1120 400" role="img" aria-label="Family tree of the goldfish attention span claim from 2012 to 2026; dragging the scrubber removes nodes newer than the chosen year">
+          <line class="axis" x1="40" y1="372" x2="1090" y2="372"/>
+          <g class="yr-t">
+            <text x="80" y="392" text-anchor="middle">2012</text><text x="210" y="392" text-anchor="middle">2014</text><text x="341" y="392" text-anchor="middle">2016</text><text x="472" y="392" text-anchor="middle">2018</text><text x="603" y="392" text-anchor="middle">2020</text><text x="733" y="392" text-anchor="middle">2022</text><text x="864" y="392" text-anchor="middle">2024</text><text x="995" y="392" text-anchor="middle">2026</text>
+          </g>
+          <line class="head-ln" data-head x1="1014" y1="20" x2="1014" y2="372"/>
+          <path class="edge" data-y="2024" d="M990 190 C 950 190, 930 120, 900 120"/>
+          <path class="edge" data-y="2019" d="M854 120 C 760 120, 680 140, 577 140"/>
+          <path class="edge inf" data-y="2021" d="M684 260 C 700 180, 640 140, 577 140"/>
+          <path class="edge" data-y="2015" d="M537 140 C 460 140, 420 120, 347 120"/>
+          <path class="edge inf" data-y="2017" d="M428 332 C 482 300, 560 250, 557 160"/>
+          <path class="edge inf" data-y="2015" d="M305 133 C 285 170, 260 230, 247 288"/>
+          <path class="edge" data-y="2013" d="M238 300 C 215 300, 195 210, 183 184"/>
+          <path class="edge mut" data-y="2013" d="M155 170 C 130 170, 110 220, 100 240"/>
+          <g class="g" data-y="2026"><circle class="node" cx="1014" cy="190" r="24"/><text class="cnt" x="1014" y="190">41</text><text x="1050" y="234" text-anchor="end">AI answers and posts · 41 copies · 2026</text></g>
+          <g class="g" data-y="2024"><circle class="node" cx="877" cy="120" r="23"/><text class="cnt" x="877" y="120">37</text><text x="877" y="85" text-anchor="middle">Productivity blogs · 37 copies · 2024</text></g>
+          <g class="g" data-y="2021"><circle class="node" cx="700" cy="260" r="16"/><text class="cnt" x="700" y="260">8</text><text x="700" y="294" text-anchor="middle">Podcast show notes · 8 copies · 2021</text></g>
+          <g class="g" data-y="2019"><circle class="node" cx="557" cy="140" r="20"/><text class="cnt" x="557" y="140">22</text><text x="557" y="105" text-anchor="middle">Marketing decks and listicles · 22 copies · 2019</text></g>
+          <g class="g" data-y="2017"><circle class="node" cx="420" cy="345" r="15"/><text class="cnt" x="420" y="345">6</text><text x="441" y="349">Training slides · 6 copies · 2017</text></g>
+          <g class="g" data-y="2015"><circle class="node" cx="320" cy="120" r="19"/><text class="cnt" x="320" y="120">17</text><text x="320" y="80" text-anchor="middle">News coverage · 17 copies · May 2015</text></g>
+          <g class="g" data-y="2015"><circle class="node" cx="245" cy="300" r="12"/><text class="cnt" x="245" y="300">1</text><text x="262" y="330">Consumer insights report · Mar 2015</text></g>
+          <g class="g" data-y="2013"><circle class="node" cx="171" cy="170" r="16"/><text class="cnt" x="171" y="170">9</text><text x="171" y="135" text-anchor="middle">Infographic reposts · 9 copies · 2013</text></g>
+          <circle class="ring" data-y="2013" cx="171" cy="170" r="24"/>
+          <g class="g" data-y="2013"><text class="redtag" x="200" y="200">&#9650; earliest page we found</text><text class="redtag" x="214" y="215">with the new wording</text></g>
+          <g class="g" data-y="2012"><circle class="node cold" cx="90" cy="250" r="12"/><text class="cnt" x="90" y="250">1</text><text x="40" y="280">Statistics aggregator page · Feb 2012</text><text x="40" y="297" style="fill:var(--I3)">names The Associated Press,</text><text x="40" y="313" style="fill:var(--I3)">no linked page found</text></g>
+        </svg>
+        </div>
+      </div>
+      <aside class="rail">
+        <h3>Trace log · step 9 of 9 · replayed</h3>
+        <ol class="log tnum">
+          <li><span class="t">0:00</span><span>Clustered the input. 41 pages share this wording, newest Oct 2026.</span></li>
+          <li><span class="t">0:04</span><span>Searching pages before Jan 2026 · 37 found · 1 earlier</span></li>
+          <li><span class="t">0:11</span><span>Searching pages before Mar 2024 · 30 found · 2 earlier</span></li>
+          <li class="hit"><span class="t">0:19</span><span>Fetched 22 pages. Span matched word for word in 20. Link to 2015 coverage found in 14.</span></li>
+          <li><span class="t">0:27</span><span>Searching pages before Jan 2017 · 23 found · 2 earlier</span></li>
+          <li class="hit"><span class="t">0:36</span><span>Wording differs from its parent. Comparison added (two rows joined). Typed label 0.84, code diff agrees.</span></li>
+          <li><span class="t">0:44</span><span>Dated the 2012 page by 3 Wayback captures, Feb to Apr 2012. Earliest kept.</span></li>
+          <li><span class="t">0:52</span><span>Searching for "The Associated Press" before Feb 2012 · 0 linked pages</span></li>
+          <li class="stop"><span class="t">1:01</span><span>Searched 3 windows before Feb 2012 · 0 found. Stop rule row 6: nothing earlier.</span></li>
+        </ol>
+        <div class="already"><b>Already discussed by</b>2 fact-check pages and 1 explainer, kept off the axis.</div>
+      </aside>
+    </div>
+    <div class="scrub">
+      <div class="lab"><span>2012, earliest page we found</span><span>drag back in time</span><span>now, 2026</span></div>
+      <input class="range" type="range" min="0" max="1000" value="1000" data-range aria-label="Time machine: year on the trace, from 2012 to 2026">
+    </div>
+    <div class="banner">
+      <span class="state cold">&#9646; TRAIL GOES COLD</span>
+      <span>Earliest page we found is from Feb 2012. It names The Associated Press; no linked page turned up in 3 search windows and 2 archives.</span>
+      <span class="sp"></span>
+      <button class="btn">How this was decided</button>
+      <button class="btn">What we searched</button>
+      <button class="btn primary">Open origin card</button>
+    </div>
+    <div class="usage tnum"><span>61 s</span><span>Tavily 84 credits</span><span>Token Factory $0.19 · 2 models · 38k tokens</span><span>28 pages fetched · 3 Wayback lookups</span></div>
+  </div>
+  <p class="cap">Blame for a sentence: hover or focus any word above to see which page and year introduced it. Words in red are new at the current year.</p>
+
+  <div class="row2" style="margin-top:28px">
+    <div>
+      <div class="shead"><h2>Distortion meter</h2><p class="note"><span class="ex">example data</span> &nbsp; one typed readout per hop, "unsure" below 0.55 (chosen on dev, frozen)</p></div>
+      <div class="ui meter" data-meter="A">
+        <div class="hop" data-y="2013"><span class="yrs2">2012 &rarr; 2013</span><span class="lbl red">&#9650; Comparison added<small>two rows joined into one sentence; the earliest page we found with the new wording</small></span><span class="conf tnum"><span>0.84</span><i style="--v:84%"></i></span></div>
+        <div class="hop" data-y="2015"><span class="yrs2">2013 &rarr; 2015</span><span class="lbl">Trend asserted<small>"fell to" added; no earlier value on the page</small></span><span class="conf tnum"><span>0.74</span><i style="--v:74%"></i></span></div>
+        <div class="hop" data-y="2019"><span class="yrs2">2015 &rarr; 2019</span><span class="lbl">Scope widened<small>"average" becomes "human"; the 9 seconds drops out</small></span><span class="conf tnum"><span>0.66</span><i style="--v:66%"></i></span></div>
+        <div class="hop unsure" data-y="2026"><span class="yrs2">2019 &rarr; 2026</span><span class="lbl">Unsure<small>top two: number dropped 0.51, hedge dropped 0.38</small></span><span class="conf tnum"><span>0.51</span><i style="--v:51%"></i></span></div>
+      </div>
+    </div>
+    <div>
+      <div class="shead"><h2>Trace from any page</h2><p class="note"><span class="ex">example data</span> &nbsp; bookmarklet popover on a fictional blog</p></div>
+      <div class="page">
+        <h3>Why your meetings keep losing the room</h3>
+        <p>Every manager has felt it. The research is blunt: the average attention span is now <mark>8 seconds</mark>, shorter than a goldfish's, and your slide deck is not helping. Here is what to cut first.</p>
+        <div class="pop" role="dialog" aria-label="Patient Zero quick look">
+          <div class="pm"><i></i>Patient Zero · quick look</div>
+          <div class="big tnum">142 pages <span>1 root we could link</span></div>
+          <div>Earliest page we found: Feb 2012, two separate rows. The comparison was added later.</div>
+          <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap"><button class="btn primary" style="min-height:36px;padding:6px 12px">Open the trace</button><button class="btn" style="min-height:36px;padding:6px 12px">Copy citation</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row2" style="margin-top:28px">
+    <div>
+      <div class="shead"><h2>Zombie Stat Atlas</h2><p class="note"><span class="ex">example data</span> &nbsp; public gallery of reviewed traces</p></div>
+      <div class="ui atlas">
+        <div class="week">
+          <div><h4>Stat of the week · reviewed trace · REPLAY</h4><p class="q">"It takes 21 days to form a habit."</p><p style="margin-top:8px;font-size:13.5px;color:var(--I2)">88 pages, traced to 1 root we could link: a 1960 self-help book's "about 21 days" became "21 days" by 2004. The 2009 study everyone cites found a median of 66 days.</p></div>
+          <div><h4>This week</h4><div class="big tnum">88 <span>pages</span></div><div class="big tnum">1 <span>root we could link</span></div><div class="big tnum">0 <span>studies found in what we searched</span></div></div>
+        </div>
+        <ul class="list">
+          <li><span class="q">"Your attention span is now shorter than a goldfish's."<small>142 pages · earliest Feb 2012 · REPLAY</small></span><span class="st cold">&#9646; TRAIL GOES COLD</span><span class="st">&rarr;</span></li>
+          <li><span class="q">"93% of communication is nonverbal."<small>310 pages · earliest 1971 · REPLAY</small></span><span class="st one">&#9650; 1 root we could link</span><span class="st">&rarr;</span></li>
+          <li><span class="q">"We only use 10% of our brains."<small>204 pages · earliest 1936 · REPLAY</small></span><span class="st cold">&#9646; TRAIL GOES COLD</span><span class="st">&rarr;</span></li>
+          <li><span class="q">"People swallow 8 spiders a year in their sleep."<small>61 pages · earliest 1993 · REPLAY</small></span><span class="st one">&#9650; 1 root we could link</span><span class="st">&rarr;</span></li>
+          <li><span class="q">"Half of all marriages end in divorce."<small>177 pages · 4 roots we could link · REPLAY</small></span><span class="st ok">&#10003; ORIGIN FOUND</span><span class="st">&rarr;</span></li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="shead"><h2>Researcher mode</h2><p class="note"><span class="ex">example data</span> &nbsp; start from a study, walk forward</p></div>
+      <div class="ui">
+        <div class="fwd">
+          <p class="seed">Lally et al., 2009, European Journal of Social Psychology<small>Finding used as the seed: habit automaticity took a median of 66 days, range 18 to 254. Forward trace, frontier width 5, in what we searched.</small></p>
+          <ol class="steps">
+            <li><b>2010 · science blogs</b>"66 days on average" <q>it takes 66 days to form a habit</q></li>
+            <li><b>2012 · productivity sites</b>range dropped <q>about two months</q></li>
+            <li class="red"><b>2014 · listicles</b>&#9650; earliest page we found with the new wording <q>21 days (some say 66)</q></li>
+            <li><b>2026 · AI answers</b>both numbers survive <q>21 to 66 days</q></li>
+          </ol>
+        </div>
+        <div class="banner"><span class="state found">&#10003; SEED IS THE ROOT</span><span>Where this finding went, in what we searched: 4 windows, 19 pages, 2 wordings.</span></div>
+      </div>
+      <div class="shead" style="margin-top:24px"><h2>AI answer scan</h2><p class="note"><span class="ex">example data</span></p></div>
+      <div class="ui scan">
+        <div class="text">The average human attention span is now about <button class="hl one">8 seconds, shorter than a goldfish</button>. Adults check their phones around <button class="hl ok">144 times a day</button>, and lose <button class="hl none">2.5 hours a day searching</button> for information.</div>
+        <div class="ql"><span>8 seconds, shorter than a goldfish<small>142 pages · 1 root we could link · earliest 2012</small></span><span class="st one">&#9650; one root found</span></div>
+        <div class="ql"><span>144 times a day<small>58 pages · 3 roots we could link · earliest 2019</small></span><span class="st ok">&#10003; several roots</span></div>
+        <div class="ql"><span>2.5 hours a day searching<small>27 pages · 0 roots we could link · cold 2018</small></span><span class="st cold">&#9646; no source found</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="shead"><h2>Origin card, permalink</h2><p class="note"><span class="ex">example data</span> &nbsp; what a stranger sees first; same order on a phone</p></div>
+  <div class="ui card" style="max-width:860px">
+    <div class="bar"><span class="mark"><i></i>Patient Zero</span><span class="tnum">patientzero.app/c/goldfish-8s · traced 29 Oct 2026</span><span class="live">REPLAY</span></div>
+    <div class="num tnum">142 <span>pages</span> &rarr; 1 <span>root we could link</span> &rarr; 0 <span>studies found</span></div>
+    <p class="sum">Scope: pages the search index and the archives could reach in English. <b>TRAIL GOES COLD</b>, decided by rule row 6 (nothing earlier in 3 windows). The earliest page we found, from Feb 2012, lists <b>two separate rows</b> ("8 seconds" for people, "9 seconds" for a gold fish) and names The Associated Press; later pages joined them into a comparison.</p>
+    <div class="facts"><div><h4>The viral wording · 41 pages, 2026</h4>"Your attention span is now shorter than a goldfish's."</div><div><h4>The earliest wording we found · Feb 2012, Wayback text, VERIFIED</h4>"The average attention span in 2012: 8 seconds. The average attention span of a gold fish: 9 seconds." Source: The Associated Press.</div></div>
+    <div class="acts"><button class="btn primary">Copy citation</button><button class="btn">Download ClaimReview JSON</button><button class="btn">Copy link</button><button class="btn">Report a wrong trace</button></div>
+  </div>
+
+  <div class="shead"><h2>Scrubber at 390 px</h2><p class="note"><span class="ex">example data</span> &nbsp; the axis turns vertical; the reel stays under the thumb</p></div>
+  <div class="phonewrap">
+    <div class="phone"><div class="scr" data-sc="Ap">
+      <div class="bar"><span class="mark"><i></i>Patient Zero</span><span class="live">REPLAY</span></div>
+      <div class="stage">
+        <div class="sentence" data-sentence></div>
+        <div class="tip" data-tip role="tooltip"></div>
+        <div class="readline"><span class="yr tnum" data-year>2026</span><span data-stagelabel></span><span data-vf></span></div>
+      </div>
+      <div class="scrub"><input class="range" type="range" min="0" max="1000" value="1000" data-range aria-label="Time machine, 2012 to 2026"><div class="yrs"><span>2012</span><span>2019</span><span>now</span></div></div>
+      <ol class="vt" data-vt>
+        <li data-y="2026"><i>41</i><span><b>AI answers and posts</b>41 copies · 2026</span></li>
+        <li data-y="2024"><i>37</i><span><b>Productivity blogs</b>37 copies · 2024</span></li>
+        <li data-y="2019"><i>22</i><span><b>Marketing decks</b>22 copies · 2019 · scope widened</span></li>
+        <li data-y="2015"><i>17</i><span><b>News coverage</b>17 copies · May 2015 · trend asserted</span></li>
+        <li data-y="2013" class="red"><i>9</i><span><b>Infographic reposts</b>&#9650; earliest page we found with the new wording · 2013</span></li>
+        <li data-y="2012" class="cold"><i>1</i><span><b>Statistics aggregator page</b>Feb 2012 · names The Associated Press · VERIFIED rows</span></li>
+      </ol>
+      <div class="banner"><span class="state cold">&#9646; TRAIL GOES COLD</span><span>Nothing earlier in 3 windows before Feb 2012.</span></div>
+      <div class="usage tnum"><span>61 s</span><span>Tavily 84 cr</span><span>$0.19</span></div>
+    </div></div>
+    <div class="notes">
+      <p><b>States.</b> Empty: seeded REPLAY claims. Loading: the first node at the right within 20 s, the log writing itself, LIVE badge. Partial: amber banner with the budget line and "continue trace". Failed: TOOL FAILED names the call and what was kept. Cold or conflicting: the leftmost node greys or splits into both spans.</p>
+      <p><b>Payoff moment.</b> When the reel reaches 2012 the single sentence breaks into the two original rows and the source line fades in beneath; nothing bounces.</p>
+      <p><b>Why it is the safe push.</b> Vidyut has seen and liked this world; this round makes the scrubber the hero and adds the four other features in the same grammar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= B ================= -->
+<section class="dir dB" id="dirB" role="tabpanel" aria-labelledby="tabB">
+  <div class="spec">
+    <p class="idea"><b>Instrument.</b> A seismograph for sentences. Cool stone ground, panels on a fine grid, one signal amber for the playhead and the needle, mono readouts that count. The scrubber is a tape shuttle across a strip chart of copies per year; the sentence sits in flap tiles that step when the tape passes a hop.</p>
+    <div><h4>Palette</h4><span class="sw" style="background:#e9edf1"></span><span class="sw" style="background:#0e1a24"></span><span class="sw" style="background:#b4530a"></span><span class="sw" style="background:#c02a21"></span><span class="sw" style="background:#1b6e4e"></span><span class="sw" style="background:#d3dae1"></span><br>stone ground, ink navy, signal amber, mutation red, good green, grid; dark theme on deep navy with brighter amber</div>
+    <div><h4>Type</h4>IBM Plex Mono (sentence tiles, readouts, log, badges) with IBM Plex Sans (prose, labels). Uppercase mono labels with .08em tracking.</div>
+    <div><h4>Motion language</h4>Mechanical: linear playhead, steps(6) flap on word change over 240 ms, readouts count with tabular numerals, needles ease-out 600 ms on cubic-bezier(.2,.8,.2,1), bars collapse 320 ms linear. Nothing eases in and out softly; every move reads as a measurement. Reduced motion: values snap.</div>
+    <div><h4>Draws on</h4>Seismograph and ECG strip charts; Teenage Engineering panels; Linear's data density; the Wayback calendar; aircraft annunciator panels for the stop state.</div>
+  </div>
+
+  <div class="shead"><h2>Time-machine scrubber and trace view, desktop</h2><p class="note"><span class="ex">example data</span> &nbsp; shuttle the tape. <button class="playbtn" data-play="B">Rewind to 2012</button></p></div>
+  <div class="ui" data-sc="B">
+    <div class="bar">
+      <span class="mark"><i></i>Patient Zero</span>
+      <span class="counter tnum"><b>142</b> pages / <b>9</b> clusters / traced to <b>1</b> root we could link (2 unlinked) / <b class="zero">0</b> studies found in what we searched</span>
+      <span class="live">REPLAY · REC 2026-10-29</span>
+    </div>
+    <div class="hero">
+      <div class="stage">
+        <div class="sentence" data-sentence aria-live="polite"></div>
+        <div class="tip" data-tip role="tooltip"></div>
+        <div class="readouts">
+          <div class="ro"><small>Year</small><b class="sig tnum" data-year>2026</b></div>
+          <div class="ro"><small>Copies at this stage</small><b class="tnum" data-copies>41</b></div>
+          <div class="ro"><small>Hop label</small><b data-hop style="font-size:14px;white-space:normal;line-height:1.3">start of the trace</b></div>
+          <div class="ro"><small>Span check</small><b class="ok" data-vf2 style="font-size:14px;white-space:normal;line-height:1.3">REPLAY, example</b></div>
+        </div>
+        <div class="chart" data-chart aria-hidden="true"></div>
+      </div>
+      <aside class="rail">
+        <h3>Trace log · 9 / 9 · replayed</h3>
+        <ol class="log tnum">
+          <li><span class="t">0:00</span><span>CLUSTER 41 pages, newest 2026-10</span></li>
+          <li><span class="t">0:04</span><span>SEARCH before 2026-01 · 37 found · 1 earlier</span></li>
+          <li><span class="t">0:11</span><span>SEARCH before 2024-03 · 30 found · 2 earlier</span></li>
+          <li class="hit"><span class="t">0:19</span><span>FETCH 22 · span verbatim 20 · link to 2015 in 14</span></li>
+          <li><span class="t">0:27</span><span>SEARCH before 2017-01 · 23 found · 2 earlier</span></li>
+          <li class="hit"><span class="t">0:36</span><span>DIFF parent vs child · comparison added · typed 0.84 · code agrees</span></li>
+          <li><span class="t">0:44</span><span>DATE 2012 page · 3 Wayback captures Feb to Apr 2012 · earliest kept</span></li>
+          <li><span class="t">0:52</span><span>SEARCH "The Associated Press" before 2012-02 · 0 linked</span></li>
+          <li class="stop"><span class="t">1:01</span><span>STOP rule row 6 · 3 windows before 2012-02 · 0 found</span></li>
+        </ol>
+        <div class="already"><b>Already discussed by</b>2 fact-check pages, 1 explainer. Off the chart.</div>
+      </aside>
+    </div>
+    <div class="scrub"><span class="lab">2012</span><input class="range" type="range" min="0" max="1000" value="1000" data-range aria-label="Time machine: year on the trace, from 2012 to 2026"><span class="lab">2026</span></div>
+    <div class="banner">
+      <span class="state cold">&#9646; TRAIL GOES COLD</span>
+      <span>Earliest page we found: Feb 2012. Names The Associated Press; 0 linked pages in 3 windows and 2 archives.</span>
+      <span class="sp"></span>
+      <button class="btn">How this was decided</button><button class="btn">What we searched</button><button class="btn primary">Origin card</button>
+    </div>
+    <div class="usage tnum"><span>T 61 s</span><span>Tavily 84 cr</span><span>Token Factory $0.19 · 38k tok</span><span>28 fetched · 3 Wayback</span></div>
+  </div>
+  <p class="cap">Blame for a sentence: hover or focus a tile. Amber tiles are the words new at this year.</p>
+
+  <div class="shead"><h2>Distortion meter</h2><p class="note"><span class="ex">example data</span> &nbsp; needle per hop; "unsure" below 0.55 (chosen on dev, frozen)</p></div>
+  <div class="ui gauges" data-meter="B">
+    <div class="gauge red" data-y="2013"><small>2012 to 2013</small><svg viewBox="0 0 150 80" aria-hidden="true"><path class="arc" d="M15 70 A60 60 0 0 1 135 70"/><path class="fill" style="--v:.84" pathLength="1" d="M15 70 A60 60 0 0 1 135 70"/><line class="nd" style="--v:.84" x1="75" y1="70" x2="75" y2="18"/></svg><b class="tnum">0.84</b><p class="red">&#9650; Comparison added</p><p>two rows joined; earliest page we found with the new wording</p></div>
+    <div class="gauge" data-y="2015"><small>2013 to 2015</small><svg viewBox="0 0 150 80" aria-hidden="true"><path class="arc" d="M15 70 A60 60 0 0 1 135 70"/><path class="fill" style="--v:.74" pathLength="1" d="M15 70 A60 60 0 0 1 135 70"/><line class="nd" style="--v:.74" x1="75" y1="70" x2="75" y2="18"/></svg><b class="tnum">0.74</b><p>Trend asserted</p><p>"fell to" added, no earlier value on the page</p></div>
+    <div class="gauge" data-y="2019"><small>2015 to 2019</small><svg viewBox="0 0 150 80" aria-hidden="true"><path class="arc" d="M15 70 A60 60 0 0 1 135 70"/><path class="fill" style="--v:.66" pathLength="1" d="M15 70 A60 60 0 0 1 135 70"/><line class="nd" style="--v:.66" x1="75" y1="70" x2="75" y2="18"/></svg><b class="tnum">0.66</b><p>Scope widened</p><p>"average" becomes "human"; 9 seconds drops out</p></div>
+    <div class="gauge unsure" data-y="2026"><small>2019 to 2026</small><svg viewBox="0 0 150 80" aria-hidden="true"><path class="arc" d="M15 70 A60 60 0 0 1 135 70"/><path class="fill" style="--v:.51" pathLength="1" d="M15 70 A60 60 0 0 1 135 70"/><line class="nd" style="--v:.51" x1="75" y1="70" x2="75" y2="18"/></svg><b class="tnum">0.51 · UNSURE</b><p>top two: number dropped 0.51, hedge dropped 0.38</p></div>
+  </div>
+
+  <div class="row2" style="margin-top:28px">
+    <div>
+      <div class="shead"><h2>Trace from any page</h2><p class="note"><span class="ex">example data</span></p></div>
+      <div class="page">
+        <h3>Why your meetings keep losing the room</h3>
+        <p>Every manager has felt it. The research is blunt: the average attention span is now <mark>8 seconds</mark>, shorter than a goldfish's, and your slide deck is not helping.</p>
+        <div class="pop" role="dialog" aria-label="Patient Zero quick look">
+          <div class="pm">Patient Zero · quick look</div>
+          <div class="row"><b>PAGES</b><span class="tnum">142</span><b>ROOTS</b><span class="tnum">1 we could link</span><b>EARLIEST</b><span>2012-02 · two rows</span><b>STATE</b><span class="sig">TRAIL GOES COLD</span></div>
+          <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap"><button class="btn primary" style="min-height:36px;padding:6px 10px">Open trace</button><button class="btn" style="min-height:36px;padding:6px 10px">Copy</button></div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="shead"><h2>Researcher mode</h2><p class="note"><span class="ex">example data</span> &nbsp; forward from a study</p></div>
+      <div class="ui"><div class="fwd">
+        <p class="seed">Lally et al., 2009 · seed finding: median 66 days to automaticity (range 18 to 254)<small>FORWARD · start_date windows · frontier 5 · in what we searched</small></p>
+        <div class="strip">
+          <div><small>2010 · blogs</small><b class="tnum">66</b>"66 days on average"</div>
+          <div><small>2012 · productivity</small><b>~2 mo</b>range dropped</div>
+          <div class="red"><small>2014 · listicles</small><b class="tnum">21</b>&#9650; earliest page we found with the new wording</div>
+          <div><small>2026 · AI answers</small><b class="tnum">21 to 66</b>both survive</div>
+        </div>
+      </div><div class="banner"><span class="state found">&#10003; SEED IS THE ROOT</span><span>4 windows · 19 pages · 2 wordings</span></div></div>
+    </div>
+  </div>
+
+  <div class="shead"><h2>Zombie Stat Atlas</h2><p class="note"><span class="ex">example data</span> &nbsp; a data table, sorted by pages</p></div>
+  <div class="ui">
+    <div class="week">
+      <div><small>Stat of the week · reviewed · REPLAY</small><p class="q">"It takes 21 days to form a habit."</p></div>
+      <div><small>Pages / roots we could link</small><div class="big tnum">88 <i>/</i> 1</div></div>
+      <div><small>Studies found in what we searched</small><div class="big tnum">0</div><p style="font-size:12.5px;color:var(--I2);margin-top:6px">the 2009 study everyone cites says 66</p></div>
+    </div>
+    <table>
+      <thead><tr><th>Claim</th><th>Pages</th><th>Roots linked</th><th>Earliest</th><th>Copies by year</th><th>State</th></tr></thead>
+      <tbody>
+        <tr><td class="q">Your attention span is now shorter than a goldfish's</td><td class="n">142</td><td class="n">1</td><td class="n">2012-02</td><td><svg class="spark" viewBox="0 0 72 18" aria-hidden="true"><path d="M2 16 L12 15 L22 11 L32 12 L42 8 L52 9 L62 5 L70 2"/></svg></td><td><span class="st cold">&#9646; trail goes cold</span></td></tr>
+        <tr><td class="q">93% of communication is nonverbal</td><td class="n">310</td><td class="n">1</td><td class="n">1971</td><td><svg class="spark" viewBox="0 0 72 18" aria-hidden="true"><path d="M2 14 L12 12 L22 12 L32 9 L42 7 L52 6 L62 4 L70 3"/></svg></td><td><span class="st one">&#9650; 1 root we could link</span></td></tr>
+        <tr><td class="q">We only use 10% of our brains</td><td class="n">204</td><td class="n">0</td><td class="n">1936</td><td><svg class="spark" viewBox="0 0 72 18" aria-hidden="true"><path d="M2 10 L12 9 L22 10 L32 8 L42 8 L52 7 L62 6 L70 6"/></svg></td><td><span class="st cold">&#9646; trail goes cold</span></td></tr>
+        <tr><td class="q">Half of all marriages end in divorce</td><td class="n">177</td><td class="n">4</td><td class="n">1981</td><td><svg class="spark" viewBox="0 0 72 18" aria-hidden="true"><path d="M2 8 L12 9 L22 8 L32 9 L42 10 L52 10 L62 11 L70 12"/></svg></td><td><span class="st ok">&#10003; origin found</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="row2" style="margin-top:28px">
+    <div>
+      <div class="shead"><h2>AI answer scan</h2><p class="note"><span class="ex">example data</span></p></div>
+      <div class="ui scan">
+        <div class="text">The average human attention span is now about <button class="hl one">8 seconds, shorter than a goldfish</button>. Adults check their phones around <button class="hl ok">144 times a day</button>, and lose <button class="hl none">2.5 hours a day searching</button> for information.</div>
+        <table><thead><tr><th>AI answer says</th><th>Earliest page we found says</th><th>Chip</th></tr></thead><tbody>
+          <tr><td class="q">8 seconds, shorter than a goldfish</td><td>8 seconds (people), 9 seconds (gold fish), 2012</td><td><span class="st one">changed</span></td></tr>
+          <tr><td class="q">144 times a day</td><td>144 times a day, 2019</td><td><span class="st ok">same</span></td></tr>
+          <tr><td class="q">2.5 hours a day searching</td><td>no page found before 2018</td><td><span class="st cold">not found</span></td></tr>
+        </tbody></table>
+      </div>
+    </div>
+    <div>
+      <div class="shead"><h2>Origin card, permalink</h2><p class="note"><span class="ex">example data</span></p></div>
+      <div class="ui card">
+        <div class="bar"><span class="mark"><i></i>Patient Zero</span><span>/c/goldfish-8s</span><span class="live">REPLAY</span></div>
+        <div class="num tnum">142 <span>pages</span> / 1 <span>root linked</span> / 0 <span>studies found</span></div>
+        <p class="sum">Scope: pages the index and archives could reach in English. TRAIL GOES COLD by rule row 6. The earliest page we found (Feb 2012, Wayback text, VERIFIED) lists two rows, 8 seconds for people and 9 for a gold fish, and names The Associated Press.</p>
+        <div class="facts"><div><small>Viral wording · 2026</small>"Your attention span is now shorter than a goldfish's."</div><div><small>Earliest wording · 2012-02</small>"The average attention span in 2012: 8 seconds. The average attention span of a gold fish: 9 seconds."</div></div>
+        <div class="acts"><button class="btn primary">Copy citation</button><button class="btn">ClaimReview JSON</button><button class="btn">Copy link</button><button class="btn">Report wrong trace</button></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="shead"><h2>Scrubber at 390 px</h2><p class="note"><span class="ex">example data</span></p></div>
+  <div class="phonewrap">
+    <div class="phone"><div class="scr" data-sc="Bp">
+      <div class="bar"><span class="mark"><i></i>Patient Zero</span><span class="live">REPLAY</span></div>
+      <div class="stage">
+        <div class="sentence" data-sentence></div>
+        <div class="tip" data-tip role="tooltip"></div>
+        <div class="readouts"><div class="ro"><small>Year</small><b class="sig tnum" data-year>2026</b></div><div class="ro"><small>Copies</small><b class="tnum" data-copies>41</b></div></div>
+        <div class="chart" data-chart aria-hidden="true"></div>
+      </div>
+      <div class="scrub"><input class="range" type="range" min="0" max="1000" value="1000" data-range aria-label="Time machine, 2012 to 2026"><div class="yrs"><span>2012</span><span>2019</span><span>2026</span></div></div>
+      <ol class="vt" data-vt>
+        <li data-y="2026"><i>2026</i><span><b>AI answers and posts</b>41 copies</span></li>
+        <li data-y="2019"><i>2019</i><span><b>Marketing decks</b>22 copies · scope widened 0.66</span></li>
+        <li data-y="2015"><i>2015</i><span><b>News coverage</b>17 copies · trend asserted 0.74</span></li>
+        <li data-y="2013" class="red"><i>2013</i><span><b>Infographic reposts</b>&#9650; earliest page we found with the new wording · 0.84</span></li>
+        <li data-y="2012"><i>2012</i><span><b>Statistics aggregator page</b>two rows · The Associated Press · VERIFIED</span></li>
+      </ol>
+      <div class="banner"><span class="state cold">&#9646; TRAIL GOES COLD</span><span>rule row 6</span></div>
+      <div class="usage tnum"><span>61 s</span><span>84 cr</span><span>$0.19</span></div>
+    </div></div>
+    <div class="notes">
+      <p><b>States.</b> Loading: the strip chart draws from the right, one bar per window, the playhead parked at now with a LIVE badge. Partial: the chart stops mid-tape with an amber "budget" marker. Failed: an annunciator tile reads TOOL FAILED with the call name. Cold: the leftmost bar greys. Conflicting: two bars at the same year, both spans in the readouts.</p>
+      <p><b>Payoff moment.</b> The flap tiles clack from one sentence into two rows and the needle on the 2012 to 2013 gauge swings to 0.84.</p>
+      <p><b>Risk to watch.</b> Mono everywhere can read cold to a reporter; prose stays in Plex Sans and the tiles only hold the claim.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= C ================= -->
+<section class="dir dC" id="dirC" role="tabpanel" aria-labelledby="tabC">
+  <div class="spec">
+    <p class="idea"><b>Telephone.</b> The children's game, drawn big. White canvas, black ink, one tangerine for the changed words and one ultramarine for blame. The claim is poster-sized type; below it a chain of five speech cards, one per page that passed the sentence on. The scrubber is a fat pill that drags the whole chain back to the first whisper.</p>
+    <div><h4>Palette</h4><span class="sw" style="background:#ffffff"></span><span class="sw" style="background:#111111"></span><span class="sw" style="background:#f24a12"></span><span class="sw" style="background:#2341ff"></span><span class="sw" style="background:#1f8a5a"></span><span class="sw" style="background:#ededeb"></span><br>white, ink, tangerine (changed words, mutation), ultramarine (blame, links), mint good, grey tiles; dark theme on charcoal</div>
+    <div><h4>Type</h4>Schibsted Grotesk 800 for the claim and headings (normal width, reads at a glance), 400 and 500 for prose, Geist Mono for years, counts and badges.</div>
+    <div><h4>Motion language</h4>Playful but short: cubic-bezier(.22,1,.36,1), 480 ms; cards settle with a 1.5 degree tilt as they leave; words scale from .92 and slide; the changed word flashes tangerine once (240 ms). Hover lifts a tile 3 px. No bounce, no loops. Reduced motion: cards and words appear in place.</div>
+    <div><h4>Draws on</h4>Are.na and Readymag poster pages; Spotify Wrapped's one-number-per-card rhythm; Pentagram's typographic identities; the "telephone" visual of a message passed down a line.</div>
+  </div>
+
+  <div class="shead"><h2>Time-machine scrubber and trace view, desktop</h2><p class="note"><span class="ex">example data</span> &nbsp; drag the pill. <button class="playbtn" data-play="C">Rewind to 2012</button></p></div>
+  <div class="ui" data-sc="C">
+    <div class="bar">
+      <span class="mark"><i></i>Patient Zero</span>
+      <span class="counter tnum"><b>142</b> pages &rarr; <b>9</b> clusters &rarr; traced to <b>1</b> root we could link (2 unlinked) &rarr; <b class="zero">0</b> studies found in what we searched</span>
+      <span class="live">REPLAY · 29 Oct 2026</span>
+    </div>
+    <div class="stage">
+      <div class="sentence" data-sentence aria-live="polite"></div>
+      <div class="tip" data-tip role="tooltip"></div>
+      <div class="readline"><span class="yr tnum" data-year>2026</span><span data-stagelabel>AI answers and posts · 41 copies</span><span data-vf></span></div>
+    </div>
+    <div class="chain" data-chain>
+      <div class="ch" data-y="2012"><span class="yr">Feb 2012 · VERIFIED rows</span><b>Statistics aggregator page</b>two rows, names The Associated Press<div class="n tnum">1<span>page</span></div></div>
+      <div class="ch red" data-y="2013"><span class="tag">&#9650; new wording first seen here</span><span class="yr">2013</span><b>Infographic reposts</b>comparison added, 0.84<div class="n tnum">9<span>copies</span></div></div>
+      <div class="ch" data-y="2015"><span class="yr">May 2015</span><b>News coverage</b>trend asserted, 0.74<div class="n tnum">17<span>copies</span></div></div>
+      <div class="ch" data-y="2019"><span class="yr">2019</span><b>Marketing decks and listicles</b>scope widened, 0.66<div class="n tnum">22<span>copies</span></div></div>
+      <div class="ch" data-y="2026"><span class="yr">2026 · now</span><b>AI answers and posts</b>unsure, 0.51<div class="n tnum">41<span>copies</span></div></div>
+    </div>
+    <div class="scrub"><input class="range" type="range" min="0" max="1000" value="1000" data-range aria-label="Time machine: year on the trace, from 2012 to 2026"><div class="lab"><span>2012, first whisper</span><span>2026, what you heard</span></div></div>
+    <div class="logrow">
+      <div><h3>Trace log · 9 of 9 · replayed</h3><ol class="log">
+        <li><span class="t">0:00</span><span>Clustered 41 pages with this wording, newest Oct 2026.</span></li>
+        <li><span class="t">0:19</span><span class="hit">Fetched 22 pages; span matched word for word in 20.</span></li>
+        <li class="hit"><span class="t">0:36</span><span>Wording differs from its parent: comparison added, 0.84, code diff agrees.</span></li>
+        <li><span class="t">0:44</span><span>Dated the 2012 page by 3 Wayback captures.</span></li>
+        <li class="stop"><span class="t">1:01</span><span>Stop rule row 6: 3 windows before Feb 2012, 0 found.</span></li>
+      </ol></div>
+      <div><h3>Check these first</h3><ol class="log"><li><span class="t">1</span><span>The 2012 rows, Wayback text (VERIFIED)</span></li><li><span class="t">2</span><span>The 2012 to 2013 pair, where the comparison appeared</span></li><li><span class="t">3</span><span>No conflict found in this trace</span></li></ol><h3 style="margin-top:12px">Already discussed by</h3><p class="already">2 fact-check pages and 1 explainer, kept off the chain.</p></div>
+    </div>
+    <div class="banner"><span class="state cold">&#9646; TRAIL GOES COLD</span><span>The earliest page we found names The Associated Press; no linked page in 3 windows and 2 archives.</span><span class="sp"></span><button class="btn">How this was decided</button><button class="btn primary">Open origin card</button></div>
+    <div class="usage tnum"><span>61 s</span><span>Tavily 84 credits</span><span>Token Factory $0.19</span><span>28 pages fetched</span></div>
+  </div>
+  <p class="cap">Blame for a sentence: hover or focus any word; the tooltip turns ultramarine and names the page and year that introduced it. Tangerine words are new at this year.</p>
+
+  <div class="shead"><h2>Distortion meter</h2><p class="note"><span class="ex">example data</span> &nbsp; one tile per hop; "unsure" below 0.55 (chosen on dev, frozen)</p></div>
+  <div class="ui"><div class="tiles" data-meter="C">
+    <div class="tile red" data-y="2013"><span class="yr">2012 &rarr; 2013</span><b>&#9650; Comparison added</b><span>two rows joined; earliest page we found with the new wording</span><div class="pct tnum">0.84</div><div class="barv"><i style="--v:84%"></i></div></div>
+    <div class="tile" data-y="2015"><span class="yr">2013 &rarr; 2015</span><b>Trend asserted</b><span>"fell to" added with no earlier value</span><div class="pct tnum">0.74</div><div class="barv"><i style="--v:74%"></i></div></div>
+    <div class="tile" data-y="2019"><span class="yr">2015 &rarr; 2019</span><b>Scope widened</b><span>"average" becomes "human"; 9 seconds drops out</span><div class="pct tnum">0.66</div><div class="barv"><i style="--v:66%"></i></div></div>
+    <div class="tile unsure" data-y="2026"><span class="yr">2019 &rarr; 2026</span><b>Unsure</b><span>top two: number dropped 0.51, hedge dropped 0.38</span><div class="pct tnum">0.51</div><div class="barv"><i style="--v:51%"></i></div></div>
+  </div></div>
+
+  <div class="row2" style="margin-top:28px">
+    <div>
+      <div class="shead"><h2>Trace from any page</h2><p class="note"><span class="ex">example data</span></p></div>
+      <div class="page">
+        <h3>Why your meetings keep losing the room</h3>
+        <p>Every manager has felt it. The research is blunt: the average attention span is now <mark>8 seconds</mark>, shorter than a goldfish's, and your slide deck is not helping.</p>
+        <div class="pop" role="dialog" aria-label="Patient Zero quick look">
+          <div class="pm"><i></i>Patient Zero</div>
+          <div class="big tnum">142 pages<span>1 root we could link</span></div>
+          <div>Earliest page we found: Feb 2012, two rows. The comparison came later.</div>
+          <span class="pb">Open the trace &rarr;</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="shead"><h2>Researcher mode</h2><p class="note"><span class="ex">example data</span></p></div>
+      <div class="ui"><div class="fwd">
+        <p class="seed">Lally et al., 2009: a habit took a median of 66 days.<small>FORWARD · frontier 5 · where this finding went, in what we searched</small></p>
+        <div class="bubbles">
+          <div class="bb seed"><small>2009 · the study</small>median 66 days, range 18 to 254</div>
+          <div class="bb"><small>2010 · blogs</small>"66 days on average"</div>
+          <div class="bb"><small>2012 · productivity</small>"about two months"</div>
+          <div class="bb red"><small>&#9650; 2014 · listicles · new wording</small>"21 days (some say 66)"</div>
+          <div class="bb"><small>2026 · AI answers</small>"21 to 66 days"</div>
+        </div>
+      </div><div class="banner"><span class="state found">&#10003; SEED IS THE ROOT</span><span>4 windows · 19 pages · 2 wordings</span></div></div>
+    </div>
+  </div>
+
+  <div class="shead"><h2>Zombie Stat Atlas</h2><p class="note"><span class="ex">example data</span> &nbsp; a wall of posters</p></div>
+  <div class="ui">
+    <div class="week">
+      <div><small>STAT OF THE WEEK · reviewed · REPLAY</small><p class="q">"It takes 21 days to form a habit."</p><p style="margin-top:10px;font-size:14px;color:var(--I2)">88 pages, 1 root we could link: a 1960 book's "about 21 days" lost its "about" by 2004. The 2009 study everyone cites found 66.</p></div>
+      <div><small>THIS WEEK</small><div class="big tnum">88 <span>pages</span></div><div class="big tnum">1 <span>root we could link</span></div><div class="big tnum">0 <span>studies found in what we searched</span></div></div>
+    </div>
+    <div class="grid">
+      <div class="gc"><span class="q">"Your attention span is now shorter than a goldfish's."</span><span>142 pages · earliest 2012</span><span class="st cold">&#9646; TRAIL GOES COLD · REPLAY</span></div>
+      <div class="gc"><span class="q">"93% of communication is nonverbal."</span><span>310 pages · earliest 1971</span><span class="st one">&#9650; 1 ROOT WE COULD LINK · REPLAY</span></div>
+      <div class="gc"><span class="q">"We only use 10% of our brains."</span><span>204 pages · earliest 1936</span><span class="st cold">&#9646; TRAIL GOES COLD · REPLAY</span></div>
+      <div class="gc"><span class="q">"People swallow 8 spiders a year in their sleep."</span><span>61 pages · earliest 1993</span><span class="st one">&#9650; 1 ROOT WE COULD LINK · REPLAY</span></div>
+      <div class="gc"><span class="q">"Half of all marriages end in divorce."</span><span>177 pages · 4 roots we could link</span><span class="st ok">&#10003; ORIGIN FOUND · REPLAY</span></div>
+      <div class="gc"><span class="q">"Humans use only 10% of their lung capacity."</span><span>23 pages · 0 roots we could link</span><span class="st cold">&#9646; NO PAGES BEFORE 2016 · REPLAY</span></div>
+    </div>
+  </div>
+
+  <div class="row2" style="margin-top:28px">
+    <div>
+      <div class="shead"><h2>AI answer scan</h2><p class="note"><span class="ex">example data</span></p></div>
+      <div class="ui scan">
+        <div class="text">The average human attention span is now about <button class="hl one">8 seconds, shorter than a goldfish</button>. Adults check their phones around <button class="hl ok">144 times a day</button>, and lose <button class="hl none">2.5 hours a day searching</button> for information.</div>
+        <div class="ql"><span>8 seconds, shorter than a goldfish<small>142 pages · 1 root we could link · earliest 2012</small></span><span class="st one">&#9650; ONE ROOT</span></div>
+        <div class="ql"><span>144 times a day<small>58 pages · 3 roots we could link · earliest 2019</small></span><span class="st ok">&#10003; SEVERAL ROOTS</span></div>
+        <div class="ql"><span>2.5 hours a day searching<small>27 pages · 0 roots we could link · cold 2018</small></span><span class="st cold">&#9646; NO SOURCE FOUND</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="shead"><h2>Origin card, permalink</h2><p class="note"><span class="ex">example data</span></p></div>
+      <div class="ui card">
+        <div class="bar"><span class="mark"><i></i>Patient Zero</span><span class="tnum">/c/goldfish-8s</span><span class="live">REPLAY</span></div>
+        <div class="num tnum">142 <span>pages</span> &rarr; 1 <span>root we could link</span> &rarr; 0 <span>studies found</span></div>
+        <p class="sum">Scope: pages the index and archives could reach in English. <b>TRAIL GOES COLD</b> by rule row 6. The earliest page we found, Feb 2012 (Wayback text, VERIFIED), lists <b>two rows</b>: 8 seconds for people, 9 for a gold fish, source The Associated Press.</p>
+        <div class="facts"><div><small>VIRAL WORDING · 2026</small>"Your attention span is now shorter than a goldfish's."</div><div><small>EARLIEST WORDING · FEB 2012</small>"The average attention span in 2012: 8 seconds. The average attention span of a gold fish: 9 seconds."</div></div>
+        <div class="acts"><button class="btn primary">Copy citation</button><button class="btn">ClaimReview JSON</button><button class="btn">Copy link</button><button class="btn">Report a wrong trace</button></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="shead"><h2>Scrubber at 390 px</h2><p class="note"><span class="ex">example data</span></p></div>
+  <div class="phonewrap">
+    <div class="phone"><div class="scr" data-sc="Cp">
+      <div class="bar"><span class="mark"><i></i>Patient Zero</span><span class="live">REPLAY</span></div>
+      <div class="stage">
+        <div class="sentence" data-sentence></div>
+        <div class="tip" data-tip role="tooltip"></div>
+        <div class="readline"><span class="yr tnum" data-year>2026</span><span data-stagelabel></span><span data-vf></span></div>
+      </div>
+      <div class="scrub"><input class="range" type="range" min="0" max="1000" value="1000" data-range aria-label="Time machine, 2012 to 2026"><div class="lab"><span>2012</span><span>now</span></div></div>
+      <ol class="vt" data-vt>
+        <li data-y="2026"><span><b>AI answers and posts</b>41 copies · unsure 0.51</span><i>2026</i></li>
+        <li data-y="2019"><span><b>Marketing decks</b>22 copies · scope widened</span><i>2019</i></li>
+        <li data-y="2015"><span><b>News coverage</b>17 copies · trend asserted</span><i>2015</i></li>
+        <li data-y="2013" class="red"><span><b>Infographic reposts</b>&#9650; new wording first seen here</span><i>2013</i></li>
+        <li data-y="2012"><span><b>Statistics aggregator page</b>two rows · VERIFIED</span><i>2012</i></li>
+      </ol>
+      <div class="banner"><span class="state cold">&#9646; TRAIL GOES COLD</span><span>rule row 6</span></div>
+      <div class="usage tnum"><span>61 s</span><span>84 cr</span><span>$0.19</span></div>
+    </div></div>
+    <div class="notes">
+      <p><b>States.</b> Loading: cards arrive from the right one by one as windows return, with a LIVE pill. Partial: the chain ends in a dashed card "budget ran out, continue". Failed: a black card reads TOOL FAILED and names the call. Cold: the first card greys. Conflicting: two first cards side by side, both spans.</p>
+      <p><b>Payoff moment.</b> At 2012 the giant line splits into two rows and every tangerine word turns back to ink: nothing was changed yet.</p>
+      <p><b>The risk.</b> Poster type on a research tool can read as a campaign site; the counter, log and stop banner stay plain so the evidence never shouts.</p>
+    </div>
+  </div>
+</section>
+
+<div class="shead" style="margin-top:56px"><h2>Comparison and recommendation</h2></div>
+<div class="cmpwrap"><table class="cmp">
+  <thead><tr><th></th><th>A. Case File</th><th>B. Instrument</th><th>C. Telephone</th></tr></thead>
+  <tbody>
+    <tr><td>Scrubber feel</td><td>Microfilm reel; branches withdraw into the archive</td><td>Tape shuttle over a strip chart; tiles clack, needles swing</td><td>Fat pill drags a chain of speech cards; giant words reflow</td></tr>
+    <tr><td>Reads in 1 s at expo distance</td><td>Yes (44 px serif claim, one red mark)</td><td>Claim at 30 px mono; readouts carry the story</td><td>Yes, best of the three (62 px heading)</td></tr>
+    <tr><td>Evidence tone</td><td>Court exhibit, calm</td><td>Measurement, strict</td><td>Playful; evidence kept plain below</td></tr>
+    <tr><td>Fits Zero In and the Atlas</td><td>Good</td><td>Weakest (game beats feel cold)</td><td>Best</td></tr>
+    <tr><td>Build cost (Tailwind, motion, D3 for the tree)</td><td>Medium: SVG tree plus word FLIP</td><td>Medium: bars and gauges are plain DOM</td><td>Lowest: cards and FLIP words, no tree geometry</td></tr>
+    <tr><td>Slop risk</td><td>Low; serif plus paper is a known AI cluster, offset by the instrument layout</td><td>Low; mono dashboards exist but the chart is content</td><td>Medium; poster type can drift to campaign-site</td></tr>
+  </tbody>
+</table></div>
+<div class="reco"><b>Recommendation: A, Case File, with C's scrubber feel.</b> A keeps the reporter's trust (the court-exhibit tone judges reward under "Sourced and verifiable") and already matches the direction Vidyut liked. Borrow from C the giant claim size and the two-row split as the payoff, and from B the counting readouts on the meter. If the demo video is the priority over the fact-checker audience, pick C outright; its 1-second read at 1920 x 1080 is the strongest.</div>
+
+<footer class="foot"><span>Patient Zero · team Says Who · three directions · design only, nothing built</span><span>Every figure on this page is example data except the 2012 rows, which are VERIFIED Wayback text</span></footer>
+</div>
+
+<script>
+(function(){
+  var RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Stages, newest first. Only the 2012 rows are verified text; the rest are examples for the morph.
+  var STAGES = [
+    {y:2026,label:'AI answers and posts · 41 copies',copies:41,hop:'unsure (0.51): number dropped',vf:'example wording',
+     w:[['your','Your'],['attention','attention'],['span','span'],['is','is'],['now','now'],['shorter','shorter'],['than','than'],['a','a'],['goldfish','goldfish’s']]},
+    {y:2019,label:'Marketing decks and listicles · 22 copies',copies:22,hop:'scope widened (0.66)',vf:'example wording',
+     w:[['the','The'],['average','average'],['human','human'],['attention','attention'],['span','span'],['is','is'],['8','8'],['seconds','seconds,'],['shorter','shorter'],['than','than'],['a','a'],['goldfish','goldfish’s']]},
+    {y:2015,label:'News coverage · 17 copies',copies:17,hop:'trend asserted (0.74)',vf:'example wording',
+     w:[['the','The'],['average','average'],['attention','attention'],['span','span'],['fell','fell'],['to','to'],['8','8'],['seconds','seconds,'],['less','less'],['than','than'],['a','a'],['goldfish','goldfish’s'],['9','9'],['seconds2','seconds']]},
+    {y:2013,label:'Infographic reposts · 9 copies · earliest page we found with the new wording',copies:9,hop:'comparison added (0.84), the red hop',vf:'example wording',red:true,
+     w:[['attention','Attention'],['span','span:'],['8','8'],['seconds','seconds.'],['a','A'],['goldfish','goldfish:'],['9','9'],['seconds2','seconds']]},
+    {y:2012,label:'Statistics aggregator page · 1 page · Feb 2012',copies:1,hop:'start: two separate rows',vf:'VERIFIED Wayback text',
+     w:[['the','The'],['average','average'],['attention','attention'],['span','span'],['in','in'],['2012','2012'],['8','8'],['seconds','seconds'],
+        ['brk'],['the2','The'],['average2','average'],['attention2','attention'],['span2','span'],['of','of'],['a','a'],['goldfish','gold fish'],['9','9'],['seconds2','seconds'],
+        ['brk'],['src','Source: The Associated Press']]}
+  ];
+  // first year each word id appears (scan from oldest)
+  var FIRST = {};
+  for (var i = STAGES.length - 1; i >= 0; i--) STAGES[i].w.forEach(function(p){ if (p[0] !== 'brk' && !(p[0] in FIRST)) FIRST[p[0]] = STAGES[i]; });
+  function yearOf(t){ return 2026 - t * 14; }
+  function stageFor(year){ for (var i = 0; i < STAGES.length; i++) if (STAGES[i].y <= year + 1e-9) return STAGES[i]; return STAGES[STAGES.length-1]; }
+
+  function Scrubber(root){
+    var sent = root.querySelector('[data-sentence]'), range = root.querySelector('[data-range]'), tip = root.querySelector('[data-tip]');
+    var yearEl = root.querySelector('[data-year]'), labEl = root.querySelector('[data-stagelabel]'), vfEl = root.querySelector('[data-vf]');
+    var copiesEl = root.querySelector('[data-copies]'), hopEl = root.querySelector('[data-hop]'), vf2 = root.querySelector('[data-vf2]');
+    var chart = root.querySelector('[data-chart]'); var cur = null; var self = this;
+    if (chart) buildChart(chart);
+    function render(stage){
+      var old = {}; sent.querySelectorAll('.w[data-id]').forEach(function(el){ old[el.dataset.id] = {el:el, r:el.getBoundingClientRect()}; });
+      var base = sent.getBoundingClientRect();
+      var keep = {};
+      var frag = document.createDocumentFragment();
+      stage.w.forEach(function(p){
+        if (p[0] === 'brk'){ var b = document.createElement('span'); b.className = 'brk'; frag.appendChild(b); return; }
+        var el = document.createElement('span'); el.className = 'w' + (p[0] === 'src' ? ' src' : ''); el.dataset.id = p[0]; el.textContent = p[1]; el.tabIndex = 0;
+        var f = FIRST[p[0]]; if (f && f.y === stage.y && stage.y !== 2012) el.classList.add('new');
+        el.addEventListener('mouseenter', function(){ showTip(el, p[0]); }); el.addEventListener('focus', function(){ showTip(el, p[0]); });
+        el.addEventListener('mouseleave', hideTip); el.addEventListener('blur', hideTip);
+        keep[p[0]] = true; frag.appendChild(el);
+      });
+      // leaving words
+      sent.querySelectorAll('.w[data-id]').forEach(function(el){ if (!keep[el.dataset.id] && !RM){ var r = old[el.dataset.id].r; el.classList.add('leave'); el.style.left = (r.left - base.left) + 'px'; el.style.top = (r.top - base.top) + 'px'; el.style.transition = 'opacity .22s ease-out, transform .32s ease-out'; el.style.opacity = '0'; el.style.transform = 'scale(.92)'; setTimeout(function(){ el.remove(); }, 340); } else el.remove(); });
+      sent.appendChild(frag);
+      if (!RM){
+        sent.querySelectorAll('.w[data-id]').forEach(function(el){
+          var n = el.getBoundingClientRect(), o = old[el.dataset.id];
+          if (o){ var dx = o.r.left - n.left, dy = o.r.top - n.top; if (dx || dy){ el.style.transform = 'translate(' + dx + 'px,' + dy + 'px)'; el.style.transition = 'none'; requestAnimationFrame(function(){ el.style.transition = 'transform .32s cubic-bezier(.3,.7,.3,1)'; el.style.transform = ''; }); } }
+          else { el.style.opacity = '0'; el.style.transform = 'scale(.92)'; el.style.transition = 'none'; requestAnimationFrame(function(){ el.style.transition = 'opacity .22s ease-out, transform .32s cubic-bezier(.3,.7,.3,1)'; el.style.opacity = ''; el.style.transform = ''; }); }
+        });
+      }
+      if (labEl) labEl.textContent = stage.label; if (vfEl) vfEl.textContent = stage.vf; if (vfEl) vfEl.className = stage.vf.indexOf('VERIFIED') === 0 ? 'vf' : 'nc';
+      if (copiesEl) copiesEl.textContent = stage.copies; if (hopEl) hopEl.textContent = stage.hop; if (vf2) vf2.textContent = stage.vf;
+    }
+    function showTip(el, id){ var f = FIRST[id]; if (!f || !tip) return; var txt = id === 'src' ? 'Source line on the 2012 page, Wayback text (VERIFIED)' : (f.y === 2012 ? 'On the earliest page we found, Feb 2012 (VERIFIED rows)' : 'Introduced ' + f.y + ' · ' + f.label.split(' · ')[0] + ' (example)');
+      tip.innerHTML = '<b>' + el.textContent.replace(/[:.,]$/,'') + '</b>' + txt; var r = el.getBoundingClientRect(), b = sent.getBoundingClientRect();
+      tip.style.left = Math.max(0, Math.min(r.left - b.left, b.width - 280)) + 'px'; tip.style.top = (r.bottom - b.top + 8) + 'px'; tip.classList.add('show'); }
+    function hideTip(){ if (tip) tip.classList.remove('show'); }
+    function update(){
+      var t = 1 - range.value / 1000, year = yearOf(t), st = stageFor(year), yr = Math.round(year);
+      if (yearEl) yearEl.textContent = yr;
+      if (!cur || cur.y !== st.y){ render(st); cur = st; }
+      root.querySelectorAll('[data-y]').forEach(function(el){ el.classList.toggle('off', +el.dataset.y > year + 1e-9); });
+      root.querySelectorAll('.ch').forEach(function(el){ el.classList.toggle('cur', +el.dataset.y === st.y); });
+      var head = root.querySelector('[data-head]'); if (head){ var x = 80 + (year - 2012) / 14 * (995 - 80); head.setAttribute('x1', x); head.setAttribute('x2', x); }
+      var ph = root.querySelector('.ph'); if (ph){ ph.style.left = ((year - 2012) / 14 * 100) + '%'; ph.dataset.y = yr; }
+    }
+    range.addEventListener('input', update);
+    this.rewind = function(){ if (RM){ range.value = 0; update(); return; } var v = +range.value, start = null; function step(ts){ if (!start) start = ts; var p = Math.min(1, (ts - start) / 4200); var e = 1 - Math.pow(1 - p, 2); range.value = Math.round(v * (1 - e)); update(); if (p < 1) requestAnimationFrame(step); } requestAnimationFrame(step); };
+    update();
+  }
+  function buildChart(c){
+    var bars = [[2012,1,'cold'],[2013,9,'red'],[2014,4,''],[2015,18,''],[2016,7,''],[2017,6,''],[2018,5,''],[2019,22,''],[2020,6,''],[2021,8,''],[2022,9,''],[2023,12,''],[2024,37,''],[2025,20,''],[2026,41,'']];
+    var h = '<div class="gridy" style="top:30%">40</div><div class="gridy" style="top:65%">20</div>';
+    bars.forEach(function(b){ var x = (b[0] - 2012) / 14 * 100; h += '<div class="bar ' + b[2] + '" data-y="' + b[0] + '" style="left:calc(' + x + '% - 3px);height:' + (b[1] / 41 * 85) + '%"></div>'; if (b[0] % 2 === 0) h += '<div class="lbl' + (b[0] === 2012 ? ' first' : b[0] === 2026 ? ' last' : '') + '" style="left:' + x + '%">' + b[0] + '</div>'; });
+    h += '<div class="ph" data-y="2026" style="left:100%"></div>'; c.innerHTML = h;
+  }
+  var inst = {};
+  document.querySelectorAll('[data-sc]').forEach(function(r){ inst[r.dataset.sc] = new Scrubber(r); });
+  document.querySelectorAll('[data-play]').forEach(function(b){ b.addEventListener('click', function(){ var s = inst[b.dataset.play]; if (s) s.rewind(); }); });
+  // tabs
+  var tabs = document.querySelectorAll('.tab');
+  function pick(id){ tabs.forEach(function(t){ var on = t.getAttribute('aria-controls') === id; t.setAttribute('aria-selected', on); document.getElementById(t.getAttribute('aria-controls')).classList.toggle('on', on); }); }
+  tabs.forEach(function(t){ t.addEventListener('click', function(){ pick(t.getAttribute('aria-controls')); if (history.replaceState) history.replaceState(null, '', '#' + t.getAttribute('aria-controls')); }); });
+  var h = location.hash.replace('#',''); if (/^dir[ABC]$/.test(h)) pick(h);
+  window.addEventListener('hashchange', function(){ var h = location.hash.replace('#',''); if (/^dir[ABC]$/.test(h)) pick(h); });
+})();
+</script>
