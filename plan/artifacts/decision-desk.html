@@ -186,7 +186,7 @@ footer{font:400 12px/1.6 var(--mono);color:var(--muted)}
 
 <section class="docket" aria-labelledby="d3">
   <div class="dhead"><span class="num">DOCKET 3</span><h2 id="d3">Team</h2></div>
-  <p>Repo: <a href="https://github.com/vs-githjk/odsc-nebius-hackathon">vs-githjk/odsc-nebius-hackathon</a> (private). Tick each box when that person has done it; the conductor checks the repo too.</p>
+  <p>Repo: <a href="https://github.com/vs-githjk/odsc-nebius-hackathon">vs-githjk/odsc-nebius-hackathon</a> (private). Tick each box when that person has done it. <b>Registered</b> means they submitted the ODSC form with team name Says Who. <b>Keys in .env</b> means their Tavily key (and the shared Token Factory key from Rohan) is saved in a private <code>.env</code> file in their copy of the project; git never uploads that file.</p>
   <div class="grid4">
     <div class="member"><b>Vidyut</b><span class="gh">vs-githjk · issue #2</span>
       <label class="check"><input type="checkbox" id="reg_vidyut" data-check="registered.vidyut"><span>Registered</span></label>
@@ -294,7 +294,11 @@ footer{font:400 12px/1.6 var(--mono);color:var(--muted)}
     saveTimer = setTimeout(function(){
       state.updatedAt = new Date().toISOString();
       docRef.set(state).then(function(){ setStatus('saved', 'Saved ' + new Date().toLocaleTimeString([], {hour:'numeric', minute:'2-digit'})); })
-        .catch(function(e){ setStatus('error', e && e.code === 'permission_denied' ? 'Read only: only the owner can change picks' : 'Not saved. Check your connection and change any pick to retry'); });
+        .catch(function(e){
+          var denied = e && (e.code === 'permission_denied' || e.code === 'not_found' || e.code === 'not_granted');
+          if (denied) { canWrite = false; render(); }
+          setStatus('error', denied ? 'Read only: only the page owner can save picks' : 'Not saved. Check your connection and change any pick to retry');
+        });
     }, 500);
   }
 
@@ -323,23 +327,19 @@ footer{font:400 12px/1.6 var(--mono);color:var(--muted)}
     render(); save();
   });
 
+  // Controls work at once; the store decides who may save (a refused write turns the page read-only).
+  canWrite = true;
   setStatus('idle', 'Connecting');
   render();
-  Promise.all([window.claude && window.claude.use ? window.claude.use('db') : null, window.claude && window.claude.use ? window.claude.use('user') : null])
-    .then(function(r){
-      var db = r[0], user = r[1];
-      if (!db) { setStatus('error', 'Picks cannot be saved in this view. Open the page on claude.ai while signed in'); return; }
-      docRef = db.doc('desk/vidyut');
-      var ownerP = user ? user.isOwner() : Promise.resolve(false);
-      ownerP.then(function(isOwner){
-        canWrite = !!isOwner;
-        if (!canWrite) setStatus('idle', 'Read only: picks by the page owner');
-        docRef.onSnapshot(function(snap){
-          var d = snap.data();
-          if (d && !(snap.metadata && snap.metadata.hasPendingWrites)) { state = d; render(); }
-          if (canWrite && pill.dataset.s === 'idle') setStatus('saved', d ? 'Picks loaded' : 'Ready');
-        }, function(){ setStatus('error', 'Lost the connection to saved picks. Reload the page'); });
-      });
-    });
+  var use = window.claude && window.claude.use ? function(n){ return window.claude.use(n); } : function(){ return Promise.resolve(null); };
+  use('db').then(function(db){
+    if (!db) { setStatus('error', 'Picks are not saved in this view. Tell Claude your picks in chat instead'); return; }
+    docRef = db.doc('desk/vidyut');
+    docRef.onSnapshot(function(snap){
+      var d = snap.data();
+      if (d && !(snap.metadata && snap.metadata.hasPendingWrites)) { state = d; render(); }
+      if (pill.dataset.s === 'idle') setStatus('saved', d ? 'Picks loaded' : 'Ready: picks save as you click');
+    }, function(){ setStatus('error', 'Lost the connection to saved picks. Reload the page'); });
+  }, function(){ setStatus('error', 'Picks are not saved in this view. Tell Claude your picks in chat instead'); });
 })();
 </script>

@@ -28,3 +28,5 @@ Format: [LOCKED|REJECTED|PREFERENCE] decision | why | "Vidyut's words" | date
 - [PREFERENCE] Product name Patient Zero (team stays Says Who) if idea A is picked | | "Product name can be patient zero, but you said says who's the name of the team. Okay, that's fine" | 2026-10-29
 - [LOCKED] Rohan holds the Token Factory card and key for the team | | "Rohan will probably do the card on token factory" | 2026-10-29
 - [LOCKED] Team of 4 (up to 5 allowed); humans talk on a WhatsApp group, agents and tasks on GitHub | | "I can have 4 to 5 teammates... create a WhatsApp group and have communication done for that" | 2026-10-29
+- [LOCKED] Product name: Patient Zero. Team name: Says Who | | "Patient zero for the name of the product. Team is says who, that's fine" | 2026-10-29
+- [PREFERENCE] Patient Zero is liked but not yet picked: he wants proof of real market need first (master-finder market check) | | "I like patient zero. But how is it useful?... Is there an actual need for it in the market?" | 2026-10-29
