@@ -1,6 +1,18 @@
-{"mode": "hackathon", "name": "ODSC x Nebius Hackathon 2026", "stage": "H4-ideas",
+{
+ "mode": "hackathon",
+ "name": "ODSC x Nebius Hackathon 2026",
+ "stage": "H4-gate1",
  "deadline": "2026-11-20 (Friday; exact time and timezone UNVERIFIED)",
- "approvals": {"gate1": null, "gate2": null, "gate3": null, "storyboard": null, "submit": null},
- "branch": "build/<slug>", "design_direction": null,
+ "approvals": {
+  "gate1": null,
+  "gate2": null,
+  "gate3": null,
+  "storyboard": null,
+  "submit": null
+ },
+ "branch": "build/<slug>",
+ "design_direction": null,
  "success_metric": "Win the ODSC x Nebius Hackathon: a strong, sourced research agent submitted before Nov 20 2026",
- "runs": [], "autopilot": []}
+ "runs": [],
+ "autopilot": []
+}
