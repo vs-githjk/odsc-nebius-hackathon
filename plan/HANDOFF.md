@@ -1,6 +1,6 @@
 # Handoff: ODSC x Nebius Hackathon (team Says Who)
 
-Last updated: Thu Oct 29 2026, about 02:00 PDT, by the main session (conductor).
+Last updated: Thu Oct 29 2026, about 12:45 PDT, by the main session (conductor).
 To resume in a new Claude Code chat opened in this folder, Vidyut says: **"I'm back, continue the master playbook"**. The new session reads this file, `plan/state.json` and `plan/decisions.md`, says where we are in three lines, and carries on.
 
 ## The event
@@ -58,6 +58,8 @@ Done this session (Oct 29, 01:37 to 02:00 PDT):
 - DONE (12:28 PDT after a network drop): final design https://claude.ai/artifact/8JXR8hNEhEEk23Zfbjf7To (private to Vidyut; source and DESIGN.md in plan/artifacts/pz-final/). Build plan done: plan/PRD.md, plan/plan.md (20 Run-1 tasks, 12 Run-2), plan/issues-oct29.md, plan/progress.md. XO posting issues; finder picking claims 5 and 6 (plan/spike-claims-5-6.md, Part A postable, Part B never). Open for Vidyut: package allowlist OK, Run 2 owner (rec: his overnight build from Nov 2, Anoop second).
 
 - DONE (12:31 PDT): 20 Run-1 issues posted (#9 to #28) with queues on each focus issue; claims 5 and 6 posted as wording only on #5, #9, #10 (origin notes stay local in git-ignored plan/spike-claims-5-6.md); Anoop's blind period lasts until all 6 transcripts are committed. Rohan's and Rishit's repo invites still pending; assign on accept. WhatsApp kickoff text given to Vidyut.
+
+- PAUSED (12:45 PDT) on Vidyut's word. Package allowlist approved; Run 2 owner = his overnight build (Anoop backup). On "go": check teammates' progress on GitHub (XO watch pass: invites, PRs, #5, #9), then plan the first overnight build (Gate 3 wording "use a workflow, start the overnight build").
 
 Next, in order (when Vidyut says "go"):
 0. Discuss plan/rerunlab-inspo.md with Vidyut first.

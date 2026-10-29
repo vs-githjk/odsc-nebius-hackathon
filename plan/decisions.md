@@ -86,3 +86,6 @@ Format: [LOCKED|REJECTED|PREFERENCE] decision | why | "Vidyut's words" | date
 - [LOCKED] GATE 2: round-3 plan approved | | "Yes, I approve the plan" | 2026-10-29
 - [LOCKED] Vidyut does no work today or tomorrow (Oct 29 to 30); teammates do the work, he catches up after. One final design is the basic setup | | "I'm not gonna do any thing today ... Now everybody else needs to do work, and then I'll catch up" | 2026-10-29
 - [LOCKED] Assign lanes after the basic setup: Rishit front-end; Rohan and Anoop lanes are the conductor's call; Anoop and Rishit should carry a lot of work today and tomorrow | | "you can assign Rishit front-end Rohan, like whatever you assign them ... I want Anoop and Rishit to do a lot of work today, tomorrow" | 2026-10-29
+- [LOCKED] Package allowlist in plan/plan.md Global Constraints approved for teammates' machines (exact versions) | | "okay both are yes" | 2026-10-29
+- [LOCKED] Run 2 (search engine, Nov 2 to 8) is built by Vidyut's overnight build; Anoop is backup; Rohan builds only mechanisms (blind grader) | | "okay both are yes" | 2026-10-29
+- [LOCKED] Break: do nothing until Vidyut says "go" | | "do nothing now were taking a break, when im back and say go we begin" | 2026-10-29
