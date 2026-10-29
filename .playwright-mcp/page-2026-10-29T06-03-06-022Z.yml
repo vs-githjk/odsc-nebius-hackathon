@@ -1,0 +1,4 @@
+- generic [active]:
+  - link "Skip to form" [ref=e1] [cursor=pointer]:
+    - /url: "#main"
+  - main
