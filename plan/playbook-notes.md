@@ -14,3 +14,4 @@
 - 2026-10-29: Agent fixes 1-4 synced to vs-githjk/master-agents a98ad8f after 2 Codex review rounds (7 findings, all fixed and tested). Codex earned its place: it caught token double-counting in usage.py.
 - 2026-10-29: DEFECT: decision desk controls were gated on user.isOwner() resolving; in Vidyut's view nothing was clickable. Fixed: controls always live, the store's write refusal decides read-only. Rule: never gate inputs on an identity check; let the write decide (as the capability docs say).
 - 2026-10-29: Gotcha: piping codex exec into head kills it with SIGPIPE before the verdict. Use -o <file> and read the file.
+- 2026-10-29: Master-agents synced after 6 Codex rounds on the usage ledger and market-check edits (17 real findings, all fixed and tested).
