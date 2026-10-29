@@ -16,3 +16,4 @@
 - 2026-10-29: Gotcha: piping codex exec into head kills it with SIGPIPE before the verdict. Use -o <file> and read the file.
 - 2026-10-29: Master-agents synced after 6 Codex rounds on the usage ledger and market-check edits (17 real findings, all fixed and tested).
 - 2026-10-29 04:40: DEFECT (conductor): I relayed the 3 directions as 'strong' after looking at stills; Vidyut rejected them as sloppy and not pro-level. My check looked for wording rules and overlaps, not for the professional-league bar. Rule now: judge designs against named pro references at full size before relaying, and send back anything that would not sit next to them.
+- 2026-10-29: Network outage (ENOTFOUND) killed the final-design fix round mid-run and dropped all artifact watches; resumed after.
