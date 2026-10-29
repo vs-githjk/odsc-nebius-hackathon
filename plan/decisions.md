@@ -54,3 +54,11 @@ Format: [LOCKED|REJECTED|PREFERENCE] decision | why | "Vidyut's words" | date
 - [LOCKED] Vidyut's PaperTrail (citation ancestor-tree app, React + D3) goes in the Why us section | | "yes papertrail in why us" | 2026-10-29
 - [LOCKED] Hosted demo daily live-trace cap: 5 a day for now (any deploy still waits for his go) | | "daily cap 5 is good for now" | 2026-10-29
 - [PREFERENCE] Study his own fact-checker app RerunLab (GitHub) for inspiration and ways to make Patient Zero stronger; discuss when he is back | | "im also building a fact checker app check my github for rerunlab see if we can take inspo from there or we can make idea stronger" | 2026-10-29
+- [LOCKED] Borrow RerunLab patterns into Patient Zero (not combine): planted trap set, code-only stop state with "How this was decided", number matching rules | | "borrow" | 2026-10-29
+- [LOCKED] No code copying from his other projects; take the ideas and write fresh code | | "no copying just take and use" | 2026-10-29
+- [PREFERENCE] Hour estimates run pessimistic: AI codes most tasks, so they take less time than planned; do not overthink scope trade-offs | | "dont overthink this were using ai to code most tasks will take less time than u expect" | 2026-10-29
+- [LOCKED] Name RerunLab in Why us | | "yes" | 2026-10-29
+- [LOCKED] Take the best from all his projects (RerunLab, jev, mvr check, PaperTrail and others) | | "take the best from anything and eveyrthung even mvr check" | 2026-10-29
+- [LOCKED] Target rubric score: 96+ | | "i want to reach a score of 96+" | 2026-10-29
+- [LOCKED] Start the lead search (master-leadgen finds fact-checkers, journalism teachers, standards editors; master-writer drafts; nothing sent without Vidyut) only AFTER Anoop's head-to-head shows how Patient Zero differs from Claude and ChatGPT | | "yes start lead search after anoop sees how diff it is from claudde amd stuyff" | 2026-10-29
+- [PREFERENCE] Use a Jev-style typed decision layer ("jev - typesafe one model would be great here"): Jev = TypeSafe AI small decision model with typed boolean/choice/score answers; recommended: same pattern on Token Factory models (rubric), Jev only as an optional ablation | | "jev 0ne model typesaefe ai" | 2026-10-29

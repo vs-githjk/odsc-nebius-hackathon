@@ -9,3 +9,4 @@
 - 23:57 pushed c329ef4 (conductor's usage-ledger commit, made concurrently on local main) along with 45691e3; scanned: no keys or emails; it carries a Co-Authored-By trailer
 - 01:46 refreshed state: Anoop accepted (collaborator), assigned to #4; Rohan and Rishit invites still pending; teammate 4 = RishitRai on #1
 - 01:46 label spike; task issues #5 Anoop head-to-head (assigned), #6 Rohan Token Factory smoke test, #7 Rishit Tavily probe (both unassigned until invite accepted); kickoff #8 "Start here" pinned; pointer comments on #1-#4 (per Vidyut's LOCKED GitHub-kickoff decision)
+- 02:17 #6 comment: Part B step 3b added for Rohan (Qwen json_schema enum label + logprobs true, top_logprobs 5, record both in spike/token-factory-smoke.md), why: typed decision layer confidence from logprobs; https://github.com/vs-githjk/odsc-nebius-hackathon/issues/6#issuecomment-6492776686

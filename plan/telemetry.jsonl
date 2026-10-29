@@ -14,3 +14,6 @@
 {"ts":"2026-10-29T01:48-07:00","stage":"H4.6-kickoff","agent":"master-xo","model":"opus","effort":"default","minutes":5,"tokens":110954,"result":"met"}
 {"ts":"2026-10-29T01:53-07:00","stage":"H4.6-design-quick","agent":"master-designer","model":"opus","effort":"default","minutes":8,"tokens":130729,"result":"met"}
 {"ts":"2026-10-29T02:05-07:00","stage":"H4.6-rerunlab","agent":"master-planner","model":"opus","effort":"default","minutes":6,"tokens":172826,"result":"met"}
+{"ts":"2026-10-29T02:15-07:00","stage":"H4.6-sweep","agent":"master-planner","model":"opus","effort":"default","minutes":6,"tokens":155981,"result":"met"}
+{"at":"2026-10-29T02:17-07:00","stage":"team-relay","agent":"master-xo","minutes":2,"tokens_or_cost_if_known":null,"result":"pass","goal":"odsc-xo-6-logprobs"}
+{"ts":"2026-10-29T02:27-07:00","stage":"H4.6-gap96","agent":"master-auditor","model":"opus","effort":"default","minutes":10,"tokens":null,"result":"met"}

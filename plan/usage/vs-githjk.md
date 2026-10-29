@@ -1,30 +1,30 @@
 # Usage ledger: vs-githjk
 
-Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py. 15 runs.
+Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py. 18 runs.
 
 ## Totals by service
 
 | Service | Calls |
 |---|---|
-| Shell | 313 |
-| Claude Code tools | 190 |
-| Other HTTP | 93 |
-| GitHub (gh) | 55 |
-| Web search and fetch | 52 |
+| Shell | 372 |
+| Claude Code tools | 206 |
+| Other HTTP | 98 |
+| GitHub (gh) | 63 |
+| Web search and fetch | 53 |
 | Codex | 8 |
 | Bright Data | 7 |
 | Apify | 7 |
-| Nebius Token Factory | 5 |
+| Nebius Token Factory | 6 |
 | Browser (Playwright) | 3 |
 
 ## LLM tokens
 
 | Kind | Tokens |
 |---|---|
-| input_tokens | 1,643 |
-| cache_creation_input_tokens | 2,371,229 |
-| cache_read_input_tokens | 80,603,647 |
-| output_tokens | 662,038 |
+| input_tokens | 1,807 |
+| cache_creation_input_tokens | 2,731,839 |
+| cache_read_input_tokens | 90,087,498 |
+| output_tokens | 745,455 |
 
 ## Per run
 
@@ -40,11 +40,14 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 | 2026-10-29T07:46 | master-finder: Market validation for Patient Zero | claude-opus-5-5 | 40,009 | 7 | 2 | 0 | 25 | 0 | 0 | 0 | 0 | 11 |
 | 2026-10-29T08:19 | master-planner: Refine Patient Zero, round 1 | claude-opus-5-5 | 29,492 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 | 2 |
 | 2026-10-29T08:27 | master-auditor: Red-team Patient Zero brief, round 2 | claude-opus-5-5 | 32,092 | 0 | 0 | 0 | 5 | 3 | 0 | 0 | 0 | 5 |
-| 2026-10-29T08:37 | main session | claude-opus-5-5 | 53,822 | 0 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 |
+| 2026-10-29T08:37 | main session | claude-opus-5-5 | 67,631 | 0 | 0 | 0 | 1 | 5 | 0 | 0 | 0 | 0 |
 | 2026-10-29T08:39 | master-planner: Fold auditor r2 fixes into brief | claude-opus-5-5 | 43,561 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 |
 | 2026-10-29T08:42 | master-xo: GitHub kickoff issues for team | claude-opus-5-5 | 27,048 | 0 | 0 | 0 | 0 | 15 | 0 | 2 | 0 | 6 |
 | 2026-10-29T08:46 | master-designer: 10-min world-class Patient Zero look | claude-fable-5-1 | 43,300 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | 2026-10-29T08:59 | master-planner: RerunLab inspiration for Patient Zero | claude-opus-5-5 | 30,514 | 0 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 |
+| 2026-10-29T09:10 | master-planner: Sweep Vidyut's repos for best patterns | claude-opus-5-5 | 28,464 | 0 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 |
+| 2026-10-29T09:16 | master-auditor: Judge: gap from plan to 96+ | claude-opus-5-5 | 38,184 | 0 | 0 | 0 | 0 | 1 | 0 | 1 | 0 | 5 |
+| 2026-10-29T09:16 | master-xo: Add logprobs check to Rohan's task | claude-opus-5-5 | 2,960 | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | 0 |
 
 ## Detail (service: tool or host)
 
@@ -58,8 +61,8 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 - Browser (Playwright): browser_navigate: 1
 - Browser (Playwright): browser_snapshot: 1
 - Codex: codex: 8
-- GitHub (gh): gh: 55
-- Nebius Token Factory: api.tokenfactory.nebius.com: 3
+- GitHub (gh): gh: 63
+- Nebius Token Factory: api.tokenfactory.nebius.com: 4
 - Nebius Token Factory: tokenfactory.nebius.com: 2
 - Other HTTP: api.apify.com: 5
 - Other HTTP: app.tavily.com: 1
@@ -70,12 +73,12 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 - Other HTTP: docs.studio.nebius.com: 1
 - Other HTTP: docs.tavily.com: 10
 - Other HTTP: docs.tavily.com.: 1
-- Other HTTP: docs.tokenfactory.nebius.com: 7
+- Other HTTP: docs.tokenfactory.nebius.com: 9
 - Other HTTP: en.wikipedia.org: 1
 - Other HTTP: forms.hsforms.com: 1
 - Other HTTP: fullfact.org: 1
 - Other HTTP: github.com: 3
-- Other HTTP: hackathon.odsc.ai: 6
+- Other HTTP: hackathon.odsc.ai: 8
 - Other HTTP: hn.algolia.com: 6
 - Other HTTP: injester-com.pages.dev: 1
 - Other HTTP: lablab.ai: 1
@@ -94,10 +97,10 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 - Other HTTP: www.higherlowergame.com: 1
 - Other HTTP: www.poynter.org: 1
 - Other HTTP: www.statisticbrain.com: 2
-- Other HTTP: www.tavily.com: 2
+- Other HTTP: www.tavily.com: 3
 - Other HTTP: www.w3: 1
 - Other HTTP: www.wwno.org: 1
 - Web search and fetch: WebFetch: 6
-- Web search and fetch: WebSearch: 46
+- Web search and fetch: WebSearch: 47
 
 Not covered: other people's machines until they run this and commit plan/usage/<who>.*; calls the project's own app makes at runtime (the app logs those itself); Codex's own token use (logged by master-codex).

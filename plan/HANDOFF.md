@@ -38,6 +38,10 @@ Done this session (Oct 29, 01:37 to 02:00 PDT):
 
 - DONE (02:05): master-planner studied Vidyut's private RerunLab repo (agent reruns a paper's code and checks results against its tables) for patterns to borrow or a stronger combined idea; output plan/rerunlab-inspo.md (goal odsc-pz-rerunlab-inspo). Verdict: borrow, do not combine (about 85 to 92 on the rubric for 7 to 10 h: planted trap set, code-only stop state with a 'How this was decided' panel, number matching rules). 5 questions for Vidyut in the file. Note: RerunLab's real build (branch build/rerunlab, 207 commits) exists only on his laptop at ~/projects/rerunlab, never pushed.
 
+- DONE (02:15): portfolio sweep, plan/portfolio-inspo.md (top 5: code-only stop state, `pz verify`, trap set plus mvr false-certainty metric, README 'what is real' table, baseline ladder; Jev-style typed layer on Token Factory with logprob confidence, 'unsure' below threshold). Rohan's #6 now also checks json_schema + logprobs together.
+- DONE (02:27): auditor gap to 96 (plan/audit.md, last section): projects 89 with all borrowings (the planner said 96.5; the auditor does not give Sourced full marks on a median build); 10 gap items reach about 96 (94 to 98) for about 22 h. Biggest single lift: two outside users timed on their own claims (+2.5), which waits for Anoop's head-to-head. Needs Vidyut: a live-trace cap for the judging window, and what happens to plan/ before the repo goes public.
+- Lead search (master-leadgen) waits until Anoop's head-to-head is done (LOCKED).
+
 Next, in order (when Vidyut says "go"):
 0. Discuss plan/rerunlab-inspo.md with Vidyut first.
 1. Conductor picks claims 5 (a Wikipedia citogenesis case) and 6 (a fresh viral stat from the last 60 days) and has a non-runner write blind targets; XO posts the claims on #5 (never the targets).
