@@ -1,0 +1,345 @@
+<title>Says Who Decision Desk</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,650&family=Public+Sans:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one reading column styled as a claim ledger; each open decision is a numbered docket item with its options, and the page saves every pick for the conductor to read back. */
+:root{
+  --bg:#f6f7f9; --surface:#ffffff; --ink:#1c2430; --muted:#5b6676; --rule:#d9dee6;
+  --mark:#fde68a; --mark-ink:#5a4300; --ok:#1f7a4d; --warn:#9a5b00; --bad:#a3322a; --sel:#1d4ed8; --sel-bg:#e8eefc;
+  --display:"Newsreader",Georgia,"Times New Roman",serif;
+  --body:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12161c; --surface:#1a2029; --ink:#e6eaf0; --muted:#9aa5b4; --rule:#2c3440;
+  --mark:#5c4a12; --mark-ink:#fde68a; --ok:#5ccf93; --warn:#f0b357; --bad:#f08a80; --sel:#8fb0ff; --sel-bg:#1f2b45; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12161c; --surface:#1a2029; --ink:#e6eaf0; --muted:#9aa5b4; --rule:#2c3440;
+  --mark:#5c4a12; --mark-ink:#fde68a; --ok:#5ccf93; --warn:#f0b357; --bad:#f08a80; --sel:#8fb0ff; --sel-bg:#1f2b45; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 var(--body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:32px 72px}
+.wrap{max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+header{display:flex;flex-direction:column;gap:12px}
+.eyebrow{font:600 12px/1.3 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font:650 clamp(32px,5.5vw,48px)/1.05 var(--display);margin:0;text-wrap:balance}
+h2{font:650 26px/1.2 var(--display);margin:0;text-wrap:balance}
+h3{font:650 21px/1.2 var(--display);margin:0}
+p{margin:0;max-width:65ch}
+mark{background:var(--mark);color:var(--mark-ink);padding:0 .15em;border-radius:2px}
+code{font:13px var(--mono)}
+.status{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;font:600 12px/1.4 var(--mono);color:var(--muted)}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:4px 9px;border:1px solid var(--rule);border-radius:999px;background:var(--surface)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--muted)}
+.pill[data-s="saved"] .dot{background:var(--ok)} .pill[data-s="saving"] .dot{background:var(--warn)} .pill[data-s="error"] .dot{background:var(--bad)}
+.docket{display:flex;flex-direction:column;gap:14px}
+.dhead{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+.num{font:600 13px/1 var(--mono);color:var(--muted)}
+.ledger{display:flex;flex-direction:column;border-top:1px solid var(--rule)}
+.row{display:grid;grid-template-columns:9rem 1fr;gap:4px 16px;padding:12px 0;border-bottom:1px solid var(--rule)}
+.row>div{min-width:0}
+.k{font:600 13px/1.5 var(--mono);color:var(--muted)}
+.src{font:400 12px/1.5 var(--mono);color:var(--muted);word-break:break-word;margin-top:4px}
+.chip{display:inline-block;font:600 11px/1 var(--mono);letter-spacing:.06em;padding:4px 7px;border-radius:3px;border:1px solid currentColor;margin-right:6px;vertical-align:1px}
+.v{color:var(--ok)} .u{color:var(--warn)} .x{color:var(--bad)}
+.ideas{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.idea{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:20px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.idea .tag{font:600 12px/1.3 var(--mono);color:var(--muted);letter-spacing:.05em;text-transform:uppercase}
+.idea .score{font:650 34px/1 var(--display);font-variant-numeric:tabular-nums}
+.idea .score small{font:400 13px var(--mono);color:var(--muted)}
+.idea ol{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:6px;font-size:15px}
+.idea dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 12px;font-size:14px}
+.idea dt{font:600 12px/1.6 var(--mono);color:var(--muted)} .idea dd{margin:0;min-width:0}
+.viz{border:1px solid var(--rule);border-radius:6px;background:var(--bg);overflow:hidden}
+.viz svg{display:block;width:100%;height:auto}
+.stamps{display:flex;flex-wrap:wrap;gap:8px;padding:14px}
+.stamp{font:600 12px/1 var(--mono);letter-spacing:.06em;padding:7px 9px;border:2px solid currentColor;border-radius:3px;transform:rotate(-2deg)}
+.stamp:nth-child(2){transform:rotate(1.5deg)} .stamp:nth-child(3){transform:rotate(-1deg)}
+.audit{font-size:14px;border-left:3px solid var(--warn);padding-left:12px;color:var(--ink)}
+.choices{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+.choice{all:unset;box-sizing:border-box;cursor:pointer;border:1px solid var(--rule);background:var(--surface);border-radius:6px;padding:12px 14px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.choice b{font:600 15px/1.3 var(--body)} .choice span{font-size:13px;color:var(--muted);line-height:1.45}
+.choice[aria-checked="true"]{border-color:var(--sel);background:var(--sel-bg);box-shadow:inset 0 0 0 1px var(--sel)}
+.choice:focus-visible,input:focus-visible,textarea:focus-visible,button:focus-visible{outline:2px solid var(--sel);outline-offset:2px}
+.choice[disabled]{cursor:default;opacity:.7}
+label.f{display:flex;flex-direction:column;gap:6px;font:600 13px/1.4 var(--mono);color:var(--muted)}
+input[type=text],textarea{font:15px/1.5 var(--body);color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:9px 11px;width:100%;max-width:520px}
+textarea{min-height:76px;max-width:100%;resize:vertical}
+.checks{display:flex;flex-direction:column;gap:10px}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:15px}
+.check input{margin-top:5px;width:16px;height:16px;accent-color:var(--sel)}
+.check small{display:block;color:var(--muted);font-size:13px}
+.grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px}
+.member{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:12px 14px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.member b{font-size:15px} .member .gh{font:12px var(--mono);color:var(--muted);word-break:break-all}
+.lock{display:flex;flex-wrap:wrap;gap:12px;align-items:center;background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:18px 20px}
+.btn{font:600 15px/1 var(--body);padding:12px 18px;border-radius:6px;border:1px solid var(--sel);background:var(--sel);color:var(--bg);cursor:pointer}
+.btn[disabled]{opacity:.5;cursor:default}
+.lockmsg{font-size:14px;color:var(--muted);max-width:52ch}
+details{border-top:1px solid var(--rule);padding-top:14px}
+summary{cursor:pointer;font:650 20px/1.3 var(--display)}
+table{border-collapse:collapse;width:100%;font-size:14px}
+.tbl{overflow-x:auto}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font:600 12px/1.3 var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+td.n{font-variant-numeric:tabular-nums;font-family:var(--mono)}
+footer{font:400 12px/1.6 var(--mono);color:var(--muted)}
+@media (max-width:640px){.ideas{grid-template-columns:1fr}.row{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:no-preference){.choice{transition:background .15s,border-color .15s}}
+</style>
+
+<div class="wrap">
+<header>
+  <span class="eyebrow">Team Says Who · ODSC x Nebius Hackathon · Oct 28 to Nov 20, 2026</span>
+  <h1>Decision desk</h1>
+  <p>Everything you decide before the build starts, in one place. Each pick saves as you make it and the conductor reads it back. When you are done, press <b>Lock in my decisions</b> at the bottom and tell Claude "locked".</p>
+  <div class="status"><span class="pill" id="savePill" data-s="idle"><span class="dot"></span><span id="saveText">Connecting</span></span><span id="lockedText"></span></div>
+</header>
+
+<section class="docket" aria-labelledby="d1">
+  <div class="dhead"><span class="num">DOCKET 1</span><h2 id="d1">Pick the project</h2></div>
+  <p>Round 3, written after you rejected the first two ideas as too simple. Both put verification at the centre of the demo, not in a footnote. Scores use the event's own rubric (sourced 30, works end to end 25, usefulness 20, agent design 15, sponsor use 10).</p>
+  <div class="ideas">
+    <article class="idea">
+      <span class="tag">A · bold swing · recommended by planner and auditor</span>
+      <h3>Patient Zero</h3>
+      <p>Paste a viral stat or quote. It hunts the claim backwards through every article that repeated it, draws the family tree over time, and circles the exact hop where the words changed.</p>
+      <div class="viz" role="img" aria-label="A claim's family tree on a time axis from 2012 to 2026, with one hop ringed in red and the oldest node marked trail goes cold">
+        <svg viewBox="0 0 360 150" xmlns="http://www.w3.org/2000/svg">
+          <g stroke="var(--rule)" stroke-width="1"><line x1="20" y1="128" x2="340" y2="128"/></g>
+          <g font-family="JetBrains Mono, monospace" font-size="9" fill="var(--muted)">
+            <text x="20" y="142">2012</text><text x="120" y="142">2015</text><text x="230" y="142">2020</text><text x="312" y="142">2026</text>
+          </g>
+          <g stroke="var(--muted)" stroke-width="1.4" fill="none">
+            <path d="M330 30 C300 30 280 55 250 58"/><path d="M330 62 C300 62 280 60 250 58"/><path d="M330 96 C300 96 280 64 250 58"/>
+            <path d="M250 58 C210 58 180 70 150 72"/><path d="M150 72 C120 72 100 80 70 84"/>
+            <path d="M330 110 C290 110 230 100 205 98"/><path d="M205 98 C180 96 165 80 150 72"/>
+          </g>
+          <circle cx="200" cy="65" r="13" fill="none" stroke="var(--bad)" stroke-width="2"/>
+          <g fill="var(--ink)"><circle cx="330" cy="30" r="4"/><circle cx="330" cy="62" r="4"/><circle cx="330" cy="96" r="4"/><circle cx="330" cy="110" r="4"/><circle cx="250" cy="58" r="5"/><circle cx="205" cy="98" r="4"/><circle cx="150" cy="72" r="5"/></g>
+          <circle cx="70" cy="84" r="5" fill="var(--muted)"/>
+          <g font-family="JetBrains Mono, monospace" font-size="9" fill="var(--ink)">
+            <text x="28" y="104">TRAIL GOES COLD</text><text x="214" y="48" fill="var(--bad)">words changed</text>
+          </g>
+        </svg>
+      </div>
+      <div class="score">91 <small>/100 auditor · 95 planner</small></div>
+      <ol>
+        <li>Paste "Humans have a shorter attention span than a goldfish: 8 seconds." Click Trace.</li>
+        <li>The tree grows back from 2026 to 2012; 37 reprints of one story collapse into one node.</li>
+        <li>Header: <b>142 articles. 1 independent source. 0 studies.</b> The last node goes grey: trail goes cold.</li>
+        <li>Click the red ring: the two quotes side by side, with "comparison added" highlighted.</li>
+      </ol>
+      <dl>
+        <dt>For</dt><dd>Reporters, comms teams, research integrity, anyone about to share a stat</dd>
+        <dt>Proof</dt><dd>Hit rate on 30 claims whose origins human fact-checkers already published</dd>
+        <dt>Risk</dt><dd>The web may not link back far enough, and the tree comes out shallow</dd>
+        <dt>Spike</dt><dd>Week 0, about 6 h: trace 5 known claims; pass if 3 of 5 reach the origin under 150 Tavily credits and $0.50 each</dd>
+      </dl>
+      <p class="audit" id="auditA"><b>Auditor: FIX, recommended.</b> Ambition 4/5, creativity 4/5, rubric 91. Judges would screenshot the red hop. Before the spike counts, it must not peek at fact-check sites, must show traces 3 or more hops deep, and must date pages by their first archive capture. These go into the plan.</p>
+    </article>
+    <article class="idea">
+      <span class="tag">B · bold swing · stopped by the auditor</span>
+      <h3>Objection!</h3>
+      <p>Ask a contested question. A prosecution agent and a defense agent each build a sourced case, cross-examine each other's exhibits, and a judge rules only on evidence that survives, then says what would flip the verdict.</p>
+      <div class="viz"><div class="stamps" aria-label="Example exhibit stamps">
+        <span class="stamp v">ADMITTED</span><span class="stamp x">EXCLUDED: QUOTE NOT ON PAGE</span><span class="stamp u">CONTEXT STRIPPED</span><span class="stamp u">MERGED: SAME PRESS RELEASE</span>
+      </div></div>
+      <div class="score">78 <small>/100 auditor · 88 planner</small></div>
+      <ol>
+        <li>Ask "Did return-to-office mandates raise productivity?" The screen splits: prosecution, defense, verdict meter at 50/50.</li>
+        <li>Exhibits stream in and get stamped: admitted, excluded, merged.</li>
+        <li>Cross-examination opens exhibit P4: the next sentence says "among call-centre staff only". Context stripped; the meter swings.</li>
+        <li>The judge rules and names what would flip it. Click Order discovery and both sides search live.</li>
+      </ol>
+      <dl>
+        <dt>For</dt><dd>Analysts writing bull and bear cases, policy and consulting teams, anyone deciding a contested health or money question</dd>
+        <dt>Proof</dt><dd>Ablation: court vs single agent vs neutral checker, same models, planted errors</dd>
+        <dt>Risk</dt><dd>Debate is a common default idea and a courtroom paper (PROClaim) exists; theatre without a measured gain loses points</dd>
+        <dt>Spike</dt><dd>Week 0, about 8 h: pass if cross-examination catches at least 5 more of 20 planted errors than a neutral checker</dd>
+      </dl>
+      <p class="audit" id="auditB" style="border-left-color:var(--bad)"><b>Auditor: STOP.</b> Ambition 4/5 but creativity 2/5, rubric 78. At least five public "AI courtroom" repos exist, four pushed this month, and Objection Inc. already sells LLM-panel adjudication of disputed facts. The courtroom paper's own test credits most of its gain to better retrieval, not the roles.</p>
+    </article>
+  </div>
+  <div class="choices" role="radiogroup" aria-label="Project pick" data-field="idea">
+    <button class="choice" role="radio" aria-checked="false" data-value="A"><b>A. Patient Zero</b><span>Trace claims to their origin</span></button>
+    <button class="choice" role="radio" aria-checked="false" data-value="B"><b>B. Objection!</b><span>Stopped by the auditor; pick only to overrule it</span></button>
+    <button class="choice" role="radio" aria-checked="false" data-value="A+B"><b>A, with B's exhibit stamps</b><span>Patient Zero with ADMITTED and CONTEXT STRIPPED labels on hops; the auditor rates full cross-examination on every hop weaker (about 83)</span></button>
+    <button class="choice" role="radio" aria-checked="false" data-value="redo"><b>Neither, try again</b><span>Say why in the note below</span></button>
+  </div>
+  <label class="f" for="ideaNote">Note for the planner (optional)
+    <textarea id="ideaNote" data-text="ideaNote" placeholder="What you like, what you would change, or why neither works"></textarea>
+  </label>
+</section>
+
+<section class="docket" aria-labelledby="d2">
+  <div class="dhead"><span class="num">DOCKET 2</span><h2 id="d2">Product name</h2></div>
+  <p>The team is <b>Says Who</b> (locked; every teammate types it exactly that way on the ODSC form). The product can carry its own name. "Objection!" is out: Objection Inc. and objection.lol already use it. Note that "patient zero" comes from a famous misreading that wrongly blamed one man for spreading HIV; that story fits a tool about claims that mutate, but some readers may find it sensitive.</p>
+  <div class="choices" role="radiogroup" aria-label="Product name" data-field="productName" id="nameChoices">
+    <button class="choice" role="radio" aria-checked="false" data-value="Patient Zero"><b>Patient Zero</b><span>Fits A. No AI fact-check product uses it; repo would be patient-zero-trace</span></button>
+        <button class="choice" role="radio" aria-checked="false" data-value="Says Who"><b>Says Who</b><span>Same as the team; fits either</span></button>
+  </div>
+  <label class="f" for="nameOther">Or your own name
+    <input type="text" id="nameOther" data-text="productNameOther" placeholder="Type a name">
+  </label>
+</section>
+
+<section class="docket" aria-labelledby="d3">
+  <div class="dhead"><span class="num">DOCKET 3</span><h2 id="d3">Team</h2></div>
+  <p>Repo: <a href="https://github.com/vs-githjk/odsc-nebius-hackathon">vs-githjk/odsc-nebius-hackathon</a> (private). Tick each box when that person has done it; the conductor checks the repo too.</p>
+  <div class="grid4">
+    <div class="member"><b>Vidyut</b><span class="gh">vs-githjk · issue #2</span>
+      <label class="check"><input type="checkbox" id="reg_vidyut" data-check="registered.vidyut"><span>Registered</span></label>
+      <label class="check"><input type="checkbox" id="keys_vidyut" data-check="keys.vidyut"><span>Keys in .env</span></label></div>
+    <div class="member"><b>Rohan</b><span class="gh">rohanrastogi311 · issue #3</span>
+      <label class="check"><input type="checkbox" id="reg_rohan" data-check="registered.rohan"><span>Registered</span></label>
+      <label class="check"><input type="checkbox" id="keys_rohan" data-check="keys.rohan"><span>Keys in .env</span></label></div>
+    <div class="member"><b>Anoop</b><span class="gh">AnoopIbrampur · issue #4</span>
+      <label class="check"><input type="checkbox" id="reg_anoop" data-check="registered.anoop"><span>Registered</span></label>
+      <label class="check"><input type="checkbox" id="keys_anoop" data-check="keys.anoop"><span>Keys in .env</span></label></div>
+    <div class="member"><b>Teammate 4</b><span class="gh">issue #1</span>
+      <label class="f" for="t4">GitHub username<input type="text" id="t4" data-text="teammate4" placeholder="username"></label>
+      <label class="check"><input type="checkbox" id="reg_t4" data-check="registered.t4"><span>Registered</span></label></div>
+  </div>
+</section>
+
+<section class="docket" aria-labelledby="d4">
+  <div class="dhead"><span class="num">DOCKET 4</span><h2 id="d4">Keys and spending</h2></div>
+  <div class="ledger">
+    <div class="row"><div class="k">Tavily</div><div>Free, no card: 1,000 credits a month per person. Sign up at app.tavily.com; the key starts <code>tvly-</code>.</div></div>
+    <div class="row"><div class="k">Token Factory</div><div><span class="chip u">CARD</span>A bank card is required; new accounts get a $1 trial for 30 days. Set a low auto-charge threshold. Create the key at tokenfactory.nebius.com, API keys; copy it at once, it is shown only once.</div></div>
+    <div class="row"><div class="k">Free extra credit</div><div>Nebius AI Builder Program: $25 Token Factory, $25 Tavily, $100 LangSmith. dev.nebius.com/builders</div></div>
+  </div>
+  <p><b>Who puts a card on Token Factory?</b></p>
+  <div class="choices" role="radiogroup" aria-label="Token Factory card" data-field="tfCard">
+    <button class="choice" role="radio" aria-checked="false" data-value="everyone"><b>Everyone</b><span>Each builder has their own key (recommended)</span></button>
+    <button class="choice" role="radio" aria-checked="false" data-value="vidyut-only"><b>Only me</b><span>One key; I run the calls that need it</span></button>
+  </div>
+  <p><b>May the agents run the test calls and the week-0 spike on our keys?</b> Smoke calls cost nothing or under one cent; the spike is about $0.50 and 150 Tavily credits per traced claim, 5 claims.</p>
+  <div class="choices" role="radiogroup" aria-label="Smoke calls and spike" data-field="spend">
+    <button class="choice" role="radio" aria-checked="false" data-value="go"><b>Go</b><span>Smoke calls and the spike, capped at $5 total</span></button>
+    <button class="choice" role="radio" aria-checked="false" data-value="smoke-only"><b>Smoke calls only</b><span>Ask me again before the spike</span></button>
+    <button class="choice" role="radio" aria-checked="false" data-value="wait"><b>Wait</b><span>Nothing on our keys yet</span></button>
+  </div>
+  <label class="check"><input type="checkbox" id="builder" data-check="builderProgram"><span>Join the Nebius AI Builder Program for the free credit<small>Each person joins with their own account</small></span></label>
+</section>
+
+<section class="docket" aria-labelledby="d5">
+  <div class="dhead"><span class="num">ON RECORD</span><h2 id="d5">Already decided</h2></div>
+  <div class="ledger">
+    <div class="row"><div class="k">Team name</div><div>Says Who. Every teammate types it exactly that way.</div></div>
+    <div class="row"><div class="k">Team</div><div>Four people, about 2 hours a day each, working through GitHub issues. Rohan and Anoop invited.</div></div>
+    <div class="row"><div class="k">Repo</div><div>Private until you choose to make it public near submission.</div></div>
+    <div class="row"><div class="k">Agent fixes</div><div><span class="chip v">APPROVED 29 OCT</span>Think big in every ideas brief; each idea labelled bold swing or safe pick; safe is fine when it clearly works and you judge ambition; usage ledger after every run.</div></div>
+    <div class="row"><div class="k">Usage</div><div>Every agent's model, tokens and tool calls (Apify, Bright Data, web, GitHub, Tavily, Token Factory) are counted from transcripts into plan/usage.md.</div></div>
+  </div>
+</section>
+
+<section class="lock" aria-label="Lock in">
+  <button class="btn" id="lockBtn" type="button">Lock in my decisions</button>
+  <p class="lockmsg" id="lockMsg">Locking records the time. Then tell Claude "locked" and the playbook moves on to the plan.</p>
+</section>
+
+<details>
+  <summary>Rules and facts we are working from</summary>
+  <div class="ledger" style="margin-top:14px">
+    <div class="row"><div class="k">Deadline</div><div><span class="chip v">VERIFIED</span>Friday 20 Nov 2026. <span class="chip u">UNRESOLVED</span>exact time; our internal deadline is Thu 19 Nov, 23:59 PT. The submission link comes by email.<div class="src">hackathon.odsc.ai/event</div></div></div>
+    <div class="row"><div class="k">Must use</div><div><span class="chip v">VERIFIED</span>Inference on Nebius Token Factory, live web search with Tavily, a public repo with README, a short demo.<div class="src">hackathon.odsc.ai/event</div></div></div>
+    <div class="row"><div class="k">Judging</div><div>No live demo day. Judges read the repo, README and video after the deadline. Prizes and judges not announced yet.</div></div>
+    <div class="row"><div class="k">Team size</div><div><span class="chip u">NOT FOUND</span>No cap on any public page, form or the event app's code (checked 28 Oct, 23:50 PDT). Four is fine.</div></div>
+    <div class="row"><div class="k">Originality</div><div><span class="chip u">NOT FOUND</span>No rule published. The repo was created after 28 Oct, so the history shows it.</div></div>
+    <div class="row"><div class="k">Model trap</div><div><span class="chip x">RISK</span>11 models leave Token Factory on 9 Nov, including Kimi-K2.6 and DeepSeek-V4-Pro. We pin models off that list.<div class="src">docs.tokenfactory.nebius.com, model deprecations November 2026</div></div></div>
+    <div class="row"><div class="k">Sponsor pitch</div><div>Nebius bought Tavily in Feb 2026. A deep Token Factory plus Tavily build is their joint story.<div class="src">nebius.com newsroom, 10 Feb 2026</div></div></div>
+  </div>
+  <div class="tbl" style="margin-top:16px"><table>
+    <thead><tr><th>Criterion</th><th>Weight</th><th>What judges look for</th></tr></thead>
+    <tbody>
+      <tr><td>Sourced and verifiable</td><td class="n">30</td><td>Open a citation and see the claim match it; conflicts and gaps flagged.</td></tr>
+      <tr><td>Works end to end</td><td class="n">25</td><td>Real calls, a failure or insufficient-evidence case, a README that reproduces it.</td></tr>
+      <tr><td>Usefulness</td><td class="n">20</td><td>A named user and a decision the answer improves.</td></tr>
+      <tr><td>Agent design</td><td class="n">15</td><td>Query planning, evidence checks, page text kept apart from instructions, cost and latency.</td></tr>
+      <tr><td>Use of both services</td><td class="n">10</td><td>Source links survive into the answer; traces with no keys.</td></tr>
+    </tbody>
+  </table></div>
+</details>
+
+<footer>Sources: plan/ideas-r3.md, plan/audit.md, plan/submission.md, plan/registration.md, plan/research.md in the repo. Picks are stored with this page; only the page owner can change them.</footer>
+</div>
+
+<script>
+(function(){
+  var state = {};
+  var docRef = null, canWrite = false, saveTimer = null;
+  var pill = document.getElementById('savePill'), saveText = document.getElementById('saveText');
+  function setStatus(s, t){ pill.dataset.s = s; saveText.textContent = t; }
+  function getPath(o, p){ return p.split('.').reduce(function(a,k){ return a && a[k]; }, o); }
+  function setPath(o, p, v){ var ks = p.split('.'), last = ks.pop(), cur = o; ks.forEach(function(k){ if (typeof cur[k] !== 'object' || cur[k] === null) cur[k] = {}; cur = cur[k]; }); cur[last] = v; }
+
+  function render(){
+    document.querySelectorAll('[role=radiogroup][data-field]').forEach(function(g){
+      var v = state[g.dataset.field];
+      g.querySelectorAll('.choice').forEach(function(b){ b.setAttribute('aria-checked', String(b.dataset.value === v)); b.disabled = !canWrite; });
+    });
+    document.querySelectorAll('[data-check]').forEach(function(c){ c.checked = !!getPath(state, c.dataset.check); c.disabled = !canWrite; });
+    document.querySelectorAll('[data-text]').forEach(function(t){ if (document.activeElement !== t) t.value = state[t.dataset.text] || ''; t.disabled = !canWrite; });
+    document.getElementById('lockBtn').disabled = !canWrite;
+    var lt = document.getElementById('lockedText');
+    lt.textContent = state.lockedAt ? 'Locked ' + new Date(state.lockedAt).toLocaleString() : '';
+  }
+
+  function save(){
+    if (!docRef || !canWrite) return;
+    clearTimeout(saveTimer);
+    setStatus('saving', 'Saving');
+    saveTimer = setTimeout(function(){
+      state.updatedAt = new Date().toISOString();
+      docRef.set(state).then(function(){ setStatus('saved', 'Saved ' + new Date().toLocaleTimeString([], {hour:'numeric', minute:'2-digit'})); })
+        .catch(function(e){ setStatus('error', e && e.code === 'permission_denied' ? 'Read only: only the owner can change picks' : 'Not saved. Check your connection and change any pick to retry'); });
+    }, 500);
+  }
+
+  document.querySelectorAll('[role=radiogroup][data-field]').forEach(function(g){
+    g.addEventListener('click', function(e){
+      var b = e.target.closest('.choice'); if (!b || !canWrite) return;
+      state[g.dataset.field] = state[g.dataset.field] === b.dataset.value ? null : b.dataset.value;
+      if (g.dataset.field === 'productName' && state.productName) state.productNameOther = '';
+      render(); save();
+    });
+  });
+  document.querySelectorAll('[data-check]').forEach(function(c){
+    c.addEventListener('change', function(){ setPath(state, c.dataset.check, c.checked); save(); });
+  });
+  document.querySelectorAll('[data-text]').forEach(function(t){
+    t.addEventListener('input', function(){
+      state[t.dataset.text] = t.value;
+      if (t.dataset.text === 'productNameOther' && t.value) { state.productName = null; render(); }
+      save();
+    });
+  });
+  document.getElementById('lockBtn').addEventListener('click', function(){
+    if (!canWrite) return;
+    state.lockedAt = new Date().toISOString();
+    document.getElementById('lockMsg').textContent = state.idea ? 'Locked. Tell Claude "locked" to move on.' : 'Locked without a project pick. Pick one in Docket 1 and lock again.';
+    render(); save();
+  });
+
+  setStatus('idle', 'Connecting');
+  render();
+  Promise.all([window.claude && window.claude.use ? window.claude.use('db') : null, window.claude && window.claude.use ? window.claude.use('user') : null])
+    .then(function(r){
+      var db = r[0], user = r[1];
+      if (!db) { setStatus('error', 'Picks cannot be saved in this view. Open the page on claude.ai while signed in'); return; }
+      docRef = db.doc('desk/vidyut');
+      var ownerP = user ? user.isOwner() : Promise.resolve(false);
+      ownerP.then(function(isOwner){
+        canWrite = !!isOwner;
+        if (!canWrite) setStatus('idle', 'Read only: picks by the page owner');
+        docRef.onSnapshot(function(snap){
+          var d = snap.data();
+          if (d && !(snap.metadata && snap.metadata.hasPendingWrites)) { state = d; render(); }
+          if (canWrite && pill.dataset.s === 'idle') setStatus('saved', d ? 'Picks loaded' : 'Ready');
+        }, function(){ setStatus('error', 'Lost the connection to saved picks. Reload the page'); });
+      });
+    });
+})();
+</script>

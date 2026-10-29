@@ -1,0 +1,2 @@
+# Older Claude Code project keys for this folder (renamed from "OSDC x Nebulus Hackathon" on 2026-10-28)
+-Users-vidyutsriram-OSDC-x-Nebulus-Hackathon

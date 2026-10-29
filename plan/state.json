@@ -1,7 +1,7 @@
 {
  "mode": "hackathon",
  "name": "ODSC x Nebius Hackathon 2026",
- "stage": "H4-gate1",
+ "stage": "H4-gate1-r3",
  "deadline": "2026-11-20 (Friday; exact time and timezone UNVERIFIED)",
  "approvals": {
   "gate1": null,
@@ -14,5 +14,6 @@
  "design_direction": null,
  "success_metric": "Win the ODSC x Nebius Hackathon: a strong, sourced research agent submitted before Nov 20 2026",
  "runs": [],
- "autopilot": []
+ "autopilot": [],
+ "decision_desk": "https://claude.ai/artifact/9DkDuMHZrn3BySunuMGsjH"
 }
