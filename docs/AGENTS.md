@@ -3,13 +3,13 @@
 Team Says Who, ODSC x Nebius Hackathon 2026. Deadline: Friday Nov 20, 2026 (exact time TBD; we plan to Nov 19 23:59 PT).
 
 ## Blind test rule (head-to-head)
-Applies to Anoop (@AnoopIbrampur) and his Claude agent until his head-to-head PR (#5) is open. Do not open, read, grep or summarise these, because they name the origins of the test claims:
-`plan/idea-brief.md`, `plan/audit.md`, `plan/ideas.md`, `plan/ideas-r3.md`, `plan/market.md`, `plan/rerunlab-inspo.md`, `plan/portfolio-inspo.md`, `plan/board.md`, `plan/shared-memory.md`, `plan/artifacts/`, and any claude.ai idea or design page links shared in chat.
-Allowed: this file, the kickoff issue #8 and his own issues. If any tool output shows claim-origin content, stop and flag it on #5. The rule ends when his head-to-head PR is open. This overrides "Before every task" below for him.
+Applies to Anoop (@AnoopIbrampur) and his Claude agent until all 6 of his head-to-head claim transcripts are committed (`spike/head-to-head/<tool>/1.md` to `6.md`). Opening the PR does not end it: claims 5 and 6 arrive later as a comment on #5, and XO confirms on #5 when the rule ends. Do not open, read, grep or summarise these, because they name the origins of the test claims:
+`plan/idea-brief.md`, `plan/audit.md`, `plan/ideas.md`, `plan/ideas-r3.md`, `plan/market.md`, `plan/rerunlab-inspo.md`, `plan/portfolio-inspo.md`, `plan/board.md`, `plan/shared-memory.md`, `plan/artifacts/`, any other `spike/` or `eval/` files, and any claude.ai idea or design page links shared in chat.
+Allowed: this file, `plan/plan.md` and `plan/PRD.md` (written origin-free; do not follow links marked "(blind)"), the kickoff issue #8 and his own issues. Append board lines with `echo ... >> plan/board.md` without opening the file. If any tool output shows claim-origin content, stop and flag it on #5. The rule ends when all 6 transcripts are committed and XO says so on #5. This overrides "Before every task" below for him.
 
 ## Before every task
-1. Read `plan/shared-memory.md` (decisions, who is doing what, live facts, gotchas). (Anoop: skip until your head-to-head PR is open, see the blind test rule above.)
-2. Read `plan/decisions.md` (LOCKED and REJECTED lines win over anything else) and the last 40 lines of `plan/board.md` (Anoop: skip the board until your head-to-head PR is open).
+1. Read `plan/shared-memory.md` (decisions, who is doing what, live facts, gotchas). (Anoop: skip until all 6 head-to-head transcripts are committed, see the blind test rule above.)
+2. Read `plan/decisions.md` (LOCKED and REJECTED lines win over anything else) and the last 40 lines of `plan/board.md` (Anoop: skip the board until all 6 head-to-head transcripts are committed).
 3. Read your focus issue (title "<Name>'s agent: everything until Nov 20"). It is your inbox: tasks, fix lists and answers arrive there. Check it after every task.
 
 ## How to work
