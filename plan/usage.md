@@ -1,22 +1,22 @@
 # Usage ledger (everyone)
 
-Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py. 14 runs across 1 person: vs-githjk.
+Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py. 15 runs across 1 person: vs-githjk.
 
 ## By person
 
 | Who | Runs | Output tokens | Apify | Bright Data | Web | GitHub | Codex | Last updated (UTC) |
 |---|---|---|---|---|---|---|---|---|
-| vs-githjk | 14 | 616,622 | 7 | 7 | 52 | 51 | 8 | 2026-10-29T08:54:53Z |
+| vs-githjk | 15 | 662,038 | 7 | 7 | 52 | 55 | 8 | 2026-10-29T09:05:53Z |
 
 ## Totals by service
 
 | Service | Calls |
 |---|---|
-| Shell | 282 |
-| Claude Code tools | 180 |
+| Shell | 313 |
+| Claude Code tools | 190 |
 | Other HTTP | 93 |
+| GitHub (gh) | 55 |
 | Web search and fetch | 52 |
-| GitHub (gh) | 51 |
 | Codex | 8 |
 | Bright Data | 7 |
 | Apify | 7 |
@@ -27,10 +27,10 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 
 | Kind | Tokens |
 |---|---|
-| input_tokens | 1,426 |
-| cache_creation_input_tokens | 2,177,107 |
-| cache_read_input_tokens | 75,074,038 |
-| output_tokens | 616,622 |
+| input_tokens | 1,643 |
+| cache_creation_input_tokens | 2,371,229 |
+| cache_read_input_tokens | 80,603,647 |
+| output_tokens | 662,038 |
 
 ## Per run
 
@@ -46,10 +46,11 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 | vs-githjk | 2026-10-29T07:46 | master-finder: Market validation for Patient Zero | claude-opus-5-5 | 40,009 | 7 | 2 | 0 | 25 | 0 | 0 | 0 | 0 | 11 |
 | vs-githjk | 2026-10-29T08:19 | master-planner: Refine Patient Zero, round 1 | claude-opus-5-5 | 29,492 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 | 2 |
 | vs-githjk | 2026-10-29T08:27 | master-auditor: Red-team Patient Zero brief, round 2 | claude-opus-5-5 | 32,092 | 0 | 0 | 0 | 5 | 3 | 0 | 0 | 0 | 5 |
-| vs-githjk | 2026-10-29T08:37 | main session | claude-opus-5-5 | 48,404 | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | 0 |
+| vs-githjk | 2026-10-29T08:37 | main session | claude-opus-5-5 | 53,822 | 0 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 |
 | vs-githjk | 2026-10-29T08:39 | master-planner: Fold auditor r2 fixes into brief | claude-opus-5-5 | 43,561 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 |
 | vs-githjk | 2026-10-29T08:42 | master-xo: GitHub kickoff issues for team | claude-opus-5-5 | 27,048 | 0 | 0 | 0 | 0 | 15 | 0 | 2 | 0 | 6 |
-| vs-githjk | 2026-10-29T08:46 | master-designer: 10-min world-class Patient Zero look | claude-fable-5-1 | 33,816 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| vs-githjk | 2026-10-29T08:46 | master-designer: 10-min world-class Patient Zero look | claude-fable-5-1 | 43,300 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| vs-githjk | 2026-10-29T08:59 | master-planner: RerunLab inspiration for Patient Zero | claude-opus-5-5 | 30,514 | 0 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 |
 
 ## Detail (service: tool or host)
 
@@ -63,7 +64,7 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 - Browser (Playwright): browser_navigate: 1
 - Browser (Playwright): browser_snapshot: 1
 - Codex: codex: 8
-- GitHub (gh): gh: 51
+- GitHub (gh): gh: 55
 - Nebius Token Factory: api.tokenfactory.nebius.com: 3
 - Nebius Token Factory: tokenfactory.nebius.com: 2
 - Other HTTP: api.apify.com: 5

@@ -53,3 +53,4 @@ Format: [LOCKED|REJECTED|PREFERENCE] decision | why | "Vidyut's words" | date
 - [LOCKED] Rohan shares the Token Factory key with the team himself, through a secure channel (never GitHub) | | "roahn will send key securely dont worry" | 2026-10-29
 - [LOCKED] Vidyut's PaperTrail (citation ancestor-tree app, React + D3) goes in the Why us section | | "yes papertrail in why us" | 2026-10-29
 - [LOCKED] Hosted demo daily live-trace cap: 5 a day for now (any deploy still waits for his go) | | "daily cap 5 is good for now" | 2026-10-29
+- [PREFERENCE] Study his own fact-checker app RerunLab (GitHub) for inspiration and ways to make Patient Zero stronger; discuss when he is back | | "im also building a fact checker app check my github for rerunlab see if we can take inspo from there or we can make idea stronger" | 2026-10-29

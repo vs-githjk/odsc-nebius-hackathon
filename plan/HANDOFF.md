@@ -36,7 +36,10 @@ Done this session (Oct 29, 01:37 to 02:00 PDT):
 - Idea page published (the market artifact turned into the idea page): https://claude.ai/artifact/BtjsfsCuEUNYNWuppfJDjE . It names the goldfish 2012 origin, so do not share it with Anoop before his head-to-head is done.
 - Quick designer look done: direction "Case File" https://claude.ai/artifact/WGJxxr2E2kCM6zdHpa3Niy (paper ground, one ink, forest-green action, red only for the mutation hop; Newsreader + Geist). Idea page restyled to match and links it. Fix pass landed (version 3, 01:57): labels cleared, callout moved, example traces badged REPLAY. The final tree edit was not re-screenshotted, so eyeball the trace once next session. It too names the goldfish origin: not for Anoop yet.
 
+- DONE (02:05): master-planner studied Vidyut's private RerunLab repo (agent reruns a paper's code and checks results against its tables) for patterns to borrow or a stronger combined idea; output plan/rerunlab-inspo.md (goal odsc-pz-rerunlab-inspo). Verdict: borrow, do not combine (about 85 to 92 on the rubric for 7 to 10 h: planted trap set, code-only stop state with a 'How this was decided' panel, number matching rules). 5 questions for Vidyut in the file. Note: RerunLab's real build (branch build/rerunlab, 207 commits) exists only on his laptop at ~/projects/rerunlab, never pushed.
+
 Next, in order (when Vidyut says "go"):
+0. Discuss plan/rerunlab-inspo.md with Vidyut first.
 1. Conductor picks claims 5 (a Wikipedia citogenesis case) and 6 (a fresh viral stat from the last 60 days) and has a non-runner write blind targets; XO posts the claims on #5 (never the targets).
 2. Answered 02:05: Rohan grades the head-to-head blind; Rohan shares the key securely himself; daily cap 5; PaperTrail goes in Why us. XO tells Rohan about grading on #6 or a new issue next session. Still open: Layer 1 takes Nov 14 if the core slips (recommended yes), 2 extra fresh claims in the head-to-head (recommended yes).
 3. Add PaperTrail to the brief's Why us (done on the idea page; planner adds it to plan/idea-brief.md).
