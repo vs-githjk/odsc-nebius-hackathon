@@ -17,16 +17,14 @@ Every agent and teammate reads this first. Owner: Master XO. Keep under about 15
 - 2026-10-29 LOCKED: every teammate's work starts as a GitHub issue; XO does all team comms there; humans on WhatsApp (Vidyut)
 - 2026-10-28 PREFERENCE: ideas must be ambitious and creative; show him only 1 or 2 (Vidyut)
 
-## Who is doing what (refreshed 2026-10-29 01:46)
-Stage H4.6 refine round 2 (auditor r2 FIX 82/100). Kickoff issue #8 (pinned). Each teammate has one kickoff task (Part A setup, registration, keys; Part B own), due Sun Nov 1 23:59 PT.
-| Who | Task | Where | Due (PT) | Status |
-|---|---|---|---|---|
-| Vidyut (vs-githjk) | lead: approves brief r2, design direction, plan | #2 | n/a | registered on ODSC form |
-| Rohan (rohanrastogi311) | Token Factory team key + smoke test | #6 (inbox #3) | Nov 1 23:59 | invite pending; unassigned until accepted |
-| Anoop (AnoopIbrampur) | head-to-head vs ChatGPT, Claude, Perplexity (blind; claims 5, 6 to be posted) | #5 (inbox #4) | Nov 1 23:59 | assigned |
-| Rishit (RishitRai) | Tavily capability probe (neutral phrases) | #7 (inbox #1) | Nov 1 23:59 | invite pending; unassigned until accepted |
-| master-planner | rewrite plan/idea-brief.md to round 2 | plan/idea-brief.md | NOT CHECKED | running |
-Lanes get assigned after Vidyut approves the plan.
+## Who is doing what (refreshed 2026-10-29 12:30 PT)
+GATE 2 approved. Vidyut off Oct 29 to 30. Task issues T1 to T20 posted as #9 to #28 (queues on focus issues #4, #3, #1).
+| Who | Queue (in order) | Inbox | Status |
+|---|---|---|---|
+| Vidyut (vs-githjk) | off Oct 29 to 30 | #2 | n/a |
+| Anoop (AnoopIbrampur) | #5 head-to-head (claims 5, 6 posted 12:30), then #11 T1, #12 T2, #13 T4 (by Fri Oct 30), #14 T3, #15 T5, #16 T6, #17 T7, #18 T8, #19 T9 | #4 | assigned; blind until all 6 transcripts committed |
+| Rohan (rohanrastogi311) | #9 T13 targets hash (by Sat Oct 31 23:59, before opening anything), #6, #26 T18, #27 T19, #28 T20 | #3 | invite pending; assign on accept |
+| Rishit (RishitRai) | #7, #20 T10, #21 T11, #10 T12 spike run (Oct 31 to Nov 1), #22 to #25 T14 to T17 front end | #1 | invite pending; assign on accept |
 
 ## Open questions
 - 2026-10-29 Claims 5 (Wikipedia citogenesis case) and 6 (viral stat, last 60 days) for #5, and the blind grading targets (conductor / Vidyut)
@@ -42,6 +40,8 @@ Lanes get assigned after Vidyut approves the plan.
 - 2026-10-29 01:46 collaborators: vs-githjk, AnoopIbrampur; pending invites: rohanrastogi311, RishitRai (gh api invitations)
 
 ## Gotchas
+- (2026-10-29) GitHub API gave TLS timeouts and HTTP 499 on issue create: check by title (REST list) before retrying a create, or you get duplicates.
+- (2026-10-29) Anoop's blind rule ends only when all 6 transcripts are committed, not when his PR opens (docs/AGENTS.md f977a8d).
 - 2026-10-29 plan/idea-brief.md, audit.md, ideas-r3.md, market.md, board.md and artifacts/ discuss the spike claims' origins: Anoop must not read them until his #5 PR is open; keep claim origins out of this file and out of issues.
 - 2026-10-28 Commits on main must not carry Co-Authored-By or AI attribution (Vidyut's rule); c329ef4 already does and cannot be fixed without a force-push, so leave it.
 - 2026-10-28 Pending invitees cannot be assigned to issues until they accept; XO assigns #3 and #4 on the first watch pass after acceptance.

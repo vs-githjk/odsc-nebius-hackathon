@@ -57,6 +57,8 @@ Done this session (Oct 29, 01:37 to 02:00 PDT):
 
 - DONE (12:28 PDT after a network drop): final design https://claude.ai/artifact/8JXR8hNEhEEk23Zfbjf7To (private to Vidyut; source and DESIGN.md in plan/artifacts/pz-final/). Build plan done: plan/PRD.md, plan/plan.md (20 Run-1 tasks, 12 Run-2), plan/issues-oct29.md, plan/progress.md. XO posting issues; finder picking claims 5 and 6 (plan/spike-claims-5-6.md, Part A postable, Part B never). Open for Vidyut: package allowlist OK, Run 2 owner (rec: his overnight build from Nov 2, Anoop second).
 
+- DONE (12:31 PDT): 20 Run-1 issues posted (#9 to #28) with queues on each focus issue; claims 5 and 6 posted as wording only on #5, #9, #10 (origin notes stay local in git-ignored plan/spike-claims-5-6.md); Anoop's blind period lasts until all 6 transcripts are committed. Rohan's and Rishit's repo invites still pending; assign on accept. WhatsApp kickoff text given to Vidyut.
+
 Next, in order (when Vidyut says "go"):
 0. Discuss plan/rerunlab-inspo.md with Vidyut first.
 1. Conductor picks claims 5 (a Wikipedia citogenesis case) and 6 (a fresh viral stat from the last 60 days) and has a non-runner write blind targets; XO posts the claims on #5 (never the targets).
