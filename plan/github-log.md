@@ -6,3 +6,4 @@
 - 23:54 invited rohanrastogi311 and AnoopIbrampur (write); invites pending
 - 23:55 focus issues #1 Teammate 4 (TBD), #2 Vidyut, #3 Rohan, #4 Anoop (Rohan and Anoop unassigned until they accept; @mentioned in body)
 - 23:56 main protection: block force-push and deletion (admins exempt)
+- 23:57 pushed c329ef4 (conductor's usage-ledger commit, made concurrently on local main) along with 45691e3; scanned: no keys or emails; it carries a Co-Authored-By trailer

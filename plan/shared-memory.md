@@ -9,6 +9,7 @@ Every agent and teammate reads this first. Owner: Master XO. Keep under about 15
 - 2026-10-28 LOCKED: Vidyut's registration state is Pennsylvania (Vidyut)
 - 2026-10-28 LOCKED: set up GitHub now, in parallel with registration (Vidyut)
 - 2026-10-28 REJECTED: ideas r2 (A Receipts, B Says Who as a product): too simple, not ambitious (Vidyut)
+- 2026-10-29 LOCKED: full usage transparency: plan/tools/usage.py builds plan/usage.md after every agent run; the app logs every Token Factory and Tavily call (Vidyut)
 - 2026-10-28 PREFERENCE: ideas must be ambitious and creative; show him only 1 or 2 (Vidyut)
 
 ## Who is doing what
@@ -34,6 +35,7 @@ Lanes (lane:agent-core, lane:verification, lane:ui, lane:eval-demo-repo) get ass
 - Repo watch loop: NOT started (starts after idea and plan are approved)
 
 ## Gotchas
+- 2026-10-28 Commits on main must not carry Co-Authored-By or AI attribution (Vidyut's rule); c329ef4 already does and cannot be fixed without a force-push, so leave it.
 - 2026-10-28 Pending invitees cannot be assigned to issues until they accept; XO assigns #3 and #4 on the first watch pass after acceptance.
 - 2026-10-28 Branch protection on a personal repo cannot restrict who pushes to main: "PRs only" for teammates is a convention, not enforced.
 - 2026-10-28 Use `Refs #<focus issue>` in PRs, never `Closes`, or the inbox closes.
