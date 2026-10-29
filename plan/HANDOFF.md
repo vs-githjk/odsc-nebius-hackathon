@@ -42,6 +42,10 @@ Done this session (Oct 29, 01:37 to 02:00 PDT):
 - DONE (02:27): auditor gap to 96 (plan/audit.md, last section): projects 89 with all borrowings (the planner said 96.5; the auditor does not give Sourced full marks on a median build); 10 gap items reach about 96 (94 to 98) for about 22 h. Biggest single lift: two outside users timed on their own claims (+2.5), which waits for Anoop's head-to-head. Needs Vidyut: a live-trace cap for the judging window, and what happens to plan/ before the repo goes public.
 - Lead search (master-leadgen) waits until Anoop's head-to-head is done (LOCKED).
 
+- DONE (04:17): idea brief round 3 (all borrowings, typed decision layer, 10 gap items, 6 cooler features by layer, blind-target hash commit, RerunLab in Why us, judge pass). Projected about 96 (94 to 98), single-judge estimate. Open questions in the planner's report: new private product repo before Rohan's hash commit (rec yes, by Oct 31); judge pass 20 traces a day, $100 cap; researcher mode only if done by Nov 16; spike runner Rishit; Jev ablation skip.
+- Organizer email sent by Vidyut (paula.m@odsc.com); watch for the reply and update plan/submission.md.
+- IN FLIGHT (about 03:30): master-designer, 3 dynamic directions with the six features (goal odsc-pz-design-3dir). Conductor opens its screenshots before relaying.
+
 Next, in order (when Vidyut says "go"):
 0. Discuss plan/rerunlab-inspo.md with Vidyut first.
 1. Conductor picks claims 5 (a Wikipedia citogenesis case) and 6 (a fresh viral stat from the last 60 days) and has a non-runner write blind targets; XO posts the claims on #5 (never the targets).

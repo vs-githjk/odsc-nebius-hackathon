@@ -30,7 +30,7 @@ Sources used below (all fetched 2026-10-28 between 23:01 and 23:15 PDT, HTTP 200
 | Live support | "live support is available online for the entire hackathon"; Nebius engineers online throughout. **Channel not named** (no Discord or Slack link on [E] or in the form). Nebius runs a public builder Discord: https://discord.com/invite/nN58zxSTFR | support VERIFIED; event channel UNRESOLVED | [E] `offer[]` "Live support all hackathon"; dev.nebius.com "Join Discord" link |
 | Team matching | In person at kickoff, or online through live-support matching | VERIFIED | [E] FAQ |
 | Expo pass | Registered hackers get a complimentary ODSC AI West Expo pass | VERIFIED | [E] `offer[]` |
-| Organizer contact | organizer email shown in the form thank-you message (not copied here) | VERIFIED | [F] `inlineMessage` |
+| Organizer contact | paula.m@odsc.com (from the public form definition, fetched 2026-10-29) | VERIFIED | [F] `inlineMessage` |
 | Conflict to know | [W] still says one-day in-person Oct 29, rolling acceptance, "limited spots", tracks (agents, coding, personal AI, inference, open), 17:30 PT submit with "repo link + short demo", GPU compute on Nebius AI Cloud and Token Factory API credits. [E] (newer) says month-long virtual, single research-agent challenge, no acceptance review. Treat [W] as stale; ask at kickoff whether Token Factory credits from [W] still apply | VERIFIED conflict | [W] text; [E] config |
 
 ## Team

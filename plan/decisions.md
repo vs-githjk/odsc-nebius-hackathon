@@ -62,3 +62,12 @@ Format: [LOCKED|REJECTED|PREFERENCE] decision | why | "Vidyut's words" | date
 - [LOCKED] Target rubric score: 96+ | | "i want to reach a score of 96+" | 2026-10-29
 - [LOCKED] Start the lead search (master-leadgen finds fact-checkers, journalism teachers, standards editors; master-writer drafts; nothing sent without Vidyut) only AFTER Anoop's head-to-head shows how Patient Zero differs from Claude and ChatGPT | | "yes start lead search after anoop sees how diff it is from claudde amd stuyff" | 2026-10-29
 - [PREFERENCE] Use a Jev-style typed decision layer ("jev - typesafe one model would be great here"): Jev = TypeSafe AI small decision model with typed boolean/choice/score answers; recommended: same pattern on Token Factory models (rubric), Jev only as an optional ablation | | "jev 0ne model typesaefe ai" | 2026-10-29
+- [LOCKED] Accept the auditor's 10 gap-to-96 items (plan/audit.md "Gap to 96") | | "all of these look good" | 2026-10-29
+- [LOCKED] Raise the live-trace cap during the judging window, for judges | | "yes can raise during judhiing window" | 2026-10-29
+- [LOCKED] Move plan/ out of the submission repo (or publish without it) before the repo goes public | | "yes sounds good for plan" | 2026-10-29
+- [LOCKED] Email the ODSC organizer (contact from the public form: paula.m@odsc.com) with the open rule questions; Vidyut or Rohan sends | | "send me a message for rohan to do this or i can do it" | 2026-10-29
+- [LOCKED] Back up RerunLab: build/rerunlab pushed to its private repo (2026-10-29); uncommitted local changes left as they were | | "yes backup rerun lab - push" | 2026-10-29
+- [LOCKED] Conductor picks claims 5 and 6; Rohan writes the targets blind | | "yeah works" | 2026-10-29
+- [LOCKED] Organizer email sent by Vidyut to paula.m@odsc.com (deadline time, video cap, prior-work rule, scoring, repo visibility, credits); watch for the reply | | "i sent the email" | 2026-10-29
+- [PREFERENCE] Make the idea and the app cooler next (bold, screenshot-and-share moments) | | "now lets tru making the idea dna pp cooler" | 2026-10-29
+- [LOCKED] Add to Patient Zero: time-machine scrubber, blame for a sentence, distortion meter, trace from any page (bookmarklet/extension), Zombie Stat Atlas, researcher mode; the visuals must be very dynamic and aesthetic | | "Time-machine scrubber, Blame for a sentence, Distortion meter, Trace from any page, the visuals that go along with it need to be very dynamic and aesthetic" / "Zombie Stat Atlas, Researcher mode" | 2026-10-29
