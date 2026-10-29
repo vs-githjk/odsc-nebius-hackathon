@@ -11,3 +11,4 @@
 - 2026-10-29: Telemetry gap: telemetry.jsonl had no tool/API breakdown and 2 rows lacked tokens; agents' COST lines are self-reported. Fixed: ~/.claude/skills/master-budget/usage.py (transcript-counted), approved Oct 29.
 - 2026-10-29: DEFECT: conductor added Co-Authored-By to commits despite Vidyut's no-attribution rule (it lived only in another project's memory, not global). Rule now global in this project's memory; propose adding it to ~/.claude/CLAUDE.md.
 - 2026-10-29: Auditor r3 fixes 1-3 (spike leakage, depth bar, Wayback dating) deferred into the H5 plan rather than a second ideas revision: they change the spike, not the pick.
+- 2026-10-29: Agent fixes 1-4 synced to vs-githjk/master-agents a98ad8f after 2 Codex review rounds (7 findings, all fixed and tested). Codex earned its place: it caught token double-counting in usage.py.
