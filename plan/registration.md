@@ -20,7 +20,7 @@ Open https://share.hsforms.com/19DK8PC6FRiSg8GzegEpmNg13zdw (the "Register now" 
 | 11 | I agree to receive other communications from ODSC. | checkbox | **yes (forced marketing consent)** | must tick to submit |
 | 12 | State/Region | dropdown (US states, DC, "Remote", "Outside of the USA") | yes | Pennsylvania (your own state; each teammate picks theirs) |
 
-Then press Submit. The page shows: "Thank you for registering for the Hackathon. We will be in touch closer to the event with more details. For any questions, email us at paula.m@odsc.com" (form `inlineMessage`, VERIFIED).
+Then press Submit. The page shows: "Thank you for registering for the Hackathon. We will be in touch closer to the event with more details. For any questions, email the organizer address shown on the page" (form `inlineMessage`, VERIFIED).
 
 Notes:
 - Field 7 is stored in HubSpot property `university` (a reused field), so a placeholder like "solo" would be saved as your team name. Decide the name first.
