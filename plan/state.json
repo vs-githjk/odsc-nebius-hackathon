@@ -1,10 +1,13 @@
 {
  "mode": "hackathon",
- "name": "ODSC x Nebius Hackathon 2026",
- "stage": "H4-gate1-r3",
+ "name": "Patient Zero (team Says Who), ODSC x Nebius Hackathon 2026",
+ "stage": "H4.6-refine",
  "deadline": "2026-11-20 (Friday; exact time and timezone UNVERIFIED)",
  "approvals": {
-  "gate1": null,
+  "gate1": {
+   "at": "Thu Oct 29 2026 ~01:05 PDT",
+   "quote": "yes patient zero im open to exploring more anobt this"
+  },
   "gate2": null,
   "gate3": null,
   "storyboard": null,
