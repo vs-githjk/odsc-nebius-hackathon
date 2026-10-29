@@ -11,14 +11,14 @@ Open https://share.hsforms.com/19DK8PC6FRiSg8GzegEpmNg13zdw (the "Register now" 
 | 2 | Last name | text | yes | |
 | 3 | Email | text | yes | The inbox you watch: the submission link and prize news come by email only |
 | 4 | Country (Current Residence) | dropdown (about 250 options) | yes | United States |
-| 5 | State/Province | free text | yes | California |
+| 5 | State/Province | free text | yes | Pennsylvania (where you live) |
 | 6 | Do you have a team? | radio Yes / No | yes | Yes |
-| 7 | Team Name | text | **yes, even if solo** | The agreed team name; every teammate types it identically |
+| 7 | Team Name | text | **yes, even if solo** | Says Who (every teammate types it identically) |
 | 8 | Teammates emails | textarea, "separated by a comma (,)" | no | The other 3 emails |
 | 9 | LinkedIn profile | text | no | optional |
 | 10 | I have read and agree to ODSC Privacy Policy and Terms & Conditions | checkbox | yes | must tick |
 | 11 | I agree to receive other communications from ODSC. | checkbox | **yes (forced marketing consent)** | must tick to submit |
-| 12 | State/Region | dropdown (US states, DC, "Remote", "Outside of the USA") | yes | CA |
+| 12 | State/Region | dropdown (US states, DC, "Remote", "Outside of the USA") | yes | Pennsylvania (your own state; each teammate picks theirs) |
 
 Then press Submit. The page shows: "Thank you for registering for the Hackathon. We will be in touch closer to the event with more details. For any questions, email us at paula.m@odsc.com" (form `inlineMessage`, VERIFIED).
 

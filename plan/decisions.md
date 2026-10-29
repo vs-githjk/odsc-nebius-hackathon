@@ -15,3 +15,10 @@ Format: [LOCKED|REJECTED|PREFERENCE] decision | why | "Vidyut's words" | date
 - [PREFERENCE] Plan the month for the most effective path to a win, not a one-night sprint | one-month event | "think about the most effective way to plan it. And work it" | 2026-10-28
 - [PREFERENCE] Walk him through getting the Token Factory and Tavily API keys when research is done | | "walk me through how to get the API keys as well once that's done" | 2026-10-28
 - [PREFERENCE] Reminding an agent of its own tools (Apify, Bright Data) is fine; no rule against it | | "telling it is also fine, because it's anyway going to do it" | 2026-10-28
+- [REJECTED] Ideas r2 as shown: A Receipts (vendor due diligence) and B Says Who (reporter quote check) | too simple, bare-minimum rubric, nothing ambitious or creative | "They seem very simplistic... literally bare minimum rubric. There's nothing ambitious about it. There's nothing creative about it... both, like I said, boring" | 2026-10-28
+- [PREFERENCE] Ideas must be ambitious and creative (think big), not rubric-minimum; pass a real anti-generic test | | "first tell me if the ideas are the best you can do" | 2026-10-28
+- [LOCKED] Team name recommended by the conductor: "Says Who" (independent of the idea) | he asked me to give one; he liked it | "You should give me a team name" / "Says who is a cool name, I guess" | 2026-10-28
+- [LOCKED] Teammates so far: rohanrastogi311, AnoopIbrampur (GitHub); 4th teammate TBD; emails to come from Vidyut | | "rohanrastogi311 anoopibrampur first 2 teammates githubs" | 2026-10-28
+- [LOCKED] Vidyut lives in Pennsylvania: registration State/Province = Pennsylvania, State/Region = Pennsylvania (not California) | registration.md wrongly said California | "I stay in Pennsylvania" | 2026-10-28
+- [LOCKED] Set up GitHub now, in parallel with registration (master-xo setup) | | "Then you can do the GitHub. You can do the GitHub simultaneously" | 2026-10-28
+- [PREFERENCE] Turn the research-brief artifact into the single decisions page where he decides everything before building | | "make that the artifact about ideas where I decide everything before the hackathon starts" | 2026-10-28

@@ -5,3 +5,6 @@
 - 2026-10-28: Folder rename deferred until master-finder finishes: renaming cwd mid-run breaks the running agent's absolute paths and the session/memory path.
 - 2026-10-28: Finder already uses Apify/Bright Data by design; reminding it is harmless (his words). Lesson: I over-read "I don't care about the judges" as drop all win intel; he meant only that unannounced judges/prizes do not matter. Ask or keep scope when a cut would remove win-relevant work.
 - 2026-10-28 23:40: Folder renamed to ODSC x Nebius Hackathon; memory copied to the new project key; old memory left in place.
+- 2026-10-28: DEFECT: registration.md hard-coded California for State fields; Vidyut lives in Pennsylvania. Rule: never assume a person's location; leave "your own state".
+- 2026-10-28: DEFECT: ideas r1/r2 optimized for rubric points and 2h/day scope and came out boring; violated the "Think big" lesson. The anti-generic check compared against other research agents, not against "ambitious and creative". Oversight must test ambition, not only distinctness.
+- 2026-10-28: Team size cap NOT FOUND (event bundle, odsc.ai page, HubSpot form all silent); conductor re-checked 23:50.
