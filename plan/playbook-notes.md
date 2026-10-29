@@ -8,3 +8,4 @@
 - 2026-10-28: DEFECT: registration.md hard-coded California for State fields; Vidyut lives in Pennsylvania. Rule: never assume a person's location; leave "your own state".
 - 2026-10-28: DEFECT: ideas r1/r2 optimized for rubric points and 2h/day scope and came out boring; violated the "Think big" lesson. The anti-generic check compared against other research agents, not against "ambitious and creative". Oversight must test ambition, not only distinctness.
 - 2026-10-28: Team size cap NOT FOUND (event bundle, odsc.ai page, HubSpot form all silent); conductor re-checked 23:50.
+- 2026-10-29: Telemetry gap: telemetry.jsonl had no tool/API breakdown and 2 rows lacked tokens; agents' COST lines are self-reported. Fixed for this project with plan/tools/usage.py (transcript-counted). Propose promoting it into master-budget.
