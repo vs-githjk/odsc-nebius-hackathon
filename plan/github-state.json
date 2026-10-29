@@ -1,0 +1,18 @@
+{
+ "repo": "vs-githjk/odsc-nebius-hackathon",
+ "visibility": "private",
+ "default_branch": "main",
+ "deadline": "2026-11-20 (internal D: 2026-11-19 23:59 PT)",
+ "teammates": [
+  {"name": "Vidyut", "login": "vs-githjk", "focus_issue": 2, "lane": null, "plan": null, "models": null, "usage_left": null, "invite": "owner"},
+  {"name": "Rohan", "login": "rohanrastogi311", "focus_issue": 3, "lane": null, "plan": null, "models": null, "usage_left": null, "invite": "pending (write), id 340308040", "assigned": false},
+  {"name": "Anoop", "login": "AnoopIbrampur", "focus_issue": 4, "lane": null, "plan": null, "models": null, "usage_left": null, "invite": "pending (write), id 340308044", "assigned": false},
+  {"name": "Teammate 4 (TBD)", "login": null, "focus_issue": 1, "lane": null, "plan": null, "models": null, "usage_left": null, "invite": "not sent"}
+ ],
+ "labels": ["lane:agent-core", "lane:verification", "lane:ui", "lane:eval-demo-repo", "focus", "onboarding", "needs-vidyut"],
+ "reviewed_heads": [],
+ "last_seen_comment_at": "2026-10-28T23:55:00-07:00",
+ "held_prs": [],
+ "merge_command": "gh pr merge <n> --squash --match-head-commit <sha> --subject \"<clean subject> (#n)\" --body \"\"",
+ "watch_loop": "not started (after idea and plan approval)"
+}
