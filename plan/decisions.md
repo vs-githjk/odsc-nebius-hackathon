@@ -49,3 +49,7 @@ Format: [LOCKED|REJECTED|PREFERENCE] decision | why | "Vidyut's words" | date
 - [LOCKED] Team kickoff through GitHub: every teammate's work starts as an issue, master-xo does all comms there, Vidyut tells the team on WhatsApp to look there | | "for all of them we begin like this, xo does comms thorugh there and i can just as a kickoff tell them to look thee" | 2026-10-29
 - [LOCKED] Teammate kickoff issues must cover setup: ODSC registration (team Says Who), API keys, and basic tasks | he closes the laptop once they have work | "their stuff should contain setup registration kes and bsic tasks" | 2026-10-29
 - [LOCKED] Quick 10-minute master-designer run now: one world-class look at the product to visualize it (the full 3 directions still follow next session) | | "set off a 10 min desginer that gets me a world class design i can look at to visulaize what the prod will be like" | 2026-10-29
+- [LOCKED] Rohan grades the head-to-head blind (not Anoop, not the spike runner) | | "rohan will grad ehead to head blind" | 2026-10-29
+- [LOCKED] Rohan shares the Token Factory key with the team himself, through a secure channel (never GitHub) | | "roahn will send key securely dont worry" | 2026-10-29
+- [LOCKED] Vidyut's PaperTrail (citation ancestor-tree app, React + D3) goes in the Why us section | | "yes papertrail in why us" | 2026-10-29
+- [LOCKED] Hosted demo daily live-trace cap: 5 a day for now (any deploy still waits for his go) | | "daily cap 5 is good for now" | 2026-10-29

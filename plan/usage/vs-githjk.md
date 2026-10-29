@@ -6,8 +6,8 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 
 | Service | Calls |
 |---|---|
-| Shell | 271 |
-| Claude Code tools | 153 |
+| Shell | 282 |
+| Claude Code tools | 180 |
 | Other HTTP | 93 |
 | Web search and fetch | 52 |
 | GitHub (gh) | 51 |
@@ -21,10 +21,10 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 
 | Kind | Tokens |
 |---|---|
-| input_tokens | 1,158 |
-| cache_creation_input_tokens | 2,118,928 |
-| cache_read_input_tokens | 71,964,757 |
-| output_tokens | 571,583 |
+| input_tokens | 1,426 |
+| cache_creation_input_tokens | 2,177,107 |
+| cache_read_input_tokens | 75,074,038 |
+| output_tokens | 616,622 |
 
 ## Per run
 
@@ -40,10 +40,10 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 | 2026-10-29T07:46 | master-finder: Market validation for Patient Zero | claude-opus-5-5 | 40,009 | 7 | 2 | 0 | 25 | 0 | 0 | 0 | 0 | 11 |
 | 2026-10-29T08:19 | master-planner: Refine Patient Zero, round 1 | claude-opus-5-5 | 29,492 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 | 2 |
 | 2026-10-29T08:27 | master-auditor: Red-team Patient Zero brief, round 2 | claude-opus-5-5 | 32,092 | 0 | 0 | 0 | 5 | 3 | 0 | 0 | 0 | 5 |
-| 2026-10-29T08:37 | main session | claude-opus-5-5 | 35,904 | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | 0 |
+| 2026-10-29T08:37 | main session | claude-opus-5-5 | 48,404 | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | 0 |
 | 2026-10-29T08:39 | master-planner: Fold auditor r2 fixes into brief | claude-opus-5-5 | 43,561 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 |
 | 2026-10-29T08:42 | master-xo: GitHub kickoff issues for team | claude-opus-5-5 | 27,048 | 0 | 0 | 0 | 0 | 15 | 0 | 2 | 0 | 6 |
-| 2026-10-29T08:46 | master-designer: 10-min world-class Patient Zero look | claude-fable-5-1 | 1,277 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| 2026-10-29T08:46 | master-designer: 10-min world-class Patient Zero look | claude-fable-5-1 | 33,816 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 
 ## Detail (service: tool or host)
 

@@ -34,12 +34,12 @@ Done this session (Oct 29, 01:37 to 02:00 PDT):
 - Planner r2: `plan/idea-brief.md` is now round 2 (all auditor fixes, "Why not just ask ChatGPT or Claude?" section, head-to-head in the spike, Layer 1 fits only with a step-reveal tree first; whole build 104 to 129 h vs 128 h).
 - XO kickoff: pinned #8 "Start here", kickoff tasks #5 Anoop head-to-head, #6 Rohan Token Factory smoke test, #7 Rishit Tavily probe, all due Sun Nov 1. Rohan and Rishit get assigned once they accept invites. Anoop must not read plan files that discuss claim origins until his PR is open.
 - Idea page published (the market artifact turned into the idea page): https://claude.ai/artifact/BtjsfsCuEUNYNWuppfJDjE . It names the goldfish 2012 origin, so do not share it with Anoop before his head-to-head is done.
-- Quick designer look (one direction, goal odsc-pz-quick-look) was launched at about 01:50; link it from the idea page's "How it will look" callout when it reports. If it never reported, re-run it.
+- Quick designer look done: direction "Case File" https://claude.ai/artifact/WGJxxr2E2kCM6zdHpa3Niy (paper ground, one ink, forest-green action, red only for the mutation hop; Newsreader + Geist). Idea page restyled to match and links it. Fix pass landed (version 3, 01:57): labels cleared, callout moved, example traces badged REPLAY. The final tree edit was not re-screenshotted, so eyeball the trace once next session. It too names the goldfish origin: not for Anoop yet.
 
 Next, in order (when Vidyut says "go"):
 1. Conductor picks claims 5 (a Wikipedia citogenesis case) and 6 (a fresh viral stat from the last 60 days) and has a non-runner write blind targets; XO posts the claims on #5 (never the targets).
-2. Vidyut answers the planner's open questions: blind grader (recommended Rohan or Rishit), hosted daily live-trace cap (recommended 5 a day, about $8.50), Layer 1 takes Nov 14 if the core slips (recommended yes), 2 extra fresh claims in the head-to-head (recommended yes); and how Rohan's Token Factory key reaches the others (never on GitHub).
-3. Suggest to Vidyut: his PaperTrail repo (citation ancestor tree, React + D3) as "Why us" evidence and a layout reference; his call.
+2. Answered 02:05: Rohan grades the head-to-head blind; Rohan shares the key securely himself; daily cap 5; PaperTrail goes in Why us. XO tells Rohan about grading on #6 or a new issue next session. Still open: Layer 1 takes Nov 14 if the core slips (recommended yes), 2 extra fresh claims in the head-to-head (recommended yes).
+3. Add PaperTrail to the brief's Why us (done on the idea page; planner adds it to plan/idea-brief.md).
 4. master-designer: the full 3 directions from "How it will look" in the r2 brief.
 5. Vidyut approves direction and plan (GATE 2), then the overnight build ("use a workflow, start the overnight build").
 
