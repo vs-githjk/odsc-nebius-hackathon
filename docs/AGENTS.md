@@ -28,5 +28,11 @@ The board is for coordination and asks. Decisions are only in `plan/decisions.md
 ## Budget
 Use the cheapest model that does the job well: Sonnet medium for specified code tasks and tests, Opus only for architecture or a hard bug. No long research sweeps or parallel subagents unless your task says so. Post a one-line usage check on your focus issue every few hours (for example "about 40% of weekly limit left").
 
+## Usage ledger (everyone, after every Claude session)
+So the whole team can see which models, tokens and tools (Apify, Bright Data, web search, Tavily, Token Factory) were used:
+1. Install the crew's skills once: `git clone https://github.com/vs-githjk/master-agents.git ~/master-agents && ~/master-agents/install.sh` (ask Vidyut for access), or ask him for `usage.py` and put it at `~/.claude/skills/master-budget/usage.py`.
+2. After each session, from the repo folder: `python3 ~/.claude/skills/master-budget/usage.py`. It counts only your own machine's Claude Code sessions for this project and writes `plan/usage/<your GitHub login>.md` and `.jsonl`.
+3. Commit those two files in your PR. Never edit `plan/usage.md` by hand: it is the generated summary. If it conflicts in a merge, run the script with `--combine` and commit the result.
+
 ## Lanes
 Labels `lane:agent-core`, `lane:verification`, `lane:ui`, `lane:eval-demo-repo`. Lanes are assigned after the idea is picked; until then your focus issue has week-0 onboarding tasks only.
