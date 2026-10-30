@@ -1,0 +1,1033 @@
+{
+  "recorded_date": "2026-10-30",
+  "base_url": "https://api.tokenfactory.nebius.com/v1",
+  "notes": "Real API calls. Response/request/account IDs omitted; embeddings retain dimensions and a four-value preview. No credentials. Costs estimated from reported token usage and catalog prices.",
+  "models_request": 200,
+  "prices": {
+    "Qwen/Qwen3-30B-A3B-Instruct-2507": {
+      "prompt": "0.0000001",
+      "input_cache_read": "0.0000001",
+      "completion": "0.0000003",
+      "image": "0",
+      "price_per_video_second": "0",
+      "request": "0",
+      "price_per_minute": "0"
+    },
+    "zai-org/GLM-5.2": {
+      "prompt": "0.0000014",
+      "input_cache_read": "0.00000014",
+      "completion": "0.0000044",
+      "image": "0",
+      "price_per_video_second": "0",
+      "request": "0",
+      "price_per_minute": "0"
+    },
+    "deepseek-ai/DeepSeek-V4-Pro-0813": {
+      "prompt": "0.00000132",
+      "input_cache_read": "0.00000004",
+      "completion": "0.00000396",
+      "image": "0",
+      "price_per_video_second": "0",
+      "request": "0",
+      "price_per_minute": "0"
+    },
+    "Qwen/Qwen3-Embedding-8B": {
+      "prompt": "0.00000001",
+      "completion": "0.0",
+      "image": "0",
+      "price_per_video_second": "0",
+      "request": "0",
+      "price_per_minute": "0",
+      "input_cache_read": null
+    }
+  },
+  "calls": [
+    {
+      "name": "bge-embeddings",
+      "started_utc": "2026-10-30T21:58:49.293615+00:00",
+      "endpoint": "/embeddings",
+      "request": {
+        "model": "BAAI/bge-en-icl",
+        "input": [
+          "A cat sits on a mat.",
+          "A kitten rests on a rug.",
+          "The car drives on the road."
+        ]
+      },
+      "status": 404,
+      "latency_ms": 2638,
+      "usage": {},
+      "cost_usd": null,
+      "pricing_source": "https://api.tokenfactory.nebius.com/v1/models?verbose=true",
+      "response": {
+        "error": {
+          "type": "invalid_request_error",
+          "message": "The model `BAAI/bge-en-icl` does not exist.",
+          "param": "model",
+          "code": "model_not_found"
+        }
+      }
+    },
+    {
+      "name": "deepseek-chat",
+      "started_utc": "2026-10-30T21:58:46.655442+00:00",
+      "endpoint": "/chat/completions",
+      "request": {
+        "model": "deepseek-ai/DeepSeek-V4-Pro-0813",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Reply with exactly: hello"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 20
+      },
+      "status": 200,
+      "latency_ms": 4534,
+      "usage": {
+        "completion_tokens": 13,
+        "prompt_tokens": 9,
+        "total_tokens": 22,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 11,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": null,
+        "reasoning_tokens": 11,
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 9
+      },
+      "cost_usd": 6.336e-05,
+      "pricing_source": "https://api.tokenfactory.nebius.com/v1/models?verbose=true",
+      "response": {
+        "model": "deepseek-ai/DeepSeek-V4-Pro-0813",
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "logprobs": null,
+            "message": {
+              "content": "hello",
+              "refusal": null,
+              "role": "assistant",
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "tool_calls": null,
+              "reasoning_content": "We need answer exactly \"hello\". No extra."
+            },
+            "matched_stop": 1
+          }
+        ],
+        "usage": {
+          "completion_tokens": 13,
+          "prompt_tokens": 9,
+          "total_tokens": 22,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 11,
+            "rejected_prediction_tokens": null
+          },
+          "prompt_tokens_details": null,
+          "reasoning_tokens": 11,
+          "prompt_cache_hit_tokens": 0,
+          "prompt_cache_miss_tokens": 9
+        },
+        "object": "chat.completion"
+      }
+    },
+    {
+      "name": "glm-chat-128",
+      "started_utc": "2026-10-30T21:59:37.288575+00:00",
+      "endpoint": "/chat/completions",
+      "request": {
+        "model": "zai-org/GLM-5.2",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Reply with exactly: hello"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 128
+      },
+      "status": 200,
+      "latency_ms": 4381,
+      "usage": {
+        "completion_tokens": 128,
+        "prompt_tokens": 17,
+        "total_tokens": 145,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 129,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": null,
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 17,
+        "reasoning_tokens": 129
+      },
+      "cost_usd": 0.0005870000000000001,
+      "pricing_source": "https://api.tokenfactory.nebius.com/v1/models?verbose=true",
+      "response": {
+        "model": "zai-org/GLM-5.2",
+        "choices": [
+          {
+            "finish_reason": "length",
+            "index": 0,
+            "logprobs": null,
+            "message": {
+              "content": "",
+              "refusal": null,
+              "role": "assistant",
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "tool_calls": null,
+              "reasoning_content": "1.  **Analyze the Request:**\n    *   Input: \"Reply with exactly: hello\"\n    *   Constraint: Reply with *exactly* \"hello\".\n\n2.  **Determine the Output:**\n    *   The user wants the exact string \"hello\".\n    *   No punctuation, no capitalization (unless specified, but \"hello\" is lowercase in the prompt), no extra words.\n\n3.  **Formulate the Response:**\n    *   hello\n\n4.  **Verify against constraints:**\n    *   Is it exactly \"hello\"? Yes.\n    *   Are there any extra spaces"
+            },
+            "matched_stop": null
+          }
+        ],
+        "usage": {
+          "completion_tokens": 128,
+          "prompt_tokens": 17,
+          "total_tokens": 145,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 129,
+            "rejected_prediction_tokens": null
+          },
+          "prompt_tokens_details": null,
+          "prompt_cache_hit_tokens": 0,
+          "prompt_cache_miss_tokens": 17,
+          "reasoning_tokens": 129
+        },
+        "object": "chat.completion"
+      }
+    },
+    {
+      "name": "glm-chat",
+      "started_utc": "2026-10-30T21:58:46.916218+00:00",
+      "endpoint": "/chat/completions",
+      "request": {
+        "model": "zai-org/GLM-5.2",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Reply with exactly: hello"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 20
+      },
+      "status": 200,
+      "latency_ms": 4795,
+      "usage": {
+        "completion_tokens": 20,
+        "prompt_tokens": 17,
+        "total_tokens": 37,
+        "completion_tokens_details": {
+          "accepted_prediction_tokens": null,
+          "audio_tokens": null,
+          "reasoning_tokens": 25,
+          "rejected_prediction_tokens": null
+        },
+        "prompt_tokens_details": null,
+        "prompt_cache_hit_tokens": 0,
+        "prompt_cache_miss_tokens": 17,
+        "reasoning_tokens": 25
+      },
+      "cost_usd": 0.0001118,
+      "pricing_source": "https://api.tokenfactory.nebius.com/v1/models?verbose=true",
+      "response": {
+        "model": "zai-org/GLM-5.2",
+        "choices": [
+          {
+            "finish_reason": "length",
+            "index": 0,
+            "logprobs": null,
+            "message": {
+              "content": "",
+              "refusal": null,
+              "role": "assistant",
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "tool_calls": null,
+              "reasoning_content": "1.  **Analyze the Request:**\n    *   Input: \"Reply with exactly:"
+            },
+            "matched_stop": null
+          }
+        ],
+        "usage": {
+          "completion_tokens": 20,
+          "prompt_tokens": 17,
+          "total_tokens": 37,
+          "completion_tokens_details": {
+            "accepted_prediction_tokens": null,
+            "audio_tokens": null,
+            "reasoning_tokens": 25,
+            "rejected_prediction_tokens": null
+          },
+          "prompt_tokens_details": null,
+          "prompt_cache_hit_tokens": 0,
+          "prompt_cache_miss_tokens": 17,
+          "reasoning_tokens": 25
+        },
+        "object": "chat.completion"
+      }
+    },
+    {
+      "name": "qwen-chat",
+      "started_utc": "2026-10-30T21:58:46.394924+00:00",
+      "endpoint": "/chat/completions",
+      "request": {
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Reply with exactly: hello"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 20
+      },
+      "status": 200,
+      "latency_ms": 4275,
+      "usage": {
+        "completion_tokens": 2,
+        "prompt_tokens": 13,
+        "total_tokens": 15,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": null
+      },
+      "cost_usd": 1.8999999999999998e-06,
+      "pricing_source": "https://api.tokenfactory.nebius.com/v1/models?verbose=true",
+      "response": {
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "logprobs": null,
+            "message": {
+              "content": "hello",
+              "refusal": null,
+              "role": "assistant",
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "tool_calls": [],
+              "reasoning": null
+            },
+            "stop_reason": null,
+            "token_ids": null
+          }
+        ],
+        "usage": {
+          "completion_tokens": 2,
+          "prompt_tokens": 13,
+          "total_tokens": 15,
+          "completion_tokens_details": null,
+          "prompt_tokens_details": null
+        },
+        "object": "chat.completion"
+      }
+    },
+    {
+      "name": "qwen-embeddings",
+      "started_utc": "2026-10-30T21:58:58.107234+00:00",
+      "endpoint": "/embeddings",
+      "request": {
+        "model": "Qwen/Qwen3-Embedding-8B",
+        "input": [
+          "A cat sits on a mat.",
+          "A kitten rests on a rug.",
+          "The car drives on the road."
+        ]
+      },
+      "status": 200,
+      "latency_ms": 11191,
+      "usage": {
+        "prompt_tokens": 24,
+        "total_tokens": 24,
+        "completion_tokens": 0,
+        "prompt_tokens_details": null
+      },
+      "cost_usd": 2.4000000000000003e-07,
+      "pricing_source": "https://api.tokenfactory.nebius.com/v1/models?verbose=true",
+      "response": {
+        "model": "Qwen/Qwen3-Embedding-8B",
+        "usage": {
+          "prompt_tokens": 24,
+          "total_tokens": 24,
+          "completion_tokens": 0,
+          "prompt_tokens_details": null
+        },
+        "data": [
+          {
+            "index": 0,
+            "dimensions": 4096,
+            "embedding_head": [
+              -0.006436599418520927,
+              0.003202127292752266,
+              -0.0047546736896038055,
+              -0.0221237875521183
+            ]
+          },
+          {
+            "index": 1,
+            "dimensions": 4096,
+            "embedding_head": [
+              -0.00011793005251092836,
+              0.004443563520908356,
+              0.02156435325741768,
+              -0.005619801115244627
+            ]
+          },
+          {
+            "index": 2,
+            "dimensions": 4096,
+            "embedding_head": [
+              -0.004875772632658482,
+              -0.029079459607601166,
+              0.007766201160848141,
+              -0.004554613959044218
+            ]
+          }
+        ],
+        "object": "list"
+      }
+    },
+    {
+      "name": "qwen-schema-logprobs",
+      "started_utc": "2026-10-30T21:58:49.922121+00:00",
+      "endpoint": "/chat/completions",
+      "request": {
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Sentence A: 'Goldfish remember for 3 seconds.' Sentence B: 'A goldfish has a 3 second memory.' Is B a copy, new wording, or unrelated?"
+          }
+        ],
+        "temperature": 0,
+        "max_tokens": 20,
+        "response_format": {
+          "type": "json_schema",
+          "json_schema": {
+            "name": "hop_label",
+            "strict": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "label": {
+                  "type": "string",
+                  "enum": [
+                    "copy",
+                    "new_wording",
+                    "unrelated"
+                  ]
+                }
+              },
+              "required": [
+                "label"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "logprobs": true,
+        "top_logprobs": 5
+      },
+      "status": 200,
+      "latency_ms": 3526,
+      "usage": {
+        "completion_tokens": 10,
+        "prompt_tokens": 45,
+        "total_tokens": 55,
+        "completion_tokens_details": null,
+        "prompt_tokens_details": null
+      },
+      "cost_usd": 7.5e-06,
+      "pricing_source": "https://api.tokenfactory.nebius.com/v1/models?verbose=true",
+      "response": {
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "choices": [
+          {
+            "finish_reason": "stop",
+            "index": 0,
+            "logprobs": {
+              "content": [
+                {
+                  "token": "{\"",
+                  "bytes": [
+                    123,
+                    34
+                  ],
+                  "logprob": -0.5570375323295593,
+                  "top_logprobs": [
+                    {
+                      "token": "{\"",
+                      "bytes": [
+                        123,
+                        34
+                      ],
+                      "logprob": -0.5570375323295593
+                    },
+                    {
+                      "token": "{",
+                      "bytes": [
+                        123
+                      ],
+                      "logprob": -0.8695375323295593
+                    },
+                    {
+                      "token": "{\n",
+                      "bytes": [
+                        123,
+                        10
+                      ],
+                      "logprob": -4.869537353515625
+                    },
+                    {
+                      "token": "{\n\n",
+                      "bytes": [
+                        123,
+                        10,
+                        10
+                      ],
+                      "logprob": -8.213287353515625
+                    },
+                    {
+                      "token": "{\n\n\n",
+                      "bytes": [
+                        123,
+                        10,
+                        10,
+                        10
+                      ],
+                      "logprob": -12.726959228515625
+                    }
+                  ]
+                },
+                {
+                  "token": "label",
+                  "bytes": [
+                    108,
+                    97,
+                    98,
+                    101,
+                    108
+                  ],
+                  "logprob": -6.139089964563027e-05,
+                  "top_logprobs": [
+                    {
+                      "token": "label",
+                      "bytes": [
+                        108,
+                        97,
+                        98,
+                        101,
+                        108
+                      ],
+                      "logprob": -6.139089964563027e-05
+                    },
+                    {
+                      "token": "l",
+                      "bytes": [
+                        108
+                      ],
+                      "logprob": -10.37506103515625
+                    },
+                    {
+                      "token": "lab",
+                      "bytes": [
+                        108,
+                        97,
+                        98
+                      ],
+                      "logprob": -10.43756103515625
+                    },
+                    {
+                      "token": "la",
+                      "bytes": [
+                        108,
+                        97
+                      ],
+                      "logprob": -14.06256103515625
+                    },
+                    {
+                      "token": "!",
+                      "bytes": [
+                        33
+                      ],
+                      "logprob": -9999.0
+                    }
+                  ]
+                },
+                {
+                  "token": "\":",
+                  "bytes": [
+                    34,
+                    58
+                  ],
+                  "logprob": -0.0004306104383431375,
+                  "top_logprobs": [
+                    {
+                      "token": "\":",
+                      "bytes": [
+                        34,
+                        58
+                      ],
+                      "logprob": -0.0004306104383431375
+                    },
+                    {
+                      "token": "\":\"",
+                      "bytes": [
+                        34,
+                        58,
+                        34
+                      ],
+                      "logprob": -7.750430583953857
+                    },
+                    {
+                      "token": "\"",
+                      "bytes": [
+                        34
+                      ],
+                      "logprob": -17.250431060791016
+                    },
+                    {
+                      "token": "\":\n",
+                      "bytes": [
+                        34,
+                        58,
+                        10
+                      ],
+                      "logprob": -21.000431060791016
+                    },
+                    {
+                      "token": "\":\n\n",
+                      "bytes": [
+                        34,
+                        58,
+                        10,
+                        10
+                      ],
+                      "logprob": -26.625431060791016
+                    }
+                  ]
+                },
+                {
+                  "token": " \"",
+                  "bytes": [
+                    32,
+                    34
+                  ],
+                  "logprob": 0.0,
+                  "top_logprobs": [
+                    {
+                      "token": " \"",
+                      "bytes": [
+                        32,
+                        34
+                      ],
+                      "logprob": 0.0
+                    },
+                    {
+                      "token": " ",
+                      "bytes": [
+                        32
+                      ],
+                      "logprob": -17.375
+                    },
+                    {
+                      "token": "\t",
+                      "bytes": [
+                        9
+                      ],
+                      "logprob": -23.25
+                    },
+                    {
+                      "token": "  ",
+                      "bytes": [
+                        32,
+                        32
+                      ],
+                      "logprob": -23.375
+                    },
+                    {
+                      "token": "   ",
+                      "bytes": [
+                        32,
+                        32,
+                        32
+                      ],
+                      "logprob": -24.75
+                    }
+                  ]
+                },
+                {
+                  "token": "new",
+                  "bytes": [
+                    110,
+                    101,
+                    119
+                  ],
+                  "logprob": -9.536738616588991e-07,
+                  "top_logprobs": [
+                    {
+                      "token": "new",
+                      "bytes": [
+                        110,
+                        101,
+                        119
+                      ],
+                      "logprob": -9.536738616588991e-07
+                    },
+                    {
+                      "token": "copy",
+                      "bytes": [
+                        99,
+                        111,
+                        112,
+                        121
+                      ],
+                      "logprob": -13.875000953674316
+                    },
+                    {
+                      "token": "c",
+                      "bytes": [
+                        99
+                      ],
+                      "logprob": -17.875
+                    },
+                    {
+                      "token": "n",
+                      "bytes": [
+                        110
+                      ],
+                      "logprob": -18.125
+                    },
+                    {
+                      "token": "cop",
+                      "bytes": [
+                        99,
+                        111,
+                        112
+                      ],
+                      "logprob": -18.75
+                    }
+                  ]
+                },
+                {
+                  "token": "_",
+                  "bytes": [
+                    95
+                  ],
+                  "logprob": -0.5376251935958862,
+                  "top_logprobs": [
+                    {
+                      "token": "_",
+                      "bytes": [
+                        95
+                      ],
+                      "logprob": -0.5376251935958862
+                    },
+                    {
+                      "token": "_w",
+                      "bytes": [
+                        95,
+                        119
+                      ],
+                      "logprob": -1.0376251935958862
+                    },
+                    {
+                      "token": "_word",
+                      "bytes": [
+                        95,
+                        119,
+                        111,
+                        114,
+                        100
+                      ],
+                      "logprob": -2.787625312805176
+                    },
+                    {
+                      "token": "_wo",
+                      "bytes": [
+                        95,
+                        119,
+                        111
+                      ],
+                      "logprob": -12.475125312805176
+                    },
+                    {
+                      "token": "!",
+                      "bytes": [
+                        33
+                      ],
+                      "logprob": -9999.0
+                    }
+                  ]
+                },
+                {
+                  "token": "word",
+                  "bytes": [
+                    119,
+                    111,
+                    114,
+                    100
+                  ],
+                  "logprob": -0.07531972229480743,
+                  "top_logprobs": [
+                    {
+                      "token": "word",
+                      "bytes": [
+                        119,
+                        111,
+                        114,
+                        100
+                      ],
+                      "logprob": -0.07531972229480743
+                    },
+                    {
+                      "token": "wo",
+                      "bytes": [
+                        119,
+                        111
+                      ],
+                      "logprob": -2.887819766998291
+                    },
+                    {
+                      "token": "w",
+                      "bytes": [
+                        119
+                      ],
+                      "logprob": -4.262819766998291
+                    },
+                    {
+                      "token": "wor",
+                      "bytes": [
+                        119,
+                        111,
+                        114
+                      ],
+                      "logprob": -5.887819766998291
+                    },
+                    {
+                      "token": "!",
+                      "bytes": [
+                        33
+                      ],
+                      "logprob": -9999.0
+                    }
+                  ]
+                },
+                {
+                  "token": "ing",
+                  "bytes": [
+                    105,
+                    110,
+                    103
+                  ],
+                  "logprob": 0.0,
+                  "top_logprobs": [
+                    {
+                      "token": "ing",
+                      "bytes": [
+                        105,
+                        110,
+                        103
+                      ],
+                      "logprob": 0.0
+                    },
+                    {
+                      "token": "in",
+                      "bytes": [
+                        105,
+                        110
+                      ],
+                      "logprob": -19.125
+                    },
+                    {
+                      "token": "i",
+                      "bytes": [
+                        105
+                      ],
+                      "logprob": -23.625
+                    },
+                    {
+                      "token": "\"",
+                      "bytes": [
+                        34
+                      ],
+                      "logprob": -9999.0
+                    },
+                    {
+                      "token": "!",
+                      "bytes": [
+                        33
+                      ],
+                      "logprob": -9999.0
+                    }
+                  ]
+                },
+                {
+                  "token": "\"}",
+                  "bytes": [
+                    34,
+                    125
+                  ],
+                  "logprob": -5.960462772236497e-07,
+                  "top_logprobs": [
+                    {
+                      "token": "\"}",
+                      "bytes": [
+                        34,
+                        125
+                      ],
+                      "logprob": -5.960462772236497e-07
+                    },
+                    {
+                      "token": "\"",
+                      "bytes": [
+                        34
+                      ],
+                      "logprob": -14.250000953674316
+                    },
+                    {
+                      "token": "\"\n",
+                      "bytes": [
+                        34,
+                        10
+                      ],
+                      "logprob": -24.125
+                    },
+                    {
+                      "token": "\"\n\n",
+                      "bytes": [
+                        34,
+                        10,
+                        10
+                      ],
+                      "logprob": -24.9375
+                    },
+                    {
+                      "token": "\"\n\n\n",
+                      "bytes": [
+                        34,
+                        10,
+                        10,
+                        10
+                      ],
+                      "logprob": -29.0625
+                    }
+                  ]
+                },
+                {
+                  "token": "<|im_end|>",
+                  "bytes": [
+                    60,
+                    124,
+                    105,
+                    109,
+                    95,
+                    101,
+                    110,
+                    100,
+                    124,
+                    62
+                  ],
+                  "logprob": 0.0,
+                  "top_logprobs": [
+                    {
+                      "token": "<|im_end|>",
+                      "bytes": [
+                        60,
+                        124,
+                        105,
+                        109,
+                        95,
+                        101,
+                        110,
+                        100,
+                        124,
+                        62
+                      ],
+                      "logprob": 0.0
+                    },
+                    {
+                      "token": "#",
+                      "bytes": [
+                        35
+                      ],
+                      "logprob": -9999.0
+                    },
+                    {
+                      "token": "!",
+                      "bytes": [
+                        33
+                      ],
+                      "logprob": -9999.0
+                    },
+                    {
+                      "token": "$",
+                      "bytes": [
+                        36
+                      ],
+                      "logprob": -9999.0
+                    },
+                    {
+                      "token": "\"",
+                      "bytes": [
+                        34
+                      ],
+                      "logprob": -9999.0
+                    }
+                  ]
+                }
+              ],
+              "refusal": null
+            },
+            "message": {
+              "content": "{\"label\": \"new_wording\"}",
+              "refusal": null,
+              "role": "assistant",
+              "annotations": null,
+              "audio": null,
+              "function_call": null,
+              "tool_calls": [],
+              "reasoning": null
+            },
+            "stop_reason": null,
+            "token_ids": null
+          }
+        ],
+        "usage": {
+          "completion_tokens": 10,
+          "prompt_tokens": 45,
+          "total_tokens": 55,
+          "completion_tokens_details": null,
+          "prompt_tokens_details": null
+        },
+        "object": "chat.completion"
+      }
+    }
+  ],
+  "tavily": {
+    "endpoint": "GET /usage",
+    "status": 200,
+    "latency_ms": 4903,
+    "search_requests": 0,
+    "account_details_saved": false
+  }
+}
