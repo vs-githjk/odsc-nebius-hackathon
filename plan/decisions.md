@@ -89,3 +89,6 @@ Format: [LOCKED|REJECTED|PREFERENCE] decision | why | "Vidyut's words" | date
 - [LOCKED] Package allowlist in plan/plan.md Global Constraints approved for teammates' machines (exact versions) | | "okay both are yes" | 2026-10-29
 - [LOCKED] Run 2 (search engine, Nov 2 to 8) is built by Vidyut's overnight build; Anoop is backup; Rohan builds only mechanisms (blind grader) | | "okay both are yes" | 2026-10-29
 - [LOCKED] Break: do nothing until Vidyut says "go" | | "do nothing now were taking a break, when im back and say go we begin" | 2026-10-29
+[LOCKED] No overnight build on Oct 29; no team check needed today | teammates have not started yet | "Don't do the overnight build. I'm not doing that today." | 2026-10-29
+[LOCKED] Jev key added to local .env (TYPESAFE_API_KEY); organizer email forwarded to Luka | done by Vidyut | "I've added a Jev key ... I already forwarded it to Luca" | 2026-10-29
+[LOCKED] Issue #2 rewritten to current state (stale pre-pick text removed) | his ask | "Issue number 2 still, you can just get that off" | 2026-10-29
