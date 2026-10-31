@@ -64,11 +64,14 @@
   "needs-vidyut",
   "spike"
  ],
- "reviewed_heads": [],
- "last_seen_comment_at": "2026-10-29T01:46:00-07:00",
+ "reviewed_heads": [
+  "#29@4f0aa1f",
+  "#30@4dbc454"
+ ],
+ "last_seen_comment_at": "2026-10-31T11:00:00-07:00",
  "held_prs": [],
  "merge_command": "gh pr merge <n> --squash --match-head-commit <sha> --subject \"<clean subject> (#n)\" --body \"\"",
- "watch_loop": "not started (after idea and plan approval)",
+ "watch_loop": "running from main session, every 20 min from 2026-10-31, session-only, 7-day expiry",
  "kickoff_issue": 8,
  "kickoff_issue_pinned": true,
  "task_issues": {
