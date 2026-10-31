@@ -94,7 +94,7 @@ Branch `AnoopIbrampur/dev-claims`. PR body: `Closes #<this issue>`, `Refs #4`. R
 ## 3. Queue posts on focus issues
 
 ### #3 Rohan
-Thanks Rohan, strong work: #29 and #30 are reviewed. Your two questions are settled: embeddings move to `Qwen/Qwen3-Embedding-8B`, with clustering thresholds set on dev, and GLM is dropped, so no follow-up.
+Thanks Rohan, strong work. #29 and #30 are in review now; any fix list comes back here. Your two questions are settled: embeddings move to `Qwen/Qwen3-Embedding-8B`, with clustering thresholds set on dev, and GLM is dropped, so no follow-up.
 
 You were blocked on T2, so you now own T1 and T2. New order:
 1. **Today, about 15 minutes, reply yes or no on each:** durable private backup of the targets; ODSC form as `Says Who`; Builder Program joined; low auto-charge limit set.

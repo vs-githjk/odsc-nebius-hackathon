@@ -7,7 +7,7 @@ Status is one of: done, done_with_concerns, parked, needs_context, skipped, not 
 
 Kickoff issues (prerequisites, not plan tasks):
 - #5 head-to-head (Anoop): not started
-- #6 Token Factory smoke (Rohan): PR #30 in review
+- #6 Token Factory smoke (Rohan): PR #30 reviewed, FIX (2 medium, 3 low)
 - #7 Tavily probe (Rishit): not started
 
 Run 1 (Oct 29 to Nov 1):
@@ -23,7 +23,7 @@ Run 1 (Oct 29 to Nov 1):
 - T10: not started
 - T11: not started
 - T12: not started
-- T13: PR #29 in review (hashes match the #10 comment)
+- T13: PR #29 reviewed, PASS; merge waits for Vidyut
 - T14: not started
 - T15: not started
 - T16: not started
