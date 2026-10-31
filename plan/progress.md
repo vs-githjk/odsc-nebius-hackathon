@@ -23,7 +23,7 @@ Run 1 (Oct 29 to Nov 1):
 - T10: not started
 - T11: not started
 - T12: not started
-- T13: PR #29 reviewed, PASS; merge waits for Vidyut
+- T13: PR #29 reviewed, PASS, merged Oct 31
 - T14: not started
 - T15: not started
 - T16: not started

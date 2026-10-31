@@ -24,7 +24,7 @@ Team batch from plan/issues-oct31.md posted Oct 31: new issues #31 T2b, #32 T18b
 | Who | Queue (in order) | Inbox | Status |
 |---|---|---|---|
 | Vidyut (vs-githjk) | orchestrating only until Wed Nov 4; add the Nebius key line to his `.env` when Rohan sends it | #2 | decisions only |
-| Rohan (rohanrastogi311) | 4 yes or no answers on #3 (today); key to Vidyut privately (Sun Nov 1); #11 T1 (Sat Oct 31 23:59); #12 T2 without wording (Sun Nov 1 23:59); #26 T18 (Mon Nov 2 23:59); #32 T18b (Tue Nov 3 12:00); #27 T19 (Tue Nov 3 23:59); #33 E1 (Wed Nov 4 23:59); #28 T20 (Wed Nov 4 23:59) | #3 | PRs #29 and #30 open, in review with master-reviewer; #6 and #9 stay open |
+| Rohan (rohanrastogi311) | 4 yes or no answers on #3 (today); key to Vidyut privately (Sun Nov 1); #11 T1 (Sat Oct 31 23:59); #12 T2 without wording (Sun Nov 1 23:59); #26 T18 (Mon Nov 2 23:59); #32 T18b (Tue Nov 3 12:00); #27 T19 (Tue Nov 3 23:59); #33 E1 (Wed Nov 4 23:59); #28 T20 (Wed Nov 4 23:59) | #3 | PRs #29 and #30 open, in review; #6 and #9 stay open |
 | Anoop (AnoopIbrampur) | #5 head-to-head (Sun Nov 1 23:59); #13 T4, #31 T2b, #14 T3 (Mon Nov 2); #15 T5 (Mon Nov 2 23:59, unblocks the spike); #34 E2 (Tue Nov 3 23:59, only after XO confirms on #5 that his blind period ended); #16 T6 (Tue Nov 3 23:59); then #17 T7, #18 T8, #19 T9 | #4 | blind until all 6 transcripts are committed; not ended |
 | Rishit (RishitRai) | reply on #1 today; #7 (Sun Nov 1 23:59); #20 T10 (Mon Nov 2 23:59); #21 T11 (Tue Nov 3 12:00); #10 T12 spike run and report (Tue Nov 3 23:59); #22 T14, then #23, #24, #25 | #1 | nothing from him on GitHub yet as of Oct 31 |
 
@@ -39,7 +39,7 @@ Team batch from plan/issues-oct31.md posted Oct 31: new issues #31 T2b, #32 T18b
 - 2026-10-28 23:56 main branch protection: force-push and deletion blocked; admins not enforced; no required reviews or checks
 - Nothing deployed. No CI. Keys: none in repo; .env.example lists NEBIUS_API_KEY, TAVILY_API_KEY
 - Repo watch loop: NOT started (starts after idea and plan are approved)
-- 2026-10-31 Open PRs #29 and #30 in review with master-reviewer, not merged; merging waits for that verdict and Vidyut
+- 2026-10-31 Open PRs #29 and #30 in review, not merged; merging waits for that verdict and Vidyut
 - 2026-10-31 All invites accepted: collaborators vs-githjk, rohanrastogi311, AnoopIbrampur, RishitRai; pending invitations empty (gh api collaborators, invitations)
 - 2026-10-31 Rohan's Token Factory key is ready (#3, Oct 30) but not yet delivered to Vidyut; due privately by Sun Nov 1, never on GitHub
 - 2026-10-31 Model pins (plan/plan.md): `Qwen/Qwen3-30B-A3B-Instruct-2507` typed answers, fingerprint, card sentence; `Qwen/Qwen3-Embedding-8B` embeddings, 4096 dimensions, replaces `BAAI/bge-en-icl` (404 in #6), clustering thresholds set on dev; `deepseek-ai/DeepSeek-V4-Pro-0813` second opinion, eval stretch only; GLM dropped; temperature 0 for every typed call
