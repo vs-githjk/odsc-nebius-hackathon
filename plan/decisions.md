@@ -92,3 +92,5 @@ Format: [LOCKED|REJECTED|PREFERENCE] decision | why | "Vidyut's words" | date
 [LOCKED] No overnight build on Oct 29; no team check needed today | teammates have not started yet | "Don't do the overnight build. I'm not doing that today." | 2026-10-29
 [LOCKED] Jev key added to local .env (TYPESAFE_API_KEY); organizer email forwarded to Luka | done by Vidyut | "I've added a Jev key ... I already forwarded it to Luca" | 2026-10-29
 [LOCKED] Issue #2 rewritten to current state (stale pre-pick text removed) | his ask | "Issue number 2 still, you can just get that off" | 2026-10-29
+[LOCKED] Until Wed Nov 4 the main session only orchestrates; teammates get tasks through Mon or Tue, including research, testing and manual work | Rohan finished his first tasks, Anoop still has to do his | "Our job for the next 2-3 days is till Wednesday is just orchestrating pretty much ... give them more tasks till Monday or Tuesday" | 2026-10-31
+[LOCKED] Do what Rohan asked: review #29 and #30, and settle his two open calls (embedding replacement, GLM follow-up) | | "just look at this, do whatever he's asked or whatever it's said" | 2026-10-31

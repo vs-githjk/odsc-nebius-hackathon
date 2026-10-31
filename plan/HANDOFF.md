@@ -1,6 +1,6 @@
 # Handoff: ODSC x Nebius Hackathon (team Says Who)
 
-Last updated: Thu Oct 29 2026, about 12:45 PDT, by the main session (conductor).
+Last updated: Sat Oct 31 2026, by the main session (conductor).
 To resume in a new Claude Code chat opened in this folder, Vidyut says: **"I'm back, continue the master playbook"**. The new session reads this file, `plan/state.json` and `plan/decisions.md`, says where we are in three lines, and carries on.
 
 ## The event
@@ -60,6 +60,8 @@ Done this session (Oct 29, 01:37 to 02:00 PDT):
 - DONE (12:31 PDT): 20 Run-1 issues posted (#9 to #28) with queues on each focus issue; claims 5 and 6 posted as wording only on #5, #9, #10 (origin notes stay local in git-ignored plan/spike-claims-5-6.md); Anoop's blind period lasts until all 6 transcripts are committed. Rohan's and Rishit's repo invites still pending; assign on accept. WhatsApp kickoff text given to Vidyut.
 
 - PAUSED (12:45 PDT) on Vidyut's word. Package allowlist approved; Run 2 owner = his overnight build (Anoop backup). On "go": check teammates' progress on GitHub (XO watch pass: invites, PRs, #5, #9), then plan the first overnight build (Gate 3 wording "use a workflow, start the overnight build").
+
+- Oct 31: orchestrating until Wed Nov 4 (LOCKED). Rohan finished #6 and T13 (PRs #29, #30). Batch in plan/issues-oct31.md: T1 and T2 moved to Rohan, new tasks T2b, T18b, E1, E2, all queues re-dated to Mon to Wed. Spike report now Tue Nov 3, grading Wed Nov 4, Run 2 after that. Rishit has posted nothing yet. Vidyut's own Nebius key line is still empty; Rohan sends it.
 
 Next, in order (when Vidyut says "go"):
 0. Discuss plan/rerunlab-inspo.md with Vidyut first.
