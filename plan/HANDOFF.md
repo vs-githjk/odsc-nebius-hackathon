@@ -63,6 +63,8 @@ Done this session (Oct 29, 01:37 to 02:00 PDT):
 
 - Oct 31: orchestrating until Wed Nov 4 (LOCKED). Rohan finished #6 and T13 (PRs #29, #30). Batch in plan/issues-oct31.md: T1 and T2 moved to Rohan, new tasks T2b, T18b, E1, E2, all queues re-dated to Mon to Wed. Spike report now Tue Nov 3, grading Wed Nov 4, Run 2 after that. Rishit has posted nothing yet. Vidyut's own Nebius key line is still empty; Rohan sends it.
 
+- Oct 31 latest: no background loop (LOCKED). When Vidyut comes back and asks for an update, run one XO watch pass, merge what passes, report in a few lines. PR #29 merged; #30 waiting on Rohan's fix list.
+
 Next, in order (when Vidyut says "go"):
 0. Discuss plan/rerunlab-inspo.md with Vidyut first.
 1. Conductor picks claims 5 (a Wikipedia citogenesis case) and 6 (a fresh viral stat from the last 60 days) and has a non-runner write blind targets; XO posts the claims on #5 (never the targets).

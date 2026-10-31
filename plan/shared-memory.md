@@ -38,7 +38,7 @@ Team batch from plan/issues-oct31.md posted Oct 31: new issues #31 T2b, #32 T18b
 - 2026-10-28 23:54 Repo https://github.com/vs-githjk/odsc-nebius-hackathon PRIVATE, default branch main (gh repo view)
 - 2026-10-28 23:56 main branch protection: force-push and deletion blocked; admins not enforced; no required reviews or checks
 - Nothing deployed. No CI. Keys: none in repo; .env.example lists NEBIUS_API_KEY, TAVILY_API_KEY
-- Repo watch loop: running from the main session every 20 minutes since 2026-10-31
+- Repo watch: on demand, one pass when Vidyut asks for an update (no cron, no cloud routine)
 - 2026-10-31 Open PRs #29 and #30 in review, not merged; merging waits for that verdict and Vidyut
 - 2026-10-31 All invites accepted: collaborators vs-githjk, rohanrastogi311, AnoopIbrampur, RishitRai; pending invitations empty (gh api collaborators, invitations)
 - 2026-10-31 Rohan's Token Factory key is ready (#3, Oct 30) but not yet delivered to Vidyut; due privately by Sun Nov 1, never on GitHub

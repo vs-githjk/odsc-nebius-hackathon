@@ -71,7 +71,7 @@
  "last_seen_comment_at": "2026-10-31T11:00:00-07:00",
  "held_prs": [],
  "merge_command": "gh pr merge <n> --squash --match-head-commit <sha> --subject \"<clean subject> (#n)\" --body \"\"",
- "watch_loop": "running from main session, every 20 min from 2026-10-31, session-only, 7-day expiry",
+ "watch_loop": "on demand: one pass when Vidyut asks for an update (LOCKED 2026-10-31); no cron, no cloud routine",
  "kickoff_issue": 8,
  "kickoff_issue_pinned": true,
  "task_issues": {
