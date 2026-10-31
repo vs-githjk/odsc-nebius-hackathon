@@ -18,3 +18,4 @@
 - 2026-10-29 04:40: DEFECT (conductor): I relayed the 3 directions as 'strong' after looking at stills; Vidyut rejected them as sloppy and not pro-level. My check looked for wording rules and overlaps, not for the professional-league bar. Rule now: judge designs against named pro references at full size before relaying, and send back anything that would not sit next to them.
 - 2026-10-29: Network outage (ENOTFOUND) killed the final-design fix round mid-run and dropped all artifact watches; resumed after.
 - 2026-10-31 conductor defect: XO watch loop was never started after GATE 2 (playbook line 167), so reviewed PRs sat waiting and Vidyut was asked to approve a routine merge. Fix: rule for the loop to start the moment setup and GATE 2 are both done.
+- 2026-10-31 Oct 31 note: watch runs only in the main session (Vidyut: session stays on). Cloud routine XO watch created for a test, then disabled on his word; it can only be deleted at claude.ai/code/routines.
