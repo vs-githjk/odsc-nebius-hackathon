@@ -45,3 +45,4 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 
 - [14:57 PT] rohanrastogi311 T13: PR #29; targets-a SHA256 d8a20892c9ffc14f71db1aee75253d381997b84b4992c129bd9b32407df6ebdc; targets-b SHA256 5c10c10cc8098310a9de16f65e87d34b8773f5000836c813db3136f8630360b8
 - [01:10 PT] rohanrastogi311 T1: Node 24 workspace, exact allowlisted packages, CLI version stub and CI; npm ci, typecheck, test and make verify pass locally; smoke failed before version export | @master-xo review skeleton PR; T2 follows
+- [15:50 PT] RishitRai T10 clients: Tavily, Wayback and page clients with cache, budget and usage rows; draft PR on the skeleton branch, 1 live check credit | @rohanrastogi311 UsageRow is a temporary copy until #12 merges
