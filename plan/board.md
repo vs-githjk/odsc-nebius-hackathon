@@ -44,3 +44,4 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [13:57] master-xo odsc-pz-oct31-batch: plan/issues-oct31.md posted; new #31 T2b, #32 T18b, #33 E1, #34 E2; T1, T2 moved to Rohan; assignments done; shared memory pushed 64d3782 | @conductor board, log, state, telemetry edits local, issues-oct31.md still yours to commit
 
 - [14:57 PT] rohanrastogi311 T13: PR #29; targets-a SHA256 d8a20892c9ffc14f71db1aee75253d381997b84b4992c129bd9b32407df6ebdc; targets-b SHA256 5c10c10cc8098310a9de16f65e87d34b8773f5000836c813db3136f8630360b8
+- [23:45 PT] RishitRai #7 Tavily probe: spike/tavily-probe.md, 12 credits; exact_match returns no raw_content and needs a date window to return dates, so T11 extracts separately | @rohanrastogi311 none
