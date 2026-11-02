@@ -1,14 +1,14 @@
-# Token Factory smoke test — 2026-10-30
+# Token Factory smoke test - 2026-10-30
 
 Refs #6, #3. These are capability smoke calls, not spike or head-to-head runs. No evaluation output was opened.
 
 ## Findings
 
 - Token Factory key: authenticated; model catalogue HTTP 200 with 30 models. Tavily key: authenticated with GET /usage (HTTP 200); no search request made or account details saved.
-- Qwen: plain chat works; strict JSON schema and logprobs work in the same call, with five top alternatives on every generated token.
+- Qwen: plain chat works; strict JSON schema and logprobs work in the same call, with five returned slots per generated token (some slots are padding, not alternatives).
 - DeepSeek: plain chat returned `hello`.
 - GLM: HTTP 200 but empty visible content and `finish_reason: length` at both 20 and 128 max_tokens. Endpoint access is proven; useful text generation is NOT yet proven. Stop further retries here rather than hiding the failure.
-- BAAI/bge-en-icl is absent from the catalogue and returns HTTP 404 model_not_found. Qwen/Qwen3-Embedding-8B succeeds: three embeddings, each 4096 dimensions. Changing the model changes vector dimensions and similarity distributions; do not reuse existing clustering thresholds without dev validation.
+- BAAI/bge-en-icl is absent from the catalogue and returns HTTP 404 model_not_found. Qwen/Qwen3-Embedding-8B succeeds: three embeddings, each 4096 dimensions; pinned by the Oct 31 ruling. Changing the model changes vector dimensions and similarity distributions; do not reuse existing clustering thresholds without dev validation.
 
 ## Measured calls
 
@@ -16,8 +16,8 @@ Base URL: `https://api.tokenfactory.nebius.com/v1`. Plain chat prompt: `Reply wi
 
 | Call | Endpoint | Model | HTTP | Latency ms | Input tokens | Output tokens | Estimated USD |
 |---|---|---|---:|---:|---:|---:|---:|
-| Catalogue | GET /models?verbose=true | — | 200 | 6804 | — | — | 0 |
-| bge-embeddings | POST /embeddings | BAAI/bge-en-icl | 404 | 2638 | — | — | unknown (no successful usage) |
+| Catalogue | GET /models?verbose=true | - | 200 | 6804 | - | - | 0 |
+| bge-embeddings | POST /embeddings | BAAI/bge-en-icl | 404 | 2638 | - | - | unknown (no successful usage) |
 | deepseek-chat | POST /chat/completions | deepseek-ai/DeepSeek-V4-Pro-0813 | 200 | 4534 | 9 | 13 | 0.00006336 |
 | glm-chat-128 | POST /chat/completions | zai-org/GLM-5.2 | 200 | 4381 | 17 | 128 | 0.00058700 |
 | glm-chat | POST /chat/completions | zai-org/GLM-5.2 | 200 | 4795 | 17 | 20 | 0.00011180 |
@@ -42,7 +42,7 @@ Source: authenticated `GET https://api.tokenfactory.nebius.com/v1/models?verbose
 
 Request: the exact hop_label schema and sentence pair from the #6 addition, with `temperature: 0`, `max_tokens: 20`, `logprobs: true`, `top_logprobs: 5`.
 
-Schema match: **yes**. Returned content: `{"label": "new_wording"}`. Per-token logprobs with five alternatives: **yes**. No schema-only/logprobs-only retries were needed. The label occupies four tokens (`new`, `_`, `word`, `ing`); the first-token probability is not a calibrated whole-option probability. Unmatched probability mass must remain `other` in T19.
+Schema match: **yes**. Returned content: `{"label": "new_wording"}`. Per-token logprobs with five returned slots: **yes**. Of 50 returned slots, 9 have `logprob: -9999` and are padding, not real alternatives; treat them as zero probability. No schema-only/logprobs-only retries were needed. The label occupies four tokens (`new`, `_`, `word`, `ing`); the first-token probability is not a calibrated whole-option probability. Unmatched probability mass must remain `other` in T19.
 
 Label-value token evidence:
 
@@ -280,12 +280,12 @@ None of the three planned chat IDs is on that removal list. BAAI/bge-en-icl is a
 Recommended pinned IDs from this smoke:
 
 - Main chat/structured labels: `Qwen/Qwen3-30B-A3B-Instruct-2507`.
-- Optional second opinion: `deepseek-ai/DeepSeek-V4-Pro-0813`. Keep GLM unverified for useful text until a bounded follow-up resolves its reasoning/token budget.
-- Embeddings: propose `Qwen/Qwen3-Embedding-8B` to the coordinator; schema/threshold owners must account for its 4096-dimensional vectors. Do not silently change rules.
+- Optional second opinion: `deepseek-ai/DeepSeek-V4-Pro-0813`. GLM is dropped per the Oct 31 ruling; no follow-up.
+- Embeddings: `Qwen/Qwen3-Embedding-8B` is pinned per the Oct 31 ruling, with 4096 dimensions. Clustering thresholds are set on dev; none changed here.
 
 ## Validation and limits
 
-- Python JSON checks: all seven response records parse; schema enum matches; ten generated tokens each have five alternatives; three embedding rows have 4096 dimensions.
+- Python JSON checks: all seven response records parse; schema enum matches; ten generated tokens each have five returned slots; 9 of 50 slots are -9999 padding; three embedding rows have 4096 dimensions.
 - Secrets scan: neither supplied key occurs in any deliverable; no account or billing details included.
 - Targets were frozen before smoke calls; hash verification repeated without opening evaluated runs.
 - This is a one-run smoke test, not a latency benchmark, confidence calibration, or a claim of production reliability.
