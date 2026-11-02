@@ -13,7 +13,7 @@
   "scripts": {
     "typecheck": "tsc --noEmit -p packages/pz/tsconfig.json",
     "test": "vitest run",
-    "schema": "node -e \"console.error('schema export not built yet'); process.exit(1)\"",
+    "schema": "node --import tsx packages/pz/scripts/export-schema.ts",
     "fixtures": "node -e \"console.error('fixtures not built yet'); process.exit(1)\"",
     "pz": "node --env-file-if-exists=.env --import tsx packages/pz/src/cli/pz.ts"
   },
