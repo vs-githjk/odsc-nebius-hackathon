@@ -19,3 +19,4 @@
 - 13:57 Oct 31 batch from plan/issues-oct31.md: created #31 T2b, #32 T18b, #33 E1, #34 E2 (title-checked); owner moves #11, #12 to Rohan; 12 comments on task issues; assignments to Rohan and Rishit; focus comments #3, #4, #1, #2; no duplicates; shared memory 64d3782
 - 15:10 PT Nov 1 watch pass: PR #35 T1 aa79edd FIX (reviewer plus Codex): pz.ts mode, Vite 8.3.5 via vitest against the Vite 7 pin; list on #3; nudge on #1; #30 unchanged at 4dbc454; nothing merged
 - 20:35 PT Nov 1 watch pass: #36 f521176 PASS inline, merged, #7 closed; #37 draft skipped; #35, #30 unchanged; Anoop nothing yet
+- 12:50 PT Nov 2 watch pass: #38 dd08eff accepted, held until T12 report; blind period ended on #5; do-not-open notes on #1 and #3; Rohan bottleneck note on #3; nothing merged

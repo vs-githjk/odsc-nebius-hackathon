@@ -68,10 +68,16 @@
     "#29@4f0aa1f",
     "#30@4dbc454",
     "#35@aa79edd",
-    "#36@f521176"
+    "#36@f521176",
+    "#38@dd08eff"
   ],
-  "last_seen_comment_at": "2026-11-01T20:35:00-08:00",
-  "held_prs": [],
+  "last_seen_comment_at": "2026-11-02T12:50:00-08:00",
+  "held_prs": [
+    {
+      "pr": 38,
+      "reason": "hold until spike/REPORT.md is committed (T12), so the spike runner cannot see tool answers on claims 1 to 6"
+    }
+  ],
   "merge_command": "gh pr merge <n> --squash --match-head-commit <sha> --subject \"<clean subject> (#n)\" --body \"\"",
   "watch_loop": "on demand: one pass when Vidyut asks for an update (LOCKED 2026-10-31); no cron, no cloud routine",
   "kickoff_issue": 8,
