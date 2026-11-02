@@ -64,6 +64,8 @@ Done this session (Oct 29, 01:37 to 02:00 PDT):
 - Oct 31: orchestrating until Wed Nov 4 (LOCKED). Rohan finished #6 and T13 (PRs #29, #30). Batch in plan/issues-oct31.md: T1 and T2 moved to Rohan, new tasks T2b, T18b, E1, E2, all queues re-dated to Mon to Wed. Spike report now Tue Nov 3, grading Wed Nov 4, Run 2 after that. Rishit has posted nothing yet. Vidyut's own Nebius key line is still empty; Rohan sends it.
 
 - Oct 31 latest: no background loop (LOCKED). When Vidyut comes back and asks for an update, run one XO watch pass, merge what passes, report in a few lines. PR #29 merged; #30 waiting on Rohan's fix list.
+- Nov 1 passes: #36 merged. #35 (T1) FIX at aa79edd; once mode and Vite fixes land, re-check those two items only and merge. #30 still waits on Rohan. #37 (T10) is a draft, review after #35 and #12 merge. Rishit is active, dates yes.
+- Nov 2 pass: #38 head-to-head HOLD until spike/REPORT.md is committed, then Anoop merges main and XO merges. Anoop's blind period ended. Rishit and Rohan told not to open #38. Rohan is the bottleneck on #35 and T2. For the Nov 13 held-out head-to-head, ChatGPT must actually run in Deep research.
 
 Next, in order (when Vidyut says "go"):
 0. Discuss plan/rerunlab-inspo.md with Vidyut first.
