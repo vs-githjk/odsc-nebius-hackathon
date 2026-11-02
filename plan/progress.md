@@ -42,6 +42,7 @@ Every decision made during the build that the plan did not settle, by Vidyut or 
 - 2026-10-31 (main session): spike report moves to Tue Nov 3 and grading to Wed Nov 4, since T1 to T5 had not started. Run 2 cannot start before the grading, so it loses about 2 of its 7 days.
 - 2026-10-31 (main session): `usage.py` copied into the repo at `plan/tools/usage.py` so teammates need no access to master-agents. It holds no personal data or keys.
 - 2026-11-01 (watch pass): PR #35 T1 FIX at aa79edd, two small items on #3. Vite 7.3.7 pin enforced as the plan says. Nothing merged. Rishit nudged on #1, still silent; Anoop has pushed nothing, #5 due tonight.
+- 2026-11-01 (watch pass 2): Rishit active: ODSC registered, dates yes. PR #36 (#7 probe) PASS, merged. PR #37 T10 draft on Rohan's skeleton, not reviewed until #35 and #12 merge. Probe: `exact_match` returns no raw_content and needs a date window to return dates, so T11 extracts separately.
 
 ## Gates
 - gate1: "yes patient zero im open to exploring more anobt this" (Thu Oct 29 2026, about 01:05 PDT)
