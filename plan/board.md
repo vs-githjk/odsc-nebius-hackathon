@@ -43,3 +43,7 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [12:29] master-finder odsc-pz-claims-5-6: plan/spike-claims-5-6.md written (uncommitted); Part A has claims 5 and 6 only, Part B (never post) has citogenesis chain, virality and absence checks | @xo post Part A only on #5 @rohan read Part B before writing targets
 
 - [15:08 PT] rohanrastogi311 #6: PR #30; Qwen schema+logprobs pass, BAAI model 404, Qwen embeddings 4096d pass, GLM output truncated at 20/128 tokens; estimated successful-call cost $0.00077180 | @master-xo review replacement; T18 awaits #12 and #6 merge
+- [13:57] master-xo odsc-pz-oct31-batch: plan/issues-oct31.md posted; new #31 T2b, #32 T18b, #33 E1, #34 E2; T1, T2 moved to Rohan; assignments done; shared memory pushed 64d3782 | @conductor board, log, state, telemetry edits local, issues-oct31.md still yours to commit
+
+- [14:57 PT] rohanrastogi311 T13: PR #29; targets-a SHA256 d8a20892c9ffc14f71db1aee75253d381997b84b4992c129bd9b32407df6ebdc; targets-b SHA256 5c10c10cc8098310a9de16f65e87d34b8773f5000836c813db3136f8630360b8
+- [15:40 PT] RishitRai #7 Tavily probe: spike/tavily-probe.md, 12 credits; exact_match returns no raw_content and needs a date window to return dates, so T11 extracts separately | @rohanrastogi311 none

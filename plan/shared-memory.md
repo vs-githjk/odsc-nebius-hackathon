@@ -15,20 +15,22 @@ Every agent and teammate reads this first. Owner: Master XO. Keep under about 15
 - 2026-10-29 LOCKED: Rohan holds the Token Factory card and team key; week-0 spike approved (Tavily, Token Factory under about $2) (Vidyut)
 - 2026-10-29 LOCKED: Anoop runs the consumer deep-research head-to-head (Vidyut)
 - 2026-10-29 LOCKED: every teammate's work starts as a GitHub issue; XO does all team comms there; humans on WhatsApp (Vidyut)
+- 2026-10-31 LOCKED: until Wed Nov 4 the main session only orchestrates; teammates get tasks through Mon or Tue (Vidyut)
+- 2026-10-31 LOCKED: review #29 and #30 and settle Rohan's two open calls (embedding replacement, GLM follow-up) (Vidyut)
 - 2026-10-28 PREFERENCE: ideas must be ambitious and creative; show him only 1 or 2 (Vidyut)
 
-## Who is doing what (refreshed 2026-10-29 12:30 PT)
-GATE 2 approved. Vidyut off Oct 29 to 30. Task issues T1 to T20 posted as #9 to #28 (queues on focus issues #4, #3, #1).
+## Who is doing what (refreshed 2026-10-31 PT; assignees checked with gh after posting)
+Team batch from plan/issues-oct31.md posted Oct 31: new issues #31 T2b, #32 T18b, #33 E1, #34 E2. T1 and T2 moved from Anoop to Rohan. All times PT.
 | Who | Queue (in order) | Inbox | Status |
 |---|---|---|---|
-| Vidyut (vs-githjk) | off Oct 29 to 30 | #2 | n/a |
-| Anoop (AnoopIbrampur) | #5 head-to-head (claims 5, 6 posted 12:30), then #11 T1, #12 T2, #13 T4 (by Fri Oct 30), #14 T3, #15 T5, #16 T6, #17 T7, #18 T8, #19 T9 | #4 | assigned; blind until all 6 transcripts committed |
-| Rohan (rohanrastogi311) | #9 T13 targets hash (by Sat Oct 31 23:59, before opening anything), #6, #26 T18, #27 T19, #28 T20 | #3 | invite pending; assign on accept |
-| Rishit (RishitRai) | #7, #20 T10, #21 T11, #10 T12 spike run (Oct 31 to Nov 1), #22 to #25 T14 to T17 front end | #1 | invite pending; assign on accept |
+| Vidyut (vs-githjk) | orchestrating only until Wed Nov 4; add the Nebius key line to his `.env` when Rohan sends it | #2 | decisions only |
+| Rohan (rohanrastogi311) | 4 yes or no answers on #3 (today); key to Vidyut privately (Sun Nov 1); #11 T1 (Sat Oct 31 23:59); #12 T2 without wording (Sun Nov 1 23:59); #26 T18 (Mon Nov 2 23:59); #32 T18b (Tue Nov 3 12:00); #27 T19 (Tue Nov 3 23:59); #33 E1 (Wed Nov 4 23:59); #28 T20 (Wed Nov 4 23:59) | #3 | PRs #29 and #30 open, in review; #6 and #9 stay open |
+| Anoop (AnoopIbrampur) | #5 head-to-head (Sun Nov 1 23:59); #13 T4, #31 T2b, #14 T3 (Mon Nov 2); #15 T5 (Mon Nov 2 23:59, unblocks the spike); #34 E2 (Tue Nov 3 23:59, only after XO confirms on #5 that his blind period ended); #16 T6 (Tue Nov 3 23:59); then #17 T7, #18 T8, #19 T9 | #4 | blind until all 6 transcripts are committed; not ended |
+| Rishit (RishitRai) | reply on #1 today; #7 (Sun Nov 1 23:59); #20 T10 (Mon Nov 2 23:59); #21 T11 (Tue Nov 3 12:00); #10 T12 spike run and report (Tue Nov 3 23:59); #22 T14, then #23, #24, #25 | #1 | nothing from him on GitHub yet as of Oct 31 |
 
 ## Open questions
-- 2026-10-29 Claims 5 (Wikipedia citogenesis case) and 6 (viral stat, last 60 days) for #5, and the blind grading targets (conductor / Vidyut)
-- 2026-10-29 How Rohan's Token Factory key reaches the others (Vidyut; never on GitHub)
+- 2026-10-31 Rohan to answer on #3: durable private backup of the targets; ODSC form as `Says Who`; Builder Program joined; low auto-charge limit set (Rohan)
+- 2026-10-31 Rishit to answer on #1: ODSC form as `Says Who`, skills, usual hours, AI plans (Rishit)
 - 2026-10-28 Repo visibility: private now; must be public by submission (Vidyut, at the end)
 - 2026-10-28 Exact deadline time and timezone (settled by the ODSC submission email)
 
@@ -36,10 +38,15 @@ GATE 2 approved. Vidyut off Oct 29 to 30. Task issues T1 to T20 posted as #9 to 
 - 2026-10-28 23:54 Repo https://github.com/vs-githjk/odsc-nebius-hackathon PRIVATE, default branch main (gh repo view)
 - 2026-10-28 23:56 main branch protection: force-push and deletion blocked; admins not enforced; no required reviews or checks
 - Nothing deployed. No CI. Keys: none in repo; .env.example lists NEBIUS_API_KEY, TAVILY_API_KEY
-- Repo watch loop: NOT started (starts after idea and plan are approved)
-- 2026-10-29 01:46 collaborators: vs-githjk, AnoopIbrampur; pending invites: rohanrastogi311, RishitRai (gh api invitations)
+- Repo watch: on demand, one pass when Vidyut asks for an update (no cron, no cloud routine)
+- 2026-10-31 Open PRs #29 and #30 in review, not merged; merging waits for that verdict and Vidyut
+- 2026-10-31 All invites accepted: collaborators vs-githjk, rohanrastogi311, AnoopIbrampur, RishitRai; pending invitations empty (gh api collaborators, invitations)
+- 2026-10-31 Rohan's Token Factory key is ready (#3, Oct 30) but not yet delivered to Vidyut; due privately by Sun Nov 1, never on GitHub
+- 2026-10-31 Model pins (plan/plan.md): `Qwen/Qwen3-30B-A3B-Instruct-2507` typed answers, fingerprint, card sentence; `Qwen/Qwen3-Embedding-8B` embeddings, 4096 dimensions, replaces `BAAI/bge-en-icl` (404 in #6), clustering thresholds set on dev; `deepseek-ai/DeepSeek-V4-Pro-0813` second opinion, eval stretch only; GLM dropped; temperature 0 for every typed call
+- 2026-10-31 `usage.py` is in the repo at plan/tools/usage.py; teammates do not need master-agents access
 
 ## Gotchas
+- 2026-10-31 #10's title still says due Sun Nov 1; the Oct 31 comment (Tue Nov 3, 23:59 PT) is the current date.
 - (2026-10-29) GitHub API gave TLS timeouts and HTTP 499 on issue create: check by title (REST list) before retrying a create, or you get duplicates.
 - (2026-10-29) Anoop's blind rule ends only when all 6 transcripts are committed, not when his PR opens (docs/AGENTS.md f977a8d).
 - 2026-10-29 plan/idea-brief.md, audit.md, ideas-r3.md, market.md, board.md and artifacts/ discuss the spike claims' origins: Anoop must not read them until his #5 PR is open; keep claim origins out of this file and out of issues.

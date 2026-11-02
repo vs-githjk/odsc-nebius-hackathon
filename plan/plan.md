@@ -31,7 +31,7 @@ Ship a research agent that traces a viral statistic backwards to the earliest so
 - Keys only from `process.env` (Node's `--env-file-if-exists=.env`); never logged, never in a usage row, error message, cache file, trace or test fixture. `.env.example` lists `NEBIUS_API_KEY`, `TAVILY_API_KEY`, `TYPESAFE_API_KEY` (optional, Jev ablation only).
 - **Runtime usage log (LOCKED):** every Tavily, Token Factory, Wayback and fetch call appends one `UsageRow` to `runs/usage.jsonl` (git-ignored); every trace embeds its own rows.
 - **Per-trace caps** (in `packages/pz/rules/rules.json`): 150 Tavily credits, $0.50 Token Factory, 5 minutes, depth 8 hops, frontier width 5; checked before each call. Spike total: Tavily within the approved few hundred credits, Token Factory under about $2.
-- Pinned models (config, confirmed against the Nov 9 removal list by #6): `Qwen/Qwen3-30B-A3B-Instruct-2507` (typed answers, fingerprint, card sentence), `BAAI/bge-en-icl` (embeddings). Temperature 0 for every typed call.
+- Pinned models (config, confirmed against the Nov 9 removal list by #6): `Qwen/Qwen3-30B-A3B-Instruct-2507` (typed answers, fingerprint, card sentence), `Qwen/Qwen3-Embedding-8B` (embeddings, 4096 dimensions; replaced `BAAI/bge-en-icl`, which returned 404 in #6, ruling Oct 31; clustering thresholds are set on dev, never carried over), `deepseek-ai/DeepSeek-V4-Pro-0813` (second opinion, eval stretch only; GLM dropped). Temperature 0 for every typed call.
 - **Page text:** full extracts live only in the git-ignored `.cache/`; committed traces hold spans with at most 200 characters of context each side, character offsets, `extractSha256`, `windowSha256` and a Wayback URL.
 - **Synthetic fixtures:** an invented claim about an invented entity, every page on a `*.example` domain, `synthetic: true`, `mode: "SAMPLE"`. Never real outlets, never real people.
 - **Copy:** no em dashes or en dashes anywhere (code, comments, copy, commits). Banned in README, UI copy and card templates: "independent sources", "invented by", "this outlet changed", "proves", "introduced by". Say "earliest source we found", "traced to N roots we could link", "earliest page we found with the new wording". Copy lint enforces this from T8.
@@ -168,16 +168,16 @@ Never claimed: print or paywalled origins, "who invented" a claim, "independent 
 5. Reduced motion and 390 px: the scrubber steps by arrow keys and swipe, static frames carry the same information, and no state is shown by colour alone.
 
 ## Schedule and lanes
-Anchors: internal D = Thu Nov 19 23:59 PT. Feature freeze Nov 18 (brief). Run-of-show hard anchors: storyboard gate D-14h (Nov 19 09:59 PT), freeze for fixes D-6h (Nov 19 17:59), submitted D-3h (Nov 19 20:59). Spike results due Sun Nov 1 23:59 PT; the plan is re-cut on Nov 1 from the spike report.
+Anchors: internal D = Thu Nov 19 23:59 PT. Feature freeze Nov 18 (brief). Run-of-show hard anchors: storyboard gate D-14h (Nov 19 09:59 PT), freeze for fixes D-6h (Nov 19 17:59), submitted D-3h (Nov 19 20:59). Spike results due Tue Nov 3 23:59 PT and grading Wed Nov 4 (moved Oct 31, was Nov 1); the plan is re-cut on Nov 4 from the spike report.
 
 | Lane | Person | Run 1 queue, in order (Oct 29 to Nov 1) | Oct 29 to 30 load |
 |---|---|---|---|
-| verification, eval-demo-repo | Anoop | #5 head-to-head (blind, first), then T1, T2, T4, T3, T5, T6, T7, T8, T9 | about 6 h after #5 (T1 to T6); T7 to T9 Oct 31 |
-| ui, spike | Rishit | #7 Tavily probe, T10, T11 (spike first), then T14, T15, T16, T17; T12 spike run Oct 31 to Nov 1 | about 5.5 h (#7, T10, T11, T14, T15) |
-| agent-core | Rohan | T13 targets and hash (first, before opening any head-to-head or spike output), #6 smoke, then T18, T19; T20 grading after all runs | about 3.5 h (T13, #6); T18, T19 Oct 31 |
-| none until Nov 1 | Vidyut | Run 2 engine lane proposed from Nov 2 (overnight master-builder), his call | 0 |
+| verification, eval-demo-repo | Anoop | #5 head-to-head (blind, first), then T4, T2b, T3, T5, E2 dev claims, T6, then T7, T8, T9 | re-queued Oct 31, dates on #4 |
+| ui, spike | Rishit | #7 Tavily probe, T10, T11, T12 spike run, then T14, T15, T16, T17 | re-queued Oct 31, dates on #1 |
+| agent-core, eval | Rohan | T13 and #6 done, then T1, T2 (everything except the question wording), T18, T18b probe, T19, E1 held-out set, T20 grading | re-queued Oct 31, dates on #3 |
+| none until Wed Nov 4 | Vidyut | orchestrating only; Run 2 engine lane after the spike report and grading, his call | 0 |
 
-Fallback: if T1 and T2 are not open as PRs by Fri Oct 30 10:00 PT, Rishit's agent builds them from this section (both are origin-free) and Anoop starts at T4.
+Oct 31 change: T1 and T2 moved from Anoop to Rohan, who was blocked on them and may do both (neither touches prompts, rules or thresholds). The four question texts stay Anoop's as T2b.
 
 ## Tasks
 Run 1: 20 tasks, demo path first (schema, fixtures and the trace view before engine depth). Kickoff issues #5, #6, #7 are prerequisites, not plan tasks. Every task: failing test first, then the smallest change, `npm run typecheck && npm test` green, one PR, one board line.
