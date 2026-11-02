@@ -1,0 +1,14 @@
+{
+  "name": "pz",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "bin": { "pz": "src/cli/pz.ts" },
+  "exports": {
+    ".": "./src/index.ts",
+    "./schema": "./src/schema/index.ts",
+    "./rules": "./src/rules/index.ts",
+    "./verify": "./src/verify/index.ts"
+  },
+  "dependencies": { "zod": "4.6.7" }
+}
