@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "scope_widened": {
+      "type": "string",
+      "enum": [
+        "yes",
+        "no"
+      ]
+    },
+    "attribution_shifted": {
+      "type": "string",
+      "enum": [
+        "yes",
+        "no"
+      ]
+    },
+    "context_stripped": {
+      "type": "string",
+      "enum": [
+        "yes",
+        "no"
+      ]
+    },
+    "page_type": {
+      "type": "string",
+      "enum": [
+        "study",
+        "dataset",
+        "report",
+        "speaker",
+        "news",
+        "blog",
+        "social",
+        "other"
+      ]
+    }
+  },
+  "required": [
+    "scope_widened",
+    "attribution_shifted",
+    "context_stripped",
+    "page_type"
+  ],
+  "additionalProperties": false
+}
