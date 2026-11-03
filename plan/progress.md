@@ -51,3 +51,5 @@ Every decision made during the build that the plan did not settle, by Vidyut or 
 - gate1: "yes patient zero im open to exploring more anobt this" (Thu Oct 29 2026, about 01:05 PDT)
 - gate2: "Yes, I approve the plan" (Thu Oct 29 2026, about 05:05 PDT)
 - design direction: "Yeah, I completely agree. Time machine plus rewind, but somewhat lighter, more vibrant color" (Thu Oct 29 2026, about 05:00 PDT)
+- 2026-11-02 (XO ruling): written-out numbers ("ten times") are not parsed in T4 or the spike; candidate rule to test on the E2 dev set before the held-out run.
+- 2026-11-02 (XO): new issues #54 T20a forms (Anoop), #55 T26 and #56 T27 pulled forward on fixtures (Anoop), #57 T31 Jev (Rohan). T20 grading moved to Thu Nov 5. Spike rerun go on #10.
