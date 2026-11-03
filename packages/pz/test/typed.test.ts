@@ -78,6 +78,13 @@ describe("typed decision mechanism", () => {
       { token: 'low"}', logprob: 0, top_logprobs: [] }] };
     expect(confidenceFor(q, content, logprobs).probability).toBeCloseTo(.8);
   });
+  it("[C19] an escaped value that has no exact token prefix gets null confidence", () => {
+    const content = String.raw`{"scope_widened":"\u0079es"}`;
+    const logprobs = { content: [{ token: '{"scope_widened":"', logprob: 0, top_logprobs: [] },
+      { token: String.raw`\u0079`, logprob: 0, top_logprobs: [{ token: String.raw`\u0079`, logprob: 0 }] },
+      { token: 'es"}', logprob: 0, top_logprobs: [] }] };
+    expect(confidenceFor(question, content, logprobs).probability).toBeNull();
+  });
   it("[C19] below threshold is unsure, equal threshold and null threshold preserve choice", async () => {
     const d = measured();
     const data = { ...recorded, ...d };
