@@ -146,3 +146,42 @@ describe("review fixes", () => {
     expect(atomHit("Seals nap 14 times a day.", atoms("14", "penguin"), 2)).toBe(true);
   });
 });
+
+// T4b (#59): weak numbers need the subject in the same clause. Invented sentences only; the rule was measured
+// on the E2 dev claims (eval/weak-atoms), never on spike claims.
+describe("weak numbers need the subject in the same clause", () => {
+  const penguins = atoms("14", "penguin");
+
+  it("[C2] still hits when the number and the subject share a clause", () => {
+    expect(atomHit("Harbor Zoo penguins nap 14 times a day.", penguins)).toBe(true);
+    expect(atomHit("So, if not 14 naps, then, how often do penguins rest?", penguins)).toBe(true);
+    expect(atomHit("14 naps a day is a myth; penguins rest far less.", penguins)).toBe(true);
+    expect(atomHit("The zoo keeps a 14-penguin colony.", penguins)).toBe(true);
+  });
+
+  it("[C2] rejects a tag list or a run of commas between them", () => {
+    expect(atomHit("Tags: 14 naps, 3 seals, zoo visits, keeper notes, penguins", penguins)).toBe(false);
+  });
+
+  it("[C2] rejects a heading break, colon or bracket between them", () => {
+    expect(atomHit("Open 14 hours | Penguin feeding guide", penguins)).toBe(false);
+    expect(atomHit("Gate 14: penguins this way", penguins)).toBe(false);
+    expect(atomHit("Seals nap 14 times (penguins rarely do).", penguins)).toBe(false);
+  });
+
+  it("[C2] never counts a number inside a URL", () => {
+    expect(atomHit("Photo: https://zoo.example/14-penguins-1401695227", penguins)).toBe(false);
+    expect(atomHit("See https://zoo.example/penguins/14 for penguins.", penguins)).toBe(false);
+  });
+
+  it("[C2] leaves strong numbers alone", () => {
+    expect(atomHit("By 2050, a year of change, more, more, more penguins.", atoms("2050", "penguin"))).toBe(true);
+    expect(atomHit("By 2050 the seals will move.", atoms("2050", "penguin"))).toBe(true);
+  });
+
+  it("[C2] takes the comma limit from the caller", () => {
+    const list = "14 naps, 3 seals, zoo visits, penguins";
+    expect(atomHit(list, penguins)).toBe(false);
+    expect(atomHit(list, penguins, 3, 3)).toBe(true);
+  });
+});
