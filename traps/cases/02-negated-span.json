@@ -1,13 +1,17 @@
 {
   "id": "negated-span",
   "kind": "trace",
-  "note": "The origin page only says the number is a myth, so it is marked meta; no origin is left.",
+  "note": "The origin page's sentence follows \"It is a myth that\" on a page that is not marked meta (Review Focus 2); the negation rule must stop it being the origin.",
   "input": {
     "tracePath": "fixtures/traces/sample-origin.json",
     "mutate": [
       {
-        "set": "nodes.0.meta",
-        "value": true
+        "set": "spans.0.contextBefore",
+        "value": "Seals were counted elsewhere. It is a myth that"
+      },
+      {
+        "set": "spans.0.windowSha256",
+        "value": "23f14720e37d110584517dbdd7964e60ddaa74e2246ee5c5a09a3b31adfef84d"
       }
     ]
   },
@@ -18,6 +22,9 @@
       0,
       0,
       0
+    ],
+    "verify": [
+      "negated"
     ]
   }
 }

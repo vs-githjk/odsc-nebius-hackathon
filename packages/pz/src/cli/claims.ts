@@ -2,14 +2,15 @@ import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 
-export type Claim = { id: string; state: string; text: string };
+export type Claim = { id: string; state: string; text: string; proof: string };
 export type Tally = { passed: number; failed: number };
 type VitestJson = { testResults: { assertionResults: { title: string; status: string }[] }[] };
 
 // Reads the `- Cn | state | text | proof: ...` lines under "## Claims we will make".
 export function parseClaims(plan: string): Claim[] {
   const section = plan.split(/^## Claims we will make\s*$/m)[1]?.split(/^## /m)[0] ?? "";
-  return [...section.matchAll(/^- (C\d+) \| (\w+) \| (.+?) \| proof:/gm)].map((m) => ({ id: m[1]!, state: m[2]!, text: m[3]! }));
+  return [...section.matchAll(/^- (C\d+) \| (\w+) \| (.+?) \| proof: (.*)$/gm)]
+    .map((m) => ({ id: m[1]!, state: m[2]!, text: m[3]!, proof: m[4]!.trim() }));
 }
 
 export function tallyTags(results: VitestJson): Map<string, Tally> {
@@ -23,10 +24,13 @@ export function tallyTags(results: VitestJson): Map<string, Tally> {
   return tally;
 }
 
-// A claim is only "built" when plan.md says so; then its tagged tests decide PASS or FAIL.
+// A claim is only "built" when plan.md says so. Tagged tests decide PASS or FAIL only when its proof is a test;
+// a proof such as a CI link, screenshot or session table stays "no proof yet" until someone checks it.
 export function claimRow(claim: Claim, tally: Tally | undefined): string {
   const tests = tally ? `${tally.passed} of ${tally.passed + tally.failed} tagged tests pass` : "no tagged tests";
-  const status = claim.state !== "built" ? "planned" : !tally ? "no test yet" : tally.failed > 0 ? "built FAIL" : "built PASS";
+  const status = claim.state !== "built" ? "planned"
+    : !/\btests?\b/i.test(claim.proof) ? "no proof yet"
+    : !tally ? "no test yet" : tally.failed > 0 ? "built FAIL" : "built PASS";
   return `${claim.id.padEnd(4)} ${status.padEnd(12)} ${tests}`;
 }
 

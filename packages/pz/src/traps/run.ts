@@ -4,6 +4,7 @@ import { join } from "node:path";
 import { z } from "zod";
 import { decideStopState, loadRules } from "../rules/index.ts";
 import { StopState, Trace } from "../schema/index.ts";
+import { verifyTrace } from "../verify/checks.ts";
 import { falseCertainty } from "../verify/false-certainty.ts";
 import { bound } from "./bound.ts";
 
@@ -14,7 +15,10 @@ export const TrapCase = z.object({
     mutate: z.array(z.object({ set: z.string(), value: z.unknown() }).strict()),
     cardSentence: z.string().optional(),
   }).strict(),
-  expect: z.object({ state: StopState, falseCertainty: z.tuple([z.number(), z.number(), z.number(), z.number()]) }).strict(),
+  expect: z.object({
+    state: StopState, falseCertainty: z.tuple([z.number(), z.number(), z.number(), z.number()]),
+    verify: z.array(z.string()).default([]),   // pz verify checks the planted problem must fire, sorted
+  }).strict(),
 }).strict();
 export type TrapCase = z.infer<typeof TrapCase>;
 
@@ -58,6 +62,8 @@ export function runTraps(paths: TrapPaths): { code: number; lines: string[] } {
     const fc = Object.values(falseCertainty(trace, { cardSentence: c.input.cardSentence, rules }));
     if ((state === "ORIGIN_FOUND") !== (c.expect.state === "ORIGIN_FOUND")) wrongOrigins++;
     if (state !== c.expect.state) lines.push(`FAIL ${c.id}: state ${state}, case expects ${c.expect.state}`);
+    const fired = [...new Set(verifyTrace(trace, { rules }).failures.map((x) => x.check))].sort();
+    if (fired.join(",") !== c.expect.verify.join(",")) lines.push(`FAIL ${c.id}: pz verify fired [${fired.join(", ")}], case expects [${c.expect.verify.join(", ")}]`);
     fc.forEach((v, i) => {
       if (v !== c.expect.falseCertainty[i]) { misses[i]!++; lines.push(`FAIL ${c.id}: false-certainty counter ${i + 1} is ${v}, case expects ${c.expect.falseCertainty[i]}`); }
     });

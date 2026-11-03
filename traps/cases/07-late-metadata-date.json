@@ -1,7 +1,7 @@
 {
   "id": "late-metadata-date",
   "kind": "trace",
-  "note": "The origin page's metadata date is later than its first capture and the conflict flag is not set; the first capture still dates it, so the origin stands.",
+  "note": "The origin page's metadata date is later than its first capture and the conflict flag is not set; the date-cap check must fire.",
   "input": {
     "tracePath": "fixtures/traces/sample-origin.json",
     "mutate": [
@@ -22,6 +22,9 @@
       0,
       0,
       0
+    ],
+    "verify": [
+      "date_cap"
     ]
   }
 }
