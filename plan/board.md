@@ -62,3 +62,4 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [18:15 PT] AnoopIbrampur T8 make verify: copy lint, leakage stub, claims table, CI runs make verify (3 s locally), stacked on T7 (#47), PR to follow
 - [18:53 PT] AnoopIbrampur T8 fixes: 60 s budget enforced, no proof yet for non-test proofs, fixture self-check untagged on #48
 - [18:16 PT] AnoopIbrampur T9 README: judge-facing README, plan index, llms.txt, link and copy tests, stacked on T8 (#48), PR to follow
+- [18:54 PT] AnoopIbrampur T9 fixes: README wording per XO batch 2 on #49

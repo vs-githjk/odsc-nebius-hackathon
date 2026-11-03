@@ -1,8 +1,8 @@
 # Patient Zero
 
-For a reporter or fact-checker with one viral number and a deadline: paste a number, a quote or an AI answer, and Patient Zero will walk each claim backwards through time to the earliest source it can find, count how many separate roots the copies trace back to, and mark the earliest page where the wording changed.
+For a reporter or fact-checker with one viral number and a deadline: paste a number, a quote or an AI answer, and Patient Zero will walk each claim backwards through time to the earliest source it can find, say how many roots we could link the copies to, and mark the earliest page where the wording changed.
 
-Team **Says Who**, ODSC x Nebius Hackathon 2026. Built on Nebius Token Factory and Tavily.
+Team **Says Who**, ODSC x Nebius Hackathon 2026. Built for Nebius Token Factory and Tavily; today only the spike scripts call them.
 
 **Trace GIF:** coming with the first real trace.
 
@@ -10,7 +10,7 @@ Team **Says Who**, ODSC x Nebius Hackathon 2026. Built on Nebius Token Factory a
 
 | Command | What it does | Status |
 |---|---|---|
-| `make verify` | Re-checks every committed trace, the trap set, the copy lint and the leakage test, then prints the claims table. No API keys needed. | works now |
+| `make verify` | Re-checks every committed trace, the trap set and the copy lint, runs the leakage test (a stub until the held-out claims are revealed), then prints the claims table. No API keys needed. | works now |
 | `make replay` | Will replay a recorded trace with its original usage rows | not built yet |
 | `make live CLAIM="..."` | Will run a live trace with your own keys | not built yet |
 
@@ -27,7 +27,7 @@ Team **Says Who**, ODSC x Nebius Hackathon 2026. Built on Nebius Token Factory a
 | Sourced (30) | Every edge rests on two verbatim spans; `make verify` re-checks spans, edges and the stop state of every committed trace ([packages/pz/src/verify/checks.ts](packages/pz/src/verify/checks.ts)) | built on synthetic fixtures; real traces planned |
 | Works (25) | `make replay` and `make live CLAIM="..."`; public CI running `make verify` ([.github/workflows/ci.yml](.github/workflows/ci.yml)) | `make verify` and CI built; replay and live planned |
 | Usefulness (20) | Two outside-user sessions timed against their usual method; demo video | planned |
-| Agent design (15) | Code decides how a trace ends ([packages/pz/src/rules/decide.ts](packages/pz/src/rules/decide.ts), [packages/pz/rules/rules.json](packages/pz/rules/rules.json)); planted trap set ([traps/README.md](traps/README.md)) | built |
+| Agent design (15) | Code decides how a trace ends ([packages/pz/src/rules/decide.ts](packages/pz/src/rules/decide.ts), [packages/pz/rules/rules.json](packages/pz/rules/rules.json)); planted trap set ([traps/README.md](traps/README.md)) | built on synthetic fixtures; card and real traces planned |
 | Token Factory and Tavily (10) | Every call logged with model, tokens, credits, cost and latency; one line per model below | planned |
 
 ## What is real

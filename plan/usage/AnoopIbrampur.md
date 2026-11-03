@@ -6,10 +6,10 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 
 | Service | Calls |
 |---|---|
-| Shell | 148 |
+| Shell | 149 |
 | Other HTTP | 91 |
 | Claude Code tools | 87 |
-| GitHub (gh) | 72 |
+| GitHub (gh) | 73 |
 | MCP ccd_turn | 51 |
 | Web search and fetch | 36 |
 | MCP ccd_host | 7 |
@@ -20,20 +20,20 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 
 | Kind | Tokens |
 |---|---|
-| input_tokens | 468 |
-| cache_creation_input_tokens | 1,225,806 |
-| cache_read_input_tokens | 48,529,396 |
-| output_tokens | 218,630 |
+| input_tokens | 470 |
+| cache_creation_input_tokens | 1,227,379 |
+| cache_read_input_tokens | 48,993,186 |
+| output_tokens | 219,349 |
 
 ## Per run
 
 | Started (UTC) | Agent | Model | Output tokens | Apify | Bright Data | Browser | Web | GitHub | Codex | Nebius Token Factory | Tavily API | Other HTTP |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 2026-10-30T20:10 | main session | claude-opus-5-5, claude-sonnet-5-5 | 218,630 | 0 | 0 | 0 | 36 | 72 | 0 | 0 | 0 | 91 |
+| 2026-10-30T20:10 | main session | claude-opus-5-5, claude-sonnet-5-5 | 219,349 | 0 | 0 | 0 | 36 | 73 | 0 | 0 | 0 | 91 |
 
 ## Detail (service: tool or host)
 
-- GitHub (gh): gh: 72
+- GitHub (gh): gh: 73
 - MCP ccd_directory: change_directory: 1
 - MCP ccd_host: open_in_editor: 7
 - MCP ccd_pr: get_status: 1
