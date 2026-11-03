@@ -36,7 +36,7 @@ export function createTokenFactoryClient(options: Options = {}) {
     const key = process.env.NEBIUS_API_KEY?.trim();
     if (!key) throw new TokenFactoryError("not_configured");
     const price = (prices.models as Record<string, { input: number; output: number; cachedInput: number }>)[body.model];
-    if (!price) throw new TokenFactoryError("bad_response");
+    if (!price) throw new TokenFactoryError("not_configured");
     const rows: UsageRow[] = [];
     const redact = (value: unknown): unknown => {
       if (typeof value === "string") return value.split(key).join("[REDACTED]");
@@ -44,6 +44,10 @@ export function createTokenFactoryClient(options: Options = {}) {
       if (value !== null && typeof value === "object") return Object.fromEntries(Object.entries(value).map(([k, v]) => [String(redact(k)), redact(v)]));
       return value;
     };
+    async function record(row: UsageRow) {
+      rows.push(row);
+      try { await log(row); } catch { /* The returned attempt rows remain authoritative when persistence fails. */ }
+    }
     const safeModel = String(redact(body.model));
     for (let attempt = 0; attempt < 2; attempt++) {
       const at = new Date().toISOString(), start = performance.now();
@@ -55,7 +59,7 @@ export function createTokenFactoryClient(options: Options = {}) {
         });
       } catch {
         const row = rowFor("network_error");
-        rows.push(row); await log(row);
+        await record(row);
         throw new TokenFactoryError("network_error", null, rows);
       }
       let raw: unknown;
@@ -63,7 +67,7 @@ export function createTokenFactoryClient(options: Options = {}) {
       const parsedUsage = Usage.safeParse(raw && typeof raw === "object" ? (raw as Record<string, unknown>).usage : null);
       const u = parsedUsage.success ? parsedUsage.data : null;
       const row = rowFor(String(response.status), u);
-      rows.push(row); await log(row);
+      await record(row);
       if (!response.ok) {
         if (attempt === 0 && (response.status === 429 || response.status >= 500)) { await sleep(250); continue; }
         throw new TokenFactoryError("http_error", response.status, rows);
