@@ -2,7 +2,9 @@
 
 Run 2026-11-02, about 18:35 PT, by RishitRai with `spike/walk.ts` at commit 83a1e71. That is one run per claim with fixed rules and no reruns. The claims and their atoms were committed in 83a1e71 before any spike call, and Rohan's target hashes were on #10 before the run.
 
-**Total: 63 Tavily credits (about $0.50 at the $0.008 list price), $0 Token Factory, 2.4 minutes of walking.** All 6 traces pass `pz verify`, both on their own and against their saved pages (`--pages .cache/pages/<id>`).
+**Total: 63 Tavily credits (about $0.50 at the $0.008 list price), $0 Token Factory, 2.4 minutes of walking.** All 6 traces passed `pz verify` at run time, both on their own and against their saved pages (`--pages .cache/pages/<id>`). Under the T4, T5 and T6 rules reviewed later, two checks now differ; see "Run 1 under the reviewed rules".
+
+**This is the only run.** On #10, XO decided against a rerun: the reviewed T4 fix would not change the false matches below, and choosing a stricter rule is tuning, so it belongs on the dev set (#59).
 
 Whether a trace reached its target is graded blind by Rohan in T20 against the hashed targets. Nothing below grades it.
 
@@ -21,7 +23,7 @@ The matching rule is too loose for small numbers, and that is the main finding. 
 
 Claims 3 and 5 look like real matches: each earliest span states the claim's numbers in the claim's context.
 
-**Proposed fix, for XO and Vidyut to decide, not applied:** a sentence counts only if it contains one of the claim's variant phrases (for example "8 seconds", "8-second") as well as passing `atomHit`. The search query already quotes those phrases, so this makes the reading rule match the search rule. It would be a logged rerun from scratch at a few credits, since repeat searches come from the cache. It is not applied because changing a rule after seeing spike results is tuning on the test claims, and that is not mine to decide.
+A stricter rule is listed under "Candidate rules (not applied)" and is measured on the dev set in #59.
 
 ## The five pass-bar lines
 
@@ -52,13 +54,40 @@ Tavily `/extract` with markdown keeps hyperlinks inline, with no links field and
 
 ## What failed or is missing
 
-1. **False matches on weak numbers** (bottom line above), on claims 1, 2, 4 and 6.
+1. **False matches on weak numbers** (bottom line above). The earliest page on claims 1, 2, 4 and 6 does not state the claim; on claims 3 and 5 it does. The reviewed T4 fix (#42, on `main` at 73736dc) does not repair this. An offline check of run 1's spans against it, at no credit cost, gave:
+
+   | Claim | Run-1 earliest page | Passes the reviewed `atomHit`? |
+   |---|---|---|
+   | 1 | hotrod.com, 1994 (false match) | No, and it is the only span the fix drops |
+   | 2 | prsecrets.com, 2005 (false match) | Yes |
+   | 3 | psychologytoday.com, 2011 (real match) | Yes |
+   | 4 | wired.com, 2013 (false match) | Yes |
+   | 5 | boatcoversdirect.com, 2013 (real match) | Yes |
+   | 6 | frontiersin.org, captured 2024 (false match) | Yes |
+
+   The fix also checks whether the sentence's own number is weak, but a weak claim number such as 8 or 10 still counts with the subject word anywhere in the sentence. On claim 1, dropping the 1994 page would only move the earliest to the next page, a 2010 journal reference list, which is also a false match.
 2. **No page types**, so no ORIGIN FOUND is possible. This waits on T19 (#27).
-3. **Written-out numbers never match.** `atomHit` reads digits only, so pages saying "ten times" or "eight seconds" were found and dropped. Claim 4 is the most affected: only 2 of the 9 pages read were kept.
+3. **Written-out numbers never match.** `atomHit` reads digits only, so pages saying "ten times" or "eight seconds" were found and dropped. Claim 4 is the most affected: only 2 of the 9 pages read were kept. XO ruled this out of scope for the spike (#50).
 4. **Extract failures leave parents unread.** 17 pages across claims 1, 2, 4 and 5 failed to extract, mostly social and video pages. They stay unread and block ORIGIN FOUND, as designed.
 5. **Spans carry page chrome.** Sentences before the first full stop include navigation text, for example "Skip to content", or the end of a WhatsApp share page in claim 1. They are still verbatim.
 6. **Inferred edges are date order only**, which inflates line 3.
 7. **Dates:** 4 of 27 dated pages are `existed_by` from the Wayback first capture, and 3 of those disagree with Tavily's date. 2 pages have no date at all.
+
+## Run 1 under the reviewed rules
+
+The run used T4, T5 and T6 as they stood at 83a1e71. Re-checking the stored traces with the reviewed versions now on `main`, `npx pz verify spike/traces/claim-<n>.json --pages .cache/pages/claim-<n>` reports two things. The traces are kept as recorded: no rerun, and no hand edits.
+
+- **`stop_state` differs on all 6 traces, in wording only.** The state, the row and every count are identical. The reviewed `decideStopState` words row 6's first reason as "...no earlier citation and no negated span", where the stored traces say "...and no earlier citation". `pz verify` compares the whole decision, so it flags this.
+- **`atoms` fails on claim 1, span `s8`.** That is the 1994 hotrod.com span, the same result as the offline check above.
+
+Every other check passes: window hashes, offsets, page hashes and offsets, two spans per edge, edge kinds, the earliest node, and negation.
+
+## Candidate rules (not applied)
+
+These were written after seeing run 1, so applying them here would be tuning on the test claims. Each is measured on the E2 dev set first.
+
+1. **Variant phrase required** (#59). A sentence counts only if it contains one of the claim's variant phrases (for example "8 seconds" or "8-second") as well as passing `atomHit`. The search query already quotes those phrases, so the reading rule would match the search rule.
+2. **Written-out numbers.** "ten times" matches 10, and "eight seconds" matches 8. Logged by XO on #50.
 
 ## Files
 
