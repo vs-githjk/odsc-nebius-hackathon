@@ -11,8 +11,10 @@ verify:
 	npm run -s pz -- traps && \
 	node --import tsx packages/pz/src/cli/lint-copy.ts && \
 	node --import tsx packages/pz/src/cli/leakage.ts && \
-	node --import tsx packages/pz/src/cli/claims.ts && \
-	echo "make verify passed in $$(( $$(date +%s) - start )) s"
+	node --import tsx packages/pz/src/cli/claims.ts || exit 1; \
+	took=$$(( $$(date +%s) - start )); \
+	if [ $$took -gt 60 ]; then echo "make verify FAILED: took $$took s, over the 60 s budget (C17)"; exit 1; fi; \
+	echo "make verify passed in $$took s"
 
 replay live:
 	@echo "not built yet"

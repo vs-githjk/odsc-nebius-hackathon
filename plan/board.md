@@ -60,3 +60,4 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [18:13 PT] AnoopIbrampur T7 traps: falseCertainty, pz traps, 10 synthetic cases with lock, stacked on T6 (#46), PR to follow
 - [18:52 PT] AnoopIbrampur T7 fixes: real negated-span case, date_cap check, verify expectations per case, card-sentence branch tests on #47
 - [18:15 PT] AnoopIbrampur T8 make verify: copy lint, leakage stub, claims table, CI runs make verify (3 s locally), stacked on T7 (#47), PR to follow
+- [18:53 PT] AnoopIbrampur T8 fixes: 60 s budget enforced, no proof yet for non-test proofs, fixture self-check untagged on #48
