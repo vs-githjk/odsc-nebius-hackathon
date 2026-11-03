@@ -1,0 +1,56 @@
+{"at":"2026-11-03T02:29:45.404Z","step":"search","query":"\"26.2 miles\" marathon","reason":"end_date 2026-11-03, 10 results"}
+{"at":"2026-11-03T02:29:45.406Z","step":"search","query":"\"26.2-mile\" marathon","reason":"end_date 2026-11-03, 10 results"}
+{"at":"2026-11-03T02:29:47.325Z","step":"read","url":"https://www.history.com/articles/why-is-a-marathon-26-2-miles","kept":true,"reason":"span found"}
+{"at":"2026-11-03T02:29:47.724Z","step":"read","url":"https://www.jeffgalloway.com/04/marathon-faq-question-why-do-we-run-262-miles","kept":true,"reason":"span found"}
+{"at":"2026-11-03T02:29:48.166Z","step":"read","url":"https://www.idahofallsmarathon.com/post/how-many-miles-is-a-marathon-the-distance-and-the-challenge","kept":true,"reason":"span found"}
+{"at":"2026-11-03T02:29:48.862Z","step":"read","url":"https://www.britannica.com/sports/Why-Is-a-Marathon-26-2-Miles","kept":true,"reason":"span found"}
+{"at":"2026-11-03T02:29:49.148Z","step":"read","url":"https://marathontours.com/en-gb/marathon-history-why-the-royal-family-wanted-a-26-2-mile-race","kept":true,"reason":"span found"}
+{"at":"2026-11-03T02:29:50.276Z","step":"search","query":"\"26.2 miles\" marathon","reason":"end_date 2014-10-28, 10 results"}
+{"at":"2026-11-03T02:29:51.835Z","step":"search","query":"\"26.2-mile\" marathon","reason":"end_date 2014-10-28, 8 results"}
+{"at":"2026-11-03T02:29:54.404Z","step":"read","url":"https://www.nytimes.com/2012/04/21/sports/the-marathons-accidental-route-to-26-miles-385-yards.html","kept":false,"reason":"no sentence asserts the claim's atoms"}
+{"at":"2026-11-03T02:29:55.419Z","step":"read","url":"https://www.britannica.com/sports/Tokyo-Marathon","kept":true,"reason":"span found"}
+{"at":"2026-11-03T02:29:55.420Z","step":"read","url":"https://foxcitiesmarathon.org/registration","kept":false,"reason":"no sentence asserts the claim's atoms"}
+{"at":"2026-11-03T02:29:55.832Z","step":"read","url":"https://careers.ef.com/we-are-ef/ef-staff-marathoners","kept":true,"reason":"span found"}
+{"at":"2026-11-03T02:29:56.085Z","step":"read","url":"https://strengthrunning.com/2014/07/ready-to-run-a-marathon","kept":true,"reason":"span found"}
+{"at":"2026-11-03T02:29:57.500Z","step":"search","query":"\"26.2 miles\" marathon","reason":"end_date 2014-02-19, 10 results"}
+{"at":"2026-11-03T02:29:58.579Z","step":"search","query":"\"26.2-mile\" marathon","reason":"end_date 2014-02-19, 8 results"}
+{"at":"2026-11-03T02:29:59.394Z","step":"extract","url":"https://www.ef.com/wwen/blog/we-are-ef/riding-hope-hannahs-ef-story","kept":false,"reason":"extract failed, unread"}
+{"at":"2026-11-03T02:29:59.395Z","step":"read","url":"https://www.ef.com/wwen","kept":false,"reason":"no sentence asserts the claim's atoms"}
+{"at":"2026-11-03T02:29:59.639Z","step":"read","url":"https://www.lakepowell.net/marathon.html","kept":true,"reason":"span found"}
+{"at":"2026-11-03T02:29:59.912Z","step":"read","url":"https://www.primermagazine.com/2010/field-manual/know-it-all-why-is-a-marathon-26-2-miles","kept":true,"reason":"span found"}
+{"at":"2026-11-03T02:30:00.287Z","step":"read","url":"http://www.marathonrookie.com","kept":true,"reason":"span found"}
+{"at":"2026-11-03T02:30:01.377Z","step":"search","query":"\"26.2 miles\" marathon","reason":"end_date 2000-10-18, 10 results"}
+{"at":"2026-11-03T02:30:02.365Z","step":"search","query":"\"26.2-mile\" marathon","reason":"end_date 2000-10-18, 10 results"}
+{"at":"2026-11-03T02:30:04.032Z","step":"extract","url":"https://www.ef.com/wwen/blog/we-are-ef/delivering-results-charleys-ef-journey","kept":false,"reason":"extract failed, unread"}
+{"at":"2026-11-03T02:30:04.032Z","step":"read","url":"https://adsumnyc.com/blogs/news/fred-lebow","kept":false,"reason":"no sentence asserts the claim's atoms"}
+{"at":"2026-11-03T02:30:04.459Z","step":"read","url":"https://www.nytimes.com/1996/11/13/sports/at-end-of-26.2-miles-million-dollar-incentive.html","kept":true,"reason":"span found"}
+{"at":"2026-11-03T02:30:04.460Z","step":"read","url":"https://www.thechurchnews.com/1988/7/30/23263760/runner-recalls-pioneers-while-thirsting-for-water","kept":false,"reason":"no sentence asserts the claim's atoms"}
+{"at":"2026-11-03T02:30:05.439Z","step":"read","url":"https://www.latimes.com/archives/la-xpm-1995-03-06-mn-39402-story.html","kept":true,"reason":"span found"}
+{"at":"2026-11-03T02:30:06.574Z","step":"search","query":"\"26.2 miles\" marathon","reason":"end_date 1995-03-05, 10 results"}
+{"at":"2026-11-03T02:30:07.814Z","step":"search","query":"\"26.2-mile\" marathon","reason":"end_date 1995-03-05, 10 results"}
+{"at":"2026-11-03T02:30:14.321Z","step":"extract","url":"https://www.upi.com/Archives/1985/04/13/Marathon-Run-Can-Be-Hazardous-To-Health/9809482216400","kept":false,"reason":"extract failed, unread"}
+{"at":"2026-11-03T02:30:14.321Z","step":"extract","url":"https://www.nytimes.com/1984/08/05/sports/marathon-women-s-debut-becomes-a-highlight.html","kept":false,"reason":"extract failed, unread"}
+{"at":"2026-11-03T02:30:14.321Z","step":"extract","url":"https://static1.squarespace.com/static/6209a10bff4ac21c6abc9fda/t/643d987b8b8d48101165bc58/1681758331343/1983_7_Disabled_Runners_Compete_in_Marathon.pdf","kept":false,"reason":"extract failed, unread"}
+{"at":"2026-11-03T02:30:15.534Z","step":"read","url":"https://www.mcall.com/1984/04/15/boston-marathon-jim-knight-wont-be-a-fun-runner-last-shot-at-olympics","kept":true,"reason":"span found"}
+{"at":"2026-11-03T02:30:15.840Z","step":"read","url":"https://www.washingtonpost.com/archive/sports/1984/11/04/marathon-blast-from-the-past/a9acc841-c0dc-424a-8cfd-2442ba0d2fac","kept":true,"reason":"span found"}
+{"at":"2026-11-03T02:30:16.937Z","step":"search","query":"\"26.2 miles\" marathon","reason":"end_date 1984-04-14, 10 results"}
+{"at":"2026-11-03T02:30:18.407Z","step":"search","query":"\"26.2-mile\" marathon","reason":"end_date 1984-04-14, 10 results"}
+{"at":"2026-11-03T02:30:22.046Z","step":"read","url":"https://www.usms.org/hist/swimmaster/1982_swimmaster_v11n4_05.pdf","kept":true,"reason":"span found"}
+{"at":"2026-11-03T02:30:22.589Z","step":"read","url":"https://brrc.com/wp-content/uploads/2024/12/MM78.pdf","kept":true,"reason":"span found"}
+{"at":"2026-11-03T02:30:22.896Z","step":"read","url":"http://www.weinerpublic.com/jwindrun.pdf","kept":true,"reason":"span found"}
+{"at":"2026-11-03T02:30:23.578Z","step":"read","url":"https://jtrr.org/event/1983","kept":true,"reason":"span found"}
+{"at":"2026-11-03T02:30:23.668Z","step":"dating","url":"https://kids.kiddle.co/Twin_Cities_Marathon","reason":"wayback http_error"}
+{"at":"2026-11-03T02:30:23.668Z","step":"read","url":"https://kids.kiddle.co/Twin_Cities_Marathon","kept":true,"reason":"span found"}
+{"at":"2026-11-03T02:30:24.864Z","step":"search","query":"\"26.2 miles\" marathon","reason":"end_date 1982-05-03, 10 results"}
+{"at":"2026-11-03T02:30:27.944Z","step":"search","query":"\"26.2-mile\" marathon","reason":"end_date 1982-05-03, 0 results"}
+{"at":"2026-11-03T02:30:29.263Z","step":"read","url":"https://www.tracksmith.com/journal/article/ted-corbitt-the-boston-marathon","kept":false,"reason":"no sentence asserts the claim's atoms"}
+{"at":"2026-11-03T02:30:32.771Z","step":"read","url":"https://pubmed.ncbi.nlm.nih.gov/1181180","kept":true,"reason":"span found"}
+{"at":"2026-11-03T02:30:33.617Z","step":"read","url":"https://documents.adventistarchives.org/Periodicals/NUO/NUO19791119-V43-24.pdf","kept":true,"reason":"span found"}
+{"at":"2026-11-03T02:30:34.149Z","step":"read","url":"https://www.medford.k12.wi.us/cms_files/M6cqPC47ehcXwW0dFmdPINbabIfwSr.pdf","kept":true,"reason":"span found"}
+{"at":"2026-11-03T02:30:35.035Z","step":"read","url":"https://colletlayden.wordpress.com/1972/12/27/scenic-warm-up-for-the-big-one-lesotho-marathon-poses-own-challenges-11","kept":true,"reason":"span found"}
+{"at":"2026-11-03T02:30:36.672Z","step":"search","query":"\"26.2 miles\" marathon","reason":"end_date 1972-12-26, 3 results"}
+{"at":"2026-11-03T02:30:38.340Z","step":"search","query":"\"26.2-mile\" marathon","reason":"end_date 1972-12-26, 1 results"}
+{"at":"2026-11-03T02:30:39.234Z","step":"extract","url":"https://pressbooks.pub/ourstory/chapter/1970s-pop-culture-and-other-stuff","kept":false,"reason":"extract failed, unread"}
+{"at":"2026-11-03T02:30:39.237Z","step":"read","url":"https://culture.fandom.com/wiki/Nike,_Inc.","kept":false,"reason":"no sentence asserts the claim's atoms"}
+{"at":"2026-11-03T02:30:39.239Z","step":"read","url":"https://www.tracksmith.com/journal/article/fifty-years-on-frank-shorter-remembers-munich-72","kept":false,"reason":"no sentence asserts the claim's atoms"}
+{"at":"2026-11-03T02:30:39.239Z","step":"read","url":"https://www.tracksmith.com/journal/article/title-ix-more-than-a-title","kept":false,"reason":"no sentence asserts the claim's atoms"}

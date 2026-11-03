@@ -1,0 +1,3742 @@
+{
+  "schemaVersion": "1",
+  "id": "dry-run",
+  "mode": "LIVE",
+  "synthetic": false,
+  "recordedAt": "2026-11-03T02:30:39.244Z",
+  "claim": {
+    "text": "A marathon is 26.2 miles long.",
+    "atoms": {
+      "number": {
+        "raw": "26.2",
+        "canonical": "26.2"
+      },
+      "unit": "miles",
+      "subjectLemma": "marathon",
+      "population": null,
+      "time": null,
+      "hedge": null,
+      "namedSource": null,
+      "variants": [
+        "26.2 miles",
+        "26.2-mile"
+      ]
+    }
+  },
+  "viralSentence": "A marathon is 26.2 miles long.",
+  "nodes": [
+    {
+      "id": "n1",
+      "url": "https://www.history.com/articles/why-is-a-marathon-26-2-miles",
+      "domain": "history.com",
+      "title": "Why Is a Marathon 26.2 Miles? | HISTORY",
+      "date": {
+        "kind": "published",
+        "value": "2014-10-29",
+        "source": "tavily",
+        "firstCapture": "2025-04-09",
+        "conflictingDate": false
+      },
+      "clusterId": "c1",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s1"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n2",
+      "url": "https://www.jeffgalloway.com/04/marathon-faq-question-why-do-we-run-262-miles",
+      "domain": "jeffgalloway.com",
+      "title": "Marathon FAQ: Question: Why Do we run 26.2 miles? | Jeff Galloway",
+      "date": {
+        "kind": "existed_by",
+        "value": "2022-10-03",
+        "source": "wayback_first_capture",
+        "firstCapture": "2022-10-03",
+        "conflictingDate": true
+      },
+      "clusterId": "c2",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s2"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n3",
+      "url": "https://www.idahofallsmarathon.com/post/how-many-miles-is-a-marathon-the-distance-and-the-challenge",
+      "domain": "idahofallsmarathon.com",
+      "title": "How Many Miles is a Marathon? The Distance and the Challenge",
+      "date": {
+        "kind": "published",
+        "value": "2024-08-23",
+        "source": "tavily",
+        "firstCapture": "2024-09-19",
+        "conflictingDate": false
+      },
+      "clusterId": "c3",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s3"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n4",
+      "url": "https://www.britannica.com/sports/Why-Is-a-Marathon-26-2-Miles",
+      "domain": "britannica.com",
+      "title": "Why Is a Marathon 26.2 Miles? | Ancient Greece, Long, Km, & Distance | Britannica",
+      "date": {
+        "kind": "published",
+        "value": "2025-03-12",
+        "source": "tavily",
+        "firstCapture": "2025-03-25",
+        "conflictingDate": false
+      },
+      "clusterId": "c4",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s4"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n5",
+      "url": "https://marathontours.com/en-gb/marathon-history-why-the-royal-family-wanted-a-26-2-mile-race",
+      "domain": "marathontours.com",
+      "title": "Marathon History: Why the Royal Family wanted a 26.2 mile race",
+      "date": {
+        "kind": "published",
+        "value": "2024-04-04",
+        "source": "tavily",
+        "firstCapture": "2025-09-07",
+        "conflictingDate": false
+      },
+      "clusterId": "c5",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s5"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n6",
+      "url": "https://www.britannica.com/sports/Tokyo-Marathon",
+      "domain": "britannica.com",
+      "title": "Tokyo Marathon | Japan, Road Race, Charity | Britannica",
+      "date": {
+        "kind": "published",
+        "value": "2014-02-20",
+        "source": "tavily",
+        "firstCapture": "2015-09-07",
+        "conflictingDate": false
+      },
+      "clusterId": "c6",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s6"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n7",
+      "url": "https://careers.ef.com/we-are-ef/ef-staff-marathoners",
+      "domain": "careers.ef.com",
+      "title": "On the run: EF staff marathoners exploring the world 26.2 miles at a time ‹ We are EF ‹ We are EF Blog | Careers",
+      "date": {
+        "kind": "existed_by",
+        "value": "2025-04-26",
+        "source": "wayback_first_capture",
+        "firstCapture": "2025-04-26",
+        "conflictingDate": false
+      },
+      "clusterId": "c7",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s7"
+      ],
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "https://www.ef.com/wwen",
+          "read": true
+        },
+        {
+          "url": "https://www.ef.com/wwen/blog/we-are-ef/riding-hope-hannahs-ef-story",
+          "read": false
+        },
+        {
+          "url": "https://www.ef.com/wwen/blog/we-are-ef/delivering-results-charleys-ef-journey",
+          "read": false
+        }
+      ],
+      "pageType": null
+    },
+    {
+      "id": "n8",
+      "url": "https://strengthrunning.com/2014/07/ready-to-run-a-marathon",
+      "domain": "strengthrunning.com",
+      "title": "When Are You Ready to Run a Marathon? - Strength Running",
+      "date": {
+        "kind": "existed_by",
+        "value": "2014-07-12",
+        "source": "wayback_first_capture",
+        "firstCapture": "2014-07-12",
+        "conflictingDate": false
+      },
+      "clusterId": "c8",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s8"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n9",
+      "url": "https://www.lakepowell.net/marathon.html",
+      "domain": "lakepowell.net",
+      "title": "The First Marathon Run, The history of Phidippides",
+      "date": {
+        "kind": "existed_by",
+        "value": "2000-10-19",
+        "source": "wayback_first_capture",
+        "firstCapture": "2000-10-19",
+        "conflictingDate": true
+      },
+      "clusterId": "c9",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s9"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n10",
+      "url": "https://www.primermagazine.com/2010/field-manual/know-it-all-why-is-a-marathon-26-2-miles",
+      "domain": "primermagazine.com",
+      "title": "Why is a Marathon 26.2 Miles?",
+      "date": {
+        "kind": "published",
+        "value": "2010-03-23",
+        "source": "tavily",
+        "firstCapture": null,
+        "conflictingDate": false
+      },
+      "clusterId": "c10",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s10"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n11",
+      "url": "http://www.marathonrookie.com",
+      "domain": "marathonrookie.com",
+      "title": "How to train for a marathon or half marathon",
+      "date": {
+        "kind": "existed_by",
+        "value": "2005-07-10",
+        "source": "wayback_first_capture",
+        "firstCapture": "2005-07-10",
+        "conflictingDate": true
+      },
+      "clusterId": "c11",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s11"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n12",
+      "url": "https://www.nytimes.com/1996/11/13/sports/at-end-of-26.2-miles-million-dollar-incentive.html",
+      "domain": "nytimes.com",
+      "title": "At End of 26.2 Miles, Million-Dollar Incentive - The New York Times",
+      "date": {
+        "kind": "published",
+        "value": "1996-11-13",
+        "source": "tavily",
+        "firstCapture": "2015-05-26",
+        "conflictingDate": false
+      },
+      "clusterId": "c12",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s12"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n13",
+      "url": "https://www.latimes.com/archives/la-xpm-1995-03-06-mn-39402-story.html",
+      "domain": "latimes.com",
+      "title": "Rain Fails to Dampen Spirits at L.A. Marathon : Race: First daylong downpour in the event's 10-year history thins out spectators but doesn't slow contestants. - Los Angeles Times",
+      "date": {
+        "kind": "published",
+        "value": "1995-03-06",
+        "source": "tavily",
+        "firstCapture": "2025-08-20",
+        "conflictingDate": false
+      },
+      "clusterId": "c13",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s13"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n14",
+      "url": "https://www.mcall.com/1984/04/15/boston-marathon-jim-knight-wont-be-a-fun-runner-last-shot-at-olympics",
+      "domain": "mcall.com",
+      "title": "BOSTON MARATHON JIM KNIGHT WON’T BE A FUN RUNNER LAST SHOT AT OLYMPICS – The Morning Call",
+      "date": {
+        "kind": "published",
+        "value": "1984-04-15",
+        "source": "tavily",
+        "firstCapture": null,
+        "conflictingDate": false
+      },
+      "clusterId": "c14",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s14"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n15",
+      "url": "https://www.washingtonpost.com/archive/sports/1984/11/04/marathon-blast-from-the-past/a9acc841-c0dc-424a-8cfd-2442ba0d2fac",
+      "domain": "washingtonpost.com",
+      "title": "Marathon: Blast From The Past - The Washington Post",
+      "date": {
+        "kind": "published",
+        "value": "1984-11-03",
+        "source": "tavily",
+        "firstCapture": null,
+        "conflictingDate": false
+      },
+      "clusterId": "c15",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s15"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n16",
+      "url": "https://www.usms.org/hist/swimmaster/1982_swimmaster_v11n4_05.pdf",
+      "domain": "usms.org",
+      "title": "May 1982",
+      "date": {
+        "kind": "published",
+        "value": "1982-05-04",
+        "source": "tavily",
+        "firstCapture": "2020-09-24",
+        "conflictingDate": false
+      },
+      "clusterId": "c16",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s16"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n17",
+      "url": "https://brrc.com/wp-content/uploads/2024/12/MM78.pdf",
+      "domain": "brrc.com",
+      "title": "Baltimore, Md November 1978 Place Name Ag S City Sta ...",
+      "date": {
+        "kind": "existed_by",
+        "value": "2025-01-21",
+        "source": "wayback_first_capture",
+        "firstCapture": "2025-01-21",
+        "conflictingDate": false
+      },
+      "clusterId": "c17",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s17"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n18",
+      "url": "http://www.weinerpublic.com/jwindrun.pdf",
+      "domain": "weinerpublic.com",
+      "title": "JAY JACOB WIND AKA racedirector@att.net ...",
+      "date": {
+        "kind": "existed_by",
+        "value": "2019-04-20",
+        "source": "wayback_first_capture",
+        "firstCapture": "2019-04-20",
+        "conflictingDate": false
+      },
+      "clusterId": "c18",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s18"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n19",
+      "url": "https://jtrr.org/event/1983",
+      "domain": "jtrr.org",
+      "title": "JTRR Events 1983",
+      "date": {
+        "kind": "existed_by",
+        "value": "2018-09-01",
+        "source": "wayback_first_capture",
+        "firstCapture": "2018-09-01",
+        "conflictingDate": false
+      },
+      "clusterId": "c19",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s19"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n20",
+      "url": "https://kids.kiddle.co/Twin_Cities_Marathon",
+      "domain": "kids.kiddle.co",
+      "title": "Twin Cities Marathon Facts for Kids",
+      "date": {
+        "kind": "unconfirmed",
+        "value": null,
+        "source": "tavily",
+        "firstCapture": null,
+        "conflictingDate": false
+      },
+      "clusterId": "c20",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s20"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n21",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/1181180",
+      "domain": "pubmed.ncbi.nlm.nih.gov",
+      "title": "Acute blood biochemical alterations in response to marathon running.",
+      "date": {
+        "kind": "published",
+        "value": "1975-08-15",
+        "source": "tavily",
+        "firstCapture": "2022-06-18",
+        "conflictingDate": false
+      },
+      "clusterId": "c21",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s21"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n22",
+      "url": "https://documents.adventistarchives.org/Periodicals/NUO/NUO19791119-V43-24.pdf",
+      "domain": "documents.adventistarchives.org",
+      "title": "E.•,.4 C:r",
+      "date": {
+        "kind": "published",
+        "value": "1979-11-19",
+        "source": "tavily",
+        "firstCapture": "2025-01-10",
+        "conflictingDate": false
+      },
+      "clusterId": "c22",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s22"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n23",
+      "url": "https://www.medford.k12.wi.us/cms_files/M6cqPC47ehcXwW0dFmdPINbabIfwSr.pdf",
+      "domain": "medford.k12.wi.us",
+      "title": "MAPSD Newsletter Oct 2024",
+      "date": {
+        "kind": "published",
+        "value": "1977-09-08",
+        "source": "tavily",
+        "firstCapture": null,
+        "conflictingDate": false
+      },
+      "clusterId": "c23",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s23"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n24",
+      "url": "https://colletlayden.wordpress.com/1972/12/27/scenic-warm-up-for-the-big-one-lesotho-marathon-poses-own-challenges-11",
+      "domain": "colletlayden.wordpress.com",
+      "title": "Scenic warm-up for the ‘Big One’, Lesotho marathon poses own challenges | colletlayden",
+      "date": {
+        "kind": "published",
+        "value": "1972-12-27",
+        "source": "tavily",
+        "firstCapture": "2015-05-16",
+        "conflictingDate": false
+      },
+      "clusterId": "c24",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s24"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "parentId": "n24",
+      "childId": "n21",
+      "kind": "inferred",
+      "parentSpanId": "s24",
+      "childSpanId": "s21",
+      "linkHref": null
+    },
+    {
+      "id": "e2",
+      "parentId": "n21",
+      "childId": "n23",
+      "kind": "inferred",
+      "parentSpanId": "s21",
+      "childSpanId": "s23",
+      "linkHref": null
+    },
+    {
+      "id": "e3",
+      "parentId": "n23",
+      "childId": "n22",
+      "kind": "inferred",
+      "parentSpanId": "s23",
+      "childSpanId": "s22",
+      "linkHref": null
+    },
+    {
+      "id": "e4",
+      "parentId": "n22",
+      "childId": "n16",
+      "kind": "inferred",
+      "parentSpanId": "s22",
+      "childSpanId": "s16",
+      "linkHref": null
+    },
+    {
+      "id": "e5",
+      "parentId": "n16",
+      "childId": "n14",
+      "kind": "inferred",
+      "parentSpanId": "s16",
+      "childSpanId": "s14",
+      "linkHref": null
+    },
+    {
+      "id": "e6",
+      "parentId": "n14",
+      "childId": "n15",
+      "kind": "inferred",
+      "parentSpanId": "s14",
+      "childSpanId": "s15",
+      "linkHref": null
+    },
+    {
+      "id": "e7",
+      "parentId": "n15",
+      "childId": "n13",
+      "kind": "inferred",
+      "parentSpanId": "s15",
+      "childSpanId": "s13",
+      "linkHref": null
+    },
+    {
+      "id": "e8",
+      "parentId": "n13",
+      "childId": "n12",
+      "kind": "inferred",
+      "parentSpanId": "s13",
+      "childSpanId": "s12",
+      "linkHref": null
+    },
+    {
+      "id": "e9",
+      "parentId": "n12",
+      "childId": "n9",
+      "kind": "inferred",
+      "parentSpanId": "s12",
+      "childSpanId": "s9",
+      "linkHref": null
+    },
+    {
+      "id": "e10",
+      "parentId": "n9",
+      "childId": "n11",
+      "kind": "inferred",
+      "parentSpanId": "s9",
+      "childSpanId": "s11",
+      "linkHref": null
+    },
+    {
+      "id": "e11",
+      "parentId": "n11",
+      "childId": "n10",
+      "kind": "inferred",
+      "parentSpanId": "s11",
+      "childSpanId": "s10",
+      "linkHref": null
+    },
+    {
+      "id": "e12",
+      "parentId": "n10",
+      "childId": "n6",
+      "kind": "inferred",
+      "parentSpanId": "s10",
+      "childSpanId": "s6",
+      "linkHref": null
+    },
+    {
+      "id": "e13",
+      "parentId": "n6",
+      "childId": "n8",
+      "kind": "inferred",
+      "parentSpanId": "s6",
+      "childSpanId": "s8",
+      "linkHref": null
+    },
+    {
+      "id": "e14",
+      "parentId": "n8",
+      "childId": "n1",
+      "kind": "inferred",
+      "parentSpanId": "s8",
+      "childSpanId": "s1",
+      "linkHref": null
+    },
+    {
+      "id": "e15",
+      "parentId": "n1",
+      "childId": "n19",
+      "kind": "inferred",
+      "parentSpanId": "s1",
+      "childSpanId": "s19",
+      "linkHref": null
+    },
+    {
+      "id": "e16",
+      "parentId": "n19",
+      "childId": "n18",
+      "kind": "inferred",
+      "parentSpanId": "s19",
+      "childSpanId": "s18",
+      "linkHref": null
+    },
+    {
+      "id": "e17",
+      "parentId": "n18",
+      "childId": "n2",
+      "kind": "inferred",
+      "parentSpanId": "s18",
+      "childSpanId": "s2",
+      "linkHref": null
+    },
+    {
+      "id": "e18",
+      "parentId": "n2",
+      "childId": "n5",
+      "kind": "inferred",
+      "parentSpanId": "s2",
+      "childSpanId": "s5",
+      "linkHref": null
+    },
+    {
+      "id": "e19",
+      "parentId": "n5",
+      "childId": "n3",
+      "kind": "inferred",
+      "parentSpanId": "s5",
+      "childSpanId": "s3",
+      "linkHref": null
+    },
+    {
+      "id": "e20",
+      "parentId": "n3",
+      "childId": "n17",
+      "kind": "inferred",
+      "parentSpanId": "s3",
+      "childSpanId": "s17",
+      "linkHref": null
+    },
+    {
+      "id": "e21",
+      "parentId": "n17",
+      "childId": "n4",
+      "kind": "inferred",
+      "parentSpanId": "s17",
+      "childSpanId": "s4",
+      "linkHref": null
+    },
+    {
+      "id": "e22",
+      "parentId": "n4",
+      "childId": "n7",
+      "kind": "inferred",
+      "parentSpanId": "s4",
+      "childSpanId": "s7",
+      "linkHref": null
+    }
+  ],
+  "clusters": [
+    {
+      "id": "c1",
+      "nodeIds": [
+        "n1"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c2",
+      "nodeIds": [
+        "n2"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c3",
+      "nodeIds": [
+        "n3"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c4",
+      "nodeIds": [
+        "n4"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c5",
+      "nodeIds": [
+        "n5"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c6",
+      "nodeIds": [
+        "n6"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c7",
+      "nodeIds": [
+        "n7"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c8",
+      "nodeIds": [
+        "n8"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c9",
+      "nodeIds": [
+        "n9"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c10",
+      "nodeIds": [
+        "n10"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c11",
+      "nodeIds": [
+        "n11"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c12",
+      "nodeIds": [
+        "n12"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c13",
+      "nodeIds": [
+        "n13"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c14",
+      "nodeIds": [
+        "n14"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c15",
+      "nodeIds": [
+        "n15"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c16",
+      "nodeIds": [
+        "n16"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c17",
+      "nodeIds": [
+        "n17"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c18",
+      "nodeIds": [
+        "n18"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c19",
+      "nodeIds": [
+        "n19"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c20",
+      "nodeIds": [
+        "n20"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c21",
+      "nodeIds": [
+        "n21"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c22",
+      "nodeIds": [
+        "n22"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c23",
+      "nodeIds": [
+        "n23"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c24",
+      "nodeIds": [
+        "n24"
+      ],
+      "rule": "single"
+    }
+  ],
+  "spans": [
+    {
+      "id": "s1",
+      "nodeId": "n1",
+      "text": "By: Elizabeth Nix Ancient Greece Why Is a Marathon 26.2 Miles?",
+      "contextBefore": "",
+      "contextAfter": " It has to do with ancient Greek mythology, the Olympics and the British royal family. EN Elizabeth Nix David Madison / Getty Images Published: October 29, 2014Last Updated: May 28, 2025 The marathon ",
+      "start": 0,
+      "end": 62,
+      "extractSha256": "8dc15846cd1134574ea3ab2926852a11f8abe96f7bbf0a3830a635974b660c0b",
+      "windowSha256": "53b4f18a0e4dcf3c885993bdf2164928149f6e8602de0ef304a856937bc0eeb4",
+      "fetchedAt": "2026-11-03T02:29:47.324Z",
+      "waybackUrl": "https://web.archive.org/web/20250409151934/https://www.history.com/articles/why-is-a-marathon-26-2-miles",
+      "tier": "exact"
+    },
+    {
+      "id": "s2",
+      "nodeId": "n2",
+      "text": "Skip to content Get Custom Training Custom Training Plans Marathon FAQ: Question: Why Do we run 26.2 miles?",
+      "contextBefore": "",
+      "contextAfter": " Question: Why Do we run 26.2 miles? Answer: The first race, from the battle site into the 1896 Olympic Stadium, was determined to be 40 Kilometers, or 25 miles. In 1908, the Olympics were held in Lon",
+      "start": 0,
+      "end": 107,
+      "extractSha256": "7c9dac16a612be84db7d3a65f56c58e85ca0178474f52a3189a6b3d0f3676fb2",
+      "windowSha256": "ff2b63ce8b719dd657383f6a0d49af09f5ae1af40bd9339b4d15c6b3f5a08195",
+      "fetchedAt": "2026-11-03T02:29:47.723Z",
+      "waybackUrl": "https://web.archive.org/web/20221003205544/https://www.jeffgalloway.com/04/marathon-faq-question-why-do-we-run-262-miles",
+      "tier": "exact"
+    },
+    {
+      "id": "s3",
+      "nodeId": "n3",
+      "text": "This simple question has a straightforward answer: a marathon race is 26.2 miles (42.195 kilometers) long.",
+      "contextBefore": " a Marathon? The Distance and the Challenge. marketing58660 Aug 23, 2024 4 min read When it comes to marathon races, one of the first questions that often comes up is, \"How many miles is a marathon?\" ",
+      "contextAfter": " However, behind this distance lies a rich history, a significant challenge, and a journey that tests the limits of human endurance. The History Behind the Marathon Distance. To fully appreciate why a",
+      "start": 236,
+      "end": 342,
+      "extractSha256": "0156927cb9473519416d6e37a5c8474bd5c6241935a2f941786144f4aaed56c2",
+      "windowSha256": "cddd4398d520b79bf51d219343442032ee55e7c93d7199e31309ebe9725cbf80",
+      "fetchedAt": "2026-11-03T02:29:48.165Z",
+      "waybackUrl": "https://web.archive.org/web/20240919081829/https://www.idahofallsmarathon.com/post/how-many-miles-is-a-marathon-the-distance-and-the-challenge",
+      "tier": "exact"
+    },
+    {
+      "id": "s4",
+      "nodeId": "n4",
+      "text": "Ask the Chatbot Games & Quizzes History & Society Science & Tech Biographies Animals & Nature Geography & Travel Arts & Culture ProCon Money Videos Why Is a Marathon 26.2 Miles?",
+      "contextBefore": "",
+      "contextAfter": " Introduction References & Edit History Related Topics Images Quick Facts Related Topics: : ancient Greek civilization : Olympic Games : marathon See all related content Adding us as a Preferred Sourc",
+      "start": 0,
+      "end": 177,
+      "extractSha256": "4e5a4b4cabb9e785c7397ad15d2c5df8e4772d94f046257bd152b679743ec48e",
+      "windowSha256": "5aa9a13e3d0c7be10c71825e39d016312884745ac5bb9ac26b53432a8386d19f",
+      "fetchedAt": "2026-11-03T02:29:48.861Z",
+      "waybackUrl": "https://web.archive.org/web/20250325233036/https://www.britannica.com/sports/Why-Is-a-Marathon-26-2-Miles",
+      "tier": "exact"
+    },
+    {
+      "id": "s5",
+      "nodeId": "n5",
+      "text": "Marathon History: Why the Royal Family wanted a 26.2 mile race.",
+      "contextBefore": "",
+      "contextAfter": " Have you ever wondered why marathons are 26.2 miles? Strange isn't it, why not round it off to 26 miles? Well, we can thank British Royalty for that! In honour of the upcoming coronation why not take",
+      "start": 0,
+      "end": 63,
+      "extractSha256": "64d021beb72eb6da2c599bd73a8e7360f280bc4a4692d59e7bf35b35890fb7c6",
+      "windowSha256": "cf32258c94c00e1d1d32a7030b61d8c7920a01dfebf48ae397a75a7f4e364d5b",
+      "fetchedAt": "2026-11-03T02:29:49.147Z",
+      "waybackUrl": "https://web.archive.org/web/20250907064117/https://marathontours.com/en-gb/marathon-history-why-the-royal-family-wanted-a-26-2-mile-race",
+      "tier": "exact"
+    },
+    {
+      "id": "s6",
+      "nodeId": "n6",
+      "text": "See all videos for this article Tokyo Marathon, annual 26.2-mile (42.2-km) footrace through Tokyo that is held each February.",
+      "contextBefore": "ng on that content or via study for an advanced degree.... Britannica Editors History The miles-long history of the marathonThe marathon is said to commemorate the feat of a Greek soldier in 490 bce. ",
+      "contextAfter": " The Tokyo Marathon is one of the six major world marathons, along with the Berlin, Boston, Chicago, London, and New York City races. The Tokyo Marathon is the most recently established of the major m",
+      "start": 817,
+      "end": 942,
+      "extractSha256": "2a30c78f121e4948f2f51491d447030f74b949d44cba5984235c4422ebc291f8",
+      "windowSha256": "ce8a3075a69e02b08dde9e24e574c73fd1ad774ac4fa5e21541a72e47560da79",
+      "fetchedAt": "2026-11-03T02:29:55.418Z",
+      "waybackUrl": "https://web.archive.org/web/20150907202430/https://www.britannica.com/sports/Tokyo-Marathon",
+      "tier": "exact"
+    },
+    {
+      "id": "s7",
+      "nodeId": "n7",
+      "text": "Home Programs Offices About us Careers Home Programs Offices About us Careers On the run: EF staff marathoners exploring the world 26.2 miles at a time.",
+      "contextBefore": "",
+      "contextAfter": " Here at EF Education First, people are a lot more than their day jobs. Whether it's cycling for a cause, pumping iron in our fitness studio, or setting the record for the fastest self-supported Appal",
+      "start": 0,
+      "end": 152,
+      "extractSha256": "47897da328de5df91b72ea0c88d6f2c410b94236879c2d2f29735c55874981ac",
+      "windowSha256": "4ab92027c6a5d3abf8600504e4c69d937c4abdd14b08dc319e37a1bd82eed4f3",
+      "fetchedAt": "2026-11-03T02:29:55.831Z",
+      "waybackUrl": "https://web.archive.org/web/20250426202959/https://careers.ef.com/we-are-ef/ef-staff-marathoners",
+      "tier": "exact"
+    },
+    {
+      "id": "s8",
+      "nodeId": "n8",
+      "text": "But once you get your marathon training right, you can safely run 26.2 miles - and even run it quite fast!",
+      "contextBefore": "ting first marathon experience. I'm a straight shooter, so let me tell it to you straight: marathons are hard. While I think almost anyone can do one eventually, it still takes the right preparation. ",
+      "contextAfter": " Why is Running a Marathon So Hard? An interesting thing happens to our bodies after running for roughly 20 miles: we use up nearly all of our carbohydrate, the body's preferred fuel source for strenu",
+      "start": 1816,
+      "end": 1922,
+      "extractSha256": "a6c652b4977b5a6524cab55eac912b2a483bb1707181e71f862c59af24717e96",
+      "windowSha256": "379599bdf4b2277ebd5db2e374970565c43e02bd31f4c993d40f839befc28e71",
+      "fetchedAt": "2026-11-03T02:29:56.084Z",
+      "waybackUrl": "https://web.archive.org/web/20140712051940/https://strengthrunning.com/2014/07/ready-to-run-a-marathon",
+      "tier": "exact"
+    },
+    {
+      "id": "s9",
+      "nodeId": "n9",
+      "text": "At the 1908 Olympic Games in London, the marathon distance was changed to 26 miles to cover the ground from Windsor Castleto White City stadium, with 385 yards added on so the race could finish in front of King Edward VII's royal box.",
+      "contextBefore": "postal worker from village of Marusi and veteran of several long military marches , His time was 2 hours, 58 minutes, 50 seconds for the 40 kilometer distance (average pace of 7:11 minutes per mile). ",
+      "contextAfter": " After 16 years of extremely heated discussion, this 26.2 mile distance was established at the 1924 Olympics in Paris as the official marathon distance. Back to the Lake Powell |",
+      "start": 4206,
+      "end": 4440,
+      "extractSha256": "e5a7ea7d13f65fb7b9dbd4da4caf84106ebfe9eebd1a23e6c22190424f9f892c",
+      "windowSha256": "b4710cd1c00b1b33c07d1b760e706372720deffe71c375de18f92cf2ccafdc1d",
+      "fetchedAt": "2026-11-03T02:29:59.638Z",
+      "waybackUrl": "https://web.archive.org/web/20001019054916/https://www.lakepowell.net/marathon.html",
+      "tier": "exact"
+    },
+    {
+      "id": "s10",
+      "nodeId": "n10",
+      "text": "Primer is proudly spam free, Unsubscribe at any time. * Search X The Secret Manual to Affordable style, self-development, how-tos, and apartment DIY for the Self-made Man Know It All: Why is a Marathon 26.2 Miles?",
+      "contextBefore": "Skip to Main Navigation Skip to Content * + Home + About + Contact * Subscribe Join 30,000 other guys just like you. ",
+      "contextAfter": " We all prefer round numbers so why does the world's most famous footrace measure in at such an odd figure? 25 January,2012By Justin Brown This post may contain affiliate links, read about our editori",
+      "start": 117,
+      "end": 330,
+      "extractSha256": "1407d447e5ccbc979fb6337019416f9d6872c78ee24e22a463ff34476422bca7",
+      "windowSha256": "e0d565b09de5470d89f5acfa7903ca01cf284582794db4a6f7798461f4d0ae5e",
+      "fetchedAt": "2026-11-03T02:29:59.911Z",
+      "waybackUrl": null,
+      "tier": "exact"
+    },
+    {
+      "id": "s11",
+      "nodeId": "n11",
+      "text": "This site was created for the runner who wants to experience the thrill and sensational high of finishing their first 26.2-mile marathon or 13.1-mile half marathon.",
+      "contextBefore": "* Add to My MSN | | | | | | --- | --- | --- | | How to Train for a Marathon or Half Marathon Want to learn how to train for a marathon or half marathon? Welcome to Brad Boughman's MarathonRookie.com! ",
+      "contextAfter": " The secret to successful marathon training and half marathon training lies within staying supremely motivated, training smart & safe, and maintaining proper nutrition. The days of just \"gutting it ou",
+      "start": 746,
+      "end": 910,
+      "extractSha256": "ec137134c4fa42fc3d1d89e0ee4649a67685cf2212b50d402c01a1e80fd1d760",
+      "windowSha256": "f0c39b3498bc754593c6e59c084dc376bea64292caec58528ab7ae8447055525",
+      "fetchedAt": "2026-11-03T02:30:00.286Z",
+      "waybackUrl": "https://web.archive.org/web/20050710234137/http://www.marathonrookie.com",
+      "tier": "exact"
+    },
+    {
+      "id": "s12",
+      "nodeId": "n12",
+      "text": "Supported by MARATHON At End of 26.2 Miles, Million-Dollar Incentive.",
+      "contextBefore": "",
+      "contextAfter": " In an effort to raise the level of marathon running in the United States, the Boston-based New Balance Athletic Shoe Inc., announced yesterday that it would award $1 million to the American man or wo",
+      "start": 0,
+      "end": 69,
+      "extractSha256": "76b07a98bf0add1d2a5597d2da52f628fba480c85fc3632a8268d91ba5b34a2c",
+      "windowSha256": "ba05ecedd835152b6f6fa646fad90925f55f7639fbecf760412e9a162b55a6aa",
+      "fetchedAt": "2026-11-03T02:30:04.459Z",
+      "waybackUrl": "https://web.archive.org/web/20150526164022/https://www.nytimes.com/1996/11/13/sports/at-end-of-26.2-miles-million-dollar-incentive.html",
+      "tier": "exact"
+    },
+    {
+      "id": "s13",
+      "nodeId": "n13",
+      "text": "Marathon history--contributed to a handful of nasty spills among the more than 10,000 bicyclists who took up the marathon's first-ever offer to ride the 26.2-mile route of auto-free boulevards.",
+      "contextBefore": " racers in Sunday's 10th annual Los Angeles Marathon, although the unrelenting rainstorm cut back on traditional crowds of sidewalk fans and party animals. The weather--the first daylong rain in L.A. ",
+      "contextAfter": " The rain, and the mid-50s temperature, slowed down some of the estimated 16,500 runners, but not the speeds of the fastest, who welcomed a break from the dehydrating heat of past years. \"It feels gre",
+      "start": 450,
+      "end": 643,
+      "extractSha256": "504ed94248fdd8405678256eafe3cd0a2c729eb3657f9204e45be4c1c01cfdbd",
+      "windowSha256": "e569aa4c8d97efc0cb7a2092b4cf90691d3f82be26eec48ecce82fb2ba535463",
+      "fetchedAt": "2026-11-03T02:30:05.438Z",
+      "waybackUrl": "https://web.archive.org/web/20250820162400/https://www.latimes.com/archives/la-xpm-1995-03-06-mn-39402-story.html",
+      "tier": "exact"
+    },
+    {
+      "id": "s14",
+      "nodeId": "n14",
+      "text": "But the chance of qualifying for the Olympic Trials in the marathon have lured him to the longer race, where he hopes to average slightly less than 5:20 per mile for 26 miles.",
+      "contextBefore": " 10-Ks in under 30 minutes now, and admits that he would prefer to race that distance - or even his old collegiate track event, the steeplechase - instead of training for the more-demanding marathon. ",
+      "contextAfter": " To do that, one must pay the training dues day-in, day-out. \"The marathon takes so much training time,\" he notes. \"You're putting in 100-mile training weeks, the long runs (20-24 miles in one workout",
+      "start": 4609,
+      "end": 4784,
+      "extractSha256": "71655601795439f9d00e0a36eb1dd0bb5d7e743ae025d6e8f6a0574b0d1546ca",
+      "windowSha256": "3064dc55f2c86376d2f455a3a15a138ebe8f13c92360fca378e07abb573e59cb",
+      "fetchedAt": "2026-11-03T02:30:15.533Z",
+      "waybackUrl": null,
+      "tier": "exact"
+    },
+    {
+      "id": "s15",
+      "nodeId": "n15",
+      "text": "By Steve Nearman At the blast of a 105mm howitzer, the ninth running of the 26.2-mile Marine Corps Marathon will begin today at 9 a.m. near the Iwo Jima Memorial.",
+      "contextBefore": "Democracy Dies in Darkness Marathon: Blast From The Past. ",
+      "contextAfter": " More than 12,000 runners will flood the streets of Arlington and the District of Columbia before the leaders return to the memorial at approximately 11:15 a.m. ---",
+      "start": 58,
+      "end": 220,
+      "extractSha256": "69d2b1658fe2e34c4924dd20303fd03cd80e7b8fb83f4f89f1114cb08923872c",
+      "windowSha256": "69d2b1658fe2e34c4924dd20303fd03cd80e7b8fb83f4f89f1114cb08923872c",
+      "fetchedAt": "2026-11-03T02:30:15.839Z",
+      "waybackUrl": null,
+      "tier": "exact"
+    },
+    {
+      "id": "s16",
+      "nodeId": "n16",
+      "text": "4 mile open water swim, followed by a 112 mile bike race and a 26.2 mile marathon.",
+      "contextBefore": "IRONMAN TRIATHLON by Jim Green Several people have asked me for my impressions of the lronman Triathlon that I participated in for the second time on Feb. 6, 1982, Kana, HI. The race consists of a 2. ",
+      "contextAfter": " I have attempted to summarize my im-pressions as a participant as I remembered them as my facilities slowly deteriorated throughout the day. In spite of the rotten weather during the month of January",
+      "start": 336,
+      "end": 418,
+      "extractSha256": "8d0ecfa407b4b02fa591fb85b12d8d31319d5207b7d8386f79165aeeada35963",
+      "windowSha256": "afc8ac1c85e60f7a40859097e2f62f3d5ab3a38bc3139664c05284d70acbee65",
+      "fetchedAt": "2026-11-03T02:30:22.045Z",
+      "waybackUrl": "https://web.archive.org/web/20200924190942/https://www.usms.org/hist/swimmaster/1982_swimmaster_v11n4_05.pdf",
+      "tier": "exact"
+    },
+    {
+      "id": "s17",
+      "nodeId": "n17",
+      "text": "Page 1 SIXTH ANNUAL MARYLAND MARATHON 26.2 MILES Baltimore, Md November 1978 Place Name Ag S City Sta Time Pace ===== =================== == = ================== === ======= ===== 1 Jeffrey Bradley 26 M MANHEIM PA 2:19:36 5:20 2 Ron Hill 40 M CHELSHIRE ENG 2:22:22 5:27 3 Charles Trayer 24 M READING PA 2:23:24 5:29 4 Craig Crouch 22 M HAMILTON NY 2:25:34 5:34 5 Mark Studnicki 21 M PITTSBURGH PA 2:26:00 5:35 6 Thomas Allison 32 M WHEELING WV 2:26:17 5:35 7 James D.",
+      "contextBefore": "",
+      "contextAfter": " Hage 20 M ROCKVILLE MD 2:26:37 5:36 8 Edward Runkle 20 M HUMMELSTOWN PA 2:27:05 5:37 9 Joseph McCool 24 M SHILLINGTON PA 2:27:11 5:38 10 Charles Koester 33 M ABINGDON MD 2:27:12 5:38 11 George Settle",
+      "start": 0,
+      "end": 467,
+      "extractSha256": "bbc7482e52dc4cb2761fd8c7ab3c1ce31707fa22845a6bc31a8e8a1bf4b7b257",
+      "windowSha256": "f325126dc9e41c5715f3cb311bd97774e29bc7bfebad4951b2b6d2c2d8e2b180",
+      "fetchedAt": "2026-11-03T02:30:22.589Z",
+      "waybackUrl": "https://web.archive.org/web/20250121185808/https://brrc.com/wp-content/uploads/2024/12/MM78.pdf",
+      "tier": "exact"
+    },
+    {
+      "id": "s18",
+      "nodeId": "n18",
+      "text": "As of November 3, 2019, Jay finished 200 marathons (26.2-mile races) on the road, 13 more marathons on indoor or outdoor tracks, and more than 5,000 shorter races.",
+      "contextBefore": "or@att.net Jay Jacob Wind's missions are to see Arlington recognized as one of America's top communities for the sport of running and to achieve greatness in his age group, M65-69 since January 2015. ",
+      "contextAfter": " His fastest marathon was Boston April 21, 1980, where he finished 68th in 2:27:25, just 5:38 short of qualifying for the US Olympic Trials. He ran the last 42 Marine Marathons, finishing 36, winning ",
+      "start": 229,
+      "end": 392,
+      "extractSha256": "997812327be287e1506c433dfc6c76c3c4ec333895582953cca60d011854b99a",
+      "windowSha256": "45d71016bd40f5eddf89ca63e8376a3fc799b6d70f30301d312101528139572c",
+      "fetchedAt": "2026-11-03T02:30:22.895Z",
+      "waybackUrl": "https://web.archive.org/web/20190420023111/http://www.weinerpublic.com/jwindrun.pdf",
+      "tier": "exact"
+    },
+    {
+      "id": "s19",
+      "nodeId": "n19",
+      "text": "(29 records) | DefaultRaceDirector Unassigned --- leg+:no --- club:yes --- cup:no --- results:yes --- pics:no | | Juneau Marathon --- Glacier Parking Lot, Mendenhall Valley, Juneau --- July 30th 1983 (Saturday) 12:00AM | Distance: 26.2 miles, with a 13.1 mile half marathon Location: start at the Glacier Parking Lot The annual Juneau Marathon.",
+      "contextBefore": " Race Director --- Multiple Leg/Team Event --- JTRR Event --- Cup Event | | --- | --- | --- | | Veterans 10-K Run --- Juneau --- November 12th 1983 (Saturday) 10:00AM | A ten kilometer run in Juneau. ",
+      "contextAfter": " (38 records) | DefaultRaceDirector Unassigned --- leg+:no --- club:yes --- cup:no --- results:yes --- pics:no | | Magnificent Mendenhall Mudpuddle Meet --- UAJ campus --- May 7th 1983 (Saturday) 10:0",
+      "start": 396,
+      "end": 740,
+      "extractSha256": "3ba06e7a24b2f69e52fa2eec2b9408b8cab37a36790930d75f1f49bda03630da",
+      "windowSha256": "67556f9072c6308d4bc88402f142eeb1f834ff00a180ce7749cc4ecc61e72cdb",
+      "fetchedAt": "2026-11-03T02:30:23.578Z",
+      "waybackUrl": "https://web.archive.org/web/20180901233425/https://jtrr.org/event/1983",
+      "tier": "exact"
+    },
+    {
+      "id": "s20",
+      "nodeId": "n20",
+      "text": "Paul, Minnesota | | Distance | 26.219 miles (42.195 km) | | Primary sponsor | Medtronic | | Established | October 3, 1982; 44 years ago (1982-10-03) | | Course records | Men: 2:08:51 (2016) Dominic Ondoro Women: 2:26:51 (2001 and 2004) Zinaida Semenova and Irina Permitina (respectively) | | Official site | Medtronic Twin Cities Marathon | | Participants | 8,800 | The Twin Cities Marathon is a big running race in Minneapolis and St.",
+      "contextBefore": "kids Twin Cities Marathon | | | --- | --- | | Minnesota-marathon-logos-2019-twin-cities.png Twin Cities Marathon logo | | | Date | First Sunday in October | | Location | Minneapolis, Minnesota to St. ",
+      "contextAfter": " Paul, USA. It happens every year in early October. Many people call it \"The Most Beautiful Urban Marathon in America.\" This is because the running path goes through city areas, past lakes, and throug",
+      "start": 687,
+      "end": 1122,
+      "extractSha256": "09ec8380ff3c51ff4e57d8edee8db3554a829bf0b8506674398fb140a609da52",
+      "windowSha256": "a6b33ab4846f1b63ca07de433069ea7714aa2e1ce56e8e292447af330a81e471",
+      "fetchedAt": "2026-11-03T02:30:23.668Z",
+      "waybackUrl": null,
+      "tier": "exact"
+    },
+    {
+      "id": "s21",
+      "nodeId": "n21",
+      "text": "Adrenal-sympathico function, blood carbohydrates and lipids, and water and electrolyte balance were studied in six highly trained male marathon runners prior to and after running a marathon (26.2 miles; 42.2 km) and on control days corresponding to the above times.",
+      "contextBefore": "lied physiology and occupational physiology · 1975-08-15 · 34(3):173-81 · DOI: 10.1007/BF00999930 · PMID: 1181180 Publication type: Journal Article, Research Support, U.S. Gov't, Non-P.H.S. Abstract. ",
+      "contextAfter": " Fluid intake was not sufficient to maintain body weight, the runners losing approximately 2.8 kg. Estimated plasma volume losses (161 ml, 4.4%) indicated that most of the fluid loss was extravascular",
+      "start": 330,
+      "end": 595,
+      "extractSha256": "0ee2c4d24d6897a62a9f5b9f1f6a52a4975ac89f4387838b112a82f4135e7f3e",
+      "windowSha256": "e5244c910cb4445fc4da639724379ed8773f168e503111610e4af59312276f04",
+      "fetchedAt": "2026-11-03T02:30:32.770Z",
+      "waybackUrl": "https://web.archive.org/web/20220618084436/https://pubmed.ncbi.nlm.nih.gov/1181180",
+      "tier": "exact"
+    },
+    {
+      "id": "s22",
+      "nodeId": "n22",
+      "text": "Marathon Runner Willie Smith displays the map of his marathon run of 26.2 miles.",
+      "contextBefore": " grow. There are eight clubs in the conference with the newest in Rapid City and the Pine Ridge Indian School. Surely, the young people of South Dakota are discovering the joys of being a Pathfinder. ",
+      "contextAfter": " The Rapid City youth and junior room had a special guest during Sabbath School on September 22. Hugh Barton interviewed Willie Smith about the Black Hills Marathon Race on Labor Day. There were 107 e",
+      "start": 28103,
+      "end": 28183,
+      "extractSha256": "a5009bcc997e6abf4fab374c6a8a76898062ab89f400948fd320b50409b05be5",
+      "windowSha256": "49b3e1a8e861beb58c4b9beae7c6190c852e3e0e4df57e64588211f4f0256433",
+      "fetchedAt": "2026-11-03T02:30:33.616Z",
+      "waybackUrl": "https://web.archive.org/web/20250110054502/https://documents.adventistarchives.org/Periodicals/NUO/NUO19791119-V43-24.pdf",
+      "tier": "exact"
+    },
+    {
+      "id": "s23",
+      "nodeId": "n23",
+      "text": "To this day, Tony still runs for exercise and enjoyment and recently ran a full marathon, 26.2 miles, in Medford's Pine Line Marathon.",
+      "contextBefore": "rent interests and hobbies to his former Medford teachers like Frank Kleczewski. With Mr. Kleczewski's encouragement and tough love, Tony began running the 800 yard dash for junior high school track. ",
+      "contextAfter": " This photo ran in the 1977 insert of the Star News. It features Karen Bergmann's first grade class, which includes Tony Schumacher. Row one: Jason Strebig, Mark Berry, Judy Cypher, and Laurie Pautz. ",
+      "start": 8621,
+      "end": 8755,
+      "extractSha256": "d3809a8f4c255b4bdf68438f7ae22a2ca91b2b2d1cbc2af7507f907caea2a456",
+      "windowSha256": "3e46661889709470e65f6d73d22d84acbfc1e863022f90e5fa4d614f91b6ef68",
+      "fetchedAt": "2026-11-03T02:30:34.148Z",
+      "waybackUrl": null,
+      "tier": "exact"
+    },
+    {
+      "id": "s24",
+      "nodeId": "n24",
+      "text": "INTIMATE AFFAIR It іs ɑlso an intimate affair, ɑs fewer thɑn twߋ dozen runners tօok paгt in the 42.2 km (26.2 miles) - the standard marathon distance - race աhile about the same number ran thе half marathon аt this year's event on March 1.",
+      "contextBefore": "ɦe route, and betweеn the rows оf corn stalks sprout tҺe plants of аnother regional favorite, marijuana. In ɑ numbeг of the villages tɦе pungent smell of this harvest hangs іn thе still mountain air. ",
+      "contextAfter": " Fοr myѕelf and somе of the friends I epic island hack tool island cheats fоr ios made along the way, thе attraction was in the novelty, the scenery, ɑnd also tҺe difficulty, as іt was а \"training run",
+      "start": 2271,
+      "end": 2510,
+      "extractSha256": "4ed66e3929f45161a0d97450814e66bd34a44204675f40adbe1ff86ea724ea71",
+      "windowSha256": "f4668fefda167ce5ba2dfd75fc17009cdfbe1e9b3a326512a5377f44761085c6",
+      "fetchedAt": "2026-11-03T02:30:35.034Z",
+      "waybackUrl": "https://web.archive.org/web/20150516053228/https://colletlayden.wordpress.com/1972/12/27/scenic-warm-up-for-the-big-one-lesotho-marathon-poses-own-challenges-11",
+      "tier": "exact"
+    }
+  ],
+  "hops": [
+    {
+      "edgeId": "e1",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "Adrenal-sympathico function, blood carbohydrates and lipids, and water and electrolyte balance were studied"
+        },
+        {
+          "op": "del",
+          "text": "INTIMATE AFFAIR It іs ɑlso an intimate affair, ɑs fewer thɑn twߋ dozen runners tօok paгt"
+        },
+        {
+          "op": "same",
+          "text": "in"
+        },
+        {
+          "op": "add",
+          "text": "six highly trained male"
+        },
+        {
+          "op": "del",
+          "text": "the 42.2 km (26.2 miles) - the standard"
+        },
+        {
+          "op": "same",
+          "text": "marathon"
+        },
+        {
+          "op": "add",
+          "text": "runners prior to and after running a"
+        },
+        {
+          "op": "del",
+          "text": "distance - race աhile about the same number ran thе half"
+        },
+        {
+          "op": "same",
+          "text": "marathon"
+        },
+        {
+          "op": "add",
+          "text": "(26.2 miles; 42.2 km) and"
+        },
+        {
+          "op": "del",
+          "text": "аt this year's event"
+        },
+        {
+          "op": "same",
+          "text": "on"
+        },
+        {
+          "op": "add",
+          "text": "control days corresponding to the above times."
+        },
+        {
+          "op": "del",
+          "text": "March 1."
+        }
+      ],
+      "faithful": false
+    },
+    {
+      "edgeId": "e2",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "To this day, Tony still runs for exercise"
+        },
+        {
+          "op": "del",
+          "text": "Adrenal-sympathico function, blood carbohydrates"
+        },
+        {
+          "op": "same",
+          "text": "and"
+        },
+        {
+          "op": "add",
+          "text": "enjoyment"
+        },
+        {
+          "op": "del",
+          "text": "lipids,"
+        },
+        {
+          "op": "same",
+          "text": "and"
+        },
+        {
+          "op": "add",
+          "text": "recently ran a full marathon, 26.2 miles,"
+        },
+        {
+          "op": "del",
+          "text": "water and electrolyte balance were studied"
+        },
+        {
+          "op": "same",
+          "text": "in"
+        },
+        {
+          "op": "add",
+          "text": "Medford's Pine Line Marathon."
+        },
+        {
+          "op": "del",
+          "text": "six highly trained male marathon runners prior to and after running a marathon (26.2 miles; 42.2 km) and on control days corresponding to the above times."
+        }
+      ],
+      "faithful": false
+    },
+    {
+      "edgeId": "e3",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "Marathon Runner Willie Smith displays the map of his marathon run of"
+        },
+        {
+          "op": "del",
+          "text": "To this day, Tony still runs for exercise and enjoyment and recently ran a full marathon,"
+        },
+        {
+          "op": "same",
+          "text": "26.2"
+        },
+        {
+          "op": "add",
+          "text": "miles."
+        },
+        {
+          "op": "del",
+          "text": "miles, in Medford's Pine Line Marathon."
+        }
+      ],
+      "faithful": true
+    },
+    {
+      "edgeId": "e4",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "4 mile open water swim, followed by a 112 mile bike race and a"
+        },
+        {
+          "op": "del",
+          "text": "Marathon Runner Willie Smith displays the map of his marathon run of"
+        },
+        {
+          "op": "same",
+          "text": "26.2"
+        },
+        {
+          "op": "add",
+          "text": "mile marathon."
+        },
+        {
+          "op": "del",
+          "text": "miles."
+        }
+      ],
+      "faithful": false
+    },
+    {
+      "edgeId": "e5",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "But the chance of qualifying for the Olympic Trials in the marathon have lured him to the longer race, where he hopes to average slightly less than 5:20 per"
+        },
+        {
+          "op": "del",
+          "text": "4"
+        },
+        {
+          "op": "same",
+          "text": "mile"
+        },
+        {
+          "op": "add",
+          "text": "for 26 miles."
+        },
+        {
+          "op": "del",
+          "text": "open water swim, followed by a 112 mile bike race and a 26.2 mile marathon."
+        }
+      ],
+      "faithful": false
+    },
+    {
+      "edgeId": "e6",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "By Steve Nearman At"
+        },
+        {
+          "op": "del",
+          "text": "But"
+        },
+        {
+          "op": "same",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "blast"
+        },
+        {
+          "op": "del",
+          "text": "chance"
+        },
+        {
+          "op": "same",
+          "text": "of"
+        },
+        {
+          "op": "add",
+          "text": "a 105mm howitzer,"
+        },
+        {
+          "op": "del",
+          "text": "qualifying for"
+        },
+        {
+          "op": "same",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "ninth running of"
+        },
+        {
+          "op": "del",
+          "text": "Olympic Trials in"
+        },
+        {
+          "op": "same",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "26.2-mile Marine Corps Marathon will begin today at 9 a.m. near"
+        },
+        {
+          "op": "del",
+          "text": "marathon have lured him to"
+        },
+        {
+          "op": "same",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "Iwo Jima Memorial."
+        },
+        {
+          "op": "del",
+          "text": "longer race, where he hopes to average slightly less than 5:20 per mile for 26 miles."
+        }
+      ],
+      "faithful": false
+    },
+    {
+      "edgeId": "e7",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "Marathon history--contributed to a handful of nasty spills among"
+        },
+        {
+          "op": "del",
+          "text": "By Steve Nearman At"
+        },
+        {
+          "op": "same",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "more than 10,000 bicyclists who took up"
+        },
+        {
+          "op": "del",
+          "text": "blast of a 105mm howitzer,"
+        },
+        {
+          "op": "same",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "marathon's first-ever offer to ride"
+        },
+        {
+          "op": "del",
+          "text": "ninth running of"
+        },
+        {
+          "op": "same",
+          "text": "the 26.2-mile"
+        },
+        {
+          "op": "add",
+          "text": "route of auto-free boulevards."
+        },
+        {
+          "op": "del",
+          "text": "Marine Corps Marathon will begin today at 9 a.m. near the Iwo Jima Memorial."
+        }
+      ],
+      "faithful": false
+    },
+    {
+      "edgeId": "e8",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "Supported by MARATHON At End"
+        },
+        {
+          "op": "del",
+          "text": "Marathon history--contributed to a handful"
+        },
+        {
+          "op": "same",
+          "text": "of"
+        },
+        {
+          "op": "add",
+          "text": "26.2 Miles, Million-Dollar Incentive."
+        },
+        {
+          "op": "del",
+          "text": "nasty spills among the more than 10,000 bicyclists who took up the marathon's first-ever offer to ride the 26.2-mile route of auto-free boulevards."
+        }
+      ],
+      "faithful": false
+    },
+    {
+      "edgeId": "e9",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "del",
+          "text": "Supported by MARATHON"
+        },
+        {
+          "op": "same",
+          "text": "At"
+        },
+        {
+          "op": "add",
+          "text": "the 1908 Olympic Games in London, the marathon distance was changed to 26 miles to cover the ground from Windsor Castleto White City stadium, with 385 yards added on so the race could finish in front"
+        },
+        {
+          "op": "del",
+          "text": "End"
+        },
+        {
+          "op": "same",
+          "text": "of"
+        },
+        {
+          "op": "add",
+          "text": "King Edward VII's royal box."
+        },
+        {
+          "op": "del",
+          "text": "26.2 Miles, Million-Dollar Incentive."
+        }
+      ],
+      "faithful": true
+    },
+    {
+      "edgeId": "e10",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "This site was created for"
+        },
+        {
+          "op": "del",
+          "text": "At"
+        },
+        {
+          "op": "same",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "runner who wants"
+        },
+        {
+          "op": "del",
+          "text": "1908 Olympic Games in London, the marathon distance was changed"
+        },
+        {
+          "op": "same",
+          "text": "to"
+        },
+        {
+          "op": "add",
+          "text": "experience"
+        },
+        {
+          "op": "del",
+          "text": "26 miles to cover"
+        },
+        {
+          "op": "same",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "thrill and sensational high"
+        },
+        {
+          "op": "del",
+          "text": "ground from Windsor Castleto White City stadium, with 385 yards added on so the race could finish in front"
+        },
+        {
+          "op": "same",
+          "text": "of"
+        },
+        {
+          "op": "add",
+          "text": "finishing their first 26.2-mile marathon or 13.1-mile half marathon."
+        },
+        {
+          "op": "del",
+          "text": "King Edward VII's royal box."
+        }
+      ],
+      "faithful": false
+    },
+    {
+      "edgeId": "e11",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "Primer is proudly spam free, Unsubscribe at any time. * Search X The Secret Manual to Affordable style, self-development, how-tos, and apartment DIY"
+        },
+        {
+          "op": "del",
+          "text": "This site was created"
+        },
+        {
+          "op": "same",
+          "text": "for the"
+        },
+        {
+          "op": "add",
+          "text": "Self-made Man Know It All: Why is a Marathon 26.2 Miles?"
+        },
+        {
+          "op": "del",
+          "text": "runner who wants to experience the thrill and sensational high of finishing their first 26.2-mile marathon or 13.1-mile half marathon."
+        }
+      ],
+      "faithful": false
+    },
+    {
+      "edgeId": "e12",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "See all videos"
+        },
+        {
+          "op": "del",
+          "text": "Primer is proudly spam free, Unsubscribe at any time. * Search X The Secret Manual to Affordable style, self-development, how-tos, and apartment DIY"
+        },
+        {
+          "op": "same",
+          "text": "for"
+        },
+        {
+          "op": "add",
+          "text": "this article Tokyo Marathon, annual 26.2-mile (42.2-km) footrace through Tokyo that"
+        },
+        {
+          "op": "del",
+          "text": "the Self-made Man Know It All: Why"
+        },
+        {
+          "op": "same",
+          "text": "is"
+        },
+        {
+          "op": "add",
+          "text": "held each February."
+        },
+        {
+          "op": "del",
+          "text": "a Marathon 26.2 Miles?"
+        }
+      ],
+      "faithful": false
+    },
+    {
+      "edgeId": "e13",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "But once you get your marathon training right, you can safely run 26.2 miles - and even run it quite fast!"
+        },
+        {
+          "op": "del",
+          "text": "See all videos for this article Tokyo Marathon, annual 26.2-mile (42.2-km) footrace through Tokyo that is held each February."
+        }
+      ],
+      "faithful": false
+    },
+    {
+      "edgeId": "e14",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "By: Elizabeth Nix Ancient Greece Why Is a Marathon"
+        },
+        {
+          "op": "del",
+          "text": "But once you get your marathon training right, you can safely run"
+        },
+        {
+          "op": "same",
+          "text": "26.2"
+        },
+        {
+          "op": "add",
+          "text": "Miles?"
+        },
+        {
+          "op": "del",
+          "text": "miles - and even run it quite fast!"
+        }
+      ],
+      "faithful": true
+    },
+    {
+      "edgeId": "e15",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "(29 records) | DefaultRaceDirector Unassigned --- leg+:no --- club:yes --- cup:no --- results:yes --- pics:no | | Juneau"
+        },
+        {
+          "op": "del",
+          "text": "By: Elizabeth Nix Ancient Greece Why Is a"
+        },
+        {
+          "op": "same",
+          "text": "Marathon"
+        },
+        {
+          "op": "add",
+          "text": "--- Glacier Parking Lot, Mendenhall Valley, Juneau --- July 30th 1983 (Saturday) 12:00AM | Distance:"
+        },
+        {
+          "op": "same",
+          "text": "26.2"
+        },
+        {
+          "op": "add",
+          "text": "miles, with a 13.1 mile half marathon Location: start at the Glacier Parking Lot The annual Juneau Marathon."
+        },
+        {
+          "op": "del",
+          "text": "Miles?"
+        }
+      ],
+      "faithful": true
+    },
+    {
+      "edgeId": "e16",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "As of November 3, 2019, Jay finished 200 marathons (26.2-mile races) on"
+        },
+        {
+          "op": "del",
+          "text": "(29 records) | DefaultRaceDirector Unassigned --- leg+:no --- club:yes --- cup:no --- results:yes --- pics:no | | Juneau Marathon --- Glacier Parking Lot, Mendenhall Valley, Juneau --- July 30th 1983 (Saturday) 12:00AM | Distance: 26.2 miles, with a 13.1 mile half marathon Location: start at"
+        },
+        {
+          "op": "same",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "road, 13 more marathons on indoor or outdoor tracks, and more than 5,000 shorter races."
+        },
+        {
+          "op": "del",
+          "text": "Glacier Parking Lot The annual Juneau Marathon."
+        }
+      ],
+      "faithful": false
+    },
+    {
+      "edgeId": "e17",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "Skip to content Get Custom Training Custom Training Plans Marathon FAQ: Question: Why Do we run 26.2 miles?"
+        },
+        {
+          "op": "del",
+          "text": "As of November 3, 2019, Jay finished 200 marathons (26.2-mile races) on the road, 13 more marathons on indoor or outdoor tracks, and more than 5,000 shorter races."
+        }
+      ],
+      "faithful": false
+    },
+    {
+      "edgeId": "e18",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "del",
+          "text": "Skip to content Get Custom Training Custom Training Plans"
+        },
+        {
+          "op": "same",
+          "text": "Marathon"
+        },
+        {
+          "op": "add",
+          "text": "History:"
+        },
+        {
+          "op": "del",
+          "text": "FAQ: Question:"
+        },
+        {
+          "op": "same",
+          "text": "Why"
+        },
+        {
+          "op": "add",
+          "text": "the Royal Family wanted a"
+        },
+        {
+          "op": "del",
+          "text": "Do we run"
+        },
+        {
+          "op": "same",
+          "text": "26.2"
+        },
+        {
+          "op": "add",
+          "text": "mile race."
+        },
+        {
+          "op": "del",
+          "text": "miles?"
+        }
+      ],
+      "faithful": false
+    },
+    {
+      "edgeId": "e19",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "This simple question has a straightforward answer:"
+        },
+        {
+          "op": "del",
+          "text": "Marathon History: Why the Royal Family wanted"
+        },
+        {
+          "op": "same",
+          "text": "a"
+        },
+        {
+          "op": "add",
+          "text": "marathon race is"
+        },
+        {
+          "op": "same",
+          "text": "26.2"
+        },
+        {
+          "op": "add",
+          "text": "miles (42.195 kilometers) long."
+        },
+        {
+          "op": "del",
+          "text": "mile race."
+        }
+      ],
+      "faithful": true
+    },
+    {
+      "edgeId": "e20",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "Page 1 SIXTH ANNUAL MARYLAND MARATHON"
+        },
+        {
+          "op": "del",
+          "text": "This simple question has a straightforward answer: a marathon race is"
+        },
+        {
+          "op": "same",
+          "text": "26.2"
+        },
+        {
+          "op": "add",
+          "text": "MILES Baltimore, Md November 1978 Place Name Ag S City Sta Time Pace ===== =================== == = ================== === ======= ===== 1 Jeffrey Bradley 26 M MANHEIM PA 2:19:36 5:20 2 Ron Hill 40 M CHELSHIRE ENG 2:22:22 5:27 3 Charles Trayer 24 M READING PA 2:23:24 5:29 4 Craig Crouch 22 M HAMILTON NY 2:25:34 5:34 5 Mark Studnicki 21 M PITTSBURGH PA 2:26:00 5:35 6 Thomas Allison 32 M WHEELING WV 2:26:17 5:35 7 James D."
+        },
+        {
+          "op": "del",
+          "text": "miles (42.195 kilometers) long."
+        }
+      ],
+      "faithful": false
+    },
+    {
+      "edgeId": "e21",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "Ask the Chatbot Games & Quizzes History & Society Science & Tech Biographies Animals & Nature Geography & Travel Arts & Culture ProCon Money Videos Why Is a Marathon"
+        },
+        {
+          "op": "del",
+          "text": "Page 1 SIXTH ANNUAL MARYLAND MARATHON"
+        },
+        {
+          "op": "same",
+          "text": "26.2"
+        },
+        {
+          "op": "add",
+          "text": "Miles?"
+        },
+        {
+          "op": "del",
+          "text": "MILES Baltimore, Md November 1978 Place Name Ag S City Sta Time Pace ===== =================== == = ================== === ======= ===== 1 Jeffrey Bradley 26 M MANHEIM PA 2:19:36 5:20 2 Ron Hill 40 M CHELSHIRE ENG 2:22:22 5:27 3 Charles Trayer 24 M READING PA 2:23:24 5:29 4 Craig Crouch 22 M HAMILTON NY 2:25:34 5:34 5 Mark Studnicki 21 M PITTSBURGH PA 2:26:00 5:35 6 Thomas Allison 32 M WHEELING WV 2:26:17 5:35 7 James D."
+        }
+      ],
+      "faithful": false
+    },
+    {
+      "edgeId": "e22",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "Home Programs Offices About us Careers Home Programs Offices About us Careers On the run: EF staff marathoners exploring"
+        },
+        {
+          "op": "del",
+          "text": "Ask"
+        },
+        {
+          "op": "same",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "world 26.2 miles at"
+        },
+        {
+          "op": "del",
+          "text": "Chatbot Games & Quizzes History & Society Science & Tech Biographies Animals & Nature Geography & Travel Arts & Culture ProCon Money Videos Why Is"
+        },
+        {
+          "op": "same",
+          "text": "a"
+        },
+        {
+          "op": "add",
+          "text": "time."
+        },
+        {
+          "op": "del",
+          "text": "Marathon 26.2 Miles?"
+        }
+      ],
+      "faithful": true
+    }
+  ],
+  "blame": [],
+  "roots": {
+    "pages": 24,
+    "clusters": 24,
+    "rootsLinked": 0,
+    "clustersUnlinked": 24,
+    "studiesFound": null
+  },
+  "redHopEdgeId": "e1",
+  "earliest": {
+    "nodeIds": [
+      "n24"
+    ],
+    "earlierWindowSearches": 2,
+    "earlierFound": 0
+  },
+  "failure": null,
+  "budget": {
+    "credits": 21,
+    "usd": 0,
+    "ms": 53844,
+    "capHit": null
+  },
+  "decision": {
+    "state": "TRAIL_GOES_COLD",
+    "row": 6,
+    "reasons": [
+      "no earliest page with a confirmed date, a primary page type and no earlier citation",
+      "2 unread candidate parent(s)"
+    ],
+    "counts": {
+      "pages": 24,
+      "clusters": 24,
+      "unreadParents": 2,
+      "earlierWindowSearches": 2
+    }
+  },
+  "searchLog": [
+    {
+      "at": "2026-11-03T02:29:45.404Z",
+      "step": "search",
+      "query": "\"26.2 miles\" marathon",
+      "endDate": "2026-11-03",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:29:45.406Z",
+      "step": "search",
+      "query": "\"26.2-mile\" marathon",
+      "endDate": "2026-11-03",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:29:50.276Z",
+      "step": "search",
+      "query": "\"26.2 miles\" marathon",
+      "endDate": "2014-10-28",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:29:51.835Z",
+      "step": "search",
+      "query": "\"26.2-mile\" marathon",
+      "endDate": "2014-10-28",
+      "startDate": null,
+      "results": 8,
+      "kept": 8,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:29:57.500Z",
+      "step": "search",
+      "query": "\"26.2 miles\" marathon",
+      "endDate": "2014-02-19",
+      "startDate": null,
+      "results": 10,
+      "kept": 7,
+      "dropped": 3
+    },
+    {
+      "at": "2026-11-03T02:29:58.579Z",
+      "step": "search",
+      "query": "\"26.2-mile\" marathon",
+      "endDate": "2014-02-19",
+      "startDate": null,
+      "results": 8,
+      "kept": 7,
+      "dropped": 1
+    },
+    {
+      "at": "2026-11-03T02:30:01.377Z",
+      "step": "search",
+      "query": "\"26.2 miles\" marathon",
+      "endDate": "2000-10-18",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:30:02.365Z",
+      "step": "search",
+      "query": "\"26.2-mile\" marathon",
+      "endDate": "2000-10-18",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:30:06.574Z",
+      "step": "search",
+      "query": "\"26.2 miles\" marathon",
+      "endDate": "1995-03-05",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:30:07.814Z",
+      "step": "search",
+      "query": "\"26.2-mile\" marathon",
+      "endDate": "1995-03-05",
+      "startDate": null,
+      "results": 10,
+      "kept": 8,
+      "dropped": 2
+    },
+    {
+      "at": "2026-11-03T02:30:16.937Z",
+      "step": "search",
+      "query": "\"26.2 miles\" marathon",
+      "endDate": "1984-04-14",
+      "startDate": null,
+      "results": 10,
+      "kept": 9,
+      "dropped": 1
+    },
+    {
+      "at": "2026-11-03T02:30:18.407Z",
+      "step": "search",
+      "query": "\"26.2-mile\" marathon",
+      "endDate": "1984-04-14",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:30:24.864Z",
+      "step": "search",
+      "query": "\"26.2 miles\" marathon",
+      "endDate": "1982-05-03",
+      "startDate": null,
+      "results": 10,
+      "kept": 9,
+      "dropped": 1
+    },
+    {
+      "at": "2026-11-03T02:30:27.944Z",
+      "step": "search",
+      "query": "\"26.2-mile\" marathon",
+      "endDate": "1982-05-03",
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:30:36.672Z",
+      "step": "search",
+      "query": "\"26.2 miles\" marathon",
+      "endDate": "1972-12-26",
+      "startDate": null,
+      "results": 3,
+      "kept": 3,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:30:38.340Z",
+      "step": "search",
+      "query": "\"26.2-mile\" marathon",
+      "endDate": "1972-12-26",
+      "startDate": null,
+      "results": 1,
+      "kept": 1,
+      "dropped": 0
+    }
+  ],
+  "usage": [
+    {
+      "at": "2026-11-03T02:29:45.403Z",
+      "traceId": "dry-run",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-03T02:29:45.405Z",
+      "traceId": "dry-run",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-03T02:29:46.530Z",
+      "traceId": "dry-run",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1116,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:29:47.324Z",
+      "traceId": "dry-run",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 788,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:29:47.723Z",
+      "traceId": "dry-run",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 396,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:29:48.165Z",
+      "traceId": "dry-run",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 439,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:29:48.861Z",
+      "traceId": "dry-run",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 694,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:29:49.147Z",
+      "traceId": "dry-run",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 285,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:29:50.276Z",
+      "traceId": "dry-run",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1128,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:29:51.835Z",
+      "traceId": "dry-run",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1558,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:29:54.403Z",
+      "traceId": "dry-run",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 2567,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:29:55.418Z",
+      "traceId": "dry-run",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 1010,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:29:55.831Z",
+      "traceId": "dry-run",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 409,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:29:56.083Z",
+      "traceId": "dry-run",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 250,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:29:57.499Z",
+      "traceId": "dry-run",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1414,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:29:58.578Z",
+      "traceId": "dry-run",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1078,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:29:59.394Z",
+      "traceId": "dry-run",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 815,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:29:59.638Z",
+      "traceId": "dry-run",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 242,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:29:59.911Z",
+      "traceId": "dry-run",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 271,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:30:00.286Z",
+      "traceId": "dry-run",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 372,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:30:01.376Z",
+      "traceId": "dry-run",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1089,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:30:02.365Z",
+      "traceId": "dry-run",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 988,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:30:04.031Z",
+      "traceId": "dry-run",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1666,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:30:04.458Z",
+      "traceId": "dry-run",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 426,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:30:05.437Z",
+      "traceId": "dry-run",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 976,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:30:06.574Z",
+      "traceId": "dry-run",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1135,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:30:07.813Z",
+      "traceId": "dry-run",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1239,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:30:14.320Z",
+      "traceId": "dry-run",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 6506,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:30:15.533Z",
+      "traceId": "dry-run",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 1211,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:30:15.839Z",
+      "traceId": "dry-run",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 304,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:30:16.937Z",
+      "traceId": "dry-run",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1097,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:30:18.406Z",
+      "traceId": "dry-run",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1469,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:30:20.041Z",
+      "traceId": "dry-run",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1634,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:30:22.045Z",
+      "traceId": "dry-run",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 1998,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:30:22.588Z",
+      "traceId": "dry-run",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 537,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:30:22.894Z",
+      "traceId": "dry-run",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 305,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:30:23.577Z",
+      "traceId": "dry-run",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 681,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:30:23.667Z",
+      "traceId": "dry-run",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 87,
+      "status": "403",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:30:24.863Z",
+      "traceId": "dry-run",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1195,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:30:27.944Z",
+      "traceId": "dry-run",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 3080,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:30:29.262Z",
+      "traceId": "dry-run",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1318,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:30:32.770Z",
+      "traceId": "dry-run",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 3506,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:30:33.616Z",
+      "traceId": "dry-run",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 841,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:30:34.147Z",
+      "traceId": "dry-run",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 530,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:30:35.034Z",
+      "traceId": "dry-run",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 884,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:30:36.672Z",
+      "traceId": "dry-run",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1637,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:30:38.340Z",
+      "traceId": "dry-run",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1667,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:30:39.234Z",
+      "traceId": "dry-run",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 893,
+      "status": "200",
+      "cacheHit": false
+    }
+  ],
+  "scopeNote": "Web pages only; print and paywalled origins are out of scope. Earliest source we found, not proof of first use."
+}

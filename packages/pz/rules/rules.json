@@ -6,5 +6,5 @@
   "primaryPageTypes": ["study", "dataset", "report", "speaker"],
   "metaKeywords": ["myth", "debunk", "zombie", "actually comes from", "misattributed", "no evidence that"],
   "negationPrefixes": ["not", "no evidence that", "myth that", "it is a myth that"],
-  "factCheckDomains": []
+  "factCheckDomains": ["snopes.com", "politifact.com", "factcheck.org", "fullfact.org", "leadstories.com", "checkyourfact.com", "africacheck.org", "truthorfiction.com", "quoteinvestigator.com"]
 }
