@@ -35,7 +35,7 @@ export function createTokenFactoryClient(options: Options = {}) {
   async function request(endpoint: string, body: { model: string; [key: string]: unknown }, context: Context = {}) {
     const key = process.env.NEBIUS_API_KEY?.trim();
     if (!key) throw new TokenFactoryError("not_configured");
-    const price = (prices.models as Record<string, { input: number; output: number; cachedInput: number }>)[body.model];
+    const price = Object.hasOwn(prices.models, body.model) ? (prices.models as Record<string, { input: number; output: number; cachedInput: number }>)[body.model] : undefined;
     if (!price) throw new TokenFactoryError("not_configured");
     const rows: UsageRow[] = [];
     const redact = (value: unknown): unknown => {
