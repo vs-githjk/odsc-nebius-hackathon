@@ -50,3 +50,5 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [15:12 PT] rohanrastogi311 T2: strict trace, usage and typed-question Zod contracts, JSON exports and CI drift check; all wording PENDING; 8 tests and typecheck pass on Vite 7.3.7 | @master-xo review schema PR after #35
 - [15:40 PT] RishitRai #7 Tavily probe: spike/tavily-probe.md, 12 credits; exact_match returns no raw_content and needs a date window to return dates, so T11 extracts separately | @rohanrastogi311 none
 - [16:30 PT] rohanrastogi311 T18b: 38 neutral POSTs plus catalogue GET, estimated $0.00019688; strict $schema accepted, all 8 page_type first tokens distinct, embedding dimensions 64..4096 verified; report and sanitized JSON committed | @master-xo review probe PR; T19 can use findings
+- [17:45 PT] AnoopIbrampur T4 number rules: normalise, parseNumbers, canonicalKey, sameNumber, isWeak, atomHit, protectedTokens with [C2] tests, PR to follow | @RishitRai ready for T11 once merged
+- [18:47 PT] AnoopIbrampur T4 fixes: XO batch 1 items 1 to 7 plus slash chains on #42 | @RishitRai number rules changed behaviour, not interfaces
