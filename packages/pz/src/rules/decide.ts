@@ -1,6 +1,6 @@
 import type { Decision, Node, Trace, TypedAnswer } from "../schema/index.ts";
 import { normalise } from "./normalise.ts";
-import { parseNumbers, sameNumber, type ParsedNumber } from "./numbers.ts";
+import { atomHit, parseNumbers, sameNumber } from "./numbers.ts";
 import type { Rules } from "./rules.ts";
 
 // A typed answer counts only if it is not "unsure" and, once a threshold is frozen, clears it.
@@ -9,18 +9,23 @@ function confident(answer: TypedAnswer | null, rules: Rules): answer is TypedAns
   return rules.confidenceThreshold === null || (answer.probability ?? 0) >= rules.confidenceThreshold;
 }
 
-// Numbers each earliest-cluster page gives for the claim's subject (spans that name the subject lemma).
-function subjectNumbers(trace: Trace, node: Node): ParsedNumber[] {
-  const lemma = normalise(trace.claim.atoms.subjectLemma).toLowerCase();
-  return trace.spans
-    .filter((s) => s.nodeId === node.id && normalise(s.text).toLowerCase().includes(lemma))
-    .flatMap((s) => parseNumbers(s.text).numbers);
-}
-
-function conflicting(trace: Trace, pages: Node[]): boolean {
+// Anchored on the claim's number: the earliest cluster conflicts when one page gives that number for the subject
+// and another page gives the subject only other numbers. A shared unrelated number (a year, a count) hides nothing.
+function conflicting(trace: Trace, pages: Node[], rules: Rules): boolean {
+  const atoms = trace.claim.atoms;
+  const target = parseNumbers(atoms.number.canonical).numbers[0];
+  if (!target) return false;
+  const lemma = normalise(atoms.subjectLemma).toLowerCase();
   const earliestClusters = new Set(pages.filter((n) => trace.earliest.nodeIds.includes(n.id)).map((n) => n.clusterId));
-  const sets = pages.filter((n) => earliestClusters.has(n.clusterId)).map((n) => subjectNumbers(trace, n)).filter((s) => s.length > 0);
-  return sets.some((a, i) => sets.slice(i + 1).some((b) => !a.some((x) => b.some((y) => sameNumber(x, y).equal))));
+  let agrees = false;
+  let differs = false;
+  for (const node of pages.filter((n) => earliestClusters.has(n.clusterId))) {
+    const spans = trace.spans.filter((s) => s.nodeId === node.id && normalise(s.text).toLowerCase().includes(lemma));
+    const numbers = spans.flatMap((s) => parseNumbers(s.text).numbers);
+    if (spans.some((s) => atomHit(s.text, atoms, rules.weakNumberMinSigDigits))) agrees = true;
+    else if (numbers.length > 0 && !numbers.some((n) => sameNumber(n, target).equal)) differs = true;
+  }
+  return agrees && differs;
 }
 
 // Rows are checked in order; the first row that holds wins. Pure: reads only the trace and the rules.
@@ -36,7 +41,7 @@ export function decideStopState(trace: Trace, rules: Rules): Decision {
   if (trace.failure) return decide("TOOL_FAILED", 1, [`${trace.failure.service} failed: ${trace.failure.status}`]);
   if (trace.budget.capHit) return decide("PARTIAL", 2, [`cap hit: ${trace.budget.capHit}`]);
   if (pages.length === 0) return decide("NO_PAGES_FOUND", 3, ["no pages besides meta pages"]);
-  if (conflicting(trace, pages)) return decide("CONFLICTING", 4, ["earliest cluster gives different numbers beyond every transform"]);
+  if (conflicting(trace, pages, rules)) return decide("CONFLICTING", 4, ["earliest cluster gives different numbers beyond every transform"]);
 
   const origin = pages.find((n) =>
     trace.earliest.nodeIds.includes(n.id) && confident(n.pageType, rules) && rules.primaryPageTypes.includes(n.pageType.optionId)
