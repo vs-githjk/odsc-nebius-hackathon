@@ -1,6 +1,6 @@
 import { appendFileSync, mkdirSync } from "node:fs";
 import { dirname } from "node:path";
-import type { UsageRow } from "./row.ts";
+import type { UsageRow } from "pz/schema";
 
 export const DEFAULT_USAGE_PATH = "runs/usage.jsonl";
 

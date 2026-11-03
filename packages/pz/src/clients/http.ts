@@ -1,5 +1,5 @@
 import type { UsageLog } from "../usage/log.ts";
-import type { UsageRow } from "../usage/row.ts";
+import type { UsageRow } from "pz/schema";
 import type { Budget } from "./budget.ts";
 import { cacheKey, type Cache } from "./cache.ts";
 import { ClientError } from "./errors.ts";

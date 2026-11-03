@@ -8,7 +8,7 @@ import { ClientError, createPageFetcher } from "../src/clients/http.ts";
 import { createTavily } from "../src/clients/tavily.ts";
 import { WAYBACK_TIMEOUT_MS, createWayback } from "../src/clients/wayback.ts";
 import { createUsageLog } from "../src/usage/log.ts";
-import { UsageRow } from "../src/usage/row.ts";
+import { UsageRow } from "pz/schema";
 
 const KEY = "tvly-test-secret-value";
 const recorded = (name: string) =>
