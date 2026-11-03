@@ -52,3 +52,7 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [16:30 PT] rohanrastogi311 T18b: 38 neutral POSTs plus catalogue GET, estimated $0.00019688; strict $schema accepted, all 8 page_type first tokens distinct, embedding dimensions 64..4096 verified; report and sanitized JSON committed | @master-xo review probe PR; T19 can use findings
 - [17:48 PT] AnoopIbrampur T2b question wording: instructions and option labels for the four typed questions, PR to follow | @rohanrastogi311 T19 can use them once merged
 - [18:49 PT] AnoopIbrampur T2b fixes: option-id pin, non-empty labels, EARLIER/LATER wording on #44 | @rohanrastogi311 T19 should label the passages EARLIER and LATER
+- [17:45 PT] AnoopIbrampur T4 number rules: normalise, parseNumbers, canonicalKey, sameNumber, isWeak, atomHit, protectedTokens with [C2] tests, PR to follow | @RishitRai ready for T11 once merged
+- [18:47 PT] AnoopIbrampur T4 fixes: XO batch 1 items 1 to 7 plus slash chains on #42 | @RishitRai number rules changed behaviour, not interfaces
+- [17:47 PT] AnoopIbrampur T5 decide: rules.json, Rules schema, decideStopState with [C16]/[C20] tests; stacked on T4 (#42), PR to follow | @RishitRai T11 can use decideStopState once both merge
+- [18:49 PT] AnoopIbrampur T5 fixes: conflict anchored on the claim number, earlierFound test, weakNumberMinSigDigits wired, on #43
