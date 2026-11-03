@@ -6,7 +6,7 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 
 | Service | Calls |
 |---|---|
-| Shell | 182 |
+| Shell | 188 |
 | Claude Code tools | 122 |
 | Other HTTP | 91 |
 | GitHub (gh) | 85 |
@@ -20,16 +20,16 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 
 | Kind | Tokens |
 |---|---|
-| input_tokens | 570 |
-| cache_creation_input_tokens | 1,385,671 |
-| cache_read_input_tokens | 73,198,710 |
-| output_tokens | 273,484 |
+| input_tokens | 576 |
+| cache_creation_input_tokens | 1,387,793 |
+| cache_read_input_tokens | 75,071,990 |
+| output_tokens | 275,561 |
 
 ## Per run
 
 | Started (UTC) | Agent | Model | Output tokens | Apify | Bright Data | Browser | Web | GitHub | Codex | Nebius Token Factory | Tavily API | Other HTTP |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 2026-10-30T20:10 | main session | claude-opus-5-5, claude-sonnet-5-5 | 273,484 | 0 | 0 | 0 | 36 | 85 | 0 | 0 | 0 | 91 |
+| 2026-10-30T20:10 | main session | claude-opus-5-5, claude-sonnet-5-5 | 275,561 | 0 | 0 | 0 | 36 | 85 | 0 | 0 | 0 | 91 |
 
 ## Detail (service: tool or host)
 
