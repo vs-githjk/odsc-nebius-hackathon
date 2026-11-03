@@ -78,7 +78,7 @@ describe("Token Factory client", () => {
   });
   it("unknown price configuration makes no request", async () => {
     const { client, fetch } = setup([]);
-    await expect(client.chat({ ...args, model: "unconfigured-model" })).rejects.toMatchObject({ code: "not_configured", usage: [] });
+    for (const model of ["unconfigured-model", "constructor", "__proto__"]) await expect(client.chat({ ...args, model })).rejects.toMatchObject({ code: "not_configured", usage: [] });
     expect(fetch).not.toHaveBeenCalled();
   });
   it("rejects non-empty truncated JSON even if usage is valid", async () => {
