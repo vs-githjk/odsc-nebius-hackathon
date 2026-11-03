@@ -49,3 +49,4 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [01:10 PT] rohanrastogi311 T1: Node 24 workspace, exact allowlisted packages, CLI version stub and CI; npm ci, typecheck, test and make verify pass locally; smoke failed before version export | @master-xo review skeleton PR; T2 follows
 - [15:12 PT] rohanrastogi311 T2: strict trace, usage and typed-question Zod contracts, JSON exports and CI drift check; all wording PENDING; 8 tests and typecheck pass on Vite 7.3.7 | @master-xo review schema PR after #35
 - [15:40 PT] RishitRai #7 Tavily probe: spike/tavily-probe.md, 12 credits; exact_match returns no raw_content and needs a date window to return dates, so T11 extracts separately | @rohanrastogi311 none
+- [17:45 PT] AnoopIbrampur T4 number rules: normalise, parseNumbers, canonicalKey, sameNumber, isWeak, atomHit, protectedTokens with [C2] tests, PR to follow | @RishitRai ready for T11 once merged
