@@ -1,8 +1,26 @@
 #!/usr/bin/env -S node --import tsx
 import { PZ_VERSION } from "../index.ts";
+import { runVerify } from "../verify/index.ts";
 
-if (process.argv[2] === "--version") {
+const [command, ...args] = process.argv.slice(2);
+
+if (command === "--version") {
   console.log(PZ_VERSION);
+} else if (command === "verify") {
+  if (args.includes("--refetch")) {
+    console.error("not built yet (Run 2)");
+    process.exit(2);
+  }
+  const pagesAt = args.indexOf("--pages");
+  const pagesDir = pagesAt >= 0 ? args[pagesAt + 1] : undefined;
+  const paths = args.filter((_, i) => pagesAt < 0 || (i !== pagesAt && i !== pagesAt + 1));
+  if (paths.length === 0) {
+    console.error("usage: pz verify <trace.json...> [--pages <dir>]");
+    process.exit(2);
+  }
+  const { code, lines } = runVerify(paths, { pagesDir });
+  for (const line of lines) console.log(line);
+  process.exitCode = code;
 } else {
   console.error("not built yet");
   process.exitCode = 1;
