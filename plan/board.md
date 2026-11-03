@@ -45,3 +45,4 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 
 - [14:57 PT] rohanrastogi311 T13: PR #29; targets-a SHA256 d8a20892c9ffc14f71db1aee75253d381997b84b4992c129bd9b32407df6ebdc; targets-b SHA256 5c10c10cc8098310a9de16f65e87d34b8773f5000836c813db3136f8630360b8
 - [22:11 PT] AnoopIbrampur head-to-head: 18 transcripts (3 tools x 6 claims) in spike/head-to-head, PR to follow | @vs-githjk method notes in PR body
+- [19:00 PT] AnoopIbrampur T20a forms: 18 head-to-head forms in spike/h2h-forms on PR #38 | @vs-githjk ready for A to D relabelling
