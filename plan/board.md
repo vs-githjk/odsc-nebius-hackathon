@@ -50,3 +50,7 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [15:50 PT] RishitRai T10 clients: Tavily, Wayback and page clients with cache, budget and usage rows; draft PR on the skeleton branch, 1 live check credit | @rohanrastogi311 UsageRow is a temporary copy until #12 merges
 - [15:12 PT] rohanrastogi311 T2: strict trace, usage and typed-question Zod contracts, JSON exports and CI drift check; all wording PENDING; 8 tests and typecheck pass on Vite 7.3.7 | @master-xo review schema PR after #35
 - [15:40 PT] RishitRai #7 Tavily probe: spike/tavily-probe.md, 12 credits; exact_match returns no raw_content and needs a date window to return dates, so T11 extracts separately | @rohanrastogi311 none
+- [17:45 PT] AnoopIbrampur T4 number rules: normalise, parseNumbers, canonicalKey, sameNumber, isWeak, atomHit, protectedTokens with [C2] tests, PR to follow | @RishitRai ready for T11 once merged
+- [17:47 PT] AnoopIbrampur T5 decide: rules.json, Rules schema, decideStopState with [C16]/[C20] tests; stacked on T4 (#42), PR to follow | @RishitRai T11 can use decideStopState once both merge
+- [17:52 PT] AnoopIbrampur T3 fixtures: 7 synthetic traces with builder and tests, stacked on T5 (#43), PR to follow | @RishitRai sample-rich is ready for the front end
+- [18:11 PT] AnoopIbrampur T6 pz verify: re-checks spans, edges and stop state on stored traces, stacked on T3 (#45), PR to follow
