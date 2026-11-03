@@ -1,4 +1,5 @@
 import { execFileSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import { mkdtempSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -12,6 +13,8 @@ const tracesDir = join(root, "fixtures/traces");
 const pagesDir = join(root, "fixtures/pages");
 const fixtures = readdirSync(tracesDir).filter((f) => f.endsWith(".json")).map((f) => join(tracesDir, f));
 const rich = (): Trace => JSON.parse(readFileSync(join(tracesDir, "sample-rich.json"), "utf8"));
+const origin = (): Trace => JSON.parse(readFileSync(join(tracesDir, "sample-origin.json"), "utf8"));
+const sha = (text: string) => createHash("sha256").update(text).digest("hex");
 const checks = (t: Trace) => verifyTrace(t, { pagesDir }).failures.map((f) => f.check);
 
 describe("pz verify", () => {
@@ -64,6 +67,40 @@ describe("pz verify", () => {
     catch (e) { status = (e as { status: number }).status; out = String((e as { stdout: Buffer }).stdout); }
     expect(status).toBe(1);
     expect(out).toContain("FAIL sample-rich window_hash");
+  });
+
+  it("[C16] fails a stored earliest node that has an incoming edge", () => {
+    const t = origin();
+    t.earliest.nodeIds = ["zoo-report"];
+    expect(checks(t)).toContain("earliest");
+  });
+
+  it("[C16] fails when a page outside the earliest clusters is older", () => {
+    const t = origin();
+    t.nodes[2]!.date.value = "2018-01-01";
+    expect(checks(t)).toEqual(["earliest"]);
+  });
+
+  it("[C2] rejects a span preceded by a negation on a non-meta page", () => {
+    const t = origin();
+    const s = t.spans[0]!;
+    s.contextBefore = "It is a myth that";
+    s.windowSha256 = sha(s.contextBefore + s.text + s.contextAfter);
+    const found = verifyTrace(t).failures.map((f) => f.check);
+    expect(found).toContain("negated");
+  });
+
+  it("fails a page hash mismatch with --pages", () => {
+    const t = rich();
+    t.spans[0]!.extractSha256 = "0".repeat(64);
+    expect(checks(t)).toEqual(["page_hash"]);
+  });
+
+  it("exits 2 when --pages has no directory", () => {
+    let status = 0;
+    try { execFileSync("node", ["--import", "tsx", join(root, "packages/pz/src/cli/pz.ts"), "verify", fixtures[0]!, "--pages"], { cwd: root, stdio: "pipe" }); }
+    catch (e) { status = (e as { status: number }).status; }
+    expect(status).toBe(2);
   });
 
   it("never imports the matcher", () => {

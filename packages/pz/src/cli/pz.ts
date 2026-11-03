@@ -13,6 +13,10 @@ if (command === "--version") {
   }
   const pagesAt = args.indexOf("--pages");
   const pagesDir = pagesAt >= 0 ? args[pagesAt + 1] : undefined;
+  if (pagesAt >= 0 && (!pagesDir || pagesDir.startsWith("--"))) {
+    console.error("usage: pz verify <trace.json...> [--pages <dir>]");
+    process.exit(2);
+  }
   const paths = args.filter((_, i) => pagesAt < 0 || (i !== pagesAt && i !== pagesAt + 1));
   if (paths.length === 0) {
     console.error("usage: pz verify <trace.json...> [--pages <dir>]");
