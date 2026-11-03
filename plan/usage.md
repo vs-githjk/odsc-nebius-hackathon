@@ -6,7 +6,7 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 
 | Who | Runs | Output tokens | Apify | Bright Data | Web | GitHub | Codex | Last updated (UTC) |
 |---|---|---|---|---|---|---|---|---|
-| AnoopIbrampur | 1 | 194,828 | 0 | 0 | 36 | 59 | 0 | 2026-11-03T02:49:03Z |
+| AnoopIbrampur | 1 | 197,606 | 0 | 0 | 36 | 63 | 0 | 2026-11-03T02:49:42Z |
 | vs-githjk | 34 | 1,681,747 | 10 | 7 | 63 | 162 | 11 | 2026-11-03T02:43:40Z |
 
 ## Totals by service
@@ -14,8 +14,8 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 | Service | Calls |
 |---|---|
 | Claude Code tools | 960 |
-| Shell | 768 |
-| GitHub (gh) | 221 |
+| Shell | 770 |
+| GitHub (gh) | 225 |
 | Other HTTP | 217 |
 | Web search and fetch | 99 |
 | MCP ccd_turn | 51 |
@@ -32,10 +32,10 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 
 | Kind | Tokens |
 |---|---|
-| input_tokens | 6,889 |
-| cache_creation_input_tokens | 9,281,678 |
-| cache_read_input_tokens | 209,617,850 |
-| output_tokens | 1,876,575 |
+| input_tokens | 6,895 |
+| cache_creation_input_tokens | 9,285,728 |
+| cache_read_input_tokens | 210,931,752 |
+| output_tokens | 1,879,353 |
 
 ## Per run
 
@@ -69,7 +69,7 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 | vs-githjk | 2026-10-29T12:03 | master-planner: Build plan and team lanes | claude-opus-5-5 | 90,327 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 2 |
 | vs-githjk | 2026-10-29T19:16 | master-xo: Post the Oct 29 task issues | claude-opus-5-5 | 23,591 | 0 | 0 | 0 | 0 | 8 | 0 | 0 | 0 | 0 |
 | vs-githjk | 2026-10-29T19:16 | master-finder: Pick spike claims 5 and 6 | claude-opus-5-5 | 22,586 | 3 | 0 | 0 | 10 | 0 | 0 | 0 | 0 | 21 |
-| AnoopIbrampur | 2026-10-30T20:10 | main session | claude-opus-5-5, claude-sonnet-5-5 | 194,828 | 0 | 0 | 0 | 36 | 59 | 0 | 0 | 0 | 91 |
+| AnoopIbrampur | 2026-10-30T20:10 | main session | claude-opus-5-5, claude-sonnet-5-5 | 197,606 | 0 | 0 | 0 | 36 | 63 | 0 | 0 | 0 | 91 |
 | vs-githjk | 2026-10-31T17:53 | master-xo: Post Oct 31 team batch | claude-opus-5-5 | 17,818 | 0 | 0 | 0 | 0 | 7 | 0 | 0 | 0 | 0 |
 | vs-githjk | 2026-10-31T17:53 | master-reviewer: Review PRs 29 and 30 | claude-opus-5-5 | 23,036 | 0 | 0 | 0 | 0 | 7 | 0 | 2 | 0 | 1 |
 | vs-githjk | 2026-11-01T22:55 | master-reviewer: Review PR 35 skeleton | claude-opus-5-5 | 17,524 | 0 | 0 | 0 | 0 | 5 | 0 | 0 | 0 | 0 |
@@ -89,7 +89,7 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 - Browser (Playwright): browser_navigate: 1
 - Browser (Playwright): browser_snapshot: 1
 - Codex: codex: 11
-- GitHub (gh): gh: 221
+- GitHub (gh): gh: 225
 - MCP ccd_directory: change_directory: 1
 - MCP ccd_host: open_in_editor: 7
 - MCP ccd_pr: get_status: 1
