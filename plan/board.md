@@ -52,3 +52,4 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [17:45 PT] AnoopIbrampur T4 number rules: normalise, parseNumbers, canonicalKey, sameNumber, isWeak, atomHit, protectedTokens with [C2] tests, PR to follow | @RishitRai ready for T11 once merged
 - [17:47 PT] AnoopIbrampur T5 decide: rules.json, Rules schema, decideStopState with [C16]/[C20] tests; stacked on T4 (#42), PR to follow | @RishitRai T11 can use decideStopState once both merge
 - [17:52 PT] AnoopIbrampur T3 fixtures: 7 synthetic traces with builder and tests, stacked on T5 (#43), PR to follow | @RishitRai sample-rich is ready for the front end
+- [18:39 PT] RishitRai T14 app shell: apps/web on Vite 7.3.7 and React 19.3.1, DESIGN.md tokens, hash routes, fixtures parsed with pz/schema, SAMPLE badge; draft on the fixtures stack
