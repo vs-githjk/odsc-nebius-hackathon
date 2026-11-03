@@ -21,18 +21,18 @@ const yesNo = (yes: string, no: string) => [{ id: "yes", label: yes }, { id: "no
 export const QUESTIONS: Question[] = [
   {
     id: "scope_widened", kind: "yesno",
-    options: yesNo("The later passage applies the number more widely", "The number covers the same group, place and time"),
-    instructions: "`source_text` holds an earlier passage and a later passage that repeats its number: does the later passage apply that number to a wider group, place or time than the earlier one?" + RULES,
+    options: yesNo("LATER applies the number more widely", "The number covers the same group, place and time"),
+    instructions: "`source_text` holds two passages labelled EARLIER and LATER, where LATER repeats or changes EARLIER's number: does LATER apply its number to a wider group, place or time than EARLIER?" + RULES,
   },
   {
     id: "attribution_shifted", kind: "yesno",
-    options: yesNo("The later passage credits a different source", "The number is credited to the same source, or to none in both"),
-    instructions: "`source_text` holds an earlier passage and a later passage that repeats its number: does the later passage credit the number to a different person, organisation or study than the earlier one does?" + RULES,
+    options: yesNo("LATER credits a different source", "The number is credited to the same source, or to none in both"),
+    instructions: "`source_text` holds two passages labelled EARLIER and LATER, where LATER repeats or changes EARLIER's number: does LATER credit the number to a different person, organisation or study than EARLIER does?" + RULES,
   },
   {
     id: "context_stripped", kind: "yesno",
-    options: yesNo("The later passage drops a limit that changes the meaning", "The limits that matter are kept"),
-    instructions: "`source_text` holds an earlier passage and a later passage that repeats its number: does the later passage drop a condition, sample, method or caveat from the earlier one that changes what the number means?" + RULES,
+    options: yesNo("LATER drops a limit that changes the meaning", "The limits that matter are kept"),
+    instructions: "`source_text` holds two passages labelled EARLIER and LATER, where LATER repeats or changes EARLIER's number: does LATER drop a condition, sample, method or caveat from EARLIER that changes what the number means?" + RULES,
   },
   {
     id: "page_type", kind: "choice",
@@ -46,7 +46,7 @@ export const QUESTIONS: Question[] = [
       { id: "social", label: "Social media post" },
       { id: "other", label: "Anything else" },
     ],
-    instructions: "`source_text` holds the text of one web page: which option best describes what kind of page it is?" + RULES,
+    instructions: "`source_text` holds the text of one web page, asked on its own: which option best describes what kind of page it is?" + RULES,
   },
 ];
 
