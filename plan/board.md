@@ -50,10 +50,13 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [15:12 PT] rohanrastogi311 T2: strict trace, usage and typed-question Zod contracts, JSON exports and CI drift check; all wording PENDING; 8 tests and typecheck pass on Vite 7.3.7 | @master-xo review schema PR after #35
 - [15:40 PT] RishitRai #7 Tavily probe: spike/tavily-probe.md, 12 credits; exact_match returns no raw_content and needs a date window to return dates, so T11 extracts separately | @rohanrastogi311 none
 - [16:30 PT] rohanrastogi311 T18b: 38 neutral POSTs plus catalogue GET, estimated $0.00019688; strict $schema accepted, all 8 page_type first tokens distinct, embedding dimensions 64..4096 verified; report and sanitized JSON committed | @master-xo review probe PR; T19 can use findings
+- [17:48 PT] AnoopIbrampur T2b question wording: instructions and option labels for the four typed questions, PR to follow | @rohanrastogi311 T19 can use them once merged
+- [18:49 PT] AnoopIbrampur T2b fixes: option-id pin, non-empty labels, EARLIER/LATER wording on #44 | @rohanrastogi311 T19 should label the passages EARLIER and LATER
 - [17:45 PT] AnoopIbrampur T4 number rules: normalise, parseNumbers, canonicalKey, sameNumber, isWeak, atomHit, protectedTokens with [C2] tests, PR to follow | @RishitRai ready for T11 once merged
 - [18:47 PT] AnoopIbrampur T4 fixes: XO batch 1 items 1 to 7 plus slash chains on #42 | @RishitRai number rules changed behaviour, not interfaces
 - [17:47 PT] AnoopIbrampur T5 decide: rules.json, Rules schema, decideStopState with [C16]/[C20] tests; stacked on T4 (#42), PR to follow | @RishitRai T11 can use decideStopState once both merge
 - [18:49 PT] AnoopIbrampur T5 fixes: conflict anchored on the claim number, earlierFound test, weakNumberMinSigDigits wired, on #43
 - [17:52 PT] AnoopIbrampur T3 fixtures: 7 synthetic traces with builder and tests, stacked on T5 (#43), PR to follow | @RishitRai sample-rich is ready for the front end
+- [19:19 PT] AnoopIbrampur stack update: merged main (#42 to #44 squashes) into #45 to #49 and #58 instead of rebasing (no force-push); added the optional weakNumberMinSigDigits test on #45
 - [18:11 PT] AnoopIbrampur T6 pz verify: re-checks spans, edges and stop state on stored traces, stacked on T3 (#45), PR to follow
 - [18:51 PT] AnoopIbrampur T6 fixes: earliest check, --pages usage, negated spans in verify and decide, page_hash test on #46
