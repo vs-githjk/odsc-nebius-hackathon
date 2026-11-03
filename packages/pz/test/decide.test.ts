@@ -98,6 +98,10 @@ describe("ORIGIN_FOUND blockers", () => {
   it("[C16] a non-primary page type blocks it", () => {
     cold(trace({ nodes: [node("study", { pageType: answer("blog") })] }));
   });
+  it("[C2] [C16] a negated span on the earliest page blocks it", () => {
+    cold(trace({ spans: [{ ...span("s1", "study", "Penguins napped 14 times a day."), contextBefore: "It is a myth that" }] }));
+    cold(trace({ spans: [span("s1", "study", "It is a myth that penguins nap 14 times a day.")] }));
+  });
   it("[C16] an earlier page found in the earlier-window searches blocks it", () => {
     cold(trace({ earliest: { nodeIds: ["study"], earlierWindowSearches: 2, earlierFound: 1 } }));
   });
