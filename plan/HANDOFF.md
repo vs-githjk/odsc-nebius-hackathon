@@ -67,6 +67,8 @@ Done this session (Oct 29, 01:37 to 02:00 PDT):
 - Nov 1 passes: #36 merged. #35 (T1) FIX at aa79edd; once mode and Vite fixes land, re-check those two items only and merge. #30 still waits on Rohan. #37 (T10) is a draft, review after #35 and #12 merge. Rishit is active, dates yes.
 - Nov 2 pass: #38 head-to-head HOLD until spike/REPORT.md is committed, then Anoop merges main and XO merges. Anoop's blind period ended. Rishit and Rohan told not to open #38. For the Nov 13 held-out head-to-head, ChatGPT must actually run in Deep research.
 - Nov 2 later: #35, #30, #39 merged, T1 and T2 closed. Open: #37 T10 (ready after main merge), T4, T5, T3, T2b from Anoop; T18 from Rohan. Nebius key works in Vidyut's .env (200 on /v1/models). Rohan works browser-only, so conflicts on stacked PRs may need XO.
+- Nov 2 evening: 10 PRs reviewed. Merged #41. Waiting on fixes: #40 (Rohan), #42 #43 #44 #46 #47 #48 #49 (Anoop). #45 PASS, merge after #43. Stack: after each squash, rebase --onto main. #37 still draft (Rishit). #38 held until spike report.
+- Nov 2 late: spike delivered by Rishit (#50, #52 drafts, #53 app shell). Rerun go on #10 (reviewed T4 fix only, keep first run). New issues #54 forms, #55 T26, #56 T27 (Anoop), #57 T31 (Rohan). T20 moved to Thu Nov 5; XO must relabel the 24 forms A to D on #28 once #54 lands, mapping kept off the repo. #42, #43, #44 merged after re-review; rerun CANCELLED after Rishit's offline check (decisions.md); run 1 graded Thu; T4b on dev set (Anoop). Next pass: #45 to #49 after Anoop's fixes and rebase, #37, #40, #51, #53.
 
 Next, in order (when Vidyut says "go"):
 0. Discuss plan/rerunlab-inspo.md with Vidyut first.
