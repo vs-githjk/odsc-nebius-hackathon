@@ -1,0 +1,23 @@
+{
+  "id": "negated-span",
+  "kind": "trace",
+  "note": "The origin page only says the number is a myth, so it is marked meta; no origin is left.",
+  "input": {
+    "tracePath": "fixtures/traces/sample-origin.json",
+    "mutate": [
+      {
+        "set": "nodes.0.meta",
+        "value": true
+      }
+    ]
+  },
+  "expect": {
+    "state": "TRAIL_GOES_COLD",
+    "falseCertainty": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

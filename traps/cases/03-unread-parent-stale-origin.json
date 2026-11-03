@@ -1,0 +1,36 @@
+{
+  "id": "unread-parent-stale-origin",
+  "kind": "trace",
+  "note": "The origin page has an unread candidate parent, and the stored decision still says ORIGIN_FOUND.",
+  "input": {
+    "tracePath": "fixtures/traces/sample-origin.json",
+    "mutate": [
+      {
+        "set": "nodes.0.candidateParents",
+        "value": [
+          {
+            "url": "https://harborzoo.example/keeper-notes",
+            "read": false
+          }
+        ]
+      },
+      {
+        "set": "decision.state",
+        "value": "ORIGIN_FOUND"
+      },
+      {
+        "set": "decision.row",
+        "value": 5
+      }
+    ]
+  },
+  "expect": {
+    "state": "TRAIL_GOES_COLD",
+    "falseCertainty": [
+      1,
+      0,
+      0,
+      0
+    ]
+  }
+}

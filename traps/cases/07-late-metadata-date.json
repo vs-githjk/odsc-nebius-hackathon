@@ -1,0 +1,27 @@
+{
+  "id": "late-metadata-date",
+  "kind": "trace",
+  "note": "The origin page's metadata date is later than its first capture and the conflict flag is not set; the first capture still dates it, so the origin stands.",
+  "input": {
+    "tracePath": "fixtures/traces/sample-origin.json",
+    "mutate": [
+      {
+        "set": "nodes.0.date.value",
+        "value": "2019-06-30"
+      },
+      {
+        "set": "nodes.0.date.firstCapture",
+        "value": "2019-04-30"
+      }
+    ]
+  },
+  "expect": {
+    "state": "ORIGIN_FOUND",
+    "falseCertainty": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

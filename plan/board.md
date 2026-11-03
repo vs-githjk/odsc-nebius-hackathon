@@ -53,3 +53,4 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [17:47 PT] AnoopIbrampur T5 decide: rules.json, Rules schema, decideStopState with [C16]/[C20] tests; stacked on T4 (#42), PR to follow | @RishitRai T11 can use decideStopState once both merge
 - [17:52 PT] AnoopIbrampur T3 fixtures: 7 synthetic traces with builder and tests, stacked on T5 (#43), PR to follow | @RishitRai sample-rich is ready for the front end
 - [18:11 PT] AnoopIbrampur T6 pz verify: re-checks spans, edges and stop state on stored traces, stacked on T3 (#45), PR to follow
+- [18:13 PT] AnoopIbrampur T7 traps: falseCertainty, pz traps, 10 synthetic cases with lock, stacked on T6 (#46), PR to follow
