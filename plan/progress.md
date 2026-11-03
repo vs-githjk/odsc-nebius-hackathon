@@ -53,3 +53,4 @@ Every decision made during the build that the plan did not settle, by Vidyut or 
 - design direction: "Yeah, I completely agree. Time machine plus rewind, but somewhat lighter, more vibrant color" (Thu Oct 29 2026, about 05:00 PDT)
 - 2026-11-02 (XO ruling): written-out numbers ("ten times") are not parsed in T4 or the spike; candidate rule to test on the E2 dev set before the held-out run.
 - 2026-11-02 (XO): new issues #54 T20a forms (Anoop), #55 T26 and #56 T27 pulled forward on fixtures (Anoop), #57 T31 Jev (Rohan). T20 grading moved to Thu Nov 5. Spike rerun go on #10.
+- 2026-11-02 (XO): rerun cancelled after Rishit's offline check; run 1 graded as is; #59 T4b for Anoop on dev set, due Fri Nov 6.
