@@ -1,24 +1,24 @@
 # Usage ledger (everyone)
 
-Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py. 32 runs across 1 person: vs-githjk.
+Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py. 34 runs across 1 person: vs-githjk.
 
 ## By person
 
 | Who | Runs | Output tokens | Apify | Bright Data | Web | GitHub | Codex | Last updated (UTC) |
 |---|---|---|---|---|---|---|---|---|
-| vs-githjk | 32 | 1,572,069 | 10 | 7 | 63 | 146 | 10 | 2026-11-02T23:30:52Z |
+| vs-githjk | 34 | 1,681,747 | 10 | 7 | 63 | 162 | 11 | 2026-11-03T02:43:40Z |
 
 ## Totals by service
 
 | Service | Calls |
 |---|---|
-| Claude Code tools | 858 |
-| Shell | 599 |
-| GitHub (gh) | 146 |
+| Claude Code tools | 873 |
+| Shell | 645 |
+| GitHub (gh) | 162 |
 | Other HTTP | 126 |
 | Web search and fetch | 63 |
-| Nebius Token Factory | 15 |
-| Codex | 10 |
+| Nebius Token Factory | 16 |
+| Codex | 11 |
 | Apify | 10 |
 | Bright Data | 7 |
 | Browser (Playwright) | 3 |
@@ -27,10 +27,10 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 
 | Kind | Tokens |
 |---|---|
-| input_tokens | 6,327 |
-| cache_creation_input_tokens | 7,243,551 |
-| cache_read_input_tokens | 161,324,902 |
-| output_tokens | 1,572,069 |
+| input_tokens | 6,459 |
+| cache_creation_input_tokens | 8,082,938 |
+| cache_read_input_tokens | 169,641,078 |
+| output_tokens | 1,681,747 |
 
 ## Per run
 
@@ -46,7 +46,7 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 | vs-githjk | 2026-10-29T07:46 | master-finder: Market validation for Patient Zero | claude-opus-5-5 | 40,009 | 7 | 2 | 0 | 25 | 0 | 0 | 0 | 0 | 11 |
 | vs-githjk | 2026-10-29T08:19 | master-planner: Refine Patient Zero, round 1 | claude-opus-5-5 | 29,492 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 | 2 |
 | vs-githjk | 2026-10-29T08:27 | master-auditor: Red-team Patient Zero brief, round 2 | claude-opus-5-5 | 32,092 | 0 | 0 | 0 | 5 | 3 | 0 | 0 | 0 | 5 |
-| vs-githjk | 2026-10-29T08:37 | main session | claude-opus-5-5, <synthetic> | 233,016 | 0 | 0 | 0 | 1 | 49 | 2 | 7 | 0 | 4 |
+| vs-githjk | 2026-10-29T08:37 | main session | claude-opus-5-5, <synthetic> | 250,707 | 0 | 0 | 0 | 1 | 55 | 3 | 8 | 0 | 4 |
 | vs-githjk | 2026-10-29T08:39 | master-planner: Fold auditor r2 fixes into brief | claude-opus-5-5 | 43,561 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 |
 | vs-githjk | 2026-10-29T08:42 | master-xo: GitHub kickoff issues for team | claude-opus-5-5 | 27,048 | 0 | 0 | 0 | 0 | 15 | 0 | 2 | 0 | 6 |
 | vs-githjk | 2026-10-29T08:46 | master-designer: 10-min world-class Patient Zero look | claude-fable-5-1 | 43,300 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -68,6 +68,8 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 | vs-githjk | 2026-10-31T17:53 | master-reviewer: Review PRs 29 and 30 | claude-opus-5-5 | 23,036 | 0 | 0 | 0 | 0 | 7 | 0 | 2 | 0 | 1 |
 | vs-githjk | 2026-11-01T22:55 | master-reviewer: Review PR 35 skeleton | claude-opus-5-5 | 17,524 | 0 | 0 | 0 | 0 | 5 | 0 | 0 | 0 | 0 |
 | vs-githjk | 2026-11-02T23:23 | master-reviewer: Review PRs 39 and 30 | claude-opus-5-5 | 28,039 | 0 | 0 | 0 | 0 | 8 | 0 | 0 | 0 | 0 |
+| vs-githjk | 2026-11-03T02:22 | master-reviewer: Review PRs 40 to 44 | claude-opus-5-5 | 54,383 | 0 | 0 | 0 | 0 | 8 | 0 | 0 | 0 | 0 |
+| vs-githjk | 2026-11-03T02:34 | master-reviewer: Review Anoop's PRs 45 to 49 | claude-opus-5-5 | 37,604 | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | 0 |
 
 ## Detail (service: tool or host)
 
@@ -80,10 +82,10 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 - Browser (Playwright): browser_close: 1
 - Browser (Playwright): browser_navigate: 1
 - Browser (Playwright): browser_snapshot: 1
-- Codex: codex: 10
-- GitHub (gh): gh: 146
+- Codex: codex: 11
+- GitHub (gh): gh: 162
 - Nebius Token Factory: api.studio.nebius.com: 1
-- Nebius Token Factory: api.tokenfactory.nebius.com: 12
+- Nebius Token Factory: api.tokenfactory.nebius.com: 13
 - Nebius Token Factory: tokenfactory.nebius.com: 2
 - Other HTTP: api.apify.com: 5
 - Other HTTP: api.github.com: 1
