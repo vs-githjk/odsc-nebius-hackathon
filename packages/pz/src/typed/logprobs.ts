@@ -30,7 +30,8 @@ export function confidenceFor(question: Question, content: string, logprobs: Cha
       const mass = new Map(question.options.map(o => [o.id, 0]));
       const seen = new Set<string>();
       const selectedPiece = token.token.slice(prefix.length).split('"')[0]!;
-      const ambiguous = question.options.filter(o => selectedPiece && o.id.startsWith(selectedPiece)).length > 1;
+      const selectedMatches = question.options.filter(o => selectedPiece && o.id.startsWith(selectedPiece));
+      const unavailableSelected = selectedMatches.length !== 1 || selectedMatches[0]?.id !== field.value;
       let usable = 0, total = 0;
       for (const alternative of token.top_logprobs) {
         if (alternative.logprob === -9999 || !Number.isFinite(alternative.logprob) || alternative.logprob > 0 || seen.has(alternative.token)) continue;
@@ -47,7 +48,7 @@ export function confidenceFor(question: Question, content: string, logprobs: Cha
       const known = [...mass.values()].reduce((a, b) => a + b, 0);
       const top = [...mass].map(([optionId, p]) => ({ optionId, p }));
       top.push({ optionId: OTHER_MASS, p: Math.max(0, 1 - known) });
-      return { probability: ambiguous ? null : mass.get(field.value) ?? null, top };
+      return { probability: unavailableSelected ? null : mass.get(field.value) ?? null, top };
     }
     offset = end;
   }
