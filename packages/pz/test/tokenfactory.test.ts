@@ -23,7 +23,7 @@ const response = (body: unknown, status = 200) => new Response(JSON.stringify(bo
 afterEach(() => vi.unstubAllEnvs());
 
 describe("Token Factory client", () => {
-  it("[C19] sends strict schema and logprobs together and reads recorded tokens", async () => {
+  it("sends strict schema and logprobs together and reads recorded tokens", async () => {
     const body = await fixture("qwen-schema-logprobs");
     const { client, fetch, rows } = setup([response(body)]);
     const schema = { $schema: "https://json-schema.org/draft/2020-12/schema", type: "object", properties: { label: { type: "string", enum: ["copy", "new_wording", "unrelated"] } }, required: ["label"], additionalProperties: false };
@@ -36,13 +36,13 @@ describe("Token Factory client", () => {
     expect(result.usage.costUsd).toBeCloseTo(0.0000075, 12);
     expect(rows).toHaveLength(1);
   });
-  it.each([429, 500, 503])("[C1] retries %s once and logs both attempts", async status => {
+  it.each([429, 500, 503])("retries %s once and logs both attempts", async status => {
     const { client, fetch, rows } = setup([response({}, status), response(await fixture("qwen-chat"))]);
     await client.chat(args);
     expect(fetch).toHaveBeenCalledTimes(2);
     expect(rows.map(row => row.status)).toEqual([String(status), "200"]);
   });
-  it("[C1] stops after the second retryable error and never copies response bodies", async () => {
+  it("stops after the second retryable error and never copies response bodies", async () => {
     const { client, fetch, rows } = setup([response({ error: "test-secret-only" }, 503), response({}, 503)]);
     const error = await client.chat(args).catch(error => error);
     expect(error).toMatchObject({ code: "http_error", status: 503 });
@@ -50,38 +50,71 @@ describe("Token Factory client", () => {
     expect(rows).toHaveLength(2);
     expect(JSON.stringify(error)).not.toContain("test-secret-only");
   });
-  it("[C1] HTTP 400 is a typed error without retry", async () => {
+  it("HTTP 400 is a typed error without retry", async () => {
     const { client, fetch } = setup([response({}, 400)]);
     await expect(client.chat(args)).rejects.toMatchObject({ code: "http_error", status: 400 });
     expect(fetch).toHaveBeenCalledTimes(1);
   });
-  it("[C1] missing key makes no request", async () => {
+  it("log failure preserves a paid answer and the in-memory usage row", async () => {
+    const body = await fixture("qwen-chat");
+    const { fetch } = setup([response(body)]);
+    const client = createTokenFactoryClient({ fetch, logUsage: async () => { throw new Error("disk unavailable"); } });
+    const result = await client.chat(args);
+    expect(result.data.content).toBe(body.choices[0].message.content);
+    expect(result.attempts).toHaveLength(1);
+    expect(result.attempts[0]).toEqual(result.usage);
+  });
+  it("log failure preserves typed HTTP and network errors, and retries", async () => {
+    for (const [responses, code] of [[[response({}, 400)], "http_error"], [[new Error("network")], "network_error"]] as const) {
+      const { fetch } = setup([...responses]);
+      const client = createTokenFactoryClient({ fetch, logUsage: () => { throw new Error("disk unavailable"); } });
+      const error = await client.chat(args).catch(error => error);
+      expect(error.code).toBe(code);
+      expect(error.usage).toHaveLength(1);
+    }
+    const { fetch } = setup([response({}, 429), response(await fixture("qwen-chat"))]);
+    const client = createTokenFactoryClient({ fetch, logUsage: () => { throw new Error("disk unavailable"); }, sleep: async () => {} });
+    expect((await client.chat(args)).attempts).toHaveLength(2);
+  });
+  it("unknown price configuration makes no request", async () => {
+    const { client, fetch } = setup([]);
+    await expect(client.chat({ ...args, model: "unconfigured-model" })).rejects.toMatchObject({ code: "not_configured", usage: [] });
+    expect(fetch).not.toHaveBeenCalled();
+  });
+  it("rejects non-empty truncated JSON even if usage is valid", async () => {
+    const body = await fixture("qwen-chat");
+    body.choices[0].finish_reason = "length";
+    body.choices[0].message.content = '{"label":"par';
+    const { client } = setup([response(body)]);
+    await expect(client.chat(args)).rejects.toMatchObject({ code: "bad_response" });
+  });
+  it("missing key makes no request", async () => {
     const { client, fetch } = setup([]);
     vi.stubEnv("NEBIUS_API_KEY", "");
     await expect(client.chat(args)).rejects.toMatchObject({ code: "not_configured" });
     expect(fetch).not.toHaveBeenCalled();
   });
-  it("[C1] rejects malformed JSON, missing usage, empty content and truncated completion", async () => {
+  it("rejects malformed JSON, missing usage, empty content and truncated completion", async () => {
     const valid = await fixture("qwen-chat");
     for (const body of [new Response("{"), response({ choices: valid.choices }), response({ ...valid, choices: [{ message: { content: "" }, finish_reason: "stop" }] }), response(await fixture("glm-chat-128"))]) {
       const { client } = setup([body]);
       await expect(client.chat(args)).rejects.toMatchObject({ code: "bad_response" });
     }
   });
-  it("[C1] network errors are sanitized and logged without fabricated answers", async () => {
+  it("network errors are sanitized and logged without fabricated answers", async () => {
     const { client, rows } = setup([new Error("test-secret-only")]);
     const error = await client.chat(args).catch(error => error);
     expect(error).toMatchObject({ code: "network_error" });
     expect(rows[0]?.status).toBe("network_error");
     expect(JSON.stringify(error) + JSON.stringify(rows)).not.toContain("test-secret-only");
   });
-  it("[C1] redacts echoed keys from returned data", async () => {
+  it("redacts echoed keys from returned data", async () => {
     const body = await fixture("qwen-chat");
     body.choices[0].message.content = "test-secret-only";
     const { client } = setup([response(body)]);
     expect(JSON.stringify(await client.chat(args))).not.toContain("test-secret-only");
   });
-  it("[C1] prices cached input separately and preserves absent logprobs", async () => {
+  it("prices cached input separately and preserves absent logprobs", async () => {
     const body = await fixture("qwen-chat");
     body.usage = { prompt_tokens: 100, completion_tokens: 2, prompt_tokens_details: { cached_tokens: 80 } };
     const { client } = setup([response(body)]);
@@ -89,7 +122,7 @@ describe("Token Factory client", () => {
     expect(result.usage.costUsd).toBeCloseTo(20 * 0.00000132 + 80 * 0.00000004 + 2 * 0.00000396, 12);
     expect(result.data.logprobs).toBeNull();
   });
-  it("[C4] sends embedding inputs and restores index order, rejecting missing vectors", async () => {
+  it("sends embedding inputs and restores index order, rejecting missing vectors", async () => {
     const body = { data: [{ index: 1, embedding: [0.3, 0.4] }, { index: 0, embedding: [0.1, 0.2] }], usage: { prompt_tokens: 10 } };
     const { client, fetch } = setup([response(body)]);
     const result = await client.embed({ model: embeddingModel, input: ["neutral a", "neutral b"] });
