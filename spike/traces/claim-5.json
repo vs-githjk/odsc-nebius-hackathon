@@ -1,0 +1,466 @@
+{
+  "schemaVersion": "1",
+  "id": "claim-5",
+  "mode": "LIVE",
+  "synthetic": false,
+  "recordedAt": "2026-11-03T02:34:00.353Z",
+  "claim": {
+    "text": "The water speed record has an approximate fatality rate of 85% since 1940, making it one of the most hazardous competitions in sport.",
+    "atoms": {
+      "number": {
+        "raw": "85%",
+        "canonical": "85%"
+      },
+      "unit": null,
+      "subjectLemma": "water speed record",
+      "population": null,
+      "time": "since 1940",
+      "hedge": "approximate",
+      "namedSource": null,
+      "variants": [
+        "85%",
+        "85 percent",
+        "85 per cent"
+      ]
+    }
+  },
+  "viralSentence": "The water speed record has an approximate fatality rate of 85% since 1940, making it one of the most hazardous competitions in sport.",
+  "nodes": [
+    {
+      "id": "n1",
+      "url": "https://www.boatcoversdirect.com/boat-lovers/resources/the-worlds-fastest-boat-and-the-race-for-the-water-speed-record",
+      "domain": "boatcoversdirect.com",
+      "title": "The world's fastest boat & the race for the water speed record - Boat Lovers Direct",
+      "date": {
+        "kind": "published",
+        "value": "2013-04-27",
+        "source": "tavily",
+        "firstCapture": "2016-03-04",
+        "conflictingDate": false
+      },
+      "clusterId": "c1",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s1"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n2",
+      "url": "https://www.atlasobscura.com/places/site-of-64-world-water-speed-record",
+      "domain": "atlasobscura.com",
+      "title": "Site of 1964 World Water Speed Record in Dumbleyung - Atlas Obscura",
+      "date": {
+        "kind": "published",
+        "value": "2014-08-14",
+        "source": "tavily",
+        "firstCapture": "2014-08-16",
+        "conflictingDate": false
+      },
+      "clusterId": "c2",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s2"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "parentId": "n1",
+      "childId": "n2",
+      "kind": "inferred",
+      "parentSpanId": "s1",
+      "childSpanId": "s2",
+      "linkHref": null
+    }
+  ],
+  "clusters": [
+    {
+      "id": "c1",
+      "nodeIds": [
+        "n1"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c2",
+      "nodeIds": [
+        "n2"
+      ],
+      "rule": "single"
+    }
+  ],
+  "spans": [
+    {
+      "id": "s1",
+      "nodeId": "n1",
+      "text": "In fact, the race to beat the world water speed record is considered to be perhaps the most hazardous in the professional sporting world, with an approximate fatality rate of 85% for all racers since 1940 (ladies don't marry a boat racer unless you're prepared for some serious heart break).",
+      "contextBefore": "nd shatter his own world record a year later at an incredible 317 mph. Woah! Warby's record has stood for an astonishing 34 years, despite many attempts to beat it. Dozens of racers have died trying. ",
+      "contextAfter": " Who will the new water speed record holder be? Who will the new water speed record holder be? What people and country will finally break Warby's incredible record? Who knows. But one thing is certain",
+      "start": 2446,
+      "end": 2737,
+      "extractSha256": "4a8b46608100f2a7d55b4552ac0f2644f7f183548225c2f1933058b399c7b121",
+      "windowSha256": "b1e210cdbd876110a634f542e0c7c5c6f9ce4cf0e1b6203f43b2b784801c0192",
+      "fetchedAt": "2026-11-03T02:33:53.791Z",
+      "waybackUrl": "https://web.archive.org/web/20160304215532/https://www.boatcoversdirect.com/boat-lovers/resources/the-worlds-fastest-boat-and-the-race-for-the-water-speed-record",
+      "tier": "exact"
+    },
+    {
+      "id": "s2",
+      "nodeId": "n2",
+      "text": "The world water speed record has an 85% mortality rate, and Campbell later tragically died on Coniston Water in the United Kingdom trying to break his own record.",
+      "contextBefore": " the year, giving him two world speed records (land and water) in one calendar year. Although both individual records have since been broken, the '\"double\" is a feat that has not been achieved since. ",
+      "contextAfter": " Dumbleyung Lake is now predominantly dry more often than not, however, it is still a stunning and fascinating spot that is home to birds and other wildlife. It fills up every few years and has a rich",
+      "start": 2534,
+      "end": 2696,
+      "extractSha256": "d41e9a8276347dcb64f2b1e6049bad71a3f3dc21a58a8c3e60a1eba504889d4c",
+      "windowSha256": "cbb74f859c2c1b8afe6cc2513d9fcc83a60995671cdac8b00636a888dc43bbc6",
+      "fetchedAt": "2026-11-03T02:33:54.177Z",
+      "waybackUrl": "https://web.archive.org/web/20140816043300/https://www.atlasobscura.com/places/site-of-64-world-water-speed-record",
+      "tier": "exact"
+    }
+  ],
+  "hops": [
+    {
+      "edgeId": "e1",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "The"
+        },
+        {
+          "op": "del",
+          "text": "In fact, the race to beat the"
+        },
+        {
+          "op": "same",
+          "text": "world water speed record"
+        },
+        {
+          "op": "add",
+          "text": "has an 85% mortality rate, and Campbell later tragically died on Coniston Water"
+        },
+        {
+          "op": "del",
+          "text": "is considered to be perhaps the most hazardous"
+        },
+        {
+          "op": "same",
+          "text": "in the"
+        },
+        {
+          "op": "add",
+          "text": "United Kingdom trying to break his own record."
+        },
+        {
+          "op": "del",
+          "text": "professional sporting world, with an approximate fatality rate of 85% for all racers since 1940 (ladies don't marry a boat racer unless you're prepared for some serious heart break)."
+        }
+      ],
+      "faithful": false
+    }
+  ],
+  "blame": [],
+  "roots": {
+    "pages": 2,
+    "clusters": 2,
+    "rootsLinked": 0,
+    "clustersUnlinked": 2,
+    "studiesFound": null
+  },
+  "redHopEdgeId": "e1",
+  "earliest": {
+    "nodeIds": [
+      "n1"
+    ],
+    "earlierWindowSearches": 3,
+    "earlierFound": 0
+  },
+  "failure": null,
+  "budget": {
+    "credits": 7,
+    "usd": 0,
+    "ms": 18152,
+    "capHit": null
+  },
+  "decision": {
+    "state": "TRAIL_GOES_COLD",
+    "row": 6,
+    "reasons": [
+      "no earliest page with a confirmed date, a primary page type and no earlier citation"
+    ],
+    "counts": {
+      "pages": 2,
+      "clusters": 2,
+      "unreadParents": 0,
+      "earlierWindowSearches": 3
+    }
+  },
+  "searchLog": [
+    {
+      "at": "2026-11-03T02:33:43.255Z",
+      "step": "search",
+      "query": "\"85%\" water speed record",
+      "endDate": "2026-11-03",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:33:44.751Z",
+      "step": "search",
+      "query": "\"85 percent\" water speed record",
+      "endDate": "2026-11-03",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:33:47.195Z",
+      "step": "search",
+      "query": "\"85 per cent\" water speed record",
+      "endDate": "2026-11-03",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:33:55.599Z",
+      "step": "search",
+      "query": "\"85%\" water speed record",
+      "endDate": "2013-04-26",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:33:56.792Z",
+      "step": "search",
+      "query": "\"85 percent\" water speed record",
+      "endDate": "2013-04-26",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:33:58.835Z",
+      "step": "search",
+      "query": "\"85 per cent\" water speed record",
+      "endDate": "2013-04-26",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    }
+  ],
+  "usage": [
+    {
+      "at": "2026-11-03T02:33:43.254Z",
+      "traceId": "claim-5",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1051,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:33:44.751Z",
+      "traceId": "claim-5",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1495,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:33:47.194Z",
+      "traceId": "claim-5",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 2443,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:33:49.670Z",
+      "traceId": "claim-5",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 2467,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:33:53.791Z",
+      "traceId": "claim-5",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 4113,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:33:54.176Z",
+      "traceId": "claim-5",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 377,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:33:55.598Z",
+      "traceId": "claim-5",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1419,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:33:56.791Z",
+      "traceId": "claim-5",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1192,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:33:58.835Z",
+      "traceId": "claim-5",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 2043,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:34:00.350Z",
+      "traceId": "claim-5",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 1514,
+      "status": "200",
+      "cacheHit": false
+    }
+  ],
+  "scopeNote": "Web pages only; print and paywalled origins are out of scope. Earliest source we found, not proof of first use."
+}

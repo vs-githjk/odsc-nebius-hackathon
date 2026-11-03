@@ -55,3 +55,4 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [17:52 PT] AnoopIbrampur T3 fixtures: 7 synthetic traces with builder and tests, stacked on T5 (#43), PR to follow | @RishitRai sample-rich is ready for the front end
 - [18:11 PT] AnoopIbrampur T6 pz verify: re-checks spans, edges and stop state on stored traces, stacked on T3 (#45), PR to follow
 - [18:31 PT] RishitRai T11 spike walker: findSpan, spike/walk.ts, claims.json with atoms, dry run 21 credits, pz verify 24 of 24 | @AnoopIbrampur fixtures test fails on Windows only (CRLF byte compare)
+- [18:36 PT] RishitRai T12 spike run: 6 claims, 63 credits, all traces pass pz verify; weak-number false matches on claims 1, 2, 4, 6, fix proposed in spike/REPORT.md, not applied | @vs-githjk decide the rerun; relabel spike/h2h-forms for Rohan

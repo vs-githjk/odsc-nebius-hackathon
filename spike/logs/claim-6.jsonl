@@ -1,0 +1,16 @@
+{"at":"2026-11-03T02:34:03.806Z","step":"search","query":"\"8 IQ points\" choline","reason":"end_date 2026-11-03, 10 results"}
+{"at":"2026-11-03T02:34:05.190Z","step":"search","query":"\"8 points\" choline","reason":"end_date 2026-11-03, 10 results"}
+{"at":"2026-11-03T02:34:06.247Z","step":"search","query":"\"eight IQ points\" choline","reason":"end_date 2026-11-03, 10 results"}
+{"at":"2026-11-03T02:34:07.446Z","step":"read","url":"https://pmc.ncbi.nlm.nih.gov/articles/PMC12560564","kept":true,"reason":"span found"}
+{"at":"2026-11-03T02:34:07.446Z","step":"read","url":"https://www.instagram.com/reel/DUmdbPPDe5_","kept":false,"reason":"no sentence asserts the claim's atoms"}
+{"at":"2026-11-03T02:34:08.446Z","step":"read","url":"https://www.celinegounder.com/p/choline-pregnancy-iq-autism-trial","kept":true,"reason":"span found"}
+{"at":"2026-11-03T02:34:08.446Z","step":"read","url":"https://www.youtube.com/shorts/1MZX234HSTg","kept":false,"reason":"no sentence asserts the claim's atoms"}
+{"at":"2026-11-03T02:34:09.024Z","step":"read","url":"https://www.frontiersin.org/journals/immunology/articles/10.3389/fimmu.2022.1038927/full","kept":true,"reason":"span found"}
+{"at":"2026-11-03T02:34:11.754Z","step":"search","query":"\"8 IQ points\" choline","reason":"end_date 2024-05-25, 10 results"}
+{"at":"2026-11-03T02:34:13.475Z","step":"search","query":"\"8 points\" choline","reason":"end_date 2024-05-25, 9 results"}
+{"at":"2026-11-03T02:34:16.280Z","step":"search","query":"\"eight IQ points\" choline","reason":"end_date 2024-05-25, 10 results"}
+{"at":"2026-11-03T02:34:18.757Z","step":"read","url":"https://brainy-child.com/article/brainfood.shtml","kept":false,"reason":"no sentence asserts the claim's atoms"}
+{"at":"2026-11-03T02:34:18.758Z","step":"read","url":"https://www.psychreg.org/ego-and-intelligence","kept":false,"reason":"no sentence asserts the claim's atoms"}
+{"at":"2026-11-03T02:34:18.759Z","step":"read","url":"https://www.psychreg.org/how-do-we-measure-creativity","kept":false,"reason":"no sentence asserts the claim's atoms"}
+{"at":"2026-11-03T02:34:18.759Z","step":"read","url":"https://www.psychreg.org/bonding-pregnancy","kept":false,"reason":"no sentence asserts the claim's atoms"}
+{"at":"2026-11-03T02:34:18.759Z","step":"read","url":"https://www.psychreg.org/what-does-it-mean-smart","kept":false,"reason":"no sentence asserts the claim's atoms"}
