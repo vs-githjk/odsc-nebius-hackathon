@@ -1,14 +1,14 @@
 # Usage ledger: vs-githjk
 
-Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py. 34 runs.
+Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py. 35 runs.
 
 ## Totals by service
 
 | Service | Calls |
 |---|---|
-| Claude Code tools | 873 |
-| Shell | 645 |
-| GitHub (gh) | 162 |
+| Claude Code tools | 875 |
+| Shell | 679 |
+| GitHub (gh) | 176 |
 | Other HTTP | 126 |
 | Web search and fetch | 63 |
 | Nebius Token Factory | 16 |
@@ -21,10 +21,10 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 
 | Kind | Tokens |
 |---|---|
-| input_tokens | 6,459 |
-| cache_creation_input_tokens | 8,082,938 |
-| cache_read_input_tokens | 169,641,078 |
-| output_tokens | 1,681,747 |
+| input_tokens | 6,573 |
+| cache_creation_input_tokens | 8,227,827 |
+| cache_read_input_tokens | 177,244,250 |
+| output_tokens | 1,727,238 |
 
 ## Per run
 
@@ -40,7 +40,7 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 | 2026-10-29T07:46 | master-finder: Market validation for Patient Zero | claude-opus-5-5 | 40,009 | 7 | 2 | 0 | 25 | 0 | 0 | 0 | 0 | 11 |
 | 2026-10-29T08:19 | master-planner: Refine Patient Zero, round 1 | claude-opus-5-5 | 29,492 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 | 2 |
 | 2026-10-29T08:27 | master-auditor: Red-team Patient Zero brief, round 2 | claude-opus-5-5 | 32,092 | 0 | 0 | 0 | 5 | 3 | 0 | 0 | 0 | 5 |
-| 2026-10-29T08:37 | main session | claude-opus-5-5, <synthetic> | 250,707 | 0 | 0 | 0 | 1 | 55 | 3 | 8 | 0 | 4 |
+| 2026-10-29T08:37 | main session | claude-opus-5-5, <synthetic> | 274,792 | 0 | 0 | 0 | 1 | 66 | 3 | 8 | 0 | 4 |
 | 2026-10-29T08:39 | master-planner: Fold auditor r2 fixes into brief | claude-opus-5-5 | 43,561 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 |
 | 2026-10-29T08:42 | master-xo: GitHub kickoff issues for team | claude-opus-5-5 | 27,048 | 0 | 0 | 0 | 0 | 15 | 0 | 2 | 0 | 6 |
 | 2026-10-29T08:46 | master-designer: 10-min world-class Patient Zero look | claude-fable-5-1 | 43,300 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -64,6 +64,7 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 | 2026-11-02T23:23 | master-reviewer: Review PRs 39 and 30 | claude-opus-5-5 | 28,039 | 0 | 0 | 0 | 0 | 8 | 0 | 0 | 0 | 0 |
 | 2026-11-03T02:22 | master-reviewer: Review PRs 40 to 44 | claude-opus-5-5 | 54,383 | 0 | 0 | 0 | 0 | 8 | 0 | 0 | 0 | 0 |
 | 2026-11-03T02:34 | master-reviewer: Review Anoop's PRs 45 to 49 | claude-opus-5-5 | 37,604 | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | 0 |
+| 2026-11-03T02:56 | master-reviewer: Re-review fixes on PRs 42 to 44 | claude-opus-5-5 | 21,406 | 0 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 |
 
 ## Detail (service: tool or host)
 
@@ -77,7 +78,7 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 - Browser (Playwright): browser_navigate: 1
 - Browser (Playwright): browser_snapshot: 1
 - Codex: codex: 11
-- GitHub (gh): gh: 162
+- GitHub (gh): gh: 176
 - Nebius Token Factory: api.studio.nebius.com: 1
 - Nebius Token Factory: api.tokenfactory.nebius.com: 13
 - Nebius Token Factory: tokenfactory.nebius.com: 2
