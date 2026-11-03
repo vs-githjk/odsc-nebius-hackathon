@@ -9,14 +9,14 @@ const temp = () => mkdtempSync(join(tmpdir(), "pz-t8-"));
 
 describe("copy lint", () => {
   it("[C17] flags each dash and each banned phrase", () => {
-    const bad = ["a — b", "a – b", "two independent sources", "invented by them", "this outlet changed it", "it proves it", "introduced by them"];
+    const bad = ["a \u2014 b", "a \u2013 b", "two independent sources", "invented by them", "this outlet changed it", "it proves it", "introduced by them"];
     expect(bad.map((l) => lintText(l).length)).toEqual([1, 1, 1, 1, 1, 1, 1]);
   });
 
   it("[C17] passes clean text and flags a dirty file in scope", () => {
     expect(lintText("Traced to 3 roots we could link. The earliest source we found is a keeper log.")).toEqual([]);
     const root = temp();
-    writeFileSync(join(root, "README.md"), "Clean line.\nA draft — line.\n");
+    writeFileSync(join(root, "README.md"), "Clean line.\nA draft \u2014 line.\n");
     const run = lintCopy(root);
     expect(run.code).toBe(1);
     expect(run.lines[0]).toBe("FAIL README.md:2: em dash (U+2014)");

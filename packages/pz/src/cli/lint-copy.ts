@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 
 // Copy rules from plan.md: no em or en dashes, and none of these phrases in reader-facing copy.
 const BANNED: [RegExp, string][] = [
-  [/—/, "em dash (U+2014)"], [/–/, "en dash (U+2013)"],
+  [/\u2014/, "em dash (U+2014)"], [/\u2013/, "en dash (U+2013)"],
   ...["independent sources", "invented by", "this outlet changed", "proves", "introduced by"]
     .map((p): [RegExp, string] => [new RegExp(`\\b${p}\\b`, "i"), `"${p}"`]),
 ];
