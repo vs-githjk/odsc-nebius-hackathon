@@ -21,3 +21,5 @@
 - 20:35 PT Nov 1 watch pass: #36 f521176 PASS inline, merged, #7 closed; #37 draft skipped; #35, #30 unchanged; Anoop nothing yet
 - 12:50 PT Nov 2 watch pass: #38 dd08eff accepted, held until T12 report; blind period ended on #5; do-not-open notes on #1 and #3; Rohan bottleneck note on #3; nothing merged
 - 15:45 PT Nov 2 watch pass: merged #35 (after mode fix df4d61d), #30, #39 (after conflict merge b632620); follow-ups on #3, #31, #4, #1
+- 18:50 PT Nov 2 watch pass: merged #41; FIX lists #40 on #3, #42 #43 #44 and #46 to #49 on #4; #45 PASS held for stack order; ruling on skip reasons pushed de62dc2; Rishit asked to build T11 on decide and ready #37
+- 19:30 PT Nov 2: re-review PASS #42 #43 #44; merged #42 73736dc, #43 d37d4ea (after XO merge of main ca2e138), #44 bc8a11c (after d70996c); rerun go posted on #10

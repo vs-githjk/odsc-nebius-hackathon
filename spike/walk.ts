@@ -177,7 +177,7 @@ export async function walkClaim(claim: SpikeClaim, deps: Deps): Promise<{ trace:
   async function readPage(url: string, title: string, raw: string, apiDate: string | null): Promise<boolean> {
     const { text, links } = toPlain(raw);
     const sentence = sentences(text).find(
-      (s) => s.text.length <= MAX_SENTENCE_CHARS && s.text.toLowerCase().includes(lemma) && atomHit(s.text, atoms) && assertsNumber(s.text, atoms, rules.negationPrefixes),
+      (s) => s.text.length <= MAX_SENTENCE_CHARS && s.text.toLowerCase().includes(lemma) && atomHit(s.text, atoms, rules.weakNumberMinSigDigits) && assertsNumber(s.text, atoms, rules.negationPrefixes),
     );
     if (!sentence) {
       note({ step: "read", url, kept: false, reason: "no sentence asserts the claim's atoms" });
