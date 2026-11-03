@@ -87,6 +87,19 @@ describe("decideStopState rows", () => {
   });
 });
 
+describe("rules wiring", () => {
+  // "Superpenguins" contains the subject word but not as a whole word, so a weak 14 (under 3 significant digits)
+  // does not hit; with weakNumberMinSigDigits 2, 14 is strong and hits, which exposes the conflict with 41.
+  it("[C20] passes weakNumberMinSigDigits from rules.json into the conflict check", () => {
+    const t = trace({
+      nodes: [node("study"), node("copy", { clusterId: "c-study" })],
+      spans: [span("s1", "study", "Superpenguins nap 14 times a day."), span("s2", "copy", "Penguins nap 41 times a day.")],
+    });
+    expect(decideStopState(t, rules).state).not.toBe("CONFLICTING");
+    expect(decideStopState(t, { ...rules, weakNumberMinSigDigits: 2 }).state).toBe("CONFLICTING");
+  });
+});
+
 describe("ORIGIN_FOUND blockers", () => {
   const cold = (t: Trace) => expect(state(t).state).toBe("TRAIL_GOES_COLD");
   it("[C16] an unread candidate parent blocks it", () => {
