@@ -9,17 +9,19 @@ The bound is 1 minus 0.05^(1/n), the 95% upper bound on the error rate after 0 f
 | Case | What it plants | Why |
 |---|---|---|
 | 01 nudged-number | A page in the earliest cluster gives 15 instead of 14 | Different numbers at the start of the trail are CONFLICTING, never an origin |
-| 02 negated-span | The origin page only calls the number a myth (marked meta) | A page that denies the number is not its origin |
+| 02 negated-span | The origin page's sentence follows "It is a myth that", on a page not marked meta | Review Focus 2: a negated span never backs an origin; `pz verify` fires `negated` |
 | 03 unread-parent-stale-origin | An unread candidate parent, with ORIGIN_FOUND left in the stored decision | An unread parent blocks an origin; the stale stored origin fires the first counter |
 | 04 cap-hit | The time cap was hit | A partial walk is PARTIAL |
 | 05 tool-failure | Search failed | A failed call is TOOL_FAILED, never a decision about the claim |
 | 06 empty-results | No pages came back | NO_PAGES_FOUND |
-| 07 late-metadata-date | Metadata date later than the first capture, flag not set | The first capture still dates the page; the origin stands |
+| 07 late-metadata-date | Metadata date later than the first capture, flag not set | The capture caps the date and the disagreement must be flagged; `pz verify` fires `date_cap` |
 | 08 typed-readout-measured | A model-typed readout tagged measured | Fires the second counter: typed answers must say inferred |
 | 09 card-number-not-in-spans | A card sentence with a number no span carries | Fires the third counter: the card may not say more than the spans |
 | 10 undated-shown-dated | An unconfirmed date that still carries a date to display | Fires the fourth counter: undated nodes are shown undated |
 
 After the mutation, the runner stores the decision the rules give, as a pipeline run would, unless the case sets `decision` itself (only case 03 does, to plant a stale origin).
+
+Each case also lists the `pz verify` checks its planted problem must fire (`expect.verify`, empty when none should); the runner fails on any difference.
 
 Cases built from real spike data (kind `pipeline`) come later in T30.
 

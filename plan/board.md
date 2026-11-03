@@ -58,3 +58,4 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [18:11 PT] AnoopIbrampur T6 pz verify: re-checks spans, edges and stop state on stored traces, stacked on T3 (#45), PR to follow
 - [18:51 PT] AnoopIbrampur T6 fixes: earliest check, --pages usage, negated spans in verify and decide, page_hash test on #46
 - [18:13 PT] AnoopIbrampur T7 traps: falseCertainty, pz traps, 10 synthetic cases with lock, stacked on T6 (#46), PR to follow
+- [18:52 PT] AnoopIbrampur T7 fixes: real negated-span case, date_cap check, verify expectations per case, card-sentence branch tests on #47
