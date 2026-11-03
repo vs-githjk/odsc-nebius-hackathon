@@ -115,7 +115,7 @@ questionsToJsonSchema(questions: Question[]): object   // one object, one enum f
 
 Functions (owner task in brackets):
 - `normalise(text: string): string` [T4]: NFKC, soft hyphens removed, non-breaking spaces to spaces, curly quotes to straight, look-alike dashes to `-`, whitespace collapsed.
-- `parseNumbers(text): { numbers: ParsedNumber[]; skipped: { raw: string; reason: "range" | "inequality" | "decimal_comma" | "two_numbers" }[] }`, `canonicalKey(n)`, `sameNumber(a, b): { equal: boolean; via: "exact" | "rounded" | "percent" | null }`, `isWeak(n)`, `atomHit(sentence, atoms): boolean`, `protectedTokens(text): string[]` [T4].
+- `parseNumbers(text): { numbers: ParsedNumber[]; skipped: { raw: string; reason: "range" | "inequality" | "decimal_comma" | "two_numbers" | "joined" | "special_digit" }[] }`, `canonicalKey(n)`, `sameNumber(a, b): { equal: boolean; via: "exact" | "rounded" | "percent" | null }`, `isWeak(n)`, `atomHit(sentence, atoms): boolean`, `protectedTokens(text): string[]` [T4].
 - `decideStopState(trace: Trace, rules: Rules): Decision` [T5]: pure, rows 1 to 6 in order, first row that holds wins.
 - `pz verify <trace.json...> [--pages <dir>] [--refetch]` [T6]: exit 0 or 1; prints `N of N spans re-verified, E edges without two spans, stop state agrees` (or names the failing check and trace).
 - `falseCertainty(trace): { originOnCold: number; typedWithoutInferred: number; sentenceStrongerThanSpans: number; undatedShownDated: number }` [T7].
