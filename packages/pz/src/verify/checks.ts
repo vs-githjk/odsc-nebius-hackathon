@@ -1,11 +1,11 @@
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { isDeepStrictEqual } from "node:util";
-import { decideStopState, loadRules, normalise, type Rules } from "../rules/index.ts";
+import { decideStopState, isNegated, loadRules, normalise, type Rules } from "../rules/index.ts";
 import { atomHit } from "../rules/numbers.ts";
 import type { Trace } from "../schema/index.ts";
 
-export type Check = "window_hash" | "offsets" | "atoms" | "edge_spans" | "edge_kind" | "stop_state" | "page_hash" | "page_offsets";
+export type Check = "window_hash" | "offsets" | "atoms" | "negated" | "earliest" | "date_cap" | "edge_spans" | "edge_kind" | "stop_state" | "page_hash" | "page_offsets";
 export type Failure = { traceId: string; check: Check; detail: string };
 export type TraceReport = { spans: number; spansOk: number; edgesWithoutTwoSpans: number; stateAgrees: boolean; failures: Failure[] };
 
@@ -17,6 +17,8 @@ export function verifyTrace(trace: Trace, opts: { pagesDir?: string; rules?: Rul
   const fail = (check: Check, detail: string) => failures.push({ traceId: trace.id, check, detail });
   const onEdge = new Set(trace.edges.flatMap((e) => [e.parentSpanId, e.childSpanId]));
   const lemma = normalise(trace.claim.atoms.subjectLemma).toLowerCase();
+  const rules = opts.rules ?? loadRules();
+  const meta = new Set(trace.nodes.filter((n) => n.meta).map((n) => n.id));
   let spansOk = 0;
 
   for (const s of trace.spans) {
@@ -24,8 +26,10 @@ export function verifyTrace(trace: Trace, opts: { pagesDir?: string; rules?: Rul
     if (sha256(s.contextBefore + s.text + s.contextAfter) !== s.windowSha256) fail("window_hash", `span ${s.id}: window hash differs`);
     if (s.end - s.start !== s.text.length) fail("offsets", `span ${s.id}: ${s.start}..${s.end} does not fit ${s.text.length} characters`);
     // Spans that back an edge must carry the claim's number; other spans must at least name the subject.
-    const atomsOk = onEdge.has(s.id) ? atomHit(s.text, trace.claim.atoms) : normalise(s.text).toLowerCase().includes(lemma);
+    const atomsOk = onEdge.has(s.id) ? atomHit(s.text, trace.claim.atoms, rules.weakNumberMinSigDigits) : normalise(s.text).toLowerCase().includes(lemma);
     if (!atomsOk) fail("atoms", `span ${s.id}: claim atoms not found under the number rules`);
+    // Meta pages deny the claim on purpose; anywhere else a negated span cannot back the trace.
+    if (!meta.has(s.nodeId) && isNegated(s, rules.negationPrefixes)) fail("negated", `span ${s.id}: preceded by a negation`);
     if (opts.pagesDir) {
       const page = normalise(readFileSync(`${opts.pagesDir}/${s.nodeId}.txt`, "utf8"));
       if (sha256(page) !== s.extractSha256) fail("page_hash", `span ${s.id}: page hash differs`);
@@ -44,7 +48,27 @@ export function verifyTrace(trace: Trace, opts: { pagesDir?: string; rules?: Rul
     if ((e.kind === "explicit") !== (e.linkHref !== null)) fail("edge_kind", `edge ${e.id}: kind ${e.kind} with linkHref ${e.linkHref ?? "null"}`);
   }
 
-  const recomputed = decideStopState(trace, opts.rules ?? loadRules());
+  // The stored earliest nodes must really be earliest: no page feeds into them, and no page outside their clusters is older.
+  const earliest = trace.nodes.filter((n) => trace.earliest.nodeIds.includes(n.id));
+  const earliestClusters = new Set(earliest.map((n) => n.clusterId));
+  for (const n of earliest) {
+    const from = trace.edges.find((e) => e.childId === n.id && !meta.has(e.parentId));
+    if (from) fail("earliest", `earliest node ${n.id} has an incoming edge ${from.id} from ${from.parentId}`);
+  }
+  const firstDate = earliest.map((n) => n.date.value).filter((d): d is string => d !== null).sort()[0];
+  for (const n of trace.nodes) {
+    if (firstDate && !n.meta && !earliestClusters.has(n.clusterId) && n.date.value !== null && n.date.value < firstDate)
+      fail("earliest", `node ${n.id} (${n.date.value}) is older than the earliest nodes (${firstDate})`);
+  }
+
+  // A metadata date later than the page's first capture must carry the conflict flag (the capture caps the date).
+  for (const n of trace.nodes) {
+    const { value, firstCapture, conflictingDate } = n.date;
+    if (value !== null && firstCapture !== null && value > firstCapture && !conflictingDate)
+      fail("date_cap", `node ${n.id}: date ${value} is later than its first capture ${firstCapture} and is not flagged`);
+  }
+
+  const recomputed = decideStopState(trace, rules);
   const stateAgrees = isDeepStrictEqual(recomputed, trace.decision);
   if (!stateAgrees) fail("stop_state", `stored ${trace.decision.state} row ${trace.decision.row}, rules give ${recomputed.state} row ${recomputed.row}`);
 
