@@ -26,7 +26,7 @@ describe("Token Factory client", () => {
   it("[C19] sends strict schema and logprobs together and reads recorded tokens", async () => {
     const body = await fixture("qwen-schema-logprobs");
     const { client, fetch, rows } = setup([response(body)]);
-    const schema = { type: "object", properties: { label: { type: "string", enum: ["copy", "new_wording", "unrelated"] } }, required: ["label"], additionalProperties: false };
+    const schema = { $schema: "https://json-schema.org/draft/2020-12/schema", type: "object", properties: { label: { type: "string", enum: ["copy", "new_wording", "unrelated"] } }, required: ["label"], additionalProperties: false };
     const result = await client.chat({ ...args, jsonSchema: schema, logprobs: true, topLogprobs: 5 });
     const sent = JSON.parse(fetch.mock.calls[0]![1]!.body as string);
     expect(sent).toMatchObject({ temperature: 0, max_tokens: 20, logprobs: true, top_logprobs: 5, response_format: { type: "json_schema", json_schema: { strict: true, schema } } });
@@ -96,6 +96,8 @@ describe("Token Factory client", () => {
     expect(JSON.parse(fetch.mock.calls[0]![1]!.body as string)).toEqual({ model: embeddingModel, input: ["neutral a", "neutral b"] });
     expect(result.data.embeddings).toEqual([[0.1, 0.2], [0.3, 0.4]]);
     expect(result.usage.costUsd).toBeCloseTo(0.0000001, 12);
+    const clamped = setup([response({ data: [{ index: 0, embedding: [0.1, 0.2] }], usage: { prompt_tokens: 1 } })]);
+    await expect(clamped.client.embed({ model: embeddingModel, input: "a", dimensions: 3 })).rejects.toMatchObject({ code: "bad_response" });
     const broken = setup([response({ ...body, data: body.data.slice(0, 1) })]);
     await expect(broken.client.embed({ model: embeddingModel, input: ["a", "b"] })).rejects.toMatchObject({ code: "bad_response" });
   });
