@@ -140,4 +140,9 @@ describe("review fixes", () => {
     expect(keys("5.2 \u00B1 1.1")).toEqual(["5.2", "1.1"]);
     expect(keys("3:1")).toEqual(["3", "1"]);
   });
+
+  it("[C2] takes the weak-number threshold from the caller", () => {
+    expect(atomHit("Seals nap 14 times a day.", atoms("14", "penguin"))).toBe(false);
+    expect(atomHit("Seals nap 14 times a day.", atoms("14", "penguin"), 2)).toBe(true);
+  });
 });
