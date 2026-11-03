@@ -73,6 +73,18 @@ describe("decideStopState rows", () => {
   it("[C16] row 6: everything else is TRAIL_GOES_COLD", () => {
     expect(state(trace({ nodes: [node("study", { citesEarlier: true })] }))).toMatchObject({ state: "TRAIL_GOES_COLD", row: 6 });
   });
+  it("[C20] a shared unrelated number does not hide a conflict", () => {
+    for (const [a, b] of [
+      ["In 2012 penguins napped 14 times a day.", "In 2012 penguins napped 41 times a day."],
+      ["Penguins napped 14 times a day in 3 zoos.", "Penguins napped 41 times a day in 3 zoos."],
+    ]) {
+      const t = trace({
+        nodes: [node("study"), node("copy", { clusterId: "c-study" })],
+        spans: [span("s1", "study", a!), span("s2", "copy", b!)],
+      });
+      expect(state(t)).toMatchObject({ state: "CONFLICTING", row: 4 });
+    }
+  });
 });
 
 describe("ORIGIN_FOUND blockers", () => {
@@ -85,6 +97,9 @@ describe("ORIGIN_FOUND blockers", () => {
   });
   it("[C16] a non-primary page type blocks it", () => {
     cold(trace({ nodes: [node("study", { pageType: answer("blog") })] }));
+  });
+  it("[C16] an earlier page found in the earlier-window searches blocks it", () => {
+    cold(trace({ earliest: { nodeIds: ["study"], earlierWindowSearches: 2, earlierFound: 1 } }));
   });
   it("[C16] fewer than 2 earlier-window searches block it", () => {
     cold(trace({ earliest: { nodeIds: ["study"], earlierWindowSearches: 1, earlierFound: 0 } }));
