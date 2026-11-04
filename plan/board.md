@@ -58,3 +58,4 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [18:47 PT] AnoopIbrampur T4 fixes: XO batch 1 items 1 to 7 plus slash chains on #42 | @RishitRai number rules changed behaviour, not interfaces
 - [17:47 PT] AnoopIbrampur T5 decide: rules.json, Rules schema, decideStopState with [C16]/[C20] tests; stacked on T4 (#42), PR to follow | @RishitRai T11 can use decideStopState once both merge
 - [18:49 PT] AnoopIbrampur T5 fixes: conflict anchored on the claim number, earlierFound test, weakNumberMinSigDigits wired, on #43
+- [19:56 PT] AnoopIbrampur T4b weak atoms: same-clause rule for weak numbers, measured on E2 dev claims only (eval/weak-atoms), PR to follow
