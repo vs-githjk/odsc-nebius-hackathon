@@ -72,3 +72,4 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [18:16 PT] AnoopIbrampur T9 README: judge-facing README, plan index, llms.txt, link and copy tests, stacked on T8 (#48), PR to follow
 - [18:54 PT] AnoopIbrampur T9 fixes: README wording per XO batch 2 on #49
 - [19:13 PT] AnoopIbrampur T26 clusters and roots: engine/cluster.ts with injected embed, threshold placeholder in rules.json, stacked on T3 (#45), PR to follow
+- [15:51 PT] AnoopIbrampur T26: cluster-rule priority test, stack re-merged with the T6 fix on #47, #48, #49, #58

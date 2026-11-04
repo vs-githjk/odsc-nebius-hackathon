@@ -47,6 +47,13 @@ describe("clusterNodes", () => {
     expect(clusters).toEqual([{ id: "c-v1", nodeIds: ["v1", "v2"], rule: "versions" }]);
   });
 
+  it("[C4] names the stronger rule when two rules join the same cluster", async () => {
+    const text = "Harbor Zoo penguins nap 14 times a day.";
+    const nodes = [node("v1"), node("v2", { versionOf: "v1" })];
+    const { clusters } = await clusterNodes({ nodes, spans: [span("v1", text), span("v2", text)] }, fakeEmbed(), rules);
+    expect(clusters).toEqual([{ id: "c-v1", nodeIds: ["v1", "v2"], rule: "versions" }]);
+  });
+
   it("[C4] joins near-duplicates at or above the threshold and keeps the rest apart", async () => {
     const t = rules.clusterSimilarityThreshold;
     const vectors = { "A one.": [1, 0], "A two.": [t, Math.sqrt(1 - t * t)], "Far away.": [0, 1] };
