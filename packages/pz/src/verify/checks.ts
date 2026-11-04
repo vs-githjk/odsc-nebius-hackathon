@@ -26,7 +26,7 @@ export function verifyTrace(trace: Trace, opts: { pagesDir?: string; rules?: Rul
     if (sha256(s.contextBefore + s.text + s.contextAfter) !== s.windowSha256) fail("window_hash", `span ${s.id}: window hash differs`);
     if (s.end - s.start !== s.text.length) fail("offsets", `span ${s.id}: ${s.start}..${s.end} does not fit ${s.text.length} characters`);
     // Spans that back an edge must carry the claim's number; other spans must at least name the subject.
-    const atomsOk = onEdge.has(s.id) ? atomHit(s.text, trace.claim.atoms, rules.weakNumberMinSigDigits) : normalise(s.text).toLowerCase().includes(lemma);
+    const atomsOk = onEdge.has(s.id) ? atomHit(s.text, trace.claim.atoms, rules.weakNumberMinSigDigits, rules.weakNumberMaxCommas) : normalise(s.text).toLowerCase().includes(lemma);
     if (!atomsOk) fail("atoms", `span ${s.id}: claim atoms not found under the number rules`);
     // Meta pages deny the claim on purpose; anywhere else a negated span cannot back the trace.
     if (!meta.has(s.nodeId) && isNegated(s, rules.negationPrefixes)) fail("negated", `span ${s.id}: preceded by a negation`);
