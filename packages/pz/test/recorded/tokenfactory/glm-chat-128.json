@@ -1,0 +1,37 @@
+{
+  "model": "zai-org/GLM-5.2",
+  "choices": [
+    {
+      "finish_reason": "length",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": null,
+        "reasoning_content": "1.  **Analyze the Request:**\n    *   Input: \"Reply with exactly: hello\"\n    *   Constraint: Reply with *exactly* \"hello\".\n\n2.  **Determine the Output:**\n    *   The user wants the exact string \"hello\".\n    *   No punctuation, no capitalization (unless specified, but \"hello\" is lowercase in the prompt), no extra words.\n\n3.  **Formulate the Response:**\n    *   hello\n\n4.  **Verify against constraints:**\n    *   Is it exactly \"hello\"? Yes.\n    *   Are there any extra spaces"
+      },
+      "matched_stop": null
+    }
+  ],
+  "usage": {
+    "completion_tokens": 128,
+    "prompt_tokens": 17,
+    "total_tokens": 145,
+    "completion_tokens_details": {
+      "accepted_prediction_tokens": null,
+      "audio_tokens": null,
+      "reasoning_tokens": 129,
+      "rejected_prediction_tokens": null
+    },
+    "prompt_tokens_details": null,
+    "prompt_cache_hit_tokens": 0,
+    "prompt_cache_miss_tokens": 17,
+    "reasoning_tokens": 129
+  },
+  "object": "chat.completion"
+}

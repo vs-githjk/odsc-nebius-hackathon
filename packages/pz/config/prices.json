@@ -1,0 +1,44 @@
+{
+  "recordedAt": "2026-10-30",
+  "source": "https://api.tokenfactory.nebius.com/v1/models?verbose=true",
+  "unit": "USD per token",
+  "models": {
+    "Qwen/Qwen3-Embedding-8B": {
+      "input": 1e-08,
+      "output": 0.0,
+      "cachedInput": 1e-08
+    },
+    "Qwen/Qwen3-30B-A3B-Instruct-2507": {
+      "input": 1e-07,
+      "output": 3e-07,
+      "cachedInput": 1e-07
+    },
+    "deepseek-ai/DeepSeek-V4-Pro-0813": {
+      "input": 1.32e-06,
+      "output": 3.96e-06,
+      "cachedInput": 4e-08
+    }
+  },
+  "catalogueFields": {
+    "input": "pricing.prompt",
+    "output": "pricing.completion",
+    "cachedInput": "pricing.input_cache_read; use pricing.prompt only when input_cache_read is null or absent"
+  },
+  "catalogueEvidence": {
+    "Qwen/Qwen3-Embedding-8B": {
+      "prompt": "0.00000001",
+      "completion": "0.0",
+      "input_cache_read": null
+    },
+    "Qwen/Qwen3-30B-A3B-Instruct-2507": {
+      "prompt": "0.0000001",
+      "completion": "0.0000003",
+      "input_cache_read": "0.0000001"
+    },
+    "deepseek-ai/DeepSeek-V4-Pro-0813": {
+      "prompt": "0.00000132",
+      "completion": "0.00000396",
+      "input_cache_read": "0.00000004"
+    }
+  }
+}

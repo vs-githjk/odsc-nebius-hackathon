@@ -47,8 +47,11 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 
 - [14:57 PT] rohanrastogi311 T13: PR #29; targets-a SHA256 d8a20892c9ffc14f71db1aee75253d381997b84b4992c129bd9b32407df6ebdc; targets-b SHA256 5c10c10cc8098310a9de16f65e87d34b8773f5000836c813db3136f8630360b8
 - [01:10 PT] rohanrastogi311 T1: Node 24 workspace, exact allowlisted packages, CLI version stub and CI; npm ci, typecheck, test and make verify pass locally; smoke failed before version export | @master-xo review skeleton PR; T2 follows
+- [15:50 PT] RishitRai T10 clients: Tavily, Wayback and page clients with cache, budget and usage rows; draft PR on the skeleton branch, 1 live check credit | @rohanrastogi311 UsageRow is a temporary copy until #12 merges
 - [15:12 PT] rohanrastogi311 T2: strict trace, usage and typed-question Zod contracts, JSON exports and CI drift check; all wording PENDING; 8 tests and typecheck pass on Vite 7.3.7 | @master-xo review schema PR after #35
 - [15:40 PT] RishitRai #7 Tavily probe: spike/tavily-probe.md, 12 credits; exact_match returns no raw_content and needs a date window to return dates, so T11 extracts separately | @rohanrastogi311 none
+- [16:20 PT] rohanrastogi311 T18: injected-fetch chat and embeddings, typed failures, one retry on 429/5xx, per-attempt usage logging and dated prices; 20 tests and typecheck pass locally; recorded fixtures from #6 | @master-xo review client PR; probe evidence follows
+- [19:40 PT] rohanrastogi311 T18 review fixes: logging failures preserve answers and attempt rows, missing prices give not_configured, non-empty truncated JSON rejected, claim tags removed, cached pricing fields cited; local typecheck and 24 client/schema tests pass | @master-xo re-review #40; T19 stacking next
 - [16:30 PT] rohanrastogi311 T18b: 38 neutral POSTs plus catalogue GET, estimated $0.00019688; strict $schema accepted, all 8 page_type first tokens distinct, embedding dimensions 64..4096 verified; report and sanitized JSON committed | @master-xo review probe PR; T19 can use findings
 - [17:48 PT] AnoopIbrampur T2b question wording: instructions and option labels for the four typed questions, PR to follow | @rohanrastogi311 T19 can use them once merged
 - [18:49 PT] AnoopIbrampur T2b fixes: option-id pin, non-empty labels, EARLIER/LATER wording on #44 | @rohanrastogi311 T19 should label the passages EARLIER and LATER
@@ -58,8 +61,10 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [18:49 PT] AnoopIbrampur T5 fixes: conflict anchored on the claim number, earlierFound test, weakNumberMinSigDigits wired, on #43
 - [17:52 PT] AnoopIbrampur T3 fixtures: 7 synthetic traces with builder and tests, stacked on T5 (#43), PR to follow | @RishitRai sample-rich is ready for the front end
 - [19:19 PT] AnoopIbrampur stack update: merged main (#42 to #44 squashes) into #45 to #49 and #58 instead of rebasing (no force-push); added the optional weakNumberMinSigDigits test on #45
+- [19:56 PT] AnoopIbrampur T4b weak atoms: same-clause rule for weak numbers, measured on E2 dev claims only (eval/weak-atoms), PR to follow
 - [18:11 PT] AnoopIbrampur T6 pz verify: re-checks spans, edges and stop state on stored traces, stacked on T3 (#45), PR to follow
 - [18:51 PT] AnoopIbrampur T6 fixes: earliest check, --pages usage, negated spans in verify and decide, page_hash test on #46
+- [15:51 PT] AnoopIbrampur T6 fixes: weakNumberMaxCommas passed to verify, incoming-edge-only and decide wiring tests, main merged, on #46 | @master-xo re-review #46
 - [18:13 PT] AnoopIbrampur T7 traps: falseCertainty, pz traps, 10 synthetic cases with lock, stacked on T6 (#46), PR to follow
 - [18:52 PT] AnoopIbrampur T7 fixes: real negated-span case, date_cap check, verify expectations per case, card-sentence branch tests on #47
 - [18:15 PT] AnoopIbrampur T8 make verify: copy lint, leakage stub, claims table, CI runs make verify (3 s locally), stacked on T7 (#47), PR to follow
