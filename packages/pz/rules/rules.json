@@ -1,0 +1,11 @@
+{
+  "caps": { "credits": 150, "usd": 0.5, "ms": 300000, "depth": 8, "frontier": 5 },
+  "earlierWindowSearches": 2,
+  "weakNumberMinSigDigits": 3,
+  "weakNumberMaxCommas": 2,
+  "confidenceThreshold": null,
+  "primaryPageTypes": ["study", "dataset", "report", "speaker"],
+  "metaKeywords": ["myth", "debunk", "zombie", "actually comes from", "misattributed", "no evidence that"],
+  "negationPrefixes": ["not", "no evidence that", "myth that", "it is a myth that"],
+  "factCheckDomains": []
+}
