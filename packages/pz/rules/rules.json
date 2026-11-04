@@ -8,6 +8,7 @@
   },
   "earlierWindowSearches": 2,
   "weakNumberMinSigDigits": 3,
+  "weakNumberMaxCommas": 2,
   "confidenceThreshold": null,
   "primaryPageTypes": [
     "study",

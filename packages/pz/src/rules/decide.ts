@@ -1,4 +1,5 @@
 import type { Decision, Node, Trace, TypedAnswer } from "../schema/index.ts";
+import { isNegated } from "./negation.ts";
 import { normalise } from "./normalise.ts";
 import { atomHit, parseNumbers, sameNumber } from "./numbers.ts";
 import type { Rules } from "./rules.ts";
@@ -22,7 +23,7 @@ function conflicting(trace: Trace, pages: Node[], rules: Rules): boolean {
   for (const node of pages.filter((n) => earliestClusters.has(n.clusterId))) {
     const spans = trace.spans.filter((s) => s.nodeId === node.id && normalise(s.text).toLowerCase().includes(lemma));
     const numbers = spans.flatMap((s) => parseNumbers(s.text).numbers);
-    if (spans.some((s) => atomHit(s.text, atoms, rules.weakNumberMinSigDigits))) agrees = true;
+    if (spans.some((s) => atomHit(s.text, atoms, rules.weakNumberMinSigDigits, rules.weakNumberMaxCommas))) agrees = true;
     else if (numbers.length > 0 && !numbers.some((n) => sameNumber(n, target).equal)) differs = true;
   }
   return agrees && differs;
@@ -45,9 +46,10 @@ export function decideStopState(trace: Trace, rules: Rules): Decision {
 
   const origin = pages.find((n) =>
     trace.earliest.nodeIds.includes(n.id) && confident(n.pageType, rules) && rules.primaryPageTypes.includes(n.pageType.optionId)
-    && n.date.kind !== "unconfirmed" && !n.citesEarlier);
+    && n.date.kind !== "unconfirmed" && !n.citesEarlier
+    && !trace.spans.some((s) => s.nodeId === n.id && isNegated(s, rules.negationPrefixes)));
   const blockers = [
-    !origin && "no earliest page with a confirmed date, a primary page type and no earlier citation",
+    !origin && "no earliest page with a confirmed date, a primary page type, no earlier citation and no negated span",
     unreadParents > 0 && `${unreadParents} unread candidate parent(s)`,
     trace.earliest.earlierWindowSearches < rules.earlierWindowSearches && `fewer than ${rules.earlierWindowSearches} earlier-window searches`,
     trace.earliest.earlierFound > 0 && "earlier-window searches found earlier pages",
