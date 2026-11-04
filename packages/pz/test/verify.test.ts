@@ -5,6 +5,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
+import { loadRules } from "../src/rules/index.ts";
 import type { Trace } from "../src/schema/index.ts";
 import { runVerify, verifyTrace } from "../src/verify/index.ts";
 
@@ -75,10 +76,28 @@ describe("pz verify", () => {
     expect(checks(t)).toContain("earliest");
   });
 
+  it("[C16] fails an earliest node with an incoming edge even when no page is older", () => {
+    const t = origin();
+    t.earliest.nodeIds = ["zoo-report"];
+    t.nodes.find((n) => n.id === "zoo-report")!.date.value = "2019-01-01";
+    expect(verifyTrace(t).failures.filter((f) => f.check === "earliest").map((f) => f.detail)).toEqual([expect.stringContaining("incoming edge e1")]);
+  });
+
   it("[C16] fails when a page outside the earliest clusters is older", () => {
     const t = origin();
     t.nodes[2]!.date.value = "2018-01-01";
     expect(checks(t)).toEqual(["earliest"]);
+  });
+
+  it("[C20] passes weakNumberMaxCommas from rules.json into the atom check", () => {
+    const t = origin();
+    const s = t.spans[0]!;
+    s.text = "Our penguins, the adults, nap 14 times a day.";
+    s.end = s.start + s.text.length;
+    s.windowSha256 = sha(s.contextBefore + s.text + s.contextAfter);
+    const atoms = (rules = loadRules()) => verifyTrace(t, { rules }).failures.filter((f) => f.check === "atoms");
+    expect(atoms()).toEqual([]);
+    expect(atoms({ ...loadRules(), weakNumberMaxCommas: 0 })).toHaveLength(1);
   });
 
   it("[C2] rejects a span preceded by a negation on a non-meta page", () => {

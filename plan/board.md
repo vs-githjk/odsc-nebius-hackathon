@@ -64,3 +64,4 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [19:56 PT] AnoopIbrampur T4b weak atoms: same-clause rule for weak numbers, measured on E2 dev claims only (eval/weak-atoms), PR to follow
 - [18:11 PT] AnoopIbrampur T6 pz verify: re-checks spans, edges and stop state on stored traces, stacked on T3 (#45), PR to follow
 - [18:51 PT] AnoopIbrampur T6 fixes: earliest check, --pages usage, negated spans in verify and decide, page_hash test on #46
+- [15:51 PT] AnoopIbrampur T6 fixes: weakNumberMaxCommas passed to verify, incoming-edge-only and decide wiring tests, main merged, on #46 | @master-xo re-review #46
