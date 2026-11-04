@@ -98,6 +98,15 @@ describe("rules wiring", () => {
     expect(decideStopState(t, rules).state).not.toBe("CONFLICTING");
     expect(decideStopState(t, { ...rules, weakNumberMinSigDigits: 2 }).state).toBe("CONFLICTING");
   });
+
+  it("[C20] passes weakNumberMaxCommas from rules.json into the conflict check", () => {
+    const t = trace({
+      nodes: [node("study"), node("copy", { clusterId: "c-study" })],
+      spans: [span("s1", "study", "Our penguins, the adults, nap 14 times a day."), span("s2", "copy", "Penguins nap 41 times a day.")],
+    });
+    expect(decideStopState(t, rules).state).toBe("CONFLICTING");
+    expect(decideStopState(t, { ...rules, weakNumberMaxCommas: 0 }).state).not.toBe("CONFLICTING");
+  });
 });
 
 describe("ORIGIN_FOUND blockers", () => {

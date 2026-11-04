@@ -1,0 +1,30 @@
+{
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "message": {
+        "content": "hello",
+        "refusal": null,
+        "role": "assistant",
+        "annotations": null,
+        "audio": null,
+        "function_call": null,
+        "tool_calls": [],
+        "reasoning": null
+      },
+      "stop_reason": null,
+      "token_ids": null
+    }
+  ],
+  "usage": {
+    "completion_tokens": 2,
+    "prompt_tokens": 13,
+    "total_tokens": 15,
+    "completion_tokens_details": null,
+    "prompt_tokens_details": null
+  },
+  "object": "chat.completion"
+}
