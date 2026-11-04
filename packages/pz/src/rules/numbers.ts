@@ -86,15 +86,23 @@ export function isWeak(n: ParsedNumber, minSigDigits = 3): boolean {
   return digits.length < minSigDigits;
 }
 
-// A sentence carries the claim's number. When either the claim's number or the sentence's matching number is weak,
-// the subject lemma must also be in the same sentence.
-export function atomHit(sentence: string, atoms: Atoms, minSigDigits = 3): boolean {
+const URL = /\bhttps?:\/\/\S+/g;
+
+// A sentence carries the claim's number. Numbers inside URLs never count. When either the claim's number or the
+// sentence's matching number is weak, the subject lemma must sit in the same clause as that number: nothing between
+// them may be "|", ":", "(", ")", "[" or "]", and at most maxCommas commas (a list or a tag line is not one clause).
+// The clause rule and its comma limit were chosen on the E2 dev claims (eval/weak-atoms), never on spike claims.
+export function atomHit(sentence: string, atoms: Atoms, minSigDigits = 3, maxCommas = 2): boolean {
   const target = parseNumbers(atoms.number.canonical).numbers[0];
   if (!target) return false;
-  const text = normalise(sentence);
+  const text = normalise(sentence.replace(URL, " "));
   const hits = parseNumbers(text).numbers.filter((n) => sameNumber(n, target).equal);
   if (hits.length === 0) return false;
   if (hits.some((n) => !isWeak(n, minSigDigits) && !isWeak(target, minSigDigits))) return true;
   const lemma = normalise(atoms.subjectLemma).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  return new RegExp(String.raw`(?<![\p{L}\p{N}])${lemma}`, "iu").test(text);
+  const subjects = [...text.matchAll(new RegExp(String.raw`(?<![\p{L}\p{N}])${lemma}`, "giu"))];
+  return hits.some((n) => subjects.some((m) => {
+    const between = m.index < n.start ? text.slice(m.index + m[0].length, n.start) : text.slice(n.end, m.index);
+    return !/[|:()[\]]/.test(between) && (between.match(/,/g) ?? []).length <= maxCommas;
+  }));
 }
