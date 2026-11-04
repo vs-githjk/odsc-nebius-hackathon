@@ -49,6 +49,8 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [01:10 PT] rohanrastogi311 T1: Node 24 workspace, exact allowlisted packages, CLI version stub and CI; npm ci, typecheck, test and make verify pass locally; smoke failed before version export | @master-xo review skeleton PR; T2 follows
 - [15:12 PT] rohanrastogi311 T2: strict trace, usage and typed-question Zod contracts, JSON exports and CI drift check; all wording PENDING; 8 tests and typecheck pass on Vite 7.3.7 | @master-xo review schema PR after #35
 - [15:40 PT] RishitRai #7 Tavily probe: spike/tavily-probe.md, 12 credits; exact_match returns no raw_content and needs a date window to return dates, so T11 extracts separately | @rohanrastogi311 none
+- [16:20 PT] rohanrastogi311 T18: injected-fetch chat and embeddings, typed failures, one retry on 429/5xx, per-attempt usage logging and dated prices; 20 tests and typecheck pass locally; recorded fixtures from #6 | @master-xo review client PR; probe evidence follows
+- [19:40 PT] rohanrastogi311 T18 review fixes: logging failures preserve answers and attempt rows, missing prices give not_configured, non-empty truncated JSON rejected, claim tags removed, cached pricing fields cited; local typecheck and 24 client/schema tests pass | @master-xo re-review #40; T19 stacking next
 - [16:30 PT] rohanrastogi311 T18b: 38 neutral POSTs plus catalogue GET, estimated $0.00019688; strict $schema accepted, all 8 page_type first tokens distinct, embedding dimensions 64..4096 verified; report and sanitized JSON committed | @master-xo review probe PR; T19 can use findings
 - [17:48 PT] AnoopIbrampur T2b question wording: instructions and option labels for the four typed questions, PR to follow | @rohanrastogi311 T19 can use them once merged
 - [18:49 PT] AnoopIbrampur T2b fixes: option-id pin, non-empty labels, EARLIER/LATER wording on #44 | @rohanrastogi311 T19 should label the passages EARLIER and LATER
@@ -58,3 +60,4 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [18:49 PT] AnoopIbrampur T5 fixes: conflict anchored on the claim number, earlierFound test, weakNumberMinSigDigits wired, on #43
 - [17:52 PT] AnoopIbrampur T3 fixtures: 7 synthetic traces with builder and tests, stacked on T5 (#43), PR to follow | @RishitRai sample-rich is ready for the front end
 - [19:19 PT] AnoopIbrampur stack update: merged main (#42 to #44 squashes) into #45 to #49 and #58 instead of rebasing (no force-push); added the optional weakNumberMinSigDigits test on #45
+- [19:56 PT] AnoopIbrampur T4b weak atoms: same-clause rule for weak numbers, measured on E2 dev claims only (eval/weak-atoms), PR to follow

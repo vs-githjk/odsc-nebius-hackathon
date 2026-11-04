@@ -6,7 +6,7 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 
 | Who | Runs | Output tokens | Apify | Bright Data | Web | GitHub | Codex | Last updated (UTC) |
 |---|---|---|---|---|---|---|---|---|
-| AnoopIbrampur | 1 | 275,561 | 0 | 0 | 36 | 85 | 0 | 2026-11-03T03:19:49Z |
+| AnoopIbrampur | 1 | 308,573 | 0 | 0 | 36 | 90 | 0 | 2026-11-03T03:56:34Z |
 | vs-githjk | 35 | 1,727,238 | 10 | 7 | 63 | 176 | 11 | 2026-11-03T03:08:37Z |
 
 ## Totals by service
@@ -14,11 +14,11 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 | Service | Calls |
 |---|---|
 | Claude Code tools | 997 |
-| Shell | 867 |
-| GitHub (gh) | 261 |
+| Shell | 913 |
+| GitHub (gh) | 266 |
 | Other HTTP | 217 |
 | Web search and fetch | 99 |
-| MCP ccd_turn | 73 |
+| MCP ccd_turn | 83 |
 | Nebius Token Factory | 16 |
 | Codex | 11 |
 | Apify | 10 |
@@ -32,10 +32,10 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 
 | Kind | Tokens |
 |---|---|
-| input_tokens | 7,149 |
-| cache_creation_input_tokens | 9,615,620 |
-| cache_read_input_tokens | 252,316,240 |
-| output_tokens | 2,002,799 |
+| input_tokens | 7,215 |
+| cache_creation_input_tokens | 9,666,932 |
+| cache_read_input_tokens | 272,424,182 |
+| output_tokens | 2,035,811 |
 
 ## Per run
 
@@ -69,7 +69,7 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 | vs-githjk | 2026-10-29T12:03 | master-planner: Build plan and team lanes | claude-opus-5-5 | 90,327 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 2 |
 | vs-githjk | 2026-10-29T19:16 | master-xo: Post the Oct 29 task issues | claude-opus-5-5 | 23,591 | 0 | 0 | 0 | 0 | 8 | 0 | 0 | 0 | 0 |
 | vs-githjk | 2026-10-29T19:16 | master-finder: Pick spike claims 5 and 6 | claude-opus-5-5 | 22,586 | 3 | 0 | 0 | 10 | 0 | 0 | 0 | 0 | 21 |
-| AnoopIbrampur | 2026-10-30T20:10 | main session | claude-opus-5-5, claude-sonnet-5-5 | 275,561 | 0 | 0 | 0 | 36 | 85 | 0 | 0 | 0 | 91 |
+| AnoopIbrampur | 2026-10-30T20:10 | main session | claude-opus-5-5, claude-sonnet-5-5 | 308,573 | 0 | 0 | 0 | 36 | 90 | 0 | 0 | 0 | 91 |
 | vs-githjk | 2026-10-31T17:53 | master-xo: Post Oct 31 team batch | claude-opus-5-5 | 17,818 | 0 | 0 | 0 | 0 | 7 | 0 | 0 | 0 | 0 |
 | vs-githjk | 2026-10-31T17:53 | master-reviewer: Review PRs 29 and 30 | claude-opus-5-5 | 23,036 | 0 | 0 | 0 | 0 | 7 | 0 | 2 | 0 | 1 |
 | vs-githjk | 2026-11-01T22:55 | master-reviewer: Review PR 35 skeleton | claude-opus-5-5 | 17,524 | 0 | 0 | 0 | 0 | 5 | 0 | 0 | 0 | 0 |
@@ -90,12 +90,12 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 - Browser (Playwright): browser_navigate: 1
 - Browser (Playwright): browser_snapshot: 1
 - Codex: codex: 11
-- GitHub (gh): gh: 261
+- GitHub (gh): gh: 266
 - MCP ccd_directory: change_directory: 1
 - MCP ccd_host: open_in_editor: 7
 - MCP ccd_pr: get_status: 1
-- MCP ccd_turn: update_plan: 56
-- MCP ccd_turn: wrap_up: 17
+- MCP ccd_turn: update_plan: 64
+- MCP ccd_turn: wrap_up: 19
 - Nebius Token Factory: api.studio.nebius.com: 1
 - Nebius Token Factory: api.tokenfactory.nebius.com: 13
 - Nebius Token Factory: tokenfactory.nebius.com: 2

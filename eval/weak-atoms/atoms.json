@@ -1,0 +1,15 @@
+{
+  "dev-03": { "number": "10", "subjectLemma": "brain", "unit": "percent" },
+  "dev-05": { "number": "21", "subjectLemma": "habit", "unit": "days" },
+  "dev-06": { "number": "10000", "subjectLemma": "step", "unit": "steps" },
+  "dev-09": { "number": "9%", "subjectLemma": "plastic", "unit": null },
+  "dev-10": { "number": "2050", "subjectLemma": "plastic", "unit": null },
+  "dev-11": { "number": "71%", "subjectLemma": "emission", "unit": null },
+  "dev-13": { "number": "51%", "subjectLemma": "livestock", "unit": null },
+  "dev-14": { "number": "96", "subjectLemma": "phone", "unit": "times" },
+  "dev-16": { "number": "300", "subjectLemma": "job", "unit": "million" },
+  "dev-17": { "number": "100", "subjectLemma": "user", "unit": "million" },
+  "dev-18": { "number": "95%", "subjectLemma": "pilot", "unit": null },
+  "dev-19": { "number": "5%", "subjectLemma": "ram", "unit": null },
+  "dev-20": { "number": "60%", "subjectLemma": "cand", "unit": null }
+}

@@ -92,6 +92,10 @@
     {
       "pr": 38,
       "reason": "hold until spike/REPORT.md is committed (T12), so the spike runner cannot see tool answers on claims 1 to 6"
+    },
+    {
+      "pr": 52,
+      "reason": "hold until T20 grading is posted, so the grader cannot tell our forms from the tools"
     }
   ],
   "merge_command": "gh pr merge <n> --squash --match-head-commit <sha> --subject \"<clean subject> (#n)\" --body \"\"",
