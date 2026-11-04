@@ -5,7 +5,7 @@ Run from the repo root: python3 -I eval/weak-atoms/fetch.py
 """
 import hashlib, html.parser, json, pathlib, re, subprocess, sys
 
-CLAIMS = json.loads(subprocess.run(["git", "show", "origin/AnoopIbrampur/dev-claims:eval/dev-claims.json"], capture_output=True, text=True, check=True).stdout)
+CLAIMS = json.loads(pathlib.Path("eval/dev-claims.json").read_text(encoding="utf-8"))
 OUT = pathlib.Path(".cache/weak-atoms")
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 Chrome/130 Safari/537.36"
 

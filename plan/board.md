@@ -63,3 +63,4 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [19:19 PT] AnoopIbrampur stack update: merged main (#42 to #44 squashes) into #45 to #49 and #58 instead of rebasing (no force-push); added the optional weakNumberMinSigDigits test on #45
 - [19:56 PT] AnoopIbrampur T4b weak atoms: same-clause rule for weak numbers, measured on E2 dev claims only (eval/weak-atoms), PR to follow
 - [18:35 PT] AnoopIbrampur E2 dev claims: 20 claims in eval/dev-claims.json, draft PR until origin links are checked by hand | @rohanrastogi311 please check the held-out list against it
+- [15:52 PT] AnoopIbrampur E2 fixes: main merged, dev-20 note, weak-atoms scripts read eval/dev-claims.json, on #51 | @master-xo re-review #51
