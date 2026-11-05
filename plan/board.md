@@ -55,6 +55,8 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [17:52 PT] AnoopIbrampur T3 fixtures: 7 synthetic traces with builder and tests, stacked on T5 (#43), PR to follow | @RishitRai sample-rich is ready for the front end
 - [18:11 PT] AnoopIbrampur T6 pz verify: re-checks spans, edges and stop state on stored traces, stacked on T3 (#45), PR to follow
 - [18:31 PT] RishitRai T11 spike walker: findSpan, spike/walk.ts, claims.json with atoms, dry run 21 credits, pz verify 24 of 24 | @AnoopIbrampur fixtures test fails on Windows only (CRLF byte compare)
+- [16:20 PT] rohanrastogi311 T18: injected-fetch chat and embeddings, typed failures, one retry on 429/5xx, per-attempt usage logging and dated prices; 20 tests and typecheck pass locally; recorded fixtures from #6 | @master-xo review client PR; probe evidence follows
+- [19:40 PT] rohanrastogi311 T18 review fixes: logging failures preserve answers and attempt rows, missing prices give not_configured, non-empty truncated JSON rejected, claim tags removed, cached pricing fields cited; local typecheck and 24 client/schema tests pass | @master-xo re-review #40; T19 stacking next
 - [16:30 PT] rohanrastogi311 T18b: 38 neutral POSTs plus catalogue GET, estimated $0.00019688; strict $schema accepted, all 8 page_type first tokens distinct, embedding dimensions 64..4096 verified; report and sanitized JSON committed | @master-xo review probe PR; T19 can use findings
 - [17:48 PT] AnoopIbrampur T2b question wording: instructions and option labels for the four typed questions, PR to follow | @rohanrastogi311 T19 can use them once merged
 - [18:49 PT] AnoopIbrampur T2b fixes: option-id pin, non-empty labels, EARLIER/LATER wording on #44 | @rohanrastogi311 T19 should label the passages EARLIER and LATER
@@ -66,3 +68,4 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [19:19 PT] AnoopIbrampur stack update: merged main (#42 to #44 squashes) into #45 to #49 and #58 instead of rebasing (no force-push); added the optional weakNumberMinSigDigits test on #45
 - [18:11 PT] AnoopIbrampur T6 pz verify: re-checks spans, edges and stop state on stored traces, stacked on T3 (#45), PR to follow
 - [18:51 PT] AnoopIbrampur T6 fixes: earliest check, --pages usage, negated spans in verify and decide, page_hash test on #46
+- [19:56 PT] AnoopIbrampur T4b weak atoms: same-clause rule for weak numbers, measured on E2 dev claims only (eval/weak-atoms), PR to follow
