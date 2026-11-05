@@ -211,7 +211,9 @@ a {
 }
 
 .section {
-  padding: 10vh 0;
+  /* Top and bottom only: .section sits on the same element as .wrap, whose side padding is the gutter. */
+  padding-top: 10vh;
+  padding-bottom: 10vh;
 }
 
 .k {
