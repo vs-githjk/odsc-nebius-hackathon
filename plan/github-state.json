@@ -72,13 +72,43 @@
     "#38@dd08eff",
     "#35@df4d61d",
     "#30@a9dd117",
-    "#39@b632620"
+    "#39@b632620",
+    "#40@47ff20b",
+    "#41@ff04da2",
+    "#42@e7c7df8",
+    "#43@d0ffb5d",
+    "#44@aa6fd63",
+    "#45@90c3e20",
+    "#46@e07cd36",
+    "#47@c528b7f",
+    "#48@8b9c241",
+    "#49@7f4c642",
+    "#42@ff4fdcb",
+    "#43@ca2e138",
+    "#44@d70996c",
+    "#40@76a5470",
+    "#60@bb4f188",
+    "#61@1bfc48a",
+    "#51@59004a2",
+    "#45@57f2d46",
+    "#46@e94e3b2",
+    "#47@044b727",
+    "#48@779b31e",
+    "#49@b622506",
+    "#58@13f5bef",
+    "#37@6513d48",
+    "#50@2ba34ef",
+    "#53@7b5e43e"
   ],
-  "last_seen_comment_at": "2026-11-02T15:45:00-08:00",
+  "last_seen_comment_at": "2026-11-04T15:45:00-08:00",
   "held_prs": [
     {
       "pr": 38,
       "reason": "hold until spike/REPORT.md is committed (T12), so the spike runner cannot see tool answers on claims 1 to 6"
+    },
+    {
+      "pr": 52,
+      "reason": "hold until T20 grading is posted, so the grader cannot tell our forms from the tools"
     }
   ],
   "merge_command": "gh pr merge <n> --squash --match-head-commit <sha> --subject \"<clean subject> (#n)\" --body \"\"",

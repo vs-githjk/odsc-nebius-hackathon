@@ -1,0 +1,14 @@
+{
+  "results": [
+    {
+      "url": "https://en.wikipedia.org/wiki/Creaming_(food)",
+      "title": "Creaming (cooking) - Wikipedia",
+      "raw_content": "Example with a [link](/wiki/Butter) and [another](https://en.wikipedia.org/wiki/Sugar). (Page text trimmed for the repo.)",
+      "images": []
+    }
+  ],
+  "failed_results": [],
+  "usage": {
+    "credits": 0
+  }
+}
