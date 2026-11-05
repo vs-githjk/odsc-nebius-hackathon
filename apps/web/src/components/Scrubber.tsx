@@ -25,6 +25,8 @@ export function xAt(xs: number[], position: number): number {
   return q === 0 || i + 1 >= xs.length ? xs[i]! : xs[i]! + (xs[i + 1]! - xs[i]!) * q;
 }
 
+const LABEL_GAP = 0.06;
+
 type Props = {
   trace: Trace;
   stops: Stop[];
@@ -68,6 +70,14 @@ export function Scrubber({ trace, stops, position, reducedMotion, onMove, onSett
     onSettle(Math.min(last, Math.max(0, next)));
   };
 
+  // A year label is skipped when it would sit on one already shown; the current stop's label always wins.
+  const labelled = new Set<number>();
+  for (const i of [index, ...stops.keys()]) {
+    if (xs[i] !== undefined && [...labelled].every((j) => Math.abs(xs[j]! - xs[i]!) >= LABEL_GAP)) labelled.add(i);
+  }
+  // Years alone read the same when the stops sit within two years of each other; show the month too.
+  const years = stops.map((s) => s.date).filter((d): d is string => d !== null).map((d) => Number(d.slice(0, 4)));
+  const labelChars = years.length > 0 && Math.max(...years) - Math.min(...years) < 2 ? 7 : 4;
   const current = stops[index];
   const handleX = xAt(xs, position);
   return (
@@ -102,11 +112,13 @@ export function Scrubber({ trace, stops, position, reducedMotion, onMove, onSett
         />
       </div>
       <div className="ticks" aria-hidden="true">
-        {stops.map((s, i) => (
-          <span key={s.spanId} className={i === index ? "hop" : ""} style={{ left: `${xs[i]! * 100}%` }}>
-            {s.date?.slice(0, 4) ?? "?"}
-          </span>
-        ))}
+        {stops.map((s, i) =>
+          labelled.has(i) ? (
+            <span key={s.spanId} className={i === index ? "hop" : ""} style={{ left: `${xs[i]! * 100}%` }}>
+              {s.date?.slice(0, labelChars) ?? "?"}
+            </span>
+          ) : null,
+        )}
       </div>
     </div>
   );

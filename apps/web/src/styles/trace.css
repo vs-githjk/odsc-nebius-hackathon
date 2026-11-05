@@ -203,6 +203,11 @@
 .graph .badge {
   fill: var(--ink-3);
   font: 600 13px var(--font-ui);
+  /* A halo in the card colour keeps labels readable where lines cross. */
+  paint-order: stroke;
+  stroke: var(--surface);
+  stroke-width: 4px;
+  stroke-linejoin: round;
 }
 
 .graph .node circle {
@@ -225,6 +230,7 @@
 
 .legend span {
   display: inline-flex;
+  white-space: nowrap;
   align-items: center;
   gap: 6px;
 }

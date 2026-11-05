@@ -35,7 +35,7 @@ export function TraceGraph({ trace, activeSpanId }: { trace: Trace; activeSpanId
         {clusters.map((c) => {
           const first = placed.filter((p) => p.node.clusterId === c.id).sort((p, q) => p.x - q.x)[0];
           return first && c.nodeIds.length > 1 ? (
-            <text key={c.id} className="badge" x={first.x - 14} y={first.y + 4} textAnchor="end">{`${c.nodeIds.length} copies`}</text>
+            <text key={c.id} className="badge" x={first.x + 10} y={first.y - 12} textAnchor="start">{`${c.nodeIds.length} copies`}</text>
           ) : null;
         })}
         {placed.map(({ node, x, y }) => (
