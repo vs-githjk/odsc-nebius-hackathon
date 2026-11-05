@@ -2,15 +2,9 @@ import { useEffect, useState } from "react";
 import type { Trace } from "pz/schema";
 import { ModeBadge } from "./components/ModeBadge.tsx";
 import { loadTraces } from "./data/loadTraces.ts";
+import { parseRoute, type Route } from "./route.ts";
 
 const { traces, errors } = loadTraces();
-
-type Route = { name: "start" } | { name: "trace"; id: string };
-
-function parseRoute(hash: string): Route {
-  const match = /^#\/t\/([^/]+)$/.exec(hash);
-  return match?.[1] ? { name: "trace", id: decodeURIComponent(match[1]) } : { name: "start" };
-}
 
 function useRoute(): Route {
   const [route, setRoute] = useState(() => parseRoute(window.location.hash));
