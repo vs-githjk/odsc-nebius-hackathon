@@ -10,7 +10,7 @@ import { createTavily } from "../packages/pz/src/clients/tavily.ts";
 import { createWayback } from "../packages/pz/src/clients/wayback.ts";
 import { findSpan } from "../packages/pz/src/match/verbatim.ts";
 import { atomHit, decideStopState, loadRules, normalise, parseNumbers, sameNumber, type Rules } from "../packages/pz/src/rules/index.ts";
-import type { Atoms, Cluster, DateInfo, Edge, Hop, Node, Readout, Span, Trace } from "../packages/pz/src/schema/index.ts";
+import { Trace, type Atoms, type Cluster, type DateInfo, type Edge, type Hop, type Node, type Readout, type Span } from "../packages/pz/src/schema/index.ts";
 import { createUsageLog, type UsageLog } from "../packages/pz/src/usage/log.ts";
 
 export type SpikeClaim = { id: string; text: string; atoms: Atoms };
@@ -25,6 +25,8 @@ type Deps = {
   today: string;
   now: () => string;
   pagesDir: string;
+  // The trace this run replays, when every call is served from the cache.
+  replayOf?: Trace;
 };
 
 const CONTEXT_CHARS = 200;
@@ -305,8 +307,8 @@ export async function walkClaim(claim: SpikeClaim, deps: Deps): Promise<{ trace:
   const path = nodes.filter((n) => !n.meta && n.date.value).sort((a, b) => a.date.value!.localeCompare(b.date.value!));
   const edges: Edge[] = [];
   const hops: Hop[] = [];
-  for (const [i, child] of path.entries()) {
-    const earlier = path.slice(0, i);
+  for (const child of path) {
+    const earlier = path.filter((n) => n.date.value! < child.date.value!);
     const linked = (nodeLinks.get(child.id) ?? []).map((u) => earlier.find((n) => canonUrl(n.url) === u)).find(Boolean);
     const parent = linked ?? earlier.filter((n) => n.clusterId !== child.clusterId).at(-1);
     if (!parent) continue;
@@ -334,17 +336,29 @@ export async function walkClaim(claim: SpikeClaim, deps: Deps): Promise<{ trace:
   const minDate = earliestDate();
   const usd = deps.usage.rows.reduce((sum, r) => sum + (r.service === "tokenfactory" ? r.costUsd : 0), 0);
 
+  // A run whose paid calls all came from the cache is a replay: it carries the recorded run's date, budget and usage
+  // rows, plus rows for any free calls made fresh (for example Wayback lookups after a change to the CDX query).
+  const paid = deps.usage.rows.filter((r) => r.service === "tavily" || r.service === "tokenfactory");
+  const replayed = paid.length > 0 && paid.every((r) => r.cacheHit);
+  if (replayed && !deps.replayOf) {
+    throw new Error(`${claim.id}: every paid call came from the cache, so this is a replay; pass the recorded trace with --replay-of`);
+  }
+  const recorded = replayed ? deps.replayOf! : null;
+  const budget: Trace["budget"] = recorded
+    ? { credits: recorded.budget.credits, usd: recorded.budget.usd, ms: recorded.budget.ms, capHit }
+    : { credits: deps.usage.rows.reduce((sum, r) => sum + r.credits, 0), usd, ms: Date.now() - started, capHit };
+
   const draft: Trace = {
-    schemaVersion: "1", id: claim.id, mode: "LIVE", synthetic: false, recordedAt: deps.now(),
+    schemaVersion: "1", id: claim.id, mode: recorded ? "REPLAY" : "LIVE", synthetic: false, recordedAt: recorded?.recordedAt ?? deps.now(),
     claim: { text: claim.text, atoms }, viralSentence: claim.text,
     nodes, edges, clusters, spans, hops, blame: [],
     roots: { pages: nodes.filter((n) => !n.meta).length, clusters: pageClusters.size, rootsLinked, clustersUnlinked: pageClusters.size - rootsLinked, studiesFound: null },
     redHopEdgeId: hops.find((h) => !h.faithful)?.edgeId ?? null,
     earliest: { nodeIds: nodes.filter((n) => !n.meta && minDate !== null && n.date.value === minDate).map((n) => n.id), earlierWindowSearches, earlierFound },
     failure,
-    budget: { credits: deps.usage.rows.reduce((sum, r) => sum + r.credits, 0), usd, ms: Date.now() - started, capHit },
+    budget,
     decision: { state: "TRAIL_GOES_COLD", row: 6, reasons: [], counts: {} },
-    searchLog, usage: deps.usage.rows, scopeNote: SCOPE_NOTE,
+    searchLog, usage: recorded ? [...recorded.usage, ...deps.usage.rows.filter((r) => !r.cacheHit)] : deps.usage.rows, scopeNote: SCOPE_NOTE,
   };
   return { trace: { ...draft, decision: decideStopState(draft, rules) }, log };
 }
@@ -356,9 +370,11 @@ async function main() {
   const claims = JSON.parse(readFileSync(join(here, "claims.json"), "utf8")) as SpikeClaim[];
   const claim = claims.find((c) => c.id === id);
   if (!claim) {
-    console.error(`usage: npx tsx spike/walk.ts --claim <${claims.map((c) => c.id).join("|")}>`);
+    console.error(`usage: npx tsx spike/walk.ts --claim <${claims.map((c) => c.id).join("|")}> [--replay-of <recorded trace.json>]`);
     process.exit(2);
   }
+  const replayAt = process.argv.indexOf("--replay-of");
+  const replayOf = replayAt >= 0 ? Trace.parse(JSON.parse(readFileSync(process.argv[replayAt + 1] ?? "", "utf8"))) : undefined;
   if (existsSync(".env")) process.loadEnvFile(".env");
   const rules = loadRules();
   const usage = createUsageLog();
@@ -373,6 +389,7 @@ async function main() {
     today: new Date().toISOString().slice(0, 10),
     now: () => new Date().toISOString(),
     pagesDir: ".cache/pages",
+    replayOf,
   });
   mkdirSync(join(here, "traces"), { recursive: true });
   mkdirSync(join(here, "logs"), { recursive: true });

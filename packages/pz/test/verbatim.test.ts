@@ -48,3 +48,17 @@ describe("findSpan", () => {
     expect(findSpan("The knot 14 times.", "14 times.")).toMatchObject({ tier: "exact" });
   });
 });
+
+describe("findSpan negation through look-alike characters", () => {
+  it("[C2] a no-break space inside a negation prefix is still a negation", () => {
+    expect(findSpan("It is a myth that penguins nap 14 times a day.", "penguins nap 14 times a day.")).toEqual({ rejected: "negated" });
+  });
+
+  it("[C2] a soft hyphen inside a negation prefix is still a negation", () => {
+    expect(findSpan("It is a my­th that penguins nap 14 times a day.", "penguins nap 14 times a day.")).toEqual({ rejected: "negated" });
+  });
+
+  it("[C2] a no-break space before a following not is still a negation", () => {
+    expect(findSpan("The figure is not 8.", "The figure is")).toEqual({ rejected: "negated" });
+  });
+});

@@ -46,7 +46,7 @@ function world(pages: Page[], opts: { extractStatus?: number } = {}) {
 
 let dir: string;
 const rules = loadRules();
-function run(fetchImpl: typeof fetch, credits = 150, ruleOverride = rules) {
+function run(fetchImpl: typeof fetch, credits = 150, ruleOverride = rules, extra: { replayOf?: Trace } = {}) {
   const usage = createUsageLog({ path: join(dir, "usage.jsonl") });
   const deps = { fetch: fetchImpl, usage, cache: createFileCache(join(dir, "http")), budget: createBudget(credits), traceId: claim.id };
   return walkClaim(claim, {
@@ -58,6 +58,7 @@ function run(fetchImpl: typeof fetch, credits = 150, ruleOverride = rules) {
     today: "2026-11-02",
     now: () => "2026-11-02T00:00:00.000Z",
     pagesDir: join(dir, "pages"),
+    ...extra,
   });
 }
 
@@ -216,5 +217,68 @@ describe("spans", () => {
     const marked: Page = { url: "https://a.example/m", date: "2012-01-01", text: "## Naps\n\nKeepers say penguins nap **14 times** a day." };
     const { trace } = await run(world([marked]).impl);
     expect(trace.spans[0]?.text).toBe("Keepers say penguins nap 14 times a day.");
+  });
+});
+
+describe("review fixes", () => {
+  it("[C3] an inferred edge never joins two pages with the same date", async () => {
+    const a: Page = { url: "https://a.example/x", date: "2014-01-01", text: "Writers say penguins nap 14 times a day." };
+    const b: Page = { url: "https://b.example/y", date: "2014-01-01", text: "Keepers report penguins nap 14 times a day." };
+    const c: Page = { url: "https://c.example/z", date: "2010-01-01", text: "A study says penguins nap 14 times a day." };
+    const { trace } = await run(world([a, b, c]).impl);
+    const date = (id: string) => trace.nodes.find((n) => n.id === id)?.date.value ?? "";
+    expect(trace.edges.length).toBeGreaterThan(0);
+    for (const e of trace.edges) expect(date(e.parentId) < date(e.childId)).toBe(true);
+  });
+
+  it("[C1] a fact-check domain never enters the trace", async () => {
+    const check: Page = { url: "https://www.snopes.com/fact-check/penguins", date: "2009-01-01", text: "Do penguins nap 14 times a day? Keepers say penguins nap 14 times a day." };
+    const { trace, log } = await run(world([older, check]).impl);
+    expect(trace.nodes.map((n) => n.url)).not.toContain(check.url);
+    expect(log.some((l) => l.url === check.url && l.kept === true)).toBe(false);
+  });
+
+  it("[C14] a run served entirely from the cache is a REPLAY carrying the first run's date and usage rows", async () => {
+    const pages = world([newer, older]);
+    const first = await run(pages.impl);
+    expect(first.trace.mode).toBe("LIVE");
+    const callsAfterFirst = pages.calls.length;
+    const replay = await run(pages.impl, 150, rules, { replayOf: first.trace });
+    expect(pages.calls.length).toBe(callsAfterFirst);
+    expect(replay.trace.mode).toBe("REPLAY");
+    expect(replay.trace.recordedAt).toBe(first.trace.recordedAt);
+    expect(replay.trace.usage).toEqual(first.trace.usage);
+    expect(replay.trace.budget.credits).toBe(first.trace.budget.credits);
+    expect(Trace.parse(replay.trace)).toBeTruthy();
+  });
+
+  it("[C14] a run served entirely from the cache with no first run to carry is refused, never written as LIVE", async () => {
+    const pages = world([newer, older]);
+    await run(pages.impl);
+    await expect(run(pages.impl)).rejects.toThrow(/replay/i);
+  });
+});
+
+describe("replay with fresh free calls", () => {
+  it("[C14] fresh Wayback lookups keep a replay a REPLAY, and their rows are added after the recorded ones", async () => {
+    const pages = world([newer, older]);
+    const first = await run(pages.impl);
+    const cdxFresh = (async (input: string | URL | Request, init?: RequestInit) =>
+      pages.impl(String(input).includes("/cdx/") ? `${String(input)}&fresh=1` : input, init)) as typeof fetch;
+    const usage = createUsageLog({ path: join(dir, "usage.jsonl") });
+    const cache = createFileCache(join(dir, "http"));
+    const budget = createBudget(150);
+    const deps = { usage, cache, budget, traceId: claim.id };
+    const freshWayback = createWayback({ ...deps, fetch: (async (input: string | URL | Request, init?: RequestInit) => cdxFresh(input, init)) as typeof fetch });
+    const wrapped = { ...freshWayback, firstCapture: (url: string, o?: { step?: string }) => freshWayback.firstCapture(`${url}#fresh`, o) };
+    const replay = await walkClaim(claim, {
+      tavily: createTavily({ ...deps, fetch: pages.impl, apiKey: "test-key" }), wayback: wrapped, usage, budget, rules,
+      today: "2026-11-02", now: () => "2026-11-03T00:00:00.000Z", pagesDir: join(dir, "pages"), replayOf: first.trace,
+    });
+    expect(replay.trace.mode).toBe("REPLAY");
+    expect(replay.trace.recordedAt).toBe(first.trace.recordedAt);
+    expect(replay.trace.usage.slice(0, first.trace.usage.length)).toEqual(first.trace.usage);
+    expect(replay.trace.usage.slice(first.trace.usage.length).every((r) => r.service === "wayback" && !r.cacheHit)).toBe(true);
+    expect(replay.trace.usage.length).toBeGreaterThan(first.trace.usage.length);
   });
 });

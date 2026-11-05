@@ -22,7 +22,8 @@ function parseCdx(body: string): FirstCapture {
 export function createWayback(deps: ClientDeps & { timeoutMs?: number }) {
   return {
     async firstCapture(url: string, { step = "dating" }: { step?: string } = {}) {
-      const params = new URLSearchParams({ url, matchType: "exact", limit: "1", output: "json", fl: "timestamp,original" });
+      // Only a 200 capture counts, never a 404 or a redirect.
+      const params = new URLSearchParams({ url, matchType: "exact", limit: "1", output: "json", fl: "timestamp,original", filter: "statuscode:200" });
       try {
         return await send<FirstCapture>(deps, {
           service: "wayback",

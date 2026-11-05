@@ -19,7 +19,8 @@ function onBoundary(page: string, start: number, end: number): boolean {
 
 function negated(page: string, start: number, end: number, prefixes: string[]): boolean {
   if (FOLLOWING_NEGATION.test(page.slice(end, end + 12))) return true;
-  const before = page.slice(0, start).trimEnd().toLowerCase();
+  // Read the prefix through the normaliser, so a no-break space or soft hyphen cannot hide it.
+  const before = normalise(`${page.slice(0, start)}x`).slice(0, -1).trimEnd().toLowerCase();
   return prefixes.some((p) => {
     const prefix = p.toLowerCase();
     return before.endsWith(prefix) && !ALNUM.test(before[before.length - prefix.length - 1] ?? "");

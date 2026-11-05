@@ -69,3 +69,4 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [18:11 PT] AnoopIbrampur T6 pz verify: re-checks spans, edges and stop state on stored traces, stacked on T3 (#45), PR to follow
 - [18:51 PT] AnoopIbrampur T6 fixes: earliest check, --pages usage, negated spans in verify and decide, page_hash test on #46
 - [19:56 PT] AnoopIbrampur T4b weak atoms: same-clause rule for weak numbers, measured on E2 dev claims only (eval/weak-atoms), PR to follow
+- [07:29 PT] RishitRai #50 fix list: NBSP and soft-hyphen negation, REPLAY for cache-served runs, strictly earlier inferred parents, fact-check test, CDX statuscode:200; dry run regenerated under #61 (9 credits, LIVE)
