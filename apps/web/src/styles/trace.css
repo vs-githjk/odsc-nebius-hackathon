@@ -1,0 +1,248 @@
+/* The trace stage: colour field, sentence, scrubber and graph. Values from DESIGN.md sections 1 and 3. */
+.stage {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.stage > * {
+  position: relative;
+}
+
+.time-field {
+  position: absolute !important;
+  inset: 0;
+  z-index: -1;
+  background: var(--ramp);
+  opacity: 0.12;
+}
+
+.time-field-glow {
+  position: absolute;
+  top: -30%;
+  width: 60%;
+  height: 160%;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255, 255, 255, 0.9), transparent);
+  filter: blur(16px);
+  transition: left 250ms cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.stage-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.sentence {
+  margin-top: 36px;
+  min-height: 2.3em;
+}
+
+.sentence .w {
+  transition: opacity 200ms ease;
+}
+
+.sentence .w.changed {
+  background: var(--chg-tint);
+  box-shadow: inset 0 -2px 0 var(--hot);
+  border-radius: 2px;
+}
+
+.scrub {
+  position: relative;
+  margin-top: 20px;
+  padding: 18px 0 6px;
+  touch-action: pan-y;
+}
+
+.track {
+  position: relative;
+  height: 44px;
+  cursor: pointer;
+}
+
+.track-fill {
+  position: absolute;
+  top: 19px;
+  left: 0;
+  right: 0;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--ramp);
+}
+
+.track-future {
+  position: absolute;
+  top: 19px;
+  right: 0;
+  height: 6px;
+  border-radius: 0 3px 3px 0;
+  background: var(--bg-2);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+
+.track-inferred {
+  position: absolute;
+  top: 10px;
+  height: 0;
+  border-top: 2px dashed var(--ink-3);
+  opacity: 0.7;
+}
+
+.stop {
+  position: absolute;
+  top: 22px;
+  width: 14px;
+  height: 14px;
+  margin: -7px 0 0 -7px;
+  border-radius: 50%;
+  background: var(--surface);
+  box-shadow: inset 0 0 0 2px var(--ink-3);
+}
+
+.stop.lit {
+  box-shadow: inset 0 0 0 4px var(--ink);
+  transform: scale(1.15);
+}
+
+.handle {
+  position: absolute;
+  top: 0;
+  width: 44px;
+  height: 44px;
+  margin-left: -22px;
+  border-radius: 50%;
+  touch-action: none;
+}
+
+.handle::after {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border-radius: 50%;
+  background: var(--surface);
+  box-shadow: 0 0 0 3px var(--ink), 0 4px 12px rgba(11, 16, 32, 0.25);
+}
+
+.handle:focus-visible {
+  outline: 3px solid var(--action);
+  outline-offset: 2px;
+}
+
+.ticks {
+  position: relative;
+  height: 26px;
+  margin-top: 8px;
+  color: var(--ink-3);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.ticks span {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.ticks span.hop {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.hop-open {
+  padding-top: 4px;
+}
+
+.hop-page {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0 0;
+}
+
+.chip.explicit {
+  color: var(--good);
+}
+
+.chip.inferred {
+  color: var(--caution);
+  border-style: dashed;
+}
+
+.graph {
+  margin: 0;
+}
+
+.graph svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.graph .edge line {
+  stroke: var(--ink-2);
+  stroke-width: 2;
+}
+
+.graph .edge text,
+.graph .badge {
+  fill: var(--ink-3);
+  font: 600 13px var(--font-ui);
+}
+
+.graph .node circle {
+  fill: var(--surface);
+  stroke: var(--ink);
+  stroke-width: 2;
+}
+
+.graph .node.active circle {
+  fill: var(--hot);
+  stroke: var(--hot-ink);
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 18px;
+  margin-top: 8px;
+}
+
+.legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-line {
+  stroke: var(--ink-2);
+  stroke-width: 2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .time-field-glow,
+  .sentence .w {
+    transition: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .ticks {
+    font-size: 11px;
+  }
+}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { Trace } from "pz/schema";
 import { ModeBadge } from "./components/ModeBadge.tsx";
+import { TraceView } from "./components/TraceView.tsx";
 import { loadTraces } from "./data/loadTraces.ts";
 import { parseRoute, type Route } from "./route.ts";
 
@@ -48,26 +49,11 @@ function Start() {
   );
 }
 
-function TraceView({ id }: { id: string }) {
+function TraceRoute({ id }: { id: string }) {
   const trace = traces.find((t) => t.id === id);
-  if (!trace) {
-    return (
-      <main className="wrap section stack">
-        <p className="error" role="alert">No trace called {id}.</p>
-        <a href="#/">Back to the samples</a>
-      </main>
-    );
-  }
   return (
     <main className="wrap section stack">
-      <div className="card stage stack">
-        <ModeBadge trace={trace} />
-        <p className="quote">{trace.viralSentence}</p>
-        <div className="ramp" aria-hidden="true" />
-        <p className="meta">
-          {trace.roots.pages} pages, {trace.roots.clusters} clusters. Ends: {stateLabel(trace)}, How this was decided: row {trace.decision.row}.
-        </p>
-      </div>
+      {trace ? <TraceView trace={trace} /> : <p className="error" role="alert">No trace called {id}.</p>}
       <a href="#/">Back to the samples</a>
     </main>
   );
@@ -86,7 +72,7 @@ export function App() {
           <a className="btn small" href="#/">Samples</a>
         </div>
       </nav>
-      {route.name === "trace" ? <TraceView id={route.id} /> : <Start />}
+      {route.name === "trace" ? <TraceRoute id={route.id} /> : <Start />}
     </>
   );
 }
