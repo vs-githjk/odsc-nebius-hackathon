@@ -1,0 +1,240 @@
+{
+  "schemaVersion": "1",
+  "id": "sample-no-pages",
+  "mode": "SAMPLE",
+  "synthetic": true,
+  "recordedAt": "2026-11-01T08:00:00Z",
+  "claim": {
+    "text": "Harbor Zoo penguins nap 14 times a day, twice as often as the zoo's seals",
+    "atoms": {
+      "number": {
+        "raw": "14",
+        "canonical": "14"
+      },
+      "unit": "times a day",
+      "subjectLemma": "penguin",
+      "population": "Harbor Zoo penguins",
+      "time": null,
+      "hedge": null,
+      "namedSource": null,
+      "variants": [
+        "fourteen"
+      ]
+    }
+  },
+  "viralSentence": "Harbor Zoo penguins nap 14 times a day, twice as often as the zoo's seals",
+  "nodes": [
+    {
+      "id": "myth-page",
+      "url": "https://checkdesk.example/penguin-nap-myth",
+      "domain": "checkdesk.example",
+      "title": "Check Desk: penguin naps",
+      "date": {
+        "kind": "published",
+        "value": "2023-03-01",
+        "source": "metadata",
+        "firstCapture": "2023-03-01",
+        "conflictingDate": false
+      },
+      "clusterId": "c-meta",
+      "evidence": "observed",
+      "meta": true,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s-myth-page"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": {
+        "questionId": "page_type",
+        "optionId": "news",
+        "probability": 0.9,
+        "top": [
+          {
+            "optionId": "news",
+            "p": 0.9
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      }
+    }
+  ],
+  "edges": [],
+  "clusters": [
+    {
+      "id": "c-meta",
+      "nodeIds": [
+        "myth-page"
+      ],
+      "rule": "single"
+    }
+  ],
+  "spans": [
+    {
+      "id": "s-myth-page",
+      "nodeId": "myth-page",
+      "text": "It is a myth that all penguins nap 14 times a day.",
+      "contextBefore": "Check Desk. ",
+      "contextAfter": " The number comes from one zoo's keeper log about its own birds.",
+      "start": 12,
+      "end": 62,
+      "extractSha256": "6e2a3a38e49bd3b7bb3bb62f5a6b5cee5a1ed8f75f4fc048dc0b79e199556b87",
+      "windowSha256": "6e2a3a38e49bd3b7bb3bb62f5a6b5cee5a1ed8f75f4fc048dc0b79e199556b87",
+      "fetchedAt": "2026-11-01T08:00:00Z",
+      "waybackUrl": "https://web.archive.org/web/2026/https://checkdesk.example/penguin-nap-myth",
+      "tier": "exact"
+    }
+  ],
+  "hops": [],
+  "blame": [
+    {
+      "index": 0,
+      "word": "harbor",
+      "firstSeen": null,
+      "viaInferredHop": false
+    },
+    {
+      "index": 1,
+      "word": "zoo",
+      "firstSeen": null,
+      "viaInferredHop": false
+    },
+    {
+      "index": 2,
+      "word": "penguins",
+      "firstSeen": null,
+      "viaInferredHop": false
+    },
+    {
+      "index": 3,
+      "word": "nap",
+      "firstSeen": null,
+      "viaInferredHop": false
+    },
+    {
+      "index": 4,
+      "word": "14",
+      "firstSeen": null,
+      "viaInferredHop": false
+    },
+    {
+      "index": 5,
+      "word": "times",
+      "firstSeen": null,
+      "viaInferredHop": false
+    },
+    {
+      "index": 6,
+      "word": "a",
+      "firstSeen": null,
+      "viaInferredHop": false
+    },
+    {
+      "index": 7,
+      "word": "day",
+      "firstSeen": null,
+      "viaInferredHop": false
+    },
+    {
+      "index": 8,
+      "word": "twice",
+      "firstSeen": null,
+      "viaInferredHop": false
+    },
+    {
+      "index": 9,
+      "word": "as",
+      "firstSeen": null,
+      "viaInferredHop": false
+    },
+    {
+      "index": 10,
+      "word": "often",
+      "firstSeen": null,
+      "viaInferredHop": false
+    },
+    {
+      "index": 11,
+      "word": "as",
+      "firstSeen": null,
+      "viaInferredHop": false
+    },
+    {
+      "index": 12,
+      "word": "the",
+      "firstSeen": null,
+      "viaInferredHop": false
+    },
+    {
+      "index": 13,
+      "word": "zoo's",
+      "firstSeen": null,
+      "viaInferredHop": false
+    },
+    {
+      "index": 14,
+      "word": "seals",
+      "firstSeen": null,
+      "viaInferredHop": false
+    }
+  ],
+  "roots": {
+    "pages": 0,
+    "clusters": 0,
+    "rootsLinked": 0,
+    "clustersUnlinked": 0,
+    "studiesFound": null
+  },
+  "redHopEdgeId": null,
+  "earliest": {
+    "nodeIds": [],
+    "earlierWindowSearches": 2,
+    "earlierFound": 0
+  },
+  "failure": null,
+  "budget": {
+    "credits": 24,
+    "usd": 0.06,
+    "ms": 38000,
+    "capHit": null
+  },
+  "decision": {
+    "state": "NO_PAGES_FOUND",
+    "row": 3,
+    "reasons": [
+      "no pages besides meta pages"
+    ],
+    "counts": {
+      "pages": 0,
+      "clusters": 0,
+      "unreadParents": 0,
+      "earlierWindowSearches": 2
+    }
+  },
+  "searchLog": [
+    {
+      "at": "2026-11-01T08:00:00Z",
+      "step": "earlier_window_1",
+      "query": "Harbor Zoo penguins nap 14 times a day, twice as often as the zoo's seals",
+      "endDate": null,
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-01T08:00:00Z",
+      "step": "earlier_window_2",
+      "query": "Harbor Zoo penguins nap 14 times a day, twice as often as the zoo's seals",
+      "endDate": null,
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    }
+  ],
+  "usage": [],
+  "scopeNote": "Synthetic: an invented claim on invented pages."
+}

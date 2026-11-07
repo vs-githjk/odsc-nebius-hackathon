@@ -1,0 +1,501 @@
+{
+  "schemaVersion": "1",
+  "id": "sample-conflicting",
+  "mode": "SAMPLE",
+  "synthetic": true,
+  "recordedAt": "2026-11-01T08:00:00Z",
+  "claim": {
+    "text": "Harbor Zoo penguins nap 14 times a day, twice as often as the zoo's seals",
+    "atoms": {
+      "number": {
+        "raw": "14",
+        "canonical": "14"
+      },
+      "unit": "times a day",
+      "subjectLemma": "penguin",
+      "population": "Harbor Zoo penguins",
+      "time": null,
+      "hedge": null,
+      "namedSource": null,
+      "variants": [
+        "fourteen"
+      ]
+    }
+  },
+  "viralSentence": "Harbor Zoo penguins nap 14 times a day, twice as often as the zoo's seals",
+  "nodes": [
+    {
+      "id": "keeper-log",
+      "url": "https://harborzoo.example/keeper-log-2019",
+      "domain": "harborzoo.example",
+      "title": "Harbor Zoo keeper log, spring 2019",
+      "date": {
+        "kind": "published",
+        "value": "2019-04-30",
+        "source": "metadata",
+        "firstCapture": "2019-04-30",
+        "conflictingDate": false
+      },
+      "clusterId": "c-zoo",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s-keeper-log"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": {
+        "questionId": "page_type",
+        "optionId": "dataset",
+        "probability": 0.9,
+        "top": [
+          {
+            "optionId": "dataset",
+            "p": 0.9
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      }
+    },
+    {
+      "id": "zoo-faq",
+      "url": "https://harborzoo.example/faq",
+      "domain": "harborzoo.example",
+      "title": "Harbor Zoo visitor questions",
+      "date": {
+        "kind": "existed_by",
+        "value": "2019-05-02",
+        "source": "metadata",
+        "firstCapture": "2019-05-02",
+        "conflictingDate": false
+      },
+      "clusterId": "c-zoo",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s-zoo-faq"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": {
+        "questionId": "page_type",
+        "optionId": "other",
+        "probability": 0.9,
+        "top": [
+          {
+            "optionId": "other",
+            "p": 0.9
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      }
+    },
+    {
+      "id": "zoo-report",
+      "url": "https://harborzoo.example/annual-report-2019",
+      "domain": "harborzoo.example",
+      "title": "Harbor Zoo annual report 2019",
+      "date": {
+        "kind": "published",
+        "value": "2019-12-15",
+        "source": "metadata",
+        "firstCapture": "2019-12-15",
+        "conflictingDate": false
+      },
+      "clusterId": "c-report",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s-zoo-report"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": {
+        "questionId": "page_type",
+        "optionId": "report",
+        "probability": 0.9,
+        "top": [
+          {
+            "optionId": "report",
+            "p": 0.9
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "parentId": "keeper-log",
+      "childId": "zoo-report",
+      "kind": "explicit",
+      "parentSpanId": "s-keeper-log",
+      "childSpanId": "s-zoo-report",
+      "linkHref": "https://harborzoo.example/keeper-log-2019"
+    }
+  ],
+  "clusters": [
+    {
+      "id": "c-zoo",
+      "nodeIds": [
+        "keeper-log",
+        "zoo-faq"
+      ],
+      "rule": "same_byline"
+    },
+    {
+      "id": "c-report",
+      "nodeIds": [
+        "zoo-report"
+      ],
+      "rule": "single"
+    }
+  ],
+  "spans": [
+    {
+      "id": "s-keeper-log",
+      "nodeId": "keeper-log",
+      "text": "The adult penguins napped a median of 14 times a day during daylight hours.",
+      "contextBefore": "Harbor Zoo keeper log, spring 2019. Over 30 days, keepers counted naps for 12 adult penguins in the outdoor pool. ",
+      "contextAfter": " Seals were not part of this count.",
+      "start": 114,
+      "end": 189,
+      "extractSha256": "28c95490efbdfb58ccc3b4a5391aa7f09ef433543402082da9143ebff14e0291",
+      "windowSha256": "28c95490efbdfb58ccc3b4a5391aa7f09ef433543402082da9143ebff14e0291",
+      "fetchedAt": "2026-11-01T08:00:00Z",
+      "waybackUrl": "https://web.archive.org/web/2026/https://harborzoo.example/keeper-log-2019",
+      "tier": "exact"
+    },
+    {
+      "id": "s-zoo-faq",
+      "nodeId": "zoo-faq",
+      "text": "Harbor Zoo penguins nap 41 times a day, so you will often see them resting.",
+      "contextBefore": "Harbor Zoo visitor questions. How often do the penguins nap? ",
+      "contextAfter": "",
+      "start": 61,
+      "end": 136,
+      "extractSha256": "3e7b99d6298853c84afe4896da86e359410f453d6090acfc21e9a45d851b0317",
+      "windowSha256": "3e7b99d6298853c84afe4896da86e359410f453d6090acfc21e9a45d851b0317",
+      "fetchedAt": "2026-11-01T08:00:00Z",
+      "waybackUrl": "https://web.archive.org/web/2026/https://harborzoo.example/faq",
+      "tier": "exact"
+    },
+    {
+      "id": "s-zoo-report",
+      "nodeId": "zoo-report",
+      "text": "Daylight observations found that our adult penguins nap about 14 times a day.",
+      "contextBefore": "Harbor Zoo annual report 2019. ",
+      "contextAfter": " Attendance rose for the third year in a row.",
+      "start": 31,
+      "end": 108,
+      "extractSha256": "5afde0a01a903dc051e13e2134e3c039e52555de6f3317d9ba035669a24b16b2",
+      "windowSha256": "5afde0a01a903dc051e13e2134e3c039e52555de6f3317d9ba035669a24b16b2",
+      "fetchedAt": "2026-11-01T08:00:00Z",
+      "waybackUrl": "https://web.archive.org/web/2026/https://harborzoo.example/annual-report-2019",
+      "tier": "exact"
+    }
+  ],
+  "hops": [
+    {
+      "edgeId": "e1",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "daylight"
+        },
+        {
+          "op": "add",
+          "text": "observations"
+        },
+        {
+          "op": "add",
+          "text": "found"
+        },
+        {
+          "op": "add",
+          "text": "that"
+        },
+        {
+          "op": "add",
+          "text": "our"
+        },
+        {
+          "op": "del",
+          "text": "the"
+        },
+        {
+          "op": "same",
+          "text": "adult"
+        },
+        {
+          "op": "same",
+          "text": "penguins"
+        },
+        {
+          "op": "add",
+          "text": "nap"
+        },
+        {
+          "op": "add",
+          "text": "about"
+        },
+        {
+          "op": "del",
+          "text": "napped"
+        },
+        {
+          "op": "del",
+          "text": "a"
+        },
+        {
+          "op": "del",
+          "text": "median"
+        },
+        {
+          "op": "del",
+          "text": "of"
+        },
+        {
+          "op": "same",
+          "text": "14"
+        },
+        {
+          "op": "same",
+          "text": "times"
+        },
+        {
+          "op": "same",
+          "text": "a"
+        },
+        {
+          "op": "same",
+          "text": "day"
+        },
+        {
+          "op": "del",
+          "text": "during"
+        },
+        {
+          "op": "del",
+          "text": "daylight"
+        },
+        {
+          "op": "del",
+          "text": "hours"
+        }
+      ],
+      "faithful": true
+    }
+  ],
+  "blame": [
+    {
+      "index": 0,
+      "word": "harbor",
+      "firstSeen": {
+        "spanId": "s-zoo-faq",
+        "nodeId": "zoo-faq",
+        "date": "2019-05-02"
+      },
+      "viaInferredHop": false
+    },
+    {
+      "index": 1,
+      "word": "zoo",
+      "firstSeen": {
+        "spanId": "s-zoo-faq",
+        "nodeId": "zoo-faq",
+        "date": "2019-05-02"
+      },
+      "viaInferredHop": false
+    },
+    {
+      "index": 2,
+      "word": "penguins",
+      "firstSeen": {
+        "spanId": "s-keeper-log",
+        "nodeId": "keeper-log",
+        "date": "2019-04-30"
+      },
+      "viaInferredHop": false
+    },
+    {
+      "index": 3,
+      "word": "nap",
+      "firstSeen": {
+        "spanId": "s-zoo-faq",
+        "nodeId": "zoo-faq",
+        "date": "2019-05-02"
+      },
+      "viaInferredHop": false
+    },
+    {
+      "index": 4,
+      "word": "14",
+      "firstSeen": {
+        "spanId": "s-keeper-log",
+        "nodeId": "keeper-log",
+        "date": "2019-04-30"
+      },
+      "viaInferredHop": false
+    },
+    {
+      "index": 5,
+      "word": "times",
+      "firstSeen": {
+        "spanId": "s-keeper-log",
+        "nodeId": "keeper-log",
+        "date": "2019-04-30"
+      },
+      "viaInferredHop": false
+    },
+    {
+      "index": 6,
+      "word": "a",
+      "firstSeen": {
+        "spanId": "s-keeper-log",
+        "nodeId": "keeper-log",
+        "date": "2019-04-30"
+      },
+      "viaInferredHop": false
+    },
+    {
+      "index": 7,
+      "word": "day",
+      "firstSeen": {
+        "spanId": "s-keeper-log",
+        "nodeId": "keeper-log",
+        "date": "2019-04-30"
+      },
+      "viaInferredHop": false
+    },
+    {
+      "index": 8,
+      "word": "twice",
+      "firstSeen": null,
+      "viaInferredHop": false
+    },
+    {
+      "index": 9,
+      "word": "as",
+      "firstSeen": null,
+      "viaInferredHop": false
+    },
+    {
+      "index": 10,
+      "word": "often",
+      "firstSeen": {
+        "spanId": "s-zoo-faq",
+        "nodeId": "zoo-faq",
+        "date": "2019-05-02"
+      },
+      "viaInferredHop": false
+    },
+    {
+      "index": 11,
+      "word": "as",
+      "firstSeen": null,
+      "viaInferredHop": false
+    },
+    {
+      "index": 12,
+      "word": "the",
+      "firstSeen": {
+        "spanId": "s-keeper-log",
+        "nodeId": "keeper-log",
+        "date": "2019-04-30"
+      },
+      "viaInferredHop": false
+    },
+    {
+      "index": 13,
+      "word": "zoo's",
+      "firstSeen": null,
+      "viaInferredHop": false
+    },
+    {
+      "index": 14,
+      "word": "seals",
+      "firstSeen": null,
+      "viaInferredHop": false
+    }
+  ],
+  "roots": {
+    "pages": 3,
+    "clusters": 2,
+    "rootsLinked": 1,
+    "clustersUnlinked": 0,
+    "studiesFound": null
+  },
+  "redHopEdgeId": null,
+  "earliest": {
+    "nodeIds": [
+      "keeper-log",
+      "zoo-faq"
+    ],
+    "earlierWindowSearches": 2,
+    "earlierFound": 0
+  },
+  "failure": null,
+  "budget": {
+    "credits": 24,
+    "usd": 0.06,
+    "ms": 38000,
+    "capHit": null
+  },
+  "decision": {
+    "state": "CONFLICTING",
+    "row": 4,
+    "reasons": [
+      "earliest cluster gives different numbers beyond every transform"
+    ],
+    "counts": {
+      "pages": 3,
+      "clusters": 2,
+      "unreadParents": 0,
+      "earlierWindowSearches": 2
+    }
+  },
+  "searchLog": [
+    {
+      "at": "2026-11-01T08:00:00Z",
+      "step": "earlier_window_1",
+      "query": "Harbor Zoo penguins nap 14 times a day, twice as often as the zoo's seals",
+      "endDate": "2019-04-30",
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-01T08:00:00Z",
+      "step": "earlier_window_2",
+      "query": "Harbor Zoo penguins nap 14 times a day, twice as often as the zoo's seals",
+      "endDate": "2019-04-30",
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    }
+  ],
+  "usage": [],
+  "scopeNote": "Synthetic: an invented claim on invented pages."
+}

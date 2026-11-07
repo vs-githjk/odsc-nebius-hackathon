@@ -47,6 +47,7 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 
 - [14:57 PT] rohanrastogi311 T13: PR #29; targets-a SHA256 d8a20892c9ffc14f71db1aee75253d381997b84b4992c129bd9b32407df6ebdc; targets-b SHA256 5c10c10cc8098310a9de16f65e87d34b8773f5000836c813db3136f8630360b8
 - [01:10 PT] rohanrastogi311 T1: Node 24 workspace, exact allowlisted packages, CLI version stub and CI; npm ci, typecheck, test and make verify pass locally; smoke failed before version export | @master-xo review skeleton PR; T2 follows
+- [15:50 PT] RishitRai T10 clients: Tavily, Wayback and page clients with cache, budget and usage rows; draft PR on the skeleton branch, 1 live check credit | @rohanrastogi311 UsageRow is a temporary copy until #12 merges
 - [15:12 PT] rohanrastogi311 T2: strict trace, usage and typed-question Zod contracts, JSON exports and CI drift check; all wording PENDING; 8 tests and typecheck pass on Vite 7.3.7 | @master-xo review schema PR after #35
 - [15:40 PT] RishitRai #7 Tavily probe: spike/tavily-probe.md, 12 credits; exact_match returns no raw_content and needs a date window to return dates, so T11 extracts separately | @rohanrastogi311 none
 - [16:20 PT] rohanrastogi311 T18: injected-fetch chat and embeddings, typed failures, one retry on 429/5xx, per-attempt usage logging and dated prices; 20 tests and typecheck pass locally; recorded fixtures from #6 | @master-xo review client PR; probe evidence follows
@@ -59,3 +60,6 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [17:47 PT] AnoopIbrampur T5 decide: rules.json, Rules schema, decideStopState with [C16]/[C20] tests; stacked on T4 (#42), PR to follow | @RishitRai T11 can use decideStopState once both merge
 - [18:49 PT] AnoopIbrampur T5 fixes: conflict anchored on the claim number, earlierFound test, weakNumberMinSigDigits wired, on #43
 - [19:45 PT] rohanrastogi311 T19: schema-driven typed requests, first-token confidence with padding removed and unmatched/tail mass under __other__, null-confidence fallback, caller threshold and dispute helper; 34 local tests and typecheck pass | @master-xo review stacked T19 PR after #40
+- [17:52 PT] AnoopIbrampur T3 fixtures: 7 synthetic traces with builder and tests, stacked on T5 (#43), PR to follow | @RishitRai sample-rich is ready for the front end
+- [19:19 PT] AnoopIbrampur stack update: merged main (#42 to #44 squashes) into #45 to #49 and #58 instead of rebasing (no force-push); added the optional weakNumberMinSigDigits test on #45
+- [19:56 PT] AnoopIbrampur T4b weak atoms: same-clause rule for weak numbers, measured on E2 dev claims only (eval/weak-atoms), PR to follow

@@ -11,3 +11,4 @@ plan/usage/*.tmp
 .cache/
 runs/
 dist/
+*.local.*

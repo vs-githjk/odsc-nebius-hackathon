@@ -1,0 +1,454 @@
+{
+  "schemaVersion": "1",
+  "id": "sample-cold-unread",
+  "mode": "SAMPLE",
+  "synthetic": true,
+  "recordedAt": "2026-11-01T08:00:00Z",
+  "claim": {
+    "text": "Harbor Zoo penguins nap 14 times a day, twice as often as the zoo's seals",
+    "atoms": {
+      "number": {
+        "raw": "14",
+        "canonical": "14"
+      },
+      "unit": "times a day",
+      "subjectLemma": "penguin",
+      "population": "Harbor Zoo penguins",
+      "time": null,
+      "hedge": null,
+      "namedSource": null,
+      "variants": [
+        "fourteen"
+      ]
+    }
+  },
+  "viralSentence": "Harbor Zoo penguins nap 14 times a day, twice as often as the zoo's seals",
+  "nodes": [
+    {
+      "id": "zoo-report",
+      "url": "https://harborzoo.example/annual-report-2019",
+      "domain": "harborzoo.example",
+      "title": "Harbor Zoo annual report 2019",
+      "date": {
+        "kind": "published",
+        "value": "2019-12-15",
+        "source": "metadata",
+        "firstCapture": "2019-12-15",
+        "conflictingDate": false
+      },
+      "clusterId": "c-report",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s-zoo-report"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [
+        {
+          "url": "https://harborzoo.example/keeper-log-2019",
+          "read": false
+        }
+      ],
+      "pageType": {
+        "questionId": "page_type",
+        "optionId": "report",
+        "probability": 0.9,
+        "top": [
+          {
+            "optionId": "report",
+            "p": 0.9
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      }
+    },
+    {
+      "id": "coast-news",
+      "url": "https://coastgazette.example/2020/02/penguin-naps",
+      "domain": "coastgazette.example",
+      "title": "Harbor Zoo penguins nap 14 times a day",
+      "date": {
+        "kind": "published",
+        "value": "2020-02-10",
+        "source": "metadata",
+        "firstCapture": "2020-02-10",
+        "conflictingDate": false
+      },
+      "clusterId": "c-news",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s-coast-news"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": {
+        "questionId": "page_type",
+        "optionId": "news",
+        "probability": 0.9,
+        "top": [
+          {
+            "optionId": "news",
+            "p": 0.9
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "parentId": "zoo-report",
+      "childId": "coast-news",
+      "kind": "explicit",
+      "parentSpanId": "s-zoo-report",
+      "childSpanId": "s-coast-news",
+      "linkHref": "https://harborzoo.example/annual-report-2019"
+    }
+  ],
+  "clusters": [
+    {
+      "id": "c-report",
+      "nodeIds": [
+        "zoo-report"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-news",
+      "nodeIds": [
+        "coast-news"
+      ],
+      "rule": "single"
+    }
+  ],
+  "spans": [
+    {
+      "id": "s-zoo-report",
+      "nodeId": "zoo-report",
+      "text": "Daylight observations found that our adult penguins nap about 14 times a day.",
+      "contextBefore": "Harbor Zoo annual report 2019. ",
+      "contextAfter": " Attendance rose for the third year in a row.",
+      "start": 31,
+      "end": 108,
+      "extractSha256": "5afde0a01a903dc051e13e2134e3c039e52555de6f3317d9ba035669a24b16b2",
+      "windowSha256": "5afde0a01a903dc051e13e2134e3c039e52555de6f3317d9ba035669a24b16b2",
+      "fetchedAt": "2026-11-01T08:00:00Z",
+      "waybackUrl": "https://web.archive.org/web/2026/https://harborzoo.example/annual-report-2019",
+      "tier": "exact"
+    },
+    {
+      "id": "s-coast-news",
+      "nodeId": "coast-news",
+      "text": "Harbor Zoo penguins nap 14 times a day, according to the zoo's annual report.",
+      "contextBefore": "Coast Gazette, February 10, 2020. ",
+      "contextAfter": " The zoo plans a new pool next year.",
+      "start": 34,
+      "end": 111,
+      "extractSha256": "14bc3990bb1df4844e170c8ee153c8b02cf0a909ab1e8cf3e95123061a140d6d",
+      "windowSha256": "14bc3990bb1df4844e170c8ee153c8b02cf0a909ab1e8cf3e95123061a140d6d",
+      "fetchedAt": "2026-11-01T08:00:00Z",
+      "waybackUrl": "https://web.archive.org/web/2026/https://coastgazette.example/2020/02/penguin-naps",
+      "tier": "exact"
+    }
+  ],
+  "hops": [
+    {
+      "edgeId": "e1",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "harbor"
+        },
+        {
+          "op": "add",
+          "text": "zoo"
+        },
+        {
+          "op": "del",
+          "text": "daylight"
+        },
+        {
+          "op": "del",
+          "text": "observations"
+        },
+        {
+          "op": "del",
+          "text": "found"
+        },
+        {
+          "op": "del",
+          "text": "that"
+        },
+        {
+          "op": "del",
+          "text": "our"
+        },
+        {
+          "op": "del",
+          "text": "adult"
+        },
+        {
+          "op": "same",
+          "text": "penguins"
+        },
+        {
+          "op": "same",
+          "text": "nap"
+        },
+        {
+          "op": "del",
+          "text": "about"
+        },
+        {
+          "op": "same",
+          "text": "14"
+        },
+        {
+          "op": "same",
+          "text": "times"
+        },
+        {
+          "op": "same",
+          "text": "a"
+        },
+        {
+          "op": "same",
+          "text": "day"
+        },
+        {
+          "op": "add",
+          "text": "according"
+        },
+        {
+          "op": "add",
+          "text": "to"
+        },
+        {
+          "op": "add",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "zoo's"
+        },
+        {
+          "op": "add",
+          "text": "annual"
+        },
+        {
+          "op": "add",
+          "text": "report"
+        }
+      ],
+      "faithful": true
+    }
+  ],
+  "blame": [
+    {
+      "index": 0,
+      "word": "harbor",
+      "firstSeen": {
+        "spanId": "s-coast-news",
+        "nodeId": "coast-news",
+        "date": "2020-02-10"
+      },
+      "viaInferredHop": false
+    },
+    {
+      "index": 1,
+      "word": "zoo",
+      "firstSeen": {
+        "spanId": "s-coast-news",
+        "nodeId": "coast-news",
+        "date": "2020-02-10"
+      },
+      "viaInferredHop": false
+    },
+    {
+      "index": 2,
+      "word": "penguins",
+      "firstSeen": {
+        "spanId": "s-zoo-report",
+        "nodeId": "zoo-report",
+        "date": "2019-12-15"
+      },
+      "viaInferredHop": false
+    },
+    {
+      "index": 3,
+      "word": "nap",
+      "firstSeen": {
+        "spanId": "s-zoo-report",
+        "nodeId": "zoo-report",
+        "date": "2019-12-15"
+      },
+      "viaInferredHop": false
+    },
+    {
+      "index": 4,
+      "word": "14",
+      "firstSeen": {
+        "spanId": "s-zoo-report",
+        "nodeId": "zoo-report",
+        "date": "2019-12-15"
+      },
+      "viaInferredHop": false
+    },
+    {
+      "index": 5,
+      "word": "times",
+      "firstSeen": {
+        "spanId": "s-zoo-report",
+        "nodeId": "zoo-report",
+        "date": "2019-12-15"
+      },
+      "viaInferredHop": false
+    },
+    {
+      "index": 6,
+      "word": "a",
+      "firstSeen": {
+        "spanId": "s-zoo-report",
+        "nodeId": "zoo-report",
+        "date": "2019-12-15"
+      },
+      "viaInferredHop": false
+    },
+    {
+      "index": 7,
+      "word": "day",
+      "firstSeen": {
+        "spanId": "s-zoo-report",
+        "nodeId": "zoo-report",
+        "date": "2019-12-15"
+      },
+      "viaInferredHop": false
+    },
+    {
+      "index": 8,
+      "word": "twice",
+      "firstSeen": null,
+      "viaInferredHop": false
+    },
+    {
+      "index": 9,
+      "word": "as",
+      "firstSeen": null,
+      "viaInferredHop": false
+    },
+    {
+      "index": 10,
+      "word": "often",
+      "firstSeen": null,
+      "viaInferredHop": false
+    },
+    {
+      "index": 11,
+      "word": "as",
+      "firstSeen": null,
+      "viaInferredHop": false
+    },
+    {
+      "index": 12,
+      "word": "the",
+      "firstSeen": {
+        "spanId": "s-coast-news",
+        "nodeId": "coast-news",
+        "date": "2020-02-10"
+      },
+      "viaInferredHop": false
+    },
+    {
+      "index": 13,
+      "word": "zoo's",
+      "firstSeen": {
+        "spanId": "s-coast-news",
+        "nodeId": "coast-news",
+        "date": "2020-02-10"
+      },
+      "viaInferredHop": false
+    },
+    {
+      "index": 14,
+      "word": "seals",
+      "firstSeen": null,
+      "viaInferredHop": false
+    }
+  ],
+  "roots": {
+    "pages": 2,
+    "clusters": 2,
+    "rootsLinked": 1,
+    "clustersUnlinked": 0,
+    "studiesFound": null
+  },
+  "redHopEdgeId": null,
+  "earliest": {
+    "nodeIds": [
+      "zoo-report"
+    ],
+    "earlierWindowSearches": 2,
+    "earlierFound": 0
+  },
+  "failure": null,
+  "budget": {
+    "credits": 24,
+    "usd": 0.06,
+    "ms": 38000,
+    "capHit": null
+  },
+  "decision": {
+    "state": "TRAIL_GOES_COLD",
+    "row": 6,
+    "reasons": [
+      "1 unread candidate parent(s)"
+    ],
+    "counts": {
+      "pages": 2,
+      "clusters": 2,
+      "unreadParents": 1,
+      "earlierWindowSearches": 2
+    }
+  },
+  "searchLog": [
+    {
+      "at": "2026-11-01T08:00:00Z",
+      "step": "earlier_window_1",
+      "query": "Harbor Zoo penguins nap 14 times a day, twice as often as the zoo's seals",
+      "endDate": "2019-12-15",
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-01T08:00:00Z",
+      "step": "earlier_window_2",
+      "query": "Harbor Zoo penguins nap 14 times a day, twice as often as the zoo's seals",
+      "endDate": "2019-12-15",
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    }
+  ],
+  "usage": [],
+  "scopeNote": "Synthetic: an invented claim on invented pages."
+}
