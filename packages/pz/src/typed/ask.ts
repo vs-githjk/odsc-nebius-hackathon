@@ -9,9 +9,22 @@ const MODEL = "Qwen/Qwen3-30B-A3B-Instruct-2507";
 
 export async function ask(questions: Question[], input: Input, { client, threshold }: Options): Promise<TypedAnswer[]> {
   if (threshold !== null && (!Number.isFinite(threshold) || threshold < 0 || threshold > 1)) throw new TokenFactoryError("bad_response");
+  // Validate every input before any paid call. Page classification is independent.
+  questionsToJsonSchema(questions);
+  const pairs = questions.filter(q => q.id !== "page_type");
+  const pages = questions.filter(q => q.id === "page_type");
+  if (pairs.length && (typeof input === "string" || typeof input.earlier !== "string" || typeof input.later !== "string")) throw new TokenFactoryError("bad_response");
+  const page = typeof input === "string" ? input : input.page;
+  if (pages.length && typeof page !== "string") throw new TokenFactoryError("bad_response");
+  const answers: TypedAnswer[] = [];
+  if (pairs.length && typeof input !== "string") answers.push(...await askBatch(pairs, JSON.stringify({ EARLIER: input.earlier, LATER: input.later }), { client, threshold }));
+  if (pages.length) answers.push(...await askBatch(pages, page!, { client, threshold }));
+  return questions.map(q => answers.find(a => a.questionId === q.id)!);
+}
+
+async function askBatch(questions: Question[], content: string, { client, threshold }: Options): Promise<TypedAnswer[]> {
   // Serialize the owner's questions without rewriting instructions or labels.
   const jsonSchema = questionsToJsonSchema(questions);
-  const content = typeof input === "string" ? input : JSON.stringify({ EARLIER: input.earlier, LATER: input.later, ...(input.page === undefined ? {} : { PAGE: input.page }) });
   const result = await client.chat({ model: MODEL, messages: [
     { role: "system", content: JSON.stringify(questions) }, { role: "user", content: JSON.stringify({ source_text: content }) },
   ], jsonSchema, logprobs: true, topLogprobs: 5, maxTokens: 512 });
