@@ -6,16 +6,29 @@ import { QUESTIONS } from "../src/schema/questions.ts";
 import type { ChatData, ChatInput } from "../src/clients/tokenfactory.ts";
 import type { UsageRow } from "../src/schema/usage.ts";
 
-const probe = JSON.parse(readFileSync(new URL("../../../spike/token-factory-probe.json", import.meta.url), "utf8"));
-const call = probe.calls.find((c: { name: string }) => c.name === "typed-1");
+const call = JSON.parse(readFileSync(new URL("./recorded/tokenfactory/typed-1.json", import.meta.url), "utf8"));
 const choice = call.response.choices[0];
 const recorded: ChatData = { content: choice.message.content, logprobs: choice.logprobs, model: call.request.model };
 const usage: UsageRow = { at: call.at, traceId: null, step: "test", service: "tokenfactory", endpoint: call.endpoint, model: recorded.model,
   promptTokens: call.usage.prompt_tokens, completionTokens: call.usage.completion_tokens, cachedTokens: 0, credits: 0,
   costUsd: call.cost_usd, latencyMs: call.latency_ms, status: "200", cacheHit: false };
 const input = { earlier: "A neutral blue rectangle.", later: "A neutral green circle.", page: "A neutral sample page." };
-function clientFor(data = structuredClone(recorded)) {
-  return { chat: vi.fn(async (_request: ChatInput) => ({ data, usage, attempts: [usage] })) };
+// Repackage recorded value tokens into each request's schema; no new model output.
+function replay(request: ChatInput): ChatData {
+  const questions = JSON.parse(request.messages[0]!.content) as typeof QUESTIONS;
+  const values = JSON.parse(recorded.content);
+  const tokens = [{ token: "{", logprob: 0, top_logprobs: [] as { token: string; logprob: number }[] }];
+  questions.forEach((q, i) => {
+    tokens.push({ token: (i ? "," : "") + JSON.stringify(q.id) + ":", logprob: 0, top_logprobs: [] });
+    const value = values[q.id] as string;
+    const original = recorded.logprobs!.content.find(t => t.token === value)!;
+    tokens.push({ token: '"', logprob: 0, top_logprobs: [] }, structuredClone(original), { token: '"', logprob: 0, top_logprobs: [] });
+  });
+  tokens.push({ token: "}", logprob: 0, top_logprobs: [] });
+  return { ...recorded, content: tokens.map(t => t.token).join(""), logprobs: { content: tokens } };
+}
+function clientFor(data?: ChatData) {
+  return { chat: vi.fn(async (request: ChatInput) => ({ data: data ?? replay(request), usage, attempts: [usage] })) };
 }
 const question = QUESTIONS[0]!;
 function measured(alternatives = [{ token: "yes", logprob: Math.log(.6) }, { token: "no", logprob: Math.log(.3) }, { token: "unknown", logprob: Math.log(.1) }]) {
@@ -34,12 +47,18 @@ describe("typed decision mechanism", () => {
     const parsed = JSON.parse(recorded.content);
     expect(answers.map(a => [a.questionId, a.optionId])).toEqual(QUESTIONS.map(q => [q.id, parsed[q.id]]));
     expect(answers.every(a => a.probability !== null)).toBe(true);
-    const request = client.chat.mock.calls[0]![0];
-    expect(request.logprobs).toBe(true);
-    expect(request.topLogprobs).toBe(5);
-    expect(request.jsonSchema).toMatchObject({ additionalProperties: false, required: QUESTIONS.map(q => q.id) });
-    expect(JSON.parse(request.messages[0]!.content)).toEqual(QUESTIONS);
-    expect(JSON.parse(JSON.parse(request.messages[1]!.content).source_text)).toEqual({ EARLIER: input.earlier, LATER: input.later, PAGE: input.page });
+    expect(client.chat).toHaveBeenCalledTimes(2);
+    const pairQuestions = QUESTIONS.filter(q => q.id !== "page_type");
+    const pageQuestions = QUESTIONS.filter(q => q.id === "page_type");
+    const [pairRequest, pageRequest] = client.chat.mock.calls.map(([request]) => request);
+    for (const [request, questions] of [[pairRequest!, pairQuestions], [pageRequest!, pageQuestions]] as const) {
+      expect(request.logprobs).toBe(true);
+      expect(request.topLogprobs).toBe(5);
+      expect(request.jsonSchema).toMatchObject({ additionalProperties: false, required: questions.map(q => q.id) });
+      expect(JSON.parse(request.messages[0]!.content)).toEqual(questions);
+    }
+    expect(JSON.parse(JSON.parse(pairRequest!.messages[1]!.content).source_text)).toEqual({ EARLIER: input.earlier, LATER: input.later });
+    expect(JSON.parse(pageRequest!.messages[1]!.content)).toEqual({ source_text: input.page });
     for (const answer of answers) expect(answer.top.reduce((sum, option) => sum + option.p, 0)).toBeCloseTo(1, 10);
   });
   it("[C19] maps first-token mass and retains unmatched alternatives", () => {
@@ -63,6 +82,27 @@ describe("typed decision mechanism", () => {
     const result = confidenceFor(q, content, logprobs);
     expect(result.top.find(o => o.optionId === "other")?.p).toBeCloseTo(.7);
     expect(result.top.find(o => o.optionId === OTHER_MASS)?.p).toBeCloseTo(.3);
+  });
+  it("[C19] skips padding before deduplicating a real token", () => {
+    const data = measured([{ token: "yes", logprob: -9999 }, { token: "yes", logprob: Math.log(.6) }, { token: "no", logprob: Math.log(.3) }]);
+    expect(confidenceFor(question, data.content, data.logprobs).probability).toBeCloseTo(.6);
+  });
+  it("[C19] requires paired passages and an explicit page before making mixed calls", async () => {
+    for (const invalid of ["bare text", { earlier: input.earlier, later: input.later }]) {
+      const client = clientFor();
+      await expect(ask(QUESTIONS, invalid, { client, threshold: null })).rejects.toMatchObject({ code: "bad_response" });
+      expect(client.chat).not.toHaveBeenCalled();
+    }
+    const client = clientFor();
+    const q = QUESTIONS.find(q => q.id === "page_type")!;
+    const answers = await ask([q], input.page, { client, threshold: null });
+    expect(client.chat).toHaveBeenCalledTimes(1);
+    expect(JSON.parse(client.chat.mock.calls[0]![0].messages[1]!.content)).toEqual({ source_text: input.page });
+    expect(answers[0]?.questionId).toBe("page_type");
+  });
+  it("[C19] preserves caller question order across split requests", async () => {
+    const questions = [...QUESTIONS].reverse();
+    expect((await ask(questions, input, { client: clientFor(), threshold: null })).map(a => a.questionId)).toEqual(questions.map(q => q.id));
   });
   it("[C19] ambiguous shared first tokens produce no claimed confidence", () => {
     const q = { ...question, options: [{ id: "yellow", label: "PENDING" }, { id: "yes", label: "PENDING" }] };
@@ -88,13 +128,13 @@ describe("typed decision mechanism", () => {
   it("[C19] below threshold is unsure, equal threshold and null threshold preserve choice", async () => {
     const d = measured();
     const data = { ...recorded, ...d };
-    expect((await ask([question], "neutral", { client: clientFor(data), threshold: .7 }))[0]).toMatchObject({ optionId: "unsure", probability: expect.closeTo(.6), threshold: .7 });
-    expect((await ask([question], "neutral", { client: clientFor(data), threshold: .6 }))[0]?.optionId).toBe("yes");
-    expect((await ask([question], "neutral", { client: clientFor(data), threshold: null }))[0]?.optionId).toBe("yes");
+    expect((await ask([question], input, { client: clientFor(data), threshold: .7 }))[0]).toMatchObject({ optionId: "unsure", probability: expect.closeTo(.6), threshold: .7 });
+    expect((await ask([question], input, { client: clientFor(data), threshold: .6 }))[0]?.optionId).toBe("yes");
+    expect((await ask([question], input, { client: clientFor(data), threshold: null }))[0]?.optionId).toBe("yes");
   });
   it("[C19] no logprobs or misaligned tokens have null confidence without invented mass", async () => {
     for (const logprobs of [null, { content: [{ token: "not the response", logprob: 0, top_logprobs: [] }] }]) {
-      const answers = await ask(QUESTIONS, input, { client: clientFor({ ...recorded, logprobs }), threshold: .9 });
+      const answers = await ask(QUESTIONS, input, { client: { chat: vi.fn(async (request: ChatInput) => ({ data: { ...replay(request), logprobs }, usage, attempts: [usage] })) }, threshold: .9 });
       expect(answers.every(a => a.probability === null && a.top.length === 0 && a.optionId !== "unsure")).toBe(true);
     }
   });
