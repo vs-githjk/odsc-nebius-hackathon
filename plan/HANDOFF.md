@@ -64,7 +64,12 @@ Done this session (Oct 29, 01:37 to 02:00 PDT):
 - Oct 31: orchestrating until Wed Nov 4 (LOCKED). Rohan finished #6 and T13 (PRs #29, #30). Batch in plan/issues-oct31.md: T1 and T2 moved to Rohan, new tasks T2b, T18b, E1, E2, all queues re-dated to Mon to Wed. Spike report now Tue Nov 3, grading Wed Nov 4, Run 2 after that. Rishit has posted nothing yet. Vidyut's own Nebius key line is still empty; Rohan sends it.
 
 - Oct 31 latest: no background loop (LOCKED). When Vidyut comes back and asks for an update, run one XO watch pass, merge what passes, report in a few lines. PR #29 merged; #30 waiting on Rohan's fix list.
-- Nov 1 pass: #35 (T1) FIX at aa79edd; once mode and Vite fixes land, re-check those two items only and merge. #30 still waits on Rohan. Rishit silent since kickoff; if still silent after Vidyut's ping, propose moving spike work (T10, T11, T12) to Vidyut's build.
+- Nov 1 passes: #36 merged. #35 (T1) FIX at aa79edd; once mode and Vite fixes land, re-check those two items only and merge. #30 still waits on Rohan. #37 (T10) is a draft, review after #35 and #12 merge. Rishit is active, dates yes.
+- Nov 2 pass: #38 head-to-head HOLD until spike/REPORT.md is committed, then Anoop merges main and XO merges. Anoop's blind period ended. Rishit and Rohan told not to open #38. For the Nov 13 held-out head-to-head, ChatGPT must actually run in Deep research.
+- Nov 2 later: #35, #30, #39 merged, T1 and T2 closed. Open: #37 T10 (ready after main merge), T4, T5, T3, T2b from Anoop; T18 from Rohan. Nebius key works in Vidyut's .env (200 on /v1/models). Rohan works browser-only, so conflicts on stacked PRs may need XO.
+- Nov 2 evening: 10 PRs reviewed. Merged #41. Waiting on fixes: #40 (Rohan), #42 #43 #44 #46 #47 #48 #49 (Anoop). #45 PASS, merge after #43. Stack: after each squash, rebase --onto main. #37 still draft (Rishit). #38 held until spike report.
+- Nov 2 late: spike delivered by Rishit (#50, #52 drafts, #53 app shell). Rerun go on #10 (reviewed T4 fix only, keep first run). New issues #54 forms, #55 T26, #56 T27 (Anoop), #57 T31 (Rohan). T20 moved to Thu Nov 5; XO must relabel the 24 forms A to D on #28 once #54 lands, mapping kept off the repo. #42, #43, #44 merged after re-review; rerun CANCELLED after Rishit's offline check (decisions.md); run 1 graded Thu; T4b on dev set (Anoop). Next pass: #45 to #49 after Anoop's fixes and rebase, #37, #40, #51, #53.
+- Nov 4: see progress.md last line. Grading Thu on spike/blind-forms; key plan/grading-key.local.json (backup in session scratchpad) is never committed; after Rohan posts, add wall times from the key. Merge order next: #46 after fix, then #47 #48 #49 #58 (merge main into each; #58 fixtures.test.ts takes main), #50 after #46, #52 only after grading, #38 after grading.
 
 Next, in order (when Vidyut says "go"):
 0. Discuss plan/rerunlab-inspo.md with Vidyut first.
@@ -96,3 +101,5 @@ Next, in order (when Vidyut says "go"):
 - After every agent run: `python3 ~/.claude/skills/master-budget/usage.py --project "/Users/vidyutsriram/ODSC x Nebius Hackathon"`, and a line in `plan/telemetry.jsonl`.
 - Cross-model: Codex reviews agent or skill changes before `~/master-agents/sync.sh`; save Codex output with `-o <file>`, never pipe it into `head`.
 - Push plan updates to the private repo as part of the approved GitHub setup; nothing public, no deploys, no spending beyond what is approved.
+
+- Nov 7: main has T1 to T10 (minus T11), T13, T14, T18, T19, T26, E1 hash, E2. Open: #50 T11 and #62 T15 (Rishit fixes), T20 publish (Rohan), #38 and #52 after grading. New: #64 T21 and #65 T22 (Anoop), #66 T23 and #67 T24 (Rishit), #68 T25 (Rohan). T28 and T29 unassigned, Vidyut's call. Held-out run Nov 13 needs T29.

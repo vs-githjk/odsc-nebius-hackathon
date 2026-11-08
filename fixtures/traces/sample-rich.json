@@ -1,0 +1,1156 @@
+{
+  "schemaVersion": "1",
+  "id": "sample-rich",
+  "mode": "SAMPLE",
+  "synthetic": true,
+  "recordedAt": "2026-11-01T08:00:00Z",
+  "claim": {
+    "text": "Harbor Zoo penguins nap 14 times a day, twice as often as the zoo's seals",
+    "atoms": {
+      "number": {
+        "raw": "14",
+        "canonical": "14"
+      },
+      "unit": "times a day",
+      "subjectLemma": "penguin",
+      "population": "Harbor Zoo penguins",
+      "time": null,
+      "hedge": null,
+      "namedSource": null,
+      "variants": [
+        "fourteen"
+      ]
+    }
+  },
+  "viralSentence": "Harbor Zoo penguins nap 14 times a day, twice as often as the zoo's seals",
+  "nodes": [
+    {
+      "id": "zoo-report",
+      "url": "https://harborzoo.example/annual-report-2019",
+      "domain": "harborzoo.example",
+      "title": "Harbor Zoo annual report 2019",
+      "date": {
+        "kind": "published",
+        "value": "2019-12-15",
+        "source": "metadata",
+        "firstCapture": "2019-12-15",
+        "conflictingDate": false
+      },
+      "clusterId": "c-report",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s-zoo-report"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": {
+        "questionId": "page_type",
+        "optionId": "report",
+        "probability": 0.9,
+        "top": [
+          {
+            "optionId": "report",
+            "p": 0.9
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      }
+    },
+    {
+      "id": "coast-news",
+      "url": "https://coastgazette.example/2020/02/penguin-naps",
+      "domain": "coastgazette.example",
+      "title": "Harbor Zoo penguins nap 14 times a day",
+      "date": {
+        "kind": "published",
+        "value": "2020-02-10",
+        "source": "metadata",
+        "firstCapture": "2020-02-10",
+        "conflictingDate": false
+      },
+      "clusterId": "c-news",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s-coast-news"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": {
+        "questionId": "page_type",
+        "optionId": "news",
+        "probability": 0.9,
+        "top": [
+          {
+            "optionId": "news",
+            "p": 0.9
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      }
+    },
+    {
+      "id": "coast-news-v2",
+      "url": "https://coastgazette.example/2020/02/penguin-naps?v=2",
+      "domain": "coastgazette.example",
+      "title": "Harbor Zoo penguins nap 14 times a day",
+      "date": {
+        "kind": "published",
+        "value": "2020-02-12",
+        "source": "metadata",
+        "firstCapture": "2020-02-12",
+        "conflictingDate": false
+      },
+      "clusterId": "c-news",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": "coast-news",
+      "spanIds": [
+        "s-coast-news-v2"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": {
+        "questionId": "page_type",
+        "optionId": "news",
+        "probability": 0.9,
+        "top": [
+          {
+            "optionId": "news",
+            "p": 0.9
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      }
+    },
+    {
+      "id": "trivia-blog",
+      "url": "https://funfactsdaily.example/penguin-naps",
+      "domain": "funfactsdaily.example",
+      "title": "Fun Facts Daily: penguin naps",
+      "date": {
+        "kind": "existed_by",
+        "value": "2021-06-01",
+        "source": "metadata",
+        "firstCapture": "2021-06-01",
+        "conflictingDate": false
+      },
+      "clusterId": "c-blog",
+      "evidence": "inferred",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s-trivia-blog"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": {
+        "questionId": "page_type",
+        "optionId": "blog",
+        "probability": 0.9,
+        "top": [
+          {
+            "optionId": "blog",
+            "p": 0.9
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      }
+    },
+    {
+      "id": "social-post",
+      "url": "https://chirp.example/status/1001",
+      "domain": "chirp.example",
+      "title": "Post on Chirp",
+      "date": {
+        "kind": "published",
+        "value": "2022-08-20",
+        "source": "metadata",
+        "firstCapture": "2022-08-20",
+        "conflictingDate": false
+      },
+      "clusterId": "c-social",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s-social-post"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": {
+        "questionId": "page_type",
+        "optionId": "social",
+        "probability": 0.9,
+        "top": [
+          {
+            "optionId": "social",
+            "p": 0.9
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      }
+    },
+    {
+      "id": "myth-page",
+      "url": "https://checkdesk.example/penguin-nap-myth",
+      "domain": "checkdesk.example",
+      "title": "Check Desk: penguin naps",
+      "date": {
+        "kind": "published",
+        "value": "2023-03-01",
+        "source": "metadata",
+        "firstCapture": "2023-03-01",
+        "conflictingDate": false
+      },
+      "clusterId": "c-meta",
+      "evidence": "observed",
+      "meta": true,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s-myth-page"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": {
+        "questionId": "page_type",
+        "optionId": "news",
+        "probability": 0.9,
+        "top": [
+          {
+            "optionId": "news",
+            "p": 0.9
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "parentId": "zoo-report",
+      "childId": "coast-news",
+      "kind": "explicit",
+      "parentSpanId": "s-zoo-report",
+      "childSpanId": "s-coast-news",
+      "linkHref": "https://harborzoo.example/annual-report-2019"
+    },
+    {
+      "id": "e2",
+      "parentId": "zoo-report",
+      "childId": "trivia-blog",
+      "kind": "inferred",
+      "parentSpanId": "s-zoo-report",
+      "childSpanId": "s-trivia-blog",
+      "linkHref": null
+    },
+    {
+      "id": "e3",
+      "parentId": "coast-news-v2",
+      "childId": "social-post",
+      "kind": "explicit",
+      "parentSpanId": "s-coast-news-v2",
+      "childSpanId": "s-social-post",
+      "linkHref": "https://coastgazette.example/2020/02/penguin-naps?v=2"
+    },
+    {
+      "id": "e4",
+      "parentId": "trivia-blog",
+      "childId": "social-post",
+      "kind": "explicit",
+      "parentSpanId": "s-trivia-blog",
+      "childSpanId": "s-social-post",
+      "linkHref": "https://funfactsdaily.example/penguin-naps"
+    },
+    {
+      "id": "e5",
+      "parentId": "coast-news-v2",
+      "childId": "trivia-blog",
+      "kind": "explicit",
+      "parentSpanId": "s-coast-news-v2",
+      "childSpanId": "s-trivia-blog",
+      "linkHref": "https://coastgazette.example/2020/02/penguin-naps?v=2"
+    }
+  ],
+  "clusters": [
+    {
+      "id": "c-report",
+      "nodeIds": [
+        "zoo-report"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-news",
+      "nodeIds": [
+        "coast-news",
+        "coast-news-v2"
+      ],
+      "rule": "versions"
+    },
+    {
+      "id": "c-blog",
+      "nodeIds": [
+        "trivia-blog"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-social",
+      "nodeIds": [
+        "social-post"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-meta",
+      "nodeIds": [
+        "myth-page"
+      ],
+      "rule": "single"
+    }
+  ],
+  "spans": [
+    {
+      "id": "s-zoo-report",
+      "nodeId": "zoo-report",
+      "text": "Daylight observations found that our adult penguins nap about 14 times a day.",
+      "contextBefore": "Harbor Zoo annual report 2019. ",
+      "contextAfter": " Attendance rose for the third year in a row.",
+      "start": 31,
+      "end": 108,
+      "extractSha256": "5afde0a01a903dc051e13e2134e3c039e52555de6f3317d9ba035669a24b16b2",
+      "windowSha256": "5afde0a01a903dc051e13e2134e3c039e52555de6f3317d9ba035669a24b16b2",
+      "fetchedAt": "2026-11-01T08:00:00Z",
+      "waybackUrl": "https://web.archive.org/web/2026/https://harborzoo.example/annual-report-2019",
+      "tier": "exact"
+    },
+    {
+      "id": "s-coast-news",
+      "nodeId": "coast-news",
+      "text": "Harbor Zoo penguins nap 14 times a day, according to the zoo's annual report.",
+      "contextBefore": "Coast Gazette, February 10, 2020. ",
+      "contextAfter": " The zoo plans a new pool next year.",
+      "start": 34,
+      "end": 111,
+      "extractSha256": "14bc3990bb1df4844e170c8ee153c8b02cf0a909ab1e8cf3e95123061a140d6d",
+      "windowSha256": "14bc3990bb1df4844e170c8ee153c8b02cf0a909ab1e8cf3e95123061a140d6d",
+      "fetchedAt": "2026-11-01T08:00:00Z",
+      "waybackUrl": "https://web.archive.org/web/2026/https://coastgazette.example/2020/02/penguin-naps",
+      "tier": "exact"
+    },
+    {
+      "id": "s-coast-news-v2",
+      "nodeId": "coast-news-v2",
+      "text": "Harbor Zoo penguins nap 14 times a day, twice as often as the zoo's seals, the zoo said.",
+      "contextBefore": "Coast Gazette, updated February 12, 2020. ",
+      "contextAfter": " The zoo plans a new pool next year.",
+      "start": 42,
+      "end": 130,
+      "extractSha256": "11cd97eeb6b3e6d2fc0f4e3de93c521f69357cd28ab465028bed80982ad31f3e",
+      "windowSha256": "11cd97eeb6b3e6d2fc0f4e3de93c521f69357cd28ab465028bed80982ad31f3e",
+      "fetchedAt": "2026-11-01T08:00:00Z",
+      "waybackUrl": "https://web.archive.org/web/2026/https://coastgazette.example/2020/02/penguin-naps?v=2",
+      "tier": "exact"
+    },
+    {
+      "id": "s-trivia-blog",
+      "nodeId": "trivia-blog",
+      "text": "Penguins nap 14 times a day, twice as often as seals, says a marine study.",
+      "contextBefore": "Fun Facts Daily. Did you know? ",
+      "contextAfter": " Share this with a friend.",
+      "start": 31,
+      "end": 105,
+      "extractSha256": "ca1e85e0aade246573383f7888d96b3f59da4a464d523c251661d75ff39349bd",
+      "windowSha256": "ca1e85e0aade246573383f7888d96b3f59da4a464d523c251661d75ff39349bd",
+      "fetchedAt": "2026-11-01T08:00:00Z",
+      "waybackUrl": "https://web.archive.org/web/2026/https://funfactsdaily.example/penguin-naps",
+      "tier": "exact"
+    },
+    {
+      "id": "s-social-post",
+      "nodeId": "social-post",
+      "text": "penguins nap 14 times a day, twice as often as the zoo's seals!!",
+      "contextBefore": "",
+      "contextAfter": " #animals",
+      "start": 0,
+      "end": 64,
+      "extractSha256": "d329daeea9509bb48027f9e98b03d7d8ce977fe74242252fdab970ee9e267c51",
+      "windowSha256": "d329daeea9509bb48027f9e98b03d7d8ce977fe74242252fdab970ee9e267c51",
+      "fetchedAt": "2026-11-01T08:00:00Z",
+      "waybackUrl": "https://web.archive.org/web/2026/https://chirp.example/status/1001",
+      "tier": "exact"
+    },
+    {
+      "id": "s-myth-page",
+      "nodeId": "myth-page",
+      "text": "It is a myth that all penguins nap 14 times a day.",
+      "contextBefore": "Check Desk. ",
+      "contextAfter": " The number comes from one zoo's keeper log about its own birds.",
+      "start": 12,
+      "end": 62,
+      "extractSha256": "6e2a3a38e49bd3b7bb3bb62f5a6b5cee5a1ed8f75f4fc048dc0b79e199556b87",
+      "windowSha256": "6e2a3a38e49bd3b7bb3bb62f5a6b5cee5a1ed8f75f4fc048dc0b79e199556b87",
+      "fetchedAt": "2026-11-01T08:00:00Z",
+      "waybackUrl": "https://web.archive.org/web/2026/https://checkdesk.example/penguin-nap-myth",
+      "tier": "exact"
+    }
+  ],
+  "hops": [
+    {
+      "edgeId": "e1",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "harbor"
+        },
+        {
+          "op": "add",
+          "text": "zoo"
+        },
+        {
+          "op": "del",
+          "text": "daylight"
+        },
+        {
+          "op": "del",
+          "text": "observations"
+        },
+        {
+          "op": "del",
+          "text": "found"
+        },
+        {
+          "op": "del",
+          "text": "that"
+        },
+        {
+          "op": "del",
+          "text": "our"
+        },
+        {
+          "op": "del",
+          "text": "adult"
+        },
+        {
+          "op": "same",
+          "text": "penguins"
+        },
+        {
+          "op": "same",
+          "text": "nap"
+        },
+        {
+          "op": "del",
+          "text": "about"
+        },
+        {
+          "op": "same",
+          "text": "14"
+        },
+        {
+          "op": "same",
+          "text": "times"
+        },
+        {
+          "op": "same",
+          "text": "a"
+        },
+        {
+          "op": "same",
+          "text": "day"
+        },
+        {
+          "op": "add",
+          "text": "according"
+        },
+        {
+          "op": "add",
+          "text": "to"
+        },
+        {
+          "op": "add",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "zoo's"
+        },
+        {
+          "op": "add",
+          "text": "annual"
+        },
+        {
+          "op": "add",
+          "text": "report"
+        }
+      ],
+      "faithful": false
+    },
+    {
+      "edgeId": "e2",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "scope_widened",
+          "source": "inferred",
+          "value": "yes",
+          "probability": 0.81,
+          "disputed": false
+        },
+        {
+          "id": "attribution_shifted",
+          "source": "inferred",
+          "value": "unsure",
+          "probability": 0.55,
+          "disputed": false
+        },
+        {
+          "id": "context_stripped",
+          "source": "inferred",
+          "value": "yes",
+          "probability": 0.62,
+          "disputed": true
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "del",
+          "text": "daylight"
+        },
+        {
+          "op": "del",
+          "text": "observations"
+        },
+        {
+          "op": "del",
+          "text": "found"
+        },
+        {
+          "op": "del",
+          "text": "that"
+        },
+        {
+          "op": "del",
+          "text": "our"
+        },
+        {
+          "op": "del",
+          "text": "adult"
+        },
+        {
+          "op": "same",
+          "text": "penguins"
+        },
+        {
+          "op": "same",
+          "text": "nap"
+        },
+        {
+          "op": "del",
+          "text": "about"
+        },
+        {
+          "op": "same",
+          "text": "14"
+        },
+        {
+          "op": "same",
+          "text": "times"
+        },
+        {
+          "op": "same",
+          "text": "a"
+        },
+        {
+          "op": "same",
+          "text": "day"
+        },
+        {
+          "op": "add",
+          "text": "twice"
+        },
+        {
+          "op": "add",
+          "text": "as"
+        },
+        {
+          "op": "add",
+          "text": "often"
+        },
+        {
+          "op": "add",
+          "text": "as"
+        },
+        {
+          "op": "add",
+          "text": "seals"
+        },
+        {
+          "op": "add",
+          "text": "says"
+        },
+        {
+          "op": "add",
+          "text": "a"
+        },
+        {
+          "op": "add",
+          "text": "marine"
+        },
+        {
+          "op": "add",
+          "text": "study"
+        }
+      ],
+      "faithful": false
+    },
+    {
+      "edgeId": "e3",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "del",
+          "text": "harbor"
+        },
+        {
+          "op": "del",
+          "text": "zoo"
+        },
+        {
+          "op": "same",
+          "text": "penguins"
+        },
+        {
+          "op": "same",
+          "text": "nap"
+        },
+        {
+          "op": "same",
+          "text": "14"
+        },
+        {
+          "op": "same",
+          "text": "times"
+        },
+        {
+          "op": "same",
+          "text": "a"
+        },
+        {
+          "op": "same",
+          "text": "day"
+        },
+        {
+          "op": "same",
+          "text": "twice"
+        },
+        {
+          "op": "same",
+          "text": "as"
+        },
+        {
+          "op": "same",
+          "text": "often"
+        },
+        {
+          "op": "same",
+          "text": "as"
+        },
+        {
+          "op": "same",
+          "text": "the"
+        },
+        {
+          "op": "same",
+          "text": "zoo's"
+        },
+        {
+          "op": "same",
+          "text": "seals"
+        },
+        {
+          "op": "del",
+          "text": "the"
+        },
+        {
+          "op": "del",
+          "text": "zoo"
+        },
+        {
+          "op": "del",
+          "text": "said"
+        }
+      ],
+      "faithful": true
+    },
+    {
+      "edgeId": "e4",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "attribution_shifted",
+          "source": "inferred",
+          "value": "yes",
+          "probability": 0.74,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "same",
+          "text": "penguins"
+        },
+        {
+          "op": "same",
+          "text": "nap"
+        },
+        {
+          "op": "same",
+          "text": "14"
+        },
+        {
+          "op": "same",
+          "text": "times"
+        },
+        {
+          "op": "same",
+          "text": "a"
+        },
+        {
+          "op": "same",
+          "text": "day"
+        },
+        {
+          "op": "same",
+          "text": "twice"
+        },
+        {
+          "op": "same",
+          "text": "as"
+        },
+        {
+          "op": "same",
+          "text": "often"
+        },
+        {
+          "op": "same",
+          "text": "as"
+        },
+        {
+          "op": "add",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "zoo's"
+        },
+        {
+          "op": "same",
+          "text": "seals"
+        },
+        {
+          "op": "del",
+          "text": "says"
+        },
+        {
+          "op": "del",
+          "text": "a"
+        },
+        {
+          "op": "del",
+          "text": "marine"
+        },
+        {
+          "op": "del",
+          "text": "study"
+        }
+      ],
+      "faithful": false
+    },
+    {
+      "edgeId": "e5",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "attribution_shifted",
+          "source": "inferred",
+          "value": "yes",
+          "probability": 0.77,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "del",
+          "text": "harbor"
+        },
+        {
+          "op": "del",
+          "text": "zoo"
+        },
+        {
+          "op": "same",
+          "text": "penguins"
+        },
+        {
+          "op": "same",
+          "text": "nap"
+        },
+        {
+          "op": "same",
+          "text": "14"
+        },
+        {
+          "op": "same",
+          "text": "times"
+        },
+        {
+          "op": "same",
+          "text": "a"
+        },
+        {
+          "op": "same",
+          "text": "day"
+        },
+        {
+          "op": "same",
+          "text": "twice"
+        },
+        {
+          "op": "same",
+          "text": "as"
+        },
+        {
+          "op": "same",
+          "text": "often"
+        },
+        {
+          "op": "same",
+          "text": "as"
+        },
+        {
+          "op": "del",
+          "text": "the"
+        },
+        {
+          "op": "del",
+          "text": "zoo's"
+        },
+        {
+          "op": "same",
+          "text": "seals"
+        },
+        {
+          "op": "add",
+          "text": "says"
+        },
+        {
+          "op": "add",
+          "text": "a"
+        },
+        {
+          "op": "add",
+          "text": "marine"
+        },
+        {
+          "op": "add",
+          "text": "study"
+        },
+        {
+          "op": "del",
+          "text": "the"
+        },
+        {
+          "op": "del",
+          "text": "zoo"
+        },
+        {
+          "op": "del",
+          "text": "said"
+        }
+      ],
+      "faithful": false
+    }
+  ],
+  "blame": [
+    {
+      "index": 0,
+      "word": "harbor",
+      "firstSeen": {
+        "spanId": "s-coast-news",
+        "nodeId": "coast-news",
+        "date": "2020-02-10"
+      },
+      "viaInferredHop": false
+    },
+    {
+      "index": 1,
+      "word": "zoo",
+      "firstSeen": {
+        "spanId": "s-coast-news",
+        "nodeId": "coast-news",
+        "date": "2020-02-10"
+      },
+      "viaInferredHop": false
+    },
+    {
+      "index": 2,
+      "word": "penguins",
+      "firstSeen": {
+        "spanId": "s-zoo-report",
+        "nodeId": "zoo-report",
+        "date": "2019-12-15"
+      },
+      "viaInferredHop": false
+    },
+    {
+      "index": 3,
+      "word": "nap",
+      "firstSeen": {
+        "spanId": "s-zoo-report",
+        "nodeId": "zoo-report",
+        "date": "2019-12-15"
+      },
+      "viaInferredHop": false
+    },
+    {
+      "index": 4,
+      "word": "14",
+      "firstSeen": {
+        "spanId": "s-zoo-report",
+        "nodeId": "zoo-report",
+        "date": "2019-12-15"
+      },
+      "viaInferredHop": false
+    },
+    {
+      "index": 5,
+      "word": "times",
+      "firstSeen": {
+        "spanId": "s-zoo-report",
+        "nodeId": "zoo-report",
+        "date": "2019-12-15"
+      },
+      "viaInferredHop": false
+    },
+    {
+      "index": 6,
+      "word": "a",
+      "firstSeen": {
+        "spanId": "s-zoo-report",
+        "nodeId": "zoo-report",
+        "date": "2019-12-15"
+      },
+      "viaInferredHop": false
+    },
+    {
+      "index": 7,
+      "word": "day",
+      "firstSeen": {
+        "spanId": "s-zoo-report",
+        "nodeId": "zoo-report",
+        "date": "2019-12-15"
+      },
+      "viaInferredHop": false
+    },
+    {
+      "index": 8,
+      "word": "twice",
+      "firstSeen": {
+        "spanId": "s-coast-news-v2",
+        "nodeId": "coast-news-v2",
+        "date": "2020-02-12"
+      },
+      "viaInferredHop": false
+    },
+    {
+      "index": 9,
+      "word": "as",
+      "firstSeen": {
+        "spanId": "s-coast-news-v2",
+        "nodeId": "coast-news-v2",
+        "date": "2020-02-12"
+      },
+      "viaInferredHop": false
+    },
+    {
+      "index": 10,
+      "word": "often",
+      "firstSeen": {
+        "spanId": "s-coast-news-v2",
+        "nodeId": "coast-news-v2",
+        "date": "2020-02-12"
+      },
+      "viaInferredHop": false
+    },
+    {
+      "index": 11,
+      "word": "as",
+      "firstSeen": {
+        "spanId": "s-coast-news-v2",
+        "nodeId": "coast-news-v2",
+        "date": "2020-02-12"
+      },
+      "viaInferredHop": false
+    },
+    {
+      "index": 12,
+      "word": "the",
+      "firstSeen": {
+        "spanId": "s-coast-news",
+        "nodeId": "coast-news",
+        "date": "2020-02-10"
+      },
+      "viaInferredHop": false
+    },
+    {
+      "index": 13,
+      "word": "zoo's",
+      "firstSeen": {
+        "spanId": "s-coast-news",
+        "nodeId": "coast-news",
+        "date": "2020-02-10"
+      },
+      "viaInferredHop": false
+    },
+    {
+      "index": 14,
+      "word": "seals",
+      "firstSeen": {
+        "spanId": "s-coast-news-v2",
+        "nodeId": "coast-news-v2",
+        "date": "2020-02-12"
+      },
+      "viaInferredHop": false
+    }
+  ],
+  "roots": {
+    "pages": 5,
+    "clusters": 4,
+    "rootsLinked": 1,
+    "clustersUnlinked": 0,
+    "studiesFound": null
+  },
+  "redHopEdgeId": "e2",
+  "earliest": {
+    "nodeIds": [
+      "zoo-report"
+    ],
+    "earlierWindowSearches": 1,
+    "earlierFound": 0
+  },
+  "failure": null,
+  "budget": {
+    "credits": 42,
+    "usd": 0.12,
+    "ms": 61000,
+    "capHit": null
+  },
+  "decision": {
+    "state": "TRAIL_GOES_COLD",
+    "row": 6,
+    "reasons": [
+      "fewer than 2 earlier-window searches"
+    ],
+    "counts": {
+      "pages": 5,
+      "clusters": 4,
+      "unreadParents": 0,
+      "earlierWindowSearches": 1
+    }
+  },
+  "searchLog": [
+    {
+      "at": "2026-11-01T08:00:00Z",
+      "step": "earlier_window_1",
+      "query": "Harbor Zoo penguins nap 14 times a day, twice as often as the zoo's seals",
+      "endDate": "2019-12-15",
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    }
+  ],
+  "usage": [],
+  "scopeNote": "Synthetic: an invented claim on invented pages."
+}

@@ -1,0 +1,39 @@
+{
+  "id": "empty-results",
+  "kind": "trace",
+  "note": "Search returned no pages at all.",
+  "input": {
+    "tracePath": "fixtures/traces/sample-origin.json",
+    "mutate": [
+      {
+        "set": "nodes",
+        "value": []
+      },
+      {
+        "set": "edges",
+        "value": []
+      },
+      {
+        "set": "spans",
+        "value": []
+      },
+      {
+        "set": "clusters",
+        "value": []
+      },
+      {
+        "set": "earliest.nodeIds",
+        "value": []
+      }
+    ]
+  },
+  "expect": {
+    "state": "NO_PAGES_FOUND",
+    "falseCertainty": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

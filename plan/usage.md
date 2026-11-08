@@ -1,30 +1,30 @@
 # Usage ledger (everyone)
 
-Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py. 32 runs across 2 people: AnoopIbrampur, vs-githjk.
+Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py. 40 runs across 2 people: AnoopIbrampur, vs-githjk.
 
 ## By person
 
 | Who | Runs | Output tokens | Apify | Bright Data | Web | GitHub | Codex | Last updated (UTC) |
 |---|---|---|---|---|---|---|---|---|
-| AnoopIbrampur | 1 | 252,548 | 0 | 0 | 36 | 82 | 0 | 2026-11-03T03:00:43Z |
-| vs-githjk | 31 | 1,511,657 | 10 | 7 | 63 | 120 | 9 | 2026-11-01T23:04:34Z |
+| AnoopIbrampur | 1 | 412,471 | 0 | 0 | 36 | 146 | 0 | 2026-11-08T19:18:34Z |
+| vs-githjk | 39 | 1,905,060 | 10 | 7 | 63 | 220 | 11 | 2026-11-08T03:39:17Z |
 
 ## Totals by service
 
 | Service | Calls |
 |---|---|
-| Claude Code tools | 963 |
-| Shell | 753 |
-| Other HTTP | 215 |
-| GitHub (gh) | 202 |
+| Shell | 1158 |
+| Claude Code tools | 1025 |
+| GitHub (gh) | 366 |
+| Other HTTP | 241 |
+| MCP ccd_turn | 112 |
 | Web search and fetch | 99 |
-| MCP ccd_turn | 63 |
+| Nebius Token Factory | 16 |
+| Codex | 11 |
 | Apify | 10 |
-| Codex | 9 |
-| Nebius Token Factory | 9 |
 | MCP ccd_host | 7 |
 | Bright Data | 7 |
-| Browser (Playwright) | 3 |
+| Browser (Playwright) | 5 |
 | MCP ccd_directory | 1 |
 | MCP ccd_pr | 1 |
 
@@ -32,10 +32,10 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 
 | Kind | Tokens |
 |---|---|
-| input_tokens | 6,729 |
-| cache_creation_input_tokens | 8,108,068 |
-| cache_read_input_tokens | 216,389,216 |
-| output_tokens | 1,764,205 |
+| input_tokens | 7,885 |
+| cache_creation_input_tokens | 11,737,987 |
+| cache_read_input_tokens | 322,057,340 |
+| output_tokens | 2,317,531 |
 
 ## Per run
 
@@ -51,7 +51,7 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 | vs-githjk | 2026-10-29T07:46 | master-finder: Market validation for Patient Zero | claude-opus-5-5 | 40,009 | 7 | 2 | 0 | 25 | 0 | 0 | 0 | 0 | 11 |
 | vs-githjk | 2026-10-29T08:19 | master-planner: Refine Patient Zero, round 1 | claude-opus-5-5 | 29,492 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 | 2 |
 | vs-githjk | 2026-10-29T08:27 | master-auditor: Red-team Patient Zero brief, round 2 | claude-opus-5-5 | 32,092 | 0 | 0 | 0 | 5 | 3 | 0 | 0 | 0 | 5 |
-| vs-githjk | 2026-10-29T08:37 | main session | claude-opus-5-5, <synthetic> | 200,643 | 0 | 0 | 0 | 1 | 31 | 1 | 1 | 0 | 2 |
+| vs-githjk | 2026-10-29T08:37 | main session | claude-opus-5-5, <synthetic> | 316,947 | 0 | 0 | 0 | 1 | 86 | 3 | 8 | 0 | 4 |
 | vs-githjk | 2026-10-29T08:39 | master-planner: Fold auditor r2 fixes into brief | claude-opus-5-5 | 43,561 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 |
 | vs-githjk | 2026-10-29T08:42 | master-xo: GitHub kickoff issues for team | claude-opus-5-5 | 27,048 | 0 | 0 | 0 | 0 | 15 | 0 | 2 | 0 | 6 |
 | vs-githjk | 2026-10-29T08:46 | master-designer: 10-min world-class Patient Zero look | claude-fable-5-1 | 43,300 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -69,10 +69,18 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 | vs-githjk | 2026-10-29T12:03 | master-planner: Build plan and team lanes | claude-opus-5-5 | 90,327 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 2 |
 | vs-githjk | 2026-10-29T19:16 | master-xo: Post the Oct 29 task issues | claude-opus-5-5 | 23,591 | 0 | 0 | 0 | 0 | 8 | 0 | 0 | 0 | 0 |
 | vs-githjk | 2026-10-29T19:16 | master-finder: Pick spike claims 5 and 6 | claude-opus-5-5 | 22,586 | 3 | 0 | 0 | 10 | 0 | 0 | 0 | 0 | 21 |
-| AnoopIbrampur | 2026-10-30T20:10 | main session | claude-opus-5-5, claude-sonnet-5-5 | 252,548 | 0 | 0 | 0 | 36 | 82 | 0 | 0 | 0 | 91 |
+| AnoopIbrampur | 2026-10-30T20:10 | main session | claude-opus-5-5, claude-sonnet-5-5 | 412,471 | 0 | 0 | 0 | 36 | 146 | 0 | 0 | 0 | 91 |
 | vs-githjk | 2026-10-31T17:53 | master-xo: Post Oct 31 team batch | claude-opus-5-5 | 17,818 | 0 | 0 | 0 | 0 | 7 | 0 | 0 | 0 | 0 |
 | vs-githjk | 2026-10-31T17:53 | master-reviewer: Review PRs 29 and 30 | claude-opus-5-5 | 23,036 | 0 | 0 | 0 | 0 | 7 | 0 | 2 | 0 | 1 |
 | vs-githjk | 2026-11-01T22:55 | master-reviewer: Review PR 35 skeleton | claude-opus-5-5 | 17,524 | 0 | 0 | 0 | 0 | 5 | 0 | 0 | 0 | 0 |
+| vs-githjk | 2026-11-02T23:23 | master-reviewer: Review PRs 39 and 30 | claude-opus-5-5 | 28,039 | 0 | 0 | 0 | 0 | 8 | 0 | 0 | 0 | 0 |
+| vs-githjk | 2026-11-03T02:22 | master-reviewer: Review PRs 40 to 44 | claude-opus-5-5 | 54,383 | 0 | 0 | 0 | 0 | 8 | 0 | 0 | 0 | 0 |
+| vs-githjk | 2026-11-03T02:34 | master-reviewer: Review Anoop's PRs 45 to 49 | claude-opus-5-5 | 37,604 | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | 0 |
+| vs-githjk | 2026-11-03T02:56 | master-reviewer: Re-review fixes on PRs 42 to 44 | claude-opus-5-5 | 21,406 | 0 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 |
+| vs-githjk | 2026-11-04T23:13 | master-reviewer: Review Rohan and Anoop data PRs | claude-opus-5-5 | 35,892 | 0 | 0 | 0 | 0 | 11 | 0 | 0 | 0 | 22 |
+| vs-githjk | 2026-11-04T23:22 | master-reviewer: Review Anoop stack refix and T26 | claude-opus-5-5 | 35,556 | 0 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 |
+| vs-githjk | 2026-11-04T23:33 | master-reviewer: Review Rishit's clients, walker, shell | claude-opus-5-5 | 31,763 | 0 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 |
+| vs-githjk | 2026-11-08T03:27 | master-reviewer: Re-review T19, T11, T14, T15 | claude-opus-5-5 | 32,456 | 0 | 0 | 2 | 0 | 7 | 0 | 0 | 0 | 2 |
 
 ## Detail (service: tool or host)
 
@@ -84,18 +92,23 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 - Bright Data: search_engine_batch: 3
 - Browser (Playwright): browser_close: 1
 - Browser (Playwright): browser_navigate: 1
+- Browser (Playwright): browser_run_code_unsafe: 2
 - Browser (Playwright): browser_snapshot: 1
-- Codex: codex: 9
-- GitHub (gh): gh: 202
+- Codex: codex: 11
+- GitHub (gh): gh: 366
 - MCP ccd_directory: change_directory: 1
 - MCP ccd_host: open_in_editor: 7
 - MCP ccd_pr: get_status: 1
-- MCP ccd_turn: update_plan: 48
-- MCP ccd_turn: wrap_up: 15
-- Nebius Token Factory: api.tokenfactory.nebius.com: 7
+- MCP ccd_turn: update_plan: 84
+- MCP ccd_turn: wrap_up: 28
+- Nebius Token Factory: api.studio.nebius.com: 1
+- Nebius Token Factory: api.tokenfactory.nebius.com: 13
 - Nebius Token Factory: tokenfactory.nebius.com: 2
+- Other HTTP: 127.0.0.1: 2
 - Other HTTP: api.apify.com: 5
 - Other HTTP: api.github.com: 1
+- Other HTTP: api.studio.nebius.ai: 1
+- Other HTTP: api.tokenfactory.us-central1.nebius.com: 1
 - Other HTTP: app.tavily.com: 1
 - Other HTTP: arxiv.org: 1
 - Other HTTP: awellfedworld.org: 1
@@ -156,8 +169,8 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 - Other HTTP: studyfinds.com: 1
 - Other HTTP: tarantulaforum.com: 2
 - Other HTTP: techxplore.com: 2
-- Other HTTP: web.archive.org: 7
-- Other HTTP: web.augsburg.edu: 1
+- Other HTTP: web.archive.org: 10
+- Other HTTP: web.augsburg.edu: 2
 - Other HTTP: whatthefact.app: 1
 - Other HTTP: wwf.panda.org: 3
 - Other HTTP: www.aap.com.au: 1
@@ -165,11 +178,11 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 - Other HTTP: www.aigl.blog: 1
 - Other HTTP: www.aljazeera.com: 2
 - Other HTTP: www.artificialintelligence-news.com: 2
-- Other HTTP: www.asurion.com: 1
+- Other HTTP: www.asurion.com: 4
 - Other HTTP: www.atlasobscura.com: 1
 - Other HTTP: www.bmj.com: 1
 - Other HTTP: www.boatcoversdirect.com: 1
-- Other HTTP: www.cdp.net: 1
+- Other HTTP: www.cdp.net: 4
 - Other HTTP: www.cjr.org: 1
 - Other HTTP: www.ctvnews.ca: 2
 - Other HTTP: www.damiencharlotin.com: 1
@@ -179,10 +192,10 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 - Other HTTP: www.ellenmacarthurfoundation.org: 1
 - Other HTTP: www.epocrates.com: 1
 - Other HTTP: www.fashiongonerogue.com: 3
-- Other HTTP: www.floridahealth.gov: 1
-- Other HTTP: www.fox6now.com: 1
+- Other HTTP: www.floridahealth.gov: 5
+- Other HTTP: www.fox6now.com: 2
 - Other HTTP: www.foxnews.com: 1
-- Other HTTP: www.goldmansachs.com: 1
+- Other HTTP: www.goldmansachs.com: 4
 - Other HTTP: www.goodreads.com: 1
 - Other HTTP: www.grough.co.uk: 1
 - Other HTTP: www.higherlowergame.com: 1
@@ -204,9 +217,9 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 - Other HTTP: www.visitourchina.com: 2
 - Other HTTP: www.w3: 1
 - Other HTTP: www.weforum.org: 1
-- Other HTTP: www.worldwatch.org: 4
+- Other HTTP: www.worldwatch.org: 7
 - Other HTTP: www.wwno.org: 1
-- Other HTTP: www.youtube.com: 2
+- Other HTTP: www.youtube.com: 3
 - Other HTTP: x.com: 1
 - Web search and fetch: WebFetch: 10
 - Web search and fetch: WebSearch: 89

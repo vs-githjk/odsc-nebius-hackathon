@@ -8,3 +8,7 @@ __pycache__/
 .playwright-mcp/
 plan/usage/*.lock
 plan/usage/*.tmp
+.cache/
+runs/
+dist/
+*.local.*

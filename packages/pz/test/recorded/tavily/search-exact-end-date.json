@@ -1,0 +1,22 @@
+{
+  "query": "\"cream the butter and sugar until light and fluffy\"",
+  "results": [
+    {
+      "url": "https://food52.com/recipes/30272-sprinkles-cake",
+      "title": "Sprinkles Cake",
+      "content": "In the bowl of an electric mixer fitted with the paddle attachment, cream the butter and sugar until light and fluffy, 5 to 6 minutes. Beat in the vanilla. Add",
+      "score": 0.9123193,
+      "published_date": "Tue, 05 Aug 2014 00:00:00 GMT"
+    },
+    {
+      "url": "https://kitchenconfidante.com/meyer-lemon-mini-bundt-cakes-recipe",
+      "title": "Meyer Lemon Mini Bundt Cakes | Kitchen Confidante",
+      "content": "Preheat the oven to 350°F (180°C). Butter and flour your bundt cake pan. In the bowl of an electric mixer, cream the butter and sugar until light and fluffy.",
+      "score": 0.9121316,
+      "published_date": "Wed, 12 Jun 2013 00:00:00 GMT"
+    }
+  ],
+  "usage": {
+    "credits": 1
+  }
+}

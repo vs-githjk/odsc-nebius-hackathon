@@ -18,3 +18,10 @@
 - 12:30 claims 5 and 6 posted (exact sentences only, no sources) on #5 https://github.com/vs-githjk/odsc-nebius-hackathon/issues/5#issuecomment-6506377580 , #9 T13 https://github.com/vs-githjk/odsc-nebius-hackathon/issues/9#issuecomment-6506377934 , #10 T12 https://github.com/vs-githjk/odsc-nebius-hackathon/issues/10#issuecomment-6506378467 ; plan/spike-claims-5-6.md left local (git-ignored, not referenced)
 - 13:57 Oct 31 batch from plan/issues-oct31.md: created #31 T2b, #32 T18b, #33 E1, #34 E2 (title-checked); owner moves #11, #12 to Rohan; 12 comments on task issues; assignments to Rohan and Rishit; focus comments #3, #4, #1, #2; no duplicates; shared memory 64d3782
 - 15:10 PT Nov 1 watch pass: PR #35 T1 aa79edd FIX (reviewer plus Codex): pz.ts mode, Vite 8.3.5 via vitest against the Vite 7 pin; list on #3; nudge on #1; #30 unchanged at 4dbc454; nothing merged
+- 20:35 PT Nov 1 watch pass: #36 f521176 PASS inline, merged, #7 closed; #37 draft skipped; #35, #30 unchanged; Anoop nothing yet
+- 12:50 PT Nov 2 watch pass: #38 dd08eff accepted, held until T12 report; blind period ended on #5; do-not-open notes on #1 and #3; Rohan bottleneck note on #3; nothing merged
+- 15:45 PT Nov 2 watch pass: merged #35 (after mode fix df4d61d), #30, #39 (after conflict merge b632620); follow-ups on #3, #31, #4, #1
+- 18:50 PT Nov 2 watch pass: merged #41; FIX lists #40 on #3, #42 #43 #44 and #46 to #49 on #4; #45 PASS held for stack order; ruling on skip reasons pushed de62dc2; Rishit asked to build T11 on decide and ready #37
+- 19:30 PT Nov 2: re-review PASS #42 #43 #44; merged #42 73736dc, #43 d37d4ea (after XO merge of main ca2e138), #44 bc8a11c (after d70996c); rerun go posted on #10
+- 15:45 PT Nov 4 watch pass: merged #40 #61 #45 #37; FIX lists #60 on #3, #46 #51 on #4, #50 #53 on #1; blind forms 27be8cd; #15 closed
+- 19:45 PT Nov 7 watch pass: merged #63 #51 #46 #47 #48 #49 #58 #60 #53 via syncmerge; FIX #50 #62 on #1; new issues #64 to #68

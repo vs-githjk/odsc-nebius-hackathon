@@ -1,0 +1,23 @@
+{
+  "id": "typed-readout-measured",
+  "kind": "trace",
+  "note": "A model-typed readout is tagged measured.",
+  "input": {
+    "tracePath": "fixtures/traces/sample-rich.json",
+    "mutate": [
+      {
+        "set": "hops.1.readouts.3.source",
+        "value": "measured"
+      }
+    ]
+  },
+  "expect": {
+    "state": "TRAIL_GOES_COLD",
+    "falseCertainty": [
+      0,
+      1,
+      0,
+      0
+    ]
+  }
+}
