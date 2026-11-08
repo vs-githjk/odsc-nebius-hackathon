@@ -1,0 +1,19 @@
+{
+  "id": "card-number-not-in-spans",
+  "kind": "trace",
+  "note": "The card sentence says 15, a number no span carries.",
+  "input": {
+    "tracePath": "fixtures/traces/sample-origin.json",
+    "mutate": [],
+    "cardSentence": "Harbor Zoo penguins nap 15 times a day."
+  },
+  "expect": {
+    "state": "ORIGIN_FOUND",
+    "falseCertainty": [
+      0,
+      0,
+      1,
+      0
+    ]
+  }
+}

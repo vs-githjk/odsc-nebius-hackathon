@@ -1,0 +1,23 @@
+{
+  "id": "undated-shown-dated",
+  "kind": "trace",
+  "note": "A node with an unconfirmed date still carries a date to display.",
+  "input": {
+    "tracePath": "fixtures/traces/sample-origin.json",
+    "mutate": [
+      {
+        "set": "nodes.2.date.kind",
+        "value": "unconfirmed"
+      }
+    ]
+  },
+  "expect": {
+    "state": "ORIGIN_FOUND",
+    "falseCertainty": [
+      0,
+      0,
+      0,
+      1
+    ]
+  }
+}
