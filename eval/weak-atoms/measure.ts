@@ -1,6 +1,5 @@
 // Scores weak-number matching rules against the hand labels in labels.json (E2 dev claims only).
 // Run from the repo root: node --import tsx eval/weak-atoms/measure.ts
-import { execFileSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import { atomHit, isWeak, loadRules, normalise, parseNumbers, sameNumber } from "../../packages/pz/src/rules/index.ts";
 
@@ -99,7 +98,7 @@ if (process.argv.includes("--diff")) {
 }
 
 if (process.argv.includes("--per-claim")) {
-  const all = JSON.parse(execFileSync("git", ["show", "origin/AnoopIbrampur/dev-claims:eval/dev-claims.json"], { encoding: "utf8" })) as { id: string }[];
+  const all = JSON.parse(readFileSync("eval/dev-claims.json", "utf8")) as { id: string }[];
   console.log("| Claim | Weak number | Sentences (true / false) | Before: hits / false / missed | After: hits / false / missed |");
   console.log("|---|---|---|---|---|");
   for (const { id } of all) {

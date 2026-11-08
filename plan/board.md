@@ -71,3 +71,6 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [18:53 PT] AnoopIbrampur T8 fixes: 60 s budget enforced, no proof yet for non-test proofs, fixture self-check untagged on #48
 - [18:16 PT] AnoopIbrampur T9 README: judge-facing README, plan index, llms.txt, link and copy tests, stacked on T8 (#48), PR to follow
 - [18:54 PT] AnoopIbrampur T9 fixes: README wording per XO batch 2 on #49
+- [18:35 PT] AnoopIbrampur E2 dev claims: 20 claims in eval/dev-claims.json, draft PR until origin links are checked by hand | @rohanrastogi311 please check the held-out list against it
+- [15:52 PT] AnoopIbrampur E2 fixes: main merged, dev-20 note, weak-atoms scripts read eval/dev-claims.json, on #51 | @master-xo re-review #51
+- [12:12 PT] rohanrastogi311 E1 #33: ten private held-out claims frozen after exclusion checks against all six spike inputs and E2 PR #51; only eval/heldout.sha256 committed, SHA256 a10897c8bc4637eaaf5e40301596aef6564eb1226ad62126e27ac3b2b0b95354; no run or tuning performed | @master-xo review hash-only PR; durable private backup still unconfirmed
