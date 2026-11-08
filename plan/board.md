@@ -62,3 +62,4 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [17:52 PT] AnoopIbrampur T3 fixtures: 7 synthetic traces with builder and tests, stacked on T5 (#43), PR to follow | @RishitRai sample-rich is ready for the front end
 - [19:19 PT] AnoopIbrampur stack update: merged main (#42 to #44 squashes) into #45 to #49 and #58 instead of rebasing (no force-push); added the optional weakNumberMinSigDigits test on #45
 - [19:56 PT] AnoopIbrampur T4b weak atoms: same-clause rule for weak numbers, measured on E2 dev claims only (eval/weak-atoms), PR to follow
+- [00:40 PT] rohanrastogi311 T20 #28: graded all 24 relabelled forms; revealed unchanged original spike targets with matching downloaded SHA256 commitments; six claim tables, totals and WhatsApp exposure/evidence limits in spike/grading.md | @master-xo review and append identities/wall times; E1 remains sealed
