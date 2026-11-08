@@ -1,0 +1,182 @@
+[
+  {
+    "id": "dev-01",
+    "text": "Insanity is doing the same thing over and over again and expecting different results.",
+    "seenAt": "https://www.goodreads.com/quotes/5543-insanity-is-doing-the-same-thing-over-and-over-again-but",
+    "topic": "quotes",
+    "tracedOrigin": null,
+    "tracedBy": "https://quoteinvestigator.com/2017/03/23/same/",
+    "expected": "cold"
+  },
+  {
+    "id": "dev-02",
+    "text": "The average person swallows eight spiders a year while sleeping.",
+    "seenAt": "https://tarantulaforum.com/threads/do-people-swallow-eight-spiders-per-year.41690",
+    "topic": "animals",
+    "tracedOrigin": null,
+    "tracedBy": "https://www.snopes.com/fact-check/swallow-spiders/",
+    "expected": "cold"
+  },
+  {
+    "id": "dev-03",
+    "text": "Humans use only 10 percent of their brains.",
+    "seenAt": "https://www.imdb.com/title/tt2872732/",
+    "topic": "brain",
+    "tracedOrigin": null,
+    "tracedBy": "https://faculty.washington.edu/chudler/pdf/tenper.pdf",
+    "expected": "cold"
+  },
+  {
+    "id": "dev-04",
+    "text": "You should drink eight glasses of water a day.",
+    "seenAt": "https://bbdc.it.com/?p=4827",
+    "topic": "health",
+    "tracedOrigin": null,
+    "tracedBy": "https://pubmed.ncbi.nlm.nih.gov/12376390/",
+    "expected": "cold"
+  },
+  {
+    "id": "dev-05",
+    "text": "It takes 21 days to form a habit.",
+    "seenAt": "https://web.augsburg.edu/hr/wellness/21day.html",
+    "topic": "habits",
+    "tracedOrigin": null,
+    "tracedBy": "https://blogs.ucl.ac.uk/bsh/2012/06/29/busting-the-21-days-habit-formation-myth/",
+    "expected": "cold"
+  },
+  {
+    "id": "dev-06",
+    "text": "You need to walk 10,000 steps a day to stay healthy.",
+    "seenAt": "https://health.clevelandclinic.org/10000-steps-a-day",
+    "topic": "fitness",
+    "tracedOrigin": null,
+    "tracedBy": "https://www.skeptic.org.uk/2025/12/is-the-10000-steps-goal-a-fitness-fact-or-merely-a-marketing-myth/",
+    "expected": "cold"
+  },
+  {
+    "id": "dev-07",
+    "text": "You lose 40 to 45 percent of your body heat through your head.",
+    "seenAt": "https://www.fashiongonerogue.com/?p=984396",
+    "topic": "health",
+    "tracedOrigin": null,
+    "tracedBy": "https://www.grough.co.uk/magazine/2008/12/19/hats-heads-and-heat-medics-debunk-decades-old-myth",
+    "expected": "cold"
+  },
+  {
+    "id": "dev-08",
+    "text": "The Great Wall of China is the only man-made structure visible from space.",
+    "seenAt": "https://www.visitourchina.com/Special/China-Great-Wall/faq-03.html",
+    "topic": "history",
+    "tracedOrigin": null,
+    "tracedBy": "https://www.scientificamerican.com/article/is-chinas-great-wall-visible-from-space/",
+    "expected": "cold"
+  },
+  {
+    "id": "dev-09",
+    "text": "Only 9% of all plastic ever made has been recycled.",
+    "seenAt": "https://www.nationalgeographic.com/news/2017/07/plastic-produced-recycling-waste-ocean-trash-debris-environment/",
+    "topic": "plastic",
+    "tracedOrigin": "https://www.science.org/doi/10.1126/sciadv.1700782",
+    "tracedBy": null,
+    "expected": "origin"
+  },
+  {
+    "id": "dev-10",
+    "text": "By 2050 there will be more plastic than fish in the ocean.",
+    "seenAt": "https://www.aljazeera.com/news/2016/1/21/oceans-to-have-more-plastic-than-fish-by-2050-report",
+    "topic": "plastic",
+    "tracedOrigin": "https://www.ellenmacarthurfoundation.org/the-new-plastics-economy-rethinking-the-future-of-plastics",
+    "tracedBy": "https://www.aap.com.au/factcheck/fishy-figures-underpin-ministers-ocean-plastic-warning/",
+    "expected": "origin"
+  },
+  {
+    "id": "dev-11",
+    "text": "Just 100 companies are responsible for 71% of global emissions.",
+    "seenAt": "https://insideclimatenews.org/news/10072017/fossil-fuel-companies-responsible-global-emissions-cdp-report/",
+    "topic": "climate",
+    "tracedOrigin": "https://www.cdp.net/press-releases/new-report-shows-just-100-companies-are-source-of-over-70-of-emissions",
+    "tracedBy": null,
+    "expected": "origin"
+  },
+  {
+    "id": "dev-12",
+    "text": "You eat a credit card's worth of plastic every week.",
+    "seenAt": "https://www.ctvnews.ca/health/article/you-consume-a-credit-card-a-week-of-tiny-plastic-study/",
+    "topic": "plastic",
+    "tracedOrigin": "https://wwf.panda.org/wwf_news/?348337/Revealed-plastic-ingestion-by-people-could-be-equating-to-a-credit-card-a-week",
+    "tracedBy": "https://www.theweek.in/news/india/2025/01/28/fact-check-would-drinking-from-plastic-bottles-make-you-consume-a-credit-cards-worth-of-plastic-a-week.html",
+    "expected": "origin"
+  },
+  {
+    "id": "dev-13",
+    "text": "Livestock is responsible for 51% of global greenhouse gas emissions.",
+    "seenAt": "https://awellfedworld.org/issues/climate-issues/ghg-percentages/",
+    "topic": "climate",
+    "tracedOrigin": "https://web.archive.org/web/2010/http://www.worldwatch.org/node/6294",
+    "tracedBy": "https://newsarchive.ilri.org/archives/6239",
+    "expected": "origin"
+  },
+  {
+    "id": "dev-14",
+    "text": "Americans check their phones 96 times a day.",
+    "seenAt": "https://www.fox6now.com/news/americans-check-their-smartphones-96-times-a-day-survey-says",
+    "topic": "phones",
+    "tracedOrigin": "https://www.asurion.com/about/press-releases/americans-check-their-phones-96-times-a-day/",
+    "tracedBy": null,
+    "expected": "origin"
+  },
+  {
+    "id": "dev-15",
+    "text": "Training a single AI model can emit as much carbon as five cars in their lifetimes.",
+    "seenAt": "https://techxplore.com/news/2019-06-glare-energy-consumption-deep.html",
+    "topic": "ai",
+    "tracedOrigin": "https://arxiv.org/abs/1906.02243",
+    "tracedBy": null,
+    "expected": "origin"
+  },
+  {
+    "id": "dev-16",
+    "text": "AI could replace 300 million jobs.",
+    "seenAt": "https://siliconangle.com/2023/03/29/goldman-sachs-report-says-ai-put-300-million-jobs-risk/",
+    "topic": "ai",
+    "tracedOrigin": "https://www.goldmansachs.com/insights/articles/generative-ai-could-raise-global-gdp-by-7-percent",
+    "tracedBy": null,
+    "expected": "origin"
+  },
+  {
+    "id": "dev-17",
+    "text": "ChatGPT reached 100 million users in two months, the fastest-growing app in history.",
+    "seenAt": "https://gizmodo.com/chatgpt-apps-ai-microsoft-google-1850065429",
+    "topic": "ai",
+    "tracedOrigin": null,
+    "tracedBy": null,
+    "expected": "cold"
+  },
+  {
+    "id": "dev-18",
+    "text": "95% of generative AI pilots at companies are failing.",
+    "seenAt": "https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo/",
+    "topic": "ai",
+    "tracedOrigin": "https://www.aigl.blog/content/files/2025/09/The-GenAI-Divide-STATE-OF-AI-IN-BUSINESS-2025.pdf",
+    "tracedBy": null,
+    "expected": "origin"
+  },
+  {
+    "id": "dev-19",
+    "text": "Sam Altman says the RAM in your PC is only used about 5% of the time.",
+    "seenAt": "https://www.youtube.com/shorts/i75VZkM01iM",
+    "topic": "ai",
+    "tracedOrigin": "https://open.spotify.com/episode/7h9CwLYsJbBrjWxOtOFlQf",
+    "tracedBy": "https://cellcog.ai/blog/altman-dram-local-inference/",
+    "expected": "origin"
+  },
+  {
+    "id": "dev-20",
+    "text": "Florida found arsenic in 60% of popular Halloween candies.",
+    "seenAt": "https://x.com/NicHulscher/status/2116168562410660301",
+    "topic": "food",
+    "tracedOrigin": "https://www.floridahealth.gov/2026/01/26/icymi-florida-releases-candy-testing-results-under-healthy-florida-first-initiative/",
+    "tracedBy": "https://whatthefact.app/fact-checks/2026-11-01-florida-arsenic-60-percent-halloween-candy-annual-limits",
+    "expected": "origin"
+  }
+]
