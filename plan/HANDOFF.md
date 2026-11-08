@@ -101,3 +101,5 @@ Next, in order (when Vidyut says "go"):
 - After every agent run: `python3 ~/.claude/skills/master-budget/usage.py --project "/Users/vidyutsriram/ODSC x Nebius Hackathon"`, and a line in `plan/telemetry.jsonl`.
 - Cross-model: Codex reviews agent or skill changes before `~/master-agents/sync.sh`; save Codex output with `-o <file>`, never pipe it into `head`.
 - Push plan updates to the private repo as part of the approved GitHub setup; nothing public, no deploys, no spending beyond what is approved.
+
+- Nov 7: main has T1 to T10 (minus T11), T13, T14, T18, T19, T26, E1 hash, E2. Open: #50 T11 and #62 T15 (Rishit fixes), T20 publish (Rohan), #38 and #52 after grading. New: #64 T21 and #65 T22 (Anoop), #66 T23 and #67 T24 (Rishit), #68 T25 (Rohan). T28 and T29 unassigned, Vidyut's call. Held-out run Nov 13 needs T29.

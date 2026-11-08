@@ -11,6 +11,8 @@ export const Rules = z.object({
   metaKeywords: z.array(z.string()),
   negationPrefixes: z.array(z.string()),
   factCheckDomains: z.array(z.string()),
+  clusterSimilarityThreshold: z.number().min(0).max(1),
+  notes: z.record(z.string(), z.string()).optional(),
 }).strict();
 export type Rules = z.infer<typeof Rules>;
 

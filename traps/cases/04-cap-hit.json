@@ -1,0 +1,23 @@
+{
+  "id": "cap-hit",
+  "kind": "trace",
+  "note": "The time cap was hit before the walk finished.",
+  "input": {
+    "tracePath": "fixtures/traces/sample-origin.json",
+    "mutate": [
+      {
+        "set": "budget.capHit",
+        "value": "ms"
+      }
+    ]
+  },
+  "expect": {
+    "state": "PARTIAL",
+    "falseCertainty": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

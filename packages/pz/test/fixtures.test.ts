@@ -13,7 +13,7 @@ describe("synthetic fixture traces", () => {
     expect(files).toHaveLength(7);
     for (const t of traces) expect([t.synthetic, t.mode]).toEqual([true, "SAMPLE"]);
   });
-  it("[C2] finds every span at start..end in its normalised page, with the page hash", () => {
+  it("finds every span at start..end in its normalised page, with the page hash", () => {
     for (const t of traces) for (const s of t.spans) {
       const page = readPage(s.nodeId);
       expect(page.slice(s.start, s.end)).toBe(s.text);
