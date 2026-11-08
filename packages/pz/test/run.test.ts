@@ -111,7 +111,8 @@ describe("trace orchestration and replay", () => {
   it("make replay works through the actual CLI with provider keys empty and pz verify accepts it", () => {
     const cwd = fileURLToPath(new URL("../../../", import.meta.url));
     const env = { ...process.env, NEBIUS_API_KEY: "", TAVILY_API_KEY: "", TYPESAFE_API_KEY: "" };
-    const output = execFileSync("make", ["replay"], { cwd, env, encoding: "utf8" });
+    // Also runs nested inside make verify; keep Make's directory chatter out of JSON.
+    const output = execFileSync("make", ["--no-print-directory", "replay"], { cwd, env, encoding: "utf8" });
     expect(Trace.parse(JSON.parse(output)).mode).toBe("SAMPLE");
     const path = join(mkdtempSync(join(tmpdir(), "pz-cli-replay-")), "trace.json");
     writeFileSync(path, output);
