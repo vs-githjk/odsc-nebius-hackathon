@@ -1,0 +1,20 @@
+# Patient Zero
+
+> Patient Zero is a research agent for reporters and fact-checkers, built by team Says Who for the ODSC x Nebius Hackathon 2026. Given a number, a quote or an AI answer, it will walk each claim backwards through time to the earliest source it can find, using Tavily for search and Nebius Token Factory for typed answers. Every edge in a trace rests on two verbatim spans, and code, not the model, decides which of six stop states a trace ends in. Today the repo holds the schema, the number rules, the stop-state table, the `pz verify` re-check, a planted trap set and `make verify`; live and replay traces are planned.
+
+## Start here
+
+- [README: run it](README.md#run-it)
+- [README: for judges](README.md#for-judges)
+- [README: what is real](README.md#what-is-real)
+- [README: for agents reading this repo](README.md#for-agents-reading-this-repo)
+
+## Plan
+
+- [plan/README.md](plan/README.md): what every file in `plan/` holds
+- [plan/plan.md](plan/plan.md): architecture, interfaces, the claims list and every task
+
+## Data formats
+
+- [schema/trace.schema.json](schema/trace.schema.json): the trace format
+- [fixtures/README.md](fixtures/README.md): the synthetic fixture traces
