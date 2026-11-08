@@ -16,6 +16,12 @@ verify:
 	if [ $$took -gt 60 ]; then echo "make verify FAILED: took $$took s, over the 60 s budget (C17)"; exit 1; fi; \
 	echo "make verify passed in $$took s"
 
-replay live:
+TRACE ?= fixtures/traces/sample-rich.json
+
+# The default is explicitly SAMPLE. Supply TRACE=... for a verified real recording.
+replay:
+	@node --import tsx packages/pz/src/cli/pz.ts trace --replay-of "$(TRACE)"
+
+live:
 	@echo "not built yet"
 	@exit 1
