@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { Trace, type Blame, type Hop, type Node, type Span } from "../../packages/pz/src/schema/index.ts";
+import { computeRoots } from "../../packages/pz/src/engine/cluster.ts";
 import { decideStopState, loadRules, normalise } from "../../packages/pz/src/rules/index.ts";
 import { PAGES } from "./pages.ts";
 import { CLAIM, readout, type FixtureSpec } from "./spec.ts";
@@ -72,10 +73,6 @@ export function buildTrace(spec: FixtureSpec): Trace {
       && !spec.edges.some((e) => e.child === first.id && e.kind === "explicit");
     return { index, word, firstSeen: first ? { spanId: `s-${first.id}`, nodeId: first.id, date: first.date.value } : null, viaInferredHop };
   });
-  const pageClusters = new Set(nodes.filter((n) => !n.meta).map((n) => n.clusterId));
-  const clusterOf = (id: string) => nodes.find((n) => n.id === id)!.clusterId;
-  const linked = spec.edges.filter((e) => clusterOf(e.parent) !== clusterOf(e.child));
-  const roots = [...pageClusters].filter((c) => linked.some((e) => clusterOf(e.parent) === c) && !linked.some((e) => clusterOf(e.child) === c));
   const earliestDate = nodes.find((n) => n.id === spec.earliest.nodeIds[0])?.date.value ?? null;
 
   const draft = Trace.parse({
@@ -90,8 +87,7 @@ export function buildTrace(spec: FixtureSpec): Trace {
     })),
     clusters: spec.clusters.map((c) => ({ ...c, nodeIds: nodes.filter((n) => n.clusterId === c.id).map((n) => n.id) })),
     spans, hops, blame,
-    roots: { pages: nodes.filter((n) => !n.meta).length, clusters: pageClusters.size, rootsLinked: roots.length,
-      clustersUnlinked: [...pageClusters].filter((c) => !linked.some((e) => clusterOf(e.parent) === c || clusterOf(e.child) === c)).length, studiesFound: null },
+    roots: { pages: 0, clusters: 0, rootsLinked: 0, clustersUnlinked: 0, studiesFound: null },
     redHopEdgeId: spec.redHop ?? null,
     earliest: { nodeIds: spec.earliest.nodeIds, earlierWindowSearches: spec.earliest.searches, earlierFound: spec.earliest.found },
     failure: spec.failure ?? null,
@@ -102,6 +98,7 @@ export function buildTrace(spec: FixtureSpec): Trace {
       results: spec.earliest.found, kept: spec.earliest.found, dropped: 0 })),
     usage: [], scopeNote: "Synthetic: an invented claim on invented pages.",
   });
+  draft.roots = computeRoots(draft.nodes, draft.edges);
   const decision = decideStopState(draft, loadRules());
   if (decision.state !== spec.expect) throw new Error(`${spec.id}: expected ${spec.expect}, rules give ${decision.state}`);
   return { ...draft, decision };

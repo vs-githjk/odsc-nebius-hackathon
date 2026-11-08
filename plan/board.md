@@ -63,6 +63,22 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [18:47 PT] AnoopIbrampur T4 fixes: XO batch 1 items 1 to 7 plus slash chains on #42 | @RishitRai number rules changed behaviour, not interfaces
 - [17:47 PT] AnoopIbrampur T5 decide: rules.json, Rules schema, decideStopState with [C16]/[C20] tests; stacked on T4 (#42), PR to follow | @RishitRai T11 can use decideStopState once both merge
 - [18:49 PT] AnoopIbrampur T5 fixes: conflict anchored on the claim number, earlierFound test, weakNumberMinSigDigits wired, on #43
+- [19:45 PT] rohanrastogi311 T19: schema-driven typed requests, first-token confidence with padding removed and unmatched/tail mass under __other__, null-confidence fallback, caller threshold and dispute helper; 34 local tests and typecheck pass | @master-xo review stacked T19 PR after #40
 - [17:52 PT] AnoopIbrampur T3 fixtures: 7 synthetic traces with builder and tests, stacked on T5 (#43), PR to follow | @RishitRai sample-rich is ready for the front end
 - [19:19 PT] AnoopIbrampur stack update: merged main (#42 to #44 squashes) into #45 to #49 and #58 instead of rebasing (no force-push); added the optional weakNumberMinSigDigits test on #45
 - [19:56 PT] AnoopIbrampur T4b weak atoms: same-clause rule for weak numbers, measured on E2 dev claims only (eval/weak-atoms), PR to follow
+- [11:29 PT] rohanrastogi311 T19 review fixes: separate page-only and EARLIER/LATER calls, reject missing inputs before requests, move typed-1 neutral fixture under test/recorded, padding-before-real-token regression mutation checked; 38 local tests and typecheck pass; main merged preserving both board sides | @master-xo re-review #60
+- [18:11 PT] AnoopIbrampur T6 pz verify: re-checks spans, edges and stop state on stored traces, stacked on T3 (#45), PR to follow
+- [18:51 PT] AnoopIbrampur T6 fixes: earliest check, --pages usage, negated spans in verify and decide, page_hash test on #46
+- [15:51 PT] AnoopIbrampur T6 fixes: weakNumberMaxCommas passed to verify, incoming-edge-only and decide wiring tests, main merged, on #46 | @master-xo re-review #46
+- [18:13 PT] AnoopIbrampur T7 traps: falseCertainty, pz traps, 10 synthetic cases with lock, stacked on T6 (#46), PR to follow
+- [18:52 PT] AnoopIbrampur T7 fixes: real negated-span case, date_cap check, verify expectations per case, card-sentence branch tests on #47
+- [18:15 PT] AnoopIbrampur T8 make verify: copy lint, leakage stub, claims table, CI runs make verify (3 s locally), stacked on T7 (#47), PR to follow
+- [18:53 PT] AnoopIbrampur T8 fixes: 60 s budget enforced, no proof yet for non-test proofs, fixture self-check untagged on #48
+- [18:16 PT] AnoopIbrampur T9 README: judge-facing README, plan index, llms.txt, link and copy tests, stacked on T8 (#48), PR to follow
+- [18:54 PT] AnoopIbrampur T9 fixes: README wording per XO batch 2 on #49
+- [19:13 PT] AnoopIbrampur T26 clusters and roots: engine/cluster.ts with injected embed, threshold placeholder in rules.json, stacked on T3 (#45), PR to follow
+- [15:51 PT] AnoopIbrampur T26: cluster-rule priority test, stack re-merged with the T6 fix on #47, #48, #49, #58
+- [18:35 PT] AnoopIbrampur E2 dev claims: 20 claims in eval/dev-claims.json, draft PR until origin links are checked by hand | @rohanrastogi311 please check the held-out list against it
+- [15:52 PT] AnoopIbrampur E2 fixes: main merged, dev-20 note, weak-atoms scripts read eval/dev-claims.json, on #51 | @master-xo re-review #51
+- [12:12 PT] rohanrastogi311 E1 #33: ten private held-out claims frozen after exclusion checks against all six spike inputs and E2 PR #51; only eval/heldout.sha256 committed, SHA256 a10897c8bc4637eaaf5e40301596aef6564eb1226ad62126e27ac3b2b0b95354; no run or tuning performed | @master-xo review hash-only PR; durable private backup still unconfirmed
