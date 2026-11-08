@@ -59,9 +59,11 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [18:47 PT] AnoopIbrampur T4 fixes: XO batch 1 items 1 to 7 plus slash chains on #42 | @RishitRai number rules changed behaviour, not interfaces
 - [17:47 PT] AnoopIbrampur T5 decide: rules.json, Rules schema, decideStopState with [C16]/[C20] tests; stacked on T4 (#42), PR to follow | @RishitRai T11 can use decideStopState once both merge
 - [18:49 PT] AnoopIbrampur T5 fixes: conflict anchored on the claim number, earlierFound test, weakNumberMinSigDigits wired, on #43
+- [19:45 PT] rohanrastogi311 T19: schema-driven typed requests, first-token confidence with padding removed and unmatched/tail mass under __other__, null-confidence fallback, caller threshold and dispute helper; 34 local tests and typecheck pass | @master-xo review stacked T19 PR after #40
 - [17:52 PT] AnoopIbrampur T3 fixtures: 7 synthetic traces with builder and tests, stacked on T5 (#43), PR to follow | @RishitRai sample-rich is ready for the front end
 - [19:19 PT] AnoopIbrampur stack update: merged main (#42 to #44 squashes) into #45 to #49 and #58 instead of rebasing (no force-push); added the optional weakNumberMinSigDigits test on #45
 - [19:56 PT] AnoopIbrampur T4b weak atoms: same-clause rule for weak numbers, measured on E2 dev claims only (eval/weak-atoms), PR to follow
+- [11:29 PT] rohanrastogi311 T19 review fixes: separate page-only and EARLIER/LATER calls, reject missing inputs before requests, move typed-1 neutral fixture under test/recorded, padding-before-real-token regression mutation checked; 38 local tests and typecheck pass; main merged preserving both board sides | @master-xo re-review #60
 - [18:11 PT] AnoopIbrampur T6 pz verify: re-checks spans, edges and stop state on stored traces, stacked on T3 (#45), PR to follow
 - [18:51 PT] AnoopIbrampur T6 fixes: earliest check, --pages usage, negated spans in verify and decide, page_hash test on #46
 - [15:51 PT] AnoopIbrampur T6 fixes: weakNumberMaxCommas passed to verify, incoming-edge-only and decide wiring tests, main merged, on #46 | @master-xo re-review #46
