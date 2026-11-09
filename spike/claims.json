@@ -1,0 +1,65 @@
+[
+  {
+    "id": "dry-run",
+    "text": "A marathon is 26.2 miles long.",
+    "atoms": {
+      "number": { "raw": "26.2", "canonical": "26.2" }, "unit": "miles", "subjectLemma": "marathon",
+      "population": null, "time": null, "hedge": null, "namedSource": null,
+      "variants": ["26.2 miles", "26.2-mile"]
+    }
+  },
+  {
+    "id": "claim-1",
+    "text": "The average human attention span is 8 seconds, shorter than a goldfish's 9 seconds.",
+    "atoms": {
+      "number": { "raw": "8", "canonical": "8" }, "unit": "seconds", "subjectLemma": "attention",
+      "population": "human", "time": null, "hedge": null, "namedSource": null,
+      "variants": ["8 seconds", "8-second", "8 second"]
+    }
+  },
+  {
+    "id": "claim-2",
+    "text": "A 100-word email written by AI uses a whole bottle of water.",
+    "atoms": {
+      "number": { "raw": "100", "canonical": "100" }, "unit": "word", "subjectLemma": "email",
+      "population": null, "time": null, "hedge": null, "namedSource": null,
+      "variants": ["100-word email", "100 word email"]
+    }
+  },
+  {
+    "id": "claim-3",
+    "text": "Communication is 7% words, 38% tone of voice and 55% body language.",
+    "atoms": {
+      "number": { "raw": "55%", "canonical": "55%" }, "unit": null, "subjectLemma": "body language",
+      "population": null, "time": null, "hedge": null, "namedSource": null,
+      "variants": ["55% body language", "55 percent body language", "55% of communication"]
+    }
+  },
+  {
+    "id": "claim-4",
+    "text": "A ChatGPT query uses ten times the energy of a Google search.",
+    "atoms": {
+      "number": { "raw": "10", "canonical": "10" }, "unit": "times", "subjectLemma": "Google",
+      "population": null, "time": null, "hedge": null, "namedSource": null,
+      "variants": ["10 times", "10x", "ten times"]
+    }
+  },
+  {
+    "id": "claim-5",
+    "text": "The water speed record has an approximate fatality rate of 85% since 1940, making it one of the most hazardous competitions in sport.",
+    "atoms": {
+      "number": { "raw": "85%", "canonical": "85%" }, "unit": null, "subjectLemma": "water speed record",
+      "population": null, "time": "since 1940", "hedge": "approximate", "namedSource": null,
+      "variants": ["85%", "85 percent", "85 per cent"]
+    }
+  },
+  {
+    "id": "claim-6",
+    "text": "Children whose mothers took choline supplements during pregnancy scored 8 IQ points higher at age 4 than those in a placebo group.",
+    "atoms": {
+      "number": { "raw": "8", "canonical": "8" }, "unit": "IQ points", "subjectLemma": "choline",
+      "population": "children", "time": "age 4", "hedge": null, "namedSource": null,
+      "variants": ["8 IQ points", "8 points", "eight IQ points"]
+    }
+  }
+]

@@ -53,6 +53,8 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [17:45 PT] AnoopIbrampur T4 number rules: normalise, parseNumbers, canonicalKey, sameNumber, isWeak, atomHit, protectedTokens with [C2] tests, PR to follow | @RishitRai ready for T11 once merged
 - [17:47 PT] AnoopIbrampur T5 decide: rules.json, Rules schema, decideStopState with [C16]/[C20] tests; stacked on T4 (#42), PR to follow | @RishitRai T11 can use decideStopState once both merge
 - [17:52 PT] AnoopIbrampur T3 fixtures: 7 synthetic traces with builder and tests, stacked on T5 (#43), PR to follow | @RishitRai sample-rich is ready for the front end
+- [18:11 PT] AnoopIbrampur T6 pz verify: re-checks spans, edges and stop state on stored traces, stacked on T3 (#45), PR to follow
+- [18:31 PT] RishitRai T11 spike walker: findSpan, spike/walk.ts, claims.json with atoms, dry run 21 credits, pz verify 24 of 24 | @AnoopIbrampur fixtures test fails on Windows only (CRLF byte compare)
 - [18:39 PT] RishitRai T14 app shell: apps/web on Vite 7.3.7 and React 19.3.1, DESIGN.md tokens, hash routes, fixtures parsed with pz/schema, SAMPLE badge; draft on the fixtures stack
 - [16:20 PT] rohanrastogi311 T18: injected-fetch chat and embeddings, typed failures, one retry on 429/5xx, per-attempt usage logging and dated prices; 20 tests and typecheck pass locally; recorded fixtures from #6 | @master-xo review client PR; probe evidence follows
 - [19:40 PT] rohanrastogi311 T18 review fixes: logging failures preserve answers and attempt rows, missing prices give not_configured, non-empty truncated JSON rejected, claim tags removed, cached pricing fields cited; local typecheck and 24 client/schema tests pass | @master-xo re-review #40; T19 stacking next
@@ -66,7 +68,10 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [19:45 PT] rohanrastogi311 T19: schema-driven typed requests, first-token confidence with padding removed and unmatched/tail mass under __other__, null-confidence fallback, caller threshold and dispute helper; 34 local tests and typecheck pass | @master-xo review stacked T19 PR after #40
 - [17:52 PT] AnoopIbrampur T3 fixtures: 7 synthetic traces with builder and tests, stacked on T5 (#43), PR to follow | @RishitRai sample-rich is ready for the front end
 - [19:19 PT] AnoopIbrampur stack update: merged main (#42 to #44 squashes) into #45 to #49 and #58 instead of rebasing (no force-push); added the optional weakNumberMinSigDigits test on #45
+- [18:11 PT] AnoopIbrampur T6 pz verify: re-checks spans, edges and stop state on stored traces, stacked on T3 (#45), PR to follow
+- [18:51 PT] AnoopIbrampur T6 fixes: earliest check, --pages usage, negated spans in verify and decide, page_hash test on #46
 - [19:56 PT] AnoopIbrampur T4b weak atoms: same-clause rule for weak numbers, measured on E2 dev claims only (eval/weak-atoms), PR to follow
+- [07:29 PT] RishitRai #50 fix list: NBSP and soft-hyphen negation, REPLAY for cache-served runs, strictly earlier inferred parents, fact-check test, CDX statuscode:200; dry run regenerated under #61 (9 credits, LIVE)
 - [00:40 PT] rohanrastogi311 T20 #28: graded all 24 relabelled forms; revealed unchanged original spike targets with matching downloaded SHA256 commitments; six claim tables, totals and WhatsApp exposure/evidence limits in spike/grading.md | @master-xo review and append identities/wall times; E1 remains sealed
 - [11:29 PT] rohanrastogi311 T19 review fixes: separate page-only and EARLIER/LATER calls, reject missing inputs before requests, move typed-1 neutral fixture under test/recorded, padding-before-real-token regression mutation checked; 38 local tests and typecheck pass; main merged preserving both board sides | @master-xo re-review #60
 - [18:11 PT] AnoopIbrampur T6 pz verify: re-checks spans, edges and stop state on stored traces, stacked on T3 (#45), PR to follow
