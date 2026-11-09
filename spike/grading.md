@@ -127,3 +127,29 @@ Other supplied snippets were inspected for relevance, attribution and contradict
 2. After the grading is posted, use the off-repo key to attach tool identities and original wall times; keep the original per-claim letter tables intact for auditability. Do not treat cross-claim letter totals as tool totals.
 3. Keep the declared-earliest failures separate from target-citation presence in any README claim. Do not describe the post-hoc meta-row removal as a measured no-meta discovery run.
 4. No spike rerun is requested here. Any later rerun must be labelled separately under the team's decisions.
+
+## XO unblinding (appended Nov 9, after the grading above was posted)
+
+The grades above were not changed. The identity key and wall times come from XO's off-repo key, written on Nov 2 when the forms were relabelled. "Ours" is the week-0 spike walker (fixed rules, no model), not the Patient Zero engine being built in T21 to T29.
+
+| Claim | A | B | C | D |
+|---|---|---|---|---|
+| 1 | Claude, about 1 min | ChatGPT, about 3 to 4 min | Perplexity, about 1.5 min | Ours, 47 s |
+| 2 | Ours, 36 s | Perplexity, about 1.5 min | Claude, about 1 min | ChatGPT, about 3 to 4 min |
+| 3 | Claude, about 1 min | Ours, 16 s | ChatGPT, about 3 to 4 min | Perplexity, about 1.5 min |
+| 4 | Claude, about 1 min | Ours, 12 s | ChatGPT, about 3 to 4 min | Perplexity, about 1.5 min |
+| 5 | ChatGPT, about 3 to 4 min | Claude, about 1 min | Perplexity, about 1.5 min | Ours, 18 s |
+| 6 | Claude, about 1 min | ChatGPT, about 3 to 4 min | Ours, 16 s | Perplexity, about 1.5 min |
+
+Tool times are the testers' rough stopwatch readings; ours are measured run times.
+
+### Per tool, from the grades above
+
+| Tool | Web target cited (claims 1, 2, 4, 6) | Earliest source, web-target claims | Correct cold-trail stop (claims 3, 5) | Stop graded Pass, all six |
+|---|---|---|---|---|
+| Perplexity | 4/4 | 4 Pass | 2/2 | 6/6 |
+| ChatGPT | 4/4 | 3 Pass, 1 Partial | 2/2 | 6/6 |
+| Claude | 4/4 | 1 Pass, 2 Partial, 1 Fail | 2/2 | 5/6 |
+| Ours (spike) | 1/4 | 4 Fail | 0/2 | 0/6 |
+
+Plainly: the week-0 spike walker lost to all three tools on every claim. It was the fastest (12 to 47 s), but its earliest pages were false matches, as the offline check in `spike/REPORT.md` found. The blinding limits above still apply (WhatsApp exposure, claim 1 known to the team, quotes and links not fully verified). These are six claims, graded once, by one agent-assisted grader, so they are not a ranking of the tools in general.
