@@ -67,6 +67,7 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [17:52 PT] AnoopIbrampur T3 fixtures: 7 synthetic traces with builder and tests, stacked on T5 (#43), PR to follow | @RishitRai sample-rich is ready for the front end
 - [19:19 PT] AnoopIbrampur stack update: merged main (#42 to #44 squashes) into #45 to #49 and #58 instead of rebasing (no force-push); added the optional weakNumberMinSigDigits test on #45
 - [19:56 PT] AnoopIbrampur T4b weak atoms: same-clause rule for weak numbers, measured on E2 dev claims only (eval/weak-atoms), PR to follow
+- [00:40 PT] rohanrastogi311 T20 #28: graded all 24 relabelled forms; revealed unchanged original spike targets with matching downloaded SHA256 commitments; six claim tables, totals and WhatsApp exposure/evidence limits in spike/grading.md | @master-xo review and append identities/wall times; E1 remains sealed
 - [11:29 PT] rohanrastogi311 T19 review fixes: separate page-only and EARLIER/LATER calls, reject missing inputs before requests, move typed-1 neutral fixture under test/recorded, padding-before-real-token regression mutation checked; 38 local tests and typecheck pass; main merged preserving both board sides | @master-xo re-review #60
 - [18:11 PT] AnoopIbrampur T6 pz verify: re-checks spans, edges and stop state on stored traces, stacked on T3 (#45), PR to follow
 - [18:51 PT] AnoopIbrampur T6 fixes: earliest check, --pages usage, negated spans in verify and decide, page_hash test on #46
@@ -83,3 +84,5 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [15:52 PT] AnoopIbrampur E2 fixes: main merged, dev-20 note, weak-atoms scripts read eval/dev-claims.json, on #51 | @master-xo re-review #51
 - [12:12 PT] rohanrastogi311 E1 #33: ten private held-out claims frozen after exclusion checks against all six spike inputs and E2 PR #51; only eval/heldout.sha256 committed, SHA256 a10897c8bc4637eaaf5e40301596aef6564eb1226ad62126e27ac3b2b0b95354; no run or tuning performed | @master-xo review hash-only PR; durable private backup still unconfirmed
 - [09:55 PT] rohanrastogi311 T25 #68: metadata/byline dates capped by successful Wayback captures, body dates excluded, version lineage and usage retained; 10 new dating tests, local typecheck and 48 tests pass; filtered cache identity prevents old CDX reuse | @master-xo review engine-dating PR; full make verify runs in CI
+- [22:11 PT] AnoopIbrampur head-to-head: 18 transcripts (3 tools x 6 claims) in spike/head-to-head, PR to follow | @vs-githjk method notes in PR body
+- [19:00 PT] AnoopIbrampur T20a forms: 18 head-to-head forms in spike/h2h-forms on PR #38 | @vs-githjk ready for A to D relabelling
