@@ -282,3 +282,13 @@ describe("replay with fresh free calls", () => {
     expect(replay.trace.usage.length).toBeGreaterThan(first.trace.usage.length);
   });
 });
+
+describe("replay guard", () => {
+  it("[C14] refuses to replay a recorded trace of a different claim, before any call", async () => {
+    const pages = world([newer, older]);
+    const first = await run(pages.impl);
+    const calls = pages.calls.length;
+    await expect(run(pages.impl, 150, rules, { replayOf: { ...first.trace, id: "another-claim" } })).rejects.toThrow(/another-claim/);
+    expect(pages.calls.length).toBe(calls);
+  });
+});

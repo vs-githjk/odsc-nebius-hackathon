@@ -133,6 +133,9 @@ function measuredReadouts(parent: string, child: string, atoms: Atoms): Readout[
 }
 
 export async function walkClaim(claim: SpikeClaim, deps: Deps): Promise<{ trace: Trace; log: LogLine[] }> {
+  if (deps.replayOf && deps.replayOf.id !== claim.id) {
+    throw new Error(`--replay-of holds a trace of ${deps.replayOf.id}, not ${claim.id}`);
+  }
   const { atoms } = claim;
   const { rules } = deps;
   const lemma = normalise(atoms.subjectLemma).toLowerCase();

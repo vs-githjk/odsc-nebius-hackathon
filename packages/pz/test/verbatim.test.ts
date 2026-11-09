@@ -62,3 +62,9 @@ describe("findSpan negation through look-alike characters", () => {
     expect(findSpan("The figure is not 8.", "The figure is")).toEqual({ rejected: "negated" });
   });
 });
+
+describe("findSpan following negation through look-alike characters", () => {
+  it("[C2] a soft hyphen inside a following not is still a negation", () => {
+    expect(findSpan("The figure is n­ot 8.", "The figure is")).toEqual({ rejected: "negated" });
+  });
+});
