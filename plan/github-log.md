@@ -25,3 +25,10 @@
 - 19:30 PT Nov 2: re-review PASS #42 #43 #44; merged #42 73736dc, #43 d37d4ea (after XO merge of main ca2e138), #44 bc8a11c (after d70996c); rerun go posted on #10
 - 15:45 PT Nov 4 watch pass: merged #40 #61 #45 #37; FIX lists #60 on #3, #46 #51 on #4, #50 #53 on #1; blind forms 27be8cd; #15 closed
 - 19:45 PT Nov 7 watch pass: merged #63 #51 #46 #47 #48 #49 #58 #60 #53 via syncmerge; FIX #50 #62 on #1; new issues #64 to #68
+
+## Nov 9 watch pass (14:30 to 14:50 PT)
+- Merged: #78 T20 grading (XO unblinding appended), #38 head-to-head, #79 T25 dating, #81 T31 Jev harness, #76 T22 fingerprint, #50 T11 spike walker.
+- FIX posted: #74 T27 (May as hedge), #75 T21 (substring sentences), #77 T28 (first-word name, wrong date, origin words), #62 T15 (#69: dark ramp, top band, start page), #52 (make verify fails on run-1 traces under post-#61 rules; stop_state comparison bug).
+- Notes: #80 T29 (5), #82 T23 (6). Rulings: red hop (b); dating owns node dates.
+- Unblinded result: spike walker 0/4 earliest, 1/4 target cited, 0/2 cold stops; Perplexity 4/4 and 2/2, ChatGPT 3/4 and 2/2, Claude 1/4 and 2/2.
+- Waiting on Vidyut: Tavily credits for claims 1 and 4 replay (#82, default no); live Jev run (#81).

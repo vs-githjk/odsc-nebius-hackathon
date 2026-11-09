@@ -1,21 +1,21 @@
 # Usage ledger (everyone)
 
-Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py. 40 runs across 2 people: AnoopIbrampur, vs-githjk.
+Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py. 43 runs across 2 people: AnoopIbrampur, vs-githjk.
 
 ## By person
 
 | Who | Runs | Output tokens | Apify | Bright Data | Web | GitHub | Codex | Last updated (UTC) |
 |---|---|---|---|---|---|---|---|---|
 | AnoopIbrampur | 1 | 412,471 | 0 | 0 | 36 | 146 | 0 | 2026-11-08T19:18:34Z |
-| vs-githjk | 39 | 1,905,060 | 10 | 7 | 63 | 220 | 11 | 2026-11-08T03:39:17Z |
+| vs-githjk | 42 | 1,980,984 | 10 | 7 | 63 | 236 | 11 | 2026-11-09T22:46:32Z |
 
 ## Totals by service
 
 | Service | Calls |
 |---|---|
-| Shell | 1158 |
-| Claude Code tools | 1025 |
-| GitHub (gh) | 366 |
+| Shell | 1242 |
+| Claude Code tools | 1048 |
+| GitHub (gh) | 382 |
 | Other HTTP | 241 |
 | MCP ccd_turn | 112 |
 | Web search and fetch | 99 |
@@ -32,10 +32,10 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 
 | Kind | Tokens |
 |---|---|
-| input_tokens | 7,885 |
-| cache_creation_input_tokens | 11,737,987 |
-| cache_read_input_tokens | 322,057,340 |
-| output_tokens | 2,317,531 |
+| input_tokens | 8,103 |
+| cache_creation_input_tokens | 12,215,279 |
+| cache_read_input_tokens | 333,783,110 |
+| output_tokens | 2,393,455 |
 
 ## Per run
 
@@ -51,7 +51,7 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 | vs-githjk | 2026-10-29T07:46 | master-finder: Market validation for Patient Zero | claude-opus-5-5 | 40,009 | 7 | 2 | 0 | 25 | 0 | 0 | 0 | 0 | 11 |
 | vs-githjk | 2026-10-29T08:19 | master-planner: Refine Patient Zero, round 1 | claude-opus-5-5 | 29,492 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 | 2 |
 | vs-githjk | 2026-10-29T08:27 | master-auditor: Red-team Patient Zero brief, round 2 | claude-opus-5-5 | 32,092 | 0 | 0 | 0 | 5 | 3 | 0 | 0 | 0 | 5 |
-| vs-githjk | 2026-10-29T08:37 | main session | claude-opus-5-5, <synthetic> | 316,947 | 0 | 0 | 0 | 1 | 86 | 3 | 8 | 0 | 4 |
+| vs-githjk | 2026-10-29T08:37 | main session | claude-opus-5-5, <synthetic> | 347,386 | 0 | 0 | 0 | 1 | 99 | 3 | 8 | 0 | 4 |
 | vs-githjk | 2026-10-29T08:39 | master-planner: Fold auditor r2 fixes into brief | claude-opus-5-5 | 43,561 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 |
 | vs-githjk | 2026-10-29T08:42 | master-xo: GitHub kickoff issues for team | claude-opus-5-5 | 27,048 | 0 | 0 | 0 | 0 | 15 | 0 | 2 | 0 | 6 |
 | vs-githjk | 2026-10-29T08:46 | master-designer: 10-min world-class Patient Zero look | claude-fable-5-1 | 43,300 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -81,6 +81,9 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 | vs-githjk | 2026-11-04T23:22 | master-reviewer: Review Anoop stack refix and T26 | claude-opus-5-5 | 35,556 | 0 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 |
 | vs-githjk | 2026-11-04T23:33 | master-reviewer: Review Rishit's clients, walker, shell | claude-opus-5-5 | 31,763 | 0 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 |
 | vs-githjk | 2026-11-08T03:27 | master-reviewer: Re-review T19, T11, T14, T15 | claude-opus-5-5 | 32,456 | 0 | 0 | 2 | 0 | 7 | 0 | 0 | 0 | 2 |
+| vs-githjk | 2026-11-09T22:33 | master-reviewer: Review Anoop PRs 74-77 | claude-opus-5-5 | 14,409 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| vs-githjk | 2026-11-09T22:33 | master-reviewer: Review Rohan PRs 79-81 | claude-opus-5-5 | 13,126 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| vs-githjk | 2026-11-09T22:33 | master-reviewer: Re-review Rishit PRs 50 62 82 | claude-opus-5-5 | 17,950 | 0 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 |
 
 ## Detail (service: tool or host)
 
@@ -95,7 +98,7 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 - Browser (Playwright): browser_run_code_unsafe: 2
 - Browser (Playwright): browser_snapshot: 1
 - Codex: codex: 11
-- GitHub (gh): gh: 366
+- GitHub (gh): gh: 382
 - MCP ccd_directory: change_directory: 1
 - MCP ccd_host: open_in_editor: 7
 - MCP ccd_pr: get_status: 1
