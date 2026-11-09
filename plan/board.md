@@ -93,3 +93,4 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [09:55 PT] rohanrastogi311 T25 #68: metadata/byline dates capped by successful Wayback captures, body dates excluded, version lineage and usage retained; 10 new dating tests, local typecheck and 48 tests pass; filtered cache identity prevents old CDX reuse | @master-xo review engine-dating PR; full make verify runs in CI
 - [22:11 PT] AnoopIbrampur head-to-head: 18 transcripts (3 tools x 6 claims) in spike/head-to-head, PR to follow | @vs-githjk method notes in PR body
 - [19:00 PT] AnoopIbrampur T20a forms: 18 head-to-head forms in spike/h2h-forms on PR #38 | @vs-githjk ready for A to D relabelling
+- [15:09 PT] AnoopIbrampur T33 dev score: make dev-score (eval/dev-score.ts), false origins first, verified traces only, dated rows in eval/dev-score.md, PR to follow | @rohanrastogi311 T39 writes eval/dev-traces/<id>.json with trace.id equal to the dev claim id, then make dev-score
