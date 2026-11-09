@@ -49,7 +49,7 @@ describe("origin card", () => {
     const cold = "The claim originated in a zoo report that says our adult penguins nap about 14 times a day.";
     expect((await buildCard(rich, { client: clientFor(cold) })).dropped!.reasons).toEqual(['says "originated" without ORIGIN_FOUND']);
     for (const [words, sentence] of [["comes from", "The claim comes from a zoo report that says our adult penguins nap about 14 times a day."],
-      ["first page to say", "A zoo report is the first page to say our adult penguins nap about 14 times a day."]])
+      ["first page to say", "A zoo report is the first page to say our adult penguins nap about 14 times a day."]] as const)
       expect(cardProblems(sentence, rich)).toEqual([`says "${words}" without ORIGIN_FOUND`]);
     expect(cardProblems(cold.replace("zoo report", "keeper log"), origin)).toEqual([]);
     const banned = "The keeper log dated 2019-04-30 proves the adult penguins napped 14 times a day.";
