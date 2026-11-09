@@ -1,0 +1,22 @@
+{
+  "note": "Hand-written by Anoop: stand-in fingerprint responses for the E2 dev claims, in the Token Factory chat format. Not live calls.",
+  "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+  "responses": {
+    "dev-02": "{\"subject\": \"person\", \"unit\": null, \"population\": \"The average person\", \"time\": null, \"hedge\": null, \"namedSource\": null}",
+    "dev-03": "{\"subject\": \"brains\", \"unit\": \"percent\", \"population\": \"Humans\", \"time\": null, \"hedge\": \"only\", \"namedSource\": null}",
+    "dev-04": "{\"subject\": \"glasses\", \"unit\": \"glasses of water a day\", \"population\": \"You\", \"time\": null, \"hedge\": null, \"namedSource\": null}",
+    "dev-05": "{\"subject\": \"habit\", \"unit\": \"days\", \"population\": null, \"time\": null, \"hedge\": null, \"namedSource\": null}",
+    "dev-06": "{\"subject\": \"steps\", \"unit\": \"steps a day\", \"population\": \"You\", \"time\": null, \"hedge\": null, \"namedSource\": null}",
+    "dev-09": "{\"subject\": \"plastic\", \"unit\": null, \"population\": \"all plastic ever made\", \"time\": null, \"hedge\": \"Only\", \"namedSource\": null}",
+    "dev-10": "{\"subject\": \"plastic\", \"unit\": null, \"population\": null, \"time\": \"By 2050\", \"hedge\": null, \"namedSource\": null}",
+    "dev-11": "{\"subject\": \"companies\", \"unit\": null, \"population\": null, \"time\": null, \"hedge\": \"Just\", \"namedSource\": null}",
+    "dev-13": "{\"subject\": \"Livestock\", \"unit\": null, \"population\": null, \"time\": null, \"hedge\": null, \"namedSource\": null}",
+    "dev-14": "{\"subject\": \"phones\", \"unit\": \"times a day\", \"population\": \"Americans\", \"time\": null, \"hedge\": null, \"namedSource\": null}",
+    "dev-15": "{\"subject\": \"cars\", \"unit\": null, \"population\": null, \"time\": \"in their lifetimes\", \"hedge\": null, \"namedSource\": null}",
+    "dev-16": "{\"subject\": \"jobs\", \"unit\": \"million\", \"population\": null, \"time\": null, \"hedge\": \"could\", \"namedSource\": null}",
+    "dev-17": "{\"subject\": \"users\", \"unit\": \"million users\", \"population\": \"ChatGPT\", \"time\": \"in two months\", \"hedge\": null, \"namedSource\": null}",
+    "dev-18": "{\"subject\": \"pilots\", \"unit\": null, \"population\": \"generative AI pilots at companies\", \"time\": null, \"hedge\": null, \"namedSource\": null}",
+    "dev-19": "{\"subject\": \"RAM\", \"unit\": null, \"population\": \"your PC\", \"time\": null, \"hedge\": \"about\", \"namedSource\": \"Sam Altman\"}",
+    "dev-20": "{\"subject\": \"candies\", \"unit\": null, \"population\": \"popular Halloween candies\", \"time\": null, \"hedge\": null, \"namedSource\": \"Florida\"}"
+  }
+}

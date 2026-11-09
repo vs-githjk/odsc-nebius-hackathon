@@ -1,0 +1,1 @@
+The first-capture.json CDX response is copied unchanged from the existing synthetic response in packages/pz/test/clients.test.ts. It uses a.example and is a deterministic client replay fixture, not evidence of a new live archive request.
