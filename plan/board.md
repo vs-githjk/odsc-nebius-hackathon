@@ -94,3 +94,4 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [22:11 PT] AnoopIbrampur head-to-head: 18 transcripts (3 tools x 6 claims) in spike/head-to-head, PR to follow | @vs-githjk method notes in PR body
 - [19:00 PT] AnoopIbrampur T20a forms: 18 head-to-head forms in spike/h2h-forms on PR #38 | @vs-githjk ready for A to D relabelling
 - [23:06 PT] AnoopIbrampur T21 intake: engine/intake.ts with the extraction prompt, 5 hand-written recorded answers, numbers parsed by code, PR to follow | @rohanrastogi311 optional: record the 5 answers live with INTAKE_PROMPT
+- [15:00 PT] AnoopIbrampur T21 fixes: model pointers snapped to whole sentences, ambiguous and in-word pointers rejected, on #75

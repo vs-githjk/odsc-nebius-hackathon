@@ -1,7 +1,7 @@
 import { readdirSync, readFileSync } from "node:fs";
 import { describe, expect, it, vi } from "vitest";
 import type { ChatInput } from "../src/clients/tokenfactory.ts";
-import { INTAKE_PROMPT, intake } from "../src/engine/intake.ts";
+import { INTAKE_PROMPT, intake, sentences } from "../src/engine/intake.ts";
 
 type Recorded = { note: string; answer: string; response: { model: string; content: string } };
 const dir = new URL("./recorded/intake/", import.meta.url);
@@ -59,6 +59,28 @@ describe("intake", () => {
     const answer = "The colony is large. Keepers counted 14 naps a day.";
     const out = await intake(answer, { client: clientFor(JSON.stringify({ claims: [{ sentence: "The colony is large.", number: "14" }] })) });
     expect(out.rejected).toEqual([{ sentence: "The colony is large.", number: "14", reason: "no_number" }]);
+  });
+
+  it("[C11] snaps a cut pointer to its whole sentence, so a negation is never dropped", async () => {
+    const answer = "Keepers say penguins do not nap 14 times a day. They nap less.";
+    const list = (items: [string, string][]) => clientFor(JSON.stringify({ claims: items.map(([sentence, number]) => ({ sentence, number })) }));
+    const cut = await intake(answer, { client: list([["nap 14 times a day.", "14"]]) });
+    expect(cut.claims.map((c) => c.text)).toEqual(["Keepers say penguins do not nap 14 times a day."]);
+    expect(answer.slice(cut.claims[0]!.start, cut.claims[0]!.end)).toBe("Keepers say penguins do not nap 14 times a day.");
+    const bare = await intake(answer, { client: list([["14", "14"]]) });
+    expect(bare.claims.map((c) => [c.text, c.number.raw])).toEqual([["Keepers say penguins do not nap 14 times a day.", "14"]]);
+  });
+
+  it("[C11] a pointer found in two different sentences, or only inside a word, is rejected", async () => {
+    const answer = "The colony has 3 pools. Keepers count 3 feeds a day. It opened in 1935.";
+    const list = (sentence: string, number: string) => clientFor(JSON.stringify({ claims: [{ sentence, number }] }));
+    expect((await intake(answer, { client: list("3", "3") })).rejected.map((r) => r.reason)).toEqual(["ambiguous"]);
+    expect((await intake(answer, { client: list("93", "93") })).rejected.map((r) => r.reason)).toEqual(["not_in_text"]);
+  });
+
+  it("splits sentences per line, and keeps decimals and list items whole", () => {
+    expect(sentences("The reservoir holds 4.2 billion litres. It fell to 61%!\n- 14 naps a day\n- 212 penguins").map((s) => s.text))
+      .toEqual(["The reservoir holds 4.2 billion litres.", "It fell to 61%!", "- 14 naps a day", "- 212 penguins"]);
   });
 
   it("sends one strict-schema request with the pinned model and the answer as data", async () => {

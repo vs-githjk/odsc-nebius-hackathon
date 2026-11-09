@@ -24,15 +24,34 @@ const Extracted = z.object({
 export const INTAKE_SCHEMA = z.toJSONSchema(Extracted);
 
 export type IntakeClaim = { text: string; start: number; end: number; number: { raw: string; canonical: string } };
-export type RejectReason = "not_in_text" | "no_number" | "number_not_in_sentence" | "duplicate" | SkipReason;
+export type RejectReason = "not_in_text" | "ambiguous" | "no_number" | "number_not_in_sentence" | "duplicate" | SkipReason;
 export type IntakeResult = {
   claims: IntakeClaim[];
   rejected: { sentence: string; number: string; reason: RejectReason }[];
   usage: Result<ChatData>["attempts"];
 };
 
+// The pasted answer's sentences, with offsets in its normalised text. Lines split first, so list items stay apart;
+// a sentence ends at ".", "!" or "?" (and any closing quote or bracket) before a space and a capital or digit.
+export function sentences(answer: string): { text: string; start: number; end: number }[] {
+  const text = normalise(answer);
+  const out: { text: string; start: number; end: number }[] = [];
+  let from = 0;
+  for (const piece of answer.split(/\n+/).flatMap((line) => normalise(line).split(/(?<=[.!?]["')\]]?)\s+(?=["'(\[]?[\p{Lu}\p{N}])/u))) {
+    if (!piece) continue;
+    const start = text.indexOf(piece, from);
+    out.push({ text: piece, start, end: start + piece.length });
+    from = start + piece.length;
+  }
+  return out;
+}
+
+const atWords = (sentence: string, pointer: string) =>
+  new RegExp(String.raw`(?<![\p{L}\p{N}])${pointer.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?![\p{L}\p{N}])`, "u").test(sentence);
+
 // A quick look at a pasted answer. Each listed sentence must appear in the normalised text, and its number is
 // parsed by code from that sentence; the model's copy of the number only picks which parsed number it meant.
+// The model's pointer is snapped to the one whole sentence that contains it, so a cut can never drop a "not".
 export async function intake(answer: string, { client }: { client: Client }): Promise<IntakeResult> {
   const result = await client.chat({ model: MODEL, messages: [
     { role: "system", content: INTAKE_PROMPT }, { role: "user", content: JSON.stringify({ source_text: answer }) },
@@ -41,14 +60,16 @@ export async function intake(answer: string, { client }: { client: Client }): Pr
   try { listed = Extracted.parse(JSON.parse(result.data.content)).claims; }
   catch { throw new TokenFactoryError("bad_response", 200, result.attempts); }
 
-  const text = normalise(answer);
+  const all = sentences(answer);
   const claims: IntakeClaim[] = [];
   const rejected: IntakeResult["rejected"] = [];
   for (const item of listed) {
     const reject = (reason: RejectReason) => rejected.push({ sentence: item.sentence, number: item.number, reason });
-    const sentence = normalise(item.sentence);
-    const start = sentence ? text.indexOf(sentence) : -1;
-    if (start < 0) { reject("not_in_text"); continue; }
+    const pointer = normalise(item.sentence);
+    const hits = pointer ? all.filter((s) => atWords(s.text, pointer)) : [];
+    if (!hits.length) { reject("not_in_text"); continue; }
+    if (new Set(hits.map((h) => h.text)).size > 1) { reject("ambiguous"); continue; }
+    const { text: sentence, start, end } = hits[0]!;
     const { numbers, skipped } = parseNumbers(sentence);
     const given = parseNumbers(item.number);
     const hint = given.numbers[0];
@@ -57,7 +78,7 @@ export async function intake(answer: string, { client }: { client: Client }): Pr
     if (!found) { reject(hintSkip?.reason ?? (numbers.length ? "number_not_in_sentence" : "no_number")); continue; }
     const number = { raw: found.raw, canonical: canonicalKey(found) };
     if (claims.some((c) => c.text === sentence && c.number.canonical === number.canonical)) { reject("duplicate"); continue; }
-    claims.push({ text: sentence, start, end: start + sentence.length, number });
+    claims.push({ text: sentence, start, end, number });
   }
   return { claims, rejected, usage: result.attempts };
 }
