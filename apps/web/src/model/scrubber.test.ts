@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import type { Trace } from "pz/schema";
 import { loadTraces } from "../data/loadTraces.ts";
-import { dateToX, edgeStyle, scrubberStops, wordsAt } from "./scrubber.ts";
+import { dateToX, edgeStyle, heat, scrubberStops, stopNote, wordsAt } from "./scrubber.ts";
 
 const { traces } = loadTraces();
 const byId = (id: string) => traces.find((t) => t.id === id)!;
@@ -95,5 +95,39 @@ describe("dateToX", () => {
     expect(dateToX(trace, "2019-12-15")).toBeCloseTo(0, 5);
     expect(dateToX(trace, "2023-03-01")).toBeCloseTo(1, 5);
     expect(dateToX(trace, "2021-06-01")).toBeGreaterThan(dateToX(trace, "2020-02-10"));
+  });
+});
+
+describe("stopNote", () => {
+  it("every page in trace.earliest.nodeIds is noted as the earliest we found, both on a conflicting trace", () => {
+    const trace = byId("sample-conflicting");
+    const stops = scrubberStops(trace);
+    const earliest = stops.map((_, i) => stopNote(trace, stops, i).earliest);
+    expect(earliest.slice(-2)).toEqual([true, true]);
+    expect(earliest[0]).toBe(false);
+  });
+
+  it("a hop's note names the newer page it was reached from, so the link reads the right way", () => {
+    const trace = byId("sample-conflicting");
+    const stops = scrubberStops(trace);
+    const last = stopNote(trace, stops, stops.length - 1);
+    const zooFaq = stopNote(trace, stops, stops.length - 2);
+    expect(last.via).toEqual({ kind: "explicit", domain: "harborzoo.example", date: "2019-12-15" });
+    expect(zooFaq.via).toBeNull();
+  });
+
+  it("[C3] an inferred hop says so in its note", () => {
+    const trace = byId("sample-rich");
+    const stops = scrubberStops(trace);
+    const i = stops.findIndex((s) => s.inferred);
+    expect(stopNote(trace, stops, i).via?.kind).toBe("inferred");
+  });
+});
+
+describe("heat", () => {
+  it("samples the time ramp: deep at the past end, hot at today", () => {
+    expect(heat(0)).toBe("rgb(20, 52, 164)");
+    expect(heat(1)).toBe("rgb(255, 79, 63)");
+    expect(heat(0.5)).toBe("rgb(25, 184, 204)");
   });
 });

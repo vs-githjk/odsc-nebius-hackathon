@@ -241,30 +241,49 @@ a {
   background: var(--ramp);
 }
 
+.samples-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.samples-head h2 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+}
+
 .samples {
-  display: grid;
-  gap: 12px;
-  margin: 24px 0 0;
+  margin: 0;
   padding: 0;
   list-style: none;
 }
 
+/* Rows separated by hairlines, not boxed: the stage is the only card. */
 .sample {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
-  gap: 8px 16px;
+  gap: 4px 16px;
   min-height: 44px;
-  padding: 14px 18px;
-  border: 1px solid var(--line);
-  border-radius: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
   color: var(--ink);
   text-decoration: none;
 }
 
-.sample:hover {
-  background: var(--bg-2);
+.sample:hover .sample-state {
+  color: var(--action);
+}
+
+.sample-state {
+  font-size: 17px;
+  font-weight: 500;
 }
 
 .meta {
@@ -298,5 +317,21 @@ a {
   .stage {
     padding: 22px;
     border-radius: 20px;
+  }
+}
+
+.field-note {
+  display: block;
+  margin-top: 8px;
+}
+
+.field {
+  display: block;
+}
+
+@media (max-width: 600px) {
+  /* No text under 14 px on a phone (#69). */
+  .chip {
+    font-size: 14px;
   }
 }

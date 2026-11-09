@@ -25,7 +25,32 @@ export function xAt(xs: number[], position: number): number {
   return q === 0 || i + 1 >= xs.length ? xs[i]! : xs[i]! + (xs[i + 1]! - xs[i]!) * q;
 }
 
-const LABEL_GAP = 0.06;
+const LABEL_GAP = 0.07;
+
+type Tick = { key: string; x: number; label: string; hop: boolean };
+
+// One label per year across the trace, bold where a stop sits. When the stops sit within two years of each other,
+// years alone would repeat, so each stop is labelled with its month instead. A label that would crowd one already
+// placed is skipped; the current stop's label is placed first.
+function tickLabels(trace: Trace, stops: Stop[], xs: number[], index: number): Tick[] {
+  const dated = stops.map((s) => s.date).filter((d): d is string => d !== null);
+  const years = dated.map((d) => Number(d.slice(0, 4)));
+  const short = years.length === 0 || Math.max(...years) - Math.min(...years) < 2;
+  const candidates: Tick[] = short
+    ? stops.map((s, i) => ({ key: s.spanId, x: xs[i]!, label: s.date?.slice(0, 7) ?? "undated", hop: true }))
+    : Array.from({ length: Math.max(...years) - Math.min(...years) + 1 }, (_, n) => Math.min(...years) + n).map((y) => ({
+        key: String(y),
+        x: Math.min(1, Math.max(0, dateToX(trace, `${y}-07-01`))),
+        label: String(y),
+        hop: years.includes(y),
+      }));
+  const current = short ? candidates[index] : candidates.find((c) => c.label === stops[index]?.date?.slice(0, 4));
+  const placed: Tick[] = [];
+  for (const c of [...(current ? [current] : []), ...candidates.filter((c) => c.hop), ...candidates]) {
+    if (!placed.includes(c) && placed.every((p) => Math.abs(p.x - c.x) >= LABEL_GAP)) placed.push(c);
+  }
+  return placed.sort((a, b) => a.x - b.x);
+}
 
 type Props = {
   trace: Trace;
@@ -70,21 +95,14 @@ export function Scrubber({ trace, stops, position, reducedMotion, onMove, onSett
     onSettle(Math.min(last, Math.max(0, next)));
   };
 
-  // A year label is skipped when it would sit on one already shown; the current stop's label always wins.
-  const labelled = new Set<number>();
-  for (const i of [index, ...stops.keys()]) {
-    if (xs[i] !== undefined && [...labelled].every((j) => Math.abs(xs[j]! - xs[i]!) >= LABEL_GAP)) labelled.add(i);
-  }
-  // Years alone read the same when the stops sit within two years of each other; show the month too.
-  const years = stops.map((s) => s.date).filter((d): d is string => d !== null).map((d) => Number(d.slice(0, 4)));
-  const labelChars = years.length > 0 && Math.max(...years) - Math.min(...years) < 2 ? 7 : 4;
+  const ticks = tickLabels(trace, stops, xs, index);
   const current = stops[index];
   const handleX = xAt(xs, position);
   return (
     <div className="scrub">
       <div className="track" ref={track} onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={up}>
-        <div className="track-fill" />
-        <div className="track-future" style={{ left: `${xs[0]! * 100}%` }} />
+        <div className="track-rest" />
+        <div className="track-fill" style={{ ["--x" as string]: handleX }} />
         {stops.slice(1).map((s, n) =>
           s.inferred ? (
             <span
@@ -109,16 +127,18 @@ export function Scrubber({ trace, stops, position, reducedMotion, onMove, onSett
           aria-valuetext={current ? `${current.date ?? "undated"}, ${new URL(current.url).hostname}` : ""}
           onKeyDown={key}
           style={{ left: `${handleX * 100}%` }}
-        />
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 12a9 9 0 1 0 3-6.7M3 4v4.5h4.5M12 7.5V12l3 2" />
+          </svg>
+        </div>
       </div>
       <div className="ticks" aria-hidden="true">
-        {stops.map((s, i) =>
-          labelled.has(i) ? (
-            <span key={s.spanId} className={i === index ? "hop" : ""} style={{ left: `${xs[i]! * 100}%` }}>
-              {s.date?.slice(0, labelChars) ?? "?"}
-            </span>
-          ) : null,
-        )}
+        {ticks.map((t) => (
+          <span key={t.key} className={t.hop ? "hop" : ""} style={{ left: `${t.x * 100}%` }}>
+            {t.label}
+          </span>
+        ))}
       </div>
     </div>
   );

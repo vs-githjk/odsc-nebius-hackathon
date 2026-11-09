@@ -18,25 +18,31 @@ function useRoute(): Route {
 }
 
 const stateLabel = (trace: Trace) => trace.decision.state.replace(/_/g, " ");
+const sentenceCase = (text: string) => text.charAt(0) + text.slice(1).toLowerCase();
 
 function Start() {
   return (
     <main className="wrap section stack">
       <h1 className="k">Where did this number start?</h1>
       <p className="lead">Paste a statistic. Patient Zero walks it back through time to the earliest page we can find, and shows every step.</p>
-      <label className="stack">
-        <span className="meta">Live traces arrive with the engine; samples below</span>
-        <input className="input" type="text" placeholder="Paste a statistic or a quote" disabled />
+      <label className="field">
+        <input className="input" type="text" placeholder="Paste a statistic or a quote" aria-describedby="live-note" disabled />
+        <span id="live-note" className="meta field-note">Live traces arrive with the engine; samples below.</span>
       </label>
       <section aria-labelledby="samples-heading">
-        <h2 id="samples-heading" className="meta">Samples</h2>
+        <div className="samples-head">
+          <h2 id="samples-heading">Samples</h2>
+          {traces.every((t) => t.synthetic) && <span className="meta">Example data: an invented claim on invented pages.</span>}
+        </div>
         <ul className="samples">
           {traces.map((trace) => (
             <li key={trace.id}>
               <a className="sample" href={`#/t/${encodeURIComponent(trace.id)}`}>
-                <span>{trace.id}</span>
-                <span className="meta">{stateLabel(trace)}</span>
-                <ModeBadge trace={trace} />
+                <span className="sample-state">{sentenceCase(stateLabel(trace))}</span>
+                <span className="meta">
+                  {trace.roots.pages} {trace.roots.pages === 1 ? "page" : "pages"}, {trace.id}
+                </span>
+                {!trace.synthetic && <ModeBadge trace={trace} />}
               </a>
             </li>
           ))}
@@ -69,7 +75,7 @@ export function App() {
             <span className="wordmark-ring" aria-hidden="true" />
             Patient Zero
           </a>
-          <a className="btn small" href="#/">Samples</a>
+          <a className="btn small" href="#/">Trace a claim</a>
         </div>
       </nav>
       {route.name === "trace" ? <TraceRoute id={route.id} /> : <Start />}

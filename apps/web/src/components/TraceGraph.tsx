@@ -1,53 +1,74 @@
 import type { Trace } from "pz/schema";
-import { dateToX, edgeStyle } from "../model/scrubber.ts";
+import { dateToX, edgeStyle, heat } from "../model/scrubber.ts";
 
-const W = 1000;
-const ROW = 46;
-const PAD = 28;
+type Disc = { id: string; x: number; y: number; pages: number; nodeIds: string[] };
 
-// Pages on a time axis, past on the left; one row per cluster, with a count badge; edges labelled by kind.
-export function TraceGraph({ trace, activeSpanId }: { trace: Trace; activeSpanId: string | null }) {
-  const clusters = trace.clusters.filter((c) => c.nodeIds.some((id) => !trace.nodes.find((n) => n.id === id)?.meta));
-  const row = new Map(clusters.map((c, i) => [c.id, i]));
-  const placed = trace.nodes
-    .filter((n) => !n.meta && n.date.value && row.has(n.clusterId))
-    .map((n) => ({ node: n, x: PAD + dateToX(trace, n.date.value!) * (W - 2 * PAD), y: PAD + row.get(n.clusterId)! * ROW }));
-  const at = new Map(placed.map((p) => [p.node.id, p]));
-  const height = PAD * 2 + Math.max(0, clusters.length - 1) * ROW;
-  const active = trace.spans.find((s) => s.id === activeSpanId)?.nodeId;
+// One disc per cluster on the time axis, past on the left. Rows alternate so neighbours do not collide.
+function discs(trace: Trace): Disc[] {
+  const placed = trace.clusters
+    .map((c) => {
+      const dated = c.nodeIds
+        .map((id) => trace.nodes.find((n) => n.id === id))
+        .filter((n) => n && !n.meta && n.date.value);
+      const first = dated.map((n) => n!.date.value!).sort()[0];
+      return first ? { id: c.id, x: dateToX(trace, first), pages: dated.length, nodeIds: c.nodeIds } : null;
+    })
+    .filter((d): d is Omit<Disc, "y"> => d !== null)
+    .sort((a, b) => a.x - b.x);
+  const rows = [0.62, 0.3, 0.78, 0.46];
+  return placed.map((d, i) => ({ ...d, y: rows[i % rows.length]! }));
+}
+
+// The band: clusters as discs, the scrubber's position as a hairline, and everything later than it dimmed to a ring.
+export function TraceGraph({ trace, activeSpanId, x }: { trace: Trace; activeSpanId: string | null; x: number }) {
+  const all = discs(trace);
+  const at = new Map(all.map((d) => [d.id, d]));
+  const clusterOf = (nodeId: string) => trace.nodes.find((n) => n.id === nodeId)?.clusterId;
+  const activeNode = trace.spans.find((s) => s.id === activeSpanId)?.nodeId;
+  const active = activeNode ? clusterOf(activeNode) : undefined;
+  const links = trace.edges
+    .map((e) => ({ e, a: at.get(clusterOf(e.parentId) ?? ""), b: at.get(clusterOf(e.childId) ?? "") }))
+    .filter((l): l is { e: (typeof trace.edges)[number]; a: Disc; b: Disc } => Boolean(l.a && l.b && l.a !== l.b));
 
   return (
-    <figure className="graph">
-      <svg viewBox={`0 0 ${W} ${height}`} role="img" aria-label={`${placed.length} dated pages in ${clusters.length} clusters, past on the left`}>
-        {trace.edges.map((e) => {
-          const a = at.get(e.parentId);
-          const b = at.get(e.childId);
-          if (!a || !b) return null;
-          const style = edgeStyle(e.kind);
+    <figure className="band" aria-label={`${all.length} clusters of pages on a time axis, past on the left`}>
+      <div className="band-inner">
+        <div className="band-future" style={{ ["--x" as string]: x }} />
+        <div className="band-now" style={{ ["--x" as string]: x }} />
+        <svg className="band-links" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          {links.map(({ e, a, b }) => {
+            const style = edgeStyle(e.kind);
+            const mid = (a.x + b.x) * 50;
+            return (
+              <path
+                key={e.id}
+                className={`band-link ${e.kind}`}
+                d={`M ${a.x * 100} ${a.y * 100} Q ${mid} ${Math.min(a.y, b.y) * 100 - 6} ${b.x * 100} ${b.y * 100}`}
+                strokeDasharray={style.dash === "none" ? undefined : style.dash}
+                vectorEffect="non-scaling-stroke"
+              />
+            );
+          })}
+        </svg>
+        {all.map((d) => {
+          const later = d.x > x + 0.001;
+          const size = 14 + 6 * Math.sqrt(d.pages);
+          const edge = d.x < 0.12 ? "start" : d.x > 0.88 ? "end" : "middle";
           return (
-            <g key={e.id} className={`edge ${e.kind}`}>
-              <line x1={a.x} y1={a.y} x2={b.x} y2={b.y} strokeDasharray={style.dash === "none" ? undefined : style.dash} />
-              <text x={(a.x + b.x) / 2} y={(a.y + b.y) / 2 - 6} textAnchor="middle">{e.kind === "explicit" ? "link" : "inferred"}</text>
-              <title>{style.label}</title>
-            </g>
+            <div
+              key={d.id}
+              className={`disc${d.id === active ? " active" : ""}${later ? " later" : ""}`}
+              style={{ ["--x" as string]: d.x, top: `${d.y * 100}%`, ["--disc" as string]: `${size}px`, ["--tone" as string]: heat(d.x) }}
+            >
+              <span className={`disc-label ${edge}`}>{d.pages === 1 ? "1 page" : `${d.pages} copies`}</span>
+              <span className="disc-dot" />
+            </div>
           );
         })}
-        {clusters.map((c) => {
-          const first = placed.filter((p) => p.node.clusterId === c.id).sort((p, q) => p.x - q.x)[0];
-          return first && c.nodeIds.length > 1 ? (
-            <text key={c.id} className="badge" x={first.x + 10} y={first.y - 12} textAnchor="start">{`${c.nodeIds.length} copies`}</text>
-          ) : null;
-        })}
-        {placed.map(({ node, x, y }) => (
-          <g key={node.id} className={`node${node.id === active ? " active" : ""}`}>
-            <circle cx={x} cy={y} r={node.id === active ? 9 : 6} />
-            <title>{`${node.domain}, ${node.date.value}`}</title>
-          </g>
-        ))}
-      </svg>
-      <figcaption className="meta legend">
-        <span><svg width="28" height="8" aria-hidden="true"><line x1="0" y1="4" x2="28" y2="4" className="legend-line" /></svg> link-verified</span>
-        <span><svg width="28" height="8" aria-hidden="true"><line x1="0" y1="4" x2="28" y2="4" className="legend-line" strokeDasharray="6 5" /></svg> inferred, no link</span>
+      </div>
+      <figcaption className="band-legend">
+        <span><i className="key solid" aria-hidden="true" />link-verified</span>
+        <span><i className="key dashed" aria-hidden="true" />inferred, no link</span>
       </figcaption>
     </figure>
   );
