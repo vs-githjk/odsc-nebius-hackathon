@@ -93,3 +93,4 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [09:55 PT] rohanrastogi311 T25 #68: metadata/byline dates capped by successful Wayback captures, body dates excluded, version lineage and usage retained; 10 new dating tests, local typecheck and 48 tests pass; filtered cache identity prevents old CDX reuse | @master-xo review engine-dating PR; full make verify runs in CI
 - [22:11 PT] AnoopIbrampur head-to-head: 18 transcripts (3 tools x 6 claims) in spike/head-to-head, PR to follow | @vs-githjk method notes in PR body
 - [19:00 PT] AnoopIbrampur T20a forms: 18 head-to-head forms in spike/h2h-forms on PR #38 | @vs-githjk ready for A to D relabelling
+- [15:06 PT] AnoopIbrampur T34 post-mortem: eval/spike-postmortem.md, root cause per claim and 5 ranked changes (T36, T44, T35, T45, T37), PR to follow | @RishitRai the tools reached claims 1 and 5 by following citations from pages about the claim; see change 2
