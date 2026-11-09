@@ -22,14 +22,14 @@ function parseCdx(body: string): FirstCapture {
 export function createWayback(deps: ClientDeps & { timeoutMs?: number }) {
   return {
     async firstCapture(url: string, { step = "dating" }: { step?: string } = {}) {
-      const params = new URLSearchParams({ url, matchType: "exact", limit: "1", output: "json", fl: "timestamp,original" });
+      const params = new URLSearchParams({ url, matchType: "exact", limit: "1", output: "json", fl: "timestamp,original", filter: "statuscode:200" });
       try {
         return await send<FirstCapture>(deps, {
           service: "wayback",
           endpoint: "cdx",
           step,
           url: `${CDX_URL}?${params}`,
-          cacheInput: { service: "wayback", url },
+          cacheInput: { service: "wayback", url, filter: "statuscode:200" },
           maxCredits: 0,
           timeoutMs: deps.timeoutMs ?? WAYBACK_TIMEOUT_MS,
           retryTimeouts: true,
