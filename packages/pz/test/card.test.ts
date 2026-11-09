@@ -35,9 +35,22 @@ describe("origin card", () => {
     }
   });
 
+  it("drops an invented first-word name and a date that is not an earliest page's date", async () => {
+    const name = "Okafor wrote that the adult penguins napped a median of 14 times a day.";
+    expect((await buildCard(origin, { client: clientFor(name) })).dropped!.reasons).toEqual(["name not in the spans: Okafor"]);
+    const wrong = "The keeper log dated 2017-01-01 says the adult penguins napped a median of 14 times a day.";
+    expect((await buildCard(origin, { client: clientFor(wrong) })).dropped!.reasons).toEqual(["date is not an earliest page's date: 2017-01-01"]);
+    for (const ok of ["Penguins napped a median of 14 times a day, says a keeper log from April 2019.", "On 30 April 2019 a keeper log said the adult penguins napped 14 times a day."])
+      expect([ok, cardProblems(ok, origin)]).toEqual([ok, []]);
+    expect(cardProblems("A keeper log from March 2019 says the adult penguins napped 14 times a day.", origin)).toEqual(["date is not an earliest page's date: March 2019"]);
+  });
+
   it("drops a sentence that names a start without ORIGIN_FOUND, or breaks a copy rule", async () => {
     const cold = "The claim originated in a zoo report that says our adult penguins nap about 14 times a day.";
     expect((await buildCard(rich, { client: clientFor(cold) })).dropped!.reasons).toEqual(['says "originated" without ORIGIN_FOUND']);
+    for (const [words, sentence] of [["comes from", "The claim comes from a zoo report that says our adult penguins nap about 14 times a day."],
+      ["first page to say", "A zoo report is the first page to say our adult penguins nap about 14 times a day."]])
+      expect(cardProblems(sentence, rich)).toEqual([`says "${words}" without ORIGIN_FOUND`]);
     expect(cardProblems(cold.replace("zoo report", "keeper log"), origin)).toEqual([]);
     const banned = "The keeper log dated 2019-04-30 proves the adult penguins napped 14 times a day.";
     expect(cardProblems(banned, origin)).toEqual(['copy rule: "proves"']);

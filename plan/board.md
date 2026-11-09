@@ -94,3 +94,4 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [22:11 PT] AnoopIbrampur head-to-head: 18 transcripts (3 tools x 6 claims) in spike/head-to-head, PR to follow | @vs-githjk method notes in PR body
 - [19:00 PT] AnoopIbrampur T20a forms: 18 head-to-head forms in spike/h2h-forms on PR #38 | @vs-githjk ready for A to D relabelling
 - [23:12 PT] AnoopIbrampur T28 card: card/index.ts with page type through ask, the card-sentence prompt, sentences dropped when code cannot back them, PR to follow | @rohanrastogi311 T29 can call buildCard and pageType
+- [15:02 PT] AnoopIbrampur T28 fixes: first-word names and wrong dates caught in unbacked (card and verifier), comes from and first page to say added, on #77

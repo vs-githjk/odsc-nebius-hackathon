@@ -38,9 +38,16 @@ describe("trap set", () => {
     expect(counters(undated)).toEqual([0, 0, 0, 1]);
   });
 
+  it("[C18] the card-sentence counter catches a first-word name and a wrong date", () => {
+    const t = load("sample-origin");
+    expect(counters(t, "Okafor wrote that the adult penguins napped a median of 14 times a day.")).toEqual([0, 0, 1, 0]);
+    expect(counters(t, "The keeper log dated 2017-01-01 says the adult penguins napped a median of 14 times a day.")).toEqual([0, 0, 1, 0]);
+    expect(counters(t, "The keeper log dated 2019-04-30 says the adult penguins napped a median of 14 times a day.")).toEqual([0, 0, 0, 0]);
+  });
+
   it("[C18] the card-sentence counter catches quotes and names no span carries", () => {
     const t = load("sample-origin");
-    expect(counters(t, "Keepers said \"penguins nap all day\".")).toEqual([0, 0, 1, 0]);
+    expect(counters(t, "The keepers said \"penguins nap all day\".")).toEqual([0, 0, 1, 0]);
     expect(counters(t, "Harbor Zoo penguins nap 14 times a day, says Dr Smith.")).toEqual([0, 0, 2, 0]);
     expect(counters(t, "Harbor Zoo penguins nap 14 times a day.")).toEqual([0, 0, 0, 0]);
   });
