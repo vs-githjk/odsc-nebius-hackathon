@@ -1,6 +1,6 @@
 # Handoff: ODSC x Nebius Hackathon (team Says Who)
 
-Last updated: Sat Oct 31 2026, by the main session (conductor).
+Last updated: Mon Nov 9 2026, by the main session (conductor).
 To resume in a new Claude Code chat opened in this folder, Vidyut says: **"I'm back, continue the master playbook"**. The new session reads this file, `plan/state.json` and `plan/decisions.md`, says where we are in three lines, and carries on.
 
 ## The event
@@ -24,6 +24,13 @@ To resume in a new Claude Code chat opened in this folder, Vidyut says: **"I'm b
 - Trivia mode **Zero In** (original game-show format) is Layer 2.
 - Market check verdict: real but narrow need; fact-checkers and journalists are the demo user but not the payer; nobody else traces backwards or counts independent sources; the paid route later is a stat-origin API for AI answer engines and content tools (unproven). `plan/market.md`, artifact https://claude.ai/artifact/BtjsfsCuEUNYNWuppfJDjE
 - Full brief: `plan/idea-brief.md` (refinement round 1).
+
+## Latest (Nov 9 watch pass)
+- Merged Nov 9: #78 T20 grading (XO unblinding appended), #38 head-to-head, #79 T25, #81 T31, #76 T22, #50 T11. Main is green, 235 tests.
+- Unblinded: the week-0 spike walker lost on every claim (0/4 earliest, 0/2 cold stops); Perplexity was best. The T21 to T29 engine has to beat this on the Nov 13 held-out run.
+- Open with FIX lists: #74 T27, #75 T21, #77 T28 (Anoop); #62 T15 against #69, #52 make verify on run-1 traces (Rishit). Drafts with notes: #80 T29 (Rohan), #82 T23 (Rishit).
+- Waiting on Vidyut: Tavily credits to replay spike claims 1 and 4 (default no); live Jev run (#81).
+- Next pass: re-review the FIX PRs, merge #52 when verify passes, then #82 and #80 out of draft.
 
 ## Where the playbook is
 Stage: **H4.6 refine** (`plan/state.json`). Done: research, ideas r1 to r3, audits, market check, GATE 1, idea brief r1, GitHub setup, team invites.

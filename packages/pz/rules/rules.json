@@ -30,7 +30,7 @@
     "myth that",
     "it is a myth that"
   ],
-  "factCheckDomains": [],
+  "factCheckDomains": ["snopes.com", "politifact.com", "factcheck.org", "fullfact.org", "leadstories.com", "checkyourfact.com", "africacheck.org", "truthorfiction.com", "quoteinvestigator.com"],
   "clusterSimilarityThreshold": 0.9,
   "hedgeWords": [
     "about",
