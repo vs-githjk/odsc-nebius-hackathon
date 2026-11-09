@@ -103,3 +103,4 @@ Format: [LOCKED|REJECTED|PREFERENCE] decision | why | "Vidyut's words" | date
 [LOCKED] (XO ruling) The dating stage (T25) owns node dates; walk's Tavily dates are search hints only and never order nodes | C6 | XO | 2026-11-09
 [LOCKED] (XO) #38 and #52 unheld: T20 grading merged Nov 9 with XO unblinding appended | blinding purpose served | XO | 2026-11-09
 [LOCKED] Run 2b quality push: T33 to T46 (#83 to #95) assigned, about 10 items per person through Nov 15, every engine PR carries its dev score | spike lost to all three tools | "be more ambitious ... hand them work, like 10 tasks" | 2026-11-09
+[LOCKED] Live dev-run budget: $15 total for the week (Tavily plus Token Factory), Nov 9 to Nov 15; runs stop at the cap; held-out run on Nov 13 counts inside it | dev recordings and dev-run need live calls | "Yeah, I budget 15" | 2026-11-09
