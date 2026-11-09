@@ -79,6 +79,9 @@ describe("measured readouts", () => {
     expect(m("Penguins nap 14 times a day.", "Penguins nap about 14 times a day.")).toMatchObject({ hedge_dropped: "no" });
     expect(m("Penguins nap 14 times a day.", "Penguins nap 14 times a day, twice as often as seals.")).toMatchObject({ comparison_added: "yes" });
     expect(m("Penguins nap often.", "Penguins nap 14 times a day.")).toMatchObject({ number_changed: "unsure", unit_changed: "unsure" });
+    // "May" the month is not the modal "may", so dropping the month drops no hedge.
+    expect(m("In May 2019 keepers saw penguins nap 14 times a day.", "Keepers saw penguins nap 14 times a day.")).toMatchObject({ hedge_dropped: "no" });
+    expect(m("Penguins may nap 14 times a day.", "Penguins nap 14 times a day.")).toMatchObject({ hedge_dropped: "yes" });
   });
 
   it("[C5] the word diff matches every fixture hop", () => {
@@ -127,6 +130,11 @@ describe("typed readouts", () => {
 });
 
 describe("red hop", () => {
+  it("[C5] recomputes the stored red hop on every fixture", () => {
+    for (const t of fixtures) expect([t.id, redHop(t.hops, t.edges, t.nodes)]).toEqual([t.id, t.redHopEdgeId]);
+  });
+
+
   const nodes = [node("a", "2019-01-01"), node("b", "2019-06-01"), node("c", "2020-01-01"), node("d", "2021-01-01")];
   const edges = [edge("e1", "a", "b"), edge("e2", "b", "c"), edge("e3", "c", "d")];
 

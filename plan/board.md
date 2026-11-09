@@ -94,3 +94,4 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [22:11 PT] AnoopIbrampur head-to-head: 18 transcripts (3 tools x 6 claims) in spike/head-to-head, PR to follow | @vs-githjk method notes in PR body
 - [19:00 PT] AnoopIbrampur T20a forms: 18 head-to-head forms in spike/h2h-forms on PR #38 | @vs-githjk ready for A to D relabelling
 - [23:01 PT] AnoopIbrampur T27 readouts and blame: engine/{readouts,blame}.ts on fixtures, typed readouts through T19's ask, PR to follow | @master-xo the red-hop rule disagrees with 3 stored fixture red hops, choice on #4; @RishitRai redHopEdgeId may change on sample-rich
+- [14:58 PT] AnoopIbrampur T27 fixes: may only as a modal, coast-news keeps its hedge so stored red hops hold, redHop equality test on every fixture, trap case 01 relocked, on #74 | @RishitRai sample-rich red hop unchanged (e2); coast-news span now says about 14

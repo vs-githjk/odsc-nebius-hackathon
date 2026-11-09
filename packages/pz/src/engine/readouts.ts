@@ -10,8 +10,12 @@ export type Ask = (questions: Question[], input: { earlier: string; later: strin
 
 const TYPED = QUESTIONS.filter((q) => q.id !== "page_type");
 const lower = (text: string) => normalise(text).toLowerCase();
-const has = (text: string, phrase: string) =>
-  new RegExp(String.raw`(?<![\p{L}\p{N}])${lower(phrase).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?![\p{L}\p{N}])`, "u").test(text);
+// Word lists match whole words, ignoring case, except "may": only the lowercase modal counts, never the month.
+const has = (text: string, phrase: string) => {
+  const word = lower(phrase);
+  const body = word === "may" ? text : lower(text);
+  return new RegExp(String.raw`(?<![\p{L}\p{N}])${word.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?![\p{L}\p{N}])`, "u").test(body);
+};
 const measured = (id: Readout["id"], value: Readout["value"]): Readout => ({ id, source: "measured", value, probability: null, disputed: false });
 
 // The claim's number in this span, or the span's first number when the claim's number is absent.
@@ -31,14 +35,15 @@ function unitAfter(text: string, n: ParsedNumber, atoms: Atoms): string {
 export function measuredReadouts(earlier: string, later: string, atoms: Atoms, rules: Rules): Readout[] {
   const [a, b] = [lower(earlier), lower(later)];
   const [na, nb] = [numberIn(a, atoms), numberIn(b, atoms)];
+  const [ra, rb] = [normalise(earlier), normalise(later)];
   const both = na && nb ? [na, nb] as const : null;
   const hedged = (t: string) => rules.hedgeWords.some((w) => has(t, w));
   const compares = (t: string) => rules.comparisonWords.some((w) => has(t, w));
   return [
     measured("number_changed", !both ? "unsure" : sameNumber(both[0], both[1]).equal ? "no" : "yes"),
     measured("unit_changed", !both ? "unsure" : unitAfter(a, both[0], atoms) === unitAfter(b, both[1], atoms) ? "no" : "yes"),
-    measured("hedge_dropped", hedged(a) && !hedged(b) ? "yes" : "no"),
-    measured("comparison_added", !compares(a) && compares(b) ? "yes" : "no"),
+    measured("hedge_dropped", hedged(ra) && !hedged(rb) ? "yes" : "no"),
+    measured("comparison_added", !compares(ra) && compares(rb) ? "yes" : "no"),
   ];
 }
 
