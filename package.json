@@ -11,7 +11,7 @@
     "apps/*"
   ],
   "scripts": {
-    "typecheck": "tsc --noEmit -p packages/pz/tsconfig.json",
+    "typecheck": "tsc --noEmit -p packages/pz/tsconfig.json && tsc -p apps/web/tsconfig.json",
     "test": "vitest run",
     "schema": "node --import tsx packages/pz/scripts/export-schema.ts",
     "fixtures": "node --import tsx fixtures/src/build.ts",

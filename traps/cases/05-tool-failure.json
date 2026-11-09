@@ -1,0 +1,28 @@
+{
+  "id": "tool-failure",
+  "kind": "trace",
+  "note": "Search failed mid walk.",
+  "input": {
+    "tracePath": "fixtures/traces/sample-origin.json",
+    "mutate": [
+      {
+        "set": "failure",
+        "value": {
+          "service": "tavily",
+          "endpoint": "search",
+          "status": "network_error",
+          "kept": "pages read before the failure"
+        }
+      }
+    ]
+  },
+  "expect": {
+    "state": "TOOL_FAILED",
+    "falseCertainty": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}
