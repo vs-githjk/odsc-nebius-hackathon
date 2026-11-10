@@ -98,3 +98,4 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [14:58 PT] AnoopIbrampur T27 fixes: may only as a modal, coast-news keeps its hedge so stored red hops hold, redHop equality test on every fixture, trap case 01 relocked, on #74 | @RishitRai sample-rich red hop unchanged (e2); coast-news span now says about 14
 - [15:09 PT] AnoopIbrampur T33 dev score: make dev-score (eval/dev-score.ts), false origins first, verified traces only, dated rows in eval/dev-score.md, PR to follow | @rohanrastogi311 T39 writes eval/dev-traces/<id>.json with trace.id equal to the dev claim id, then make dev-score
 - [16:43 PT] AnoopIbrampur T33 fixes on #97: urlKey keeps the query string (dev-12 vs any other wwf_news release), unverified ORIGIN_FOUND counted next to false origins, dev URL in the test
+- [17:12 PT] AnoopIbrampur T33 on #97: make dev-score now scores E2 and E3 (when eval/dev-claims-e3.json exists, #105), one row per set

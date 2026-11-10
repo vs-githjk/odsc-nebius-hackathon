@@ -76,12 +76,12 @@ describe("dev score", () => {
     expect(s).toMatchObject({ traces: 4, claims: 20, scored: 3, unverified: 1, falseOrigins: 1, unverifiedOrigins: 0, targetCited: 1, originClaims: 11, pass: 1, fail: 1, coldCorrect: 1, coldClaims: 9, modes: ["SAMPLE"] });
     expect(headline(s)).toMatch(/^false origins 1 \(\+0 unverified ORIGIN_FOUND\) \| target cited 1\/11 \| earliest 1 Pass, 0 Partial, 1 Fail \| cold stops 1\/9 \| 3 of 20 claims scored \(1 unverified\)/);
     const md = join(dir, "dev-score.md");
-    appendRow(md, s, "2026-11-09 12:00", "abc1234");
-    appendRow(md, s, "2026-11-10 12:00", "def5678");
+    appendRow(md, s, "2026-11-09 12:00", "abc1234", "E2");
+    appendRow(md, s, "2026-11-10 12:00", "def5678", "E3");
     const rows = readFileSync(md, "utf8").trim().split("\n").filter((l) => l.startsWith("| 2026"));
     expect(rows).toEqual([
-      "| 2026-11-09 12:00 | abc1234 | 1 (+0) | 1/11 | 1 / 0 / 1 | 1/9 | 3 of 20 | 90 | 137 | SAMPLE |",
-      "| 2026-11-10 12:00 | def5678 | 1 (+0) | 1/11 | 1 / 0 / 1 | 1/9 | 3 of 20 | 90 | 137 | SAMPLE |",
+      "| 2026-11-09 12:00 | abc1234 | E2 | 1 (+0) | 1/11 | 1 / 0 / 1 | 1/9 | 3 of 20 | 90 | 137 | SAMPLE |",
+      "| 2026-11-10 12:00 | def5678 | E3 | 1 (+0) | 1/11 | 1 / 0 / 1 | 1/9 | 3 of 20 | 90 | 137 | SAMPLE |",
     ]);
   });
 });

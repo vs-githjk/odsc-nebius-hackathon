@@ -1,5 +1,6 @@
-// make dev-score: grades the dev traces in eval/dev-traces/ against eval/dev-claims.json, with the same columns as
-// spike/grading.md, and appends one dated row to eval/dev-score.md. Run from the repo root.
+// make dev-score: grades the dev traces in eval/dev-traces/ against each dev set (E2 eval/dev-claims.json, the tuning
+// set, and E3 eval/dev-claims-e3.json, the check set, when present), with the same columns as spike/grading.md, and
+// appends one dated row per set to eval/dev-score.md. Run from the repo root.
 import { execFileSync } from "node:child_process";
 import { appendFileSync, existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
@@ -103,13 +104,15 @@ export function scoreDir(dir: string, claims: DevClaim[]): ClaimScore[] {
   });
 }
 
-const HEADER = "# Dev score\n\nOne row per `make dev-score` run, newest last. Graded on the E2 dev claims only; see `eval/dev-score.ts` for the rules.\n\n"
-  + "| Date (UTC) | Commit | False origins (+ unverified ORIGIN_FOUND) | Target cited | Earliest Pass / Partial / Fail | Cold stops | Scored | Credits | Seconds | Modes |\n"
-  + "|---|---|---|---|---|---|---|---|---|---|\n";
+export const DEV_SETS = [{ set: "E2", file: "eval/dev-claims.json" }, { set: "E3", file: "eval/dev-claims-e3.json" }] as const;
 
-export function appendRow(path: string, s: Summary, at: string, commit: string): void {
+const HEADER = "# Dev score\n\nOne row per set per `make dev-score` run, newest last. E2 is the tuning set and E3 the check set: a change that helps E2 and hurts E3 is flagged. See `eval/dev-score.ts` for the rules.\n\n"
+  + "| Date (UTC) | Commit | Set | False origins (+ unverified ORIGIN_FOUND) | Target cited | Earliest Pass / Partial / Fail | Cold stops | Scored | Credits | Seconds | Modes |\n"
+  + "|---|---|---|---|---|---|---|---|---|---|---|\n";
+
+export function appendRow(path: string, s: Summary, at: string, commit: string, set: string): void {
   if (!existsSync(path)) writeFileSync(path, HEADER);
-  appendFileSync(path, `| ${at} | ${commit} | ${s.falseOrigins} (+${s.unverifiedOrigins}) | ${s.targetCited}/${s.originClaims} | ${s.pass} / ${s.partial} / ${s.fail} | `
+  appendFileSync(path, `| ${at} | ${commit} | ${set} | ${s.falseOrigins} (+${s.unverifiedOrigins}) | ${s.targetCited}/${s.originClaims} | ${s.pass} / ${s.partial} / ${s.fail} | `
     + `${s.coldCorrect}/${s.coldClaims} | ${s.scored} of ${s.claims} | ${s.credits} | ${s.seconds} | ${s.modes.join(", ") || "none"} |\n`);
 }
 
@@ -120,14 +123,17 @@ export function perClaimLines(scores: ClaimScore[]): string[] {
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  const claims: DevClaim[] = JSON.parse(readFileSync("eval/dev-claims.json", "utf8"));
   const dir = "eval/dev-traces";
-  const scores = existsSync(dir) ? scoreDir(dir, claims) : claims.map((c) => scoreClaim(c, null));
-  const summary = summarise(scores);
-  for (const line of perClaimLines(scores)) console.log(line);
-  console.log(headline(summary));
-  if (summary.traces > 0) {
-    const commit = execFileSync("git", ["rev-parse", "--short", "HEAD"], { encoding: "utf8" }).trim();
-    appendRow("eval/dev-score.md", summary, new Date().toISOString().slice(0, 16).replace("T", " "), commit);
+  const at = new Date().toISOString().slice(0, 16).replace("T", " ");
+  for (const { set, file } of DEV_SETS.filter((d) => existsSync(d.file))) {
+    const claims: DevClaim[] = JSON.parse(readFileSync(file, "utf8"));
+    const scores = existsSync(dir) ? scoreDir(dir, claims) : claims.map((c) => scoreClaim(c, null));
+    const summary = summarise(scores);
+    for (const line of perClaimLines(scores)) console.log(line);
+    console.log(`${set}: ${headline(summary)}`);
+    if (summary.traces > 0) {
+      const commit = execFileSync("git", ["rev-parse", "--short", "HEAD"], { encoding: "utf8" }).trim();
+      appendRow("eval/dev-score.md", summary, at, commit, set);
+    }
   }
 }
