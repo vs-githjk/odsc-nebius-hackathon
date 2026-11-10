@@ -105,19 +105,22 @@
     "#60@7e23a49",
     "#50@a607072",
     "#53@8c14439",
-    "#62@f949a78"
+    "#62@f949a78",
+    "#78@481befa",
+    "#38@1b27498",
+    "#79@9687402",
+    "#81@9a44e68",
+    "#76@70e5e5c",
+    "#50@7267c41",
+    "#74@b0c84b9",
+    "#75@303ae99",
+    "#77@d88043f",
+    "#62@98b7cca",
+    "#82@e7a6fcd",
+    "#80@97649dd"
   ],
-  "last_seen_comment_at": "2026-11-07T19:45:00-08:00",
-  "held_prs": [
-    {
-      "pr": 38,
-      "reason": "hold until spike/REPORT.md is committed (T12), so the spike runner cannot see tool answers on claims 1 to 6"
-    },
-    {
-      "pr": 52,
-      "reason": "hold until T20 grading is posted, so the grader cannot tell our forms from the tools"
-    }
-  ],
+  "last_seen_comment_at": "2026-11-09T14:50:00-08:00",
+  "held_prs": [],
   "merge_command": "gh pr merge <n> --squash --match-head-commit <sha> --subject \"<clean subject> (#n)\" --body \"\"",
   "watch_loop": "on demand: one pass when Vidyut asks for an update (LOCKED 2026-10-31); no cron, no cloud routine",
   "kickoff_issue": 8,
