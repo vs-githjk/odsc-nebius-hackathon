@@ -29,13 +29,20 @@ local under the existing ignore rule.
 calling anything, then calls intake, fingerprint, walk, spans, dating, clusters,
 readouts and card in order. Intake receives Context and returns an initial Trace;
 the remaining adapters receive the current Trace plus Context and return a Trace.
-Context carries the input plus URL/JSON-quoted page data. It contains no executable
+Context carries the input plus URL/JSON-quoted page data and optional publication
+`metadata` and `byline` dates. Page inputs and context are immutable. It contains no executable
 page instructions. Each stage result is schema checked. The final decision is
 recomputed by the existing rules, and the completed trace must pass verification.
 Client errors propagate rather than becoming an invented successful result.
 
-Adapters must carry all original usage rows forward; T25's dateNode returns its
-row for this purpose. Stage adapters own the specific module argument conversions.
+Every stage must return LIVE or synthetic SAMPLE; adapter-produced REPLAY is
+rejected. Each output's usage must begin with an unchanged copy of its incoming
+usage, checked against a pre-call snapshot even if the adapter mutates its input.
+Use `dating: datingStep(wayback)` from engine/run.ts for the production dating
+stage. It replaces every node.date via T25 dateEvidence (through dateNode), using
+that URL's metadata/byline and a successful Wayback capture. Walk/search hints and
+body dates are never used. Missing publication evidence becomes unconfirmed if no
+capture exists. Original usage is retained and every dating row is appended. Stage adapters own the specific module argument conversions.
 No threshold, question wording, prompt or rule is defined by this orchestrator.
 
 A reviewed local module exporting `pipeline` can be selected explicitly:
@@ -55,8 +62,21 @@ contain `type: "stage"`, `stage` and `status` (started/completed/failed). One fi
 `type: "trace"` event carries the verified Trace. Replay emits just that final event.
 Stage events do not carry page bodies, prompts or provider errors.
 
-The C10 test checks orchestration with deterministic stub adapters: a malicious
+C10 remains PLANNED until it runs through real adapters. The current transport
+test checks orchestration with deterministic stub adapters: a malicious
 page stays JSON-quoted data and the verified result is unchanged. It is not a
 claim of model-level injection resistance, a live model test, or a completed
 production-engine evaluation. That test must be repeated through the real
 adapters when they land.
+
+CLI failures print only an allowlisted typed client error code, or `trace_failed`
+for unknown failures. Provider message bodies and arbitrary error.code values
+never reach stderr.
+
+## Dev score evidence (2026-11-10 UTC)
+
+T33 scorer from PR #97 head c126a3b, E2 only: false origins 0 (+0 unverified
+ORIGIN_FOUND), target cited 0/11, earliest 0 Pass / 0 Partial / 0 Fail, cold stops
+0/9, **0 of 20 scored**, 0 credits / 0 seconds, modes none. No dev traces exist
+yet; this is missing coverage, not a quality score or improvement. T38/T39 supply
+real recordings. No held-out run or paid calls were performed for these fixes.
