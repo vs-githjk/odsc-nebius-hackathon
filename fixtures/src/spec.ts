@@ -30,6 +30,6 @@ export const CHAIN: Pick<FixtureSpec, "nodes" | "clusters" | "edges"> = {
   clusters: [{ id: "c-log", rule: "single" }, { id: "c-report", rule: "single" }, { id: "c-news", rule: "single" }],
   edges: [
     { id: "e1", parent: "keeper-log", child: "zoo-report", kind: "explicit", readouts: [measured("hedge_dropped", "no")] },
-    { id: "e2", parent: "zoo-report", child: "coast-news", kind: "explicit", readouts: [measured("hedge_dropped", "yes")] },
+    { id: "e2", parent: "zoo-report", child: "coast-news", kind: "explicit", readouts: [measured("hedge_dropped", "no")] },
   ],
 };

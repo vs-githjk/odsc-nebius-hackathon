@@ -23,7 +23,7 @@ function conflicting(trace: Trace, pages: Node[], rules: Rules): boolean {
   for (const node of pages.filter((n) => earliestClusters.has(n.clusterId))) {
     const spans = trace.spans.filter((s) => s.nodeId === node.id && normalise(s.text).toLowerCase().includes(lemma));
     const numbers = spans.flatMap((s) => parseNumbers(s.text).numbers);
-    if (spans.some((s) => atomHit(s.text, atoms, rules.weakNumberMinSigDigits))) agrees = true;
+    if (spans.some((s) => atomHit(s.text, atoms, rules.weakNumberMinSigDigits, rules.weakNumberMaxCommas))) agrees = true;
     else if (numbers.length > 0 && !numbers.some((n) => sameNumber(n, target).equal)) differs = true;
   }
   return agrees && differs;

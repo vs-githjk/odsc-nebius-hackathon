@@ -5,7 +5,7 @@ import { decideStopState, isNegated, loadRules, normalise, type Rules } from "..
 import { atomHit } from "../rules/numbers.ts";
 import type { Trace } from "../schema/index.ts";
 
-export type Check = "window_hash" | "offsets" | "atoms" | "negated" | "earliest" | "edge_spans" | "edge_kind" | "stop_state" | "page_hash" | "page_offsets";
+export type Check = "window_hash" | "offsets" | "atoms" | "negated" | "earliest" | "date_cap" | "edge_spans" | "edge_kind" | "stop_state" | "page_hash" | "page_offsets";
 export type Failure = { traceId: string; check: Check; detail: string };
 export type TraceReport = { spans: number; spansOk: number; edgesWithoutTwoSpans: number; stateAgrees: boolean; failures: Failure[] };
 
@@ -26,7 +26,7 @@ export function verifyTrace(trace: Trace, opts: { pagesDir?: string; rules?: Rul
     if (sha256(s.contextBefore + s.text + s.contextAfter) !== s.windowSha256) fail("window_hash", `span ${s.id}: window hash differs`);
     if (s.end - s.start !== s.text.length) fail("offsets", `span ${s.id}: ${s.start}..${s.end} does not fit ${s.text.length} characters`);
     // Spans that back an edge must carry the claim's number; other spans must at least name the subject.
-    const atomsOk = onEdge.has(s.id) ? atomHit(s.text, trace.claim.atoms, rules.weakNumberMinSigDigits) : normalise(s.text).toLowerCase().includes(lemma);
+    const atomsOk = onEdge.has(s.id) ? atomHit(s.text, trace.claim.atoms, rules.weakNumberMinSigDigits, rules.weakNumberMaxCommas) : normalise(s.text).toLowerCase().includes(lemma);
     if (!atomsOk) fail("atoms", `span ${s.id}: claim atoms not found under the number rules`);
     // Meta pages deny the claim on purpose; anywhere else a negated span cannot back the trace.
     if (!meta.has(s.nodeId) && isNegated(s, rules.negationPrefixes)) fail("negated", `span ${s.id}: preceded by a negation`);
@@ -59,6 +59,13 @@ export function verifyTrace(trace: Trace, opts: { pagesDir?: string; rules?: Rul
   for (const n of trace.nodes) {
     if (firstDate && !n.meta && !earliestClusters.has(n.clusterId) && n.date.value !== null && n.date.value < firstDate)
       fail("earliest", `node ${n.id} (${n.date.value}) is older than the earliest nodes (${firstDate})`);
+  }
+
+  // A metadata date later than the page's first capture must carry the conflict flag (the capture caps the date).
+  for (const n of trace.nodes) {
+    const { value, firstCapture, conflictingDate } = n.date;
+    if (value !== null && firstCapture !== null && value > firstCapture && !conflictingDate)
+      fail("date_cap", `node ${n.id}: date ${value} is later than its first capture ${firstCapture} and is not flagged`);
   }
 
   const recomputed = decideStopState(trace, rules);

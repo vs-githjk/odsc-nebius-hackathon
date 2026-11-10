@@ -1,6 +1,6 @@
 # Handoff: ODSC x Nebius Hackathon (team Says Who)
 
-Last updated: Sat Oct 31 2026, by the main session (conductor).
+Last updated: Mon Nov 9 2026, by the main session (conductor).
 To resume in a new Claude Code chat opened in this folder, Vidyut says: **"I'm back, continue the master playbook"**. The new session reads this file, `plan/state.json` and `plan/decisions.md`, says where we are in three lines, and carries on.
 
 ## The event
@@ -24,6 +24,13 @@ To resume in a new Claude Code chat opened in this folder, Vidyut says: **"I'm b
 - Trivia mode **Zero In** (original game-show format) is Layer 2.
 - Market check verdict: real but narrow need; fact-checkers and journalists are the demo user but not the payer; nobody else traces backwards or counts independent sources; the paid route later is a stat-origin API for AI answer engines and content tools (unproven). `plan/market.md`, artifact https://claude.ai/artifact/BtjsfsCuEUNYNWuppfJDjE
 - Full brief: `plan/idea-brief.md` (refinement round 1).
+
+## Latest (Nov 9 watch pass)
+- Merged Nov 9: #78 T20 grading (XO unblinding appended), #38 head-to-head, #79 T25, #81 T31, #76 T22, #50 T11. Main is green, 235 tests.
+- Unblinded: the week-0 spike walker lost on every claim (0/4 earliest, 0/2 cold stops); Perplexity was best. The T21 to T29 engine has to beat this on the Nov 13 held-out run.
+- Open with FIX lists: #74 T27, #75 T21, #77 T28 (Anoop); #62 T15 against #69, #52 make verify on run-1 traces (Rishit). Drafts with notes: #80 T29 (Rohan), #82 T23 (Rishit).
+- Waiting on Vidyut: Tavily credits to replay spike claims 1 and 4 (default no); live Jev run (#81).
+- Next pass: re-review the FIX PRs, merge #52 when verify passes, then #82 and #80 out of draft.
 
 ## Where the playbook is
 Stage: **H4.6 refine** (`plan/state.json`). Done: research, ideas r1 to r3, audits, market check, GATE 1, idea brief r1, GitHub setup, team invites.
@@ -69,6 +76,7 @@ Done this session (Oct 29, 01:37 to 02:00 PDT):
 - Nov 2 later: #35, #30, #39 merged, T1 and T2 closed. Open: #37 T10 (ready after main merge), T4, T5, T3, T2b from Anoop; T18 from Rohan. Nebius key works in Vidyut's .env (200 on /v1/models). Rohan works browser-only, so conflicts on stacked PRs may need XO.
 - Nov 2 evening: 10 PRs reviewed. Merged #41. Waiting on fixes: #40 (Rohan), #42 #43 #44 #46 #47 #48 #49 (Anoop). #45 PASS, merge after #43. Stack: after each squash, rebase --onto main. #37 still draft (Rishit). #38 held until spike report.
 - Nov 2 late: spike delivered by Rishit (#50, #52 drafts, #53 app shell). Rerun go on #10 (reviewed T4 fix only, keep first run). New issues #54 forms, #55 T26, #56 T27 (Anoop), #57 T31 (Rohan). T20 moved to Thu Nov 5; XO must relabel the 24 forms A to D on #28 once #54 lands, mapping kept off the repo. #42, #43, #44 merged after re-review; rerun CANCELLED after Rishit's offline check (decisions.md); run 1 graded Thu; T4b on dev set (Anoop). Next pass: #45 to #49 after Anoop's fixes and rebase, #37, #40, #51, #53.
+- Nov 4: see progress.md last line. Grading Thu on spike/blind-forms; key plan/grading-key.local.json (backup in session scratchpad) is never committed; after Rohan posts, add wall times from the key. Merge order next: #46 after fix, then #47 #48 #49 #58 (merge main into each; #58 fixtures.test.ts takes main), #50 after #46, #52 only after grading, #38 after grading.
 
 Next, in order (when Vidyut says "go"):
 0. Discuss plan/rerunlab-inspo.md with Vidyut first.
@@ -100,3 +108,5 @@ Next, in order (when Vidyut says "go"):
 - After every agent run: `python3 ~/.claude/skills/master-budget/usage.py --project "/Users/vidyutsriram/ODSC x Nebius Hackathon"`, and a line in `plan/telemetry.jsonl`.
 - Cross-model: Codex reviews agent or skill changes before `~/master-agents/sync.sh`; save Codex output with `-o <file>`, never pipe it into `head`.
 - Push plan updates to the private repo as part of the approved GitHub setup; nothing public, no deploys, no spending beyond what is approved.
+
+- Nov 7: main has T1 to T10 (minus T11), T13, T14, T18, T19, T26, E1 hash, E2. Open: #50 T11 and #62 T15 (Rishit fixes), T20 publish (Rohan), #38 and #52 after grading. New: #64 T21 and #65 T22 (Anoop), #66 T23 and #67 T24 (Rishit), #68 T25 (Rohan). T28 and T29 unassigned, Vidyut's call. Held-out run Nov 13 needs T29.

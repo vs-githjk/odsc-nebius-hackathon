@@ -56,6 +56,9 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [18:11 PT] AnoopIbrampur T6 pz verify: re-checks spans, edges and stop state on stored traces, stacked on T3 (#45), PR to follow
 - [18:31 PT] RishitRai T11 spike walker: findSpan, spike/walk.ts, claims.json with atoms, dry run 21 credits, pz verify 24 of 24 | @AnoopIbrampur fixtures test fails on Windows only (CRLF byte compare)
 - [18:36 PT] RishitRai T12 spike run: 6 claims, 63 credits, all traces pass pz verify; weak-number false matches on claims 1, 2, 4, 6, fix proposed in spike/REPORT.md, not applied | @vs-githjk decide the rerun; relabel spike/h2h-forms for Rohan
+- [18:39 PT] RishitRai T14 app shell: apps/web on Vite 7.3.7 and React 19.3.1, DESIGN.md tokens, hash routes, fixtures parsed with pz/schema, SAMPLE badge; draft on the fixtures stack
+- [16:20 PT] rohanrastogi311 T18: injected-fetch chat and embeddings, typed failures, one retry on 429/5xx, per-attempt usage logging and dated prices; 20 tests and typecheck pass locally; recorded fixtures from #6 | @master-xo review client PR; probe evidence follows
+- [19:40 PT] rohanrastogi311 T18 review fixes: logging failures preserve answers and attempt rows, missing prices give not_configured, non-empty truncated JSON rejected, claim tags removed, cached pricing fields cited; local typecheck and 24 client/schema tests pass | @master-xo re-review #40; T19 stacking next
 - [16:30 PT] rohanrastogi311 T18b: 38 neutral POSTs plus catalogue GET, estimated $0.00019688; strict $schema accepted, all 8 page_type first tokens distinct, embedding dimensions 64..4096 verified; report and sanitized JSON committed | @master-xo review probe PR; T19 can use findings
 - [17:48 PT] AnoopIbrampur T2b question wording: instructions and option labels for the four typed questions, PR to follow | @rohanrastogi311 T19 can use them once merged
 - [18:49 PT] AnoopIbrampur T2b fixes: option-id pin, non-empty labels, EARLIER/LATER wording on #44 | @rohanrastogi311 T19 should label the passages EARLIER and LATER
@@ -63,7 +66,38 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [18:47 PT] AnoopIbrampur T4 fixes: XO batch 1 items 1 to 7 plus slash chains on #42 | @RishitRai number rules changed behaviour, not interfaces
 - [17:47 PT] AnoopIbrampur T5 decide: rules.json, Rules schema, decideStopState with [C16]/[C20] tests; stacked on T4 (#42), PR to follow | @RishitRai T11 can use decideStopState once both merge
 - [18:49 PT] AnoopIbrampur T5 fixes: conflict anchored on the claim number, earlierFound test, weakNumberMinSigDigits wired, on #43
+- [19:45 PT] rohanrastogi311 T19: schema-driven typed requests, first-token confidence with padding removed and unmatched/tail mass under __other__, null-confidence fallback, caller threshold and dispute helper; 34 local tests and typecheck pass | @master-xo review stacked T19 PR after #40
 - [17:52 PT] AnoopIbrampur T3 fixtures: 7 synthetic traces with builder and tests, stacked on T5 (#43), PR to follow | @RishitRai sample-rich is ready for the front end
 - [19:19 PT] AnoopIbrampur stack update: merged main (#42 to #44 squashes) into #45 to #49 and #58 instead of rebasing (no force-push); added the optional weakNumberMinSigDigits test on #45
 - [18:11 PT] AnoopIbrampur T6 pz verify: re-checks spans, edges and stop state on stored traces, stacked on T3 (#45), PR to follow
 - [18:51 PT] AnoopIbrampur T6 fixes: earliest check, --pages usage, negated spans in verify and decide, page_hash test on #46
+- [19:56 PT] AnoopIbrampur T4b weak atoms: same-clause rule for weak numbers, measured on E2 dev claims only (eval/weak-atoms), PR to follow
+- [07:29 PT] RishitRai #50 fix list: NBSP and soft-hyphen negation, REPLAY for cache-served runs, strictly earlier inferred parents, fact-check test, CDX statuscode:200; dry run regenerated under #61 (9 credits, LIVE)
+- [00:40 PT] rohanrastogi311 T20 #28: graded all 24 relabelled forms; revealed unchanged original spike targets with matching downloaded SHA256 commitments; six claim tables, totals and WhatsApp exposure/evidence limits in spike/grading.md | @master-xo review and append identities/wall times; E1 remains sealed
+- [11:29 PT] rohanrastogi311 T19 review fixes: separate page-only and EARLIER/LATER calls, reject missing inputs before requests, move typed-1 neutral fixture under test/recorded, padding-before-real-token regression mutation checked; 38 local tests and typecheck pass; main merged preserving both board sides | @master-xo re-review #60
+- [18:11 PT] AnoopIbrampur T6 pz verify: re-checks spans, edges and stop state on stored traces, stacked on T3 (#45), PR to follow
+- [18:51 PT] AnoopIbrampur T6 fixes: earliest check, --pages usage, negated spans in verify and decide, page_hash test on #46
+- [15:51 PT] AnoopIbrampur T6 fixes: weakNumberMaxCommas passed to verify, incoming-edge-only and decide wiring tests, main merged, on #46 | @master-xo re-review #46
+- [18:13 PT] AnoopIbrampur T7 traps: falseCertainty, pz traps, 10 synthetic cases with lock, stacked on T6 (#46), PR to follow
+- [18:52 PT] AnoopIbrampur T7 fixes: real negated-span case, date_cap check, verify expectations per case, card-sentence branch tests on #47
+- [18:15 PT] AnoopIbrampur T8 make verify: copy lint, leakage stub, claims table, CI runs make verify (3 s locally), stacked on T7 (#47), PR to follow
+- [18:53 PT] AnoopIbrampur T8 fixes: 60 s budget enforced, no proof yet for non-test proofs, fixture self-check untagged on #48
+- [18:16 PT] AnoopIbrampur T9 README: judge-facing README, plan index, llms.txt, link and copy tests, stacked on T8 (#48), PR to follow
+- [18:54 PT] AnoopIbrampur T9 fixes: README wording per XO batch 2 on #49
+- [19:13 PT] AnoopIbrampur T26 clusters and roots: engine/cluster.ts with injected embed, threshold placeholder in rules.json, stacked on T3 (#45), PR to follow
+- [15:51 PT] AnoopIbrampur T26: cluster-rule priority test, stack re-merged with the T6 fix on #47, #48, #49, #58
+- [18:35 PT] AnoopIbrampur E2 dev claims: 20 claims in eval/dev-claims.json, draft PR until origin links are checked by hand | @rohanrastogi311 please check the held-out list against it
+- [15:52 PT] AnoopIbrampur E2 fixes: main merged, dev-20 note, weak-atoms scripts read eval/dev-claims.json, on #51 | @master-xo re-review #51
+- [12:12 PT] rohanrastogi311 E1 #33: ten private held-out claims frozen after exclusion checks against all six spike inputs and E2 PR #51; only eval/heldout.sha256 committed, SHA256 a10897c8bc4637eaaf5e40301596aef6564eb1226ad62126e27ac3b2b0b95354; no run or tuning performed | @master-xo review hash-only PR; durable private backup still unconfirmed
+- [23:09 PT] AnoopIbrampur T22 fingerprint: engine/fingerprint.ts, atoms copied from the claim or dropped, code-made variants with declared transforms, tested on invented and E2 dev claims, PR to follow
+- [10:43 PT] rohanrastogi311 T31 #57: Jev client and private-file comparison harness, owner questions unchanged, pair/page split, agreement and latency summaries, credential-echo mutation checked; local typecheck and 66 tests pass with synthetic contract responses | @master-xo review jev PR; Vidyut alone runs live command with his key and go
+- [09:55 PT] rohanrastogi311 T25 #68: metadata/byline dates capped by successful Wayback captures, body dates excluded, version lineage and usage retained; 10 new dating tests, local typecheck and 48 tests pass; filtered cache identity prevents old CDX reuse | @master-xo review engine-dating PR; full make verify runs in CI
+- [22:11 PT] AnoopIbrampur head-to-head: 18 transcripts (3 tools x 6 claims) in spike/head-to-head, PR to follow | @vs-githjk method notes in PR body
+- [19:00 PT] AnoopIbrampur T20a forms: 18 head-to-head forms in spike/h2h-forms on PR #38 | @vs-githjk ready for A to D relabelling
+- [15:06 PT] AnoopIbrampur T34 post-mortem: eval/spike-postmortem.md, root cause per claim and 5 ranked changes (T36, T44, T35, T45, T37), PR to follow | @RishitRai the tools reached claims 1 and 5 by following citations from pages about the claim; see change 2
+- [23:01 PT] AnoopIbrampur T27 readouts and blame: engine/{readouts,blame}.ts on fixtures, typed readouts through T19's ask, PR to follow | @master-xo the red-hop rule disagrees with 3 stored fixture red hops, choice on #4; @RishitRai redHopEdgeId may change on sample-rich
+- [14:58 PT] AnoopIbrampur T27 fixes: may only as a modal, coast-news keeps its hedge so stored red hops hold, redHop equality test on every fixture, trap case 01 relocked, on #74 | @RishitRai sample-rich red hop unchanged (e2); coast-news span now says about 14
+- [17:11 PT] AnoopIbrampur T47 E3: eval/dev-claims-e3.json, 40 claims (18 origin, 22 cold), every URL fetched and checked, eval/dev-sets.md with the E2 tune / E3 check split, PR to follow | @rohanrastogi311 please run the E1 exclusion check on E3 against heldout.jsonl and say pass or fail on the PR (no details needed)
+- [15:09 PT] AnoopIbrampur T33 dev score: make dev-score (eval/dev-score.ts), false origins first, verified traces only, dated rows in eval/dev-score.md, PR to follow | @rohanrastogi311 T39 writes eval/dev-traces/<id>.json with trace.id equal to the dev claim id, then make dev-score
+- [16:43 PT] AnoopIbrampur T33 fixes on #97: urlKey keeps the query string (dev-12 vs any other wwf_news release), unverified ORIGIN_FOUND counted next to false origins, dev URL in the test
+- [17:12 PT] AnoopIbrampur T33 on #97: make dev-score now scores E2 and E3 (when eval/dev-claims-e3.json exists, #105), one row per set

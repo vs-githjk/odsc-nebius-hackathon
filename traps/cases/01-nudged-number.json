@@ -1,0 +1,31 @@
+{
+  "id": "nudged-number",
+  "kind": "trace",
+  "note": "A page in the earliest cluster gives 15 instead of 14; the trail must not end at an origin.",
+  "input": {
+    "tracePath": "fixtures/traces/sample-origin.json",
+    "mutate": [
+      {
+        "set": "nodes.2.clusterId",
+        "value": "c-log"
+      },
+      {
+        "set": "spans.2.text",
+        "value": "Harbor Zoo penguins nap about 15 times a day, according to the zoo's annual report."
+      }
+    ]
+  },
+  "expect": {
+    "state": "CONFLICTING",
+    "falseCertainty": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "verify": [
+      "atoms",
+      "window_hash"
+    ]
+  }
+}

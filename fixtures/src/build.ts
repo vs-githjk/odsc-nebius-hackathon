@@ -1,7 +1,10 @@
 import { createHash } from "node:crypto";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
-import { Trace, type Blame, type Hop, type Node, type Span } from "../../packages/pz/src/schema/index.ts";
+import { Trace, type Edge, type Hop, type Node, type Span } from "../../packages/pz/src/schema/index.ts";
+import { blameWords } from "../../packages/pz/src/engine/blame.ts";
+import { computeRoots } from "../../packages/pz/src/engine/cluster.ts";
+import { wordDiff, words } from "../../packages/pz/src/engine/readouts.ts";
 import { decideStopState, loadRules, normalise } from "../../packages/pz/src/rules/index.ts";
 import { PAGES } from "./pages.ts";
 import { CLAIM, readout, type FixtureSpec } from "./spec.ts";
@@ -14,7 +17,6 @@ const CONTEXT = 200;
 
 export const sha256 = (text: string) => createHash("sha256").update(text).digest("hex");
 export const readPage = (id: string) => normalise(readFileSync(new URL(`pages/${id}.txt`, ROOT), "utf8"));
-const words = (text: string) => normalise(text).toLowerCase().split(" ").map((w) => w.replace(/^[^\p{L}\p{N}']+|[^\p{L}\p{N}']+$/gu, "")).filter(Boolean);
 
 function span(nodeId: string): Span {
   const page = readPage(nodeId);
@@ -31,21 +33,6 @@ function span(nodeId: string): Span {
   };
 }
 
-// Word-level LCS diff from the parent span to the child span.
-function wordDiff(a: string[], b: string[]): Hop["wordDiff"] {
-  const lcs = a.map(() => b.map(() => 0));
-  for (let i = a.length - 1; i >= 0; i--) for (let j = b.length - 1; j >= 0; j--)
-    lcs[i]![j] = a[i] === b[j] ? 1 + (lcs[i + 1]?.[j + 1] ?? 0) : Math.max(lcs[i + 1]?.[j] ?? 0, lcs[i]![j + 1] ?? 0);
-  const out: Hop["wordDiff"] = [];
-  let i = 0, j = 0;
-  while (i < a.length || j < b.length) {
-    if (i < a.length && j < b.length && a[i] === b[j]) { out.push({ op: "same", text: a[i]! }); i++; j++; }
-    else if (j < b.length && (i >= a.length || (lcs[i]?.[j + 1] ?? 0) >= (lcs[i + 1]?.[j] ?? 0))) out.push({ op: "add", text: b[j++]! });
-    else out.push({ op: "del", text: a[i++]! });
-  }
-  return out;
-}
-
 export function buildTrace(spec: FixtureSpec): Trace {
   const spans = spec.nodes.map((n) => span(n.page));
   const nodes: Node[] = spec.nodes.map((n) => {
@@ -59,23 +46,15 @@ export function buildTrace(spec: FixtureSpec): Trace {
       pageType: { questionId: "page_type", optionId: page.pageType, probability: 0.9, top: [{ optionId: page.pageType, p: 0.9 }], model: MODEL, threshold: null },
     };
   });
+  const edges: Edge[] = spec.edges.map((e) => ({
+    id: e.id, parentId: e.parent, childId: e.child, kind: e.kind, parentSpanId: `s-${e.parent}`, childSpanId: `s-${e.child}`,
+    linkHref: e.kind === "explicit" ? PAGES[e.parent]!.url : null,
+  }));
   const textOf = (id: string) => words(PAGES[id]!.span);
   const hops: Hop[] = spec.edges.map((e) => {
     const readouts = [readout.measured("number_changed", "no"), ...(e.readouts ?? [])];
     return { edgeId: e.id, readouts, wordDiff: wordDiff(textOf(e.parent), textOf(e.child)), faithful: readouts.every((r) => r.value === "no") };
   });
-  // Each word of the viral sentence is blamed on the earliest non-meta page whose span has it.
-  const byDate = nodes.filter((n) => !n.meta).sort((a, b) => (a.date.value ?? "").localeCompare(b.date.value ?? "") || a.id.localeCompare(b.id));
-  const blame: Blame[] = words(CLAIM).map((word, index) => {
-    const first = byDate.find((n) => textOf(n.id).includes(word));
-    const viaInferredHop = !!first && spec.edges.some((e) => e.child === first.id && e.kind === "inferred")
-      && !spec.edges.some((e) => e.child === first.id && e.kind === "explicit");
-    return { index, word, firstSeen: first ? { spanId: `s-${first.id}`, nodeId: first.id, date: first.date.value } : null, viaInferredHop };
-  });
-  const pageClusters = new Set(nodes.filter((n) => !n.meta).map((n) => n.clusterId));
-  const clusterOf = (id: string) => nodes.find((n) => n.id === id)!.clusterId;
-  const linked = spec.edges.filter((e) => clusterOf(e.parent) !== clusterOf(e.child));
-  const roots = [...pageClusters].filter((c) => linked.some((e) => clusterOf(e.parent) === c) && !linked.some((e) => clusterOf(e.child) === c));
   const earliestDate = nodes.find((n) => n.id === spec.earliest.nodeIds[0])?.date.value ?? null;
 
   const draft = Trace.parse({
@@ -84,14 +63,10 @@ export function buildTrace(spec: FixtureSpec): Trace {
       number: { raw: "14", canonical: "14" }, unit: "times a day", subjectLemma: "penguin", population: "Harbor Zoo penguins",
       time: null, hedge: null, namedSource: null, variants: ["fourteen"] } },
     viralSentence: CLAIM, nodes,
-    edges: spec.edges.map((e) => ({
-      id: e.id, parentId: e.parent, childId: e.child, kind: e.kind, parentSpanId: `s-${e.parent}`, childSpanId: `s-${e.child}`,
-      linkHref: e.kind === "explicit" ? PAGES[e.parent]!.url : null,
-    })),
+    edges,
     clusters: spec.clusters.map((c) => ({ ...c, nodeIds: nodes.filter((n) => n.clusterId === c.id).map((n) => n.id) })),
-    spans, hops, blame,
-    roots: { pages: nodes.filter((n) => !n.meta).length, clusters: pageClusters.size, rootsLinked: roots.length,
-      clustersUnlinked: [...pageClusters].filter((c) => !linked.some((e) => clusterOf(e.parent) === c || clusterOf(e.child) === c)).length, studiesFound: null },
+    spans, hops, blame: blameWords(CLAIM, nodes, spans, edges),
+    roots: { pages: 0, clusters: 0, rootsLinked: 0, clustersUnlinked: 0, studiesFound: null },
     redHopEdgeId: spec.redHop ?? null,
     earliest: { nodeIds: spec.earliest.nodeIds, earlierWindowSearches: spec.earliest.searches, earlierFound: spec.earliest.found },
     failure: spec.failure ?? null,
@@ -102,6 +77,7 @@ export function buildTrace(spec: FixtureSpec): Trace {
       results: spec.earliest.found, kept: spec.earliest.found, dropped: 0 })),
     usage: [], scopeNote: "Synthetic: an invented claim on invented pages.",
   });
+  draft.roots = computeRoots(draft.nodes, draft.edges);
   const decision = decideStopState(draft, loadRules());
   if (decision.state !== spec.expect) throw new Error(`${spec.id}: expected ${spec.expect}, rules give ${decision.state}`);
   return { ...draft, decision };

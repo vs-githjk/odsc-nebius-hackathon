@@ -1,0 +1,362 @@
+[
+ {
+  "id": "e3-01",
+  "text": "There are 5.25 trillion pieces of plastic in the world's oceans.",
+  "seenAt": "https://futurism.com/alarms-ring-on-plastic-pollution-5-25-trillion-tons-are-in-our-oceans",
+  "topic": "plastic",
+  "tracedOrigin": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+  "tracedBy": null,
+  "expected": "origin"
+ },
+ {
+  "id": "e3-02",
+  "text": "1 in 3 people globally do not have access to safe drinking water.",
+  "seenAt": "https://waterstep.org/about-us/why-water/",
+  "topic": "water",
+  "tracedOrigin": "https://www.who.int/news/item/18-06-2019-1-in-3-people-globally-do-not-have-access-to-safe-drinking-water-unicef-who",
+  "tracedBy": null,
+  "expected": "origin"
+ },
+ {
+  "id": "e3-03",
+  "text": "Air pollution kills 7 million people every year.",
+  "seenAt": "https://www.cbc.ca/news/health/air-pollution-kills-7-million-people-every-year-globally-who-finds-1.2585505",
+  "topic": "health",
+  "tracedOrigin": "https://www.who.int/news/item/25-03-2014-7-million-premature-deaths-annually-linked-to-air-pollution",
+  "tracedBy": null,
+  "expected": "origin"
+ },
+ {
+  "id": "e3-04",
+  "text": "One million animal and plant species are threatened with extinction.",
+  "seenAt": "https://www.sciencefriday.com/segments/one-million-animal-and-plant-species-are-at-risk-for-extinction/",
+  "topic": "nature",
+  "tracedOrigin": "https://www.ipbes.net/news/Media-Release-Global-Assessment",
+  "tracedBy": null,
+  "expected": "origin"
+ },
+ {
+  "id": "e3-05",
+  "text": "Drug-resistant infections could kill 10 million people a year by 2050.",
+  "seenAt": "https://pharmaceutical-journal.com/article/news/antimicrobial-resistance-will-lead-to-an-additional-10-million-deaths-each-year-worldwide-by-2050",
+  "topic": "health",
+  "tracedOrigin": "https://amr-review.org/sites/default/files/AMR%20Review%20Paper%20-%20Tackling%20a%20crisis%20for%20the%20health%20and%20wealth%20of%20nations_1.pdf",
+  "tracedBy": null,
+  "expected": "origin"
+ },
+ {
+  "id": "e3-06",
+  "text": "The world generated 62 million tonnes of e-waste in 2022.",
+  "seenAt": "https://fortune.com/2024/04/08/world-generated-62-million-tonnes-electronic-waste-year-un-agencies-warn-tech-environment/",
+  "topic": "waste",
+  "tracedOrigin": "https://www.itu.int/en/mediacentre/Pages/PR-2024-03-20-e-waste-recycling.aspx",
+  "tracedBy": null,
+  "expected": "origin"
+ },
+ {
+  "id": "e3-07",
+  "text": "People with strong social relationships have a 50% greater likelihood of survival.",
+  "seenAt": "https://longlevity.ai/blog/loneliness-and-longevity/",
+  "topic": "health",
+  "tracedOrigin": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+  "tracedBy": null,
+  "expected": "origin"
+ },
+ {
+  "id": "e3-08",
+  "text": "One third of all food produced in the world is lost or wasted.",
+  "seenAt": "https://www.rts.com/resources/guides/food-waste-america/",
+  "topic": "food",
+  "tracedOrigin": "https://www.fao.org/4/mb060e/mb060e00.htm",
+  "tracedBy": null,
+  "expected": "origin"
+ },
+ {
+  "id": "e3-09",
+  "text": "95% of teens have access to a smartphone.",
+  "seenAt": "https://www.missingkids.org/netsmartz/topics/smartphones",
+  "topic": "phones",
+  "tracedOrigin": "https://www.pewresearch.org/internet/2018/05/31/teens-social-media-technology-2018/",
+  "tracedBy": null,
+  "expected": "origin"
+ },
+ {
+  "id": "e3-10",
+  "text": "Electricity demand from data centres will more than double by 2030 to around 945 TWh.",
+  "seenAt": "https://www.scientificamerican.com/article/ai-will-drive-doubling-of-data-center-energy-demand-by-2030/",
+  "topic": "ai",
+  "tracedOrigin": "https://www.iea.org/news/ai-is-set-to-drive-surging-electricity-demand-from-data-centres-while-offering-the-potential-to-transform-how-the-energy-sector-works",
+  "tracedBy": null,
+  "expected": "origin"
+ },
+ {
+  "id": "e3-11",
+  "text": "Developers using GitHub Copilot complete tasks 55% faster.",
+  "seenAt": "https://linearb.io/blog/is-github-copilot-worth-it",
+  "topic": "ai",
+  "tracedOrigin": "https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-on-developer-productivity-and-happiness/",
+  "tracedBy": null,
+  "expected": "origin"
+ },
+ {
+  "id": "e3-12",
+  "text": "The world's population reached 8 billion on 15 November 2022.",
+  "seenAt": "https://www.npr.org/2022/11/15/1136709784/there-are-now-8-billion-people-on-earth-according-to-a-new-u-n-report",
+  "topic": "population",
+  "tracedOrigin": "https://www.un.org/en/desa/world-population-reach-8-billion-15-november-2022",
+  "tracedBy": null,
+  "expected": "origin"
+ },
+ {
+  "id": "e3-13",
+  "text": "250 million children around the world are out of school.",
+  "seenAt": "https://easterncaribbean.un.org/en/246650-unesco-250-million-children-now-out-school",
+  "topic": "education",
+  "tracedOrigin": "https://www.unesco.org/en/articles/250-million-children-out-school-what-you-need-know-about-unescos-latest-education-data",
+  "tracedBy": null,
+  "expected": "origin"
+ },
+ {
+  "id": "e3-14",
+  "text": "52% of Americans are more concerned than excited about the increased use of AI in daily life.",
+  "seenAt": "https://finance.yahoo.com/news/52-of-americans-say-theyre-concerned-about-growing-use-of-ai-pew-194429113.html",
+  "topic": "ai",
+  "tracedOrigin": "https://www.pewresearch.org/short-reads/2023/08/28/growing-public-concern-about-the-role-of-artificial-intelligence-in-daily-life/",
+  "tracedBy": null,
+  "expected": "origin"
+ },
+ {
+  "id": "e3-15",
+  "text": "1.19 million people die in road traffic crashes every year.",
+  "seenAt": "https://maxdispatchservice.com/global-vehicle-accident-stats/",
+  "topic": "transport",
+  "tracedOrigin": "https://www.who.int/news/item/13-12-2023-despite-notable-progress-road-safety-remains-urgent-global-issue",
+  "tracedBy": null,
+  "expected": "origin"
+ },
+ {
+  "id": "e3-16",
+  "text": "1 in 6 people worldwide are affected by infertility.",
+  "seenAt": "https://fortune.com/well/2023/04/04/infertility-1-in-6-globally-who-ivf-cost/",
+  "topic": "health",
+  "tracedOrigin": "https://www.who.int/news/item/04-04-2023-1-in-6-people-globally-affected-by-infertility",
+  "tracedBy": null,
+  "expected": "origin"
+ },
+ {
+  "id": "e3-17",
+  "text": "Loneliness is linked to 871,000 deaths a year.",
+  "seenAt": "https://eagleeyewatchnews.com/2025/07/01/loneliness-kills-871000-people-every-year-globally-who/",
+  "topic": "health",
+  "tracedOrigin": "https://www.who.int/news/item/30-06-2025-social-connection-linked-to-improved-heath-and-reduced-risk-of-early-death",
+  "tracedBy": null,
+  "expected": "origin"
+ },
+ {
+  "id": "e3-18",
+  "text": "GPT-3 has 175 billion parameters.",
+  "seenAt": "https://www.infoq.com/news/2020/06/openai-gpt3-language-model/",
+  "topic": "ai",
+  "tracedOrigin": "https://arxiv.org/abs/2005.14165",
+  "tracedBy": null,
+  "expected": "origin"
+ },
+ {
+  "id": "e3-19",
+  "text": "Einstein called compound interest the eighth wonder of the world.",
+  "seenAt": "https://www.goodreads.com/quotes/76863-compound-interest-is-the-eighth-wonder-of-the-world-he",
+  "topic": "quotes",
+  "tracedOrigin": null,
+  "tracedBy": "https://quoteinvestigator.com/2019/09/09/interest/",
+  "expected": "cold"
+ },
+ {
+  "id": "e3-20",
+  "text": "Abraham Lincoln said: Give me six hours to chop down a tree and I will spend the first four sharpening the axe.",
+  "seenAt": "https://www.passiton.com/inspirational-quotes/6682-give-me-six-hours-to-chop-down-a-tree-and-i",
+  "topic": "quotes",
+  "tracedOrigin": null,
+  "tracedBy": "https://quoteinvestigator.com/2014/03/29/sharp-axe/",
+  "expected": "cold"
+ },
+ {
+  "id": "e3-21",
+  "text": "Einstein said that if he had an hour to solve a problem he would spend 55 minutes thinking about the problem and 5 minutes thinking about solutions.",
+  "seenAt": "https://www.goodreads.com/quotes/60780-if-i-had-an-hour-to-solve-a-problem-i-d",
+  "topic": "quotes",
+  "tracedOrigin": null,
+  "tracedBy": "https://quoteinvestigator.com/2014/05/22/solve/",
+  "expected": "cold"
+ },
+ {
+  "id": "e3-22",
+  "text": "Woody Allen said 80 percent of success is showing up.",
+  "seenAt": "https://www.azquotes.com/quote/5754",
+  "topic": "quotes",
+  "tracedOrigin": null,
+  "tracedBy": "https://quoteinvestigator.com/2013/06/10/showing-up/",
+  "expected": "cold"
+ },
+ {
+  "id": "e3-23",
+  "text": "Bill Gates said 640K of memory ought to be enough for anybody.",
+  "seenAt": "https://ronutz.com/en/glossary/640k-quote/",
+  "topic": "computing",
+  "tracedOrigin": null,
+  "tracedBy": "https://quoteinvestigator.com/2011/09/08/640k-enough/",
+  "expected": "cold"
+ },
+ {
+  "id": "e3-24",
+  "text": "Swallowed chewing gum takes seven years to digest.",
+  "seenAt": "https://www.doctronic.ai/blog/swallowing-gum-stays-in-stomach/",
+  "topic": "health",
+  "tracedOrigin": null,
+  "tracedBy": "https://www.scientificamerican.com/article/fact-or-fiction-chewing-gum-takes-seven-years-to-digest/",
+  "expected": "cold"
+ },
+ {
+  "id": "e3-25",
+  "text": "Thomas Edison said genius is one percent inspiration and ninety-nine percent perspiration.",
+  "seenAt": "https://www.goodreads.com/author/quotes/3091287.Thomas_A_Edison",
+  "topic": "quotes",
+  "tracedOrigin": null,
+  "tracedBy": "https://quoteinvestigator.com/2012/12/14/genius-ratio/",
+  "expected": "cold"
+ },
+ {
+  "id": "e3-26",
+  "text": "Thomas Edison said: I have not failed. I've just found 10,000 ways that won't work.",
+  "seenAt": "https://www.goodreads.com/quotes/8287-i-have-not-failed-i-ve-just-found-10-000-ways-that",
+  "topic": "quotes",
+  "tracedOrigin": null,
+  "tracedBy": "https://quoteinvestigator.com/2012/07/31/edison-lot-results/",
+  "expected": "cold"
+ },
+ {
+  "id": "e3-27",
+  "text": "Mark Twain said the two most important days in your life are the day you are born and the day you find out why.",
+  "seenAt": "https://www.passiton.com/inspirational-quotes/7304-the-two-most-important-days-in-your-life-are",
+  "topic": "quotes",
+  "tracedOrigin": null,
+  "tracedBy": "https://quoteinvestigator.com/2016/06/22/why/",
+  "expected": "cold"
+ },
+ {
+  "id": "e3-28",
+  "text": "Mark Twain said there are three kinds of lies: lies, damned lies, and statistics.",
+  "seenAt": "https://www.goodreads.com/quotes/11351457-there-are-three-kinds-of-lies-lies-damned-lies-and",
+  "topic": "quotes",
+  "tracedOrigin": null,
+  "tracedBy": "https://quoteinvestigator.com/2022/06/22/lies-statistics/",
+  "expected": "cold"
+ },
+ {
+  "id": "e3-29",
+  "text": "90% of Americans marry their high school sweetheart.",
+  "seenAt": "https://www.elitedaily.com/dating/majority-people-marry-high-school-sweetheart",
+  "topic": "relationships",
+  "tracedOrigin": null,
+  "tracedBy": "https://www.snopes.com/fact-check/let-me-call-you-sweetheart/",
+  "expected": "cold"
+ },
+ {
+  "id": "e3-30",
+  "text": "Humans share 50% of their DNA with bananas.",
+  "seenAt": "https://www.metaquest.com.sg/post/are-humans-50-bananas",
+  "topic": "biology",
+  "tracedOrigin": null,
+  "tracedBy": "https://www.snopes.com/fact-check/banana-human-genetics/",
+  "expected": "cold"
+ },
+ {
+  "id": "e3-31",
+  "text": "Heraclitus said: Out of every one hundred men, ten shouldn't even be there, eighty are just targets, nine are the real fighters, and one is a warrior.",
+  "seenAt": "https://www.goodreads.com/quotes/10660229-out-of-every-one-hundred-men-ten-shouldn-t-even-be-there",
+  "topic": "quotes",
+  "tracedOrigin": null,
+  "tracedBy": "https://quoteinvestigator.com/2024/08/27/one-warrior/",
+  "expected": "cold"
+ },
+ {
+  "id": "e3-32",
+  "text": "It takes 43 muscles to frown and only 17 to smile.",
+  "seenAt": "https://www.madsci.org/posts/archives/2008-06/1213986646.An.r.html",
+  "topic": "body",
+  "tracedOrigin": null,
+  "tracedBy": "https://www.snopes.com/fact-check/happiness-is-only-grin-deep/",
+  "expected": "cold"
+ },
+ {
+  "id": "e3-33",
+  "text": "Men think about sex every seven seconds.",
+  "seenAt": "https://www.drjasonwinters.com/blogs/psychology-of-sexuality/2011/06/22/sex-on-the-male-brain-every-seven-seconds",
+  "topic": "psychology",
+  "tracedOrigin": null,
+  "tracedBy": "https://www.snopes.com/fact-check/thinking-about-sex/",
+  "expected": "cold"
+ },
+ {
+  "id": "e3-34",
+  "text": "Suicides have increased by 200% since lockdown began.",
+  "seenAt": "https://slate.com/technology/2020/11/whats-actually-happening-with-suicide-during-the-pandemic.html",
+  "topic": "health",
+  "tracedOrigin": null,
+  "tracedBy": "https://fullfact.org/online/suicide-200-percent/",
+  "expected": "cold"
+ },
+ {
+  "id": "e3-35",
+  "text": "John Wanamaker said: Half the money I spend on advertising is wasted; the trouble is I don't know which half.",
+  "seenAt": "https://www.goodreads.com/quotes/9325923-half-the-money-i-spend-on-advertising-is-wasted-the",
+  "topic": "quotes",
+  "tracedOrigin": null,
+  "tracedBy": "https://quoteinvestigator.com/2022/04/11/advertising/",
+  "expected": "cold"
+ },
+ {
+  "id": "e3-36",
+  "text": "If the world were a village of 100 people, 57 would be Asian.",
+  "seenAt": "https://web.cortland.edu/russellk/courses/hdouts/100ppl.htm",
+  "topic": "population",
+  "tracedOrigin": null,
+  "tracedBy": "https://www.snopes.com/fact-check/aisle-of-man/",
+  "expected": "cold"
+ },
+ {
+  "id": "e3-37",
+  "text": "Mark Twain said a lie can travel halfway around the world while the truth is putting on its shoes.",
+  "seenAt": "https://www.goodreads.com/quotes/76-a-lie-can-travel-half-way-around-the-world-while",
+  "topic": "quotes",
+  "tracedOrigin": null,
+  "tracedBy": "https://quoteinvestigator.com/2014/07/13/truth/",
+  "expected": "cold"
+ },
+ {
+  "id": "e3-38",
+  "text": "Mark Twain said figures don't lie, but liars figure.",
+  "seenAt": "https://www.goodreads.com/quotes/662810-figures-don-t-lie-liars-figure",
+  "topic": "quotes",
+  "tracedOrigin": null,
+  "tracedBy": "https://quoteinvestigator.com/2010/11/15/liars-figure/",
+  "expected": "cold"
+ },
+ {
+  "id": "e3-39",
+  "text": "Mark Twain said twenty years from now you will be more disappointed by the things you didn't do than by the ones you did do.",
+  "seenAt": "https://snarkynomad.com/the-best-of-mark-twains-travel-quotes/",
+  "topic": "quotes",
+  "tracedOrigin": null,
+  "tracedBy": "https://quoteinvestigator.com/2011/09/29/you-did/",
+  "expected": "cold"
+ },
+ {
+  "id": "e3-40",
+  "text": "Fred Hoyle said the optimum population of the world should be about one hundred thousand.",
+  "seenAt": "https://authorscalendar.info/hoyle.htm",
+  "topic": "population",
+  "tracedOrigin": null,
+  "tracedBy": "https://quoteinvestigator.com/2022/10/18/population/",
+  "expected": "cold"
+ }
+]

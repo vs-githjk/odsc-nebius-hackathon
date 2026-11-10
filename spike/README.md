@@ -29,3 +29,7 @@ Do not run `claim-1` to `claim-6` until the target hashes are on #10. Their text
 - **Clusters are crude.** Pages join a cluster only if title and sentence both match. Clustering proper is T26.
 - **The subject must appear in the sentence.** A page spelling or phrasing the subject differently is dropped and logged.
 - **Blame is empty.** It arrives with T27.
+
+## Replays
+
+If a claim's paid calls all come from the cache, the walker treats the run as a replay. It then refuses to write the trace unless it gets the recorded trace to carry, through `--replay-of <trace.json>`. A replay is written as `mode: "REPLAY"` with the recorded run's date, budget and usage rows, plus rows for any free calls made fresh, such as Wayback lookups after a change to the CDX query. A run that makes even one paid call is LIVE, and its credits count only that run's new calls.
