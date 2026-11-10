@@ -32,7 +32,36 @@
   ],
   "factCheckDomains": ["snopes.com", "politifact.com", "factcheck.org", "fullfact.org", "leadstories.com", "checkyourfact.com", "africacheck.org", "truthorfiction.com", "quoteinvestigator.com"],
   "clusterSimilarityThreshold": 0.9,
+  "hedgeWords": [
+    "about",
+    "around",
+    "roughly",
+    "approximately",
+    "nearly",
+    "almost",
+    "up to",
+    "as many as",
+    "more than",
+    "less than",
+    "estimated",
+    "may",
+    "might",
+    "could"
+  ],
+  "comparisonWords": [
+    "twice as",
+    "half as",
+    "times as",
+    "times more than",
+    "as often as",
+    "as much as",
+    "compared with",
+    "compared to",
+    "relative to"
+  ],
   "notes": {
-    "clusterSimilarityThreshold": "Placeholder. Set on the E2 dev set (#34) before the held-out run; Rohan never edits it."
+    "clusterSimilarityThreshold": "Placeholder. Set on the E2 dev set (#34) before the held-out run; Rohan never edits it.",
+    "hedgeWords": "Placeholder list for the hedge_dropped readout (T27). Check on the E2 dev set before the held-out run.",
+    "comparisonWords": "Placeholder list for the comparison_added readout (T27). Check on the E2 dev set before the held-out run."
   }
 }
