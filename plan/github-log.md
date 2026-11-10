@@ -35,3 +35,6 @@
 
 ## Nov 9 evening
 - Anoop finished queue items 1 to 3 early. Merged #74 T27, #96 T34. FIX: #75 (abbreviation split), #77 (substring name check, origin words card-only), #97 (urlKey drops query string). New issues T47 to T52 (#98 to #103) for Anoop. Budget $15 locked.
+
+## Nov 10 morning
+- Merged #97 T33 dev-score, #105 T47 E3. FIX: #75 (U.S. acronym split, last blocker for T38 live), #77, #104, #106; #80 and #107 FIX. Ledger $0 of $15, Rohan single live runner, ceilings TF $0.01 Tavily $0.02.

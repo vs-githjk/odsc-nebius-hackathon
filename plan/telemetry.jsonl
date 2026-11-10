@@ -47,3 +47,5 @@
 {"ts":"2026-11-09T14:37-08:00","stage":"H5-build-run2","agent":"master-reviewer","model":"inherit","effort":"default","minutes":4,"tokens":121418,"result":"#76 PASS, #74 #75 #77 FIX"}
 {"ts":"2026-11-09T14:38-08:00","stage":"H5-build-run2","agent":"master-reviewer","model":"inherit","effort":"default","minutes":5,"tokens":116372,"result":"#50 PASS, #62 FIX (#69), #82 notes"}
 {"ts":"2026-11-09T16:14-08:00","stage":"H5-build-run2b","agent":"master-reviewer","model":"inherit","effort":"default","minutes":8,"tokens":133482,"result":"#74 #96 PASS, #75 #77 #97 FIX"}
+{"ts":"2026-11-10T08:47-08:00","stage":"H5-build-run2b","agent":"master-reviewer","model":"inherit","effort":"default","minutes":9,"tokens":0,"result":"#80 FIX (dating not enforced, metadata path), #107 FIX (ceiling pin, replay provenance)"}
+{"ts":"2026-11-10T08:52-08:00","stage":"H5-build-run2b","agent":"master-reviewer","model":"inherit","effort":"default","minutes":11,"tokens":139984,"result":"#97 #105 PASS, #75 #77 #104 #106 FIX"}
