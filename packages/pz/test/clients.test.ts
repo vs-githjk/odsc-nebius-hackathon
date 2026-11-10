@@ -255,6 +255,7 @@ describe("wayback", () => {
     expect(url.searchParams.get("url")).toBe("https://a.example/x");
     expect(url.searchParams.get("matchType")).toBe("exact");
     expect(url.searchParams.get("limit")).toBe("1");
+    expect(url.searchParams.get("filter")).toBe("statuscode:200");
     expect(data).toEqual({ status: "found", firstCapture: "2001-03-31", timestamp: "20010331090921" });
     expect(usage.rows[0]).toMatchObject({ service: "wayback", credits: 0 });
   });
