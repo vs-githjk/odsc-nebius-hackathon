@@ -31,9 +31,10 @@ export type IntakeResult = {
   usage: Result<ChatData>["attempts"];
 };
 
-// Abbreviations that end in "." but do not end a sentence ("approx. 14", "Dr. Smith"), and single initials ("J. Smith").
+// Abbreviations that end in "." but do not end a sentence ("approx. 14", "Dr. Smith"), single initials ("J. Smith"), and any
+// run of letters each followed by a dot ("U.S.", "a.m.", "p.m.", "U.K.").
 // Joining too much is the safe way to be wrong: a longer sentence keeps its negation, a cut one may lose it.
-const ABBREVIATION = /(?:^|[\s(])(?:approx|appr|est|ca|cf|vs|etc|e\.g|i\.e|al|fig|figs|no|nos|vol|pp|dr|mr|mrs|ms|prof|st|mt|jr|sr|inc|ltd|corp|gov|sen|rep|gen|dept|univ|jan|feb|mar|apr|jun|jul|aug|sep|sept|oct|nov|dec|\p{Lu})\.["')\]]?$/iu;
+const ABBREVIATION = /(?:^|[\s(])(?:(?:\p{L}\.)+\p{L}|approx|appr|est|ca|cf|vs|etc|e\.g|i\.e|al|fig|figs|no|nos|vol|pp|dr|mr|mrs|ms|prof|st|mt|jr|sr|inc|ltd|corp|gov|sen|rep|gen|dept|univ|jan|feb|mar|apr|jun|jul|aug|sep|sept|oct|nov|dec|\p{Lu})\.["')\]]?$/iu;
 // A piece that is only a list number ("1.") belongs to the item after it.
 // A line that starts a list item or heading, and a line that ends a sentence.
 const STARTS_ITEM = /^\s*(?:[-*+\u2022]\s|\d+[.)]\s|#)/u;
