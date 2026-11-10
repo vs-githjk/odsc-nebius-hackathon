@@ -38,3 +38,4 @@
 
 ## Nov 10 morning
 - Merged #97 T33 dev-score, #105 T47 E3. FIX: #75 (U.S. acronym split, last blocker for T38 live), #77, #104, #106; #80 and #107 FIX. Ledger $0 of $15, Rohan single live runner, ceilings TF $0.01 Tavily $0.02.
+- Nov 10 midday: Rishit cleared #52 #62 #82. Merged #82 T23 walker. FIX: #52 (pin historical traces by sha256), #62 (plain-language stop reasons, label overlap, 390 rows).
