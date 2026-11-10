@@ -48,3 +48,28 @@ T33 scorer PR #97 c126a3b, E2: false origins 0 (+0 unverified ORIGIN_FOUND), tar
 cited 0/11, earliest 0 Pass / 0 Partial / 0 Fail, cold stops 0/9, **0 of 20 scored**,
 0 credits, 0 seconds, modes none. This is missing dev coverage, not an engine
 quality improvement. No paid call or held-out access/run occurred in this prep.
+
+## Shared-file budget mechanism
+
+`budget.ts` adds explicit ledger initialization with the combined prior spend,
+approved week and a cap no higher than $15. It never defaults prior spend to zero
+or overwrites an existing ledger. Reservations are persisted before an HTTP
+attempt and serialized through an exclusive lock. Usage settlement releases only
+a known unused reservation; missing usage, transport errors and unparseable usage
+retain the entire reservation. Each retry passes through the fetch wrapper again.
+An exceeded cost bound is recorded and blocks further reservations. Corrupt,
+missing, locked or expired ledgers fail closed. Amounts round up to microdollars.
+
+This coordinates only callers using the same shared file. Before a live run,
+reconcile other machines' Tavily and Token Factory spend into one authoritative
+ledger and ensure every runner uses it. The caller must supply a valid per-attempt
+cost ceiling and provider-specific usage conversion; neither is invented here.
+The current Token Factory client maps fetch-level failures to network_error,
+including a refused budget reservation; the refusal still prevents the HTTP
+attempt, but typed budget error propagation remains a T41 integration concern.
+No live CLI is exposed and no cross-machine cap is claimed by these tests.
+
+Ten new budget tests cover shared ledger instances, exact settlement, unknown
+usage, locks/corruption, expiry, overwrite refusal, violated bounds and the
+existing Token Factory client's automatic retry using an injected fake transport.
+Local typecheck and 88 tests pass. No paid call occurred.
