@@ -27,6 +27,24 @@ describe("number words in the parser", () => {
     expect(parseNumberWords("8eight \u00e9ten")).toEqual([]);
     expect(wordsToNumber("three hundred twenty")).toEqual({ raw: "three hundred twenty", value: 320 });
   });
+
+  it("joins words only in number order, and never reads a lone one (XO's cases)", () => {
+    const values = (t: string) => parseNumberWords(t).map((n) => n.value);
+    expect(values("One study of people found nothing")).toEqual([]);
+    expect(values("No one reads")).toEqual([]);
+    expect(values("twenty twenty")).toEqual([20, 20]);
+    expect(values("nineteen eighty-four")).toEqual([19, 84]);
+    expect(values("fifty-fifty")).toEqual([]);
+    expect(values("twenty one days, one hundred steps, one in eight")).toEqual([21, 100, 8]);
+    expect(values("eight twenty")).toEqual([8, 20]);
+    expect(values("five million two thousand")).toEqual([5002000]);
+    expect(values("thousand million")).toEqual([]);
+    expect(values("two thousand million")).toEqual([2000]);
+    expect(values("five thousand two million")).toEqual([5000, 2000000]);
+    const one = atoms("1", "study");
+    expect(atomHit("One study of people found nothing", one)).toBe(false);
+    expect(atomHit("No one reads the study", one)).toBe(false);
+  });
 });
 
 describe("atomHit reads written-out numbers (E2 dev-02 and dev-04 wording)", () => {

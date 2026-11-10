@@ -21,7 +21,7 @@ This folder decides the code half of the same-claim check in `packages/pz/src/ma
 
 Out of 100 true and 31 false sentences.
 
-- **Number words: kept.** `atomHit` now reads "eight spiders" and "ten thousand steps". A number in words always counts as weak, so its subject must be in the same clause. That adds 9 true hits and no false ones.
+- **Number words: kept.** `atomHit` now reads "eight spiders" and "ten thousand steps". A number in words always counts as weak, so its subject must be in the same clause. Words join only in number order ("twenty one" is 21, "twenty twenty" is two numbers, "fifty-fifty" is none), and a lone "one" is never read ("One study found", "no one reads"). That adds 9 true hits and no false ones; the counts were re-run after the order rules and did not change.
 - **Variant phrase required (candidate rule 1 in the spike post-mortem): not shipped.** It removed no false hit and lost 2 true ones, "eight 8-ounce glasses of water" among them. The function stays in `measure.ts` so it can be measured again.
 - **The 9 false hits left** are 8 dev-10 sentences that use 2050 as a date with "plastic" in the clause, and the TikTok "100 million users" sentence on dev-17. Each has the right number and subject word but a different claim. Catching them is the job of the typed `same_claim` question, which is the second half of the check.
 
@@ -29,6 +29,7 @@ Out of 100 true and 31 false sentences.
 
 - **The question:** `same_claim` (`SAME_CLAIM` in `packages/pz/src/schema/questions.ts`) asks: does SENTENCE state the same claim as CLAIM, with the same subject, number and unit? The options are yes and no. "Unsure" comes only from the confidence threshold (`confidenceThreshold` in `rules.json`, set by T48).
 - **The gate:** a page needs a code hit and a typed yes whose confidence is known. A no, an unsure, or a yes with no logprobs never makes a candidate. With no model, nothing does.
+- **Where it is enforced:** `decideStopState` (row 5). An earliest page reaches ORIGIN_FOUND only when one of its spans passes `atomHit` and its `sameClaim` answer (a new optional field on each trace node) is a confident yes. A missing answer counts as unsure, and the trace's reasons say "same_claim not asked on N earliest page(s) (no model)". The walker only fills `sameClaim` on each candidate, through `sameClaim()`.
 - **Not measured yet.** This machine has no Token Factory key, so $0 has been spent. Asking it about the 95 sentences that pass the code check is 95 short calls, well under a cent at the pinned model's price. That run goes on #2 when it is made.
 
 ## Limits
