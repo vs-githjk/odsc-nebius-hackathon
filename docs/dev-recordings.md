@@ -1,75 +1,88 @@
-# T38 recording preparation
+# T38 dev recordings
 
-The transport in `eval/recordings/session.ts` is ready for offline review. No live
-recordings are included. C11 stays planned. Intake PR #75 must merge before the
-live capture phase of #88; its prompt and implementation remain Anoop's.
+T38 prepares five approved intake answers and 20 E2 fingerprints for live capture.
+No live recordings are included yet. C11 stays planned until the actual captures
+pass. Intake PR #75 must merge before live execution. Its prompts remain Anoop's.
 
-`loadT38Cases()` reads only the five approved intake fixture `answer` fields and
-the 20 E2 `text` fields, in deterministic order. It never uses the hand-written
-model replies or dev target URLs. No held-out path is accepted.
+## Commands
 
-`recordCases(cases, deps)` calls the supplied intake/fingerprint operations in
-order with the supplied existing Token Factory clients. It records exact typed
-requests and responses, original attempt usage, timestamp, source and explicit
-LIVE or SYNTHETIC provenance. Available attempt usage survives a client failure;
-only a fixed error code is stored. A failed case or failed write stops the batch.
-Completed captures are not silently replaced by retries. `writeRecording` uses
-exclusive creation and mode 0600, refusing existing files.
+Run from a normal Git checkout after fetching the current `origin/main`:
 
-`replayRecording(record, operations)` has no network fallback. It reruns the
-operation with saved responses and checks exact requests, call count and output.
-Prompt/interface drift therefore fails replay instead of quietly changing the
-meaning of a capture. Synthetic tests remain labelled SYNTHETIC.
+```sh
+node --import tsx eval/record-dev.ts --plan
+node --import tsx eval/record-dev.ts --replay "$CAPTURE_DIR"
+```
 
-## Remaining live integration
+Plan prints counts and ids, with no model loading or network access. The fixed
+manifest reads only the five approved intake fixture `answer` fields and 20 E2
+`text` fields. It never uses handwritten responses, target URLs or held-out files.
+Plan needs the intake fixture files, so it becomes available after #75 merges.
+Replay checks all 25 source/id/kind pairs, reruns the unchanged operations using
+saved responses and compares exact requests, call count and output. There is no
+network fallback. SYNTHETIC provenance is retained in the files; a replay success
+is not a claim that synthetic captures came from a live provider.
 
-Once #75 merges, assemble the two merged operations and existing clients, run
-`loadT38Cases`, then `recordCases`. This preparation intentionally exposes no live
-CLI. Before live execution, add the shared weekly budget integration at the HTTP
-attempt boundary (including retries) and obtain the combined weekly spending
-ledger. The required `beforeCase` hook is an additional preflight, not proof of a
-per-attempt or cross-machine cap. The Nov 9 to 15 budget is $15 for Tavily plus
-Token Factory combined, including the held-out run, as posted on #2.
+Only after #75 merges and the shared spending ledger is reconciled:
 
-Save actual captures under `packages/pz/test/recorded/live/`, review their outputs,
-and replay all 25 through the merged operations before marking C11 proven. Keep
-failed captures and their usage visible. Do not overwrite the existing synthetic
-fixtures or call a completed transport test a live model evaluation.
+```sh
+node --env-file-if-exists=.env --import tsx eval/record-dev.ts --live \
+  --ledger "$WEEKLY_LEDGER" --ceiling-usd "$REVIEWED_ATTEMPT_CEILING_USD" \
+  --out "$NEW_CAPTURE_DIR"
+```
 
-## Validation and score coverage
+The ledger must already exist. The command never resets it or assumes zero prior
+spend. Both operation files and all six input files must match exact bytes in
+`origin/main`; no
+arbitrary pipeline or prompt path can be supplied. A missing key or invalid budget
+fails before network access. The output directory must be new, with an existing
+parent, and its recording files use exclusive creation. The command accepts only
+the pinned Qwen chat endpoint/model and uses the repository price table for valid
+reported token usage. Unknown or malformed usage retains the full reservation.
+Command errors print only `recording_failed`, without git stderr, paths, arguments
+or provider message bodies.
 
-Eight transport/manifest tests cover deterministic capture, failure usage,
-preflight, full-manifest validation, exclusive writes, replay drift and the real
-merged fingerprint operation using a synthetic provider response. Local typecheck
-and 78 tests pass in the partial source workspace; full make verify runs in CI.
-No prompt, wording, rule or threshold changes.
+## Budget contract
+
+`budget.ts` initializes a ledger only with explicit combined prior spend, approved
+week and cap no higher than $15. The Nov 9 to 15 budget covers Tavily and Token
+Factory combined, including the Nov 13 held-out run, as posted on #2. Do not run
+the held-out set through this command.
+
+Reservations persist before each HTTP attempt, serialized by an exclusive lock;
+each retry reserves again. Known usage settles once and releases only the unused
+reservation. Missing usage, transport errors and usage-parsing errors retain the
+entire reservation. A violated cost bound is recorded and blocks further calls.
+Missing, corrupt, locked, expired or exhausted ledgers fail closed. Amounts round
+up to microdollars. A crashed lock requires investigation, not automatic removal.
+
+This coordinates only callers sharing the same ledger file. XO must reconcile
+all other machines' Tavily and Token Factory spend and ensure runners use the
+same authoritative allowance. The supplied per-attempt ceiling must be a reviewed
+upper bound for the pinned request/model; the command does not infer a safe bound
+from a guessed token estimate. Repository prices are dated and require review
+before spending. An exceeded bound is detected after the response and prevents
+further calls; a correct ceiling is necessary to enforce the intended cap.
+The existing Token Factory client maps fetch-level reservation failures to
+network_error. The request is still blocked; typed budget propagation is a T41
+integration concern.
+
+## Capture and validation
+
+`session.ts` captures exact typed requests/responses, original per-attempt usage,
+recordedAt and explicit LIVE or SYNTHETIC provenance. Available attempt usage
+survives a client failure, with only a safe error code stored. A failed case or
+write stops the batch. Save actual captures under test/recorded/live, review them,
+and replay all 25 before marking C11 proven. Keep failed captures and usage
+visible; do not overwrite the original synthetic fixtures.
+
+Local typecheck and 94 tests pass, including eight capture/manifest tests, ten
+budget tests and six command tests. They include the real merged fingerprint
+operation and existing Token Factory retry path with synthetic provider responses.
+One command test replays all 25 generated synthetic records with no network.
+The merge gate is tested against a temporary Git repository. Full make verify
+runs in repository CI because the local source workspace is partial.
 
 T33 scorer PR #97 c126a3b, E2: false origins 0 (+0 unverified ORIGIN_FOUND), target
 cited 0/11, earliest 0 Pass / 0 Partial / 0 Fail, cold stops 0/9, **0 of 20 scored**,
-0 credits, 0 seconds, modes none. This is missing dev coverage, not an engine
-quality improvement. No paid call or held-out access/run occurred in this prep.
-
-## Shared-file budget mechanism
-
-`budget.ts` adds explicit ledger initialization with the combined prior spend,
-approved week and a cap no higher than $15. It never defaults prior spend to zero
-or overwrites an existing ledger. Reservations are persisted before an HTTP
-attempt and serialized through an exclusive lock. Usage settlement releases only
-a known unused reservation; missing usage, transport errors and unparseable usage
-retain the entire reservation. Each retry passes through the fetch wrapper again.
-An exceeded cost bound is recorded and blocks further reservations. Corrupt,
-missing, locked or expired ledgers fail closed. Amounts round up to microdollars.
-
-This coordinates only callers using the same shared file. Before a live run,
-reconcile other machines' Tavily and Token Factory spend into one authoritative
-ledger and ensure every runner uses it. The caller must supply a valid per-attempt
-cost ceiling and provider-specific usage conversion; neither is invented here.
-The current Token Factory client maps fetch-level failures to network_error,
-including a refused budget reservation; the refusal still prevents the HTTP
-attempt, but typed budget error propagation remains a T41 integration concern.
-No live CLI is exposed and no cross-machine cap is claimed by these tests.
-
-Ten new budget tests cover shared ledger instances, exact settlement, unknown
-usage, locks/corruption, expiry, overwrite refusal, violated bounds and the
-existing Token Factory client's automatic retry using an injected fake transport.
-Local typecheck and 88 tests pass. No paid call occurred.
+0 credits, 0 seconds, modes none. This is missing coverage, not an engine quality
+improvement. No paid call or held-out access/run occurred during preparation.
