@@ -82,7 +82,7 @@ The run used T4, T5 and T6 as they stood at 83a1e71. The traces are kept as reco
 
 Every other check passes: window hashes, offsets, page hashes and offsets, two spans per edge, edge kinds, the earliest node, and negation.
 
-**How `make verify` treats these traces:** they are historical records, listed in `spike/historical-traces.json` with the rules they were recorded under (83a1e71). `pz verify --historical <manifest>` then skips the atoms re-check and compares the decision on state and row only. It prints a `HISTORICAL` line for each such trace, so the exemption is never silent. Every other check still runs. A trace not in the manifest, including `dry-run.json`, is checked in full.
+**How `make verify` treats these traces:** they are historical records, listed in `spike/historical-traces.json` with the rules they were recorded under (83a1e71). Each entry pins the trace by id and by a sha256 of its content, so a re-run written under the same id is no longer historical and is checked in full. `pz verify --historical <manifest>` then skips the atoms re-check and compares the decision on state and row only. It prints a `HISTORICAL` line for each such trace, so the exemption is never silent. Every other check still runs. A trace not in the manifest, including `dry-run.json`, is checked in full.
 
 ## Candidate rules (not applied)
 

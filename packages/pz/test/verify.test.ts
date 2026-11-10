@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 import { loadRules } from "../src/rules/index.ts";
 import type { Trace } from "../src/schema/index.ts";
-import { runVerify, verifyTrace } from "../src/verify/index.ts";
+import { runVerify, traceHash, verifyTrace } from "../src/verify/index.ts";
 
 const root = fileURLToPath(new URL("../../../", import.meta.url));
 const tracesDir = join(root, "fixtures/traces");
@@ -166,10 +166,29 @@ describe("pz verify on historical records", () => {
     const dir = mkdtempSync(join(tmpdir(), "pz-historical-"));
     const path = join(dir, "sample-origin.json");
     writeFileSync(path, JSON.stringify(olderWording()));
-    const manifest = { rulesAt: "abc1234", note: "recorded before a rules change", traces: ["sample-origin"] };
+    const manifest = { rulesAt: "abc1234", note: "recorded before a rules change", traces: [{ id: "sample-origin", sha256: traceHash(olderWording()) }] };
     const { code, lines } = runVerify([path], { historical: manifest });
     expect(code).toBe(0);
     expect(lines[0]).toBe("HISTORICAL sample-origin: recorded under the rules at abc1234 (recorded before a rules change); atoms re-check skipped, stop state compared on state and row");
     expect(runVerify([path]).code).toBe(1);
+  });
+
+  it("[C16] a re-run with the same id but different content is not historical: it is checked in full", () => {
+    const dir = mkdtempSync(join(tmpdir(), "pz-historical-"));
+    const path = join(dir, "sample-origin.json");
+    const manifest = { rulesAt: "abc1234", note: "recorded before a rules change", traces: [{ id: "sample-origin", sha256: traceHash(olderWording()) }] };
+    const rerun = olderWording();
+    rerun.recordedAt = "2026-11-10T00:00:00.000Z";
+    writeFileSync(path, JSON.stringify(rerun));
+    const { code, lines } = runVerify([path], { historical: manifest });
+    expect(code).toBe(1);
+    expect(lines.some((l) => l.startsWith("HISTORICAL"))).toBe(false);
+    expect(lines.some((l) => l.startsWith("FAIL sample-origin stop_state"))).toBe(true);
+  });
+
+  it("the hash is of the trace's content, so line endings or key spacing in the file never change it", () => {
+    const t = olderWording();
+    expect(traceHash(JSON.parse(JSON.stringify(t, null, 2).replace(/\n/g, "\r\n")))).toBe(traceHash(t));
+    expect(traceHash(t)).toMatch(/^[0-9a-f]{64}$/);
   });
 });

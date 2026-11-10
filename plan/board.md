@@ -104,3 +104,4 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [17:12 PT] AnoopIbrampur T33 on #97: make dev-score now scores E2 and E3 (when eval/dev-claims-e3.json exists, #105), one row per set
 - [09:34 PT] RishitRai #52 make verify: run-1 traces verified as historical records (spike/historical-traces.json, pz verify --historical); stop_state failures now name the differing field
 - [09:43 PT] RishitRai #82 review notes: walkStep builds per-run deps, carries mode/recordedAt/synthetic/usage, allows warm-cache runs, leaves dates and ordering to the dating stage
+- [10:02 PT] RishitRai #52 fix: historical traces pinned by id and content sha256; a re-run with the same id is checked in full
