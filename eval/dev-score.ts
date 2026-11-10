@@ -17,13 +17,19 @@ export type ClaimScore = {
   credits: number; seconds: number; reason?: string;
 };
 
-// A URL reduced to host and path: no scheme, "www.", query, fragment or trailing slash, and a Wayback capture
-// unwrapped to the page it archives. "https://web.archive.org/web/2010/http://www.x.org/a/" becomes "x.org/a".
+// Tracking parameters that never change which page a URL is. Every other query parameter is kept: some sites
+// (wwf.panda.org/wwf_news/?348337/...) name the page in the query string.
+const TRACKING = /^(utm_[a-z]+|fbclid|gclid|mc_cid|mc_eid|ref|ref_src)$/i;
+
+// A URL reduced to host, path and query: no scheme, "www.", port, fragment, tracking parameters or trailing slash,
+// and a Wayback capture unwrapped to the page it archives. "https://web.archive.org/web/2010/http://www.x.org/a/"
+// becomes "x.org/a"; "https://x.org/news/?123/a" stays "x.org/news?123/a".
 export function urlKey(url: string): string {
   const unwrapped = url.replace(/^https?:\/\/web\.archive\.org\/web\/[^/]+\//i, "");
   try {
     const u = new URL(/^https?:\/\//i.test(unwrapped) ? unwrapped : `http://${unwrapped}`);
-    return (u.hostname.replace(/^www\./i, "").toLowerCase() + u.pathname.replace(/\/+$/, "")).replace(/:\d+/, "");
+    const query = u.search.replace(/^\?/, "").split("&").filter((p) => p && !TRACKING.test(p.split("=")[0]!)).join("&");
+    return u.hostname.replace(/^www\./i, "").toLowerCase() + u.pathname.replace(/\/+$/, "") + (query ? `?${query}` : "");
   } catch { return unwrapped.toLowerCase(); }
 }
 const hostOf = (url: string) => urlKey(url).split("/")[0]!;
@@ -56,7 +62,7 @@ export function scoreClaim(claim: DevClaim, trace: Trace | null): ClaimScore {
 
 export type Summary = {
   traces: number; claims: number; scored: number; unverified: number; modes: string[];
-  falseOrigins: number; targetCited: number; originClaims: number; pass: number; partial: number; fail: number;
+  falseOrigins: number; unverifiedOrigins: number; targetCited: number; originClaims: number; pass: number; partial: number; fail: number;
   coldCorrect: number; coldClaims: number; credits: number; seconds: number;
 };
 
@@ -70,6 +76,9 @@ export function summarise(scores: ClaimScore[]): Summary {
     unverified: count(scores, (s) => s.status === "unverified" || s.status === "bad trace"),
     modes: [...new Set(scored.map((s) => s.mode!))].sort(),
     falseOrigins: count(scored, (s) => s.falseOrigin),
+    // A trace that fails verify is not scored, but if it claims an origin that is still worth seeing next to the
+    // false origins: it may be one we cannot check.
+    unverifiedOrigins: count(scores, (s) => s.status !== "scored" && s.state === "ORIGIN_FOUND"),
     targetCited: count(origin, (s) => !!s.targetCited), originClaims: count(scores, (s) => s.expected === "origin"),
     pass: count(origin, (s) => s.earliest === "Pass"), partial: count(origin, (s) => s.earliest === "Partial"), fail: count(origin, (s) => s.earliest === "Fail"),
     coldCorrect: count(cold, (s) => !!s.coldCorrect), coldClaims: count(scores, (s) => s.expected === "cold"),
@@ -79,7 +88,7 @@ export function summarise(scores: ClaimScore[]): Summary {
 
 // The one line every engine PR posts. False origins come first: they are the worst outcome.
 export function headline(s: Summary): string {
-  return `false origins ${s.falseOrigins} | target cited ${s.targetCited}/${s.originClaims} | earliest ${s.pass} Pass, ${s.partial} Partial, ${s.fail} Fail`
+  return `false origins ${s.falseOrigins} (+${s.unverifiedOrigins} unverified ORIGIN_FOUND) | target cited ${s.targetCited}/${s.originClaims} | earliest ${s.pass} Pass, ${s.partial} Partial, ${s.fail} Fail`
     + ` | cold stops ${s.coldCorrect}/${s.coldClaims} | ${s.scored} of ${s.claims} claims scored (${s.unverified} unverified)`
     + ` | ${s.credits} credits, ${s.seconds} s | modes ${s.modes.join(", ") || "none"}`;
 }
@@ -95,12 +104,12 @@ export function scoreDir(dir: string, claims: DevClaim[]): ClaimScore[] {
 }
 
 const HEADER = "# Dev score\n\nOne row per `make dev-score` run, newest last. Graded on the E2 dev claims only; see `eval/dev-score.ts` for the rules.\n\n"
-  + "| Date (UTC) | Commit | False origins | Target cited | Earliest Pass / Partial / Fail | Cold stops | Scored | Credits | Seconds | Modes |\n"
+  + "| Date (UTC) | Commit | False origins (+ unverified ORIGIN_FOUND) | Target cited | Earliest Pass / Partial / Fail | Cold stops | Scored | Credits | Seconds | Modes |\n"
   + "|---|---|---|---|---|---|---|---|---|---|\n";
 
 export function appendRow(path: string, s: Summary, at: string, commit: string): void {
   if (!existsSync(path)) writeFileSync(path, HEADER);
-  appendFileSync(path, `| ${at} | ${commit} | ${s.falseOrigins} | ${s.targetCited}/${s.originClaims} | ${s.pass} / ${s.partial} / ${s.fail} | `
+  appendFileSync(path, `| ${at} | ${commit} | ${s.falseOrigins} (+${s.unverifiedOrigins}) | ${s.targetCited}/${s.originClaims} | ${s.pass} / ${s.partial} / ${s.fail} | `
     + `${s.coldCorrect}/${s.coldClaims} | ${s.scored} of ${s.claims} | ${s.credits} | ${s.seconds} | ${s.modes.join(", ") || "none"} |\n`);
 }
 
