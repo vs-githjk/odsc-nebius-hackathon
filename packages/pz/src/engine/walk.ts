@@ -37,7 +37,8 @@ const MAX_SENTENCE_CHARS = 600;
 const SCOPE_NOTE = "Web pages only; print and paywalled origins are out of scope. Earliest source we found, not proof of first use.";
 
 const sha256 = (text: string) => createHash("sha256").update(text).digest("hex");
-const canonUrl = (url: string) => url.replace(/#.*$/, "").replace(/\/$/, "");
+// One spelling per page: no fragment, no trailing slash.
+export const canonUrl = (url: string) => url.replace(/#.*$/, "").replace(/\/$/, "");
 const hostOf = (url: string) => new URL(url).hostname.replace(/^www\./, "");
 const dayBefore = (iso: string) => new Date(Date.parse(iso) - 86_400_000).toISOString().slice(0, 10);
 // Tavily sends RFC dates; undated pages sort last.
