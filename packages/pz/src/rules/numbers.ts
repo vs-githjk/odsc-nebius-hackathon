@@ -1,5 +1,6 @@
 import type { Atoms } from "../schema/index.ts";
 import { normalise } from "./normalise.ts";
+import { parseNumberWords } from "./number-words.ts";
 
 export type ParsedNumber = {
   raw: string; digits: string; value: number; decimals: number; percent: boolean; start: number; end: number;
@@ -92,13 +93,17 @@ const URL = /\bhttps?:\/\/\S+/g;
 // sentence's matching number is weak, the subject lemma must sit in the same clause as that number: nothing between
 // them may be "|", ":", "(", ")", "[" or "]", and at most maxCommas commas (a list or a tag line is not one clause).
 // The clause rule and its comma limit were chosen on the E2 dev claims (eval/weak-atoms), never on spike claims.
-export function atomHit(sentence: string, atoms: Atoms, minSigDigits = 3, maxCommas = 2): boolean {
+// Numbers written out in words ("eight spiders", "ten thousand steps") count too, as weak numbers (eval/same-claim);
+// words=false reads digits only, which is how the rule was before T36.
+export function atomHit(sentence: string, atoms: Atoms, minSigDigits = 3, maxCommas = 2, words = true): boolean {
   const target = parseNumbers(atoms.number.canonical).numbers[0];
   if (!target) return false;
   const text = normalise(sentence.replace(URL, " "));
-  const hits = parseNumbers(text).numbers.filter((n) => sameNumber(n, target).equal);
+  const wordNumbers = words ? parseNumberWords(text) : [];
+  const found = [...parseNumbers(text).numbers, ...wordNumbers];
+  const hits = found.filter((n) => sameNumber(n, target).equal);
   if (hits.length === 0) return false;
-  if (hits.some((n) => !isWeak(n, minSigDigits) && !isWeak(target, minSigDigits))) return true;
+  if (hits.some((n) => !wordNumbers.includes(n) && !isWeak(n, minSigDigits) && !isWeak(target, minSigDigits))) return true;
   const lemma = normalise(atoms.subjectLemma).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const subjects = [...text.matchAll(new RegExp(String.raw`(?<![\p{L}\p{N}])${lemma}`, "giu"))];
   return hits.some((n) => subjects.some((m) => {
