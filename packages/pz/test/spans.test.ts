@@ -126,3 +126,20 @@ describe("spans and links (T24)", () => {
     expect(spansStep()(walked, {}).nodes).toEqual(walked.nodes);
   });
 });
+
+describe("same-site citations (#108 note)", () => {
+  it("[C2] a page citing its own site's older post, beside the span, makes an explicit edge", async () => {
+    const child: Page = { url: "https://blog.example/new", date: "2020-05-01", text: "Report: penguins nap 14 times a day, as [we wrote](/old/#notes) before." };
+    const t = await walkThenSpans([child, older]);
+    const kid = nodeAt(t, child.url)!;
+    const parent = nodeAt(t, older.url)!;
+    expect(t.edges.map((e) => [e.childId, e.parentId, e.linkHref])).toEqual([[kid.id, parent.id, older.url]]);
+  });
+
+  it("[C2] a link back to the page itself is never a parent", async () => {
+    const self: Page = { url: "https://blog.example/old", date: "2012-02-08", text: "Our keepers noted that penguins nap 14 times a day ([permalink](https://blog.example/old#top))." };
+    const t = await walkThenSpans([self]);
+    expect(nodeAt(t, self.url)?.candidateParents).toEqual([]);
+    expect(t.edges).toEqual([]);
+  });
+});

@@ -103,3 +103,4 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [17:12 PT] AnoopIbrampur T33 on #97: make dev-score now scores E2 and E3 (when eval/dev-claims-e3.json exists, #105), one row per set
 - [09:43 PT] RishitRai #82 review notes: walkStep builds per-run deps, carries mode/recordedAt/synthetic/usage, allows warm-cache runs, leaves dates and ordering to the dating stage
 - [09:50 PT] RishitRai T24 spans and links: linkEdges and spansStep, explicit edges from links beside the span, unfetchable parents read false; draft on #82
+- [10:10 PT] RishitRai #108 same-site note: a same-site citation beside the span now makes an edge; self-links never do

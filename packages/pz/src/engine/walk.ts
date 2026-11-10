@@ -219,7 +219,8 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
           return [];
         }
       })
-      .filter((u) => hostOf(u) !== hostOf(url) && !excluded(u));
+      // Only links within reach of the span get here, so menus are already out; a same-site citation counts, a self-link never.
+      .filter((u) => u !== canonUrl(url) && !excluded(u));
     const parents = [...new Set(nearby)].slice(0, LINKS_PER_SPAN);
     nodeLinks.set(id, parents);
 
