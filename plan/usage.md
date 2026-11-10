@@ -1,30 +1,30 @@
 # Usage ledger (everyone)
 
-Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py. 46 runs across 2 people: AnoopIbrampur, vs-githjk.
+Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py. 47 runs across 2 people: AnoopIbrampur, vs-githjk.
 
 ## By person
 
 | Who | Runs | Output tokens | Apify | Bright Data | Web | GitHub | Codex | Last updated (UTC) |
 |---|---|---|---|---|---|---|---|---|
-| AnoopIbrampur | 1 | 636,947 | 0 | 0 | 95 | 211 | 0 | 2026-11-10T17:30:53Z |
-| vs-githjk | 45 | 2,083,422 | 10 | 7 | 63 | 259 | 11 | 2026-11-10T16:57:20Z |
+| AnoopIbrampur | 1 | 664,542 | 0 | 0 | 95 | 221 | 0 | 2026-11-10T18:19:23Z |
+| vs-githjk | 46 | 2,106,021 | 10 | 7 | 63 | 265 | 11 | 2026-11-10T17:58:59Z |
 
 ## Totals by service
 
 | Service | Calls |
 |---|---|
-| Shell | 1600 |
-| Claude Code tools | 1073 |
-| GitHub (gh) | 470 |
+| Shell | 1689 |
+| Claude Code tools | 1087 |
+| GitHub (gh) | 486 |
 | Other HTTP | 325 |
 | Web search and fetch | 158 |
-| MCP ccd_turn | 142 |
+| MCP ccd_turn | 145 |
+| Browser (Playwright) | 21 |
 | Nebius Token Factory | 16 |
 | Codex | 11 |
 | Apify | 10 |
 | MCP ccd_host | 7 |
 | Bright Data | 7 |
-| Browser (Playwright) | 5 |
 | MCP ccd_directory | 1 |
 | MCP ccd_pr | 1 |
 
@@ -32,10 +32,10 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 
 | Kind | Tokens |
 |---|---|
-| input_tokens | 8,787 |
-| cache_creation_input_tokens | 13,858,255 |
-| cache_read_input_tokens | 393,117,247 |
-| output_tokens | 2,720,369 |
+| input_tokens | 8,969 |
+| cache_creation_input_tokens | 14,079,517 |
+| cache_read_input_tokens | 407,200,619 |
+| output_tokens | 2,770,563 |
 
 ## Per run
 
@@ -51,7 +51,7 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 | vs-githjk | 2026-10-29T07:46 | master-finder: Market validation for Patient Zero | claude-opus-5-5 | 40,009 | 7 | 2 | 0 | 25 | 0 | 0 | 0 | 0 | 11 |
 | vs-githjk | 2026-10-29T08:19 | master-planner: Refine Patient Zero, round 1 | claude-opus-5-5 | 29,492 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 | 2 |
 | vs-githjk | 2026-10-29T08:27 | master-auditor: Red-team Patient Zero brief, round 2 | claude-opus-5-5 | 32,092 | 0 | 0 | 0 | 5 | 3 | 0 | 0 | 0 | 5 |
-| vs-githjk | 2026-10-29T08:37 | main session | claude-opus-5-5, <synthetic> | 377,855 | 0 | 0 | 0 | 1 | 114 | 3 | 8 | 0 | 4 |
+| vs-githjk | 2026-10-29T08:37 | main session | claude-opus-5-5, <synthetic> | 381,672 | 0 | 0 | 0 | 1 | 117 | 3 | 8 | 0 | 4 |
 | vs-githjk | 2026-10-29T08:39 | master-planner: Fold auditor r2 fixes into brief | claude-opus-5-5 | 43,561 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 |
 | vs-githjk | 2026-10-29T08:42 | master-xo: GitHub kickoff issues for team | claude-opus-5-5 | 27,048 | 0 | 0 | 0 | 0 | 15 | 0 | 2 | 0 | 6 |
 | vs-githjk | 2026-10-29T08:46 | master-designer: 10-min world-class Patient Zero look | claude-fable-5-1 | 43,300 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -69,7 +69,7 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 | vs-githjk | 2026-10-29T12:03 | master-planner: Build plan and team lanes | claude-opus-5-5 | 90,327 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 2 |
 | vs-githjk | 2026-10-29T19:16 | master-xo: Post the Oct 29 task issues | claude-opus-5-5 | 23,591 | 0 | 0 | 0 | 0 | 8 | 0 | 0 | 0 | 0 |
 | vs-githjk | 2026-10-29T19:16 | master-finder: Pick spike claims 5 and 6 | claude-opus-5-5 | 22,586 | 3 | 0 | 0 | 10 | 0 | 0 | 0 | 0 | 21 |
-| AnoopIbrampur | 2026-10-30T20:10 | main session | claude-opus-5-5, claude-sonnet-5-5 | 636,947 | 0 | 0 | 0 | 95 | 211 | 0 | 0 | 0 | 172 |
+| AnoopIbrampur | 2026-10-30T20:10 | main session | claude-opus-5-5, claude-sonnet-5-5 | 664,542 | 0 | 0 | 0 | 95 | 221 | 0 | 0 | 0 | 172 |
 | vs-githjk | 2026-10-31T17:53 | master-xo: Post Oct 31 team batch | claude-opus-5-5 | 17,818 | 0 | 0 | 0 | 0 | 7 | 0 | 0 | 0 | 0 |
 | vs-githjk | 2026-10-31T17:53 | master-reviewer: Review PRs 29 and 30 | claude-opus-5-5 | 23,036 | 0 | 0 | 0 | 0 | 7 | 0 | 2 | 0 | 1 |
 | vs-githjk | 2026-11-01T22:55 | master-reviewer: Review PR 35 skeleton | claude-opus-5-5 | 17,524 | 0 | 0 | 0 | 0 | 5 | 0 | 0 | 0 | 0 |
@@ -87,6 +87,7 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 | vs-githjk | 2026-11-10T00:07 | master-reviewer: Review Anoop's 5 new heads | claude-opus-5-5 | 20,909 | 0 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 |
 | vs-githjk | 2026-11-10T16:41 | master-reviewer: Review Anoop's 6 PR heads | claude-opus-5-5 | 28,812 | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | 3 |
 | vs-githjk | 2026-11-10T16:41 | master-reviewer: Re-review Rohan #80 and #107 | claude-opus-5-5 | 22,248 | 0 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 |
+| vs-githjk | 2026-11-10T17:48 | master-reviewer: Re-review Rishit #52 #62 #82 | claude-opus-5-5 | 18,782 | 0 | 0 | 16 | 0 | 3 | 0 | 0 | 0 | 0 |
 
 ## Detail (service: tool or host)
 
@@ -97,16 +98,20 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 - Bright Data: search_engine: 2
 - Bright Data: search_engine_batch: 3
 - Browser (Playwright): browser_close: 1
-- Browser (Playwright): browser_navigate: 1
+- Browser (Playwright): browser_emulate_media: 3
+- Browser (Playwright): browser_evaluate: 3
+- Browser (Playwright): browser_navigate: 4
+- Browser (Playwright): browser_resize: 2
 - Browser (Playwright): browser_run_code_unsafe: 2
 - Browser (Playwright): browser_snapshot: 1
+- Browser (Playwright): browser_take_screenshot: 5
 - Codex: codex: 11
-- GitHub (gh): gh: 470
+- GitHub (gh): gh: 486
 - MCP ccd_directory: change_directory: 1
 - MCP ccd_host: open_in_editor: 7
 - MCP ccd_pr: get_status: 1
-- MCP ccd_turn: update_plan: 108
-- MCP ccd_turn: wrap_up: 34
+- MCP ccd_turn: update_plan: 110
+- MCP ccd_turn: wrap_up: 35
 - Nebius Token Factory: api.studio.nebius.com: 1
 - Nebius Token Factory: api.tokenfactory.nebius.com: 13
 - Nebius Token Factory: tokenfactory.nebius.com: 2

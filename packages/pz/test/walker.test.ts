@@ -3,7 +3,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { beforeEach, describe, expect, it } from "vitest";
 import { Trace } from "pz/schema";
-import { queriesFor, toPlain, walkClaim, type SpikeClaim } from "../../../spike/walk.ts";
+import { queriesFor, toPlain, walkClaim, type SpikeClaim } from "../src/engine/walk.ts";
 import { createBudget } from "../src/clients/budget.ts";
 import { createFileCache } from "../src/clients/cache.ts";
 import { createTavily } from "../src/clients/tavily.ts";
