@@ -71,8 +71,8 @@ export function TraceView({ trace }: { trace: Trace }) {
                 </p>
                 <p className="hop-note">
                   {note.earliest ? "Earliest page we found. " : ""}
-                  {note.via?.kind === "explicit" && `${note.via.domain} links to this page (${note.via.date ?? "undated"}). `}
-                  {note.via?.kind === "inferred" && `Inferred as the source for ${note.via.domain} (${note.via.date ?? "undated"}) by date; no link. `}
+                  {note.via?.kind === "explicit" && `${note.via.label} links to this page (${note.via.date ?? "undated"}). `}
+                  {note.via?.kind === "inferred" && `Inferred as the source for ${note.via.label} (${note.via.date ?? "undated"}) by date; no link. `}
                   {hop.unsure && "One readout on this hop is unsure. "}
                   <a href={hop.url} target="_blank" rel="noreferrer">Open the page</a>
                 </p>

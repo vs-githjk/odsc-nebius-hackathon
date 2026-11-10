@@ -112,7 +112,7 @@ describe("stopNote", () => {
     const stops = scrubberStops(trace);
     const last = stopNote(trace, stops, stops.length - 1);
     const zooFaq = stopNote(trace, stops, stops.length - 2);
-    expect(last.via).toEqual({ kind: "explicit", domain: "harborzoo.example", date: "2019-12-15" });
+    expect(last.via).toMatchObject({ kind: "explicit", domain: "harborzoo.example", date: "2019-12-15" });
     expect(zooFaq.via).toBeNull();
   });
 
@@ -125,9 +125,28 @@ describe("stopNote", () => {
 });
 
 describe("heat", () => {
-  it("samples the time ramp: deep at the past end, hot at today", () => {
-    expect(heat(0)).toBe("rgb(20, 52, 164)");
-    expect(heat(1)).toBe("rgb(255, 79, 63)");
-    expect(heat(0.5)).toBe("rgb(25, 184, 204)");
+  it("samples the theme's own ramp variables, so dark mode gets the dark ramp", () => {
+    expect(heat(0)).toBe("var(--deep)");
+    expect(heat(1)).toBe("var(--hot)");
+    expect(heat(0.5)).toBe("var(--cool)");
+    expect(heat(0.125)).toBe("color-mix(in srgb, var(--deep) 50%, var(--cold))");
+  });
+});
+
+describe("stopNote labels", () => {
+  it("names the linking page by its path when it is on the same site as the open page", () => {
+    const trace = byId("sample-conflicting");
+    const stops = scrubberStops(trace);
+    const note = stopNote(trace, stops, stops.length - 1);
+    expect(note.via?.domain).toBe("harborzoo.example");
+    expect(note.via?.label.startsWith("/")).toBe(true);
+  });
+
+  it("names the linking page by its domain when it is on another site", () => {
+    const trace = byId("sample-rich");
+    const stops = scrubberStops(trace);
+    const i = stops.findIndex((s) => s.edgeId !== null);
+    const note = stopNote(trace, stops, i);
+    expect(note.via?.label).toBe(note.via?.domain);
   });
 });

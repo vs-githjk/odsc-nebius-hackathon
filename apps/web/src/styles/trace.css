@@ -68,9 +68,12 @@
   font-variant-numeric: tabular-nums;
 }
 
+/* The product sentence scale from DESIGN.md. */
 .sentence {
   margin: 36px 0 0;
   min-height: 2.3em;
+  font-size: clamp(26px, 3vw, 40px);
+  line-height: 1.18;
 }
 
 .sentence .w {
@@ -183,8 +186,12 @@
   transform: translateX(-50%);
 }
 
+.disc-label.start {
+  left: calc(var(--disc) / -2);
+}
+
 .disc-label.end {
-  right: 0;
+  right: calc(var(--disc) / -2);
 }
 
 .disc.later .disc-label {

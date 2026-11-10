@@ -119,7 +119,8 @@ export function wordsLeaving(trace: Trace, stops: Stop[], i: number): Word[] {
   return hop ? align(stop.text, hop.wordDiff, "parent") : stop.text.split(" ").map((text) => ({ text, changed: false }));
 }
 
-export type StopNote = { earliest: boolean; via: { kind: Edge["kind"]; domain: string; date: string | null } | null };
+// label names the linking page: its domain, or its path when it is on the same site as the open page.
+export type StopNote = { earliest: boolean; via: { kind: Edge["kind"]; domain: string; label: string; date: string | null } | null };
 
 // What the open stop says about itself: whether it is one of the earliest pages, and which newer page reached it, by link or by inference.
 export function stopNote(trace: Trace, stops: Stop[], i: number): StopNote {
@@ -127,20 +128,21 @@ export function stopNote(trace: Trace, stops: Stop[], i: number): StopNote {
   const nodeId = trace.spans.find((s) => s.id === stop.spanId)?.nodeId;
   const edge = trace.edges.find((e) => e.id === stop.edgeId);
   const child = edge && trace.nodes.find((n) => n.id === edge.childId);
+  const pageDomain = trace.nodes.find((n) => n.id === nodeId)?.domain;
   return {
     earliest: nodeId !== undefined && trace.earliest.nodeIds.includes(nodeId),
-    via: edge && child ? { kind: edge.kind, domain: child.domain, date: child.date.value } : null,
+    via: edge && child ? { kind: edge.kind, domain: child.domain, label: child.domain === pageDomain ? new URL(child.url).pathname : child.domain, date: child.date.value } : null,
   };
 }
 
-// The time ramp from DESIGN.md (light values), past to today: deep, cold, cool, warm, hot.
-const RAMP: [number, number, number][] = [[20, 52, 164], [46, 91, 255], [25, 184, 204], [255, 178, 36], [255, 79, 63]];
+// The time ramp, past to today, as the theme's own CSS variables, so dark mode samples the dark values.
+const RAMP = ["--deep", "--cold", "--cool", "--warm", "--hot"];
 
 export function heat(x: number): string {
   const t = Math.min(1, Math.max(0, x)) * (RAMP.length - 1);
   const i = Math.min(RAMP.length - 2, Math.floor(t));
-  const q = t - i;
-  const [a, b] = [RAMP[i]!, RAMP[i + 1]!];
-  const mix = (k: 0 | 1 | 2) => Math.round(a[k] + (b[k] - a[k]) * q);
-  return `rgb(${mix(0)}, ${mix(1)}, ${mix(2)})`;
+  const q = Math.round((t - i) * 100);
+  if (q === 0) return `var(${RAMP[i]})`;
+  if (q === 100) return `var(${RAMP[i + 1]})`;
+  return `color-mix(in srgb, var(${RAMP[i]}) ${100 - q}%, var(${RAMP[i + 1]}))`;
 }

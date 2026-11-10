@@ -335,3 +335,25 @@ a {
     font-size: 14px;
   }
 }
+
+/* The start page hero: the claim itself, in quote type at the DESIGN.md hero scale. */
+.hero-quote {
+  margin: 0;
+  font: italic 400 clamp(40px, 7.2vw, 108px) / 1.02 var(--font-quote);
+  font-optical-sizing: auto;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+/* The trace page: the stage sits right under the nav, with the way back above it. */
+.trace-page {
+  padding-top: 20px;
+  padding-bottom: 10vh;
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: var(--ink-2);
+  font-size: 15px;
+}
