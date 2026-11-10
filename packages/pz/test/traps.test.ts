@@ -45,6 +45,27 @@ describe("trap set", () => {
     expect(counters(t, "The keeper log dated 2019-04-30 says the adult penguins napped a median of 14 times a day.")).toEqual([0, 0, 0, 0]);
   });
 
+  it("[C18] the first word must be a whole word in the spans, not part of one", () => {
+    const t = load("sample-origin");
+    expect(counters(t, "Tim wrote that the adult penguins napped a median of 14 times a day.")).toEqual([0, 0, 1, 0]);
+    expect(counters(t, "Ann wrote that the adult penguins napped a median of 14 times a day.")).toEqual([0, 0, 1, 0]);
+    expect(counters(t, "Penguin keepers logged that the adult penguins napped a median of 14 times a day.")).toEqual([0, 0, 0, 0]);
+  });
+
+  it("[C18] common openers are not names", () => {
+    const t = load("sample-origin");
+    expect(counters(t, "However, the keeper log says the adult penguins napped a median of 14 times a day.")).toEqual([0, 0, 0, 0]);
+    expect(counters(t, "Researchers at the zoo logged that the adult penguins napped a median of 14 times a day.")).toEqual([0, 0, 0, 0]);
+  });
+
+  it("[C18] the card-sentence counter catches origin words on a trace that did not find the origin", () => {
+    const sentence = "The claim originated on the keeper log, which says the adult penguins napped a median of 14 times a day.";
+    expect(load("sample-rich").decision.state).not.toBe("ORIGIN_FOUND");
+    expect(counters(load("sample-rich"), sentence)).toEqual([0, 0, 1, 0]);
+    expect(counters(load("sample-rich"), sentence.replace("The claim originated on", "The trail reached"))).toEqual([0, 0, 0, 0]);
+    expect(counters(load("sample-origin"), sentence)).toEqual([0, 0, 0, 0]);
+  });
+
   it("[C18] the card-sentence counter catches quotes and names no span carries", () => {
     const t = load("sample-origin");
     expect(counters(t, "The keepers said \"penguins nap all day\".")).toEqual([0, 0, 1, 0]);

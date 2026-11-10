@@ -4,7 +4,7 @@ import { Trace } from "../schema/index.ts";
 import { verifyTrace } from "./checks.ts";
 
 export { verifyTrace } from "./checks.ts";
-export { datesIn, earliestDates, falseCertainty, unbacked, type FalseCertainty } from "./false-certainty.ts";
+export { datesIn, earliestDates, falseCertainty, ORIGIN_WORDS, originWords, unbacked, type FalseCertainty } from "./false-certainty.ts";
 export type { Check, Failure, TraceReport } from "./checks.ts";
 
 // `pz verify`: one line per failure, then one summary line. Exit 0 only when every check passes.

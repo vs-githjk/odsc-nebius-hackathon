@@ -1,10 +1,9 @@
 import { z } from "zod";
 import { TokenFactoryError, type ChatData, type ChatInput, type Result } from "../clients/tokenfactory.ts";
 import { lintText } from "../cli/lint-copy.ts";
-import { normalise } from "../rules/normalise.ts";
 import { QUESTIONS, type TypedAnswer } from "../schema/questions.ts";
 import type { DateInfo, Decision, Trace } from "../schema/index.ts";
-import { earliestDates, falseCertainty, unbacked } from "../verify/false-certainty.ts";
+import { earliestDates, falseCertainty, originWords, unbacked } from "../verify/false-certainty.ts";
 
 type Client = { chat(input: ChatInput): Promise<Result<ChatData>> };
 // T19's ask for one page: page_type is always its own call, with the page text only.
@@ -26,10 +25,6 @@ export const CARD_PROMPT = [
 const Reply = z.object({ sentence: z.string() }).strict();
 export const CARD_SCHEMA = z.toJSONSchema(Reply);
 
-// Words that say the claim started somewhere. Only an ORIGIN_FOUND card may use them.
-const ORIGIN_WORDS = ["origin", "originated", "originally", "started", "came from", "comes from", "first said", "first published",
-  "first page to say", "first to say", "source of the claim"];
-
 export type Card = {
   state: Decision["state"]; row: Decision["row"];
   earliest: { nodeId: string; url: string; domain: string; date: string | null; dateKind: DateInfo["kind"]; spanId: string; checkedSentence: string }[];
@@ -40,14 +35,13 @@ export type Card = {
 // Every reason this sentence may not go on the card. Empty means it is backed by the spans and fits the stop state.
 export function cardProblems(sentence: string, trace: Trace): string[] {
   const { numbers, quotes, names, dates } = unbacked(sentence, trace.spans.map((s) => s.text), earliestDates(trace));
-  const text = normalise(sentence).toLowerCase();
   return [
     ...numbers.map((n) => `number not in the spans: ${n}`),
     ...quotes.map((q) => `quote not in the spans: "${q}"`),
     ...names.map((n) => `name not in the spans: ${n}`),
     ...dates.map((d) => `date is not an earliest page's date: ${d}`),
     ...lintText(sentence).map((h) => `copy rule: ${h.issue}`),
-    ...trace.decision.state === "ORIGIN_FOUND" ? [] : ORIGIN_WORDS.filter((w) => new RegExp(String.raw`\b${w}\b`).test(text)).map((w) => `says "${w}" without ORIGIN_FOUND`),
+    ...originWords(sentence, trace.decision.state).map((w) => `says "${w}" without ORIGIN_FOUND`),
   ];
 }
 

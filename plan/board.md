@@ -98,3 +98,4 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [14:58 PT] AnoopIbrampur T27 fixes: may only as a modal, coast-news keeps its hedge so stored red hops hold, redHop equality test on every fixture, trap case 01 relocked, on #74 | @RishitRai sample-rich red hop unchanged (e2); coast-news span now says about 14
 - [23:12 PT] AnoopIbrampur T28 card: card/index.ts with page type through ask, the card-sentence prompt, sentences dropped when code cannot back them, PR to follow | @rohanrastogi311 T29 can call buildCard and pageType
 - [15:02 PT] AnoopIbrampur T28 fixes: first-word names and wrong dates caught in unbacked (card and verifier), comes from and first page to say added, on #77
+- [16:45 PT] AnoopIbrampur T28 fixes on #77: first word must be a whole span word, origin words moved into false-certainty (card-sentence counter), wider openers
