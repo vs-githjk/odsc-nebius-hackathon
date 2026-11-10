@@ -32,3 +32,6 @@
 - Notes: #80 T29 (5), #82 T23 (6). Rulings: red hop (b); dating owns node dates.
 - Unblinded result: spike walker 0/4 earliest, 1/4 target cited, 0/2 cold stops; Perplexity 4/4 and 2/2, ChatGPT 3/4 and 2/2, Claude 1/4 and 2/2.
 - Waiting on Vidyut: Tavily credits for claims 1 and 4 replay (#82, default no); live Jev run (#81).
+
+## Nov 9 evening
+- Anoop finished queue items 1 to 3 early. Merged #74 T27, #96 T34. FIX: #75 (abbreviation split), #77 (substring name check, origin words card-only), #97 (urlKey drops query string). New issues T47 to T52 (#98 to #103) for Anoop. Budget $15 locked.
