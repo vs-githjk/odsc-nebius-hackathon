@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { TokenFactoryError, type ChatData, type ChatInput, type Result } from "../clients/tokenfactory.ts";
 import { normalise } from "../rules/normalise.ts";
-import { parseNumbers, sameNumber } from "../rules/numbers.ts";
+import { isWeak, parseNumbers, sameNumber } from "../rules/numbers.ts";
 import type { Rules } from "../rules/rules.ts";
 import type { Atoms, UsageRow } from "../schema/index.ts";
 import { lemma, wordsToNumber } from "./fingerprint.ts";
@@ -54,16 +54,18 @@ function numbersIn(text: string): { value: number; percent: boolean }[] {
 }
 
 // Why code refuses a query, or null to keep it. The rule (T35):
-// - no search operators (code owns the date window; a model "before:" must never undo it);
+// - no search operators anywhere in it (code owns the date window; a model "before:" must never undo it);
 // - every quoted phrase is copied from the claim, one of its variants or the hop's span;
 // - every number is the claim's number (in any form) or appears in the claim or the hop's span;
-// - it carries a claim atom: the number (any form), the named source, a variant phrase, or the subject plus one
-//   other atom word (unit, population or time). The subject alone is too broad to search on.
+// - it carries a claim atom: the number (any form) or a variant phrase, the named source, or the subject plus one
+//   other atom word (unit, population or time). The subject alone is too broad to search on, and so is a weak
+//   number alone: it also needs the subject or another atom word.
 export function whyRejected(query: string, input: { claim: string; atoms: Atoms; hop: Hop | null }): QueryReject | null {
   const q = normalise(query);
   if (!q.replace(/["']/g, "").trim()) return "empty";
   if (q.length > MAX_QUERY_CHARS) return "too_long";
-  if (/(?:^|\s)-?[a-z_]+:\S/i.test(q)) return "operator";
+  // An operator may follow any non-letter: "(site:evil.example)" and "phones,inurl:x" are operators too.
+  if (/(?<![\p{L}_])[a-z_]+:\S/iu.test(q)) return "operator";
   const sources = [input.claim, ...input.atoms.variants, input.hop?.span ?? ""];
   for (const m of q.matchAll(/"([^"]*)"/g)) if (!sources.some((s) => hasPhrase(s, m[1]!))) return "quote_not_in_sources";
 
@@ -80,10 +82,13 @@ export function whyRejected(query: string, input: { claim: string; atoms: Atoms;
   const queryLemmas = new Set(words(q).map(lemma));
   const hasSubject = queryLemmas.has(input.atoms.subjectLemma);
   const other = [input.atoms.unit, input.atoms.population, input.atoms.time].flatMap(contentLemmas).filter((l) => l !== input.atoms.subjectLemma);
-  const hasAtom = hasNumber
-    || (!!input.atoms.namedSource && hasPhrase(q, input.atoms.namedSource))
-    || input.atoms.variants.some((v) => hasPhrase(q, v))
-    || (hasSubject && other.some((l) => queryLemmas.has(l)));
+  const hasSource = !!input.atoms.namedSource && hasPhrase(q, input.atoms.namedSource);
+  const numberish = hasNumber || input.atoms.variants.some((v) => hasPhrase(q, v));
+  // A weak number (96, 9%, 10,000) is too common to search on alone: "96 buy crypto casino bonus now" is not about the
+  // claim. It also needs the subject or another atom word (unit, population, time or the named source).
+  const weak = !parsedClaim || isWeak(parsedClaim);
+  const hasAtomWord = hasSubject || hasSource || other.some((l) => queryLemmas.has(l));
+  const hasAtom = (numberish && (!weak || hasAtomWord)) || hasSource || (hasSubject && other.some((l) => queryLemmas.has(l)));
   return hasAtom ? null : "no_atom";
 }
 

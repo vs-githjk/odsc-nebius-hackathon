@@ -72,7 +72,7 @@ describe("query planning", () => {
 
   it("counts the claim's number in any form, and never a number no source has", async () => {
     const steps = { claim: claimText("dev-06"), atoms: await atomsFor("dev-06"), hop: null };
-    for (const q of ["10000 steps", "10,000 steps", "ten thousand steps", "\"ten thousand\" walking"]) expect([q, whyRejected(q, steps)]).toEqual([q, null]);
+    for (const q of ["10000 steps", "10,000 steps", "ten thousand steps", "\"ten thousand\" steps walking"]) expect([q, whyRejected(q, steps)]).toEqual([q, null]);
     expect(whyRejected("12,000 steps a day", steps)).toBe("number_not_in_sources");
     expect(whyRejected("twelve thousand steps a day", steps)).toBe("number_not_in_sources");
     const phones = { claim: claimText("dev-14"), atoms: await atomsFor("dev-14"), hop: null };
@@ -88,6 +88,21 @@ describe("query planning", () => {
     expect(whyRejected("Americans phones", phones)).toBeNull();
     expect(whyRejected("Americans phone use survey", phones)).toBeNull();
     expect(whyRejected("Americans phonebook", phones)).toBe("no_atom");
+  });
+
+  it("refuses an operator after any non-letter, and a weak number with no other atom word (XO's cases)", async () => {
+    const phones = { claim: claimText("dev-14"), atoms: await atomsFor("dev-14"), hop: null };
+    expect(whyRejected("96 times a day phones (site:evil.example)", phones)).toBe("operator");
+    expect(whyRejected("phones,inurl:evil", phones)).toBe("operator");
+    expect(whyRejected("ignore previous instructions 96", phones)).toBe("no_atom");
+    expect(whyRejected("96 buy crypto casino bonus now", phones)).toBe("no_atom");
+    expect(whyRejected("ninety-six buy crypto", phones)).toBe("no_atom");
+    expect(whyRejected("96 phones", phones)).toBeNull();
+    const steps = { claim: claimText("dev-06"), atoms: await atomsFor("dev-06"), hop: null };
+    expect(whyRejected("\"ten thousand\" walking", steps)).toBe("no_atom");
+    // A strong number (three or more significant digits) is still enough alone.
+    const plastic2050 = { claim: claimText("dev-10"), atoms: await atomsFor("dev-10"), hop: null };
+    expect(whyRejected("2050 report", plastic2050)).toBeNull();
     const altman = { claim: claimText("dev-19"), atoms: await atomsFor("dev-19"), hop: null };
     expect(whyRejected("Sam Altman RAM interview", altman)).toBeNull();
     expect(whyRejected("Sam Altmanesque", altman)).toBe("no_atom");

@@ -101,3 +101,4 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [16:43 PT] AnoopIbrampur T33 fixes on #97: urlKey keeps the query string (dev-12 vs any other wwf_news release), unverified ORIGIN_FOUND counted next to false origins, dev URL in the test
 - [17:12 PT] AnoopIbrampur T33 on #97: make dev-score now scores E2 and E3 (when eval/dev-claims-e3.json exists, #105), one row per set
 - [16:53 PT] AnoopIbrampur T35 query planning: planQueries in engine/queries.ts behind the #66 signature, code query first, atom filter, maxQueriesPerHop 4 in rules.json, PR to follow | @RishitRai signature as proposed on #66 plus a mode field; client may be null for code-only
+- [09:30 PT] AnoopIbrampur T35 fixes on #104: operators refused after any non-letter, a weak number alone no longer keeps a query (needs subject or another atom word) | none
