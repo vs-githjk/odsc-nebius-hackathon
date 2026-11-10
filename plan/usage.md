@@ -6,19 +6,19 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 
 | Who | Runs | Output tokens | Apify | Bright Data | Web | GitHub | Codex | Last updated (UTC) |
 |---|---|---|---|---|---|---|---|---|
-| AnoopIbrampur | 1 | 448,958 | 0 | 0 | 36 | 166 | 0 | 2026-11-09T23:06:28Z |
+| AnoopIbrampur | 1 | 576,287 | 0 | 0 | 95 | 188 | 0 | 2026-11-10T01:11:07Z |
 | vs-githjk | 43 | 2,021,850 | 10 | 7 | 63 | 248 | 11 | 2026-11-10T00:18:29Z |
 
 ## Totals by service
 
 | Service | Calls |
 |---|---|
-| Shell | 1312 |
-| Claude Code tools | 1051 |
-| GitHub (gh) | 414 |
-| Other HTTP | 241 |
-| MCP ccd_turn | 117 |
-| Web search and fetch | 99 |
+| Shell | 1433 |
+| Claude Code tools | 1059 |
+| GitHub (gh) | 436 |
+| Other HTTP | 322 |
+| Web search and fetch | 158 |
+| MCP ccd_turn | 129 |
 | Nebius Token Factory | 16 |
 | Codex | 11 |
 | Apify | 10 |
@@ -32,10 +32,10 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 
 | Kind | Tokens |
 |---|---|
-| input_tokens | 8,267 |
-| cache_creation_input_tokens | 12,859,975 |
-| cache_read_input_tokens | 349,635,662 |
-| output_tokens | 2,470,808 |
+| input_tokens | 8,489 |
+| cache_creation_input_tokens | 13,164,367 |
+| cache_read_input_tokens | 372,941,812 |
+| output_tokens | 2,598,137 |
 
 ## Per run
 
@@ -69,7 +69,7 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 | vs-githjk | 2026-10-29T12:03 | master-planner: Build plan and team lanes | claude-opus-5-5 | 90,327 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 2 |
 | vs-githjk | 2026-10-29T19:16 | master-xo: Post the Oct 29 task issues | claude-opus-5-5 | 23,591 | 0 | 0 | 0 | 0 | 8 | 0 | 0 | 0 | 0 |
 | vs-githjk | 2026-10-29T19:16 | master-finder: Pick spike claims 5 and 6 | claude-opus-5-5 | 22,586 | 3 | 0 | 0 | 10 | 0 | 0 | 0 | 0 | 21 |
-| AnoopIbrampur | 2026-10-30T20:10 | main session | claude-opus-5-5, claude-sonnet-5-5 | 448,958 | 0 | 0 | 0 | 36 | 166 | 0 | 0 | 0 | 91 |
+| AnoopIbrampur | 2026-10-30T20:10 | main session | claude-opus-5-5, claude-sonnet-5-5 | 576,287 | 0 | 0 | 0 | 95 | 188 | 0 | 0 | 0 | 172 |
 | vs-githjk | 2026-10-31T17:53 | master-xo: Post Oct 31 team batch | claude-opus-5-5 | 17,818 | 0 | 0 | 0 | 0 | 7 | 0 | 0 | 0 | 0 |
 | vs-githjk | 2026-10-31T17:53 | master-reviewer: Review PRs 29 and 30 | claude-opus-5-5 | 23,036 | 0 | 0 | 0 | 0 | 7 | 0 | 2 | 0 | 1 |
 | vs-githjk | 2026-11-01T22:55 | master-reviewer: Review PR 35 skeleton | claude-opus-5-5 | 17,524 | 0 | 0 | 0 | 0 | 5 | 0 | 0 | 0 | 0 |
@@ -99,22 +99,24 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 - Browser (Playwright): browser_run_code_unsafe: 2
 - Browser (Playwright): browser_snapshot: 1
 - Codex: codex: 11
-- GitHub (gh): gh: 414
+- GitHub (gh): gh: 436
 - MCP ccd_directory: change_directory: 1
 - MCP ccd_host: open_in_editor: 7
 - MCP ccd_pr: get_status: 1
-- MCP ccd_turn: update_plan: 88
-- MCP ccd_turn: wrap_up: 29
+- MCP ccd_turn: update_plan: 98
+- MCP ccd_turn: wrap_up: 31
 - Nebius Token Factory: api.studio.nebius.com: 1
 - Nebius Token Factory: api.tokenfactory.nebius.com: 13
 - Nebius Token Factory: tokenfactory.nebius.com: 2
 - Other HTTP: 127.0.0.1: 2
+- Other HTTP: amr-review.org: 3
 - Other HTTP: api.apify.com: 5
 - Other HTTP: api.github.com: 1
 - Other HTTP: api.studio.nebius.ai: 1
 - Other HTTP: api.tokenfactory.us-central1.nebius.com: 1
 - Other HTTP: app.tavily.com: 1
-- Other HTTP: arxiv.org: 1
+- Other HTTP: arxiv.org: 4
+- Other HTTP: authorscalendar.info: 1
 - Other HTTP: awellfedworld.org: 1
 - Other HTTP: bangshift.com: 1
 - Other HTTP: bbdc.it.com: 1
@@ -136,18 +138,22 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 - Other HTTP: faculty.washington.edu: 1
 - Other HTTP: forms.hsforms.com: 2
 - Other HTTP: fortune.com: 1
-- Other HTTP: fullfact.org: 1
+- Other HTTP: fullfact.org: 2
+- Other HTTP: github.blog: 1
 - Other HTTP: github.com: 3
 - Other HTTP: gizmodo.com: 1
 - Other HTTP: guinnessworldrecords.com: 1
 - Other HTTP: hackathon.odsc.ai: 8
+- Other HTTP: hai.stanford.edu: 3
 - Other HTTP: health.clevelandclinic.org: 1
 - Other HTTP: hn.algolia.com: 6
+- Other HTTP: html.duckduckgo.com: 2
 - Other HTTP: huntsmarine.com.au: 1
 - Other HTTP: injester-com.pages.dev: 1
 - Other HTTP: insideclimatenews.org: 2
 - Other HTTP: iuhealth.org: 1
 - Other HTTP: journals.physiology.org: 1
+- Other HTTP: journals.plos.org: 4
 - Other HTTP: lablab.ai: 1
 - Other HTTP: listverse.com: 1
 - Other HTTP: mdanderson.org: 1
@@ -163,7 +169,7 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 - Other HTTP: opendatascience.com: 1
 - Other HTTP: powerboatmagazine.co.nz: 1
 - Other HTTP: pubmed.ncbi.nlm.nih.gov: 6
-- Other HTTP: quoteinvestigator.com: 1
+- Other HTTP: quoteinvestigator.com: 20
 - Other HTTP: registry.npmjs.org: 2
 - Other HTTP: reporterslab.org: 2
 - Other HTTP: share.hsforms.com: 1
@@ -171,6 +177,7 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 - Other HTTP: siliconangle.com: 1
 - Other HTTP: static.nebius.com: 1
 - Other HTTP: studyfinds.com: 1
+- Other HTTP: survey.stackoverflow.co: 1
 - Other HTTP: tarantulaforum.com: 2
 - Other HTTP: techxplore.com: 2
 - Other HTTP: web.archive.org: 10
@@ -184,6 +191,8 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 - Other HTTP: www.artificialintelligence-news.com: 2
 - Other HTTP: www.asurion.com: 4
 - Other HTTP: www.atlasobscura.com: 1
+- Other HTTP: www.bbc.com: 1
+- Other HTTP: www.bing.com: 1
 - Other HTTP: www.bmj.com: 1
 - Other HTTP: www.boatcoversdirect.com: 1
 - Other HTTP: www.cdp.net: 4
@@ -195,6 +204,7 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 - Other HTTP: www.ecowatch.com: 1
 - Other HTTP: www.ellenmacarthurfoundation.org: 1
 - Other HTTP: www.epocrates.com: 1
+- Other HTTP: www.fao.org: 2
 - Other HTTP: www.fashiongonerogue.com: 3
 - Other HTTP: www.floridahealth.gov: 5
 - Other HTTP: www.fox6now.com: 2
@@ -203,29 +213,40 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 - Other HTTP: www.goodreads.com: 1
 - Other HTTP: www.grough.co.uk: 1
 - Other HTTP: www.higherlowergame.com: 1
+- Other HTTP: www.iea.org: 1
 - Other HTTP: www.imdb.com: 1
+- Other HTTP: www.imperial.ac.uk: 1
+- Other HTTP: www.ipbes.net: 2
+- Other HTTP: www.itu.int: 2
+- Other HTTP: www.mckinsey.com: 1
 - Other HTTP: www.nationalgeographic.com: 1
 - Other HTTP: www.nbcrightnow.com: 1
 - Other HTTP: www.newcastle.edu.au: 1
 - Other HTTP: www.peacefmonline.com: 2
+- Other HTTP: www.pewresearch.org: 4
 - Other HTTP: www.poynter.org: 1
+- Other HTTP: www.pwc.com: 1
 - Other HTTP: www.reuters.com: 1
-- Other HTTP: www.science.org: 1
-- Other HTTP: www.scientificamerican.com: 1
+- Other HTTP: www.science.org: 2
+- Other HTTP: www.sciencedaily.com: 1
+- Other HTTP: www.scientificamerican.com: 2
 - Other HTTP: www.shaw.af.mil: 3
 - Other HTTP: www.skeptic.org.uk: 1
-- Other HTTP: www.snopes.com: 2
+- Other HTTP: www.snopes.com: 8
 - Other HTTP: www.statisticbrain.com: 2
 - Other HTTP: www.tavily.com: 3
 - Other HTTP: www.theweek.in: 1
+- Other HTTP: www.un.org: 1
+- Other HTTP: www.unesco.org: 1
 - Other HTTP: www.visitourchina.com: 2
 - Other HTTP: www.w3: 1
-- Other HTTP: www.weforum.org: 1
+- Other HTTP: www.weforum.org: 2
+- Other HTTP: www.who.int: 15
 - Other HTTP: www.worldwatch.org: 7
 - Other HTTP: www.wwno.org: 1
 - Other HTTP: www.youtube.com: 3
 - Other HTTP: x.com: 1
 - Web search and fetch: WebFetch: 10
-- Web search and fetch: WebSearch: 89
+- Web search and fetch: WebSearch: 148
 
 Not covered: other people's machines until they run this and commit plan/usage/<who>.*; calls the project's own app makes at runtime (the app logs those itself); Codex's own token use (logged by master-codex).
