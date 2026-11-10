@@ -31,17 +31,43 @@ export type IntakeResult = {
   usage: Result<ChatData>["attempts"];
 };
 
-// The pasted answer's sentences, with offsets in its normalised text. Lines split first, so list items stay apart;
-// a sentence ends at ".", "!" or "?" (and any closing quote or bracket) before a space and a capital or digit.
+// Abbreviations that end in "." but do not end a sentence ("approx. 14", "Dr. Smith"), and single initials ("J. Smith").
+// Joining too much is the safe way to be wrong: a longer sentence keeps its negation, a cut one may lose it.
+const ABBREVIATION = /(?:^|[\s(])(?:approx|appr|est|ca|cf|vs|etc|e\.g|i\.e|al|fig|figs|no|nos|vol|pp|dr|mr|mrs|ms|prof|st|mt|jr|sr|inc|ltd|corp|gov|sen|rep|gen|dept|univ|jan|feb|mar|apr|jun|jul|aug|sep|sept|oct|nov|dec|\p{Lu})\.["')\]]?$/iu;
+// A piece that is only a list number ("1.") belongs to the item after it.
+// A line that starts a list item or heading, and a line that ends a sentence.
+const STARTS_ITEM = /^\s*(?:[-*+\u2022]\s|\d+[.)]\s|#)/u;
+const ENDS_SENTENCE = /[.!?:;]["')\]]?\s*$/u;
+
+// The pasted answer's sentences, with offsets in its normalised text. A line break ends a sentence only when the line
+// above ends with punctuation or is a heading, the line below starts a list item, or a blank line comes between;
+// otherwise the two lines are one sentence ("It is false that\n14 penguins...", or a list item wrapped onto two lines). Within that, a sentence ends at ".", "!" or "?"
+// (and any closing quote or bracket) before a space and a capital or digit, unless the "." ends an abbreviation.
 export function sentences(answer: string): { text: string; start: number; end: number }[] {
   const text = normalise(answer);
+  const blocks: string[] = [];
+  let joinNext = false;
+  for (const line of answer.split("\n")) {
+    if (!line.trim()) { joinNext = false; continue; }
+    if (joinNext && !STARTS_ITEM.test(line)) blocks[blocks.length - 1] += ` ${line}`;
+    else blocks.push(line);
+    joinNext = !ENDS_SENTENCE.test(line) && !/^\s*#/.test(line);
+  }
   const out: { text: string; start: number; end: number }[] = [];
   let from = 0;
-  for (const piece of answer.split(/\n+/).flatMap((line) => normalise(line).split(/(?<=[.!?]["')\]]?)\s+(?=["'(\[]?[\p{Lu}\p{N}])/u))) {
-    if (!piece) continue;
-    const start = text.indexOf(piece, from);
-    out.push({ text: piece, start, end: start + piece.length });
-    from = start + piece.length;
+  for (const block of blocks) {
+    const pieces: string[] = [];
+    for (const piece of normalise(block).split(/(?<=[.!?]["')\]]?)\s+(?=["'(\[]?[\p{Lu}\p{N}])/u)) {
+      const last = pieces[pieces.length - 1];
+      if (last !== undefined && (ABBREVIATION.test(last) || /^\d{1,3}\.$/.test(last))) pieces[pieces.length - 1] += ` ${piece}`;
+      else pieces.push(piece);
+    }
+    for (const piece of pieces) {
+      if (!piece) continue;
+      const start = text.indexOf(piece, from);
+      out.push({ text: piece, start, end: start + piece.length });
+      from = start + piece.length;
+    }
   }
   return out;
 }

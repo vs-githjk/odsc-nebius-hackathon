@@ -2,6 +2,7 @@ import { readdirSync, readFileSync } from "node:fs";
 import { describe, expect, it, vi } from "vitest";
 import type { ChatInput } from "../src/clients/tokenfactory.ts";
 import { INTAKE_PROMPT, intake, sentences } from "../src/engine/intake.ts";
+import { normalise } from "../src/rules/index.ts";
 
 type Recorded = { note: string; answer: string; response: { model: string; content: string } };
 const dir = new URL("./recorded/intake/", import.meta.url);
@@ -69,6 +70,29 @@ describe("intake", () => {
     expect(answer.slice(cut.claims[0]!.start, cut.claims[0]!.end)).toBe("Keepers say penguins do not nap 14 times a day.");
     const bare = await intake(answer, { client: list([["14", "14"]]) });
     expect(bare.claims.map((c) => [c.text, c.number.raw])).toEqual([["Keepers say penguins do not nap 14 times a day.", "14"]]);
+  });
+
+  it("[C11] an abbreviation or a mid-sentence line break never cuts the negation off", async () => {
+    const list = (sentence: string, number: string) => clientFor(JSON.stringify({ claims: [{ sentence, number }] }));
+    const approx = "Penguins do not sleep more than approx. 14 hours a day.";
+    expect((await intake(approx, { client: list("14 hours a day.", "14") })).claims.map((c) => c.text)).toEqual([approx]);
+    const dr = "Dr. Smith said 40% of keepers never saw a nap.";
+    expect((await intake(dr, { client: list("Smith said 40% of keepers never saw a nap.", "40%") })).claims.map((c) => c.text)).toEqual([dr]);
+    const wrapped = "It is false that\n14 penguins nap at once.";
+    const out = await intake(wrapped, { client: list("14 penguins nap at once.", "14") });
+    expect(out.claims.map((c) => c.text)).toEqual(["It is false that 14 penguins nap at once."]);
+    expect(normalise(wrapped).slice(out.claims[0]!.start, out.claims[0]!.end)).toBe("It is false that 14 penguins nap at once.");
+  });
+
+  it("still ends a sentence at a line that ends with punctuation, a blank line or a list item", () => {
+    expect(sentences("Penguins nap.\n14 of them sleep.\n\nThe colony\n\n212 penguins live here").map((s) => s.text))
+      .toEqual(["Penguins nap.", "14 of them sleep.", "The colony", "212 penguins live here"]);
+    expect(sentences("Key figures\n- 14 naps a day\n- 212 penguins\n1. 40% sleep").map((s) => s.text))
+      .toEqual(["Key figures", "- 14 naps a day", "- 212 penguins", "1. 40% sleep"]);
+    expect(sentences("Penguins nap.\nmost sleep 14 hours.\n# Figures\n- It is false that\n  14 penguins nap at once.").map((s) => s.text))
+      .toEqual(["Penguins nap.", "most sleep 14 hours.", "# Figures", "- It is false that 14 penguins nap at once."]);
+    expect(sentences("The zoo counted 212 penguins. Dr. Lee counted 14.").map((s) => s.text))
+      .toEqual(["The zoo counted 212 penguins.", "Dr. Lee counted 14."]);
   });
 
   it("[C11] a pointer found in two different sentences, or only inside a word, is rejected", async () => {

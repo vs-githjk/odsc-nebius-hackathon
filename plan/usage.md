@@ -6,14 +6,14 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 
 | Who | Runs | Output tokens | Apify | Bright Data | Web | GitHub | Codex | Last updated (UTC) |
 |---|---|---|---|---|---|---|---|---|
-| AnoopIbrampur | 1 | 480,135 | 0 | 0 | 36 | 178 | 0 | 2026-11-10T00:45:44Z |
+| AnoopIbrampur | 1 | 487,315 | 0 | 0 | 36 | 178 | 0 | 2026-11-10T00:47:26Z |
 | vs-githjk | 43 | 2,021,850 | 10 | 7 | 63 | 248 | 11 | 2026-11-10T00:18:29Z |
 
 ## Totals by service
 
 | Service | Calls |
 |---|---|
-| Shell | 1359 |
+| Shell | 1371 |
 | Claude Code tools | 1053 |
 | GitHub (gh) | 426 |
 | Other HTTP | 241 |
@@ -32,10 +32,10 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 
 | Kind | Tokens |
 |---|---|
-| input_tokens | 8,329 |
-| cache_creation_input_tokens | 12,964,118 |
-| cache_read_input_tokens | 356,065,907 |
-| output_tokens | 2,501,985 |
+| input_tokens | 8,341 |
+| cache_creation_input_tokens | 12,975,137 |
+| cache_read_input_tokens | 356,846,907 |
+| output_tokens | 2,509,165 |
 
 ## Per run
 
@@ -69,7 +69,7 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 | vs-githjk | 2026-10-29T12:03 | master-planner: Build plan and team lanes | claude-opus-5-5 | 90,327 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 2 |
 | vs-githjk | 2026-10-29T19:16 | master-xo: Post the Oct 29 task issues | claude-opus-5-5 | 23,591 | 0 | 0 | 0 | 0 | 8 | 0 | 0 | 0 | 0 |
 | vs-githjk | 2026-10-29T19:16 | master-finder: Pick spike claims 5 and 6 | claude-opus-5-5 | 22,586 | 3 | 0 | 0 | 10 | 0 | 0 | 0 | 0 | 21 |
-| AnoopIbrampur | 2026-10-30T20:10 | main session | claude-opus-5-5, claude-sonnet-5-5 | 480,135 | 0 | 0 | 0 | 36 | 178 | 0 | 0 | 0 | 91 |
+| AnoopIbrampur | 2026-10-30T20:10 | main session | claude-opus-5-5, claude-sonnet-5-5 | 487,315 | 0 | 0 | 0 | 36 | 178 | 0 | 0 | 0 | 91 |
 | vs-githjk | 2026-10-31T17:53 | master-xo: Post Oct 31 team batch | claude-opus-5-5 | 17,818 | 0 | 0 | 0 | 0 | 7 | 0 | 0 | 0 | 0 |
 | vs-githjk | 2026-10-31T17:53 | master-reviewer: Review PRs 29 and 30 | claude-opus-5-5 | 23,036 | 0 | 0 | 0 | 0 | 7 | 0 | 2 | 0 | 1 |
 | vs-githjk | 2026-11-01T22:55 | master-reviewer: Review PR 35 skeleton | claude-opus-5-5 | 17,524 | 0 | 0 | 0 | 0 | 5 | 0 | 0 | 0 | 0 |
