@@ -20,7 +20,7 @@ export const sampleRich: FixtureSpec = {
     { id: "c-social", rule: "single" }, { id: "c-meta", rule: "single" },
   ],
   edges: [
-    { id: "e1", parent: "zoo-report", child: "coast-news", kind: "explicit", readouts: [measured("hedge_dropped", "yes")] },
+    { id: "e1", parent: "zoo-report", child: "coast-news", kind: "explicit", readouts: [measured("hedge_dropped", "no")] },
     {
       id: "e2", parent: "zoo-report", child: "trivia-blog", kind: "inferred", readouts: [
         measured("hedge_dropped", "yes"), measured("comparison_added", "yes"), inferred("scope_widened", "yes", 0.81),
