@@ -147,13 +147,13 @@
     {
       "id": "s-coast-news",
       "nodeId": "coast-news",
-      "text": "Harbor Zoo penguins nap 14 times a day, according to the zoo's annual report.",
+      "text": "Harbor Zoo penguins nap about 14 times a day, according to the zoo's annual report.",
       "contextBefore": "Coast Gazette, February 10, 2020. ",
       "contextAfter": " The zoo plans a new pool next year.",
       "start": 34,
-      "end": 111,
-      "extractSha256": "14bc3990bb1df4844e170c8ee153c8b02cf0a909ab1e8cf3e95123061a140d6d",
-      "windowSha256": "14bc3990bb1df4844e170c8ee153c8b02cf0a909ab1e8cf3e95123061a140d6d",
+      "end": 117,
+      "extractSha256": "ee601c18d43ad8333991756fecf97f8b44c8bae758509cf83d0ad3710ea958d7",
+      "windowSha256": "ee601c18d43ad8333991756fecf97f8b44c8bae758509cf83d0ad3710ea958d7",
       "fetchedAt": "2026-11-01T08:00:00Z",
       "waybackUrl": "https://web.archive.org/web/2026/https://coastgazette.example/2020/02/penguin-naps",
       "tier": "exact"
@@ -213,7 +213,7 @@
           "text": "nap"
         },
         {
-          "op": "del",
+          "op": "same",
           "text": "about"
         },
         {
