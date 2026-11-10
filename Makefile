@@ -1,4 +1,4 @@
-.PHONY: verify replay live
+.PHONY: verify replay live dev-score
 
 # Re-checks everything with no API keys: typecheck, tests, every committed trace, the trap set,
 # the copy lint, the leakage test and the claims table.
@@ -19,3 +19,7 @@ verify:
 replay live:
 	@echo "not built yet"
 	@exit 1
+
+# Grades eval/dev-traces/ against the E2 dev claims and appends a dated row to eval/dev-score.md (T33).
+dev-score:
+	@node --import tsx eval/dev-score.ts
