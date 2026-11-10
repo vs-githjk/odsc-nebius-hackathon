@@ -75,12 +75,14 @@ Tavily `/extract` with markdown keeps hyperlinks inline, with no links field and
 
 ## Run 1 under the reviewed rules
 
-The run used T4, T5 and T6 as they stood at 83a1e71. Re-checking the stored traces with the reviewed versions now on `main`, `npx pz verify spike/traces/claim-<n>.json --pages .cache/pages/claim-<n>` reports two things. The traces are kept as recorded: no rerun, and no hand edits.
+The run used T4, T5 and T6 as they stood at 83a1e71. The traces are kept as recorded: no rerun, and no hand edits. Re-checked strictly against the rules now on `main` (`npx pz verify spike/traces/claim-<n>.json`), two things differ:
 
-- **`stop_state` differs on all 6 traces, in wording only.** The state, the row and every count are identical. The reviewed `decideStopState` words row 6's first reason as "...no earlier citation and no negated span", where the stored traces say "...and no earlier citation". `pz verify` compares the whole decision, so it flags this.
-- **`atoms` fails on claim 1, span `s8`.** That is the 1994 hotrod.com span, the same result as the offline check above.
+- **`stop_state` differs on all 6 traces, in the reasons only.** The state, the row and every count are identical. The reviewed `decideStopState` words row 6's first reason as "...no earlier citation and no negated span", where the stored traces say "...and no earlier citation". `pz verify` compares the whole decision, and its message now names the field that differs, so this no longer prints two identical-looking sides.
+- **`atoms` fails on 5 spans:** claim-1 `s7` and `s8`, claim-4 `s1`, claim-6 `s1` and `s3`. The weak-number rule tightened after the run (#61), which is the same finding as the offline check above. Claim-1 `s8` is the 1994 hotrod.com span.
 
 Every other check passes: window hashes, offsets, page hashes and offsets, two spans per edge, edge kinds, the earliest node, and negation.
+
+**How `make verify` treats these traces:** they are historical records, listed in `spike/historical-traces.json` with the rules they were recorded under (83a1e71). `pz verify --historical <manifest>` then skips the atoms re-check and compares the decision on state and row only. It prints a `HISTORICAL` line for each such trace, so the exemption is never silent. Every other check still runs. A trace not in the manifest, including `dry-run.json`, is checked in full.
 
 ## Candidate rules (not applied)
 

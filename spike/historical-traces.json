@@ -1,0 +1,5 @@
+{
+  "rulesAt": "83a1e71",
+  "note": "spike run 1, recorded before the reviewed number rules (#61) and stop-state reasons (#43); kept as the record Rohan graded",
+  "traces": ["claim-1", "claim-2", "claim-3", "claim-4", "claim-5", "claim-6"]
+}

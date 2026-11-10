@@ -128,3 +128,48 @@ describe("pz verify", () => {
       expect(readFileSync(join(dir, f), "utf8")).not.toMatch(/from\s+["'][^"']*\/match\//);
   });
 });
+
+describe("pz verify on historical records", () => {
+  // A stored decision whose state and row still agree but whose reason text was written by older rules.
+  const olderWording = (): Trace => {
+    const t = origin();
+    t.decision = { ...t.decision, reasons: ["reason text from an older version of the rules"] };
+    return t;
+  };
+  // An edge span that no longer passes the current number rules.
+  const olderAtoms = (): Trace => {
+    const t = rich();
+    t.claim = { ...t.claim, atoms: { ...t.claim.atoms, number: { raw: "15", canonical: "15" } } };
+    return t;
+  };
+
+  it("[C16] a stop-state failure names the field that differs, so equal states and rows are never a puzzle", () => {
+    const failure = verifyTrace(olderWording()).failures.find((f) => f.check === "stop_state");
+    expect(failure?.detail).toMatch(/differs in reasons/);
+    expect(failure?.detail).toContain("reason text from an older version of the rules");
+  });
+
+  it("[C16] a current trace stays strict: older reason text and older atoms both fail", () => {
+    expect(verifyTrace(olderWording()).failures.map((f) => f.check)).toContain("stop_state");
+    expect(verifyTrace(olderAtoms()).failures.map((f) => f.check)).toContain("atoms");
+  });
+
+  it("[C16] a historical record skips the atoms re-check and compares the decision on state and row only", () => {
+    expect(verifyTrace(olderWording(), { historical: true }).failures).toEqual([]);
+    expect(verifyTrace(olderAtoms(), { historical: true }).failures.map((f) => f.check)).not.toContain("atoms");
+    const moved = olderWording();
+    moved.decision = { ...moved.decision, row: 6, state: "TRAIL_GOES_COLD" };
+    expect(verifyTrace(moved, { historical: true }).failures.map((f) => f.check)).toContain("stop_state");
+  });
+
+  it("[C16] historical records are listed in a manifest and announced in the output, never silently", () => {
+    const dir = mkdtempSync(join(tmpdir(), "pz-historical-"));
+    const path = join(dir, "sample-origin.json");
+    writeFileSync(path, JSON.stringify(olderWording()));
+    const manifest = { rulesAt: "abc1234", note: "recorded before a rules change", traces: ["sample-origin"] };
+    const { code, lines } = runVerify([path], { historical: manifest });
+    expect(code).toBe(0);
+    expect(lines[0]).toBe("HISTORICAL sample-origin: recorded under the rules at abc1234 (recorded before a rules change); atoms re-check skipped, stop state compared on state and row");
+    expect(runVerify([path]).code).toBe(1);
+  });
+});
