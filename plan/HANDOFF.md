@@ -1,6 +1,6 @@
 # Handoff: ODSC x Nebius Hackathon (team Says Who)
 
-Last updated: Mon Nov 9 2026, by the main session (conductor).
+Last updated: Tue Nov 10 2026, by the main session (conductor).
 To resume in a new Claude Code chat opened in this folder, Vidyut says: **"I'm back, continue the master playbook"**. The new session reads this file, `plan/state.json` and `plan/decisions.md`, says where we are in three lines, and carries on.
 
 ## The event
@@ -25,7 +25,13 @@ To resume in a new Claude Code chat opened in this folder, Vidyut says: **"I'm b
 - Market check verdict: real but narrow need; fact-checkers and journalists are the demo user but not the payer; nobody else traces backwards or counts independent sources; the paid route later is a stat-origin API for AI answer engines and content tools (unproven). `plan/market.md`, artifact https://claude.ai/artifact/BtjsfsCuEUNYNWuppfJDjE
 - Full brief: `plan/idea-brief.md` (refinement round 1).
 
-## Latest (Nov 9 watch pass)
+## Latest (Nov 10)
+- Merged since Nov 9: #74 T27, #96 T34, #97 T33, #105 T47 E3, #82 T23 (plus Nov 9 batch). Dev score still 0/20: no live traces.
+- Critical chain: #75 (Anoop, U.S. acronym fix) -> #107 T38 live captures (Rohan, ceiling pin + LIVE-only replay) -> #80 fixes -> T39 dev-run, first real score.
+- Open FIX: #75 #77 #104 #106 (Anoop), #80 #107 (Rohan), #52 #62 (Rishit); #108 T24 draft (same-site link note).
+- Ledger: $15 week, $0 spent, Rohan the single live runner, ceilings TF $0.01 / Tavily $0.02. Held-out backup still unconfirmed.
+
+## Earlier (Nov 9 watch pass)
 - Merged Nov 9: #78 T20 grading (XO unblinding appended), #38 head-to-head, #79 T25, #81 T31, #76 T22, #50 T11. Main is green, 235 tests.
 - Unblinded: the week-0 spike walker lost on every claim (0/4 earliest, 0/2 cold stops); Perplexity was best. The T21 to T29 engine has to beat this on the Nov 13 held-out run.
 - Open with FIX lists: #74 T27, #75 T21, #77 T28 (Anoop); #62 T15 against #69, #52 make verify on run-1 traces (Rishit). Drafts with notes: #80 T29 (Rohan), #82 T23 (Rishit).
