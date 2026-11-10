@@ -24,6 +24,8 @@ export type WalkDeps = {
   pagesDir: string;
   // The trace this run replays, when every call is served from the cache.
   replayOf?: Trace;
+  // "allow" lets a run whose paid calls all came from the cache finish as a normal run (the pipeline replays elsewhere).
+  cachedRun?: "refuse" | "allow";
 };
 
 const CONTEXT_CHARS = 200;
@@ -340,10 +342,10 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
   // rows, plus rows for any free calls made fresh (for example Wayback lookups after a change to the CDX query).
   const paid = deps.usage.rows.filter((r) => r.service === "tavily" || r.service === "tokenfactory");
   const replayed = paid.length > 0 && paid.every((r) => r.cacheHit);
-  if (replayed && !deps.replayOf) {
+  if (replayed && !deps.replayOf && deps.cachedRun !== "allow") {
     throw new Error(`${claim.id}: every paid call came from the cache, so this is a replay; pass the recorded trace with --replay-of`);
   }
-  const recorded = replayed ? deps.replayOf! : null;
+  const recorded = replayed && deps.replayOf ? deps.replayOf : null;
   const budget: Trace["budget"] = recorded
     ? { credits: recorded.budget.credits, usd: recorded.budget.usd, ms: recorded.budget.ms, capHit }
     : { credits: deps.usage.rows.reduce((sum, r) => sum + r.credits, 0), usd, ms: Date.now() - started, capHit };
@@ -363,10 +365,31 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
   return { trace: { ...draft, decision: decideStopState(draft, rules) }, log };
 }
 
-// The pipeline's walk stage (T29): walks the claim the earlier stages handed over and returns the walked trace.
-export function walkStep(deps: Omit<WalkDeps, "replayOf">): (trace: Trace) => Promise<Trace> {
-  return async (trace) => {
-    const { trace: walked } = await walkClaim({ id: trace.id, text: trace.claim.text, atoms: trace.claim.atoms }, deps);
-    return { ...walked, viralSentence: trace.viralSentence };
+// A walk with no dates yet: the dating stage (T25) owns node dates, so the walk's Tavily dates are search hints only.
+const UNDATED: DateInfo = { kind: "unconfirmed", value: null, source: "tavily", firstCapture: null, conflictingDate: false };
+
+// The pipeline's walk stage (T29). `build` makes the clients, usage log and budget for each run, so one claim's
+// spending never counts against another's. Only the search and the pages found come from the walk: dates, edges and
+// the earliest pages are decided downstream, never ordered by Tavily dates (C6). Replay is the pipeline's own
+// keyless path, so a warm-cache run here is simply a run whose usage rows show cache hits.
+export function walkStep<C>(build: (trace: Trace, context: C) => Omit<WalkDeps, "replayOf" | "cachedRun">): (trace: Trace, context: C) => Promise<Trace> {
+  return async (trace, context) => {
+    const deps = build(trace, context);
+    const { trace: walked } = await walkClaim({ id: trace.id, text: trace.claim.text, atoms: trace.claim.atoms }, { ...deps, cachedRun: "allow" });
+    const draft: Trace = {
+      ...walked,
+      mode: trace.mode,
+      recordedAt: trace.recordedAt,
+      synthetic: trace.synthetic,
+      viralSentence: trace.viralSentence,
+      nodes: walked.nodes.map((n) => ({ ...n, date: UNDATED })),
+      edges: [],
+      hops: [],
+      blame: [],
+      redHopEdgeId: null,
+      earliest: { ...walked.earliest, nodeIds: [] },
+      usage: [...trace.usage, ...walked.usage],
+    };
+    return { ...draft, decision: decideStopState(draft, deps.rules) };
   };
 }

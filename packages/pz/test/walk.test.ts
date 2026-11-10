@@ -67,10 +67,12 @@ beforeEach(() => {
   dir = mkdtempSync(join(tmpdir(), "pz-engine-walk-"));
 });
 
+// A builder like the pipeline's: fresh usage log and budget for every run, over one shared cache.
+const builder = (fetchImpl: typeof fetch, credits = 150) => () => deps(fetchImpl, credits);
+
 describe("engine walk", () => {
   it("[C1] walkStep takes the handed-over trace, walks its claim and returns a schema-valid trace", async () => {
-    const step = walkStep(deps(world(pages)));
-    const trace = await step(handedOver);
+    const trace = await walkStep(builder(world(pages)))(handedOver, {});
     expect(Trace.parse(trace)).toBeTruthy();
     expect(trace.id).toBe("neutral");
     expect(trace.claim).toEqual(handedOver.claim);
@@ -78,7 +80,7 @@ describe("engine walk", () => {
   });
 
   it("[C1] meta pages are kept only in the already-discussed list, never on the path or as the earliest", async () => {
-    const trace = await walkStep(deps(world(pages)))(handedOver);
+    const trace = await walkStep(builder(world(pages)))(handedOver, {});
     const meta = trace.nodes.filter((n) => n.meta).map((n) => n.id);
     expect(meta).toHaveLength(1);
     expect(trace.earliest.nodeIds.some((id) => meta.includes(id))).toBe(false);
@@ -86,11 +88,50 @@ describe("engine walk", () => {
   });
 
   it("[C1] a cap hit ends PARTIAL and no results end NO_PAGES_FOUND", async () => {
-    expect((await walkStep(deps(world(pages), 2))(handedOver)).decision.state).toBe("PARTIAL");
-    expect((await walkStep(deps(world([])))(handedOver)).decision.state).toBe("NO_PAGES_FOUND");
+    expect((await walkStep(builder(world(pages), 2))(handedOver, {})).decision.state).toBe("PARTIAL");
+    expect((await walkStep(builder(world([])))(handedOver, {})).decision.state).toBe("NO_PAGES_FOUND");
   });
 
   it("the spike script is a thin wrapper: it runs the engine's walker, so the two can never drift", () => {
     expect(spike.walkClaim).toBe(walkClaim);
+  });
+});
+
+describe("walkStep in the pipeline (#82 review)", () => {
+  it("a second run on a warm cache does not throw; its cache hits show in the usage rows", async () => {
+    const step = walkStep(builder(world(pages)));
+    await step(handedOver, {});
+    const again = await step(handedOver, {});
+    const walkRows = again.usage.filter((r) => r.service === "tavily");
+    expect(walkRows.length).toBeGreaterThan(0);
+    expect(walkRows.every((r) => r.cacheHit && r.credits === 0)).toBe(true);
+  });
+
+  it("usage and budget are per run: a second claim's credits never include the first's", async () => {
+    const step = walkStep(builder(world(pages)));
+    const first = await step(handedOver, {});
+    const other = await step({ ...handedOver, id: "other", claim: { ...handedOver.claim, text: "Penguins nap 14 times a day." } }, {});
+    expect(first.budget.credits).toBeGreaterThan(0);
+    expect(other.budget.credits).toBe(other.usage.reduce((n, r) => n + r.credits, 0));
+  });
+
+  it("carries mode, recordedAt, synthetic and the incoming usage rows through from intake", async () => {
+    const intakeRow = { at: "2026-11-09T00:00:00.000Z", traceId: "neutral", step: "intake", service: "tokenfactory" as const, endpoint: "chat",
+      model: "m", promptTokens: 10, completionTokens: 5, cachedTokens: 0, credits: 0, costUsd: 0.001, latencyMs: 9, status: "200", cacheHit: false };
+    const incoming = { ...handedOver, mode: "REPLAY" as const, recordedAt: "2026-11-01T12:00:00.000Z", usage: [intakeRow] };
+    const trace = await walkStep(builder(world(pages)))(incoming, {});
+    expect(trace.mode).toBe("REPLAY");
+    expect(trace.recordedAt).toBe("2026-11-01T12:00:00.000Z");
+    expect(trace.synthetic).toBe(false);
+    expect(trace.usage[0]).toEqual(intakeRow);
+    expect(trace.usage.length).toBeGreaterThan(1);
+  });
+
+  it("[C6] the walk leaves dates to the dating stage: Tavily dates never order nodes", async () => {
+    const trace = await walkStep(builder(world(pages)))(handedOver, {});
+    expect(trace.nodes.every((n) => n.date.kind === "unconfirmed" && n.date.value === null && n.date.source === "tavily")).toBe(true);
+    expect(trace.edges).toEqual([]);
+    expect(trace.earliest.nodeIds).toEqual([]);
+    expect(trace.earliest.earlierWindowSearches).toBeGreaterThanOrEqual(2);
   });
 });
