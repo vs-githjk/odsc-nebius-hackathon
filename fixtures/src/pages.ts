@@ -18,7 +18,7 @@ export const PAGES: Record<string, Page> = {
   },
   "coast-news": {
     url: "https://coastgazette.example/2020/02/penguin-naps", title: "Harbor Zoo penguins nap 14 times a day", date: "2020-02-10", dateKind: "published",
-    pageType: "news", span: "Harbor Zoo penguins nap 14 times a day, according to the zoo's annual report.",
+    pageType: "news", span: "Harbor Zoo penguins nap about 14 times a day, according to the zoo's annual report.",
   },
   "coast-news-v2": {
     url: "https://coastgazette.example/2020/02/penguin-naps?v=2", title: "Harbor Zoo penguins nap 14 times a day", date: "2020-02-12", dateKind: "published",
