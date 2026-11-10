@@ -471,3 +471,4 @@ The spike walker lost to Perplexity, ChatGPT and Claude on every claim (spike/gr
 - T33 dev scorecard (#83, Anoop) · T34 spike post-mortem (#84, Anoop) · T35 query planning (#85, Anoop) · T36 same-claim check (#86, Anoop) · T37 cold-trail stop reasons (#87, Anoop)
 - T38 live dev recordings (#88, Rohan) · T39 make dev-run (#89, Rohan) · T40 held-out rehearsal (#90, Rohan) · T41 client robustness (#91, Rohan) · T42 pz serve (#92, Rohan)
 - T44 walk by links (#93, Rishit) · T45 archive-first discovery (#94, Rishit) · T46 demo path (#95, Rishit)
+- T47 E3 dev set (#98) · T48 confidence calibration (#99) · T49 meta pages as maps (#100) · T50 adversarial traps (#101) · T51 whole-answer mode (#102) · T52 README evaluation section (#103), all Anoop
