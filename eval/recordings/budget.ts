@@ -40,13 +40,21 @@ export function openBudget(path: string, now = () => Date.now()) {
       closeSync(lock); unlinkSync(path + ".lock");
     }
   }
+  function available(ledger: Ledger, amount: number): void {
+    if (ledger.breached || now() < Date.parse(ledger.start) || now() >= Date.parse(ledger.end)
+      || spent(ledger) + amount > ledger.cap) throw new Error("budget_exceeded");
+  }
   return {
+    check(ceilingUsd: number): void {
+      const amount = micros(ceilingUsd);
+      if (!amount) throw new Error("invalid_budget");
+      transaction(ledger => available(ledger, amount));
+    },
     reserve(ceilingUsd: number): string {
       const amount = micros(ceilingUsd);
       if (!amount) throw new Error("invalid_budget");
       return transaction(ledger => {
-        if (ledger.breached || now() < Date.parse(ledger.start) || now() >= Date.parse(ledger.end)
-          || spent(ledger) + amount > ledger.cap) throw new Error("budget_exceeded");
+        available(ledger, amount);
         const id = randomUUID(); ledger.entries[id] = { amount, settled: false }; return id;
       });
     },
