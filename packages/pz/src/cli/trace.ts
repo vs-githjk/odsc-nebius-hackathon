@@ -28,8 +28,12 @@ export async function traceCommand(args: string[], io = {
       if (values["replay-of"]) emit({ sequence: 0, type: "trace", trace });
     } else io.write(JSON.stringify(trace));
     return 0;
-  } catch {
-    io.error("Trace command failed: use verified --replay-of <trace.json> or a reviewed --pipeline <module> and input. Check evidence and output path.");
+  } catch (error) {
+    // Only known code literals may leave this boundary, never provider messages.
+    const codes = new Set(["not_configured", "http_error", "network_error", "bad_response", "budget_exceeded"]);
+    const code = error && typeof error === "object" && "code" in error && typeof error.code === "string"
+      && codes.has(error.code) ? error.code : "trace_failed";
+    io.error(code);
     return 1;
   }
 }
