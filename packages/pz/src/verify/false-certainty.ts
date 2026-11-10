@@ -17,8 +17,11 @@ const OPENERS = new Set(["the", "a", "an", "this", "that", "these", "those", "it
   "officials", "analysts", "surveys", "survey", "estimates", "claims", "posts", "articles", "sources", "pages", "page"]);
 
 // Words that say a page is where a claim started. The card may use them only when the trace ends ORIGIN_FOUND.
-export const ORIGIN_WORDS = ["origin", "originated", "originally", "started", "came from", "comes from", "first said", "first published",
-  "first page to say", "first to say", "source of the claim"];
+export const ORIGIN_WORDS = ["origin", "origins", "originated", "originates", "originally", "started", "starts", "began", "begins", "begun",
+  "came from", "comes from", "come from", "first said", "first published", "first appeared", "first appears", "first posted", "first reported",
+  "first stated", "first mentioned", "first surfaced", "first emerged", "first seen", "first made", "first put", "first page to say",
+  "first to say", "source of the claim", "traces back to", "traced back to", "trace back to", "dates back to", "dated back to", "goes back to",
+  "can be traced", "birthplace", "patient zero"];
 
 // The origin words a sentence uses when the stop state is not ORIGIN_FOUND. Empty on an ORIGIN_FOUND trace.
 export function originWords(sentence: string, state: Trace["decision"]["state"]): string[] {
@@ -50,13 +53,14 @@ export function unbacked(sentence: string, spans: string[], earliestDates: strin
   const quotes = [...normalise(sentence).matchAll(/"([^"]+)"/g)].filter((m) => !text.includes(m[1]!)).map((m) => m[1]!);
   const words = withoutDates.split(" ").map((w) => w.replace(/[^\p{L}']/gu, ""));
   // The first word is a name unless it is a common opener or the spans use it as a whole word in any case
-  // ("Penguins" from "penguins" or "penguin"). Whole words only: "Tim" is not backed by "times", nor "Ann" by "annual".
+  // ("Penguins" from "penguins" or "penguin"). Every capitalised word must be a whole word in the spans: "Tim" is not
+  // backed by "times", nor "Ann" by "annual", wherever it sits in the sentence.
   const spanWords = new Set(text.toLowerCase().split(/[^\p{L}']+/u).filter(Boolean));
   const first = (w: string) => {
     const low = w.toLowerCase();
     return OPENERS.has(low) || spanWords.has(low) || spanWords.has(low.replace(/s$/, "")) || spanWords.has(`${low}s`);
   };
-  const names = words.filter((w, i) => /^\p{Lu}/u.test(w) && !text.includes(w) && !(i === 0 && first(w)) && !MONTHS.includes(w.toLowerCase()));
+  const names = words.filter((w, i) => /^\p{Lu}/u.test(w) && !spanWords.has(w.toLowerCase()) && !(i === 0 && first(w)) && !MONTHS.includes(w.toLowerCase()));
   return { numbers, quotes, names, dates };
 }
 

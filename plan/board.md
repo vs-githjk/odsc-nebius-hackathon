@@ -103,3 +103,4 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [23:12 PT] AnoopIbrampur T28 card: card/index.ts with page type through ask, the card-sentence prompt, sentences dropped when code cannot back them, PR to follow | @rohanrastogi311 T29 can call buildCard and pageType
 - [15:02 PT] AnoopIbrampur T28 fixes: first-word names and wrong dates caught in unbacked (card and verifier), comes from and first page to say added, on #77
 - [16:45 PT] AnoopIbrampur T28 fixes on #77: first word must be a whole span word, origin words moved into false-certainty (card-sentence counter), wider openers
+- [09:29 PT] AnoopIbrampur T28 fixes on #77: origin words widened (first appeared, began, traces back to...), tested on all 6 non-origin fixtures; every capitalised word checked as a whole word | none

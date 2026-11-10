@@ -50,6 +50,11 @@ describe("trap set", () => {
     expect(counters(t, "Tim wrote that the adult penguins napped a median of 14 times a day.")).toEqual([0, 0, 1, 0]);
     expect(counters(t, "Ann wrote that the adult penguins napped a median of 14 times a day.")).toEqual([0, 0, 1, 0]);
     expect(counters(t, "Penguin keepers logged that the adult penguins napped a median of 14 times a day.")).toEqual([0, 0, 0, 0]);
+    expect(counters(t, "A post by Tim says the adult penguins napped a median of 14 times a day.")).toEqual([0, 0, 1, 0]);
+    expect(counters(t, "A post by Ann says the adult penguins napped a median of 14 times a day.")).toEqual([0, 0, 1, 0]);
+    // "Harb" and "Day" sit inside the spans' "Harbor" and "Daylight" with the same capital, so only a whole-word check catches them.
+    expect(counters(t, "A post by Harb says the adult penguins napped a median of 14 times a day.")).toEqual([0, 0, 1, 0]);
+    expect(counters(t, "A post by Harbor Zoo says the adult penguins napped a median of 14 times a day.")).toEqual([0, 0, 0, 0]);
   });
 
   it("[C18] common openers are not names", () => {
@@ -64,6 +69,19 @@ describe("trap set", () => {
     expect(counters(load("sample-rich"), sentence)).toEqual([0, 0, 1, 0]);
     expect(counters(load("sample-rich"), sentence.replace("The claim originated on", "The trail reached"))).toEqual([0, 0, 0, 0]);
     expect(counters(load("sample-origin"), sentence)).toEqual([0, 0, 0, 0]);
+  });
+
+  it("[C18] every way of saying where a claim started is an origin word on each non-origin fixture", () => {
+    const phrasings = ["first appeared on", "first posted on", "first published on", "began on", "traces back to", "can be traced to", "dates back to"];
+    const fixtures = ["sample-cold-unread", "sample-conflicting", "sample-no-pages", "sample-partial", "sample-rich", "sample-tool-failed"];
+    for (const name of fixtures) {
+      const t = load(name);
+      expect(t.decision.state).not.toBe("ORIGIN_FOUND");
+      const domain = t.nodes[0]?.domain ?? "keeper.example";
+      for (const p of phrasings) expect(counters(t, `The claim ${p} ${domain}.`)[2], `${name}: ${p}`).toBeGreaterThan(0);
+      expect(counters(t, `The claim was seen on ${domain}.`)[2], name).toBe(0);
+    }
+    expect(counters(load("sample-origin"), "The claim first appeared in the keeper log.")[2]).toBe(0);
   });
 
   it("[C18] the card-sentence counter catches quotes and names no span carries", () => {
