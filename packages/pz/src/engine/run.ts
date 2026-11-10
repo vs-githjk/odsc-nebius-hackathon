@@ -1,4 +1,7 @@
 import { mkdirSync, writeFileSync } from "node:fs";
+import { isDeepStrictEqual } from "node:util";
+import { dateNode, type DateEvidence } from "./dating.ts";
+import type { createWayback } from "../clients/wayback.ts";
 import { dirname } from "node:path";
 import { Trace } from "../schema/index.ts";
 import { decideStopState, loadRules } from "../rules/index.ts";
@@ -6,7 +9,10 @@ import { verifyTrace } from "../verify/checks.ts";
 
 export const STAGES = ["intake", "fingerprint", "walk", "spans", "dating", "clusters", "readouts", "card"] as const;
 export type Stage = typeof STAGES[number];
-export type Context = Readonly<{ input: string; pages: readonly Readonly<{ url: string; quotedText: string }>[] }>;
+export type PageInput = { url: string; text: string; metadata?: string | null; byline?: string | null };
+export type Context = Readonly<{ input: string; pages: readonly Readonly<{
+  url: string; quotedText: string; metadata?: string | null; byline?: string | null;
+}>[] }>;
 type Step = (trace: Trace, context: Context) => Trace | Promise<Trace>;
 // Adapters are the integration seam while T21 to T28 land. No default fabricates a live result.
 export type Pipeline = { intake: (context: Context) => Trace | Promise<Trace> } & Record<Exclude<Stage, "intake">, Step>;
@@ -15,6 +21,21 @@ export type RunEvent = { sequence: number } & (
   | { type: "trace"; trace: Trace }
 );
 type Emit = (event: RunEvent) => void;
+
+// The production dating adapter replaces every date, including Tavily hints.
+// Missing publication evidence remains unconfirmed unless Wayback caps it.
+export function datingStep(wayback: Pick<ReturnType<typeof createWayback>, "firstCapture">): Step {
+  return async (trace, context) => {
+    const nodes = [], usage = [...trace.usage];
+    for (const node of trace.nodes) {
+      const page = context.pages.find(page => page.url === node.url);
+      const evidence: DateEvidence = { metadata: page?.metadata, byline: page?.byline };
+      const dated = await dateNode(node, evidence, wayback);
+      nodes.push(dated.node); usage.push(dated.usage);
+    }
+    return { ...trace, nodes, usage };
+  };
+}
 
 function checked(value: unknown): Trace {
   const trace = Trace.parse(value);
@@ -25,17 +46,27 @@ function checked(value: unknown): Trace {
 }
 
 export async function runTrace(input: string, pipeline: Pipeline, opts: {
-  pages?: readonly { url: string; text: string }[]; emit?: Emit;
+  pages?: readonly PageInput[]; emit?: Emit;
 } = {}): Promise<Trace> {
   for (const stage of STAGES) if (typeof pipeline?.[stage] !== "function") throw new Error(`Missing pipeline stage: ${stage}`);
   const context: Context = Object.freeze({ input, pages: Object.freeze((opts.pages ?? []).map(page =>
-    Object.freeze({ url: page.url, quotedText: JSON.stringify(page.text) }))) });
+    Object.freeze({ url: page.url, quotedText: JSON.stringify(page.text), metadata: page.metadata, byline: page.byline }))) });
   let trace: Trace | undefined;
   let sequence = 0;
   for (const stage of STAGES) {
     opts.emit?.({ sequence: sequence++, type: "stage", stage, status: "started" });
     try {
-      trace = Trace.parse(await (stage === "intake" ? pipeline.intake(context) : pipeline[stage](trace!, context)));
+      // Snapshot before calling: adapters may mutate their input in place.
+      const incomingUsage = structuredClone(trace?.usage ?? []);
+      const next = Trace.parse(await (stage === "intake" ? pipeline.intake(context) : pipeline[stage](trace!, context)));
+      if (next.mode !== "LIVE" && !(next.mode === "SAMPLE" && next.synthetic)) {
+        throw new Error("Pipeline adapter must return LIVE or synthetic SAMPLE");
+      }
+      if (next.synthetic !== (next.mode === "SAMPLE")) throw new Error("Synthetic/mode mismatch");
+      if (!isDeepStrictEqual(next.usage.slice(0, incomingUsage.length), incomingUsage)) {
+        throw new Error("Pipeline stage must preserve incoming usage prefix");
+      }
+      trace = next;
     } catch (error) {
       opts.emit?.({ sequence: sequence++, type: "stage", stage, status: "failed" });
       throw error;
