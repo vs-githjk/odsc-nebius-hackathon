@@ -3,6 +3,7 @@ import type { Trace } from "pz/schema";
 import { ModeBadge } from "./components/ModeBadge.tsx";
 import { TraceView } from "./components/TraceView.tsx";
 import { loadTraces } from "./data/loadTraces.ts";
+import { endingSentence } from "./model/ending.ts";
 import { parseRoute, type Route } from "./route.ts";
 
 const { traces, errors } = loadTraces();
@@ -20,8 +21,6 @@ function useRoute(): Route {
 const stateLabel = (trace: Trace) => trace.decision.state.replace(/_/g, " ");
 const sentenceCase = (text: string) => text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
 
-// The decision's own reasons, in code's words, are what tells two samples with the same ending apart.
-const reasonLine = (trace: Trace) => sentenceCase(trace.decision.reasons.join("; ") || stateLabel(trace));
 const sharedClaim = traces.length > 0 && traces.every((t) => t.claim.text === traces[0]!.claim.text) ? traces[0]!.claim.text : null;
 
 function Start() {
@@ -48,7 +47,7 @@ function Start() {
               <a className="sample" href={`#/t/${encodeURIComponent(trace.id)}`}>
                 <span className="sample-state">{sentenceCase(stateLabel(trace))}</span>
                 <span className="meta">
-                  {reasonLine(trace)}. {trace.roots.pages} {trace.roots.pages === 1 ? "page" : "pages"}.
+                  {endingSentence(trace)} {trace.roots.pages} {trace.roots.pages === 1 ? "page" : "pages"}.
                 </span>
                 {!trace.synthetic && <ModeBadge trace={trace} />}
               </a>

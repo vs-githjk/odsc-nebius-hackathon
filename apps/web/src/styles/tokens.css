@@ -357,3 +357,11 @@ a {
   color: var(--ink-2);
   font-size: 15px;
 }
+
+@media (max-width: 600px) {
+  /* Stacked on a phone: the ending, then its sentence, aligned on the left. */
+  .sample {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

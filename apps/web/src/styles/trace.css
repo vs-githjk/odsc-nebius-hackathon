@@ -176,6 +176,10 @@
 .disc-label {
   position: absolute;
   bottom: calc(var(--disc) / 2 + 6px);
+  padding: 0 4px;
+  border-radius: 4px;
+  /* A knockout in the band's own light so a label never sits on a link line. */
+  background: color-mix(in srgb, var(--surface) 82%, transparent);
   color: var(--ink-2);
   font-size: 13px;
   font-weight: 600;

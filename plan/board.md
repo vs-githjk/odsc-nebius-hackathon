@@ -105,3 +105,4 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [17:12 PT] AnoopIbrampur T33 on #97: make dev-score now scores E2 and E3 (when eval/dev-claims-e3.json exists, #105), one row per set
 - [09:40 PT] RishitRai #62 second #69 round: theme ramp variables for dark mode, stage under the nav, claim as the start hero, rows told apart by their reasons
 - [09:43 PT] RishitRai #82 review notes: walkStep builds per-run deps, carries mode/recordedAt/synthetic/usage, allows warm-cache runs, leaves dates and ordering to the dating stage
+- [10:05 PT] RishitRai #62 fixes: plain ending sentences on the start page (no ids or codes), knockout behind band labels, sample rows stacked on phones
