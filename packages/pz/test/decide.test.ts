@@ -146,9 +146,12 @@ describe("T36 same-claim gate on ORIGIN_FOUND (row 5)", () => {
     expect(missing.reasons).toContain("same_claim not asked on 1 earliest page(s) (no model), which counts as unsure");
     expect(state(withGate({ sameClaim: null })).reasons.some((r) => r.startsWith("same_claim not asked"))).toBe(true);
     expect(state(trace()).reasons.some((r) => r.startsWith("same_claim not asked"))).toBe(false);
+    // When another check already blocks the page, the gate is not named: older traces keep their reasons.
+    const blog = state(withGate({ sameClaim: undefined, pageType: answer("blog") }));
+    expect(blog.reasons).toEqual(["no earliest page with a confirmed date, a primary page type, no earlier citation and no negated span"]);
   });
   it("a no, an unsure, or a yes with unknown confidence blocks it", () => {
-    cold(withGate({ sameClaim: sameClaim("no") }));
+    expect(state(withGate({ sameClaim: sameClaim("no") })).reasons).toEqual(["no earliest page states the same claim: the claim's atoms in a span and a confident same_claim yes"]);
     cold(withGate({ sameClaim: sameClaim("unsure") }));
     cold(withGate({ sameClaim: sameClaim("yes", null) }));
   });

@@ -40,7 +40,7 @@ describe("number words in the parser", () => {
     expect(values("five million two thousand")).toEqual([5002000]);
     expect(values("thousand million")).toEqual([]);
     expect(values("two thousand million")).toEqual([2000]);
-    expect(values("five thousand two million")).toEqual([5000, 2000000]);
+    expect(values("two thousand three million")).toEqual([2003]);
     const one = atoms("1", "study");
     expect(atomHit("One study of people found nothing", one)).toBe(false);
     expect(atomHit("No one reads the study", one)).toBe(false);

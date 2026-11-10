@@ -50,18 +50,21 @@ export function decideStopState(trace: Trace, rules: Rules): Decision {
   if (pages.length === 0) return decide("NO_PAGES_FOUND", 3, ["no pages besides meta pages"]);
   if (conflicting(trace, pages, rules)) return decide("CONFLICTING", 4, ["earliest cluster gives different numbers beyond every transform"]);
 
-  const origin = pages.find((n) =>
+  const candidates = pages.filter((n) =>
     trace.earliest.nodeIds.includes(n.id) && confident(n.pageType, rules) && rules.primaryPageTypes.includes(n.pageType.optionId)
     && n.date.kind !== "unconfirmed" && !n.citesEarlier
-    && !trace.spans.some((s) => s.nodeId === n.id && isNegated(s, rules.negationPrefixes))
-    // T36 same-claim check: a span on the page carries the claim's atoms (code) and the typed same_claim says yes.
-    && trace.spans.some((s) => s.nodeId === n.id && atomHit(s.text, trace.claim.atoms, rules.weakNumberMinSigDigits, rules.weakNumberMaxCommas))
-    && confidentYes(n.sameClaim, rules));
-  const earliestPages = pages.filter((n) => trace.earliest.nodeIds.includes(n.id));
-  const gateMissing = earliestPages.filter((n) => !n.sameClaim).length;
+    && !trace.spans.some((s) => s.nodeId === n.id && isNegated(s, rules.negationPrefixes)));
+  // T36 same-claim check: a span on the page carries the claim's atoms (code) and the typed same_claim says yes.
+  const statesClaim = (n: Node) => confidentYes(n.sameClaim, rules)
+    && trace.spans.some((s) => s.nodeId === n.id && atomHit(s.text, trace.claim.atoms, rules.weakNumberMinSigDigits, rules.weakNumberMaxCommas));
+  const origin = candidates.find(statesClaim);
+  // The gate's reasons appear only when the gate is what blocks: some earliest page passes every other check.
+  const notAsked = candidates.filter((n) => !n.sameClaim).length;
   const blockers = [
-    !origin && "no earliest page with a confirmed date, a primary page type, the claim's atoms, a confident same_claim yes, no earlier citation and no negated span",
-    !origin && gateMissing > 0 && `same_claim not asked on ${gateMissing} earliest page(s) (no model), which counts as unsure`,
+    candidates.length === 0 && "no earliest page with a confirmed date, a primary page type, no earlier citation and no negated span",
+    candidates.length > 0 && !origin && (notAsked > 0
+      ? `same_claim not asked on ${notAsked} earliest page(s) (no model), which counts as unsure`
+      : "no earliest page states the same claim: the claim's atoms in a span and a confident same_claim yes"),
     unreadParents > 0 && `${unreadParents} unread candidate parent(s)`,
     trace.earliest.earlierWindowSearches < rules.earlierWindowSearches && `fewer than ${rules.earlierWindowSearches} earlier-window searches`,
     trace.earliest.earlierFound > 0 && "earlier-window searches found earlier pages",
