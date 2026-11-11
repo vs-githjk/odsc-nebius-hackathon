@@ -42,7 +42,7 @@ export function openBudget(path: string, now = () => Date.now()) {
   }
   function available(ledger: Ledger, amount: number): void {
     if (ledger.breached || now() < Date.parse(ledger.start) || now() >= Date.parse(ledger.end)
-      || spent(ledger) + amount > ledger.cap) throw new Error("budget_exceeded");
+      || spent(ledger) + amount > ledger.cap) throw Object.assign(new Error("budget_exceeded"), { code: "budget_exceeded" as const });
   }
   return {
     check(ceilingUsd: number): void {
