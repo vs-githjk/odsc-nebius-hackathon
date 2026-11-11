@@ -6,14 +6,26 @@ import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 import { Trace } from "../src/schema/index.ts";
 import { verifyTrace } from "../src/verify/checks.ts";
-import { recordTrace, replayTrace, runTrace, datingStep, STAGES, type Pipeline, type RunEvent } from "../src/engine/run.ts";
+import { recordTrace, replayTrace, runTrace as run, datingStep, STAGES, type Pipeline, type RunEvent, type Wayback } from "../src/engine/run.ts";
 import { traceCommand } from "../src/cli/trace.ts";
 
 const fixturePath = new URL("../../../fixtures/traces/sample-rich.json", import.meta.url);
 const sample = () => Trace.parse(JSON.parse(readFileSync(fixturePath, "utf8")));
 const sameTrace = async (trace: Trace) => trace;
 const stubPipeline = (): Pipeline => ({ intake: async () => sample(), fingerprint: sameTrace,
-  walk: sameTrace, spans: sameTrace, dating: sameTrace, clusters: sameTrace, readouts: sameTrace, card: sameTrace });
+  walk: sameTrace, spans: sameTrace, clusters: sameTrace, readouts: sameTrace, card: sameTrace });
+
+const wayback: Wayback = { firstCapture: async url => {
+  const trace = sample();
+  const firstCapture = trace.nodes.find(node => node.url === url)?.date.firstCapture;
+  return {
+    data: firstCapture ? { status: "found", firstCapture, timestamp: firstCapture.replaceAll("-", "") + "000000" } : { status: "none" },
+    usage: { at: trace.recordedAt, traceId: trace.id, step: "dating", service: "wayback", endpoint: "cdx", model: null,
+      promptTokens: 0, completionTokens: 0, cachedTokens: 0, credits: 0, costUsd: 0, latencyMs: 0, cacheHit: true, status: "200" },
+  };
+} };
+const runTrace = (input: string, pipeline: Pipeline, opts: Omit<Parameters<typeof run>[2], "wayback"> = {}) =>
+  run(input, pipeline, { wayback, ...opts });
 
 describe("trace orchestration and replay", () => {
   it("keeps poisoned pages quoted as data and leaves the stubbed result unchanged", async () => {
@@ -84,7 +96,7 @@ describe("trace orchestration and replay", () => {
     }
   });
   it("rejects REPLAY and inconsistent modes returned by any adapter", async () => {
-    for (const stage of STAGES) {
+    for (const stage of STAGES.filter(s => s !== "dating")) {
       const pipeline = stubPipeline();
       if (stage === "intake") pipeline.intake = async () => ({ ...sample(), mode: "REPLAY", synthetic: false });
       else pipeline[stage] = async t => ({ ...t, mode: "REPLAY", synthetic: false });
@@ -113,8 +125,42 @@ describe("trace orchestration and replay", () => {
     expect(trace).toEqual(sample());
     const pipeline = stubPipeline();
     pipeline.spans = async (t, c) => { expect(c.pages[0]).toMatchObject({ metadata: "2020-01-01", byline: null });
-      expect(Object.isFrozen(c.pages[0])).toBe(true); return t; };
-    await runTrace("input", pipeline, { pages });
+      expect(Object.isFrozen(c.pages[0])).toBe(true); throw new Error("context checked"); };
+    await expect(runTrace("input", pipeline, { pages })).rejects.toThrow("context checked");
+  });
+  it("ignores a pass-through dating adapter and replaces walk dates with discovered metadata", async () => {
+    const pipeline = Object.assign(stubPipeline(), { dating: sameTrace });
+    const node = sample().nodes[0]!;
+    pipeline.walk = async trace => {
+      trace.nodes[0]!.date = { ...node.date, kind: "published", value: "1990-01-01", source: "metadata" };
+      return { trace, pages: [{ url: node.url, text: "page", metadata: "2019-12-14" }] };
+    };
+    const result = await runTrace("input", pipeline);
+    expect(result.nodes[0]!.date).toMatchObject({ kind: "published", value: "2019-12-14", source: "metadata" });
+  });
+  it("passes discovered publication metadata through the CLI pipeline to dating", async () => {
+    const trace = sample();
+    const path = join(mkdtempSync(join(tmpdir(), "pz-dating-")), "pipeline.mjs");
+    const captures = Object.fromEntries(trace.nodes.map(node => [node.url, node.date.firstCapture]));
+    const { usage } = await wayback.firstCapture(trace.nodes[0]!.url);
+    writeFileSync(path, [
+      `const trace = ${JSON.stringify(trace)}; const captures = ${JSON.stringify(captures)};`,
+      `export const wayback = {firstCapture: async url => ({data: {status: "found", firstCapture: captures[url], timestamp: "20191215000000"}, usage: ${JSON.stringify(usage)}})};`,
+      'const same = value => value;',
+      'export const pipeline = {intake: () => trace, fingerprint: same, walk: same, clusters: same, readouts: same, card: same,',
+      'spans: value => ({trace: value, pages: [{url: value.nodes[0].url, text: "page", metadata: "2019-12-14"}]})};',
+    ].join("\n"));
+    const lines: string[] = [];
+    expect(await traceCommand(["input", "--pipeline", path], { write: line => lines.push(line), error: line => lines.push(line) })).toBe(0);
+    expect(JSON.parse(lines[0]!).nodes[0].date).toMatchObject({ value: "2019-12-14", source: "metadata" });
+  });
+  it("rejects readouts that mutate a dated node in place", async () => {
+    const pipeline = stubPipeline();
+    pipeline.readouts = async trace => {
+      trace.nodes[0]!.date.value = "1990-01-01";
+      return trace;
+    };
+    await expect(runTrace("input", pipeline)).rejects.toThrow("authoritative node date");
   });
   it("prints only allowed typed error codes from pipeline failures", async () => {
     const dir = mkdtempSync(join(tmpdir(), "pz-pipeline-"));
@@ -122,7 +168,7 @@ describe("trace orchestration and replay", () => {
     const errors: string[] = [];
     const io = { write: () => {}, error: (s: string) => { errors.push(s); } };
     for (const code of ["budget_exceeded", "network_error", "http_error", "provider-secret"]) {
-      writeFileSync(path, `export const pipeline = Object.fromEntries(${JSON.stringify(STAGES)}.map(s => [s, async () => { throw Object.assign(new Error("secret response body"), {code:${JSON.stringify(code)}}) }]));`);
+      writeFileSync(path, `export const wayback = { firstCapture: async () => { throw new Error("unexpected"); } }; export const pipeline = Object.fromEntries(${JSON.stringify(STAGES)}.map(s => [s, async () => { throw Object.assign(new Error("secret response body"), {code:${JSON.stringify(code)}}) }]));`);
       // Unique modules avoid the import cache between code cases.
       const unique = join(dir, code + ".mjs"); writeFileSync(unique, readFileSync(path));
       expect(await traceCommand(["input", "--pipeline", unique], io)).toBe(1);
