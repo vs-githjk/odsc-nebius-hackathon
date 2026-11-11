@@ -1,4 +1,4 @@
-import { mkdtempSync, mkdirSync, writeFileSync } from "node:fs";
+import { mkdtempSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { execFileSync } from "node:child_process";
@@ -34,14 +34,15 @@ describe("T38 recording command", () => {
   });
   it("rejects ambiguous modes and incomplete live config before loading modules or network", async () => {
     for (const args of [[], ["--plan", "--live"], ["--live"], ["--plan", "--ledger", "secret-path"],
-      ["--live", "--out", "x", "--ledger", "secret-path", "--ceiling-usd", "NaN"]]) {
+      ["--live", "--out", "x", "--ledger", "secret-path", "--ceiling-usd", "NaN"],
+      ["--live", "--out", "x", "--ledger", "secret-path", "--ceiling-usd", "0.010001"]]) {
       const t = setup(); expect(await recordDevCommand(args, t.io, t.deps)).toBe(1);
       expect(t.errors).toEqual(["recording_failed"]); expect(t.counts()).toEqual({ calls: 0, loads: 0 });
     }
   });
   it("refuses a missing ledger before module loading, and refuses unmerged operations before any network", async () => {
     const t = setup(), ledger = join(t.root, "ledger.json"), out = join(t.root, "new");
-    const args = ["--live", "--out", out, "--ledger", ledger, "--ceiling-usd", "0.1"];
+    const args = ["--live", "--out", out, "--ledger", ledger, "--ceiling-usd", "0.01"];
     expect(await recordDevCommand(args, t.io, t.deps)).toBe(1);
     initializeBudget(ledger, { capUsd: 15, priorSpendUsd: 0, start: "2020-01-01T00:00:00Z", end: "2100-01-01T00:00:00Z" });
     expect(await recordDevCommand(args, t.io, t.deps)).toBe(1);
@@ -49,17 +50,30 @@ describe("T38 recording command", () => {
   });
   it("replays all 25 saved cases without a provider and refuses a changed source", async () => {
     const t = setup(), out = join(t.root, "saved");
-    const operation = async (source: string) => ({ length: source.length });
+    const usage = { at: "2026-11-10T00:00:00Z", traceId: null, step: "fixture", service: "tokenfactory" as const,
+      endpoint: "/chat/completions", model: "fixture", promptTokens: 2, completionTokens: 1, cachedTokens: 0,
+      credits: 0, costUsd: 0.000001, latencyMs: 1, status: "200", cacheHit: false };
+    const operation = async (source: string, { client }: Parameters<import("../../../eval/recordings/session.ts").Operations["intake"]>[1]) =>
+      (await client.chat({ model: "fixture", messages: [{ role: "user", content: source }], maxTokens: 1 })).data.content;
     const operations = { intake: operation, fingerprint: operation };
-    await recordCases(loadT38Cases(t.root), { provenance: "SYNTHETIC", operations,
-      beforeCase: () => {}, clientFor: () => ({ chat: async () => { throw new Error("no provider"); } }),
-      write: record => writeRecording(out, record) });
+    // In-memory stand-in for the LIVE file contract. No provider request occurs.
+    await recordCases(loadT38Cases(t.root), { provenance: "LIVE", operations,
+      beforeCase: () => {}, clientFor: () => ({ chat: async () => ({
+        data: { model: "fixture", logprobs: null, content: "answer" }, usage, attempts: [usage],
+      }) }), write: record => writeRecording(out, record) });
     const deps = { ...t.deps, loadOperations: async () => operations };
     expect(await recordDevCommand(["--replay", out], t.io, deps)).toBe(0);
     expect(JSON.parse(t.lines[0]!)).toEqual({ mode: "REPLAY", replayed: 25 });
     const file = join(out, "intake/01-plain.json");
-    writeFileSync(file, JSON.stringify({ id: "01-plain", kind: "intake", source: "changed" }));
-    expect(await recordDevCommand(["--replay", out], t.io, deps)).toBe(1);
+    const valid = JSON.parse(readFileSync(file, "utf8"));
+    for (const invalid of [
+      { ...valid, source: "changed" }, { ...valid, provenance: "SYNTHETIC" },
+      { ...valid, calls: [] }, { ...valid, usage: [] },
+      { ...valid, calls: [{ ...valid.calls[0], response: { ...valid.calls[0].response, attempts: [] } }] },
+    ]) {
+      writeFileSync(file, JSON.stringify(invalid));
+      expect(await recordDevCommand(["--replay", out], t.io, deps)).toBe(1);
+    }
     expect(t.counts().calls).toBe(0);
   });
   it("checks exact merged operation and input bytes against origin/main", () => {
