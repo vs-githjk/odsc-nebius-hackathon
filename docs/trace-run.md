@@ -25,27 +25,23 @@ local under the existing ignore rule.
 
 ## Adapter contract for T21 to T28
 
-`runTrace(input, pipeline, { pages?, emit? })` validates all eight adapters before
-calling anything, then calls intake, fingerprint, walk, spans, dating, clusters,
-readouts and card in order. Intake receives Context and returns an initial Trace;
-the remaining adapters receive the current Trace plus Context and return a Trace.
-Context carries the input plus URL/JSON-quoted page data and optional publication
-`metadata` and `byline` dates. Page inputs and context are immutable. It contains no executable
-page instructions. Each stage result is schema checked. The final decision is
-recomputed by the existing rules, and the completed trace must pass verification.
-Client errors propagate rather than becoming an invented successful result.
+`runTrace(input, pipeline, { wayback, pages?, emit? })` checks the adapters and
+Wayback client before it starts. It runs intake, fingerprint, walk, spans, dating,
+clusters, readouts and card in order. Walk and spans may return `{ trace, pages }`
+to add publication metadata and byline to the next immutable context snapshot.
+Page text is carried as JSON-quoted data.
 
-Every stage must return LIVE or synthetic SAMPLE; adapter-produced REPLAY is
-rejected. Each output's usage must begin with an unchanged copy of its incoming
-usage, checked against a pre-call snapshot even if the adapter mutates its input.
-Use `dating: datingStep(wayback)` from engine/run.ts for the production dating
-stage. It replaces every node.date via T25 dateEvidence (through dateNode), using
-that URL's metadata/byline and a successful Wayback capture. Walk/search hints and
-body dates are never used. Missing publication evidence becomes unconfirmed if no
-capture exists. Original usage is retained and every dating row is appended. Stage adapters own the specific module argument conversions.
-No threshold, question wording, prompt or rule is defined by this orchestrator.
+The runner owns dating through T25 `dateNode`, using the discovered metadata,
+byline and Wayback evidence for each URL. It replaces dates supplied by earlier
+stages, appends dating usage and rejects changes to authoritative dates in later
+stages. Walk search hints and body dates are outside the dating inputs.
 
-A reviewed local module exporting `pipeline` can be selected explicitly:
+Each stage returns LIVE or synthetic SAMPLE and preserves the incoming usage
+prefix. The runner snapshots usage before the call so it can detect in-place
+changes. It recomputes the final decision using existing rules and verifies the
+completed trace.
+
+A reviewed local module exporting `pipeline` and `wayback` can be selected explicitly:
 
 ```sh
 npm run pz -- trace "input claim" --pipeline ./reviewed-adapters.ts --events --out runs/new.json
