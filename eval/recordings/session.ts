@@ -1,5 +1,5 @@
 import { isDeepStrictEqual } from "node:util";
-import { mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
+import { linkSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import type { ChatData, ChatInput, Result } from "../../packages/pz/src/clients/tokenfactory.ts";
 import { z } from "zod";
@@ -55,6 +55,10 @@ export function loadT38Cases(root = "."): Case[] {
       || !("text" in value) || typeof value.text !== "string") throw new Error("Invalid E2 input");
     return { kind: "fingerprint" as const, id: value.id, source: value.text };
   });
+  if (fingerprint.some(item => !/^[a-zA-Z0-9_-]+$/.test(item.id) || !item.source.trim())
+      || new Set(fingerprint.map(item => item.id)).size !== fingerprint.length) {
+    throw new Error("Invalid E2 manifest");
+  }
   return [...intake, ...fingerprint];
 }
 
@@ -124,5 +128,12 @@ export function writeRecording(root: string, record: Recording): void {
   if (!/^[a-zA-Z0-9_-]+$/.test(record.id) || !["intake", "fingerprint"].includes(record.kind)) throw new Error("Invalid recording path");
   const dir = join(root, record.kind);
   mkdirSync(dir, { recursive: true });
-  writeFileSync(join(dir, record.id + ".json"), JSON.stringify(record, null, 2) + "\n", { flag: "wx", mode: 0o600 });
+  const staging = mkdtempSync(join(dir, ".capture-"));
+  try {
+    const temporary = join(staging, "record.json");
+    writeFileSync(temporary, JSON.stringify(record, null, 2) + "\n", { flag: "wx", mode: 0o600 });
+    linkSync(temporary, join(dir, record.id + ".json"));
+  } finally {
+    rmSync(staging, { recursive: true, force: true });
+  }
 }
