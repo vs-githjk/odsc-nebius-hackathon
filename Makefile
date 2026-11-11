@@ -1,4 +1,4 @@
-.PHONY: verify replay live dev-score
+.PHONY: verify replay live dev-score dev-run
 
 # Re-checks everything with no API keys: typecheck, tests, every committed trace, the trap set,
 # the copy lint, the leakage test and the claims table.
@@ -16,10 +16,19 @@ verify:
 	if [ $$took -gt 60 ]; then echo "make verify FAILED: took $$took s, over the 60 s budget (C17)"; exit 1; fi; \
 	echo "make verify passed in $$took s"
 
-replay live:
+TRACE ?= fixtures/traces/sample-rich.json
+
+replay:
+	@node --import tsx packages/pz/src/cli/pz.ts trace --replay-of "$(TRACE)"
+
+live:
 	@echo "not built yet"
 	@exit 1
 
 # Grades eval/dev-traces/ against the E2 dev claims and appends a dated row to eval/dev-score.md (T33).
 dev-score:
 	@node --import tsx eval/dev-score.ts
+
+export DEV_REPLAY_DIR DEV_PIPELINE DEV_LEDGER
+dev-run:
+	@node --import tsx eval/dev-run.ts
