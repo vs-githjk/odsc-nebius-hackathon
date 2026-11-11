@@ -3,7 +3,7 @@ import { z } from "zod";
 import prices from "../../config/prices.json" with { type: "json" };
 import type { UsageRow } from "../schema/usage.ts";
 
-export type ErrorCode = "not_configured" | "http_error" | "network_error" | "bad_response";
+export type ErrorCode = "budget_exceeded" | "not_configured" | "http_error" | "network_error" | "bad_response";
 export class TokenFactoryError extends Error {
   constructor(public readonly code: ErrorCode, public readonly status: number | null = null, public readonly usage: UsageRow[] = []) {
     super(`Token Factory ${code}${status === null ? "" : ` (${status})`}`);
@@ -57,7 +57,10 @@ export function createTokenFactoryClient(options: Options = {}) {
           method: "POST", headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
           body: JSON.stringify(body), signal: AbortSignal.timeout(options.timeoutMs ?? 30_000),
         });
-      } catch {
+      } catch (error) {
+        if (error && typeof error === "object" && "code" in error && error.code === "budget_exceeded") {
+          throw new TokenFactoryError("budget_exceeded", null, rows);
+        }
         const row = rowFor("network_error");
         await record(row);
         throw new TokenFactoryError("network_error", null, rows);
