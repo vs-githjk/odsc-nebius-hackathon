@@ -1,8 +1,9 @@
-import { mkdtempSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdtempSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { execFileSync } from "node:child_process";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { initializeBudget } from "../../../eval/recordings/budget.ts";
 import { loadT38Cases, recordCases, writeRecording } from "../../../eval/recordings/session.ts";
 import { assertMergedOperations, recordDevCommand, tokenFactoryCost } from "../../../eval/record-dev.ts";
@@ -31,6 +32,21 @@ describe("T38 recording command", () => {
     expect(JSON.parse(t.lines[0]!)).toMatchObject({ mode: "PLAN", intake: 5, fingerprint: 20 });
     expect(t.counts()).toEqual({ calls: 0, loads: 0 });
     expect(t.lines.join()).not.toContain("Invented 12 birds");
+  });
+  it("reports nonnumeric fingerprint cases before touching the ledger or capture directory", async () => {
+    const t = setup(), ledger = join(t.root, "ledger.json"), out = join(t.root, "new");
+    const manifest = join(t.root, "eval/dev-claims.json");
+    const e2Manifest = fileURLToPath(new URL("../../../eval/dev-claims.json", import.meta.url));
+    writeFileSync(manifest, readFileSync(e2Manifest));
+    const expectedIds = ["dev-01", "dev-07", "dev-08", "dev-12"];
+
+    expect(await recordDevCommand(["--plan"], t.io, t.deps)).toBe(0);
+    expect(JSON.parse(t.lines[0]!).fingerprintWithoutNumber).toEqual(expectedIds);
+    expect(await recordDevCommand(["--live", "--out", out, "--ledger", ledger], t.io, t.deps)).toBe(1);
+    expect(JSON.parse(t.errors[0]!)).toEqual({ error: "unsupported_fingerprint_claims", ids: expectedIds });
+    expect(existsSync(out)).toBe(false);
+    expect(existsSync(ledger)).toBe(false);
+    expect(t.counts()).toEqual({ calls: 0, loads: 0 });
   });
   it("rejects ambiguous modes and incomplete live config before loading modules or network", async () => {
     for (const args of [[], ["--plan", "--live"], ["--live"], ["--plan", "--ledger", "secret-path"],
@@ -75,6 +91,47 @@ describe("T38 recording command", () => {
       expect(await recordDevCommand(["--replay", out], t.io, deps)).toBe(1);
     }
     expect(t.counts().calls).toBe(0);
+  });
+  it("reuses verified captures in a new directory and rejects drift before spending", async () => {
+    const t = setup(), prior = join(t.root, "prior"), out = join(t.root, "resumed");
+    const ledger = join(t.root, "ledger.json");
+    initializeBudget(ledger, { capUsd: 15, priorSpendUsd: 0, start: "2020-01-01T00:00:00Z", end: "2100-01-01T00:00:00Z" });
+    const usage = { at: "2026-11-10T00:00:00Z", traceId: null, step: "fixture", service: "tokenfactory" as const,
+      endpoint: "/chat/completions", model: "fixture", promptTokens: 2, completionTokens: 1, cachedTokens: 0,
+      credits: 0, costUsd: 0.000001, latencyMs: 1, status: "200", cacheHit: false };
+    const operation: import("../../../eval/recordings/session.ts").Operations["intake"] = async (source, { client }) =>
+      (await client.chat({ model: "fixture", messages: [{ role: "user", content: source }], maxTokens: 1 })).data.content;
+    const operations = { intake: operation, fingerprint: operation };
+    const chat = vi.fn(async () => ({ data: { model: "fixture", logprobs: null, content: "answer" }, usage, attempts: [usage] }));
+    const cases = loadT38Cases(t.root);
+    await recordCases(cases.slice(0, 1), { provenance: "LIVE", operations,
+      beforeCase: () => {}, clientFor: () => ({ chat }), write: record => writeRecording(prior, record) });
+    const file = join(prior, "intake/01-plain.json");
+    const original = readFileSync(file, "utf8");
+    const deps = { ...t.deps, assertMergedOperations: () => {}, loadOperations: async () => operations,
+      client: () => ({ chat }) };
+    const args = ["--live", "--resume", prior, "--out", out, "--ledger", ledger];
+    vi.stubEnv("NEBIUS_API_KEY", "test-only");
+    try {
+      chat.mockClear();
+      writeFileSync(file, JSON.stringify({ ...JSON.parse(original), output: "changed" }));
+      expect(await recordDevCommand(args, t.io, deps)).toBe(1);
+      expect(existsSync(out)).toBe(false);
+      expect(chat).not.toHaveBeenCalled();
+
+      writeFileSync(file, original);
+      writeRecording(prior, { ...cases[1]!, provenance: "LIVE", status: "failed", recordedAt: usage.at,
+        calls: [], usage: [usage], errorCode: "network_error" });
+      expect(await recordDevCommand(args, t.io, deps)).toBe(0);
+      expect(JSON.parse(t.lines[0]!)).toEqual({ mode: "LIVE", recorded: 24, reused: 1 });
+      expect(chat).toHaveBeenCalledTimes(24);
+      expect(readFileSync(join(out, "intake/01-plain.json"), "utf8")).toBe(original);
+      expect(JSON.parse(readFileSync(join(prior, "intake/02-paraphrase.json"), "utf8")).status).toBe("failed");
+      expect(await recordDevCommand(["--replay", out], t.io, deps)).toBe(0);
+      expect(chat).toHaveBeenCalledTimes(24);
+    } finally {
+      vi.unstubAllEnvs();
+    }
   });
   it("checks exact merged operation and input bytes against origin/main", () => {
     const root = project(); const git = (...args: string[]) => execFileSync("git", args, { cwd: root, stdio: "pipe" });
