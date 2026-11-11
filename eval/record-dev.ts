@@ -4,10 +4,11 @@ import { resolve, join } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { parseArgs } from "node:util";
 import { z } from "zod";
+import config from "./recordings/config.json" with { type: "json" };
 import prices from "../packages/pz/config/prices.json" with { type: "json" };
 import { createTokenFactoryClient } from "../packages/pz/src/clients/tokenfactory.ts";
 import { budgetedFetch, openBudget } from "./recordings/budget.ts";
-import { loadT38Cases, recordCases, replayRecording, writeRecording, type Operations, type Recording } from "./recordings/session.ts";
+import { loadT38Cases, recordCases, replayRecording, writeRecording, type Operations, assertLiveRecording } from "./recordings/session.ts";
 
 const MODEL = "Qwen/Qwen3-30B-A3B-Instruct-2507";
 const MODULES = ["packages/pz/src/engine/intake.ts", "packages/pz/src/engine/fingerprint.ts"];
@@ -55,14 +56,15 @@ export async function recordDevCommand(args: string[], io = {
     if (values.replay) {
       const operations = await deps.loadOperations(deps.root);
       for (const item of cases) {
-        const record: Recording = JSON.parse(readFileSync(join(values.replay, item.kind, item.id + ".json"), "utf8"));
+        const record: unknown = JSON.parse(readFileSync(join(values.replay, item.kind, item.id + ".json"), "utf8"));
+        assertLiveRecording(record);
         if (record.id !== item.id || record.kind !== item.kind || record.source !== item.source) throw new Error("Recording manifest mismatch");
         await replayRecording(record, operations);
       }
       io.write(JSON.stringify({ mode: "REPLAY", replayed: cases.length })); return 0;
     }
-    const ceilingUsd = Number(values["ceiling-usd"]);
-    if (!values.out || !values.ledger || !Number.isFinite(ceilingUsd) || ceilingUsd <= 0 || ceilingUsd > 15) throw new Error("Missing live configuration");
+    const ceilingUsd = Number(values["ceiling-usd"] ?? config.tokenFactoryAttemptCeilingUsd);
+    if (!values.out || !values.ledger || !Number.isFinite(ceilingUsd) || ceilingUsd <= 0 || ceilingUsd > config.tokenFactoryAttemptCeilingUsd) throw new Error("Missing live configuration");
     // Read and validate the ledger before loading modules or touching the network.
     const budget = openBudget(values.ledger);
     budget.check(ceilingUsd);
@@ -78,7 +80,10 @@ export async function recordDevCommand(args: string[], io = {
     } });
     await recordCases(cases, { provenance: "LIVE", operations, beforeCase: () => {},
       clientFor: item => deps.client({ fetch, traceId: `t38-${item.id}`, step: item.kind }),
-      write: record => writeRecording(values.out!, record) });
+      write: record => {
+        if (record.status === "completed") assertLiveRecording(record);
+        writeRecording(values.out!, record);
+      } });
     io.write(JSON.stringify({ mode: "LIVE", recorded: cases.length })); return 0;
   } catch {
     // Arguments, git stderr, filenames and provider responses never leave stderr.
