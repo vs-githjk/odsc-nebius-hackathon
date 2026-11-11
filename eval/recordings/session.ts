@@ -2,7 +2,8 @@ import { isDeepStrictEqual } from "node:util";
 import { mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import type { ChatData, ChatInput, Result } from "../../packages/pz/src/clients/tokenfactory.ts";
-import type { UsageRow } from "../../packages/pz/src/schema/usage.ts";
+import { z } from "zod";
+import { UsageRow } from "../../packages/pz/src/schema/usage.ts";
 
 export type Case = { kind: "intake" | "fingerprint"; id: string; source: string };
 type Client = { chat(input: ChatInput): Promise<Result<ChatData>> };
@@ -11,6 +12,24 @@ type Call = { request: ChatInput; response: Result<ChatData> };
 export type Recording = Case & {
   provenance: "LIVE" | "SYNTHETIC"; recordedAt: string; calls: Call[]; usage: UsageRow[];
 } & ({ status: "completed"; output: unknown } | { status: "failed"; errorCode: string });
+
+const LiveRecording = z.object({
+  provenance: z.literal("LIVE"),
+  status: z.literal("completed"),
+  calls: z.array(z.object({
+    response: z.object({ attempts: z.array(UsageRow).min(1), usage: UsageRow }),
+  })).min(1),
+  usage: z.array(UsageRow).min(1),
+});
+
+export function assertLiveRecording(record: unknown): asserts record is Recording {
+  const parsed = LiveRecording.parse(record);
+  const attempts = parsed.calls.flatMap(call => call.response.attempts);
+  if (!isDeepStrictEqual(parsed.usage, attempts) ||
+      parsed.calls.some(({ response }) => !isDeepStrictEqual(response.usage, response.attempts.at(-1)))) {
+    throw new Error("recording_usage_mismatch");
+  }
+}
 
 const safeCode = (error: unknown) => {
   const codes = ["not_configured", "http_error", "network_error", "bad_response", "budget_exceeded"];
