@@ -43,7 +43,7 @@ describe("T38 shared-file attempt budget", () => {
       const fetch = budgetedFetch({ budget, ceilingUsd: 0.6, cost: async () => null,
         fetch: async () => { calls++; return new Response("{}", { status: 500 }); } });
       const client = createTokenFactoryClient({ fetch, sleep: async () => {}, logUsage: () => {} });
-      await expect(client.chat({ model: "Qwen/Qwen3-30B-A3B-Instruct-2507", messages: [], maxTokens: 1 })).rejects.toThrow();
+      await expect(client.chat({ model: "Qwen/Qwen3-30B-A3B-Instruct-2507", messages: [], maxTokens: 1 })).rejects.toMatchObject({ code: "budget_exceeded", usage: [{ status: "500" }] });
       expect(calls).toBe(1); expect(entries(path)).toEqual([{ amount: 600000, settled: false }]);
     } finally {
       if (key === undefined) delete process.env.NEBIUS_API_KEY; else process.env.NEBIUS_API_KEY = key;
