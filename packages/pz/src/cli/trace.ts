@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import { parseArgs } from "node:util";
-import { recordTrace, replayTrace, runTrace, type Pipeline, type RunEvent } from "../engine/run.ts";
+import { recordTrace, replayTrace, runTrace, type Pipeline, type RunEvent, type Wayback } from "../engine/run.ts";
 
 export async function traceCommand(args: string[], io = {
   write: (line: string) => console.log(line), error: (line: string) => console.error(line),
@@ -20,8 +20,8 @@ export async function traceCommand(args: string[], io = {
     } else {
       if (!values.pipeline || !positionals.length || values.pages) throw new Error("Live adapters pending");
       // An explicitly selected, reviewed local adapter module. Never loaded from page content.
-      const module = await import(pathToFileURL(resolve(values.pipeline)).href) as { pipeline: Pipeline };
-      trace = await runTrace(positionals.join(" "), module.pipeline, { emit: values.events ? emit : undefined });
+      const module = await import(pathToFileURL(resolve(values.pipeline)).href) as { pipeline: Pipeline; wayback: Wayback };
+      trace = await runTrace(positionals.join(" "), module.pipeline, { wayback: module.wayback, emit: values.events ? emit : undefined });
     }
     if (values.out) recordTrace(values.out, trace);
     if (values.events) {
