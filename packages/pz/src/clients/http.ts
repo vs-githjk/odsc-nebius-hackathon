@@ -12,6 +12,10 @@ export type ClientDeps = {
   cache: Cache;
   budget?: Budget;
   traceId?: string | null;
+  tavilyAttempts?: {
+    reserve(maxCredits: number): string;
+    settle(id: string, credits: number): void;
+  };
 };
 
 export type Result<T> = { data: T; usage: UsageRow };
@@ -65,9 +69,9 @@ export async function send<T>(deps: ClientDeps, req: ClientRequest<T>): Promise<
     return { data, usage: row({ credits: 0, latencyMs: 0, status: "200", cacheHit: true }) };
   }
 
-  deps.budget?.beforeCall(req.maxCredits);
-
   for (let attempt = 1; ; attempt += 1) {
+    deps.budget?.beforeCall(req.maxCredits);
+    const reservation = req.service === "tavily" ? deps.tavilyAttempts?.reserve(req.maxCredits) : undefined;
     const last = attempt === MAX_ATTEMPTS;
     const started = performance.now();
     const latency = () => Math.round(performance.now() - started);
@@ -98,6 +102,7 @@ export async function send<T>(deps: ClientDeps, req: ClientRequest<T>): Promise<
       row({ credits: 0, latencyMs: latency(), status: "bad_response", cacheHit: false });
       throw new ClientError("bad_response", `${req.service} ${req.endpoint}: unexpected response body`);
     }
+    if (reservation !== undefined) deps.tavilyAttempts!.settle(reservation, parsed.credits);
     deps.budget?.spend(parsed.credits);
     deps.cache.set(key, { credits: parsed.credits, body: scrub(body, req.secrets), contentType: response.headers.get("content-type") });
     return {
