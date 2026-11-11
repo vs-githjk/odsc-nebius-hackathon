@@ -13,9 +13,16 @@ export type PageInput = { url: string; text: string; metadata?: string | null; b
 export type Context = Readonly<{ input: string; pages: readonly Readonly<{
   url: string; quotedText: string; metadata?: string | null; byline?: string | null;
 }>[] }>;
+export type Wayback = Pick<ReturnType<typeof createWayback>, "firstCapture">;
 type Step = (trace: Trace, context: Context) => Trace | Promise<Trace>;
 // Adapters are the integration seam while T21 to T28 land. No default fabricates a live result.
-export type Pipeline = { intake: (context: Context) => Trace | Promise<Trace> } & Record<Exclude<Stage, "intake">, Step>;
+type PageStepResult = Trace | { trace: Trace; pages: readonly PageInput[] };
+type PageStep = (trace: Trace, context: Context) => PageStepResult | Promise<PageStepResult>;
+export type Pipeline = {
+  intake: (context: Context) => Trace | Promise<Trace>;
+  walk: PageStep;
+  spans: PageStep;
+} & Record<Exclude<Stage, "intake" | "dating" | "walk" | "spans">, Step>;
 export type RunEvent = { sequence: number } & (
   | { type: "stage"; stage: Stage; status: "started" | "completed" | "failed" }
   | { type: "trace"; trace: Trace }
@@ -24,7 +31,7 @@ type Emit = (event: RunEvent) => void;
 
 // The production dating adapter replaces every date, including Tavily hints.
 // Missing publication evidence remains unconfirmed unless Wayback caps it.
-export function datingStep(wayback: Pick<ReturnType<typeof createWayback>, "firstCapture">): Step {
+export function datingStep(wayback: Wayback): Step {
   return async (trace, context) => {
     const nodes = [], usage = [...trace.usage];
     for (const node of trace.nodes) {
@@ -46,11 +53,26 @@ function checked(value: unknown): Trace {
 }
 
 export async function runTrace(input: string, pipeline: Pipeline, opts: {
-  pages?: readonly PageInput[]; emit?: Emit;
-} = {}): Promise<Trace> {
-  for (const stage of STAGES) if (typeof pipeline?.[stage] !== "function") throw new Error(`Missing pipeline stage: ${stage}`);
-  const context: Context = Object.freeze({ input, pages: Object.freeze((opts.pages ?? []).map(page =>
-    Object.freeze({ url: page.url, quotedText: JSON.stringify(page.text), metadata: page.metadata, byline: page.byline }))) });
+  wayback: Wayback; pages?: readonly PageInput[]; emit?: Emit;
+}): Promise<Trace> {
+  for (const stage of STAGES) {
+    if (stage !== "dating" && typeof pipeline?.[stage] !== "function") throw new Error(`Missing pipeline stage: ${stage}`);
+  }
+  if (typeof opts?.wayback?.firstCapture !== "function") throw new Error("Missing Wayback client");
+  const pages = new Map<string, Context["pages"][number]>();
+  const addPages = (inputs: readonly PageInput[]) => {
+    for (const page of inputs) {
+      const previous = pages.get(page.url);
+      pages.set(page.url, Object.freeze({
+        url: page.url, quotedText: JSON.stringify(page.text),
+        metadata: page.metadata === undefined ? previous?.metadata : page.metadata,
+        byline: page.byline === undefined ? previous?.byline : page.byline,
+      }));
+    }
+  };
+  addPages(opts.pages ?? []);
+  const date = datingStep(opts.wayback);
+  let datedNodes: Map<string, { url: string; date: Trace["nodes"][number]["date"] }> | undefined;
   let trace: Trace | undefined;
   let sequence = 0;
   for (const stage of STAGES) {
@@ -58,7 +80,21 @@ export async function runTrace(input: string, pipeline: Pipeline, opts: {
     try {
       // Snapshot before calling: adapters may mutate their input in place.
       const incomingUsage = structuredClone(trace?.usage ?? []);
-      const next = Trace.parse(await (stage === "intake" ? pipeline.intake(context) : pipeline[stage](trace!, context)));
+      const context: Context = Object.freeze({ input, pages: Object.freeze([...pages.values()]) });
+      const result = await (stage === "intake" ? pipeline.intake(context)
+        : stage === "dating" ? date(trace!, context) : pipeline[stage](trace!, context));
+      const next = Trace.parse("trace" in result ? result.trace : result);
+      if ("trace" in result) {
+        if (stage !== "walk" && stage !== "spans") throw new Error("Unexpected page output");
+        addPages(result.pages);
+      }
+      if (datedNodes && next.nodes.some(node => {
+        const dated = datedNodes!.get(node.id);
+        return !dated || dated.url !== node.url || !isDeepStrictEqual(node.date, dated.date);
+      })) throw new Error("Pipeline stage changed an authoritative node date");
+      if (stage === "dating") {
+        datedNodes = new Map(next.nodes.map(node => [node.id, { url: node.url, date: structuredClone(node.date) }]));
+      }
       if (next.mode !== "LIVE" && !(next.mode === "SAMPLE" && next.synthetic)) {
         throw new Error("Pipeline adapter must return LIVE or synthetic SAMPLE");
       }
