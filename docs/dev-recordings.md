@@ -16,14 +16,18 @@ node --import tsx eval/record-dev.ts --replay "$CAPTURE_DIR"
 Plan prints counts and ids, with no model loading or network access. The fixed
 manifest reads only the five approved intake fixture `answer` fields and 20 E2
 `text` fields. It never uses handwritten responses, target URLs or held-out files.
-Plan needs the intake fixture files, so it becomes available after #75 merges.
+Plan needs the intake fixture files. Its `fingerprintWithoutNumber` list names
+E2 cases that return `no_number` before a provider call. The current list is
+`dev-01`, `dev-07`, `dev-08` and `dev-12`. A nonempty list blocks live capture
+before ledger access or output directory creation. The current C11 evidence
+requires a provider call for each case.
 Replay requires LIVE provenance and a nonempty, consistent set of usage rows per call.
 It checks all 25 source/id/kind pairs, reruns the unchanged operations using
 saved responses and compares exact requests, call count and output. There is no
-network fallback. SYNTHETIC provenance is retained in the files; a replay success
-is not a claim that synthetic captures came from a live provider.
+network fallback. The replay command rejects SYNTHETIC provenance.
 
-Only after #75 merges and the shared spending ledger is reconciled:
+Run live capture once #75 merges, the nonnumeric cases are resolved, and the
+shared spending ledger is reconciled.
 
 ```sh
 node --env-file-if-exists=.env --import tsx eval/record-dev.ts --live \
@@ -36,11 +40,27 @@ spend. Both operation files and all six input files must match exact bytes in
 `origin/main`; no
 arbitrary pipeline or prompt path can be supplied. A missing key or invalid budget
 fails before network access. The output directory must be new, with an existing
-parent, and its recording files use exclusive creation. The command accepts only
+parent. Each recording is staged in the same directory and published atomically
+with exclusive creation. The command accepts only
 the pinned Qwen chat endpoint/model and uses the repository price table for valid
 reported token usage. Unknown or malformed usage retains the full reservation.
-Command errors print only `recording_failed`, without git stderr, paths, arguments
-or provider message bodies.
+The nonnumeric preflight reports `unsupported_fingerprint_claims` and case IDs.
+Other errors report `recording_failed`. Neither diagnostic includes provider
+messages, command arguments or filesystem paths.
+
+For an interrupted batch, use the same ledger and a new output directory:
+
+```sh
+node --env-file-if-exists=.env --import tsx eval/record-dev.ts --live \
+  --ledger "$WEEKLY_LEDGER" --resume "$PRIOR_CAPTURE_DIR" --out "$NEW_CAPTURE_DIR"
+```
+
+Stop the original runner before resuming. The command validates and replays
+completed recordings before any new provider call. It copies the validated
+recordings into the new directory and attempts only missing or failed cases.
+The original directory retains the failed records and the shared ledger
+retains all prior charges. If a completed recording fails validation or
+replay, the resume stops before creating output or making a call.
 
 ## Budget contract
 
@@ -72,10 +92,10 @@ write stops the batch. Save actual captures under test/recorded/live, review the
 and replay all 25 before marking C11 proven. Keep failed captures and usage
 visible; do not overwrite the original synthetic fixtures.
 
-Local typecheck and 97 tests pass, including eight capture/manifest tests, ten
-budget tests and six command tests. They include the real merged fingerprint
-operation and existing Token Factory retry path with synthetic provider responses.
-One command test replays all 25 generated synthetic records with no network.
+The local tests cover the merged fingerprint operation and existing Token
+Factory retry path using synthetic provider responses. The command tests
+exercise the E2 preflight and replay 25 records built with a test transport. No
+provider requests occur in either test.
 The merge gate is tested against a temporary Git repository. Full make verify
 runs in repository CI because the local source workspace is partial.
 
