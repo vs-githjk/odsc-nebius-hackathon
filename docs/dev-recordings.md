@@ -17,7 +17,8 @@ Plan prints counts and ids, with no model loading or network access. The fixed
 manifest reads only the five approved intake fixture `answer` fields and 20 E2
 `text` fields. It never uses handwritten responses, target URLs or held-out files.
 Plan needs the intake fixture files, so it becomes available after #75 merges.
-Replay checks all 25 source/id/kind pairs, reruns the unchanged operations using
+Replay requires LIVE provenance and a nonempty, consistent set of usage rows per call.
+It checks all 25 source/id/kind pairs, reruns the unchanged operations using
 saved responses and compares exact requests, call count and output. There is no
 network fallback. SYNTHETIC provenance is retained in the files; a replay success
 is not a claim that synthetic captures came from a live provider.
@@ -26,7 +27,7 @@ Only after #75 merges and the shared spending ledger is reconciled:
 
 ```sh
 node --env-file-if-exists=.env --import tsx eval/record-dev.ts --live \
-  --ledger "$WEEKLY_LEDGER" --ceiling-usd "$REVIEWED_ATTEMPT_CEILING_USD" \
+  --ledger "$WEEKLY_LEDGER" \
   --out "$NEW_CAPTURE_DIR"
 ```
 
@@ -57,14 +58,10 @@ up to microdollars. A crashed lock requires investigation, not automatic removal
 
 This coordinates only callers sharing the same ledger file. XO must reconcile
 all other machines' Tavily and Token Factory spend and ensure runners use the
-same authoritative allowance. The supplied per-attempt ceiling must be a reviewed
-upper bound for the pinned request/model; the command does not infer a safe bound
-from a guessed token estimate. Repository prices are dated and require review
-before spending. An exceeded bound is detected after the response and prevents
-further calls; a correct ceiling is necessary to enforce the intended cap.
-The existing Token Factory client maps fetch-level reservation failures to
-network_error. The request is still blocked; typed budget propagation is a T41
-integration concern.
+same authoritative allowance. The reviewed Qwen ceiling is $0.01 per HTTP attempt
+and is pinned in `eval/recordings/config.json`. An optional `--ceiling-usd` can only
+lower it. Token Factory preserves a budget refusal as `budget_exceeded` and
+retains usage from earlier attempts.
 
 ## Capture and validation
 
@@ -75,7 +72,7 @@ write stops the batch. Save actual captures under test/recorded/live, review the
 and replay all 25 before marking C11 proven. Keep failed captures and usage
 visible; do not overwrite the original synthetic fixtures.
 
-Local typecheck and 94 tests pass, including eight capture/manifest tests, ten
+Local typecheck and 97 tests pass, including eight capture/manifest tests, ten
 budget tests and six command tests. They include the real merged fingerprint
 operation and existing Token Factory retry path with synthetic provider responses.
 One command test replays all 25 generated synthetic records with no network.
