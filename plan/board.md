@@ -104,3 +104,7 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [09:43 PT] RishitRai #82 review notes: walkStep builds per-run deps, carries mode/recordedAt/synthetic/usage, allows warm-cache runs, leaves dates and ordering to the dating stage
 - [16:53 PT] AnoopIbrampur T35 query planning: planQueries in engine/queries.ts behind the #66 signature, code query first, atom filter, maxQueriesPerHop 4 in rules.json, PR to follow | @RishitRai signature as proposed on #66 plus a mode field; client may be null for code-only
 - [09:30 PT] AnoopIbrampur T35 fixes on #104: operators refused after any non-letter, a weak number alone no longer keeps a query (needs subject or another atom word) | none
+- [23:06 PT] AnoopIbrampur T21 intake: engine/intake.ts with the extraction prompt, 5 hand-written recorded answers, numbers parsed by code, PR to follow | @rohanrastogi311 optional: record the 5 answers live with INTAKE_PROMPT
+- [15:00 PT] AnoopIbrampur T21 fixes: model pointers snapped to whole sentences, ambiguous and in-word pointers rejected, on #75
+- [16:47 PT] AnoopIbrampur T21 fix on #75: sentences() no longer splits after abbreviations or initials, and a line break without closing punctuation joins the lines
+- [09:28 PT] AnoopIbrampur T21 fix on #75: dotted acronyms (U.S., a.m., p.m.) no longer end a sentence, XO's Census case tested | @rohanrastogi311 this was the last blocker XO named for your T38 live run
