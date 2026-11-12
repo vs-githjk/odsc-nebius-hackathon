@@ -4,6 +4,7 @@ import { z } from "zod";
 export const Rules = z.object({
   caps: z.object({ credits: z.number(), usd: z.number(), ms: z.number(), depth: z.number(), frontier: z.number() }).strict(),
   earlierWindowSearches: z.number().int().min(0),
+  maxQueriesPerHop: z.number().int().min(1),
   weakNumberMinSigDigits: z.number().int().min(1),
   weakNumberMaxCommas: z.number().int().min(0),
   confidenceThreshold: z.number().min(0).max(1).nullable(),
