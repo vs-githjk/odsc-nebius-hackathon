@@ -102,6 +102,8 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [16:43 PT] AnoopIbrampur T33 fixes on #97: urlKey keeps the query string (dev-12 vs any other wwf_news release), unverified ORIGIN_FOUND counted next to false origins, dev URL in the test
 - [17:12 PT] AnoopIbrampur T33 on #97: make dev-score now scores E2 and E3 (when eval/dev-claims-e3.json exists, #105), one row per set
 - [09:43 PT] RishitRai #82 review notes: walkStep builds per-run deps, carries mode/recordedAt/synthetic/usage, allows warm-cache runs, leaves dates and ordering to the dating stage
+- [16:53 PT] AnoopIbrampur T35 query planning: planQueries in engine/queries.ts behind the #66 signature, code query first, atom filter, maxQueriesPerHop 4 in rules.json, PR to follow | @RishitRai signature as proposed on #66 plus a mode field; client may be null for code-only
+- [09:30 PT] AnoopIbrampur T35 fixes on #104: operators refused after any non-letter, a weak number alone no longer keeps a query (needs subject or another atom word) | none
 - [23:06 PT] AnoopIbrampur T21 intake: engine/intake.ts with the extraction prompt, 5 hand-written recorded answers, numbers parsed by code, PR to follow | @rohanrastogi311 optional: record the 5 answers live with INTAKE_PROMPT
 - [15:00 PT] AnoopIbrampur T21 fixes: model pointers snapped to whole sentences, ambiguous and in-word pointers rejected, on #75
 - [16:47 PT] AnoopIbrampur T21 fix on #75: sentences() no longer splits after abbreviations or initials, and a line break without closing punctuation joins the lines
