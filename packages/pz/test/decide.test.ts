@@ -6,11 +6,13 @@ import { decideStopState, loadRules } from "../src/rules/index.ts";
 const rules = loadRules();
 const answer = (optionId: string) => ({ questionId: "page_type", optionId, probability: 0.9, top: [], model: "test", threshold: null });
 
+const sameClaim = (optionId: string, probability: number | null = 0.9) => ({ questionId: "same_claim", optionId, probability, top: [], model: "test", threshold: null });
+
 const node = (id: string, over: Partial<Node> = {}): Node => ({
   id, url: `https://${id}.example/page`, domain: `${id}.example`, title: id,
   date: { kind: "published", value: "2020-01-01", source: "metadata", firstCapture: null, conflictingDate: false },
   clusterId: `c-${id}`, evidence: "observed", meta: false, read: true, versionOf: null, spanIds: [],
-  citesEarlier: false, candidateParents: [], pageType: answer("study"), ...over,
+  citesEarlier: false, candidateParents: [], pageType: answer("study"), sameClaim: sameClaim("yes"), ...over,
 });
 
 const span = (id: string, nodeId: string, text: string): Span => ({
@@ -132,5 +134,35 @@ describe("ORIGIN_FOUND blockers", () => {
   });
   it("[C16] an unconfirmed date blocks it", () => {
     cold(trace({ nodes: [node("study", { date: { kind: "unconfirmed", value: null, source: "tavily", firstCapture: null, conflictingDate: false } })] }));
+  });
+});
+
+describe("T36 same-claim gate on ORIGIN_FOUND (row 5)", () => {
+  const cold = (t: Trace) => expect(state(t).state).toBe("TRAIL_GOES_COLD");
+  const withGate = (over: Partial<Node>) => trace({ nodes: [node("study", over), node("news", { pageType: answer("news"), clusterId: "c-news" })] });
+  it("a missing same_claim answer (no model) blocks it, and the trace says the gate was not asked", () => {
+    const missing = state(withGate({ sameClaim: undefined }));
+    expect(missing.state).toBe("TRAIL_GOES_COLD");
+    expect(missing.reasons).toContain("same_claim not asked on 1 earliest page(s) (no model), which counts as unsure");
+    expect(state(withGate({ sameClaim: null })).reasons.some((r) => r.startsWith("same_claim not asked"))).toBe(true);
+    expect(state(trace()).reasons.some((r) => r.startsWith("same_claim not asked"))).toBe(false);
+    // When another check already blocks the page, the gate is not named: older traces keep their reasons.
+    const blog = state(withGate({ sameClaim: undefined, pageType: answer("blog") }));
+    expect(blog.reasons).toEqual(["no earliest page with a confirmed date, a primary page type, no earlier citation and no negated span"]);
+  });
+  it("a no, an unsure, or a yes with unknown confidence blocks it", () => {
+    expect(state(withGate({ sameClaim: sameClaim("no") })).reasons).toEqual(["no earliest page states the same claim: the claim's atoms in a span and a confident same_claim yes"]);
+    cold(withGate({ sameClaim: sameClaim("unsure") }));
+    cold(withGate({ sameClaim: sameClaim("yes", null) }));
+  });
+  it("a yes below a frozen confidence threshold blocks it", () => {
+    // The page type clears 0.95 on its own, so only the same_claim answer (0.9) can block.
+    const t = withGate({ pageType: { ...answer("study"), probability: 0.99 } });
+    expect(decideStopState(t, { ...rules, confidenceThreshold: 0.95 }).state).toBe("TRAIL_GOES_COLD");
+    expect(decideStopState(t, { ...rules, confidenceThreshold: 0.85 }).state).toBe("ORIGIN_FOUND");
+  });
+  it("a typed yes without a code hit blocks it: no span on the page carries the claim's atoms", () => {
+    cold(trace({ spans: [span("s1", "study", "Penguins napped 41 times a day.")] }));
+    cold(trace({ spans: [span("s1", "news", "Penguins napped 14 times a day.")] }));
   });
 });

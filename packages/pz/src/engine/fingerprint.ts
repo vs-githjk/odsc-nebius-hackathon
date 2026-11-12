@@ -2,6 +2,7 @@ import { z } from "zod";
 import { TokenFactoryError, type ChatData, type ChatInput, type Result } from "../clients/tokenfactory.ts";
 import { normalise } from "../rules/normalise.ts";
 import { canonicalKey, parseNumbers } from "../rules/numbers.ts";
+import { numberToWords, wordsToNumber } from "../rules/number-words.ts";
 import type { Atoms } from "../schema/index.ts";
 
 type Client = { chat(input: ChatInput): Promise<Result<ChatData>> };
@@ -11,6 +12,7 @@ const MODEL = "Qwen/Qwen3-30B-A3B-Instruct-2507";
 export const TRANSFORMS = ["number_words", "number_digits", "number_commas", "percent_words", "spelling", "compound_split", "compound_join"] as const;
 export type Transform = (typeof TRANSFORMS)[number];
 export type Variant = { text: string; of: string; transform: Transform };
+export { numberToWords, wordsToNumber };
 
 // British and American spellings that turn up in statistics claims. Only these pairs are swapped.
 const SPELLING: [string, string][] = [
@@ -21,51 +23,6 @@ const SPELLING: [string, string][] = [
   ["anaemia", "anemia"], ["foetus", "fetus"], ["programme", "program"], ["defence", "defense"], ["licence", "license"],
   ["travelling", "traveling"], ["modelling", "modeling"], ["grey", "gray"], ["tyre", "tire"], ["ageing", "aging"],
 ];
-
-const ONES = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve",
-  "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"];
-const TENS = ["", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"];
-const SCALES: [number, string][] = [[1e9, "billion"], [1e6, "million"], [1e3, "thousand"]];
-
-// Whole numbers below a trillion in words: 21 is "twenty-one", 10000 is "ten thousand".
-export function numberToWords(n: number): string | null {
-  if (!Number.isInteger(n) || n < 0 || n >= 1e12) return null;
-  const under1000 = (x: number): string => {
-    const parts: string[] = [];
-    if (x >= 100) { parts.push(`${ONES[Math.floor(x / 100)]} hundred`); x %= 100; }
-    if (x >= 20) parts.push(TENS[Math.floor(x / 10)]! + (x % 10 ? `-${ONES[x % 10]}` : ""));
-    else if (x > 0 || !parts.length) parts.push(ONES[x]!);
-    return parts.join(" ");
-  };
-  if (n < 1000) return under1000(n);
-  const parts: string[] = [];
-  for (const [size, name] of SCALES) if (n >= size) { parts.push(`${under1000(Math.floor(n / size))} ${name}`); n %= size; }
-  if (n) parts.push(under1000(n));
-  return parts.join(" ");
-}
-
-// The first run of number words in a text ("eight", "twenty-one", "ten thousand"), with its value.
-export function wordsToNumber(text: string): { raw: string; value: number } | null {
-  const small = new Map<string, number>([...ONES.map((w, i) => [w, i] as [string, number]), ...TENS.map((w, i) => [w, i * 10] as [string, number]).filter(([w]) => w)]);
-  const big = new Map<string, number>([["hundred", 100], ...SCALES.map(([v, w]) => [w, v] as [string, number])]);
-  const tokens = [...normalise(text).toLowerCase().matchAll(/[a-z]+(?:-[a-z]+)?/g)];
-  for (let i = 0; i < tokens.length; i++) {
-    let total = 0, current = 0, j = i;
-    for (; j < tokens.length; j++) {
-      const parts = tokens[j]![0].split("-");
-      if (parts.every((p) => small.has(p))) current += parts.reduce((s, p) => s + small.get(p)!, 0);
-      else if (big.has(tokens[j]![0]) && j > i) {
-        const scale = big.get(tokens[j]![0])!;
-        if (scale === 100) current *= 100; else { total += current * scale; current = 0; }
-      } else break;
-    }
-    if (j > i) {
-      const first = tokens[i]!, last = tokens[j - 1]!;
-      return { raw: normalise(text).slice(first.index, last.index + last[0].length), value: total + current };
-    }
-  }
-  return null;
-}
 
 // Code reads the claim's number: digits first, then number words.
 export function claimNumber(text: string): Atoms["number"] | null {

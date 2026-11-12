@@ -1,0 +1,79 @@
+[
+  {
+    "id": "dev-02-w01",
+    "claim": "dev-02",
+    "url": "https://tarantulaforum.com/threads/do-people-swallow-eight-spiders-per-year.41690",
+    "sentence": "Do People Swallow Eight Spiders Per Year? | Tarantula Forum",
+    "statesClaim": true
+  },
+  {
+    "id": "dev-02-w02",
+    "claim": "dev-02",
+    "url": "https://tarantulaforum.com/threads/do-people-swallow-eight-spiders-per-year.41690",
+    "sentence": "Do People Swallow Eight Spiders Per Year?",
+    "statesClaim": true
+  },
+  {
+    "id": "dev-02-w03",
+    "claim": "dev-02",
+    "url": "https://tarantulaforum.com/threads/do-people-swallow-eight-spiders-per-year.41690",
+    "sentence": "This \"statistic\" average the average person swallowing eight spiders per year was not only made up out of whole cloth, it was invented as an example of the absurd things people will believe simply because they come across them on the Internet.",
+    "statesClaim": true
+  },
+  {
+    "id": "dev-02-w04",
+    "claim": "dev-02",
+    "url": "https://tarantulaforum.com/threads/do-people-swallow-eight-spiders-per-year.41690",
+    "sentence": "To demonstrate her point, Holst offered her own made-up list of equally ridiculous \"facts,\" among which was the statistic cited above about the average person's swallowing eight spiders per year, which she took from a collection of common misbeliefs printed in a 1954 book on insect folklore.",
+    "statesClaim": true
+  },
+  {
+    "id": "dev-02-w05",
+    "claim": "dev-02",
+    "url": "https://www.snopes.com/fact-check/swallow-spiders/",
+    "sentence": "Do People Swallow Eight Spiders Per Year? | Snopes.com",
+    "statesClaim": true
+  },
+  {
+    "id": "dev-02-w06",
+    "claim": "dev-02",
+    "url": "https://www.snopes.com/fact-check/swallow-spiders/",
+    "sentence": "The average person swallows eight spiders per year.",
+    "statesClaim": true
+  },
+  {
+    "id": "dev-04-w01",
+    "claim": "dev-04",
+    "url": "https://bbdc.it.com/?p=4827",
+    "sentence": "Many people grow up hearing the popular advice that everyone should drink eight glasses of water a day, but health experts say hydration is far more personal than that simple rule suggests.",
+    "statesClaim": true
+  },
+  {
+    "id": "dev-04-w02",
+    "claim": "dev-04",
+    "url": "https://bbdc.it.com/?p=4827",
+    "sentence": "Experts now emphasize that proper hydration depends on factors such as age, activity level, climate, diet, and overall health rather than a universal \"eight glasses\" formula.",
+    "statesClaim": true
+  },
+  {
+    "id": "dev-04-w03",
+    "claim": "dev-04",
+    "url": "https://bbdc.it.com/?p=4827",
+    "sentence": "The \"8×8 rule\" - eight 8-ounce glasses of water daily - became popular because it is simple and easy to remember.",
+    "statesClaim": true
+  },
+  {
+    "id": "dev-04-w04",
+    "claim": "dev-04",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/12376390/",
+    "sentence": "\"Drink at least eight glasses of water a day.\" Really?",
+    "statesClaim": true
+  },
+  {
+    "id": "dev-04-w05",
+    "claim": "dev-04",
+    "url": "https://pubmed.ncbi.nlm.nih.gov/12376390/",
+    "sentence": "Despite the seemingly ubiquitous admonition to \"drink at least eight 8-oz glasses of water a day\" (with an accompanying reminder that beverages containing caffeine and alcohol do not count), rigorous proof for this counsel appears to be lacking.",
+    "statesClaim": true
+  }
+]

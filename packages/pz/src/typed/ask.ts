@@ -1,5 +1,5 @@
 import { TokenFactoryError, type ChatInput, type ChatData, type Result } from "../clients/tokenfactory.ts";
-import { Question, TypedAnswer, questionsToJsonSchema } from "../schema/questions.ts";
+import { Question, SAME_CLAIM, TypedAnswer, questionsToJsonSchema } from "../schema/questions.ts";
 import { confidenceFor, stringFields } from "./logprobs.ts";
 
 type Client = { chat(input: ChatInput): Promise<Result<ChatData>> };
@@ -20,6 +20,13 @@ export async function ask(questions: Question[], input: Input, { client, thresho
   if (pairs.length && typeof input !== "string") answers.push(...await askBatch(pairs, JSON.stringify({ EARLIER: input.earlier, LATER: input.later }), { client, threshold }));
   if (pages.length) answers.push(...await askBatch(pages, page!, { client, threshold }));
   return questions.map(q => answers.find(a => a.questionId === q.id)!);
+}
+
+// T36: the same_claim question for one sentence, asked on its own. The claim and sentence travel as data in source_text.
+export async function askSameClaim(input: { claim: string; sentence: string }, { client, threshold }: Options): Promise<TypedAnswer> {
+  if (threshold !== null && (!Number.isFinite(threshold) || threshold < 0 || threshold > 1)) throw new TokenFactoryError("bad_response");
+  if (typeof input?.claim !== "string" || typeof input.sentence !== "string") throw new TokenFactoryError("bad_response");
+  return (await askBatch([SAME_CLAIM], JSON.stringify({ CLAIM: input.claim, SENTENCE: input.sentence }), { client, threshold }))[0]!;
 }
 
 async function askBatch(questions: Question[], content: string, { client, threshold }: Options): Promise<TypedAnswer[]> {
