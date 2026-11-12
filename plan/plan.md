@@ -477,3 +477,4 @@ The spike walker lost to Perplexity, ChatGPT and Claude on every claim (spike/gr
 - Anoop: T53 non-numeric claims (#111) · T54 first dev-run error analysis (#112) · T55 claims only from numbers (#113) · T56 DeepSeek typed-question check (#114)
 - Rohan: T57 live pz trace with real adapters, C10 (#115) · T58 usage report for the sponsor rubric (#116) · T59 dev score regression gate in CI (#117) · T60 clean-clone judge check (#118)
 - Rishit: T61 accessibility and reduced motion (#119) · T62 shareable origin card (#120) · T63 static REPLAY demo build (#121) · T64 demo walkthrough capture (#122)
+- Run 3 tail: T65 held-out run Mon Nov 16 and T66 release candidate (Rohan), T67 held-out readout and T68 submission draft (Anoop), T69 polish pass and T70 README visuals (Rishit). Held-out moved to Nov 16.
