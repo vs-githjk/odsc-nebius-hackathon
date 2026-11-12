@@ -55,6 +55,7 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [17:52 PT] AnoopIbrampur T3 fixtures: 7 synthetic traces with builder and tests, stacked on T5 (#43), PR to follow | @RishitRai sample-rich is ready for the front end
 - [18:11 PT] AnoopIbrampur T6 pz verify: re-checks spans, edges and stop state on stored traces, stacked on T3 (#45), PR to follow
 - [18:31 PT] RishitRai T11 spike walker: findSpan, spike/walk.ts, claims.json with atoms, dry run 21 credits, pz verify 24 of 24 | @AnoopIbrampur fixtures test fails on Windows only (CRLF byte compare)
+- [18:36 PT] RishitRai T12 spike run: 6 claims, 63 credits, all traces pass pz verify; weak-number false matches on claims 1, 2, 4, 6, fix proposed in spike/REPORT.md, not applied | @vs-githjk decide the rerun; relabel spike/h2h-forms for Rohan
 - [18:39 PT] RishitRai T14 app shell: apps/web on Vite 7.3.7 and React 19.3.1, DESIGN.md tokens, hash routes, fixtures parsed with pz/schema, SAMPLE badge; draft on the fixtures stack
 - [16:20 PT] rohanrastogi311 T18: injected-fetch chat and embeddings, typed failures, one retry on 429/5xx, per-attempt usage logging and dated prices; 20 tests and typecheck pass locally; recorded fixtures from #6 | @master-xo review client PR; probe evidence follows
 - [19:40 PT] rohanrastogi311 T18 review fixes: logging failures preserve answers and attempt rows, missing prices give not_configured, non-empty truncated JSON rejected, claim tags removed, cached pricing fields cited; local typecheck and 24 client/schema tests pass | @master-xo re-review #40; T19 stacking next
@@ -105,6 +106,9 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [15:09 PT] AnoopIbrampur T33 dev score: make dev-score (eval/dev-score.ts), false origins first, verified traces only, dated rows in eval/dev-score.md, PR to follow | @rohanrastogi311 T39 writes eval/dev-traces/<id>.json with trace.id equal to the dev claim id, then make dev-score
 - [16:43 PT] AnoopIbrampur T33 fixes on #97: urlKey keeps the query string (dev-12 vs any other wwf_news release), unverified ORIGIN_FOUND counted next to false origins, dev URL in the test
 - [17:12 PT] AnoopIbrampur T33 on #97: make dev-score now scores E2 and E3 (when eval/dev-claims-e3.json exists, #105), one row per set
+- [09:34 PT] RishitRai #52 make verify: run-1 traces verified as historical records (spike/historical-traces.json, pz verify --historical); stop_state failures now name the differing field
+- [09:43 PT] RishitRai #82 review notes: walkStep builds per-run deps, carries mode/recordedAt/synthetic/usage, allows warm-cache runs, leaves dates and ordering to the dating stage
+- [10:02 PT] RishitRai #52 fix: historical traces pinned by id and content sha256; a re-run with the same id is checked in full
 - [09:40 PT] RishitRai #62 second #69 round: theme ramp variables for dark mode, stage under the nav, claim as the start hero, rows told apart by their reasons
 - [09:43 PT] RishitRai #82 review notes: walkStep builds per-run deps, carries mode/recordedAt/synthetic/usage, allows warm-cache runs, leaves dates and ordering to the dating stage
 - [10:05 PT] RishitRai #62 fixes: plain ending sentences on the start page (no ids or codes), knockout behind band labels, sample rows stacked on phones
