@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import type { Trace } from "pz/schema";
 import { ModeBadge } from "./components/ModeBadge.tsx";
+import { TraceView } from "./components/TraceView.tsx";
 import { loadTraces } from "./data/loadTraces.ts";
+import { endingSentence } from "./model/ending.ts";
 import { parseRoute, type Route } from "./route.ts";
 
 const { traces, errors } = loadTraces();
@@ -17,25 +19,37 @@ function useRoute(): Route {
 }
 
 const stateLabel = (trace: Trace) => trace.decision.state.replace(/_/g, " ");
+const sentenceCase = (text: string) => text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
+
+const sharedClaim = traces.length > 0 && traces.every((t) => t.claim.text === traces[0]!.claim.text) ? traces[0]!.claim.text : null;
 
 function Start() {
   return (
     <main className="wrap section stack">
-      <h1 className="k">Where did this number start?</h1>
-      <p className="lead">Paste a statistic. Patient Zero walks it back through time to the earliest page we can find, and shows every step.</p>
-      <label className="stack">
-        <span className="meta">Live traces arrive with the engine; samples below</span>
-        <input className="input" type="text" placeholder="Paste a statistic or a quote" disabled />
+      {sharedClaim ? (
+        <h1 className="hero-quote">{`“${sharedClaim}”`}</h1>
+      ) : (
+        <h1 className="k">Where did this number start?</h1>
+      )}
+      <p className="lead">Patient Zero walks a claim back through time to the earliest page it can find, and shows every step.</p>
+      <label className="field">
+        <input className="input" type="text" placeholder="Paste a statistic or a quote" aria-describedby="live-note" disabled />
+        <span id="live-note" className="meta field-note">Live traces arrive with the engine; samples below.</span>
       </label>
       <section aria-labelledby="samples-heading">
-        <h2 id="samples-heading" className="meta">Samples</h2>
+        <div className="samples-head">
+          <h2 id="samples-heading">Samples</h2>
+          {traces.every((t) => t.synthetic) && <span className="meta">Example data: an invented claim on invented pages.</span>}
+        </div>
         <ul className="samples">
           {traces.map((trace) => (
             <li key={trace.id}>
               <a className="sample" href={`#/t/${encodeURIComponent(trace.id)}`}>
-                <span>{trace.id}</span>
-                <span className="meta">{stateLabel(trace)}</span>
-                <ModeBadge trace={trace} />
+                <span className="sample-state">{sentenceCase(stateLabel(trace))}</span>
+                <span className="meta">
+                  {endingSentence(trace)} {trace.roots.pages} {trace.roots.pages === 1 ? "page" : "pages"}.
+                </span>
+                {!trace.synthetic && <ModeBadge trace={trace} />}
               </a>
             </li>
           ))}
@@ -48,27 +62,12 @@ function Start() {
   );
 }
 
-function TraceView({ id }: { id: string }) {
+function TraceRoute({ id }: { id: string }) {
   const trace = traces.find((t) => t.id === id);
-  if (!trace) {
-    return (
-      <main className="wrap section stack">
-        <p className="error" role="alert">No trace called {id}.</p>
-        <a href="#/">Back to the samples</a>
-      </main>
-    );
-  }
   return (
-    <main className="wrap section stack">
-      <div className="card stage stack">
-        <ModeBadge trace={trace} />
-        <p className="quote">{trace.viralSentence}</p>
-        <div className="ramp" aria-hidden="true" />
-        <p className="meta">
-          {trace.roots.pages} pages, {trace.roots.clusters} clusters. Ends: {stateLabel(trace)}, How this was decided: row {trace.decision.row}.
-        </p>
-      </div>
-      <a href="#/">Back to the samples</a>
+    <main className="wrap trace-page">
+      <a className="back" href="#/">Back to the samples</a>
+      {trace ? <TraceView trace={trace} /> : <p className="error" role="alert">No trace called {id}.</p>}
     </main>
   );
 }
@@ -83,10 +82,10 @@ export function App() {
             <span className="wordmark-ring" aria-hidden="true" />
             Patient Zero
           </a>
-          <a className="btn small" href="#/">Samples</a>
+          <a className="btn small" href="#/">Trace a claim</a>
         </div>
       </nav>
-      {route.name === "trace" ? <TraceView id={route.id} /> : <Start />}
+      {route.name === "trace" ? <TraceRoute id={route.id} /> : <Start />}
     </>
   );
 }
