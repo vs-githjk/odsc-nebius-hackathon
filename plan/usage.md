@@ -6,7 +6,7 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 
 | Who | Runs | Output tokens | Apify | Bright Data | Web | GitHub | Codex | Last updated (UTC) |
 |---|---|---|---|---|---|---|---|---|
-| AnoopIbrampur | 1 | 664,542 | 0 | 0 | 95 | 221 | 0 | 2026-11-10T18:19:23Z |
+| AnoopIbrampur | 1 | 664,542 | 0 | 0 | 95 | 221 | 0 | 2026-11-10T18:19:38Z |
 | vs-githjk | 46 | 2,106,021 | 10 | 7 | 63 | 265 | 11 | 2026-11-10T17:58:59Z |
 
 ## Totals by service

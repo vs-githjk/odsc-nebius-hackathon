@@ -3,7 +3,7 @@ import { z } from "zod";
 const probability = z.number().min(0).max(1);
 const Option = z.object({ id: z.string().regex(/^[a-z][a-z0-9_]*$/).max(12), label: z.string() }).strict();
 export const Question = z.object({
-  id: z.enum(["scope_widened", "attribution_shifted", "context_stripped", "page_type"]),
+  id: z.enum(["scope_widened", "attribution_shifted", "context_stripped", "page_type", "same_claim"]),
   kind: z.enum(["yesno", "choice"]), options: z.array(Option).min(1), instructions: z.string(),
 }).strict().refine(q => new Set(q.options.map(o => o.id)).size === q.options.length, { message: "Option ids must be unique" });
 export type Question = z.infer<typeof Question>;
@@ -49,6 +49,14 @@ export const QUESTIONS: Question[] = [
     instructions: "`source_text` holds the text of one web page, asked on its own: which option best describes what kind of page it is?" + RULES,
   },
 ];
+
+// T36. Asked on its own, never with QUESTIONS, after code has found the claim's number and subject in one clause.
+// Only "yes" and "no": "unsure" comes from the confidence threshold, never from the model.
+export const SAME_CLAIM: Question = {
+  id: "same_claim", kind: "yesno",
+  options: yesNo("SENTENCE states the same claim", "SENTENCE uses the number for something else"),
+  instructions: "`source_text` holds a CLAIM and a SENTENCE from a web page: does SENTENCE state the same claim as CLAIM, with the same subject, the same number and the same unit? A sentence that repeats the claim in order to question or debunk it still states it. A different subject, a different thing counted, or the number used as a date, a total or a citation is not the same claim." + RULES,
+};
 
 export function questionsToJsonSchema(questions: Question[]) {
   const fields: Record<string, z.ZodEnum<Record<string, string>>> = {};
