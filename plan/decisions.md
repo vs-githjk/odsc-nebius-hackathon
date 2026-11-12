@@ -110,3 +110,4 @@ Format: [LOCKED|REJECTED|PREFERENCE] decision | why | "Vidyut's words" | date
 [LOCKED] (XO ruling) T36 wires the same_claim gate into decide.ts: ORIGIN_FOUND needs a code hit and a confident typed yes on the earliest page; T44 only supplies typed answers | spec line in #86 | XO | 2026-11-10
 [LOCKED] (XO ruling) T38 capture contract: 21 live captures plus 4 recorded zero-call outcomes (dev-01, dev-07, dev-08, dev-12 return no_number before any call; that is correct current behaviour, recorded honestly as outcomes, not as LIVE model evidence). Non-numeric claims become T53 (Anoop) | unblock live capture today | XO | 2026-11-12
 [LOCKED] (XO) Embedding cost envelope: Qwen/Qwen3-Embedding-8B $0.002 per HTTP attempt (prices.json $0.01/M input, about 200k tokens of headroom) | from repo prices | XO | 2026-11-12
+[LOCKED] Run 3 (T53 to T64, #111 to #122) assigned: about 4 new tasks each through Nov 17, on top of open queues | "give them a lot more work" | 2026-11-12
