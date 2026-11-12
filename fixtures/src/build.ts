@@ -5,7 +5,7 @@ import { Trace, type Edge, type Hop, type Node, type Span } from "../../packages
 import { blameWords } from "../../packages/pz/src/engine/blame.ts";
 import { computeRoots } from "../../packages/pz/src/engine/cluster.ts";
 import { wordDiff, words } from "../../packages/pz/src/engine/readouts.ts";
-import { decideStopState, loadRules, normalise } from "../../packages/pz/src/rules/index.ts";
+import { atomHit, decideStopState, loadRules, normalise } from "../../packages/pz/src/rules/index.ts";
 import { PAGES } from "./pages.ts";
 import { CLAIM, readout, type FixtureSpec } from "./spec.ts";
 import { SPECS } from "./specs/index.ts";
@@ -33,6 +33,11 @@ function span(nodeId: string): Span {
   };
 }
 
+const ATOMS = {
+  number: { raw: "14", canonical: "14" }, unit: "times a day", subjectLemma: "penguin", population: "Harbor Zoo penguins",
+  time: null, hedge: null, namedSource: null, variants: ["fourteen"],
+};
+
 export function buildTrace(spec: FixtureSpec): Trace {
   const spans = spec.nodes.map((n) => span(n.page));
   const nodes: Node[] = spec.nodes.map((n) => {
@@ -44,6 +49,9 @@ export function buildTrace(spec: FixtureSpec): Trace {
       spanIds: [`s-${n.page}`], citesEarlier: n.citesEarlier ?? false,
       candidateParents: (n.unreadParents ?? []).map((url) => ({ url, read: false })),
       pageType: { questionId: "page_type", optionId: page.pageType, probability: 0.9, top: [{ optionId: page.pageType, p: 0.9 }], model: MODEL, threshold: null },
+      // Synthetic same_claim answer: "yes" when the span carries the claim's atoms, else "no".
+      sameClaim: ((option) => ({ questionId: "same_claim", optionId: option, probability: 0.9, top: [{ optionId: option, p: 0.9 }], model: MODEL, threshold: null }))(
+        atomHit(page.span, ATOMS) ? "yes" : "no"),
     };
   });
   const edges: Edge[] = spec.edges.map((e) => ({
@@ -59,9 +67,7 @@ export function buildTrace(spec: FixtureSpec): Trace {
 
   const draft = Trace.parse({
     schemaVersion: "1", id: spec.id, mode: "SAMPLE", synthetic: true, recordedAt: AT,
-    claim: { text: CLAIM, atoms: {
-      number: { raw: "14", canonical: "14" }, unit: "times a day", subjectLemma: "penguin", population: "Harbor Zoo penguins",
-      time: null, hedge: null, namedSource: null, variants: ["fourteen"] } },
+    claim: { text: CLAIM, atoms: ATOMS },
     viralSentence: CLAIM, nodes,
     edges,
     clusters: spec.clusters.map((c) => ({ ...c, nodeIds: nodes.filter((n) => n.clusterId === c.id).map((n) => n.id) })),

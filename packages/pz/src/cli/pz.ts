@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import { PZ_VERSION } from "../index.ts";
 import { relock, runTraps } from "../traps/run.ts";
 import { runVerify, type HistoricalManifest } from "../verify/index.ts";
+import { traceCommand } from "./trace.ts";
 
 const [command, ...args] = process.argv.slice(2);
 
@@ -38,6 +39,8 @@ if (command === "--version") {
   const { code, lines } = runVerify(paths, { pagesDir: pages.value, historical: manifest });
   for (const line of lines) console.log(line);
   process.exitCode = code;
+} else if (command === "trace") {
+  process.exitCode = await traceCommand(args);
 } else if (command === "traps") {
   const root = fileURLToPath(new URL("../../../../", import.meta.url));
   const paths = { root, casesDir: join(root, "traps/cases"), lockPath: join(root, "traps/traps.lock") };

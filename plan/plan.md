@@ -472,3 +472,8 @@ The spike walker lost to Perplexity, ChatGPT and Claude on every claim (spike/gr
 - T38 live dev recordings (#88, Rohan) · T39 make dev-run (#89, Rohan) · T40 held-out rehearsal (#90, Rohan) · T41 client robustness (#91, Rohan) · T42 pz serve (#92, Rohan)
 - T44 walk by links (#93, Rishit) · T45 archive-first discovery (#94, Rishit) · T46 demo path (#95, Rishit)
 - T47 E3 dev set (#98) · T48 confidence calibration (#99) · T49 meta pages as maps (#100) · T50 adversarial traps (#101) · T51 whole-answer mode (#102) · T52 README evaluation section (#103), all Anoop
+
+## Run 3: measure and ship, Nov 13 to Nov 17 (XO)
+- Anoop: T53 non-numeric claims (#111) · T54 first dev-run error analysis (#112) · T55 claims only from numbers (#113) · T56 DeepSeek typed-question check (#114)
+- Rohan: T57 live pz trace with real adapters, C10 (#115) · T58 usage report for the sponsor rubric (#116) · T59 dev score regression gate in CI (#117) · T60 clean-clone judge check (#118)
+- Rishit: T61 accessibility and reduced motion (#119) · T62 shareable origin card (#120) · T63 static REPLAY demo build (#121) · T64 demo walkthrough capture (#122)
