@@ -104,3 +104,4 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [09:43 PT] RishitRai #82 review notes: walkStep builds per-run deps, carries mode/recordedAt/synthetic/usage, allows warm-cache runs, leaves dates and ordering to the dating stage
 - [09:50 PT] RishitRai T24 spans and links: linkEdges and spansStep, explicit edges from links beside the span, unfetchable parents read false; draft on #82
 - [10:10 PT] RishitRai #108 same-site note: a same-site citation beside the span now makes an edge; self-links never do
+- [09:06 PT] RishitRai T44 walk by links: ranked citations (links, DOI, PMID) followed first, named sources searched by name, planner interface for T35, budget over all rows; draft on #108, dev score pending #107
