@@ -1,25 +1,25 @@
 # Usage ledger (everyone)
 
-Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py. 47 runs across 2 people: AnoopIbrampur, vs-githjk.
+Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py. 50 runs across 2 people: AnoopIbrampur, vs-githjk.
 
 ## By person
 
 | Who | Runs | Output tokens | Apify | Bright Data | Web | GitHub | Codex | Last updated (UTC) |
 |---|---|---|---|---|---|---|---|---|
 | AnoopIbrampur | 1 | 664,542 | 0 | 0 | 95 | 221 | 0 | 2026-11-10T18:19:38Z |
-| vs-githjk | 46 | 2,106,021 | 10 | 7 | 63 | 265 | 11 | 2026-11-10T17:58:59Z |
+| vs-githjk | 49 | 2,194,651 | 10 | 7 | 63 | 283 | 11 | 2026-11-12T20:37:00Z |
 
 ## Totals by service
 
 | Service | Calls |
 |---|---|
-| Shell | 1689 |
-| Claude Code tools | 1087 |
-| GitHub (gh) | 486 |
+| Shell | 1782 |
+| Claude Code tools | 1102 |
+| GitHub (gh) | 504 |
 | Other HTTP | 325 |
 | Web search and fetch | 158 |
 | MCP ccd_turn | 145 |
-| Browser (Playwright) | 21 |
+| Browser (Playwright) | 43 |
 | Nebius Token Factory | 16 |
 | Codex | 11 |
 | Apify | 10 |
@@ -32,10 +32,10 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 
 | Kind | Tokens |
 |---|---|
-| input_tokens | 8,969 |
-| cache_creation_input_tokens | 14,079,517 |
-| cache_read_input_tokens | 407,200,619 |
-| output_tokens | 2,770,563 |
+| input_tokens | 9,253 |
+| cache_creation_input_tokens | 14,621,804 |
+| cache_read_input_tokens | 423,527,017 |
+| output_tokens | 2,859,193 |
 
 ## Per run
 
@@ -51,7 +51,7 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 | vs-githjk | 2026-10-29T07:46 | master-finder: Market validation for Patient Zero | claude-opus-5-5 | 40,009 | 7 | 2 | 0 | 25 | 0 | 0 | 0 | 0 | 11 |
 | vs-githjk | 2026-10-29T08:19 | master-planner: Refine Patient Zero, round 1 | claude-opus-5-5 | 29,492 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 | 2 |
 | vs-githjk | 2026-10-29T08:27 | master-auditor: Red-team Patient Zero brief, round 2 | claude-opus-5-5 | 32,092 | 0 | 0 | 0 | 5 | 3 | 0 | 0 | 0 | 5 |
-| vs-githjk | 2026-10-29T08:37 | main session | claude-opus-5-5, <synthetic> | 381,672 | 0 | 0 | 0 | 1 | 117 | 3 | 8 | 0 | 4 |
+| vs-githjk | 2026-10-29T08:37 | main session | claude-opus-5-5, <synthetic> | 408,346 | 0 | 0 | 0 | 1 | 128 | 3 | 8 | 0 | 4 |
 | vs-githjk | 2026-10-29T08:39 | master-planner: Fold auditor r2 fixes into brief | claude-opus-5-5 | 43,561 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 |
 | vs-githjk | 2026-10-29T08:42 | master-xo: GitHub kickoff issues for team | claude-opus-5-5 | 27,048 | 0 | 0 | 0 | 0 | 15 | 0 | 2 | 0 | 6 |
 | vs-githjk | 2026-10-29T08:46 | master-designer: 10-min world-class Patient Zero look | claude-fable-5-1 | 43,300 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -88,6 +88,9 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 | vs-githjk | 2026-11-10T16:41 | master-reviewer: Review Anoop's 6 PR heads | claude-opus-5-5 | 28,812 | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | 3 |
 | vs-githjk | 2026-11-10T16:41 | master-reviewer: Re-review Rohan #80 and #107 | claude-opus-5-5 | 22,248 | 0 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 |
 | vs-githjk | 2026-11-10T17:48 | master-reviewer: Re-review Rishit #52 #62 #82 | claude-opus-5-5 | 18,782 | 0 | 0 | 16 | 0 | 3 | 0 | 0 | 0 | 0 |
+| vs-githjk | 2026-11-12T20:22 | master-reviewer: Re-review Rohan #80 #107 #109 | claude-opus-5-5 | 23,954 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| vs-githjk | 2026-11-12T20:22 | master-reviewer: Re-review Anoop #77 #104 #106 | claude-opus-5-5 | 19,534 | 0 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 |
+| vs-githjk | 2026-11-12T20:22 | master-reviewer: Re-review Rishit #52 #62, drafts #108 #110 | claude-opus-5-5 | 18,468 | 0 | 0 | 22 | 0 | 4 | 0 | 0 | 0 | 0 |
 
 ## Detail (service: tool or host)
 
@@ -98,15 +101,15 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 - Bright Data: search_engine: 2
 - Bright Data: search_engine_batch: 3
 - Browser (Playwright): browser_close: 1
-- Browser (Playwright): browser_emulate_media: 3
-- Browser (Playwright): browser_evaluate: 3
-- Browser (Playwright): browser_navigate: 4
-- Browser (Playwright): browser_resize: 2
+- Browser (Playwright): browser_emulate_media: 6
+- Browser (Playwright): browser_evaluate: 7
+- Browser (Playwright): browser_navigate: 8
+- Browser (Playwright): browser_resize: 5
 - Browser (Playwright): browser_run_code_unsafe: 2
 - Browser (Playwright): browser_snapshot: 1
-- Browser (Playwright): browser_take_screenshot: 5
+- Browser (Playwright): browser_take_screenshot: 13
 - Codex: codex: 11
-- GitHub (gh): gh: 486
+- GitHub (gh): gh: 504
 - MCP ccd_directory: change_directory: 1
 - MCP ccd_host: open_in_editor: 7
 - MCP ccd_pr: get_status: 1
