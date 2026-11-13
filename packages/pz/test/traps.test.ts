@@ -7,6 +7,7 @@ import type { Trace } from "../src/schema/index.ts";
 import { bound } from "../src/traps/bound.ts";
 import { runTraps } from "../src/traps/run.ts";
 import { falseCertainty } from "../src/verify/index.ts";
+import { originWords } from "../src/verify/false-certainty.ts";
 
 const root = fileURLToPath(new URL("../../../", import.meta.url));
 const paths = { root, casesDir: join(root, "traps/cases"), lockPath: join(root, "traps/traps.lock") };
@@ -81,6 +82,15 @@ describe("trap set", () => {
       for (const p of phrasings) expect(counters(t, `The claim ${p} ${domain}.`)[2], `${name}: ${p}`).toBeGreaterThan(0);
       expect(counters(t, `The claim was seen on ${domain}.`)[2], name).toBe(0);
     }
+    // XO's #77 list: open-ended phrasings caught by pattern, not by the word list.
+    const sentences = ["It was first shared on Facebook.", "The figure was first tweeted in 2019.", "The number first circulated on forums.",
+      "The phrase was coined by a blog.", "The page is the original source.", "The claim appeared first on a blog.",
+      "The post originally ran on a forum.", "The claim was first written up on a wiki."];
+    for (const name of fixtures) for (const s of sentences) expect(counters(load(name), s)[2], `${name}: ${s}`).toBeGreaterThan(0);
+    // "first" + a noun is not an origin word.
+    expect(originWords("The first page in the trail says 14 times a day.", "PARTIAL")).toEqual([]);
+    expect(originWords("The first 100 results were read.", "PARTIAL")).toEqual([]);
+    expect(originWords("It was first shared on Facebook.", "ORIGIN_FOUND")).toEqual([]);
     expect(counters(load("sample-origin"), "The claim first appeared in the keeper log.")[2]).toBe(0);
   });
 

@@ -23,11 +23,24 @@ export const ORIGIN_WORDS = ["origin", "origins", "originated", "originates", "o
   "first to say", "source of the claim", "traces back to", "traced back to", "trace back to", "dates back to", "dated back to", "goes back to",
   "can be traced", "birthplace", "patient zero"];
 
+// Patterns, not a list, for the open-ended ways of saying it: "first" + a past-tense verb ("first shared", "first tweeted",
+// "first circulated", "first went", "first written"), "appeared first", "original" / "originally" / "originator",
+// and "coined". "first" + a noun ("the first page", "first 100 results") is not matched.
+const W = String.raw`(?<![\p{L}\p{N}])`, E = String.raw`(?![\p{L}\p{N}])`;
+const ORIGIN_PATTERNS = [
+  new RegExp(String.raw`${W}first\s+(?:[a-z]+(?:ed|en)|went|came|made|said|put|sent|told|wrote|spread|ran|shown|seen)${E}`, "gu"),
+  new RegExp(String.raw`${W}appear(?:ed|s)?\s+first${E}`, "gu"),
+  new RegExp(String.raw`${W}original(?:ly|s|ator|ators)?${E}`, "gu"),
+  new RegExp(String.raw`${W}coin(?:ed|s|ing)?${E}(?!\s+(?:toss|flip))`, "gu"),
+];
+
 // The origin words a sentence uses when the stop state is not ORIGIN_FOUND. Empty on an ORIGIN_FOUND trace.
 export function originWords(sentence: string, state: Trace["decision"]["state"]): string[] {
   if (state === "ORIGIN_FOUND") return [];
   const text = normalise(sentence).toLowerCase();
-  return ORIGIN_WORDS.filter((w) => new RegExp(String.raw`(?<![\p{L}\p{N}])${w}(?![\p{L}\p{N}])`, "u").test(text));
+  const listed = ORIGIN_WORDS.filter((w) => new RegExp(String.raw`(?<![\p{L}\p{N}])${w}(?![\p{L}\p{N}])`, "u").test(text));
+  const patterned = ORIGIN_PATTERNS.flatMap((p) => [...text.matchAll(p)].map((m) => m[0]));
+  return [...new Set([...listed, ...patterned])];
 }
 const MONTHS = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
 const DATE = new RegExp(String.raw`\b(\d{4})-(\d{2})-(\d{2})\b|\b(${MONTHS.join("|")})\s+(?:(\d{1,2}),?\s+)?(\d{4})\b|\b(\d{1,2})\s+(${MONTHS.join("|")})\s+(\d{4})\b`, "gi");
