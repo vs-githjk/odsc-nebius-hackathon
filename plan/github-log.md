@@ -39,3 +39,8 @@
 ## Nov 10 morning
 - Merged #97 T33 dev-score, #105 T47 E3. FIX: #75 (U.S. acronym split, last blocker for T38 live), #77, #104, #106; #80 and #107 FIX. Ledger $0 of $15, Rohan single live runner, ceilings TF $0.01 Tavily $0.02.
 - Nov 10 midday: Rishit cleared #52 #62 #82. Merged #82 T23 walker. FIX: #52 (pin historical traces by sha256), #62 (plain-language stop reasons, label overlap, 390 rows).
+
+## Nov 12 pass
+- XO review backlog since Nov 10 cleared. Merged: #75 T21, #104 T35, #106 T36, #80 T29, #52 spike report (XO resolved pz.ts with #80), #62 T15.
+- FIX: #77 (origin-word pattern), #107 (NO_CALL outcomes, over-ceiling row), #108 (same-paragraph rule). Notes: #109, #110 (seen pairs).
+- Rulings: 21 live plus 4 NO_CALL outcomes; embedding ceiling $0.002. Run 3 issues #111 to #122. Held-out date: asked Vidyut (recommend Mon Nov 16).

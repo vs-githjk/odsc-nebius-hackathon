@@ -241,30 +241,49 @@ a {
   background: var(--ramp);
 }
 
+.samples-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4px 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.samples-head h2 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+}
+
 .samples {
-  display: grid;
-  gap: 12px;
-  margin: 24px 0 0;
+  margin: 0;
   padding: 0;
   list-style: none;
 }
 
+/* Rows separated by hairlines, not boxed: the stage is the only card. */
 .sample {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
-  gap: 8px 16px;
+  gap: 4px 16px;
   min-height: 44px;
-  padding: 14px 18px;
-  border: 1px solid var(--line);
-  border-radius: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
   color: var(--ink);
   text-decoration: none;
 }
 
-.sample:hover {
-  background: var(--bg-2);
+.sample:hover .sample-state {
+  color: var(--action);
+}
+
+.sample-state {
+  font-size: 17px;
+  font-weight: 500;
 }
 
 .meta {
@@ -298,5 +317,51 @@ a {
   .stage {
     padding: 22px;
     border-radius: 20px;
+  }
+}
+
+.field-note {
+  display: block;
+  margin-top: 8px;
+}
+
+.field {
+  display: block;
+}
+
+@media (max-width: 600px) {
+  /* No text under 14 px on a phone (#69). */
+  .chip {
+    font-size: 14px;
+  }
+}
+
+/* The start page hero: the claim itself, in quote type at the DESIGN.md hero scale. */
+.hero-quote {
+  margin: 0;
+  font: italic 400 clamp(40px, 7.2vw, 108px) / 1.02 var(--font-quote);
+  font-optical-sizing: auto;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+/* The trace page: the stage sits right under the nav, with the way back above it. */
+.trace-page {
+  padding-top: 20px;
+  padding-bottom: 10vh;
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: var(--ink-2);
+  font-size: 15px;
+}
+
+@media (max-width: 600px) {
+  /* Stacked on a phone: the ending, then its sentence, aligned on the left. */
+  .sample {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

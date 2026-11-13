@@ -1,0 +1,468 @@
+{
+  "schemaVersion": "1",
+  "id": "claim-4",
+  "mode": "LIVE",
+  "synthetic": false,
+  "recordedAt": "2026-11-03T02:33:40.490Z",
+  "claim": {
+    "text": "A ChatGPT query uses ten times the energy of a Google search.",
+    "atoms": {
+      "number": {
+        "raw": "10",
+        "canonical": "10"
+      },
+      "unit": "times",
+      "subjectLemma": "Google",
+      "population": null,
+      "time": null,
+      "hedge": null,
+      "namedSource": null,
+      "variants": [
+        "10 times",
+        "10x",
+        "ten times"
+      ]
+    }
+  },
+  "viralSentence": "A ChatGPT query uses ten times the energy of a Google search.",
+  "nodes": [
+    {
+      "id": "n1",
+      "url": "https://www.wired.com/2013/02/moonshots-matter-heres-how-to-make-them-happen",
+      "domain": "wired.com",
+      "title": "Google X Head on Moonshots: 10X Is Easier Than 10 Percent | WIRED",
+      "date": {
+        "kind": "published",
+        "value": "2013-02-11",
+        "source": "tavily",
+        "firstCapture": "2013-12-03",
+        "conflictingDate": false
+      },
+      "clusterId": "c1",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s1"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n2",
+      "url": "https://epoch.ai/gradient-updates/how-much-energy-does-chatgpt-use",
+      "domain": "epoch.ai",
+      "title": "How much energy does ChatGPT use? | Epoch AI",
+      "date": {
+        "kind": "published",
+        "value": "2025-02-07",
+        "source": "tavily",
+        "firstCapture": "2025-02-08",
+        "conflictingDate": false
+      },
+      "clusterId": "c2",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s2"
+      ],
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "https://www.sciencedirect.com/science/article/pii/S2542435123003653?dgcid=author",
+          "read": false
+        }
+      ],
+      "pageType": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "parentId": "n1",
+      "childId": "n2",
+      "kind": "inferred",
+      "parentSpanId": "s1",
+      "childSpanId": "s2",
+      "linkHref": null
+    }
+  ],
+  "clusters": [
+    {
+      "id": "c1",
+      "nodeIds": [
+        "n1"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c2",
+      "nodeIds": [
+        "n2"
+      ],
+      "rule": "single"
+    }
+  ],
+  "spans": [
+    {
+      "id": "s1",
+      "nodeId": "n1",
+      "text": "Google X Head on Moonshots: 10X Is Easier Than 10 Percent.",
+      "contextBefore": "",
+      "contextAfter": " Here is the surprising truth: It's often easier to make something 10 times better than it is to make it 10 percent better. Yes ... really. Because when you're working to make things 10 percent better",
+      "start": 0,
+      "end": 58,
+      "extractSha256": "826820a0b22f88539e5907edae91f21dac539deafa781d10d1231b0f3f507813",
+      "windowSha256": "655075e6cc88a23688d6da5638ec0a0602aa1a24175572d0b1dc164fa392d1a9",
+      "fetchedAt": "2026-11-03T02:33:34.642Z",
+      "waybackUrl": "https://web.archive.org/web/20131203110232/https://www.wired.com/2013/02/moonshots-matter-heres-how-to-make-them-happen",
+      "tier": "exact"
+    },
+    {
+      "id": "s2",
+      "nodeId": "n2",
+      "text": "In this issue, \"we\" refers to our collective judgment.* A commonly-cited claim is that powering an individual ChatGPT query requires around 3 watt-hours of electricity, or 10 times as much as a Google search.1 This is often brought up to express concern over AI's impact on the environment, climate change, or the electric grid.",
+      "contextBefore": "ts solely represent the views of the authors, and do not necessarily reflect the views of Epoch AI as a whole. *Credit to Alex Erben and Ege Erdil for substantial help with research and calculations. ",
+      "contextAfter": " However, we believe that this figure of 3 watt-hours per query is likely an overestimate. In this issue, we revisit this question using a similar methodology, but using up-to-date facts and clearer a",
+      "start": 495,
+      "end": 823,
+      "extractSha256": "1941ca221ac31355b9ec40c74fecea4d2d790eaa7776b2a0b36d0113c1492e61",
+      "windowSha256": "e745f5971b9d10b4571c5bd6ead28926120756fa208619a19cfe0061eb7cdac0",
+      "fetchedAt": "2026-11-03T02:33:35.573Z",
+      "waybackUrl": "https://web.archive.org/web/20250208091646/https://epoch.ai/gradient-updates/how-much-energy-does-chatgpt-use",
+      "tier": "exact"
+    }
+  ],
+  "hops": [
+    {
+      "edgeId": "e1",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "In this issue, \"we\" refers to our collective judgment.* A commonly-cited claim is that powering an individual ChatGPT query requires around 3 watt-hours of electricity, or 10 times as much as a"
+        },
+        {
+          "op": "same",
+          "text": "Google"
+        },
+        {
+          "op": "add",
+          "text": "search.1 This is often brought up to express concern over AI's impact"
+        },
+        {
+          "op": "del",
+          "text": "X Head"
+        },
+        {
+          "op": "same",
+          "text": "on"
+        },
+        {
+          "op": "add",
+          "text": "the environment, climate change, or the electric grid."
+        },
+        {
+          "op": "del",
+          "text": "Moonshots: 10X Is Easier Than 10 Percent."
+        }
+      ],
+      "faithful": true
+    }
+  ],
+  "blame": [],
+  "roots": {
+    "pages": 2,
+    "clusters": 2,
+    "rootsLinked": 0,
+    "clustersUnlinked": 2,
+    "studiesFound": null
+  },
+  "redHopEdgeId": null,
+  "earliest": {
+    "nodeIds": [
+      "n1"
+    ],
+    "earlierWindowSearches": 3,
+    "earlierFound": 0
+  },
+  "failure": null,
+  "budget": {
+    "credits": 8,
+    "usd": 0,
+    "ms": 11872,
+    "capHit": null
+  },
+  "decision": {
+    "state": "TRAIL_GOES_COLD",
+    "row": 6,
+    "reasons": [
+      "no earliest page with a confirmed date, a primary page type and no earlier citation",
+      "1 unread candidate parent(s)"
+    ],
+    "counts": {
+      "pages": 2,
+      "clusters": 2,
+      "unreadParents": 1,
+      "earlierWindowSearches": 3
+    }
+  },
+  "searchLog": [
+    {
+      "at": "2026-11-03T02:33:30.252Z",
+      "step": "search",
+      "query": "\"10 times\" Google",
+      "endDate": "2026-11-03",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:33:31.648Z",
+      "step": "search",
+      "query": "\"10x\" Google",
+      "endDate": "2026-11-03",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:33:33.846Z",
+      "step": "search",
+      "query": "\"ten times\" Google",
+      "endDate": "2026-11-03",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:33:36.610Z",
+      "step": "search",
+      "query": "\"10 times\" Google",
+      "endDate": "2013-02-10",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:33:37.955Z",
+      "step": "search",
+      "query": "\"10x\" Google",
+      "endDate": "2013-02-10",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:33:39.475Z",
+      "step": "search",
+      "query": "\"ten times\" Google",
+      "endDate": "2013-02-10",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    }
+  ],
+  "usage": [
+    {
+      "at": "2026-11-03T02:33:30.251Z",
+      "traceId": "claim-4",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1632,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:33:31.647Z",
+      "traceId": "claim-4",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1395,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:33:33.846Z",
+      "traceId": "claim-4",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 2198,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:33:34.004Z",
+      "traceId": "claim-4",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 150,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:33:34.642Z",
+      "traceId": "claim-4",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 631,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:33:35.573Z",
+      "traceId": "claim-4",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 925,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:33:36.609Z",
+      "traceId": "claim-4",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1033,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:33:37.955Z",
+      "traceId": "claim-4",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1345,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:33:39.474Z",
+      "traceId": "claim-4",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1519,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:33:40.487Z",
+      "traceId": "claim-4",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1012,
+      "status": "200",
+      "cacheHit": false
+    }
+  ],
+  "scopeNote": "Web pages only; print and paywalled origins are out of scope. Earliest source we found, not proof of first use."
+}

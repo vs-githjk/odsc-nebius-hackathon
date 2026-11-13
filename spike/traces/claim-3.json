@@ -1,0 +1,818 @@
+{
+  "schemaVersion": "1",
+  "id": "claim-3",
+  "mode": "LIVE",
+  "synthetic": false,
+  "recordedAt": "2026-11-03T02:33:26.910Z",
+  "claim": {
+    "text": "Communication is 7% words, 38% tone of voice and 55% body language.",
+    "atoms": {
+      "number": {
+        "raw": "55%",
+        "canonical": "55%"
+      },
+      "unit": null,
+      "subjectLemma": "body language",
+      "population": null,
+      "time": null,
+      "hedge": null,
+      "namedSource": null,
+      "variants": [
+        "55% body language",
+        "55 percent body language",
+        "55% of communication"
+      ]
+    }
+  },
+  "viralSentence": "Communication is 7% words, 38% tone of voice and 55% body language.",
+  "nodes": [
+    {
+      "id": "n1",
+      "url": "https://people-shift.com/articles/mehrabians-7-38-55-communication-model",
+      "domain": "people-shift.com",
+      "title": "Mehrabian's 7-38-55 Communication Model: It's More Than Words - PeopleShift",
+      "date": {
+        "kind": "published",
+        "value": "2019-07-04",
+        "source": "tavily",
+        "firstCapture": "2025-08-07",
+        "conflictingDate": false
+      },
+      "clusterId": "c1",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s1"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n2",
+      "url": "https://law.temple.edu/aer/2021/05/03/brain-lessons-the-seven-percent-delusion",
+      "domain": "law.temple.edu",
+      "title": "BRAIN LESSONS: THE SEVEN PERCENT DELUSION - Advocacy and Evidence Resources",
+      "date": {
+        "kind": "published",
+        "value": "2021-05-03",
+        "source": "tavily",
+        "firstCapture": "2022-08-13",
+        "conflictingDate": false
+      },
+      "clusterId": "c2",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s2"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n3",
+      "url": "https://cuttingedgepr.com/articles/ignore-this-nonverbal-communication-myth",
+      "domain": "cuttingedgepr.com",
+      "title": "Debunking the Nonverbal Communication Myth - Cutting Edge PR",
+      "date": {
+        "kind": "published",
+        "value": "2022-06-01",
+        "source": "tavily",
+        "firstCapture": "2023-06-10",
+        "conflictingDate": false
+      },
+      "clusterId": "c3",
+      "evidence": "observed",
+      "meta": true,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s3"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n4",
+      "url": "https://www.psychologytoday.com/us/blog/beyond-words/201109/is-nonverbal-communication-a-numbers-game",
+      "domain": "psychologytoday.com",
+      "title": "Is Nonverbal Communication a Numbers Game? | Psychology Today",
+      "date": {
+        "kind": "published",
+        "value": "2011-09-30",
+        "source": "tavily",
+        "firstCapture": null,
+        "conflictingDate": false
+      },
+      "clusterId": "c4",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s4"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n5",
+      "url": "http://www.cmhcm.org/provider/centrain/Welcome%20to%20CenTrain_files/Units/POSITIVE%20APPROACHES.pdf",
+      "domain": "cmhcm.org",
+      "title": "Positive Approaches to Challenging Behaviors",
+      "date": {
+        "kind": "unconfirmed",
+        "value": null,
+        "source": "tavily",
+        "firstCapture": null,
+        "conflictingDate": false
+      },
+      "clusterId": "c5",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s5"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "parentId": "n4",
+      "childId": "n1",
+      "kind": "inferred",
+      "parentSpanId": "s4",
+      "childSpanId": "s1",
+      "linkHref": null
+    },
+    {
+      "id": "e2",
+      "parentId": "n1",
+      "childId": "n2",
+      "kind": "inferred",
+      "parentSpanId": "s1",
+      "childSpanId": "s2",
+      "linkHref": null
+    }
+  ],
+  "clusters": [
+    {
+      "id": "c1",
+      "nodeIds": [
+        "n1"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c2",
+      "nodeIds": [
+        "n2"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c3",
+      "nodeIds": [
+        "n3"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c4",
+      "nodeIds": [
+        "n4"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c5",
+      "nodeIds": [
+        "n5"
+      ],
+      "rule": "single"
+    }
+  ],
+  "spans": [
+    {
+      "id": "s1",
+      "nodeId": "n1",
+      "text": "Key Learning Points: Albert Mehrabian's 7-38-55 Communication model says that 7% of the meaning of feelings and attitudes takes place through the words we use in spoken communications, while 38% takes place through tone and voice and the remaining 55% of communication of these factors take place through the body language we use (specifically our facial expressions).",
+      "contextBefore": "Mehrabian's 7-38-55 Communication Model: It's More Than Words. ",
+      "contextAfter": " James Carrier Director Mehrabian's 7-38-55 Communication Model. We are often told that tone, body language, nuance and facial expressions play a huge role in the our communications. And that this is ",
+      "start": 63,
+      "end": 431,
+      "extractSha256": "1c19a2a495f6ccdcc76fd59adac1aa10d86c1b144ad15ec242ce3d59e983d209",
+      "windowSha256": "05310ee86a705c8a5850642855e0db1e74888625b535d299bbee7633d5c2075a",
+      "fetchedAt": "2026-11-03T02:33:16.653Z",
+      "waybackUrl": "https://web.archive.org/web/20250807205429/https://people-shift.com/articles/mehrabians-7-38-55-communication-model",
+      "tier": "exact"
+    },
+    {
+      "id": "s2",
+      "nodeId": "n2",
+      "text": "But I was intrigued, if abashed by my lack of knowledge, when she later told the students \"Here is one piece of advice I give all my students - communication is only 7% word choice; the balance is 55% body language and 38% tone.\"",
+      "contextBefore": "om one who, after expressing surprise over a move by students to use the defendant's deposition in the plaintiff's case, opined that \"you don't necessarily have to meet your burden during your case.\" ",
+      "contextAfter": " Had I missed something? Was there a knowledge base to support this? The competition round ended, and I began to search. It turns out to be myth, just like the \"80% of all trials are won or lost in th",
+      "start": 381,
+      "end": 610,
+      "extractSha256": "f6f54b74d631bd0aa36718cec79a2b8f16388dec53bc444bbf3b5be42c14e882",
+      "windowSha256": "65f843462747ec9ca8bcdeb928428c1be22654cabd74a0afb514eb81ca7e5444",
+      "fetchedAt": "2026-11-03T02:33:16.938Z",
+      "waybackUrl": "https://web.archive.org/web/20220813053251/https://law.temple.edu/aer/2021/05/03/brain-lessons-the-seven-percent-delusion",
+      "tier": "exact"
+    },
+    {
+      "id": "s3",
+      "nodeId": "n3",
+      "text": "Interpersonal communication | Messaging | Networking, first impressions | Workplace relationships June 1, 2022 You have probably heard this type of statement: \"Effective personal communication is 55% body language, 38% tone of voice and only 7% content of the words you use.\"",
+      "contextBefore": "Debunking this nonverbal communication myth. ",
+      "contextAfter": " However, these widely quoted figures *(465 million results from a Google search in 2024!)* are just an urban myth and represent a fundamental misinterpretation of limited experimental results. *The t",
+      "start": 45,
+      "end": 320,
+      "extractSha256": "4f8f862cccb3b4df3ac9611b130a05c6b395504addf224b9bd7ee217daaca9b3",
+      "windowSha256": "015acba8cc5e2636aac28272b0ce3c949f428790c5294b83c6572372b1fa8063",
+      "fetchedAt": "2026-11-03T02:33:17.283Z",
+      "waybackUrl": "https://web.archive.org/web/20230610082734/https://cuttingedgepr.com/articles/ignore-this-nonverbal-communication-myth",
+      "tier": "exact"
+    },
+    {
+      "id": "s4",
+      "nodeId": "n4",
+      "text": "The belief is that 55% of communication is body language, 38% is the tone of voice, and 7% is the actual words spoken.",
+      "contextBefore": "ody language or nonverbal? Perhaps even you might have said it, but do you know where it originates from? The numbers represent the percentages of importance that varying communication channels have. ",
+      "contextAfter": " Is that true? Well, yes and no. Firstly, the history behind this often quoted, and equally often misunderstood magic set of percentages is often unknown, which I think happens to be the main reason i",
+      "start": 1089,
+      "end": 1207,
+      "extractSha256": "1c65144f46a0ee4996dfb9dd08f4f391067884525f5000367c3b9b626ee15486",
+      "windowSha256": "e43dde8ddffb432e151de462f58d4145c1aeb49b5f980272f783ad7e10dd6f9b",
+      "fetchedAt": "2026-11-03T02:33:17.376Z",
+      "waybackUrl": null,
+      "tier": "exact"
+    },
+    {
+      "id": "s5",
+      "nodeId": "n5",
+      "text": "The body language we use represents 55% of communication.",
+      "contextBefore": "ssage Positive Approaches Page 9 2/24/2009 we are giving to the person and how they will respond back to us. The tone of voice we use when we say something to someone represents 38% of communication. ",
+      "contextAfter": " The actual words we use only represent 7% of communication. So the tone of voice we use along with the way we express ourselves through body movements has a big impact on the message we are trying to",
+      "start": 27058,
+      "end": 27115,
+      "extractSha256": "9e05e9181bcdd9d23db5ac7574a45d81afd5f0b5530c519f0645a73440df6813",
+      "windowSha256": "10e65cd1d97bb5bb0c2de122f4cc088638277ef38e2cb8edf9bfb28b2a7947a9",
+      "fetchedAt": "2026-11-03T02:33:26.904Z",
+      "waybackUrl": null,
+      "tier": "exact"
+    }
+  ],
+  "hops": [
+    {
+      "edgeId": "e1",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "Key Learning Points: Albert Mehrabian's 7-38-55 Communication model says"
+        },
+        {
+          "op": "del",
+          "text": "The belief is"
+        },
+        {
+          "op": "same",
+          "text": "that"
+        },
+        {
+          "op": "add",
+          "text": "7%"
+        },
+        {
+          "op": "del",
+          "text": "55%"
+        },
+        {
+          "op": "same",
+          "text": "of"
+        },
+        {
+          "op": "del",
+          "text": "communication is body language, 38% is"
+        },
+        {
+          "op": "same",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "meaning"
+        },
+        {
+          "op": "del",
+          "text": "tone"
+        },
+        {
+          "op": "same",
+          "text": "of"
+        },
+        {
+          "op": "add",
+          "text": "feelings"
+        },
+        {
+          "op": "del",
+          "text": "voice,"
+        },
+        {
+          "op": "same",
+          "text": "and"
+        },
+        {
+          "op": "add",
+          "text": "attitudes takes place through"
+        },
+        {
+          "op": "del",
+          "text": "7% is"
+        },
+        {
+          "op": "same",
+          "text": "the"
+        },
+        {
+          "op": "del",
+          "text": "actual"
+        },
+        {
+          "op": "same",
+          "text": "words"
+        },
+        {
+          "op": "add",
+          "text": "we use in spoken communications, while 38% takes place through tone and voice and the remaining 55% of communication of these factors take place through the body language we use (specifically our facial expressions)."
+        },
+        {
+          "op": "del",
+          "text": "spoken."
+        }
+      ],
+      "faithful": true
+    },
+    {
+      "edgeId": "e2",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "But I was intrigued, if abashed by my lack"
+        },
+        {
+          "op": "del",
+          "text": "Key Learning Points: Albert Mehrabian's 7-38-55 Communication model says that 7%"
+        },
+        {
+          "op": "same",
+          "text": "of"
+        },
+        {
+          "op": "add",
+          "text": "knowledge, when she later told"
+        },
+        {
+          "op": "same",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "students \"Here is one piece"
+        },
+        {
+          "op": "del",
+          "text": "meaning"
+        },
+        {
+          "op": "same",
+          "text": "of"
+        },
+        {
+          "op": "add",
+          "text": "advice I give all my students - communication is only 7% word choice;"
+        },
+        {
+          "op": "del",
+          "text": "feelings and attitudes takes place through"
+        },
+        {
+          "op": "same",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "balance is"
+        },
+        {
+          "op": "del",
+          "text": "words we use in spoken communications, while 38% takes place through tone and voice and the remaining"
+        },
+        {
+          "op": "same",
+          "text": "55%"
+        },
+        {
+          "op": "del",
+          "text": "of communication of these factors take place through the"
+        },
+        {
+          "op": "same",
+          "text": "body language"
+        },
+        {
+          "op": "add",
+          "text": "and 38% tone.\""
+        },
+        {
+          "op": "del",
+          "text": "we use (specifically our facial expressions)."
+        }
+      ],
+      "faithful": false
+    }
+  ],
+  "blame": [],
+  "roots": {
+    "pages": 4,
+    "clusters": 4,
+    "rootsLinked": 0,
+    "clustersUnlinked": 4,
+    "studiesFound": null
+  },
+  "redHopEdgeId": "e2",
+  "earliest": {
+    "nodeIds": [
+      "n4"
+    ],
+    "earlierWindowSearches": 3,
+    "earlierFound": 0
+  },
+  "failure": null,
+  "budget": {
+    "credits": 8,
+    "usd": 0,
+    "ms": 16480,
+    "capHit": null
+  },
+  "decision": {
+    "state": "TRAIL_GOES_COLD",
+    "row": 6,
+    "reasons": [
+      "no earliest page with a confirmed date, a primary page type and no earlier citation"
+    ],
+    "counts": {
+      "pages": 4,
+      "clusters": 4,
+      "unreadParents": 0,
+      "earlierWindowSearches": 3
+    }
+  },
+  "searchLog": [
+    {
+      "at": "2026-11-03T02:33:11.814Z",
+      "step": "search",
+      "query": "\"55% body language\" body language",
+      "endDate": "2026-11-03",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:33:13.282Z",
+      "step": "search",
+      "query": "\"55 percent body language\" body language",
+      "endDate": "2026-11-03",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:33:15.035Z",
+      "step": "search",
+      "query": "\"55% of communication\" body language",
+      "endDate": "2026-11-03",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:33:20.550Z",
+      "step": "search",
+      "query": "\"55% body language\" body language",
+      "endDate": "2011-09-29",
+      "startDate": null,
+      "results": 6,
+      "kept": 6,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:33:22.327Z",
+      "step": "search",
+      "query": "\"55 percent body language\" body language",
+      "endDate": "2011-09-29",
+      "startDate": null,
+      "results": 2,
+      "kept": 2,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:33:24.442Z",
+      "step": "search",
+      "query": "\"55% of communication\" body language",
+      "endDate": "2011-09-29",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    }
+  ],
+  "usage": [
+    {
+      "at": "2026-11-03T02:33:11.813Z",
+      "traceId": "claim-3",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1382,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:33:13.282Z",
+      "traceId": "claim-3",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1467,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:33:15.034Z",
+      "traceId": "claim-3",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1752,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:33:15.973Z",
+      "traceId": "claim-3",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 930,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:33:16.652Z",
+      "traceId": "claim-3",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 672,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:33:16.937Z",
+      "traceId": "claim-3",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 282,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:33:17.282Z",
+      "traceId": "claim-3",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 342,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:33:17.375Z",
+      "traceId": "claim-3",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 90,
+      "status": "403",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:33:20.549Z",
+      "traceId": "claim-3",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 3173,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:33:22.326Z",
+      "traceId": "claim-3",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1776,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:33:24.441Z",
+      "traceId": "claim-3",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 2114,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:33:26.381Z",
+      "traceId": "claim-3",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1939,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:33:26.904Z",
+      "traceId": "claim-3",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 514,
+      "status": "200",
+      "cacheHit": false
+    }
+  ],
+  "scopeNote": "Web pages only; print and paywalled origins are out of scope. Earliest source we found, not proof of first use."
+}

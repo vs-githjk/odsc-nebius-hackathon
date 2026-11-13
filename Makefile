@@ -7,7 +7,7 @@ verify:
 	npm run -s typecheck && \
 	mkdir -p runs && npx vitest run --reporter=default --reporter=json --outputFile.json=runs/vitest.json && \
 	npm run -s pz -- verify fixtures/traces/*.json && \
-	if ls spike/traces/*.json >/dev/null 2>&1; then npm run -s pz -- verify spike/traces/*.json; fi && \
+	if ls spike/traces/*.json >/dev/null 2>&1; then npm run -s pz -- verify spike/traces/*.json --historical spike/historical-traces.json; fi && \
 	npm run -s pz -- traps && \
 	node --import tsx packages/pz/src/cli/lint-copy.ts && \
 	node --import tsx packages/pz/src/cli/leakage.ts && \
@@ -16,7 +16,13 @@ verify:
 	if [ $$took -gt 60 ]; then echo "make verify FAILED: took $$took s, over the 60 s budget (C17)"; exit 1; fi; \
 	echo "make verify passed in $$took s"
 
-replay live:
+TRACE ?= fixtures/traces/sample-rich.json
+
+# The default is explicitly SAMPLE. Supply TRACE=... for a verified real recording.
+replay:
+	@node --import tsx packages/pz/src/cli/pz.ts trace --replay-of "$(TRACE)"
+
+live:
 	@echo "not built yet"
 	@exit 1
 
