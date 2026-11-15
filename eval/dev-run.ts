@@ -5,6 +5,7 @@ import { randomUUID } from "node:crypto";
 import { mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
 import { z } from "zod";
+import { DEV_SETS } from "./dev-score.ts";
 import { devClusterStep } from "./dev-clusters.ts";
 import prices from "../packages/pz/config/prices.json" with { type: "json" };
 import { budgetedFetch, openBudget } from "./recordings/budget.ts";
@@ -18,8 +19,20 @@ import { Trace } from "../packages/pz/src/schema/index.ts";
 import { traceCommand } from "../packages/pz/src/cli/trace.ts";
 import { verifyTrace } from "../packages/pz/src/verify/checks.ts";
 
-const Input = z.object({ id: z.string().regex(/^dev-\d{2}$/), text: z.string().trim().min(1) });
+const Input = z.object({ id: z.string().regex(/^(?:dev|e3)-\d{2}$/), text: z.string().trim().min(1) });
 type Input = z.infer<typeof Input>;
+
+export function parseDevSet(rows: unknown, set: "E2" | "E3"): Input[] {
+  const prefix = set === "E2" ? "dev" : "e3";
+  const count = set === "E2" ? 20 : 40;
+  const inputs = z.array(Input).length(count).parse(rows);
+  const expected = new Set(Array.from({ length: count }, (_, index) =>
+    prefix + "-" + String(index + 1).padStart(2, "0")));
+  for (const input of inputs) {
+    if (!expected.delete(input.id)) throw new Error("Invalid dev set claim ID");
+  }
+  return inputs;
+}
 
 const errorCodes = new Set(["budget_exceeded", "budget_bound_exceeded", "claim_timeout", "not_configured", "http_error", "network_error", "bad_response", "trace_failed"]);
 
@@ -72,7 +85,7 @@ export async function runDevBatch(
   }
   const work = inputs.map(input => ({ input, trace: existing(input) }));
   const pending = work.filter(entry => !entry.trace).length;
-  if (opts.mode === "LIVE" && pending) opts.checkBudget(pending * rules.caps.usd);
+  if (opts.mode === "LIVE" && pending) opts.checkBudget(rules.caps.usd);
   mkdirSync(opts.dir, { recursive: true });
 
   let recorded = 0, skipped = 0, failed = 0;
@@ -283,7 +296,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     const { values } = parseArgs({ options: {
       "replay-from": { type: "string" }, pipeline: { type: "string" },
       ledger: { type: "string" }, force: { type: "boolean" },
-      rehearse: { type: "string", multiple: true },
+      rehearse: { type: "string", multiple: true }, set: { type: "string" },
     } });
     const source = values["replay-from"] ?? process.env.DEV_REPLAY_DIR;
     const pipeline = values.pipeline ?? process.env.DEV_PIPELINE;
@@ -292,9 +305,12 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
       console.error("Use DEV_REPLAY_DIR for replay, or DEV_PIPELINE and DEV_LEDGER for live evaluation.");
       process.exitCode = 1;
     } else {
-      const rows: unknown = JSON.parse(readFileSync("eval/dev-claims.json", "utf8"));
-      const allClaims = z.array(Input).length(20).parse(rows);
+      const selected = values.set ?? process.env.DEV_SET ?? "E2";
+      const spec = DEV_SETS.find(entry => entry.set === selected);
+      if (!spec) throw new Error("Use E2 or E3");
       const rehearsal = values.rehearse;
+      if (rehearsal && spec.set !== "E2") throw new Error("Rehearsal requires E2");
+      const allClaims = parseDevSet(JSON.parse(readFileSync(spec.file, "utf8")), spec.set);
       if (rehearsal && (rehearsal.length !== 2 || new Set(rehearsal).size !== 2 ||
           rehearsal.some(id => !allClaims.some(claim => claim.id === id)))) {
         console.error("Pass --rehearse twice with two distinct E2 claim IDs.");
