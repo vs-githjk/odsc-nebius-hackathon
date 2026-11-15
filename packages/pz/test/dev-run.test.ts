@@ -124,20 +124,21 @@ describe("T39 batch runner", () => {
     });
     const result = await runLiveDevBatch([t.input], {
       dir: t.dir, fetch, ledger: { check: vi.fn(), reserve, settle: vi.fn() }, report: () => {},
-      loadFactory: async () => async (_input, { sendTavily }) => {
-        await sendTavily({
-          cache: { get: () => null, set: vi.fn() },
+      loadFactory: async () => async (_input, { createTavily }) => {
+        const tavily = createTavily({
+          apiKey: "test-only", cache: { get: () => null, set: vi.fn() },
           usage: { rows: [], append: vi.fn() },
-        }, {
-          service: "tavily", endpoint: "search", step: "walk", url: "https://api.tavily.com/search",
-          cacheInput: {}, maxCredits: 2, timeoutMs: 1000, parse: () => ({ data: [], credits: 2 }),
+        });
+        await tavily.search({
+          query: "fixture query", exactMatch: false, includeRawContent: false,
+          includePublishedDate: false, maxResults: 1,
         });
         throw new Error("unreachable");
       },
     });
     expect(result).toMatchObject({ failed: 1 });
     expect(reserve.mock.calls).toEqual([[0.02], [0.02]]);
-    expect(fetch).toHaveBeenCalledOnce();
+    expect(fetch).toHaveBeenCalledExactlyOnceWith("https://api.tavily.com/search", expect.objectContaining({ redirect: "error" }));
     expect(JSON.parse(readFileSync(join(t.dir, "dev-01.error.json"), "utf8")).code).toBe("budget_exceeded");
   });
 
