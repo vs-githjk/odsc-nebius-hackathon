@@ -20,7 +20,7 @@ export type ClientDeps = {
 
 export type Result<T> = { data: T; usage: UsageRow };
 
-type ClientRequest<T> = {
+export type ClientRequest<T> = {
   service: UsageRow["service"];
   endpoint: string;
   step: string;
