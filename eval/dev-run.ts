@@ -6,10 +6,11 @@ import { mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from "node
 import { join, resolve } from "node:path";
 import { z } from "zod";
 import { devClusterStep } from "./dev-clusters.ts";
-import { openBudget } from "./recordings/budget.ts";
+import prices from "../packages/pz/config/prices.json" with { type: "json" };
+import { budgetedFetch, openBudget } from "./recordings/budget.ts";
 import { qwenChatFetch } from "./record-dev.ts";
 import { createTokenFactoryClient } from "../packages/pz/src/clients/tokenfactory.ts";
-import type { ClientDeps } from "../packages/pz/src/clients/http.ts";
+import { send, type ClientDeps, type ClientRequest } from "../packages/pz/src/clients/http.ts";
 import { runTrace, type Pipeline, type Wayback } from "../packages/pz/src/engine/run.ts";
 import { loadRules } from "../packages/pz/src/rules/index.ts";
 import { Trace } from "../packages/pz/src/schema/index.ts";
@@ -19,7 +20,7 @@ import { verifyTrace } from "../packages/pz/src/verify/checks.ts";
 const Input = z.object({ id: z.string().regex(/^dev-\d{2}$/), text: z.string().trim().min(1) });
 type Input = z.infer<typeof Input>;
 
-const errorCodes = new Set(["budget_exceeded", "not_configured", "http_error", "network_error", "bad_response", "trace_failed"]);
+const errorCodes = new Set(["budget_exceeded", "budget_bound_exceeded", "claim_timeout", "not_configured", "http_error", "network_error", "bad_response", "trace_failed"]);
 
 function codeOf(error: unknown): string {
   if (error && typeof error === "object" && "code" in error &&
@@ -83,6 +84,12 @@ export async function runDevBatch(
     const path = join(opts.dir, input.id + ".json");
     const errorPath = join(opts.dir, input.id + ".error.json");
     try {
+      if (opts.force) {
+        try { renameSync(path, path + "." + randomUUID() + ".superseded"); }
+        catch (error) {
+          if (!(error instanceof Error && "code" in error && error.code === "ENOENT")) throw error;
+        }
+      }
       // The live adapter must enforce these caps at the transport boundary.
       if (opts.mode === "LIVE") opts.checkBudget(rules.caps.usd);
       const result = verified(await opts.run(input, rules.caps), input);
@@ -97,7 +104,7 @@ export async function runDevBatch(
       save(errorPath, { id: input.id, code });
       opts.report(JSON.stringify({ id: input.id, status: "failed", code }));
       failed++;
-      if (code === "budget_exceeded") break;
+      if (code === "budget_exceeded" || code === "budget_bound_exceeded") break;
     }
   }
   return { recorded, skipped, failed, unattempted: inputs.length - recorded - skipped - failed };
@@ -130,13 +137,12 @@ type Caps = ReturnType<typeof loadRules>["caps"];
 type DevPipeline = {
   pipeline: Omit<Pipeline, "clusters">;
   wayback: Wayback;
-  embeddingClient: Parameters<typeof devClusterStep>[0];
 };
 type DevPipelineFactory = (input: Input, options: {
   caps: Caps;
-  budget: Budget;
+  signal: AbortSignal;
   chatClient: Pick<ReturnType<typeof createTokenFactoryClient>, "chat">;
-  tavilyAttempts: NonNullable<ClientDeps["tavilyAttempts"]>;
+  sendTavily: <T>(deps: Omit<ClientDeps, "fetch" | "tavilyAttempts">, request: ClientRequest<T>) => ReturnType<typeof send<T>>;
 }) =>
   Promise<DevPipeline> | DevPipeline;
 
@@ -182,6 +188,7 @@ export async function runLiveDevBatch(
     dir: string;
     ledger: Budget;
     loadFactory: () => Promise<DevPipelineFactory>;
+    fetch?: typeof globalThis.fetch;
     force?: boolean;
     report: (line: string) => void;
   },
@@ -192,14 +199,44 @@ export async function runLiveDevBatch(
     mode: "LIVE",
     checkBudget: usd => opts.ledger.check(usd),
     run: async (input, caps) => {
-      createPipeline ??= await opts.loadFactory();
+      const signal = AbortSignal.timeout(caps.ms);
+      const timeout = () => Object.assign(new Error("Claim deadline exceeded"), { code: "claim_timeout" });
+      const checkTime = () => { if (signal.aborted) throw timeout(); };
+      const transport = opts.fetch ?? globalThis.fetch;
+      const fetch: typeof globalThis.fetch = (url, init) => {
+        checkTime();
+        return transport(url, { ...init, signal: init?.signal ? AbortSignal.any([signal, init.signal]) : signal });
+      };
       const budget = claimBudget(opts.ledger, caps.usd);
+      const guardedChat = qwenChatFetch(budget, fetch);
       const chatClient = createTokenFactoryClient({
         traceId: input.id,
-        fetch: qwenChatFetch(budget, globalThis.fetch),
+        fetch: (url, init) => {
+          checkTime();
+          return guardedChat(url, init);
+        },
+      });
+      const model = "Qwen/Qwen3-Embedding-8B";
+      const guardedEmbeddingFetch = budgetedFetch({
+        budget, ceilingUsd: 0.002, fetch,
+        cost: async response => {
+          const body: unknown = await response.json();
+          const result = z.object({ usage: z.object({ prompt_tokens: z.number().int().nonnegative() }) }).safeParse(body);
+          return result.success ? result.data.usage.prompt_tokens * prices.models[model].input : null;
+        },
+      });
+      const embeddingClient = createTokenFactoryClient({
+        traceId: input.id,
+        fetch: (url, init) => {
+          if (String(url) !== "https://api.tokenfactory.nebius.com/v1/embeddings" ||
+              JSON.parse(String(init?.body)).model !== model) throw new Error("Unsupported embedding request");
+          checkTime();
+          return guardedEmbeddingFetch(url, init);
+        },
       });
       const tavilyAttempts: NonNullable<ClientDeps["tavilyAttempts"]> = {
         reserve(maxCredits) {
+          checkTime();
           if (!Number.isInteger(maxCredits) || maxCredits < 1 || maxCredits > 2) {
             throw Object.assign(new Error("Tavily attempt exceeds the approved ceiling"), { code: "budget_exceeded" });
           }
@@ -209,8 +246,27 @@ export async function runLiveDevBatch(
           if (Number.isInteger(credits) && credits >= 0) budget.settle(id, credits * 0.008);
         },
       };
-      const { pipeline, wayback, embeddingClient } = await createPipeline(input, { caps, budget, chatClient, tavilyAttempts });
-      const trace = await runTrace(input.text, { ...pipeline, clusters: devClusterStep(embeddingClient, loadRules()) }, { wayback });
+      const sendTavily = <T>(deps: Omit<ClientDeps, "fetch" | "tavilyAttempts">, request: ClientRequest<T>) => {
+        if (request.service !== "tavily" || new URL(request.url).origin !== "https://api.tavily.com") {
+          throw new Error("Unsupported Tavily request");
+        }
+        return send({ ...deps, tavilyAttempts, fetch: (url, init) => fetch(url, { ...init, redirect: "error" }) }, request);
+      };
+      let stop: () => void = () => {};
+      const deadline = new Promise<never>((_, reject) => {
+        stop = () => reject(timeout());
+        signal.addEventListener("abort", stop, { once: true });
+      });
+      const execute = async () => {
+        createPipeline ??= await opts.loadFactory();
+        checkTime();
+        const { pipeline, wayback } = await createPipeline(input, { caps, signal, chatClient, sendTavily });
+        checkTime();
+        return runTrace(input.text, { ...pipeline, clusters: devClusterStep(embeddingClient, loadRules()) }, { wayback });
+      };
+      const trace = await Promise.race([execute(), deadline])
+        .finally(() => signal.removeEventListener("abort", stop));
+      checkTime();
       if (trace.budget.usd > caps.usd || trace.budget.credits > caps.credits) {
         throw Object.assign(new Error("Trace exceeded claim cap"), { code: "budget_exceeded" });
       }
