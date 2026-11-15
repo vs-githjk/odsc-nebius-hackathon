@@ -1,10 +1,9 @@
-import { mkdtempSync, readFileSync, existsSync, writeFileSync } from "node:fs";
+import { mkdtempSync, readFileSync, existsSync, readdirSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it, vi } from "vitest";
 import { replayDevBatch, runDevBatch, runLiveDevBatch } from "../../../eval/dev-run.ts";
 import { replayTrace } from "../src/engine/run.ts";
-import { send } from "../src/clients/http.ts";
 import { Trace } from "../src/schema/index.ts";
 
 function setup() {
@@ -37,20 +36,41 @@ describe("T39 batch runner", () => {
     expect(ledger.reserve).not.toHaveBeenCalled();
   });
 
-  it("counts unreported attempts against the claim ceiling before reserving more shared spend", async () => {
+  it("moves a stale trace out of the scorer path on a forced failure", async () => {
     const t = setup();
-    const ledger = { check: vi.fn(), reserve: vi.fn(() => "pending"), settle: vi.fn() };
-    const result = await runLiveDevBatch([t.input], {
-      dir: t.dir, ledger, report: () => {},
-      loadFactory: async () => (_input, { budget }) => {
-        budget.reserve(0.49);
-        budget.reserve(0.02);
-        throw new Error("unreachable");
-      },
+    const path = join(t.dir, "dev-01.json");
+    writeFileSync(path, JSON.stringify(t.live));
+    const result = await runDevBatch([t.input], {
+      dir: t.dir, mode: "LIVE", force: true, checkBudget: () => {},
+      report: () => {}, run: async () => { throw new Error("failed"); },
     });
     expect(result).toMatchObject({ failed: 1, recorded: 0 });
-    expect(ledger.reserve).toHaveBeenCalledExactlyOnceWith(0.49);
-    expect(JSON.parse(readFileSync(join(t.dir, "dev-01.error.json"), "utf8")).code).toBe("budget_exceeded");
+    expect(existsSync(path)).toBe(false);
+    expect(readdirSync(t.dir).some(name => name.endsWith(".superseded"))).toBe(true);
+  });
+
+  it("applies the claim deadline before any further paid request", async () => {
+    const t = setup();
+    const controller = new AbortController();
+    const timer = vi.spyOn(AbortSignal, "timeout").mockReturnValue(controller.signal);
+    const fetch = vi.fn<typeof globalThis.fetch>();
+    const reserve = vi.fn();
+    try {
+      const result = await runLiveDevBatch([t.input], {
+        dir: t.dir, ledger: { check: vi.fn(), reserve, settle: vi.fn() }, fetch, report: () => {},
+        loadFactory: async () => async () => {
+          controller.abort();
+          throw new Error("cancelled factory");
+        },
+      });
+      expect(timer).toHaveBeenCalledWith(300_000);
+      expect(result).toMatchObject({ failed: 1, recorded: 0 });
+      expect(fetch).not.toHaveBeenCalled();
+      expect(reserve).not.toHaveBeenCalled();
+      expect(JSON.parse(readFileSync(join(t.dir, "dev-01.error.json"), "utf8")).code).toBe("claim_timeout");
+    } finally {
+      timer.mockRestore();
+    }
   });
 
   it("restores earliest ids after the walk clears them and accounts for embedding attempts", async () => {
@@ -58,12 +78,17 @@ describe("T39 batch runner", () => {
     const usage = { at: t.live.recordedAt, traceId: t.live.id, step: "clusters", service: "tokenfactory" as const,
       endpoint: "/embeddings", model: "Qwen/Qwen3-Embedding-8B", promptTokens: 30, completionTokens: 0,
       cachedTokens: 0, credits: 0, costUsd: 0.0000003, latencyMs: 1, status: "200", cacheHit: false };
-    const embed = vi.fn(async ({ input }: { input: string | string[] }) => ({
-      data: { embeddings: Array.from(input, (_, i) => [1, i + 1]) }, usage, attempts: [usage],
-    }));
+    const reserve = vi.fn(() => "embedding");
+    const settle = vi.fn();
+    const fetch = vi.fn<typeof globalThis.fetch>(async (_url, init) => {
+      const request = JSON.parse(String(init?.body));
+      return new Response(JSON.stringify({ usage: { prompt_tokens: 30 },
+        data: request.input.map((_: string, index: number) => ({ index, embedding: [1, index + 1] })) }));
+    });
+    vi.stubEnv("NEBIUS_API_KEY", "test-only");
     const same = (trace: Trace) => trace;
     const run = await runLiveDevBatch([t.input], {
-      dir: t.dir, ledger: { check: vi.fn(), reserve: vi.fn(), settle: vi.fn() }, report: () => {},
+      dir: t.dir, ledger: { check: vi.fn(), reserve, settle }, fetch, report: () => {},
       loadFactory: async () => () => ({
         pipeline: {
           intake: () => ({ ...t.live, earliest: { ...t.live.earliest, nodeIds: [] } }),
@@ -76,15 +101,18 @@ describe("T39 batch runner", () => {
             usage: { ...usage, service: "wayback", step: "dating", promptTokens: 0, costUsd: 0 },
           };
         } },
-        embeddingClient: { embed },
       }),
     });
     expect(run).toMatchObject({ recorded: 1, failed: 0 });
     const result = Trace.parse(JSON.parse(readFileSync(join(t.dir, "dev-01.json"), "utf8")));
-    expect(embed).toHaveBeenCalledOnce();
+    vi.unstubAllEnvs();
+    expect(fetch).toHaveBeenCalledOnce();
+    expect(fetch.mock.calls[0]?.[0]).toBe("https://api.tokenfactory.nebius.com/v1/embeddings");
+    expect(reserve).toHaveBeenCalledExactlyOnceWith(0.002);
+    expect(settle).toHaveBeenCalledWith("embedding", expect.closeTo(0.0000003));
     expect(result.earliest.nodeIds).toEqual(t.live.earliest.nodeIds);
     expect(result.nodes.map(node => node.date.value)).toEqual(t.live.nodes.map(node => node.date.value));
-    expect(result.usage.at(-1)).toEqual(usage);
+    expect(result.usage.at(-1)).toMatchObject({ endpoint: usage.endpoint, model: usage.model, promptTokens: 30 });
     expect(result.budget.usd).toBeCloseTo(t.live.budget.usd + usage.costUsd);
   });
 
@@ -95,10 +123,10 @@ describe("T39 batch runner", () => {
       throw Object.assign(new Error("cap"), { code: "budget_exceeded" });
     });
     const result = await runLiveDevBatch([t.input], {
-      dir: t.dir, ledger: { check: vi.fn(), reserve, settle: vi.fn() }, report: () => {},
-      loadFactory: async () => async (_input, { tavilyAttempts }) => {
-        await send({
-          fetch, tavilyAttempts, cache: { get: () => null, set: vi.fn() },
+      dir: t.dir, fetch, ledger: { check: vi.fn(), reserve, settle: vi.fn() }, report: () => {},
+      loadFactory: async () => async (_input, { sendTavily }) => {
+        await sendTavily({
+          cache: { get: () => null, set: vi.fn() },
           usage: { rows: [], append: vi.fn() },
         }, {
           service: "tavily", endpoint: "search", step: "walk", url: "https://api.tavily.com/search",
@@ -159,6 +187,6 @@ describe("T39 batch runner", () => {
     expect(await runDevBatch([t.input], {
       dir: t.dir, mode: "LIVE", force: true, checkBudget, report: () => {}, run: async () => t.fixture,
     })).toMatchObject({ failed: 1 });
-    expect(JSON.parse(readFileSync(join(t.dir, "dev-01.json"), "utf8")).mode).toBe("REPLAY");
+    expect(existsSync(join(t.dir, "dev-01.json"))).toBe(false);
   });
 });
