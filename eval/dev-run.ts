@@ -10,6 +10,7 @@ import prices from "../packages/pz/config/prices.json" with { type: "json" };
 import { budgetedFetch, openBudget } from "./recordings/budget.ts";
 import { qwenChatFetch } from "./record-dev.ts";
 import { createTokenFactoryClient } from "../packages/pz/src/clients/tokenfactory.ts";
+import { createTavily } from "../packages/pz/src/clients/tavily.ts";
 import { send, type ClientDeps, type ClientRequest } from "../packages/pz/src/clients/http.ts";
 import { runTrace, type Pipeline, type Wayback } from "../packages/pz/src/engine/run.ts";
 import { loadRules } from "../packages/pz/src/rules/index.ts";
@@ -142,7 +143,7 @@ type DevPipelineFactory = (input: Input, options: {
   caps: Caps;
   signal: AbortSignal;
   chatClient: Pick<ReturnType<typeof createTokenFactoryClient>, "chat">;
-  sendTavily: <T>(deps: Omit<ClientDeps, "fetch" | "tavilyAttempts">, request: ClientRequest<T>) => ReturnType<typeof send<T>>;
+  createTavily: (deps: Omit<Parameters<typeof createTavily>[0], "fetch" | "tavilyAttempts">) => ReturnType<typeof createTavily>;
 }) =>
   Promise<DevPipeline> | DevPipeline;
 
@@ -260,7 +261,9 @@ export async function runLiveDevBatch(
       const execute = async () => {
         createPipeline ??= await opts.loadFactory();
         checkTime();
-        const { pipeline, wayback } = await createPipeline(input, { caps, signal, chatClient, sendTavily });
+        const { pipeline, wayback } = await createPipeline(input, {
+          caps, signal, chatClient, createTavily: deps => createTavily(deps, sendTavily),
+        });
         checkTime();
         return runTrace(input.text, { ...pipeline, clusters: devClusterStep(embeddingClient, loadRules()) }, { wayback });
       };
