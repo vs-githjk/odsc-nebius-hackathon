@@ -2,7 +2,7 @@ import { mkdtempSync, readFileSync, existsSync, readdirSync, writeFileSync } fro
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it, vi } from "vitest";
-import { replayDevBatch, runDevBatch, runLiveDevBatch } from "../../../eval/dev-run.ts";
+import { parseDevSet, replayDevBatch, runDevBatch, runLiveDevBatch } from "../../../eval/dev-run.ts";
 import { replayTrace } from "../src/engine/run.ts";
 import { Trace } from "../src/schema/index.ts";
 
@@ -15,14 +15,34 @@ function setup() {
 }
 
 describe("T39 batch runner", () => {
-  it("preflights the entire run before invoking an adapter", async () => {
+  it("preflights one claim before invoking an adapter", async () => {
     const t = setup(), run = vi.fn();
     const checkBudget = vi.fn(() => { throw new Error("cap"); });
     await expect(runDevBatch([t.input, { ...t.input, id: "dev-02" }], {
       dir: t.dir, mode: "LIVE", run, checkBudget, report: () => {},
     })).rejects.toThrow("cap");
-    expect(checkBudget).toHaveBeenCalledWith(1);
+    expect(checkBudget).toHaveBeenCalledWith(0.5);
     expect(run).not.toHaveBeenCalled();
+  });
+
+  it("accepts exactly the E3 IDs and strips scoring data before execution", async () => {
+    const t = setup();
+    const rows = Array.from({ length: 40 }, (_, index) =>
+      ({ ...t.input, id: "e3-" + String(index + 1).padStart(2, "0") }));
+    const inputs = parseDevSet(rows, "E3");
+    expect(inputs).toHaveLength(40);
+    expect(inputs[0]).toEqual({ id: "e3-01", text: t.input.text });
+    expect(() => parseDevSet(rows.slice(1), "E3")).toThrow();
+    expect(() => parseDevSet([...rows.slice(1), rows[1]], "E3")).toThrow();
+    expect(() => parseDevSet([...rows.slice(1), t.input], "E3")).toThrow();
+    const trace = { ...t.live, id: "e3-01" };
+    const checkBudget = vi.fn();
+    const run = vi.fn(async () => trace);
+    expect(await runDevBatch(inputs.slice(0, 1), {
+      dir: t.dir, mode: "LIVE", checkBudget, run, report: () => {},
+    })).toMatchObject({ recorded: 1 });
+    expect(existsSync(join(t.dir, "e3-01.json"))).toBe(true);
+    expect(run.mock.lastCall).toEqual([inputs[0], expect.any(Object)]);
   });
 
   it("checks the real weekly ledger before importing the pipeline", async () => {
