@@ -3,7 +3,7 @@ import { z } from "zod";
 import prices from "../../config/prices.json" with { type: "json" };
 import type { UsageRow } from "../schema/usage.ts";
 
-export type ErrorCode = "budget_exceeded" | "not_configured" | "http_error" | "network_error" | "bad_response";
+export type ErrorCode = "budget_bound_exceeded" | "budget_exceeded" | "not_configured" | "http_error" | "network_error" | "bad_response";
 export class TokenFactoryError extends Error {
   constructor(public readonly code: ErrorCode, public readonly status: number | null = null, public readonly usage: UsageRow[] = []) {
     super(`Token Factory ${code}${status === null ? "" : ` (${status})`}`);
@@ -52,6 +52,7 @@ export function createTokenFactoryClient(options: Options = {}) {
     for (let attempt = 0; attempt < 2; attempt++) {
       const at = new Date().toISOString(), start = performance.now();
       let response: Response;
+      let boundExceeded = false;
       try {
         response = await fetch("https://api.tokenfactory.nebius.com/v1" + endpoint, {
           method: "POST", headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
@@ -61,9 +62,14 @@ export function createTokenFactoryClient(options: Options = {}) {
         if (error && typeof error === "object" && "code" in error && error.code === "budget_exceeded") {
           throw new TokenFactoryError("budget_exceeded", null, rows);
         }
-        const row = rowFor("network_error");
-        await record(row);
-        throw new TokenFactoryError("network_error", null, rows);
+        if (error && typeof error === "object" && "code" in error && error.code === "budget_bound_exceeded"
+            && "response" in error && error.response instanceof Response) {
+          response = error.response;
+          boundExceeded = true;
+        } else {
+          await record(rowFor("network_error"));
+          throw new TokenFactoryError("network_error", null, rows);
+        }
       }
       let raw: unknown;
       try { raw = await response.json(); } catch { raw = null; }
@@ -71,6 +77,7 @@ export function createTokenFactoryClient(options: Options = {}) {
       const u = parsedUsage.success ? parsedUsage.data : null;
       const row = rowFor(String(response.status), u);
       await record(row);
+      if (boundExceeded) throw new TokenFactoryError("budget_bound_exceeded", response.status, rows);
       if (!response.ok) {
         if (attempt === 0 && (response.status === 429 || response.status >= 500)) { await sleep(250); continue; }
         throw new TokenFactoryError("http_error", response.status, rows);
