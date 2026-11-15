@@ -3,6 +3,7 @@ import { linkSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, wr
 import { join } from "node:path";
 import type { ChatData, ChatInput, Result } from "../../packages/pz/src/clients/tokenfactory.ts";
 import { z } from "zod";
+import { claimNumber } from "../../packages/pz/src/engine/fingerprint.ts";
 import { UsageRow } from "../../packages/pz/src/schema/usage.ts";
 
 export type Case = { kind: "intake" | "fingerprint"; id: string; source: string };
@@ -10,7 +11,7 @@ type Client = { chat(input: ChatInput): Promise<Result<ChatData>> };
 export type Operations = Record<Case["kind"], (source: string, deps: { client: Client }) => Promise<unknown>>;
 type Call = { request: ChatInput; response: Result<ChatData> };
 export type Recording = Case & {
-  provenance: "LIVE" | "SYNTHETIC"; recordedAt: string; calls: Call[]; usage: UsageRow[];
+  provenance: "LIVE" | "SYNTHETIC" | "NO_CALL"; recordedAt: string; calls: Call[]; usage: UsageRow[];
 } & ({ status: "completed"; output: unknown } | { status: "failed"; errorCode: string });
 
 const LiveRecording = z.object({
@@ -31,8 +32,25 @@ export function assertLiveRecording(record: unknown): asserts record is Recordin
   }
 }
 
+const NO_CALL_IDS = new Set(["dev-01", "dev-07", "dev-08", "dev-12"]);
+export function isNoCallCase(item: Case): boolean {
+  return item.kind === "fingerprint" && NO_CALL_IDS.has(item.id) && claimNumber(item.source) === null;
+}
+
+export function assertCompletedCapture(record: unknown, item: Case): asserts record is Recording {
+  if (!isNoCallCase(item)) {
+    assertLiveRecording(record);
+    return;
+  }
+  z.object({
+    provenance: z.literal("NO_CALL"), status: z.literal("completed"),
+    calls: z.tuple([]), usage: z.tuple([]),
+    output: z.object({ reason: z.literal("no_number") }),
+  }).parse(record);
+}
+
 const safeCode = (error: unknown) => {
-  const codes = ["not_configured", "http_error", "network_error", "bad_response", "budget_exceeded"];
+  const codes = ["not_configured", "http_error", "network_error", "bad_response", "budget_exceeded", "budget_bound_exceeded"];
   return error && typeof error === "object" && "code" in error && typeof error.code === "string"
     && codes.includes(error.code) ? error.code : "recording_failed";
 };
