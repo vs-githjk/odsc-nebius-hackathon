@@ -1,0 +1,8 @@
+{
+  "note": "Hand-written by Anoop: an invented pasted answer and a stand-in model response in the Token Factory chat format. Not a live call.",
+  "answer": "Harbor Zoo's penguins are busy sleepers. Keepers counted 14 naps a day for the adult birds. The colony has 212 penguins, and 38% of them are chicks this year. The zoo opened in 1987.",
+  "response": {
+    "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+    "content": "{\"claims\": [{\"sentence\": \"Keepers counted 14 naps a day for the adult birds.\", \"number\": \"14\"}, {\"sentence\": \"The colony has 212 penguins, and 38% of them are chicks this year.\", \"number\": \"212\"}, {\"sentence\": \"The colony has 212 penguins, and 38% of them are chicks this year.\", \"number\": \"38%\"}]}"
+  }
+}

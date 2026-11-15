@@ -1,0 +1,1533 @@
+{
+  "schemaVersion": "1",
+  "id": "claim-1",
+  "mode": "LIVE",
+  "synthetic": false,
+  "recordedAt": "2026-11-03T02:32:31.174Z",
+  "claim": {
+    "text": "The average human attention span is 8 seconds, shorter than a goldfish's 9 seconds.",
+    "atoms": {
+      "number": {
+        "raw": "8",
+        "canonical": "8"
+      },
+      "unit": "seconds",
+      "subjectLemma": "attention",
+      "population": "human",
+      "time": null,
+      "hedge": null,
+      "namedSource": null,
+      "variants": [
+        "8 seconds",
+        "8-second",
+        "8 second"
+      ]
+    }
+  },
+  "viralSentence": "The average human attention span is 8 seconds, shorter than a goldfish's 9 seconds.",
+  "nodes": [
+    {
+      "id": "n1",
+      "url": "https://uxpsychology.substack.com/p/the-attention-span-myth",
+      "domain": "uxpsychology.substack.com",
+      "title": "The attention span myth - by Dr Maria Panagiotidi",
+      "date": {
+        "kind": "existed_by",
+        "value": "2021-10-20",
+        "source": "wayback_first_capture",
+        "firstCapture": "2021-10-20",
+        "conflictingDate": true
+      },
+      "clusterId": "c1",
+      "evidence": "observed",
+      "meta": true,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s1"
+      ],
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "https://www.livescience.com/goldfish-memory.html",
+          "read": false
+        },
+        {
+          "url": "https://journals.physiology.org/doi/full/10.1152/advan.00109.2016",
+          "read": false
+        }
+      ],
+      "pageType": null
+    },
+    {
+      "id": "n2",
+      "url": "https://www.ambitionsaba.com/resources/average-human-attention-span-statistics",
+      "domain": "ambitionsaba.com",
+      "title": "Average Human Attention Span Statistics",
+      "date": {
+        "kind": "published",
+        "value": "2023-05-26",
+        "source": "tavily",
+        "firstCapture": "2023-06-01",
+        "conflictingDate": false
+      },
+      "clusterId": "c2",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s2"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n3",
+      "url": "https://www.medicaldaily.com/human-attention-span-shortens-8-seconds-due-digital-technology-3-ways-stay-focused-333474",
+      "domain": "medicaldaily.com",
+      "title": "Human Attention Span Shortens To 8 Seconds Due To Digital Technology: 3 Ways To Stay Focused",
+      "date": {
+        "kind": "published",
+        "value": "2015-05-14",
+        "source": "tavily",
+        "firstCapture": "2015-05-20",
+        "conflictingDate": false
+      },
+      "clusterId": "c3",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s3"
+      ],
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "https://twitter.com/intent/tweet?text=Human+Attention+Span+Shortens+To+8+Seconds+Due+To+Digital+Technology%3A+3+Ways+To+Stay+Focused+https://www.medicaldaily.com/human-attention-span-shortens-8-seconds-due-digital-technology-3-ways-stay-focused-333474",
+          "read": false
+        },
+        {
+          "url": "https://www.facebook.com/sharer/sharer.php?u=https://www.medicaldaily.com/human-attention-span-shortens-8-seconds-due-digital-technology-3-ways-stay-focused-333474",
+          "read": false
+        },
+        {
+          "url": "https://api.whatsapp.com/send?text=Human+Attention+Span+Shortens+To+8+Seconds+Due+To+Digital+Technology%3A+3+Ways+To+Stay+Focused+https://www.medicaldaily.com/human-attention-span-shortens-8-seconds-due-digital-technology-3-ways-stay-focused-333474",
+          "read": true
+        }
+      ],
+      "pageType": null
+    },
+    {
+      "id": "n4",
+      "url": "https://internet.psych.wisc.edu/wp-content/uploads/532-Master/532-UnitPages/Unit-09/Attention_Goldfish_Abbreviated.pdf",
+      "domain": "internet.psych.wisc.edu",
+      "title": "[PDF] Goldfish have longer attention spans than Americans, and the ...",
+      "date": {
+        "kind": "published",
+        "value": "2014-02-11",
+        "source": "tavily",
+        "firstCapture": "2020-09-20",
+        "conflictingDate": false
+      },
+      "clusterId": "c4",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s4"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n5",
+      "url": "https://api.whatsapp.com/send?text=Human+Attention+Span+Shortens+To+8+Seconds+Due+To+Digital+Technology%3A+3+Ways+To+Stay+Focused+https://www.medicaldaily.com/human-attention-span-shortens-8-seconds-due-digital-technology-3-ways-stay-focused-333474",
+      "domain": "api.whatsapp.com",
+      "title": "Share on WhatsApp",
+      "date": {
+        "kind": "unconfirmed",
+        "value": null,
+        "source": "tavily",
+        "firstCapture": null,
+        "conflictingDate": false
+      },
+      "clusterId": "c5",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s5"
+      ],
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "https://www.whatsapp.com/calling",
+          "read": true
+        },
+        {
+          "url": "https://www.whatsapp.com/messaging",
+          "read": true
+        },
+        {
+          "url": "https://www.whatsapp.com/groups",
+          "read": true
+        }
+      ],
+      "pageType": null
+    },
+    {
+      "id": "n6",
+      "url": "https://residebpg.com/2013/06/24/inspiration-at-the-national-apartment-associations-conference-in-san-diego",
+      "domain": "residebpg.com",
+      "title": "Inspiration at the National Apartment Association's Conference in San Diego|Inspiration at the National Apartment Association's Conference in San Diego",
+      "date": {
+        "kind": "published",
+        "value": "2013-06-24",
+        "source": "tavily",
+        "firstCapture": "2024-02-26",
+        "conflictingDate": false
+      },
+      "clusterId": "c6",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s6"
+      ],
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "http://educonf.naahq.org/jacobs",
+          "read": false
+        },
+        {
+          "url": "http://www.yelp.com/wilmington-de-us",
+          "read": true
+        },
+        {
+          "url": "http://www.apple.com/ios/siri/siri-faq",
+          "read": true
+        }
+      ],
+      "pageType": null
+    },
+    {
+      "id": "n7",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2847024",
+      "domain": "pmc.ncbi.nlm.nih.gov",
+      "title": "A central role for the lateral prefrontal cortex in goal-directed and stimulus-driven attention",
+      "date": {
+        "kind": "published",
+        "value": "2010-03-07",
+        "source": "tavily",
+        "firstCapture": "2024-10-01",
+        "conflictingDate": false
+      },
+      "clusterId": "c7",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s7"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n8",
+      "url": "https://www.hotrod.com/features/speed-in-the-ozarks-october-1994-982-1561-17-2",
+      "domain": "hotrod.com",
+      "title": "Speed In The Ozarks",
+      "date": {
+        "kind": "published",
+        "value": "1994-10-23",
+        "source": "tavily",
+        "firstCapture": null,
+        "conflictingDate": false
+      },
+      "clusterId": "c8",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s8"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "parentId": "n8",
+      "childId": "n7",
+      "kind": "inferred",
+      "parentSpanId": "s8",
+      "childSpanId": "s7",
+      "linkHref": null
+    },
+    {
+      "id": "e2",
+      "parentId": "n7",
+      "childId": "n6",
+      "kind": "inferred",
+      "parentSpanId": "s7",
+      "childSpanId": "s6",
+      "linkHref": null
+    },
+    {
+      "id": "e3",
+      "parentId": "n6",
+      "childId": "n4",
+      "kind": "inferred",
+      "parentSpanId": "s6",
+      "childSpanId": "s4",
+      "linkHref": null
+    },
+    {
+      "id": "e4",
+      "parentId": "n4",
+      "childId": "n3",
+      "kind": "inferred",
+      "parentSpanId": "s4",
+      "childSpanId": "s3",
+      "linkHref": null
+    },
+    {
+      "id": "e5",
+      "parentId": "n3",
+      "childId": "n2",
+      "kind": "inferred",
+      "parentSpanId": "s3",
+      "childSpanId": "s2",
+      "linkHref": null
+    }
+  ],
+  "clusters": [
+    {
+      "id": "c1",
+      "nodeIds": [
+        "n1"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c2",
+      "nodeIds": [
+        "n2"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c3",
+      "nodeIds": [
+        "n3"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c4",
+      "nodeIds": [
+        "n4"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c5",
+      "nodeIds": [
+        "n5"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c6",
+      "nodeIds": [
+        "n6"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c7",
+      "nodeIds": [
+        "n7"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c8",
+      "nodeIds": [
+        "n8"
+      ],
+      "rule": "single"
+    }
+  ],
+  "spans": [
+    {
+      "id": "s1",
+      "nodeId": "n1",
+      "text": "The 8-second attention span is not the only myth about human attention.",
+      "contextBefore": "nds familiar, therefore it is true. In fact, no one knows how to actually measure a goldfish's attention span. What has been measured by researchers is goldfish memory, which, is actually quite good. ",
+      "contextAfter": " Several authors claim that attention span declines precipitously after 10-15 min. As a result of those claims, it is often suggested that presentations/lectures/talks should last no more than 10-15 m",
+      "start": 2192,
+      "end": 2263,
+      "extractSha256": "da19f58d7cc546fd04beaaa3a302a4749105cbdd80276a5263b1953ec274f8a6",
+      "windowSha256": "f5c3667ec57859b2e96496e1bb9588c7ceb51fef19549c2443e076f1f623fd71",
+      "fetchedAt": "2026-11-03T02:31:49.278Z",
+      "waybackUrl": "https://web.archive.org/web/20211020134417/https://uxpsychology.substack.com/p/the-attention-span-myth",
+      "tier": "exact"
+    },
+    {
+      "id": "s2",
+      "nodeId": "n2",
+      "text": "February 25, 2025 Humans have an average attention span of 8.25 seconds which decreased by nearly 25% between 2000 and 2015.",
+      "contextBefore": "Get Started Average Human Attention Span Statistics. ",
+      "contextAfter": " Average Human Attention Span. 1. The average human attention span is just 8.25 seconds, according to recent studies, 4.25 seconds less than in 2000. 2. The average human's attention span decreased by",
+      "start": 53,
+      "end": 177,
+      "extractSha256": "ca5ad584d759bc6f550a54943931b941dcf4d18d886eebe9c95c8d8f690bb6d4",
+      "windowSha256": "4760cba4724b521e70a9dc754f93257845eedda765e2d6baabbf4e9693854f66",
+      "fetchedAt": "2026-11-03T02:31:49.670Z",
+      "waybackUrl": "https://web.archive.org/web/20230601105943/https://www.ambitionsaba.com/resources/average-human-attention-span-statistics",
+      "tier": "exact"
+    },
+    {
+      "id": "s3",
+      "nodeId": "n3",
+      "text": "Vitality Human Attention Span Shortens To 8 Seconds Due To Digital Technology: 3 Ways To Stay Focused.",
+      "contextBefore": " North Carolina health workforce report found registered nurse turnover reached 38% in western counties, while statewide vacancies, staffing shortages and projected nurse deficits remain significant. ",
+      "contextAfter": " By Lizette Borreli * Share on Twitter * Share on Facebook * Share on WhatsApp In the digital age, where the news is limited to 140 characters and conversations take place in the form of emojis, our a",
+      "start": 4809,
+      "end": 4911,
+      "extractSha256": "8663864a214b0ad3a2376439aeb840b508ac999199f138f8ab24de1a6fc52ec5",
+      "windowSha256": "7bf508cfeab92ade016204117b55eabcc99163d54aaa246c693cbdd5669b408c",
+      "fetchedAt": "2026-11-03T02:31:50.184Z",
+      "waybackUrl": "https://web.archive.org/web/20150520002152/https://www.medicaldaily.com/human-attention-span-shortens-8-seconds-due-digital-technology-3-ways-stay-focused-333474",
+      "tier": "exact"
+    },
+    {
+      "id": "s4",
+      "nodeId": "n4",
+      "text": "Publishers are now rolling out shorter books faster and faster, and Harvard Business School historian Nancy Koehn says it's largely because we're getting less attentive and more anxious: \"The average American attention span in 2013 was about 8 seconds.",
+      "contextBefore": "hat described something called \"series publishing.\" It's not an entirely new concept, but it's a big pivot away from the one-title-per-year model most of the industry has been abiding by for decades. ",
+      "contextAfter": " The average attention span in 2000 was 12 seconds. And then get this kicker - the average attention of a goldfish is 9 seconds.\" NB: No response has been received from this inquiry made to the Harvar",
+      "start": 795,
+      "end": 1047,
+      "extractSha256": "0963b82e0696e6d3b1f47223e0f3c66e8c1d338c02198d81f10785b3243b9ece",
+      "windowSha256": "98702207336dcb0f568788ed9548cb6883faa8c7c5c7b6e16c875eb058a76fca",
+      "fetchedAt": "2026-11-03T02:31:57.491Z",
+      "waybackUrl": "https://web.archive.org/web/20200920225608/https://internet.psych.wisc.edu/wp-content/uploads/532-Master/532-UnitPages/Unit-09/Attention_Goldfish_Abbreviated.pdf",
+      "tier": "exact"
+    },
+    {
+      "id": "s5",
+      "nodeId": "n5",
+      "text": "Human Attention Span Shortens To 8 Seconds Due To Digital Technology: 3 Ways To Stay Focused https://www.medicaldaily.com/human-attention-span-shortens-8-seconds-due-digital-technology-3-ways-stay-focused-333474 Open app Continue to WhatsApp Web Don't have the app?",
+      "contextBefore": "Features CallingMessagingGroupsChannelsMeta AIStatusSecurityParental controls PrivacyBlogAppsHelp CenterFor Business Log In Download Download Share on WhatsApp. ",
+      "contextAfter": " Download it now. Looks like you don't have WhatsApp installed. Download app Continue to WhatsApp Web",
+      "start": 161,
+      "end": 426,
+      "extractSha256": "616e2b3669f05997c650f3eb89f7582dead9fb03582a2de411567aa7835b2c49",
+      "windowSha256": "616e2b3669f05997c650f3eb89f7582dead9fb03582a2de411567aa7835b2c49",
+      "fetchedAt": "2026-11-03T02:32:07.974Z",
+      "waybackUrl": null,
+      "tier": "exact"
+    },
+    {
+      "id": "s6",
+      "nodeId": "n6",
+      "text": "Here are a few fun facts: -The average American has an 8 second attention span (which is less than a goldfish by the way!) - Wearing a blue suit for an interview increases your chances of landing a job. -Make sure your company is featured on Yelp.com so Siri can pick it up.",
+      "contextBefore": "repreneur and Bert Jacobs, Co-Founder and Chief Executive Optimist of Life is good®. The team gained quite a bit of knowledge while away and is excited to share their contagious energy with everyone! ",
+      "contextAfter": " For more information on the residential team, visit their Facebook page! Check out our socials to stay up to date! RELATED NEWS. ASSOCIATE HIGHLIGHT: Teresa Slater, Property Manager. Congratulations ",
+      "start": 636,
+      "end": 910,
+      "extractSha256": "b01b56931e57c9af75e9b31df61082af74ba5c0e0ba889259008557f99a3bd4a",
+      "windowSha256": "9b20103fdd2558d37c6c98cd05d333e4ba9d91879ba9fea498773127d25ee9b7",
+      "fetchedAt": "2026-11-03T02:32:09.413Z",
+      "waybackUrl": "https://web.archive.org/web/20240226205434/https://residebpg.com/2013/06/24/inspiration-at-the-national-apartment-associations-conference-in-san-diego",
+      "tier": "exact"
+    },
+    {
+      "id": "s7",
+      "nodeId": "n7",
+      "text": "A domain-independent source of cognitive control for task sets: Shifting spatial attention and switching categorization rules Journal of Neuroscience 2009 29 3930 3938 PMID:19321789 doi:10.1523/JNEUROSCI.5737-08.2009 PMCID:PMC2817948 8.",
+      "contextBefore": "es JT, Carlson RL, et al. Transient neural activity in human parietal cortex during spatial attention shifts Nature Neuroscience 2002 5 995 1002 PMID:12219097 doi:10.1038/nn921 7. Chiu Y-C, Yantis S. ",
+      "contextAfter": " Downar J, Crawley AP, Mikulis DJ, Davis KD. A multimodal cortical network for the detection of changes in the sensory environment Nature Neuroscience 2000 3 277 283 PMID:10700261 doi:10.1038/72991 9.",
+      "start": 38200,
+      "end": 38436,
+      "extractSha256": "f8abaad31c05ce4dae7dbf38905896fee32daf1b19069e2f88a363c2062b1b2b",
+      "windowSha256": "99922121cd9391dd269ec4629e9afc2fa6600a74d3d25cfab99885c67feb529a",
+      "fetchedAt": "2026-11-03T02:32:24.669Z",
+      "waybackUrl": "https://web.archive.org/web/20241001100550/https://pmc.ncbi.nlm.nih.gov/articles/PMC2847024",
+      "tier": "exact"
+    },
+    {
+      "id": "s8",
+      "nodeId": "n8",
+      "text": "Race-favorite Rick Pope got our attention after a few low-8-second passes in his nasty little big-block Pinto, but his day was cut short when the rearend let go.*(Photography: Rob Kinnan)* *MOTORTREND and HOT ROD's rich magazine history and legacy dating back to 1948 is something highly valued by its longtime readers, and that's why we've invested deeply to make the content available to you in a modern and accessible format.",
+      "contextBefore": "you can't make it, call 417/738-2222 for details on next year's schedule. *-Rob Kinnan* Steve Summey's sano Camaro doesn't look like it runs low 11$, but an 11.23 in the final had everyone believing. ",
+      "contextAfter": " In the interest of transparency, these magazine articles are presented as originally published, without modification, and may contain content that does not reflect the company's contemporary values a",
+      "start": 1079,
+      "end": 1507,
+      "extractSha256": "612cf13bd1fc0ae780ab0b0846cdc0b52cbe616482e1e20e8407797884ac9860",
+      "windowSha256": "5dfa6119ecf9ef34a9341208117cb0802dae64230baf723e5c16de5a494a9182",
+      "fetchedAt": "2026-11-03T02:32:25.015Z",
+      "waybackUrl": null,
+      "tier": "exact"
+    }
+  ],
+  "hops": [
+    {
+      "edgeId": "e1",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "A domain-independent source of cognitive control for task sets: Shifting spatial"
+        },
+        {
+          "op": "del",
+          "text": "Race-favorite Rick Pope got our"
+        },
+        {
+          "op": "same",
+          "text": "attention"
+        },
+        {
+          "op": "del",
+          "text": "after a few low-8-second passes in his nasty little big-block Pinto, but his day was cut short when the rearend let go.*(Photography: Rob Kinnan)* *MOTORTREND"
+        },
+        {
+          "op": "same",
+          "text": "and"
+        },
+        {
+          "op": "add",
+          "text": "switching categorization rules Journal of Neuroscience 2009 29 3930 3938 PMID:19321789 doi:10.1523/JNEUROSCI.5737-08.2009 PMCID:PMC2817948 8."
+        },
+        {
+          "op": "del",
+          "text": "HOT ROD's rich magazine history and legacy dating back to 1948 is something highly valued by its longtime readers, and that's why we've invested deeply to make the content available to you in a modern and accessible format."
+        }
+      ],
+      "faithful": false
+    },
+    {
+      "edgeId": "e2",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "Here are a few fun facts: -The average American has an 8 second attention span (which is less than a goldfish by the way!) - Wearing a blue suit"
+        },
+        {
+          "op": "del",
+          "text": "A domain-independent source of cognitive control"
+        },
+        {
+          "op": "same",
+          "text": "for"
+        },
+        {
+          "op": "add",
+          "text": "an interview increases your chances"
+        },
+        {
+          "op": "del",
+          "text": "task sets: Shifting spatial attention and switching categorization rules Journal"
+        },
+        {
+          "op": "same",
+          "text": "of"
+        },
+        {
+          "op": "add",
+          "text": "landing a job. -Make sure your company is featured on Yelp.com so Siri can pick it up."
+        },
+        {
+          "op": "del",
+          "text": "Neuroscience 2009 29 3930 3938 PMID:19321789 doi:10.1523/JNEUROSCI.5737-08.2009 PMCID:PMC2817948 8."
+        }
+      ],
+      "faithful": false
+    },
+    {
+      "edgeId": "e3",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "Publishers"
+        },
+        {
+          "op": "del",
+          "text": "Here"
+        },
+        {
+          "op": "same",
+          "text": "are"
+        },
+        {
+          "op": "add",
+          "text": "now rolling out shorter books faster and faster, and Harvard Business School historian Nancy Koehn says it's largely because we're getting less attentive and more anxious: \"The"
+        },
+        {
+          "op": "del",
+          "text": "a few fun facts: -The"
+        },
+        {
+          "op": "same",
+          "text": "average American"
+        },
+        {
+          "op": "del",
+          "text": "has an 8 second"
+        },
+        {
+          "op": "same",
+          "text": "attention span"
+        },
+        {
+          "op": "add",
+          "text": "in 2013 was about 8 seconds."
+        },
+        {
+          "op": "del",
+          "text": "(which is less than a goldfish by the way!) - Wearing a blue suit for an interview increases your chances of landing a job. -Make sure your company is featured on Yelp.com so Siri can pick it up."
+        }
+      ],
+      "faithful": true
+    },
+    {
+      "edgeId": "e4",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "Vitality Human Attention Span Shortens To"
+        },
+        {
+          "op": "del",
+          "text": "Publishers are now rolling out shorter books faster and faster, and Harvard Business School historian Nancy Koehn says it's largely because we're getting less attentive and more anxious: \"The average American attention span in 2013 was about"
+        },
+        {
+          "op": "same",
+          "text": "8"
+        },
+        {
+          "op": "add",
+          "text": "Seconds Due To Digital Technology: 3 Ways To Stay Focused."
+        },
+        {
+          "op": "del",
+          "text": "seconds."
+        }
+      ],
+      "faithful": false
+    },
+    {
+      "edgeId": "e5",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "February 25, 2025 Humans have an average attention span of 8.25 seconds which decreased by nearly 25% between 2000 and 2015."
+        },
+        {
+          "op": "del",
+          "text": "Vitality Human Attention Span Shortens To 8 Seconds Due To Digital Technology: 3 Ways To Stay Focused."
+        }
+      ],
+      "faithful": false
+    }
+  ],
+  "blame": [],
+  "roots": {
+    "pages": 7,
+    "clusters": 7,
+    "rootsLinked": 0,
+    "clustersUnlinked": 7,
+    "studiesFound": null
+  },
+  "redHopEdgeId": "e1",
+  "earliest": {
+    "nodeIds": [
+      "n8"
+    ],
+    "earlierWindowSearches": 3,
+    "earlierFound": 0
+  },
+  "failure": null,
+  "budget": {
+    "credits": 19,
+    "usd": 0,
+    "ms": 47297,
+    "capHit": null
+  },
+  "decision": {
+    "state": "TRAIL_GOES_COLD",
+    "row": 6,
+    "reasons": [
+      "no earliest page with a confirmed date, a primary page type and no earlier citation",
+      "5 unread candidate parent(s)"
+    ],
+    "counts": {
+      "pages": 7,
+      "clusters": 7,
+      "unreadParents": 5,
+      "earlierWindowSearches": 3
+    }
+  },
+  "searchLog": [
+    {
+      "at": "2026-11-03T02:31:45.088Z",
+      "step": "search",
+      "query": "\"8 seconds\" attention",
+      "endDate": "2026-11-03",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:31:46.274Z",
+      "step": "search",
+      "query": "\"8-second\" attention",
+      "endDate": "2026-11-03",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:31:47.675Z",
+      "step": "search",
+      "query": "\"8 second\" attention",
+      "endDate": "2026-11-03",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:31:51.539Z",
+      "step": "search",
+      "query": "\"8 seconds\" attention",
+      "endDate": "2015-05-13",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:31:54.872Z",
+      "step": "search",
+      "query": "\"8-second\" attention",
+      "endDate": "2015-05-13",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:31:56.185Z",
+      "step": "search",
+      "query": "\"8 second\" attention",
+      "endDate": "2015-05-13",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:31:59.048Z",
+      "step": "search",
+      "query": "\"8 seconds\" attention",
+      "endDate": "2014-02-10",
+      "startDate": null,
+      "results": 10,
+      "kept": 9,
+      "dropped": 1
+    },
+    {
+      "at": "2026-11-03T02:32:01.204Z",
+      "step": "search",
+      "query": "\"8-second\" attention",
+      "endDate": "2014-02-10",
+      "startDate": null,
+      "results": 10,
+      "kept": 9,
+      "dropped": 1
+    },
+    {
+      "at": "2026-11-03T02:32:03.386Z",
+      "step": "search",
+      "query": "\"8 second\" attention",
+      "endDate": "2014-02-10",
+      "startDate": null,
+      "results": 10,
+      "kept": 9,
+      "dropped": 1
+    },
+    {
+      "at": "2026-11-03T02:32:07.976Z",
+      "step": "search",
+      "query": "\"8 seconds\" attention",
+      "endDate": "2014-02-10",
+      "startDate": null,
+      "results": 10,
+      "kept": 9,
+      "dropped": 1
+    },
+    {
+      "at": "2026-11-03T02:32:07.977Z",
+      "step": "search",
+      "query": "\"8-second\" attention",
+      "endDate": "2014-02-10",
+      "startDate": null,
+      "results": 10,
+      "kept": 5,
+      "dropped": 5
+    },
+    {
+      "at": "2026-11-03T02:32:07.978Z",
+      "step": "search",
+      "query": "\"8 second\" attention",
+      "endDate": "2014-02-10",
+      "startDate": null,
+      "results": 10,
+      "kept": 8,
+      "dropped": 2
+    },
+    {
+      "at": "2026-11-03T02:32:10.937Z",
+      "step": "search",
+      "query": "\"8 seconds\" attention",
+      "endDate": "2013-06-23",
+      "startDate": null,
+      "results": 10,
+      "kept": 8,
+      "dropped": 2
+    },
+    {
+      "at": "2026-11-03T02:32:11.990Z",
+      "step": "search",
+      "query": "\"8-second\" attention",
+      "endDate": "2013-06-23",
+      "startDate": null,
+      "results": 10,
+      "kept": 6,
+      "dropped": 4
+    },
+    {
+      "at": "2026-11-03T02:32:13.896Z",
+      "step": "search",
+      "query": "\"8 second\" attention",
+      "endDate": "2013-06-23",
+      "startDate": null,
+      "results": 10,
+      "kept": 6,
+      "dropped": 4
+    },
+    {
+      "at": "2026-11-03T02:32:26.422Z",
+      "step": "search",
+      "query": "\"8 seconds\" attention",
+      "endDate": "1994-10-22",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:32:27.849Z",
+      "step": "search",
+      "query": "\"8-second\" attention",
+      "endDate": "1994-10-22",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:32:29.483Z",
+      "step": "search",
+      "query": "\"8 second\" attention",
+      "endDate": "1994-10-22",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    }
+  ],
+  "usage": [
+    {
+      "at": "2026-11-03T02:31:45.087Z",
+      "traceId": "claim-1",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1208,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:31:46.274Z",
+      "traceId": "claim-1",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1185,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:31:47.674Z",
+      "traceId": "claim-1",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1400,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:31:48.638Z",
+      "traceId": "claim-1",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 955,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:31:49.277Z",
+      "traceId": "claim-1",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 633,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:31:49.670Z",
+      "traceId": "claim-1",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 388,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:31:50.184Z",
+      "traceId": "claim-1",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 512,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:31:51.539Z",
+      "traceId": "claim-1",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1354,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:31:54.871Z",
+      "traceId": "claim-1",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 3332,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:31:56.184Z",
+      "traceId": "claim-1",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1312,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:31:56.940Z",
+      "traceId": "claim-1",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 755,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:31:57.491Z",
+      "traceId": "claim-1",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 544,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:31:59.047Z",
+      "traceId": "claim-1",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1555,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:32:01.204Z",
+      "traceId": "claim-1",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 2156,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:32:03.386Z",
+      "traceId": "claim-1",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 2182,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:32:07.288Z",
+      "traceId": "claim-1",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 3901,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:32:07.973Z",
+      "traceId": "claim-1",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 682,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:32:07.976Z",
+      "traceId": "claim-1",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-03T02:32:07.977Z",
+      "traceId": "claim-1",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-03T02:32:07.978Z",
+      "traceId": "claim-1",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-03T02:32:09.119Z",
+      "traceId": "claim-1",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 1140,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:32:09.413Z",
+      "traceId": "claim-1",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 292,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:32:10.936Z",
+      "traceId": "claim-1",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1522,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:32:11.989Z",
+      "traceId": "claim-1",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1053,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:32:13.895Z",
+      "traceId": "claim-1",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1905,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:32:24.099Z",
+      "traceId": "claim-1",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 10203,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:32:24.669Z",
+      "traceId": "claim-1",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 564,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:32:25.015Z",
+      "traceId": "claim-1",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 344,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:32:26.421Z",
+      "traceId": "claim-1",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1405,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:32:27.849Z",
+      "traceId": "claim-1",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1427,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:32:29.482Z",
+      "traceId": "claim-1",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1633,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:32:31.160Z",
+      "traceId": "claim-1",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1677,
+      "status": "200",
+      "cacheHit": false
+    }
+  ],
+  "scopeNote": "Web pages only; print and paywalled origins are out of scope. Earliest source we found, not proof of first use."
+}

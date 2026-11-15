@@ -67,7 +67,7 @@ export function openBudget(path: string, now = () => Date.now()) {
         entry.amount = amount; entry.settled = true;
         return ledger.breached;
       });
-      if (breached) throw new Error("budget_bound_exceeded");
+      if (breached) throw Object.assign(new Error("budget_bound_exceeded"), { code: "budget_bound_exceeded" as const });
     },
   };
 }
@@ -85,7 +85,15 @@ export function budgetedFetch(opts: {
     const response = await opts.fetch(input, init);
     let actual: number | null;
     try { actual = await opts.cost(response.clone()); } catch { return response; }
-    if (actual !== null) opts.budget.settle(reservation, actual);
+    if (actual !== null) {
+      try { opts.budget.settle(reservation, actual); }
+      catch (error) {
+        if (error instanceof Error && "code" in error && error.code === "budget_bound_exceeded") {
+          throw Object.assign(error, { response });
+        }
+        throw error;
+      }
+    }
     return response;
   };
 }

@@ -9,7 +9,7 @@ import prices from "../packages/pz/config/prices.json" with { type: "json" };
 import { createTokenFactoryClient } from "../packages/pz/src/clients/tokenfactory.ts";
 import { claimNumber } from "../packages/pz/src/engine/fingerprint.ts";
 import { budgetedFetch, openBudget } from "./recordings/budget.ts";
-import { loadT38Cases, recordCases, replayRecording, writeRecording, type Case, type Operations, type Recording, assertLiveRecording } from "./recordings/session.ts";
+import { loadT38Cases, recordCases, replayRecording, writeRecording, type Case, type Operations, type Recording, assertCompletedCapture, isNoCallCase } from "./recordings/session.ts";
 
 const MODEL = "Qwen/Qwen3-30B-A3B-Instruct-2507";
 const MODULES = ["packages/pz/src/engine/intake.ts", "packages/pz/src/engine/fingerprint.ts"];
@@ -62,10 +62,10 @@ async function loadSavedCapture(
   const record: unknown = JSON.parse(readFileSync(path, "utf8"));
   const { status } = z.object({
     id: z.literal(item.id), kind: z.literal(item.kind), source: z.literal(item.source),
-    provenance: z.literal("LIVE"), status: z.enum(["failed", "completed"]),
+    provenance: z.enum(["LIVE", "NO_CALL"]), status: z.enum(["failed", "completed"]),
   }).parse(record);
   if (partial && status === "failed") return undefined;
-  assertLiveRecording(record);
+  assertCompletedCapture(record, item);
   await replayRecording(record, operations);
   return record;
 }
@@ -91,18 +91,19 @@ export async function recordDevCommand(args: string[], io = {
       .map(item => item.id);
     if (values.plan) {
       io.write(JSON.stringify({ mode: "PLAN", intake: cases.filter(c => c.kind === "intake").length,
-        fingerprint: cases.filter(c => c.kind === "fingerprint").length, ids: cases.map(c => `${c.kind}/${c.id}`), fingerprintWithoutNumber }));
+        fingerprint: cases.filter(c => c.kind === "fingerprint").length, ids: cases.map(c => `${c.kind}/${c.id}`), fingerprintWithoutNumber, live: cases.filter(item => !isNoCallCase(item)).length }));
       return 0;
     }
     if (values.replay) {
       const operations = await deps.loadOperations(deps.root);
       for (const item of cases) await loadSavedCapture(values.replay, item, operations);
-      io.write(JSON.stringify({ mode: "REPLAY", replayed: cases.length })); return 0;
+      io.write(JSON.stringify({ mode: "REPLAY", replayed: cases.length, live: cases.filter(item => !isNoCallCase(item)).length })); return 0;
     }
     const ceilingUsd = Number(values["ceiling-usd"] ?? config.tokenFactoryAttemptCeilingUsd);
     if (!values.out || !values.ledger || !Number.isFinite(ceilingUsd) || ceilingUsd <= 0 || ceilingUsd > config.tokenFactoryAttemptCeilingUsd) throw new Error("Missing live configuration");
-    if (fingerprintWithoutNumber.length > 0) {
-      io.error(JSON.stringify({ error: "unsupported_fingerprint_claims", ids: fingerprintWithoutNumber }));
+    const unsupported = cases.filter(item => fingerprintWithoutNumber.includes(item.id) && item.kind === "fingerprint" && !isNoCallCase(item));
+    if (unsupported.length > 0) {
+      io.error(JSON.stringify({ error: "unsupported_fingerprint_claims", ids: unsupported.map(item => item.id) }));
       return 1;
     }
     // Read and validate the ledger before loading modules or touching the network.
@@ -125,13 +126,21 @@ export async function recordDevCommand(args: string[], io = {
     mkdirSync(resolve(values.out), { recursive: false, mode: 0o700 });
     for (const record of saved) writeRecording(values.out, record);
     const fetch = qwenChatFetch(budget, deps.fetch, ceilingUsd);
-    await recordCases(pending, { provenance: "LIVE", operations, beforeCase: () => {},
-      clientFor: item => deps.client({ fetch, traceId: `t38-${item.id}`, step: item.kind }),
+    const noCall = pending.filter(isNoCallCase);
+    const live = pending.filter(item => !isNoCallCase(item));
+    await recordCases(noCall, { provenance: "NO_CALL", operations, beforeCase: () => {},
+      clientFor: () => ({ chat: async () => { throw new Error("unexpected_provider_call"); } }),
       write: record => {
-        if (record.status === "completed") assertLiveRecording(record);
+        assertCompletedCapture(record, record);
         writeRecording(values.out!, record);
       } });
-    io.write(JSON.stringify({ mode: "LIVE", recorded: pending.length, reused: saved.length })); return 0;
+    await recordCases(live, { provenance: "LIVE", operations, beforeCase: () => {},
+      clientFor: item => deps.client({ fetch, traceId: `t38-${item.id}`, step: item.kind }),
+      write: record => {
+        if (record.status === "completed") assertCompletedCapture(record, record);
+        writeRecording(values.out!, record);
+      } });
+    io.write(JSON.stringify({ mode: "LIVE", recorded: live.length, noCall: noCall.length, reused: saved.length })); return 0;
   } catch {
     // Arguments, git stderr, filenames and provider responses never leave stderr.
     io.error("recording_failed"); return 1;

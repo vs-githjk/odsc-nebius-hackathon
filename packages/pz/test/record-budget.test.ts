@@ -2,7 +2,7 @@ import { mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { createTokenFactoryClient } from "../src/clients/tokenfactory.ts";
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { budgetedFetch, initializeBudget, openBudget } from "../../../eval/recordings/budget.ts";
 
 const start = "2026-11-09T08:00:00Z", end = "2026-11-16T08:00:00Z";
@@ -81,6 +81,26 @@ describe("T38 shared-file attempt budget", () => {
     expect(() => budget.settle(id, 0.2)).toThrow("budget_bound_exceeded");
     expect(JSON.parse(readFileSync(path, "utf8")).breached).toBe(true);
     expect(() => budget.reserve(0.1)).toThrow("budget_exceeded");
+  });
+  it("logs the billed usage and stops on an over-ceiling HTTP response", async () => {
+    const { path, budget } = setup();
+    const transport = vi.fn(async () => new Response(JSON.stringify({ usage: {
+      prompt_tokens: 1_000_000, completion_tokens: 0,
+    } }), { status: 500 }));
+    const logUsage = vi.fn();
+    const fetch = budgetedFetch({ budget, ceilingUsd: 0.01, cost: async () => 0.1, fetch: transport });
+    vi.stubEnv("NEBIUS_API_KEY", "test-only");
+    try {
+      const client = createTokenFactoryClient({ fetch, logUsage });
+      await expect(client.chat({ model: "Qwen/Qwen3-30B-A3B-Instruct-2507", messages: [], maxTokens: 1 }))
+        .rejects.toMatchObject({ code: "budget_bound_exceeded", status: 500,
+          usage: [expect.objectContaining({ promptTokens: 1_000_000, costUsd: expect.closeTo(0.1), status: "500" })] });
+      expect(logUsage).toHaveBeenCalledTimes(1);
+      expect(transport).toHaveBeenCalledTimes(1);
+      expect(entries(path)).toEqual([{ amount: 100000, settled: true }]);
+    } finally {
+      vi.unstubAllEnvs();
+    }
   });
   it("rejects invalid amounts, caps above $15 and inverted windows", () => {
     const { path, budget } = setup();

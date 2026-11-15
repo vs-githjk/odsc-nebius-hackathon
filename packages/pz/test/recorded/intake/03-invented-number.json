@@ -1,0 +1,8 @@
+{
+  "note": "Hand-written by Anoop: an invented pasted answer and a stand-in model response in the Token Factory chat format. Not a live call.",
+  "answer": "The Orrin Valley reservoir holds 4.2 billion litres when full. Last summer it fell to 61% of capacity.",
+  "response": {
+    "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+    "content": "{\"claims\": [{\"sentence\": \"The Orrin Valley reservoir holds 4.2 billion litres when full.\", \"number\": \"4.5\"}, {\"sentence\": \"Last summer it fell to 61% of capacity.\", \"number\": \"0.61\"}, {\"sentence\": \"Last summer it fell to 61% of capacity.\", \"number\": \"61%\"}]}"
+  }
+}
