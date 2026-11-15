@@ -1,6 +1,6 @@
 # T38 dev recordings
 
-T38 prepares five approved intake answers and 20 E2 fingerprints for live capture.
+T38 prepares five approved intake answers and 20 E2 fingerprints: 21 provider-backed captures and four deterministic outcomes.
 No live recordings are included yet. C11 stays planned until the actual captures
 pass. Intake PR #75 must merge before live execution. Its prompts remain Anoop's.
 
@@ -18,15 +18,15 @@ manifest reads only the five approved intake fixture `answer` fields and 20 E2
 `text` fields. It never uses handwritten responses, target URLs or held-out files.
 Plan needs the intake fixture files. Its `fingerprintWithoutNumber` list names
 E2 cases that return `no_number` before a provider call. The current list is
-`dev-01`, `dev-07`, `dev-08` and `dev-12`. A nonempty list blocks live capture
-before ledger access or output directory creation. The current C11 evidence
-requires a provider call for each case.
-Replay requires LIVE provenance and a nonempty, consistent set of usage rows per call.
+`dev-01`, `dev-07`, `dev-08` and `dev-12`. These four cases are stored as `NO_CALL`, with empty calls and usage, and
+are replayed against the deterministic fingerprint operation. They do not
+count towards C11. Other nonnumeric IDs block capture before ledger access.
+Provider-backed replay requires LIVE provenance and consistent usage rows.
 It checks all 25 source/id/kind pairs, reruns the unchanged operations using
 saved responses and compares exact requests, call count and output. There is no
 network fallback. The replay command rejects SYNTHETIC provenance.
 
-Run live capture once #75 merges, the nonnumeric cases are resolved, and the
+Run live capture once #75 merges and the
 shared spending ledger is reconciled.
 
 ```sh
