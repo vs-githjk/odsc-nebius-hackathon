@@ -1,0 +1,16 @@
+{"at":"2026-11-03T02:33:30.252Z","step":"search","query":"\"10 times\" Google","reason":"end_date 2026-11-03, 10 results"}
+{"at":"2026-11-03T02:33:31.648Z","step":"search","query":"\"10x\" Google","reason":"end_date 2026-11-03, 10 results"}
+{"at":"2026-11-03T02:33:33.846Z","step":"search","query":"\"ten times\" Google","reason":"end_date 2026-11-03, 10 results"}
+{"at":"2026-11-03T02:33:34.643Z","step":"read","url":"https://www.wired.com/2013/02/moonshots-matter-heres-how-to-make-them-happen","kept":true,"reason":"span found"}
+{"at":"2026-11-03T02:33:34.644Z","step":"read","url":"https://www.businessinsider.com/the-dark-side-of-google-10x-2015-7","kept":false,"reason":"no sentence asserts the claim's atoms"}
+{"at":"2026-11-03T02:33:35.574Z","step":"read","url":"https://epoch.ai/gradient-updates/how-much-energy-does-chatgpt-use","kept":true,"reason":"span found"}
+{"at":"2026-11-03T02:33:35.575Z","step":"read","url":"https://unric.org/en/artificial-intelligence-how-much-energy-does-ai-use","kept":false,"reason":"no sentence asserts the claim's atoms"}
+{"at":"2026-11-03T02:33:35.576Z","step":"read","url":"https://support.google.com/webmasters/thread/404912361/why-does-gsc-show-10x-more-clicks-when-filtering-by-device-and-page-path?hl=en","kept":false,"reason":"no sentence asserts the claim's atoms"}
+{"at":"2026-11-03T02:33:36.610Z","step":"search","query":"\"10 times\" Google","reason":"end_date 2013-02-10, 10 results"}
+{"at":"2026-11-03T02:33:37.955Z","step":"search","query":"\"10x\" Google","reason":"end_date 2013-02-10, 10 results"}
+{"at":"2026-11-03T02:33:39.475Z","step":"search","query":"\"ten times\" Google","reason":"end_date 2013-02-10, 10 results"}
+{"at":"2026-11-03T02:33:40.487Z","step":"extract","url":"https://www.sciencedirect.com/science/article/pii/S2542435123003653?dgcid=author","kept":false,"reason":"extract failed, unread"}
+{"at":"2026-11-03T02:33:40.488Z","step":"read","url":"https://support.google.com/analytics/answer/1034324?hl=en","kept":false,"reason":"no sentence asserts the claim's atoms"}
+{"at":"2026-11-03T02:33:40.488Z","step":"read","url":"https://investors.10xgenomics.com/events-and-presentations/default.aspx","kept":false,"reason":"no sentence asserts the claim's atoms"}
+{"at":"2026-11-03T02:33:40.488Z","step":"read","url":"https://play.google.com/store/apps/details?id=com.cbs.mobilebanking&hl=en_ZA","kept":false,"reason":"no sentence asserts the claim's atoms"}
+{"at":"2026-11-03T02:33:40.488Z","step":"read","url":"https://chromewebstore.google.com/detail/mailcopilot-gmail-outlook/cipiaeoeceafamgjellmcaikonmfbokn","kept":false,"reason":"no sentence asserts the claim's atoms"}

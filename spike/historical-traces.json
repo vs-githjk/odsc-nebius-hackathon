@@ -1,0 +1,30 @@
+{
+  "rulesAt": "83a1e71",
+  "note": "spike run 1, recorded before the reviewed number rules (#61) and stop-state reasons (#43); kept as the record Rohan graded",
+  "traces": [
+    {
+      "id": "claim-1",
+      "sha256": "6ae92b8f0dbb011a1a4d116ffffdb90a17827fa51c619b191f64fd7a6b099076"
+    },
+    {
+      "id": "claim-2",
+      "sha256": "290ad9a1eaf64de8e0efee563f86f82c3156f0f8e67e5f4b2fdcce3e231148a9"
+    },
+    {
+      "id": "claim-3",
+      "sha256": "6533f55bf3727b79d08ae49a4b6f6c7a85f65f29c8502e59a5f8309587291e7e"
+    },
+    {
+      "id": "claim-4",
+      "sha256": "3234f9ddf406532df983b10f5ee2d7ddf566528f1fc42d73c0e7e8da5e13f439"
+    },
+    {
+      "id": "claim-5",
+      "sha256": "e88aa5ed98c39d3a8a911d9679221e7c6776a06eb39ed105208aaf4ffe7913c1"
+    },
+    {
+      "id": "claim-6",
+      "sha256": "91ea7a8c5fc2a397ebfe1f046c937dbe71b2d11c491d73d506ab0960c517235e"
+    }
+  ]
+}

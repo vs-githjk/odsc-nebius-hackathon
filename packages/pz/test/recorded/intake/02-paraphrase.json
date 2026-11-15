@@ -1,0 +1,8 @@
+{
+  "note": "Hand-written by Anoop: an invented pasted answer and a stand-in model response in the Token Factory chat format. Not a live call.",
+  "answer": "According to the Larkfield survey, about 3,400 residents cycle to work. Only 1 in 8 of them wears a helmet.",
+  "response": {
+    "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+    "content": "{\"claims\": [{\"sentence\": \"Around 3,400 residents in Larkfield cycle to work.\", \"number\": \"3,400\"}, {\"sentence\": \"According to the Larkfield survey, about 3,400 residents cycle to work.\", \"number\": \"3400\"}, {\"sentence\": \"Only 1 in 8 of them wears a helmet.\", \"number\": \"8\"}]}"
+  }
+}

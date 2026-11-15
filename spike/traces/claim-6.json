@@ -1,0 +1,608 @@
+{
+  "schemaVersion": "1",
+  "id": "claim-6",
+  "mode": "LIVE",
+  "synthetic": false,
+  "recordedAt": "2026-11-03T02:34:18.761Z",
+  "claim": {
+    "text": "Children whose mothers took choline supplements during pregnancy scored 8 IQ points higher at age 4 than those in a placebo group.",
+    "atoms": {
+      "number": {
+        "raw": "8",
+        "canonical": "8"
+      },
+      "unit": "IQ points",
+      "subjectLemma": "choline",
+      "population": "children",
+      "time": "age 4",
+      "hedge": null,
+      "namedSource": null,
+      "variants": [
+        "8 IQ points",
+        "8 points",
+        "eight IQ points"
+      ]
+    }
+  },
+  "viralSentence": "Children whose mothers took choline supplements during pregnancy scored 8 IQ points higher at age 4 than those in a placebo group.",
+  "nodes": [
+    {
+      "id": "n1",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12560564",
+      "domain": "pmc.ncbi.nlm.nih.gov",
+      "title": "Effect of egg consumption on circulating choline, betaine, and trimethylamine n-oxide in adults: a systematic review and meta-analysis of randomized controlled trials",
+      "date": {
+        "kind": "published",
+        "value": "2025-10-27",
+        "source": "tavily",
+        "firstCapture": null,
+        "conflictingDate": false
+      },
+      "clusterId": "c1",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s1"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n2",
+      "url": "https://www.celinegounder.com/p/choline-pregnancy-iq-autism-trial",
+      "domain": "celinegounder.com",
+      "title": "Does choline in pregnancy raise IQ or prevent autism?",
+      "date": {
+        "kind": "published",
+        "value": "2026-10-27",
+        "source": "tavily",
+        "firstCapture": null,
+        "conflictingDate": false
+      },
+      "clusterId": "c2",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s2"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n3",
+      "url": "https://www.frontiersin.org/journals/immunology/articles/10.3389/fimmu.2022.1038927/full",
+      "domain": "frontiersin.org",
+      "title": "Frontiers | Construction of a novel choline metabolism-related signature to predict prognosis, immune landscape, and chemotherapy response in colon adenocarcinoma",
+      "date": {
+        "kind": "existed_by",
+        "value": "2024-05-26",
+        "source": "wayback_first_capture",
+        "firstCapture": "2024-05-26",
+        "conflictingDate": true
+      },
+      "clusterId": "c3",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s3"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "parentId": "n3",
+      "childId": "n1",
+      "kind": "inferred",
+      "parentSpanId": "s3",
+      "childSpanId": "s1",
+      "linkHref": null
+    },
+    {
+      "id": "e2",
+      "parentId": "n1",
+      "childId": "n2",
+      "kind": "inferred",
+      "parentSpanId": "s1",
+      "childSpanId": "s2",
+      "linkHref": null
+    }
+  ],
+  "clusters": [
+    {
+      "id": "c1",
+      "nodeIds": [
+        "n1"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c2",
+      "nodeIds": [
+        "n2"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c3",
+      "nodeIds": [
+        "n3"
+      ],
+      "rule": "single"
+    }
+  ],
+  "spans": [
+    {
+      "id": "s1",
+      "nodeId": "n1",
+      "text": "The NutriGRADE assessment indicated moderate certainty of evidence for choline (score 7.75), betaine (7.05), and TMAO (7.25), with downgrades mainly due to imprecision and heterogeneity.",
+      "contextBefore": "e or obesity. Meta-regression revealed a negative association between egg dose and both choline and betaine levels (p < 0.001). Publication bias was suggested for betaine but not for choline or TMAO. ",
+      "contextAfter": " Conclusions. No clear effect of egg consumption on circulating choline, betaine, or TMAO levels could be demonstrated. Age and metabolic status may influence choline responses, and higher egg doses m",
+      "start": 2500,
+      "end": 2686,
+      "extractSha256": "c9b7cd09e3f1f98bd3f06fca113ef0a1804f4dd6cce876159ffbecdfe1a056fc",
+      "windowSha256": "cba01db72f6be66f39fc835ea6f7b0d84a517151c4ecbb9bb268f12678b08e63",
+      "fetchedAt": "2026-11-03T02:34:07.445Z",
+      "waybackUrl": null,
+      "tier": "exact"
+    },
+    {
+      "id": "s2",
+      "nodeId": "n2",
+      "text": "At age four, children in the choline group scored about 8 points higher on an IQ test, 106 versus 98.",
+      "contextBefore": "similar rates of attention problems. On withdrawal, 17 of 71 children in the placebo group scored two or more, which can mean one problem that happens all the time. In the choline group, 3 of 71 did. ",
+      "contextAfter": " The result most likely to make headlines came from an analysis the team hadn't planned. In the placebo group, 10 of 71 children had checklist scores in the range seen in autism. In the choline group,",
+      "start": 2061,
+      "end": 2162,
+      "extractSha256": "752fed55265a4d9004dc0d87261ba3ddc9a5d008a0267589ee5d07ab769084d1",
+      "windowSha256": "51999a8182ae7ac273406c9e7063dbfc7ea5a9cfa977215551f7e2834fc29087",
+      "fetchedAt": "2026-11-03T02:34:08.445Z",
+      "waybackUrl": null,
+      "tier": "exact"
+    },
+    {
+      "id": "s3",
+      "nodeId": "n3",
+      "text": "The GeneMANIA database (<http://genemania.org/>) generated genes with similar functions to choline metabolism-related genes and predicted their biological functions (8, 9).",
+      "contextBefore": "e obtained (Supplementary Tables 4 and 5). The protein-protein interaction (PPI) network of choline metabolism-related genes was constructed through the STRING database (<https://cn.string-db.org/>). ",
+      "contextAfter": " The analysis flowchart of the study is shown in Figure 1. Figure 1 Flowchart of the present study. Genomic alterations of choline metabolism-related genes in pan-cancer. Gene set cancer analysis (GSC",
+      "start": 8994,
+      "end": 9166,
+      "extractSha256": "6859980318bc88d0a1a0b3ee52b465b90ff019e87ba637acca76db13d3a42e2f",
+      "windowSha256": "7c351c2f70c9add974b271b5a4467799dc7d6f174aa0c3b4f4dd9ff8e06e6145",
+      "fetchedAt": "2026-11-03T02:34:09.023Z",
+      "waybackUrl": "https://web.archive.org/web/20240526031555/https://www.frontiersin.org/journals/immunology/articles/10.3389/fimmu.2022.1038927/full",
+      "tier": "exact"
+    }
+  ],
+  "hops": [
+    {
+      "edgeId": "e1",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "same",
+          "text": "The"
+        },
+        {
+          "op": "add",
+          "text": "NutriGRADE assessment indicated moderate certainty of evidence for choline (score 7.75), betaine (7.05), and TMAO (7.25),"
+        },
+        {
+          "op": "del",
+          "text": "GeneMANIA database (<http://genemania.org/>) generated genes"
+        },
+        {
+          "op": "same",
+          "text": "with"
+        },
+        {
+          "op": "add",
+          "text": "downgrades mainly due"
+        },
+        {
+          "op": "del",
+          "text": "similar functions"
+        },
+        {
+          "op": "same",
+          "text": "to"
+        },
+        {
+          "op": "add",
+          "text": "imprecision"
+        },
+        {
+          "op": "del",
+          "text": "choline metabolism-related genes"
+        },
+        {
+          "op": "same",
+          "text": "and"
+        },
+        {
+          "op": "add",
+          "text": "heterogeneity."
+        },
+        {
+          "op": "del",
+          "text": "predicted their biological functions (8, 9)."
+        }
+      ],
+      "faithful": false
+    },
+    {
+      "edgeId": "e2",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "At age four, children in the"
+        },
+        {
+          "op": "del",
+          "text": "The NutriGRADE assessment indicated moderate certainty of evidence for"
+        },
+        {
+          "op": "same",
+          "text": "choline"
+        },
+        {
+          "op": "add",
+          "text": "group scored about 8 points higher on an IQ test, 106 versus 98."
+        },
+        {
+          "op": "del",
+          "text": "(score 7.75), betaine (7.05), and TMAO (7.25), with downgrades mainly due to imprecision and heterogeneity."
+        }
+      ],
+      "faithful": false
+    }
+  ],
+  "blame": [],
+  "roots": {
+    "pages": 3,
+    "clusters": 3,
+    "rootsLinked": 0,
+    "clustersUnlinked": 3,
+    "studiesFound": null
+  },
+  "redHopEdgeId": "e1",
+  "earliest": {
+    "nodeIds": [
+      "n3"
+    ],
+    "earlierWindowSearches": 3,
+    "earlierFound": 0
+  },
+  "failure": null,
+  "budget": {
+    "credits": 8,
+    "usd": 0,
+    "ms": 16420,
+    "capHit": null
+  },
+  "decision": {
+    "state": "TRAIL_GOES_COLD",
+    "row": 6,
+    "reasons": [
+      "no earliest page with a confirmed date, a primary page type and no earlier citation"
+    ],
+    "counts": {
+      "pages": 3,
+      "clusters": 3,
+      "unreadParents": 0,
+      "earlierWindowSearches": 3
+    }
+  },
+  "searchLog": [
+    {
+      "at": "2026-11-03T02:34:03.806Z",
+      "step": "search",
+      "query": "\"8 IQ points\" choline",
+      "endDate": "2026-11-03",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:34:05.190Z",
+      "step": "search",
+      "query": "\"8 points\" choline",
+      "endDate": "2026-11-03",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:34:06.247Z",
+      "step": "search",
+      "query": "\"eight IQ points\" choline",
+      "endDate": "2026-11-03",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:34:11.754Z",
+      "step": "search",
+      "query": "\"8 IQ points\" choline",
+      "endDate": "2024-05-25",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:34:13.475Z",
+      "step": "search",
+      "query": "\"8 points\" choline",
+      "endDate": "2024-05-25",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:34:16.280Z",
+      "step": "search",
+      "query": "\"eight IQ points\" choline",
+      "endDate": "2024-05-25",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    }
+  ],
+  "usage": [
+    {
+      "at": "2026-11-03T02:34:03.805Z",
+      "traceId": "claim-6",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1463,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:34:05.189Z",
+      "traceId": "claim-6",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1383,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:34:06.247Z",
+      "traceId": "claim-6",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1057,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:34:06.389Z",
+      "traceId": "claim-6",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 134,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:34:07.444Z",
+      "traceId": "claim-6",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 1044,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:34:08.445Z",
+      "traceId": "claim-6",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 996,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:34:09.022Z",
+      "traceId": "claim-6",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 572,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:34:11.753Z",
+      "traceId": "claim-6",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 2729,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:34:13.474Z",
+      "traceId": "claim-6",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1720,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:34:16.280Z",
+      "traceId": "claim-6",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 2805,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:34:18.754Z",
+      "traceId": "claim-6",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 2473,
+      "status": "200",
+      "cacheHit": false
+    }
+  ],
+  "scopeNote": "Web pages only; print and paywalled origins are out of scope. Earliest source we found, not proof of first use."
+}

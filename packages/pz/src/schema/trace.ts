@@ -30,6 +30,9 @@ export const Node = z.object({
   clusterId: z.string(), evidence: z.enum(["observed", "inferred", "conflicting", "unknown"]),
   meta: z.boolean(), read: z.boolean(), versionOf: z.string().nullable(), spanIds: z.array(z.string()),
   citesEarlier: z.boolean(), candidateParents: z.array(z.object({ url: z.string(), read: z.boolean() }).strict()), pageType: TypedAnswer.nullable(),
+  // T36: the typed same_claim answer for this page's span. Absent or null means the gate did not run (no model),
+  // which counts as unsure: such a page is never an origin.
+  sameClaim: TypedAnswer.nullable().optional(),
 }).strict();
 export type Node = z.infer<typeof Node>;
 export const Edge = z.object({
