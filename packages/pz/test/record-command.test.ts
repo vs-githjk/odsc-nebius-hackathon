@@ -42,8 +42,11 @@ describe("T38 recording command", () => {
 
     expect(await recordDevCommand(["--plan"], t.io, t.deps)).toBe(0);
     expect(JSON.parse(t.lines[0]!).fingerprintWithoutNumber).toEqual(expectedIds);
+    const cases = JSON.parse(readFileSync(manifest, "utf8"));
+    cases.find((item: { id: string }) => item.id === "dev-02").text = "An unexpected claim without numbers.";
+    writeFileSync(manifest, JSON.stringify(cases));
     expect(await recordDevCommand(["--live", "--out", out, "--ledger", ledger], t.io, t.deps)).toBe(1);
-    expect(JSON.parse(t.errors[0]!)).toEqual({ error: "unsupported_fingerprint_claims", ids: expectedIds });
+    expect(JSON.parse(t.errors[0]!)).toEqual({ error: "unsupported_fingerprint_claims", ids: ["dev-02"] });
     expect(existsSync(out)).toBe(false);
     expect(existsSync(ledger)).toBe(false);
     expect(t.counts()).toEqual({ calls: 0, loads: 0 });
@@ -79,7 +82,7 @@ describe("T38 recording command", () => {
       }) }), write: record => writeRecording(out, record) });
     const deps = { ...t.deps, loadOperations: async () => operations };
     expect(await recordDevCommand(["--replay", out], t.io, deps)).toBe(0);
-    expect(JSON.parse(t.lines[0]!)).toEqual({ mode: "REPLAY", replayed: 25 });
+    expect(JSON.parse(t.lines[0]!)).toEqual({ mode: "REPLAY", replayed: 25, live: 25 });
     const file = join(out, "intake/01-plain.json");
     const valid = JSON.parse(readFileSync(file, "utf8"));
     for (const invalid of [
@@ -103,7 +106,14 @@ describe("T38 recording command", () => {
       (await client.chat({ model: "fixture", messages: [{ role: "user", content: source }], maxTokens: 1 })).data.content;
     const operations = { intake: operation, fingerprint: operation };
     const chat = vi.fn(async () => ({ data: { model: "fixture", logprobs: null, content: "answer" }, usage, attempts: [usage] }));
+    writeFileSync(join(t.root, "eval/dev-claims.json"), readFileSync(new URL("../../../eval/dev-claims.json", import.meta.url)));
+    const { fingerprint } = await import("../src/engine/fingerprint.ts");
+    operations.fingerprint = (source, deps) => zeroSources.has(source) ? fingerprint(source, deps) : operation(source, deps);
+    const zeroSources = new Set<string>();
     const cases = loadT38Cases(t.root);
+    for (const item of cases.filter(item => item.kind === "fingerprint" && ["dev-01", "dev-07", "dev-08", "dev-12"].includes(item.id))) {
+      zeroSources.add(item.source);
+    }
     await recordCases(cases.slice(0, 1), { provenance: "LIVE", operations,
       beforeCase: () => {}, clientFor: () => ({ chat }), write: record => writeRecording(prior, record) });
     const file = join(prior, "intake/01-plain.json");
@@ -123,12 +133,18 @@ describe("T38 recording command", () => {
       writeRecording(prior, { ...cases[1]!, provenance: "LIVE", status: "failed", recordedAt: usage.at,
         calls: [], usage: [usage], errorCode: "network_error" });
       expect(await recordDevCommand(args, t.io, deps)).toBe(0);
-      expect(JSON.parse(t.lines[0]!)).toEqual({ mode: "LIVE", recorded: 24, reused: 1 });
-      expect(chat).toHaveBeenCalledTimes(24);
+      expect(JSON.parse(t.lines[0]!)).toEqual({ mode: "LIVE", recorded: 20, noCall: 4, reused: 1 });
+      expect(chat).toHaveBeenCalledTimes(20);
       expect(readFileSync(join(out, "intake/01-plain.json"), "utf8")).toBe(original);
       expect(JSON.parse(readFileSync(join(prior, "intake/02-paraphrase.json"), "utf8")).status).toBe("failed");
+      const zeroPath = join(out, "fingerprint/dev-01.json");
+      const noCall = JSON.parse(readFileSync(zeroPath, "utf8"));
+      expect(noCall).toMatchObject({ provenance: "NO_CALL", calls: [], usage: [], output: { reason: "no_number" } });
       expect(await recordDevCommand(["--replay", out], t.io, deps)).toBe(0);
-      expect(chat).toHaveBeenCalledTimes(24);
+      expect(JSON.parse(t.lines.at(-1)!)).toEqual({ mode: "REPLAY", replayed: 25, live: 21 });
+      writeFileSync(zeroPath, JSON.stringify({ ...noCall, provenance: "LIVE" }));
+      expect(await recordDevCommand(["--replay", out], t.io, deps)).toBe(1);
+      expect(chat).toHaveBeenCalledTimes(20);
     } finally {
       vi.unstubAllEnvs();
     }
