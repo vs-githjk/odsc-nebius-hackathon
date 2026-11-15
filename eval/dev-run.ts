@@ -330,7 +330,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
         });
         console.log(JSON.stringify(result));
         if (result.failed || result.unattempted) process.exitCode = 1;
-        else if (!rehearsal) execFileSync("make", ["dev-score"], { stdio: "inherit" });
+        else if (!rehearsal) execFileSync(process.execPath, ["--import", "tsx", "eval/dev-score.ts", "--set", spec.set], { stdio: "inherit" });
       }
     }
   } catch (error) {
