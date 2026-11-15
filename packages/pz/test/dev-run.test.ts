@@ -3,6 +3,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it, vi } from "vitest";
 import { parseDevSet, replayDevBatch, runDevBatch, runLiveDevBatch } from "../../../eval/dev-run.ts";
+import { devSetsToScore, scoreDir } from "../../../eval/dev-score.ts";
 import { replayTrace } from "../src/engine/run.ts";
 import { Trace } from "../src/schema/index.ts";
 
@@ -43,6 +44,20 @@ describe("T39 batch runner", () => {
     })).toMatchObject({ recorded: 1 });
     expect(existsSync(join(t.dir, "e3-01.json"))).toBe(true);
     expect(run.mock.lastCall).toEqual([inputs[0], expect.any(Object)]);
+  });
+
+  it("scores only the selected set and rejects damaged or mismatched trace files", () => {
+    const t = setup();
+    const claim = { ...t.input, expected: "cold" as const, tracedOrigin: null, tracedBy: null };
+    const path = join(t.dir, claim.id + ".json");
+    expect(devSetsToScore("E3").map(entry => entry.set)).toEqual(["E3"]);
+    expect(() => devSetsToScore("heldout")).toThrow();
+    writeFileSync(path, "{");
+    expect(scoreDir(t.dir, [claim])[0]).toMatchObject({ status: "bad trace", reason: "cannot read trace JSON" });
+    writeFileSync(path, JSON.stringify({ ...t.live, claim: { ...t.live.claim, text: "A different claim." } }));
+    expect(scoreDir(t.dir, [claim])[0]).toMatchObject({ status: "bad trace", reason: "trace does not match claim" });
+    writeFileSync(path, JSON.stringify(t.live));
+    expect(scoreDir(t.dir, [claim])[0]).toMatchObject({ status: "scored" });
   });
 
   it("checks the real weekly ledger before importing the pipeline", async () => {
