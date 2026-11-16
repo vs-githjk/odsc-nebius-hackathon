@@ -29,7 +29,7 @@ To resume in a new Claude Code chat opened in this folder, Vidyut says: **"I'm b
 - Merged Nov 12: #75 T21, #104 T35, #106 T36, #80 T29, #52, #62 T15. Main 355 tests green.
 - Critical path: #107 NO_CALL fix -> 21 live captures -> #109 fixes -> first live E2/E3 dev score (Rohan, Fri Nov 13).
 - Open: #77 (Anoop), #107 #109 (Rohan), #108 #110 drafts (Rishit). Run 3 issues #111 to #122 queued through Nov 17.
-- Held-out run moved to Mon Nov 16 (Vidyut, Nov 12). T65 to T70 added for the final stretch.
+- Nov 15: live runs on Vidyut's machine (Rohan's key, he tops up). Schedule: 16-17 build, 17 full run-through incl. held-out, 18 regroup, 19 build + freeze, 20 submit.
 
 ## Earlier (Nov 10)
 - Merged since Nov 9: #74 T27, #96 T34, #97 T33, #105 T47 E3, #82 T23 (plus Nov 9 batch). Dev score still 0/20: no live traces.
