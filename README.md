@@ -11,7 +11,7 @@ Team **Says Who**, ODSC x Nebius Hackathon 2026. Built for Nebius Token Factory 
 | Command | What it does | Status |
 |---|---|---|
 | `make verify` | Re-checks every committed trace, the trap set and the copy lint, runs the leakage test (a stub until the held-out claims are revealed), then prints the claims table. No API keys needed. | works now |
-| `make replay` | Will replay a recorded trace with its original usage rows | not built yet |
+| `make replay` | Replays a recorded trace as a readable card, with its original usage rows and no network calls. `TRACE=<file>` picks the trace (the default is a SAMPLE); `ARGS=--json` prints the raw trace. | works now |
 | `make live CLAIM="..."` | Will run a live trace with your own keys | not built yet |
 
 ## When it fails

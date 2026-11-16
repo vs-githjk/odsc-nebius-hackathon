@@ -5,8 +5,11 @@ import { lintText } from "../src/cli/lint-copy.ts";
 import { Trace } from "../src/schema/index.ts";
 
 const dir = new URL("../../../fixtures/traces/", import.meta.url);
+const failureDir = new URL("../../../fixtures/failure/traces/", import.meta.url);
 const load = (name: string): Trace => Trace.parse(JSON.parse(readFileSync(new URL(`${name}.json`, dir), "utf8")));
+const loadFailure = (name: string): Trace => Trace.parse(JSON.parse(readFileSync(new URL(`${name}.json`, failureDir), "utf8")));
 const names = readdirSync(dir).filter((f) => f.endsWith(".json")).map((f) => f.replace(/\.json$/, "")).sort();
+const failureNames = readdirSync(failureDir).filter((f) => f.endsWith(".json")).map((f) => f.replace(/\.json$/, "")).sort();
 
 describe("T77 readable CLI card", () => {
   it.each(names)("%s renders one plain screen that matches its snapshot", async (name) => {
@@ -16,6 +19,13 @@ describe("T77 readable CLI card", () => {
     expect(Math.max(...lines.map((l) => l.length))).toBeLessThanOrEqual(78);
     expect(lines.length).toBeLessThanOrEqual(40);
     expect(card).not.toContain("\u001b[");
+    expect(lintText(card)).toEqual([]);
+  });
+
+  it.each(failureNames)("failure trace %s renders a card that matches its snapshot", async (name) => {
+    const card = renderCard(loadFailure(name));
+    await expect(card).toMatchFileSnapshot(`__snapshots__/cli-card/${name}.txt`);
+    expect(Math.max(...card.split("\n").map((l) => l.length))).toBeLessThanOrEqual(78);
     expect(lintText(card)).toEqual([]);
   });
 
