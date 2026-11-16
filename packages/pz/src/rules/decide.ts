@@ -1,5 +1,5 @@
 import type { Decision, Node, Trace, TypedAnswer } from "../schema/index.ts";
-import { isInjected, isNegated } from "./negation.ts";
+import { hasInjection, isInjected, isNegated } from "./negation.ts";
 import { normalise } from "./normalise.ts";
 import { atomHit, parseNumbers, sameNumber } from "./numbers.ts";
 import type { Rules } from "./rules.ts";
@@ -54,8 +54,10 @@ export function decideStopState(trace: Trace, rules: Rules): Decision {
     trace.earliest.nodeIds.includes(n.id) && confident(n.pageType, rules) && rules.primaryPageTypes.includes(n.pageType.optionId)
     && n.date.kind !== "unconfirmed" && !n.citesEarlier
     && !trace.spans.some((s) => s.nodeId === n.id && isNegated(s, rules.negationPrefixes)));
-  // T50: a page with an instruction aimed at a model in or around its span is never an origin.
-  const candidates = eligible.filter((n) => !trace.spans.some((s) => s.nodeId === n.id && isInjected(s, rules.injectionPatterns)));
+  // T50: a page with an instruction aimed at a model anywhere on it (the walker quotes it on the node) or in or around
+  // its span is never an origin.
+  const candidates = eligible.filter((n) => !(n.injection && hasInjection(n.injection, rules.injectionPatterns))
+    && !trace.spans.some((s) => s.nodeId === n.id && isInjected(s, rules.injectionPatterns)));
   // T36 same-claim check: a span on the page carries the claim's atoms (code) and the typed same_claim says yes.
   const statesClaim = (n: Node) => confidentYes(n.sameClaim, rules)
     && trace.spans.some((s) => s.nodeId === n.id && atomHit(s.text, trace.claim.atoms, rules.weakNumberMinSigDigits, rules.weakNumberMaxCommas));
@@ -64,7 +66,7 @@ export function decideStopState(trace: Trace, rules: Rules): Decision {
   const notAsked = candidates.filter((n) => !n.sameClaim).length;
   const blockers = [
     eligible.length === 0 && "no earliest page with a confirmed date, a primary page type, no earlier citation and no negated span",
-    eligible.length > 0 && candidates.length === 0 && "instruction-like text beside the claim on every remaining earliest page",
+    eligible.length > 0 && candidates.length === 0 && "instruction-like text on every remaining earliest page",
     candidates.length > 0 && !origin && (notAsked > 0
       ? `same_claim not asked on ${notAsked} earliest page(s) (no model), which counts as unsure`
       : "no earliest page states the same claim: the claim's atoms in a span and a confident same_claim yes"),

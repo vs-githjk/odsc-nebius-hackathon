@@ -3,4 +3,4 @@ export { atomHit, canonicalKey, isWeak, parseNumbers, sameNumber } from "./numbe
 export type { ParsedNumber, SameNumber, SkipReason } from "./numbers.ts";
 export { Rules, loadRules } from "./rules.ts";
 export { decideStopState } from "./decide.ts";
-export { isInjected, isNegated } from "./negation.ts";
+export { findInjection, hasInjection, isInjected, isNegated } from "./negation.ts";

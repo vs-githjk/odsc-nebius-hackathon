@@ -373,6 +373,12 @@
                 "type": "null"
               }
             ]
+          },
+          "injection": {
+            "type": [
+              "string",
+              "null"
+            ]
           }
         },
         "required": [
