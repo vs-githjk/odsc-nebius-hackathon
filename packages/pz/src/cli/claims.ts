@@ -26,20 +26,36 @@ export function tallyTags(results: VitestJson): Map<string, Tally> {
 
 // A claim is only "built" when plan.md says so. Tagged tests decide PASS or FAIL only when its proof is a test;
 // a proof such as a CI link, screenshot or session table stays "no proof yet" until someone checks it.
-export function claimRow(claim: Claim, tally: Tally | undefined): string {
+// T55: the repo files a proof names, as `path` or `path:line`, that exist (and whose line exists). A claim marked
+// built must name at least one, so every built row can be checked from the repo.
+export function proofFiles(proof: string, root: string): { found: string[]; missing: string[] } {
+  const refs = [...proof.matchAll(/(?<![\w/.-])((?:[\w.-]+\/)*[\w.-]+\.(?:ts|tsx|json|jsonl|md|txt|yml|png|gif|sha256|lock))(?::(\d+))?/g)];
+  const found: string[] = [], missing: string[] = [];
+  for (const [, path, line] of refs) {
+    const full = join(root, path!);
+    const ok = existsSync(full) && (!line || readFileSync(full, "utf8").split("\n").length >= Number(line));
+    (ok ? found : missing).push(line ? `${path}:${line}` : path!);
+  }
+  return { found, missing };
+}
+
+export function claimRow(claim: Claim, tally: Tally | undefined, root?: string): string {
   const tests = tally ? `${tally.passed} of ${tally.passed + tally.failed} tagged tests pass` : "no tagged tests";
+  const files = root && claim.state === "built" ? proofFiles(claim.proof, root) : null;
   const status = claim.state !== "built" ? "planned"
+    : files && (!files.found.length || files.missing.length) ? "proof missing"
     : !/\btests?\b/i.test(claim.proof) ? "no proof yet"
     : !tally ? "no test yet" : tally.failed > 0 ? "built FAIL" : "built PASS";
-  return `${claim.id.padEnd(4)} ${status.padEnd(12)} ${tests}`;
+  const missing = files?.missing.length ? `; missing ${files.missing.join(", ")}` : files && !files.found.length ? "; names no proof file" : "";
+  return `${claim.id.padEnd(4)} ${status.padEnd(12)} ${tests}${missing}`;
 }
 
 export function claimsTable(root: string): { code: number; lines: string[] } {
   const claims = parseClaims(readFileSync(join(root, "plan/plan.md"), "utf8"));
   const resultsPath = join(root, "runs/vitest.json");
   const tally = existsSync(resultsPath) ? tallyTags(JSON.parse(readFileSync(resultsPath, "utf8"))) : new Map<string, Tally>();
-  const rows = claims.map((c) => claimRow(c, tally.get(c.id)));
-  return { code: rows.some((r) => r.includes("built FAIL")) ? 1 : 0, lines: ["claims table:", ...rows] };
+  const rows = claims.map((c) => claimRow(c, tally.get(c.id), root));
+  return { code: rows.some((r) => r.includes("built FAIL") || r.includes("proof missing")) ? 1 : 0, lines: ["claims table:", ...rows] };
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
