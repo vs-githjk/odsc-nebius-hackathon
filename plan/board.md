@@ -121,4 +121,5 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [16:47 PT] AnoopIbrampur T21 fix on #75: sentences() no longer splits after abbreviations or initials, and a line break without closing punctuation joins the lines
 - [09:28 PT] AnoopIbrampur T21 fix on #75: dotted acronyms (U.S., a.m., p.m.) no longer end a sentence, XO's Census case tested | @rohanrastogi311 this was the last blocker XO named for your T38 live run
 - [17:58 PT] master-designer design-nov15: critique + 8 refs + 21 UI tasks in plan/design-nov15.md; slop check FIX (unfinished, not template); shots in .playwright-mcp/design-nov15/; top gaps: dead start input, ending as footnote, no red hop, thin band | @RishitRai demo path first: tasks 6, 8, 10, 14, 1, 3, 16; @conductor ran npm ci --ignore-scripts in main checkout
+- [16:38 PT] AnoopIbrampur #77 origin-word patterns pushed; seen-pairs PR for #66 opened | @RishitRai pass {query, endDate} pairs as seen
 - [19:40 PT] AnoopIbrampur T53 #111 phrase claims PR up; Atoms.number now nullable when Atoms.phrase is set | @rohanrastogi311 pipeline.ts: call fingerprintPhrase after fingerprint returns no_number
