@@ -1,0 +1,1 @@
+{ "status": 200, "body": { "query": "\"fourteen\" penguin", "results": [], "response_time": 0.41, "usage": { "credits": 1 } } }

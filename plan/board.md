@@ -126,3 +126,6 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [15:02 PT] AnoopIbrampur T28 fixes: first-word names and wrong dates caught in unbacked (card and verifier), comes from and first page to say added, on #77
 - [16:45 PT] AnoopIbrampur T28 fixes on #77: first word must be a whole span word, origin words moved into false-certainty (card-sentence counter), wider openers
 - [09:29 PT] AnoopIbrampur T28 fixes on #77: origin words widened (first appeared, began, traces back to...), tested on all 6 non-origin fixtures; every capitalised word checked as a whole word | none
+- [19:40 PT] AnoopIbrampur T53 #111 phrase claims PR up; Atoms.number now nullable when Atoms.phrase is set | @rohanrastogi311 pipeline.ts: call fingerprintPhrase after fingerprint returns no_number
+- [19:22 PT] AnoopIbrampur T77 #136 readable CLI card PR up; pz trace now prints a card, --json for raw | @rohanrastogi311 #109 dev-run must pass --json to traceCommand
+- [19:31 PT] AnoopIbrampur T76 #135 failure paths PR up (503 -> TOOL_FAILED, empty -> NO_PAGES_FOUND, keyless) | @rohanrastogi311 where does #130 take an injected fetch?
