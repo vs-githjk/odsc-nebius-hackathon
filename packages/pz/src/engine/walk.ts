@@ -6,7 +6,7 @@ import { ClientError } from "../clients/errors.ts";
 import { createTavily } from "../clients/tavily.ts";
 import { createWayback } from "../clients/wayback.ts";
 import { findSpan } from "../match/verbatim.ts";
-import { atomHit, decideStopState, normalise, parseNumbers, sameNumber, type Rules } from "../rules/index.ts";
+import { atomHit, claimHit, decideStopState, isRange, normalise, parseNumbers, sameNumber, type Rules } from "../rules/index.ts";
 import type { Atoms, Cluster, DateInfo, Edge, Hop, Node, Readout, Span, Trace } from "../schema/index.ts";
 import type { UsageLog } from "../usage/log.ts";
 
@@ -44,6 +44,12 @@ const dayBefore = (iso: string) => new Date(Date.parse(iso) - 86_400_000).toISOS
 const isoDate = (date: string | null) => (date && !Number.isNaN(Date.parse(date)) ? new Date(date).toISOString().slice(0, 10) : "9999");
 
 export function queriesFor(atoms: Atoms): string[] {
+  // A phrase claim (T53) searches for its phrase and its variants, quoted.
+  // A range adds the subject word, the same as a number does ("40 to 45 percent" heat).
+  if (!atoms.number) {
+    const tail = isRange(atoms) ? ` ${atoms.subjectLemma}` : "";
+    return [...new Set([atoms.phrase!, ...atoms.variants].map((p) => `"${p}"${tail}`))].slice(0, MAX_QUERIES);
+  }
   const phrases = atoms.variants.length > 0 ? atoms.variants : [[atoms.number.raw, atoms.unit].filter(Boolean).join(" ")];
   return [...new Set(phrases.map((p) => `"${p}" ${atoms.subjectLemma}`))].slice(0, MAX_QUERIES);
 }
@@ -80,6 +86,7 @@ function sentences(text: string): { text: string; start: number }[] {
 
 // A negation anywhere before the claim's number means the sentence does not assert it.
 function assertsNumber(sentence: string, atoms: Atoms, prefixes: string[]): boolean {
+  if (!atoms.number) return false;
   const target = parseNumbers(atoms.number.canonical).numbers[0];
   const hit = target && parseNumbers(sentence).numbers.find((n) => sameNumber(n, target).equal);
   if (!hit) return false;
@@ -188,7 +195,9 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
   async function readPage(url: string, title: string, raw: string, apiDate: string | null): Promise<boolean> {
     const { text, links } = toPlain(raw);
     const sentence = sentences(text).find(
-      (s) => s.text.length <= MAX_SENTENCE_CHARS && s.text.toLowerCase().includes(lemma) && atomHit(s.text, atoms, rules.weakNumberMinSigDigits) && assertsNumber(s.text, atoms, rules.negationPrefixes),
+      (s) => s.text.length <= MAX_SENTENCE_CHARS && (atoms.number
+        ? s.text.toLowerCase().includes(lemma) && atomHit(s.text, atoms, rules.weakNumberMinSigDigits) && assertsNumber(s.text, atoms, rules.negationPrefixes)
+        : claimHit(s.text, atoms, rules)),
     );
     if (!sentence) {
       note({ step: "read", url, kept: false, reason: "no sentence asserts the claim's atoms" });
