@@ -2,15 +2,17 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import { parseArgs } from "node:util";
+import { renderCard } from "../card/terminal.ts";
 import { recordTrace, replayTrace, runTrace, type Pipeline, type RunEvent, type Wayback } from "../engine/run.ts";
 
-export async function traceCommand(args: string[], io = {
+export async function traceCommand(args: string[], io: { write(line: string): void; error(line: string): void; color?: boolean } = {
   write: (line: string) => console.log(line), error: (line: string) => console.error(line),
+  color: !!process.stdout.isTTY && !process.env.NO_COLOR,
 }): Promise<number> {
   try {
     const { values, positionals } = parseArgs({ args, allowPositionals: true, options: {
       "replay-of": { type: "string" }, pipeline: { type: "string" }, out: { type: "string" },
-      pages: { type: "string" }, events: { type: "boolean" },
+      pages: { type: "string" }, events: { type: "boolean" }, json: { type: "boolean" },
     } });
     const emit = (event: RunEvent) => io.write(JSON.stringify(event));
     let trace;
@@ -26,7 +28,9 @@ export async function traceCommand(args: string[], io = {
     if (values.out) recordTrace(values.out, trace);
     if (values.events) {
       if (values["replay-of"]) emit({ sequence: 0, type: "trace", trace });
-    } else io.write(JSON.stringify(trace));
+    } else if (values.json) io.write(JSON.stringify(trace));
+    // The default is the readable card (T77); --json gives the raw trace for scripts and pz verify.
+    else io.write(renderCard(trace, { color: io.color ?? false }));
     return 0;
   } catch (error) {
     // Only known code literals may leave this boundary, never provider messages.

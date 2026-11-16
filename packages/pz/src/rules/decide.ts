@@ -1,6 +1,7 @@
 import type { Decision, Node, Trace, TypedAnswer } from "../schema/index.ts";
 import { hasInjection, isInjected, isNegated } from "./negation.ts";
 import { normalise } from "./normalise.ts";
+import { claimHit } from "./claim-hit.ts";
 import { atomHit, parseNumbers, sameNumber } from "./numbers.ts";
 import type { Rules } from "./rules.ts";
 
@@ -20,6 +21,8 @@ function confidentYes(answer: TypedAnswer | null | undefined, rules: Rules): boo
 // and another page gives the subject only other numbers. A shared unrelated number (a year, a count) hides nothing.
 function conflicting(trace: Trace, pages: Node[], rules: Rules): boolean {
   const atoms = trace.claim.atoms;
+  // A phrase claim (T53) has no number to disagree about.
+  if (!atoms.number) return false;
   const target = parseNumbers(atoms.number.canonical).numbers[0];
   if (!target) return false;
   const lemma = normalise(atoms.subjectLemma).toLowerCase();
@@ -60,7 +63,7 @@ export function decideStopState(trace: Trace, rules: Rules): Decision {
     && !trace.spans.some((s) => s.nodeId === n.id && isInjected(s, rules.injectionPatterns)));
   // T36 same-claim check: a span on the page carries the claim's atoms (code) and the typed same_claim says yes.
   const statesClaim = (n: Node) => confidentYes(n.sameClaim, rules)
-    && trace.spans.some((s) => s.nodeId === n.id && atomHit(s.text, trace.claim.atoms, rules.weakNumberMinSigDigits, rules.weakNumberMaxCommas));
+    && trace.spans.some((s) => s.nodeId === n.id && claimHit(s.text, trace.claim.atoms, rules));
   const origin = candidates.find(statesClaim);
   // The gate's reasons appear only when the gate is what blocks: some earliest page passes every other check.
   const notAsked = candidates.filter((n) => !n.sameClaim).length;

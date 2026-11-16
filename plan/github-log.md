@@ -49,3 +49,9 @@
 - Reviewed 8 Anoop PRs (master-reviewer x4). #129 PASS, merged 4a01f79. FIX lists posted: #77, #151, #152, #153 (H: range phrase without subject), #155, #156 (H: injection outside 200-char window), #157. Drafts #154, #158 not reviewed.
 - Cross-PR notes for Rishit: #110 must use SeenQuery[] and guard atoms.number after #153.
 - New issues for Anoop: #159 T92 gallery, #160 T93 rematch, #161 T94 independence count, #162 T95 make judge + pz doctor, #163 T96 limits page. Queue reposted on #4.
+
+## Mon Nov 16 15:30 ET (XO pass, Anoop fixes)
+- Re-reviewed 7 (master-reviewer x2). Merged: #151 712be17, #152 790edce, #153 e8f6ef9, #77 de8207a, #155 cc795be, #157 62bef06. main 423 tests, verify green.
+- #156 FIX: 300-char quote cut in findInjection (H), 3 fresh rewordings (M).
+- #110 heads-up to Rishit: SeenQuery[], atoms.number guard, --json in dev-run.
+- New for Anoop: #164 T97 embeddings for reworded/drifted copies, #165 T98 speed and cost budget. Queue reposted on #4.

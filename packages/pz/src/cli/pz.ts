@@ -6,6 +6,7 @@ import { PZ_VERSION } from "../index.ts";
 import { relockAdversarial, runAdversarial } from "../traps/adversarial.ts";
 import { relock, runTraps } from "../traps/run.ts";
 import { runVerify, type HistoricalManifest } from "../verify/index.ts";
+import { answerCommand } from "./answer.ts";
 import { traceCommand } from "./trace.ts";
 
 const [command, ...args] = process.argv.slice(2);
@@ -41,7 +42,9 @@ if (command === "--version") {
   for (const line of lines) console.log(line);
   process.exitCode = code;
 } else if (command === "trace") {
-  process.exitCode = await traceCommand(args);
+  // Whole-answer mode (T51) has its own command so the single-claim path stays as it is.
+  const answerMode = args.some((a) => a === "--answer" || a === "--answer-replay-of" || a.startsWith("--answer=") || a.startsWith("--answer-replay-of="));
+  process.exitCode = answerMode ? await answerCommand(args) : await traceCommand(args);
 } else if (command === "traps") {
   const root = fileURLToPath(new URL("../../../../", import.meta.url));
   const paths = { root, casesDir: join(root, "traps/cases"), lockPath: join(root, "traps/traps.lock") };

@@ -92,9 +92,9 @@ describe("intake", () => {
     expect(sentences("Penguins nap.\n14 of them sleep.\n\nThe colony\n\n212 penguins live here").map((s) => s.text))
       .toEqual(["Penguins nap.", "14 of them sleep.", "The colony", "212 penguins live here"]);
     expect(sentences("Key figures\n- 14 naps a day\n- 212 penguins\n1. 40% sleep").map((s) => s.text))
-      .toEqual(["Key figures", "- 14 naps a day", "- 212 penguins", "1. 40% sleep"]);
+      .toEqual(["Key figures", "14 naps a day", "212 penguins", "40% sleep"]);
     expect(sentences("Penguins nap.\nmost sleep 14 hours.\n# Figures\n- It is false that\n  14 penguins nap at once.").map((s) => s.text))
-      .toEqual(["Penguins nap.", "most sleep 14 hours.", "# Figures", "- It is false that 14 penguins nap at once."]);
+      .toEqual(["Penguins nap.", "most sleep 14 hours.", "# Figures", "It is false that 14 penguins nap at once."]);
     expect(sentences("The zoo counted 212 penguins. Dr. Lee counted 14.").map((s) => s.text))
       .toEqual(["The zoo counted 212 penguins.", "Dr. Lee counted 14."]);
   });
@@ -108,7 +108,7 @@ describe("intake", () => {
 
   it("splits sentences per line, and keeps decimals and list items whole", () => {
     expect(sentences("The reservoir holds 4.2 billion litres. It fell to 61%!\n- 14 naps a day\n- 212 penguins").map((s) => s.text))
-      .toEqual(["The reservoir holds 4.2 billion litres.", "It fell to 61%!", "- 14 naps a day", "- 212 penguins"]);
+      .toEqual(["The reservoir holds 4.2 billion litres.", "It fell to 61%!", "14 naps a day", "212 penguins"]);
   });
 
   it("sends one strict-schema request with the pinned model and the answer as data", async () => {
