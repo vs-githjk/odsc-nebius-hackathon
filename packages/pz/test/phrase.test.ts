@@ -51,6 +51,9 @@ describe("T53 fingerprintPhrase on the four E2 claims fingerprint() stops at no_
     const range: Atoms = { number: null, phrase: "40 to 45 percent", unit: "percent", subjectLemma: "heat", population: null, time: null, hedge: null, namedSource: null, variants: ["40-45%"] };
     expect(queriesFor(range)).toEqual(['"40 to 45 percent" heat', '"40-45%" heat']);
     expect(codeQuery(dev["dev-07"]!, range)).toBe('"40 to 45 percent" heat');
+    // Planning keeps the code query (it is copied from the claim), so a range claim never plans zero queries.
+    expect(whyRejected('"40 to 45 percent" heat', { claim: dev["dev-07"]!, atoms: range, hop: null })).toBeNull();
+    expect(whyRejected('"40-45%" heat', { claim: dev["dev-07"]!, atoms: range, hop: null })).toBeNull();
     const quote: Atoms = { ...range, phrase: "doing the same thing over and over again", unit: null, subjectLemma: "insanity", variants: [] };
     expect(queriesFor(quote)).toEqual(['"doing the same thing over and over again"']);
   });
