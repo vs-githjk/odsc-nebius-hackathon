@@ -1,30 +1,31 @@
 # Usage ledger: vs-githjk
 
-Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py. 49 runs.
+Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py. 52 runs.
 
 ## Totals by service
 
 | Service | Calls |
 |---|---|
-| Shell | 1113 |
-| Claude Code tools | 951 |
-| GitHub (gh) | 283 |
-| Other HTTP | 153 |
-| Web search and fetch | 63 |
-| Browser (Playwright) | 43 |
-| Nebius Token Factory | 16 |
+| Shell | 1179 |
+| Claude Code tools | 983 |
+| GitHub (gh) | 294 |
+| Other HTTP | 189 |
+| Web search and fetch | 67 |
+| Browser (Playwright) | 45 |
+| Nebius Token Factory | 18 |
 | Codex | 11 |
 | Apify | 10 |
 | Bright Data | 7 |
+| Tavily API | 1 |
 
 ## LLM tokens
 
 | Kind | Tokens |
 |---|---|
-| input_tokens | 7,881 |
-| cache_creation_input_tokens | 11,220,862 |
-| cache_read_input_tokens | 252,870,586 |
-| output_tokens | 2,194,651 |
+| input_tokens | 8,089 |
+| cache_creation_input_tokens | 11,898,641 |
+| cache_read_input_tokens | 265,580,854 |
+| output_tokens | 2,279,765 |
 
 ## Per run
 
@@ -40,7 +41,7 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 | 2026-10-29T07:46 | master-finder: Market validation for Patient Zero | claude-opus-5-5 | 40,009 | 7 | 2 | 0 | 25 | 0 | 0 | 0 | 0 | 11 |
 | 2026-10-29T08:19 | master-planner: Refine Patient Zero, round 1 | claude-opus-5-5 | 29,492 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 | 2 |
 | 2026-10-29T08:27 | master-auditor: Red-team Patient Zero brief, round 2 | claude-opus-5-5 | 32,092 | 0 | 0 | 0 | 5 | 3 | 0 | 0 | 0 | 5 |
-| 2026-10-29T08:37 | main session | claude-opus-5-5, <synthetic> | 408,346 | 0 | 0 | 0 | 1 | 128 | 3 | 8 | 0 | 4 |
+| 2026-10-29T08:37 | main session | claude-opus-5-5, <synthetic> | 432,301 | 0 | 0 | 0 | 1 | 134 | 3 | 10 | 1 | 4 |
 | 2026-10-29T08:39 | master-planner: Fold auditor r2 fixes into brief | claude-opus-5-5 | 43,561 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 |
 | 2026-10-29T08:42 | master-xo: GitHub kickoff issues for team | claude-opus-5-5 | 27,048 | 0 | 0 | 0 | 0 | 15 | 0 | 2 | 0 | 6 |
 | 2026-10-29T08:46 | master-designer: 10-min world-class Patient Zero look | claude-fable-5-1 | 43,300 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -79,6 +80,9 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 | 2026-11-12T20:22 | master-reviewer: Re-review Rohan #80 #107 #109 | claude-opus-5-5 | 23,954 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 | 2026-11-12T20:22 | master-reviewer: Re-review Anoop #77 #104 #106 | claude-opus-5-5 | 19,534 | 0 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 |
 | 2026-11-12T20:22 | master-reviewer: Re-review Rishit #52 #62, drafts #108 #110 | claude-opus-5-5 | 18,468 | 0 | 0 | 22 | 0 | 4 | 0 | 0 | 0 | 0 |
+| 2026-11-16T01:51 | master-finder: Deadline and competitor research | claude-opus-5-5 | 21,107 | 0 | 0 | 0 | 4 | 2 | 0 | 0 | 0 | 21 |
+| 2026-11-16T01:51 | master-designer: UI/UX research and critique | claude-fable-5-2 | 20,715 | 0 | 0 | 2 | 0 | 1 | 0 | 0 | 0 | 14 |
+| 2026-11-16T01:51 | master-auditor: Judge-mode audit of current repo | claude-opus-5-5 | 19,337 | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | 1 |
 
 ## Detail (service: tool or host)
 
@@ -93,56 +97,72 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 - Browser (Playwright): browser_evaluate: 7
 - Browser (Playwright): browser_navigate: 8
 - Browser (Playwright): browser_resize: 5
-- Browser (Playwright): browser_run_code_unsafe: 2
+- Browser (Playwright): browser_run_code_unsafe: 4
 - Browser (Playwright): browser_snapshot: 1
 - Browser (Playwright): browser_take_screenshot: 13
 - Codex: codex: 11
-- GitHub (gh): gh: 283
+- GitHub (gh): gh: 294
 - Nebius Token Factory: api.studio.nebius.com: 1
-- Nebius Token Factory: api.tokenfactory.nebius.com: 13
+- Nebius Token Factory: api.tokenfactory.nebius.com: 15
 - Nebius Token Factory: tokenfactory.nebius.com: 2
 - Other HTTP: 127.0.0.1: 2
+- Other HTTP: api: 1
 - Other HTTP: api.apify.com: 5
 - Other HTTP: api.github.com: 1
 - Other HTTP: api.studio.nebius.ai: 1
 - Other HTTP: api.tokenfactory.us-central1.nebius.com: 1
 - Other HTTP: app.tavily.com: 1
+- Other HTTP: auto-archiver.bellingcat.com: 1
 - Other HTTP: bangshift.com: 1
 - Other HTTP: cerebralvalley.ai: 1
 - Other HTTP: claude.ai: 1
 - Other HTTP: community.element14.com: 2
+- Other HTTP: consensus.app: 2
 - Other HTTP: dev.nebius.com: 3
 - Other HTTP: discord: 1
+- Other HTTP: docs.github.com: 1
 - Other HTTP: docs.studio.nebius.com: 1
 - Other HTTP: docs.tavily.com: 10
 - Other HTTP: docs.tavily.com.: 1
 - Other HTTP: docs.tokenfactory.nebius.com: 10
+- Other HTTP: elicit.com: 2
 - Other HTTP: en.setopati.com: 1
 - Other HTTP: en.wikipedia.org: 7
 - Other HTTP: forms.hsforms.com: 2
-- Other HTTP: fullfact.org: 2
-- Other HTTP: github.com: 3
+- Other HTTP: fullfact.org: 4
+- Other HTTP: github.com: 5
 - Other HTTP: guinnessworldrecords.com: 1
-- Other HTTP: hackathon.odsc.ai: 8
+- Other HTTP: hackathon.odsc.ai: 11
 - Other HTTP: hn.algolia.com: 6
 - Other HTTP: huntsmarine.com.au: 1
+- Other HTTP: idir.uta.edu: 2
 - Other HTTP: injester-com.pages.dev: 1
 - Other HTTP: lablab.ai: 1
+- Other HTTP: linear.app: 1
+- Other HTTP: localhost: 1
 - Other HTTP: nebius.com: 11
 - Other HTTP: news.cuanschutz.edu: 1
 - Other HTTP: news.ycombinator.com: 1
 - Other HTTP: objection.ai: 1
 - Other HTTP: objection.lol: 1
-- Other HTTP: odsc.ai: 9
+- Other HTTP: odsc.ai: 10
 - Other HTTP: opendatascience.com: 1
+- Other HTTP: originality.ai: 2
+- Other HTTP: ourworldindata.org: 1
 - Other HTTP: powerboatmagazine.co.nz: 1
+- Other HTTP: press.stripe.com: 1
+- Other HTTP: pudding.cool: 1
 - Other HTTP: quoteinvestigator.com: 1
 - Other HTTP: registry.npmjs.org: 2
 - Other HTTP: reporterslab.org: 2
+- Other HTTP: scite.ai: 2
 - Other HTTP: share.hsforms.com: 1
+- Other HTTP: sourcetrail-chi.vercel.app: 1
 - Other HTTP: static.nebius.com: 1
 - Other HTTP: studyfinds.com: 1
-- Other HTTP: web.archive.org: 7
+- Other HTTP: support.google.com: 2
+- Other HTTP: toolbox.google.com: 1
+- Other HTTP: web.archive.org: 8
 - Other HTTP: web.augsburg.edu: 1
 - Other HTTP: www.abc.net.au: 1
 - Other HTTP: www.asurion.com: 3
@@ -153,12 +173,16 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 - Other HTTP: www.damiencharlotin.com: 1
 - Other HTTP: www.earth.com: 1
 - Other HTTP: www.epocrates.com: 1
+- Other HTTP: www.factiverse.ai: 2
 - Other HTTP: www.floridahealth.gov: 4
 - Other HTTP: www.fox6now.com: 1
 - Other HTTP: www.goldmansachs.com: 3
 - Other HTTP: www.higherlowergame.com: 1
 - Other HTTP: www.nbcrightnow.com: 1
+- Other HTTP: www.nytimes.com: 1
+- Other HTTP: www.perplexity.ai: 1
 - Other HTTP: www.poynter.org: 1
+- Other HTTP: www.reuters.com: 1
 - Other HTTP: www.snopes.com: 1
 - Other HTTP: www.statisticbrain.com: 2
 - Other HTTP: www.tavily.com: 3
@@ -166,7 +190,8 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 - Other HTTP: www.worldwatch.org: 3
 - Other HTTP: www.wwno.org: 1
 - Other HTTP: www.youtube.com: 1
+- Tavily API: api.tavily.com: 1
 - Web search and fetch: WebFetch: 7
-- Web search and fetch: WebSearch: 56
+- Web search and fetch: WebSearch: 60
 
 Not covered: other people's machines until they run this and commit plan/usage/<who>.*; calls the project's own app makes at runtime (the app logs those itself); Codex's own token use (logged by master-codex).

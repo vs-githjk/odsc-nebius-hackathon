@@ -1,5 +1,7 @@
 # Submission: ODSC x Nebius Hackathon 2026
 
+**Update Nov 15 (master-finder, plan/research-nov15.md):** deadline VERIFIED **Fri Nov 20 2026, 11:59 PM EST (8:59 PM PT)** (bundle `deadlineAt:"2026-11-20T23:59:00-05:00"`). Video 2 to 3 minutes suggested, no hard cap. Prizes $2,000 / $1,000 / $500 in Token Factory credits. Judges: Tony Kipkemboi and Jacquie Capur (Senior Developer Advocates, Nebius), remote. Optional live Q&A for finalists. Form fields and open date still come by email. Weights and the four requirements unchanged. Team submit target: Fri Nov 20 morning PT.
+
 Owner: master-finder seeded this at H3 (2026-10-28 23:20 PDT). Master Planner owns it after the idea is locked. Every row cites where it came from. Status of the whole file: **partial (public pages only)**. There is no hacker portal yet: the submission link is emailed to registered participants near the end, and prizes and judges are "announced soon".
 
 Sources used below (all fetched 2026-10-28 between 23:01 and 23:15 PDT, HTTP 200):
