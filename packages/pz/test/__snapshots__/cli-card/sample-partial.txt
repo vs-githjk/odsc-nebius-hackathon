@@ -1,0 +1,22 @@
+Patient Zero  SAMPLE an invented example, not a real search
+
+Claim    Harbor Zoo penguins nap 14 times a day, twice as often as the zoo's
+         seals
+
+Ending   Stopped early
+         The search hit its credit cap before it finished.
+         Decision table row 2 of 6.
+
+Earliest Harbor Zoo keeper log, spring 2019
+         harborzoo.example, dataset, published 2019-04-30 (page metadata)
+         "The adult penguins napped a median of 14 times a day during daylight
+         hours."
+         https://harborzoo.example/keeper-log-2019
+
+Roots    3 pages read, in 3 groups of copies. Traced to 1 root we could link
+         (0 clusters unlinked).
+
+Cost     150 credits, $0.21, 140 s
+
+Synthetic: an invented claim on invented pages.
+Raw trace: add --json (make replay ARGS=--json).

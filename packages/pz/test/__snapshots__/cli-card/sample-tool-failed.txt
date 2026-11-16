@@ -1,0 +1,24 @@
+Patient Zero  SAMPLE an invented example, not a real search
+
+Claim    Harbor Zoo penguins nap 14 times a day, twice as often as the zoo's
+         seals
+
+Ending   A tool failed
+         A search service failed partway through.
+         Decision table row 1 of 6.
+         Tavily search returned http_error 503. Kept: pages read before the
+         failure.
+
+Earliest Harbor Zoo annual report 2019
+         harborzoo.example, report, published 2019-12-15 (page metadata)
+         "Daylight observations found that our adult penguins nap about 14
+         times a day."
+         https://harborzoo.example/annual-report-2019
+
+Roots    1 page read, in 1 group of copies. Traced to 0 roots we could link (1
+         cluster unlinked).
+
+Cost     24 credits, $0.06, 38 s
+
+Synthetic: an invented claim on invented pages.
+Raw trace: add --json (make replay ARGS=--json).

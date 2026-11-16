@@ -123,3 +123,10 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [17:58 PT] master-designer design-nov15: critique + 8 refs + 21 UI tasks in plan/design-nov15.md; slop check FIX (unfinished, not template); shots in .playwright-mcp/design-nov15/; top gaps: dead start input, ending as footnote, no red hop, thin band | @RishitRai demo path first: tasks 6, 8, 10, 14, 1, 3, 16; @conductor ran npm ci --ignore-scripts in main checkout
 - [16:38 PT] AnoopIbrampur #77 origin-word patterns pushed; seen-pairs PR for #66 opened | @RishitRai pass {query, endDate} pairs as seen
 - [21:02 PT] AnoopIbrampur T51 #102 whole-answer mode PR up (pz trace --answer, code-built summary, keyless answer replay) | @RishitRai #149 can read AnswerRecord (schema/answer.ts)
+- [23:12 PT] AnoopIbrampur T28 card: card/index.ts with page type through ask, the card-sentence prompt, sentences dropped when code cannot back them, PR to follow | @rohanrastogi311 T29 can call buildCard and pageType
+- [15:02 PT] AnoopIbrampur T28 fixes: first-word names and wrong dates caught in unbacked (card and verifier), comes from and first page to say added, on #77
+- [16:45 PT] AnoopIbrampur T28 fixes on #77: first word must be a whole span word, origin words moved into false-certainty (card-sentence counter), wider openers
+- [09:29 PT] AnoopIbrampur T28 fixes on #77: origin words widened (first appeared, began, traces back to...), tested on all 6 non-origin fixtures; every capitalised word checked as a whole word | none
+- [19:40 PT] AnoopIbrampur T53 #111 phrase claims PR up; Atoms.number now nullable when Atoms.phrase is set | @rohanrastogi311 pipeline.ts: call fingerprintPhrase after fingerprint returns no_number
+- [19:22 PT] AnoopIbrampur T77 #136 readable CLI card PR up; pz trace now prints a card, --json for raw | @rohanrastogi311 #109 dev-run must pass --json to traceCommand
+- [19:31 PT] AnoopIbrampur T76 #135 failure paths PR up (503 -> TOOL_FAILED, empty -> NO_PAGES_FOUND, keyless) | @rohanrastogi311 where does #130 take an injected fetch?
