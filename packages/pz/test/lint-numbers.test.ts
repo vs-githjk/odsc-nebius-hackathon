@@ -7,7 +7,7 @@ import { lintNumbers, lintNumbersIn } from "../src/cli/lint-numbers.ts";
 
 const files: Record<string, string> = {
   "spike/grading.md": "| Perplexity | 4/4 | 6/6 |\n| Ours | 1/4 | 0/6 |\nruns took 12 to 47 s",
-  "rules.json": "{ \"credits\": 150, \"steps\": 10000 }",
+  "rules.json": "{ \"credits\": 150, \"steps\": 10000, \"cutoff\": 0.50 }",
 };
 const read = (path: string) => files[path] ?? null;
 const lint = (text: string) => lintNumbers("README.md", text, read).map((p) => `${p.line}: ${p.issue}`);
@@ -15,7 +15,17 @@ const lint = (text: string) => lintNumbers("README.md", text, read).map((p) => `
 describe("T55 number lint", () => {
   it("passes a number found in a file its section links to, and fails one that is not", () => {
     expect(lint("## Spike\n\nWe scored 1/4 against 4/4 ([grading](spike/grading.md)).")).toEqual([]);
-    expect(lint("## Spike\n\nWe scored 3/4 ([grading](spike/grading.md)).")).toEqual(["3: \"3\" is not in any file this section links to"]);
+    expect(lint("## Spike\n\nWe scored 3/4 ([grading](spike/grading.md)).")).toEqual(["3: \"3/4\" is not in any file this section links to"]);
+  });
+
+  it("checks a fraction whole: 4/9 is not backed by a file that says 4/4", () => {
+    expect(lint("## Spike\n\nWe scored 4/9 ([grading](spike/grading.md)).")).toEqual(["3: \"4/9\" is not in any file this section links to"]);
+    expect(lint("## Spike\n\nRanges like 40-45 count both ends ([grading](spike/grading.md)).")).toEqual([
+      "3: \"40\" is not in any file this section links to", "3: \"45\" is not in any file this section links to"]);
+  });
+
+  it("compares values, so 0.5 is backed by 0.50", () => {
+    expect(lint("## Caps\n\nA cutoff of 0.5 ([rules](rules.json)).")).toEqual([]);
   });
 
   it("looks only at links in the same section", () => {

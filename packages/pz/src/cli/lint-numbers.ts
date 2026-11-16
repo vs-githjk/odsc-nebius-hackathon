@@ -14,7 +14,11 @@ export const SCOPE = ["README.md", "llms.txt"];
 
 const MONTHS = "jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:t(?:ember)?)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?";
 const DATE = new RegExp(String.raw`\b(?:${MONTHS})\.? \d{1,2}(?:, \d{4})?\b|\b\d{1,2} (?:${MONTHS}) \d{4}\b|\b\d{4}-\d{2}-\d{2}\b`, "giu");
-const NUMBER = /(?<![\p{L}\p{N}_.#\/-])\d+(?:[.,]\d+)*(?![\p{L}\p{N}_])/gu;
+// A fraction ("4/9", our score format) is one number and must appear whole.
+const NUMBER = /(?<![\p{L}\p{N}_.#\/])\d+(?:[.,]\d+)*(?:\/\d+(?:[.,]\d+)*)?(?![\p{L}\p{N}_\/])/gu;
+// Numbers in a linked file, by value: thousands commas only ("[1,5]" is 1 and 5), so "0.50" backs "0.5".
+const SOURCE_NUMBER = /(?<![\d.])(?:\d{1,3}(?:,\d{3})+|\d+)(?:\.\d+)?(?!\d)/g;
+const value = (n: string) => Number(n.replace(/,/g, ""));
 
 type Section = { start: number; lines: string[] };
 
@@ -29,8 +33,15 @@ function sections(text: string): Section[] {
   return out;
 }
 
-// The digits a file would show for a number: "10,000" also matches "10000", and the other way round.
-const forms = (n: string) => [...new Set([n, n.replace(/,/g, ""), Number(n.replace(/,/g, "")).toLocaleString("en-US")])];
+// Is this number in one of the linked files? A fraction needs the same fraction ("4/9", "4 / 9" or "4 of 9"); any
+// other number needs the same value ("10,000" and "10000", "0.5" and "0.50"), never part of a longer one (15 in 150).
+function backed(n: string, sources: string[], values: Set<number>): boolean {
+  const [top, bottom] = n.split("/");
+  if (bottom === undefined) return values.has(value(n));
+  const esc = (x: string) => x.replace(/[.,]/g, "\\$&");
+  const re = new RegExp(String.raw`(?<![\d.,])${esc(top!)}\s*(?:\/|of)\s*${esc(bottom)}(?![\d])`);
+  return sources.some((s) => re.test(s));
+}
 
 export function lintNumbers(file: string, text: string, readLinked: (path: string) => string | null): { line: number; issue: string }[] {
   const problems: { line: number; issue: string }[] = [];
@@ -39,6 +50,7 @@ export function lintNumbers(file: string, text: string, readLinked: (path: strin
     const allowed = new Set([...body.matchAll(/<!--\s*numbers ok:([^>]*)-->/giu)].flatMap((m) => m[1]!.replace(/\([^)]*\)/g, "").split(/[\s,]+/).filter(Boolean)));
     const linked = [...body.matchAll(/\]\(([^)\s#]+)(?:#[^)]*)?\)/g)].map((m) => m[1]!).filter((l) => !/^[a-z]+:/i.test(l));
     const sources = linked.map((l) => readLinked(join(dirname(file), l))).filter((t): t is string => t !== null);
+    const values = new Set(sources.flatMap((t) => [...t.matchAll(SOURCE_NUMBER)].map((m) => value(m[0]))));
     section.lines.forEach((raw, i) => {
       const line = raw
         .replace(/<!--.*?-->/g, " ").replace(/`[^`]*`/g, " ")
@@ -46,7 +58,7 @@ export function lintNumbers(file: string, text: string, readLinked: (path: strin
         .replace(DATE, " ").replace(/\b(?:19|20)\d{2}\b/g, " ").replace(/^\s*\d+[.)]\s/, " ");
       for (const m of line.matchAll(NUMBER)) {
         const n = m[0];
-        if (allowed.has(n) || sources.some((s) => forms(n).some((f) => new RegExp(String.raw`(?<![\d.,])${f.replace(/[.,]/g, "\\$&")}(?![\d])`).test(s)))) continue;
+        if (allowed.has(n) || backed(n, sources, values)) continue;
         problems.push({ line: section.start + i, issue: `"${n}" is not in any file this section links to` });
       }
     });
