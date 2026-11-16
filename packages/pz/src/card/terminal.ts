@@ -134,7 +134,7 @@ export function renderCard(trace: Trace, { color = false }: { color?: boolean } 
   out.push("");
   const r = trace.roots;
   field("Roots", r.pages
-    ? `${plural(r.pages, "page")} read, in ${plural(r.clusters, "group")} of copies. ${plural(r.rootsLinked, "group")} linked back to an earlier page, ${plural(r.clustersUnlinked, "group")} with no link back.`
+    ? `${plural(r.pages, "page")} read, in ${plural(r.clusters, "group")} of copies. Traced to ${plural(r.rootsLinked, "root")} we could link (${plural(r.clustersUnlinked, "cluster")} unlinked).`
     : "No pages read.");
 
   out.push("");
@@ -144,7 +144,7 @@ export function renderCard(trace: Trace, { color = false }: { color?: boolean } 
   if (calls.size) more([...calls].map(([name, n]) => `${name} ${plural(n, "call")}`).join(", "), s.dim);
 
   out.push("");
-  if (trace.scopeNote) out.push(s.dim(trace.scopeNote));
-  out.push(s.dim("Raw trace: add --json."));
+  if (trace.scopeNote) for (const l of wrap(trace.scopeNote, 0)) out.push(s.dim(l));
+  out.push(s.dim("Raw trace: add --json (make replay ARGS=--json)."));
   return out.join("\n");
 }

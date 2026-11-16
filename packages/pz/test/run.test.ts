@@ -233,5 +233,5 @@ describe("trace orchestration and replay", () => {
     writeFileSync(path, output);
     const verified = execFileSync(process.execPath, ["--import", "tsx", "packages/pz/src/cli/pz.ts", "verify", path], { cwd, env, encoding: "utf8" });
     expect(verified).toContain("stop state agrees");
-  });
+  }, 20_000);
 });

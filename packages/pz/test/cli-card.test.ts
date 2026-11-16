@@ -49,6 +49,14 @@ describe("T77 readable CLI card", () => {
     expect(renderCard(t)).toContain("SAMPLE an invented example, not a real search");
   });
 
+  it("wraps a long scope note to the card width", () => {
+    const t = load("sample-origin");
+    const note = "Scope: this trace searched the open web through Tavily and archive copies through the Wayback Machine; pages behind logins, PDFs it could not open, and anything never archived are outside what it can see.";
+    const lines = renderCard({ ...t, scopeNote: note }).split("\n");
+    expect(Math.max(...lines.map((l) => l.length))).toBeLessThanOrEqual(78);
+    expect(lines.join(" ")).toContain(note);
+  });
+
   it("adds colour only when asked", () => {
     const t = load("sample-origin");
     const coloured = renderCard(t, { color: true });

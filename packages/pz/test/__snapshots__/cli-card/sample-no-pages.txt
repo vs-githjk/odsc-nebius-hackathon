@@ -14,4 +14,4 @@ Roots    No pages read.
 Cost     24 credits, $0.06, 38 s
 
 Synthetic: an invented claim on invented pages.
-Raw trace: add --json.
+Raw trace: add --json (make replay ARGS=--json).

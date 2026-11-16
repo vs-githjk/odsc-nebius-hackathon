@@ -19,10 +19,10 @@ Earliest Harbor Zoo keeper log, spring 2019
          resting."
          https://harborzoo.example/faq
 
-Roots    3 pages read, in 2 groups of copies. 1 group linked back to an
-         earlier page, 0 groups with no link back.
+Roots    3 pages read, in 2 groups of copies. Traced to 1 root we could link
+         (0 clusters unlinked).
 
 Cost     24 credits, $0.06, 38 s
 
 Synthetic: an invented claim on invented pages.
-Raw trace: add --json.
+Raw trace: add --json (make replay ARGS=--json).
