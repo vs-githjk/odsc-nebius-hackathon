@@ -151,7 +151,7 @@ describe("trace orchestration and replay", () => {
       'spans: value => ({trace: value, pages: [{url: value.nodes[0].url, text: "page", metadata: "2019-12-14"}]})};',
     ].join("\n"));
     const lines: string[] = [];
-    expect(await traceCommand(["input", "--pipeline", path], { write: line => lines.push(line), error: line => lines.push(line) })).toBe(0);
+    expect(await traceCommand(["input", "--pipeline", path, "--json"], { write: line => lines.push(line), error: line => lines.push(line) })).toBe(0);
     expect(JSON.parse(lines[0]!).nodes[0].date).toMatchObject({ value: "2019-12-14", source: "metadata" });
   });
   it("rejects readouts that mutate a dated node in place", async () => {
@@ -206,8 +206,12 @@ describe("trace orchestration and replay", () => {
   it("runs the keyless replay CLI in JSON and event modes, rejecting invalid evidence", async () => {
     const lines: string[] = [], errors: string[] = [];
     const io = { write: (s: string) => { lines.push(s); }, error: (s: string) => { errors.push(s); } };
-    expect(await traceCommand(["--replay-of", fixturePath.pathname], io)).toBe(0);
+    expect(await traceCommand(["--replay-of", fixturePath.pathname, "--json"], io)).toBe(0);
     expect(Trace.parse(JSON.parse(lines[0]!)).mode).toBe("SAMPLE");
+    lines.length = 0;
+    expect(await traceCommand(["--replay-of", fixturePath.pathname], io)).toBe(0);
+    expect(lines[0]).toMatch(/^Patient Zero  SAMPLE/);
+    expect(lines[0]).not.toContain("\u001b[");
     lines.length = 0;
     expect(await traceCommand(["--replay-of", fixturePath.pathname, "--events"], io)).toBe(0);
     expect(JSON.parse(lines[0]!)).toMatchObject({ type: "trace", trace: { mode: "SAMPLE" } });
@@ -222,11 +226,12 @@ describe("trace orchestration and replay", () => {
     const cwd = fileURLToPath(new URL("../../../", import.meta.url));
     const env = { ...process.env, NEBIUS_API_KEY: "", TAVILY_API_KEY: "", TYPESAFE_API_KEY: "" };
     // Also runs nested inside make verify; keep Make's directory chatter out of JSON.
-    const output = execFileSync("make", ["--no-print-directory", "replay"], { cwd, env, encoding: "utf8" });
+    const output = execFileSync("make", ["--no-print-directory", "replay", "ARGS=--json"], { cwd, env, encoding: "utf8" });
+    expect(execFileSync("make", ["--no-print-directory", "replay"], { cwd, env, encoding: "utf8" })).toContain("Ending   Trail goes cold");
     expect(Trace.parse(JSON.parse(output)).mode).toBe("SAMPLE");
     const path = join(mkdtempSync(join(tmpdir(), "pz-cli-replay-")), "trace.json");
     writeFileSync(path, output);
     const verified = execFileSync(process.execPath, ["--import", "tsx", "packages/pz/src/cli/pz.ts", "verify", path], { cwd, env, encoding: "utf8" });
     expect(verified).toContain("stop state agrees");
-  });
+  }, 20_000);
 });

@@ -122,3 +122,4 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [09:28 PT] AnoopIbrampur T21 fix on #75: dotted acronyms (U.S., a.m., p.m.) no longer end a sentence, XO's Census case tested | @rohanrastogi311 this was the last blocker XO named for your T38 live run
 - [17:58 PT] master-designer design-nov15: critique + 8 refs + 21 UI tasks in plan/design-nov15.md; slop check FIX (unfinished, not template); shots in .playwright-mcp/design-nov15/; top gaps: dead start input, ending as footnote, no red hop, thin band | @RishitRai demo path first: tasks 6, 8, 10, 14, 1, 3, 16; @conductor ran npm ci --ignore-scripts in main checkout
 - [16:38 PT] AnoopIbrampur #77 origin-word patterns pushed; seen-pairs PR for #66 opened | @RishitRai pass {query, endDate} pairs as seen
+- [19:22 PT] AnoopIbrampur T77 #136 readable CLI card PR up; pz trace now prints a card, --json for raw | @rohanrastogi311 #109 dev-run must pass --json to traceCommand
