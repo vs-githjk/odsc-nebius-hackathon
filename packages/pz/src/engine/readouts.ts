@@ -20,7 +20,7 @@ const measured = (id: Readout["id"], value: Readout["value"]): Readout => ({ id,
 
 // The claim's number in this span, or the span's first number when the claim's number is absent.
 function numberIn(text: string, atoms: Atoms): ParsedNumber | null {
-  const claim = parseNumbers(atoms.number.canonical).numbers[0];
+  const claim = atoms.number ? parseNumbers(atoms.number.canonical).numbers[0] : undefined;
   const numbers = parseNumbers(text).numbers;
   return numbers.find((n) => claim && sameNumber(n, claim).equal) ?? numbers[0] ?? null;
 }

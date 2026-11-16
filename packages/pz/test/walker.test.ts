@@ -133,6 +133,24 @@ describe("walkClaim", () => {
     expect(trace.decision.state).toBe("PARTIAL");
   });
 
+  it("[T53] a phrase claim searches for its quoted phrase and keeps only pages that state it, not ones that negate it", async () => {
+    const quote: SpikeClaim = { id: "quote", text: "Insanity is doing the same thing over and over again and expecting different results.", atoms: {
+      number: null, phrase: "doing the same thing over and over again", unit: null, subjectLemma: "insanity", population: null, time: null, hedge: null, namedSource: null, variants: [] } };
+    const pages: Page[] = [
+      { url: "https://quotes.example/a", date: "2015-01-01", text: "A famous line: insanity is doing the same thing over and over again and expecting different results." },
+      { url: "https://debunk.example/b", date: "2016-01-01", text: "It is not true that Einstein said insanity is doing the same thing over and over again." },
+      { url: "https://other.example/c", date: "2014-01-01", text: "Doing the same thing again and again is a habit." },
+    ];
+    const w = world(pages);
+    const usage = createUsageLog({ path: join(dir, "usage.jsonl") });
+    const deps = { fetch: w.impl, usage, cache: createFileCache(join(dir, "http")), budget: createBudget(150), traceId: quote.id };
+    const { trace } = await walkClaim(quote, { tavily: createTavily({ ...deps, apiKey: "test-key" }), wayback: createWayback(deps), usage, budget: deps.budget,
+      rules, today: "2026-11-02", now: () => "2026-11-02T00:00:00.000Z", pagesDir: join(dir, "pages") });
+    expect(trace.nodes.map((n) => n.url)).toEqual(["https://quotes.example/a"]);
+    expect(trace.searchLog[0]!.query).toBe("\"doing the same thing over and over again\"");
+    expect(queriesFor(quote.atoms)).toEqual(["\"doing the same thing over and over again\""]);
+  });
+
   it("[C1] no results end as NO_PAGES_FOUND", async () => {
     const { trace } = await run(world([]).impl);
     expect(trace.decision.state).toBe("NO_PAGES_FOUND");
@@ -140,7 +158,14 @@ describe("walkClaim", () => {
 
   it("[C1] a tool failure ends as TOOL_FAILED and is not a decision about the claim", async () => {
     const { trace } = await run(world([older], { extractStatus: 401 }).impl);
-    expect(trace.failure).toMatchObject({ service: "tavily", status: "http_error" });
+    expect(trace.failure).toMatchObject({ service: "tavily", endpoint: "extract", status: "http_error 401" });
+    expect(trace.decision.state).toBe("TOOL_FAILED");
+  });
+
+  it("[C1] a Tavily 503 on search names the service, the endpoint and the code (T76)", async () => {
+    const down = (async (input: string | URL | Request) => String(input).includes("/cdx/") ? new Response("[]") : new Response("busy", { status: 503 })) as typeof fetch;
+    const { trace } = await run(down);
+    expect(trace.failure).toEqual({ service: "tavily", endpoint: "search", status: "http_error 503", kept: "0 pages read before the failure" });
     expect(trace.decision.state).toBe("TOOL_FAILED");
   });
 

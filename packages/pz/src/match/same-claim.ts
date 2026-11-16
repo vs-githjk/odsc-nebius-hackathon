@@ -1,5 +1,5 @@
 import { TokenFactoryError, type ChatData, type ChatInput, type Result } from "../clients/tokenfactory.ts";
-import { atomHit, type Rules } from "../rules/index.ts";
+import { claimHit, type Rules } from "../rules/index.ts";
 import type { Atoms } from "../schema/index.ts";
 import type { TypedAnswer } from "../schema/questions.ts";
 import { askSameClaim } from "../typed/ask.ts";
@@ -12,7 +12,8 @@ export type SameClaimResult = {
 };
 
 // T36: may this sentence make its page an origin candidate? Two layers, and both must pass.
-// 1. Code: the claim's number, in digits or words, with its subject in the same clause (atomHit). A miss costs no call.
+// 1. Code: the claim's number, in digits or words, with its subject in the same clause (atomHit), or for a claim
+//    with no single number its phrase, verbatim and not negated (T53). A miss costs no call.
 // 2. The typed same_claim question: "yes" with a known confidence at or above rules.confidenceThreshold.
 //    "no", a low-confidence "yes" (turned into "unsure") and a "yes" with no logprobs never make a candidate.
 // With no model (no client, or no key), nothing becomes a candidate: mode "code_only", reason "no_model".
@@ -21,8 +22,8 @@ export async function sameClaim(
   input: { claim: string; sentence: string; atoms: Atoms },
   deps: { client: Client | null; rules: Rules },
 ): Promise<SameClaimResult> {
-  const { weakNumberMinSigDigits, weakNumberMaxCommas, confidenceThreshold } = deps.rules;
-  if (!atomHit(input.sentence, input.atoms, weakNumberMinSigDigits, weakNumberMaxCommas)) {
+  const { confidenceThreshold } = deps.rules;
+  if (!claimHit(input.sentence, input.atoms, deps.rules)) {
     return { candidate: false, codeHit: false, typed: null, mode: deps.client ? "model" : "code_only", reason: "no_atom" };
   }
   const offline = { candidate: false, codeHit: true, typed: null, mode: "code_only" as const, reason: "no_model" as const };

@@ -1,0 +1,22 @@
+Patient Zero  SAMPLE an invented example, not a real search
+
+Claim    Harbor Zoo penguins nap 14 times a day, twice as often as the zoo's
+         seals
+
+Ending   A tool failed
+         A search service failed partway through.
+         Decision table row 1 of 6.
+         Tavily search returned http_error 503. Kept: 0 pages read before the
+         failure.
+
+Earliest No page to show.
+
+Roots    No pages read.
+
+Cost     0 credits, $0.00, 0 s
+         Tavily 2 calls
+
+Synthetic: an invented claim, and a Tavily response written for this test, not
+captured from a live call. Web pages only; print and paywalled origins are out
+of scope. Earliest source we found, not proof of first use.
+Raw trace: add --json (make replay ARGS=--json).

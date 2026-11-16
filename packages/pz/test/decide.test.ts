@@ -165,4 +165,12 @@ describe("T36 same-claim gate on ORIGIN_FOUND (row 5)", () => {
     cold(trace({ spans: [span("s1", "study", "Penguins napped 41 times a day.")] }));
     cold(trace({ spans: [span("s1", "news", "Penguins napped 14 times a day.")] }));
   });
+  it("[T53] a phrase claim reaches ORIGIN_FOUND on its phrase, never on a negated or reworded one, and never conflicts on numbers", () => {
+    const quote = "Insanity is doing the same thing over and over again";
+    const claim = { text: quote, atoms: { number: null, phrase: "doing the same thing over and over again", unit: null, subjectLemma: "insanity",
+      population: null, time: null, hedge: null, namedSource: null, variants: [] } };
+    expect(state(trace({ claim, spans: [span("s1", "study", "Insanity is doing the same thing over and over again, she wrote in 1981.")] })).state).toBe("ORIGIN_FOUND");
+    cold(trace({ claim, spans: [span("s1", "study", "Insanity is doing the same thing again and again.")] }));
+    cold(trace({ claim, spans: [span("s1", "study", "It is not true that insanity is doing the same thing over and over again.")] }));
+  });
 });
