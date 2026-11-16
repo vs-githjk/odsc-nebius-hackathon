@@ -73,7 +73,8 @@ describe("T50 injection patterns", () => {
 
   it("never fire on ordinary prose, nor on any of the 131 labelled E2 page sentences", () => {
     for (const t of ["Follow the instructions on the label.", "The system was designed in 2019.", "Ignore the noise and focus on the data.", "We answer questions from readers.",
-      "Follow these instructions to set up the router.", "Forget everything you know about penguins.", "Ignore the directions on the old map.", "Model trains reading this far will stall."])
+      "Follow these instructions to set up the router.", "Do not ignore your doctor's instructions.", "If you forget your password, follow the instructions.",
+      "Don't forget to read the cooking instructions.", "This article explains what a system prompt is.", "Experts now say ignore previous guidelines on fat.", "Forget everything you know about penguins.", "Ignore the directions on the old map.", "Model trains reading this far will stall."])
       expect(isInjected(span(t), rules.injectionPatterns), t).toBe(false);
     const labels = [...JSON.parse(readFileSync(join(root, "eval/weak-atoms/labels.json"), "utf8")), ...JSON.parse(readFileSync(join(root, "eval/same-claim/labels.json"), "utf8"))] as { sentence: string }[];
     expect(labels).toHaveLength(131);

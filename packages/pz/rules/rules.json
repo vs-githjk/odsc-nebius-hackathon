@@ -32,12 +32,14 @@
     "it is a myth that"
   ],
   "injectionPatterns": [
-    "\\b(?:ignore|disregard|forget)\\b[^.]{0,80}\\b(?:instructions|directives|prompts?)\\b",
-    "\\b(?:ignore|disregard|forget) (?:all |any |your )?(?:prior|previous|earlier|above|preceding) (?:directions|guidelines|rules)\\b",
+    "\\b(?:ignore|disregard|forget) (?:all |any )?(?:of )?(?:your |the |my |all )?(?:previous|prior|above|earlier|preceding|original|system) (?:instructions|prompts?|directives|directions)\\b",
+    "\\b(?:ignore|disregard|forget) (?:your|all|all your|these|those) (?:instructions|prompts?|directives)\\b",
+    "\\b(?:ignore|disregard|forget) the (?:instructions|prompts?) (?:above|before this)\\b",
     "\\b(?:ignore|disregard|forget) (?:everything|anything|all) (?:you(?:'ve| have)? (?:were|been|was) told|above|before|prior|previous)",
     "\\b(?:ai|llm|language model|assistant|chatbot)s?\\b[^.]{0,20}\\b(?:reading|processing|parsing|summari[sz]ing|crawling) this\\b",
     "\\btreat this (?:page|site|article|document|post|text) as\\b",
-    "\\bsystem prompt\\b",
+    "\\bsystem prompt(?: override)?\\s*:",
+    "\\bsystem prompt override\\b",
     "\\b(?:note|message) to (?:ai|llm|language model|assistant)s?\\b",
     "\\b(?:classify|label|mark) this (?:page|site|article) as\\b",
     "\\banswer (?:yes|study|dataset|report) to\\b"
