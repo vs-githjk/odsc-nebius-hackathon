@@ -14,6 +14,17 @@ Team **Says Who**, ODSC x Nebius Hackathon 2026. Built for Nebius Token Factory 
 | `make replay` | Will replay a recorded trace with its original usage rows | not built yet |
 | `make live CLAIM="..."` | Will run a live trace with your own keys | not built yet |
 
+## When it fails
+
+A search that breaks, or finds nothing, ends in a named state instead of a guess. Both cases run through the engine's own walk, dating, Tavily client and stop-state rules, on a written Tavily response, and replay with no API keys:
+
+| Case | Command | How it ends |
+|---|---|---|
+| Tavily answers 503 on search | `make replay TRACE=fixtures/failure/traces/failure-tavily-503.json` | `TOOL_FAILED`, rule row 1: "Tavily search returned http_error 503", 0 pages kept. It retried once; both attempts are in the usage rows at 0 credits. It says nothing about the claim. |
+| Every search comes back empty | `make replay TRACE=fixtures/failure/traces/failure-empty-search.json` | `NO_PAGES_FOUND`, rule row 3, after searching earlier windows too. Not a tool failure. |
+
+These two are labelled synthetic: the claim is the invented Harbor Zoo one, and the responses were written for the test ([fixtures/failure/](fixtures/failure/record.ts)), not captured from a live call. `node --import tsx fixtures/failure/record.ts` rebuilds them byte for byte.
+
 ## Eval
 
 | Claim set | Origin hit rate | Full trace vs baseline ladder | Full trace vs consumer tools | Cost p50 / p90 | Time to stop state p50 / p90 |
