@@ -8,11 +8,14 @@ export const Mode = z.enum(["LIVE", "REPLAY", "SAMPLE"]);
 export type Mode = z.infer<typeof Mode>;
 export const MatchTier = z.enum(["exact", "normalised"]);
 export type MatchTier = z.infer<typeof MatchTier>;
+// A claim is matched by its number, or, when it has no single number (a quote, a range, "the only..."), by a
+// distinctive phrase copied verbatim from it (T53). Exactly one of the two drives matching; number wins when present.
 export const Atoms = z.object({
-  number: z.object({ raw: z.string(), canonical: z.string() }).strict(), unit: z.string().nullable(),
+  number: z.object({ raw: z.string(), canonical: z.string() }).strict().nullable(), unit: z.string().nullable(),
   subjectLemma: z.string(), population: z.string().nullable(), time: z.string().nullable(),
   hedge: z.string().nullable(), namedSource: z.string().nullable(), variants: z.array(z.string()),
-}).strict();
+  phrase: z.string().min(1).nullable().optional(),
+}).strict().refine((a) => a.number !== null || !!a.phrase, { message: "atoms need a number or a phrase" });
 export type Atoms = z.infer<typeof Atoms>;
 export const Span = z.object({
   id: z.string(), nodeId: z.string(), text: z.string(), contextBefore: z.string().max(200), contextAfter: z.string().max(200),

@@ -69,6 +69,14 @@ export function whyRejected(query: string, input: { claim: string; atoms: Atoms;
   const sources = [input.claim, ...input.atoms.variants, input.hop?.span ?? ""];
   for (const m of q.matchAll(/"([^"]*)"/g)) if (!sources.some((s) => hasPhrase(s, m[1]!))) return "quote_not_in_sources";
 
+  // A phrase claim (T53): the query must carry the phrase, one of its variants or the named source, and no number
+  // that is not in the claim or the hop.
+  if (!input.atoms.number) {
+    const known = [...numbersIn(input.claim), ...numbersIn(input.hop?.span ?? "")];
+    if (numbersIn(q).some((n) => !known.some((k) => k.value === n.value))) return "number_not_in_sources";
+    const carries = [input.atoms.phrase ?? "", ...input.atoms.variants, input.atoms.namedSource ?? ""].some((p) => !!p && hasPhrase(q, p));
+    return carries ? null : "no_atom";
+  }
   const claimNumbers = numbersIn(input.atoms.number.raw);
   const known = [...numbersIn(input.claim), ...numbersIn(input.hop?.span ?? "")];
   const queryNumbers = numbersIn(q);
@@ -97,6 +105,8 @@ export function whyRejected(query: string, input: { claim: string; atoms: Atoms;
 // (The spike's queriesFor quoted the first variant and the subject's stem, which gave "ninety-six" phone and
 // "sixty percent" cand.)
 export function codeQuery(claim: string, atoms: Atoms): string {
+  // A phrase claim (T53) searches for the phrase itself, quoted, as the claim writes it.
+  if (!atoms.number) return `"${normalise(atoms.phrase!)}"`;
   const withUnit = atoms.unit ? `${atoms.number.raw} ${atoms.unit}` : null;
   const phrase = withUnit && hasPhrase(claim, withUnit) ? normalise(claim).slice(lower(claim).indexOf(lower(withUnit)), lower(claim).indexOf(lower(withUnit)) + withUnit.length) : atoms.number.raw;
   const subject = words(claim).find((w) => lemma(w) === atoms.subjectLemma) ?? atoms.subjectLemma;
