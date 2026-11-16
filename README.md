@@ -21,7 +21,7 @@ A search that breaks, or finds nothing, ends in a named state instead of a guess
 | Case | Command | How it ends |
 |---|---|---|
 | Tavily answers 503 on search | `make replay TRACE=fixtures/failure/traces/failure-tavily-503.json` | `TOOL_FAILED`, rule row 1: "Tavily search returned http_error 503", 0 pages kept. It retried once; both attempts are in the usage rows at 0 credits. It says nothing about the claim. |
-| Every search comes back empty | `make replay TRACE=fixtures/failure/traces/failure-empty-search.json` | `NO_PAGES_FOUND`, rule row 3, after searching earlier windows too. Not a tool failure. |
+| Every search comes back empty | `make replay TRACE=fixtures/failure/traces/failure-empty-search.json` | `NO_PAGES_FOUND`, rule row 3. Not a tool failure. |
 
 These two are labelled synthetic: the claim is the invented Harbor Zoo one, and the responses were written for the test ([fixtures/failure/](fixtures/failure/record.ts)), not captured from a live call. `node --import tsx fixtures/failure/record.ts` rebuilds them byte for byte.
 
