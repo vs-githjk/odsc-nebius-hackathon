@@ -1,0 +1,76 @@
+# Submission draft (for Vidyut and XO to edit)
+
+This is the text for the submission form, drafted from what is in the repo on Nov 16. Nothing gets submitted from this file. Vidyut and XO edit it, and it goes into the form only after the live results are in.
+
+- Every number here either links to the file that backs it or is marked `[SLOT: ...]` until a run fills it. `make verify` checks this file with the copy lint and the number lint.
+- The form fields come from the event app: team name, captain name, team description, project URL, deployment URL (optional), report URL (optional) and video link (optional). They are confirmed only when the submission email arrives.
+
+## Team name
+
+Says Who
+
+## Team description
+
+### In two sentences
+
+Patient Zero takes a viral statistic, a quote or a whole AI answer, and walks each claim backwards through time to the earliest web page it can find that states it, quoting the exact sentence on every page. It shows how the wording changed along the way and how many independent roots the copies trace back to. When the trail ends without an origin, it says so and says why: code decides that from the trace, never the model.
+
+### Who it is for
+
+A reporter or fact-checker with one number and a deadline. Today they paste the claim into a chatbot and get a confident source that often says something else when they click it. Patient Zero gives them the chain of pages, each with its verbatim sentence and date, and an honest ending they can check.
+
+### How it works
+
+- **Nebius Token Factory**, `Qwen/Qwen3-30B-A3B-Instruct-2507`, with strict JSON schemas and first-token logprobs. It finds each statistic in a pasted answer, copies the parts of a claim (subject, unit, population, time, named source) that code then checks verbatim, plans search queries that code filters, and answers narrow typed questions: the page type, whether a sentence states the same claim, and how wording changed between two pages. Each answer carries a confidence from its logprobs, and a low one becomes "unsure". [SLOT: the confidence cutoff from #99]
+- **Nebius Token Factory**, `Qwen/Qwen3-Embedding-8B`. It groups reworded copies and finds pages that state the claim with a different number (in review, [#170](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/170)).
+- **Tavily `search`** runs date-windowed searches further and further back in time. **Tavily `extract`** reads each page a search returns.
+- **The Wayback Machine** gives each page's first capture, which caps any date the page claims for itself.
+- **Code** does everything else:
+  - every edge between two pages rests on two verbatim sentences, one on each page;
+  - one decision table picks one of six endings ([packages/pz/src/rules/decide.ts](../packages/pz/src/rules/decide.ts)): tool failed, stopped at a cap, no pages found, conflicting, origin found, or trail goes cold;
+  - caps of 150 Tavily credits, $0.50, 8 hops and 5 pages per round apply to every trace ([packages/pz/rules/rules.json](../packages/pz/rules/rules.json)).
+
+### How we know it works
+
+- **`make verify`**, with no API keys, re-opens every committed trace, re-finds each sentence by its offsets and hashes, and recomputes the ending ([packages/pz/src/verify/checks.ts](../packages/pz/src/verify/checks.ts)). It runs in CI on every push.
+- **Held-out set:** 10 claims, kept private, with their hash committed before the engine stages were built ([eval/heldout.sha256](../eval/heldout.sha256)). Run once, on a frozen engine. Result: [SLOT: held-out origin hits X of 10, and every miss, from #125].
+- **Dev sets:** E2 has 20 claims and is the only set anything is tuned on. E3 has 40 claims and is only checked ([eval/dev-sets.md](../eval/dev-sets.md)). Results: [SLOT: the E2 and E3 dev scores from the first live run].
+- **Planted traps:**
+  - 0 wrong origins on 10 planted traces ([traps/README.md](../traps/README.md));
+  - 0 of 24 fake-origin pages written to fool the model, and 0 of 27 cases run through the real walk and dating with no network. Both are in review ([#156](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/156), [#173](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/173)).
+  - These are planted by us. They are not an accuracy number.
+  <!-- numbers ok: 24, 27 (from #156 and #173, in review) -->
+- **Gallery:** 8 famous viral statistics, with their true origins researched by hand and committed before any trace ran ([#168](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/168)). Result: [SLOT: hits, partials and misses from #159].
+  <!-- numbers ok: 8 (the gallery list in #168, in review) -->
+- **Rematch** against ChatGPT, Claude and Perplexity on 10 drawn E3 claims, graded blind ([#171](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/171)). Result: [SLOT: per-tool totals from #160, losses included].
+
+### The first-week spike, told straight
+
+A first walker with fixed rules and no model lost to all three consumer tools on six claims: Perplexity cited the web target on 4 of 4 claims, and we did on 1 of 4 ([spike/grading.md](../spike/grading.md)). The engine above was built against the causes found in [eval/spike-postmortem.md](../eval/spike-postmortem.md): false matches on common numbers, and searches that never reached the target.
+
+### What it cannot do
+
+- It reads web pages only. Print-only, paywalled and never-archived origins are out of reach, and the trail goes cold there.
+- "Earliest source we found" is not "first use".
+- Every known failure is listed with an example you can run, the rule that should catch it and whether it is caught today, in `docs/limits.md` (in review, [#172](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/172)). Among them: a fake early date in a page's own metadata is trusted, and the number used as a count passes the number rules.
+
+### Cost and speed
+
+[SLOT: median cost and time per trace from the dev run usage rows (#165, #116), with Tavily included]
+
+## Project URL
+
+https://github.com/vs-githjk/odsc-nebius-hackathon [SLOT: the repo is public and has a LICENSE; both are Vidyut's call]
+
+## Deployment URL (optional)
+
+[SLOT: the static REPLAY demo build, if it ships (#121)]
+
+## Report URL (optional)
+
+The README's evaluation section, once the slots above are filled: [README.md](../README.md#evaluation).
+
+## Video link
+
+[SLOT: the demo video, about 2:15, script in docs/demo-script.md (#158)]
+<!-- numbers ok: 2, 15 (the planned video length, 2:15, from the demo script in #158) -->
