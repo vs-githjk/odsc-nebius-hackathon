@@ -6,10 +6,22 @@ Team **Says Who**, ODSC x Nebius Hackathon 2026. Built for Nebius Token Factory 
 
 **Trace GIF:** coming with the first real trace.
 
+## Quick start (no keys needed)
+
+```sh
+git clone https://github.com/vs-githjk/odsc-nebius-hackathon.git && cd odsc-nebius-hackathon
+npm ci
+make judge
+```
+
+`make judge` explains your setup (`pz doctor`), shows every committed trace as a card, re-checks them with `pz verify`, runs the planted traps and ends with one summary line. It needs no API keys and runs in well under a minute. Until the reviewed live traces are committed, the cards are the SAMPLE fixtures, and it says so.
+
 ## Run it
 
 | Command | What it does | Status |
 |---|---|---|
+| `make judge` | The quick start above: setup check, cards, `pz verify`, traps and a summary. No API keys needed. | works now |
+| `make doctor` | Says what is installed and which keys are set (never their values), and which stages run live or replay. `ARGS=--network` makes one free request per service whose key is set. | works now |
 | `make verify` | Re-checks every committed trace, the trap set and the copy lint, runs the leakage test (a stub until the held-out claims are revealed), then prints the claims table. No API keys needed. | works now |
 | `make replay` | Replays a recorded trace as a readable card, with its original usage rows and no network calls. `TRACE=<file>` picks the trace (the default is a SAMPLE); `ARGS=--json` prints the raw trace. | works now |
 | `make live CLAIM="..."` | Will run a live trace with your own keys | not built yet |
@@ -74,7 +86,7 @@ Teammates and their agents: read [docs/AGENTS.md](docs/AGENTS.md) first.
 
 1. Node 24, then `npm ci`.
 2. Copy [.env.example](.env.example) to `.env` and fill it locally (`NEBIUS_API_KEY`, `TAVILY_API_KEY`). `.env` is git-ignored; never paste keys in issues, PRs or chat.
-3. `make verify` needs no keys.
+3. `make judge` and `make verify` need no keys. `make doctor` tells you what is missing and the fix for each line.
 
 ## Models (Nebius Token Factory)
 
