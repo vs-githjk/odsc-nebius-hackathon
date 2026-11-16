@@ -1,0 +1,17 @@
+{
+  "id": "dry-run-negate",
+  "kind": "pipeline",
+  "note": "The earliest page's sentence follows \"It is a myth that\".",
+  "source": "spike/traces/dry-run.json",
+  "mutation": "negate",
+  "expect": {
+    "state": "TRAIL_GOES_COLD",
+    "noOrigin": true,
+    "falseCertainty": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

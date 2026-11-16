@@ -1,0 +1,17 @@
+{
+  "id": "claim-2-negate",
+  "kind": "pipeline",
+  "note": "The earliest page's sentence follows \"It is a myth that\".",
+  "source": "spike/traces/claim-2.json",
+  "mutation": "negate",
+  "expect": {
+    "state": "TRAIL_GOES_COLD",
+    "noOrigin": true,
+    "falseCertainty": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

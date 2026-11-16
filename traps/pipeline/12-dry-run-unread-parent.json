@@ -1,0 +1,17 @@
+{
+  "id": "dry-run-unread-parent",
+  "kind": "pipeline",
+  "note": "The earliest page links, beside its sentence, to an earlier page that cannot be read.",
+  "source": "spike/traces/dry-run.json",
+  "mutation": "unread-parent",
+  "expect": {
+    "state": "TRAIL_GOES_COLD",
+    "noOrigin": true,
+    "falseCertainty": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

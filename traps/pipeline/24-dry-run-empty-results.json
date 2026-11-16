@@ -1,0 +1,17 @@
+{
+  "id": "dry-run-empty-results",
+  "kind": "pipeline",
+  "note": "Every search comes back empty.",
+  "source": "spike/traces/dry-run.json",
+  "mutation": "empty-results",
+  "expect": {
+    "state": "NO_PAGES_FOUND",
+    "noOrigin": true,
+    "falseCertainty": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}
