@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import { describe, expect, it, vi } from "vitest";
 import { TokenFactoryError, type ChatInput } from "../src/clients/tokenfactory.ts";
 import { fingerprint } from "../src/engine/fingerprint.ts";
-import { codeQuery, planQueries, QUERIES_PROMPT, whyRejected, type Hop } from "../src/engine/queries.ts";
+import { codeQuery, planQueries, QUERIES_PROMPT, whyRejected, type Hop, type SeenQuery } from "../src/engine/queries.ts";
 import { loadRules } from "../src/rules/index.ts";
 import type { Atoms } from "../src/schema/index.ts";
 
@@ -17,7 +17,7 @@ const claimText = (id: string) => claims.find((c) => c.id === id)!.text;
 async function atomsFor(id: string): Promise<Atoms> {
   return (await fingerprint(claimText(id), { client: clientFor(fingerprints.responses[id]!) })).atoms!;
 }
-async function plan(id: string, opts: { seen?: string[]; maxQueriesPerHop?: number } = {}) {
+async function plan(id: string, opts: { seen?: SeenQuery[]; maxQueriesPerHop?: number } = {}) {
   const client = clientFor(recorded.cases[id]!.response);
   const out = await planQueries({ claim: claimText(id), atoms: await atomsFor(id), hop: recorded.cases[id]!.hop, seen: opts.seen ?? [] },
     { client, rules: { ...rules, maxQueriesPerHop: opts.maxQueriesPerHop ?? rules.maxQueriesPerHop } });
@@ -111,11 +111,23 @@ describe("query planning", () => {
   });
 
   it("drops repeats of what the trace already searched, and repeats within one plan", async () => {
-    const { out } = await plan("dev-14", { seen: ["  \"96 TIMES a day\"   phones "] });
+    const { out } = await plan("dev-14", { seen: [{ query: "  \"96 TIMES a day\"   phones ", endDate: recorded.cases["dev-14"]!.hop?.date ?? null }] });
     expect(out.rejected[0]).toEqual({ query: "\"96 times a day\" phones", reason: "duplicate" });
     const twice = clientFor(JSON.stringify({ queries: [{ query: "Americans phones", why: "topic" }, { query: "americans  PHONES", why: "topic" }] }));
     const again = await planQueries({ claim: claimText("dev-14"), atoms: await atomsFor("dev-14"), hop: null, seen: [] }, { client: twice, rules });
     expect(again.rejected).toEqual([{ query: "americans  PHONES", reason: "duplicate" }]);
+  });
+
+  it("counts a repeat only when the query and its date limit both match (#66: one query per earlier window)", async () => {
+    const input = { claim: claimText("dev-14"), atoms: await atomsFor("dev-14"), hop: { url: "https://x.example/a", date: "2015-06-01", span: "" } };
+    const q = "\"96 times a day\" phones";
+    const later = await planQueries({ ...input, seen: [{ query: q, endDate: "2018-01-01" }, { query: q, endDate: null }] }, { client: null, rules });
+    expect(later).toMatchObject({ queries: [{ query: q, endDate: "2015-06-01" }], rejected: [] });
+    const same = await planQueries({ ...input, seen: [{ query: q, endDate: "2015-06-01" }] }, { client: null, rules });
+    expect(same).toMatchObject({ queries: [], rejected: [{ query: q, reason: "duplicate" }] });
+    const model = clientFor(JSON.stringify({ queries: [{ query: "Americans phones 96", why: "topic" }] }));
+    const window2 = await planQueries({ ...input, seen: [{ query: q, endDate: "2018-01-01" }, { query: "Americans phones 96", endDate: "2018-01-01" }] }, { client: model, rules });
+    expect(window2.queries.map((x) => x.query)).toEqual([q, "Americans phones 96"]);
   });
 
   it("caps the count from rules.json", async () => {
@@ -131,7 +143,7 @@ describe("query planning", () => {
     expect(none).toEqual({ queries: [{ query: "\"96 times a day\" phones", endDate: null, why: "variant" }], rejected: [], usage: [], mode: "code_only" });
     const noKey = { chat: vi.fn(async () => { throw new TokenFactoryError("not_configured"); }) };
     expect(await planQueries(input, { client: noKey, rules })).toEqual(none);
-    expect(await planQueries({ ...input, seen: ["\"96 times a day\" phones"] }, { client: null, rules }))
+    expect(await planQueries({ ...input, seen: [{ query: "\"96 times a day\" phones", endDate: null }] }, { client: null, rules }))
       .toMatchObject({ queries: [], rejected: [{ query: "\"96 times a day\" phones", reason: "duplicate" }] });
   });
 

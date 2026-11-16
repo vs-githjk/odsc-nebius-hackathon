@@ -12,6 +12,8 @@ const MAX_QUERY_CHARS = 400;
 
 export const WHY = ["variant", "older_wording", "publisher", "study", "topic"] as const;
 export type PlannedQuery = { query: string; endDate: string | null; why: (typeof WHY)[number] };
+// A query the trace already sent, with the date limit it was sent with (null for no limit).
+export type SeenQuery = { query: string; endDate: string | null };
 export type QueryReject = "empty" | "too_long" | "operator" | "quote_not_in_sources" | "number_not_in_sources" | "no_atom" | "duplicate" | "over_cap";
 export type Hop = { url: string; date: string | null; span: string };
 export type PlanResult = { queries: PlannedQuery[]; rejected: { query: string; reason: QueryReject }[]; usage: UsageRow[]; mode: "model" | "code_only" };
@@ -108,7 +110,7 @@ export function codeQuery(claim: string, atoms: Atoms): string {
 // With no Token Factory key (or no client) it plans the code query alone, through the same checks.
 // The date limit is the hop's date, set by code: the walker still owns the earlier-window loop.
 export async function planQueries(
-  input: { claim: string; atoms: Atoms; hop: Hop | null; seen: string[] },
+  input: { claim: string; atoms: Atoms; hop: Hop | null; seen: SeenQuery[] },
   deps: { client: Client | null; rules: Rules },
 ): Promise<PlanResult> {
   const endDate = input.hop?.date && /^\d{4}-\d{2}-\d{2}$/.test(input.hop.date) ? input.hop.date : null;
@@ -134,13 +136,16 @@ export async function planQueries(
     }
   }
 
-  const seen = new Set(input.seen.map(queryKey));
+  // A repeat is the same query with the same date limit (#66): the walker re-sends a query for each earlier window,
+  // and that is a new search, not a duplicate.
+  const pair = (query: string, end: string | null) => `${queryKey(query)}\u0000${end ?? ""}`;
+  const seen = new Set(input.seen.map((q) => pair(q.query, q.endDate)));
   const queries: PlannedQuery[] = [];
   const rejected: PlanResult["rejected"] = [];
   for (const { query, why } of proposed) {
-    const reason = whyRejected(query, input) ?? (seen.has(queryKey(query)) ? "duplicate" : queries.length >= deps.rules.maxQueriesPerHop ? "over_cap" : null);
+    const reason = whyRejected(query, input) ?? (seen.has(pair(query, endDate)) ? "duplicate" : queries.length >= deps.rules.maxQueriesPerHop ? "over_cap" : null);
     if (reason) { rejected.push({ query, reason }); continue; }
-    seen.add(queryKey(query));
+    seen.add(pair(query, endDate));
     queries.push({ query: normalise(query), endDate, why });
   }
   return { queries, rejected, usage, mode };
