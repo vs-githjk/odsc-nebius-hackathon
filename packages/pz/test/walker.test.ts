@@ -140,7 +140,14 @@ describe("walkClaim", () => {
 
   it("[C1] a tool failure ends as TOOL_FAILED and is not a decision about the claim", async () => {
     const { trace } = await run(world([older], { extractStatus: 401 }).impl);
-    expect(trace.failure).toMatchObject({ service: "tavily", status: "http_error" });
+    expect(trace.failure).toMatchObject({ service: "tavily", endpoint: "extract", status: "http_error 401" });
+    expect(trace.decision.state).toBe("TOOL_FAILED");
+  });
+
+  it("[C1] a Tavily 503 on search names the service, the endpoint and the code (T76)", async () => {
+    const down = (async (input: string | URL | Request) => String(input).includes("/cdx/") ? new Response("[]") : new Response("busy", { status: 503 })) as typeof fetch;
+    const { trace } = await run(down);
+    expect(trace.failure).toEqual({ service: "tavily", endpoint: "search", status: "http_error 503", kept: "0 pages read before the failure" });
     expect(trace.decision.state).toBe("TOOL_FAILED");
   });
 

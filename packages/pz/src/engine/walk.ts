@@ -131,6 +131,13 @@ function measuredReadouts(parent: string, child: string, atoms: Atoms): Readout[
   ];
 }
 
+// What failed, read from the client error. Its message is "<service> <endpoint>: ..." (clients/http.ts), and the
+// status keeps the HTTP code when there is one: "http_error 503", not just "http_error".
+export function failureOf(err: ClientError, pagesRead: number): NonNullable<Trace["failure"]> {
+  const [, service = "tavily", endpoint = ""] = /^(\S+) (\S+):/.exec(err.message) ?? [];
+  return { service, endpoint, status: err.status ? `${err.code} ${err.status}` : err.code, kept: `${pagesRead} pages read before the failure` };
+}
+
 export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ trace: Trace; log: LogLine[] }> {
   if (deps.replayOf && deps.replayOf.id !== claim.id) {
     throw new Error(`--replay-of holds a trace of ${deps.replayOf.id}, not ${claim.id}`);
@@ -302,7 +309,7 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
     if (!(err instanceof ClientError)) throw err;
     note({ step: "stop", reason: err.code });
     if (err.code === "budget_exceeded") capHit = "credits";
-    else failure = { service: "tavily", endpoint: err.message.split(":")[0] ?? "", status: err.code, kept: `${nodes.length} pages read before the failure` };
+    else failure = failureOf(err, nodes.length);
   }
 
   // Edges run from each dated page to an earlier one: a link beside the span if it reaches one, else the nearest earlier cluster.
