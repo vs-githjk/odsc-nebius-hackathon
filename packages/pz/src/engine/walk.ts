@@ -32,6 +32,9 @@ const CONTEXT_CHARS = 200;
 const LINK_REACH_CHARS = 150;
 const LINKS_PER_SPAN = 3;
 const LINKS_PER_ROUND = 2;
+// T49: fact-check pages read as maps per trace, and the citations taken from each.
+const META_PAGES = 2;
+const META_LINKS = 4;
 const MAX_QUERIES = 3;
 const MAX_SENTENCE_CHARS = 600;
 const SCOPE_NOTE = "Web pages only; print and paywalled origins are out of scope. Earliest source we found, not proof of first use.";
@@ -161,6 +164,8 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
   const seen = new Set<string>();
   const searchLog: Trace["searchLog"] = [];
   let pendingLinks: string[] = [];
+  // T49: a citation found on a meta page, mapped to that page's url. These are read before any other link.
+  const metaLinks = new Map<string, string>();
   let capHit: Trace["budget"]["capHit"] = null;
   let failure: Trace["failure"] = null;
   let earlierWindowSearches = 0;
@@ -244,10 +249,45 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
       id, url, domain: hostOf(url), title, date, clusterId: clusterKeys.get(clusterKey)!,
       evidence: "observed", meta, read: true, versionOf: null, spanIds: [spanId], citesEarlier: parents.length > 0,
       candidateParents: parents.map((p) => ({ url: p, read: seen.has(p) })), pageType: null,
+      ...(rules.metaMaps ? { foundViaMeta: metaLinks.get(url) ?? null } : {}),
     });
     if (!meta) pendingLinks.push(...parents.filter((p) => !seen.has(p)));
+    // T49: a meta page is off the path, but what it cites is a map to the origin.
+    else if (rules.metaMaps) for (const p of parents) if (!seen.has(p) && !metaLinks.has(p)) { metaLinks.set(p, url); pendingLinks.unshift(p); }
     note({ step: "read", url, kept: true, reason: meta ? "meta page, off the path" : "span found" });
     return !meta;
+  }
+
+  // T49: a fact-check page, read as a map. It becomes a meta node (never an origin, no span needed) whose candidate
+  // parents are the pages it cites beside the claim's number or subject, those with the number first, at most
+  // META_LINKS. They are read before any other link.
+  async function readMeta(url: string, title: string, raw: string): Promise<void> {
+    const { text, links } = toPlain(raw);
+    const lower = text.toLowerCase();
+    const number = atoms.number?.raw.toLowerCase() ?? atoms.phrase?.toLowerCase() ?? "";
+    const scored = links.flatMap((l, i) => {
+      let target: string;
+      try { const t = new URL(l.href, url); if (!t.protocol.startsWith("http")) return []; target = canonUrl(t.href); } catch { return []; }
+      if (hostOf(target) === hostOf(url) || excluded(target)) return [];
+      const around = lower.slice(Math.max(0, l.start - LINK_REACH_CHARS), l.end + LINK_REACH_CHARS);
+      const score = (number && around.includes(number) ? 2 : 0) + (around.includes(lemma) ? 1 : 0);
+      return [{ target, score, i }];
+    });
+    // Only citations the page ties to the claim (its number or subject nearby) become leads: an unread lead blocks an
+    // origin, so a share button or a "more checks" link must not.
+    const cited = [...new Map(scored.filter((c) => c.score > 0).sort((a, b) => b.score - a.score || a.i - b.i).map((c) => [c.target, c])).keys()].slice(0, META_LINKS);
+    const id = `n${nodes.length + 1}`;
+    const dir = join(deps.pagesDir, claim.id);
+    mkdirSync(dir, { recursive: true });
+    writeFileSync(join(dir, `${id}.txt`), text);
+    clusterKeys.set(`meta|${url}`, `c${clusterKeys.size + 1}`);
+    nodes.push({
+      id, url, domain: hostOf(url), title, date: { kind: "unconfirmed", value: null, source: "tavily", firstCapture: null, conflictingDate: false },
+      clusterId: clusterKeys.get(`meta|${url}`)!, evidence: "observed", meta: true, read: true, versionOf: null, spanIds: [], citesEarlier: cited.length > 0,
+      candidateParents: cited.map((p) => ({ url: p, read: seen.has(p) })), pageType: null, foundViaMeta: null,
+    });
+    for (const p of [...cited].reverse()) if (!seen.has(p) && !metaLinks.has(p)) { metaLinks.set(p, url); pendingLinks.unshift(p); }
+    note({ step: "read", url, kept: true, reason: `fact-check page read as a map, ${cited.length} citation(s) to follow` });
   }
 
   const outOfTime = () => Date.now() - started >= rules.caps.ms;
@@ -279,8 +319,24 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
         note({ step: "search", query, reason: `end_date ${endDate}${filter ? ", filtered" : ""}, ${data.results.length} results` });
       }
 
-      // Links beside a span go first: they are the page's own citation of its parent.
-      const links = [...new Set(pendingLinks.filter((u) => !seen.has(u)))].slice(0, LINKS_PER_ROUND);
+      // T49: once per trace, fact-check pages that discuss the claim, read as maps before anything else.
+      if (depth === 0 && rules.metaMaps) {
+        const { data } = await deps.tavily.search({
+          query: queries[0]!, exactMatch: true, includeRawContent: false, includePublishedDate: true, maxResults: 5, includeDomains: rules.factCheckDomains,
+        }, { step: "meta-search" });
+        const maps = [...new Set(data.results.map((r) => canonUrl(r.url)).filter((u) => excluded(u) && !seen.has(u)))].slice(0, META_PAGES);
+        searchLog.push({ at: deps.now(), step: "meta-search", query: queries[0]!, endDate: null, startDate: null, results: data.results.length, kept: maps.length, dropped: data.results.length - maps.length });
+        if (maps.length) {
+          const read = await deps.tavily.extract({ urls: maps, format: "markdown" }, { step: "meta-extract" });
+          for (const u of maps) seen.add(u);
+          for (const page of read.data.results) await readMeta(canonUrl(page.url), page.title ?? "", page.raw_content ?? "");
+        }
+      }
+
+      // Links beside a span go first: they are the page's own citation of its parent. Citations from meta pages
+      // (T49) go before those.
+      const unseen = [...new Set(pendingLinks.filter((u) => !seen.has(u)))];
+      const links = [...unseen.filter((u) => metaLinks.has(u)), ...unseen.filter((u) => !metaLinks.has(u))].slice(0, LINKS_PER_ROUND);
       pendingLinks = pendingLinks.filter((u) => !seen.has(u) && !links.includes(u));
       const dated = [...results.entries()].sort(([ua, a], [ub, b]) => isoDate(a.date).localeCompare(isoDate(b.date)) || ua.localeCompare(ub));
       const fromSearch = dated.map(([u]) => u).filter((u) => !links.includes(u));

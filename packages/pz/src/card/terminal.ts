@@ -127,6 +127,8 @@ export function renderCard(trace: Trace, { color = false }: { color?: boolean } 
     more(`${node.domain}${type}, ${dateWords(node)}`);
     const span = trace.spans.find((sp) => sp.nodeId === node.id);
     if (span) more(`"${span.text}"`);
+    // T49: say when a fact-check page pointed the way. It is a map; the page above stands on its own sentence.
+    if (node.foundViaMeta) more(`Found through ${new URL(node.foundViaMeta).hostname.replace(/^www\./, "")}, a page about the claim; that page is a map, never the origin.`, s.dim);
     more(node.url, s.dim);
     if (i < earliest.length - 1) out.push("");
   });

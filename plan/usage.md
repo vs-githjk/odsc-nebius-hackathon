@@ -1,42 +1,42 @@
 # Usage ledger (everyone)
 
-Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py. 53 runs across 2 people: AnoopIbrampur, vs-githjk.
+Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py. 54 runs across 2 people: AnoopIbrampur, vs-githjk.
 
 ## By person
 
 | Who | Runs | Output tokens | Apify | Bright Data | Web | GitHub | Codex | Last updated (UTC) |
 |---|---|---|---|---|---|---|---|---|
-| AnoopIbrampur | 1 | 889,174 | 0 | 0 | 95 | 340 | 0 | 2026-11-16T19:42:49Z |
+| AnoopIbrampur | 2 | 2,006,923 | 0 | 0 | 222 | 755 | 0 | 2026-11-16T22:49:48Z |
 | vs-githjk | 52 | 2,279,765 | 10 | 7 | 67 | 294 | 11 | 2026-11-16T01:58:36Z |
 
 ## Totals by service
 
 | Service | Calls |
 |---|---|
-| Shell | 2214 |
-| Claude Code tools | 1167 |
-| GitHub (gh) | 634 |
-| Other HTTP | 361 |
-| MCP ccd_turn | 202 |
-| Web search and fetch | 162 |
+| Shell | 3576 |
+| Claude Code tools | 1381 |
+| GitHub (gh) | 1049 |
+| Other HTTP | 535 |
+| MCP ccd_turn | 437 |
+| Web search and fetch | 289 |
 | Browser (Playwright) | 45 |
 | Nebius Token Factory | 18 |
+| MCP ccd_host | 14 |
 | Codex | 11 |
 | Apify | 10 |
-| MCP ccd_host | 7 |
 | Bright Data | 7 |
-| MCP ccd_directory | 1 |
-| MCP ccd_pr | 1 |
+| MCP ccd_directory | 2 |
+| MCP ccd_pr | 2 |
 | Tavily API | 1 |
 
 ## LLM tokens
 
 | Kind | Tokens |
 |---|---|
-| input_tokens | 10,065 |
-| cache_creation_input_tokens | 16,003,557 |
-| cache_read_input_tokens | 504,186,167 |
-| output_tokens | 3,168,939 |
+| input_tokens | 12,565 |
+| cache_creation_input_tokens | 20,630,412 |
+| cache_read_input_tokens | 830,643,139 |
+| output_tokens | 4,286,688 |
 
 ## Per run
 
@@ -71,6 +71,7 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 | vs-githjk | 2026-10-29T19:16 | master-xo: Post the Oct 29 task issues | claude-opus-5-5 | 23,591 | 0 | 0 | 0 | 0 | 8 | 0 | 0 | 0 | 0 |
 | vs-githjk | 2026-10-29T19:16 | master-finder: Pick spike claims 5 and 6 | claude-opus-5-5 | 22,586 | 3 | 0 | 0 | 10 | 0 | 0 | 0 | 0 | 21 |
 | AnoopIbrampur | 2026-10-30T20:10 | main session | claude-opus-5-5, claude-sonnet-5-5 | 889,174 | 0 | 0 | 0 | 95 | 340 | 0 | 0 | 0 | 172 |
+| AnoopIbrampur | 2026-10-30T20:10 | main session | claude-opus-5-5, claude-sonnet-5-5 | 1,117,749 | 0 | 0 | 0 | 127 | 415 | 0 | 0 | 0 | 174 |
 | vs-githjk | 2026-10-31T17:53 | master-xo: Post Oct 31 team batch | claude-opus-5-5 | 17,818 | 0 | 0 | 0 | 0 | 7 | 0 | 0 | 0 | 0 |
 | vs-githjk | 2026-10-31T17:53 | master-reviewer: Review PRs 29 and 30 | claude-opus-5-5 | 23,036 | 0 | 0 | 0 | 0 | 7 | 0 | 2 | 0 | 1 |
 | vs-githjk | 2026-11-01T22:55 | master-reviewer: Review PR 35 skeleton | claude-opus-5-5 | 17,524 | 0 | 0 | 0 | 0 | 5 | 0 | 0 | 0 | 0 |
@@ -113,33 +114,33 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 - Browser (Playwright): browser_snapshot: 1
 - Browser (Playwright): browser_take_screenshot: 13
 - Codex: codex: 11
-- GitHub (gh): gh: 634
-- MCP ccd_directory: change_directory: 1
-- MCP ccd_host: open_in_editor: 7
-- MCP ccd_pr: get_status: 1
-- MCP ccd_turn: update_plan: 154
-- MCP ccd_turn: wrap_up: 48
+- GitHub (gh): gh: 1049
+- MCP ccd_directory: change_directory: 2
+- MCP ccd_host: open_in_editor: 14
+- MCP ccd_pr: get_status: 2
+- MCP ccd_turn: update_plan: 328
+- MCP ccd_turn: wrap_up: 109
 - Nebius Token Factory: api.studio.nebius.com: 1
 - Nebius Token Factory: api.tokenfactory.nebius.com: 15
 - Nebius Token Factory: tokenfactory.nebius.com: 2
 - Other HTTP: 127.0.0.1: 2
-- Other HTTP: amr-review.org: 3
+- Other HTTP: amr-review.org: 6
 - Other HTTP: api: 1
 - Other HTTP: api.apify.com: 5
 - Other HTTP: api.github.com: 1
 - Other HTTP: api.studio.nebius.ai: 1
 - Other HTTP: api.tokenfactory.us-central1.nebius.com: 1
 - Other HTTP: app.tavily.com: 1
-- Other HTTP: arxiv.org: 4
-- Other HTTP: authorscalendar.info: 1
+- Other HTTP: arxiv.org: 8
+- Other HTTP: authorscalendar.info: 2
 - Other HTTP: auto-archiver.bellingcat.com: 1
-- Other HTTP: awellfedworld.org: 1
+- Other HTTP: awellfedworld.org: 2
 - Other HTTP: bangshift.com: 1
-- Other HTTP: bbdc.it.com: 1
-- Other HTTP: bigthink.com: 1
-- Other HTTP: blogs.ucl.ac.uk: 1
-- Other HTTP: boingboing.net: 1
-- Other HTTP: cellcog.ai: 1
+- Other HTTP: bbdc.it.com: 2
+- Other HTTP: bigthink.com: 2
+- Other HTTP: blogs.ucl.ac.uk: 2
+- Other HTTP: boingboing.net: 2
+- Other HTTP: cellcog.ai: 2
 - Other HTTP: cerebralvalley.ai: 1
 - Other HTTP: claude.ai: 1
 - Other HTTP: community.element14.com: 2
@@ -153,134 +154,135 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 - Other HTTP: docs.tokenfactory.nebius.com: 10
 - Other HTTP: elicit.com: 2
 - Other HTTP: en.setopati.com: 1
-- Other HTTP: en.wikipedia.org: 8
-- Other HTTP: faculty.washington.edu: 1
+- Other HTTP: en.wikipedia.org: 9
+- Other HTTP: faculty.washington.edu: 2
 - Other HTTP: forms.hsforms.com: 2
-- Other HTTP: fortune.com: 1
-- Other HTTP: fullfact.org: 5
-- Other HTTP: github.blog: 1
+- Other HTTP: fortune.com: 2
+- Other HTTP: fullfact.org: 6
+- Other HTTP: github.blog: 2
 - Other HTTP: github.com: 5
-- Other HTTP: gizmodo.com: 1
+- Other HTTP: gizmodo.com: 2
 - Other HTTP: guinnessworldrecords.com: 1
 - Other HTTP: hackathon.odsc.ai: 11
-- Other HTTP: hai.stanford.edu: 3
-- Other HTTP: health.clevelandclinic.org: 1
+- Other HTTP: hai.stanford.edu: 6
+- Other HTTP: health.clevelandclinic.org: 2
 - Other HTTP: hn.algolia.com: 6
-- Other HTTP: html.duckduckgo.com: 2
+- Other HTTP: html.duckduckgo.com: 4
 - Other HTTP: huntsmarine.com.au: 1
 - Other HTTP: idir.uta.edu: 2
 - Other HTTP: injester-com.pages.dev: 1
-- Other HTTP: insideclimatenews.org: 2
-- Other HTTP: iuhealth.org: 1
-- Other HTTP: journals.physiology.org: 1
-- Other HTTP: journals.plos.org: 4
+- Other HTTP: insideclimatenews.org: 4
+- Other HTTP: iuhealth.org: 2
+- Other HTTP: journals.physiology.org: 2
+- Other HTTP: journals.plos.org: 8
 - Other HTTP: lablab.ai: 1
 - Other HTTP: linear.app: 1
-- Other HTTP: listverse.com: 1
+- Other HTTP: listverse.com: 2
 - Other HTTP: localhost: 1
-- Other HTTP: mdanderson.org: 1
-- Other HTTP: medibank.com.au: 2
+- Other HTTP: mdanderson.org: 2
+- Other HTTP: medibank.com.au: 4
 - Other HTTP: nebius.com: 11
 - Other HTTP: news.cuanschutz.edu: 1
 - Other HTTP: news.ycombinator.com: 1
-- Other HTTP: newsarchive.ilri.org: 1
+- Other HTTP: newsarchive.ilri.org: 2
 - Other HTTP: objection.ai: 1
 - Other HTTP: objection.lol: 1
 - Other HTTP: odsc.ai: 10
-- Other HTTP: open.spotify.com: 1
+- Other HTTP: open.spotify.com: 2
 - Other HTTP: opendatascience.com: 1
 - Other HTTP: originality.ai: 2
 - Other HTTP: ourworldindata.org: 1
 - Other HTTP: powerboatmagazine.co.nz: 1
 - Other HTTP: press.stripe.com: 1
-- Other HTTP: pubmed.ncbi.nlm.nih.gov: 6
+- Other HTTP: pubmed.ncbi.nlm.nih.gov: 12
 - Other HTTP: pudding.cool: 1
-- Other HTTP: quoteinvestigator.com: 21
+- Other HTTP: quoteinvestigator.com: 41
 - Other HTTP: registry.npmjs.org: 2
 - Other HTTP: reporterslab.org: 2
 - Other HTTP: scite.ai: 2
 - Other HTTP: share.hsforms.com: 1
-- Other HTTP: shattered.io: 1
-- Other HTTP: siliconangle.com: 1
+- Other HTTP: shattered.io: 2
+- Other HTTP: siliconangle.com: 2
 - Other HTTP: sourcetrail-chi.vercel.app: 1
 - Other HTTP: static.nebius.com: 1
 - Other HTTP: studyfinds.com: 1
 - Other HTTP: support.google.com: 2
-- Other HTTP: survey.stackoverflow.co: 1
-- Other HTTP: tarantulaforum.com: 2
-- Other HTTP: techxplore.com: 2
+- Other HTTP: survey.stackoverflow.co: 2
+- Other HTTP: tarantulaforum.com: 4
+- Other HTTP: techxplore.com: 4
 - Other HTTP: toolbox.google.com: 1
-- Other HTTP: web.archive.org: 11
-- Other HTTP: web.augsburg.edu: 2
-- Other HTTP: whatthefact.app: 1
-- Other HTTP: wwf.panda.org: 3
-- Other HTTP: www.aap.com.au: 1
+- Other HTTP: web.archive.org: 14
+- Other HTTP: web.augsburg.edu: 3
+- Other HTTP: whatthefact.app: 2
+- Other HTTP: wwf.panda.org: 6
+- Other HTTP: www.aap.com.au: 2
 - Other HTTP: www.abc.net.au: 1
-- Other HTTP: www.aigl.blog: 1
-- Other HTTP: www.aljazeera.com: 2
-- Other HTTP: www.artificialintelligence-news.com: 2
-- Other HTTP: www.asurion.com: 4
+- Other HTTP: www.aigl.blog: 2
+- Other HTTP: www.aljazeera.com: 4
+- Other HTTP: www.artificialintelligence-news.com: 4
+- Other HTTP: www.asurion.com: 5
 - Other HTTP: www.atlasobscura.com: 1
-- Other HTTP: www.bbc.com: 1
-- Other HTTP: www.bing.com: 1
-- Other HTTP: www.bmj.com: 1
+- Other HTTP: www.bbc.com: 2
+- Other HTTP: www.bing.com: 2
+- Other HTTP: www.bmj.com: 2
 - Other HTTP: www.boatcoversdirect.com: 1
-- Other HTTP: www.cdp.net: 4
+- Other HTTP: www.cdp.net: 5
 - Other HTTP: www.cjr.org: 1
-- Other HTTP: www.ctvnews.ca: 2
+- Other HTTP: www.ctvnews.ca: 4
 - Other HTTP: www.damiencharlotin.com: 1
-- Other HTTP: www.doc2us.com: 1
+- Other HTTP: www.doc2us.com: 2
 - Other HTTP: www.earth.com: 1
-- Other HTTP: www.ecowatch.com: 1
-- Other HTTP: www.ellenmacarthurfoundation.org: 1
+- Other HTTP: www.ecowatch.com: 2
+- Other HTTP: www.ellenmacarthurfoundation.org: 2
 - Other HTTP: www.epocrates.com: 1
 - Other HTTP: www.factiverse.ai: 2
-- Other HTTP: www.fao.org: 2
-- Other HTTP: www.fashiongonerogue.com: 3
-- Other HTTP: www.floridahealth.gov: 5
-- Other HTTP: www.fox6now.com: 2
-- Other HTTP: www.foxnews.com: 1
-- Other HTTP: www.goldmansachs.com: 4
-- Other HTTP: www.goodreads.com: 1
-- Other HTTP: www.grough.co.uk: 1
+- Other HTTP: www.fao.org: 4
+- Other HTTP: www.fashiongonerogue.com: 6
+- Other HTTP: www.floridahealth.gov: 6
+- Other HTTP: www.fox6now.com: 3
+- Other HTTP: www.foxnews.com: 2
+- Other HTTP: www.goldmansachs.com: 5
+- Other HTTP: www.goodreads.com: 2
+- Other HTTP: www.grough.co.uk: 2
 - Other HTTP: www.higherlowergame.com: 1
-- Other HTTP: www.iea.org: 1
-- Other HTTP: www.imdb.com: 1
-- Other HTTP: www.imperial.ac.uk: 1
-- Other HTTP: www.ipbes.net: 2
-- Other HTTP: www.itu.int: 2
-- Other HTTP: www.mckinsey.com: 1
-- Other HTTP: www.nationalgeographic.com: 1
+- Other HTTP: www.iea.org: 2
+- Other HTTP: www.imdb.com: 2
+- Other HTTP: www.imperial.ac.uk: 2
+- Other HTTP: www.ipbes.net: 4
+- Other HTTP: www.itu.int: 4
+- Other HTTP: www.mckinsey.com: 2
+- Other HTTP: www.nationalgeographic.com: 2
+- Other HTTP: www.nature.com: 1
 - Other HTTP: www.nbcrightnow.com: 1
-- Other HTTP: www.newcastle.edu.au: 1
+- Other HTTP: www.newcastle.edu.au: 2
 - Other HTTP: www.nytimes.com: 1
-- Other HTTP: www.peacefmonline.com: 2
+- Other HTTP: www.peacefmonline.com: 4
 - Other HTTP: www.perplexity.ai: 1
-- Other HTTP: www.pewresearch.org: 4
+- Other HTTP: www.pewresearch.org: 8
 - Other HTTP: www.poynter.org: 1
-- Other HTTP: www.pwc.com: 1
-- Other HTTP: www.reuters.com: 2
-- Other HTTP: www.science.org: 2
-- Other HTTP: www.sciencedaily.com: 1
-- Other HTTP: www.scientificamerican.com: 2
-- Other HTTP: www.shaw.af.mil: 3
-- Other HTTP: www.skeptic.org.uk: 1
-- Other HTTP: www.snopes.com: 9
+- Other HTTP: www.pwc.com: 3
+- Other HTTP: www.reuters.com: 3
+- Other HTTP: www.science.org: 4
+- Other HTTP: www.sciencedaily.com: 2
+- Other HTTP: www.scientificamerican.com: 4
+- Other HTTP: www.shaw.af.mil: 6
+- Other HTTP: www.skeptic.org.uk: 2
+- Other HTTP: www.snopes.com: 17
 - Other HTTP: www.statisticbrain.com: 2
 - Other HTTP: www.tavily.com: 3
-- Other HTTP: www.theweek.in: 1
-- Other HTTP: www.un.org: 1
-- Other HTTP: www.unesco.org: 1
-- Other HTTP: www.visitourchina.com: 2
+- Other HTTP: www.theweek.in: 2
+- Other HTTP: www.un.org: 2
+- Other HTTP: www.unesco.org: 2
+- Other HTTP: www.visitourchina.com: 4
 - Other HTTP: www.w3: 1
-- Other HTTP: www.weforum.org: 2
-- Other HTTP: www.who.int: 15
-- Other HTTP: www.worldwatch.org: 7
+- Other HTTP: www.weforum.org: 4
+- Other HTTP: www.who.int: 30
+- Other HTTP: www.worldwatch.org: 11
 - Other HTTP: www.wwno.org: 1
-- Other HTTP: www.youtube.com: 3
-- Other HTTP: x.com: 1
+- Other HTTP: www.youtube.com: 5
+- Other HTTP: x.com: 2
 - Tavily API: api.tavily.com: 1
-- Web search and fetch: WebFetch: 10
-- Web search and fetch: WebSearch: 152
+- Web search and fetch: WebFetch: 33
+- Web search and fetch: WebSearch: 256
 
 Not covered: other people's machines until they run this and commit plan/usage/<who>.*; calls the project's own app makes at runtime (the app logs those itself); Codex's own token use (logged by master-codex).

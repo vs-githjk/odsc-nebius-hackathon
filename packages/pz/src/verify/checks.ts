@@ -5,7 +5,7 @@ import { decideStopState, isNegated, loadRules, normalise, type Rules } from "..
 import { atomHit } from "../rules/numbers.ts";
 import type { Trace } from "../schema/index.ts";
 
-export type Check = "window_hash" | "offsets" | "atoms" | "negated" | "earliest" | "date_cap" | "edge_spans" | "edge_kind" | "stop_state" | "page_hash" | "page_offsets";
+export type Check = "window_hash" | "offsets" | "atoms" | "negated" | "earliest" | "date_cap" | "edge_spans" | "edge_kind" | "stop_state" | "page_hash" | "page_offsets" | "via_meta";
 export type Failure = { traceId: string; check: Check; detail: string };
 export type TraceReport = { spans: number; spansOk: number; edgesWithoutTwoSpans: number; stateAgrees: boolean; failures: Failure[] };
 
@@ -68,6 +68,15 @@ export function verifyTrace(trace: Trace, opts: { pagesDir?: string; rules?: Rul
     const { value, firstCapture, conflictingDate } = n.date;
     if (value !== null && firstCapture !== null && value > firstCapture && !conflictingDate)
       fail("date_cap", `node ${n.id}: date ${value} is later than its first capture ${firstCapture} and is not flagged`);
+  }
+
+  // T49: a page found through a meta page must point at a meta node in this trace that cites it, and is never meta itself.
+  for (const n of trace.nodes) {
+    if (!n.foundViaMeta) continue;
+    const map = trace.nodes.find((m) => m.url === n.foundViaMeta);
+    if (!map || !map.meta) fail("via_meta", `node ${n.id}: foundViaMeta ${n.foundViaMeta} is not a meta node in this trace`);
+    else if (!map.candidateParents.some((p) => p.url === n.url)) fail("via_meta", `node ${n.id}: meta node ${map.id} does not cite ${n.url}`);
+    if (n.meta) fail("via_meta", `node ${n.id}: a meta page cannot be found through another meta page and count`);
   }
 
   const recomputed = decideStopState(trace, rules);
