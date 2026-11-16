@@ -66,6 +66,9 @@ export const Blame = z.object({
 export type Blame = z.infer<typeof Blame>;
 export const Roots = z.object({
   pages: z.number(), clusters: z.number(), rootsLinked: z.number(), clustersUnlinked: z.number(), studiesFound: z.number().nullable(),
+  // T94: clusters with no link-verified earlier page, and the pages that copy one (pages = independentRoots + copies).
+  // Absent on traces recorded before T94; pz verify re-derives both whenever they are present.
+  independentRoots: z.number().int().min(0).optional(), copies: z.number().int().min(0).optional(),
 }).strict();
 export type Roots = z.infer<typeof Roots>;
 export const Decision = z.object({

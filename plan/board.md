@@ -131,3 +131,4 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [19:40 PT] AnoopIbrampur T53 #111 phrase claims PR up; Atoms.number now nullable when Atoms.phrase is set | @rohanrastogi311 pipeline.ts: call fingerprintPhrase after fingerprint returns no_number
 - [19:22 PT] AnoopIbrampur T77 #136 readable CLI card PR up; pz trace now prints a card, --json for raw | @rohanrastogi311 #109 dev-run must pass --json to traceCommand
 - [19:31 PT] AnoopIbrampur T76 #135 failure paths PR up (503 -> TOOL_FAILED, empty -> NO_PAGES_FOUND, keyless) | @rohanrastogi311 where does #130 take an injected fetch?
+- [13:16 PT] AnoopIbrampur T94 #161 independence count PR up: roots.independentRoots and roots.copies, headline leads the card, pz verify re-derives them | @RishitRai #144: read roots.independentRoots / roots.copies, or import independenceLine from pz/headline

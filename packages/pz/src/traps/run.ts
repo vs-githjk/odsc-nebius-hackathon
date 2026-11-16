@@ -4,6 +4,7 @@ import { join } from "node:path";
 import { z } from "zod";
 import { decideStopState, loadRules } from "../rules/index.ts";
 import { StopState, Trace } from "../schema/index.ts";
+import { computeRoots } from "../engine/cluster.ts";
 import { verifyTrace } from "../verify/checks.ts";
 import { falseCertainty } from "../verify/false-certainty.ts";
 import { bound } from "./bound.ts";
@@ -58,6 +59,8 @@ export function runTraps(paths: TrapPaths): { code: number; lines: string[] } {
     const recomputed = decideStopState(trace, rules);
     // A case stores the decision a pipeline run would store, unless it plants a stale one on purpose.
     if (!c.input.mutate.some((m) => m.set.startsWith("decision"))) trace.decision = recomputed;
+    // Likewise the roots counts (T94): a pipeline derives them from the nodes and edges it stores.
+    if (!c.input.mutate.some((m) => m.set.startsWith("roots"))) trace.roots = computeRoots(trace.nodes, trace.edges);
     const state = recomputed.state;
     const fc = Object.values(falseCertainty(trace, { cardSentence: c.input.cardSentence, rules }));
     if ((state === "ORIGIN_FOUND") !== (c.expect.state === "ORIGIN_FOUND")) wrongOrigins++;
