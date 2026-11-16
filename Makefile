@@ -18,9 +18,9 @@ verify:
 
 TRACE ?= fixtures/traces/sample-rich.json
 
-# The default is explicitly SAMPLE. Supply TRACE=... for a verified real recording.
+# The default is explicitly SAMPLE. Supply TRACE=... for a verified real recording, ARGS=--json for the raw trace.
 replay:
-	@node --import tsx packages/pz/src/cli/pz.ts trace --replay-of "$(TRACE)"
+	@node --import tsx packages/pz/src/cli/pz.ts trace --replay-of "$(TRACE)" $(ARGS)
 
 live:
 	@echo "not built yet"
