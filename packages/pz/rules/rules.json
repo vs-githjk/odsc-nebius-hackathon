@@ -33,6 +33,7 @@
   ],
   "factCheckDomains": ["snopes.com", "politifact.com", "factcheck.org", "fullfact.org", "leadstories.com", "checkyourfact.com", "africacheck.org", "truthorfiction.com", "quoteinvestigator.com"],
   "clusterSimilarityThreshold": 0.9,
+  "secondSameClaimModel": null,
   "hedgeWords": [
     "about",
     "around",
@@ -61,6 +62,7 @@
     "relative to"
   ],
   "notes": {
+    "secondSameClaimModel": "T79: a second Token Factory model family that answers same_claim beside Qwen; an origin then needs its yes too, and any other answer, or none, counts as unsure. null is off. It is switched on (deepseek-ai/DeepSeek-V4-Pro-0813) only if eval/same-claim/second-model.ts shows fewer false hits on E2 without losing true ones.",
     "clusterSimilarityThreshold": "Placeholder. Set on the E2 dev set (#34) before the held-out run; Rohan never edits it.",
     "hedgeWords": "Placeholder list for the hedge_dropped readout (T27). Check on the E2 dev set before the held-out run.",
     "maxQueriesPerHop": "Placeholder cap on planned search queries per hop (T35). Set on the E2 dev set within the credit cap; never on spike or held-out claims.",

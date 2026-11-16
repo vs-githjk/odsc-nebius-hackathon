@@ -17,6 +17,12 @@ function confidentYes(answer: TypedAnswer | null | undefined, rules: Rules): boo
   return !!answer && answer.optionId === "yes" && answer.probability !== null && confident(answer, rules);
 }
 
+// T79: with a second model set, its answer must be a plain yes too. Disagreement, or no answer, is unsure. Its
+// confidence is not required: the second model is a veto, and some families return no logprobs.
+function secondAgrees(n: Node, rules: Rules): boolean {
+  return rules.secondSameClaimModel === null || n.sameClaimSecond?.optionId === "yes";
+}
+
 // Anchored on the claim's number: the earliest cluster conflicts when one page gives that number for the subject
 // and another page gives the subject only other numbers. A shared unrelated number (a year, a count) hides nothing.
 function conflicting(trace: Trace, pages: Node[], rules: Rules): boolean {
@@ -58,16 +64,20 @@ export function decideStopState(trace: Trace, rules: Rules): Decision {
     && n.date.kind !== "unconfirmed" && !n.citesEarlier
     && !trace.spans.some((s) => s.nodeId === n.id && isNegated(s, rules.negationPrefixes)));
   // T36 same-claim check: a span on the page carries the claim's atoms (code) and the typed same_claim says yes.
-  const statesClaim = (n: Node) => confidentYes(n.sameClaim, rules)
+  const statesClaim = (n: Node) => confidentYes(n.sameClaim, rules) && secondAgrees(n, rules)
     && trace.spans.some((s) => s.nodeId === n.id && claimHit(s.text, trace.claim.atoms, rules));
   const origin = candidates.find(statesClaim);
   // The gate's reasons appear only when the gate is what blocks: some earliest page passes every other check.
   const notAsked = candidates.filter((n) => !n.sameClaim).length;
+  // T79: pages the first model says yes on that the second model does not.
+  const vetoed = candidates.filter((n) => confidentYes(n.sameClaim, rules) && !secondAgrees(n, rules)).length;
   const blockers = [
     candidates.length === 0 && "no earliest page with a confirmed date, a primary page type, no earlier citation and no negated span",
     candidates.length > 0 && !origin && (notAsked > 0
       ? `same_claim not asked on ${notAsked} earliest page(s) (no model), which counts as unsure`
-      : "no earliest page states the same claim: the claim's atoms in a span and a confident same_claim yes"),
+      : vetoed > 0
+        ? `the second model (${rules.secondSameClaimModel}) did not say yes on same_claim for ${vetoed} earliest page(s), which counts as unsure`
+        : "no earliest page states the same claim: the claim's atoms in a span and a confident same_claim yes"),
     unreadParents > 0 && `${unreadParents} unread candidate parent(s)`,
     trace.earliest.earlierWindowSearches < rules.earlierWindowSearches && `fewer than ${rules.earlierWindowSearches} earlier-window searches`,
     trace.earliest.earlierFound > 0 && "earlier-window searches found earlier pages",

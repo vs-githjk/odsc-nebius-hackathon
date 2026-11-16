@@ -36,6 +36,9 @@ export const Node = z.object({
   // T36: the typed same_claim answer for this page's span. Absent or null means the gate did not run (no model),
   // which counts as unsure: such a page is never an origin.
   sameClaim: TypedAnswer.nullable().optional(),
+  // T79: the same question answered by a second model family (rules.json secondSameClaimModel). When that rule is
+  // set, an origin needs this to say yes as well; absent or null then counts as unsure.
+  sameClaimSecond: TypedAnswer.nullable().optional(),
 }).strict();
 export type Node = z.infer<typeof Node>;
 export const Edge = z.object({
