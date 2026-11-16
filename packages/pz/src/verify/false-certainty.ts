@@ -1,4 +1,5 @@
 import { decideStopState, loadRules, normalise, parseNumbers, sameNumber, type Rules } from "../rules/index.ts";
+import { parseNumberWords } from "../rules/number-words.ts";
 import type { Trace } from "../schema/index.ts";
 
 export type FalseCertainty = { originOnCold: number; typedWithoutInferred: number; sentenceStrongerThanSpans: number; undatedShownDated: number };
@@ -15,6 +16,8 @@ const OPENERS = new Set(["the", "a", "an", "this", "that", "these", "those", "it
   "about", "around", "nearly", "almost", "more", "less", "none", "neither", "either", "another", "other",
   "researchers", "scientists", "experts", "studies", "study", "reports", "report", "data", "people", "users", "authors",
   "officials", "analysts", "surveys", "survey", "estimates", "claims", "posts", "articles", "sources", "pages", "page"]);
+
+const TITLES = new Set(["dr", "mr", "mrs", "ms", "prof", "professor", "sir", "dame", "rev", "president", "senator", "minister"]);
 
 // Words that say a page is where a claim started. The card may use them only when the trace ends ORIGIN_FOUND.
 export const ORIGIN_WORDS = ["origin", "origins", "originated", "originates", "originally", "started", "starts", "began", "begins", "begun",
@@ -62,8 +65,15 @@ export function unbacked(sentence: string, spans: string[], earliestDates: strin
   const dates = datesIn(sentence).filter((d) => !earliestDates.some((e) => e.startsWith(d.value))).map((d) => d.raw);
   const withoutDates = datesIn(sentence).reduce((s, d) => s.replace(d.raw, " "), normalise(sentence));
   const spanNumbers = parseNumbers(text).numbers;
-  const numbers = parseNumbers(withoutDates).numbers.filter((n) => !spanNumbers.some((m) => sameNumber(n, m).equal)).map((n) => n.raw);
-  const quotes = [...normalise(sentence).matchAll(/"([^"]+)"/g)].filter((m) => !text.includes(m[1]!)).map((m) => m[1]!);
+  const spanValues = new Set([...spanNumbers.map((n) => n.value), ...parseNumberWords(text).map((n) => n.value)]);
+  const numbers = [
+    ...parseNumbers(withoutDates).numbers.filter((n) => !spanNumbers.some((m) => sameNumber(n, m).equal) && !spanValues.has(n.value)),
+    // Number words count too: "fifteen times a day" is not backed by spans that say 14.
+    ...parseNumberWords(withoutDates).filter((n) => !spanValues.has(n.value)),
+  ].map((n) => n.raw);
+  // Double or single quotes. A single quote opens and closes only next to a non-letter, so "zoo's" is not a quote.
+  const quoted = [...normalise(sentence).matchAll(/"([^"]+)"|(?<![\p{L}\p{N}])'([^']+?)'(?![\p{L}\p{N}])/gu)].map((m) => (m[1] ?? m[2])!);
+  const quotes = quoted.filter((q) => !text.includes(q));
   const words = withoutDates.split(" ").map((w) => w.replace(/[^\p{L}']/gu, ""));
   // The first word is a name unless it is a common opener or the spans use it as a whole word in any case
   // ("Penguins" from "penguins" or "penguin"). Every capitalised word must be a whole word in the spans: "Tim" is not
@@ -74,6 +84,11 @@ export function unbacked(sentence: string, spans: string[], earliestDates: strin
     return OPENERS.has(low) || spanWords.has(low) || spanWords.has(low.replace(/s$/, "")) || spanWords.has(`${low}s`);
   };
   const names = words.filter((w, i) => /^\p{Lu}/u.test(w) && !spanWords.has(w.toLowerCase()) && !(i === 0 && first(w)) && !MONTHS.includes(w.toLowerCase()));
+  // A name written in lower case still follows a title ("according to dr okafor").
+  words.forEach((w, i) => {
+    const next = words[i + 1];
+    if (next && TITLES.has(w.toLowerCase().replace(/\.$/, "")) && !/^\p{Lu}/u.test(next) && !spanWords.has(next.toLowerCase())) names.push(next);
+  });
   return { numbers, quotes, names, dates };
 }
 
