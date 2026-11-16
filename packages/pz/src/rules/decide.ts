@@ -1,5 +1,5 @@
 import type { Decision, Node, Trace, TypedAnswer } from "../schema/index.ts";
-import { isNegated } from "./negation.ts";
+import { isInjected, isNegated } from "./negation.ts";
 import { normalise } from "./normalise.ts";
 import { atomHit, parseNumbers, sameNumber } from "./numbers.ts";
 import type { Rules } from "./rules.ts";
@@ -50,10 +50,12 @@ export function decideStopState(trace: Trace, rules: Rules): Decision {
   if (pages.length === 0) return decide("NO_PAGES_FOUND", 3, ["no pages besides meta pages"]);
   if (conflicting(trace, pages, rules)) return decide("CONFLICTING", 4, ["earliest cluster gives different numbers beyond every transform"]);
 
-  const candidates = pages.filter((n) =>
+  const eligible = pages.filter((n) =>
     trace.earliest.nodeIds.includes(n.id) && confident(n.pageType, rules) && rules.primaryPageTypes.includes(n.pageType.optionId)
     && n.date.kind !== "unconfirmed" && !n.citesEarlier
     && !trace.spans.some((s) => s.nodeId === n.id && isNegated(s, rules.negationPrefixes)));
+  // T50: a page with an instruction aimed at a model in or around its span is never an origin.
+  const candidates = eligible.filter((n) => !trace.spans.some((s) => s.nodeId === n.id && isInjected(s, rules.injectionPatterns)));
   // T36 same-claim check: a span on the page carries the claim's atoms (code) and the typed same_claim says yes.
   const statesClaim = (n: Node) => confidentYes(n.sameClaim, rules)
     && trace.spans.some((s) => s.nodeId === n.id && atomHit(s.text, trace.claim.atoms, rules.weakNumberMinSigDigits, rules.weakNumberMaxCommas));
@@ -61,7 +63,8 @@ export function decideStopState(trace: Trace, rules: Rules): Decision {
   // The gate's reasons appear only when the gate is what blocks: some earliest page passes every other check.
   const notAsked = candidates.filter((n) => !n.sameClaim).length;
   const blockers = [
-    candidates.length === 0 && "no earliest page with a confirmed date, a primary page type, no earlier citation and no negated span",
+    eligible.length === 0 && "no earliest page with a confirmed date, a primary page type, no earlier citation and no negated span",
+    eligible.length > 0 && candidates.length === 0 && "instruction-like text beside the claim on every remaining earliest page",
     candidates.length > 0 && !origin && (notAsked > 0
       ? `same_claim not asked on ${notAsked} earliest page(s) (no model), which counts as unsure`
       : "no earliest page states the same claim: the claim's atoms in a span and a confident same_claim yes"),
