@@ -1,6 +1,6 @@
 # Demo video script (draft for Vidyut's approval)
 
-This is a draft. We don't record anything until Vidyut writes "approve". It runs about two minutes, 2:15 at the outside. Rishit's capture script for T64 ([#122](https://github.com/vs-githjk/odsc-nebius-hackathon/issues/122)) shoots the footage, and each shot here has an id, S1 to S11, that the capture script and `docs/demo-shots.md` share.
+This is a draft. We don't record the final take until Vidyut writes "approve". It runs about two minutes, 2:15 at the outside. Rishit's capture script for T64 ([#122](https://github.com/vs-githjk/odsc-nebius-hackathon/issues/122)) shoots the footage, and each shot here has an id, S1 to S11, that the capture script and `docs/demo-shots.md` share.
 
 The challenge asks to see four things: a real question, real Token Factory and Tavily calls, an opened citation that matches its quote, and a case where the evidence runs out or a tool fails. The order follows the video plan in the idea brief (`plan/idea-brief.md`, which stays out of the public repo). We open on the contrast, have our own trace on screen by 0:20 and a trail that goes cold by 0:45, and keep the proof for the second half.
 
@@ -17,7 +17,7 @@ The challenge asks to see four things: a real question, real Token Factory and T
 
 | Time | Shot | On screen | Voice (draft) | Source | Ready? |
 |---|---|---|---|---|---|
-| 0:00 to 0:12 | S1, the contrast | A chatbot gives a confident statistic with a source link. We click it, and the page doesn't say that. | "Ask a chatbot where a number comes from and it'll tell you. Click the source, though, and a lot of the time it says something else." | A head-to-head transcript ([spike grading](../spike/grading.md)), re-shot on a dev claim | pick the claim from Monday's run |
+| 0:00 to 0:12 | S1, the contrast | A chatbot gives a confident statistic with a source link. We click it, and the page doesn't say that. | "Ask a chatbot where a number comes from and it'll tell you. Click the source, though, and a lot of the time it says something else." | Re-shot on the hero claim | needs the hero claim from Tuesday's run |
 | 0:12 to 0:20 | S2, the question | A reporter pastes one viral statistic into the start page and hits Trace | "So we built Patient Zero. Give it one claim, and it walks back through time to the earliest page that says it." | Web app, REPLAY of a reviewed live trace | needs Monday's trace and Rishit's start page |
 | 0:20 to 0:40 | S3, the walk | Pages land on the time axis, oldest on the left. A strip beside it names each call: "Tavily search, window ending 2015", "Token Factory: page type, 0.94". | "Every step here is a real call. Tavily searches further and further back. Token Factory answers small, typed questions about each page, and says how sure it is." | Web app on the REPLAY trace, from its usage rows | needs Monday's trace |
 | 0:40 to 0:52 | S4, the time machine (hero shot) | Drag the scrubber back. The viral sentence rewrites itself, word by word, into the oldest wording we found, with the page and date at each stop. | "Drag it back and you can watch the sentence change. Each stop is a line quoted straight from a real page." | Web app scrubber, same trace | scrubber works; needs the real trace |
@@ -33,10 +33,10 @@ The challenge asks to see four things: a real question, real Token Factory and T
 
 S6, S9 and S10 can be shot as soon as the open PRs merge. S1's pick, S2 to S5, S7 and S11 all need a reviewed trace from Monday's live run, replayed. S8 waits for the held-out run. Zero In, the Atlas and researcher mode stay out unless they get built, and even then they'd get ten seconds at most, after S11.
 
-## Questions for Vidyut
+## Decided (Vidyut, Nov 16)
 
-1. Which claim is the hero for S2 to S5 and S11? It should come from Monday's reviewed traces. One that ends ORIGIN_FOUND on a page judges can open themselves would land best.
-2. For the cold open, do we use a saved head-to-head transcript, or re-shoot it on the hero claim?
-3. Whose voice: yours, a teammate's, or just captions?
-4. The draft runs 2:15. Dropping S7 or S10 gets it to about two minutes.
-5. If the held-out result is weak, S8 shows it as it is. I'd keep the same voice line either way.
+1. Hero claim: XO picks it from Tuesday's live traces. It has to end ORIGIN_FOUND on a page judges can open, and Vidyut sees it before we capture.
+2. Cold open: we re-shoot it on the hero claim.
+3. Voice: Anoop records it, with Rohan as backup. ElevenLabs is only a fallback, and only with Vidyut's account and OK.
+4. Length: it stays at 2:15 and nothing gets cut.
+5. If the held-out result is weak, S8 shows it as it is.
