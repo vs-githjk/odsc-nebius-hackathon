@@ -48,7 +48,7 @@ describe("T51 whole-answer mode", () => {
     expect(record.claims.map((c) => c.trace?.decision.state)).toEqual(["ORIGIN_FOUND", "TRAIL_GOES_COLD", "TRAIL_GOES_COLD", "PARTIAL", "CONFLICTING"]);
     expect(record.rejected).toEqual([{ sentence: "Try to put your phone down more often.", number: "7", reason: "no_number" }]);
     expect(record.summary).toBe("5 statistics: 1 traced to an earliest primary source, 1 has earliest pages that disagree, 2 went cold and 1 stopped at a cap. "
-      + "Set aside by code: 1 sentence whose number code could not match to the text.");
+      + "Set aside by code: 1 sentence with no number to check.");
     expect(() => AnswerRecord.parse(record)).not.toThrow();
     // The list marker is not part of the claim, and the offsets still point at the claim in the answer.
     for (const c of record.claims) expect(normalise(ANSWER).slice(c.start, c.end)).toBe(c.text);
@@ -74,7 +74,7 @@ describe("T51 whole-answer mode", () => {
     const offline = await run({ traceClaim: noKey });
     expect(noKey).toHaveBeenCalledTimes(1);
     expect(offline.claims.every((c) => c.notTraced === "not_configured")).toBe(true);
-    expect(offline.summary).toBe("5 statistics. Not traced: 5 could not run. Set aside by code: 1 sentence whose number code could not match to the text.");
+    expect(offline.summary).toBe("5 statistics. Not traced: 5 could not run. Set aside by code: 1 sentence with no number to check.");
     await expect(run({ traceClaim: vi.fn(async () => { throw new Error("provider said: secret"); }) })).rejects.toThrow("secret");
   });
 
@@ -85,7 +85,8 @@ describe("T51 whole-answer mode", () => {
     });
     const r = (reason: string) => ({ reason });
     expect(answerSummary([], [])).toBe("No statistics found in the answer.");
-    expect(answerSummary([], [r("no_number"), r("not_in_text")])).toBe("No statistics passed the checks. Set aside by code: 2 sentences whose number code could not match to the text.");
+    expect(answerSummary([], [r("number_not_in_sentence"), r("not_in_text")])).toBe("No statistics passed the checks. Set aside by code: 2 sentences whose number code could not match to the text.");
+    expect(answerSummary([], [r("no_number"), r("not_in_text")])).toBe("No statistics passed the checks. Set aside by code: 1 sentence with no number to check and 1 sentence whose number code could not match to the text.");
     expect(answerSummary([claim("ORIGIN_FOUND")], [r("duplicate")])).toBe("1 statistic: 1 traced to an earliest primary source. Set aside by code: 1 repeat of a statistic already listed.");
     expect(answerSummary([], [r("ambiguous"), r("duplicate"), r("duplicate")])).toBe("No statistics passed the checks. Set aside by code: 1 sentence whose number code could not match to the text and 2 repeats of a statistic already listed.");
     expect(answerSummary([claim("NO_PAGES_FOUND"), claim("NO_PAGES_FOUND"), claim("TOOL_FAILED")], []))

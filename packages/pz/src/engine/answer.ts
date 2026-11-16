@@ -41,9 +41,13 @@ export function answerSummary(claims: readonly AnswerClaim[], rejected: readonly
   if (notTraced.length) sentences.push(`Not traced: ${list(notTraced)}.`);
   // Worded by intake's reason: a repeat is not a sentence code failed to match.
   const repeats = rejected.filter((r) => r.reason === "duplicate").length;
-  const unmatched = rejected.length - repeats;
-  const aside = [unmatched && `${plural(unmatched, "sentence")} whose number code could not match to the text`, repeats && `${plural(repeats, "repeat")} of a statistic already listed`]
-    .filter(Boolean) as string[];
+  const noNumber = rejected.filter((r) => r.reason === "no_number").length;
+  const unmatched = rejected.length - repeats - noNumber;
+  const aside = [
+    noNumber && `${plural(noNumber, "sentence")} with no number to check`,
+    unmatched && `${plural(unmatched, "sentence")} whose number code could not match to the text`,
+    repeats && `${plural(repeats, "repeat")} of a statistic already listed`,
+  ].filter(Boolean) as string[];
   if (aside.length) sentences.push(`Set aside by code: ${list(aside)}.`);
   return sentences.join(" ");
 }
