@@ -96,6 +96,7 @@ const URL = /\bhttps?:\/\/\S+/g;
 // Numbers written out in words ("eight spiders", "ten thousand steps") count too, as weak numbers (eval/same-claim);
 // words=false reads digits only, which is how the rule was before T36.
 export function atomHit(sentence: string, atoms: Atoms, minSigDigits = 3, maxCommas = 2, words = true): boolean {
+  if (!atoms.number) return false;
   const target = parseNumbers(atoms.number.canonical).numbers[0];
   if (!target) return false;
   const text = normalise(sentence.replace(URL, " "));

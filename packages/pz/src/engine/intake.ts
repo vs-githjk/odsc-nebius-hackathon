@@ -58,7 +58,9 @@ export function sentences(answer: string): { text: string; start: number; end: n
   let from = 0;
   for (const block of blocks) {
     const pieces: string[] = [];
-    for (const piece of normalise(block).split(/(?<=[.!?]["')\]]?)\s+(?=["'(\[]?[\p{Lu}\p{N}])/u)) {
+    // A list marker ("- ", "* ", "1. ", "2) ") is not part of the sentence.
+    const body = normalise(block).replace(/^\s*(?:[-*+\u2022]|\d+[.)])\s+/u, "");
+    for (const piece of body.split(/(?<=[.!?]["')\]]?)\s+(?=["'(\[]?[\p{Lu}\p{N}])/u)) {
       const last = pieces[pieces.length - 1];
       if (last !== undefined && (ABBREVIATION.test(last) || /^\d{1,3}\.$/.test(last))) pieces[pieces.length - 1] += ` ${piece}`;
       else pieces.push(piece);
