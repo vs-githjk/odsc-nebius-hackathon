@@ -1,6 +1,6 @@
 # Handoff: ODSC x Nebius Hackathon (team Says Who)
 
-Last updated: Thu Nov 12 2026, by the main session (conductor).
+Last updated: Sun Nov 15 2026, by the main session (conductor).
 To resume in a new Claude Code chat opened in this folder, Vidyut says: **"I'm back, continue the master playbook"**. The new session reads this file, `plan/state.json` and `plan/decisions.md`, says where we are in three lines, and carries on.
 
 ## The event
@@ -25,11 +25,18 @@ To resume in a new Claude Code chat opened in this folder, Vidyut says: **"I'm b
 - Market check verdict: real but narrow need; fact-checkers and journalists are the demo user but not the payer; nobody else traces backwards or counts independent sources; the paid route later is a stat-origin API for AI answer engines and content tools (unproven). `plan/market.md`, artifact https://claude.ai/artifact/BtjsfsCuEUNYNWuppfJDjE
 - Full brief: `plan/idea-brief.md` (refinement round 1).
 
-## Latest (Nov 12)
+## Latest (Nov 15, final sprint)
+- Deadline VERIFIED: Fri Nov 20 11:59 PM EST (8:59 PM PT). Judges: two Nebius DevRel. Prizes in TF credits.
+- Judge audit 38/100 (plan/judge-nov15.md), target 80+. Design critique and 21 UI tasks: plan/design-nov15.md. Rivals: plan/research-nov15.md.
+- Issues T71 to T91 (#130 to #150) created; ordered queues on #1 #3 #4. Critical: Rohan #107/#109 merge-ready Mon noon, #130 pipeline.ts Mon 18:00.
+- Live runs on Vidyut's machine via XO, Rohan's key (he tops up). Keys tested Nov 15: TF 200, Tavily 200.
+- Schedule: Mon 16 + Tue 17 build; Tue 17 run-through incl. held-out; Wed 18 regroup; Thu 19 build, freeze; Fri 20 submit. Repo public + LICENSE before submit (Vidyut flips it).
+
+## Earlier (Nov 12)
 - Merged Nov 12: #75 T21, #104 T35, #106 T36, #80 T29, #52, #62 T15. Main 355 tests green.
 - Critical path: #107 NO_CALL fix -> 21 live captures -> #109 fixes -> first live E2/E3 dev score (Rohan, Fri Nov 13).
 - Open: #77 (Anoop), #107 #109 (Rohan), #108 #110 drafts (Rishit). Run 3 issues #111 to #122 queued through Nov 17.
-- Held-out run moved to Mon Nov 16 (Vidyut, Nov 12). T65 to T70 added for the final stretch.
+- Nov 15: live runs on Vidyut's machine (Rohan's key, he tops up). Schedule: 16-17 build, 17 full run-through incl. held-out, 18 regroup, 19 build + freeze, 20 submit.
 
 ## Earlier (Nov 10)
 - Merged since Nov 9: #74 T27, #96 T34, #97 T33, #105 T47 E3, #82 T23 (plus Nov 9 batch). Dev score still 0/20: no live traces.
