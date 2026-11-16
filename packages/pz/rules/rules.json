@@ -42,7 +42,12 @@
     "\\bsystem prompt override\\b",
     "\\b(?:note|message) to (?:ai|llm|language model|assistant)s?\\b",
     "\\b(?:classify|label|mark) this (?:page|site|article) as\\b",
-    "\\banswer (?:yes|study|dataset|report) to\\b"
+    "\\banswer (?:yes|study|dataset|report) to\\b",
+    "\\b(?:attention|hey|dear|calling all) (?:ai|llms?|language models?|assistants?|chatbots?|bots?|crawlers?)\\b",
+    "\\b(?:set aside|override|overrule|discard) (?:your|their|its|all|any) (?:earlier |previous |prior |original |existing )?(?:guidance|instructions|rules|directions|directives|prompts?)\\b",
+    "\\breport this (?:page|site|website|article|document) as (?:the|an?) (?:original|primary|peer-reviewed|study|source|authoritative)\\b",
+    "\\b(?:ai|llm|language model|assistant|chatbot)s?[.,:;!?]*\\s+(?:are you |if you are |you are |while )?reading this\\b",
+    "\\btreat (?:it|this) as (?:the|an?) (?:original|primary|peer-reviewed|authoritative)\\b"
   ],
   "factCheckDomains": ["snopes.com", "politifact.com", "factcheck.org", "fullfact.org", "leadstories.com", "checkyourfact.com", "africacheck.org", "truthorfiction.com", "quoteinvestigator.com"],
   "clusterSimilarityThreshold": 0.9,

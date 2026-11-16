@@ -22,13 +22,16 @@ export function hasInjection(text: string, patterns: string[]): boolean {
   return patterns.some((p) => new RegExp(p, "iu").test(plain));
 }
 
-// The model reads the whole page for page_type, so an instruction anywhere on it can steer the answer. Returns the
-// first stretch of the page (title included) that matches a pattern, quoted up to 300 characters, or null. The walker
-// stores it on the node so pz verify can re-test it without the page.
+// The model reads the whole page for page_type, so an instruction anywhere on it can steer the answer. Scans the
+// whole page (title included, across sentence breaks) and returns the earliest match with up to 80 characters either
+// side, or null. The window always holds the whole match, so pz verify can re-test it without the page, however
+// long the sentence around it runs.
 export function findInjection(title: string, text: string, patterns: string[]): string | null {
-  for (const part of [title, ...text.split(/(?<=[.!?])\s+|\n+/)]) {
-    const piece = part.trim();
-    if (piece && hasInjection(piece, patterns)) return piece.slice(0, 300);
+  const page = normalise(`${title}\n${text}`);
+  let best: { start: number; end: number } | null = null;
+  for (const p of patterns) {
+    const m = new RegExp(p, "iu").exec(page);
+    if (m && (!best || m.index < best.start)) best = { start: m.index, end: m.index + m[0].length };
   }
-  return null;
+  return best ? page.slice(Math.max(0, best.start - 80), best.end + 80).trim() : null;
 }
