@@ -7,6 +7,7 @@ import type { Trace } from "../src/schema/index.ts";
 import { bound } from "../src/traps/bound.ts";
 import { runTraps } from "../src/traps/run.ts";
 import { falseCertainty } from "../src/verify/index.ts";
+import { originWords } from "../src/verify/false-certainty.ts";
 
 const root = fileURLToPath(new URL("../../../", import.meta.url));
 const paths = { root, casesDir: join(root, "traps/cases"), lockPath: join(root, "traps/traps.lock") };
@@ -38,9 +39,64 @@ describe("trap set", () => {
     expect(counters(undated)).toEqual([0, 0, 0, 1]);
   });
 
+  it("[C18] the card-sentence counter catches a first-word name and a wrong date", () => {
+    const t = load("sample-origin");
+    expect(counters(t, "Okafor wrote that the adult penguins napped a median of 14 times a day.")).toEqual([0, 0, 1, 0]);
+    expect(counters(t, "The keeper log dated 2017-01-01 says the adult penguins napped a median of 14 times a day.")).toEqual([0, 0, 1, 0]);
+    expect(counters(t, "The keeper log dated 2019-04-30 says the adult penguins napped a median of 14 times a day.")).toEqual([0, 0, 0, 0]);
+  });
+
+  it("[C18] the first word must be a whole word in the spans, not part of one", () => {
+    const t = load("sample-origin");
+    expect(counters(t, "Tim wrote that the adult penguins napped a median of 14 times a day.")).toEqual([0, 0, 1, 0]);
+    expect(counters(t, "Ann wrote that the adult penguins napped a median of 14 times a day.")).toEqual([0, 0, 1, 0]);
+    expect(counters(t, "Penguin keepers logged that the adult penguins napped a median of 14 times a day.")).toEqual([0, 0, 0, 0]);
+    expect(counters(t, "A post by Tim says the adult penguins napped a median of 14 times a day.")).toEqual([0, 0, 1, 0]);
+    expect(counters(t, "A post by Ann says the adult penguins napped a median of 14 times a day.")).toEqual([0, 0, 1, 0]);
+    // "Harb" and "Day" sit inside the spans' "Harbor" and "Daylight" with the same capital, so only a whole-word check catches them.
+    expect(counters(t, "A post by Harb says the adult penguins napped a median of 14 times a day.")).toEqual([0, 0, 1, 0]);
+    expect(counters(t, "A post by Harbor Zoo says the adult penguins napped a median of 14 times a day.")).toEqual([0, 0, 0, 0]);
+  });
+
+  it("[C18] common openers are not names", () => {
+    const t = load("sample-origin");
+    expect(counters(t, "However, the keeper log says the adult penguins napped a median of 14 times a day.")).toEqual([0, 0, 0, 0]);
+    expect(counters(t, "Researchers at the zoo logged that the adult penguins napped a median of 14 times a day.")).toEqual([0, 0, 0, 0]);
+  });
+
+  it("[C18] the card-sentence counter catches origin words on a trace that did not find the origin", () => {
+    const sentence = "The claim originated on the keeper log, which says the adult penguins napped a median of 14 times a day.";
+    expect(load("sample-rich").decision.state).not.toBe("ORIGIN_FOUND");
+    expect(counters(load("sample-rich"), sentence)).toEqual([0, 0, 1, 0]);
+    expect(counters(load("sample-rich"), sentence.replace("The claim originated on", "The trail reached"))).toEqual([0, 0, 0, 0]);
+    expect(counters(load("sample-origin"), sentence)).toEqual([0, 0, 0, 0]);
+  });
+
+  it("[C18] every way of saying where a claim started is an origin word on each non-origin fixture", () => {
+    const phrasings = ["first appeared on", "first posted on", "first published on", "began on", "traces back to", "can be traced to", "dates back to"];
+    const fixtures = ["sample-cold-unread", "sample-conflicting", "sample-no-pages", "sample-partial", "sample-rich", "sample-tool-failed"];
+    for (const name of fixtures) {
+      const t = load(name);
+      expect(t.decision.state).not.toBe("ORIGIN_FOUND");
+      const domain = t.nodes[0]?.domain ?? "keeper.example";
+      for (const p of phrasings) expect(counters(t, `The claim ${p} ${domain}.`)[2], `${name}: ${p}`).toBeGreaterThan(0);
+      expect(counters(t, `The claim was seen on ${domain}.`)[2], name).toBe(0);
+    }
+    // XO's #77 list: open-ended phrasings caught by pattern, not by the word list.
+    const sentences = ["It was first shared on Facebook.", "The figure was first tweeted in 2019.", "The number first circulated on forums.",
+      "The phrase was coined by a blog.", "The page is the original source.", "The claim appeared first on a blog.",
+      "The post originally ran on a forum.", "The claim was first written up on a wiki."];
+    for (const name of fixtures) for (const s of sentences) expect(counters(load(name), s)[2], `${name}: ${s}`).toBeGreaterThan(0);
+    // "first" + a noun is not an origin word.
+    expect(originWords("The first page in the trail says 14 times a day.", "PARTIAL")).toEqual([]);
+    expect(originWords("The first 100 results were read.", "PARTIAL")).toEqual([]);
+    expect(originWords("It was first shared on Facebook.", "ORIGIN_FOUND")).toEqual([]);
+    expect(counters(load("sample-origin"), "The claim first appeared in the keeper log.")[2]).toBe(0);
+  });
+
   it("[C18] the card-sentence counter catches quotes and names no span carries", () => {
     const t = load("sample-origin");
-    expect(counters(t, "Keepers said \"penguins nap all day\".")).toEqual([0, 0, 1, 0]);
+    expect(counters(t, "The keepers said \"penguins nap all day\".")).toEqual([0, 0, 1, 0]);
     expect(counters(t, "Harbor Zoo penguins nap 14 times a day, says Dr Smith.")).toEqual([0, 0, 2, 0]);
     expect(counters(t, "Harbor Zoo penguins nap 14 times a day.")).toEqual([0, 0, 0, 0]);
   });

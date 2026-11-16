@@ -5,7 +5,7 @@ import { Trace } from "../schema/index.ts";
 import { verifyTrace } from "./checks.ts";
 
 export { verifyTrace } from "./checks.ts";
-export { falseCertainty, type FalseCertainty } from "./false-certainty.ts";
+export { datesIn, earliestDates, falseCertainty, ORIGIN_WORDS, originWords, unbacked, type FalseCertainty } from "./false-certainty.ts";
 export type { Check, Failure, TraceReport } from "./checks.ts";
 
 // Traces recorded under earlier rules and kept as they were, each pinned by id and content hash.
