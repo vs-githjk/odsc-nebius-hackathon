@@ -23,6 +23,13 @@ const NOT_TRACED: Record<NonNullable<AnswerRecord["claims"][number]["notTraced"]
 };
 
 // The answer as plain text: the code-built summary, then one line per statistic with how its trace ended.
+// Intake's reject reasons in plain words. Anything not listed prints its code with spaces.
+const REJECT_WORDS: Record<string, string> = {
+  range: "a range, not one number; trace it as a phrase claim", inequality: "a bound such as \"over 70%\", not one number",
+  no_number: "no number", duplicate: "repeat", not_in_text: "not found in the answer", ambiguous: "matches more than one sentence",
+  number_not_in_sentence: "its number is not in the sentence",
+};
+
 export function renderAnswer(record: AnswerRecord): string {
   const modes = [...new Set(record.claims.flatMap((c) => (c.trace ? [c.trace.mode] : [])))];
   const lines = [`Patient Zero  answer mode${modes.length ? `  ${modes.join(", ")}` : ""}`, "", record.summary, ""];
@@ -32,7 +39,7 @@ export function renderAnswer(record: AnswerRecord): string {
   });
   if (record.rejected.length) {
     lines.push("", "Set aside by code:");
-    for (const r of record.rejected) lines.push(`   "${r.sentence}" (${r.reason.replace(/_/g, " ")})`);
+    for (const r of record.rejected) lines.push(`   "${r.sentence}" (${REJECT_WORDS[r.reason] ?? r.reason.replace(/_/g, " ")})`);
   }
   lines.push("", "Raw record: add --json.");
   return lines.join("\n");

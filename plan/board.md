@@ -131,3 +131,4 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [19:40 PT] AnoopIbrampur T53 #111 phrase claims PR up; Atoms.number now nullable when Atoms.phrase is set | @rohanrastogi311 pipeline.ts: call fingerprintPhrase after fingerprint returns no_number
 - [19:22 PT] AnoopIbrampur T77 #136 readable CLI card PR up; pz trace now prints a card, --json for raw | @rohanrastogi311 #109 dev-run must pass --json to traceCommand
 - [19:31 PT] AnoopIbrampur T76 #135 failure paths PR up (503 -> TOOL_FAILED, empty -> NO_PAGES_FOUND, keyless) | @rohanrastogi311 where does #130 take an injected fetch?
+- [13:10 PT] AnoopIbrampur XO's Nov 16 follow-ups (L): range subject is a whole word, card counts one time and a dozen, README replay row, intake range and bound rejects worded | none
