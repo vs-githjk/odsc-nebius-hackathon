@@ -44,13 +44,15 @@ function inClaim(claim: string, run: string): string | null {
 export function claimRange(claim: string): { raw: string; low: string; high: string; unit: string | null } | null {
   const skip = parseNumbers(claim).skipped.find((s) => s.reason === "range");
   if (!skip) return null;
-  const [low, high] = skip.raw.split(/\s*(?:-|to|\/)\s*/);
-  if (!low || !high) return null;
+  const [low, rawHigh] = skip.raw.split(/\s*(?:-|\u2013|to|\/)\s*/);
+  if (!low || !rawHigh) return null;
   const c = normalise(claim);
   const at = c.indexOf(skip.raw);
+  // "40-45%": the % belongs to the range, so the unit is percent and the word after it ("of") is not a unit.
+  if (rawHigh.endsWith("%")) return { raw: skip.raw, low: low.replace(/%$/, ""), high: rawHigh.slice(0, -1), unit: "percent" };
   const after = c.slice(at + skip.raw.length).match(/^\s*(%|percent|per cent|[\p{L}]+)/u);
   const unit = after ? after[1]!.toLowerCase() : null;
-  return { raw: after ? c.slice(at, at + skip.raw.length + after[0].length) : skip.raw, low, high, unit };
+  return { raw: after ? c.slice(at, at + skip.raw.length + after[0].length) : skip.raw, low, high: rawHigh, unit };
 }
 
 // The declared range forms (transform "range_forms"): "40 to 45 percent", "40-45%", "40 to 45%", "40-45 percent" and so on.
@@ -59,7 +61,7 @@ export function rangeForms(range: NonNullable<ReturnType<typeof claimRange>>): V
   const percent = unit === "%" || unit === "percent" || unit === "per cent";
   const tails = percent ? ["%", " percent", " per cent"] : unit ? [` ${unit}`] : [""];
   const out: Variant[] = [];
-  for (const join of [" to ", "-", "–"]) for (const tail of tails) {
+  for (const join of [" to ", "-", "\u2013"]) for (const tail of tails) {
     const text = `${low}${join}${high}${tail}`;
     if (text.toLowerCase() !== raw.toLowerCase() && !out.some((v) => v.text === text)) out.push({ text, of: raw, transform: "range_forms" });
   }

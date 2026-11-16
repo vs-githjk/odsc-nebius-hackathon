@@ -4,6 +4,7 @@ import { TokenFactoryError, type ChatInput } from "../src/clients/tokenfactory.t
 import { fingerprint } from "../src/engine/fingerprint.ts";
 import { claimRange, fingerprintPhrase, PHRASE_PROMPT, rangeForms } from "../src/engine/phrase.ts";
 import { codeQuery, whyRejected } from "../src/engine/queries.ts";
+import { queriesFor } from "../src/engine/walk.ts";
 import { claimHit, loadRules, phraseHit } from "../src/rules/index.ts";
 import { Atoms } from "../src/schema/index.ts";
 
@@ -35,9 +36,23 @@ describe("T53 fingerprintPhrase on the four E2 claims fingerprint() stops at no_
     expect(claimRange(dev["dev-07"]!)).toEqual({ raw: "40 to 45 percent", low: "40", high: "45", unit: "percent" });
     const out = await fingerprintPhrase(dev["dev-07"]!, { client: clientFor(reply(["body heat through your head"], "heat")) });
     expect(out.atoms).toMatchObject({ phrase: "40 to 45 percent", unit: "percent" });
-    expect(out.atoms!.variants).toEqual(expect.arrayContaining(["40-45%", "40 to 45%", "40-45 percent", "40–45%"]));
+    expect(out.atoms!.variants).toEqual(expect.arrayContaining(["40-45%", "40 to 45%", "40-45 percent", "40\u201345%"]));
     expect(out.variants.every((v) => v.transform === "range_forms" && v.of === "40 to 45 percent")).toBe(true);
-    expect(rangeForms({ raw: "3 to 5 days", low: "3", high: "5", unit: "days" }).map((v) => v.text)).toEqual(["3-5 days", "3–5 days"]);
+    expect(rangeForms({ raw: "3 to 5 days", low: "3", high: "5", unit: "days" }).map((v) => v.text)).toEqual(["3-5 days", "3\u20135 days"]);
+  });
+
+  it("a range written with % parses as percent, and its forms include the spelled-out one", () => {
+    const r = claimRange("You lose 40-45% of your body heat through your head.");
+    expect(r).toEqual({ raw: "40-45%", low: "40", high: "45", unit: "percent" });
+    expect(rangeForms(r!).map((v) => v.text)).toContain("40 to 45 percent");
+  });
+
+  it("a range claim's queries carry the subject word; a quote's do not", () => {
+    const range: Atoms = { number: null, phrase: "40 to 45 percent", unit: "percent", subjectLemma: "heat", population: null, time: null, hedge: null, namedSource: null, variants: ["40-45%"] };
+    expect(queriesFor(range)).toEqual(['"40 to 45 percent" heat', '"40-45%" heat']);
+    expect(codeQuery(dev["dev-07"]!, range)).toBe('"40 to 45 percent" heat');
+    const quote: Atoms = { ...range, phrase: "doing the same thing over and over again", unit: null, subjectLemma: "insanity", variants: [] };
+    expect(queriesFor(quote)).toEqual(['"doing the same thing over and over again"']);
   });
 
   it("dev-08 and dev-12: the distinctive run, as the claim writes it", async () => {
@@ -87,6 +102,10 @@ describe("T53 matching a page sentence by phrase", () => {
     const range: Atoms = { ...quote, phrase: "40 to 45 percent", variants: ["40-45%"], unit: "percent", subjectLemma: "heat" };
     expect(claimHit("We lose 40-45% of body heat through the head.", range, rules)).toBe(true);
     expect(claimHit("We lose 40% of body heat through the head.", range, rules)).toBe(false);
+    // A range needs the subject word too: the same range about turnout is not the claim.
+    expect(claimHit("Turnout rose 40 to 45 percent in the county.", range, rules)).toBe(false);
+    expect(claimHit("Turnout rose 40-45% in the county.", range, rules)).toBe(false);
+    expect(claimHit("Between 40 to 45 percent of your heat escapes.", range, rules)).toBe(true);
     const numeric: Atoms = { ...quote, number: { raw: "8", canonical: "8" }, phrase: null, subjectLemma: "spider" };
     expect(claimHit("People swallow eight spiders a year.", numeric, rules)).toBe(true);
     expect(claimHit("doing the same thing over and over again", numeric, rules)).toBe(false);

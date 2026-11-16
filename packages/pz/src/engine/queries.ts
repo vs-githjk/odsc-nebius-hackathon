@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { TokenFactoryError, type ChatData, type ChatInput, type Result } from "../clients/tokenfactory.ts";
+import { isRange } from "../rules/claim-hit.ts";
 import { normalise } from "../rules/normalise.ts";
 import { isWeak, parseNumbers, sameNumber } from "../rules/numbers.ts";
 import type { Rules } from "../rules/rules.ts";
@@ -107,8 +108,12 @@ export function whyRejected(query: string, input: { claim: string; atoms: Atoms;
 // (The spike's queriesFor quoted the first variant and the subject's stem, which gave "ninety-six" phone and
 // "sixty percent" cand.)
 export function codeQuery(claim: string, atoms: Atoms): string {
-  // A phrase claim (T53) searches for the phrase itself, quoted, as the claim writes it.
-  if (!atoms.number) return `"${normalise(atoms.phrase!)}"`;
+  // A phrase claim (T53) searches for the phrase itself, quoted, as the claim writes it; a range adds the subject word.
+  if (!atoms.number) {
+    if (!isRange(atoms)) return `"${normalise(atoms.phrase!)}"`;
+    const subject = words(claim).find((w) => lemma(w) === atoms.subjectLemma) ?? atoms.subjectLemma;
+    return `"${normalise(atoms.phrase!)}" ${subject}`;
+  }
   const withUnit = atoms.unit ? `${atoms.number.raw} ${atoms.unit}` : null;
   const phrase = withUnit && hasPhrase(claim, withUnit) ? normalise(claim).slice(lower(claim).indexOf(lower(withUnit)), lower(claim).indexOf(lower(withUnit)) + withUnit.length) : atoms.number.raw;
   const subject = words(claim).find((w) => lemma(w) === atoms.subjectLemma) ?? atoms.subjectLemma;

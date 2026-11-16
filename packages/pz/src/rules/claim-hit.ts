@@ -20,5 +20,11 @@ export function phraseHit(sentence: string, phrase: string, negationPrefixes: st
 export function claimHit(sentence: string, atoms: Atoms, rules: { weakNumberMinSigDigits: number; weakNumberMaxCommas: number; negationPrefixes: string[] }): boolean {
   if (atoms.number) return atomHit(sentence, atoms, rules.weakNumberMinSigDigits, rules.weakNumberMaxCommas);
   // A phrase claim's variants are only declared forms of its own phrase (a range written "40-45%").
-  return [atoms.phrase ?? "", ...atoms.variants].some((p) => !!p && phraseHit(sentence, p, rules.negationPrefixes));
+  const hit = [atoms.phrase ?? "", ...atoms.variants].some((p) => !!p && phraseHit(sentence, p, rules.negationPrefixes));
+  // A range ("40 to 45 percent") is common on its own, so it also needs the claim's subject word in the sentence;
+  // "Turnout rose 40 to 45 percent" is not about body heat. A quote is distinctive enough without one.
+  return hit && (!isRange(atoms) || lower(sentence).includes(atoms.subjectLemma.toLowerCase()));
 }
+
+// A phrase claim whose phrase carries digits is a range read by code (T53 claimRange).
+export const isRange = (atoms: Atoms) => !atoms.number && /\d/.test(atoms.phrase ?? "");
