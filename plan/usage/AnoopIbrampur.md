@@ -6,12 +6,12 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 
 | Service | Calls |
 |---|---|
-| Shell | 1622 |
-| GitHub (gh) | 576 |
-| MCP ccd_turn | 356 |
-| Other HTTP | 344 |
-| Claude Code tools | 335 |
-| Web search and fetch | 190 |
+| Shell | 2319 |
+| GitHub (gh) | 731 |
+| MCP ccd_turn | 425 |
+| Claude Code tools | 390 |
+| Other HTTP | 346 |
+| Web search and fetch | 222 |
 | MCP ccd_host | 14 |
 | MCP ccd_directory | 2 |
 | MCP ccd_pr | 2 |
@@ -20,26 +20,26 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 
 | Kind | Tokens |
 |---|---|
-| input_tokens | 3,300 |
-| cache_creation_input_tokens | 7,677,589 |
-| cache_read_input_tokens | 404,533,030 |
-| output_tokens | 1,534,183 |
+| input_tokens | 4,338 |
+| cache_creation_input_tokens | 8,639,145 |
+| cache_read_input_tokens | 533,337,660 |
+| output_tokens | 1,945,682 |
 
 ## Per run
 
 | Started (UTC) | Agent | Model | Output tokens | Apify | Bright Data | Browser | Web | GitHub | Codex | Nebius Token Factory | Tavily API | Other HTTP |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 2026-10-30T20:10 | main session | claude-opus-5-5, claude-sonnet-5-5 | 678,481 | 0 | 0 | 0 | 95 | 242 | 0 | 0 | 0 | 172 |
-| 2026-10-30T20:10 | main session | claude-opus-5-5, claude-sonnet-5-5 | 855,702 | 0 | 0 | 0 | 95 | 334 | 0 | 0 | 0 | 172 |
+| 2026-10-30T20:10 | main session | claude-opus-5-5, claude-sonnet-5-5 | 889,174 | 0 | 0 | 0 | 95 | 340 | 0 | 0 | 0 | 172 |
+| 2026-10-30T20:10 | main session | claude-opus-5-5, claude-sonnet-5-5 | 1,056,508 | 0 | 0 | 0 | 127 | 391 | 0 | 0 | 0 | 174 |
 
 ## Detail (service: tool or host)
 
-- GitHub (gh): gh: 576
+- GitHub (gh): gh: 731
 - MCP ccd_directory: change_directory: 2
 - MCP ccd_host: open_in_editor: 14
 - MCP ccd_pr: get_status: 2
-- MCP ccd_turn: update_plan: 270
-- MCP ccd_turn: wrap_up: 86
+- MCP ccd_turn: update_plan: 322
+- MCP ccd_turn: wrap_up: 103
 - Other HTTP: amr-review.org: 6
 - Other HTTP: arxiv.org: 8
 - Other HTTP: authorscalendar.info: 2
@@ -106,10 +106,11 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 - Other HTTP: www.itu.int: 4
 - Other HTTP: www.mckinsey.com: 2
 - Other HTTP: www.nationalgeographic.com: 2
+- Other HTTP: www.nature.com: 1
 - Other HTTP: www.newcastle.edu.au: 2
 - Other HTTP: www.peacefmonline.com: 4
 - Other HTTP: www.pewresearch.org: 8
-- Other HTTP: www.pwc.com: 2
+- Other HTTP: www.pwc.com: 3
 - Other HTTP: www.reuters.com: 2
 - Other HTTP: www.science.org: 4
 - Other HTTP: www.sciencedaily.com: 2
@@ -126,7 +127,7 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 - Other HTTP: www.worldwatch.org: 8
 - Other HTTP: www.youtube.com: 4
 - Other HTTP: x.com: 2
-- Web search and fetch: WebFetch: 6
-- Web search and fetch: WebSearch: 184
+- Web search and fetch: WebFetch: 26
+- Web search and fetch: WebSearch: 196
 
 Not covered: other people's machines until they run this and commit plan/usage/<who>.*; calls the project's own app makes at runtime (the app logs those itself); Codex's own token use (logged by master-codex).

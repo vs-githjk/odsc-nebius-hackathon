@@ -58,6 +58,8 @@ These two are labelled synthetic: the claim is the invented Harbor Zoo one, and 
 
 The only traces in the repo today are synthetic fixtures: an invented claim on invented pages, shown as SAMPLE ([fixtures/README.md](fixtures/README.md)).
 
+**Where Patient Zero is wrong:** [docs/limits.md](docs/limits.md) lists every failure we know of, each with an example you can run, the rule that should catch it, whether it is caught today and who owns the fix. Its open rows are pinned by tests, so the page can't say a gap is closed while it is still open.
+
 ## For agents reading this repo
 
 Start at [llms.txt](llms.txt), then [plan/README.md](plan/README.md), which says what every file in `plan/` holds.

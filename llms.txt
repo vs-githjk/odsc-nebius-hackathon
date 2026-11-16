@@ -7,6 +7,7 @@
 - [README: run it](README.md#run-it)
 - [README: for judges](README.md#for-judges)
 - [README: what is real](README.md#what-is-real)
+- [docs/limits.md](docs/limits.md): where Patient Zero is wrong, every known failure with a test or trace
 - [README: for agents reading this repo](README.md#for-agents-reading-this-repo)
 
 ## Plan
