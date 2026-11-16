@@ -49,6 +49,11 @@ export function endingSentence(trace: Trace): string {
     case "ORIGIN_FOUND":
       return "The earliest page is a primary source with a confirmed date.";
     case "TRAIL_GOES_COLD": {
+      // T37: a boundary code found comes first, worded from the reason code wrote, never from a model.
+      const boundary = trace.decision.reasons[0]?.match(/^boundary (print|unsourced|circular):/)?.[1];
+      if (boundary === "print") return "The trail ends at a print source the earliest page credits. There is no web copy to open.";
+      if (boundary === "unsourced") return "The earliest page is one anyone can edit, and it gives no source for the claim.";
+      if (boundary === "circular") return "The earliest pages only cite each other or later copies, so there is nothing earlier to follow.";
       if (trace.nodes.some((n) => n.candidateParents.some((p) => !p.read))) return "A page it cites could not be opened.";
       // 2 is rules.json earlierWindowSearches: fewer empty earlier searches than that is a stop before looking far enough.
       if (trace.earliest.earlierWindowSearches < 2) return "It stopped before searching further back.";

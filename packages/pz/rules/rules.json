@@ -33,6 +33,17 @@
   ],
   "factCheckDomains": ["snopes.com", "politifact.com", "factcheck.org", "fullfact.org", "leadstories.com", "checkyourfact.com", "africacheck.org", "truthorfiction.com", "quoteinvestigator.com"],
   "clusterSimilarityThreshold": 0.9,
+  "printCues": [
+    "\\bisbn\\b",
+    "\\bpp?\\.\\s*\\d",
+    "\\bvol\\.\\s*\\d",
+    "\\bjournal of\\b",
+    "\\b(?:book|paperback|hardcover|textbook|monograph)\\b",
+    "\\b(?:published|printed|wrote) in (?:1[5-9]|20)\\d{2}\\b",
+    "\\b(?:1[5-9]\\d{2}|20[01]\\d) (?:study|paper|book|article|experiment)s?\\b",
+    "\\((?:1[5-9]\\d{2}|19\\d{2}|20[01]\\d)\\)"
+  ],
+  "editableDomains": ["wikipedia.org", "wikiquote.org", "wikia.com", "fandom.com", "wikihow.com", "everybodywiki.com"],
   "hedgeWords": [
     "about",
     "around",
@@ -61,6 +72,8 @@
     "relative to"
   ],
   "notes": {
+    "printCues": "T37: case-insensitive patterns that show the earliest page credits print (an ISBN, page or volume numbers, a journal, a book, a dated study). A typed boundary of print counts only if one matches the sentence or the text around it.",
+    "editableDomains": "T37: pages anyone can edit. A typed boundary of unsourced counts only on one of these domains, and only when the page cites nothing beside the sentence.",
     "clusterSimilarityThreshold": "Placeholder. Set on the E2 dev set (#34) before the held-out run; Rohan never edits it.",
     "hedgeWords": "Placeholder list for the hedge_dropped readout (T27). Check on the E2 dev set before the held-out run.",
     "maxQueriesPerHop": "Placeholder cap on planned search queries per hop (T35). Set on the E2 dev set within the credit cap; never on spike or held-out claims.",

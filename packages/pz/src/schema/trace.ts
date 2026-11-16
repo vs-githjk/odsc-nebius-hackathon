@@ -36,6 +36,9 @@ export const Node = z.object({
   // T36: the typed same_claim answer for this page's span. Absent or null means the gate did not run (no model),
   // which counts as unsure: such a page is never an origin.
   sameClaim: TypedAnswer.nullable().optional(),
+  // T37: the typed boundary answer for an earliest page on a cold trail (print, unsourced, none). Absent or null
+  // means not asked; code decides whether it counts.
+  boundary: TypedAnswer.nullable().optional(),
 }).strict();
 export type Node = z.infer<typeof Node>;
 export const Edge = z.object({

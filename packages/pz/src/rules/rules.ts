@@ -13,6 +13,8 @@ export const Rules = z.object({
   negationPrefixes: z.array(z.string()),
   factCheckDomains: z.array(z.string()),
   clusterSimilarityThreshold: z.number().min(0).max(1),
+  printCues: z.array(z.string()),
+  editableDomains: z.array(z.string()),
   hedgeWords: z.array(z.string()),
   comparisonWords: z.array(z.string()),
   notes: z.record(z.string(), z.string()).optional(),
