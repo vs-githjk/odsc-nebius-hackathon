@@ -28,8 +28,8 @@ const plural = (n: number, one: string, many = `${one}s`) => `${n} ${n === 1 ? o
 
 // "5 statistics: 2 traced to an earliest primary source, 2 went cold and 1 stopped at a cap." then, when they apply,
 // what was not traced and what intake set aside. Built only from the claims' stop states and counts.
-export function answerSummary(claims: readonly AnswerClaim[], rejected: number): string {
-  if (!claims.length && !rejected) return "No statistics found in the answer.";
+export function answerSummary(claims: readonly AnswerClaim[], rejected: readonly { reason: string }[]): string {
+  if (!claims.length && !rejected.length) return "No statistics found in the answer.";
   const states = new Map<StopState, number>();
   for (const c of claims) if (c.trace) states.set(c.trace.decision.state, (states.get(c.trace.decision.state) ?? 0) + 1);
   const parts = PHRASES.filter(([s]) => states.has(s)).map(([s, phrase]) => phrase(states.get(s)!));
@@ -39,7 +39,12 @@ export function answerSummary(claims: readonly AnswerClaim[], rejected: number):
   const failed = claims.filter((c) => c.notTraced && c.notTraced !== "over_claim_cap").length;
   const notTraced = [capped && `${capped} over the ${MAX_CLAIMS}-statistic limit`, failed && `${failed} could not run`].filter(Boolean) as string[];
   if (notTraced.length) sentences.push(`Not traced: ${list(notTraced)}.`);
-  if (rejected) sentences.push(`${plural(rejected, "sentence")} set aside because code could not match ${rejected === 1 ? "its" : "their"} number to the text.`);
+  // Worded by intake's reason: a repeat is not a sentence code failed to match.
+  const repeats = rejected.filter((r) => r.reason === "duplicate").length;
+  const unmatched = rejected.length - repeats;
+  const aside = [unmatched && `${plural(unmatched, "sentence")} whose number code could not match to the text`, repeats && `${plural(repeats, "repeat")} of a statistic already listed`]
+    .filter(Boolean) as string[];
+  if (aside.length) sentences.push(`Set aside by code: ${list(aside)}.`);
   return sentences.join(" ");
 }
 
@@ -71,7 +76,7 @@ export async function traceAnswer(answer: string, deps: {
   const rejected = found.rejected.map((r) => ({ sentence: r.sentence, number: r.number, reason: r.reason }));
   return AnswerRecord.parse({
     schemaVersion: "1", recordedAt: deps.now(), answer, claims, rejected, intakeUsage: found.usage,
-    summary: answerSummary(claims, rejected.length),
+    summary: answerSummary(claims, rejected),
   });
 }
 
@@ -79,7 +84,7 @@ export async function traceAnswer(answer: string, deps: {
 export function replayAnswer(value: unknown, replay: (trace: unknown) => Trace): AnswerRecord {
   const record = AnswerRecord.parse(value);
   const claims = record.claims.map((c) => ({ ...c, trace: c.trace ? replay(c.trace) : null }));
-  const summary = answerSummary(claims, record.rejected.length);
+  const summary = answerSummary(claims, record.rejected);
   if (summary !== record.summary) throw new Error("Answer summary does not match its traces");
   return { ...record, claims };
 }

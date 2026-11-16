@@ -1,3 +1,4 @@
+import { execFileSync } from "node:child_process";
 import { mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -47,7 +48,7 @@ describe("T51 whole-answer mode", () => {
     expect(record.claims.map((c) => c.trace?.decision.state)).toEqual(["ORIGIN_FOUND", "TRAIL_GOES_COLD", "TRAIL_GOES_COLD", "PARTIAL", "CONFLICTING"]);
     expect(record.rejected).toEqual([{ sentence: "Try to put your phone down more often.", number: "7", reason: "no_number" }]);
     expect(record.summary).toBe("5 statistics: 1 traced to an earliest primary source, 1 has earliest pages that disagree, 2 went cold and 1 stopped at a cap. "
-      + "1 sentence set aside because code could not match its number to the text.");
+      + "Set aside by code: 1 sentence whose number code could not match to the text.");
     expect(() => AnswerRecord.parse(record)).not.toThrow();
     // The list marker is not part of the claim, and the offsets still point at the claim in the answer.
     for (const c of record.claims) expect(normalise(ANSWER).slice(c.start, c.end)).toBe(c.text);
@@ -73,7 +74,7 @@ describe("T51 whole-answer mode", () => {
     const offline = await run({ traceClaim: noKey });
     expect(noKey).toHaveBeenCalledTimes(1);
     expect(offline.claims.every((c) => c.notTraced === "not_configured")).toBe(true);
-    expect(offline.summary).toBe("5 statistics. Not traced: 5 could not run. 1 sentence set aside because code could not match its number to the text.");
+    expect(offline.summary).toBe("5 statistics. Not traced: 5 could not run. Set aside by code: 1 sentence whose number code could not match to the text.");
     await expect(run({ traceClaim: vi.fn(async () => { throw new Error("provider said: secret"); }) })).rejects.toThrow("secret");
   });
 
@@ -82,13 +83,16 @@ describe("T51 whole-answer mode", () => {
       text: "x", start: 0, end: 1, number: { raw: "1", canonical: "1" }, notTraced: state ? null : notTraced,
       trace: state ? { ...fixture("sample-rich"), decision: { ...fixture("sample-rich").decision, state } } : null,
     });
-    expect(answerSummary([], 0)).toBe("No statistics found in the answer.");
-    expect(answerSummary([], 2)).toBe("No statistics passed the checks. 2 sentences set aside because code could not match their number to the text.");
-    expect(answerSummary([claim("NO_PAGES_FOUND"), claim("NO_PAGES_FOUND"), claim("TOOL_FAILED")], 0))
+    const r = (reason: string) => ({ reason });
+    expect(answerSummary([], [])).toBe("No statistics found in the answer.");
+    expect(answerSummary([], [r("no_number"), r("not_in_text")])).toBe("No statistics passed the checks. Set aside by code: 2 sentences whose number code could not match to the text.");
+    expect(answerSummary([claim("ORIGIN_FOUND")], [r("duplicate")])).toBe("1 statistic: 1 traced to an earliest primary source. Set aside by code: 1 repeat of a statistic already listed.");
+    expect(answerSummary([], [r("ambiguous"), r("duplicate"), r("duplicate")])).toBe("No statistics passed the checks. Set aside by code: 1 sentence whose number code could not match to the text and 2 repeats of a statistic already listed.");
+    expect(answerSummary([claim("NO_PAGES_FOUND"), claim("NO_PAGES_FOUND"), claim("TOOL_FAILED")], []))
       .toBe("3 statistics: 2 turned up no page stating them and 1 stopped when a tool failed.");
-    expect(answerSummary([claim("ORIGIN_FOUND")], 0)).toBe("1 statistic: 1 traced to an earliest primary source.");
+    expect(answerSummary([claim("ORIGIN_FOUND")], [])).toBe("1 statistic: 1 traced to an earliest primary source.");
     for (const s of ["ORIGIN_FOUND", "CONFLICTING", "TRAIL_GOES_COLD", "NO_PAGES_FOUND", "PARTIAL", "TOOL_FAILED"] as const) {
-      const text = answerSummary([claim(s), claim(s)], 1);
+      const text = answerSummary([claim(s), claim(s)], [r("duplicate"), r("no_number")]);
       expect(text).not.toMatch(/\b(true|false|debunked|correct|wrong)\b/i);
       expect(lintText(text)).toEqual([]);
     }
@@ -122,4 +126,12 @@ describe("T51 the CLI", () => {
     expect(errors.at(-1)).toBe("trace_failed");
     expect(renderAnswer(await run({ maxClaims: 4 }))).toContain("5. not traced, over the 5-statistic limit");
   });
+
+  it("pz trace takes --answer-replay-of=<file> as answer mode", async () => {
+    const path = join(mkdtempSync(join(tmpdir(), "pz-answer-eq-")), "answer.json");
+    writeFileSync(path, JSON.stringify(await run()));
+    const cwd = new URL("../../../", import.meta.url).pathname;
+    const out = execFileSync(process.execPath, ["--import", "tsx", "packages/pz/src/cli/pz.ts", "trace", `--answer-replay-of=${path}`], { cwd, encoding: "utf8" });
+    expect(out).toContain("Patient Zero  answer mode  SAMPLE");
+  }, 20_000);
 });

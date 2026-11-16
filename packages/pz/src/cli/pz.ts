@@ -42,7 +42,7 @@ if (command === "--version") {
   process.exitCode = code;
 } else if (command === "trace") {
   // Whole-answer mode (T51) has its own command so the single-claim path stays as it is.
-  const answerMode = args.some((a) => a === "--answer" || a === "--answer-replay-of" || a.startsWith("--answer="));
+  const answerMode = args.some((a) => a === "--answer" || a === "--answer-replay-of" || a.startsWith("--answer=") || a.startsWith("--answer-replay-of="));
   process.exitCode = answerMode ? await answerCommand(args) : await traceCommand(args);
 } else if (command === "traps") {
   const root = fileURLToPath(new URL("../../../../", import.meta.url));
