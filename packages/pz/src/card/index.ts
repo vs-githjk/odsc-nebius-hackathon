@@ -35,7 +35,7 @@ export type Card = {
 
 // Every reason this sentence may not go on the card. Empty means it is backed by the spans and fits the stop state.
 export function cardProblems(sentence: string, trace: Trace): string[] {
-  const { numbers, quotes, names, dates } = unbacked(sentence, trace.spans.map((s) => s.text), earliestDates(trace));
+  const { numbers, quotes, names, dates } = unbacked(sentence, trace.spans.map((s) => s.text), earliestDates(trace), trace.earliest.nodeIds.length);
   return [
     ...numbers.map((n) => `number not in the spans: ${n}`),
     ...quotes.map((q) => `quote not in the spans: "${q}"`),

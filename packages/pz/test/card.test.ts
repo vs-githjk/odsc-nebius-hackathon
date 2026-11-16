@@ -5,6 +5,7 @@ import type { ChatData, ChatInput } from "../src/clients/tokenfactory.ts";
 import type { Trace } from "../src/schema/index.ts";
 import { ask } from "../src/typed/ask.ts";
 import { falseCertainty } from "../src/verify/index.ts";
+import { unbacked } from "../src/verify/false-certainty.ts";
 
 const load = (id: string): Trace => JSON.parse(readFileSync(new URL(`../../../fixtures/traces/${id}.json`, import.meta.url), "utf8"));
 const origin = load("sample-origin");
@@ -36,6 +37,13 @@ describe("origin card", () => {
       expect(card.dropped).toEqual({ sentence, reasons: expect.arrayContaining([reason]) });
       expect(falseCertainty(origin, { cardSentence: sentence }).sentenceStrongerThanSpans).toBeGreaterThan(0);
     }
+  });
+
+  it("does not read an ordinary word after a job title as a name, and lets the sentence count the earliest pages", () => {
+    const spans = ["The adult penguins napped a median of 14 times a day during daylight hours."];
+    expect(unbacked("The zoo's president said the penguins napped 14 times a day.", spans).names).toEqual([]);
+    expect(unbacked("Two earliest pages say the adult penguins napped 14 times a day.", spans, [], 2).numbers).toEqual([]);
+    expect(unbacked("Two earliest pages say the adult penguins napped 14 times a day.", spans, [], 1).numbers).toEqual(["Two"]);
   });
 
   it("never calls a first-archive-capture date published, and tells the model what each date means", async () => {

@@ -17,7 +17,8 @@ const OPENERS = new Set(["the", "a", "an", "this", "that", "these", "those", "it
   "researchers", "scientists", "experts", "studies", "study", "reports", "report", "data", "people", "users", "authors",
   "officials", "analysts", "surveys", "survey", "estimates", "claims", "posts", "articles", "sources", "pages", "page"]);
 
-const TITLES = new Set(["dr", "mr", "mrs", "ms", "prof", "professor", "sir", "dame", "rev", "president", "senator", "minister"]);
+// Abbreviated titles only: "the zoo's president said" is not a name.
+const TITLES = new Set(["dr", "mr", "mrs", "ms", "prof"]);
 
 // Words that say a page is where a claim started. The card may use them only when the trace ends ORIGIN_FOUND.
 export const ORIGIN_WORDS = ["origin", "origins", "originated", "originates", "originally", "started", "starts", "began", "begins", "begun",
@@ -60,7 +61,8 @@ export function datesIn(sentence: string): { raw: string; value: string }[] {
 
 // Things the card sentence says that nothing backs: numbers, quoted text and capitalised names not in the spans,
 // and dates that are not the date of an earliest page (a month and year must match one).
-export function unbacked(sentence: string, spans: string[], earliestDates: string[] = []): { numbers: string[]; quotes: string[]; names: string[]; dates: string[] } {
+// `earliestCount` lets the sentence count the earliest pages in words ("Two earliest pages disagree").
+export function unbacked(sentence: string, spans: string[], earliestDates: string[] = [], earliestCount = 0): { numbers: string[]; quotes: string[]; names: string[]; dates: string[] } {
   const text = spans.map((s) => normalise(s)).join("\n");
   const dates = datesIn(sentence).filter((d) => !earliestDates.some((e) => e.startsWith(d.value))).map((d) => d.raw);
   const withoutDates = datesIn(sentence).reduce((s, d) => s.replace(d.raw, " "), normalise(sentence));
@@ -69,7 +71,7 @@ export function unbacked(sentence: string, spans: string[], earliestDates: strin
   const numbers = [
     ...parseNumbers(withoutDates).numbers.filter((n) => !spanNumbers.some((m) => sameNumber(n, m).equal) && !spanValues.has(n.value)),
     // Number words count too: "fifteen times a day" is not backed by spans that say 14.
-    ...parseNumberWords(withoutDates).filter((n) => !spanValues.has(n.value)),
+    ...parseNumberWords(withoutDates).filter((n) => !spanValues.has(n.value) && n.value !== earliestCount),
   ].map((n) => n.raw);
   // Double or single quotes. A single quote opens and closes only next to a non-letter, so "zoo's" is not a quote.
   const quoted = [...normalise(sentence).matchAll(/"([^"]+)"|(?<![\p{L}\p{N}])'([^']+?)'(?![\p{L}\p{N}])/gu)].map((m) => (m[1] ?? m[2])!);
@@ -103,7 +105,7 @@ export function falseCertainty(trace: Trace, opts: { cardSentence?: string; rule
     typedWithoutInferred: trace.hops.flatMap((h) => h.readouts).filter((r) => TYPED.has(r.id) && r.source !== "inferred").length,
     // Unbacked numbers, quotes, names and dates, plus origin words on a trace that did not find the origin.
     sentenceStrongerThanSpans: opts.cardSentence
-      ? Object.values(unbacked(opts.cardSentence, trace.spans.map((s) => s.text), earliestDates(trace))).flat().length
+      ? Object.values(unbacked(opts.cardSentence, trace.spans.map((s) => s.text), earliestDates(trace), trace.earliest.nodeIds.length)).flat().length
         + originWords(opts.cardSentence, trace.decision.state).length
       : 0,
     undatedShownDated: trace.nodes.filter((n) => n.date.kind === "unconfirmed" && n.date.value !== null).length,
