@@ -7,24 +7,35 @@ Team **Says Who**, ODSC x Nebius Hackathon 2026. Built on **Nebius Token Factory
 ![The trace view on a sample trace, 1440 px, light](docs/screenshots/ui-pass/rich-1440-light.png)
 
 *The trace view, shown on an invented sample claim. A real trace replaces it once the first live run is reviewed.*
+<!-- numbers ok: 1440 (screenshot width in the file name) -->
 
 ## Where it stands
 
 Honest status as of this README:
 
-- **Built and tested with no network:** the engine stages below (all but spans, which is in review), the Token Factory and Tavily clients, the six-way stop-state table, the `pz verify` re-check, a planted trap set, keyless replay with a readable card, and the trace view.
+- **Built and tested with no network:** the engine stages below (all but spans, which is in review), the Token Factory and Tavily clients, the six-way stop-state table, the `pz verify` re-check, a planted trap set, keyless replay with a readable card, failure paths that replay keylessly, whole-answer mode, the origin card's checked sentence, and the trace view.
 - **Wiring in progress:** `engine/pipeline.ts` ([#130](https://github.com/vs-githjk/odsc-nebius-hackathon/issues/130)) joins the stages to the live clients, so `pz trace "<claim>"` runs end to end. Until it lands, `pz trace` replays recorded traces only.
-- **Not yet measured:** the first live dev run is Monday Nov 16, then the held-out run. The only result so far is the week-0 spike, which lost (see [Evaluation](#evaluation)).
+- **Not yet measured:** the first live dev run is Monday Nov 16, then the held-out run. The only result so far is the first-week spike, which lost (see [Evaluation](#evaluation)).
 
 ## Try it in two minutes, no API keys
 
 ```sh
+git clone https://github.com/vs-githjk/odsc-nebius-hackathon.git && cd odsc-nebius-hackathon
 npm ci
+make judge                      # setup check, every committed trace as a card, pz verify, traps, one summary line
+```
+
+Then, if you want more:
+
+```sh
+make doctor                     # what is installed, which keys are set (never their values), what runs live or replays
 make verify                     # typecheck, tests, re-check every committed trace, traps, copy lint, claims table
 make replay                     # replay a trace and print it as a card
 make replay ARGS=--json         # the same trace as raw JSON
 npm run dev -w web              # the trace view, on the sample traces
 ```
+
+`make judge` and `make doctor` are in review ([#169](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/169)); until they merge, `make verify` and `make replay` cover the same checks.
 
 `make replay` defaults to an invented sample trace and labels it SAMPLE on the first line. Point it at any recorded trace with `TRACE=path/to/trace.json`. Replay never calls a model or a search API.
 
@@ -48,15 +59,20 @@ flowchart LR
 | Stage | What it does | Model or API | Status |
 |---|---|---|---|
 | intake | Finds each statistic in a pasted answer; code checks every claim is in the text | `Qwen/Qwen3-30B-A3B-Instruct-2507`, strict schema | built, tested offline |
-| fingerprint | Reads the claim's number by code; the model only copies parts of the claim (subject, unit, population, time, named source), and code drops anything not copied verbatim | same model | built; phrase claims (quotes, ranges) in [#153](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/153) |
+| fingerprint | Reads the claim's number by code; the model only copies parts of the claim (subject, unit, population, time, named source), and code drops anything not copied verbatim | same model | built, including claims with no plain number (quotes, ranges) |
 | plan queries | Proposes searches; code keeps only queries tied to the claim and rejects search operators | same model | built |
 | walk | Searches date windows further and further back, reads pages, keeps sentences that state the claim | Tavily `search`, `extract` | built; citation following in [#110](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/110) |
 | spans | Every edge between two pages rests on two verbatim sentences, one on each page | code | link-verified edges in [#108](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/108) |
 | dating | Dates each page from its own metadata or byline, capped by its first Wayback capture | Wayback CDX | built |
-| clusters | Groups copies (versions, syndication, same byline, near duplicates) and counts roots | code | built; embeddings not wired yet |
+| clusters | Groups copies (versions, syndication, same byline, near duplicates) and counts roots | code, `Qwen/Qwen3-Embedding-8B` for reworded copies | built; embeddings in review ([#170](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/170)) |
 | readouts | Per hop: number, unit, hedge and comparison changes measured by code; scope, attribution and context asked as typed yes/no questions | same model, logprobs | built |
 | same claim | A page counts as stating the claim only if code finds the claim's number (or phrase) in the sentence **and** a typed question answers yes with known confidence | same model, logprobs | built |
 | stop state | Code picks one of six endings from the trace; the model never does | none | built |
+
+### How many roots, not just how many pages
+
+Every trace counts the pages it found, how many independent roots they trace back to, and how many are copies: "Found on 23 pages: 3 independent roots, 1 origin. 20 are copies." An independent root is a group of copies with no verified link to an earlier page; every other page is a copy. Code counts it from the trace's own links, and `pz verify` recounts it (in review, [#167](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/167)). An unlinked group counts as its own root, so the count can run high when a copy does not cite its source.
+<!-- numbers ok: 23, 3, 1, 20 (an example sentence, not a result) -->
 
 ### Code decides how a trace ends
 
@@ -76,7 +92,7 @@ The model answers narrow typed questions. Code reads the trace and picks the end
 - **Two verbatim spans per edge.** `pz verify` re-opens each saved page, re-finds every sentence at its offsets and hashes, and recomputes the stop state ([packages/pz/src/verify/checks.ts](packages/pz/src/verify/checks.ts)). `make verify` runs it on every committed trace.
 - **Typed questions, not free text.** Every model call uses a strict JSON schema. Confidence comes from the first-token logprobs of the answer, so a low-confidence "yes" becomes "unsure" ([packages/pz/src/typed/](packages/pz/src/typed/ask.ts)).
 - **Page text is data.** Claims and pages go to the model inside a `source_text` field, and every prompt says so. Tests plant instructions inside claims and sentences and check they stay data. A planted trap set checks the counters for false certainty ([traps/README.md](traps/README.md)).
-- **The card cannot overclaim.** The card's one sentence is dropped if it uses a number, name, quote or date not in the spans, or says "origin" on a trace that did not end `ORIGIN_FOUND` ([#77](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/77)).
+- **The card cannot overclaim.** The card's one sentence is dropped if it uses a number, name, quote or date not in the spans, or says "origin" on a trace that did not end `ORIGIN_FOUND` ([packages/pz/src/card/index.ts](packages/pz/src/card/index.ts)).
 
 ## A trace, walked step by step
 
@@ -97,7 +113,7 @@ A search that breaks, or finds nothing, ends in a named state instead of a guess
 | Tavily answers 503 on search | `make replay TRACE=fixtures/failure/traces/failure-tavily-503.json` | `TOOL_FAILED`, rule row 1: "Tavily search returned http_error 503", 0 pages kept. It retried once; both attempts are in the usage rows at 0 credits. It says nothing about the claim. |
 | Every search comes back empty | `make replay TRACE=fixtures/failure/traces/failure-empty-search.json` | `NO_PAGES_FOUND`, rule row 3. Not a tool failure. |
 
-These two are labelled synthetic: the claim is the invented Harbor Zoo one, and the responses were written for the test (`fixtures/failure/`), not captured from a live call. `node --import tsx fixtures/failure/record.ts` rebuilds them byte for byte.
+These two are labelled synthetic: the claim is the invented Harbor Zoo one, and the responses were written for the test, not captured from a live call ([failure-tavily-503.json](fixtures/failure/traces/failure-tavily-503.json), [failure-empty-search.json](fixtures/failure/traces/failure-empty-search.json)). `node --import tsx fixtures/failure/record.ts` rebuilds them byte for byte.
 
 ## Evaluation
 
@@ -127,7 +143,7 @@ It was the fastest (12 to 47 s) and lost on every claim. The grading was not ful
 | Service | Used for | Status |
 |---|---|---|
 | Token Factory `Qwen/Qwen3-30B-A3B-Instruct-2507` | intake, fingerprint, query planning, typed readouts, page type, same claim | client built and tested offline; live calls from Monday's run |
-| Token Factory `Qwen/Qwen3-Embedding-8B` | near-duplicate clustering (replaced `BAAI/bge-en-icl`, which returned 404) | client built; not wired into clustering yet |
+| Token Factory `Qwen/Qwen3-Embedding-8B` | near-duplicate clustering (replaced `BAAI/bge-en-icl`, which returned 404) <!-- numbers ok: 404 (HTTP status) --> | client built; not wired into clustering yet |
 | Tavily `search` | date-windowed exact-phrase searches | built; used by the spike walker |
 | Tavily `extract` | reading the pages a search returns | built |
 | Wayback CDX | first capture of each page, capping its date | built |
@@ -138,11 +154,12 @@ Every call writes a usage row: model, tokens, cached tokens, Tavily credits, dol
 
 - Web pages only. Print-only and paywalled origins are out of scope; the trail goes cold there and says so.
 - "Earliest source we found" is not "first use". Pages that were never indexed or archived cannot be found.
-- Claims need a number, a range or a distinctive phrase to match on ([#153](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/153) adds the last two).
+- Claims need a number, a range or a distinctive phrase to match on.
+- Every known failure, with an example you can run, the rule that should catch it, whether it is caught today and who owns it: `docs/limits.md`, "Where Patient Zero is wrong" (in review, [#172](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/172)).
 
 ## Setup for live runs
 
-1. Node 24, then `npm ci`.
+1. Node 24 ([package.json](package.json)), then `npm ci`.
 2. Copy [.env.example](.env.example) to `.env` and fill it locally (`NEBIUS_API_KEY`, `TAVILY_API_KEY`). `.env` is git-ignored; never paste keys in issues, PRs or chat.
 3. `make verify` and `make replay` need no keys.
 
@@ -163,11 +180,11 @@ Every call writes a usage row: model, tokens, cached tokens, Tavily credits, dol
 
 ## For agents reading this repo
 
-Start at [llms.txt](llms.txt), then [plan/README.md](plan/README.md), which says what every file in `plan/` holds.
+Start at [llms.txt](llms.txt). The working notes live in `plan/` while the build runs; `plan/README.md` says what every file there holds.
 
-- Decisions live in [plan/decisions.md](plan/decisions.md) (Vidyut's, with his words and dates).
-- Rulings made during the build live in [plan/progress.md](plan/progress.md).
-- Coordination between agents and teammates lives in [plan/board.md](plan/board.md).
-- The claims list in [plan/plan.md](plan/plan.md) ("Claims we will make") is what `make verify` prints, one row per claim.
+- Decisions live in `plan/decisions.md` (Vidyut's, with his words and dates).
+- Rulings made during the build live in `plan/progress.md`.
+- Coordination between agents and teammates lives in `plan/board.md`.
+- The claims list in `plan/plan.md` ("Claims we will make") is what `make verify` prints, one row per claim.
 
 Teammates and their agents: read [docs/AGENTS.md](docs/AGENTS.md) first.
