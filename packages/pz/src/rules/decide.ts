@@ -18,6 +18,13 @@ function confidentYes(answer: TypedAnswer | null | undefined, rules: Rules): boo
   return !!answer && answer.optionId === "yes" && answer.probability !== null && confident(answer, rules);
 }
 
+// F1 (#192): a confident same_claim "no" rules a page out of the trail. It is still a page we read, but it never becomes
+// the earliest page or sets how far back the walk searches. "unsure", absent and below-threshold answers rule nothing out.
+export function confidentNo(answer: TypedAnswer | null | undefined, rules: Pick<Rules, "confidenceThreshold">): boolean {
+  if (!answer || answer.optionId !== "no") return false;
+  return rules.confidenceThreshold === null || (answer.probability !== null && answer.probability >= rules.confidenceThreshold);
+}
+
 // T79: with a second model set, its answer must be a plain yes too. Disagreement, or no answer, is unsure. Its
 // confidence is not required: the second model is a veto, and some families return no logprobs.
 function secondAgrees(n: Node, rules: Rules): boolean {
