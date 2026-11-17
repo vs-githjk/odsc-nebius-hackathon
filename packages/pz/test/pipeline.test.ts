@@ -1,4 +1,4 @@
-import { createHash } from "node:crypto";
+import { createHash, randomInt } from "node:crypto";
 import { existsSync, mkdtempSync, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -123,8 +123,15 @@ function stub(world: World) {
 }
 
 // Search and page requests are cached on disk by request, so each test gets a number no other test or run has used.
-let counter = 0;
-const unique = () => String(2200 + ((Date.now() * 7 + ++counter * 1013) % 7700));
+// Six digits drawn at random and never repeated in this process: the old 7,700-value range collided about 6% of runs,
+// and a test then read another test's cached search (flaky "readouts", 0 hops).
+const used = new Set<string>();
+const unique = (): string => {
+  for (;;) {
+    const id = String(100000 + randomInt(900000));
+    if (!used.has(id)) { used.add(id); return id; }
+  }
+};
 
 function run(claim: string, world: World, opts: { capUsd?: number; extra?: string[]; env?: Record<string, string> } = {}) {
   const dir = mkdtempSync(join(tmpdir(), "pz-pipeline-"));
