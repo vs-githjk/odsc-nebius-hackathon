@@ -1,0 +1,2042 @@
+{
+  "schemaVersion": "1",
+  "id": "dev-20",
+  "mode": "LIVE",
+  "synthetic": false,
+  "recordedAt": "2026-11-17T06:36:25.239Z",
+  "claim": {
+    "text": "Florida found arsenic in 60% of popular Halloween candies.",
+    "atoms": {
+      "number": {
+        "raw": "60%",
+        "canonical": "60%"
+      },
+      "unit": null,
+      "subjectLemma": "arsenic",
+      "population": "popular Halloween candies",
+      "time": null,
+      "hedge": null,
+      "namedSource": null,
+      "variants": [
+        "sixty percent",
+        "60 percent",
+        "60 per cent"
+      ]
+    }
+  },
+  "viralSentence": "Florida found arsenic in 60% of popular Halloween candies.",
+  "nodes": [
+    {
+      "id": "n1",
+      "url": "https://www.snopes.com/news/2017/10/26/baby-food-arsenic",
+      "domain": "snopes.com",
+      "title": "'Alarming Study' on Chemicals in Baby Food? | Snopes.com",
+      "date": {
+        "kind": "existed_by",
+        "value": "2021-11-27",
+        "source": "wayback_first_capture",
+        "firstCapture": "2021-11-27",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n1",
+      "evidence": "observed",
+      "meta": true,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [],
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "https://www.nydailynews.com/life-style/popular-baby-formulas-foods-arsenic-lead-bpa-article-1.3587740",
+          "read": true
+        },
+        {
+          "url": "https://www.dailymail.co.uk/health/article-5017827/Two-thirds-baby-food-market-contains-arsenic.html",
+          "read": true
+        },
+        {
+          "url": "https://www.usatoday.com/story/news/nation-now/2017/10/25/these-baby-foods-and-formulas-tested-positive-arsenic-lead-and-bpa-new-study/794291001",
+          "read": true
+        },
+        {
+          "url": "https://www.cleanlabelproject.org/app/uploads/baby-food-infographic.jpg",
+          "read": false
+        }
+      ],
+      "pageType": null,
+      "foundViaMeta": null
+    },
+    {
+      "id": "n2",
+      "url": "https://www.factcheck.org/2014/04/60-plus-association-2",
+      "domain": "factcheck.org",
+      "title": "60 Plus Association - FactCheck.org",
+      "date": {
+        "kind": "existed_by",
+        "value": "2014-04-09",
+        "source": "wayback_first_capture",
+        "firstCapture": "2014-04-09",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n2",
+      "evidence": "observed",
+      "meta": true,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "foundViaMeta": null
+    },
+    {
+      "id": "n3",
+      "url": "https://www.jpmph.org/journal/view.php?doi=10.3961%2Fjpmph.14.036",
+      "domain": "jpmph.org",
+      "title": "Environmental Source of Arsenic Exposure",
+      "date": {
+        "kind": "existed_by",
+        "value": "2018-06-02",
+        "source": "wayback_first_capture",
+        "firstCapture": "2018-06-02",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n3",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s1"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "no",
+        "probability": 0.9999999987498471,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 1.2501529669563195e-9
+          },
+          {
+            "optionId": "no",
+            "p": 0.9999999987498471
+          },
+          {
+            "optionId": "__other__",
+            "p": 0
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    },
+    {
+      "id": "n4",
+      "url": "https://www.nydailynews.com/life-style/popular-baby-formulas-foods-arsenic-lead-bpa-article-1.3587740",
+      "domain": "nydailynews.com",
+      "title": "Popular baby formulas and foods contain arsenic, lead and BPA – New York Daily News",
+      "date": {
+        "kind": "published",
+        "value": "2017-10-26",
+        "source": "metadata",
+        "firstCapture": "2017-10-26",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n4",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s2"
+      ],
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "http://www.cleanlabelproject.org/product_category/baby-food",
+          "read": false
+        }
+      ],
+      "pageType": {
+        "questionId": "page_type",
+        "optionId": "news",
+        "probability": 0.9999999881074058,
+        "top": [
+          {
+            "optionId": "study",
+            "p": 0
+          },
+          {
+            "optionId": "dataset",
+            "p": 0
+          },
+          {
+            "optionId": "report",
+            "p": 1.18611199438289e-8
+          },
+          {
+            "optionId": "speaker",
+            "p": 0
+          },
+          {
+            "optionId": "news",
+            "p": 0.9999999881074058
+          },
+          {
+            "optionId": "blog",
+            "p": 1.5737101831536154e-11
+          },
+          {
+            "optionId": "social",
+            "p": 0
+          },
+          {
+            "optionId": "other",
+            "p": 1.5737101831536154e-11
+          },
+          {
+            "optionId": "__other__",
+            "p": 1.1102230246251565e-16
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "no",
+        "probability": 0.9980732445107544,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.0019267343935248436
+          },
+          {
+            "optionId": "no",
+            "p": 0.9980732445107544
+          },
+          {
+            "optionId": "__other__",
+            "p": 2.1095720725838873e-8
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": "https://www.snopes.com/news/2017/10/26/baby-food-arsenic",
+      "injection": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "parentId": "n4",
+      "childId": "n3",
+      "kind": "inferred",
+      "parentSpanId": "s2",
+      "childSpanId": "s1",
+      "linkHref": null
+    }
+  ],
+  "clusters": [
+    {
+      "id": "c-n3",
+      "nodeIds": [
+        "n3"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n4",
+      "nodeIds": [
+        "n4"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n1",
+      "nodeIds": [
+        "n1"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n2",
+      "nodeIds": [
+        "n2"
+      ],
+      "rule": "single"
+    }
+  ],
+  "spans": [
+    {
+      "id": "s1",
+      "nodeId": "n3",
+      "text": "In most animal studies, DMA has been the main metabolite, while in humans, urinary excretion analysis under normal conditions have revealed approximately 20% inorganic arsenic, 20% MMA, and 60% DMA [13,14].",
+      "contextBefore": "cal species present in the body. It is generally recognized that inorganic arsenic is more toxic than organic arsenic (DMA and MMA), and among inorganic arsenic, As3+ is more toxic than As5+ [10-12]. ",
+      "contextAfter": " Therefore, arsenic levels measured in the urine can be used as a biomarker of arsenic exposure in humans. Since arsenic is rapidly metabolized and excreted through the urine, this measurement can pro",
+      "start": 8988,
+      "end": 9194,
+      "extractSha256": "50a9ac5325e82668e11abec4ca2be212566da4141d6ef89b140f41e408ca6d84",
+      "windowSha256": "fa548787339eceffe3cb4837f9916e8ca47d6fe4d36b459b084b85b015be4d7c",
+      "fetchedAt": "2026-11-17T06:36:41.248Z",
+      "waybackUrl": "https://web.archive.org/web/20180602124351/https://www.jpmph.org/journal/view.php?doi=10.3961%2Fjpmph.14.036",
+      "tier": "exact"
+    },
+    {
+      "id": "s2",
+      "nodeId": "n4",
+      "text": "Out of those, the study found that 65% contained arsenic, 36% had lead, 60% had BPA (industrial chemical bisphenol A) and 58% contained cadmium, a natural toxic metal typically found in plant soil and smoking products.",
+      "contextBefore": "s from a new study released Wednesday. The 530 baby products, purchased in the past five months, were all tested by the Clean Label Project, a nonprofit group that advocates for transparent labeling. ",
+      "contextAfter": " Some of the more popular brands that tested positive for these harmful ingredients, including Gerber, Enfamil, Plum Organics and Sprout, were the worst offenders, according to the study. The brands s",
+      "start": 544,
+      "end": 762,
+      "extractSha256": "f4fedf26db7bffb67f5d0a95363af4ffb1eddf9608f56cb2fbcb48d4738d8a45",
+      "windowSha256": "ec10208ae44e7b93d04ce31c6b7afbbff0eee041afa6350f5e9c9f6e4e538373",
+      "fetchedAt": "2026-11-17T06:36:51.662Z",
+      "waybackUrl": "https://web.archive.org/web/20171026043717/https://www.nydailynews.com/life-style/popular-baby-formulas-foods-arsenic-lead-bpa-article-1.3587740",
+      "tier": "exact"
+    }
+  ],
+  "hops": [
+    {
+      "edgeId": "e1",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "scope_widened",
+          "source": "inferred",
+          "value": "no",
+          "probability": 0.9626730734917641,
+          "disputed": false
+        },
+        {
+          "id": "attribution_shifted",
+          "source": "inferred",
+          "value": "yes",
+          "probability": 0.9988304897046841,
+          "disputed": false
+        },
+        {
+          "id": "context_stripped",
+          "source": "inferred",
+          "value": "yes",
+          "probability": 0.9914224797904038,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "in"
+        },
+        {
+          "op": "add",
+          "text": "most"
+        },
+        {
+          "op": "add",
+          "text": "animal"
+        },
+        {
+          "op": "add",
+          "text": "studies"
+        },
+        {
+          "op": "add",
+          "text": "dma"
+        },
+        {
+          "op": "add",
+          "text": "has"
+        },
+        {
+          "op": "add",
+          "text": "been"
+        },
+        {
+          "op": "del",
+          "text": "out"
+        },
+        {
+          "op": "del",
+          "text": "of"
+        },
+        {
+          "op": "del",
+          "text": "those"
+        },
+        {
+          "op": "same",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "main"
+        },
+        {
+          "op": "add",
+          "text": "metabolite"
+        },
+        {
+          "op": "add",
+          "text": "while"
+        },
+        {
+          "op": "add",
+          "text": "in"
+        },
+        {
+          "op": "add",
+          "text": "humans"
+        },
+        {
+          "op": "add",
+          "text": "urinary"
+        },
+        {
+          "op": "add",
+          "text": "excretion"
+        },
+        {
+          "op": "add",
+          "text": "analysis"
+        },
+        {
+          "op": "add",
+          "text": "under"
+        },
+        {
+          "op": "add",
+          "text": "normal"
+        },
+        {
+          "op": "add",
+          "text": "conditions"
+        },
+        {
+          "op": "add",
+          "text": "have"
+        },
+        {
+          "op": "add",
+          "text": "revealed"
+        },
+        {
+          "op": "add",
+          "text": "approximately"
+        },
+        {
+          "op": "add",
+          "text": "20"
+        },
+        {
+          "op": "add",
+          "text": "inorganic"
+        },
+        {
+          "op": "del",
+          "text": "study"
+        },
+        {
+          "op": "del",
+          "text": "found"
+        },
+        {
+          "op": "del",
+          "text": "that"
+        },
+        {
+          "op": "del",
+          "text": "65"
+        },
+        {
+          "op": "del",
+          "text": "contained"
+        },
+        {
+          "op": "same",
+          "text": "arsenic"
+        },
+        {
+          "op": "add",
+          "text": "20"
+        },
+        {
+          "op": "add",
+          "text": "mma"
+        },
+        {
+          "op": "add",
+          "text": "and"
+        },
+        {
+          "op": "del",
+          "text": "36"
+        },
+        {
+          "op": "del",
+          "text": "had"
+        },
+        {
+          "op": "del",
+          "text": "lead"
+        },
+        {
+          "op": "same",
+          "text": "60"
+        },
+        {
+          "op": "add",
+          "text": "dma"
+        },
+        {
+          "op": "add",
+          "text": "13,14"
+        },
+        {
+          "op": "del",
+          "text": "had"
+        },
+        {
+          "op": "del",
+          "text": "bpa"
+        },
+        {
+          "op": "del",
+          "text": "industrial"
+        },
+        {
+          "op": "del",
+          "text": "chemical"
+        },
+        {
+          "op": "del",
+          "text": "bisphenol"
+        },
+        {
+          "op": "del",
+          "text": "a"
+        },
+        {
+          "op": "del",
+          "text": "and"
+        },
+        {
+          "op": "del",
+          "text": "58"
+        },
+        {
+          "op": "del",
+          "text": "contained"
+        },
+        {
+          "op": "del",
+          "text": "cadmium"
+        },
+        {
+          "op": "del",
+          "text": "a"
+        },
+        {
+          "op": "del",
+          "text": "natural"
+        },
+        {
+          "op": "del",
+          "text": "toxic"
+        },
+        {
+          "op": "del",
+          "text": "metal"
+        },
+        {
+          "op": "del",
+          "text": "typically"
+        },
+        {
+          "op": "del",
+          "text": "found"
+        },
+        {
+          "op": "del",
+          "text": "in"
+        },
+        {
+          "op": "del",
+          "text": "plant"
+        },
+        {
+          "op": "del",
+          "text": "soil"
+        },
+        {
+          "op": "del",
+          "text": "and"
+        },
+        {
+          "op": "del",
+          "text": "smoking"
+        },
+        {
+          "op": "del",
+          "text": "products"
+        }
+      ],
+      "faithful": false
+    }
+  ],
+  "blame": [],
+  "roots": {
+    "pages": 2,
+    "clusters": 2,
+    "rootsLinked": 0,
+    "clustersUnlinked": 2,
+    "studiesFound": null,
+    "independentRoots": 2,
+    "copies": 0
+  },
+  "redHopEdgeId": "e1",
+  "earliest": {
+    "nodeIds": [
+      "n4"
+    ],
+    "earlierWindowSearches": 2,
+    "earlierFound": 0
+  },
+  "failure": null,
+  "budget": {
+    "credits": 28,
+    "usd": 0.0010689900000000001,
+    "ms": 223577,
+    "capHit": "depth"
+  },
+  "decision": {
+    "state": "PARTIAL",
+    "row": 2,
+    "reasons": [
+      "cap hit: depth"
+    ],
+    "counts": {
+      "pages": 2,
+      "clusters": 2,
+      "unreadParents": 2,
+      "earlierWindowSearches": 2
+    }
+  },
+  "searchLog": [
+    {
+      "at": "2026-11-17T06:36:31.626Z",
+      "step": "search",
+      "query": "\"60%\" arsenic",
+      "endDate": "2026-11-17",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-17T06:36:32.506Z",
+      "step": "search",
+      "query": "arsenic in 60% of popular Halloween candies Florida",
+      "endDate": "2026-11-17",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-17T06:36:33.500Z",
+      "step": "search",
+      "query": "60% of Halloween candies tested positive for arsenic Florida",
+      "endDate": "2026-11-17",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-17T06:36:34.574Z",
+      "step": "search",
+      "query": "Florida Department of Health arsenic in Halloween candy study",
+      "endDate": "2026-11-17",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-17T06:36:36.741Z",
+      "step": "meta-search",
+      "query": "\"60%\" arsenic",
+      "endDate": "2026-11-17",
+      "startDate": null,
+      "results": 5,
+      "kept": 2,
+      "dropped": 3
+    },
+    {
+      "at": "2026-11-17T06:36:58.871Z",
+      "step": "search",
+      "query": "\"60%\" arsenic",
+      "endDate": "2014-09-10",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-17T06:37:01.059Z",
+      "step": "search",
+      "query": "\"60%\" of popular Halloween candies contain arsenic",
+      "endDate": "2014-09-10",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-17T06:37:03.055Z",
+      "step": "search",
+      "query": "arsenic in Halloween candy 60%",
+      "endDate": "2014-09-10",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-17T06:37:06.019Z",
+      "step": "search",
+      "query": "60% of Halloween candies have arsenic Florida",
+      "endDate": "2014-09-10",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-17T06:37:16.071Z",
+      "step": "search",
+      "query": "\"60%\" arsenic in Halloween candies Florida",
+      "endDate": "2014-09-10",
+      "startDate": null,
+      "results": 9,
+      "kept": 7,
+      "dropped": 2
+    },
+    {
+      "at": "2026-11-17T06:37:20.628Z",
+      "step": "search",
+      "query": "\"60%\" arsenic in candy Florida Halloween",
+      "endDate": "2014-09-10",
+      "startDate": null,
+      "results": 9,
+      "kept": 8,
+      "dropped": 1
+    },
+    {
+      "at": "2026-11-17T06:37:24.160Z",
+      "step": "search",
+      "query": "Florida 60% arsenic in Halloween candy report",
+      "endDate": "2014-09-10",
+      "startDate": null,
+      "results": 9,
+      "kept": 8,
+      "dropped": 1
+    },
+    {
+      "at": "2026-11-17T06:37:27.856Z",
+      "step": "search",
+      "query": "60% arsenic in Halloween candies Florida study",
+      "endDate": "2014-09-10",
+      "startDate": null,
+      "results": 9,
+      "kept": 8,
+      "dropped": 1
+    },
+    {
+      "at": "2026-11-17T06:37:48.178Z",
+      "step": "search",
+      "query": "\"60%\" \"arsenic\" \"Halloween candies\" Florida",
+      "endDate": "2014-09-10",
+      "startDate": null,
+      "results": 3,
+      "kept": 3,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-17T06:37:50.108Z",
+      "step": "search",
+      "query": "\"60%\" \"DMA\" \"arsenic\" \"Halloween\" \"Florida\"",
+      "endDate": "2014-09-10",
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-17T06:38:03.175Z",
+      "step": "search",
+      "query": "\"sixty percent\" arsenic",
+      "endDate": "2014-09-10",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-17T06:38:04.142Z",
+      "step": "search",
+      "query": "\"60 percent\" arsenic",
+      "endDate": "2014-09-10",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-17T06:38:05.226Z",
+      "step": "search",
+      "query": "\"60 per cent\" arsenic",
+      "endDate": "2014-09-10",
+      "startDate": null,
+      "results": 8,
+      "kept": 8,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-17T06:38:37.375Z",
+      "step": "search",
+      "query": "60% arsenic in Halloween candy Florida",
+      "endDate": "2014-09-10",
+      "startDate": null,
+      "results": 9,
+      "kept": 7,
+      "dropped": 2
+    },
+    {
+      "at": "2026-11-17T06:38:39.366Z",
+      "step": "search",
+      "query": "Florida arsenic in candy 60% study",
+      "endDate": "2014-09-10",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-17T06:38:55.861Z",
+      "step": "search",
+      "query": "60% arsenic in Halloween candy Florida source",
+      "endDate": "2014-09-10",
+      "startDate": null,
+      "results": 9,
+      "kept": 6,
+      "dropped": 3
+    },
+    {
+      "at": "2026-11-17T06:38:58.676Z",
+      "step": "search",
+      "query": "60% arsenic in Halloween candy Florida source",
+      "endDate": "2014-09-10",
+      "startDate": null,
+      "results": 5,
+      "kept": 4,
+      "dropped": 1
+    },
+    {
+      "at": "2026-11-17T06:39:12.454Z",
+      "step": "search",
+      "query": "\"60%\" \"arsenic\" \"Halloween\" \"Florida\" candy",
+      "endDate": "2014-09-10",
+      "startDate": null,
+      "results": 9,
+      "kept": 5,
+      "dropped": 4
+    },
+    {
+      "at": "2026-11-17T06:39:14.572Z",
+      "step": "search",
+      "query": "arsenic levels in candy Florida 60%",
+      "endDate": "2014-09-10",
+      "startDate": null,
+      "results": 10,
+      "kept": 9,
+      "dropped": 1
+    }
+  ],
+  "usage": [
+    {
+      "at": "2026-11-17T06:36:25.239Z",
+      "traceId": "dev-20",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 162,
+      "completionTokens": 46,
+      "cachedTokens": 128,
+      "credits": 0,
+      "costUsd": 0.00003,
+      "latencyMs": 1502,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:36:26.746Z",
+      "traceId": "dev-20",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 272,
+      "completionTokens": 151,
+      "cachedTokens": 240,
+      "credits": 0,
+      "costUsd": 0.0000725,
+      "latencyMs": 3811,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:36:31.625Z",
+      "traceId": "dev-20",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1055,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:36:32.506Z",
+      "traceId": "dev-20",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 862,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:36:33.499Z",
+      "traceId": "dev-20",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 974,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:36:34.573Z",
+      "traceId": "dev-20",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1056,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:36:36.741Z",
+      "traceId": "dev-20",
+      "step": "meta-search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2137,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:36:36.853Z",
+      "traceId": "dev-20",
+      "step": "meta-extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 96,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:36:38.562Z",
+      "traceId": "dev-20",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1686,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:36:41.248Z",
+      "traceId": "dev-20",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1973,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:36:41.289Z",
+      "traceId": "dev-20",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 248,
+      "completionTokens": 7,
+      "cachedTokens": 160,
+      "credits": 0,
+      "costUsd": 0.0000269,
+      "latencyMs": 526,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:36:41.842Z",
+      "traceId": "dev-20",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 123,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00000123,
+      "latencyMs": 2146,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:36:43.994Z",
+      "traceId": "dev-20",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 174,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00000174,
+      "latencyMs": 3463,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:36:51.661Z",
+      "traceId": "dev-20",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 4194,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:36:51.666Z",
+      "traceId": "dev-20",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 253,
+      "completionTokens": 7,
+      "cachedTokens": 160,
+      "credits": 0,
+      "costUsd": 0.0000274,
+      "latencyMs": 706,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:36:52.378Z",
+      "traceId": "dev-20",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 316,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.0000031600000000000002,
+      "latencyMs": 2241,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:36:54.625Z",
+      "traceId": "dev-20",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 353,
+      "completionTokens": 196,
+      "cachedTokens": 256,
+      "credits": 0,
+      "costUsd": 0.0000941,
+      "latencyMs": 2793,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:36:58.871Z",
+      "traceId": "dev-20",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1434,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:37:01.059Z",
+      "traceId": "dev-20",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2166,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:37:03.054Z",
+      "traceId": "dev-20",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1976,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:37:06.018Z",
+      "traceId": "dev-20",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2943,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:37:07.589Z",
+      "traceId": "dev-20",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1552,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:37:07.718Z",
+      "traceId": "dev-20",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 16,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 1.6e-7,
+      "latencyMs": 824,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:37:08.544Z",
+      "traceId": "dev-20",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 353,
+      "completionTokens": 177,
+      "cachedTokens": 352,
+      "credits": 0,
+      "costUsd": 0.00008840000000000001,
+      "latencyMs": 4874,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:37:16.070Z",
+      "traceId": "dev-20",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2636,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:37:20.627Z",
+      "traceId": "dev-20",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 4546,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:37:24.159Z",
+      "traceId": "dev-20",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 3510,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:37:27.856Z",
+      "traceId": "dev-20",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 3677,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:37:29.398Z",
+      "traceId": "dev-20",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1525,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:37:29.461Z",
+      "traceId": "dev-20",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 29,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 2.9000000000000003e-7,
+      "latencyMs": 1456,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:37:31.142Z",
+      "traceId": "dev-20",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 2356,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00002356,
+      "latencyMs": 3086,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:37:34.240Z",
+      "traceId": "dev-20",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 1346,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00001346,
+      "latencyMs": 7513,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:37:41.780Z",
+      "traceId": "dev-20",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 353,
+      "completionTokens": 235,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.0001058,
+      "latencyMs": 4396,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:37:48.178Z",
+      "traceId": "dev-20",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1960,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:37:50.108Z",
+      "traceId": "dev-20",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1911,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:37:54.051Z",
+      "traceId": "dev-20",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 3924,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:37:54.092Z",
+      "traceId": "dev-20",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 1492,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.000014920000000000001,
+      "latencyMs": 4947,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:37:59.052Z",
+      "traceId": "dev-20",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 353,
+      "completionTokens": 143,
+      "cachedTokens": 352,
+      "credits": 0,
+      "costUsd": 0.0000782,
+      "latencyMs": 2357,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:38:03.175Z",
+      "traceId": "dev-20",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1739,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:38:04.142Z",
+      "traceId": "dev-20",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 946,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:38:05.226Z",
+      "traceId": "dev-20",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1064,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:38:06.760Z",
+      "traceId": "dev-20",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1510,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:38:06.799Z",
+      "traceId": "dev-20",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 621,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00000621,
+      "latencyMs": 3558,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:38:10.767Z",
+      "traceId": "dev-20",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 1335,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.000013350000000000001,
+      "latencyMs": 7177,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:38:17.963Z",
+      "traceId": "dev-20",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 1530,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.0000153,
+      "latencyMs": 7910,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:38:25.885Z",
+      "traceId": "dev-20",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 1162,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00001162,
+      "latencyMs": 5274,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:38:31.179Z",
+      "traceId": "dev-20",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 126,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00000126,
+      "latencyMs": 440,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:38:31.649Z",
+      "traceId": "dev-20",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 353,
+      "completionTokens": 105,
+      "cachedTokens": 240,
+      "credits": 0,
+      "costUsd": 0.0000668,
+      "latencyMs": 2815,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:38:37.375Z",
+      "traceId": "dev-20",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2895,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:38:39.365Z",
+      "traceId": "dev-20",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1973,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:38:40.270Z",
+      "traceId": "dev-20",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 893,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:38:40.371Z",
+      "traceId": "dev-20",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 75,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 7.5e-7,
+      "latencyMs": 3031,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:38:43.458Z",
+      "traceId": "dev-20",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 292,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00000292,
+      "latencyMs": 4474,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:38:47.938Z",
+      "traceId": "dev-20",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 353,
+      "completionTokens": 147,
+      "cachedTokens": 352,
+      "credits": 0,
+      "costUsd": 0.0000794,
+      "latencyMs": 3833,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:38:55.861Z",
+      "traceId": "dev-20",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 4065,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:38:58.675Z",
+      "traceId": "dev-20",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2796,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:38:59.533Z",
+      "traceId": "dev-20",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 839,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:38:59.627Z",
+      "traceId": "dev-20",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 138,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.0000013800000000000001,
+      "latencyMs": 3568,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:39:03.196Z",
+      "traceId": "dev-20",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 353,
+      "completionTokens": 260,
+      "cachedTokens": 352,
+      "credits": 0,
+      "costUsd": 0.0001133,
+      "latencyMs": 6481,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:39:12.454Z",
+      "traceId": "dev-20",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2742,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:39:14.571Z",
+      "traceId": "dev-20",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2097,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:39:15.286Z",
+      "traceId": "dev-20",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 695,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:39:15.305Z",
+      "traceId": "dev-20",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 118,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00000118,
+      "latencyMs": 8936,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:39:24.414Z",
+      "traceId": "dev-20",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 172,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:39:28.167Z",
+      "traceId": "dev-20",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 3925,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:39:28.770Z",
+      "traceId": "dev-20",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 599,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:39:36.081Z",
+      "traceId": "dev-20",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 7310,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:39:36.082Z",
+      "traceId": "dev-20",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-17T06:39:36.083Z",
+      "traceId": "dev-20",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-17T06:39:36.089Z",
+      "traceId": "dev-20",
+      "step": "page_type",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 1142,
+      "completionTokens": 8,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.0001166,
+      "latencyMs": 27436,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:40:03.566Z",
+      "traceId": "dev-20",
+      "step": "readouts",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 502,
+      "completionTokens": 23,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.0000571,
+      "latencyMs": 5244,
+      "status": "200",
+      "cacheHit": false
+    }
+  ],
+  "scopeNote": "Web pages only; print and paywalled origins are out of scope. Earliest source we found, not proof of first use.",
+  "otherNumbers": []
+}
