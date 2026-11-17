@@ -6,6 +6,8 @@ import { PZ_VERSION } from "../index.ts";
 import { relock, runTraps } from "../traps/run.ts";
 import { runVerify, type HistoricalManifest } from "../verify/index.ts";
 import { answerCommand } from "./answer.ts";
+import { formatDoctor, runDoctor } from "./doctor.ts";
+import { runJudge } from "./judge.ts";
 import { traceCommand } from "./trace.ts";
 
 const [command, ...args] = process.argv.slice(2);
@@ -51,6 +53,14 @@ if (command === "--version") {
   const { code, lines } = runTraps(paths);
   for (const line of lines) console.log(line);
   process.exitCode = code;
+} else if (command === "doctor") {
+  const root = fileURLToPath(new URL("../../../../", import.meta.url));
+  const { code, lines } = await runDoctor({ root, env: process.env, nodeVersion: process.version, network: args.includes("--network") });
+  for (const line of formatDoctor(lines)) console.log(line);
+  process.exitCode = code;
+} else if (command === "judge") {
+  const root = fileURLToPath(new URL("../../../../", import.meta.url));
+  process.exitCode = await runJudge({ root, env: process.env, nodeVersion: process.version });
 } else {
   console.error("not built yet");
   process.exitCode = 1;

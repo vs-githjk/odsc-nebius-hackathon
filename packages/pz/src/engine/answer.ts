@@ -42,9 +42,12 @@ export function answerSummary(claims: readonly AnswerClaim[], rejected: readonly
   // Worded by intake's reason: a repeat is not a sentence code failed to match.
   const repeats = rejected.filter((r) => r.reason === "duplicate").length;
   const noNumber = rejected.filter((r) => r.reason === "no_number").length;
-  const unmatched = rejected.length - repeats - noNumber;
+  // A range ("40 to 45 percent") or a bound ("over 70%") is a real statistic, just not one number to trace.
+  const notOne = rejected.filter((r) => r.reason === "range" || r.reason === "inequality").length;
+  const unmatched = rejected.length - repeats - noNumber - notOne;
   const aside = [
     noNumber && `${plural(noNumber, "sentence")} with no number to check`,
+    notOne && `${plural(notOne, "sentence")} with a range or a bound, not one number`,
     unmatched && `${plural(unmatched, "sentence")} whose number code could not match to the text`,
     repeats && `${plural(repeats, "repeat")} of a statistic already listed`,
   ].filter(Boolean) as string[];

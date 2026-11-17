@@ -50,6 +50,15 @@ describe("T37 cold trails that explain themselves", () => {
     expect(findBoundary(withEarliest({ after: " From a 1967 study." }), rules)).toBeNull();
   });
 
+  it("print never stands while the earliest page cites a link we never opened, since that link could be the web copy", () => {
+    const after = " The figure comes from Dr Okafor's book on seabirds (1967), pp. 112.";
+    const unread = withEarliest({ boundary: answer("print"), after, parents: [{ url: "https://archive.example/okafor-1967", read: false }] });
+    expect(findBoundary(unread, rules)).not.toBe("print");
+    expect(endingSentence(unread)).not.toContain("no web copy");
+    const opened = withEarliest({ boundary: answer("print"), after, parents: [{ url: "https://archive.example/okafor-1967", read: true }] });
+    expect(findBoundary(opened, rules)).toBe("print");
+  });
+
   it("unsourced: an editable page that cites nothing, and only then", () => {
     const wiki = withEarliest({ boundary: answer("unsourced"), url: "https://en.wikipedia.org/wiki/Harbor_Zoo" });
     expect(findBoundary(wiki, rules)).toBe("unsourced");

@@ -4,8 +4,10 @@ import { isDeepStrictEqual } from "node:util";
 import { decideStopState, isNegated, loadRules, normalise, type Rules } from "../rules/index.ts";
 import { atomHit } from "../rules/numbers.ts";
 import type { Trace } from "../schema/index.ts";
+import { otherNumberCandidate } from "../engine/similar.ts";
+import { computeRoots } from "../engine/cluster.ts";
 
-export type Check = "window_hash" | "offsets" | "atoms" | "negated" | "earliest" | "date_cap" | "edge_spans" | "edge_kind" | "stop_state" | "page_hash" | "page_offsets";
+export type Check = "window_hash" | "offsets" | "atoms" | "negated" | "earliest" | "date_cap" | "edge_spans" | "edge_kind" | "stop_state" | "page_hash" | "page_offsets" | "other_numbers" | "roots";
 export type Failure = { traceId: string; check: Check; detail: string };
 export type TraceReport = { spans: number; spansOk: number; edgesWithoutTwoSpans: number; stateAgrees: boolean; failures: Failure[] };
 
@@ -68,6 +70,23 @@ export function verifyTrace(trace: Trace, opts: { pagesDir?: string; rules?: Rul
     const { value, firstCapture, conflictingDate } = n.date;
     if (value !== null && firstCapture !== null && value > firstCapture && !conflictingDate)
       fail("date_cap", `node ${n.id}: date ${value} is later than its first capture ${firstCapture} and is not flagged`);
+  }
+
+  // T97: a page listed as the same claim with another number must pass code's own gate (the subject, not negated, a
+  // number that is not the claim's) and carry a similarity at or above the rule. The vectors are not stored, so the
+  // similarity itself is taken as recorded.
+  for (const o of trace.otherNumbers ?? []) {
+    if (otherNumberCandidate(o.sentence, trace.claim.atoms, rules) === null) fail("other_numbers", `${o.url}: sentence does not pass the other-number gate`);
+    else if (o.similarity < rules.otherNumberSimilarity) fail("other_numbers", `${o.url}: similarity ${o.similarity} is under otherNumberSimilarity ${rules.otherNumberSimilarity}`);
+  }
+
+  // T94: the headline counts are re-derived from the nodes and edges, never trusted. Traces from before T94 carry no
+  // independentRoots and are not held to it (spike claim-2 stored an older count of unlinked clusters).
+  if (trace.roots.independentRoots !== undefined || trace.roots.copies !== undefined) {
+    const derived = computeRoots(trace.nodes, trace.edges);
+    const differing = (["pages", "clusters", "rootsLinked", "clustersUnlinked", "independentRoots", "copies"] as const)
+      .filter((k) => derived[k] !== trace.roots[k]).map((k) => `${k}: stored ${trace.roots[k] ?? "none"}, edges give ${derived[k]}`);
+    if (differing.length) fail("roots", `roots disagree with the nodes and edges; ${differing.join("; ")}`);
   }
 
   const recomputed = decideStopState(trace, rules);

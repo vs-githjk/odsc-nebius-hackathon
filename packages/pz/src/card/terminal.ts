@@ -1,4 +1,5 @@
 import type { Node, Trace } from "../schema/index.ts";
+import { independenceLine } from "./headline.ts";
 
 // T77: one readable screen for `pz trace` and `make replay`, built only from the trace's own fields.
 // The raw trace stays one flag away (--json). Nothing here calls a model or the network.
@@ -113,6 +114,9 @@ export function renderCard(trace: Trace, { color = false }: { color?: boolean } 
   const badge = trace.mode === "SAMPLE" ? s.tone(trace.mode, "warn") : s.tone(trace.mode, trace.mode === "LIVE" ? "good" : "info");
   out.push(`${s.bold("Patient Zero")}  ${badge} ${s.dim(MODE_NOTE[trace.mode])}`);
   out.push("");
+  // T94: the independence count leads the card.
+  for (const l of wrap(independenceLine(trace), 0)) out.push(s.bold(l));
+  out.push("");
   field("Claim", trace.claim.text);
   out.push("");
   field("Ending", STATE_WORDS[trace.decision.state], (x) => s.bold(s.tone(x, TONE[trace.decision.state])));
@@ -141,6 +145,16 @@ export function renderCard(trace: Trace, { color = false }: { color?: boolean } 
   field("Roots", r.pages
     ? `${plural(r.pages, "page")} read, in ${plural(r.clusters, "group")} of copies. Traced to ${plural(r.rootsLinked, "root")} we could link (${plural(r.clustersUnlinked, "cluster")} unlinked).`
     : "No pages read.");
+
+  // T97: pages that state the claim with another number, worded from the fields only. "Instead of", not "became":
+  // which number came first is the dates' job, and a page with another number may be the earlier one.
+  const others = trace.otherNumbers ?? [];
+  if (others.length) {
+    out.push("");
+    const claimNumber = trace.claim.atoms.number?.raw ?? "";
+    others.slice(0, 2).forEach((o, i) => field(i ? "" : "Numbers", `${o.number} instead of ${claimNumber} on ${o.domain}${o.date ? ` (${o.date})` : ""}: "${o.sentence}"`));
+    if (others.length > 2) more(`and ${others.length - 2} more page${others.length - 2 === 1 ? "" : "s"} with another number`, s.dim);
+  }
 
   out.push("");
   field("Cost", `${plural(trace.budget.credits, "credit")}, ${money(trace.budget.usd)}, ${Math.round(trace.budget.ms / 1000)} s`);
