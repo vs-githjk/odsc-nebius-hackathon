@@ -3,7 +3,7 @@
   "id": "dev-03",
   "mode": "LIVE",
   "synthetic": false,
-  "recordedAt": "2026-11-17T06:05:19.280Z",
+  "recordedAt": "2026-11-17T23:04:39.525Z",
   "claim": {
     "text": "Humans use only 10 percent of their brains.",
     "atoms": {
@@ -48,7 +48,7 @@
       "candidateParents": [
         {
           "url": "https://www.bloomberg.com/profile/company/USSB:US",
-          "read": false
+          "read": true
         },
         {
           "url": "https://www.discovermagazine.com/mind/the-10-percent-of-your-brain-myth-that-just-wont-die",
@@ -124,15 +124,183 @@
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "yes",
-        "probability": 0.9999999966017321,
+        "probability": 0.9999998555019765,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.9999999966017321
+            "p": 0.9999998555019765
           },
           {
             "optionId": "no",
-            "p": 3.398267898710773e-9
+            "p": 1.4449802344345402e-7
+          },
+          {
+            "optionId": "__other__",
+            "p": 1.1102230246251565e-16
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    },
+    {
+      "id": "n4",
+      "url": "https://www.youtube.com/watch?v=JDF2rjFd8hY",
+      "domain": "youtube.com",
+      "title": "Do We Really Use Only 10% Of Our Brain?",
+      "date": {
+        "kind": "published",
+        "value": "2013-09-27",
+        "source": "metadata",
+        "firstCapture": "2013-09-28",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n4",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s2"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": {
+        "questionId": "page_type",
+        "optionId": "speaker",
+        "probability": 0.5983600477429968,
+        "top": [
+          {
+            "optionId": "study",
+            "p": 0.020474753686253545
+          },
+          {
+            "optionId": "dataset",
+            "p": 0
+          },
+          {
+            "optionId": "report",
+            "p": 0.014072078694447999
+          },
+          {
+            "optionId": "speaker",
+            "p": 0.5983600477429968
+          },
+          {
+            "optionId": "news",
+            "p": 0.0035579786892368163
+          },
+          {
+            "optionId": "blog",
+            "p": 0
+          },
+          {
+            "optionId": "social",
+            "p": 0.3629236928713042
+          },
+          {
+            "optionId": "other",
+            "p": 0
+          },
+          {
+            "optionId": "__other__",
+            "p": 0.0006114483157606543
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9996646499678654,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9996646499678654
+          },
+          {
+            "optionId": "no",
+            "p": 0.0003353500321348797
+          },
+          {
+            "optionId": "__other__",
+            "p": 0
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "boundary": {
+        "questionId": "boundary",
+        "optionId": "print",
+        "probability": 0.9999936827058733,
+        "top": [
+          {
+            "optionId": "print",
+            "p": 0.9999936827058733
+          },
+          {
+            "optionId": "unsourced",
+            "p": 0.0000029625364273442445
+          },
+          {
+            "optionId": "none",
+            "p": 0.0000032887379265989447
+          },
+          {
+            "optionId": "__other__",
+            "p": 6.601977264875103e-8
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "injection": null
+    },
+    {
+      "id": "n5",
+      "url": "https://www.brainfacts.org/brain-anatomy-and-function/anatomy/2014/lucy-and-the-10-percent-brain-myth",
+      "domain": "brainfacts.org",
+      "title": "Lucy and the 10 Percent Brain Myth",
+      "date": {
+        "kind": "existed_by",
+        "value": "2019-07-01",
+        "source": "wayback_first_capture",
+        "firstCapture": "2019-07-01",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n5",
+      "evidence": "observed",
+      "meta": true,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s3"
+      ],
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "https://www.youtube.com/watch?v=MVt32qoyhi0",
+          "read": true
+        }
+      ],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9999999994788586,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9999999994788586
+          },
+          {
+            "optionId": "no",
+            "p": 5.211413149681787e-10
           },
           {
             "optionId": "__other__",
@@ -148,6 +316,20 @@
   ],
   "edges": [],
   "clusters": [
+    {
+      "id": "c-n4",
+      "nodeIds": [
+        "n4"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n5",
+      "nodeIds": [
+        "n5"
+      ],
+      "rule": "single"
+    },
     {
       "id": "c-n3",
       "nodeIds": [
@@ -174,58 +356,88 @@
     {
       "id": "s1",
       "nodeId": "n3",
-      "text": "Sign up for our email newsletter for the latest science news You've likely heard this wild (and wildly misinformed) idea in one form or another: we humans only use 10 percent of our brain.",
-      "contextBefore": "cent-of-Your-Brain Myth That Just Won't Die. Nope, sorry. You don't have a lot of extra brain power just waiting for you to access it. View Full Profile. Learn about our Editorial Policy. Newsletter. ",
+      "text": "Sign up for our email newsletter for the latest science news Sign Up You've likely heard this wild (and wildly misinformed) idea in one form or another: we humans only use 10 percent of our brain.",
+      "contextBefore": "equently writes for*Discover Magazine*, covering scientific studies on topics like neuroscience, insects, and microbes. ViewFull Profile. --- Learn about ourEditorial Policy. | 3 min read Newsletter. ",
       "contextAfter": " Like a horror movie monster, the myth just won't die. Various scientists and science journalists think they've killed it. But as soon as they start to relax, it comes roaring back. The fact is, this ",
-      "start": 252,
-      "end": 440,
-      "extractSha256": "62207792ce0a756e1cab24b26ee891953f48f217aa7fbee5d711006e010164ee",
-      "windowSha256": "631e7596607c96c5d7c993d4fbe7326c7ed84a41c56c164f4fa2ea16df1ce468",
-      "fetchedAt": "2026-11-17T06:05:33.705Z",
+      "start": 541,
+      "end": 737,
+      "extractSha256": "84aab4d4b619841df144379f978db93f8ef6a7f62e3956199813edd00dddaa41",
+      "windowSha256": "14bdb62c1dbfb4ae8079fe6dbb23d41dfcfa081614d1e9e0ae96803e0a43053a",
+      "fetchedAt": "2026-11-17T23:04:50.484Z",
       "waybackUrl": "https://web.archive.org/web/20210909232934/https://www.discovermagazine.com/mind/the-10-percent-of-your-brain-myth-that-just-wont-die",
+      "tier": "exact"
+    },
+    {
+      "id": "s2",
+      "nodeId": "n4",
+      "text": "Nearly two-thirds of Americans mistakenly believe that humans use only 10 percent of their brains, according to a new poll on brain health.",
+      "contextBefore": " myths and misperceptions abound, including a considerable underestimation of the incidence of brain ailments.\" Busted! Most in US Believe Brain Disease Myths http://www.livescience.com/39923-amer... ",
+      "contextAfter": " Do People Only Use 10 Percent Of Their Brains? http://www.scientificamerican.com/art... \"The human brain is complex. Along with performing millions of mundane acts, it composes concertos, issues mani",
+      "start": 888,
+      "end": 1027,
+      "extractSha256": "218c9e432e63340e95b9d6a62b6e2aac6014ecc85985eb77e48feea53ada4749",
+      "windowSha256": "13fea5de84172f67a55ffa2768752a6af4f6b91487ebb2ebbb5642ad6fe73df2",
+      "fetchedAt": "2026-11-17T23:04:54.512Z",
+      "waybackUrl": "https://web.archive.org/web/20130928072756/https://www.youtube.com/watch?v=JDF2rjFd8hY",
+      "tier": "exact"
+    },
+    {
+      "id": "s3",
+      "nodeId": "n5",
+      "text": "In the trailer for the upcoming film *Lucy*, the actor who has played both the President and God addresses an auditorium of students and says, \"It is estimated most human beings only use 10 percent of their brain's capacity...Imagine if we could access 100 percent.\"",
+      "contextBefore": "es + Tools & Techniques + See All Blog Lucy and the 10 Percent Brain Myth. * Published16 Jul 2014 * Source The Dana Foundation It's unfair to have Morgan Freeman, with his smooth, deep voice, say it. ",
+      "contextAfter": " It's hard not to believe Morgan Freeman. But in this case, he's wrong. The idea that we only use 10 percent of our brains is a myth. \"The crazy thing about this belief is that despite being totally f",
+      "start": 2172,
+      "end": 2438,
+      "extractSha256": "f7cc3401d6f613cca68851a8b15f514d0cace41f950f81e938fd1ad04294edd8",
+      "windowSha256": "a8c2d9a3ca772030475de1ea3cde25d66a947d4552d2f34fb8f702154c46a607",
+      "fetchedAt": "2026-11-17T23:04:55.123Z",
+      "waybackUrl": "https://web.archive.org/web/20190701114517/https://www.brainfacts.org/brain-anatomy-and-function/anatomy/2014/lucy-and-the-10-percent-brain-myth",
       "tier": "exact"
     }
   ],
   "hops": [],
   "blame": [],
   "roots": {
-    "pages": 0,
-    "clusters": 0,
+    "pages": 1,
+    "clusters": 1,
     "rootsLinked": 0,
-    "clustersUnlinked": 0,
+    "clustersUnlinked": 1,
     "studiesFound": null,
-    "independentRoots": 0,
+    "independentRoots": 1,
     "copies": 0
   },
   "redHopEdgeId": null,
   "earliest": {
-    "nodeIds": [],
-    "earlierWindowSearches": 3,
+    "nodeIds": [
+      "n4"
+    ],
+    "earlierWindowSearches": 4,
     "earlierFound": 0
   },
   "failure": null,
   "budget": {
-    "credits": 4,
-    "usd": 0.00019096,
-    "ms": 27158,
+    "credits": 16,
+    "usd": 0.0005696200000000001,
+    "ms": 51182,
     "capHit": null
   },
   "decision": {
-    "state": "NO_PAGES_FOUND",
-    "row": 3,
+    "state": "TRAIL_GOES_COLD",
+    "row": 6,
     "reasons": [
-      "no pages besides meta pages"
+      "1 unread candidate parent(s)"
     ],
     "counts": {
-      "pages": 0,
-      "clusters": 0,
-      "unreadParents": 2,
-      "earlierWindowSearches": 3
+      "pages": 1,
+      "clusters": 1,
+      "unreadParents": 1,
+      "earlierWindowSearches": 4
     }
   },
   "searchLog": [
     {
-      "at": "2026-11-17T06:05:24.607Z",
+      "at": "2026-11-17T23:04:43.514Z",
       "step": "search",
       "query": "\"10 percent\" humans",
       "endDate": "2026-11-17",
@@ -235,7 +447,7 @@
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:05:24.608Z",
+      "at": "2026-11-17T23:04:45.113Z",
       "step": "search",
       "query": "\"Humans use only 10 percent of their brains\"",
       "endDate": "2026-11-17",
@@ -245,47 +457,17 @@
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:05:24.612Z",
-      "step": "search",
-      "query": "10 percent brain usage myth origin publisher",
-      "endDate": "2026-11-17",
-      "startDate": null,
-      "results": 10,
-      "kept": 10,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:05:24.613Z",
-      "step": "search",
-      "query": "10 percent brain use study neuroscience research",
-      "endDate": "2026-11-17",
-      "startDate": null,
-      "results": 10,
-      "kept": 10,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:05:24.616Z",
-      "step": "meta-search",
-      "query": "\"10 percent\" humans",
-      "endDate": "2026-11-17",
-      "startDate": null,
-      "results": 5,
-      "kept": 2,
-      "dropped": 3
-    },
-    {
-      "at": "2026-11-17T06:05:39.318Z",
+      "at": "2026-11-17T23:04:46.411Z",
       "step": "search",
       "query": "10 percent brain usage myth origin",
       "endDate": "2026-11-17",
       "startDate": null,
       "results": 10,
-      "kept": 9,
-      "dropped": 1
+      "kept": 10,
+      "dropped": 0
     },
     {
-      "at": "2026-11-17T06:05:40.343Z",
+      "at": "2026-11-17T23:04:48.050Z",
       "step": "search",
       "query": "10 percent brain use claim history",
       "endDate": "2026-11-17",
@@ -295,19 +477,99 @@
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:05:42.004Z",
-      "step": "search",
-      "query": "10 percent brain myth publisher",
+      "at": "2026-11-17T23:04:49.631Z",
+      "step": "meta-search",
+      "query": "\"10 percent\" humans",
       "endDate": "2026-11-17",
       "startDate": null,
+      "results": 5,
+      "kept": 2,
+      "dropped": 3
+    },
+    {
+      "at": "2026-11-17T23:04:58.797Z",
+      "step": "search",
+      "query": "\"10 percent\" humans",
+      "endDate": "2013-09-26",
+      "startDate": null,
       "results": 10,
-      "kept": 8,
-      "dropped": 2
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-17T23:05:00.416Z",
+      "step": "search",
+      "query": "10 percent of brain use myth origin",
+      "endDate": "2013-09-26",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-17T23:05:01.967Z",
+      "step": "search",
+      "query": "\"humans use only 10 percent of their brains\" earliest source",
+      "endDate": "2013-09-26",
+      "startDate": null,
+      "results": 4,
+      "kept": 4,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-17T23:05:03.433Z",
+      "step": "search",
+      "query": "10 percent brain use myth older wording",
+      "endDate": "2013-09-26",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-17T23:05:11.860Z",
+      "step": "search",
+      "query": "\"use only 10 percent of their brains\" first appearance",
+      "endDate": "2013-09-26",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-17T23:05:13.231Z",
+      "step": "search",
+      "query": "10 percent brain usage claim first published by publisher",
+      "endDate": "2013-09-26",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-17T23:05:14.295Z",
+      "step": "search",
+      "query": "10 percent brain myth study on human brain capacity",
+      "endDate": "2013-09-26",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-17T23:05:16.017Z",
+      "step": "search",
+      "query": "10 percent brain usage topic of neuroscience research",
+      "endDate": "2013-09-26",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
     }
   ],
   "usage": [
     {
-      "at": "2026-11-17T06:05:19.280Z",
+      "at": "2026-11-17T23:04:39.525Z",
       "traceId": "dev-03",
       "step": "tokenfactory",
       "service": "tokenfactory",
@@ -315,31 +577,31 @@
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 159,
       "completionTokens": 46,
-      "cachedTokens": 0,
+      "cachedTokens": 128,
       "credits": 0,
       "costUsd": 0.0000297,
-      "latencyMs": 1642,
+      "latencyMs": 545,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:05:20.929Z",
+      "at": "2026-11-17T23:04:40.075Z",
       "traceId": "dev-03",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 269,
-      "completionTokens": 138,
+      "completionTokens": 134,
       "cachedTokens": 240,
       "credits": 0,
-      "costUsd": 0.00006829999999999999,
-      "latencyMs": 3667,
+      "costUsd": 0.0000671,
+      "latencyMs": 1372,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:05:24.606Z",
+      "at": "2026-11-17T23:04:43.513Z",
       "traceId": "dev-03",
       "step": "search",
       "service": "tavily",
@@ -348,14 +610,14 @@
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2035,
       "status": "200",
-      "cacheHit": true
+      "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:05:24.607Z",
+      "at": "2026-11-17T23:04:45.113Z",
       "traceId": "dev-03",
       "step": "search",
       "service": "tavily",
@@ -364,14 +626,14 @@
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1580,
       "status": "200",
-      "cacheHit": true
+      "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:05:24.611Z",
+      "at": "2026-11-17T23:04:46.410Z",
       "traceId": "dev-03",
       "step": "search",
       "service": "tavily",
@@ -380,14 +642,14 @@
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1276,
       "status": "200",
-      "cacheHit": true
+      "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:05:24.612Z",
+      "at": "2026-11-17T23:04:48.049Z",
       "traceId": "dev-03",
       "step": "search",
       "service": "tavily",
@@ -396,14 +658,14 @@
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1619,
       "status": "200",
-      "cacheHit": true
+      "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:05:24.616Z",
+      "at": "2026-11-17T23:04:49.631Z",
       "traceId": "dev-03",
       "step": "meta-search",
       "service": "tavily",
@@ -412,14 +674,14 @@
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1559,
       "status": "200",
-      "cacheHit": true
+      "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:05:24.617Z",
+      "at": "2026-11-17T23:04:49.803Z",
       "traceId": "dev-03",
       "step": "meta-extract",
       "service": "tavily",
@@ -430,12 +692,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 0,
+      "latencyMs": 148,
       "status": "200",
-      "cacheHit": true
+      "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:05:24.662Z",
+      "at": "2026-11-17T23:04:50.011Z",
       "traceId": "dev-03",
       "step": "extract",
       "service": "tavily",
@@ -444,30 +706,14 @@
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 0,
-      "status": "200",
-      "cacheHit": true
-    },
-    {
-      "at": "2026-11-17T06:05:24.767Z",
-      "traceId": "dev-03",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 86,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 8.6e-7,
-      "latencyMs": 8922,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 167,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:05:33.705Z",
+      "at": "2026-11-17T23:04:50.483Z",
       "traceId": "dev-03",
       "step": "dating",
       "service": "wayback",
@@ -478,44 +724,108 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 0,
+      "latencyMs": 458,
       "status": "200",
-      "cacheHit": true
+      "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:05:33.707Z",
+      "at": "2026-11-17T23:04:50.487Z",
       "traceId": "dev-03",
       "step": "same_claim",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 232,
+      "promptTokens": 234,
       "completionTokens": 7,
       "cachedTokens": 160,
       "credits": 0,
-      "costUsd": 0.0000253,
-      "latencyMs": 488,
+      "costUsd": 0.0000255,
+      "latencyMs": 434,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:05:34.198Z",
+      "at": "2026-11-17T23:04:54.512Z",
+      "traceId": "dev-03",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 3477,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T23:04:54.513Z",
+      "traceId": "dev-03",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 217,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.0000238,
+      "latencyMs": 249,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T23:04:55.123Z",
+      "traceId": "dev-03",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 349,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T23:04:55.127Z",
+      "traceId": "dev-03",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 253,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.0000274,
+      "latencyMs": 262,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T23:04:55.390Z",
       "traceId": "dev-03",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 269,
-      "completionTokens": 133,
-      "cachedTokens": 256,
+      "promptTokens": 321,
+      "completionTokens": 146,
+      "cachedTokens": 240,
       "credits": 0,
-      "costUsd": 0.0000668,
-      "latencyMs": 4041,
+      "costUsd": 0.0000759,
+      "latencyMs": 1803,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:05:39.318Z",
+      "at": "2026-11-17T23:04:58.796Z",
       "traceId": "dev-03",
       "step": "search",
       "service": "tavily",
@@ -526,12 +836,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1065,
+      "latencyMs": 1576,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:05:40.343Z",
+      "at": "2026-11-17T23:05:00.415Z",
       "traceId": "dev-03",
       "step": "search",
       "service": "tavily",
@@ -542,12 +852,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1021,
+      "latencyMs": 1600,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:05:42.004Z",
+      "at": "2026-11-17T23:05:01.967Z",
       "traceId": "dev-03",
       "step": "search",
       "service": "tavily",
@@ -558,12 +868,28 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1657,
+      "latencyMs": 1528,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:05:46.396Z",
+      "at": "2026-11-17T23:05:03.433Z",
+      "traceId": "dev-03",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1444,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T23:05:04.144Z",
       "traceId": "dev-03",
       "step": "extract",
       "service": "tavily",
@@ -574,12 +900,204 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 4387,
+      "latencyMs": 689,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:05:46.436Z",
+      "at": "2026-11-17T23:05:04.187Z",
+      "traceId": "dev-03",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 272,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.0000027200000000000002,
+      "latencyMs": 3805,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T23:05:08.007Z",
+      "traceId": "dev-03",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 21,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 2.1e-7,
+      "latencyMs": 277,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T23:05:08.288Z",
+      "traceId": "dev-03",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 321,
+      "completionTokens": 183,
+      "cachedTokens": 256,
+      "credits": 0,
+      "costUsd": 0.000087,
+      "latencyMs": 2348,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T23:05:11.859Z",
+      "traceId": "dev-03",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1204,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T23:05:13.230Z",
+      "traceId": "dev-03",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1349,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T23:05:14.295Z",
+      "traceId": "dev-03",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1040,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T23:05:16.016Z",
+      "traceId": "dev-03",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1701,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T23:05:16.219Z",
+      "traceId": "dev-03",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 179,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T23:05:16.221Z",
+      "traceId": "dev-03",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 29,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 2.9000000000000003e-7,
+      "latencyMs": 9055,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T23:05:26.208Z",
+      "traceId": "dev-03",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 792,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T23:05:28.591Z",
+      "traceId": "dev-03",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 2378,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T23:05:29.712Z",
+      "traceId": "dev-03",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1120,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T23:05:29.713Z",
       "traceId": "dev-03",
       "step": "dating",
       "service": "wayback",
@@ -595,7 +1113,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:05:46.438Z",
+      "at": "2026-11-17T23:05:29.714Z",
       "traceId": "dev-03",
       "step": "dating",
       "service": "wayback",
@@ -611,7 +1129,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:05:46.438Z",
+      "at": "2026-11-17T23:05:29.715Z",
       "traceId": "dev-03",
       "step": "dating",
       "service": "wayback",
@@ -625,6 +1143,38 @@
       "latencyMs": 0,
       "status": "200",
       "cacheHit": true
+    },
+    {
+      "at": "2026-11-17T23:05:29.722Z",
+      "traceId": "dev-03",
+      "step": "page_type",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 1927,
+      "completionTokens": 8,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.0001951,
+      "latencyMs": 605,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T23:05:30.352Z",
+      "traceId": "dev-03",
+      "step": "boundary",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 331,
+      "completionTokens": 6,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.0000349,
+      "latencyMs": 345,
+      "status": "200",
+      "cacheHit": false
     }
   ],
   "scopeNote": "Web pages only; print and paywalled origins are out of scope. Earliest source we found, not proof of first use.",
