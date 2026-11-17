@@ -36,7 +36,7 @@ These two are labelled synthetic: the claim is the invented Harbor Zoo one, and 
 | Rubric line | Where it will be shown | Status |
 |---|---|---|
 | Sourced (30) | Every edge rests on two verbatim spans; `make verify` re-checks spans, edges and the stop state of every committed trace ([packages/pz/src/verify/checks.ts](packages/pz/src/verify/checks.ts)) | built on synthetic fixtures; real traces planned |
-| Works (25) | `make replay` and `make live CLAIM="..."`; public CI running `make verify` ([.github/workflows/ci.yml](.github/workflows/ci.yml)) | `make verify` and CI built; replay and live planned |
+| Works (25) | `make replay` and `make live CLAIM="..."`; public CI running `make verify` ([.github/workflows/ci.yml](.github/workflows/ci.yml)) | `make verify`, `make replay` and CI built; `make live` planned |
 | Usefulness (20) | Two outside-user sessions timed against their usual method; demo video | planned |
 | Agent design (15) | Code decides how a trace ends ([packages/pz/src/rules/decide.ts](packages/pz/src/rules/decide.ts), [packages/pz/rules/rules.json](packages/pz/rules/rules.json)); planted trap set ([traps/README.md](traps/README.md)) | built on synthetic fixtures; card and real traces planned |
 | Token Factory and Tavily (10) | Every call logged with model, tokens, credits, cost and latency; one line per model below | planned |
