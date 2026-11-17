@@ -10,6 +10,7 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 |---|---|---|---|---|
 
 ## Log
+- [10:15 PT] RishitRai F7 #192 depth cap: caps.depth counts steps back in time; link rounds that reach nothing earlier stop after 2 in a row, cold not PARTIAL (dev-05, 06, 20)
 - [18:53 PT] RishitRai T83 red hop and readout chips: coral stop, segment and band edge with "Wording changed here", changed words as one run, chips measured or inferred N%, staggered 60 ms
 - [18:58 PT] RishitRai T82 band of copies: each cluster a swarm with one dot per page, copies not yet published at the handle are rings, the active cluster named by its site
 - [19:01 PT] RishitRai T81 sample rows as claims: the wording in Newsreader, the ending with a ramp dot, the earliest year and the page count, richest first
