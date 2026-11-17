@@ -61,6 +61,8 @@ export type WalkDeps = {
   rules: Rules;
   today: string;
   now: () => string;
+  // Milliseconds for the time cap; Date.now when absent. Tests pass a stub clock.
+  clockMs?: () => number;
   pagesDir: string;
   // The trace this run replays, when every call is served from the cache.
   replayOf?: Trace;
@@ -78,6 +80,10 @@ const SOURCE_QUERIES_PER_WINDOW = 2;
 // F7 (#192): rounds in a row that only follow citations without reaching an earlier page. After this many the walk
 // stops following and ends as it would with no links left: a cold trail, not a cap hit.
 export const LINK_ROUNDS_WITHOUT_PROGRESS = 2;
+// #192 F2 time reserve: no new round starts after this share of caps.ms. A round already running finishes, and the
+// rest of the cap is left for dating, page_type, readouts and the card, so a deep trail that keeps stepping back
+// (dev-05, uncapped rounds since F7) ends with a card rather than at the run's deadline. The stop is a time cap hit.
+export const WALK_TIME_SHARE = 0.7;
 // T49: fact-check pages read as maps per trace, and the citations taken from each.
 const META_PAGES = 2;
 const META_LINKS = 4;
@@ -244,7 +250,8 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
   const { atoms } = claim;
   const { rules } = deps;
   const lemma = normalise(atoms.subjectLemma).toLowerCase();
-  const started = Date.now();
+  const clock = deps.clockMs ?? Date.now;
+  const started = clock();
   const log: LogLine[] = [];
   const nodes: Node[] = [];
   const spans: Span[] = [];
@@ -434,7 +441,7 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
     searchLog.push({ at: deps.now(), step: "model", query: reason, endDate: null, startDate: null, results: 0, kept: 0, dropped: 0 });
   }
 
-  const outOfTime = () => Date.now() - started >= rules.caps.ms;
+  const outOfTime = () => clock() - started >= rules.caps.ms * WALK_TIME_SHARE;
 
   try {
     let endDate = deps.today;
@@ -655,7 +662,7 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
   const recorded = replayed && deps.replayOf ? deps.replayOf : null;
   const budget: Trace["budget"] = recorded
     ? { credits: recorded.budget.credits, usd: recorded.budget.usd, ms: recorded.budget.ms, capHit }
-    : { credits: deps.usage.rows.reduce((sum, r) => sum + r.credits, 0), usd, ms: Date.now() - started, capHit };
+    : { credits: deps.usage.rows.reduce((sum, r) => sum + r.credits, 0), usd, ms: clock() - started, capHit };
 
   const draft: Trace = {
     schemaVersion: "1", id: claim.id, mode: recorded ? "REPLAY" : "LIVE", synthetic: false, recordedAt: recorded?.recordedAt ?? deps.now(),
