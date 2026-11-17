@@ -8,6 +8,7 @@ import { createFileCache } from "../src/clients/cache.ts";
 import { createTavily } from "../src/clients/tavily.ts";
 import { createWayback } from "../src/clients/wayback.ts";
 import { linkEdges, spansStep } from "../src/engine/spans.ts";
+import { toPlain } from "../src/engine/walk.ts";
 import { walkStep } from "../src/engine/walk.ts";
 import { loadRules } from "../src/rules/index.ts";
 import { createUsageLog } from "../src/usage/log.ts";
@@ -141,5 +142,35 @@ describe("same-site citations (#108 note)", () => {
     const t = await walkThenSpans([self]);
     expect(nodeAt(t, self.url)?.candidateParents).toEqual([]);
     expect(t.edges).toEqual([]);
+  });
+});
+
+describe("same paragraph only (#108 review)", () => {
+  it("[C2] a menu row after a blank line is never a citation, even with the parent page on the same site", async () => {
+    const child: Page = { url: "https://blog.example/new", date: "2020-05-01", text: "Report: penguins nap 14 times a day.\n\n[Home](/) | [Archive](/old) | [About](/about)" };
+    const t = await walkThenSpans([child, older]);
+    expect(nodeAt(t, child.url)?.candidateParents).toEqual([]);
+    expect(t.edges).toEqual([]);
+  });
+
+  it("[C2] a cross-site link in the next paragraph is not a citation of the span either", async () => {
+    const child: Page = { url: "https://news.example/new", date: "2020-05-01", text: "Report: penguins nap 14 times a day.\n\nRead [the blog](https://blog.example/old)." };
+    const t = await walkThenSpans([child, older]);
+    expect(t.edges).toEqual([]);
+  });
+
+  it("[C2] a self-link written with www, a tracking query or a fragment is never a parent", async () => {
+    const self: Page = { url: "https://blog.example/old", date: "2012-02-08", text: "Our keepers noted that penguins nap 14 times a day ([link](https://www.blog.example/old/?utm_source=feed#top))." };
+    const t = await walkThenSpans([self]);
+    expect(nodeAt(t, self.url)?.candidateParents).toEqual([]);
+  });
+});
+
+describe("toPlain paragraph breaks", () => {
+  it("reports where blank lines were without changing the text or the link offsets", () => {
+    const { text, links, breaks } = toPlain("First line about [a](https://a.example).\n\n  \nSecond line with [b](https://b.example).");
+    expect(text).toBe("First line about a. Second line with b.");
+    expect(breaks).toEqual([text.indexOf("Second")]);
+    expect(links.map((l) => text.slice(l.start, l.end))).toEqual(["a", "b"]);
   });
 });
