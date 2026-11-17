@@ -8,8 +8,8 @@
 //
 // No model or search call is made here. Rival answers are collected by hand; our traces come from the live run.
 import { createHash, randomInt } from "node:crypto";
-import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
-import { dirname, join, resolve } from "node:path";
+import { existsSync, mkdirSync, readdirSync, readFileSync, realpathSync, writeFileSync } from "node:fs";
+import { basename, dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { Trace } from "../../packages/pz/src/schema/index.ts";
 
@@ -30,10 +30,18 @@ export function draw(claims: { id: string }[], seed = SEED, n = 10): string[] {
 export const dirOf = (url: string) => dirname(fileURLToPath(url));
 export const REPO = resolve(dirOf(import.meta.url), "../..");
 
+// The real path, lower-cased: symlinks resolved through the nearest folder that exists (the key file itself usually
+// doesn't yet), and case folded, since macOS's default disk treats EVAL/K.JSON and eval/k.json as one file.
+function real(path: string): string {
+  let dir = resolve(path), rest = "";
+  while (!existsSync(dir) && dirname(dir) !== dir) { rest = rest ? join(basename(dir), rest) : basename(dir); dir = dirname(dir); }
+  return join(realpathSync.native(dir), rest).toLowerCase();
+}
+
 // Inside the repo and outside the git-ignored .cache/: where git could pick a grading key up.
 export function insideGit(path: string, repo = REPO): boolean {
-  const at = resolve(path);
-  return at.startsWith(repo + "/") && !at.startsWith(join(repo, ".cache") + "/");
+  const at = real(path), root = real(repo);
+  return at.startsWith(root + "/") && !at.startsWith(join(root, ".cache") + "/");
 }
 
 // The facts of our trace in the spike's form shape. This is a fact sheet, never the form itself: every form, ours
