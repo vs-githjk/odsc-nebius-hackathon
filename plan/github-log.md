@@ -99,3 +99,4 @@
 - 2026-11-17 14:35 ET tick: no new heads. Nudged Rishit (order: #212, #209, #210) and Rohan (push PR before 18:00; time reserve is now #212).
 - 2026-11-17 14:43 ET tick: no new heads.
 - 2026-11-17 15:10 ET: Vidyut gave the go for the 18:00 run (logged). Work posted for Rishit (#212, #209, #210 by 17:30), Rohan (push the PR by 17:30), Anoop (limits rows, submission refresh, demo script check). Scheduled: merge pass 17:31, live run 18:02.
+- 2026-11-17 17:35 ET: pre-run pass. #214 (Anoop, L16 caps row) PASS, merged ea2a69b. Rishit #212, #209, #210, #184 no new heads since the 13:4x fix lists, wait for after the run. Rohan PR not opened. #158 script checked against main by Anoop; held for Vidyut's approval.
