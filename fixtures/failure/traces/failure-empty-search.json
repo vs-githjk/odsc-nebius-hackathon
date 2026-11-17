@@ -1,0 +1,124 @@
+{
+  "schemaVersion": "1",
+  "id": "failure-empty-search",
+  "mode": "SAMPLE",
+  "synthetic": true,
+  "recordedAt": "2026-11-15T08:00:00.000Z",
+  "claim": {
+    "text": "Harbor Zoo penguins nap 14 times a day, twice as often as the zoo's seals",
+    "atoms": {
+      "number": {
+        "raw": "14",
+        "canonical": "14"
+      },
+      "unit": "times a day",
+      "subjectLemma": "penguin",
+      "population": "Harbor Zoo penguins",
+      "time": null,
+      "hedge": null,
+      "namedSource": null,
+      "variants": [
+        "fourteen"
+      ]
+    }
+  },
+  "viralSentence": "Harbor Zoo penguins nap 14 times a day, twice as often as the zoo's seals",
+  "nodes": [],
+  "edges": [],
+  "clusters": [],
+  "spans": [],
+  "hops": [],
+  "blame": [],
+  "roots": {
+    "pages": 0,
+    "clusters": 0,
+    "rootsLinked": 0,
+    "clustersUnlinked": 0,
+    "studiesFound": null,
+    "independentRoots": 0,
+    "copies": 0
+  },
+  "redHopEdgeId": null,
+  "earliest": {
+    "nodeIds": [],
+    "earlierWindowSearches": 2,
+    "earlierFound": 0
+  },
+  "failure": null,
+  "budget": {
+    "credits": 2,
+    "usd": 0,
+    "ms": 0,
+    "capHit": null
+  },
+  "decision": {
+    "state": "NO_PAGES_FOUND",
+    "row": 3,
+    "reasons": [
+      "no pages besides meta pages"
+    ],
+    "counts": {
+      "pages": 0,
+      "clusters": 0,
+      "unreadParents": 0,
+      "earlierWindowSearches": 2
+    }
+  },
+  "searchLog": [
+    {
+      "at": "2026-11-15T08:00:00.000Z",
+      "step": "search",
+      "query": "\"fourteen\" penguin",
+      "endDate": "2026-11-15",
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-15T08:00:00.000Z",
+      "step": "search",
+      "query": "\"fourteen\" penguin",
+      "endDate": "2026-11-15",
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    }
+  ],
+  "usage": [
+    {
+      "at": "2026-11-15T08:00:00.000Z",
+      "traceId": "failure-empty-search",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-15T08:00:00.000Z",
+      "traceId": "failure-empty-search",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": false
+    }
+  ],
+  "scopeNote": "Synthetic: an invented claim, and a Tavily response written for this test, not captured from a live call. Web pages only; print and paywalled origins are out of scope. Earliest source we found, not proof of first use."
+}

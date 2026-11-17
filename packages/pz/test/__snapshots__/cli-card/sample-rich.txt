@@ -1,0 +1,24 @@
+Patient Zero  SAMPLE an invented example, not a real search
+
+Found on 5 pages: 1 independent root. 4 are copies.
+
+Claim    Harbor Zoo penguins nap 14 times a day, twice as often as the zoo's
+         seals
+
+Ending   Trail goes cold
+         It stopped before searching further back.
+         Decision table row 6 of 6.
+
+Earliest Harbor Zoo annual report 2019
+         harborzoo.example, report, published 2019-12-15 (page metadata)
+         "Daylight observations found that our adult penguins nap about 14
+         times a day."
+         https://harborzoo.example/annual-report-2019
+
+Roots    5 pages read, in 4 groups of copies. Traced to 1 root we could link
+         (0 clusters unlinked).
+
+Cost     42 credits, $0.12, 61 s
+
+Synthetic: an invented claim on invented pages.
+Raw trace: add --json (make replay ARGS=--json).

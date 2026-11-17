@@ -6,13 +6,36 @@ Team **Says Who**, ODSC x Nebius Hackathon 2026. Built for Nebius Token Factory 
 
 **Trace GIF:** coming with the first real trace.
 
+## Quick start (no keys needed)
+
+```sh
+git clone https://github.com/vs-githjk/odsc-nebius-hackathon.git && cd odsc-nebius-hackathon
+npm ci
+make judge
+```
+
+`make judge` explains your setup (`pz doctor`), shows every committed trace as a card, re-checks them with `pz verify`, runs the planted traps and ends with one summary line. It needs no API keys and runs in well under a minute. Until the reviewed live traces are committed, the cards are the SAMPLE fixtures, and it says so.
+
 ## Run it
 
 | Command | What it does | Status |
 |---|---|---|
+| `make judge` | The quick start above: setup check, cards, `pz verify`, traps and a summary. No API keys needed. | works now |
+| `make doctor` | Says what is installed and which keys are set (never their values), and which stages run live or replay. `ARGS=--network` makes one free request per service whose key is set. | works now |
 | `make verify` | Re-checks every committed trace, the trap set and the copy lint, runs the leakage test (a stub until the held-out claims are revealed), then prints the claims table. No API keys needed. | works now |
-| `make replay` | Will replay a recorded trace with its original usage rows | not built yet |
+| `make replay` | Replays a recorded trace as a readable card, with its original usage rows and no network calls. `TRACE=<file>` picks the trace (the default is a SAMPLE); `ARGS=--json` prints the raw trace. | works now |
 | `make live CLAIM="..."` | Will run a live trace with your own keys | not built yet |
+
+## When it fails
+
+A search that breaks, or finds nothing, ends in a named state instead of a guess. Both cases run through the engine's own walk, dating, Tavily client and stop-state rules, on a written Tavily response, and replay with no API keys:
+
+| Case | Command | How it ends |
+|---|---|---|
+| Tavily answers 503 on search | `make replay TRACE=fixtures/failure/traces/failure-tavily-503.json` | `TOOL_FAILED`, rule row 1: "Tavily search returned http_error 503", 0 pages kept. It retried once; both attempts are in the usage rows at 0 credits. It says nothing about the claim. |
+| Every search comes back empty | `make replay TRACE=fixtures/failure/traces/failure-empty-search.json` | `NO_PAGES_FOUND`, rule row 3. Not a tool failure. |
+
+These two are labelled synthetic: the claim is the invented Harbor Zoo one, and the responses were written for the test ([fixtures/failure/](fixtures/failure/record.ts)), not captured from a live call. `node --import tsx fixtures/failure/record.ts` rebuilds them byte for byte.
 
 ## Eval
 
@@ -25,7 +48,7 @@ Team **Says Who**, ODSC x Nebius Hackathon 2026. Built for Nebius Token Factory 
 | Rubric line | Where it will be shown | Status |
 |---|---|---|
 | Sourced (30) | Every edge rests on two verbatim spans; `make verify` re-checks spans, edges and the stop state of every committed trace ([packages/pz/src/verify/checks.ts](packages/pz/src/verify/checks.ts)) | built on synthetic fixtures; real traces planned |
-| Works (25) | `make replay` and `make live CLAIM="..."`; public CI running `make verify` ([.github/workflows/ci.yml](.github/workflows/ci.yml)) | `make verify` and CI built; replay and live planned |
+| Works (25) | `make replay` and `make live CLAIM="..."`; public CI running `make verify` ([.github/workflows/ci.yml](.github/workflows/ci.yml)) | `make verify`, `make replay` and CI built; `make live` planned |
 | Usefulness (20) | Two outside-user sessions timed against their usual method; demo video | planned |
 | Agent design (15) | Code decides how a trace ends ([packages/pz/src/rules/decide.ts](packages/pz/src/rules/decide.ts), [packages/pz/rules/rules.json](packages/pz/rules/rules.json)); planted trap set ([traps/README.md](traps/README.md)) | built on synthetic fixtures; card and real traces planned |
 | Token Factory and Tavily (10) | Every call logged with model, tokens, credits, cost and latency; one line per model below | planned |
@@ -63,7 +86,7 @@ Teammates and their agents: read [docs/AGENTS.md](docs/AGENTS.md) first.
 
 1. Node 24, then `npm ci`.
 2. Copy [.env.example](.env.example) to `.env` and fill it locally (`NEBIUS_API_KEY`, `TAVILY_API_KEY`). `.env` is git-ignored; never paste keys in issues, PRs or chat.
-3. `make verify` needs no keys.
+3. `make judge` and `make verify` need no keys. `make doctor` tells you what is missing and the fix for each line.
 
 ## Models (Nebius Token Factory)
 

@@ -1,6 +1,6 @@
 # Handoff: ODSC x Nebius Hackathon (team Says Who)
 
-Last updated: Mon Nov 9 2026, by the main session (conductor).
+Last updated: Sun Nov 15 2026, by the main session (conductor).
 To resume in a new Claude Code chat opened in this folder, Vidyut says: **"I'm back, continue the master playbook"**. The new session reads this file, `plan/state.json` and `plan/decisions.md`, says where we are in three lines, and carries on.
 
 ## The event
@@ -25,7 +25,26 @@ To resume in a new Claude Code chat opened in this folder, Vidyut says: **"I'm b
 - Market check verdict: real but narrow need; fact-checkers and journalists are the demo user but not the payer; nobody else traces backwards or counts independent sources; the paid route later is a stat-origin API for AI answer engines and content tools (unproven). `plan/market.md`, artifact https://claude.ai/artifact/BtjsfsCuEUNYNWuppfJDjE
 - Full brief: `plan/idea-brief.md` (refinement round 1).
 
-## Latest (Nov 9 watch pass)
+## Latest (Nov 15, final sprint)
+- Deadline VERIFIED: Fri Nov 20 11:59 PM EST (8:59 PM PT). Judges: two Nebius DevRel. Prizes in TF credits.
+- Judge audit 38/100 (plan/judge-nov15.md), target 80+. Design critique and 21 UI tasks: plan/design-nov15.md. Rivals: plan/research-nov15.md.
+- Issues T71 to T91 (#130 to #150) created; ordered queues on #1 #3 #4. Critical: Rohan #107/#109 merge-ready Mon noon, #130 pipeline.ts Mon 18:00.
+- Live runs on Vidyut's machine via XO, Rohan's key (he tops up). Keys tested Nov 15: TF 200, Tavily 200.
+- Schedule: Mon 16 + Tue 17 build; Tue 17 run-through incl. held-out; Wed 18 regroup; Thu 19 build, freeze; Fri 20 submit. Repo public + LICENSE before submit (Vidyut flips it).
+
+## Earlier (Nov 12)
+- Merged Nov 12: #75 T21, #104 T35, #106 T36, #80 T29, #52, #62 T15. Main 355 tests green.
+- Critical path: #107 NO_CALL fix -> 21 live captures -> #109 fixes -> first live E2/E3 dev score (Rohan, Fri Nov 13).
+- Open: #77 (Anoop), #107 #109 (Rohan), #108 #110 drafts (Rishit). Run 3 issues #111 to #122 queued through Nov 17.
+- Nov 15: live runs on Vidyut's machine (Rohan's key, he tops up). Schedule: 16-17 build, 17 full run-through incl. held-out, 18 regroup, 19 build + freeze, 20 submit.
+
+## Earlier (Nov 10)
+- Merged since Nov 9: #74 T27, #96 T34, #97 T33, #105 T47 E3, #82 T23 (plus Nov 9 batch). Dev score still 0/20: no live traces.
+- Critical chain: #75 (Anoop, U.S. acronym fix) -> #107 T38 live captures (Rohan, ceiling pin + LIVE-only replay) -> #80 fixes -> T39 dev-run, first real score.
+- Open FIX: #75 #77 #104 #106 (Anoop), #80 #107 (Rohan), #52 #62 (Rishit); #108 T24 draft (same-site link note).
+- Ledger: $15 week, $0 spent, Rohan the single live runner, ceilings TF $0.01 / Tavily $0.02. Held-out backup still unconfirmed.
+
+## Earlier (Nov 9 watch pass)
 - Merged Nov 9: #78 T20 grading (XO unblinding appended), #38 head-to-head, #79 T25, #81 T31, #76 T22, #50 T11. Main is green, 235 tests.
 - Unblinded: the week-0 spike walker lost on every claim (0/4 earliest, 0/2 cold stops); Perplexity was best. The T21 to T29 engine has to beat this on the Nov 13 held-out run.
 - Open with FIX lists: #74 T27, #75 T21, #77 T28 (Anoop); #62 T15 against #69, #52 make verify on run-1 traces (Rishit). Drafts with notes: #80 T29 (Rohan), #82 T23 (Rishit).

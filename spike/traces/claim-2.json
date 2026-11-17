@@ -1,0 +1,1686 @@
+{
+  "schemaVersion": "1",
+  "id": "claim-2",
+  "mode": "LIVE",
+  "synthetic": false,
+  "recordedAt": "2026-11-03T02:33:08.661Z",
+  "claim": {
+    "text": "A 100-word email written by AI uses a whole bottle of water.",
+    "atoms": {
+      "number": {
+        "raw": "100",
+        "canonical": "100"
+      },
+      "unit": "word",
+      "subjectLemma": "email",
+      "population": null,
+      "time": null,
+      "hedge": null,
+      "namedSource": null,
+      "variants": [
+        "100-word email",
+        "100 word email"
+      ]
+    }
+  },
+  "viralSentence": "A 100-word email written by AI uses a whole bottle of water.",
+  "nodes": [
+    {
+      "id": "n1",
+      "url": "https://www.techrepublic.com/article/generative-ai-data-center-water-use",
+      "domain": "techrepublic.com",
+      "title": "Sending One Email With ChatGPT is the Equivalent of Consuming One Bottle of Water",
+      "date": {
+        "kind": "published",
+        "value": "2024-09-20",
+        "source": "tavily",
+        "firstCapture": "2024-09-20",
+        "conflictingDate": false
+      },
+      "clusterId": "c1",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s1"
+      ],
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "https://www.washingtonpost.com/technology/2024/09/18/energy-ai-use-electricity-water-data-centers",
+          "read": true
+        },
+        {
+          "url": "https://hbr.org/2024/07/the-uneven-distribution-of-ais-environmental-impacts",
+          "read": true
+        }
+      ],
+      "pageType": null
+    },
+    {
+      "id": "n2",
+      "url": "https://www.washingtonpost.com/technology/2024/09/18/energy-ai-use-electricity-water-data-centers",
+      "domain": "washingtonpost.com",
+      "title": "How much energy can AI use? Breaking down the toll of each ChatGPT query - The Washington Post",
+      "date": {
+        "kind": "existed_by",
+        "value": "2024-09-18",
+        "source": "wayback_first_capture",
+        "firstCapture": "2024-09-18",
+        "conflictingDate": true
+      },
+      "clusterId": "c2",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s2"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n3",
+      "url": "https://medium.com/@macplanet2012/how-much-water-does-ai-use-per-prompt-5-drops-or-a-bottle-d38c90f22122",
+      "domain": "medium.com",
+      "title": "How Much Water Does AI Use Per Prompt? 5 Drops or a Bottle?",
+      "date": {
+        "kind": "published",
+        "value": "2026-06-15",
+        "source": "tavily",
+        "firstCapture": "2026-07-03",
+        "conflictingDate": false
+      },
+      "clusterId": "c3",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s3"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n4",
+      "url": "https://www.ecoticias.com/en/a-100-word-email-written-with-chatgpt-may-use-about-17-6-fluid-ounces-of-water-roughly-the-size-of-a-stan/33096",
+      "domain": "ecoticias.com",
+      "title": "A 100-word email written with ChatGPT may use about 17.6 fluid ounces of water, roughly the size of a stan",
+      "date": {
+        "kind": "published",
+        "value": "2026-06-11",
+        "source": "tavily",
+        "firstCapture": "2026-06-22",
+        "conflictingDate": false
+      },
+      "clusterId": "c4",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s4"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n5",
+      "url": "https://www.youtube.com/watch?v=2GNBOg1FWM4",
+      "domain": "youtube.com",
+      "title": "The 100-Word Email: Why Your Emails Are Too Long",
+      "date": {
+        "kind": "published",
+        "value": "2022-11-06",
+        "source": "tavily",
+        "firstCapture": "2023-01-24",
+        "conflictingDate": false
+      },
+      "clusterId": "c5",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s5"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n6",
+      "url": "https://erinwrightwriting.com/editing-tips-for-very-short-documents",
+      "domain": "erinwrightwriting.com",
+      "title": "Editing Tips for Very Short Documents",
+      "date": {
+        "kind": "published",
+        "value": "2012-10-13",
+        "source": "tavily",
+        "firstCapture": "2019-08-25",
+        "conflictingDate": false
+      },
+      "clusterId": "c6",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s6"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n7",
+      "url": "https://www.brafton.com/blog/distribution/everything-you-need-to-know-about-writing-email-newsletters",
+      "domain": "brafton.com",
+      "title": "How to Write a Newsletter That Gets Read (+ Infographic) | Brafton",
+      "date": {
+        "kind": "existed_by",
+        "value": "2019-08-23",
+        "source": "wayback_first_capture",
+        "firstCapture": "2019-08-23",
+        "conflictingDate": false
+      },
+      "clusterId": "c7",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s7"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n8",
+      "url": "https://filthyrichwriter.com/the-real-math-on-job-bidding-site-success",
+      "domain": "filthyrichwriter.com",
+      "title": "The Real Math on Job-Bidding Site “Success” for Copywriters",
+      "date": {
+        "kind": "published",
+        "value": "2020-06-02",
+        "source": "tavily",
+        "firstCapture": "2020-09-21",
+        "conflictingDate": false
+      },
+      "clusterId": "c8",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s8"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null
+    },
+    {
+      "id": "n9",
+      "url": "https://prsecrets.com/books/how-to-get-a-six-figure-book-advance",
+      "domain": "prsecrets.com",
+      "title": "How to Get an Advance on a Book | How to Get a Book Advance",
+      "date": {
+        "kind": "published",
+        "value": "2005-06-08",
+        "source": "tavily",
+        "firstCapture": "2015-08-01",
+        "conflictingDate": false
+      },
+      "clusterId": "c9",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s9"
+      ],
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "https://susanharrow.kartra.com/page/affiliatesignup",
+          "read": false
+        },
+        {
+          "url": "https://app.kartra.com/login",
+          "read": false
+        }
+      ],
+      "pageType": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "parentId": "n9",
+      "childId": "n6",
+      "kind": "inferred",
+      "parentSpanId": "s9",
+      "childSpanId": "s6",
+      "linkHref": null
+    },
+    {
+      "id": "e2",
+      "parentId": "n6",
+      "childId": "n7",
+      "kind": "inferred",
+      "parentSpanId": "s6",
+      "childSpanId": "s7",
+      "linkHref": null
+    },
+    {
+      "id": "e3",
+      "parentId": "n7",
+      "childId": "n8",
+      "kind": "inferred",
+      "parentSpanId": "s7",
+      "childSpanId": "s8",
+      "linkHref": null
+    },
+    {
+      "id": "e4",
+      "parentId": "n8",
+      "childId": "n5",
+      "kind": "inferred",
+      "parentSpanId": "s8",
+      "childSpanId": "s5",
+      "linkHref": null
+    },
+    {
+      "id": "e5",
+      "parentId": "n5",
+      "childId": "n2",
+      "kind": "inferred",
+      "parentSpanId": "s5",
+      "childSpanId": "s2",
+      "linkHref": null
+    },
+    {
+      "id": "e6",
+      "parentId": "n2",
+      "childId": "n1",
+      "kind": "explicit",
+      "parentSpanId": "s2",
+      "childSpanId": "s1",
+      "linkHref": "https://www.washingtonpost.com/technology/2024/09/18/energy-ai-use-electricity-water-data-centers"
+    },
+    {
+      "id": "e7",
+      "parentId": "n1",
+      "childId": "n4",
+      "kind": "inferred",
+      "parentSpanId": "s1",
+      "childSpanId": "s4",
+      "linkHref": null
+    },
+    {
+      "id": "e8",
+      "parentId": "n4",
+      "childId": "n3",
+      "kind": "inferred",
+      "parentSpanId": "s4",
+      "childSpanId": "s3",
+      "linkHref": null
+    }
+  ],
+  "clusters": [
+    {
+      "id": "c1",
+      "nodeIds": [
+        "n1"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c2",
+      "nodeIds": [
+        "n2"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c3",
+      "nodeIds": [
+        "n3"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c4",
+      "nodeIds": [
+        "n4"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c5",
+      "nodeIds": [
+        "n5"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c6",
+      "nodeIds": [
+        "n6"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c7",
+      "nodeIds": [
+        "n7"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c8",
+      "nodeIds": [
+        "n8"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c9",
+      "nodeIds": [
+        "n9"
+      ],
+      "rule": "single"
+    }
+  ],
+  "spans": [
+    {
+      "id": "s1",
+      "nodeId": "n1",
+      "text": "ChatGPT with GPT-4 uses approximately 519 milliliters of water, slightly more than one 16.9 ounce bottle, in order to write one 100-word email, according to original research from The Washington Post and the University of California, Riverside.",
+      "contextBefore": "e Equivalent of Consuming One Bottle of Water. ChatGPT usage can draw as much water as the state of Rhode Island does in 1.5 days, say The Washington Post and the University of California, Riverside. ",
+      "contextAfter": " This extravagant resource use can worsen human-caused drought conditions, particularly in already dry climates. The Washington Post's reporting is based on the research paper \"Making AI Less \"Thirsty",
+      "start": 236,
+      "end": 480,
+      "extractSha256": "7815a52cf6c0a09637e98ece22940a6377b0e4378e74e2647de9a3783a03abbe",
+      "windowSha256": "eb8b9da844e4fa01ed684c4d37bdb1c6d99a0b0e8443b4a2235636743185f8f0",
+      "fetchedAt": "2026-11-03T02:32:38.194Z",
+      "waybackUrl": "https://web.archive.org/web/20240920194929/https://www.techrepublic.com/article/generative-ai-data-center-water-use",
+      "tier": "exact"
+    },
+    {
+      "id": "s2",
+      "nodeId": "n2",
+      "text": "While the exact burden is nearly impossible to quantify, The Washington Post worked with researchers at the University of California, Riverside to understand how much water and power OpenAI's ChatGPT, using the GPT-4 language model released in March 2023, consumes to write the average 100-word email. ---",
+      "contextBefore": "uery exacts a cost. Chatbots use an immense amount of power to respond to user questions, and simply keeping the bot's servers cool enough to function in data centers takes a toll on the environment. ",
+      "contextAfter": "",
+      "start": 581,
+      "end": 886,
+      "extractSha256": "0802dddc0fcdbf69f841d427d00b927fb73a5dffc0d5ab6f880656eac66daaee",
+      "windowSha256": "bd8f1464eb68f586be42967df76c7760feecc4446b8522f064056565627f76b7",
+      "fetchedAt": "2026-11-03T02:32:38.504Z",
+      "waybackUrl": "https://web.archive.org/web/20240918110626/https://www.washingtonpost.com/technology/2024/09/18/energy-ai-use-electricity-water-data-centers",
+      "tier": "exact"
+    },
+    {
+      "id": "s3",
+      "nodeId": "n3",
+      "text": "A typical text prompt's cooling water is a few milliliters or less; lifecycle estimates reach about a bottle. * Google's official figure: a median Gemini text prompt uses about 0.26 mL of water, roughly five drops, counting on-site cooling. * The viral figure: roughly 519 mL (about one bottle) to write a 100-word email with GPT-4, because it also counts the electricity supply chain. * The 1,000x gap is about what you count: on-site cooling alone versus the full lifecycle. * Bigger models drink more.",
+      "contextBefore": "ly deserves your attention, which is not the one on your screen. Every figure here is dated and attributed. Press enter or click to view image in full size Key Takeaways. * There is no single number. ",
+      "contextAfter": " Heavy reasoning models use far more energy, and water scales with energy. * The real story is scale and location, not your individual prompt. US data centers used about 17.4 billion gallons directly ",
+      "start": 1472,
+      "end": 1976,
+      "extractSha256": "ded0048c642b3b33cc7426746ef8475cf6d0285a33f02c943e31f048b70c55d8",
+      "windowSha256": "753e1151e29167399ee467695ee0e12509cc257ab705c5ffbb9f19f3f5f7a369",
+      "fetchedAt": "2026-11-03T02:32:39.006Z",
+      "waybackUrl": "https://web.archive.org/web/20260703052351/https://medium.com/@macplanet2012/how-much-water-does-ai-use-per-prompt-5-drops-or-a-bottle-d38c90f22122",
+      "tier": "exact"
+    },
+    {
+      "id": "s4",
+      "nodeId": "n4",
+      "text": "Home - Energy - A 100-word email written with ChatGPT may use about 17.6 fluid ounces of water, roughly the size of a stan A 100-word email written with ChatGPT may use about 17.6 fluid ounces of water, roughly the size of a stan.",
+      "contextBefore": "",
+      "contextAfter": " A 100-word email written with ChatGPT may use about 17.6 fluid ounces of water, roughly the size of a standard bottle, once researchers count both server cooling and the water used to generate electr",
+      "start": 0,
+      "end": 230,
+      "extractSha256": "6f58f7ba2ca7b27208568c033ab27a51a534ab6458efc5061b6839af13556ee2",
+      "windowSha256": "714a3888be4f336cb9e670696b94bf46f15c8bb151285690a45b62d2ba54a03b",
+      "fetchedAt": "2026-11-03T02:32:39.562Z",
+      "waybackUrl": "https://web.archive.org/web/20260622155155/https://www.ecoticias.com/en/a-100-word-email-written-with-chatgpt-may-use-about-17-6-fluid-ounces-of-water-roughly-the-size-of-a-stan/33096",
+      "tier": "exact"
+    },
+    {
+      "id": "s5",
+      "nodeId": "n5",
+      "text": "The 100-Word Email: Why Your Emails Are Too Long.",
+      "contextBefore": "",
+      "contextAfter": " Channel: Copywriting Launchpad. 2.56K subscribers 28 likes Description. 792 views Posted: 2022-11-06 Get call-free coaching for copywriters: https://www.skool.com/copywriting-lau... 7-day trial then ",
+      "start": 0,
+      "end": 49,
+      "extractSha256": "193be03646fdd9af9937417e9133ad7091b2e3d16228185a7bddb2cf107b57af",
+      "windowSha256": "eecabe30c7f3e7176bfea85f6b18cb75b25820ce5e62830a699529710ae09efd",
+      "fetchedAt": "2026-11-03T02:32:46.335Z",
+      "waybackUrl": "https://web.archive.org/web/20230124092054/https://www.youtube.com/watch?v=2GNBOg1FWM4",
+      "tier": "exact"
+    },
+    {
+      "id": "s6",
+      "nodeId": "n6",
+      "text": "If you are about to send a 100-word email to a potential client, consider spending 200 seconds on typo prevention-that's less than three and a half minutes for a little piece of mind...sorry, peace of mind! *Erin Wright is a freelance writer and editor in Chicago, Illinois.",
+      "contextBefore": "ally following my progress prevents me from going too fast or skipping content altogether. (However, touch your computer screen at your own risk!) The process only requires a couple seconds per word. ",
+      "contextAfter": " She specializes in small business content, marketing, blogs, web copy, and instructional material.* Footer. * Microsoft Word Tutorials * Adobe Acrobat Tutorials * Writing Tips * Editing Tips * Writin",
+      "start": 1353,
+      "end": 1627,
+      "extractSha256": "22da6cc7c0c737cbfdd1e7194e645a36e4c011dde505833562a726f31273e88b",
+      "windowSha256": "b0305406defa950a2c2f2d83f6436ba4e462d2d877e6cbf6754b7c26d04ec628",
+      "fetchedAt": "2026-11-03T02:32:56.773Z",
+      "waybackUrl": "https://web.archive.org/web/20190825033727/https://erinwrightwriting.com/editing-tips-for-very-short-documents",
+      "tier": "exact"
+    },
+    {
+      "id": "s7",
+      "nodeId": "n7",
+      "text": "A typo in a 2,000-word blog post is easier to overlook and forgive than one in a 100-word email.",
+      "contextBefore": "dable ones - reduces the credibility of both your writing and your brand. the credibility of both your writing and your brand. This goes for any and all marketing content, but especially newsletters. ",
+      "contextAfter": " Step 5: Scheduling Your Email Newsletter. Frequency is the main differentiator between newsletters and email campaigns. Your audience should expect to see your newsletters on the same days in a certa",
+      "start": 11321,
+      "end": 11417,
+      "extractSha256": "e629805114c1f8943e5027e8e08c58fb851f71b6554669342407d6a1eda80c7c",
+      "windowSha256": "95f1827a4daf292ec8dab3b6f5bac5540beeaade96830d349490b178b5213d08",
+      "fetchedAt": "2026-11-03T02:32:57.075Z",
+      "waybackUrl": "https://web.archive.org/web/20190823120127/https://www.brafton.com/blog/distribution/everything-you-need-to-know-about-writing-email-newsletters",
+      "tier": "exact"
+    },
+    {
+      "id": "s8",
+      "nodeId": "n8",
+      "text": "Also, to average $60 an order for a 100-word email and average $150-$200 an hour, he's writing two to three emails an hour, potentially for 18 hours a day.",
+      "contextBefore": "d you be okay with working 18-hour days to make $2,700 when you could work a six- or seven-hour day to make the same amount?And how could you have 27 jobs in your queue-or 40 to 50!-and not burn out? ",
+      "contextAfter": " (And that doesn't include research!) What kind of quality can his clients possibly be getting? And as our head coach Kate noted, when I posted this image in our student-only Facebook group:40 to 50 j",
+      "start": 5536,
+      "end": 5691,
+      "extractSha256": "a6428d777590405c3ecd407b34f95c9da076618a04de648c302dcbb8b92baa6b",
+      "windowSha256": "c0846c7a0ed6a19135bb5f28044733f0d21d00ae2c9ba6fbfd1db7280f3ca746",
+      "fetchedAt": "2026-11-03T02:32:58.516Z",
+      "waybackUrl": "https://web.archive.org/web/20200921134848/https://filthyrichwriter.com/the-real-math-on-job-bidding-site-success",
+      "tier": "exact"
+    },
+    {
+      "id": "s9",
+      "nodeId": "n9",
+      "text": "Podcast Press Susan Press True Shield Get The 100-Word Email That Can Get The Media To Call You!",
+      "contextBefore": "ses Books Podcast Blog Free Contact Logout Press Susan Press True Shield About Us. P.O. Box 543 Larkspur, CA 94977-0543 Become An Affiliate Affiliate Login Privacy Policy Disclaimer Explore the site. ",
+      "contextAfter": " (This is what journalists + producers love!). About Us. P.O. Box 543 Larkspur, CA 94977-0543 Become An Affiliate Affiliate Login Privacy Policy Disclaimer © 2015-2026 Susan Harrow • ALL RIGHTS RESERV",
+      "start": 51041,
+      "end": 51137,
+      "extractSha256": "e00fe449d8b4239134c1e52d50fcee465f5c90bb05c8bb0a7d507c4706fb56c5",
+      "windowSha256": "f8f2f38cf19752e111218278d55e175326ebe0b9f75320b7ce74de2ef8f7cc05",
+      "fetchedAt": "2026-11-03T02:33:05.284Z",
+      "waybackUrl": "https://web.archive.org/web/20150801044348/https://prsecrets.com/books/how-to-get-a-six-figure-book-advance",
+      "tier": "exact"
+    }
+  ],
+  "hops": [
+    {
+      "edgeId": "e1",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "If you are about to send a 100-word email to a potential client, consider spending 200 seconds on typo prevention-that's less than three and a half minutes for a little piece of mind...sorry, peace of mind! *Erin Wright is a freelance writer and editor in Chicago, Illinois."
+        },
+        {
+          "op": "del",
+          "text": "Podcast Press Susan Press True Shield Get The 100-Word Email That Can Get The Media To Call You!"
+        }
+      ],
+      "faithful": false
+    },
+    {
+      "edgeId": "e2",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "A"
+        },
+        {
+          "op": "del",
+          "text": "If you are about to send a 100-word email to a potential client, consider spending 200 seconds on"
+        },
+        {
+          "op": "same",
+          "text": "typo"
+        },
+        {
+          "op": "add",
+          "text": "in"
+        },
+        {
+          "op": "del",
+          "text": "prevention-that's less than three and"
+        },
+        {
+          "op": "same",
+          "text": "a"
+        },
+        {
+          "op": "add",
+          "text": "2,000-word blog post"
+        },
+        {
+          "op": "del",
+          "text": "half minutes for a little piece of mind...sorry, peace of mind! *Erin Wright"
+        },
+        {
+          "op": "same",
+          "text": "is"
+        },
+        {
+          "op": "add",
+          "text": "easier to overlook"
+        },
+        {
+          "op": "del",
+          "text": "a freelance writer"
+        },
+        {
+          "op": "same",
+          "text": "and"
+        },
+        {
+          "op": "add",
+          "text": "forgive than one"
+        },
+        {
+          "op": "del",
+          "text": "editor"
+        },
+        {
+          "op": "same",
+          "text": "in"
+        },
+        {
+          "op": "add",
+          "text": "a 100-word email."
+        },
+        {
+          "op": "del",
+          "text": "Chicago, Illinois."
+        }
+      ],
+      "faithful": false
+    },
+    {
+      "edgeId": "e3",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "Also, to average $60 an order for"
+        },
+        {
+          "op": "del",
+          "text": "A typo in"
+        },
+        {
+          "op": "same",
+          "text": "a"
+        },
+        {
+          "op": "add",
+          "text": "100-word email and average $150-$200 an hour, he's writing two"
+        },
+        {
+          "op": "del",
+          "text": "2,000-word blog post is easier"
+        },
+        {
+          "op": "same",
+          "text": "to"
+        },
+        {
+          "op": "add",
+          "text": "three emails an hour, potentially for 18 hours"
+        },
+        {
+          "op": "del",
+          "text": "overlook and forgive than one in"
+        },
+        {
+          "op": "same",
+          "text": "a"
+        },
+        {
+          "op": "add",
+          "text": "day."
+        },
+        {
+          "op": "del",
+          "text": "100-word email."
+        }
+      ],
+      "faithful": false
+    },
+    {
+      "edgeId": "e4",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "The 100-Word Email: Why Your Emails Are Too Long."
+        },
+        {
+          "op": "del",
+          "text": "Also, to average $60 an order for a 100-word email and average $150-$200 an hour, he's writing two to three emails an hour, potentially for 18 hours a day."
+        }
+      ],
+      "faithful": false
+    },
+    {
+      "edgeId": "e5",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "While the exact burden is nearly impossible to quantify,"
+        },
+        {
+          "op": "same",
+          "text": "The"
+        },
+        {
+          "op": "add",
+          "text": "Washington Post worked with researchers at the University of California, Riverside to understand how much water and power OpenAI's ChatGPT, using the GPT-4 language model released in March 2023, consumes to write the average 100-word email. ---"
+        },
+        {
+          "op": "del",
+          "text": "100-Word Email: Why Your Emails Are Too Long."
+        }
+      ],
+      "faithful": true
+    },
+    {
+      "edgeId": "e6",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "ChatGPT with GPT-4 uses approximately 519 milliliters of water, slightly more than one 16.9 ounce bottle, in order to write one 100-word email, according"
+        },
+        {
+          "op": "del",
+          "text": "While the exact burden is nearly impossible"
+        },
+        {
+          "op": "same",
+          "text": "to"
+        },
+        {
+          "op": "add",
+          "text": "original research from"
+        },
+        {
+          "op": "del",
+          "text": "quantify,"
+        },
+        {
+          "op": "same",
+          "text": "The Washington Post"
+        },
+        {
+          "op": "add",
+          "text": "and"
+        },
+        {
+          "op": "del",
+          "text": "worked with researchers at"
+        },
+        {
+          "op": "same",
+          "text": "the University of California,"
+        },
+        {
+          "op": "add",
+          "text": "Riverside."
+        },
+        {
+          "op": "del",
+          "text": "Riverside to understand how much water and power OpenAI's ChatGPT, using the GPT-4 language model released in March 2023, consumes to write the average 100-word email. ---"
+        }
+      ],
+      "faithful": false
+    },
+    {
+      "edgeId": "e7",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "Home - Energy - A 100-word email written with"
+        },
+        {
+          "op": "same",
+          "text": "ChatGPT"
+        },
+        {
+          "op": "add",
+          "text": "may use about 17.6 fluid ounces of water, roughly the size of a stan A 100-word email written"
+        },
+        {
+          "op": "same",
+          "text": "with"
+        },
+        {
+          "op": "add",
+          "text": "ChatGPT may use about 17.6 fluid ounces"
+        },
+        {
+          "op": "del",
+          "text": "GPT-4 uses approximately 519 milliliters"
+        },
+        {
+          "op": "same",
+          "text": "of water,"
+        },
+        {
+          "op": "add",
+          "text": "roughly"
+        },
+        {
+          "op": "del",
+          "text": "slightly more than one 16.9 ounce bottle, in order to write one 100-word email, according to original research from The Washington Post and"
+        },
+        {
+          "op": "same",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "size"
+        },
+        {
+          "op": "del",
+          "text": "University"
+        },
+        {
+          "op": "same",
+          "text": "of"
+        },
+        {
+          "op": "add",
+          "text": "a stan."
+        },
+        {
+          "op": "del",
+          "text": "California, Riverside."
+        }
+      ],
+      "faithful": false
+    },
+    {
+      "edgeId": "e8",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "del",
+          "text": "Home - Energy -"
+        },
+        {
+          "op": "same",
+          "text": "A"
+        },
+        {
+          "op": "add",
+          "text": "typical text prompt's cooling water is a few milliliters or less; lifecycle estimates reach about a bottle. * Google's official figure: a median Gemini text prompt uses"
+        },
+        {
+          "op": "del",
+          "text": "100-word email written with ChatGPT may use"
+        },
+        {
+          "op": "same",
+          "text": "about"
+        },
+        {
+          "op": "add",
+          "text": "0.26 mL"
+        },
+        {
+          "op": "del",
+          "text": "17.6 fluid ounces"
+        },
+        {
+          "op": "same",
+          "text": "of water, roughly"
+        },
+        {
+          "op": "add",
+          "text": "five drops, counting on-site cooling. * The viral figure: roughly 519 mL (about one bottle) to write"
+        },
+        {
+          "op": "del",
+          "text": "the size of"
+        },
+        {
+          "op": "same",
+          "text": "a"
+        },
+        {
+          "op": "del",
+          "text": "stan A"
+        },
+        {
+          "op": "same",
+          "text": "100-word email"
+        },
+        {
+          "op": "del",
+          "text": "written"
+        },
+        {
+          "op": "same",
+          "text": "with"
+        },
+        {
+          "op": "add",
+          "text": "GPT-4, because it also counts the electricity supply chain. * The 1,000x gap is"
+        },
+        {
+          "op": "del",
+          "text": "ChatGPT may use"
+        },
+        {
+          "op": "same",
+          "text": "about"
+        },
+        {
+          "op": "add",
+          "text": "what you count: on-site cooling alone versus"
+        },
+        {
+          "op": "del",
+          "text": "17.6 fluid ounces of water, roughly"
+        },
+        {
+          "op": "same",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "full lifecycle. * Bigger models drink more."
+        },
+        {
+          "op": "del",
+          "text": "size of a stan."
+        }
+      ],
+      "faithful": false
+    }
+  ],
+  "blame": [],
+  "roots": {
+    "pages": 9,
+    "clusters": 9,
+    "rootsLinked": 1,
+    "clustersUnlinked": 8,
+    "studiesFound": null
+  },
+  "redHopEdgeId": "e1",
+  "earliest": {
+    "nodeIds": [
+      "n9"
+    ],
+    "earlierWindowSearches": 2,
+    "earlierFound": 0
+  },
+  "failure": null,
+  "budget": {
+    "credits": 13,
+    "usd": 0,
+    "ms": 35728,
+    "capHit": null
+  },
+  "decision": {
+    "state": "TRAIL_GOES_COLD",
+    "row": 6,
+    "reasons": [
+      "no earliest page with a confirmed date, a primary page type and no earlier citation",
+      "2 unread candidate parent(s)"
+    ],
+    "counts": {
+      "pages": 9,
+      "clusters": 9,
+      "unreadParents": 2,
+      "earlierWindowSearches": 2
+    }
+  },
+  "searchLog": [
+    {
+      "at": "2026-11-03T02:32:34.309Z",
+      "step": "search",
+      "query": "\"100-word email\" email",
+      "endDate": "2026-11-03",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:32:37.185Z",
+      "step": "search",
+      "query": "\"100 word email\" email",
+      "endDate": "2026-11-03",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:32:42.754Z",
+      "step": "search",
+      "query": "\"100-word email\" email",
+      "endDate": "2024-09-17",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:32:44.529Z",
+      "step": "search",
+      "query": "\"100 word email\" email",
+      "endDate": "2024-09-17",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:32:48.714Z",
+      "step": "search",
+      "query": "\"100-word email\" email",
+      "endDate": "2022-11-05",
+      "startDate": null,
+      "results": 9,
+      "kept": 7,
+      "dropped": 2
+    },
+    {
+      "at": "2026-11-03T02:32:50.549Z",
+      "step": "search",
+      "query": "\"100 word email\" email",
+      "endDate": "2022-11-05",
+      "startDate": null,
+      "results": 10,
+      "kept": 8,
+      "dropped": 2
+    },
+    {
+      "at": "2026-11-03T02:32:59.382Z",
+      "step": "search",
+      "query": "\"100-word email\" email",
+      "endDate": "2012-10-12",
+      "startDate": null,
+      "results": 2,
+      "kept": 1,
+      "dropped": 1
+    },
+    {
+      "at": "2026-11-03T02:33:01.516Z",
+      "step": "search",
+      "query": "\"100 word email\" email",
+      "endDate": "2012-10-12",
+      "startDate": null,
+      "results": 2,
+      "kept": 1,
+      "dropped": 1
+    },
+    {
+      "at": "2026-11-03T02:33:05.962Z",
+      "step": "search",
+      "query": "\"100-word email\" email",
+      "endDate": "2005-06-07",
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-03T02:33:07.740Z",
+      "step": "search",
+      "query": "\"100 word email\" email",
+      "endDate": "2005-06-07",
+      "startDate": null,
+      "results": 5,
+      "kept": 5,
+      "dropped": 0
+    }
+  ],
+  "usage": [
+    {
+      "at": "2026-11-03T02:32:34.308Z",
+      "traceId": "claim-2",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1374,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:32:37.184Z",
+      "traceId": "claim-2",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 2874,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:32:37.732Z",
+      "traceId": "claim-2",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 538,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:32:38.194Z",
+      "traceId": "claim-2",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 455,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:32:38.504Z",
+      "traceId": "claim-2",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 307,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:32:39.005Z",
+      "traceId": "claim-2",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 498,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:32:39.562Z",
+      "traceId": "claim-2",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 555,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:32:42.754Z",
+      "traceId": "claim-2",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 3190,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:32:44.528Z",
+      "traceId": "claim-2",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1774,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:32:45.598Z",
+      "traceId": "claim-2",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1069,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:32:46.334Z",
+      "traceId": "claim-2",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 731,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:32:48.713Z",
+      "traceId": "claim-2",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 2377,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:32:50.548Z",
+      "traceId": "claim-2",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1834,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:32:55.701Z",
+      "traceId": "claim-2",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 5152,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:32:56.772Z",
+      "traceId": "claim-2",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 1069,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:32:57.075Z",
+      "traceId": "claim-2",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 299,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:32:58.515Z",
+      "traceId": "claim-2",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 1438,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:32:59.381Z",
+      "traceId": "claim-2",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 865,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:33:01.516Z",
+      "traceId": "claim-2",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 2134,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:33:04.015Z",
+      "traceId": "claim-2",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 2499,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:33:05.284Z",
+      "traceId": "claim-2",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 1264,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:33:05.962Z",
+      "traceId": "claim-2",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 677,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:33:07.740Z",
+      "traceId": "claim-2",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0.008,
+      "credits": 1,
+      "latencyMs": 1777,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-03T02:33:08.657Z",
+      "traceId": "claim-2",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "costUsd": 0,
+      "credits": 0,
+      "latencyMs": 916,
+      "status": "200",
+      "cacheHit": false
+    }
+  ],
+  "scopeNote": "Web pages only; print and paywalled origins are out of scope. Earliest source we found, not proof of first use."
+}

@@ -1,0 +1,48 @@
+{
+  "id": "other-subject-same-number",
+  "kind": "adversarial",
+  "note": "An earlier page gives 14 for the zoo's seals, not its penguins; the model says same claim.",
+  "planted": "https://zoonews.example/seals",
+  "pages": [
+    {
+      "url": "https://harborzoo.example/keeper-log-2019",
+      "title": "Harbor Zoo keeper log, spring 2019",
+      "date": "2019-04-30",
+      "capture": "2019-05-02",
+      "text": "Keeper log, spring 2019.\n\nOver 30 days of daylight observation, Harbor Zoo penguins nap 14 times a day on average. Data table below."
+    },
+    {
+      "url": "https://zoonews.example/seals",
+      "title": "Seal naps",
+      "date": "2015-08-01",
+      "capture": "2015-08-02",
+      "text": "Harbor Zoo seals nap 14 times a day."
+    }
+  ],
+  "replies": {
+    "https://zoonews.example/seals": {
+      "pageType": [
+        "study",
+        0.99
+      ],
+      "sameClaim": [
+        "yes",
+        0.99
+      ]
+    },
+    "https://harborzoo.example/keeper-log-2019": {
+      "pageType": [
+        "dataset",
+        0.97
+      ],
+      "sameClaim": [
+        "yes",
+        0.96
+      ]
+    }
+  },
+  "expect": {
+    "state": "ORIGIN_FOUND",
+    "origin": "https://harborzoo.example/keeper-log-2019"
+  }
+}

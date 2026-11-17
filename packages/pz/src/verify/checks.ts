@@ -4,15 +4,19 @@ import { isDeepStrictEqual } from "node:util";
 import { decideStopState, isNegated, loadRules, normalise, type Rules } from "../rules/index.ts";
 import { atomHit } from "../rules/numbers.ts";
 import type { Trace } from "../schema/index.ts";
+import { otherNumberCandidate } from "../engine/similar.ts";
+import { computeRoots } from "../engine/cluster.ts";
 
-export type Check = "window_hash" | "offsets" | "atoms" | "negated" | "earliest" | "date_cap" | "edge_spans" | "edge_kind" | "stop_state" | "page_hash" | "page_offsets";
+export type Check = "window_hash" | "offsets" | "atoms" | "negated" | "earliest" | "date_cap" | "edge_spans" | "edge_kind" | "stop_state" | "page_hash" | "page_offsets" | "other_numbers" | "roots";
 export type Failure = { traceId: string; check: Check; detail: string };
 export type TraceReport = { spans: number; spansOk: number; edgesWithoutTwoSpans: number; stateAgrees: boolean; failures: Failure[] };
 
 const sha256 = (text: string) => createHash("sha256").update(text).digest("hex");
 
 // Re-checks a stored trace from its own contents (and, with pagesDir, the saved pages). Never calls the matcher.
-export function verifyTrace(trace: Trace, opts: { pagesDir?: string; rules?: Rules } = {}): TraceReport {
+// historical: a record made under earlier rules, kept as it was. The atoms re-check is skipped and the decision is
+// compared on state and row only; the caller must say so in its output.
+export function verifyTrace(trace: Trace, opts: { pagesDir?: string; rules?: Rules; historical?: boolean } = {}): TraceReport {
   const failures: Failure[] = [];
   const fail = (check: Check, detail: string) => failures.push({ traceId: trace.id, check, detail });
   const onEdge = new Set(trace.edges.flatMap((e) => [e.parentSpanId, e.childSpanId]));
@@ -27,7 +31,7 @@ export function verifyTrace(trace: Trace, opts: { pagesDir?: string; rules?: Rul
     if (s.end - s.start !== s.text.length) fail("offsets", `span ${s.id}: ${s.start}..${s.end} does not fit ${s.text.length} characters`);
     // Spans that back an edge must carry the claim's number; other spans must at least name the subject.
     const atomsOk = onEdge.has(s.id) ? atomHit(s.text, trace.claim.atoms, rules.weakNumberMinSigDigits, rules.weakNumberMaxCommas) : normalise(s.text).toLowerCase().includes(lemma);
-    if (!atomsOk) fail("atoms", `span ${s.id}: claim atoms not found under the number rules`);
+    if (!atomsOk && !opts.historical) fail("atoms", `span ${s.id}: claim atoms not found under the number rules`);
     // Meta pages deny the claim on purpose; anywhere else a negated span cannot back the trace.
     if (!meta.has(s.nodeId) && isNegated(s, rules.negationPrefixes)) fail("negated", `span ${s.id}: preceded by a negation`);
     if (opts.pagesDir) {
@@ -68,9 +72,34 @@ export function verifyTrace(trace: Trace, opts: { pagesDir?: string; rules?: Rul
       fail("date_cap", `node ${n.id}: date ${value} is later than its first capture ${firstCapture} and is not flagged`);
   }
 
+  // T97: a page listed as the same claim with another number must pass code's own gate (the subject, not negated, a
+  // number that is not the claim's) and carry a similarity at or above the rule. The vectors are not stored, so the
+  // similarity itself is taken as recorded.
+  for (const o of trace.otherNumbers ?? []) {
+    if (otherNumberCandidate(o.sentence, trace.claim.atoms, rules) === null) fail("other_numbers", `${o.url}: sentence does not pass the other-number gate`);
+    else if (o.similarity < rules.otherNumberSimilarity) fail("other_numbers", `${o.url}: similarity ${o.similarity} is under otherNumberSimilarity ${rules.otherNumberSimilarity}`);
+  }
+
+  // T94: the headline counts are re-derived from the nodes and edges, never trusted. Traces from before T94 carry no
+  // independentRoots and are not held to it (spike claim-2 stored an older count of unlinked clusters).
+  if (trace.roots.independentRoots !== undefined || trace.roots.copies !== undefined) {
+    const derived = computeRoots(trace.nodes, trace.edges);
+    const differing = (["pages", "clusters", "rootsLinked", "clustersUnlinked", "independentRoots", "copies"] as const)
+      .filter((k) => derived[k] !== trace.roots[k]).map((k) => `${k}: stored ${trace.roots[k] ?? "none"}, edges give ${derived[k]}`);
+    if (differing.length) fail("roots", `roots disagree with the nodes and edges; ${differing.join("; ")}`);
+  }
+
   const recomputed = decideStopState(trace, rules);
-  const stateAgrees = isDeepStrictEqual(recomputed, trace.decision);
-  if (!stateAgrees) fail("stop_state", `stored ${trace.decision.state} row ${trace.decision.row}, rules give ${recomputed.state} row ${recomputed.row}`);
+  const stateAgrees = opts.historical
+    ? recomputed.state === trace.decision.state && recomputed.row === trace.decision.row
+    : isDeepStrictEqual(recomputed, trace.decision);
+  if (!stateAgrees) {
+    // Name every field that differs: state and row can agree while the reasons or counts do not.
+    const differing = (["state", "row", "reasons", "counts"] as const)
+      .filter((k) => !isDeepStrictEqual(recomputed[k], trace.decision[k]))
+      .map((k) => `${k}: stored ${JSON.stringify(trace.decision[k])}, rules give ${JSON.stringify(recomputed[k])}`);
+    fail("stop_state", `stored ${trace.decision.state} row ${trace.decision.row}, rules give ${recomputed.state} row ${recomputed.row}; differs in ${differing.join("; ")}`);
+  }
 
   return { spans: trace.spans.length, spansOk, edgesWithoutTwoSpans, stateAgrees, failures };
 }

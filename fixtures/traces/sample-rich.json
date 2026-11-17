@@ -58,6 +58,19 @@
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
         "threshold": null
+      },
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
       }
     },
     {
@@ -89,6 +102,19 @@
         "top": [
           {
             "optionId": "news",
+            "p": 0.9
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9,
+        "top": [
+          {
+            "optionId": "yes",
             "p": 0.9
           }
         ],
@@ -130,6 +156,19 @@
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
         "threshold": null
+      },
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
       }
     },
     {
@@ -161,6 +200,19 @@
         "top": [
           {
             "optionId": "blog",
+            "p": 0.9
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9,
+        "top": [
+          {
+            "optionId": "yes",
             "p": 0.9
           }
         ],
@@ -202,6 +254,19 @@
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
         "threshold": null
+      },
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
       }
     },
     {
@@ -233,6 +298,19 @@
         "top": [
           {
             "optionId": "news",
+            "p": 0.9
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9,
+        "top": [
+          {
+            "optionId": "yes",
             "p": 0.9
           }
         ],
@@ -1109,7 +1187,9 @@
     "clusters": 4,
     "rootsLinked": 1,
     "clustersUnlinked": 0,
-    "studiesFound": null
+    "studiesFound": null,
+    "independentRoots": 1,
+    "copies": 4
   },
   "redHopEdgeId": "e2",
   "earliest": {

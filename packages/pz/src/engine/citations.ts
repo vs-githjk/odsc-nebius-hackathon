@@ -22,10 +22,14 @@ const PMID = /\bPMID:?\s*(\d{5,9})\b/g;
 
 const canon = (url: string) => url.replace(/#.*$/, "").replace(/\/$/, "");
 const hostPath = (u: URL) => `${u.hostname.replace(/^www\./, "")}${u.pathname}`;
+// A page's identity for the self-link check: no www, no query, no fragment, no trailing slash.
+const pageOf = (u: URL) => `${u.hostname.replace(/^www\./, "")}${u.pathname.replace(/\/$/, "")}`;
 
 export function citationsIn(input: {
   text: string;
   links: { href: string; start: number; end: number }[];
+  // Paragraph breaks from toPlain: a citation beside the span must also share its paragraph.
+  breaks?: number[];
   pageUrl: string;
   span: { start: number; end: number };
   atoms: Atoms;
@@ -35,10 +39,21 @@ export function citationsIn(input: {
   const lemma = normalise(atoms.subjectLemma).toLowerCase();
   const variants = atoms.variants.map((v) => normalise(v).toLowerCase());
   const factCheck = (host: string) => rules.factCheckDomains.some((d) => host === d || host.endsWith(`.${d}`));
-  const isNear = (start: number, end: number) => end >= span.start - REACH && start <= span.end + REACH;
+  const breaks = input.breaks ?? [];
+  const paraStart = Math.max(0, ...breaks.filter((b) => b <= span.start));
+  const paraEnd = Math.min(Number.POSITIVE_INFINITY, ...breaks.filter((b) => b > span.start));
+  // Beside the span means within reach and in the same paragraph, so a menu row after a blank line is never near.
+  const isNear = (start: number, end: number) =>
+    end >= span.start - REACH && start <= span.end + REACH && start >= paraStart && end <= paraEnd;
 
+  // A citation's context stays inside its own paragraph: the claim sentence above a menu row is not the menu's context.
+  const paragraphOf = (at: number): [number, number] => [
+    Math.max(0, ...breaks.filter((b) => b <= at)),
+    Math.min(text.length, ...breaks.filter((b) => b > at)),
+  ];
   const score = (start: number, end: number, url: URL) => {
-    const context = text.slice(Math.max(0, start - REACH), end + REACH);
+    const [ps, pe] = paragraphOf(start);
+    const context = text.slice(Math.max(ps, start - REACH), Math.min(pe, end + REACH));
     const lower = normalise(context).toLowerCase();
     const aboutClaim = atomHit(context, atoms, rules.weakNumberMinSigDigits) || variants.some((v) => v && lower.includes(v));
     return (isNear(start, end) ? 3 : 0) + (aboutClaim ? 3 : lower.includes(lemma) ? 1 : 0) + (SCHOLARLY.test(url.hostname) ? 2 : 0);
@@ -54,7 +69,7 @@ export function citationsIn(input: {
     }
     if (!url.protocol.startsWith("http") || JUNK.test(hostPath(url)) || factCheck(url.hostname.replace(/^www\./, ""))) return;
     const key = canon(url.href);
-    if (key === canon(pageUrl)) return;
+    if (pageOf(url) === pageOf(new URL(pageUrl))) return;
     const c: Citation = { url: key, score: score(start, end, url), near: isNear(start, end), kind };
     const prior = found.get(key);
     if (c.score >= FOLLOW_MIN_SCORE && (!prior || c.score > prior.score)) found.set(key, c);

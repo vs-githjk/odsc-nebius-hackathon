@@ -6,23 +6,37 @@ import { ClientError } from "../clients/errors.ts";
 import { createTavily } from "../clients/tavily.ts";
 import { createWayback } from "../clients/wayback.ts";
 import { findSpan } from "../match/verbatim.ts";
-import { atomHit, decideStopState, normalise, parseNumbers, sameNumber, type Rules } from "../rules/index.ts";
+import { clusterNodes, computeRoots, type Embed } from "./cluster.ts";
+import { findOtherNumber } from "./similar.ts";
+import { atomHit, claimHit, decideStopState, findInjection, isRange, normalise, parseNumbers, sameNumber, type Rules } from "../rules/index.ts";
 import type { Atoms, Cluster, DateInfo, Edge, Hop, Node, Readout, Span, Trace, UsageRow } from "../schema/index.ts";
 import type { UsageLog } from "../usage/log.ts";
+import { sameClaim, type SameClaimResult } from "../match/same-claim.ts";
 import { citationsIn, namedSources } from "./citations.ts";
+import { planQueries, type SeenQuery } from "./queries.ts";
 
 export type SpikeClaim = { id: string; text: string; atoms: Atoms };
 export type LogLine = { at: string; step: string; url?: string; query?: string; kept?: boolean; reason?: string };
 
-// The query planner's shape, agreed with T35 (#104, #66): queries for one hop; the walker owns the window loop and sends
-// the earlier of a query's endDate and its own window end.
+// The query planner's shape, T35's planQueries (#104, #129): queries for one hop. `seen` lists every query already sent
+// with the endDate it was planned with, so a repeat is the same pair. The walker owns the window loop and sends the
+// earlier of a query's endDate and its own window end.
 export type PlannedQuery = { query: string; endDate: string | null; why: string };
 export type QueryPlanner = (input: {
   claim: string;
   atoms: Atoms;
   hop: { url: string; date: string | null; span: string } | null;
-  seen: string[];
+  seen: SeenQuery[];
 }) => Promise<{ queries: PlannedQuery[]; rejected: { query: string; reason: string }[]; usage: UsageRow[]; mode: "model" | "code_only" }>;
+
+type ModelClient = Parameters<typeof planQueries>[1]["client"];
+
+// T35's planner bound to a Token Factory client; with a null client it plans code-only queries.
+export const plannerFor = (client: ModelClient, rules: Rules): QueryPlanner => (input) => planQueries(input, { client, rules });
+
+// T36's same_claim question bound to a client, for the walker to ask on each page it reads (XO ruling on #106).
+export const sameClaimFor = (client: ModelClient, rules: Rules) => (input: { claim: string; sentence: string; atoms: Atoms }) =>
+  sameClaim(input, { client, rules });
 
 // The code-only planner: the claim's variant phrases with its subject, as before T35. It ignores `seen` on purpose,
 // because each window repeats these queries with an earlier end date.
@@ -34,8 +48,11 @@ export const codePlanner: QueryPlanner = async ({ atoms }) => ({
 });
 
 export type WalkDeps = {
-  // T35's planQueries once it lands; the code-only planner until then.
+  // T35's planner (plannerFor); the code-only planner when absent.
   planQueries?: QueryPlanner;
+  // T36's same_claim question (sameClaimFor); its typed answer is stored on each page read. Absent means not asked,
+  // which decide treats as unsure, so no page can become the origin.
+  askSameClaim?: (input: { claim: string; sentence: string; atoms: Atoms }) => Promise<SameClaimResult>;
   tavily: ReturnType<typeof createTavily>;
   wayback: ReturnType<typeof createWayback>;
   usage: UsageLog;
@@ -48,6 +65,9 @@ export type WalkDeps = {
   replayOf?: Trace;
   // "allow" lets a run whose paid calls all came from the cache finish as a normal run (the pipeline replays elsewhere).
   cachedRun?: "refuse" | "allow";
+  // T97: Token Factory embeddings (createEmbedder). With it, reworded copies join one cluster and pages that state
+  // the claim with another number are listed; without it, the walk is exactly as before.
+  embed?: Embed;
 };
 
 const CONTEXT_CHARS = 200;
@@ -67,28 +87,64 @@ const dayBefore = (iso: string) => new Date(Date.parse(iso) - 86_400_000).toISOS
 const isoDate = (date: string | null) => (date && !Number.isNaN(Date.parse(date)) ? new Date(date).toISOString().slice(0, 10) : "9999");
 
 export function queriesFor(atoms: Atoms): string[] {
+  // A phrase claim (T53) searches for its phrase and its variants, quoted.
+  // A range adds the subject word, the same as a number does ("40 to 45 percent" heat).
+  if (!atoms.number) {
+    const tail = isRange(atoms) ? ` ${atoms.subjectLemma}` : "";
+    return [...new Set([atoms.phrase!, ...atoms.variants].map((p) => `"${p}"${tail}`))].slice(0, MAX_QUERIES);
+  }
   const phrases = atoms.variants.length > 0 ? atoms.variants : [[atoms.number.raw, atoms.unit].filter(Boolean).join(" ")];
   return [...new Set(phrases.map((p) => `"${p}" ${atoms.subjectLemma}`))].slice(0, MAX_QUERIES);
 }
 
 // Markdown to the visible text, with where each link's words landed. Handles one level of parentheses in a url.
-export function toPlain(markdown: string): { text: string; links: { href: string; start: number; end: number }[] } {
+// Marks a blank line while the text is cleaned; removed before the text is returned, its places kept as `breaks`.
+const PARAGRAPH = "";
+
+export function toPlain(markdown: string): { text: string; links: { href: string; start: number; end: number }[]; breaks: number[] } {
   // Headings end like sentences, and emphasis marks are not the page's words.
-  const plainer = markdown.replace(/^#{1,6}[ \t]+(.*?)[ \t]*$/gm, (_, heading: string) => (/[.!?:]$/.test(heading) ? heading : `${heading}.`));
-  const cleaned = normalise(plainer.replace(/\*\*|__/g, "")).replace(/!\[[^\]]*\]\((?:[^()]|\([^()]*\))*\)\s*/g, "").replace(/\[\s*\]\((?:[^()]|\([^()]*\))*\)\s*/g, "");
+  const headed = markdown.trim().replace(/^#{1,6}[ \t]+(.*?)[ \t]*$/gm, (_, heading: string) => (/[.!?:]$/.test(heading) ? heading : `${heading}.`));
+  const plainer = headed.replace(/[ \t]*\n[ \t]*\n\s*/g, ` ${PARAGRAPH}`);
+  const marked = normalise(plainer.replace(/\*\*|__/g, "")).replace(/!\[[^\]]*\]\((?:[^()]|\([^()]*\))*\)\s*/g, "").replace(/\[\s*\]\((?:[^()]|\([^()]*\))*\)\s*/g, "");
   const links: { href: string; start: number; end: number }[] = [];
-  let text = "";
+  let withMarks = "";
   let last = 0;
-  for (const m of cleaned.matchAll(/\[([^\]]*)\]\(((?:[^()\s]|\([^()\s]*\))*)(?:\s+"[^"]*")?\)/g)) {
-    text += cleaned.slice(last, m.index);
-    links.push({ href: m[2] ?? "", start: text.length, end: text.length + (m[1] ?? "").length });
-    text += m[1] ?? "";
+  for (const m of marked.matchAll(/\[([^\]]*)\]\(((?:[^()\s]|\([^()\s]*\))*)(?:\s+"[^"]*")?\)/g)) {
+    withMarks += marked.slice(last, m.index);
+    links.push({ href: m[2] ?? "", start: withMarks.length, end: withMarks.length + (m[1] ?? "").length });
+    withMarks += m[1] ?? "";
     last = m.index + m[0].length;
   }
-  text += cleaned.slice(last);
+  withMarks += marked.slice(last);
+  // Take the marks out, shifting each link by the marks before it.
+  const breaks: number[] = [];
+  let text = "";
+  for (const ch of withMarks) {
+    if (ch === PARAGRAPH) breaks.push(text.length);
+    else text += ch;
+  }
+  const shift = (at: number) => at - [...withMarks.slice(0, at)].filter((c) => c === PARAGRAPH).length;
+  const shifted = links.map((l) => ({ ...l, start: shift(l.start), end: shift(l.end) }));
   const stable = normalise(text);
-  return stable === text ? { text, links } : { text: stable, links: [] };
+  return stable === text ? { text, links: shifted, breaks } : { text: stable, links: [], breaks: [] };
 }
+
+// The paragraph a position sits in, as [start, end) offsets.
+export function paragraphAt(breaks: number[], at: number): [number, number] {
+  const start = Math.max(0, ...breaks.filter((b) => b <= at));
+  const end = Math.min(Number.POSITIVE_INFINITY, ...breaks.filter((b) => b > at));
+  return [start, end];
+}
+
+// A page's identity for self-link checks: no www, no query, no fragment, no trailing slash.
+export const pageKey = (url: string) => {
+  try {
+    const u = new URL(url);
+    return `${u.hostname.replace(/^www\./, "")}${u.pathname.replace(/\/$/, "")}`;
+  } catch {
+    return url;
+  }
+};
 
 function sentences(text: string): { text: string; start: number }[] {
   const out: { text: string; start: number }[] = [];
@@ -103,6 +159,7 @@ function sentences(text: string): { text: string; start: number }[] {
 
 // A negation anywhere before the claim's number means the sentence does not assert it.
 function assertsNumber(sentence: string, atoms: Atoms, prefixes: string[]): boolean {
+  if (!atoms.number) return false;
   const target = parseNumbers(atoms.number.canonical).numbers[0];
   const hit = target && parseNumbers(sentence).numbers.find((n) => sameNumber(n, target).equal);
   if (!hit) return false;
@@ -154,6 +211,13 @@ function measuredReadouts(parent: string, child: string, atoms: Atoms): Readout[
   ];
 }
 
+// What failed, read from the client error. Its message is "<service> <endpoint>: ..." (clients/http.ts), and the
+// status keeps the HTTP code when there is one: "http_error 503", not just "http_error".
+export function failureOf(err: ClientError, pagesRead: number): NonNullable<Trace["failure"]> {
+  const [, service = "tavily", endpoint = ""] = /^(\S+) (\S+):/.exec(err.message) ?? [];
+  return { service, endpoint, status: err.status ? `${err.code} ${err.status}` : err.code, kept: `${pagesRead} pages read before the failure` };
+}
+
 export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ trace: Trace; log: LogLine[] }> {
   if (deps.replayOf && deps.replayOf.id !== claim.id) {
     throw new Error(`--replay-of holds a trace of ${deps.replayOf.id}, not ${claim.id}`);
@@ -172,7 +236,10 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
   // What read pages cite, best score kept per url, and the sources they name; both feed the next windows.
   const followQueue = new Map<string, number>();
   const pendingSources: string[] = [];
-  const sentQueries: string[] = [];
+  const sentQueries: SeenQuery[] = [];
+  // Where each queued citation came from, so a followed page can say why it has no link-verified edge.
+  const citedBy = new Map<string, { from: string; near: boolean }>();
+  const otherNumbers: NonNullable<Trace["otherNumbers"]> = [];
   let capHit: Trace["budget"]["capHit"] = null;
   let failure: Trace["failure"] = null;
   let earlierWindowSearches = 0;
@@ -205,12 +272,21 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
   }
 
   async function readPage(url: string, title: string, raw: string, apiDate: string | null): Promise<boolean> {
-    const { text, links } = toPlain(raw);
+    const { text, links, breaks } = toPlain(raw);
     const sentence = sentences(text).find(
-      (s) => s.text.length <= MAX_SENTENCE_CHARS && s.text.toLowerCase().includes(lemma) && atomHit(s.text, atoms, rules.weakNumberMinSigDigits) && assertsNumber(s.text, atoms, rules.negationPrefixes),
+      (s) => s.text.length <= MAX_SENTENCE_CHARS && (atoms.number
+        ? s.text.toLowerCase().includes(lemma) && atomHit(s.text, atoms, rules.weakNumberMinSigDigits) && assertsNumber(s.text, atoms, rules.negationPrefixes)
+        : claimHit(s.text, atoms, rules)),
     );
     if (!sentence) {
-      note({ step: "read", url, kept: false, reason: "no sentence asserts the claim's atoms" });
+      // T97: the same claim with another number? Listed for the reader only; the page never becomes a node.
+      let other: Awaited<ReturnType<typeof findOtherNumber>> = null;
+      if (deps.embed && atoms.number) {
+        try { other = await findOtherNumber(claim.text, atoms, sentences(text).map((x) => x.text), deps.embed, rules); }
+        catch (err) { note({ step: "read", url, reason: `embeddings failed (${err instanceof Error ? err.message : "error"})` }); }
+      }
+      if (other) otherNumbers.push({ url, domain: hostOf(url), title, date: apiDate ? isoDate(apiDate) : null, ...other });
+      note({ step: "read", url, kept: false, reason: other ? `same claim with another number (${other.number}, similarity ${other.similarity})` : "no sentence asserts the claim's atoms" });
       return false;
     }
     const hit = findSpan(text, sentence.text, rules.negationPrefixes);
@@ -236,19 +312,37 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
     const meta = rules.metaKeywords.some((k) => haystack.includes(k));
     // Everything the page cites, ranked (T44). Citations beside the span are its candidate parents; every citation that
     // scores high enough is queued to follow. Same-site citations count; self-links, share buttons and fact-checks never.
-    const cited = citationsIn({ text, links, pageUrl: url, span: hit, atoms, rules });
+    const cited = citationsIn({ text, links, breaks, pageUrl: url, span: hit, atoms, rules });
     const parents = cited.filter((c) => c.near).map((c) => c.url).slice(0, LINKS_PER_SPAN);
     nodeLinks.set(id, parents);
 
     const clusterKey = `${normalise(title).toLowerCase()}|${sentence.text.toLowerCase()}`;
     if (!clusterKeys.has(clusterKey)) clusterKeys.set(clusterKey, `c${clusterKeys.size + 1}`);
+    // The typed same_claim answer for this page, when the walker was given the question (T36 gate, ruling on #106).
+    const asked = deps.askSameClaim ? await deps.askSameClaim({ claim: claim.text, sentence: sentence.text, atoms }) : null;
     nodes.push({
       id, url, domain: hostOf(url), title, date, clusterId: clusterKeys.get(clusterKey)!,
       evidence: "observed", meta, read: true, versionOf: null, spanIds: [spanId], citesEarlier: parents.length > 0,
       candidateParents: parents.map((p) => ({ url: p, read: seen.has(p) })), pageType: null,
+      injection: findInjection(title, text, rules.injectionPatterns),
+      ...(asked && { sameClaim: asked.typed }),
     });
+    // A page reached through a citation that was not beside the citing page's span has no link-verified edge;
+    // the trace says so rather than leaving the reader to guess (XO note on #110).
+    const via = citedBy.get(url);
+    if (via && !via.near) {
+      searchLog.push({
+        at: deps.now(), step: "follow", query: `${url} cited by ${via.from}, not beside its span: no link-verified edge`,
+        endDate: null, startDate: null, results: 1, kept: 1, dropped: 0,
+      });
+    }
     if (!meta) {
-      for (const c of cited) if (!seen.has(c.url)) followQueue.set(c.url, Math.max(c.score, followQueue.get(c.url) ?? 0));
+      for (const c of cited) {
+        if (seen.has(c.url)) continue;
+        followQueue.set(c.url, Math.max(c.score, followQueue.get(c.url) ?? 0));
+        const prior = citedBy.get(c.url);
+        if (!prior || (c.near && !prior.near)) citedBy.set(c.url, { from: url, near: c.near });
+      }
       for (const name of namedSources(sentence.text)) if (!pendingSources.includes(name)) pendingSources.push(name);
     }
     note({ step: "read", url, kept: true, reason: meta ? "meta page, off the path" : "span found" });
@@ -279,19 +373,20 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
       // A planner that returns nothing still leaves the window searched with the code queries.
       const queries = planned.queries.length > 0 ? planned.queries : (await codePlanner({ claim: claim.text, atoms, hop: null, seen: [] })).queries;
       // Sources the pages named ("according to ..."), searched for by name with the claim's phrase.
-      const phrase = atoms.variants[0] ?? [atoms.number.raw, atoms.unit].filter(Boolean).join(" ");
+      const phrase = atoms.variants[0] ?? atoms.phrase ?? (atoms.number ? [atoms.number.raw, atoms.unit].filter(Boolean).join(" ") : atoms.subjectLemma);
       const bySource = pendingSources
         .map((name) => `"${phrase}" ${name}`)
-        .filter((q) => !sentQueries.includes(q))
+        .filter((q) => !sentQueries.some((s) => s.query === q))
         .slice(0, SOURCE_QUERIES_PER_WINDOW)
         .map((query) => ({ query, endDate: null, why: "publisher" }));
       const windowEnd = endDate;
       const earlier = (d: string | null) => (d && d < windowEnd ? d : windowEnd);
-      const searches = [...queries, ...bySource].map((q) => ({ query: q.query, end: earlier(q.endDate), filter: false }));
+      // `planned` is the endDate the planner gave, recorded in `seen` as-is so its repeats match (#129).
+      const searches = [...queries, ...bySource].map((q) => ({ query: q.query, planned: q.endDate, end: earlier(q.endDate), filter: false }));
       // Two searches per window at least, so "nothing earlier" never rests on one call.
       while (searches.length < rules.earlierWindowSearches) searches.push({ ...searches[0]!, filter: true });
-      for (const { query, end: searchEnd, filter } of searches) {
-        if (!sentQueries.includes(query)) sentQueries.push(query);
+      for (const { query, planned, end: searchEnd, filter } of searches) {
+        if (!sentQueries.some((s) => s.query === query && s.endDate === planned)) sentQueries.push({ query, endDate: planned });
         const { data } = await deps.tavily.search({
           query, exactMatch: true, endDate: searchEnd, includeRawContent: false, includePublishedDate: true, maxResults: 10,
           excludeDomains: rules.factCheckDomains, ...(filter && { filterByPublishedDate: true }),
@@ -348,7 +443,21 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
     if (!(err instanceof ClientError)) throw err;
     note({ step: "stop", reason: err.code });
     if (err.code === "budget_exceeded") capHit = "credits";
-    else failure = { service: "tavily", endpoint: err.message.split(":")[0] ?? "", status: err.code, kept: `${nodes.length} pages read before the failure` };
+    else failure = failureOf(err, nodes.length);
+  }
+
+  // T97: with embeddings, reworded copies (spans at or above clusterSimilarityThreshold) join one cluster before any
+  // edge is drawn, so the independence count no longer counts each rewording as its own root. If the embedding call
+  // fails, the walk keeps its exact-wording clusters and says so in the log.
+  let regrouped: Cluster[] | null = null;
+  if (deps.embed && nodes.length > 1) {
+    try {
+      const grouped = await clusterNodes({ nodes, spans }, deps.embed, rules);
+      regrouped = grouped.clusters;
+      for (const n of nodes) n.clusterId = grouped.clusterOf[n.id]!;
+    } catch (err) {
+      note({ step: "cluster", reason: `embeddings failed (${err instanceof Error ? err.message : "error"}); exact-wording clusters kept` });
+    }
   }
 
   // Edges run from each dated page to an earlier one: a link beside the span if it reaches one, else the nearest earlier cluster.
@@ -371,16 +480,11 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
     hops.push({ edgeId: edge.id, readouts, wordDiff: wordDiff(parentSpan.text, childSpan.text), faithful: !readouts.some((r) => r.value === "yes") });
   }
 
-  const clusters: Cluster[] = [...clusterKeys.values()].map((id) => {
+  let clusters: Cluster[] = [...clusterKeys.values()].map((id) => {
     const nodeIds = nodes.filter((n) => n.clusterId === id).map((n) => n.id);
     return { id, nodeIds, rule: nodeIds.length > 1 ? "near_duplicate" : "single" };
   });
-  const clusterOf = (nodeId: string) => nodes.find((n) => n.id === nodeId)?.clusterId;
-  const explicit = edges.filter((e) => e.kind === "explicit");
-  const pageClusters = new Set(nodes.filter((n) => !n.meta).map((n) => n.clusterId));
-  const rootsLinked = [...pageClusters].filter(
-    (c) => explicit.some((e) => clusterOf(e.parentId) === c) && !explicit.some((e) => clusterOf(e.childId) === c),
-  ).length;
+  if (regrouped) clusters = regrouped;
   const minDate = earliestDate();
   const usd = deps.usage.rows.reduce((sum, r) => sum + (r.service === "tokenfactory" ? r.costUsd : 0), 0);
 
@@ -400,13 +504,15 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
     schemaVersion: "1", id: claim.id, mode: recorded ? "REPLAY" : "LIVE", synthetic: false, recordedAt: recorded?.recordedAt ?? deps.now(),
     claim: { text: claim.text, atoms }, viralSentence: claim.text,
     nodes, edges, clusters, spans, hops, blame: [],
-    roots: { pages: nodes.filter((n) => !n.meta).length, clusters: pageClusters.size, rootsLinked, clustersUnlinked: pageClusters.size - rootsLinked, studiesFound: null },
+    // One counter for the roots line and the T94 headline (the old inline count called linked-into clusters unlinked).
+    roots: computeRoots(nodes, edges),
     redHopEdgeId: hops.find((h) => !h.faithful)?.edgeId ?? null,
     earliest: { nodeIds: nodes.filter((n) => !n.meta && minDate !== null && n.date.value === minDate).map((n) => n.id), earlierWindowSearches, earlierFound },
     failure,
     budget,
     decision: { state: "TRAIL_GOES_COLD", row: 6, reasons: [], counts: {} },
     searchLog, usage: recorded ? [...recorded.usage, ...deps.usage.rows.filter((r) => !r.cacheHit)] : deps.usage.rows, scopeNote: SCOPE_NOTE,
+    ...(deps.embed ? { otherNumbers } : {}),
   };
   return { trace: { ...draft, decision: decideStopState(draft, rules) }, log };
 }
@@ -421,6 +527,8 @@ const UNDATED: DateInfo = { kind: "unconfirmed", value: null, source: "tavily", 
 export function walkStep<C>(build: (trace: Trace, context: C) => Omit<WalkDeps, "replayOf" | "cachedRun">): (trace: Trace, context: C) => Promise<Trace> {
   return async (trace, context) => {
     const deps = build(trace, context);
+    // The credits the earlier stages spent count against this run's cap (XO note on #110).
+    deps.budget.spend(trace.usage.reduce((sum, r) => sum + r.credits, 0));
     const { trace: walked } = await walkClaim({ id: trace.id, text: trace.claim.text, atoms: trace.claim.atoms }, { ...deps, cachedRun: "allow" });
     const draft: Trace = {
       ...walked,

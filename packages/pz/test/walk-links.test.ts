@@ -113,7 +113,7 @@ describe("walk by links (T44)", () => {
   });
 
   it("uses the query planner it is given, and never searches later than the window", async () => {
-    const asked: { hop: unknown; seen: string[] }[] = [];
+    const asked: { hop: unknown; seen: unknown[] }[] = [];
     const planner: QueryPlanner = async (input) => {
       asked.push({ hop: input.hop, seen: [...input.seen] });
       return { queries: [{ query: '"14 times" penguins naps', endDate: "2099-01-01", why: "variant" }], rejected: [], usage: [], mode: "code_only" };
@@ -135,5 +135,65 @@ describe("walk by links (T44)", () => {
     expect(t.budget.usd).toBeCloseTo(0.002, 6);
     expect(t.budget.credits).toBe(t.usage.reduce((n, r) => n + r.credits, 0));
     expect(t.budget.ms).toBeGreaterThanOrEqual(40);
+  });
+});
+
+describe("T44 review notes (#110)", () => {
+  it("never follows a menu row in the next paragraph, even cross-site", async () => {
+    const news: Page = { url: "https://news.example/new", date: "2020-05-01", text: "Report: penguins nap 14 times a day.\n\n[Shop](https://shop.example/) | [Tickets](https://tickets.example/)" };
+    const w = world([news]);
+    await walkStep(build(w.impl))(handedOver, {});
+    expect(w.extracted.some((u) => u.includes("shop.example") || u.includes("tickets.example"))).toBe(false);
+  });
+
+  it("passes the planner every sent query as a {query, endDate} pair, with the planned date, not the window's", async () => {
+    const seenByCall: unknown[] = [];
+    const planner: QueryPlanner = async (input) => {
+      seenByCall.push(structuredClone(input.seen));
+      return { queries: [{ query: '"14 times" penguins naps', endDate: "2099-01-01", why: "variant" }], rejected: [], usage: [], mode: "code_only" };
+    };
+    const older: Page = { url: "https://blog.example/old", date: "2012-02-08", text: "Our keepers noted that penguins nap 14 times a day." };
+    const news: Page = { url: "https://news.example/new", date: "2020-05-01", text: "Report: penguins nap 14 times a day." };
+    await walkStep(build(world([news, older]).impl, planner))(handedOver, {});
+    expect(seenByCall.length).toBeGreaterThan(1);
+    expect(seenByCall[1]).toContainEqual({ query: '"14 times" penguins naps', endDate: "2099-01-01" });
+  });
+
+  it("says in the trace why a followed far citation has no link-verified edge", async () => {
+    const news: Page = {
+      url: "https://news.example/new", date: "2020-05-01",
+      text: `Report: penguins nap 14 times a day. ${padding}An earlier survey also said penguins nap 14 times a day, see [the survey](https://survey.example/2010).`,
+    };
+    const survey: Page = { url: "https://survey.example/2010", date: null, text: "The 2010 survey found that penguins nap 14 times a day." };
+    const t = await walkStep(build(world([news, survey]).impl))(handedOver, {});
+    const follow = t.searchLog.find((s) => s.step === "follow" && s.query.includes(survey.url));
+    expect(follow?.query).toMatch(/not beside its span/);
+  });
+
+  it("seeds the walk's budget with the credits the trace already spent, so intake counts toward the cap", async () => {
+    const spent = { at: "2026-11-12T00:00:00.000Z", traceId: "neutral", step: "intake", service: "tavily" as const, endpoint: "search",
+      model: null, promptTokens: 0, completionTokens: 0, cachedTokens: 0, credits: 149, costUsd: 1.192, latencyMs: 9, status: "200", cacheHit: false };
+    const news: Page = { url: "https://news.example/new", date: "2020-05-01", text: "Report: penguins nap 14 times a day." };
+    const t = await walkStep(build(world([news]).impl))({ ...handedOver, usage: [spent] }, {});
+    expect(t.budget.capHit).toBe("credits");
+  });
+
+  it("stores the same_claim answer it is given on each page it reads", async () => {
+    const yes = { questionId: "same_claim", optionId: "yes", probability: 0.97, top: [{ optionId: "yes", p: 0.97 }], model: "m", threshold: null };
+    const askSameClaim = async () => ({ candidate: true, codeHit: true, typed: yes, mode: "model" as const, reason: null });
+    const news: Page = { url: "https://news.example/new", date: "2020-05-01", text: "Report: penguins nap 14 times a day." };
+    const deps = build(world([news]).impl);
+    const t = await walkStep(() => ({ ...deps(), askSameClaim }))(handedOver, {});
+    expect(t.nodes.find((n) => n.url === news.url)?.sameClaim).toEqual(yes);
+  });
+
+  it("walks a claim with no single number, searching by its phrase", async () => {
+    const phraseAtoms = { ...atoms, number: null, unit: null, variants: [], phrase: "nap more than seals" };
+    const claim = { ...handedOver, claim: { text: "Penguins nap more than seals.", atoms: phraseAtoms } };
+    const news: Page = { url: "https://news.example/new", date: "2020-05-01", text: "According to the Harbor Zoo Annual Report, penguins nap more than seals." };
+    const w = world([news]);
+    const t = await walkStep(build(w.impl))(Trace.parse(claim), {});
+    expect(Trace.parse(t)).toBeTruthy();
+    expect(w.searches.some((q) => q.includes('"nap more than seals"'))).toBe(true);
   });
 });

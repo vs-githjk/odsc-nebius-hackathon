@@ -39,3 +39,27 @@
 ## Nov 10 morning
 - Merged #97 T33 dev-score, #105 T47 E3. FIX: #75 (U.S. acronym split, last blocker for T38 live), #77, #104, #106; #80 and #107 FIX. Ledger $0 of $15, Rohan single live runner, ceilings TF $0.01 Tavily $0.02.
 - Nov 10 midday: Rishit cleared #52 #62 #82. Merged #82 T23 walker. FIX: #52 (pin historical traces by sha256), #62 (plain-language stop reasons, label overlap, 390 rows).
+
+## Nov 12 pass
+- XO review backlog since Nov 10 cleared. Merged: #75 T21, #104 T35, #106 T36, #80 T29, #52 spike report (XO resolved pz.ts with #80), #62 T15.
+- FIX: #77 (origin-word pattern), #107 (NO_CALL outcomes, over-ceiling row), #108 (same-paragraph rule). Notes: #109, #110 (seen pairs).
+- Rulings: 21 live plus 4 NO_CALL outcomes; embedding ceiling $0.002. Run 3 issues #111 to #122. Held-out date: asked Vidyut (recommend Mon Nov 16).
+
+## Mon Nov 16 11:30 ET (XO pass, Anoop)
+- Reviewed 8 Anoop PRs (master-reviewer x4). #129 PASS, merged 4a01f79. FIX lists posted: #77, #151, #152, #153 (H: range phrase without subject), #155, #156 (H: injection outside 200-char window), #157. Drafts #154, #158 not reviewed.
+- Cross-PR notes for Rishit: #110 must use SeenQuery[] and guard atoms.number after #153.
+- New issues for Anoop: #159 T92 gallery, #160 T93 rematch, #161 T94 independence count, #162 T95 make judge + pz doctor, #163 T96 limits page. Queue reposted on #4.
+
+## Mon Nov 16 15:30 ET (XO pass, Anoop fixes)
+- Re-reviewed 7 (master-reviewer x2). Merged: #151 712be17, #152 790edce, #153 e8f6ef9, #77 de8207a, #155 cc795be, #157 62bef06. main 423 tests, verify green.
+- #156 FIX: 300-char quote cut in findInjection (H), 3 fresh rewordings (M).
+- #110 heads-up to Rishit: SeenQuery[], atoms.number guard, --json in dev-run.
+- New for Anoop: #164 T97 embeddings for reworded/drifted copies, #165 T98 speed and cost budget. Queue reposted on #4.
+
+## Mon Nov 16 20:15 ET (XO pass, Anoop's 15 PRs)
+- 5 reviewers. Merged: #156 9ce3108, #166 1f20935, #167 0b4689d, #170 b546ed4, #178 da6b274, #168 a14156d, #169 c554eb0 (XO resolved walk.ts/checks.ts/rules conflicts by hand, both sides kept). main 487 tests, make judge green.
+- FIX: #171 (H x2: %20 path writes grading key in repo; blinding leaks tool), #176 (H: meta-via-meta crashes run), #177, #173, #172, #174, #154.
+- Live: drift measure $0.00008 (best F1 0.75; 0/4315 wrong merges); DeepSeek second model $0.0885, do not ship. Ledger about $0.09 of $15.
+- MIT LICENSE added. Decisions logged: public + MIT, rematch chats Anoop, voiceover Rohan, DeepSeek veto off.
+- New: #179 T99 case study (Anoop). Gallery vs held-out check asked of Rohan on #168.
+- Rohan: no activity since Nov 16 03:22Z; #130 due 18:00 PT, no PR yet.

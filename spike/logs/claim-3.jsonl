@@ -1,0 +1,17 @@
+{"at":"2026-11-03T02:33:11.814Z","step":"search","query":"\"55% body language\" body language","reason":"end_date 2026-11-03, 10 results"}
+{"at":"2026-11-03T02:33:13.282Z","step":"search","query":"\"55 percent body language\" body language","reason":"end_date 2026-11-03, 10 results"}
+{"at":"2026-11-03T02:33:15.035Z","step":"search","query":"\"55% of communication\" body language","reason":"end_date 2026-11-03, 10 results"}
+{"at":"2026-11-03T02:33:16.653Z","step":"read","url":"https://people-shift.com/articles/mehrabians-7-38-55-communication-model","kept":true,"reason":"span found"}
+{"at":"2026-11-03T02:33:16.938Z","step":"read","url":"https://law.temple.edu/aer/2021/05/03/brain-lessons-the-seven-percent-delusion","kept":true,"reason":"span found"}
+{"at":"2026-11-03T02:33:16.939Z","step":"read","url":"https://www.nonverbalgroup.com/content/articles/how-much-of-communication-is-really-nonverbal-an-extensive-breakdown","kept":false,"reason":"no sentence asserts the claim's atoms"}
+{"at":"2026-11-03T02:33:17.284Z","step":"read","url":"https://cuttingedgepr.com/articles/ignore-this-nonverbal-communication-myth","kept":true,"reason":"meta page, off the path"}
+{"at":"2026-11-03T02:33:17.375Z","step":"dating","url":"https://www.psychologytoday.com/us/blog/beyond-words/201109/is-nonverbal-communication-a-numbers-game","reason":"wayback http_error"}
+{"at":"2026-11-03T02:33:17.376Z","step":"read","url":"https://www.psychologytoday.com/us/blog/beyond-words/201109/is-nonverbal-communication-a-numbers-game","kept":true,"reason":"span found"}
+{"at":"2026-11-03T02:33:20.550Z","step":"search","query":"\"55% body language\" body language","reason":"end_date 2011-09-29, 6 results"}
+{"at":"2026-11-03T02:33:22.327Z","step":"search","query":"\"55 percent body language\" body language","reason":"end_date 2011-09-29, 2 results"}
+{"at":"2026-11-03T02:33:24.442Z","step":"search","query":"\"55% of communication\" body language","reason":"end_date 2011-09-29, 10 results"}
+{"at":"2026-11-03T02:33:26.905Z","step":"read","url":"http://www.cmhcm.org/provider/centrain/Welcome%20to%20CenTrain_files/Units/POSITIVE%20APPROACHES.pdf","kept":true,"reason":"span found"}
+{"at":"2026-11-03T02:33:26.905Z","step":"read","url":"http://mediacoach.blogspot.com/2008/11/7-myth.html?showComment=1243722769272","kept":false,"reason":"no sentence asserts the claim's atoms"}
+{"at":"2026-11-03T02:33:26.906Z","step":"read","url":"http://mediacoach.blogspot.com/2008/11/7-myth.html?showComment=1227693600000","kept":false,"reason":"no sentence asserts the claim's atoms"}
+{"at":"2026-11-03T02:33:26.907Z","step":"read","url":"http://mediacoach.blogspot.com/2008/11/7-myth.html","kept":false,"reason":"no sentence asserts the claim's atoms"}
+{"at":"2026-11-03T02:33:26.907Z","step":"read","url":"http://mediacoach.blogspot.com/2008/11/7-myth.html?showComment=1243783125376","kept":false,"reason":"no sentence asserts the claim's atoms"}

@@ -8,11 +8,14 @@ export const Mode = z.enum(["LIVE", "REPLAY", "SAMPLE"]);
 export type Mode = z.infer<typeof Mode>;
 export const MatchTier = z.enum(["exact", "normalised"]);
 export type MatchTier = z.infer<typeof MatchTier>;
+// A claim is matched by its number, or, when it has no single number (a quote, a range, "the only..."), by a
+// distinctive phrase copied verbatim from it (T53). Exactly one of the two drives matching; number wins when present.
 export const Atoms = z.object({
-  number: z.object({ raw: z.string(), canonical: z.string() }).strict(), unit: z.string().nullable(),
+  number: z.object({ raw: z.string(), canonical: z.string() }).strict().nullable(), unit: z.string().nullable(),
   subjectLemma: z.string(), population: z.string().nullable(), time: z.string().nullable(),
   hedge: z.string().nullable(), namedSource: z.string().nullable(), variants: z.array(z.string()),
-}).strict();
+  phrase: z.string().min(1).nullable().optional(),
+}).strict().refine((a) => a.number !== null || !!a.phrase, { message: "atoms need a number or a phrase" });
 export type Atoms = z.infer<typeof Atoms>;
 export const Span = z.object({
   id: z.string(), nodeId: z.string(), text: z.string(), contextBefore: z.string().max(200), contextAfter: z.string().max(200),
@@ -30,6 +33,15 @@ export const Node = z.object({
   clusterId: z.string(), evidence: z.enum(["observed", "inferred", "conflicting", "unknown"]),
   meta: z.boolean(), read: z.boolean(), versionOf: z.string().nullable(), spanIds: z.array(z.string()),
   citesEarlier: z.boolean(), candidateParents: z.array(z.object({ url: z.string(), read: z.boolean() }).strict()), pageType: TypedAnswer.nullable(),
+  // T36: the typed same_claim answer for this page's span. Absent or null means the gate did not run (no model),
+  // which counts as unsure: such a page is never an origin.
+  sameClaim: TypedAnswer.nullable().optional(),
+  // T79: the same question answered by a second model family (rules.json secondSameClaimModel). When that rule is
+  // set, an origin needs this to say yes as well; absent or null then counts as unsure.
+  sameClaimSecond: TypedAnswer.nullable().optional(),
+  // T50: the first instruction-like stretch found anywhere on the page (rules.json injectionPatterns), quoted, or null.
+  // Absent on traces recorded before the check. A page with one is never an origin.
+  injection: z.string().nullable().optional(),
 }).strict();
 export type Node = z.infer<typeof Node>;
 export const Edge = z.object({
@@ -60,8 +72,16 @@ export const Blame = z.object({
 export type Blame = z.infer<typeof Blame>;
 export const Roots = z.object({
   pages: z.number(), clusters: z.number(), rootsLinked: z.number(), clustersUnlinked: z.number(), studiesFound: z.number().nullable(),
+  // T94: clusters with no link-verified earlier page, and the pages that copy one (pages = independentRoots + copies).
+  // Absent on traces recorded before T94; pz verify re-derives both whenever they are present.
+  independentRoots: z.number().int().min(0).optional(), copies: z.number().int().min(0).optional(),
 }).strict();
 export type Roots = z.infer<typeof Roots>;
+export const OtherNumber = z.object({
+  url: z.string(), domain: z.string(), title: z.string(), date: z.string().nullable(),
+  sentence: z.string(), number: z.string(), similarity: z.number().min(0).max(1),
+}).strict();
+export type OtherNumber = z.infer<typeof OtherNumber>;
 export const Decision = z.object({
   state: StopState, row: z.union([z.literal(1), z.literal(2), z.literal(3), z.literal(4), z.literal(5), z.literal(6)]),
   reasons: z.array(z.string()), counts: z.record(z.string(), z.number()),
@@ -81,5 +101,8 @@ export const Trace = z.object({
   failure: z.object({ service: z.string(), endpoint: z.string(), status: z.string(), kept: z.string() }).strict().nullable(),
   budget: z.object({ credits: z.number(), usd: z.number(), ms: z.number(), capHit: z.enum(["credits", "usd", "ms", "depth", "frontier"]).nullable() }).strict(),
   decision: Decision, searchLog: z.array(SearchLogEntry), usage: z.array(UsageRow), scopeNote: z.string(),
+  // T97: pages that state the claim with another number ("14 became 15"), found by embeddings past code's gate.
+  // Listed for the reader, never nodes, so they never change how a trace ends. Absent on traces from before T97.
+  otherNumbers: z.array(OtherNumber).optional(),
 }).strict();
 export type Trace = z.infer<typeof Trace>;
