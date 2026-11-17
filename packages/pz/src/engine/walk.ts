@@ -14,7 +14,7 @@ import type { Atoms, Cluster, DateInfo, Edge, Hop, Node, Readout, Span, Trace, U
 import type { UsageLog } from "../usage/log.ts";
 import { sameClaim, type SameClaimResult } from "../match/same-claim.ts";
 import { citationsIn, namedSources, REACH } from "./citations.ts";
-import { planQueries, type SeenQuery } from "./queries.ts";
+import { planQueries, queryKey, whyRejected, type SeenQuery } from "./queries.ts";
 
 export type SpikeClaim = { id: string; text: string; atoms: Atoms };
 export type LogLine = { at: string; step: string; url?: string; query?: string; kept?: boolean; reason?: string };
@@ -89,6 +89,15 @@ const hostOf = (url: string) => new URL(url).hostname.replace(/^www\./, "");
 const dayBefore = (iso: string) => new Date(Date.parse(iso) - 86_400_000).toISOString().slice(0, 10);
 // Tavily sends RFC dates; undated pages sort last.
 const isoDate = (date: string | null) => (date && !Number.isNaN(Date.parse(date)) ? new Date(date).toISOString().slice(0, 10) : "9999");
+
+// #192 F6: code's extra queries, aimed at the publisher or the original study, used when a window would otherwise send
+// the same search twice (dev-12 sent one quoted phrase 8 times): the claim's first quoted search plus "study",
+// "report" or "survey". Each must pass the same query rules as the planner's (queries.ts whyRejected).
+export function studyQueries(claim: string, atoms: Atoms): string[] {
+  const first = queriesFor(atoms)[0];
+  if (!first) return [];
+  return ["study", "report", "survey"].map((w) => `${first} ${w}`).filter((q) => whyRejected(q, { claim, atoms, hop: null }) === null);
+}
 
 export function queriesFor(atoms: Atoms): string[] {
   // A phrase claim (T53) searches for its phrase and its variants, quoted.
@@ -244,6 +253,8 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
   const followQueue = new Map<string, number>();
   const pendingSources: string[] = [];
   const sentQueries: SeenQuery[] = [];
+  const sentSearches = new Set<string>();
+  const emptySearches = new Set<{ query: string; end: string; filter: boolean }>();
   // Where each queued citation came from, so a followed page can say why it has no link-verified edge.
   const citedBy = new Map<string, { from: string; near: boolean }>();
   const otherNumbers: NonNullable<Trace["otherNumbers"]> = [];
@@ -455,9 +466,26 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
       const windowEnd = endDate;
       const earlier = (d: string | null) => (d && d < windowEnd ? d : windowEnd);
       // `planned` is the endDate the planner gave, recorded in `seen` as-is so its repeats match (#129).
-      const searches = [...queries, ...bySource].map((q) => ({ query: q.query, planned: q.endDate, end: earlier(q.endDate), filter: false }));
-      // Two searches per window at least, so "nothing earlier" never rests on one call.
-      while (searches.length < rules.earlierWindowSearches) searches.push({ ...searches[0]!, filter: true });
+      // #192 F6: one search per (query, end date, filter). A planned date later than the window collapses to the window
+      // end, so two planned copies of one query were the same request. A search already sent in an earlier window with
+      // the same end, or one that found nothing with a later end (an earlier end can only find less), is not repeated.
+      const key = (query: string, end: string, filter: boolean) => `${queryKey(query)}|${end}|${filter}`;
+      const repeat = (query: string, end: string, filter: boolean) => sentSearches.has(key(query, end, filter))
+        || [...emptySearches].some((e) => e.query === queryKey(query) && e.end >= end && e.filter === filter);
+      const searches: { query: string; planned: string | null; end: string; filter: boolean }[] = [];
+      const add = (query: string, planned: string | null, filter = false) => {
+        const end = earlier(planned);
+        if (repeat(query, end, filter) || searches.some((x) => key(x.query, x.end, x.filter) === key(query, end, filter))) {
+          note({ step: "plan", query, kept: false, reason: "duplicate search" });
+          return;
+        }
+        searches.push({ query, planned, end, filter });
+      };
+      for (const q of [...queries, ...bySource]) add(q.query, q.endDate);
+      // Two searches per window at least, so "nothing earlier" never rests on one call: first code's publisher and
+      // study queries, then the date-filtered copy of the first query.
+      for (const q of studyQueries(claim.text, atoms)) if (searches.length < rules.earlierWindowSearches) add(q, null);
+      if (searches.length < rules.earlierWindowSearches && searches[0]) add(searches[0].query, searches[0].planned, true);
       for (const { query, planned, end: searchEnd, filter } of searches) {
         if (!sentQueries.some((s) => s.query === query && s.endDate === planned)) sentQueries.push({ query, endDate: planned });
         const { data } = await deps.tavily.search({
@@ -469,6 +497,8 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
         for (const r of fresh) {
           results.set(canonUrl(r.url), { title: r.title ?? "", date: r.published_date ?? null });
         }
+        sentSearches.add(key(query, searchEnd, filter));
+        if (data.results.length === 0) emptySearches.add({ query: queryKey(query), end: searchEnd, filter });
         searchLog.push({ at: deps.now(), step: "search", query, endDate: searchEnd, startDate: null, results: data.results.length, kept: fresh.length, dropped: data.results.length - fresh.length });
         note({ step: "search", query, reason: `end_date ${searchEnd}${filter ? ", filtered" : ""}, ${data.results.length} results` });
       }
