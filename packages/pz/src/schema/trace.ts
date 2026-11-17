@@ -36,6 +36,9 @@ export const Node = z.object({
   // T36: the typed same_claim answer for this page's span. Absent or null means the gate did not run (no model),
   // which counts as unsure: such a page is never an origin.
   sameClaim: TypedAnswer.nullable().optional(),
+  // T50: the first instruction-like stretch found anywhere on the page (rules.json injectionPatterns), quoted, or null.
+  // Absent on traces recorded before the check. A page with one is never an origin.
+  injection: z.string().nullable().optional(),
 }).strict();
 export type Node = z.infer<typeof Node>;
 export const Edge = z.object({
@@ -66,6 +69,9 @@ export const Blame = z.object({
 export type Blame = z.infer<typeof Blame>;
 export const Roots = z.object({
   pages: z.number(), clusters: z.number(), rootsLinked: z.number(), clustersUnlinked: z.number(), studiesFound: z.number().nullable(),
+  // T94: clusters with no link-verified earlier page, and the pages that copy one (pages = independentRoots + copies).
+  // Absent on traces recorded before T94; pz verify re-derives both whenever they are present.
+  independentRoots: z.number().int().min(0).optional(), copies: z.number().int().min(0).optional(),
 }).strict();
 export type Roots = z.infer<typeof Roots>;
 export const OtherNumber = z.object({

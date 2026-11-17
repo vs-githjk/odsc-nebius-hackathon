@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { PZ_VERSION } from "../index.ts";
+import { relockAdversarial, runAdversarial } from "../traps/adversarial.ts";
 import { relock, runTraps } from "../traps/run.ts";
 import { runVerify, type HistoricalManifest } from "../verify/index.ts";
 import { answerCommand } from "./answer.ts";
@@ -47,10 +48,14 @@ if (command === "--version") {
 } else if (command === "traps") {
   const root = fileURLToPath(new URL("../../../../", import.meta.url));
   const paths = { root, casesDir: join(root, "traps/cases"), lockPath: join(root, "traps/traps.lock") };
-  if (args.includes("--relock")) relock(paths);
+  const adversarial = { casesDir: join(root, "traps/adversarial"), lockPath: join(root, "traps/adversarial.lock") };
+  if (args.includes("--relock")) { relock(paths); relockAdversarial(adversarial); }
   const { code, lines } = runTraps(paths);
   for (const line of lines) console.log(line);
-  process.exitCode = code;
+  // T50: planted adversarial pages through the walker, dating, the typed layer and the decision table.
+  const adv = await runAdversarial(adversarial);
+  for (const line of adv.lines) console.log(line);
+  process.exitCode = code || adv.code;
 } else {
   console.error("not built yet");
   process.exitCode = 1;

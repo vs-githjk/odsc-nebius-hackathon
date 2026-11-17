@@ -46,6 +46,14 @@ describe("origin card", () => {
     expect(unbacked("Two earliest pages say the adult penguins napped 14 times a day.", spans, [], 1).numbers).toEqual(["Two"]);
   });
 
+  it("counts written as words the number parser skips: one time, a dozen, half a dozen", () => {
+    const spans = ["The adult penguins napped a median of 14 times a day, twice as often as the seals."];
+    expect(unbacked("The keeper log says the penguins napped one time a day.", spans).numbers).toEqual(["one time"]);
+    expect(unbacked("The keeper log says the penguins napped a dozen times a day.", spans).numbers).toEqual(["a dozen"]);
+    expect(unbacked("The keeper log says the penguins napped half a dozen times a day.", spans).numbers).toEqual(["half a dozen"]);
+    expect(unbacked("The keeper log says the penguins napped 14 times a day, twice as often as the seals.", spans).numbers).toEqual([]);
+  });
+
   it("never calls a first-archive-capture date published, and tells the model what each date means", async () => {
     const capped: typeof origin = { ...origin, nodes: origin.nodes.map((n) => origin.earliest.nodeIds.includes(n.id)
       ? { ...n, date: { ...n.date, kind: "existed_by" as const, source: "wayback_first_capture" as const } } : n) };

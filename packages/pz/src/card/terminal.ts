@@ -1,4 +1,5 @@
 import type { Node, Trace } from "../schema/index.ts";
+import { independenceLine } from "./headline.ts";
 
 // T77: one readable screen for `pz trace` and `make replay`, built only from the trace's own fields.
 // The raw trace stays one flag away (--json). Nothing here calls a model or the network.
@@ -107,6 +108,9 @@ export function renderCard(trace: Trace, { color = false }: { color?: boolean } 
 
   const badge = trace.mode === "SAMPLE" ? s.tone(trace.mode, "warn") : s.tone(trace.mode, trace.mode === "LIVE" ? "good" : "info");
   out.push(`${s.bold("Patient Zero")}  ${badge} ${s.dim(MODE_NOTE[trace.mode])}`);
+  out.push("");
+  // T94: the independence count leads the card.
+  for (const l of wrap(independenceLine(trace), 0)) out.push(s.bold(l));
   out.push("");
   field("Claim", trace.claim.text);
   out.push("");
