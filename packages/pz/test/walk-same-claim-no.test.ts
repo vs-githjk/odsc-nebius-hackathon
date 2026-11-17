@@ -8,7 +8,8 @@ import { createFileCache } from "../src/clients/cache.ts";
 import { createTavily } from "../src/clients/tavily.ts";
 import { createWayback } from "../src/clients/wayback.ts";
 import { walkClaim, walkStep } from "../src/engine/walk.ts";
-import { confidentNo, loadRules } from "../src/rules/index.ts";
+import { closeTrail } from "../src/engine/pipeline.ts";
+import { confidentNo, decideStopState, loadRules } from "../src/rules/index.ts";
 import { createUsageLog } from "../src/usage/log.ts";
 import { verifyTrace } from "../src/verify/checks.ts";
 
@@ -140,5 +141,35 @@ describe("pz verify knows F1", () => {
 
   it("an older page with an unsure answer still does", () => {
     expect(earliestFailures(withOlder(answer("unsure", 0.5)))).toHaveLength(1);
+  });
+});
+
+describe("closeTrail knows F1 (the pipeline's earliest pages, #200)", () => {
+  const rich = Trace.parse(JSON.parse(readFileSync(join(import.meta.dirname, "../../../fixtures/traces/sample-rich.json"), "utf8")));
+  const mark = (t: Trace, ids: string[], a: TypedAnswer): Trace => ({ ...t, nodes: t.nodes.map((n) => (ids.includes(n.id) ? { ...n, sameClaim: a } : n)) });
+  const linksOnly = (t: Trace): Trace => ({ ...t, edges: t.edges.filter((e) => e.kind === "explicit") });
+
+  it("a confident 'no' oldest page is not the earliest page nor the parent of an inferred edge, and the trace verifies", () => {
+    const oldest = rich.earliest.nodeIds[0]!;
+    const t = mark(linksOnly(rich), [oldest], answer("no", 0.95));
+    const closed = closeTrail(t, rules);
+    expect(closed.earliest.nodeIds).not.toContain(oldest);
+    expect(closed.earliest.nodeIds.length).toBeGreaterThan(0);
+    expect(closed.edges.filter((e) => e.kind === "inferred" && e.parentId === oldest)).toEqual([]);
+    const decided = { ...closed, decision: decideStopState(closed, rules) };
+    expect(verifyTrace(decided, { rules }).failures.filter((f) => f.check === "earliest" || f.check === "roots")).toEqual([]);
+  });
+
+  it("an unsure oldest page stays the earliest page", () => {
+    const oldest = rich.earliest.nodeIds[0]!;
+    expect(closeTrail(mark(linksOnly(rich), [oldest], answer("unsure", 0.5)), rules).earliest.nodeIds).toContain(oldest);
+  });
+
+  it("when every page is a confident 'no', there is no earliest page and the trail ends cold, without crashing", () => {
+    const t = mark(linksOnly(rich), rich.nodes.map((n) => n.id), answer("no", 0.95));
+    const closed = closeTrail(t, rules);
+    expect(closed.earliest.nodeIds).toEqual([]);
+    expect(closed.edges.filter((e) => e.kind === "inferred")).toEqual([]);
+    expect(decideStopState(closed, rules).state).toBe("TRAIL_GOES_COLD");
   });
 });
