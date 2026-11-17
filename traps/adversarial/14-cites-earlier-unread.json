@@ -1,0 +1,31 @@
+{
+  "id": "cites-earlier-unread",
+  "kind": "adversarial",
+  "note": "An earlier page calls itself the source but links to an earlier page that was never read.",
+  "planted": "https://penguinfacts.example/cites",
+  "pages": [
+    {
+      "url": "https://penguinfacts.example/cites",
+      "title": "Penguin naps",
+      "date": "2016-04-01",
+      "capture": "2016-04-02",
+      "text": "Harbor Zoo penguins nap 14 times a day, as [the zoo's first report](https://harborzoo.example/missing-report) found."
+    }
+  ],
+  "replies": {
+    "https://penguinfacts.example/cites": {
+      "pageType": [
+        "study",
+        0.99
+      ],
+      "sameClaim": [
+        "yes",
+        0.99
+      ]
+    }
+  },
+  "expect": {
+    "state": "TRAIL_GOES_COLD",
+    "origin": null
+  }
+}

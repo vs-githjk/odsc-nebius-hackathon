@@ -31,9 +31,28 @@
     "myth that",
     "it is a myth that"
   ],
+  "injectionPatterns": [
+    "\\b(?:ignore|disregard|forget) (?:all |any )?(?:of )?(?:your |the |my |all )?(?:previous|prior|above|earlier|preceding|original|system) (?:instructions|prompts?|directives|directions)\\b",
+    "\\b(?:ignore|disregard|forget) (?:your|all|all your|these|those) (?:instructions|prompts?|directives)\\b",
+    "\\b(?:ignore|disregard|forget) the (?:instructions|prompts?) (?:above|before this)\\b",
+    "\\b(?:ignore|disregard|forget) (?:everything|anything|all) (?:you(?:'ve| have)? (?:were|been|was) told|above|before|prior|previous)",
+    "\\b(?:ai|llm|language model|assistant|chatbot)s?\\b[^.]{0,20}\\b(?:reading|processing|parsing|summari[sz]ing|crawling) this\\b",
+    "\\btreat this (?:page|site|article|document|post|text) as\\b",
+    "\\bsystem prompt(?: override)?\\s*:",
+    "\\bsystem prompt override\\b",
+    "\\b(?:note|message) to (?:ai|llm|language model|assistant)s?\\b",
+    "\\b(?:classify|label|mark) this (?:page|site|article) as\\b",
+    "\\banswer (?:yes|study|dataset|report) to\\b",
+    "\\b(?:attention|hey|dear|calling all) (?:ai|llms?|language models?|assistants?|chatbots?|bots?|crawlers?)\\b",
+    "\\b(?:set aside|override|overrule|discard) (?:your|their|its|all|any) (?:earlier |previous |prior |original |existing )?(?:guidance|instructions|rules|directions|directives|prompts?)\\b",
+    "\\breport this (?:page|site|website|article|document) as (?:the|an?) (?:original|primary|peer-reviewed|study|source|authoritative)\\b",
+    "\\b(?:ai|llm|language model|assistant|chatbot)s?[.,:;!?]*\\s+(?:are you |if you are |you are |while )?reading this\\b",
+    "\\btreat (?:it|this) as (?:the|an?) (?:original|primary|peer-reviewed|authoritative)\\b"
+  ],
   "factCheckDomains": ["snopes.com", "politifact.com", "factcheck.org", "fullfact.org", "leadstories.com", "checkyourfact.com", "africacheck.org", "truthorfiction.com", "quoteinvestigator.com"],
   "clusterSimilarityThreshold": 0.9,
   "secondSameClaimModel": null,
+  "otherNumberSimilarity": 0.8,
   "hedgeWords": [
     "about",
     "around",
@@ -63,7 +82,9 @@
   ],
   "notes": {
     "secondSameClaimModel": "T79: a second Token Factory model family that answers same_claim beside Qwen; an origin then needs its yes too, and any other answer, or none, counts as unsure. null is off. It is switched on (deepseek-ai/DeepSeek-V4-Pro-0813) only if eval/same-claim/second-model.ts shows fewer false hits on E2 without losing true ones.",
+    "injectionPatterns": "T50: instruction-like text in a page, case-insensitive regular expressions. A page with one anywhere on it (the walker quotes it on the node) or in or around its span cannot be an origin, whatever the typed answers say. Written from the adversarial trap set, never from dev, spike or held-out pages.",
     "clusterSimilarityThreshold": "Placeholder. Set on the E2 dev set (#34) before the held-out run; Rohan never edits it.",
+    "otherNumberSimilarity": "T97: cosine between the claim and a page sentence, on Qwen3-Embedding-8B vectors, at or above which a sentence that names the claim's subject with a different number is listed as the same claim with another number. Placeholder until eval/drift/measure.ts runs on the 107 labelled E2 sentences (live, on Vidyut's machine); E3 is checked, never tuned on.",
     "hedgeWords": "Placeholder list for the hedge_dropped readout (T27). Check on the E2 dev set before the held-out run.",
     "maxQueriesPerHop": "Placeholder cap on planned search queries per hop (T35). Set on the E2 dev set within the credit cap; never on spike or held-out claims.",
     "comparisonWords": "Placeholder list for the comparison_added readout (T27). Check on the E2 dev set before the held-out run."
