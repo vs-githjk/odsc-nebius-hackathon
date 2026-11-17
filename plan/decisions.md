@@ -128,3 +128,4 @@ Format: [LOCKED|REJECTED|PREFERENCE] decision | why | "Vidyut's words" | date
 [LOCKED] #130 integration: XO merges Rohan's pushed draft with main (builder agent), Rohan reviews | Rohan missed 18:00 PT with no ETA; Tue run-through needs live traces | "XO merges it" | 2026-11-16
 [LOCKED] Other-number card line is softened to "possible variant" with the E3 precision cited; never "became" | E3 untuned precision 0.37 (E2 0.82) | "Soften to 'possible'" | 2026-11-17
 [LOCKED] Live dating uses page publication metadata (and NCBI/Crossref registry dates), labelled on the card as "page says published <date>" distinct from "archived by <date>"; limits page names the backdated-metadata trap | real 2004 papers showed as 2020 on archive-only dating | "Use it, label it" | 2026-11-17
+[LOCKED] Merge #191 (live pipeline) now, before Rohan's review; Rohan reviews on main and fixes go in follow-ups | Tue run-through needs it; reviewer PASS after 4 rounds | "Merge now" | 2026-11-17
