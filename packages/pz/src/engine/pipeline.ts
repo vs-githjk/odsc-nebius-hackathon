@@ -9,7 +9,7 @@ import { decideStopState, loadRules } from "../rules/index.ts";
 import type { Atoms, Edge, Trace, UsageRow } from "../schema/index.ts";
 import { ask } from "../typed/ask.ts";
 import { createUsageLog } from "../usage/log.ts";
-import { clusterStep } from "./cluster.ts";
+import { devClusterStep } from "../../../../eval/dev-clusters.ts";
 import { claimNumber, fingerprint } from "./fingerprint.ts";
 import { intake } from "./intake.ts";
 import { hopFor, redHop } from "./readouts.ts";
@@ -51,7 +51,7 @@ export function createPipeline(options: {
   const tokenFactory = createTokenFactoryClient({ traceId: id, apiKey: options.nebiusKey, fetch: options.tokenFactoryFetch });
   const downstream = options.buildDownstream?.({ tavily, wayback, tokenFactory, usage, budget, rules });
 
-  const cluster = clusterStep(createTokenFactoryClient({
+  const cluster = devClusterStep(createTokenFactoryClient({
     traceId: id, apiKey: options.nebiusKey, fetch: options.embeddingFetch,
   }), rules);
   const pipeline: Pipeline = {
