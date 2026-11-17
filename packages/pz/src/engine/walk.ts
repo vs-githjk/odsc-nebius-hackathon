@@ -254,6 +254,7 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
   const pendingSources: string[] = [];
   const sentQueries: SeenQuery[] = [];
   const sentSearches = new Set<string>();
+  let studyBarren = false;
   const emptySearches = new Set<{ query: string; end: string; filter: boolean }>();
   // Where each queued citation came from, so a followed page can say why it has no link-verified edge.
   const citedBy = new Map<string, { from: string; near: boolean }>();
@@ -469,24 +470,41 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
       // #192 F6: one search per (query, end date, filter). A planned date later than the window collapses to the window
       // end, so two planned copies of one query were the same request. A search already sent in an earlier window with
       // the same end, or one that found nothing with a later end (an earlier end can only find less), is not repeated.
+      // A skipped repeat still counts as the search it repeats (XO on #198): after a round that only follows links the
+      // end date has not moved, and its searches are already answered for this window, so "nothing earlier" still rests
+      // on that many searches and decide's earlier-window check is not starved.
       const key = (query: string, end: string, filter: boolean) => `${queryKey(query)}|${end}|${filter}`;
       const repeat = (query: string, end: string, filter: boolean) => sentSearches.has(key(query, end, filter))
         || [...emptySearches].some((e) => e.query === queryKey(query) && e.end >= end && e.filter === filter);
-      const searches: { query: string; planned: string | null; end: string; filter: boolean }[] = [];
-      const add = (query: string, planned: string | null, filter = false) => {
+      const searches: { query: string; planned: string | null; end: string; filter: boolean; study?: boolean }[] = [];
+      const answered = new Set<string>();
+      const add = (query: string, planned: string | null, filter = false, study = false) => {
         const end = earlier(planned);
-        if (repeat(query, end, filter) || searches.some((x) => key(x.query, x.end, x.filter) === key(query, end, filter))) {
-          note({ step: "plan", query, kept: false, reason: "duplicate search" });
+        const k = key(query, end, filter);
+        if (searches.some((x) => key(x.query, x.end, x.filter) === k)) return;
+        if (repeat(query, end, filter)) {
+          if (!answered.has(k)) note({ step: "plan", query, kept: false, reason: "duplicate search, already answered for this window" });
+          answered.add(k);
           return;
         }
-        searches.push({ query, planned, end, filter });
+        searches.push({ query, planned, end, filter, study });
       };
       for (const q of [...queries, ...bySource]) add(q.query, q.endDate);
-      // Two searches per window at least, so "nothing earlier" never rests on one call: first code's publisher and
-      // study queries, then the date-filtered copy of the first query.
-      for (const q of studyQueries(claim.text, atoms)) if (searches.length < rules.earlierWindowSearches) add(q, null);
-      if (searches.length < rules.earlierWindowSearches && searches[0]) add(searches[0].query, searches[0].planned, true);
-      for (const { query, planned, end: searchEnd, filter } of searches) {
+      const counted = () => searches.length + answered.size;
+      // Two searches per window at least, so "nothing earlier" never rests on one call. A repeat already answered
+      // counts. Short of two, one code study or report query (a new paid request, so at most one per window, and none
+      // once one has found nothing new in this trace), then the date-filtered copy of the first query.
+      const studies = studyQueries(claim.text, atoms);
+      // A study query already sent for this window end is answered too.
+      for (const q of studies) if (counted() < rules.earlierWindowSearches && sentSearches.has(key(q, windowEnd, false))) answered.add(key(q, windowEnd, false));
+      if (counted() < rules.earlierWindowSearches && !studyBarren) {
+        const study = studies.find((q) => !repeat(q, windowEnd, false));
+        if (study) add(study, null, false, true);
+      }
+      const first = searches[0] ?? (queries[0] ? { query: queries[0].query, planned: queries[0].endDate } : undefined);
+      if (counted() < rules.earlierWindowSearches && first) add(first.query, first.planned, true);
+      earlierWindowSearches += answered.size;
+      for (const { query, planned, end: searchEnd, filter, study } of searches) {
         if (!sentQueries.some((s) => s.query === query && s.endDate === planned)) sentQueries.push({ query, endDate: planned });
         const { data } = await deps.tavily.search({
           query, exactMatch: true, endDate: searchEnd, includeRawContent: false, includePublishedDate: true, maxResults: 10,
@@ -498,6 +516,7 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
           results.set(canonUrl(r.url), { title: r.title ?? "", date: r.published_date ?? null });
         }
         sentSearches.add(key(query, searchEnd, filter));
+        if (study && fresh.length === 0) studyBarren = true;
         if (data.results.length === 0) emptySearches.add({ query: queryKey(query), end: searchEnd, filter });
         searchLog.push({ at: deps.now(), step: "search", query, endDate: searchEnd, startDate: null, results: data.results.length, kept: fresh.length, dropped: data.results.length - fresh.length });
         note({ step: "search", query, reason: `end_date ${searchEnd}${filter ? ", filtered" : ""}, ${data.results.length} results` });

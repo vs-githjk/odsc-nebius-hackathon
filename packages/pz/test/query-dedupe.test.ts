@@ -29,7 +29,9 @@ function walk(claim: SpikeClaim, pages: Page[], planQueries?: QueryPlanner) {
     const body = JSON.parse(String(init?.body));
     if (url.endsWith("/search")) {
       bodies.push(body);
-      const results = pages.filter((p) => !body.end_date || p.date <= body.end_date)
+      // The fact-check search (include_domains) finds nothing here: these are ordinary pages.
+      // Only pages that carry the claim's words come back from a search; cited pages are reached by their links.
+      const results = body.include_domains ? [] : pages.filter((p) => /credit card/i.test(p.text) && (!body.end_date || p.date <= body.end_date))
         .map((p) => ({ url: p.url, title: "A page", content: p.text.slice(0, 80), score: 0.5, published_date: p.date }));
       return new Response(JSON.stringify({ query: body.query, results, usage: { credits: 1 } }));
     }
@@ -43,8 +45,10 @@ function walk(claim: SpikeClaim, pages: Page[], planQueries?: QueryPlanner) {
     tavily: createTavily({ ...deps, apiKey: "test-key" }), wayback: createWayback(deps), usage, budget: deps.budget, rules,
     today: "2026-11-02", now: () => "2026-11-02T00:00:00.000Z", pagesDir: join(dir, "pages"), ...(planQueries ? { planQueries } : {}),
   });
-  return { run, bodies };
+  return { run, bodies, usage };
 }
+// Tavily credits a walk was billed for: rows that were not served from the cache.
+const billed = (usage: ReturnType<typeof createUsageLog>) => usage.rows.filter((r) => r.service === "tavily" && !r.cacheHit).reduce((n, r) => n + r.credits, 0);
 
 const pages: Page[] = [
   { url: "https://news.example/a", date: "2021-03-01", text: "Studies say you eat a credit card's worth of plastic every week." },
@@ -74,5 +78,21 @@ describe("#192 F6: queries", () => {
     await run;
     const sent = bodies.map((b) => JSON.stringify(b));
     expect(new Set(sent).size).toBe(sent.length);
+  });
+
+  // XO's stub on #198: one page states the claim and cites 7 links, so the second round only follows links and the
+  // window's end date does not move. Main sent the same searches again there; their results were cached.
+  const cited = Array.from({ length: 7 }, (_, i) => `https://src${i}.example/page`);
+  const linked: Page[] = [
+    { url: "https://news.example/a", date: "2021-03-01", text: `You eat a credit card's worth of plastic every week, studies say ${cited.map((u, i) => `[${i}](${u})`).join(" ")}.` },
+    ...cited.map((url) => ({ url, date: "2020-01-01", text: "A page about something else entirely." })),
+  ];
+
+  it("a round that only follows links keeps its earlier-window searches, and costs no more than main", async () => {
+    const { run, usage } = walk(plastic, linked);
+    const { trace } = await run;
+    expect(trace.earliest.earlierWindowSearches).toBeGreaterThanOrEqual(rules.earlierWindowSearches);
+    // Main billed 9 Tavily credits on this stub (its repeats were cache hits); a study query must not add to that.
+    expect(billed(usage)).toBeLessThanOrEqual(9);
   });
 });
