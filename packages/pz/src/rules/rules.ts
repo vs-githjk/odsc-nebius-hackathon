@@ -11,6 +11,7 @@ export const Rules = z.object({
   primaryPageTypes: z.array(z.string()),
   metaKeywords: z.array(z.string()),
   negationPrefixes: z.array(z.string()),
+  injectionPatterns: z.array(z.string()),
   factCheckDomains: z.array(z.string()),
   clusterSimilarityThreshold: z.number().min(0).max(1),
   hedgeWords: z.array(z.string()),
