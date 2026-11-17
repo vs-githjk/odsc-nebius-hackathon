@@ -117,8 +117,22 @@ function numberClass(n: ParsedNumber, text: string): UnitClass {
   return null;
 }
 
+// #192 F5: a two-number claim's other number is a veto only. When it is a percent ("100 companies ... 71%"), a
+// sentence that gives a different, plain percent ("100 companies ... 30%") states another claim. A hedged one ("over
+// 70%", "about 70%") is not plain and never vetoes: dev-11's own CDP release says "over 70%" for the 71% claim.
+const HEDGED_BEFORE = /(?:over|more than|about|around|nearly|almost|roughly|approximately|at least|up to|under|less than|some|~)\s*$/iu;
+function otherNumberVetoes(text: string, atoms: Atoms): boolean {
+  const also = atoms.alsoNumber && parseNumbers(atoms.alsoNumber.canonical).numbers[0];
+  if (!also || !also.percent) return false;
+  const percents = parseNumbers(text).numbers.filter((n) => numberClass(n, text) === "percent");
+  const same = (n: ParsedNumber) => sameNumber({ ...n, percent: false }, { ...also, percent: false }).equal;
+  if (percents.some(same)) return false;
+  return percents.some((n) => !HEDGED_BEFORE.test(text.slice(0, n.start)));
+}
+
 export function atomHit(sentence: string, atoms: Atoms, minSigDigits = 3, maxCommas = 2, words = true): boolean {
   if (!atoms.number) return false;
+  if (otherNumberVetoes(normalise(sentence.replace(URL, " ")), atoms)) return false;
   const target = parseNumbers(atoms.number.canonical).numbers[0];
   if (!target) return false;
   const text = normalise(sentence.replace(URL, " "));

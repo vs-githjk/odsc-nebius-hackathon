@@ -33,6 +33,13 @@ export function isYear(text: string, n: { raw: string; start: number; percent: b
   return !n.percent && /^(?:19|20)\d\d$/.test(n.raw) && YEAR_AFTER.test(text.slice(0, n.start));
 }
 
+// #192 F5: the claim's second number, when it has two that are not years ("Just 100 companies are responsible for
+// 71% of global emissions" gives 71%). It is kept on the atoms as a veto, never as a second thing a page must say.
+export function alsoNumber(text: string, first: ClaimNumber): ClaimNumber | null {
+  const rest = parseNumbers(text).numbers.filter((n) => !isYear(text, n) && canonicalKey(n) !== first.canonical);
+  return rest[0] ? { raw: rest[0].raw, canonical: canonicalKey(rest[0]) } : null;
+}
+
 // Code reads the claim's number: digits first (skipping years), then number words.
 export function claimNumber(text: string): ClaimNumber | null {
   const parsed = parseNumbers(text).numbers.find((n) => !isYear(text, n));
@@ -142,5 +149,7 @@ export async function fingerprint(text: string, { client, number: given }: { cli
     time: keep("time", parts.time), hedge: keep("hedge", parts.hedge), namedSource: keep("namedSource", parts.namedSource),
     variants: variants.map((v) => v.text),
   };
+  const second = alsoNumber(text, number);
+  if (second) atoms.alsoNumber = second;
   return { atoms, dropped, variants, reason: null, usage: result.attempts };
 }
