@@ -1,0 +1,19 @@
+Patient Zero  SAMPLE an invented example, not a real search
+
+Found on no pages.
+
+Claim    Harbor Zoo penguins nap 14 times a day, twice as often as the zoo's
+         seals
+
+Ending   No pages found
+         No page stated the claim, apart from pages discussing it as a claim.
+         Decision table row 3 of 6.
+
+Earliest No page to show.
+
+Roots    No pages read.
+
+Cost     24 credits, $0.06, 38 s
+
+Synthetic: an invented claim on invented pages.
+Raw trace: add --json (make replay ARGS=--json).

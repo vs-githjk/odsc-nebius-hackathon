@@ -58,6 +58,19 @@
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
         "threshold": null
+      },
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
       }
     }
   ],
@@ -185,7 +198,9 @@
     "clusters": 0,
     "rootsLinked": 0,
     "clustersUnlinked": 0,
-    "studiesFound": null
+    "studiesFound": null,
+    "independentRoots": 0,
+    "copies": 0
   },
   "redHopEdgeId": null,
   "earliest": {

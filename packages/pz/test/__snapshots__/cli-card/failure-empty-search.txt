@@ -1,0 +1,22 @@
+Patient Zero  SAMPLE an invented example, not a real search
+
+Found on no pages.
+
+Claim    Harbor Zoo penguins nap 14 times a day, twice as often as the zoo's
+         seals
+
+Ending   No pages found
+         No page stated the claim, apart from pages discussing it as a claim.
+         Decision table row 3 of 6.
+
+Earliest No page to show.
+
+Roots    No pages read.
+
+Cost     2 credits, $0.00, 0 s
+         Tavily 2 calls
+
+Synthetic: an invented claim, and a Tavily response written for this test, not
+captured from a live call. Web pages only; print and paywalled origins are out
+of scope. Earliest source we found, not proof of first use.
+Raw trace: add --json (make replay ARGS=--json).

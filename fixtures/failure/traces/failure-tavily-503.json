@@ -1,0 +1,108 @@
+{
+  "schemaVersion": "1",
+  "id": "failure-tavily-503",
+  "mode": "SAMPLE",
+  "synthetic": true,
+  "recordedAt": "2026-11-15T08:00:00.000Z",
+  "claim": {
+    "text": "Harbor Zoo penguins nap 14 times a day, twice as often as the zoo's seals",
+    "atoms": {
+      "number": {
+        "raw": "14",
+        "canonical": "14"
+      },
+      "unit": "times a day",
+      "subjectLemma": "penguin",
+      "population": "Harbor Zoo penguins",
+      "time": null,
+      "hedge": null,
+      "namedSource": null,
+      "variants": [
+        "fourteen"
+      ]
+    }
+  },
+  "viralSentence": "Harbor Zoo penguins nap 14 times a day, twice as often as the zoo's seals",
+  "nodes": [],
+  "edges": [],
+  "clusters": [],
+  "spans": [],
+  "hops": [],
+  "blame": [],
+  "roots": {
+    "pages": 0,
+    "clusters": 0,
+    "rootsLinked": 0,
+    "clustersUnlinked": 0,
+    "studiesFound": null,
+    "independentRoots": 0,
+    "copies": 0
+  },
+  "redHopEdgeId": null,
+  "earliest": {
+    "nodeIds": [],
+    "earlierWindowSearches": 0,
+    "earlierFound": 0
+  },
+  "failure": {
+    "service": "tavily",
+    "endpoint": "search",
+    "status": "http_error 503",
+    "kept": "0 pages read before the failure"
+  },
+  "budget": {
+    "credits": 0,
+    "usd": 0,
+    "ms": 0,
+    "capHit": null
+  },
+  "decision": {
+    "state": "TOOL_FAILED",
+    "row": 1,
+    "reasons": [
+      "tavily failed: http_error 503"
+    ],
+    "counts": {
+      "pages": 0,
+      "clusters": 0,
+      "unreadParents": 0,
+      "earlierWindowSearches": 0
+    }
+  },
+  "searchLog": [],
+  "usage": [
+    {
+      "at": "2026-11-15T08:00:00.000Z",
+      "traceId": "failure-tavily-503",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "503",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-15T08:00:00.000Z",
+      "traceId": "failure-tavily-503",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "503",
+      "cacheHit": false
+    }
+  ],
+  "scopeNote": "Synthetic: an invented claim, and a Tavily response written for this test, not captured from a live call. Web pages only; print and paywalled origins are out of scope. Earliest source we found, not proof of first use."
+}

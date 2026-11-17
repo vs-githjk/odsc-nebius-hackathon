@@ -24,7 +24,7 @@ describe("fingerprint", () => {
       expect(() => Atoms.parse(atoms)).not.toThrow();
       expect(words(claim).some((w) => w.startsWith(atoms!.subjectLemma))).toBe(true);
       for (const part of [atoms!.unit, atoms!.population, atoms!.time, atoms!.hedge, atoms!.namedSource]) if (part) expect(phrase(claim, part)).toBe(true);
-      expect(phrase(claim, atoms!.number.raw)).toBe(true);
+      expect(phrase(claim, atoms!.number!.raw)).toBe(true);
     }
   });
 

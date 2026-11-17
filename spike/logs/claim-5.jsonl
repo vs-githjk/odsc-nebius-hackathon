@@ -1,0 +1,16 @@
+{"at":"2026-11-03T02:33:43.255Z","step":"search","query":"\"85%\" water speed record","reason":"end_date 2026-11-03, 10 results"}
+{"at":"2026-11-03T02:33:44.751Z","step":"search","query":"\"85 percent\" water speed record","reason":"end_date 2026-11-03, 10 results"}
+{"at":"2026-11-03T02:33:47.195Z","step":"search","query":"\"85 per cent\" water speed record","reason":"end_date 2026-11-03, 10 results"}
+{"at":"2026-11-03T02:33:49.670Z","step":"extract","url":"https://www.reddit.com/r/todayilearned/comments/6fek62/til_the_water_speed_record_has_an_85_fatality","kept":false,"reason":"extract failed, unread"}
+{"at":"2026-11-03T02:33:53.792Z","step":"read","url":"https://www.boatcoversdirect.com/boat-lovers/resources/the-worlds-fastest-boat-and-the-race-for-the-water-speed-record","kept":true,"reason":"span found"}
+{"at":"2026-11-03T02:33:53.794Z","step":"read","url":"https://slate.com/human-interest/2016/09/a-homemade-speedboat-has-held-the-deadly-water-speed-record-since-1978.html","kept":false,"reason":"no sentence asserts the claim's atoms"}
+{"at":"2026-11-03T02:33:54.177Z","step":"read","url":"https://www.atlasobscura.com/places/site-of-64-world-water-speed-record","kept":true,"reason":"span found"}
+{"at":"2026-11-03T02:33:54.179Z","step":"read","url":"https://www.digitaltrends.com/cool-tech/fastest-boat-in-the-world","kept":false,"reason":"no sentence asserts the claim's atoms"}
+{"at":"2026-11-03T02:33:55.599Z","step":"search","query":"\"85%\" water speed record","reason":"end_date 2013-04-26, 10 results"}
+{"at":"2026-11-03T02:33:56.792Z","step":"search","query":"\"85 percent\" water speed record","reason":"end_date 2013-04-26, 10 results"}
+{"at":"2026-11-03T02:33:58.835Z","step":"search","query":"\"85 per cent\" water speed record","reason":"end_date 2013-04-26, 10 results"}
+{"at":"2026-11-03T02:34:00.350Z","step":"extract","url":"https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2009WR007731","kept":false,"reason":"extract failed, unread"}
+{"at":"2026-11-03T02:34:00.350Z","step":"extract","url":"https://academic.oup.com/gji/article-pdf/187/3/1363/1693288/187-3-1363.pdf","kept":false,"reason":"extract failed, unread"}
+{"at":"2026-11-03T02:34:00.350Z","step":"extract","url":"http://region8water.colostate.edu/PDFs/AE-792.pdf","kept":false,"reason":"extract failed, unread"}
+{"at":"2026-11-03T02:34:00.351Z","step":"read","url":"https://nofiretechnology.com/2003/11/24/glenn-hutchison-story","kept":false,"reason":"no sentence asserts the claim's atoms"}
+{"at":"2026-11-03T02:34:00.351Z","step":"read","url":"https://news.vanderbilt.edu/2006/12/20/scientist-discovers-some-mammals-can-smell-objects-under-water-58788","kept":false,"reason":"no sentence asserts the claim's atoms"}

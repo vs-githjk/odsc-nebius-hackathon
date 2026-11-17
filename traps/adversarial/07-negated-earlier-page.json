@@ -1,0 +1,48 @@
+{
+  "id": "negated-earlier-page",
+  "kind": "adversarial",
+  "note": "An earlier page says there is no evidence for the claim; the model says it states it.",
+  "planted": "https://skeptic.example/penguins",
+  "pages": [
+    {
+      "url": "https://harborzoo.example/keeper-log-2019",
+      "title": "Harbor Zoo keeper log, spring 2019",
+      "date": "2019-04-30",
+      "capture": "2019-05-02",
+      "text": "Keeper log, spring 2019.\n\nOver 30 days of daylight observation, Harbor Zoo penguins nap 14 times a day on average. Data table below."
+    },
+    {
+      "url": "https://skeptic.example/penguins",
+      "title": "Penguin facts checked",
+      "date": "2015-06-01",
+      "capture": "2015-06-02",
+      "text": "There is no evidence that Harbor Zoo penguins nap 14 times a day."
+    }
+  ],
+  "replies": {
+    "https://skeptic.example/penguins": {
+      "pageType": [
+        "study",
+        0.99
+      ],
+      "sameClaim": [
+        "yes",
+        0.99
+      ]
+    },
+    "https://harborzoo.example/keeper-log-2019": {
+      "pageType": [
+        "dataset",
+        0.97
+      ],
+      "sameClaim": [
+        "yes",
+        0.96
+      ]
+    }
+  },
+  "expect": {
+    "state": "ORIGIN_FOUND",
+    "origin": "https://harborzoo.example/keeper-log-2019"
+  }
+}
