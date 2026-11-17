@@ -48,10 +48,12 @@ const score = (c: number) => {
   const tp = hit.filter((s) => s.sameClaimOtherNumber).length, fp = hit.length - tp, fn = scored.filter((s) => s.sameClaimOtherNumber).length - tp;
   return { tp, fp, fn, p: tp + fp ? tp / (tp + fp) : 0, r: tp + fn ? tp / (tp + fn) : 0 };
 };
+// Precision with no hits, or recall with no true labels, is undefined: printed as n/a, never as 0.00.
+const ratio = (n: number, d: number) => (d ? (n / d).toFixed(2) : "n/a");
 if (E3) {
   const e = score(rules.otherNumberSimilarity);
   console.log(`E3 check at otherNumberSimilarity ${rules.otherNumberSimilarity} (set on E2, not tuned here): ${labels.length} sentences, ${labels.filter((l) => l.sameClaimOtherNumber).length} true; `
-    + `${e.tp} true hits, ${e.fp} false hits, ${e.fn} missed; precision ${e.p.toFixed(2)}, recall ${e.r.toFixed(2)}`);
+    + `${e.tp} true hits, ${e.fp} false hits, ${e.fn} missed; precision ${ratio(e.tp, e.tp + e.fp)}, recall ${ratio(e.tp, e.tp + e.fn)}`);
   console.log(`embedding requests made: ${embed.calls()}`);
   process.exit(0);
 }
@@ -63,7 +65,7 @@ for (let c = 0.5; c <= 0.951; c += 0.05) {
   const tp = hit.filter((s) => s.sameClaimOtherNumber).length, fp = hit.length - tp, fn = scored.filter((s) => s.sameClaimOtherNumber).length - tp;
   const p = tp + fp ? tp / (tp + fp) : 0, r = tp + fn ? tp / (tp + fn) : 0, f1 = p + r ? (2 * p * r) / (p + r) : 0;
   if (f1 > best.f1) best = { cutoff: Math.round(c * 100) / 100, f1 };
-  console.log(`${c.toFixed(2).padEnd(8)}${String(tp).padEnd(11)}${String(fp).padEnd(12)}${String(fn).padEnd(8)}${p.toFixed(2).padEnd(11)}${r.toFixed(2)}`);
+  console.log(`${c.toFixed(2).padEnd(8)}${String(tp).padEnd(11)}${String(fp).padEnd(12)}${String(fn).padEnd(8)}${ratio(tp, tp + fp).padEnd(11)}${ratio(tp, tp + fn)}`);
 }
 console.log(`best F1 on E2 at ${best.cutoff} (rules.json has ${rules.otherNumberSimilarity}); a human sets the rule`);
 

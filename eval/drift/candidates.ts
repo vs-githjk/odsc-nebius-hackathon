@@ -1,6 +1,7 @@
 // T97 (#164): lists every sentence on an E2 dev claim's fetched pages that names the claim's subject and carries a
 // number, but not the claim's number. Each is labelled by hand in labels.json: is it the same claim with the number
-// changed (a drifted copy), or something else? E2 dev claims only; no spike, E3 or held-out page is opened.
+// changed (a drifted copy), or something else? Without --set=e3 it reads E2 dev claims' pages only; no spike, E3 or
+// held-out page is opened for the E2 run.
 // Run from the repo root after eval/weak-atoms/fetch.py: node --import tsx eval/drift/candidates.ts
 // With --set=e3 (after fetch.py --set=e3) it lists the E3 check claims' sentences into eval/drift/e3/candidates.json,
 // using the hand-written eval/drift/e3/atoms.json. Those are labelled by hand before any E3 embedding is run.
