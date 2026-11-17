@@ -16,6 +16,10 @@
 //
 // The E3 check: precision and recall at the rules.json cutoff only, on eval/drift/e3/labels.json (hand-labelled
 // before this runs). It prints no other cutoff and picks nothing, since nothing is tuned on E3.
+//
+//   node --env-file=.env --import tsx eval/drift/measure.ts --set=e3 --list
+//
+// The same, plus one line per hit and per missed true sentence, for sorting the false hits by kind.
 import { readFileSync } from "node:fs";
 import { createTokenFactoryClient } from "../../packages/pz/src/clients/tokenfactory.ts";
 import { cosine, createEmbedder, otherNumberCandidate } from "../../packages/pz/src/engine/similar.ts";
@@ -54,6 +58,15 @@ if (E3) {
   const e = score(rules.otherNumberSimilarity);
   console.log(`E3 check at otherNumberSimilarity ${rules.otherNumberSimilarity} (set on E2, not tuned here): ${labels.length} sentences, ${labels.filter((l) => l.sameClaimOtherNumber).length} true; `
     + `${e.tp} true hits, ${e.fp} false hits, ${e.fn} missed; precision ${ratio(e.tp, e.tp + e.fp)}, recall ${ratio(e.tp, e.tp + e.fn)}`);
+  // --list: every hit and every missed true sentence, so the false hits can be sorted by kind. With the vectors
+  // cached from the first run it makes no new requests.
+  if (process.argv.includes("--list")) {
+    const rows = scored.filter((s) => (s.gate && s.sim >= rules.otherNumberSimilarity) || s.sameClaimOtherNumber).sort((a, b) => b.sim - a.sim);
+    for (const s of rows) {
+      const kind = !(s.gate && s.sim >= rules.otherNumberSimilarity) ? "missed" : s.sameClaimOtherNumber ? "true hit" : "false hit";
+      console.log(`${kind.padEnd(10)}${s.sim.toFixed(3)}  ${s.id}  ${s.sentence.slice(0, 160)}`);
+    }
+  }
   console.log(`embedding requests made: ${embed.calls()}`);
   process.exit(0);
 }

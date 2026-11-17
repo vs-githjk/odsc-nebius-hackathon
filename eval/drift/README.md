@@ -8,7 +8,7 @@ This folder sets `otherNumberSimilarity` in `packages/pz/rules/rules.json`, and 
 2. `node --import tsx eval/drift/candidates.ts` lists every sentence on a claim's pages that names the claim's subject and carries a number, none with the claim's value (years aside, except on dev-10, whose number is a year). That gives 107 sentences from 13 claims (`candidates.json`).
 3. `labels.json` is that list, labelled by hand before any embedding was run. `sameClaimOtherNumber` is true when the sentence on its own states the claim's relation for the claim's subject with a different number. Some notes on how cases were labelled:
    - "100 companies are source of over 70% of emissions" counts as true for dev-11.
-   - FAO's "18 percent" counts as true for dev-13. It's an earlier, separate estimate, which is why the card says "instead of" and never "became".
+   - FAO's "18 percent" counts as true for dev-13. It's an earlier, separate estimate, which is why the card calls it a possible variant and never says "became".
    - "28 of 46 candy products" counts as true for dev-20.
    - A complement ("91% of plastic isn't recycled" for 9%, "about 5% of pilots succeed" for 95% failing) means the same thing and is labelled false.
 
@@ -36,9 +36,18 @@ E3 is never tuned on. The check runs once, at the value already set on E2:
 1. Done by XO on Nov 16 at $0 (plain curl, no keys): `python3 -I eval/weak-atoms/fetch.py --set=e3` fetched 80 pages (79 HTML, 1 PDF skipped) into the git-ignored `.cache/weak-atoms-e3/`.
 2. Done by XO: `node --import tsx eval/drift/candidates.ts --set=e3` listed 308 candidate sentences across 21 claims into `e3/candidates.json`, using the claim atoms in `e3/atoms.json`. Those were written by hand from the claim texts: 22 of the 40 claims, leaving out quotes with no statistic and claims whose number is a word ("one million", "every seven seconds").
 3. Done: `e3/labels.json` labels all 308 sentences, 24 true from 6 claims, checked by Anoop before any E3 embedding. It uses the same rules as E2, plus one for claims that pin a date. The true and borderline calls are in `e3/REVIEW.md`.
-4. To do, XO, live: `node --env-file=.env --import tsx eval/drift/measure.ts --set=e3` prints precision and recall at 0.75 only. It looks at no other cutoff and picks nothing. **Expected spend:** the claim texts plus the 308 sentences, about 330 short texts in batches of 32, so about 11 embedding requests. That is well under the $0.002 ceiling; the E2 run's 9 requests cost $0.00008.
+4. Done by XO on Nov 17, live on Vidyut's machine, at head 5b0bf1c: `node --env-file=.env --import tsx eval/drift/measure.ts --set=e3`, 11 embedding requests, well under the $0.002 ceiling. It looked at no other cutoff and picked nothing.
 
-The E3 numbers go here, whatever they are.
+**The E3 result, at 0.75 as set on E2 and not tuned here:**
+
+| Set | Sentences | True | True hits | False hits | Missed | Precision | Recall |
+|---|---|---|---|---|---|---|---|
+| E2 (tuned) | 107 | 14 | 9 | 2 | 5 | 0.82 | 0.64 |
+| **E3 (check)** | **308** | **24** | **14** | **24** | **10** | **0.37** | **0.58** |
+
+Recall holds up, but precision falls from 0.82 to 0.37: on claims it was not tuned on, a listed sentence is wrong more often than right. A listed page is never a node, so a false hit cannot change how a trace ends. It only adds a line to the card. Vidyut decided on Nov 17 that the line says "possible variant" and never "became" (`packages/pz/src/card/terminal.ts`), and the limits page cites this precision. The value stays 0.75: nothing is re-tuned on E3.
+
+Code's gate stops almost nothing on E3. Every candidate already names the subject, and all 284 false sentences pass it, so the cutoff alone decides. **The 24 false hits by kind:** pending one more run, `measure.ts --set=e3 --list`, which prints every hit from the cached vectors with no new requests.
 
 ## Limits
 

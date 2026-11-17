@@ -141,13 +141,15 @@ export function renderCard(trace: Trace, { color = false }: { color?: boolean } 
     ? `${plural(r.pages, "page")} read, in ${plural(r.clusters, "group")} of copies. Traced to ${plural(r.rootsLinked, "root")} we could link (${plural(r.clustersUnlinked, "cluster")} unlinked).`
     : "No pages read.");
 
-  // T97: pages that state the claim with another number, worded from the fields only. "Instead of", not "became":
-  // which number came first is the dates' job, and a page with another number may be the earlier one.
+  // T97: pages with a similar sentence that uses another number, worded from the fields only. Never "became": which
+  // number came first is the dates' job, and on E3 only 0.37 of these hits were the same claim (eval/drift/README.md),
+  // so each is shown as a possible variant (Vidyut, Nov 17). The label is wider than the column, so it gets its own line.
   const others = trace.otherNumbers ?? [];
   if (others.length) {
     out.push("");
     const claimNumber = trace.claim.atoms.number?.raw ?? "";
-    others.slice(0, 2).forEach((o, i) => field(i ? "" : "Numbers", `${o.number} instead of ${claimNumber} on ${o.domain}${o.date ? ` (${o.date})` : ""}: "${o.sentence}"`));
+    out.push(s.bold("Possible variant"));
+    others.slice(0, 2).forEach((o) => more(`A similar sentence on ${o.domain}${o.date ? ` (${o.date})` : ""} uses ${o.number}, not ${claimNumber}: "${o.sentence}"`));
     if (others.length > 2) more(`and ${others.length - 2} more page${others.length - 2 === 1 ? "" : "s"} with another number`, s.dim);
   }
 
