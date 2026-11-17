@@ -87,8 +87,8 @@ describe("page fetching is public-only, logged and challenge-aware", () => {
     expect(await pubmed.found("https://pubmed.ncbi.nlm.nih.gov/7/")).toEqual({ date: "2004-01-20", source: "registry_pubmed" });
     const pmc = setup({ [esummary("pmc", "8")]: json({ result: { "8": { pubdate: "2010 Mar 5" } } }) });
     expect(await pmc.found("https://pmc.ncbi.nlm.nih.gov/articles/PMC8/")).toEqual({ date: "2010-03-05", source: "registry_pmc" });
-    const cr = setup({ "https://api.crossref.org/works/10.1%2Fz": json({ message: { issued: { "date-parts": [[2012, 4, 2]] } } }) });
-    expect(await cr.found("https://doi.org/10.1/z")).toEqual({ date: "2012-04-02", source: "registry_crossref" });
+    const cr = setup({ "https://api.crossref.org/works/10.1000%2Fz": json({ message: { issued: { "date-parts": [[2012, 4, 2]] } } }) });
+    expect(await cr.found("https://doi.org/10.1000/z")).toEqual({ date: "2012-04-02", source: "registry_crossref" });
     const own = setup({ "https://n.example/a": page(html('<meta name="citation_date" content="2008/02/03">')) });
     expect(await own.found("https://n.example/a")).toEqual({ date: "2008-02-03", source: "metadata" });
   });
