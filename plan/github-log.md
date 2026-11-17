@@ -55,3 +55,11 @@
 - #156 FIX: 300-char quote cut in findInjection (H), 3 fresh rewordings (M).
 - #110 heads-up to Rishit: SeenQuery[], atoms.number guard, --json in dev-run.
 - New for Anoop: #164 T97 embeddings for reworded/drifted copies, #165 T98 speed and cost budget. Queue reposted on #4.
+
+## Mon Nov 16 20:15 ET (XO pass, Anoop's 15 PRs)
+- 5 reviewers. Merged: #156 9ce3108, #166 1f20935, #167 0b4689d, #170 b546ed4, #178 da6b274, #168 a14156d, #169 c554eb0 (XO resolved walk.ts/checks.ts/rules conflicts by hand, both sides kept). main 487 tests, make judge green.
+- FIX: #171 (H x2: %20 path writes grading key in repo; blinding leaks tool), #176 (H: meta-via-meta crashes run), #177, #173, #172, #174, #154.
+- Live: drift measure $0.00008 (best F1 0.75; 0/4315 wrong merges); DeepSeek second model $0.0885, do not ship. Ledger about $0.09 of $15.
+- MIT LICENSE added. Decisions logged: public + MIT, rematch chats Anoop, voiceover Rohan, DeepSeek veto off.
+- New: #179 T99 case study (Anoop). Gallery vs held-out check asked of Rohan on #168.
+- Rohan: no activity since Nov 16 03:22Z; #130 due 18:00 PT, no PR yet.
