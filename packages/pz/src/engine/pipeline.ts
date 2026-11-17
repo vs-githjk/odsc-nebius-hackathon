@@ -2,35 +2,244 @@ import { randomUUID } from "node:crypto";
 import { createBudget } from "../clients/budget.ts";
 import { createFileCache, type Cache } from "../clients/cache.ts";
 import { ClientError } from "../clients/errors.ts";
+import type { ClientDeps } from "../clients/http.ts";
 import { type TavilySender, createTavily } from "../clients/tavily.ts";
-import { createTokenFactoryClient } from "../clients/tokenfactory.ts";
+import { TokenFactoryError, createTokenFactoryClient } from "../clients/tokenfactory.ts";
 import { createWayback } from "../clients/wayback.ts";
 import { decideStopState, loadRules } from "../rules/index.ts";
-import type { Atoms, Edge, Trace, UsageRow } from "../schema/index.ts";
+import type { Atoms, Edge, Hop, Trace, UsageRow } from "../schema/index.ts";
 import { ask } from "../typed/ask.ts";
 import { createUsageLog } from "../usage/log.ts";
-import { devClusterStep } from "../../../../eval/dev-clusters.ts";
+import { computeRoots } from "./cluster.ts";
+import { withBoundaries } from "./boundary.ts";
 import { claimNumber, fingerprint } from "./fingerprint.ts";
-import { intake } from "./intake.ts";
-import { hopFor, redHop } from "./readouts.ts";
-import { walkStep } from "./walk.ts";
+import { fingerprintPhrase } from "./phrase.ts";
+import { measuredReadouts, hopFor, redHop, wordDiff, words } from "./readouts.ts";
 import type { Pipeline } from "./run.ts";
+import { spansStep } from "./spans.ts";
+import { createEmbedder } from "./similar.ts";
+import { plannerFor, sameClaimFor, walkStep } from "./walk.ts";
 
-type StageClients = {
-  tavily: ReturnType<typeof createTavily>;
-  wayback: ReturnType<typeof createWayback>;
-  tokenFactory: ReturnType<typeof createTokenFactoryClient>;
-  usage: ReturnType<typeof createUsageLog>;
-  budget: ReturnType<typeof createBudget>;
-  rules: ReturnType<typeof loadRules>;
+type TokenFactory = ReturnType<typeof createTokenFactoryClient>;
+
+const SCOPE_NOTE = "Web pages only; print and paywalled origins are out of scope. Earliest source we found, not proof of first use.";
+
+// Rows added by a later stage join the trace's usage, and the budget line is re-derived from every row the trace
+// carries. Credits count every service; dollars count Token Factory only, as the walk does (walkStep).
+function withUsage(trace: Trace, rows: readonly UsageRow[]): Trace {
+  const usage = [...trace.usage, ...rows];
+  return {
+    ...trace, usage,
+    budget: {
+      ...trace.budget,
+      credits: usage.reduce((sum, row) => sum + row.credits, 0),
+      usd: usage.reduce((sum, row) => sum + (row.service === "tokenfactory" ? row.costUsd : 0), 0),
+    },
+  };
+}
+
+// The clusters stage. Dates are final by now (the dating stage ran), so this is where the earliest pages, the
+// date-ordered edges and the root counts are settled. The walk already grouped reworded copies with its own embedding
+// call (deps.embed), so nothing is embedded again here.
+// - Earliest: the dated pages with the oldest date.
+// - A link that points away from the oldest dated page cannot establish an earlier source, so an earliest page keeps
+//   no incoming edge (the verifier's `earliest` check).
+// - A dated page with no link-verified parent gets an inferred edge from the latest earlier page in another cluster.
+export function closeTrail(trace: Trace): Trace {
+  const dated = trace.nodes.filter((node) => !node.meta && node.date.value !== null);
+  const first = dated.map((node) => node.date.value!).sort()[0];
+  const earliestIds = first === undefined ? [] : dated.filter((node) => node.date.value === first).map((node) => node.id);
+  const earliest = new Set(earliestIds);
+  const kept = trace.edges.filter((edge) => !earliest.has(edge.childId));
+  const edges: Edge[] = [...kept];
+  const linked = new Set(kept.map((edge) => edge.childId));
+  const pages = dated.filter((node) => node.read && node.spanIds.length > 0)
+    .sort((a, b) => a.date.value!.localeCompare(b.date.value!) || a.id.localeCompare(b.id));
+  for (const child of pages) {
+    if (earliest.has(child.id) || linked.has(child.id)) continue;
+    const parent = pages.filter((page) => page.date.value! < child.date.value! && page.clusterId !== child.clusterId).at(-1);
+    if (!parent) continue;
+    edges.push({
+      id: "", kind: "inferred", parentId: parent.id, childId: child.id,
+      parentSpanId: parent.spanIds[0]!, childSpanId: child.spanIds[0]!, linkHref: null,
+    });
+  }
+  const numbered = edges.map((edge, index) => ({ ...edge, id: `e${index + 1}` }));
+  return {
+    ...trace, edges: numbered,
+    earliest: { ...trace.earliest, nodeIds: earliestIds },
+    roots: computeRoots(trace.nodes, numbered),
+  };
+}
+
+// The claim as the pipeline starts: no pages, no atoms beyond what code can read. A claim with no single number is
+// held by its own text until the fingerprint stage finds its phrase.
+function startTrace(id: string, text: string, rules: ReturnType<typeof loadRules>): Trace {
+  const number = claimNumber(text);
+  const atoms: Atoms = {
+    number, ...(number ? {} : { phrase: text }), unit: null, subjectLemma: "", population: null, time: null, hedge: null, variants: [],
+    namedSource: null,
+  };
+  const trace: Trace = {
+    schemaVersion: "1", id, mode: "LIVE", synthetic: false, recordedAt: new Date().toISOString(),
+    claim: { text, atoms }, viralSentence: text,
+    nodes: [], edges: [], clusters: [], spans: [], hops: [], blame: [], redHopEdgeId: null,
+    roots: { pages: 0, clusters: 0, rootsLinked: 0, clustersUnlinked: 0, studiesFound: null },
+    earliest: { nodeIds: [], earlierWindowSearches: 0, earlierFound: 0 },
+    failure: null, budget: { credits: 0, usd: 0, ms: 0, capHit: null },
+    decision: { state: "NO_PAGES_FOUND", row: 6, reasons: [], counts: {} },
+    searchLog: [], usage: [], scopeNote: SCOPE_NOTE,
+  };
+  return { ...trace, decision: decideStopState(trace, rules) };
+}
+
+export type PipelineParts = {
+  chat: TokenFactory;
+  embed: TokenFactory;
+  // Builds the Tavily client for one walk from the run's shared deps (usage log, cache, per-walk budget).
+  tavily: (deps: ClientDeps) => ReturnType<typeof createTavily>;
+  archiveFetch?: typeof fetch;
+  cache?: Cache;
+  traceId?: string;
+  pagesDir?: string;
+  usagePath?: string;
 };
 
-type Downstream = Omit<Pipeline, "intake" | "fingerprint" | "clusters" | "walk" | "readouts">;
+// The production pipeline from ready clients. One pipeline serves one trace: it holds that trace's usage log and clock.
+// Every Token Factory attempt, including retries and failures, ends up as a usage row on the trace.
+export function buildPipeline(parts: PipelineParts): { pipeline: Pipeline; wayback: ReturnType<typeof createWayback> } {
+  let startedAt = performance.now();
+  const id = parts.traceId ?? randomUUID();
+  const rules = loadRules();
+  const usage = createUsageLog(parts.usagePath ? { path: parts.usagePath } : {});
+  const base = { usage, cache: parts.cache ?? createFileCache(), traceId: id };
+  const wayback = createWayback({ ...base, fetch: parts.archiveFetch });
 
-// The caller supplies the ledger-guarded paid transports. Public archive
-// requests use a separate transport and never receive provider credentials.
+  // Walk-stage model calls (the same_claim question) return no usage of their own, so each successful call's attempt
+  // rows go to the run's usage log here. A failed call's rows are added by the walk's own fallback (modelFailed).
+  const walkChat = (step: string) => ({
+    chat: async (input: Parameters<TokenFactory["chat"]>[0]) => {
+      const response = await parts.chat.chat(input, { step });
+      for (const row of response.attempts) usage.append(row);
+      return response;
+    },
+  });
+  // Embedding calls report nothing to the walk, so success and failure rows both go to the usage log.
+  const walkEmbed = {
+    embed: async (input: Parameters<TokenFactory["embed"]>[0], context?: Parameters<TokenFactory["embed"]>[1]) => {
+      try {
+        const response = await parts.embed.embed(input, { ...context, step: "embed" });
+        for (const row of response.attempts) usage.append(row);
+        return response;
+      } catch (error) {
+        if (error instanceof TokenFactoryError) for (const row of error.usage) usage.append(row);
+        throw error;
+      }
+    },
+  };
+  // Stage calls after the walk collect their rows into `rows`, which the stage adds to the trace.
+  const collecting = (rows: UsageRow[], step: string) => ({
+    chat: async (input: Parameters<TokenFactory["chat"]>[0]) => {
+      try {
+        const response = await parts.chat.chat(input, { step });
+        rows.push(...response.attempts);
+        return response;
+      } catch (error) {
+        if (error instanceof TokenFactoryError) rows.push(...error.usage);
+        throw error;
+      }
+    },
+  });
+
+  const pipeline: Pipeline = {
+    async intake({ input }) {
+      startedAt = performance.now();
+      const text = input.trim();
+      if (!text) throw new ClientError("bad_response", "Empty claim");
+      return startTrace(id, text, rules);
+    },
+
+    async fingerprint(trace) {
+      const text = trace.claim.text;
+      const number = trace.claim.atoms.number;
+      let atoms: Atoms;
+      let rows: UsageRow[];
+      if (number) {
+        const result = await fingerprint(text, { client: parts.chat, number });
+        if (!result.atoms) throw new ClientError("bad_response", "Claim fingerprint has no usable subject");
+        atoms = result.atoms;
+        rows = result.usage;
+      } else {
+        // T53: no single number, so the phrase drives matching. A named stop ends the run with a code, never a guess.
+        const result = await fingerprintPhrase(text, { client: parts.chat });
+        if (!result.atoms) {
+          throw new ClientError(result.reason === "no_model" ? "not_configured" : "bad_response", `Phrase claim stopped: ${result.reason}`);
+        }
+        atoms = result.atoms;
+        rows = result.usage;
+      }
+      return withUsage({ ...trace, claim: { ...trace.claim, atoms } }, rows);
+    },
+
+    walk: walkStep((trace) => {
+      // A fresh budget for each walk: walkStep spends the credits the earlier stages already used onto it, once.
+      // Sharing a budget with an earlier stage would count those credits twice.
+      const budget = createBudget(rules.caps.credits);
+      return {
+        tavily: parts.tavily({ ...base, budget }),
+        wayback, usage, budget, rules,
+        planQueries: plannerFor(parts.chat, rules),
+        askSameClaim: sameClaimFor(walkChat("same_claim"), rules),
+        embed: createEmbedder(walkEmbed, { traceId: id }),
+        today: trace.recordedAt.slice(0, 10), now: () => new Date().toISOString(),
+        pagesDir: parts.pagesDir ?? "runs/pages",
+      };
+    }),
+
+    spans: spansStep(),
+    clusters: closeTrail,
+
+    async readouts(trace) {
+      const rows: UsageRow[] = [];
+      const client = collecting(rows, "readouts");
+      const hops: Hop[] = [];
+      for (const edge of trace.edges) {
+        try {
+          hops.push(await hopFor(edge, trace.spans, trace.claim.atoms, rules,
+            (questions, input) => ask(questions, input, { client, threshold: rules.confidenceThreshold })));
+        } catch (error) {
+          // A failed model call keeps the measured readouts and leaves the hop unfaithful, not unmeasured (T76 fallback).
+          if (!(error instanceof TokenFactoryError)) throw error;
+          const text = (spanId: string) => trace.spans.find((span) => span.id === spanId)?.text ?? "";
+          const [earlier, later] = [text(edge.parentSpanId), text(edge.childSpanId)];
+          hops.push({
+            edgeId: edge.id, readouts: measuredReadouts(earlier, later, trace.claim.atoms, rules),
+            wordDiff: wordDiff(words(earlier), words(later)), faithful: false,
+          });
+        }
+      }
+      return withUsage({ ...trace, hops, redHopEdgeId: redHop(hops, trace.edges, trace.nodes) }, rows);
+    },
+
+    async card(trace) {
+      // T37: a trace that went cold asks the boundary question about each earliest page. Code still picks the ending.
+      const rows: UsageRow[] = [];
+      let bounded = trace;
+      try {
+        bounded = await withBoundaries(trace, { client: collecting(rows, "boundary"), rules });
+      } catch (error) {
+        if (!(error instanceof TokenFactoryError)) throw error;
+      }
+      const done = withUsage(bounded, rows);
+      return { ...done, budget: { ...done.budget, ms: Math.round(performance.now() - startedAt) } };
+    },
+  };
+  return { pipeline, wayback };
+}
+
+// The default pipeline for `pz trace "<claim>"`. The caller supplies the ledger-guarded paid transports. Public
+// archive requests use a separate transport and never receive provider credentials.
 export function createPipeline(options: {
-  buildDownstream?: (clients: StageClients) => Downstream;
   tokenFactoryFetch: typeof fetch;
   embeddingFetch: typeof fetch;
   cache?: Cache;
@@ -39,109 +248,13 @@ export function createPipeline(options: {
   archiveFetch?: typeof fetch;
   traceId?: string;
   pagesDir?: string;
+  usagePath?: string;
 } & ({ tavilySender: TavilySender; tavilyFetch?: never } | { tavilySender?: never; tavilyFetch: typeof fetch })) {
-  let startedAt = 0;
-  const id = options.traceId ?? randomUUID();
-  const rules = loadRules();
-  const usage = createUsageLog();
-  const budget = createBudget(rules.caps.credits);
-  const base = { usage, cache: options.cache ?? createFileCache(), traceId: id };
-  const tavily = createTavily({ ...base, budget, apiKey: options.tavilyKey, fetch: options.tavilyFetch }, options.tavilySender);
-  const wayback = createWayback({ ...base, fetch: options.archiveFetch });
-  const tokenFactory = createTokenFactoryClient({ traceId: id, apiKey: options.nebiusKey, fetch: options.tokenFactoryFetch });
-  const downstream = options.buildDownstream?.({ tavily, wayback, tokenFactory, usage, budget, rules });
-
-  const cluster = devClusterStep(createTokenFactoryClient({
-    traceId: id, apiKey: options.nebiusKey, fetch: options.embeddingFetch,
-  }), rules);
-  const pipeline: Pipeline = {
-    spans: downstream?.spans ?? (trace => {
-      const pages = trace.nodes.filter(node => node.read && !node.meta && node.spanIds.length);
-      const byUrl = new Map(pages.map(node => [node.url, node]));
-      const edges: Edge[] = [];
-      for (const child of pages) {
-        for (const candidate of child.candidateParents) {
-          const parent = byUrl.get(candidate.url);
-          if (!candidate.read || !parent || parent.id === child.id) continue;
-          edges.push({
-            id: `e${edges.length + 1}`, kind: "explicit", parentId: parent.id, childId: child.id,
-            parentSpanId: parent.spanIds[0]!, childSpanId: child.spanIds[0]!, linkHref: candidate.url,
-          });
-        }
-      }
-      return { ...trace, edges };
-    }),
-    walk: walkStep(trace => ({
-      tavily, wayback, usage, budget, rules,
-      today: trace.recordedAt.slice(0, 10), now: () => new Date().toISOString(),
-      pagesDir: options.pagesDir ?? "runs/pages",
-    })),
-    async readouts(trace) {
-      const addedUsage: UsageRow[] = [];
-      const client = {
-        chat: async (input: Parameters<typeof tokenFactory.chat>[0]) => {
-          const response = await tokenFactory.chat(input, { step: "readouts" });
-          addedUsage.push(...response.attempts);
-          return response;
-        },
-      };
-      const hops = [];
-      for (const edge of trace.edges) {
-        hops.push(await hopFor(edge, trace.spans, trace.claim.atoms, rules,
-          (questions, input) => ask(questions, input, { client, threshold: rules.confidenceThreshold })));
-      }
-      return { ...trace, hops, redHopEdgeId: redHop(hops, trace.edges, trace.nodes), usage: [...trace.usage, ...addedUsage] };
-    },
-    clusters: (trace, context) => {
-      if (downstream) return cluster(trace, context);
-      const firstDate = trace.nodes.flatMap(node => !node.meta && node.date.value ? [node.date.value] : []).sort()[0];
-      const earliest = new Set(trace.nodes.filter(node => firstDate && node.date.value === firstDate).map(node => node.id));
-      // A link that points away from the oldest dated page cannot establish an earlier source.
-      return cluster({ ...trace, edges: trace.edges.filter(edge => !earliest.has(edge.childId)) }, context);
-    },
-    async intake({ input }) {
-      startedAt = performance.now();
-      const text = input.trim();
-      const number = claimNumber(text);
-      if (!number) throw new ClientError("bad_response", "Claim has no supported number");
-      const result = await intake(text, { client: tokenFactory });
-      const atoms: Atoms = {
-        number: result.claims.find(claim => claim.text === text)?.number ?? number,
-        unit: null, subjectLemma: "", population: null, time: null, hedge: null, namedSource: null, variants: [],
-      };
-      const trace: Trace = {
-        schemaVersion: "1", id, mode: "LIVE", synthetic: false, recordedAt: new Date().toISOString(),
-        claim: { text, atoms }, viralSentence: text,
-        nodes: [], edges: [], clusters: [], spans: [], hops: [], blame: [], redHopEdgeId: null,
-        roots: { pages: 0, clusters: 0, rootsLinked: 0, clustersUnlinked: 0, studiesFound: null },
-        earliest: { nodeIds: [], earlierWindowSearches: 0, earlierFound: 0 },
-        failure: null, budget: { credits: 0, usd: result.usage.reduce((sum, row) => sum + row.costUsd, 0), ms: 0, capHit: null },
-        decision: { state: "NO_PAGES_FOUND", row: 6, reasons: [], counts: {} },
-        searchLog: [], usage: result.usage,
-        scopeNote: "Web pages only; print and paywalled origins are out of scope. Earliest source we found, not proof of first use.",
-      };
-      return { ...trace, decision: decideStopState(trace, rules) };
-    },
-    async fingerprint(trace) {
-      const result = await fingerprint(trace.claim.text, { client: tokenFactory, number: trace.claim.atoms.number });
-      if (!result.atoms) throw new ClientError("bad_response", "Claim fingerprint has no usable subject");
-      return {
-        ...trace, claim: { ...trace.claim, atoms: result.atoms },
-        usage: [...trace.usage, ...result.usage],
-        budget: { ...trace.budget, usd: trace.budget.usd + result.usage.reduce((sum, row) => sum + row.costUsd, 0) },
-      };
-    },
-    async card(trace, context) {
-      const completed = downstream ? await downstream.card(trace, context) : trace;
-      const totals = completed.usage.reduce((sum, row) => ({
-        credits: sum.credits + row.credits,
-        usd: sum.usd + row.costUsd,
-      }), { credits: 0, usd: 0 });
-      return {
-        ...completed,
-        budget: { ...completed.budget, ...totals, ms: Math.round(performance.now() - startedAt) },
-      };
-    },
-  };
-  return { pipeline, wayback };
+  const traceId = options.traceId ?? randomUUID();
+  return buildPipeline({
+    chat: createTokenFactoryClient({ traceId, apiKey: options.nebiusKey, fetch: options.tokenFactoryFetch }),
+    embed: createTokenFactoryClient({ traceId, apiKey: options.nebiusKey, fetch: options.embeddingFetch }),
+    tavily: (deps) => createTavily({ ...deps, apiKey: options.tavilyKey, fetch: options.tavilyFetch }, options.tavilySender),
+    archiveFetch: options.archiveFetch, cache: options.cache, traceId, pagesDir: options.pagesDir, usagePath: options.usagePath,
+  });
 }
