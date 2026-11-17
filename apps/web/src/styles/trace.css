@@ -446,6 +446,14 @@
   color: var(--caution);
 }
 
+.stop-count {
+  margin: 6px 0 0;
+  color: var(--ink);
+  font-size: 17px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
 .stop-sentence {
   margin: 4px 0 0;
   color: var(--ink);

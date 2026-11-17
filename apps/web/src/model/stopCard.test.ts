@@ -44,13 +44,18 @@ describe("stopCard", () => {
   it("no card string carries a banned phrase, a dash, an id or a code", () => {
     for (const t of traces) {
       const card = stopCard(t);
-      const strings = [card.title, card.sentence, card.searched, ...card.rules.map((r) => r.text)];
+      const strings = [card.title, card.count, card.sentence, card.searched, ...card.rules.map((r) => r.text)];
       for (const s of strings) {
         expect(lintText(s)).toEqual([]);
         expect(s).not.toMatch(/_|row \d/);
         for (const n of t.nodes) expect(s).not.toContain(n.id);
       }
     }
+  });
+
+  it("leads with the independence count from pz/headline (T94)", () => {
+    expect(stopCard(byId("sample-origin")).count).toBe("Found on 3 pages: 1 independent root, 1 origin. 2 are copies.");
+    expect(stopCard(byId("sample-no-pages")).count).toBe("Found on no pages.");
   });
 
   it("the sentence and the tone come from the ending", () => {

@@ -1,4 +1,5 @@
 import type { Trace } from "pz/schema";
+import { independenceLine } from "pz/headline";
 import { endingSentence } from "./ending.ts";
 
 // The six rows of the stop-state table (decide.ts), in plain words for the rule sheet. Checked in order; the first
@@ -37,6 +38,7 @@ const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one :
 export type StopCard = {
   title: string;
   sentence: string;
+  count: string; // T94: pages, independent roots and copies, from pz/headline
   searched: string;
   ruleRow: Trace["decision"]["row"];
   rules: { row: Trace["decision"]["row"]; text: string; decided: boolean }[];
@@ -63,6 +65,7 @@ export function stopCard(trace: Trace): StopCard {
   return {
     title: TITLES[trace.decision.state],
     sentence: endingSentence(trace),
+    count: independenceLine(trace),
     searched,
     ruleRow: trace.decision.row,
     rules: RULES.map((r) => ({ ...r, decided: r.row === trace.decision.row })),

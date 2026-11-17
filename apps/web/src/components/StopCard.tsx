@@ -8,6 +8,7 @@ export function StopCard({ trace }: { trace: Trace }) {
   return (
     <section className={`stop-card ${card.tone}`} aria-label="How this trace ended">
       <h2 className="stop-title">{card.title}</h2>
+      <p className="stop-count">{card.count}</p>
       <p className="stop-sentence">{card.sentence}</p>
       {card.origin && (
         <blockquote className="origin-quote" cite={card.origin.url}>
