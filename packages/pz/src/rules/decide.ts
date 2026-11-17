@@ -1,4 +1,5 @@
 import type { Decision, Node, Trace, TypedAnswer } from "../schema/index.ts";
+import { BOUNDARY_REASONS, findBoundary } from "./boundary.ts";
 import { hasInjection, isInjected, isNegated } from "./negation.ts";
 import { normalise } from "./normalise.ts";
 import { claimHit } from "./claim-hit.ts";
@@ -101,5 +102,7 @@ export function decideStopState(trace: Trace, rules: Rules): Decision {
     trace.earliest.earlierFound > 0 && "earlier-window searches found earlier pages",
   ].filter((b): b is string => typeof b === "string");
   if (blockers.length === 0) return decide("ORIGIN_FOUND", 5, [`earliest page ${origin!.id} is a ${origin!.pageType!.optionId} with a confirmed date`]);
-  return decide("TRAIL_GOES_COLD", 6, blockers);
+  // T37: where the trail ends, when code can say so, goes first among the reasons.
+  const boundary = findBoundary(trace, rules);
+  return decide("TRAIL_GOES_COLD", 6, boundary ? [BOUNDARY_REASONS[boundary], ...blockers] : blockers);
 }
