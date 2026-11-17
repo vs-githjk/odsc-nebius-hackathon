@@ -391,6 +391,87 @@
                 "type": "null"
               }
             ]
+          },
+          "sameClaimSecond": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "questionId": {
+                    "type": "string"
+                  },
+                  "optionId": {
+                    "type": "string"
+                  },
+                  "probability": {
+                    "anyOf": [
+                      {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "top": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "optionId": {
+                          "type": "string"
+                        },
+                        "p": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1
+                        }
+                      },
+                      "required": [
+                        "optionId",
+                        "p"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "model": {
+                    "type": "string"
+                  },
+                  "threshold": {
+                    "anyOf": [
+                      {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "questionId",
+                  "optionId",
+                  "probability",
+                  "top",
+                  "model",
+                  "threshold"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "injection": {
+            "type": [
+              "string",
+              "null"
+            ]
           }
         },
         "required": [
@@ -736,6 +817,16 @@
             "number",
             "null"
           ]
+        },
+        "independentRoots": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "copies": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
         }
       },
       "required": [
@@ -1042,6 +1133,50 @@
     },
     "scopeNote": {
       "type": "string"
+    },
+    "otherNumbers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string"
+          },
+          "domain": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "date": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sentence": {
+            "type": "string"
+          },
+          "number": {
+            "type": "string"
+          },
+          "similarity": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        },
+        "required": [
+          "url",
+          "domain",
+          "title",
+          "date",
+          "sentence",
+          "number",
+          "similarity"
+        ],
+        "additionalProperties": false
+      }
     }
   },
   "required": [
