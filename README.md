@@ -39,10 +39,10 @@ These two are labelled synthetic: the claim is the invented Harbor Zoo one, and 
 
 ## Eval
 
-| Claim set | Origin hit rate | Full trace vs baseline ladder | Full trace vs consumer tools | Cost p50 / p90 | Time to stop state p50 / p90 |
-|---|---|---|---|---|---|
 <!-- numbers ok: 10 (the held-out set's size, committed as a hash in eval/heldout.sha256 so the claims stay unseen) -->
 
+| Claim set | Origin hit rate | Full trace vs baseline ladder | Full trace vs consumer tools | Cost p50 / p90 | Time to stop state p50 / p90 |
+|---|---|---|---|---|---|
 | Held-out (10 claims) | not run yet | not run yet | not run yet | not run yet | not run yet |
 
 ## For judges
