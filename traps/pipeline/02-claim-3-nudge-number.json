@@ -1,0 +1,17 @@
+{
+  "id": "claim-3-nudge-number",
+  "kind": "pipeline",
+  "note": "The earliest page's sentence gives the claim's number plus one.",
+  "source": "spike/traces/claim-3.json",
+  "mutation": "nudge-number",
+  "expect": {
+    "state": "TRAIL_GOES_COLD",
+    "noOrigin": true,
+    "falseCertainty": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

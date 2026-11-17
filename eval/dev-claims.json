@@ -77,6 +77,9 @@
     "seenAt": "https://www.nationalgeographic.com/news/2017/07/plastic-produced-recycling-waste-ocean-trash-debris-environment/",
     "topic": "plastic",
     "tracedOrigin": "https://www.science.org/doi/10.1126/sciadv.1700782",
+    "originAliases": [
+      "https://pubmed.ncbi.nlm.nih.gov/28776036"
+    ],
     "tracedBy": null,
     "expected": "origin"
   },
@@ -86,6 +89,9 @@
     "seenAt": "https://www.aljazeera.com/news/2016/1/21/oceans-to-have-more-plastic-than-fish-by-2050-report",
     "topic": "plastic",
     "tracedOrigin": "https://www.ellenmacarthurfoundation.org/the-new-plastics-economy-rethinking-the-future-of-plastics",
+    "originAliases": [
+      "https://www3.weforum.org/docs/WEF_The_New_Plastics_Economy.pdf"
+    ],
     "tracedBy": "https://www.aap.com.au/factcheck/fishy-figures-underpin-ministers-ocean-plastic-warning/",
     "expected": "origin"
   },
@@ -95,6 +101,9 @@
     "seenAt": "https://insideclimatenews.org/news/10072017/fossil-fuel-companies-responsible-global-emissions-cdp-report/",
     "topic": "climate",
     "tracedOrigin": "https://www.cdp.net/press-releases/new-report-shows-just-100-companies-are-source-of-over-70-of-emissions",
+    "originAliases": [
+      "https://www.cdp.net/en/press-releases/new-report-shows-just-100-companies-are-source-of-over-70-of-emissions"
+    ],
     "tracedBy": null,
     "expected": "origin"
   },
@@ -122,6 +131,9 @@
     "seenAt": "https://www.fox6now.com/news/americans-check-their-smartphones-96-times-a-day-survey-says",
     "topic": "phones",
     "tracedOrigin": "https://www.asurion.com/about/press-releases/americans-check-their-phones-96-times-a-day/",
+    "originAliases": [
+      "https://www.asurion.com/press-releases/americans-check-their-phones-96-times-a-day"
+    ],
     "tracedBy": null,
     "expected": "origin"
   },
@@ -168,7 +180,8 @@
     "topic": "ai",
     "tracedOrigin": "https://open.spotify.com/episode/7h9CwLYsJbBrjWxOtOFlQf",
     "tracedBy": "https://cellcog.ai/blog/altman-dram-local-inference/",
-    "expected": "origin"
+    "expected": "origin",
+    "outOfScope": "audio origin (a Spotify episode); scored apart, Vidyut Nov 17 (#192)"
   },
   {
     "id": "dev-20",

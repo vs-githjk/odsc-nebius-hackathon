@@ -1,0 +1,17 @@
+{
+  "id": "claim-3-cap-hit",
+  "kind": "pipeline",
+  "note": "The credit cap is 1, so the walk stops early.",
+  "source": "spike/traces/claim-3.json",
+  "mutation": "cap-hit",
+  "expect": {
+    "state": "PARTIAL",
+    "noOrigin": true,
+    "falseCertainty": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

@@ -32,7 +32,7 @@ const PAGE_TYPES: Record<string, string> = {
 };
 
 const SERVICES: Record<Trace["usage"][number]["service"], string> = {
-  tokenfactory: "Token Factory", tavily: "Tavily", wayback: "Wayback", fetch: "page fetch", jev: "Jev",
+  tokenfactory: "Token Factory", tavily: "Tavily", wayback: "Wayback", fetch: "page fetch", jev: "Jev", ncbi: "NCBI", crossref: "Crossref",
 };
 
 // How a trace ended, as one plain sentence. Built from the trace's own data, never from decision reason strings,
@@ -50,6 +50,11 @@ export function endingSentence(trace: Trace): string {
     case "ORIGIN_FOUND":
       return "The earliest page is a primary source with a confirmed date.";
     case "TRAIL_GOES_COLD": {
+      // T37: a boundary code found comes first, worded from the reason code wrote, never from a model.
+      const boundary = trace.decision.reasons[0]?.match(/^boundary (print|unsourced|circular):/)?.[1];
+      if (boundary === "print") return "The trail ends at a print source the earliest page credits. There is no web copy to open.";
+      if (boundary === "unsourced") return "The earliest page is one anyone can edit, and it gives no source for the claim.";
+      if (boundary === "circular") return "The earliest pages only cite each other or later copies, so there is nothing earlier to follow.";
       if (trace.nodes.some((n) => n.candidateParents.some((p) => !p.read))) return "A page it cites could not be opened.";
       // 2 is rules.json earlierWindowSearches: fewer empty earlier searches than that is a stop before looking far enough.
       if (trace.earliest.earlierWindowSearches < 2) return "It stopped before searching further back.";
@@ -58,13 +63,18 @@ export function endingSentence(trace: Trace): string {
   }
 }
 
-// A page's date in words, saying where it came from.
+// A page's date in words, saying where it came from and how far to trust it: the page's own claim of when it was
+// published, a scholarly registry's record, or only the first time an archive saw the page.
+const REGISTRY = { registry_pubmed: "PubMed", registry_pmc: "PubMed Central", registry_crossref: "Crossref" } as const;
 export function dateWords(node: Node): string {
   const d = node.date;
   if (d.kind === "unconfirmed" || !d.value) return "date not confirmed";
-  const from = { metadata: "page metadata", byline: "byline", wayback_first_capture: "first archive capture", tavily: "search result" }[d.source];
+  const disagree = d.conflictingDate ? ", other dates disagree" : "";
+  if (d.kind === "published" && d.source === "metadata") return `page says published ${d.value}${d.conflictingDate ? " (other dates disagree)" : ""}`;
+  if (d.kind === "published" && d.source in REGISTRY) return `published ${d.value} (${REGISTRY[d.source as keyof typeof REGISTRY]}${disagree})`;
+  const from = { metadata: "page metadata", byline: "byline", wayback_first_capture: "first archive capture", tavily: "search result", ...REGISTRY }[d.source];
   const what = d.kind === "published" ? `published ${d.value}` : `online by ${d.value}`;
-  return `${what} (${from}${d.conflictingDate ? ", other dates disagree" : ""})`;
+  return `${what} (${from}${disagree})`;
 }
 
 const plural = (n: number, one: string, many = `${one}s`) => `${n} ${n === 1 ? one : many}`;
@@ -131,6 +141,8 @@ export function renderCard(trace: Trace, { color = false }: { color?: boolean } 
     more(`${node.domain}${type}, ${dateWords(node)}`);
     const span = trace.spans.find((sp) => sp.nodeId === node.id);
     if (span) more(`"${span.text}"`);
+    // T49: say when a fact-check page pointed the way. It is a map; the page above stands on its own sentence.
+    if (node.foundViaMeta) more(`Found through ${new URL(node.foundViaMeta).hostname.replace(/^www\./, "")}, a page about the claim; that page is a map, never the origin.`, s.dim);
     more(node.url, s.dim);
     if (i < earliest.length - 1) out.push("");
   });
@@ -141,13 +153,17 @@ export function renderCard(trace: Trace, { color = false }: { color?: boolean } 
     ? `${plural(r.pages, "page")} read, in ${plural(r.clusters, "group")} of copies. Traced to ${plural(r.rootsLinked, "root")} we could link (${plural(r.clustersUnlinked, "cluster")} unlinked).`
     : "No pages read.");
 
-  // T97: pages that state the claim with another number, worded from the fields only. "Instead of", not "became":
-  // which number came first is the dates' job, and a page with another number may be the earlier one.
+  // T97: pages with a similar sentence that uses another number, worded from the fields only. Never "became": which
+  // number came first is the dates' job, and on E3 only 0.37 of these hits were the same claim (eval/drift/README.md),
+  // so each is shown as a possible variant (Vidyut, Nov 17). The label is wider than the column, so it gets its own line.
+  // E3 check of otherNumberSimilarity 0.75 (eval/drift/README.md): 14 of 38 hits were the same claim.
+  const E3_VARIANT_PRECISION = "0.37";
   const others = trace.otherNumbers ?? [];
   if (others.length) {
     out.push("");
     const claimNumber = trace.claim.atoms.number?.raw ?? "";
-    others.slice(0, 2).forEach((o, i) => field(i ? "" : "Numbers", `${o.number} instead of ${claimNumber} on ${o.domain}${o.date ? ` (${o.date})` : ""}: "${o.sentence}"`));
+    out.push(`${s.bold("Possible variant")} ${s.dim(`(right about 1 in 3 times on held-apart claims, E3 precision ${E3_VARIANT_PRECISION})`)}`);
+    others.slice(0, 2).forEach((o) => more(`A similar sentence on ${o.domain}${o.date ? ` (${o.date})` : ""} uses ${o.number}, not ${claimNumber}: "${o.sentence}"`));
     if (others.length > 2) more(`and ${others.length - 2} more page${others.length - 2 === 1 ? "" : "s"} with another number`, s.dim);
   }
 

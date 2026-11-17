@@ -1,0 +1,17 @@
+{
+  "id": "dry-run-tool-failure",
+  "kind": "pipeline",
+  "note": "Tavily search answers 503.",
+  "source": "spike/traces/dry-run.json",
+  "mutation": "tool-failure",
+  "expect": {
+    "state": "TOOL_FAILED",
+    "noOrigin": true,
+    "falseCertainty": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}
