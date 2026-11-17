@@ -13,7 +13,7 @@ import { atomHit, claimHit, decideStopState, findInjection, isRange, normalise, 
 import type { Atoms, Cluster, DateInfo, Edge, Hop, Node, Readout, Span, Trace, UsageRow } from "../schema/index.ts";
 import type { UsageLog } from "../usage/log.ts";
 import { sameClaim, type SameClaimResult } from "../match/same-claim.ts";
-import { citationsIn, namedSources } from "./citations.ts";
+import { citationsIn, namedSources, REACH } from "./citations.ts";
 import { planQueries, type SeenQuery } from "./queries.ts";
 
 export type SpikeClaim = { id: string; text: string; atoms: Atoms };
@@ -75,6 +75,9 @@ const CONTEXT_CHARS = 200;
 const LINKS_PER_SPAN = 3;
 const LINKS_PER_ROUND = 3;
 const SOURCE_QUERIES_PER_WINDOW = 2;
+// T49: fact-check pages read as maps per trace, and the citations taken from each.
+const META_PAGES = 2;
+const META_LINKS = 4;
 const MAX_QUERIES = 3;
 const MAX_SENTENCE_CHARS = 600;
 const SCOPE_NOTE = "Web pages only; print and paywalled origins are out of scope. Earliest source we found, not proof of first use.";
@@ -244,6 +247,10 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
   // Where each queued citation came from, so a followed page can say why it has no link-verified edge.
   const citedBy = new Map<string, { from: string; near: boolean }>();
   const otherNumbers: NonNullable<Trace["otherNumbers"]> = [];
+  // T49: a citation found on a meta page, mapped to that page's url, and the order they were found in. They have
+  // their own queue, read before anything in followQueue, so a fact-check page's map always goes first.
+  const metaLinks = new Map<string, string>();
+  const metaQueue: string[] = [];
   let capHit: Trace["budget"]["capHit"] = null;
   let failure: Trace["failure"] = null;
   let earlierWindowSearches = 0;
@@ -335,6 +342,9 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
       id, url, domain: hostOf(url), title, date, clusterId: clusterKeys.get(clusterKey)!,
       evidence: "observed", meta, read: true, versionOf: null, spanIds: [spanId], citesEarlier: parents.length > 0,
       candidateParents: parents.map((p) => ({ url: p, read: seen.has(p) })), pageType: null,
+      // A page that is itself meta (it says "myth" or "debunk") is off the path, so it is never recorded as found
+      // through a meta page: only a page that can stand on its own span carries foundViaMeta.
+      ...(rules.metaMaps ? { foundViaMeta: meta ? null : metaLinks.get(url) ?? null } : {}),
       injection: findInjection(title, text, rules.injectionPatterns),
       ...(asked && { sameClaim: asked.typed }),
     });
@@ -355,9 +365,44 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
         if (!prior || (c.near && !prior.near)) citedBy.set(c.url, { from: url, near: c.near });
       }
       for (const name of namedSources(sentence.text)) if (!pendingSources.includes(name)) pendingSources.push(name);
+    } else if (rules.metaMaps) {
+      // T49: a meta page is off the path, but what it cites is a map to the origin: its own queue, not followQueue.
+      for (const p of parents) if (!seen.has(p) && !metaLinks.has(p)) { metaLinks.set(p, url); metaQueue.push(p); }
     }
     note({ step: "read", url, kept: true, reason: meta ? "meta page, off the path" : "span found" });
     return !meta;
+  }
+
+  // T49: a fact-check page, read as a map. It becomes a meta node (never an origin, no span needed) whose candidate
+  // parents are the pages it cites beside the claim's number or subject, those with the number first, at most
+  // META_LINKS. They are read before any other link.
+  async function readMeta(url: string, title: string, raw: string): Promise<void> {
+    const { text, links } = toPlain(raw);
+    const lower = text.toLowerCase();
+    const number = atoms.number?.raw.toLowerCase() ?? atoms.phrase?.toLowerCase() ?? "";
+    const scored = links.flatMap((l, i) => {
+      let target: string;
+      try { const t = new URL(l.href, url); if (!t.protocol.startsWith("http")) return []; target = canonUrl(t.href); } catch { return []; }
+      if (hostOf(target) === hostOf(url) || excluded(target)) return [];
+      const around = lower.slice(Math.max(0, l.start - REACH), l.end + REACH);
+      const score = (number && around.includes(number) ? 2 : 0) + (around.includes(lemma) ? 1 : 0);
+      return [{ target, score, i }];
+    });
+    // Only citations the page ties to the claim (its number or subject nearby) become leads: an unread lead blocks an
+    // origin, so a share button or a "more checks" link must not.
+    const cited = [...new Map(scored.filter((c) => c.score > 0).sort((a, b) => b.score - a.score || a.i - b.i).map((c) => [c.target, c])).keys()].slice(0, META_LINKS);
+    const id = `n${nodes.length + 1}`;
+    const dir = join(deps.pagesDir, claim.id);
+    mkdirSync(dir, { recursive: true });
+    writeFileSync(join(dir, `${id}.txt`), text);
+    clusterKeys.set(`meta|${url}`, `c${clusterKeys.size + 1}`);
+    nodes.push({
+      id, url, domain: hostOf(url), title, date: { kind: "unconfirmed", value: null, source: "tavily", firstCapture: null, conflictingDate: false },
+      clusterId: clusterKeys.get(`meta|${url}`)!, evidence: "observed", meta: true, read: true, versionOf: null, spanIds: [], citesEarlier: cited.length > 0,
+      candidateParents: cited.map((p) => ({ url: p, read: seen.has(p) })), pageType: null, foundViaMeta: null,
+    });
+    for (const p of cited) if (!seen.has(p) && !metaLinks.has(p)) { metaLinks.set(p, url); metaQueue.push(p); }
+    note({ step: "read", url, kept: true, reason: `fact-check page read as a map, ${cited.length} citation(s) to follow` });
   }
 
   // A Token Factory failure in the planner or the same_claim question must not end the trace (XO on #110): the
@@ -428,13 +473,29 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
         note({ step: "search", query, reason: `end_date ${searchEnd}${filter ? ", filtered" : ""}, ${data.results.length} results` });
       }
 
-      // The best-scored citations go first: what pages cite is how the tools reach origins (T44).
-      const links = [...followQueue.entries()]
-        .filter(([u]) => !seen.has(u))
+      // T49: once per trace, fact-check pages that discuss the claim, read as maps before anything else.
+      if (depth === 0 && rules.metaMaps) {
+        const { data } = await deps.tavily.search({
+          query: queries[0]!.query, exactMatch: true, endDate, includeRawContent: false, includePublishedDate: true, maxResults: 5, includeDomains: rules.factCheckDomains,
+        }, { step: "meta-search" });
+        const maps = [...new Set(data.results.map((r) => canonUrl(r.url)).filter((u) => excluded(u) && !seen.has(u)))].slice(0, META_PAGES);
+        searchLog.push({ at: deps.now(), step: "meta-search", query: queries[0]!.query, endDate, startDate: null, results: data.results.length, kept: maps.length, dropped: data.results.length - maps.length });
+        if (maps.length) {
+          const read = await deps.tavily.extract({ urls: maps, format: "markdown" }, { step: "meta-extract" });
+          for (const u of maps) seen.add(u);
+          for (const page of read.data.results) await readMeta(canonUrl(page.url), page.title ?? "", page.raw_content ?? "");
+        }
+      }
+
+      // Citations from meta pages (T49) go first, in the order they were found; then the best-scored citations, since
+      // what pages cite is how the tools reach origins (T44).
+      const fromMaps = [...new Set(metaQueue.filter((u) => !seen.has(u)))].slice(0, LINKS_PER_ROUND);
+      const links = [...fromMaps, ...[...followQueue.entries()]
+        .filter(([u]) => !seen.has(u) && !fromMaps.includes(u))
         .sort(([, a], [, b]) => b - a)
-        .slice(0, LINKS_PER_ROUND)
-        .map(([u]) => u);
-      for (const u of links) followQueue.delete(u);
+        .slice(0, LINKS_PER_ROUND - fromMaps.length)
+        .map(([u]) => u)];
+      for (const u of links) { followQueue.delete(u); const i = metaQueue.indexOf(u); if (i >= 0) metaQueue.splice(i, 1); }
       const dated = [...results.entries()].sort(([ua, a], [ub, b]) => isoDate(a.date).localeCompare(isoDate(b.date)) || ua.localeCompare(ub));
       const fromSearch = dated.map(([u]) => u).filter((u) => !links.includes(u));
       const frontier = [...new Set([...links, ...fromSearch])].slice(0, rules.caps.frontier);
@@ -459,7 +520,7 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
       const earliestNow = earliestDate();
       const movedBack = earliestNow !== null && (earliestBefore === null || earliestNow < earliestBefore);
       earlierFound = movedBack ? found : 0;
-      const moreLinks = [...followQueue.keys()].some((u) => !seen.has(u));
+      const moreLinks = [...followQueue.keys(), ...metaQueue].some((u) => !seen.has(u));
       if (!movedBack && !moreLinks) break;
       if (depth + 1 >= rules.caps.depth) {
         capHit = "depth";

@@ -392,6 +392,12 @@
               }
             ]
           },
+          "foundViaMeta": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
           "boundary": {
             "anyOf": [
               {
