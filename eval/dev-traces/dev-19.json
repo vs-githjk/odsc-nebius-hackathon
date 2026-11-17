@@ -1,0 +1,585 @@
+{
+  "schemaVersion": "1",
+  "id": "dev-19",
+  "mode": "LIVE",
+  "synthetic": false,
+  "recordedAt": "2026-11-17T06:35:10.851Z",
+  "claim": {
+    "text": "Sam Altman says the RAM in your PC is only used about 5% of the time.",
+    "atoms": {
+      "number": {
+        "raw": "5%",
+        "canonical": "5%"
+      },
+      "unit": null,
+      "subjectLemma": "ram",
+      "population": "your PC",
+      "time": null,
+      "hedge": null,
+      "namedSource": "Sam Altman",
+      "variants": [
+        "five percent",
+        "5 percent",
+        "5 per cent"
+      ]
+    }
+  },
+  "viralSentence": "Sam Altman says the RAM in your PC is only used about 5% of the time.",
+  "nodes": [
+    {
+      "id": "n1",
+      "url": "https://www.factcheck.org/2021/09/republicans-inflate-cost-of-taliban-seized-u-s-military-equipment",
+      "domain": "factcheck.org",
+      "title": "Republicans Inflate Cost of Taliban-Seized U.S. Military Equipment - FactCheck.org",
+      "date": {
+        "kind": "existed_by",
+        "value": "2021-09-03",
+        "source": "wayback_first_capture",
+        "firstCapture": "2021-09-03",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n1",
+      "evidence": "observed",
+      "meta": true,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [],
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "https://www.nytimes.com/live/2021/08/23/world/taliban-afghanistan-biden-news",
+          "read": true
+        }
+      ],
+      "pageType": null,
+      "foundViaMeta": null
+    },
+    {
+      "id": "n2",
+      "url": "https://politifact.com/article/2020/sep/25/fact-checking-claims-about-breonna-taylors-death",
+      "domain": "politifact.com",
+      "title": "Fact-checking claims about Breonna Taylor’s death – PolitiFact",
+      "date": {
+        "kind": "existed_by",
+        "value": "2020-09-27",
+        "source": "wayback_first_capture",
+        "firstCapture": "2020-09-27",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n2",
+      "evidence": "observed",
+      "meta": true,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [],
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "https://www.courier-journal.com/story/news/2020/05/12/breonna-taylor-louisville-emt-not-main-target-drug-investigation/3115928001",
+          "read": false
+        },
+        {
+          "url": "https://archive.is/2OCPf",
+          "read": false
+        },
+        {
+          "url": "https://archive.is/dBuWJ",
+          "read": false
+        },
+        {
+          "url": "https://www.facebook.com/sam.aguiar.986/posts/10102536585848449",
+          "read": false
+        }
+      ],
+      "pageType": null,
+      "foundViaMeta": null
+    }
+  ],
+  "edges": [],
+  "clusters": [
+    {
+      "id": "c-n1",
+      "nodeIds": [
+        "n1"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n2",
+      "nodeIds": [
+        "n2"
+      ],
+      "rule": "single"
+    }
+  ],
+  "spans": [],
+  "hops": [],
+  "blame": [],
+  "roots": {
+    "pages": 0,
+    "clusters": 0,
+    "rootsLinked": 0,
+    "clustersUnlinked": 0,
+    "studiesFound": null,
+    "independentRoots": 0,
+    "copies": 0
+  },
+  "redHopEdgeId": null,
+  "earliest": {
+    "nodeIds": [],
+    "earlierWindowSearches": 4,
+    "earlierFound": 0
+  },
+  "failure": null,
+  "budget": {
+    "credits": 10,
+    "usd": 0.00016136000000000001,
+    "ms": 74380,
+    "capHit": null
+  },
+  "decision": {
+    "state": "NO_PAGES_FOUND",
+    "row": 3,
+    "reasons": [
+      "no pages besides meta pages"
+    ],
+    "counts": {
+      "pages": 0,
+      "clusters": 0,
+      "unreadParents": 4,
+      "earlierWindowSearches": 4
+    }
+  },
+  "searchLog": [
+    {
+      "at": "2026-11-17T06:35:16.264Z",
+      "step": "search",
+      "query": "\"5%\" ram",
+      "endDate": "2026-11-17",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-17T06:35:17.284Z",
+      "step": "search",
+      "query": "5% of PC RAM usage Sam Altman",
+      "endDate": "2026-11-17",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-17T06:35:18.380Z",
+      "step": "search",
+      "query": "RAM in your PC used only 5% of the time",
+      "endDate": "2026-11-17",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-17T06:35:19.325Z",
+      "step": "search",
+      "query": "Sam Altman PC RAM usage study",
+      "endDate": "2026-11-17",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-17T06:35:22.162Z",
+      "step": "meta-search",
+      "query": "\"5%\" ram",
+      "endDate": "2026-11-17",
+      "startDate": null,
+      "results": 5,
+      "kept": 2,
+      "dropped": 3
+    },
+    {
+      "at": "2026-11-17T06:35:48.005Z",
+      "step": "search",
+      "query": "5% of PC RAM used Sam Altman",
+      "endDate": "2026-11-17",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-17T06:35:49.134Z",
+      "step": "search",
+      "query": "Sam Altman says PC RAM used 5% of time",
+      "endDate": "2026-11-17",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-17T06:35:51.900Z",
+      "step": "search",
+      "query": "Sam Altman RAM usage 5% PC",
+      "endDate": "2026-11-17",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-17T06:35:52.955Z",
+      "step": "search",
+      "query": "study on PC RAM utilization 5%",
+      "endDate": "2026-11-17",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    }
+  ],
+  "usage": [
+    {
+      "at": "2026-11-17T06:35:10.851Z",
+      "traceId": "dev-19",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 168,
+      "completionTokens": 48,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.0000312,
+      "latencyMs": 1560,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:35:12.416Z",
+      "traceId": "dev-19",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 278,
+      "completionTokens": 105,
+      "cachedTokens": 240,
+      "credits": 0,
+      "costUsd": 0.000059300000000000005,
+      "latencyMs": 1434,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:35:16.264Z",
+      "traceId": "dev-19",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2402,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:35:17.284Z",
+      "traceId": "dev-19",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1000,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:35:18.379Z",
+      "traceId": "dev-19",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1073,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:35:19.325Z",
+      "traceId": "dev-19",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 926,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:35:22.161Z",
+      "traceId": "dev-19",
+      "step": "meta-search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2817,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:35:22.283Z",
+      "traceId": "dev-19",
+      "step": "meta-extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 99,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:35:32.951Z",
+      "traceId": "dev-19",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 10603,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:35:32.957Z",
+      "traceId": "dev-19",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 157,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00000157,
+      "latencyMs": 1004,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:35:33.976Z",
+      "traceId": "dev-19",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 253,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00000253,
+      "latencyMs": 9895,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:35:43.877Z",
+      "traceId": "dev-19",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 278,
+      "completionTokens": 107,
+      "cachedTokens": 240,
+      "credits": 0,
+      "costUsd": 0.000059900000000000006,
+      "latencyMs": 3000,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:35:48.004Z",
+      "traceId": "dev-19",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1108,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:35:49.134Z",
+      "traceId": "dev-19",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1110,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:35:51.900Z",
+      "traceId": "dev-19",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2745,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:35:52.955Z",
+      "traceId": "dev-19",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1043,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:36:03.153Z",
+      "traceId": "dev-19",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 10189,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:36:03.154Z",
+      "traceId": "dev-19",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 402,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.0000040200000000000005,
+      "latencyMs": 5124,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:36:08.304Z",
+      "traceId": "dev-19",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 284,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00000284,
+      "latencyMs": 3257,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:36:14.303Z",
+      "traceId": "dev-19",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 2736,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:36:25.229Z",
+      "traceId": "dev-19",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 10925,
+      "status": "200",
+      "cacheHit": false
+    }
+  ],
+  "scopeNote": "Web pages only; print and paywalled origins are out of scope. Earliest source we found, not proof of first use.",
+  "otherNumbers": []
+}

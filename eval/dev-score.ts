@@ -3,6 +3,7 @@
 // appends one dated row per set to eval/dev-score.md. Run from the repo root.
 import { execFileSync } from "node:child_process";
 import { appendFileSync, existsSync, readFileSync, writeFileSync } from "node:fs";
+import { parseArgs } from "node:util";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { loadRules } from "../packages/pz/src/rules/index.ts";
@@ -46,6 +47,7 @@ export function scoreClaim(claim: DevClaim, trace: Trace | null): ClaimScore {
   if (!trace) return { ...base, status: "no trace", mode: null, state: null };
   const run = { mode: trace.mode, state: trace.decision.state, credits: trace.budget.credits, seconds: Math.round(trace.budget.ms / 1000) };
   if (trace.id !== claim.id) return { ...base, ...run, status: "bad trace", reason: `trace id ${trace.id}` };
+  if (trace.claim.text !== claim.text.trim()) return { ...base, ...run, status: "bad trace", reason: "trace does not match claim" };
   const failures = verifyTrace(trace, { rules: loadRules() }).failures;
   if (failures.length) return { ...base, ...run, status: "unverified", reason: failures.map((f) => f.check).join(", ") };
 
@@ -98,13 +100,24 @@ export function scoreDir(dir: string, claims: DevClaim[]): ClaimScore[] {
   return claims.map((c) => {
     const path = join(dir, `${c.id}.json`);
     if (!existsSync(path)) return scoreClaim(c, null);
-    const parsed = Trace.safeParse(JSON.parse(readFileSync(path, "utf8")));
-    if (!parsed.success) return { ...scoreClaim(c, null), status: "bad trace" as const, reason: "not a valid Trace" };
+    const bad = (reason: string): ClaimScore => ({ ...scoreClaim(c, null), status: "bad trace", reason });
+    let raw: unknown;
+    try { raw = JSON.parse(readFileSync(path, "utf8")); }
+    catch { return bad("cannot read trace JSON"); }
+    const parsed = Trace.safeParse(raw);
+    if (!parsed.success) return bad("not a valid Trace");
     return scoreClaim(c, parsed.data);
   });
 }
 
 export const DEV_SETS = [{ set: "E2", file: "eval/dev-claims.json" }, { set: "E3", file: "eval/dev-claims-e3.json" }] as const;
+
+export function devSetsToScore(selected?: string) {
+  if (selected === undefined) return DEV_SETS.filter(entry => existsSync(entry.file));
+  const set = DEV_SETS.find(entry => entry.set === selected);
+  if (!set) throw new Error("Use E2 or E3");
+  return [set];
+}
 
 const HEADER = "# Dev score\n\nOne row per set per `make dev-score` run, newest last. E2 is the tuning set and E3 the check set: a change that helps E2 and hurts E3 is flagged. See `eval/dev-score.ts` for the rules.\n\n"
   + "| Date (UTC) | Commit | Set | False origins (+ unverified ORIGIN_FOUND) | Target cited | Earliest Pass / Partial / Fail | Cold stops | Scored | Credits | Seconds | Modes |\n"
@@ -123,9 +136,10 @@ export function perClaimLines(scores: ClaimScore[]): string[] {
 }
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
+  const { values } = parseArgs({ options: { set: { type: "string" } } });
   const dir = "eval/dev-traces";
   const at = new Date().toISOString().slice(0, 16).replace("T", " ");
-  for (const { set, file } of DEV_SETS.filter((d) => existsSync(d.file))) {
+  for (const { set, file } of devSetsToScore(values.set)) {
     const claims: DevClaim[] = JSON.parse(readFileSync(file, "utf8"));
     const scores = existsSync(dir) ? scoreDir(dir, claims) : claims.map((c) => scoreClaim(c, null));
     const summary = summarise(scores);

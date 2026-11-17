@@ -5,7 +5,7 @@ import { fileURLToPath } from "node:url";
 import { Trace } from "../src/schema/index.ts";
 
 const SERVICE: Record<Trace["usage"][number]["service"], string> = {
-  tokenfactory: "Token Factory", tavily: "Tavily", wayback: "Wayback", fetch: "fetch", jev: "Jev",
+  tokenfactory: "Token Factory", tavily: "Tavily", wayback: "Wayback", fetch: "fetch", jev: "Jev", ncbi: "NCBI", crossref: "Crossref",
 };
 const usd = (n: number) => (n === 0 ? "$0" : `$${n.toFixed(4)}`);
 

@@ -9,10 +9,11 @@ const load = (id: string): Trace => JSON.parse(readFileSync(new URL(`../../../fi
 const claims: DevClaim[] = JSON.parse(readFileSync(new URL("../../../eval/dev-claims.json", import.meta.url), "utf8"));
 const originClaim = claims.find((c) => c.id === "dev-14")!;
 const coldClaim = claims.find((c) => c.id === "dev-05")!;
-// A SAMPLE fixture standing in for a dev trace: renamed, with one page's URL set as given. URLs are not hashed.
+// A SAMPLE fixture standing in for a dev trace: bound to the dev claim, with page URLs set as given. URLs are not hashed.
 function asDev(fixture: string, id: string, urls: Record<string, string> = {}): Trace {
   const t = load(fixture);
   t.id = id;
+  t.claim.text = claims.find(claim => claim.id === id)!.text;
   for (const n of t.nodes) if (urls[n.id]) n.url = urls[n.id]!;
   return t;
 }
