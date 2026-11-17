@@ -7,7 +7,7 @@ import { createTavily } from "../clients/tavily.ts";
 import { createWayback } from "../clients/wayback.ts";
 import { findSpan } from "../match/verbatim.ts";
 import { computeRoots } from "./cluster.ts";
-import { atomHit, claimHit, decideStopState, isRange, normalise, parseNumbers, sameNumber, type Rules } from "../rules/index.ts";
+import { atomHit, claimHit, decideStopState, findInjection, isRange, normalise, parseNumbers, sameNumber, type Rules } from "../rules/index.ts";
 import type { Atoms, Cluster, DateInfo, Edge, Hop, Node, Readout, Span, Trace } from "../schema/index.ts";
 import type { UsageLog } from "../usage/log.ts";
 
@@ -245,6 +245,7 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
       id, url, domain: hostOf(url), title, date, clusterId: clusterKeys.get(clusterKey)!,
       evidence: "observed", meta, read: true, versionOf: null, spanIds: [spanId], citesEarlier: parents.length > 0,
       candidateParents: parents.map((p) => ({ url: p, read: seen.has(p) })), pageType: null,
+      injection: findInjection(title, text, rules.injectionPatterns),
     });
     if (!meta) pendingLinks.push(...parents.filter((p) => !seen.has(p)));
     note({ step: "read", url, kept: true, reason: meta ? "meta page, off the path" : "span found" });
