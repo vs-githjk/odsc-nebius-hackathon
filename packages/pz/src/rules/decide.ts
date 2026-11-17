@@ -3,6 +3,7 @@ import { BOUNDARY_REASONS, findBoundary } from "./boundary.ts";
 import { hasInjection, isInjected, isNegated } from "./negation.ts";
 import { normalise } from "./normalise.ts";
 import { claimHit } from "./claim-hit.ts";
+import { citesInWords } from "./written-citation.ts";
 import { atomHit, parseNumbers, sameNumber } from "./numbers.ts";
 import type { Rules } from "./rules.ts";
 
@@ -49,7 +50,7 @@ function conflicting(trace: Trace, pages: Node[], rules: Rules): boolean {
 function originChecks(trace: Trace, pages: Node[], rules: Rules) {
   const eligible = pages.filter((n) =>
     trace.earliest.nodeIds.includes(n.id) && confident(n.pageType, rules) && rules.primaryPageTypes.includes(n.pageType.optionId)
-    && n.date.kind !== "unconfirmed" && !n.citesEarlier
+    && n.date.kind !== "unconfirmed" && !n.citesEarlier && citesInWords(trace, n, rules) === null
     && !trace.spans.some((s) => s.nodeId === n.id && isNegated(s, rules.negationPrefixes)));
   // T50: a page with an instruction aimed at a model anywhere on it (the walker quotes it on the node) or in or around
   // its span is never an origin.
@@ -97,6 +98,10 @@ export function decideStopState(trace: Trace, rules: Rules): Decision {
       : vetoed > 0
         ? `the second model (${rules.secondSameClaimModel}) did not say yes on same_claim for ${vetoed} earliest page(s), which counts as unsure`
         : "no earliest page states the same claim: the claim's atoms in a span and a confident same_claim yes"),
+    ...pages.filter((n) => trace.earliest.nodeIds.includes(n.id)).flatMap((n) => {
+      const year = citesInWords(trace, n, rules);
+      return year === null ? [] : [`earliest page ${n.id} cites an earlier source in words (${year})`];
+    }),
     unreadParents > 0 && `${unreadParents} unread candidate parent(s)`,
     trace.earliest.earlierWindowSearches < rules.earlierWindowSearches && `fewer than ${rules.earlierWindowSearches} earlier-window searches`,
     trace.earliest.earlierFound > 0 && "earlier-window searches found earlier pages",
