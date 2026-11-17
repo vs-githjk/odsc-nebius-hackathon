@@ -140,7 +140,7 @@ function run(claim: string, world: World, opts: { capUsd?: number; extra?: strin
   const net = stub(world);
   const out: string[] = [];
   const err: string[] = [];
-  const env = { NEBIUS_API_KEY: "test-nebius", TAVILY_API_KEY: "test-tavily", DEV_LEDGER: ledger, ...opts.env };
+  const env = { NEBIUS_API_KEY: "test-nebius", TAVILY_API_KEY: "test-tavily", DEV_LEDGER: ledger, PZ_CACHE_DIR: join(dir, "http"), ...opts.env };
   const io = { write: (line: string) => out.push(line), error: (line: string) => err.push(line), color: false };
   const go = (args: string[]) => traceCommand(args, io, env, net.fetch, async () => ["93.184.216.34"]);
   return { dir, ledger, net, out, err, go, args: [...(opts.extra ?? []), claim] };
