@@ -41,7 +41,7 @@ describe("TraceView", () => {
     expect(html).toContain('class="track-red"');
     expect(html).toMatch(/class="stop red"/);
     expect(html).toContain("band-link inferred red");
-    expect(html).toContain('<span class="chip-label">Attribution shifted</span><span class="chip-tag">inferred, 74%</span>');
+    expect(html).toContain('<span class="readout-label">Attribution shifted</span><span class="readout-tag">inferred, 74%</span>');
     const plain = traces.find((t) => t.id === "sample-origin")!;
     expect(renderToStaticMarkup(<TraceView trace={plain} />)).not.toContain("Wording changed here");
   });

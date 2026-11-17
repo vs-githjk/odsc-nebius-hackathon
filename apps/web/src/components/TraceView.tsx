@@ -86,11 +86,11 @@ export function TraceView({ trace }: { trace: Trace }) {
                   <div className="readouts">
                     <p className="readouts-head">{into.chips.length > 0 ? "What changed from the older page" : "Nothing we check for changed from the older page."}</p>
                     {into.chips.length > 0 && (
-                      <ul className="chips" key={`${trace.id}-${open}`}>
+                      <ul className="readout-list" key={`${trace.id}-${open}`}>
                         {into.chips.map((c, n) => (
-                          <li key={c.id} className={`chip ${c.tone}${c.disputed ? " disputed" : ""}`} style={{ ["--i" as string]: n }}>
-                            <span className="chip-label">{c.label}</span>
-                            <span className="chip-tag">{c.tag}</span>
+                          <li key={c.id} className={`readout ${c.tone}${c.disputed ? " disputed" : ""}`} style={{ ["--i" as string]: n }}>
+                            <span className="readout-label">{c.label}</span>
+                            <span className="readout-tag">{c.tag}</span>
                           </li>
                         ))}
                       </ul>

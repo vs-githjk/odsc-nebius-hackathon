@@ -490,7 +490,7 @@
   font-size: 14px;
 }
 
-.chips {
+.readout-list {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -499,43 +499,43 @@
   list-style: none;
 }
 
-.chip {
+.readout {
   display: inline-flex;
   align-items: baseline;
   gap: 8px;
   padding: 5px 12px;
   border-radius: 999px;
   font-size: 14px;
-  animation: chip-in 220ms cubic-bezier(0.215, 0.61, 0.355, 1) both;
+  animation: readout-in 220ms cubic-bezier(0.215, 0.61, 0.355, 1) both;
   animation-delay: calc(var(--i) * 60ms);
 }
 
-.chip.changed {
+.readout.changed {
   background: var(--chg-tint);
   box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--hot) 40%, transparent);
 }
 
-.chip.unsure {
+.readout.unsure {
   background: var(--bg-2);
   box-shadow: inset 0 0 0 1px var(--line-2);
 }
 
-.chip.disputed {
+.readout.disputed {
   box-shadow: inset 0 0 0 1px var(--line-2);
   background-image: repeating-linear-gradient(135deg, transparent 0 6px, var(--line) 6px 7px);
 }
 
-.chip-label {
+.readout-label {
   color: var(--ink);
   font-weight: 600;
 }
 
-.chip-tag {
+.readout-tag {
   color: var(--ink-2);
   font-variant-numeric: tabular-nums;
 }
 
-@keyframes chip-in {
+@keyframes readout-in {
   from {
     opacity: 0;
     transform: translateY(4px);
@@ -543,7 +543,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .chip {
+  .readout {
     animation: none;
   }
 }
