@@ -49,6 +49,7 @@ export type SearchArgs = {
   includePublishedDate: boolean;
   maxResults: number;
   excludeDomains?: string[];
+  includeDomains?: string[];
   filterByPublishedDate?: boolean;
 };
 
@@ -94,6 +95,7 @@ export function createTavily(deps: ClientDeps & { apiKey?: string }, sender: Tav
         include_published_date: args.includePublishedDate,
         max_results: args.maxResults,
         ...(args.excludeDomains?.length && { exclude_domains: args.excludeDomains }),
+        ...(args.includeDomains?.length && { include_domains: args.includeDomains }),
         ...(args.filterByPublishedDate !== undefined && { filter_by_published_date: args.filterByPublishedDate }),
         include_usage: true,
       };

@@ -1,7 +1,8 @@
 .PHONY: verify replay live dev-score dev-run judge doctor
 
 # Re-checks everything with no API keys: typecheck, tests, every committed trace, the trap set,
-# the copy lint, the leakage test and the claims table.
+# the copy lint, the number lint (every number in README.md and llms.txt backed by a linked file), the leakage test
+# and the claims table.
 verify:
 	@start=$$(date +%s); \
 	npm run -s typecheck && \
@@ -10,6 +11,7 @@ verify:
 	if ls spike/traces/*.json >/dev/null 2>&1; then npm run -s pz -- verify spike/traces/*.json --historical spike/historical-traces.json; fi && \
 	npm run -s pz -- traps && \
 	node --import tsx packages/pz/src/cli/lint-copy.ts && \
+	node --import tsx packages/pz/src/cli/lint-numbers.ts && \
 	node --import tsx packages/pz/src/cli/leakage.ts && \
 	node --import tsx packages/pz/src/cli/claims.ts || exit 1; \
 	took=$$(( $$(date +%s) - start )); \
