@@ -422,3 +422,115 @@ a {
     font-size: 19px;
   }
 }
+
+/* The claim box: grows with a pasted sentence, Enter traces, Shift+Enter adds a line. */
+.claim-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  gap: 10px;
+}
+
+.claim-input {
+  display: block;
+  min-height: 52px;
+  max-height: 40vh;
+  padding: 14px 16px;
+  line-height: 1.4;
+  resize: none;
+  field-sizing: content;
+}
+
+.claim-input:focus-visible {
+  outline: 2px solid var(--action);
+  outline-offset: 2px;
+  border-color: transparent;
+}
+
+.claim-go {
+  min-height: 52px;
+  padding: 0 24px;
+  font-size: 16px;
+}
+
+.claim-go:focus-visible {
+  outline: 2px solid var(--action);
+  outline-offset: 3px;
+}
+
+.claim-note {
+  min-height: 24px;
+  margin-top: 10px;
+}
+
+.claim-note p {
+  margin: 0;
+}
+
+.claim-problem {
+  color: var(--caution);
+  font-size: 15px;
+}
+
+/* Not traced yet: a calm, quiet panel, not an error. */
+.untraced {
+  padding: 14px 18px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg-2);
+  color: var(--ink-2);
+  font-size: 15px;
+  animation: settle-in 200ms ease both;
+}
+
+.untraced-title {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.untraced p + p {
+  margin-top: 4px;
+}
+
+@keyframes settle-in {
+  from {
+    opacity: 0;
+    transform: translateY(-3px);
+  }
+}
+
+/* A real trace as the hero: the claim links to its trace, with the count under it. */
+.hero {
+  display: block;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.hero-count {
+  margin: 18px 0 0;
+  color: var(--ink-2);
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.hero-open {
+  color: var(--action);
+  white-space: nowrap;
+}
+
+.hero:hover .hero-open,
+.hero:focus-visible .hero-open {
+  text-decoration: underline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .untraced {
+    animation: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .claim-go {
+    padding: 0 18px;
+  }
+}

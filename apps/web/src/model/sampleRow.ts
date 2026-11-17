@@ -53,3 +53,10 @@ export function sampleRows(traces: Trace[]): SampleRow[] {
 export function rowFacts(row: SampleRow): string[] {
   return [row.ending, row.earliestYear === null ? "No dated page" : `Back to ${row.earliestYear}`, row.pages === 1 ? "1 page" : `${row.pages} pages`];
 }
+
+// The start page's hero: the recorded real trace with the most to show. Samples are invented, so they never lead;
+// with no real trace loaded the page asks its question instead.
+export function heroTrace(traces: Trace[]): Trace | null {
+  const id = sampleRows(traces.filter((t) => !t.synthetic))[0]?.id;
+  return traces.find((t) => t.id === id) ?? null;
+}

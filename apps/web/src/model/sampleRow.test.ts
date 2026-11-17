@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { loadTraces } from "../data/loadTraces.ts";
 import { lintText } from "../../../../packages/pz/src/cli/lint-copy.ts";
-import { rowFacts, sampleRow, sampleRows } from "./sampleRow.ts";
+import { heroTrace, rowFacts, sampleRow, sampleRows } from "./sampleRow.ts";
 import { scrubberStops } from "./scrubber.ts";
 
 const { traces } = loadTraces();
@@ -38,5 +38,13 @@ describe("sampleRow", () => {
 
   it("row copy passes the copy lint", () => {
     for (const r of sampleRows(traces)) for (const s of rowFacts(r)) expect(lintText(s)).toEqual([]);
+  });
+});
+
+describe("heroTrace", () => {
+  it("never leads with an invented sample, and picks the real trace with the most to show", () => {
+    expect(heroTrace(traces)).toBeNull();
+    const real = (id: string, pages: number) => ({ ...byId("sample-rich"), id, synthetic: false, roots: { ...byId("sample-rich").roots, pages } });
+    expect(heroTrace([...traces, real("live-a", 3), real("live-b", 9)])?.id).toBe("live-b");
   });
 });
