@@ -86,6 +86,7 @@ describe("T51 whole-answer mode", () => {
     const r = (reason: string) => ({ reason });
     expect(answerSummary([], [])).toBe("No statistics found in the answer.");
     expect(answerSummary([], [r("number_not_in_sentence"), r("not_in_text")])).toBe("No statistics passed the checks. Set aside by code: 2 sentences whose number code could not match to the text.");
+    expect(answerSummary([], [r("range"), r("inequality")])).toBe("No statistics passed the checks. Set aside by code: 2 sentences with a range or a bound, not one number.");
     expect(answerSummary([], [r("no_number"), r("not_in_text")])).toBe("No statistics passed the checks. Set aside by code: 1 sentence with no number to check and 1 sentence whose number code could not match to the text.");
     expect(answerSummary([claim("ORIGIN_FOUND")], [r("duplicate")])).toBe("1 statistic: 1 traced to an earliest primary source. Set aside by code: 1 repeat of a statistic already listed.");
     expect(answerSummary([], [r("ambiguous"), r("duplicate"), r("duplicate")])).toBe("No statistics passed the checks. Set aside by code: 1 sentence whose number code could not match to the text and 2 repeats of a statistic already listed.");
@@ -126,6 +127,14 @@ describe("T51 the CLI", () => {
     expect(await answerCommand(["--answer", path], io)).toBe(1);
     expect(errors.at(-1)).toBe("trace_failed");
     expect(renderAnswer(await run({ maxClaims: 4 }))).toContain("5. not traced, over the 5-statistic limit");
+  });
+
+  it("words each set-aside reason plainly, ranges and bounds included", async () => {
+    const record = await run();
+    const text = renderAnswer({ ...record, rejected: [{ sentence: "Up to 40 to 45 percent leaves.", number: "40", reason: "range" }, { sentence: "Over 70% agree.", number: "70%", reason: "inequality" }] });
+    expect(text).toContain('"Up to 40 to 45 percent leaves." (a range, not one number; trace it as a phrase claim)');
+    expect(text).toContain('"Over 70% agree." (a bound such as "over 70%", not one number)');
+    expect(lintText(text)).toEqual([]);
   });
 
   it("pz trace takes --answer-replay-of=<file> as answer mode", async () => {

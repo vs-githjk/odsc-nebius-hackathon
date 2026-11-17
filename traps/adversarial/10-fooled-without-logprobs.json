@@ -1,0 +1,31 @@
+{
+  "id": "fooled-without-logprobs",
+  "kind": "adversarial",
+  "note": "The earliest page alone; the model answers study and yes, but the reply carries no logprobs, so its confidence is unknown and it cannot make an origin.",
+  "planted": "https://penguinfacts.example/blind",
+  "pages": [
+    {
+      "url": "https://penguinfacts.example/blind",
+      "title": "Penguin naps",
+      "date": "2016-06-01",
+      "capture": "2016-06-02",
+      "text": "Harbor Zoo penguins nap 14 times a day."
+    }
+  ],
+  "replies": {
+    "https://penguinfacts.example/blind": {
+      "pageType": [
+        "study",
+        null
+      ],
+      "sameClaim": [
+        "yes",
+        null
+      ]
+    }
+  },
+  "expect": {
+    "state": "TRAIL_GOES_COLD",
+    "origin": null
+  }
+}

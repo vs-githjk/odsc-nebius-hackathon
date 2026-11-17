@@ -4,7 +4,7 @@ import { confidenceFor, stringFields } from "./logprobs.ts";
 
 type Client = { chat(input: ChatInput): Promise<Result<ChatData>> };
 type Input = string | { earlier: string; later: string; page?: string };
-type Options = { client: Client; threshold: number | null };
+type Options = { client: Client; threshold: number | null; model?: string };
 const MODEL = "Qwen/Qwen3-30B-A3B-Instruct-2507";
 
 export async function ask(questions: Question[], input: Input, { client, threshold }: Options): Promise<TypedAnswer[]> {
@@ -23,16 +23,16 @@ export async function ask(questions: Question[], input: Input, { client, thresho
 }
 
 // T36: the same_claim question for one sentence, asked on its own. The claim and sentence travel as data in source_text.
-export async function askSameClaim(input: { claim: string; sentence: string }, { client, threshold }: Options): Promise<TypedAnswer> {
+export async function askSameClaim(input: { claim: string; sentence: string }, { client, threshold, model }: Options): Promise<TypedAnswer> {
   if (threshold !== null && (!Number.isFinite(threshold) || threshold < 0 || threshold > 1)) throw new TokenFactoryError("bad_response");
   if (typeof input?.claim !== "string" || typeof input.sentence !== "string") throw new TokenFactoryError("bad_response");
-  return (await askBatch([SAME_CLAIM], JSON.stringify({ CLAIM: input.claim, SENTENCE: input.sentence }), { client, threshold }))[0]!;
+  return (await askBatch([SAME_CLAIM], JSON.stringify({ CLAIM: input.claim, SENTENCE: input.sentence }), { client, threshold, model }))[0]!;
 }
 
-async function askBatch(questions: Question[], content: string, { client, threshold }: Options): Promise<TypedAnswer[]> {
+async function askBatch(questions: Question[], content: string, { client, threshold, model = MODEL }: Options): Promise<TypedAnswer[]> {
   // Serialize the owner's questions without rewriting instructions or labels.
   const jsonSchema = questionsToJsonSchema(questions);
-  const result = await client.chat({ model: MODEL, messages: [
+  const result = await client.chat({ model, messages: [
     { role: "system", content: JSON.stringify(questions) }, { role: "user", content: JSON.stringify({ source_text: content }) },
   ], jsonSchema, logprobs: true, topLogprobs: 5, maxTokens: 512 });
   let parsed: Record<string, unknown>;
