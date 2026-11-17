@@ -4,6 +4,7 @@ import { scrubberStops, stopNote } from "../model/scrubber.ts";
 import { ModeBadge } from "./ModeBadge.tsx";
 import { Scrubber, stopXs, xAt } from "./Scrubber.tsx";
 import { Sentence } from "./Sentence.tsx";
+import { StopCard } from "./StopCard.tsx";
 import { TimeField } from "./TimeField.tsx";
 import { TraceGraph } from "./TraceGraph.tsx";
 
@@ -19,7 +20,6 @@ function useReducedMotion(): boolean {
   return reduced;
 }
 
-const stateLabel = (trace: Trace) => trace.decision.state.replace(/_/g, " ");
 const monthYear = new Intl.DateTimeFormat("en-US", { month: "long", year: "numeric", timeZone: "UTC" });
 const when = (date: string | null) => (date ? monthYear.format(new Date(date)) : "Undated");
 
@@ -80,10 +80,8 @@ export function TraceView({ trace }: { trace: Trace }) {
             )}
           </>
         )}
-        <p className="foot-note">
-          {trace.synthetic ? "Sample trace: an invented claim on invented pages. " : ""}
-          Ends {stateLabel(trace)}. How this was decided: row {trace.decision.row}.
-        </p>
+        {/* The ending closes the stage: the card replaces the old one-line footnote (T85). */}
+        <StopCard trace={trace} />
       </div>
     </>
   );
