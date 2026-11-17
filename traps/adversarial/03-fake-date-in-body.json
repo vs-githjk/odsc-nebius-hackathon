@@ -1,0 +1,48 @@
+{
+  "id": "fake-date-in-body",
+  "kind": "adversarial",
+  "note": "A 2022 page claims in its body text to be first published in 1998; body text is never a date.",
+  "planted": "https://oldfacts.example/penguins",
+  "pages": [
+    {
+      "url": "https://harborzoo.example/keeper-log-2019",
+      "title": "Harbor Zoo keeper log, spring 2019",
+      "date": "2019-04-30",
+      "capture": "2019-05-02",
+      "text": "Keeper log, spring 2019.\n\nOver 30 days of daylight observation, Harbor Zoo penguins nap 14 times a day on average. Data table below."
+    },
+    {
+      "url": "https://oldfacts.example/penguins",
+      "title": "Penguin research archive",
+      "date": "2022-01-10",
+      "capture": "2022-01-12",
+      "text": "First published on 3 March 1998 by our research team. Harbor Zoo penguins nap 14 times a day, our original research found."
+    }
+  ],
+  "replies": {
+    "https://oldfacts.example/penguins": {
+      "pageType": [
+        "study",
+        0.99
+      ],
+      "sameClaim": [
+        "yes",
+        0.99
+      ]
+    },
+    "https://harborzoo.example/keeper-log-2019": {
+      "pageType": [
+        "dataset",
+        0.97
+      ],
+      "sameClaim": [
+        "yes",
+        0.96
+      ]
+    }
+  },
+  "expect": {
+    "state": "ORIGIN_FOUND",
+    "origin": "https://harborzoo.example/keeper-log-2019"
+  }
+}

@@ -17,6 +17,9 @@ const OPENERS = new Set(["the", "a", "an", "this", "that", "these", "those", "it
   "researchers", "scientists", "experts", "studies", "study", "reports", "report", "data", "people", "users", "authors",
   "officials", "analysts", "surveys", "survey", "estimates", "claims", "posts", "articles", "sources", "pages", "page"]);
 
+const COUNT_VALUES: Record<string, number> = { "one time": 1, twice: 2, "half a dozen": 6, "a dozen": 12, dozens: 24, "a couple of": 2 };
+const COUNT_WORDS = /(?<![\p{L}])(?:one\s+time|twice|half\s+a\s+dozen|a\s+dozen|dozens|a\s+couple\s+of)(?![\p{L}])/giu;
+
 // Abbreviated titles only: "the zoo's president said" is not a name.
 const TITLES = new Set(["dr", "mr", "mrs", "ms", "prof"]);
 
@@ -67,11 +70,15 @@ export function unbacked(sentence: string, spans: string[], earliestDates: strin
   const dates = datesIn(sentence).filter((d) => !earliestDates.some((e) => e.startsWith(d.value))).map((d) => d.raw);
   const withoutDates = datesIn(sentence).reduce((s, d) => s.replace(d.raw, " "), normalise(sentence));
   const spanNumbers = parseNumbers(text).numbers;
-  const spanValues = new Set([...spanNumbers.map((n) => n.value), ...parseNumberWords(text).map((n) => n.value)]);
+  const countValue = (m: RegExpMatchArray) => COUNT_VALUES[m[0].toLowerCase().replace(/\s+/g, " ")]!;
+  const spanValues = new Set([...spanNumbers.map((n) => n.value), ...parseNumberWords(text).map((n) => n.value), ...[...text.matchAll(COUNT_WORDS)].map(countValue)]);
   const numbers = [
     ...parseNumbers(withoutDates).numbers.filter((n) => !spanNumbers.some((m) => sameNumber(n, m).equal) && !spanValues.has(n.value)),
     // Number words count too: "fifteen times a day" is not backed by spans that say 14.
     ...parseNumberWords(withoutDates).filter((n) => !spanValues.has(n.value) && n.value !== earliestCount),
+    // Counts the number-word parser leaves alone: "one time", "twice", "a dozen", "half a dozen", "dozens".
+    ...[...withoutDates.matchAll(COUNT_WORDS)].map((m) => ({ raw: m[0], value: countValue(m) }))
+      .filter((n) => !spanValues.has(n.value)),
   ].map((n) => n.raw);
   // Double or single quotes. A single quote opens and closes only next to a non-letter, so "zoo's" is not a quote.
   const quoted = [...normalise(sentence).matchAll(/"([^"]+)"|(?<![\p{L}\p{N}])'([^']+?)'(?![\p{L}\p{N}])/gu)].map((m) => (m[1] ?? m[2])!);

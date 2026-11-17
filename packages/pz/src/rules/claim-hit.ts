@@ -23,8 +23,12 @@ export function claimHit(sentence: string, atoms: Atoms, rules: { weakNumberMinS
   const hit = [atoms.phrase ?? "", ...atoms.variants].some((p) => !!p && phraseHit(sentence, p, rules.negationPrefixes));
   // A range ("40 to 45 percent") is common on its own, so it also needs the claim's subject word in the sentence;
   // "Turnout rose 40 to 45 percent" is not about body heat. A quote is distinctive enough without one.
-  return hit && (!isRange(atoms) || lower(sentence).includes(atoms.subjectLemma.toLowerCase()));
+  return hit && (!isRange(atoms) || hasSubject(sentence, atoms.subjectLemma));
 }
+
+// The subject as a whole word, singular or plural, like atomHit: "heat" is in "body heat", not in "theater" or "heater".
+const hasSubject = (sentence: string, subject: string) =>
+  new RegExp(String.raw`(?<![\p{L}\p{N}])${escape(subject.toLowerCase())}(?:s|es)?(?![\p{L}\p{N}])`, "u").test(lower(sentence));
 
 // A phrase claim whose phrase carries digits is a range read by code (T53 claimRange).
 export const isRange = (atoms: Atoms) => !atoms.number && /\d/.test(atoms.phrase ?? "");

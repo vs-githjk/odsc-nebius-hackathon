@@ -109,6 +109,10 @@ describe("T53 matching a page sentence by phrase", () => {
     expect(claimHit("Turnout rose 40 to 45 percent in the county.", range, rules)).toBe(false);
     expect(claimHit("Turnout rose 40-45% in the county.", range, rules)).toBe(false);
     expect(claimHit("Between 40 to 45 percent of your heat escapes.", range, rules)).toBe(true);
+    // The subject is a whole word: "theater" and "heater" are not "heat".
+    expect(claimHit("The theater was 40 to 45 percent full.", range, rules)).toBe(false);
+    expect(claimHit("A heater cuts 40 to 45 percent of the bill.", range, rules)).toBe(false);
+    expect(claimHit("Of all heats lost, 40 to 45 percent go through the head.", range, rules)).toBe(true);
     const numeric: Atoms = { ...quote, number: { raw: "8", canonical: "8" }, phrase: null, subjectLemma: "spider" };
     expect(claimHit("People swallow eight spiders a year.", numeric, rules)).toBe(true);
     expect(claimHit("doing the same thing over and over again", numeric, rules)).toBe(false);
