@@ -79,3 +79,5 @@
 - Live fixes found by smoke: Tavily exact_match 400 without quoted phrase; Wayback 403 crashing dating; PubMed cookie wall (NCBI/Crossref registry dates added); SSRF redirect guard.
 - E3 drift check live: precision 0.37 recall 0.58 at 0.75. Decisions: "possible variant" wording; metadata dates labelled; merge #191 now.
 - New: #192 span/headline quality. FIX lists: #184, #186, #185, #188, #172, #174, #173.
+
+- 2026-11-17 09:45 ET: morning check. No team activity since 01:50 ET. Merged #193 (.env.example comments) as 554ca60. #188: asked Anoop to cite #105 (last item). Re-reviews of #173, #185, #172, #174 running.
