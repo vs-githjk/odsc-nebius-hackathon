@@ -15,7 +15,7 @@ Honest status as of this README:
 
 - **Built and tested with no network:** the engine stages below (all but spans, which is in review), the Token Factory and Tavily clients, the six-way stop-state table, the `pz verify` re-check, a planted trap set, keyless replay with a readable card, failure paths that replay keylessly, whole-answer mode, the origin card's checked sentence, and the trace view.
 - **Wiring in progress:** `engine/pipeline.ts` ([#130](https://github.com/vs-githjk/odsc-nebius-hackathon/issues/130)) joins the stages to the live clients, so `pz trace "<claim>"` runs end to end. Until it lands, `pz trace` replays recorded traces only.
-- **Not yet measured:** the first live dev run is Monday Nov 16, then the held-out run. The only result so far is the first-week spike, which lost (see [Evaluation](#evaluation)).
+- **Not yet measured:** the first live dev run and then the held-out run are pending. The only result so far is the first-week spike, which lost (see [Evaluation](#evaluation)).
 
 ## Try it in two minutes, no API keys
 
@@ -34,8 +34,6 @@ make replay                     # replay a trace and print it as a card
 make replay ARGS=--json         # the same trace as raw JSON
 npm run dev -w web              # the trace view, on the sample traces
 ```
-
-`make judge` and `make doctor` are in review ([#169](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/169)); until they merge, `make verify` and `make replay` cover the same checks.
 
 `make replay` defaults to an invented sample trace and labels it SAMPLE on the first line. Point it at any recorded trace with `TRACE=path/to/trace.json`. Replay never calls a model or a search API.
 
@@ -96,7 +94,7 @@ The model answers narrow typed questions. Code reads the trace and picks the end
 
 ## A trace, walked step by step
 
-*Lands with the first reviewed live trace from Monday's dev run (T72).* It will show one real claim from paste to stop state: each search and its date window, each page kept or dropped and why, each hop's readouts, and every Token Factory and Tavily call with its tokens, credits, cost and latency.
+*Lands with the first reviewed live trace from the first dev run (T72).* It will show one real claim from paste to stop state: each search and its date window, each page kept or dropped and why, each hop's readouts, and every Token Factory and Tavily call with its tokens, credits, cost and latency.
 
 The per-call table is generated from the trace file's own usage rows, so every figure can be checked against the file:
 
@@ -115,13 +113,15 @@ A search that breaks, or finds nothing, ends in a named state instead of a guess
 
 These two are labelled synthetic: the claim is the invented Harbor Zoo one, and the responses were written for the test, not captured from a live call ([failure-tavily-503.json](fixtures/failure/traces/failure-tavily-503.json), [failure-empty-search.json](fixtures/failure/traces/failure-empty-search.json)). `node --import tsx fixtures/failure/record.ts` rebuilds them byte for byte.
 
+<a id="eval"></a>
+
 ## Evaluation
 
 | Set | Claims | Use | Result |
 |---|---|---|---|
-| E2 dev ([eval/dev-claims.json](eval/dev-claims.json)) | 20: 11 with a web origin, 9 that go cold | Rules, cutoffs and prompts are tuned here only | first live run Mon Nov 16 |
-| E3 check ([eval/dev-claims-e3.json](eval/dev-claims-e3.json)) | 40: 18 with a web origin, 22 that go cold | Check only, nothing tuned on it | first live run Mon Nov 16 |
-| Held-out | 10, private; its hash was committed on Nov 8, before the engine stages were built ([eval/heldout.sha256](eval/heldout.sha256)) | Run once, on a frozen engine | Mon Nov 16; the readout follows |
+| E2 dev ([eval/dev-claims.json](eval/dev-claims.json)) | 20: 11 with a web origin, 9 that go cold | Rules, cutoffs and prompts are tuned here only | pending (first live run) |
+| E3 check ([eval/dev-claims-e3.json](eval/dev-claims-e3.json)) | 40: 18 with a web origin, 22 that go cold | Check only, nothing tuned on it | pending (first live run) |
+| Held-out | 10, private; its hash was committed on Nov 8, before most stages were built (the decision table, number rules and clients came first) ([eval/heldout.sha256](eval/heldout.sha256)) | Run once, on a frozen engine | pending |
 
 `make dev-score` grades a set of traces the way the spike was graded ([eval/dev-score.ts](eval/dev-score.ts)).
 
@@ -136,13 +136,13 @@ In week 0 a first walker with fixed rules and no model ran on six claims, graded
 | Claude | 4/4 | 2/2 | 5/6 |
 | Ours (spike) | 1/4 | 0/2 | 0/6 |
 
-It was the fastest (12 to 47 s) and lost on every claim. The grading was not fully blind: six claims, graded once, by one agent-assisted grader. The post-mortem ([eval/spike-postmortem.md](eval/spike-postmortem.md)) found two main causes. False matches on a common number became the "earliest" page on four claims, and exact-number searches never reached two targets. The engine above was built against those causes: the same-claim check, weak-number clause rules, model-planned queries, and citation following (in review, [#110](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/110)). Monday's dev score says whether it worked.
+It was the fastest (12 to 47 s) and lost on every claim. The grading was not fully blind: six claims, graded once, by one agent-assisted grader. The post-mortem ([eval/spike-postmortem.md](eval/spike-postmortem.md)) found two main causes. False matches on a common number became the "earliest" page on four claims, and exact-number searches never reached two targets. The engine above was built against those causes: the same-claim check, weak-number clause rules, model-planned queries, and citation following (in review, [#110](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/110)). The dev score will say whether it worked.
 
 ## Token Factory and Tavily
 
 | Service | Used for | Status |
 |---|---|---|
-| Token Factory `Qwen/Qwen3-30B-A3B-Instruct-2507` | intake, fingerprint, query planning, typed readouts, page type, same claim | client built and tested offline; live calls from Monday's run |
+| Token Factory `Qwen/Qwen3-30B-A3B-Instruct-2507` | intake, fingerprint, query planning, typed readouts, page type, same claim | client built and tested offline; live calls from the first dev run |
 | Token Factory `Qwen/Qwen3-Embedding-8B` | near-duplicate clustering (replaced `BAAI/bge-en-icl`, which returned 404) <!-- numbers ok: 404 (HTTP status) --> | client built; not wired into clustering yet |
 | Tavily `search` | date-windowed exact-phrase searches | built; used by the spike walker |
 | Tavily `extract` | reading the pages a search returns | built |
@@ -188,3 +188,7 @@ Start at [llms.txt](llms.txt). The working notes live in `plan/` while the build
 - The claims list in `plan/plan.md` ("Claims we will make") is what `make verify` prints, one row per claim.
 
 Teammates and their agents: read [docs/AGENTS.md](docs/AGENTS.md) first.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
