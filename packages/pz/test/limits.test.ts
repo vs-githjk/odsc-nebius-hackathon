@@ -6,14 +6,14 @@ import { createBudget } from "../src/clients/budget.ts";
 import { createFileCache } from "../src/clients/cache.ts";
 import { createTavily } from "../src/clients/tavily.ts";
 import { createWayback } from "../src/clients/wayback.ts";
-import { walkClaim, type SpikeClaim } from "../src/engine/walk.ts";
-import { atomHit, loadRules, phraseHit } from "../src/rules/index.ts";
+import { LINK_ROUNDS_WITHOUT_PROGRESS, walkClaim, type SpikeClaim } from "../src/engine/walk.ts";
+import { atomHit, decideStopState, loadRules, phraseHit } from "../src/rules/index.ts";
 import { hasInjection, isNegated } from "../src/rules/negation.ts";
 import { createUsageLog } from "../src/usage/log.ts";
 import { readdirSync, readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dateWords } from "../src/card/terminal.ts";
-import type { Node } from "../src/schema/trace.ts";
+import type { Node, Trace } from "../src/schema/trace.ts";
 
 // T96 (#163): each open row of docs/limits.md, pinned as the engine behaves today. These tests pass while the gap is
 // open. When someone closes a gap, its test fails on purpose: flip the expectation, and update the row in
@@ -110,6 +110,16 @@ describe("docs/limits.md, open rows pinned as they behave today", () => {
     expect(at("registry_pmc")).toBe("published 2017-07-19 (PubMed Central)");
     expect(at("registry_crossref")).toBe("published 2017-07-19 (Crossref)");
     expect(at("metadata")).toBe("page says published 2017-07-19");
+  });
+
+  it("L16 a trail can stop at the depth or time cap: 8 steps back, 300 s, and the trace ends PARTIAL, never an origin", () => {
+    expect([rules.caps.depth, rules.caps.ms, LINK_ROUNDS_WITHOUT_PROGRESS]).toEqual([8, 300_000, 2]);
+    const sample: Trace = JSON.parse(readFileSync(fileURLToPath(new URL("../../../fixtures/traces/sample-origin.json", import.meta.url)), "utf8"));
+    expect(decideStopState(sample, rules).state).toBe("ORIGIN_FOUND");
+    for (const capHit of ["depth", "ms"] as const) {
+      const d = decideStopState({ ...sample, budget: { ...sample.budget, capHit } }, rules);
+      expect([d.state, d.reasons]).toEqual(["PARTIAL", [`cap hit: ${capHit}`]]);
+    }
   });
 
   it("L13 a negation in wording the list doesn't know is not caught by code", () => {
