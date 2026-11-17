@@ -32,7 +32,7 @@ const PAGE_TYPES: Record<string, string> = {
 };
 
 const SERVICES: Record<Trace["usage"][number]["service"], string> = {
-  tokenfactory: "Token Factory", tavily: "Tavily", wayback: "Wayback", fetch: "page fetch", jev: "Jev",
+  tokenfactory: "Token Factory", tavily: "Tavily", wayback: "Wayback", fetch: "page fetch", jev: "Jev", ncbi: "NCBI", crossref: "Crossref",
 };
 
 // How a trace ended, as one plain sentence. Built from the trace's own data, never from decision reason strings,

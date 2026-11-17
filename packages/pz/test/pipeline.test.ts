@@ -27,6 +27,7 @@ type World = {
   sameClaim?: "yes" | "no";
   phrase?: { phrases: string[]; subject: string };
   onSearch?: (count: number) => void;
+  registry?: Record<string, unknown>;
 };
 
 // A reply with logprobs for each string field, so typed answers carry a confidence like the real provider's.
@@ -105,6 +106,7 @@ function stub(world: World) {
       const typed = typedReply(fields);
       return reply(typed.content, typed.logprobs);
     }
+    if (world.registry && url in world.registry) return new Response(JSON.stringify(world.registry[url]), { headers: { "content-type": "application/json" } });
     const page = world.pages.find((p) => p.url === url);
     if (page?.html) return new Response(page.html, { headers: { "content-type": "text/html" } });
     throw new Error(`no stub for ${url}`);
@@ -125,7 +127,7 @@ function run(claim: string, world: World, opts: { capUsd?: number; extra?: strin
   const err: string[] = [];
   const env = { NEBIUS_API_KEY: "test-nebius", TAVILY_API_KEY: "test-tavily", DEV_LEDGER: ledger, ...opts.env };
   const io = { write: (line: string) => out.push(line), error: (line: string) => err.push(line), color: false };
-  const go = (args: string[]) => traceCommand(args, io, env, net.fetch);
+  const go = (args: string[]) => traceCommand(args, io, env, net.fetch, async () => ["93.184.216.34"]);
   return { dir, ledger, net, out, err, go, args: [...(opts.extra ?? []), claim] };
 }
 
@@ -317,6 +319,26 @@ describe("publication evidence in dating (#79)", () => {
     const t = run(claim, { pages: [p] }, { extra: ["--json"] });
     expect(await t.go(t.args)).toBe(0);
     expect(Trace.parse(JSON.parse(t.out.join(""))).nodes[0]!.date).toMatchObject({ kind: "existed_by", value: "2020-06-24" });
+  });
+});
+
+describe("scholarly registry evidence (#79)", () => {
+  it("dates a PubMed page from NCBI past its cookie wall, logs the call on the trace, and replay makes no call", async () => {
+    const claim = zoo(unique());
+    const pmid = String(40000000 + Number(unique()));
+    const url = `https://pubmed.ncbi.nlm.nih.gov/${pmid}`;
+    const wall = "<html><head><title>x</title></head><body>Cookies must be enabled.</body></html>";
+    const registry = { [`https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&id=${pmid}&retmode=json`]: { result: { [pmid]: { pubdate: "2004 Jan 20", epubdate: "" } } } };
+    const t = run(claim, { pages: [{ url, date: "2020-06-24", html: wall, text: `Paper: ${claim}` }], registry }, { extra: ["--json"] });
+    const saved = join(t.dir, "pubmed.json");
+    expect(await t.go(["--out", saved, ...t.args])).toBe(0);
+    const trace = Trace.parse(JSON.parse(readFileSync(saved, "utf8")));
+    expect(trace.nodes[0]!.date).toMatchObject({ kind: "published", value: "2004-01-20", source: "metadata", firstCapture: "2020-06-24" });
+    expect(trace.usage.filter((row) => row.service === "ncbi")).toEqual([expect.objectContaining({ endpoint: "esummary", step: "dating", credits: 0, costUsd: 0 })]);
+    const never = (() => { throw new Error("network used on replay"); }) as typeof fetch;
+    const out: string[] = [];
+    expect(await traceCommand(["--replay-of", saved, "--json"], { write: (l) => out.push(l), error: () => {} }, {}, never, async () => { throw new Error("dns on replay"); })).toBe(0);
+    expect(Trace.parse(JSON.parse(out.join(""))).nodes[0]!.date.value).toBe("2004-01-20");
   });
 });
 

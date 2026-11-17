@@ -1156,7 +1156,9 @@
               "tokenfactory",
               "wayback",
               "fetch",
-              "jev"
+              "jev",
+              "ncbi",
+              "crossref"
             ]
           },
           "endpoint": {

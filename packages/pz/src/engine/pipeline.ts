@@ -21,7 +21,7 @@ import { measuredReadouts, hopFor, redHop, wordDiff, words } from "./readouts.ts
 import type { PageInput, Pipeline } from "./run.ts";
 import { spansStep } from "./spans.ts";
 import { createEmbedder } from "./similar.ts";
-import { fetchPublication } from "./publication.ts";
+import { createEvidence, type Resolver } from "./publication.ts";
 import { plannerFor, sameClaimFor, walkStep } from "./walk.ts";
 
 type TokenFactory = ReturnType<typeof createTokenFactoryClient>;
@@ -108,6 +108,7 @@ export type PipelineParts = {
   archiveFetch?: typeof fetch;
   // Fetches a page's raw HTML for its publication metadata (dating, #79). Without it, dates come from archive captures only.
   pageFetch?: typeof fetch;
+  resolveHost?: Resolver;
   cache?: Cache;
   traceId?: string;
   pagesDir?: string;
@@ -209,18 +210,22 @@ export function buildPipeline(parts: PipelineParts): { pipeline: Pipeline; wayba
     walk: async (trace, context) => {
       const walked = await walkStage(trace, context);
       if (!parts.pageFetch) return walked;
-      // The walk reads markdown, which has no meta tags, so each page is fetched once more as HTML for the dating stage.
-      const pageFetch = parts.pageFetch;
+      // The walk reads markdown, which has no meta tags, so the dating stage gets each page's publication evidence
+      // from a scholarly registry or the page's own HTML (publication.ts). Every request is a usage row on the trace.
+      const rows: UsageRow[] = [];
+      const evidence = createEvidence({ fetch: parts.pageFetch, cache: base.cache, usage: { rows, append: (row) => { rows.push(row); } }, traceId: id, resolve: parts.resolveHost });
       const queue = walked.nodes.filter((node) => !node.meta && node.read);
       const pages: PageInput[] = [];
       const work = async () => {
         for (let node = queue.shift(); node; node = queue.shift()) {
-          const metadata = await fetchPublication(node.url, pageFetch);
+          let saved = "";
+          try { saved = readFileSync(join(pagesDir, walked.id, `${node.id}.txt`), "utf8"); } catch { /* no saved page */ }
+          const metadata = await evidence(node.url, saved);
           if (metadata) pages.push({ url: node.url, text: "", metadata });
         }
       };
-      await Promise.all([work(), work(), work(), work()]);
-      return { trace: walked, pages };
+      await Promise.all([work(), work()]);
+      return { trace: withUsage(walked, rows), pages };
     },
 
     spans: spansStep(),
@@ -297,6 +302,7 @@ export function createPipeline(options: {
   tavilyKey?: string;
   archiveFetch?: typeof fetch;
   pageFetch?: typeof fetch;
+  resolveHost?: Resolver;
   traceId?: string;
   pagesDir?: string;
   usagePath?: string;
@@ -306,6 +312,6 @@ export function createPipeline(options: {
     chat: createTokenFactoryClient({ traceId, apiKey: options.nebiusKey, fetch: options.tokenFactoryFetch }),
     embed: createTokenFactoryClient({ traceId, apiKey: options.nebiusKey, fetch: options.embeddingFetch }),
     tavily: (deps) => createTavily({ ...deps, apiKey: options.tavilyKey, fetch: options.tavilyFetch }, options.tavilySender),
-    archiveFetch: options.archiveFetch, pageFetch: options.pageFetch, cache: options.cache, traceId, pagesDir: options.pagesDir, usagePath: options.usagePath,
+    archiveFetch: options.archiveFetch, pageFetch: options.pageFetch, resolveHost: options.resolveHost, cache: options.cache, traceId, pagesDir: options.pagesDir, usagePath: options.usagePath,
   });
 }

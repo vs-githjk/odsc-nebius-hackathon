@@ -2,15 +2,16 @@ import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import { parseArgs } from "node:util";
+import type { Resolver } from "../engine/publication.ts";
 import { renderCard } from "../card/terminal.ts";
 import { recordTrace, replayTrace, runTrace, type Pipeline, type RunEvent, type Wayback } from "../engine/run.ts";
 
-const POST_WALK_MS = 60_000;
+const POST_WALK_MS = 120_000;
 
 export async function traceCommand(args: string[], io: { write(line: string): void; error(line: string): void; color?: boolean } = {
   write: (line: string) => console.log(line), error: (line: string) => console.error(line),
   color: !!process.stdout.isTTY && !process.env.NO_COLOR,
-}, env: NodeJS.ProcessEnv = process.env, transport: typeof fetch = globalThis.fetch): Promise<number> {
+}, env: NodeJS.ProcessEnv = process.env, transport: typeof fetch = globalThis.fetch, resolveHost?: Resolver): Promise<number> {
   try {
     const { values, positionals } = parseArgs({ args, allowPositionals: true, options: {
       "replay-of": { type: "string" }, pipeline: { type: "string" }, out: { type: "string" },
@@ -50,6 +51,7 @@ export async function traceCommand(args: string[], io: { write(line: string): vo
           ...traceTransports(ledger, caps.usd, deadlineFetch, () => signal.throwIfAborted()),
           archiveFetch: deadlineFetch,
           // Raw page HTML for publication metadata (dating): plain GETs that follow redirects and carry no credentials.
+          resolveHost,
           pageFetch: (url, init) => transport(url, { ...init, signal: init?.signal ? AbortSignal.any([signal, init.signal]) : signal }),
           nebiusKey: env.NEBIUS_API_KEY,
           tavilyKey: env.TAVILY_API_KEY?.trim(),
