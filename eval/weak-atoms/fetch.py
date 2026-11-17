@@ -2,11 +2,15 @@
 
 Full page text stays in the git-ignored .cache/; only short candidate sentences are committed (labels.json).
 Run from the repo root: python3 -I eval/weak-atoms/fetch.py
+With --set=e3 it fetches the E3 check claims' pages into .cache/weak-atoms-e3 instead (T97 E3 check; E3 is never
+tuned on, so the pages are only used to check a cutoff already set on E2).
 """
 import hashlib, html.parser, json, pathlib, re, subprocess, sys
 
-CLAIMS = json.loads(pathlib.Path("eval/dev-claims.json").read_text(encoding="utf-8"))
-OUT = pathlib.Path(".cache/weak-atoms")
+E3 = "--set=e3" in sys.argv[1:]
+CLAIMS = json.loads(pathlib.Path("eval/dev-claims-e3.json" if E3 else "eval/dev-claims.json").read_text(encoding="utf-8"))
+OUT = pathlib.Path(".cache/weak-atoms-e3" if E3 else ".cache/weak-atoms")
+OUT.mkdir(parents=True, exist_ok=True)
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 Chrome/130 Safari/537.36"
 
 class Text(html.parser.HTMLParser):

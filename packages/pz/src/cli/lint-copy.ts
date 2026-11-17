@@ -8,7 +8,7 @@ const BANNED: [RegExp, string][] = [
   ...["independent sources", "invented by", "this outlet changed", "proves", "introduced by"]
     .map((p): [RegExp, string] => [new RegExp(`\\b${p}\\b`, "i"), `"${p}"`]),
 ];
-export const SCOPE = ["README.md", "llms.txt", "apps/web/src", "packages/pz/src/card"];
+export const SCOPE = ["README.md", "llms.txt", "docs/submission.md", "apps/web/src", "packages/pz/src/card"];
 
 export function lintText(text: string): { line: number; issue: string }[] {
   return text.split("\n").flatMap((l, i) => BANNED.filter(([re]) => re.test(l)).map(([, issue]) => ({ line: i + 1, issue })));
