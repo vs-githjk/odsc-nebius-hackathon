@@ -25,7 +25,12 @@ export function devScore(root: string): string | null {
   const file = join(root, "eval/dev-score.md");
   if (!existsSync(file)) return null;
   const rows = readFileSync(file, "utf8").split("\n").filter((l) => /^\|\s*\d{4}-\d{2}-\d{2}/.test(l));
-  return rows.at(-1)?.match(/(\d+)\s*\/\s*(\d+)/)?.slice(1, 3).join("/") ?? null;
+  // Columns: date, commit, set, false origins, target cited, earliest Pass / Partial / Fail, ...
+  const cells = rows.at(-1)?.split("|").map((c) => c.trim()).filter(Boolean) ?? [];
+  const earliest = cells[5]?.match(/^(\d+)\s*\/\s*(\d+)\s*\/\s*(\d+)$/);
+  if (!cells[4]?.match(/^\d+\/\d+$/) || !earliest) return null;
+  const scored = Number(earliest[1]) + Number(earliest[2]) + Number(earliest[3]);
+  return `${cells[2]}: false origins ${cells[3]}, target cited ${cells[4]}, earliest ${earliest[1]}/${scored} pass`;
 }
 
 // The held-out result (T67, #125), once its readout is committed.

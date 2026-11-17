@@ -87,7 +87,7 @@ describe("T95 make judge", () => {
     for (const part of ["== pz doctor", "== pz verify", "== planted traps", "stop state agrees", "Patient Zero  "]) expect(text).toContain(part);
     expect(text).not.toContain("trace_failed");
     expect(text).not.toMatch(/^\s+at .+:\d+:\d+\)?$/m);
-    expect(out.at(-1)).toMatch(/^\d+ (SAMPLE )?traces verified, 0 planted origins, dev score (not run yet|\d+\/\d+), held-out (not run yet|\d+\/\d+)\. make judge passed in \d+ s\.$/);
+    expect(out.at(-1)).toMatch(/^\d+ (SAMPLE )?traces verified, 0 planted origins, dev score (not run yet|E\d: false origins \d+( \(\+\d+\))?, target cited \d+\/\d+, earliest \d+\/\d+ pass), held-out (not run yet|\d+\/\d+)\. make judge passed in \d+ s\.$/);
   });
 
   it("says plainly when the SAMPLE fixtures stand in for reviewed live traces, and prefers traces/ when they exist", () => {
@@ -104,9 +104,11 @@ describe("T95 make judge", () => {
     const dir = mkdtempSync(join(tmpdir(), "pz-judge-scores-"));
     mkdirSync(join(dir, "eval"));
     expect([devScore(dir), heldOut(dir)]).toEqual([null, null]);
-    writeFileSync(join(dir, "eval/dev-score.md"), "| Date | Origin hits |\n|---|---|\n| 2026-11-16 | 4/20 |\n| 2026-11-17 | 9/20 |\n");
+    // The table eval/dev-score.ts writes: the last dated row wins, read by column.
+    const head = "| Date (UTC) | Commit | Set | False origins (+ unverified ORIGIN_FOUND) | Target cited | Earliest Pass / Partial / Fail | Cold stops |\n|---|---|---|---|---|---|---|\n";
+    writeFileSync(join(dir, "eval/dev-score.md"), head + "| 2026-11-16 01:40 | aaa | E2 | 1 (+0) | 1/11 | 0 / 0 / 11 | 3/9 |\n| 2026-11-17 18:38 | bbb | E2 | 0 (+1) | 4/10 | 1 / 0 / 8 | 3/9 |\n");
     writeFileSync(join(dir, "eval/heldout-readout.md"), "Origin hits: 6/10 on the held-out set.\n");
-    expect([devScore(dir), heldOut(dir)]).toEqual(["9/20", "6/10"]);
+    expect([devScore(dir), heldOut(dir)]).toEqual(["E2: false origins 0 (+1), target cited 4/10, earliest 1/9 pass", "6/10"]);
   });
 
   it("turns any failure into one plain FAIL line, never a stack trace", async () => {
