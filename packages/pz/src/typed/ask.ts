@@ -1,5 +1,5 @@
 import { TokenFactoryError, type ChatInput, type ChatData, type Result } from "../clients/tokenfactory.ts";
-import { Question, SAME_CLAIM, TypedAnswer, questionsToJsonSchema } from "../schema/questions.ts";
+import { BOUNDARY, Question, SAME_CLAIM, TypedAnswer, questionsToJsonSchema } from "../schema/questions.ts";
 import { confidenceFor, stringFields } from "./logprobs.ts";
 
 type Client = { chat(input: ChatInput): Promise<Result<ChatData>> };
@@ -27,6 +27,12 @@ export async function askSameClaim(input: { claim: string; sentence: string }, {
   if (threshold !== null && (!Number.isFinite(threshold) || threshold < 0 || threshold > 1)) throw new TokenFactoryError("bad_response");
   if (typeof input?.claim !== "string" || typeof input.sentence !== "string") throw new TokenFactoryError("bad_response");
   return (await askBatch([SAME_CLAIM], JSON.stringify({ CLAIM: input.claim, SENTENCE: input.sentence }), { client, threshold, model }))[0]!;
+}
+
+// T37: the boundary question for the earliest page of a cold trace.
+export async function askBoundary(input: { claim: string; sentence: string; text: string }, { client, threshold }: Options): Promise<TypedAnswer> {
+  if (threshold !== null && (!Number.isFinite(threshold) || threshold < 0 || threshold > 1)) throw new TokenFactoryError("bad_response");
+  return (await askBatch([BOUNDARY], JSON.stringify({ CLAIM: input.claim, SENTENCE: input.sentence, TEXT: input.text }), { client, threshold }))[0]!;
 }
 
 async function askBatch(questions: Question[], content: string, { client, threshold, model = MODEL }: Options): Promise<TypedAnswer[]> {
