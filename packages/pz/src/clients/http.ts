@@ -6,12 +6,17 @@ import { ClientError } from "./errors.ts";
 
 export { ClientError } from "./errors.ts";
 
+// Polite and honest about who is asking. No email, no key.
+export const USER_AGENT = "patient-zero-trace/1.0 (research tool for tracing a claim to its first source; github.com/vs-githjk/odsc-nebius-hackathon)";
+
 export type ClientDeps = {
   fetch?: typeof fetch;
   usage: UsageLog;
   cache: Cache;
   budget?: Budget;
   traceId?: string | null;
+  // Waits between a request and its retry; tests inject a no-op.
+  sleep?: (ms: number) => Promise<void>;
   tavilyAttempts?: {
     reserve(maxCredits: number): string;
     settle(id: string, credits: number): void;
@@ -31,6 +36,9 @@ export type ClientRequest<T> = {
   maxCredits: number;
   timeoutMs: number;
   retryTimeouts?: boolean;
+  // Statuses beyond 429 and 5xx that are worth one more try (a rate-limited archive answers 403), and how long to wait first.
+  retryStatuses?: number[];
+  retryDelayMs?: number;
   usdPerCredit?: number;
   parse(body: string): { data: T; credits: number };
   secrets?: string[];
@@ -107,7 +115,10 @@ export async function send<T>(deps: ClientDeps, req: ClientRequest<T>): Promise<
     }
     if (!response.ok) {
       row({ credits: 0, latencyMs: latency(), status: String(response.status), cacheHit: false });
-      if (isRetryable(response.status) && !last) continue;
+      if ((isRetryable(response.status) || req.retryStatuses?.includes(response.status)) && !last) {
+        if (req.retryDelayMs) await (deps.sleep ?? ((ms) => new Promise<void>((resolve) => setTimeout(resolve, ms))))(req.retryDelayMs);
+        continue;
+      }
       throw new ClientError("http_error", `${req.service} ${req.endpoint}: HTTP ${response.status}`, {
         status: response.status,
       });

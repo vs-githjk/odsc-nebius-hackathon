@@ -109,6 +109,8 @@ export type PipelineParts = {
   // Fetches a page's raw HTML for its publication metadata (dating, #79). Without it, dates come from archive captures only.
   pageFetch?: typeof fetch;
   resolveHost?: Resolver;
+  // Waits between a rate-limited archive request and its retry; tests pass a no-op.
+  sleep?: (ms: number) => Promise<void>;
   cache?: Cache;
   traceId?: string;
   pagesDir?: string;
@@ -122,7 +124,7 @@ export function buildPipeline(parts: PipelineParts): { pipeline: Pipeline; wayba
   const id = parts.traceId ?? randomUUID();
   const rules = loadRules();
   const usage = createUsageLog(parts.usagePath ? { path: parts.usagePath } : {});
-  const base = { usage, cache: parts.cache ?? createFileCache(), traceId: id };
+  const base = { usage, cache: parts.cache ?? createFileCache(), traceId: id, sleep: parts.sleep };
   const wayback = createWayback({ ...base, fetch: parts.archiveFetch });
   const pagesDir = parts.pagesDir ?? "runs/pages";
 
@@ -218,9 +220,7 @@ export function buildPipeline(parts: PipelineParts): { pipeline: Pipeline; wayba
       const pages: PageInput[] = [];
       const work = async () => {
         for (let node = queue.shift(); node; node = queue.shift()) {
-          let saved = "";
-          try { saved = readFileSync(join(pagesDir, walked.id, `${node.id}.txt`), "utf8"); } catch { /* no saved page */ }
-          const found = await evidence(node.url, saved);
+          const found = await evidence(node.url);
           if (found) pages.push({ url: node.url, text: "", metadata: found.date, metadataSource: found.source === "metadata" ? undefined : found.source });
         }
       };
@@ -303,6 +303,7 @@ export function createPipeline(options: {
   archiveFetch?: typeof fetch;
   pageFetch?: typeof fetch;
   resolveHost?: Resolver;
+  sleep?: (ms: number) => Promise<void>;
   traceId?: string;
   pagesDir?: string;
   usagePath?: string;
@@ -312,6 +313,6 @@ export function createPipeline(options: {
     chat: createTokenFactoryClient({ traceId, apiKey: options.nebiusKey, fetch: options.tokenFactoryFetch }),
     embed: createTokenFactoryClient({ traceId, apiKey: options.nebiusKey, fetch: options.embeddingFetch }),
     tavily: (deps) => createTavily({ ...deps, apiKey: options.tavilyKey, fetch: options.tavilyFetch }, options.tavilySender),
-    archiveFetch: options.archiveFetch, pageFetch: options.pageFetch, resolveHost: options.resolveHost, cache: options.cache, traceId, pagesDir: options.pagesDir, usagePath: options.usagePath,
+    archiveFetch: options.archiveFetch, pageFetch: options.pageFetch, resolveHost: options.resolveHost, sleep: options.sleep, cache: options.cache, traceId, pagesDir: options.pagesDir, usagePath: options.usagePath,
   });
 }

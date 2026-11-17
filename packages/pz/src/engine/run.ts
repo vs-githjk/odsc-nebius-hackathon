@@ -1,6 +1,7 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { isDeepStrictEqual } from "node:util";
-import { dateNode, type DateEvidence } from "./dating.ts";
+import { ClientError } from "../clients/errors.ts";
+import { dateEvidence, dateNode, type DateEvidence } from "./dating.ts";
 import type { createWayback } from "../clients/wayback.ts";
 import { dirname } from "node:path";
 import { Trace } from "../schema/index.ts";
@@ -33,14 +34,29 @@ type Emit = (event: RunEvent) => void;
 // Missing publication evidence remains unconfirmed unless Wayback caps it.
 export function datingStep(wayback: Wayback): Step {
   return async (trace, context) => {
-    const nodes = [], usage = [...trace.usage];
+    const nodes = [], usage = [...trace.usage], searchLog = [...trace.searchLog];
     for (const node of trace.nodes) {
       const page = context.pages.find(page => page.url === node.url);
       const evidence: DateEvidence = { metadata: page?.metadata, byline: page?.byline, metadataSource: page?.metadataSource };
-      const dated = await dateNode(node, evidence, wayback);
-      nodes.push(dated.node); usage.push(dated.usage);
+      try {
+        const dated = await dateNode(node, evidence, wayback);
+        nodes.push(dated.node); usage.push(dated.usage);
+      } catch (error) {
+        // One page's archive lookup failing (rate limit, outage, timeout) never ends the trace. With no capture there is
+        // nothing to cap the page's own publication evidence with, which is #79's "pending" case: the evidence is kept
+        // with no first capture, and a page with none stays unconfirmed.
+        if (!(error instanceof ClientError)) throw error;
+        const at = new Date().toISOString();
+        nodes.push({ ...node, date: dateEvidence(evidence, { status: "pending" }) });
+        usage.push({
+          at, traceId: trace.id, step: "dating", service: "wayback", endpoint: "cdx", model: null, promptTokens: 0, completionTokens: 0,
+          cachedTokens: 0, credits: 0, costUsd: 0, latencyMs: 0, status: error.status ? `${error.code} ${error.status}` : error.code, cacheHit: false,
+        });
+        searchLog.push({ at, step: "dating", query: `wayback unavailable for ${node.url}: ${error.code}${error.status ? ` ${error.status}` : ""}; date from the page's own evidence only`,
+          endDate: null, startDate: null, results: 0, kept: 0, dropped: 0 });
+      }
     }
-    return { ...trace, nodes, usage };
+    return { ...trace, nodes, usage, searchLog };
   };
 }
 

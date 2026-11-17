@@ -29,6 +29,10 @@ type World = {
   phrase?: { phrases: string[]; subject: string };
   onSearch?: (count: number) => void;
   registry?: Record<string, unknown>;
+  // Typed questions (by id) answered with unparseable content, embeddings answered with a malformed body, the Wayback CDX answered 403.
+  failTyped?: string[];
+  embedBad?: boolean;
+  cdx403?: boolean;
 };
 
 // A reply with logprobs for each string field, so typed answers carry a confidence like the real provider's.
@@ -58,6 +62,7 @@ function stub(world: World) {
   const impl = (async (input: string | URL | Request, init?: RequestInit) => {
     const url = String(input);
     calls.push({ url });
+    if (url.includes("/cdx/") && world.cdx403) return new Response("forbidden", { status: 403 });
     if (url.includes("/cdx/")) {
       // The Wayback first capture is the only date the pipeline trusts here: each page was first archived on its date.
       const page = world.pages.find((p) => p.url === new URL(url).searchParams.get("url"));
@@ -78,6 +83,7 @@ function stub(world: World) {
       const results = world.pages.filter((p) => (body.urls as string[]).some((u) => p.url.replace("www.", "") === u.replace("www.", ""))).map((p) => ({ url: p.url, title: p.title ?? "A page", raw_content: p.text }));
       return new Response(JSON.stringify({ results, failed_results: [], usage: { credits: 1 } }));
     }
+    if (url.endsWith("/v1/embeddings") && world.embedBad) return new Response(JSON.stringify({ data: [], usage: { prompt_tokens: 5 } }));
     if (url.endsWith("/v1/embeddings")) {
       const data = (body.input as string[]).map((text, index) => {
         const slot = createHash("sha256").update(text).digest()[0]! % 64;
@@ -101,6 +107,7 @@ function stub(world: World) {
       }
       const questions: { id: string; options: { id: string }[] }[] = JSON.parse(system);
       calls.push({ url, step: "typed", questions: questions.map((q) => q.id) });
+      if (questions.some((q) => world.failTyped?.includes(q.id))) return reply("not json");
       const fields = Object.fromEntries(questions.map((q) => [q.id,
         q.id === "same_claim" ? (world.sameClaim ?? "yes") : q.id === "boundary" ? "none" : q.id === "page_type" ? (pageOf(body).includes("keepers recorded") ? "dataset" : "report")
           : q.options.some((o) => o.id === "no") ? "no" : q.options[0]!.id]));
@@ -341,6 +348,64 @@ describe("scholarly registry evidence (#79)", () => {
     const out: string[] = [];
     expect(await traceCommand(["--replay-of", saved, "--json"], { write: (l) => out.push(l), error: () => {} }, {}, never, async () => { throw new Error("dns on replay"); })).toBe(0);
     expect(Trace.parse(JSON.parse(out.join(""))).nodes[0]!.date.value).toBe("2004-01-20");
+  });
+});
+
+describe("every provider call failing still ends in a card", () => {
+  const cases: [string, World["failTyped"], Partial<World>, (trace: Trace) => void][] = [
+    ["page_type", ["page_type"], {}, (t) => {
+      expect(t.nodes.every((n) => n.pageType === null)).toBe(true);
+      expect(t.decision.state).toBe("TRAIL_GOES_COLD");
+    }],
+    ["readouts", ["scope_widened"], {}, (t) => {
+      expect(t.hops.length).toBeGreaterThan(0);
+      expect(t.hops.every((h) => !h.faithful)).toBe(true);
+    }],
+    ["boundary", ["boundary"], { sameClaim: "no" }, (t) => {
+      expect(t.decision.state).toBe("TRAIL_GOES_COLD");
+      expect(t.nodes.every((n) => !n.boundary)).toBe(true);
+    }],
+    ["embeddings", [], { embedBad: true }, (t) => expect(t.nodes.length).toBeGreaterThan(0)],
+    ["same_claim", ["same_claim"], {}, (t) => expect(t.decision.state).toBe("TRAIL_GOES_COLD")],
+  ];
+  it.each(cases)("%s", async (_name, failTyped, extra, check) => {
+    const claim = zoo(unique());
+    const t = run(claim, { pages: pagesFor(claim), failTyped, ...extra }, { extra: ["--json"] });
+    expect(await t.go(t.args)).toBe(0);
+    expect(t.err).toEqual([]);
+    const trace = Trace.parse(JSON.parse(t.out.join("")));
+    check(trace);
+  });
+
+  it("registry and page lookups that fail leave the archive date and a card", async () => {
+    const claim = zoo(unique());
+    const pmid = String(50000000 + Number(unique()));
+    const t = run(claim, { pages: [{ url: `https://pubmed.ncbi.nlm.nih.gov/${pmid}`, date: "2020-06-24", text: `Paper: ${claim}` }] }, { extra: ["--json"] });
+    expect(await t.go(t.args)).toBe(0);
+    const trace = Trace.parse(JSON.parse(t.out.join("")));
+    expect(trace.nodes[0]!.date).toMatchObject({ kind: "existed_by", source: "wayback_first_capture" });
+  });
+
+  it("a Wayback that refuses every request (403) costs the dates, not the trace, and says so", async () => {
+    const claim = zoo(unique());
+    const dir = mkdtempSync(join(tmpdir(), "pz-cdx-"));
+    const ledger = join(dir, "ledger.json");
+    initializeBudget(ledger, { capUsd: 15, priorSpendUsd: 0, start: "2020-01-01T00:00:00.000Z", end: "2099-01-01T00:00:00.000Z" });
+    const net = stub({ pages: pagesFor(claim), cdx403: true });
+    const sleeps: number[] = [];
+    const { pipeline, wayback } = createPipeline({
+      ...traceTransports(openBudget(ledger), 0.5, net.fetch, () => {}),
+      archiveFetch: net.fetch, nebiusKey: "k", tavilyKey: "k", pagesDir: join(dir, "pages"), usagePath: join(dir, "usage.jsonl"),
+      cache: { get: () => null, set: () => {} }, sleep: async (ms) => { sleeps.push(ms); },
+    });
+    const trace = await runTrace(claim, pipeline, { wayback });
+    expect(trace.nodes.length).toBeGreaterThan(0);
+    expect(trace.nodes.every((n) => n.date.kind === "unconfirmed" || n.date.source !== "wayback_first_capture")).toBe(true);
+    expect(trace.searchLog.some((l) => l.step === "dating" && l.query.includes("wayback unavailable for"))).toBe(true);
+    expect(trace.usage.some((r) => r.service === "wayback" && r.status === "403")).toBe(true);
+    // 403 is retried once after a short pause, never more than 2 s.
+    expect(sleeps.length).toBeGreaterThan(0);
+    expect(Math.max(...sleeps)).toBeLessThanOrEqual(2000);
   });
 });
 

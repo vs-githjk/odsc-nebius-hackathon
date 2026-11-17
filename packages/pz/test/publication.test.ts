@@ -93,11 +93,11 @@ describe("page fetching is public-only, logged and challenge-aware", () => {
     expect(await own.found("https://n.example/a")).toEqual({ date: "2008-02-03", source: "metadata" });
   });
 
-  it("dates a PMC page from esummary db=pmc, or from PubMed when the page names its PMID", async () => {
-    const pmc = setup({ [esummary("pmc", "1234567")]: json({ result: { "1234567": { pubdate: "2010 Mar 5" } } }) });
-    expect(await pmc.evidence("https://pmc.ncbi.nlm.nih.gov/articles/PMC1234567/")).toBe("2010-03-05");
-    const viaPmid = setup({ [esummary("pubmed", "999")]: json({ result: { "999": { pubdate: "2009 Dec 1" } } }) });
-    expect(await viaPmid.evidence("https://pmc.ncbi.nlm.nih.gov/articles/PMC1234567/", "Citation. PMID: 999")).toBe("2009-12-01");
+  it("dates a PMC page from its own PMC record, never from a PMID printed in its text (that may be a cited reference)", async () => {
+    const t = setup({ [esummary("pmc", "1234567")]: json({ result: { "1234567": { pubdate: "2010 Mar 5" } } }),
+      [esummary("pubmed", "999")]: json({ result: { "999": { pubdate: "1987 Dec 1" } } }) });
+    expect(await t.evidence("https://pmc.ncbi.nlm.nih.gov/articles/PMC1234567/", "References. 12. Smith J. PMID: 999")).toBe("2010-03-05");
+    expect(t.urls).toEqual([esummary("pmc", "1234567")]);
   });
 
   it("dates a DOI link from Crossref, and a page with citation_doi but no date", async () => {
@@ -170,8 +170,8 @@ describe("page fetching is public-only, logged and challenge-aware", () => {
 describe("addresses and names that point inside", () => {
   it("classifies private, loopback, link-local, CGNAT and IPv6 internal addresses", () => {
     for (const a of ["127.0.0.1", "10.1.2.3", "172.16.0.1", "172.31.255.255", "192.168.1.1", "169.254.169.254", "100.64.0.1", "0.0.0.0", "224.0.0.1",
-      "::1", "::", "fc00::1", "fd12:3456::1", "fe80::1", "::ffff:127.0.0.1", "::ffff:7f00:1", "ff02::1"]) expect(isPrivateAddress(a), a).toBe(true);
-    for (const a of ["93.184.216.34", "172.32.0.1", "100.63.0.1", "2606:2800:220:1::1", "::ffff:5db8:d822"]) expect(isPrivateAddress(a), a).toBe(false);
+      "::1", "::", "fc00::1", "fd12:3456::1", "fe80::1", "::ffff:127.0.0.1", "::ffff:7f00:1", "ff02::1", "64:ff9b::7f00:1", "64:ff9b::a00:1", "2002:7f00:1::", "2002:a9fe:a9fe::1", "::7f00:1", "::127.0.0.1", "::10.0.0.1"]) expect(isPrivateAddress(a), a).toBe(true);
+    for (const a of ["93.184.216.34", "172.32.0.1", "100.63.0.1", "2606:2800:220:1::1", "::ffff:5db8:d822", "64:ff9b::5db8:d822", "2002:5db8:d822::1", "::5db8:d822"]) expect(isPrivateAddress(a), a).toBe(false);
   });
   it("refuses a name that resolves to loopback (nip.io, localtest.me) or to one private address among several, before requesting it", async () => {
     for (const [host, addresses] of [["127.0.0.1.nip.io", ["127.0.0.1"]], ["localtest.me", ["127.0.0.1", "::1"]], ["mixed.example", ["93.184.216.34", "10.0.0.7"]], ["gone.example", []]] as const) {
@@ -206,6 +206,28 @@ describe("addresses and names that point inside", () => {
     expect(text.length).toBe(2500);
     expect(cancelled).toBe(true);
     expect(pulled).toBeLessThan(10);
+  });
+});
+
+describe("redirects against a real local server", () => {
+  it("never requests the Location it refused: removing redirect manual would hit /secret", async () => {
+    const { createServer } = await import("node:http");
+    let secretHits = 0;
+    const server = createServer((req, res) => {
+      if (req.url === "/secret") { secretHits++; res.end("secret"); return; }
+      res.writeHead(302, { location: `http://127.0.0.1:${(server.address() as { port: number }).port}/secret` });
+      res.end();
+    });
+    await new Promise<void>((resolve) => server.listen(0, "127.0.0.1", resolve));
+    const port = (server.address() as { port: number }).port;
+    // The first hop is a public-looking name that really reaches the local server; its Location points at loopback.
+    const real = ((url: string, init?: RequestInit) => fetch(String(url).replace("start.example", "127.0.0.1"), init)) as typeof fetch;
+    try {
+      await expect(safeFetch(real, 1000, async () => ["93.184.216.34"])(`http://start.example:${port}/a`)).rejects.toThrow(/blocked/);
+      expect(secretHits).toBe(0);
+    } finally {
+      server.close();
+    }
   });
 });
 

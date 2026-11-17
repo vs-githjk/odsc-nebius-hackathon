@@ -1,6 +1,6 @@
 import { lookup } from "node:dns/promises";
 import { isIP } from "node:net";
-import { send, type ClientDeps } from "../clients/http.ts";
+import { USER_AGENT, send, type ClientDeps } from "../clients/http.ts";
 import type { Cache } from "../clients/cache.ts";
 import type { UsageLog } from "../usage/log.ts";
 
@@ -76,8 +76,6 @@ const PAGE_BYTES = 1_000_000;
 const API_BYTES = 200_000;
 const TIMEOUT_MS = 10_000;
 const MAX_HOPS = 3;
-// Polite and honest about who is asking. No email, no key.
-export const USER_AGENT = "patient-zero-trace/1.0 (research tool for tracing a claim to its first source; github.com/vs-githjk/odsc-nebius-hackathon)";
 
 // Loopback, private, link-local, CGNAT, multicast/reserved and unspecified addresses, IPv4 and IPv6 (ULA, link-local,
 // and IPv4-mapped forms of all of the above).
@@ -90,13 +88,36 @@ export function isPrivateAddress(address: string): boolean {
       || (a === 198 && (b === 18 || b === 19)) || a >= 224;
   }
   if (kind === 6) {
-    const v = address.toLowerCase();
-    const mapped = /^::ffff:(\d+\.\d+\.\d+\.\d+)$/.exec(v)?.[1]
-      ?? (/^::ffff:([0-9a-f]{1,4}):([0-9a-f]{1,4})$/.exec(v)?.slice(1).map((h) => parseInt(h, 16)).flatMap((n) => [n >> 8, n & 255]).join("."));
-    if (mapped) return isPrivateAddress(mapped);
-    return v === "::" || v === "::1" || /^f[cd]/.test(v) || /^fe[89ab]/.test(v) || v.startsWith("ff");
+    const g = expandV6(address);
+    if (!g) return true;
+    const v4 = (hi: number, lo: number) => `${hi >> 8}.${hi & 255}.${lo >> 8}.${lo & 255}`;
+    const head5 = g.slice(0, 5).every((x) => x === 0);
+    if (g.slice(0, 6).every((x) => x === 0)) return g[6] === 0 && g[7]! <= 1 ? true : isPrivateAddress(v4(g[6]!, g[7]!)); // ::, ::1, IPv4-compatible
+    if (head5 && g[5] === 0xffff) return isPrivateAddress(v4(g[6]!, g[7]!)); // IPv4-mapped
+    if (g[0] === 0x64 && g[1] === 0xff9b && g.slice(2, 6).every((x) => x === 0)) return isPrivateAddress(v4(g[6]!, g[7]!)); // NAT64
+    if (g[0] === 0x2002) return isPrivateAddress(v4(g[1]!, g[2]!)); // 6to4
+    const first = g[0]!;
+    return (first & 0xfe00) === 0xfc00 || (first & 0xffc0) === 0xfe80 || (first & 0xff00) === 0xff00;
   }
   return true;
+}
+
+// Eight 16-bit groups of an IPv6 address, or null when it does not parse.
+function expandV6(address: string): number[] | null {
+  let text = address.toLowerCase().split("%")[0]!;
+  const dotted = /(\d+\.\d+\.\d+\.\d+)$/.exec(text)?.[1];
+  if (dotted) {
+    const [a, b, c, d] = dotted.split(".").map(Number) as [number, number, number, number];
+    text = text.slice(0, -dotted.length) + `${((a << 8) | b).toString(16)}:${((c << 8) | d).toString(16)}`;
+  }
+  const [left = "", right, extra] = text.split("::");
+  if (extra !== undefined) return null;
+  const l = left ? left.split(":") : [];
+  const r = right ? right.split(":") : [];
+  const fill = right === undefined ? 0 : 8 - l.length - r.length;
+  if (fill < 0 || (right === undefined && l.length !== 8)) return null;
+  const groups = [...l, ...Array(fill).fill("0"), ...r].map((h) => parseInt(h, 16));
+  return groups.length === 8 && groups.every((n) => Number.isInteger(n) && n >= 0 && n <= 0xffff) ? groups : null;
 }
 
 export type Resolver = (host: string) => Promise<string[]>;
@@ -241,7 +262,7 @@ export function createEvidence(deps: EvidenceDeps) {
     return body;
   }, pageFetch);
 
-  return async function publicationFor(url: string, savedText = ""): Promise<Evidence | null> {
+  return async function publicationFor(url: string, _savedText = ""): Promise<Evidence | null> {
     let u: URL;
     try { u = new URL(url); } catch { return null; }
     const host = u.hostname.toLowerCase();
@@ -252,8 +273,9 @@ export function createEvidence(deps: EvidenceDeps) {
     let found: Evidence | null = null;
     if (pubmed) found = registry(await ncbi("pubmed", pubmed), "registry_pubmed");
     else if (pmc) {
-      const pmid = /\bPMID:?\s*(\d{1,9})\b/.exec(savedText)?.[1];
-      found = pmid ? registry(await ncbi("pubmed", pmid), "registry_pubmed") : registry(await ncbi("pmc", pmc), "registry_pmc");
+      // Always the page's own PMC record. A PMID printed in the text may belong to a cited reference, and an older
+      // paper's date would backdate this page.
+      found = registry(await ncbi("pmc", pmc), "registry_pmc");
     } else if (doi) found = registry(await crossref(doi), "registry_crossref");
     if (found) return found;
     const page = await html(url);
