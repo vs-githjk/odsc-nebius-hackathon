@@ -9,6 +9,10 @@ This is the text for the submission form, drafted from what is in the repo on No
 
 Says Who
 
+## Captain name
+
+[SLOT: Vidyut fills this in; the form asks for the captain's name, and it isn't written into the repo]
+
 ## Team description
 
 ### In two sentences
@@ -68,7 +72,7 @@ https://github.com/vs-githjk/odsc-nebius-hackathon [SLOT: the repo is public and
 
 ## Report URL (optional)
 
-The README's evaluation section, once the slots above are filled: [README.md](../README.md#evaluation).
+The README's eval section, once the slots above are filled: [README.md](../README.md#eval).
 
 ## Video link
 

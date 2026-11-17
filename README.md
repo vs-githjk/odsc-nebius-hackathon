@@ -41,6 +41,8 @@ These two are labelled synthetic: the claim is the invented Harbor Zoo one, and 
 
 | Claim set | Origin hit rate | Full trace vs baseline ladder | Full trace vs consumer tools | Cost p50 / p90 | Time to stop state p50 / p90 |
 |---|---|---|---|---|---|
+<!-- numbers ok: 10 (the held-out set's size, committed as a hash in eval/heldout.sha256 so the claims stay unseen) -->
+
 | Held-out (10 claims) | not run yet | not run yet | not run yet | not run yet | not run yet |
 
 ## For judges
@@ -84,11 +86,15 @@ Teammates and their agents: read [docs/AGENTS.md](docs/AGENTS.md) first.
 
 ## Setup
 
+<!-- numbers ok: 24 (the Node version in package.json engines) -->
+
 1. Node 24, then `npm ci`.
 2. Copy [.env.example](.env.example) to `.env` and fill it locally (`NEBIUS_API_KEY`, `TAVILY_API_KEY`). `.env` is git-ignored; never paste keys in issues, PRs or chat.
 3. `make judge` and `make verify` need no keys. `make doctor` tells you what is missing and the fix for each line.
 
 ## Models (Nebius Token Factory)
+
+<!-- numbers ok: 404 (an HTTP status) -->
 
 - `Qwen/Qwen3-30B-A3B-Instruct-2507`: typed readouts, fingerprint, card sentence.
 - `Qwen/Qwen3-Embedding-8B`: clustering copies (replaced `BAAI/bge-en-icl`, which returned 404).
