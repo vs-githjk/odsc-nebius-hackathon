@@ -75,6 +75,9 @@ const CONTEXT_CHARS = 200;
 const LINKS_PER_SPAN = 3;
 const LINKS_PER_ROUND = 3;
 const SOURCE_QUERIES_PER_WINDOW = 2;
+// F7 (#192): rounds in a row that only follow citations without reaching an earlier page. After this many the walk
+// stops following and ends as it would with no links left: a cold trail, not a cap hit.
+export const LINK_ROUNDS_WITHOUT_PROGRESS = 2;
 // T49: fact-check pages read as maps per trace, and the citations taken from each.
 const META_PAGES = 2;
 const META_LINKS = 4;
@@ -436,7 +439,12 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
   try {
     let endDate = deps.today;
     const plan = deps.planQueries ?? codePlanner;
-    for (let depth = 0; ; depth++) {
+    // F7: caps.depth counts steps back in time (rounds whose window moved back), not rounds. A round that only follows
+    // links and finds nothing earlier counts against LINK_ROUNDS_WITHOUT_PROGRESS instead, so a long citation chain on
+    // a cold claim cannot turn it into a depth-capped PARTIAL (dev-05, dev-06, dev-20) or eat the time cap.
+    let steps = 0;
+    let idleLinkRounds = 0;
+    for (let round = 0; ; round++) {
       if (outOfTime()) {
         capHit = "ms";
         break;
@@ -527,7 +535,7 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
       }
 
       // T49: once per trace, fact-check pages that discuss the claim, read as maps before anything else.
-      if (depth === 0 && rules.metaMaps) {
+      if (round === 0 && rules.metaMaps) {
         const { data } = await deps.tavily.search({
           query: queries[0]!.query, exactMatch: true, endDate, includeRawContent: false, includePublishedDate: true, maxResults: 5, includeDomains: rules.factCheckDomains,
         }, { step: "meta-search" });
@@ -575,8 +583,15 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
       earlierFound = movedBack ? found : 0;
       const moreLinks = [...followQueue.keys(), ...metaQueue].some((u) => !seen.has(u));
       if (!movedBack && !moreLinks) break;
-      if (depth + 1 >= rules.caps.depth) {
-        capHit = "depth";
+      if (movedBack) {
+        idleLinkRounds = 0;
+        steps += 1;
+        if (steps >= rules.caps.depth) {
+          capHit = "depth";
+          break;
+        }
+      } else if (++idleLinkRounds >= LINK_ROUNDS_WITHOUT_PROGRESS) {
+        note({ step: "stop", reason: `followed citations for ${idleLinkRounds} rounds without reaching an earlier page; links left unfollowed` });
         break;
       }
       if (earliestNow) endDate = dayBefore(earliestNow);
