@@ -6,7 +6,7 @@ In the spike, the consumer research tools beat us. Perplexity cited the web targ
 
 - `draw.json` lists 10 E3 claims, drawn by code. Every E3 claim is ranked by sha256 of the fixed seed and its id, and the first 10 are kept.
 - The seed is `SEED` in `rematch.ts`. Anyone can re-run `node --import tsx eval/rematch/rematch.ts draw` and get the same list.
-- E3 is meant to share no claim with the held-out set, so none should be drawn. Rohan is confirming that on #168; until he does, treat it as pending. Nothing is tuned on E3.
+- E3 shares no claim with the held-out set: Rohan checked the 40 E3 claims on #105 (no overlap). Nothing is tuned on E3.
 
 | Claim | Expected | Text |
 |---|---|---|
