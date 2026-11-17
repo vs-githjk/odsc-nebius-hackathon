@@ -1,9 +1,6 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import type { Trace } from "pz/schema";
-import { claimProblem, findTrace } from "../model/claimMatch.ts";
-
-// try counts submits, so a repeated answer is a new node and screen readers announce it again.
-type Outcome = { kind: "idle" } | { kind: "problem"; text: string; try: number } | { kind: "untraced"; claim: string; try: number };
+import { outcomeOf, submitsOnKey, type Outcome } from "../model/claimBox.ts";
 
 // The claim box. A claim that matches a recorded trace opens it; anything else gets a calm answer, never a guess.
 // focusKey changes when the nav's "Trace a claim" is pressed, and the box takes focus.
@@ -21,16 +18,15 @@ export function ClaimBox({ traces, focusKey, onMatch }: { traces: Trace[]; focus
 
   const submit = (e?: FormEvent) => {
     e?.preventDefault();
-    const claim = text.trim();
-    if (!claim) return input.current?.focus();
-    const problem = claimProblem(claim);
-    tries.current += 1;
-    if (problem) return setOutcome({ kind: "problem", text: problem, try: tries.current });
-    const trace = findTrace(claim, traces);
-    if (trace) {
-      onMatch(trace.id);
-      window.location.hash = `#/t/${encodeURIComponent(trace.id)}`;
-    } else setOutcome({ kind: "untraced", claim, try: tries.current });
+    const next = outcomeOf(text, traces, tries.current);
+    if (next.kind === "empty") return input.current?.focus();
+    if (next.kind === "open") {
+      onMatch(next.id);
+      window.location.hash = `#/t/${encodeURIComponent(next.id)}`;
+      return;
+    }
+    tries.current = next.try;
+    setOutcome(next);
   };
 
   return (
@@ -50,8 +46,7 @@ export function ClaimBox({ traces, focusKey, onMatch }: { traces: Trace[]; focus
             if (outcome.kind !== "idle") setOutcome({ kind: "idle" });
           }}
           onKeyDown={(e) => {
-            // Enter while an input method is composing picks a character; it is not a submit.
-            if (e.key === "Enter" && !e.shiftKey && !e.nativeEvent.isComposing) submit(e);
+            if (submitsOnKey({ key: e.key, shiftKey: e.shiftKey, isComposing: e.nativeEvent.isComposing })) submit(e);
           }}
         />
         <button className="btn claim-go" type="submit">

@@ -1,9 +1,11 @@
 import { useEffect, useState, type MouseEvent } from "react";
+import type { Trace } from "pz/schema";
 import { independenceLine } from "pz/headline";
 import { ClaimBox } from "./components/ClaimBox.tsx";
 import { ModeBadge } from "./components/ModeBadge.tsx";
 import { TraceView } from "./components/TraceView.tsx";
 import { loadTraces } from "./data/loadTraces.ts";
+import { isPlainClick, matchedNote } from "./model/claimBox.ts";
 import { heroTrace, rowFacts, sampleRow, sampleRows } from "./model/sampleRow.ts";
 import { parseRoute, type Route } from "./route.ts";
 
@@ -81,17 +83,16 @@ function Start({ focusKey, onMatch }: { focusKey: number; onMatch(id: string): v
   );
 }
 
-const recordedOn = new Intl.DateTimeFormat("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" });
-
-// matched: the claim box opened this trace for a pasted claim, so the page says it is a recording, not a fresh trace.
-function TraceRoute({ id, matched }: { id: string; matched: boolean }) {
-  const trace = traces.find((t) => t.id === id);
+// matched: the claim box opened this trace for a pasted claim, so the page says it is a recording (or a sample), not a
+// fresh trace. A real trace's way back is plain "Back": the samples are not where it came from (#192 B).
+export function TraceRoute({ id, matched, all = traces }: { id: string; matched: boolean; all?: Trace[] }) {
+  const trace = all.find((t) => t.id === id);
   return (
     <main className="wrap trace-page">
-      <a className="back" href="#/">Back to the samples</a>
+      <a className="back" href="#/">{trace && !trace.synthetic ? "Back" : "Back to the samples"}</a>
       {trace && matched && (
         <p className="matched" role="status">
-          Matched a recorded trace, recorded {recordedOn.format(new Date(trace.recordedAt))}.
+          {matchedNote(trace)}
         </p>
       )}
       {trace ? <TraceView trace={trace} /> : <p className="error" role="alert">No trace called {id}.</p>}
@@ -110,7 +111,7 @@ export function App() {
   // "Trace a claim" goes to the start page and puts the cursor in the claim box. A modified or middle click is left
   // to the browser (a new tab or window).
   const traceAClaim = (e: MouseEvent<HTMLAnchorElement>) => {
-    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+    if (!isPlainClick(e)) return;
     e.preventDefault();
     if (route.name !== "start") window.location.hash = "#/";
     setFocusKey((k) => k + 1);

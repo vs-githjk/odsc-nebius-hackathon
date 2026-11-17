@@ -1,10 +1,11 @@
 import type { Trace } from "pz/schema";
 import { sampleRows } from "./sampleRow.ts";
 
-// Words that carry no claim of their own. Negations, multipliers, number words and units are never here: they are
-// what make two claims different.
+// Words that carry no claim of their own, folded away before comparing: function words, and the hedges and attribution
+// verbs a copy adds or drops without changing the claim (about, around, nearly, says, according to). Negations,
+// multipliers, number words, units, comparison words (more, fewer) and stance words (rarely, denied) are never here.
 const STOP = new Set(
-  "a an the of to in on at by for from with and or but as is are was were be been being it its this that these those than then so says said say according do does did has have had which who whom whose there their they them we our you your he she his her i my me about into over".split(" "),
+  "a an the of to in on at by for from with and or but as is are was were be been being it its this that these those than then so says said say according do does did has have had which who whom whose there their they them we our you your he she his her i my me about into over around nearly roughly approximately almost".split(" "),
 );
 const NUMBER_WORDS: Record<string, string> = {
   zero: "0", one: "1", two: "2", three: "3", four: "4", five: "5", six: "6", seven: "7", eight: "8", nine: "9", ten: "10",
@@ -44,30 +45,25 @@ function parse(text: string): Parsed {
   };
 }
 
-const share = (from: string[], into: string[]) => {
-  const pool = new Set(into);
-  return from.length === 0 ? 0 : from.filter((w) => pool.has(w)).length / from.length;
-};
-const twoWay = (a: string[], b: string[]) => Math.min(share(a, b), share(b, a));
 // The words before the claim's first number (its subject and verb) and the words after it.
 const sides = (ws: string[]) => {
   const at = ws.findIndex((w) => /\d/.test(w));
   return [ws.slice(0, at), ws.slice(at + 1)] as const;
 };
 
-// Two-way: each text's content words must be found in the other. The words before the first number and the words
-// after it are also checked apart, which keeps who does what ("seals nap ... than penguins" is not "penguins nap ...
-// than seals") while allowing "Penguins at Harbor Zoo nap". Numbers, multipliers, negations and units match exactly.
-export const WORD_SHARE = 0.9;
-export const SIDE_SHARE = 0.8;
+const same = (a: string[], b: string[]) => a.length === b.length && [...a].sort().join(" ") === [...b].sort().join(" ");
+
+// Exact, after folding: both texts carry the same content words, and the same words before the first number and after
+// it, which keeps who does what ("seals nap ... than penguins" is not "penguins nap ... than seals") while allowing
+// "Penguins at Harbor Zoo nap". One changed word ("lions", "rarely", "denied", "more than") is a different claim (XO
+// on #184). Numbers, multipliers, negations and units are compared as their own classes too.
 const MIN_WORDS = 4;
 
 export function sameClaimText(a: Parsed, b: Parsed): boolean {
   if (a.numbers !== b.numbers || a.multipliers !== b.multipliers || a.negations !== b.negations || a.units !== b.units) return false;
-  if (twoWay(a.content, b.content) < WORD_SHARE) return false;
+  if (!same(a.content, b.content)) return false;
   const [[headA, tailA], [headB, tailB]] = [sides(a.content), sides(b.content)];
-  const sideOk = (x: string[], y: string[]) => (x.length === 0 && y.length === 0) || twoWay(x, y) >= SIDE_SHARE;
-  return sideOk(headA, headB) && sideOk(tailA, tailB);
+  return same(headA, headB) && same(tailA, tailB);
 }
 
 // The recorded trace for a typed or pasted claim: one whose claim, or the wording on one of its pages, states the same
