@@ -42,7 +42,7 @@ A reporter or fact-checker with one number and a deadline. Today they paste the 
 - **Planted traps:**
   - 0 wrong origins on 10 planted traces ([traps/README.md](../traps/README.md));
   - 0 of 24 fake-origin pages written to fool the model ([traps/README.md](../traps/README.md), [#156](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/156));
-  - through the real walk and dating with no network: 0 wrong origins on the 12 cases that can end on one, apart from a known gap. A negation in new wording passes code on all 4 of its cases, so only the typed same-claim answer can stop it (in review, [#173](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/173)).
+  - through the real walk and dating with no network: of 12 cases that test a trap that could end on a wrong origin, 3 end on one, and all 3 are a known gap. A negation in new wording passes code, so only the typed same-claim answer can stop it. The other 9 give 0. 4 more cases test nothing for now, because their source ends cold before any trap is planted (in review, [#173](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/173)).
   - These are planted by us. They are not an accuracy number.
   <!-- numbers ok: 12, 4 (the pipeline traps in #173, in review) -->
 - **Gallery:** 8 famous viral statistics, with their true origins researched by hand and committed before any trace ran ([eval/gallery/answers.md](../eval/gallery/answers.md)). Result: [SLOT: hits, partials and misses from #159].
@@ -72,7 +72,7 @@ https://github.com/vs-githjk/odsc-nebius-hackathon [SLOT: the repo goes public b
 
 ## Report URL (optional)
 
-The README's eval section, once the slots above are filled: [README.md](../README.md#eval).
+The README's eval section, once the slots above are filled: [README.md](../README.md#evaluation).
 
 ## Video link
 
