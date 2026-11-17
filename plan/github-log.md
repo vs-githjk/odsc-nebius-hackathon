@@ -73,3 +73,12 @@
 - 5 master-reviewer runs on 13 PRs. Merged: #108 acab513, #110 5639f72, #180 039befc, #171 9a48ce7, #177 a9aa0dd, #181 e5fec09 (XO hand-merged TraceView.test.tsx), #187 2c559f1 (XO: tests used URL.pathname, failed in spaced path).
 - FIX: #184 [H] one-word near-misses still match; #176 needs real re-merge after #110 (followQueue); #185 [M] spend line; #154, #172, #174 docs staleness; #173 PASS held for #172.
 - Main 568 tests, green in the spaced path.
+
+## Nov 17 00:00-01:20 ET pass
+- Merged: #176 7b5542c, #154 b475f76, #191 940cd17 (live pipeline; XO integration of Rohan's stack, 4 review rounds, 6 live smoke runs). Closed #107 #109 #189 as included.
+- Live fixes found by smoke: Tavily exact_match 400 without quoted phrase; Wayback 403 crashing dating; PubMed cookie wall (NCBI/Crossref registry dates added); SSRF redirect guard.
+- E3 drift check live: precision 0.37 recall 0.58 at 0.75. Decisions: "possible variant" wording; metadata dates labelled; merge #191 now.
+- New: #192 span/headline quality. FIX lists: #184, #186, #185, #188, #172, #174, #173.
+
+- 2026-11-17 09:45 ET: morning check. No team activity since 01:50 ET. Merged #193 (.env.example comments) as 554ca60. #188: asked Anoop to cite #105 (last item). Re-reviews of #173, #185, #172, #174 running.
+- 2026-11-17 10:00 ET: #173 PASS, merged a3152c8. FIX: #172 (2H), #174 (1M), #185 (1M: E3 precision on the card). Posted ordered queues on #1, #3, #4.

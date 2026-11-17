@@ -32,7 +32,7 @@ const PAGE_TYPES: Record<string, string> = {
 };
 
 const SERVICES: Record<Trace["usage"][number]["service"], string> = {
-  tokenfactory: "Token Factory", tavily: "Tavily", wayback: "Wayback", fetch: "page fetch", jev: "Jev",
+  tokenfactory: "Token Factory", tavily: "Tavily", wayback: "Wayback", fetch: "page fetch", jev: "Jev", ncbi: "NCBI", crossref: "Crossref",
 };
 
 // How a trace ended, as one plain sentence. Built from the trace's own data, never from decision reason strings,
@@ -63,13 +63,18 @@ export function endingSentence(trace: Trace): string {
   }
 }
 
-// A page's date in words, saying where it came from.
+// A page's date in words, saying where it came from and how far to trust it: the page's own claim of when it was
+// published, a scholarly registry's record, or only the first time an archive saw the page.
+const REGISTRY = { registry_pubmed: "PubMed", registry_pmc: "PubMed Central", registry_crossref: "Crossref" } as const;
 export function dateWords(node: Node): string {
   const d = node.date;
   if (d.kind === "unconfirmed" || !d.value) return "date not confirmed";
-  const from = { metadata: "page metadata", byline: "byline", wayback_first_capture: "first archive capture", tavily: "search result" }[d.source];
+  const disagree = d.conflictingDate ? ", other dates disagree" : "";
+  if (d.kind === "published" && d.source === "metadata") return `page says published ${d.value}${d.conflictingDate ? " (other dates disagree)" : ""}`;
+  if (d.kind === "published" && d.source in REGISTRY) return `published ${d.value} (${REGISTRY[d.source as keyof typeof REGISTRY]}${disagree})`;
+  const from = { metadata: "page metadata", byline: "byline", wayback_first_capture: "first archive capture", tavily: "search result", ...REGISTRY }[d.source];
   const what = d.kind === "published" ? `published ${d.value}` : `online by ${d.value}`;
-  return `${what} (${from}${d.conflictingDate ? ", other dates disagree" : ""})`;
+  return `${what} (${from}${disagree})`;
 }
 
 const plural = (n: number, one: string, many = `${one}s`) => `${n} ${n === 1 ? one : many}`;
