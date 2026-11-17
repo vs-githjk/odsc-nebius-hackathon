@@ -10,6 +10,8 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 |---|---|---|---|---|
 
 ## Log
+- [18:58 PT] RishitRai T82 band of copies: each cluster a swarm with one dot per page, copies not yet published at the handle are rings, the active cluster named by its site
+- [19:01 PT] RishitRai T81 sample rows as claims: the wording in Newsreader, the ending with a ramp dot, the earliest year and the page count, richest first
 - [23:23] master-finder odsc-h3-research: plan/submission.md, registration.md, research.md, intel.md written; rubric "evidence" lines pulled from the event bundle; Nov 9 Token Factory model removals flagged | @planner rank ideas on intel.md section 4; @conductor get Vidyut's OK for the smoke calls in research.md section 5
 - [23:31] master-planner H4 ideas: plan/ideas.md written; top 2 = A Receipts (91, recommended), B Says Who (87); team name pick Receipts; month shape for A, first E2E Nov 8 | @conductor surface the pick to Vidyut; week-0 gate is the baseline-contrast measurement (L4)
 - [23:35] master-auditor H4 oversight: FIX (C0 H3 M4 L2) on plan/ideas.md; re-score A 84 (88 with a named task) vs B 92; name pick Says Who; details plan/audit.md | @planner fixes 1-3 @conductor show A/B as close; folder rename still pending
@@ -132,3 +134,10 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [19:22 PT] AnoopIbrampur T77 #136 readable CLI card PR up; pz trace now prints a card, --json for raw | @rohanrastogi311 #109 dev-run must pass --json to traceCommand
 - [19:31 PT] AnoopIbrampur T76 #135 failure paths PR up (503 -> TOOL_FAILED, empty -> NO_PAGES_FOUND, keyless) | @rohanrastogi311 where does #130 take an injected fetch?
 - [20:05 PT] AnoopIbrampur T75 #134 README rewrite draft PR up (architecture, decision table, spike told straight, slots for Mon live trace, dev score, usage) | merge after #151 #152 #153
+- [14:03 PT] AnoopIbrampur T95 #162 make judge and pz doctor PR up; clean clone with empty env runs green in about 1 s | @rohanrastogi311 #118 judge-check.sh can call make judge
+- [13:23 PT] AnoopIbrampur T92 #159 gallery list and blind answers committed (sha256 76109a68...), 8 claims ready for XO's live run | XO: check the 8 against held-out, then run them
+- [14:57 PT] AnoopIbrampur T79 #138 second model on same_claim PR up: DeepSeek-V4-Pro-0813 behind rules.json secondSameClaimModel (off), a veto only; eval/same-claim/second-model.ts is the live E2 measure that decides | XO: run it on Vidyut's machine (under $1); @rohanrastogi311 #130 stores sameClaim(...).second on node.sameClaimSecond
+- [14:11 PT] AnoopIbrampur T97 #164 embeddings PR up: reworded copies join clusters, same claim with another number listed on the trace and card; 107 E2 sentences labelled, measure is live | XO: run eval/drift/measure.ts on Vidyut's machine; @rohanrastogi311 #130 passes embed: createEmbedder(client) to walkClaim
+- [13:16 PT] AnoopIbrampur T94 #161 independence count PR up: roots.independentRoots and roots.copies, headline leads the card, pz verify re-derives them | @RishitRai #144: read roots.independentRoots / roots.copies, or import independenceLine from pz/headline
+- [13:10 PT] AnoopIbrampur XO's Nov 16 follow-ups (L): range subject is a whole word, card counts one time and a dozen, README replay row, intake range and bound rejects worded | none
+- [21:11 PT] AnoopIbrampur T50 #101 adversarial traps PR up (16 cases, fooled model, injectionPatterns in decide) | @rohanrastogi311 gap: fake early metadata date beats dating (#79), see traps/README
