@@ -3,7 +3,9 @@ import { existsSync, mkdtempSync, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
-import { initializeBudget } from "../../../eval/recordings/budget.ts";
+import { initializeBudget, openBudget } from "../../../eval/recordings/budget.ts";
+import { traceTransports } from "../../../eval/recordings/trace-transports.ts";
+import { createPipeline } from "../src/engine/pipeline.ts";
 import { traceCommand } from "../src/cli/trace.ts";
 import { buildPipeline, closeTrail } from "../src/engine/pipeline.ts";
 import { PHRASE_PROMPT } from "../src/engine/phrase.ts";
@@ -17,13 +19,14 @@ import { Trace } from "../src/schema/index.ts";
 
 // The default `pz trace "<claim>"` path, end to end, with every provider stubbed: one fetch answers Token Factory
 // (chat and embeddings), Tavily and the Wayback CDX. Nothing here reaches the network or reads a key.
-type Page = { url: string; date: string; title?: string; text: string; searchable?: boolean; factCheck?: boolean };
+type Page = { url: string; date: string; title?: string; text: string; searchable?: boolean; factCheck?: boolean; html?: string };
 type World = {
   pages: Page[];
   tavily?: "ok" | 503;
   planner?: "ok" | "bad";
   sameClaim?: "yes" | "no";
   phrase?: { phrases: string[]; subject: string };
+  onSearch?: (count: number) => void;
 };
 
 // A reply with logprobs for each string field, so typed answers carry a confidence like the real provider's.
@@ -61,6 +64,7 @@ function stub(world: World) {
     }
     const body = JSON.parse(String(init?.body ?? "{}"));
     if (url.endsWith("/search")) {
+      world.onSearch?.(calls.filter((c) => c.url.endsWith("/search")).length);
       if (world.tavily === 503) return new Response("unavailable", { status: 503 });
       const only = body.include_domains as string[] | undefined;
       const results = world.pages.filter((p) => p.searchable !== false && (only ? p.factCheck : !p.factCheck)).map((p) => ({
@@ -101,6 +105,8 @@ function stub(world: World) {
       const typed = typedReply(fields);
       return reply(typed.content, typed.logprobs);
     }
+    const page = world.pages.find((p) => p.url === url);
+    if (page?.html) return new Response(page.html, { headers: { "content-type": "text/html" } });
     throw new Error(`no stub for ${url}`);
   }) as typeof fetch;
   return { fetch: impl, calls };
@@ -287,6 +293,68 @@ describe("fact-check meta maps through the full pipeline (T49)", () => {
   });
 });
 
+describe("publication evidence in dating (#79)", () => {
+  const meta = (date: string) => `<html><head><meta name="citation_publication_date" content="${date}"></head><body>x</body></html>`;
+  it("dates a page by its own metadata, capped by the archive capture, through the full pipeline", async () => {
+    const claim = zoo(unique());
+    const id = createHash("sha256").update(claim).digest("hex").slice(0, 10);
+    const old = { url: `https://pubmed.example/old-${id}`, date: "2020-06-24", html: meta("2004/06/15"), text: `Study: ${claim}` };
+    const late = { url: `https://blog.example/late-${id}`, date: "2021-02-03", html: meta("2023/01/01"), text: `Blog: ${claim}` };
+    const t = run(claim, { pages: [old, late] }, { extra: ["--json"] });
+    expect(await t.go(t.args)).toBe(0);
+    const trace = Trace.parse(JSON.parse(t.out.join("")));
+    const dateOf = (url: string) => trace.nodes.find((n) => n.url === url)!.date;
+    // Published in 2004 by its own metadata, though first archived in 2020.
+    expect(dateOf(old.url)).toMatchObject({ kind: "published", value: "2004-06-15", source: "metadata", firstCapture: "2020-06-24" });
+    // A metadata date later than the first capture is capped and flagged.
+    expect(dateOf(late.url)).toMatchObject({ kind: "existed_by", value: "2021-02-03", conflictingDate: true });
+    expect(trace.earliest.nodeIds).toEqual([trace.nodes.find((n) => n.url === old.url)!.id]);
+  });
+  it("without a metadata tag the date stays the archive capture", async () => {
+    const claim = zoo(unique());
+    const id = createHash("sha256").update(claim).digest("hex").slice(0, 10);
+    const p = { url: `https://plain.example/p-${id}`, date: "2020-06-24", html: "<html><body>no tags</body></html>", text: claim };
+    const t = run(claim, { pages: [p] }, { extra: ["--json"] });
+    expect(await t.go(t.args)).toBe(0);
+    expect(Trace.parse(JSON.parse(t.out.join(""))).nodes[0]!.date).toMatchObject({ kind: "existed_by", value: "2020-06-24" });
+  });
+});
+
+describe("caps end the walk with a card, not a failed trace", () => {
+  it("the shared ledger running out mid-walk ends with capHit credits, a card and the spend kept", async () => {
+    const claim = zoo(unique());
+    const dir = mkdtempSync(join(tmpdir(), "pz-cap-"));
+    const ledger = join(dir, "ledger.json");
+    initializeBudget(ledger, { capUsd: 15, priorSpendUsd: 0, start: "2020-01-01T00:00:00.000Z", end: "2099-01-01T00:00:00.000Z" });
+    const t = run(claim, { pages: pagesFor(claim), onSearch: (n) => { if (n === 1) openBudget(t.ledger).reserve(14.97); } }, { extra: ["--json"] });
+    expect(await t.go(t.args)).toBe(0);
+    expect(t.err).toEqual([]);
+    const trace = Trace.parse(JSON.parse(t.out.join("")));
+    expect(trace.budget.capHit).toBe("credits");
+    expect(trace.decision.state).toBe("PARTIAL");
+    expect(trace.usage.filter((row) => row.service === "tavily").length).toBeGreaterThan(0);
+    expect(trace.usage.filter((row) => row.service === "tokenfactory").length).toBeGreaterThan(0);
+  });
+
+  it("a deadline that fires mid-walk ends as a named tool failure with a trace, not trace_failed", async () => {
+    const claim = zoo(unique());
+    const dir = mkdtempSync(join(tmpdir(), "pz-time-"));
+    const ledger = join(dir, "ledger.json");
+    initializeBudget(ledger, { capUsd: 15, priorSpendUsd: 0, start: "2020-01-01T00:00:00.000Z", end: "2099-01-01T00:00:00.000Z" });
+    let expired = false;
+    const net = stub({ pages: pagesFor(claim), onSearch: () => { expired = true; } });
+    const { pipeline, wayback } = createPipeline({
+      ...traceTransports(openBudget(ledger), 0.5, net.fetch, () => { if (expired) throw new DOMException("deadline", "TimeoutError"); }),
+      archiveFetch: net.fetch, nebiusKey: "k", tavilyKey: "k", pagesDir: join(dir, "pages"), usagePath: join(dir, "usage.jsonl"),
+      cache: { get: () => null, set: () => {} },
+    });
+    const trace = await runTrace(claim, pipeline, { wayback });
+    expect(trace.decision.state).toBe("TOOL_FAILED");
+    expect(trace.failure).toMatchObject({ service: "tavily" });
+    expect(trace.usage.length).toBeGreaterThan(0);
+  });
+});
+
 describe("budget seeding", () => {
   it("counts the credits earlier stages spent once, not twice", async () => {
     const claim = zoo(unique());
@@ -334,5 +402,27 @@ describe("closeTrail", () => {
     for (const id of trace.earliest.nodeIds) expect(trace.edges.some((e) => e.childId === id)).toBe(false);
     expect(trace.edges.map((e) => e.id)).toEqual(trace.edges.map((_, i) => `e${i + 1}`));
     expect(closeTrail(trace)).toEqual(trace);
+  });
+
+  it("drops a link that points into the oldest page and draws the inferred edge instead", async () => {
+    const claim = zoo(unique());
+    const net = stub({ pages: pagesFor(claim) });
+    const dir = mkdtempSync(join(tmpdir(), "pz-close2-"));
+    const { pipeline, wayback } = buildPipeline({
+      chat: createTokenFactoryClient({ apiKey: "k", fetch: net.fetch, logUsage: () => {} }),
+      embed: createTokenFactoryClient({ apiKey: "k", fetch: net.fetch, logUsage: () => {} }),
+      tavily: (deps) => createTavily({ ...deps, apiKey: "k", fetch: net.fetch }),
+      archiveFetch: net.fetch, pagesDir: join(dir, "pages"), usagePath: join(dir, "usage.jsonl"),
+      cache: { get: () => null, set: () => {} },
+    });
+    const trace = await runTrace(claim, pipeline, { wayback });
+    const oldest = trace.nodes.find((n) => n.id === trace.earliest.nodeIds[0])!;
+    const newer = trace.nodes.find((n) => n.id !== oldest.id)!;
+    const span = (id: string) => trace.spans.find((sp) => sp.nodeId === id)!.id;
+    const backwards = { id: "e9", kind: "explicit" as const, parentId: newer.id, childId: oldest.id, parentSpanId: span(newer.id), childSpanId: span(oldest.id), linkHref: newer.url };
+    const closed = closeTrail({ ...trace, edges: [backwards] });
+    expect(closed.edges.some((e) => e.childId === oldest.id)).toBe(false);
+    expect(closed.edges).toEqual([expect.objectContaining({ id: "e1", kind: "inferred", parentId: oldest.id, childId: newer.id, linkHref: null })]);
+    expect(closed.roots).toEqual(trace.roots);
   });
 });

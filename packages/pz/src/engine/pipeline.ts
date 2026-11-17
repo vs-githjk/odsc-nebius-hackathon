@@ -18,9 +18,10 @@ import { withBoundaries } from "./boundary.ts";
 import { claimNumber, fingerprint } from "./fingerprint.ts";
 import { fingerprintPhrase } from "./phrase.ts";
 import { measuredReadouts, hopFor, redHop, wordDiff, words } from "./readouts.ts";
-import type { Pipeline } from "./run.ts";
+import type { PageInput, Pipeline } from "./run.ts";
 import { spansStep } from "./spans.ts";
 import { createEmbedder } from "./similar.ts";
+import { fetchPublication } from "./publication.ts";
 import { plannerFor, sameClaimFor, walkStep } from "./walk.ts";
 
 type TokenFactory = ReturnType<typeof createTokenFactoryClient>;
@@ -105,6 +106,8 @@ export type PipelineParts = {
   // Builds the Tavily client for one walk from the run's shared deps (usage log, cache, per-walk budget).
   tavily: (deps: ClientDeps) => ReturnType<typeof createTavily>;
   archiveFetch?: typeof fetch;
+  // Fetches a page's raw HTML for its publication metadata (dating, #79). Without it, dates come from archive captures only.
+  pageFetch?: typeof fetch;
   cache?: Cache;
   traceId?: string;
   pagesDir?: string;
@@ -158,6 +161,21 @@ export function buildPipeline(parts: PipelineParts): { pipeline: Pipeline; wayba
     },
   });
 
+  const walkStage = walkStep((trace) => {
+      // A fresh budget for each walk: walkStep spends the credits the earlier stages already used onto it, once.
+      // Sharing a budget with an earlier stage would count those credits twice.
+      const budget = createBudget(rules.caps.credits);
+      return {
+        tavily: parts.tavily({ ...base, budget }),
+        wayback, usage, budget, rules,
+        planQueries: plannerFor(parts.chat, rules),
+        askSameClaim: sameClaimFor(walkChat("same_claim"), rules),
+        embed: createEmbedder(walkEmbed, { traceId: id }),
+        today: trace.recordedAt.slice(0, 10), now: () => new Date().toISOString(),
+        pagesDir,
+      };
+    });
+
   const pipeline: Pipeline = {
     async intake({ input }) {
       startedAt = performance.now();
@@ -188,20 +206,22 @@ export function buildPipeline(parts: PipelineParts): { pipeline: Pipeline; wayba
       return withUsage({ ...trace, claim: { ...trace.claim, atoms } }, rows);
     },
 
-    walk: walkStep((trace) => {
-      // A fresh budget for each walk: walkStep spends the credits the earlier stages already used onto it, once.
-      // Sharing a budget with an earlier stage would count those credits twice.
-      const budget = createBudget(rules.caps.credits);
-      return {
-        tavily: parts.tavily({ ...base, budget }),
-        wayback, usage, budget, rules,
-        planQueries: plannerFor(parts.chat, rules),
-        askSameClaim: sameClaimFor(walkChat("same_claim"), rules),
-        embed: createEmbedder(walkEmbed, { traceId: id }),
-        today: trace.recordedAt.slice(0, 10), now: () => new Date().toISOString(),
-        pagesDir,
+    walk: async (trace, context) => {
+      const walked = await walkStage(trace, context);
+      if (!parts.pageFetch) return walked;
+      // The walk reads markdown, which has no meta tags, so each page is fetched once more as HTML for the dating stage.
+      const pageFetch = parts.pageFetch;
+      const queue = walked.nodes.filter((node) => !node.meta && node.read);
+      const pages: PageInput[] = [];
+      const work = async () => {
+        for (let node = queue.shift(); node; node = queue.shift()) {
+          const metadata = await fetchPublication(node.url, pageFetch);
+          if (metadata) pages.push({ url: node.url, text: "", metadata });
+        }
       };
-    }),
+      await Promise.all([work(), work(), work(), work()]);
+      return { trace: walked, pages };
+    },
 
     spans: spansStep(),
 
@@ -276,6 +296,7 @@ export function createPipeline(options: {
   nebiusKey?: string;
   tavilyKey?: string;
   archiveFetch?: typeof fetch;
+  pageFetch?: typeof fetch;
   traceId?: string;
   pagesDir?: string;
   usagePath?: string;
@@ -285,6 +306,6 @@ export function createPipeline(options: {
     chat: createTokenFactoryClient({ traceId, apiKey: options.nebiusKey, fetch: options.tokenFactoryFetch }),
     embed: createTokenFactoryClient({ traceId, apiKey: options.nebiusKey, fetch: options.embeddingFetch }),
     tavily: (deps) => createTavily({ ...deps, apiKey: options.tavilyKey, fetch: options.tavilyFetch }, options.tavilySender),
-    archiveFetch: options.archiveFetch, cache: options.cache, traceId, pagesDir: options.pagesDir, usagePath: options.usagePath,
+    archiveFetch: options.archiveFetch, pageFetch: options.pageFetch, cache: options.cache, traceId, pagesDir: options.pagesDir, usagePath: options.usagePath,
   });
 }

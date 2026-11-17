@@ -42,6 +42,23 @@ const MAX_ATTEMPTS = 2;
 const isRetryable = (status: number) => status === 429 || status >= 500;
 const scrub = (text: string, secrets: string[] = []) => secrets.reduce((out, s) => out.replaceAll(s, "[redacted]"), text);
 
+// A spend guard supplied by the caller (the shared ledger, a deadline) may throw its own errors. Anything that means
+// "the budget is spent" or "time is up" becomes a ClientError here, so the walk ends with a cap or a named failure and a
+// card, instead of the whole trace failing and the spend so far being lost.
+function reserveAttempt(deps: ClientDeps, maxCredits: number): string | undefined {
+  try {
+    return deps.tavilyAttempts?.reserve(maxCredits);
+  } catch (err) {
+    if (err instanceof ClientError) throw err;
+    const code = err && typeof err === "object" && "code" in err ? err.code : undefined;
+    if (code === "budget_exceeded") throw new ClientError("budget_exceeded", "tavily search: budget spent");
+    if (err instanceof Error && (err.name === "TimeoutError" || err.name === "AbortError")) {
+      throw new ClientError("network_error", "tavily search: time limit reached", { timedOut: true });
+    }
+    throw err;
+  }
+}
+
 export async function send<T>(deps: ClientDeps, req: ClientRequest<T>): Promise<Result<T>> {
   const fetchImpl = deps.fetch ?? fetch;
   const row = (fields: Pick<UsageRow, "credits" | "latencyMs" | "status" | "cacheHit">): UsageRow => {
@@ -71,7 +88,7 @@ export async function send<T>(deps: ClientDeps, req: ClientRequest<T>): Promise<
 
   for (let attempt = 1; ; attempt += 1) {
     deps.budget?.beforeCall(req.maxCredits);
-    const reservation = req.service === "tavily" ? deps.tavilyAttempts?.reserve(req.maxCredits) : undefined;
+    const reservation = req.service === "tavily" ? reserveAttempt(deps, req.maxCredits) : undefined;
     const last = attempt === MAX_ATTEMPTS;
     const started = performance.now();
     const latency = () => Math.round(performance.now() - started);

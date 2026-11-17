@@ -161,6 +161,8 @@ type DevPipelineFactory = (input: Input, options: {
   signal: AbortSignal;
   chatClient: Pick<ReturnType<typeof createTokenFactoryClient>, "chat">;
   embeddingClient: Pick<ReturnType<typeof createTokenFactoryClient>, "embed">;
+  // Plain GETs for a page's own HTML (publication metadata), bound to the claim's deadline.
+  pageFetch: typeof globalThis.fetch;
   createTavily: (deps: Omit<Parameters<typeof createTavily>[0], "fetch" | "tavilyAttempts">) => ReturnType<typeof createTavily>;
 }) =>
   Promise<DevPipeline> | DevPipeline;
@@ -280,7 +282,7 @@ export async function runLiveDevBatch(
         createPipeline ??= await opts.loadFactory();
         checkTime();
         const { pipeline, wayback } = await createPipeline(input, {
-          caps, signal, chatClient, embeddingClient, createTavily: deps => createTavily(deps, sendTavily),
+          caps, signal, chatClient, embeddingClient, pageFetch: fetch, createTavily: deps => createTavily(deps, sendTavily),
         });
         checkTime();
         return runTrace(input.text, { ...pipeline, clusters: pipeline.clusters ?? devClusterStep(embeddingClient, loadRules()) }, { wayback });

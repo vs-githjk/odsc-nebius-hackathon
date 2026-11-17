@@ -5,6 +5,8 @@ import { parseArgs } from "node:util";
 import { renderCard } from "../card/terminal.ts";
 import { recordTrace, replayTrace, runTrace, type Pipeline, type RunEvent, type Wayback } from "../engine/run.ts";
 
+const POST_WALK_MS = 60_000;
+
 export async function traceCommand(args: string[], io: { write(line: string): void; error(line: string): void; color?: boolean } = {
   write: (line: string) => console.log(line), error: (line: string) => console.error(line),
   color: !!process.stdout.isTTY && !process.env.NO_COLOR,
@@ -37,7 +39,9 @@ export async function traceCommand(args: string[], io: { write(line: string): vo
           import("../../../../eval/recordings/budget.ts"), import("../../../../eval/recordings/trace-transports.ts"),
         ]);
         const { caps } = loadRules();
-        const signal = AbortSignal.timeout(caps.ms);
+        // The walk keeps its own caps.ms clock and ends at its time cap; this limit is the whole run's, so it must outlast
+        // the walk and leave room for page_type, readouts and boundary calls after it.
+        const signal = AbortSignal.timeout(caps.ms + POST_WALK_MS);
         const deadlineFetch: typeof fetch = (url, init) =>
           transport(url, { ...init, redirect: "error", signal: init?.signal ? AbortSignal.any([signal, init.signal]) : signal });
         const ledger = openBudget(env.DEV_LEDGER);
@@ -45,6 +49,8 @@ export async function traceCommand(args: string[], io: { write(line: string): vo
         adapter = createPipeline({
           ...traceTransports(ledger, caps.usd, deadlineFetch, () => signal.throwIfAborted()),
           archiveFetch: deadlineFetch,
+          // Raw page HTML for publication metadata (dating): plain GETs that follow redirects and carry no credentials.
+          pageFetch: (url, init) => transport(url, { ...init, signal: init?.signal ? AbortSignal.any([signal, init.signal]) : signal }),
           nebiusKey: env.NEBIUS_API_KEY,
           tavilyKey: env.TAVILY_API_KEY?.trim(),
         });

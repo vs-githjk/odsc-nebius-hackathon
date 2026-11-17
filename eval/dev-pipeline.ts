@@ -8,7 +8,8 @@ import type { createTokenFactoryClient } from "../packages/pz/src/clients/tokenf
 export function createPipeline(input: { id: string }, options: {
   chatClient: Pick<ReturnType<typeof createTokenFactoryClient>, "chat">;
   embeddingClient: Pick<ReturnType<typeof createTokenFactoryClient>, "embed">;
+  pageFetch?: typeof fetch;
   createTavily: (deps: Parameters<typeof createTavily>[0]) => ReturnType<typeof createTavily>;
 }) {
-  return buildPipeline({ chat: options.chatClient, embed: options.embeddingClient, tavily: options.createTavily, traceId: input.id });
+  return buildPipeline({ chat: options.chatClient, embed: options.embeddingClient, tavily: options.createTavily, traceId: input.id, pageFetch: options.pageFetch });
 }
