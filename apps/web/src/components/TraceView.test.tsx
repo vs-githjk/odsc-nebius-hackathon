@@ -36,4 +36,13 @@ describe("TraceView", () => {
     expect(html).toContain("link-verified");
     expect(html).toContain("inferred, no link");
   });
+
+  it("draws the band as swarms of copies, one dot per page, with the active cluster named by its site", () => {
+    const rich = traces.find((t) => t.id === "sample-rich")!;
+    const html = renderToStaticMarkup(<TraceView trace={rich} />);
+    const pages = rich.nodes.filter((n) => !n.meta && n.date.value).length;
+    expect(html.match(/class="copy( ring)?"/g)).toHaveLength(pages);
+    expect(html).toContain("chirp.example, 1 page");
+    expect(html).toContain('class="swarm-halo"');
+  });
 });

@@ -10,6 +10,8 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 |---|---|---|---|---|
 
 ## Log
+- [18:58 PT] RishitRai T82 band of copies: each cluster a swarm with one dot per page, copies not yet published at the handle are rings, the active cluster named by its site
+- [19:01 PT] RishitRai T81 sample rows as claims: the wording in Newsreader, the ending with a ramp dot, the earliest year and the page count, richest first
 - [23:23] master-finder odsc-h3-research: plan/submission.md, registration.md, research.md, intel.md written; rubric "evidence" lines pulled from the event bundle; Nov 9 Token Factory model removals flagged | @planner rank ideas on intel.md section 4; @conductor get Vidyut's OK for the smoke calls in research.md section 5
 - [23:31] master-planner H4 ideas: plan/ideas.md written; top 2 = A Receipts (91, recommended), B Says Who (87); team name pick Receipts; month shape for A, first E2E Nov 8 | @conductor surface the pick to Vidyut; week-0 gate is the baseline-contrast measurement (L4)
 - [23:35] master-auditor H4 oversight: FIX (C0 H3 M4 L2) on plan/ideas.md; re-score A 84 (88 with a named task) vs B 92; name pick Says Who; details plan/audit.md | @planner fixes 1-3 @conductor show A/B as close; folder rename still pending
@@ -108,6 +110,9 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [17:12 PT] AnoopIbrampur T33 on #97: make dev-score now scores E2 and E3 (when eval/dev-claims-e3.json exists, #105), one row per set
 - [09:34 PT] RishitRai #52 make verify: run-1 traces verified as historical records (spike/historical-traces.json, pz verify --historical); stop_state failures now name the differing field
 - [09:43 PT] RishitRai #82 review notes: walkStep builds per-run deps, carries mode/recordedAt/synthetic/usage, allows warm-cache runs, leaves dates and ordering to the dating stage
+- [09:50 PT] RishitRai T24 spans and links: linkEdges and spansStep, explicit edges from links beside the span, unfetchable parents read false; draft on #82
+- [10:10 PT] RishitRai #108 same-site note: a same-site citation beside the span now makes an edge; self-links never do
+- [09:06 PT] RishitRai T44 walk by links: ranked citations (links, DOI, PMID) followed first, named sources searched by name, planner interface for T35, budget over all rows; draft on #108, dev score pending #107
 - [10:02 PT] RishitRai #52 fix: historical traces pinned by id and content sha256; a re-run with the same id is checked in full
 - [09:40 PT] RishitRai #62 second #69 round: theme ramp variables for dark mode, stage under the nav, claim as the start hero, rows told apart by their reasons
 - [09:43 PT] RishitRai #82 review notes: walkStep builds per-run deps, carries mode/recordedAt/synthetic/usage, allows warm-cache runs, leaves dates and ordering to the dating stage
@@ -139,3 +144,5 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [13:10 PT] AnoopIbrampur XO's Nov 16 follow-ups (L): range subject is a whole word, card counts one time and a dozen, README replay row, intake range and bound rejects worded | none
 - [21:11 PT] AnoopIbrampur T50 #101 adversarial traps PR up (16 cases, fooled model, injectionPatterns in decide) | @rohanrastogi311 gap: fake early metadata date beats dating (#79), see traps/README
 - [18:46 PT] RishitRai T85 stop card, origin card and rule sheet: one card per trace for all six endings, footnote gone
+- [18:35 PT] RishitRai #108 review: citations only in the span's own paragraph, self-links matched without www, query or fragment; nav-row and next-paragraph tests
+- [18:40 PT] RishitRai #110 review: paragraph rule in citation scoring, seen as {query, endDate} pairs, far follows explained in searchLog, intake credits seed the budget, phrase claims, plannerFor and sameClaimFor for the adapter

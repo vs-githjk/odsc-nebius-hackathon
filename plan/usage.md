@@ -1,25 +1,25 @@
 # Usage ledger (everyone)
 
-Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py. 53 runs across 2 people: AnoopIbrampur, vs-githjk.
+Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py. 67 runs across 2 people: AnoopIbrampur, vs-githjk.
 
 ## By person
 
 | Who | Runs | Output tokens | Apify | Bright Data | Web | GitHub | Codex | Last updated (UTC) |
 |---|---|---|---|---|---|---|---|---|
 | AnoopIbrampur | 1 | 1,146,304 | 0 | 0 | 127 | 420 | 0 | 2026-11-16T22:57:25Z |
-| vs-githjk | 52 | 2,279,765 | 10 | 7 | 67 | 294 | 11 | 2026-11-16T01:58:36Z |
+| vs-githjk | 66 | 2,601,875 | 10 | 7 | 71 | 357 | 11 | 2026-11-17T03:20:32Z |
 
 ## Totals by service
 
 | Service | Calls |
 |---|---|
-| Shell | 2576 |
-| Claude Code tools | 1199 |
-| GitHub (gh) | 714 |
-| Other HTTP | 363 |
+| Shell | 2977 |
+| Claude Code tools | 1259 |
+| GitHub (gh) | 777 |
+| Other HTTP | 366 |
 | MCP ccd_turn | 239 |
-| Web search and fetch | 194 |
-| Browser (Playwright) | 45 |
+| Web search and fetch | 198 |
+| Browser (Playwright) | 51 |
 | Nebius Token Factory | 18 |
 | Codex | 11 |
 | Apify | 10 |
@@ -33,10 +33,10 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 
 | Kind | Tokens |
 |---|---|
-| input_tokens | 10,641 |
-| cache_creation_input_tokens | 16,564,835 |
-| cache_read_input_tokens | 605,707,580 |
-| output_tokens | 3,426,069 |
+| input_tokens | 11,665 |
+| cache_creation_input_tokens | 18,633,525 |
+| cache_read_input_tokens | 652,709,930 |
+| output_tokens | 3,748,179 |
 
 ## Per run
 
@@ -52,7 +52,7 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 | vs-githjk | 2026-10-29T07:46 | master-finder: Market validation for Patient Zero | claude-opus-5-5 | 40,009 | 7 | 2 | 0 | 25 | 0 | 0 | 0 | 0 | 11 |
 | vs-githjk | 2026-10-29T08:19 | master-planner: Refine Patient Zero, round 1 | claude-opus-5-5 | 29,492 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 | 2 |
 | vs-githjk | 2026-10-29T08:27 | master-auditor: Red-team Patient Zero brief, round 2 | claude-opus-5-5 | 32,092 | 0 | 0 | 0 | 5 | 3 | 0 | 0 | 0 | 5 |
-| vs-githjk | 2026-10-29T08:37 | main session | claude-opus-5-5, <synthetic> | 432,301 | 0 | 0 | 0 | 1 | 134 | 3 | 10 | 1 | 4 |
+| vs-githjk | 2026-10-29T08:37 | main session | claude-opus-5-5, <synthetic> | 504,856 | 0 | 0 | 0 | 1 | 164 | 3 | 10 | 1 | 4 |
 | vs-githjk | 2026-10-29T08:39 | master-planner: Fold auditor r2 fixes into brief | claude-opus-5-5 | 43,561 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 | 0 |
 | vs-githjk | 2026-10-29T08:42 | master-xo: GitHub kickoff issues for team | claude-opus-5-5 | 27,048 | 0 | 0 | 0 | 0 | 15 | 0 | 2 | 0 | 6 |
 | vs-githjk | 2026-10-29T08:46 | master-designer: 10-min world-class Patient Zero look | claude-fable-5-1 | 43,300 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -95,6 +95,20 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 | vs-githjk | 2026-11-16T01:51 | master-finder: Deadline and competitor research | claude-opus-5-5 | 21,107 | 0 | 0 | 0 | 4 | 2 | 0 | 0 | 0 | 21 |
 | vs-githjk | 2026-11-16T01:51 | master-designer: UI/UX research and critique | claude-fable-5-2 | 20,715 | 0 | 0 | 2 | 0 | 1 | 0 | 0 | 0 | 14 |
 | vs-githjk | 2026-11-16T01:51 | master-auditor: Judge-mode audit of current repo | claude-opus-5-5 | 19,337 | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | 1 |
+| vs-githjk | 2026-11-16T16:14 | master-reviewer: Review PRs 77 and 129 | claude-opus-5-5 | 11,963 | 0 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 |
+| vs-githjk | 2026-11-16T16:14 | master-reviewer: Review PRs 151 and 152 | claude-opus-5-5 | 17,490 | 0 | 0 | 0 | 0 | 5 | 0 | 0 | 0 | 0 |
+| vs-githjk | 2026-11-16T16:14 | master-reviewer: Review PRs 153 and 155 | claude-opus-5-5 | 19,362 | 0 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 |
+| vs-githjk | 2026-11-16T16:14 | master-reviewer: Review PRs 156 and 157 | claude-opus-5-5 | 14,002 | 0 | 0 | 0 | 0 | 5 | 0 | 0 | 0 | 0 |
+| vs-githjk | 2026-11-16T20:19 | master-reviewer: Re-review 151 152 153 77 | claude-opus-5-5 | 11,141 | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | 0 |
+| vs-githjk | 2026-11-16T20:19 | master-reviewer: Re-review 155 156 157 | claude-opus-5-5 | 12,697 | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | 0 |
+| vs-githjk | 2026-11-17T00:50 | master-reviewer: Review 168 169 154 | claude-opus-5-5 | 15,908 | 0 | 0 | 0 | 4 | 5 | 0 | 0 | 0 | 1 |
+| vs-githjk | 2026-11-17T00:50 | master-reviewer: Review 156 166 167 | claude-opus-5-5 | 16,189 | 0 | 0 | 0 | 0 | 2 | 0 | 0 | 0 | 0 |
+| vs-githjk | 2026-11-17T00:50 | master-reviewer: Review 176 177 174 | claude-opus-5-5 | 30,404 | 0 | 0 | 0 | 0 | 1 | 0 | 0 | 0 | 0 |
+| vs-githjk | 2026-11-17T00:50 | master-reviewer: Review 171 172 173 | claude-opus-5-5 | 14,210 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| vs-githjk | 2026-11-17T00:50 | master-reviewer: Review 170 178 | claude-opus-5-5 | 23,899 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| vs-githjk | 2026-11-17T03:13 | master-reviewer: Review engine PRs 108 and 110 | claude-opus-5-5 | 26,380 | 0 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 0 |
+| vs-githjk | 2026-11-17T03:13 | master-reviewer: Review UI PRs 180 181 182 | claude-opus-5-5 | 20,578 | 0 | 0 | 4 | 0 | 1 | 0 | 0 | 0 | 1 |
+| vs-githjk | 2026-11-17T03:13 | master-reviewer: Review UI PRs 183 and 184 | claude-opus-5-5 | 15,332 | 0 | 0 | 2 | 0 | 1 | 0 | 0 | 0 | 1 |
 
 ## Detail (service: tool or host)
 
@@ -106,14 +120,14 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 - Bright Data: search_engine_batch: 3
 - Browser (Playwright): browser_close: 1
 - Browser (Playwright): browser_emulate_media: 6
-- Browser (Playwright): browser_evaluate: 7
-- Browser (Playwright): browser_navigate: 8
-- Browser (Playwright): browser_resize: 5
-- Browser (Playwright): browser_run_code_unsafe: 4
+- Browser (Playwright): browser_evaluate: 8
+- Browser (Playwright): browser_navigate: 10
+- Browser (Playwright): browser_resize: 6
+- Browser (Playwright): browser_run_code_unsafe: 5
 - Browser (Playwright): browser_snapshot: 1
-- Browser (Playwright): browser_take_screenshot: 13
+- Browser (Playwright): browser_take_screenshot: 14
 - Codex: codex: 11
-- GitHub (gh): gh: 714
+- GitHub (gh): gh: 777
 - MCP ccd_directory: change_directory: 1
 - MCP ccd_host: open_in_editor: 7
 - MCP ccd_pr: get_status: 1
@@ -177,7 +191,7 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 - Other HTTP: lablab.ai: 1
 - Other HTTP: linear.app: 1
 - Other HTTP: listverse.com: 1
-- Other HTTP: localhost: 1
+- Other HTTP: localhost: 4
 - Other HTTP: mdanderson.org: 1
 - Other HTTP: medibank.com.au: 2
 - Other HTTP: nebius.com: 11
@@ -282,6 +296,6 @@ Counted from Claude Code transcripts by ~/.claude/skills/master-budget/usage.py.
 - Other HTTP: x.com: 1
 - Tavily API: api.tavily.com: 1
 - Web search and fetch: WebFetch: 30
-- Web search and fetch: WebSearch: 164
+- Web search and fetch: WebSearch: 168
 
 Not covered: other people's machines until they run this and commit plan/usage/<who>.*; calls the project's own app makes at runtime (the app logs those itself); Codex's own token use (logged by master-codex).
