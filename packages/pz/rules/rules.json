@@ -62,6 +62,14 @@
     "\\b(?:1[5-9]\\d{2}|20[01]\\d) (?:study|paper|book|article|experiment)s?\\b",
     "\\((?:1[5-9]\\d{2}|19\\d{2}|20[01]\\d)\\)"
   ],
+  "writtenCitationCues": [
+    "\\bissue of\\b",
+    "\\bpublished (?:in|by|the|a|an|their|his|her)\\b",
+    "\\b(?:study|report|paper|survey|article|analysis) (?:by|from|in|published)\\b",
+    "\\baccording to (?:a|an|the)\\b",
+    "\\bjournal\\b",
+    "\\bfirst (?:reported|published)\\b"
+  ],
   "editableDomains": ["wikipedia.org", "wikiquote.org", "wikia.com", "fandom.com", "wikihow.com", "everybodywiki.com"],
   "secondSameClaimModel": null,
   "otherNumberSimilarity": 0.8,
@@ -95,6 +103,7 @@
   "notes": {
     "metaMaps": "T49: one extra search per trace limited to factCheckDomains; up to two fact-check pages are read as meta nodes (never origins) and the pages they cite are read first. A page reached that way records foundViaMeta and still needs its own verbatim span. false turns it off.",
     "printCues": "T37: case-insensitive patterns that show the earliest page credits print (an ISBN, page or volume numbers, a journal, a book, a dated study). A typed boundary of print counts only if one matches the sentence or the text around it.",
+    "writtenCitationCues": "#192 F4: case-insensitive patterns that show a span cites an earlier source in words (an issue of a journal, published in, a study by). With a year before the page's own date in the same span, the page counts as citing earlier and is never an origin. Set from dev-13's span on E2; E3 is not looked at.",
     "editableDomains": "T37: pages anyone can edit. A typed boundary of unsourced counts only on one of these domains, and only when the page cites nothing beside the sentence.",
     "secondSameClaimModel": "T79: a second Token Factory model family that answers same_claim beside Qwen; an origin then needs its yes too, and any other answer, or none, counts as unsure. null is off. It is switched on (deepseek-ai/DeepSeek-V4-Pro-0813) only if eval/same-claim/second-model.ts shows fewer false hits on E2 without losing true ones.",
     "injectionPatterns": "T50: instruction-like text in a page, case-insensitive regular expressions. A page with one anywhere on it (the walker quotes it on the node) or in or around its span cannot be an origin, whatever the typed answers say. Written from the adversarial trap set, never from dev, spike or held-out pages.",
