@@ -19,7 +19,7 @@ const Embedding = z.object({ data: z.array(z.object({ index: count, embedding: z
 export type ChatData = { content: string; logprobs: z.infer<typeof Logprobs> | null; model: string };
 export type ChatInput = { model: string; messages: { role: "system" | "user" | "assistant"; content: string }[]; jsonSchema?: object; logprobs?: boolean; topLogprobs?: number; maxTokens: number };
 type Context = { traceId?: string; step?: string };
-type Options = Context & { fetch?: typeof globalThis.fetch; logUsage?: (row: UsageRow) => void | Promise<void>; sleep?: (ms: number) => Promise<void>; timeoutMs?: number };
+type Options = Context & { apiKey?: string; fetch?: typeof globalThis.fetch; logUsage?: (row: UsageRow) => void | Promise<void>; sleep?: (ms: number) => Promise<void>; timeoutMs?: number };
 export type Result<T> = { data: T; usage: UsageRow; attempts: UsageRow[] };
 const defaultLog = async (row: UsageRow) => {
   await mkdir("runs", { recursive: true });
@@ -33,7 +33,7 @@ export function createTokenFactoryClient(options: Options = {}) {
   const log = options.logUsage ?? defaultLog;
   const sleep = options.sleep ?? (ms => new Promise(resolve => setTimeout(resolve, ms)));
   async function request(endpoint: string, body: { model: string; [key: string]: unknown }, context: Context = {}) {
-    const key = process.env.NEBIUS_API_KEY?.trim();
+    const key = (options.apiKey ?? process.env.NEBIUS_API_KEY)?.trim();
     if (!key) throw new TokenFactoryError("not_configured");
     const price = Object.hasOwn(prices.models, body.model) ? (prices.models as Record<string, { input: number; output: number; cachedInput: number }>)[body.model] : undefined;
     if (!price) throw new TokenFactoryError("not_configured");
