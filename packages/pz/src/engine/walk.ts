@@ -66,8 +66,11 @@ const PARAGRAPH = "";
 
 export function toPlain(markdown: string): { text: string; links: { href: string; start: number; end: number }[]; breaks: number[] } {
   // Headings end like sentences, and emphasis marks are not the page's words.
-  const headed = markdown.trim().replace(/^#{1,6}[ \t]+(.*?)[ \t]*$/gm, (_, heading: string) => (/[.!?:]$/.test(heading) ? heading : `${heading}.`));
-  const plainer = headed.replace(/[ \t]*\n[ \t]*\n\s*/g, ` ${PARAGRAPH}`);
+  // CRLF and lone CR line ends count as plain ones, so a Windows-style blank line still splits paragraphs (XO on #108).
+  const unix = markdown.replace(/\r\n?/g, "\n");
+  const headed = unix.trim().replace(/^#{1,6}[ \t]+(.*?)[ \t]*$/gm, (_, heading: string) => (/[.!?:]$/.test(heading) ? heading : `${heading}.`));
+  // A blank line may hold any whitespace but a newline, a non-breaking space included.
+  const plainer = headed.replace(/[^\S\n]*\n[^\S\n]*\n\s*/g, ` ${PARAGRAPH}`);
   const marked = normalise(plainer.replace(/\*\*|__/g, "")).replace(/!\[[^\]]*\]\((?:[^()]|\([^()]*\))*\)\s*/g, "").replace(/\[\s*\]\((?:[^()]|\([^()]*\))*\)\s*/g, "");
   const links: { href: string; start: number; end: number }[] = [];
   let withMarks = "";
