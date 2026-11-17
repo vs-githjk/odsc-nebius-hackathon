@@ -29,8 +29,9 @@ export function devScore(root: string): string | null {
   const cells = rows.at(-1)?.split("|").map((c) => c.trim()).filter(Boolean) ?? [];
   const earliest = cells[5]?.match(/^(\d+)\s*\/\s*(\d+)\s*\/\s*(\d+)$/);
   if (!cells[4]?.match(/^\d+\/\d+$/) || !earliest) return null;
-  const scored = Number(earliest[1]) + Number(earliest[2]) + Number(earliest[3]);
-  return `${cells[2]}: false origins ${cells[3]}, target cited ${cells[4]}, earliest ${earliest[1]}/${scored} pass`;
+  // Same denominator as target cited: every origin claim, the unverified one included.
+  const origins = cells[4].split("/")[1];
+  return `${cells[2]}: false origins ${cells[3]}, target cited ${cells[4]}, earliest ${earliest[1]}/${origins} pass`;
 }
 
 // The held-out result (T67, #125), once its readout is committed.

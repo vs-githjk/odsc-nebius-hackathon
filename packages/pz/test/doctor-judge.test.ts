@@ -108,7 +108,7 @@ describe("T95 make judge", () => {
     const head = "| Date (UTC) | Commit | Set | False origins (+ unverified ORIGIN_FOUND) | Target cited | Earliest Pass / Partial / Fail | Cold stops |\n|---|---|---|---|---|---|---|\n";
     writeFileSync(join(dir, "eval/dev-score.md"), head + "| 2026-11-16 01:40 | aaa | E2 | 1 (+0) | 1/11 | 0 / 0 / 11 | 3/9 |\n| 2026-11-17 18:38 | bbb | E2 | 0 (+1) | 4/10 | 1 / 0 / 8 | 3/9 |\n");
     writeFileSync(join(dir, "eval/heldout-readout.md"), "Origin hits: 6/10 on the held-out set.\n");
-    expect([devScore(dir), heldOut(dir)]).toEqual(["E2: false origins 0 (+1), target cited 4/10, earliest 1/9 pass", "6/10"]);
+    expect([devScore(dir), heldOut(dir)]).toEqual(["E2: false origins 0 (+1), target cited 4/10, earliest 1/10 pass", "6/10"]);
   });
 
   it("turns any failure into one plain FAIL line, never a stack trace", async () => {
