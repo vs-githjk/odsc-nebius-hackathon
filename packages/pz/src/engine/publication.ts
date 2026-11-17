@@ -187,18 +187,24 @@ function parseNcbi(value: string | undefined): Part | null {
   return { y: Number(m[1]), ...(month ? { m: month } : {}), ...(m[3] ? { d: Number(m[3]) } : {}) };
 }
 
-function earliest(parts: Part[]): string | null {
+export type Precision = "day" | "month" | "year";
+export type Dated = { date: string; precision: Precision };
+
+function earliest(parts: Part[]): Dated | null {
   const full = parts.filter((p): p is Required<Part> => p.m !== undefined && p.d !== undefined);
   const iso = (p: Required<Part>) => `${p.y}-${pad(p.m)}-${pad(p.d)}`;
-  if (full.length) return full.map(iso).sort()[0]!;
+  if (full.length) return { date: full.map(iso).sort()[0]!, precision: "day" };
   const partial = parts.sort((a, b) => a.y - b.y || (a.m ?? 12) - (b.m ?? 12))[0];
   if (!partial) return null;
   const m = partial.m ?? 12;
-  return `${partial.y}-${pad(m)}-${pad(lastDay(partial.y, m))}`;
+  return { date: `${partial.y}-${pad(m)}-${pad(lastDay(partial.y, m))}`, precision: partial.m === undefined ? "year" : "month" };
 }
 
 // The earlier full pubdate/epubdate from an NCBI esummary reply (db=pubmed or db=pmc), or null.
 export function ncbiDate(json: unknown, id: string): string | null {
+  return ncbiDated(json, id)?.date ?? null;
+}
+export function ncbiDated(json: unknown, id: string): Dated | null {
   const record = (json as { result?: Record<string, { pubdate?: string; epubdate?: string }> })?.result?.[id];
   if (!record) return null;
   const parts = [parseNcbi(record.pubdate), parseNcbi(record.epubdate)].filter((p): p is Part => p !== null);
@@ -207,6 +213,9 @@ export function ncbiDate(json: unknown, id: string): string | null {
 
 // The earliest of published-print, published-online and issued from a Crossref work, or null.
 export function crossrefDate(json: unknown): string | null {
+  return crossrefDated(json)?.date ?? null;
+}
+export function crossrefDated(json: unknown): Dated | null {
   const message = (json as { message?: Record<string, { "date-parts"?: unknown }> })?.message;
   if (!message) return null;
   const parts: Part[] = [];
@@ -222,7 +231,7 @@ export function crossrefDate(json: unknown): string | null {
 
 // `budgetMs` caps the time all lookups of one dating pass may take together: once it is spent, no new request starts and
 // each request's timeout is cut to what is left, so a slow pass cannot eat the time dating and page_type still need.
-export type Evidence = { date: string; source: "metadata" | "registry_pubmed" | "registry_pmc" | "registry_crossref" };
+export type Evidence = { date: string; precision?: Precision; source: "metadata" | "registry_pubmed" | "registry_pmc" | "registry_crossref" };
 export type EvidenceDeps = { fetch: typeof fetch; cache: Cache; usage: UsageLog; traceId: string; resolve?: Resolver; budgetMs?: number };
 
 // Where a page's own publication date can be found, in this order, stopping at the first date:
@@ -254,9 +263,9 @@ export function createEvidence(deps: EvidenceDeps) {
 
   const ncbi = (db: "pubmed" | "pmc", id: string) => get("ncbi", "esummary",
     `https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=${db}&id=${encodeURIComponent(id)}&retmode=json`,
-    (body) => ncbiDate(JSON.parse(body), id), apiFetch);
+    (body) => ncbiDated(JSON.parse(body), id), apiFetch);
   const crossref = (doi: string) => get("crossref", "works", `https://api.crossref.org/works/${encodeURIComponent(doi)}`,
-    (body) => crossrefDate(JSON.parse(body)), apiFetch);
+    (body) => crossrefDated(JSON.parse(body)), apiFetch);
   const html = (url: string) => get("fetch", "page", url, (body) => {
     if (!/<\s*(?:!doctype|html|head|meta)\b/i.test(body.slice(0, 4000)) || looksLikeChallenge(body)) throw new Error("not a page");
     return body;
@@ -269,7 +278,7 @@ export function createEvidence(deps: EvidenceDeps) {
     const pubmed = host === "pubmed.ncbi.nlm.nih.gov" ? /^\/(?:\w+\/)?(\d+)/.exec(u.pathname)?.[1] : undefined;
     const pmc = /(?:^|\.)ncbi\.nlm\.nih\.gov$/.test(host) ? /\/(?:pmc\/)?articles\/PMC(\d+)/i.exec(u.pathname)?.[1] : undefined;
     const doi = /(?:^|\.)doi\.org$/.test(host) ? /^\/(10\.\d{4,9}\/.+)$/.exec(decodeURIComponent(u.pathname))?.[1] : undefined;
-    const registry = (date: string | null, source: Evidence["source"]): Evidence | null => (date ? { date, source } : null);
+    const registry = (found: Dated | null, source: Evidence["source"]): Evidence | null => (found ? { date: found.date, ...(found.precision === "day" ? {} : { precision: found.precision }), source } : null);
     let found: Evidence | null = null;
     if (pubmed) found = registry(await ncbi("pubmed", pubmed), "registry_pubmed");
     else if (pmc) {

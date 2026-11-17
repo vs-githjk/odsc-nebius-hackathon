@@ -17,6 +17,18 @@ describe("dating", () => {
       kind: "existed_by", value: "2001-03-31", source: "wayback_first_capture", firstCapture: "2001-03-31", conflictingDate: true,
     });
   });
+  it("a partial registry date carries its precision onto the node; a full day and an archive cap do not", () => {
+    const none = { status: "none" as const };
+    const year = dateEvidence({ metadata: "2020-12-31", metadataSource: "registry_crossref", metadataPrecision: "year" }, none);
+    expect(DateInfo.parse(year)).toMatchObject({ kind: "published", value: "2020-12-31", source: "registry_crossref", precision: "year" });
+    expect(dateEvidence({ metadata: "2020-06-30", metadataSource: "registry_pubmed", metadataPrecision: "month" }, none).precision).toBe("month");
+    expect("precision" in dateEvidence({ metadata: "2020-06-15", metadataSource: "registry_pubmed" }, none)).toBe(false);
+    // Capped by an earlier archive capture, the value is a real day again.
+    expect("precision" in dateEvidence({ metadata: "2020-12-31", metadataPrecision: "year" }, { status: "found", firstCapture: "2020-03-04", timestamp: "20200304000000" })).toBe(false);
+  });
+  it("a node date written before the precision field still parses", () => {
+    expect(DateInfo.parse({ kind: "published", value: "2005-01-01", source: "metadata", firstCapture: null, conflictingDate: false }).precision).toBeUndefined();
+  });
   it("[C6] never uses body-text or Tavily dates to order nodes", () => {
     const a = dateEvidence({ bodyText: "Founded in 1900. Published 1990-01-01", tavily: "1990-01-01" }, { status: "none" });
     expect(a).toMatchObject({ kind: "unconfirmed", value: null });

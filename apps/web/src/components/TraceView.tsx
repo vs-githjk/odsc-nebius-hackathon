@@ -23,7 +23,7 @@ function useReducedMotion(): boolean {
 }
 
 const monthYear = new Intl.DateTimeFormat("en-US", { month: "long", year: "numeric", timeZone: "UTC" });
-const when = (date: string | null) => (date ? monthYear.format(new Date(date)) : "Undated");
+const when = (date: string | null, precision?: "day" | "month" | "year") => (date ? (precision === "year" ? date.slice(0, 4) : monthYear.format(new Date(date))) : "Undated");
 
 export function TraceView({ trace }: { trace: Trace }) {
   const stops = useMemo(() => scrubberStops(trace), [trace]);
@@ -73,7 +73,7 @@ export function TraceView({ trace }: { trace: Trace }) {
             {hop && note && !replay.frame && (
               <section className="hop-detail" aria-label="The page at this stop">
                 <p className="hop-when">
-                  {when(hop.date)}
+                  {when(hop.date, hop.precision)}
                   {open === red && <span className="red-tag">Wording changed here</span>}
                 </p>
                 <p className="hop-page">

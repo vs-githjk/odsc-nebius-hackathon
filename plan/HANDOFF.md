@@ -3,6 +3,13 @@
 Last updated: Tue Nov 17 2026 01:20 ET, by the main session (conductor / XO).
 To resume in a new Claude Code chat opened in this folder, Vidyut says: **"I'm back, continue the master playbook"**. The new session reads this file, `plan/state.json` and `plan/decisions.md`, says where we are in three lines, and carries on.
 
+## Tonight's live E2 rerun (Tue Nov 17, 18:00 ET, needs Vidyut's go; about $2.50 of the $11.20 left)
+On main 3365344 or later: F1 (#200), F3 to F6 (#195 to #198), F5b (#199), F7 (#203), partial dates (#206) and the walk replay recorder (#208). Replay score before the rerun: false origins 0 (+1 unverified), target cited 4/10, earliest 1 Pass.
+1. `DEV_LEDGER="$PWD/.cache/pz-ledger.json" PZ_RECORD_DIR=runs/walk-record DEV_SET=E2 node --env-file=.env --import tsx eval/dev-run.ts`. Keep .cache/http as it is, so cached Tavily calls cost nothing.
+2. `node --import tsx eval/dev-score.ts --set E2`, then post the line on #164 and the spend on #2.
+3. `make replay-walk SET=E2`: should match step 2 with misses near 0. From then on every walk fix is scored at $0.
+4. Commit eval/dev-traces (not runs/), then pick 5 T72 candidates for Rohan (#131) and the hero trace.
+
 ## Where we are (Tue Nov 17, 01:20 ET)
 - **The live pipeline is on main** (#191, merged 940cd17: Rohan's #107/#109/#189 integrated by XO on Vidyut's decision). `pz trace "<claim>"` runs live on Vidyut's machine: `DEV_LEDGER="$PWD/.cache/pz-ledger.json" node --env-file=.env --import tsx packages/pz/src/cli/pz.ts trace "<claim>" --out runs/x.json`. The $15 ledger (Nov 16 to 20, prior 0.10) lives in `.cache/pz-ledger.json` (git-ignored). About $0.10 spent so far; a trace costs about $0.001.
 - Live dating uses page metadata plus NCBI/Crossref registry dates, labelled on the card (decision Nov 17).

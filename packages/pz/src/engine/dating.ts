@@ -8,6 +8,8 @@ export type DateEvidence = {
   metadata?: string | null;
   // Where `metadata` came from when it is not the page's own meta tags: a scholarly registry (same trust, same cap).
   metadataSource?: "registry_pubmed" | "registry_pmc" | "registry_crossref";
+  // "month" or "year" when `metadata` is the last day of a partial registry date. Absent means a full day.
+  metadataPrecision?: "month" | "year";
   byline?: string | null;
   bodyText?: string;
   tavily?: string | null;
@@ -38,7 +40,8 @@ export function dateEvidence(evidence: DateEvidence, capture: FirstCapture): Dat
     return { kind: "existed_by", value: firstCapture, source: "wayback_first_capture", firstCapture,
       conflictingDate: conflictingDate || published !== null };
   }
-  return { kind: published ? "published" : "unconfirmed", value: published, source, firstCapture, conflictingDate };
+  const partial = metadata && source !== "byline" ? evidence.metadataPrecision : undefined;
+  return { kind: published ? "published" : "unconfirmed", value: published, source, firstCapture, conflictingDate, ...(partial ? { precision: partial } : {}) };
 }
 
 // Keep the original usage row available for T29's trace assembly. Client errors propagate.
