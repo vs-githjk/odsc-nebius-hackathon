@@ -6,6 +6,7 @@ import { ClientError } from "../clients/errors.ts";
 import { createTavily } from "../clients/tavily.ts";
 import { createWayback } from "../clients/wayback.ts";
 import { findSpan } from "../match/verbatim.ts";
+import { computeRoots } from "./cluster.ts";
 import { atomHit, claimHit, decideStopState, findInjection, isRange, normalise, parseNumbers, sameNumber, type Rules } from "../rules/index.ts";
 import type { Atoms, Cluster, DateInfo, Edge, Hop, Node, Readout, Span, Trace } from "../schema/index.ts";
 import type { UsageLog } from "../usage/log.ts";
@@ -346,12 +347,6 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
     const nodeIds = nodes.filter((n) => n.clusterId === id).map((n) => n.id);
     return { id, nodeIds, rule: nodeIds.length > 1 ? "near_duplicate" : "single" };
   });
-  const clusterOf = (nodeId: string) => nodes.find((n) => n.id === nodeId)?.clusterId;
-  const explicit = edges.filter((e) => e.kind === "explicit");
-  const pageClusters = new Set(nodes.filter((n) => !n.meta).map((n) => n.clusterId));
-  const rootsLinked = [...pageClusters].filter(
-    (c) => explicit.some((e) => clusterOf(e.parentId) === c) && !explicit.some((e) => clusterOf(e.childId) === c),
-  ).length;
   const minDate = earliestDate();
   const usd = deps.usage.rows.reduce((sum, r) => sum + (r.service === "tokenfactory" ? r.costUsd : 0), 0);
 
@@ -371,7 +366,8 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
     schemaVersion: "1", id: claim.id, mode: recorded ? "REPLAY" : "LIVE", synthetic: false, recordedAt: recorded?.recordedAt ?? deps.now(),
     claim: { text: claim.text, atoms }, viralSentence: claim.text,
     nodes, edges, clusters, spans, hops, blame: [],
-    roots: { pages: nodes.filter((n) => !n.meta).length, clusters: pageClusters.size, rootsLinked, clustersUnlinked: pageClusters.size - rootsLinked, studiesFound: null },
+    // One counter for the roots line and the T94 headline (the old inline count called linked-into clusters unlinked).
+    roots: computeRoots(nodes, edges),
     redHopEdgeId: hops.find((h) => !h.faithful)?.edgeId ?? null,
     earliest: { nodeIds: nodes.filter((n) => !n.meta && minDate !== null && n.date.value === minDate).map((n) => n.id), earlierWindowSearches, earlierFound },
     failure,
