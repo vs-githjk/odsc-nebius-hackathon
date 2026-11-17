@@ -1,4 +1,8 @@
 import { describe, expect, it } from "vitest";
+import type { Trace } from "pz/schema";
+import rulesJson from "../../../../packages/pz/rules/rules.json";
+import { decideStopState } from "../../../../packages/pz/src/rules/decide.ts";
+import type { Rules } from "../../../../packages/pz/src/rules/rules.ts";
 import { loadTraces } from "../data/loadTraces.ts";
 import { lintText } from "../../../../packages/pz/src/cli/lint-copy.ts";
 import { RULES, stopCard } from "./stopCard.ts";
@@ -28,16 +32,35 @@ describe("stopCard", () => {
   });
 
   it("says what was searched in plain words, with months, never raw dates", () => {
-    expect(stopCard(byId("sample-rich")).searched).toBe("1 search, back to before December 2019. 6 pages read.");
+    expect(stopCard(byId("sample-rich")).searched).toBe("1 search, back to before December 2019. 6 pages read, 1 of them only discussing the claim.");
     expect(stopCard(byId("sample-cold-unread")).searched).toBe("2 searches, back to before December 2019. 2 pages read.");
     expect(stopCard(byId("sample-tool-failed")).searched).toBe("No search finished. 1 page read.");
-    expect(stopCard(byId("sample-no-pages")).searched).toBe("2 searches, with no date limit. 1 page read.");
+    expect(stopCard(byId("sample-no-pages")).searched).toBe("2 searches, with no date limit. 1 page read, which only discusses the claim.");
   });
 
   it("an origin gets the origin page itself: its site, its month and its own words", () => {
     const card = stopCard(byId("sample-origin"));
     expect(card.origin).toEqual({ domain: "harborzoo.example", when: "April 2019", quote: expect.stringContaining("14") , url: expect.stringContaining("harborzoo.example") });
     expect(stopCard(byId("sample-rich")).origin).toBeNull();
+  });
+
+  // XO on #180: with two earliest pages, news listed first, the card must quote the page decide picked.
+  it("quotes the page row 5 picked, not the first page of the earliest group", () => {
+    const base = byId("sample-origin");
+    const primary = base.nodes.find((n) => n.id === "keeper-log")!;
+    const span = base.spans.find((s) => s.nodeId === primary.id)!;
+    const news = {
+      ...primary, id: "news-first", url: "https://news.example/penguins", domain: "news.example", spanIds: ["s-news-first"], clusterId: "c-news-first",
+      pageType: { ...primary.pageType!, optionId: "news", top: [{ optionId: "news", p: 0.9 }] },
+    };
+    const trace: Trace = {
+      ...base,
+      nodes: [news, ...base.nodes],
+      spans: [{ ...span, id: "s-news-first", nodeId: "news-first", text: "Penguins nap 14 times a day, a zoo report says." }, ...base.spans],
+      earliest: { ...base.earliest, nodeIds: ["news-first", ...base.earliest.nodeIds] },
+    };
+    expect(decideStopState(trace, rulesJson as unknown as Rules).state).toBe("ORIGIN_FOUND");
+    expect(stopCard({ ...trace, decision: decideStopState(trace, rulesJson as unknown as Rules) }).origin).toMatchObject({ domain: "harborzoo.example", quote: span.text });
   });
 
   // The copy lint itself checks every card string for banned phrases and dashes.
