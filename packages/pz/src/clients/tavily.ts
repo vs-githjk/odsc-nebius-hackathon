@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { ClientError, send, type ClientDeps, type Result } from "./http.ts";
+import { ClientError, send, type ClientDeps, type ClientRequest, type Result } from "./http.ts";
 
 const BASE_URL = "https://api.tavily.com";
 const TIMEOUT_MS = 60_000;
@@ -54,12 +54,14 @@ export type SearchArgs = {
 
 export type ExtractArgs = { urls: string[]; query?: string; format: "markdown" | "text" };
 
-export function createTavily(deps: ClientDeps & { apiKey?: string }) {
+export type TavilySender = <T>(deps: ClientDeps, request: ClientRequest<T>) => Promise<Result<T>>;
+
+export function createTavily(deps: ClientDeps & { apiKey?: string }, sender: TavilySender = send) {
   const apiKey = deps.apiKey ?? process.env.TAVILY_API_KEY ?? "";
 
   function post<T>(endpoint: "search" | "extract", body: object, maxCredits: number, step: string, schema: z.ZodType<T & { usage?: { credits: number } | undefined }>) {
     if (!apiKey) throw new ClientError("not_configured", "TAVILY_API_KEY is not set");
-    return send<T>(deps, {
+    return sender<T>(deps, {
       service: "tavily",
       endpoint,
       step,
