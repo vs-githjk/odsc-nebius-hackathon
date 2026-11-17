@@ -6,7 +6,7 @@ In the spike, the consumer research tools beat us. Perplexity cited the web targ
 
 - `draw.json` lists 10 E3 claims, drawn by code. Every E3 claim is ranked by sha256 of the fixed seed and its id, and the first 10 are kept.
 - The seed is `SEED` in `rematch.ts`. Anyone can re-run `node --import tsx eval/rematch/rematch.ts draw` and get the same list.
-- No held-out claim can be drawn, because E3 shares none with it. Nothing is tuned on E3.
+- E3 is meant to share no claim with the held-out set, so none should be drawn. Rohan is confirming that on #168; until he does, treat it as pending. Nothing is tuned on E3.
 
 | Claim | Expected | Text |
 |---|---|---|
@@ -36,20 +36,21 @@ These are the same fairness rules as the spike (#5):
 - If the tool asks a clarifying question, reply only `No preference, go ahead.` and note that you did. Ask no follow-up questions.
 - Don't look up the claims' origins before or during the runs, and don't open `eval/dev-claims-e3.json`.
 
-Save each run as `eval/rematch/raw/<tool>/<claim>.md`, where `<tool>` is `chatgpt`, `claude` or `perplexity`, using the spike's template: tool and mode, date and time started (PT), minutes until the full answer, any clarifying question, share link, every cited URL in order, then the full answer pasted verbatim.
+Save each run as `eval/rematch/raw/<tool>/<claim>.md` (`raw/` is git-ignored until grading ends, so the grader can't match a form back to its transcript), where `<tool>` is `chatgpt`, `claude` or `perplexity`, using the spike's template: tool and mode, date and time started (PT), minutes until the full answer, any clarifying question, share link, every cited URL in order, then the full answer pasted verbatim.
 
 ## 3. Our answers (to do: XO, live on Vidyut's machine)
 
-Each claim's live trace goes in as `eval/rematch/raw/patient-zero/<claim>.json`. A trace is used as it ran, with no reruns to pick a better one.
+Each claim's live trace goes in as `eval/rematch/raw/patient-zero/<claim>.json` (git-ignored with the rest of `raw/`). A trace is used as it ran, with no reruns to pick a better one.
 
 ## 4. Blinding (to do: XO)
 
-1. For each rival transcript, write `raw/<tool>/<claim>.form.md` in the spike's form shape: earliest URL, its date, stop statement, then the chain newest to oldest with quotes, copied only from the transcript.
-   - Our form is written by code from the trace (`formFromTrace`), in the same shape.
+1. For every answer, ours included, write `raw/<tool>/<claim>.form.md` by hand in the spike's form shape: earliest URL, its date, stop statement, then the chain newest to oldest with quotes, copied only from that answer.
+   - For ours, `node --import tsx eval/rematch/rematch.ts draft` first writes a fact sheet from each trace (`formFromTrace`). It fills in the URLs, dates and quotes, and leaves the stop statement as a placeholder with a note on what the trace ended on. Rewrite the stop statement in your own words, the same way as for the rivals, so no form has code-made sentences. `blind` refuses while a placeholder is left.
    - Our form never says "origin" unless the trace ended ORIGIN_FOUND.
 2. Run `node --import tsx eval/rematch/rematch.ts blind <keyPath>`.
    - For each claim, the four forms get the letters A to D in a fresh random order and go to `forms/<claim>-<letter>.md`.
-   - Tool names, share links, citation markers, mode badges and rule rows are replaced with `[removed]`.
+   - Every URL loses its query string and fragment (`utm_source` and the like come from one tool only).
+   - Share links, citation markers, mode badges and rule rows are dropped, and tool names become "the tool". Nothing is replaced with a marker, since a marker only rival forms carried would give them away.
    - The key goes to `<keyPath>`, which must be outside the repo or under `.cache/`. The script refuses anywhere else.
 3. Rohan gets the forms, never the key.
 

@@ -12,3 +12,6 @@ plan/usage/*.tmp
 runs/
 dist/
 *.local.*
+# T93 rematch: the grading key and the raw transcripts stay out of git until grading ends (eval/rematch/README.md).
+eval/rematch/raw/
+eval/rematch/key*.json
