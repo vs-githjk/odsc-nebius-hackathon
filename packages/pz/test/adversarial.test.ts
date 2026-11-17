@@ -1,3 +1,4 @@
+import { fileURLToPath } from "node:url";
 import { cpSync, mkdtempSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -5,7 +6,7 @@ import { describe, expect, it } from "vitest";
 import { decideStopState, isInjected, loadRules } from "../src/rules/index.ts";
 import { AdversarialCase, runAdversarial, runAdversarialCase } from "../src/traps/adversarial.ts";
 
-const root = new URL("../../../", import.meta.url).pathname;
+const root = fileURLToPath(new URL("../../../", import.meta.url));
 const casesDir = join(root, "traps/adversarial");
 const cases = readdirSync(casesDir).filter((f) => f.endsWith(".json")).sort()
   .map((f) => AdversarialCase.parse(JSON.parse(readFileSync(join(casesDir, f), "utf8"))));
