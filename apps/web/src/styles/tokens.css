@@ -263,27 +263,81 @@ a {
   list-style: none;
 }
 
-/* Rows separated by hairlines, not boxed: the stage is the only card. */
+/* Rows separated by hairlines, not boxed: the stage is the only card. Each row is the claim as a page worded it,
+   then how its trace ended, how far back it reached and how many pages it found. */
 .sample {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 4px 16px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 8px 24px;
   min-height: 44px;
-  padding: 16px 0;
+  padding: 20px 0;
   border-bottom: 1px solid var(--line);
   color: var(--ink);
   text-decoration: none;
 }
 
-.sample:hover .sample-state {
+.sample-claim {
+  grid-column: 1;
+  font: italic 400 21px / 1.3 var(--font-quote);
+  font-optical-sizing: auto;
+  text-wrap: pretty;
+  transition: color 160ms ease;
+}
+
+.sample-facts {
+  grid-column: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 18px;
+  color: var(--ink-3);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.sample-ending {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.ramp-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--tone);
+}
+
+.ramp-dot.empty {
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px var(--ink-3);
+}
+
+.sample-go {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: var(--ink-3);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 160ms ease, stroke 160ms ease;
+}
+
+.sample:hover .sample-claim,
+.sample:focus-visible .sample-claim {
   color: var(--action);
 }
 
-.sample-state {
-  font-size: 17px;
-  font-weight: 500;
+.sample:hover .sample-go,
+.sample:focus-visible .sample-go {
+  stroke: var(--action);
+  transform: translateX(3px);
 }
 
 .meta {
@@ -359,9 +413,12 @@ a {
 }
 
 @media (max-width: 600px) {
-  /* Stacked on a phone: the ending, then its sentence, aligned on the left. */
   .sample {
-    flex-direction: column;
-    align-items: flex-start;
+    gap: 6px 12px;
+    padding: 16px 0;
+  }
+
+  .sample-claim {
+    font-size: 19px;
   }
 }
