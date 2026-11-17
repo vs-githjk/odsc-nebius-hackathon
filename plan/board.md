@@ -110,6 +110,8 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [17:12 PT] AnoopIbrampur T33 on #97: make dev-score now scores E2 and E3 (when eval/dev-claims-e3.json exists, #105), one row per set
 - [09:34 PT] RishitRai #52 make verify: run-1 traces verified as historical records (spike/historical-traces.json, pz verify --historical); stop_state failures now name the differing field
 - [09:43 PT] RishitRai #82 review notes: walkStep builds per-run deps, carries mode/recordedAt/synthetic/usage, allows warm-cache runs, leaves dates and ordering to the dating stage
+- [09:50 PT] RishitRai T24 spans and links: linkEdges and spansStep, explicit edges from links beside the span, unfetchable parents read false; draft on #82
+- [10:10 PT] RishitRai #108 same-site note: a same-site citation beside the span now makes an edge; self-links never do
 - [10:02 PT] RishitRai #52 fix: historical traces pinned by id and content sha256; a re-run with the same id is checked in full
 - [09:40 PT] RishitRai #62 second #69 round: theme ramp variables for dark mode, stage under the nav, claim as the start hero, rows told apart by their reasons
 - [09:43 PT] RishitRai #82 review notes: walkStep builds per-run deps, carries mode/recordedAt/synthetic/usage, allows warm-cache runs, leaves dates and ordering to the dating stage
@@ -140,3 +142,4 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [13:16 PT] AnoopIbrampur T94 #161 independence count PR up: roots.independentRoots and roots.copies, headline leads the card, pz verify re-derives them | @RishitRai #144: read roots.independentRoots / roots.copies, or import independenceLine from pz/headline
 - [13:10 PT] AnoopIbrampur XO's Nov 16 follow-ups (L): range subject is a whole word, card counts one time and a dozen, README replay row, intake range and bound rejects worded | none
 - [21:11 PT] AnoopIbrampur T50 #101 adversarial traps PR up (16 cases, fooled model, injectionPatterns in decide) | @rohanrastogi311 gap: fake early metadata date beats dating (#79), see traps/README
+- [18:35 PT] RishitRai #108 review: citations only in the span's own paragraph, self-links matched without www, query or fragment; nav-row and next-paragraph tests

@@ -42,7 +42,8 @@ const MAX_SENTENCE_CHARS = 600;
 const SCOPE_NOTE = "Web pages only; print and paywalled origins are out of scope. Earliest source we found, not proof of first use.";
 
 const sha256 = (text: string) => createHash("sha256").update(text).digest("hex");
-const canonUrl = (url: string) => url.replace(/#.*$/, "").replace(/\/$/, "");
+// One spelling per page: no fragment, no trailing slash.
+export const canonUrl = (url: string) => url.replace(/#.*$/, "").replace(/\/$/, "");
 const hostOf = (url: string) => new URL(url).hostname.replace(/^www\./, "");
 const dayBefore = (iso: string) => new Date(Date.parse(iso) - 86_400_000).toISOString().slice(0, 10);
 // Tavily sends RFC dates; undated pages sort last.
@@ -60,23 +61,56 @@ export function queriesFor(atoms: Atoms): string[] {
 }
 
 // Markdown to the visible text, with where each link's words landed. Handles one level of parentheses in a url.
-export function toPlain(markdown: string): { text: string; links: { href: string; start: number; end: number }[] } {
+// Marks a blank line while the text is cleaned; removed before the text is returned, its places kept as `breaks`.
+const PARAGRAPH = "";
+
+export function toPlain(markdown: string): { text: string; links: { href: string; start: number; end: number }[]; breaks: number[] } {
   // Headings end like sentences, and emphasis marks are not the page's words.
-  const plainer = markdown.replace(/^#{1,6}[ \t]+(.*?)[ \t]*$/gm, (_, heading: string) => (/[.!?:]$/.test(heading) ? heading : `${heading}.`));
-  const cleaned = normalise(plainer.replace(/\*\*|__/g, "")).replace(/!\[[^\]]*\]\((?:[^()]|\([^()]*\))*\)\s*/g, "").replace(/\[\s*\]\((?:[^()]|\([^()]*\))*\)\s*/g, "");
+  // CRLF and lone CR line ends count as plain ones, so a Windows-style blank line still splits paragraphs (XO on #108).
+  const unix = markdown.replace(/\r\n?/g, "\n");
+  const headed = unix.trim().replace(/^#{1,6}[ \t]+(.*?)[ \t]*$/gm, (_, heading: string) => (/[.!?:]$/.test(heading) ? heading : `${heading}.`));
+  // A blank line may hold any whitespace but a newline, a non-breaking space included.
+  const plainer = headed.replace(/[^\S\n]*\n[^\S\n]*\n\s*/g, ` ${PARAGRAPH}`);
+  const marked = normalise(plainer.replace(/\*\*|__/g, "")).replace(/!\[[^\]]*\]\((?:[^()]|\([^()]*\))*\)\s*/g, "").replace(/\[\s*\]\((?:[^()]|\([^()]*\))*\)\s*/g, "");
   const links: { href: string; start: number; end: number }[] = [];
-  let text = "";
+  let withMarks = "";
   let last = 0;
-  for (const m of cleaned.matchAll(/\[([^\]]*)\]\(((?:[^()\s]|\([^()\s]*\))*)(?:\s+"[^"]*")?\)/g)) {
-    text += cleaned.slice(last, m.index);
-    links.push({ href: m[2] ?? "", start: text.length, end: text.length + (m[1] ?? "").length });
-    text += m[1] ?? "";
+  for (const m of marked.matchAll(/\[([^\]]*)\]\(((?:[^()\s]|\([^()\s]*\))*)(?:\s+"[^"]*")?\)/g)) {
+    withMarks += marked.slice(last, m.index);
+    links.push({ href: m[2] ?? "", start: withMarks.length, end: withMarks.length + (m[1] ?? "").length });
+    withMarks += m[1] ?? "";
     last = m.index + m[0].length;
   }
-  text += cleaned.slice(last);
+  withMarks += marked.slice(last);
+  // Take the marks out, shifting each link by the marks before it.
+  const breaks: number[] = [];
+  let text = "";
+  for (const ch of withMarks) {
+    if (ch === PARAGRAPH) breaks.push(text.length);
+    else text += ch;
+  }
+  const shift = (at: number) => at - [...withMarks.slice(0, at)].filter((c) => c === PARAGRAPH).length;
+  const shifted = links.map((l) => ({ ...l, start: shift(l.start), end: shift(l.end) }));
   const stable = normalise(text);
-  return stable === text ? { text, links } : { text: stable, links: [] };
+  return stable === text ? { text, links: shifted, breaks } : { text: stable, links: [], breaks: [] };
 }
+
+// The paragraph a position sits in, as [start, end) offsets.
+export function paragraphAt(breaks: number[], at: number): [number, number] {
+  const start = Math.max(0, ...breaks.filter((b) => b <= at));
+  const end = Math.min(Number.POSITIVE_INFINITY, ...breaks.filter((b) => b > at));
+  return [start, end];
+}
+
+// A page's identity for self-link checks: no www, no query, no fragment, no trailing slash.
+export const pageKey = (url: string) => {
+  try {
+    const u = new URL(url);
+    return `${u.hostname.replace(/^www\./, "")}${u.pathname.replace(/\/$/, "")}`;
+  } catch {
+    return url;
+  }
+};
 
 function sentences(text: string): { text: string; start: number }[] {
   const out: { text: string; start: number }[] = [];
@@ -199,7 +233,7 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
   }
 
   async function readPage(url: string, title: string, raw: string, apiDate: string | null): Promise<boolean> {
-    const { text, links } = toPlain(raw);
+    const { text, links, breaks } = toPlain(raw);
     const sentence = sentences(text).find(
       (s) => s.text.length <= MAX_SENTENCE_CHARS && (atoms.number
         ? s.text.toLowerCase().includes(lemma) && atomHit(s.text, atoms, rules.weakNumberMinSigDigits) && assertsNumber(s.text, atoms, rules.negationPrefixes)
@@ -237,8 +271,11 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
 
     const haystack = `${title} ${sentence.text}`.toLowerCase();
     const meta = rules.metaKeywords.some((k) => haystack.includes(k));
+    // A citation of the span sits within reach and in the span's own paragraph: a menu row after a blank line never counts.
+    const [paraStart, paraEnd] = paragraphAt(breaks, hit.start);
     const nearby = links
       .filter((l) => l.end >= hit.start - LINK_REACH_CHARS && l.start <= hit.end + LINK_REACH_CHARS)
+      .filter((l) => l.start >= paraStart && l.end <= paraEnd)
       .flatMap((l) => {
         try {
           const target = new URL(l.href, url);
@@ -247,7 +284,8 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
           return [];
         }
       })
-      .filter((u) => hostOf(u) !== hostOf(url) && !excluded(u));
+      // A same-site citation counts; the page itself never does, however its address is written.
+      .filter((u) => pageKey(u) !== pageKey(url) && !excluded(u));
     const parents = [...new Set(nearby)].slice(0, LINKS_PER_SPAN);
     nodeLinks.set(id, parents);
 
