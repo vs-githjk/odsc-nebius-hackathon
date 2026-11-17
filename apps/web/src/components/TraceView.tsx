@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import type { Trace } from "pz/schema";
+import { hopInto, readoutsHead, redStop } from "../model/hop.ts";
 import { scrubberStops, stopNote } from "../model/scrubber.ts";
 import { ModeBadge } from "./ModeBadge.tsx";
 import { Scrubber, stopXs, xAt } from "./Scrubber.tsx";
@@ -39,6 +40,8 @@ export function TraceView({ trace }: { trace: Trace }) {
   };
   const hop = stops[open];
   const note = hop ? stopNote(trace, stops, open) : null;
+  const red = useMemo(() => redStop(trace, stops), [trace, stops]);
+  const into = hop ? hopInto(trace, stops, open) : null;
   const x = stops.length > 0 ? xAt(stopXs(trace, stops), position) : 1;
 
   return (
@@ -61,10 +64,13 @@ export function TraceView({ trace }: { trace: Trace }) {
           <>
             <Sentence trace={trace} stops={stops} position={position} />
             <TraceGraph trace={trace} activeSpanId={hop?.spanId ?? null} x={x} />
-            <Scrubber trace={trace} stops={stops} position={position} reducedMotion={reducedMotion} onMove={setPosition} onSettle={settle} />
+            <Scrubber trace={trace} stops={stops} position={position} reducedMotion={reducedMotion} red={red} onMove={setPosition} onSettle={settle} />
             {hop && note && (
               <section className="hop-detail" aria-label="The page at this stop">
-                <p className="hop-when">{when(hop.date)}</p>
+                <p className="hop-when">
+                  {when(hop.date)}
+                  {open === red && <span className="red-tag">Wording changed here</span>}
+                </p>
                 <p className="hop-page">
                   <span className="hop-name">{new URL(hop.url).hostname}</span>
                   <span className="pill">{hop.tier} match</span>
@@ -76,6 +82,21 @@ export function TraceView({ trace }: { trace: Trace }) {
                   {hop.unsure && "One readout on this hop is unsure. "}
                   <a href={hop.url} target="_blank" rel="noreferrer">Open the page</a>
                 </p>
+                {into && (
+                  <div className="readouts">
+                    <p className="readouts-head">{readoutsHead(into)}</p>
+                    {into.chips.length > 0 && (
+                      <ul className="readout-list" key={`${trace.id}-${open}`}>
+                        {into.chips.map((c, n) => (
+                          <li key={c.id} className={`readout ${c.tone}${c.disputed ? " disputed" : ""}`} style={{ ["--i" as string]: n }}>
+                            <span className="readout-label">{c.label}</span>
+                            <span className="readout-tag">{c.tag}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                )}
               </section>
             )}
           </>

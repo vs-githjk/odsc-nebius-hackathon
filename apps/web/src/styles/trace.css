@@ -561,3 +561,136 @@
     font-size: 15px;
   }
 }
+
+/* The red hop: where the wording changed. Coral on the track, in the band and on the open stop. */
+.key.red {
+  border-top: 2.5px solid var(--hot);
+}
+
+.band-link.red {
+  stroke: var(--hot);
+  stroke-width: 2.5;
+}
+
+.track-red {
+  position: absolute;
+  top: 19px;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--hot);
+}
+
+.stop.red {
+  background: var(--hot);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--hot) 24%, transparent);
+}
+
+.stop.red.lit {
+  box-shadow: inset 0 0 0 2px var(--ink), 0 0 0 3px color-mix(in srgb, var(--hot) 24%, transparent);
+}
+
+/* Room above the track so the label clears the 44 px handle when the handle rests on the coral stop. */
+.scrub.has-red {
+  margin-top: 40px;
+}
+
+.red-label {
+  position: absolute;
+  top: -22px;
+  line-height: 16px;
+  color: var(--hot-ink);
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.red-label.middle {
+  transform: translateX(-50%);
+}
+
+.red-label.end {
+  transform: translateX(-100%);
+}
+
+.red-tag {
+  margin-left: 10px;
+  color: var(--hot-ink);
+  font-weight: 600;
+}
+
+/* What changed on the way into the open stop: one chip per readout that fired. */
+.readouts {
+  margin-top: 14px;
+}
+
+.readouts-head {
+  margin: 0;
+  color: var(--ink-3);
+  font-size: 14px;
+}
+
+.readout-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.readout {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 14px;
+  animation: readout-in 220ms cubic-bezier(0.215, 0.61, 0.355, 1) both;
+  animation-delay: calc(var(--i) * 60ms);
+}
+
+.readout.changed {
+  background: var(--chg-tint);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--hot) 40%, transparent);
+}
+
+.readout.unsure {
+  background: var(--bg-2);
+  box-shadow: inset 0 0 0 1px var(--line-2);
+}
+
+.readout.disputed {
+  box-shadow: inset 0 0 0 1px var(--line-2);
+  background-image: repeating-linear-gradient(135deg, transparent 0 6px, var(--line) 6px 7px);
+}
+
+.readout-label {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.readout-tag {
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes readout-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .readout {
+    animation: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .red-label {
+    font-size: 14px;
+    top: -23px;
+  }
+}

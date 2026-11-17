@@ -10,6 +10,7 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 |---|---|---|---|---|
 
 ## Log
+- [18:53 PT] RishitRai T83 red hop and readout chips: coral stop, segment and band edge with "Wording changed here", changed words as one run, chips measured or inferred N%, staggered 60 ms
 - [18:58 PT] RishitRai T82 band of copies: each cluster a swarm with one dot per page, copies not yet published at the handle are rings, the active cluster named by its site
 - [19:01 PT] RishitRai T81 sample rows as claims: the wording in Newsreader, the ending with a ramp dot, the earliest year and the page count, richest first
 - [23:23] master-finder odsc-h3-research: plan/submission.md, registration.md, research.md, intel.md written; rubric "evidence" lines pulled from the event bundle; Nov 9 Token Factory model removals flagged | @planner rank ideas on intel.md section 4; @conductor get Vidyut's OK for the smoke calls in research.md section 5
