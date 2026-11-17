@@ -206,14 +206,14 @@ describe("trace orchestration and replay", () => {
   it("runs the keyless replay CLI in JSON and event modes, rejecting invalid evidence", async () => {
     const lines: string[] = [], errors: string[] = [];
     const io = { write: (s: string) => { lines.push(s); }, error: (s: string) => { errors.push(s); } };
-    expect(await traceCommand(["--replay-of", fixturePath.pathname, "--json"], io)).toBe(0);
+    expect(await traceCommand(["--replay-of", fileURLToPath(fixturePath), "--json"], io)).toBe(0);
     expect(Trace.parse(JSON.parse(lines[0]!)).mode).toBe("SAMPLE");
     lines.length = 0;
-    expect(await traceCommand(["--replay-of", fixturePath.pathname], io)).toBe(0);
+    expect(await traceCommand(["--replay-of", fileURLToPath(fixturePath)], io)).toBe(0);
     expect(lines[0]).toMatch(/^Patient Zero  SAMPLE/);
     expect(lines[0]).not.toContain("\u001b[");
     lines.length = 0;
-    expect(await traceCommand(["--replay-of", fixturePath.pathname, "--events"], io)).toBe(0);
+    expect(await traceCommand(["--replay-of", fileURLToPath(fixturePath), "--events"], io)).toBe(0);
     expect(JSON.parse(lines[0]!)).toMatchObject({ type: "trace", trace: { mode: "SAMPLE" } });
     const path = join(mkdtempSync(join(tmpdir(), "pz-invalid-")), "bad.json");
     writeFileSync(path, "{}"); lines.length = 0;
