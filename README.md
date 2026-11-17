@@ -70,7 +70,7 @@ These two are labelled synthetic: the claim is the invented Harbor Zoo one, and 
 
 The only traces in the repo today are synthetic fixtures: an invented claim on invented pages, shown as SAMPLE ([fixtures/README.md](fixtures/README.md)).
 
-**Where Patient Zero is wrong:** [docs/limits.md](docs/limits.md) lists every failure we know of, each with an example you can run, the rule that should catch it, whether it is caught today and who owns the fix. Its open rows are pinned by tests, so the page can't say a gap is closed while it is still open.
+**Where Patient Zero is wrong:** [docs/limits.md](docs/limits.md) lists every failure we know of, each with an example you can run, the rule that should catch it, whether it is caught today and who owns the fix. Rows that name a test are pinned by it, so the page can't say one of those gaps is closed while it is still open. The rest (print origins, search coverage, the roots count) are explained, not tested.
 
 ## For agents reading this repo
 
