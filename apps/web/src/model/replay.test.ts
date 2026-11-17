@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import type { Trace } from "pz/schema";
 import { loadTraces } from "../data/loadTraces.ts";
 import { lintText } from "../../../../packages/pz/src/cli/lint-copy.ts";
-import { lineMs, replayFrame, replayLines, walkTook } from "./replay.ts";
+import { afterTick, autoplays, lineMs, railHead, replayFrame, replayLines, startPhase, walkTook } from "./replay.ts";
 
 const { traces } = loadTraces();
 const byId = (id: string) => traces.find((t) => t.id === id)!;
@@ -81,5 +81,37 @@ describe("pacing", () => {
     expect(lineMs(Array.from({ length: 70 }, () => ({ kind: "page" as const, text: "" })))).toBe(100);
     expect(walkTook({ ...byId("sample-rich"), budget: { ...byId("sample-rich").budget, ms: 41_200 } })).toBe("The walk took 41 seconds.");
     expect(walkTook({ ...byId("sample-rich"), budget: { ...byId("sample-rich").budget, ms: 0 } })).toBeNull();
+  });
+});
+
+describe("the replay's state machine (XO on #186)", () => {
+  it("autoplays once per trace per visit, and never under reduced motion", () => {
+    expect(autoplays(false, false)).toBe(true);
+    expect(autoplays(true, false)).toBe(false);
+    expect(autoplays(false, true)).toBe(false);
+  });
+
+  it("'Replay the walk' under reduced motion jumps straight to the end; otherwise it plays from the first line", () => {
+    expect(startPhase(true)).toBe("done");
+    expect(startPhase(false)).toBe("lines");
+  });
+
+  it("ticks one line at a time, then hands over to the handle's walk", () => {
+    expect(afterTick(0, 3)).toEqual({ phase: "lines", shown: 1 });
+    expect(afterTick(2, 3)).toEqual({ phase: "lines", shown: 3 });
+    expect(afterTick(3, 3)).toEqual({ phase: "walk", shown: 3 });
+  });
+});
+
+describe("railHead", () => {
+  it("never says recorded, or gives a duration, on an invented sample", () => {
+    const head = railHead(byId("sample-rich"));
+    expect(head).toEqual({ title: "Sample walk, made-up data", sub: "Shown step by step from the sample trace." });
+    expect(`${head.title} ${head.sub}`).not.toMatch(/recorded|seconds|took/i);
+  });
+
+  it("gives a recorded trace its date and how long the walk took", () => {
+    const real: Trace = { ...byId("sample-rich"), synthetic: false, mode: "LIVE", recordedAt: "2026-11-17T23:05:00Z", budget: { ...byId("sample-rich").budget, ms: 36_400 } };
+    expect(railHead(real)).toEqual({ title: "Replaying the recorded walk", sub: "Recorded November 17, 2026. The walk took 36 seconds. Shown faster." });
   });
 });

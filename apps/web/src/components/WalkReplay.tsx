@@ -1,12 +1,14 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import type { Trace } from "pz/schema";
-import { lineMs, replayFrame, replayLines, walkTook, type ReplayLine } from "../model/replay.ts";
+import { afterTick, autoplays, lineMs, railHead, replayFrame, replayLines, startPhase, type ReplayLine } from "../model/replay.ts";
 
 export type Replay = {
   phase: "lines" | "walk" | "done";
   lines: ReplayLine[];
   shown: number;
   frame: ReturnType<typeof replayFrame> | null; // null when the replay is not running: the stage shows the whole trace
+  // True once the rail has closed while it held focus (Skip), so "Replay the walk" takes focus (XO on #186).
+  returnFocus: boolean;
   start(): void;
   skip(): void;
 };
@@ -35,11 +37,14 @@ export function useReplay(trace: Trace, stopCount: number, reducedMotion: boolea
   const lines = useMemo(() => replayLines(trace), [trace]);
   const [phase, setPhase] = useState<Replay["phase"]>("done");
   const [shown, setShown] = useState(lines.length);
+  const [returnFocus, setReturnFocus] = useState(false);
   const raf = useRef(0);
   const last = Math.max(0, stopCount - 1);
 
   const finish = useCallback(() => {
     cancelAnimationFrame(raf.current);
+    // Focus inside the closing rail (on Skip) would be lost; it moves to "Replay the walk" instead.
+    setReturnFocus(typeof document !== "undefined" && !!document.activeElement?.closest?.(".replay-rail"));
     setShown(lines.length);
     setPhase("done");
     settle(last);
@@ -48,13 +53,15 @@ export function useReplay(trace: Trace, stopCount: number, reducedMotion: boolea
 
   const start = useCallback(() => {
     cancelAnimationFrame(raf.current);
+    setReturnFocus(false);
+    if (startPhase(reducedMotion) === "done") return finish();
     walkTo(0);
     setShown(0);
     setPhase("lines");
-  }, [walkTo]);
+  }, [walkTo, reducedMotion, finish]);
 
   useLayoutEffect(() => {
-    if (!reducedMotion && !seen(trace.id)) start();
+    if (autoplays(seen(trace.id), reducedMotion)) start();
     else {
       setShown(lines.length);
       setPhase("done");
@@ -65,11 +72,12 @@ export function useReplay(trace: Trace, stopCount: number, reducedMotion: boolea
 
   useEffect(() => {
     if (phase !== "lines") return;
-    if (shown >= lines.length) {
+    const next = afterTick(shown, lines.length);
+    if (next.phase === "walk") {
       setPhase("walk");
       return;
     }
-    const t = setTimeout(() => setShown((n) => n + 1), lineMs(lines));
+    const t = setTimeout(() => setShown(next.shown), lineMs(lines));
     return () => clearTimeout(t);
   }, [phase, shown, lines]);
 
@@ -88,7 +96,7 @@ export function useReplay(trace: Trace, stopCount: number, reducedMotion: boolea
     return () => cancelAnimationFrame(raf.current);
   }, [phase, last, walkTo, finish]);
 
-  return { phase, lines, shown, frame: phase === "done" ? null : replayFrame(trace, lines, shown), start, skip: finish };
+  return { phase, lines, shown, frame: phase === "done" ? null : replayFrame(trace, lines, shown), returnFocus, start, skip: finish };
 }
 
 // The log rail: the walk's own lines as they replay, newest at the bottom, with Skip.
@@ -98,15 +106,15 @@ export function ReplayRail({ trace, replay }: { trace: Trace; replay: Replay }) 
     list.current?.scrollTo({ top: list.current.scrollHeight });
   }, [replay.shown]);
   if (replay.phase === "done") return null;
-  const took = walkTook(trace);
+  const head = railHead(trace);
   return (
-    <section className="replay-rail" aria-label="The recorded walk, replayed">
+    <section className="replay-rail" aria-label={head.title}>
       <div className="replay-head">
         <span className="replay-tag">
           <i className="replay-pulse" aria-hidden="true" />
-          Replaying the recorded walk
+          {head.title}
         </span>
-        <span className="replay-sub">{took ? `${took} Shown faster.` : "Shown faster than it ran."}</span>
+        <span className="replay-sub">{head.sub}</span>
         <button type="button" className="replay-skip" onClick={replay.skip}>
           Skip
         </button>
@@ -125,9 +133,13 @@ export function ReplayRail({ trace, replay }: { trace: Trace; replay: Replay }) 
 
 // After the replay: one quiet control to watch it again.
 export function ReplayAgain({ replay }: { replay: Replay }) {
+  const button = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    if (replay.phase === "done" && replay.returnFocus) button.current?.focus();
+  }, [replay.phase, replay.returnFocus]);
   if (replay.phase !== "done") return null;
   return (
-    <button type="button" className="replay-again" onClick={replay.start}>
+    <button type="button" className="replay-again" ref={button} onClick={replay.start}>
       <svg viewBox="0 0 24 24" aria-hidden="true">
         <path d="M4 12a8 8 0 1 0 2.5-5.8M4 4v4.5h4.5" />
       </svg>

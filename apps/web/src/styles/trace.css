@@ -439,43 +439,6 @@
   }
 }
 
-/* T86: the recorded walk, replayed. The rail lists the walk's own lines as they land; the band fills page by page. */
-.replay-rail {
-  margin-top: 18px;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: var(--bg-2);
-  overflow: hidden;
-}
-
-.replay-head {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 4px 12px;
-  padding: 10px 10px 10px 16px;
-  border-bottom: 1px solid var(--line);
-}
-
-.replay-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--ink);
-  font-size: 14px;
-  font-weight: 600;
-}
-
-.replay-pulse {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--hot);
-  animation: replay-pulse 1.2s ease-in-out infinite;
-}
-
-.replay-sub {
-  order: 3;
 /* The stop card (T85): the panel the band ends on. Colour stays for time; the tone only tints the title. */
 .stop-card {
   margin-top: 28px;
@@ -667,6 +630,112 @@
   font-size: 14px;
 }
 
+.readout-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.readout {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  font-size: 14px;
+  animation: readout-in 220ms cubic-bezier(0.215, 0.61, 0.355, 1) both;
+  animation-delay: calc(var(--i) * 60ms);
+}
+
+.readout.changed {
+  background: var(--chg-tint);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--hot) 40%, transparent);
+}
+
+.readout.unsure {
+  background: var(--bg-2);
+  box-shadow: inset 0 0 0 1px var(--line-2);
+}
+
+.readout.disputed {
+  box-shadow: inset 0 0 0 1px var(--line-2);
+  background-image: repeating-linear-gradient(135deg, transparent 0 6px, var(--line) 6px 7px);
+}
+
+.readout-label {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.readout-tag {
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes readout-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .readout {
+    animation: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .red-label {
+    font-size: 14px;
+    top: -23px;
+  }
+}
+
+/* T86: the recorded walk, replayed. The rail lists the walk's own lines as they land; the band fills page by page. */
+.replay-rail {
+  margin-top: 18px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--bg-2);
+  overflow: hidden;
+}
+
+.replay-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 12px;
+  padding: 10px 10px 10px 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.replay-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.replay-pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--hot);
+  animation: replay-pulse 1.2s ease-in-out infinite;
+}
+
+.replay-sub {
+  order: 3;
+  color: var(--ink-3);
+  font-size: 14px;
+}
+
 .replay-skip {
   order: 2;
   margin-left: auto;
@@ -735,42 +804,6 @@
 
 .replay-line.end,
 .replay-line.walk {
-.readout-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 8px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.readout {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 8px;
-  padding: 5px 12px;
-  border-radius: 999px;
-  font-size: 14px;
-  animation: readout-in 220ms cubic-bezier(0.215, 0.61, 0.355, 1) both;
-  animation-delay: calc(var(--i) * 60ms);
-}
-
-.readout.changed {
-  background: var(--chg-tint);
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--hot) 40%, transparent);
-}
-
-.readout.unsure {
-  background: var(--bg-2);
-  box-shadow: inset 0 0 0 1px var(--line-2);
-}
-
-.readout.disputed {
-  box-shadow: inset 0 0 0 1px var(--line-2);
-  background-image: repeating-linear-gradient(135deg, transparent 0 6px, var(--line) 6px 7px);
-}
-
-.readout-label {
   color: var(--ink);
   font-weight: 600;
 }
@@ -822,12 +855,6 @@
 }
 
 @keyframes replay-line-in {
-.readout-tag {
-  color: var(--ink-2);
-  font-variant-numeric: tabular-nums;
-}
-
-@keyframes readout-in {
   from {
     opacity: 0;
     transform: translateY(4px);
@@ -846,8 +873,6 @@
   .replay-pulse,
   .replay-line,
   .band.replaying .copy {
-@media (prefers-reduced-motion: reduce) {
-  .readout {
     animation: none;
   }
 }
@@ -859,8 +884,5 @@
 
   .replay-sub {
     flex-basis: 100%;
-  .red-label {
-    font-size: 14px;
-    top: -23px;
   }
 }

@@ -79,3 +79,30 @@ export function walkTook(trace: Trace): string | null {
   if (s <= 0) return null;
   return s < 120 ? `The walk took ${plural(s, "second", "seconds")}.` : `The walk took ${plural(Math.round(s / 60), "minute", "minutes")}.`;
 }
+
+// The replay's state machine, pure so it is tested without a DOM (XO on #186). The hook only adds timers.
+export type ReplayPhase = "lines" | "walk" | "done";
+
+// Autoplay once per trace per visit, never under reduced motion.
+export const autoplays = (seenBefore: boolean, reducedMotion: boolean) => !seenBefore && !reducedMotion;
+
+// "Replay the walk": play from the first line, or under reduced motion jump straight to the end (DESIGN.md: motion never
+// delays a result).
+export const startPhase = (reducedMotion: boolean): ReplayPhase => (reducedMotion ? "done" : "lines");
+
+// One tick of the rail: the next line, or once every line is shown, the handle's walk to the earliest page.
+export function afterTick(shown: number, total: number): { phase: ReplayPhase; shown: number } {
+  return shown >= total ? { phase: "walk", shown } : { phase: "lines", shown: shown + 1 };
+}
+
+const recordedDay = new Intl.DateTimeFormat("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" });
+
+// The rail's header. Invented samples never claim a recorded walk or a duration (XO on #186).
+export function railHead(trace: Trace): { title: string; sub: string } {
+  if (trace.synthetic || trace.mode === "SAMPLE") return { title: "Sample walk, made-up data", sub: "Shown step by step from the sample trace." };
+  const took = walkTook(trace);
+  return {
+    title: "Replaying the recorded walk",
+    sub: `Recorded ${recordedDay.format(new Date(trace.recordedAt))}.${took ? ` ${took}` : ""} Shown faster.`,
+  };
+}
