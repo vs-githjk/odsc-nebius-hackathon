@@ -88,3 +88,4 @@
 - 2026-11-17 12:40 ET: Vidyut moves heavy work to Rishit. URGENT list on #1 (F1 both halves, take over #198, F7, a walk replay harness, F5 spans, #184 and #186, partial dates, small items). Anoop is light (#197 only). Rohan: PR, F2, flaky test, T72.
 - 2026-11-17 13:05 ET: merged #196 (F4) 39a0d26 after a flaky CI rerun. #199 FIX 1H (own number vetoes itself). XO opened #201 to fix the flaky pipeline test (cache collision); in review.
 - 2026-11-17 13:30 ET: merged #201 (4ad3a86) and #197 (F5) f0404dd. #198 PASS, waiting on #202 (XO: per-test HTTP cache, flake 0/10). FIX: #200 F1 closeTrail half (Rishit), #199 1H (Anoop). Owners restated on #1, #3, #4.
+- 2026-11-17 13:40 ET: merged #202 (per-test cache, ends flake) e9a03e0 and #198 (F6) 62bc407.
