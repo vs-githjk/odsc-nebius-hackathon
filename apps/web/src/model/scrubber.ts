@@ -1,4 +1,4 @@
-import type { Edge, Hop, Node, Trace } from "pz/schema";
+import { datePhrase, type Edge, type Hop, type Node, type Trace } from "pz/schema";
 
 export type Stop = {
   edgeId: string | null; // the hop that reached this page from the newer stop; null on the first stop and on a second earliest page
@@ -132,7 +132,7 @@ export function stopNote(trace: Trace, stops: Stop[], i: number): StopNote {
   const pageDomain = trace.nodes.find((n) => n.id === nodeId)?.domain;
   return {
     earliest: nodeId !== undefined && trace.earliest.nodeIds.includes(nodeId),
-    via: edge && child ? { kind: edge.kind, domain: child.domain, label: child.domain === pageDomain ? new URL(child.url).pathname : child.domain, date: child.date.value } : null,
+    via: edge && child ? { kind: edge.kind, domain: child.domain, label: child.domain === pageDomain ? new URL(child.url).pathname : child.domain, date: child.date.value === null ? null : datePhrase(child.date.value, child.date.precision) } : null,
   };
 }
 
