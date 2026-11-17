@@ -118,6 +118,8 @@ export type PipelineParts = {
   usagePath?: string;
   // The run's clock. Replay pins it to the recorded day, because the search window ends "today" and is part of every cache key.
   clock?: () => Date;
+  // false turns PZ_RECORD_DIR off for this pipeline: a replay must never write to the recording it reads.
+  record?: boolean;
 };
 
 // The production pipeline from ready clients. One pipeline serves one trace: it holds that trace's usage log and clock.
@@ -130,7 +132,7 @@ export function buildPipeline(parts: PipelineParts): { pipeline: Pipeline; wayba
   const clock = parts.clock ?? (() => new Date());
   // PZ_RECORD_DIR turns any live run into a recording for eval/replay-walk.ts: HTTP responses are mirrored into the
   // directory and every Token Factory reply is written to its tape.
-  const recordDir = recordDirOf();
+  const recordDir = parts.record === false ? null : recordDirOf();
   const model = recordDir
     ? recordingClient({ chat: parts.chat.chat, embed: parts.embed.embed }, createFileTape(recordPaths(recordDir).model))
     : { chat: parts.chat.chat, embed: parts.embed.embed };

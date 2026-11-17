@@ -10,7 +10,7 @@ import type { UsageRow } from "../schema/usage.ts";
 //   http/<key>.json    every Tavily, page, Wayback and registry response (the same files the HTTP cache writes)
 //   model/<key>.json   every Token Factory chat and embedding reply, or the error it ended in
 //   claims/<id>.json   the clock the claim started at (the search window ends "today", so replay must use the same day)
-// Set PZ_RECORD_DIR on any live run (`pz trace`, `make dev-run`) to write one. Replay never reaches the network: a
+// Set PZ_RECORD_DIR on a `make dev-run` batch to write one (a bare `pz trace` keys its clock by a random id). Replay never reaches the network: a
 // request the recording lacks is a counted miss.
 
 type TokenFactory = ReturnType<typeof createTokenFactoryClient>;

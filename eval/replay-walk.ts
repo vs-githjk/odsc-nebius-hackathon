@@ -48,7 +48,7 @@ export async function replayClaim(claim: { id: string; text: string }, opts: Rep
     tavily: deps => { const tavily = createTavily({ ...deps, apiKey: "replay-placeholder", fetch: http }); return opts.wrapTavily?.(tavily) ?? tavily; },
     archiveFetch: http, pageFetch: http, resolveHost: async () => ["93.184.216.34"], sleep: async () => {},
     cache: readOnlyCaches(...caches), traceId: claim.id, pagesDir, usagePath: join(opts.scratch, "usage.jsonl"),
-    clock: () => new Date(recordedAt),
+    clock: () => new Date(recordedAt), record: false,
   });
   return runTrace(claim.text, pipeline, { wayback });
 }

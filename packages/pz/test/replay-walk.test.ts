@@ -109,6 +109,22 @@ describe("walk replay from a recording", () => {
     expect(replayed.nodes.map(n => n.url)).toEqual(live.nodes.map(n => n.url));
   });
 
+  it("a replay with PZ_RECORD_DIR still set never writes to the recording (#208 review)", async () => {
+    const dir = mkdtempSync(join(tmpdir(), "pz-replay-"));
+    await record(dir);
+    const before = readdirSync(recordPaths(dir).model).length;
+    vi.stubEnv("PZ_RECORD_DIR", dir);
+    vi.stubGlobal("fetch", vi.fn(() => { throw new Error("network used during replay"); }));
+    for (let i = 0; i < 2; i++) {
+      const misses = createMisses();
+      // A model miss may end the replay early; what matters is that it is counted and never written to the tape.
+      await replayClaim({ ...CLAIM, text: `Really, ${CLAIM.text}` }, { recordDir: dir, scratch: join(dir, `scratch-${i}`), misses }).catch(() => null);
+      expect(misses.list.length).toBeGreaterThan(0);
+    }
+    expect(readdirSync(recordPaths(dir).model).length).toBe(before);
+    vi.unstubAllEnvs();
+  });
+
   it("a change in what the walk sees changes the replayed result", async () => {
     const dir = mkdtempSync(join(tmpdir(), "pz-replay-"));
     const live = await record(dir);
