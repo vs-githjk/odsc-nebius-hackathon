@@ -1,0 +1,1088 @@
+{
+  "schemaVersion": "1",
+  "id": "dev-16",
+  "mode": "LIVE",
+  "synthetic": false,
+  "recordedAt": "2026-11-17T06:26:57.423Z",
+  "claim": {
+    "text": "AI could replace 300 million jobs.",
+    "atoms": {
+      "number": {
+        "raw": "300",
+        "canonical": "300"
+      },
+      "unit": "million",
+      "subjectLemma": "job",
+      "population": "jobs",
+      "time": null,
+      "hedge": "could",
+      "namedSource": null,
+      "variants": [
+        "three hundred"
+      ]
+    }
+  },
+  "viralSentence": "AI could replace 300 million jobs.",
+  "nodes": [
+    {
+      "id": "n1",
+      "url": "https://politifact.com/factchecks/2012/jan/17/mitt-romney/mitt-romney-tweets-more-americans-have-lost-their",
+      "domain": "politifact.com",
+      "title": "Mitt Romney tweets that “more Americans have lost their jobs under Barack Obama than any president in modern history” – PolitiFact",
+      "date": {
+        "kind": "existed_by",
+        "value": "2026-08-11",
+        "source": "wayback_first_capture",
+        "firstCapture": "2026-08-11",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n1",
+      "evidence": "observed",
+      "meta": true,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [],
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "https://twitter.com",
+          "read": false
+        },
+        {
+          "url": "http://data.bls.gov/cgi-bin/surveymost?ce",
+          "read": true
+        },
+        {
+          "url": "http://www.census.gov/popest/data/historical/index.html",
+          "read": false
+        }
+      ],
+      "pageType": null,
+      "foundViaMeta": null
+    },
+    {
+      "id": "n2",
+      "url": "https://www.factcheck.org/2011/10/obamas-solyndra-problem",
+      "domain": "factcheck.org",
+      "title": "Obama's Solyndra Problem - FactCheck.org",
+      "date": {
+        "kind": "existed_by",
+        "value": "2011-10-10",
+        "source": "wayback_first_capture",
+        "firstCapture": "2011-10-10",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n2",
+      "evidence": "observed",
+      "meta": true,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [],
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "https://lpo.energy.gov/?page_id=45",
+          "read": false
+        },
+        {
+          "url": "http://www.solyndra.com/2009/09/megawatt-solar",
+          "read": false
+        },
+        {
+          "url": "http://www.solyndra.com/2011/09/solyndra-suspends-operations-to-evaluate-reorganization-options",
+          "read": false
+        }
+      ],
+      "pageType": null,
+      "foundViaMeta": null
+    },
+    {
+      "id": "n3",
+      "url": "https://www.bbc.com/news/technology-65102150",
+      "domain": "bbc.com",
+      "title": "AI could replace equivalent of 300 million jobs - report",
+      "date": {
+        "kind": "published",
+        "value": "2023-03-28",
+        "source": "metadata",
+        "firstCapture": "2023-03-28",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n3",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s1"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": {
+        "questionId": "page_type",
+        "optionId": "news",
+        "probability": 0.9995694376510184,
+        "top": [
+          {
+            "optionId": "study",
+            "p": 0
+          },
+          {
+            "optionId": "dataset",
+            "p": 0
+          },
+          {
+            "optionId": "report",
+            "p": 0.0004305570839013212
+          },
+          {
+            "optionId": "speaker",
+            "p": 0
+          },
+          {
+            "optionId": "news",
+            "p": 0.9995694376510184
+          },
+          {
+            "optionId": "blog",
+            "p": 3.8490821462137635e-9
+          },
+          {
+            "optionId": "social",
+            "p": 0
+          },
+          {
+            "optionId": "other",
+            "p": 1.4159981889720952e-9
+          },
+          {
+            "optionId": "__other__",
+            "p": 0
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9999999956365375,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9999999956365375
+          },
+          {
+            "optionId": "no",
+            "p": 4.363462350474313e-9
+          },
+          {
+            "optionId": "__other__",
+            "p": 1.1102230246251565e-16
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "boundary": {
+        "questionId": "boundary",
+        "optionId": "print",
+        "probability": 0.9999972581939645,
+        "top": [
+          {
+            "optionId": "print",
+            "p": 0.9999972581939645
+          },
+          {
+            "optionId": "unsourced",
+            "p": 1.7093136391101536e-7
+          },
+          {
+            "optionId": "none",
+            "p": 0.0000025614986866257164
+          },
+          {
+            "optionId": "__other__",
+            "p": 9.375984988402308e-9
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "injection": null
+    },
+    {
+      "id": "n4",
+      "url": "https://www.cnbc.com/make-it/2023/03/28/ai-automation-could-impact-300-million-jobs-heres-which-ones.html",
+      "domain": "cnbc.com",
+      "title": "A.I. automation could impact 300 million jobs – here’s which ones",
+      "date": {
+        "kind": "existed_by",
+        "value": "2026-10-14",
+        "source": "wayback_first_capture",
+        "firstCapture": "2026-10-14",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n4",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s2"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9999999996418252,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9999999996418252
+          },
+          {
+            "optionId": "no",
+            "p": 3.5817481892074264e-10
+          },
+          {
+            "optionId": "__other__",
+            "p": 0
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "parentId": "n3",
+      "childId": "n4",
+      "kind": "inferred",
+      "parentSpanId": "s1",
+      "childSpanId": "s2",
+      "linkHref": null
+    }
+  ],
+  "clusters": [
+    {
+      "id": "c-n3",
+      "nodeIds": [
+        "n3"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n4",
+      "nodeIds": [
+        "n4"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n1",
+      "nodeIds": [
+        "n1"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n2",
+      "nodeIds": [
+        "n2"
+      ],
+      "rule": "single"
+    }
+  ],
+  "spans": [
+    {
+      "id": "s1",
+      "nodeId": "n3",
+      "text": "AI could replace equivalent of 300 million jobs - report.",
+      "contextBefore": "",
+      "contextAfter": " Artificial intelligence (AI) could replace the equivalent of 300 million full-time jobs, a report by investment bank Goldman Sachs says. It could replace a quarter of work tasks in the US and Europe ",
+      "start": 0,
+      "end": 57,
+      "extractSha256": "cc873de4283633cbb7596cb4aa814d9e1e48b7fe4de168ff4554b93d4356d2da",
+      "windowSha256": "0dd6422446875668e35114981035da05d9462e5c229e4e5de8bf02a87e98b200",
+      "fetchedAt": "2026-11-17T06:27:17.452Z",
+      "waybackUrl": "https://web.archive.org/web/20230328164108/https://www.bbc.com/news/technology-65102150",
+      "tier": "exact"
+    },
+    {
+      "id": "s2",
+      "nodeId": "n4",
+      "text": "Around the world, as many as 300 million jobs could be affected, the report says.",
+      "contextBefore": "In the U.S., \"of those occupations which are exposed, most have a significant - but partial - share of their workload (25-50%) that can be replaced,\" Goldman Sachs analysts said in the resarch paper. ",
+      "contextAfter": " Changes to labor markets are therefore likely - although historically, technological progress doesn't just make jobs redundant, it also creates new ones. The use of AI technology could also boost lab",
+      "start": 664,
+      "end": 745,
+      "extractSha256": "cb06a5916abdde7c4c01b9377caf7997aac222ce97ab5b61d7ae21c3e3fb06e9",
+      "windowSha256": "a9d43771c6eb2727d9d1be792e5a079cb4c2721ca6a5fbcca533aaf00c759cfc",
+      "fetchedAt": "2026-11-17T06:27:19.386Z",
+      "waybackUrl": "https://web.archive.org/web/20261014213437/https://www.cnbc.com/make-it/2023/03/28/ai-automation-could-impact-300-million-jobs-heres-which-ones.html",
+      "tier": "exact"
+    }
+  ],
+  "hops": [
+    {
+      "edgeId": "e1",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "scope_widened",
+          "source": "inferred",
+          "value": "yes",
+          "probability": 0.8519528001610222,
+          "disputed": false
+        },
+        {
+          "id": "attribution_shifted",
+          "source": "inferred",
+          "value": "no",
+          "probability": 0.9999970976880134,
+          "disputed": false
+        },
+        {
+          "id": "context_stripped",
+          "source": "inferred",
+          "value": "no",
+          "probability": 0.9999898673126584,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "around"
+        },
+        {
+          "op": "add",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "world"
+        },
+        {
+          "op": "add",
+          "text": "as"
+        },
+        {
+          "op": "add",
+          "text": "many"
+        },
+        {
+          "op": "add",
+          "text": "as"
+        },
+        {
+          "op": "del",
+          "text": "ai"
+        },
+        {
+          "op": "del",
+          "text": "could"
+        },
+        {
+          "op": "del",
+          "text": "replace"
+        },
+        {
+          "op": "del",
+          "text": "equivalent"
+        },
+        {
+          "op": "del",
+          "text": "of"
+        },
+        {
+          "op": "same",
+          "text": "300"
+        },
+        {
+          "op": "same",
+          "text": "million"
+        },
+        {
+          "op": "same",
+          "text": "jobs"
+        },
+        {
+          "op": "add",
+          "text": "could"
+        },
+        {
+          "op": "add",
+          "text": "be"
+        },
+        {
+          "op": "add",
+          "text": "affected"
+        },
+        {
+          "op": "add",
+          "text": "the"
+        },
+        {
+          "op": "same",
+          "text": "report"
+        },
+        {
+          "op": "add",
+          "text": "says"
+        }
+      ],
+      "faithful": false
+    }
+  ],
+  "blame": [],
+  "roots": {
+    "pages": 2,
+    "clusters": 2,
+    "rootsLinked": 0,
+    "clustersUnlinked": 2,
+    "studiesFound": null,
+    "independentRoots": 2,
+    "copies": 0
+  },
+  "redHopEdgeId": "e1",
+  "earliest": {
+    "nodeIds": [
+      "n3"
+    ],
+    "earlierWindowSearches": 4,
+    "earlierFound": 0
+  },
+  "failure": null,
+  "budget": {
+    "credits": 10,
+    "usd": 0.00039939999999999995,
+    "ms": 67020,
+    "capHit": null
+  },
+  "decision": {
+    "state": "TRAIL_GOES_COLD",
+    "row": 6,
+    "reasons": [
+      "no earliest page with a confirmed date, a primary page type, no earlier citation and no negated span",
+      "5 unread candidate parent(s)"
+    ],
+    "counts": {
+      "pages": 2,
+      "clusters": 2,
+      "unreadParents": 5,
+      "earlierWindowSearches": 4
+    }
+  },
+  "searchLog": [
+    {
+      "at": "2026-11-17T06:27:05.770Z",
+      "step": "search",
+      "query": "\"300 million\" jobs",
+      "endDate": "2026-11-17",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-17T06:27:06.936Z",
+      "step": "search",
+      "query": "300 million jobs replaced by AI",
+      "endDate": "2026-11-17",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-17T06:27:08.045Z",
+      "step": "search",
+      "query": "300 million jobs lost to artificial intelligence",
+      "endDate": "2026-11-17",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-17T06:27:09.736Z",
+      "step": "search",
+      "query": "300 million jobs replaced by AI publisher McKinsey",
+      "endDate": "2026-11-17",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-17T06:27:11.253Z",
+      "step": "meta-search",
+      "query": "\"300 million\" jobs",
+      "endDate": "2026-11-17",
+      "startDate": null,
+      "results": 5,
+      "kept": 2,
+      "dropped": 3
+    },
+    {
+      "at": "2026-11-17T06:27:26.767Z",
+      "step": "search",
+      "query": "\"300 million\" jobs",
+      "endDate": "2023-03-27",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-17T06:27:27.659Z",
+      "step": "search",
+      "query": "\"AI could replace 300 million jobs\"",
+      "endDate": "2023-03-27",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-17T06:27:28.709Z",
+      "step": "search",
+      "query": "\"equivalent of 300 million jobs\"",
+      "endDate": "2023-03-27",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-17T06:27:31.320Z",
+      "step": "search",
+      "query": "AI replace 300 million jobs report McKinsey",
+      "endDate": "2023-03-27",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    }
+  ],
+  "usage": [
+    {
+      "at": "2026-11-17T06:26:57.423Z",
+      "traceId": "dev-16",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 158,
+      "completionTokens": 45,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.000029299999999999997,
+      "latencyMs": 2366,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:26:59.794Z",
+      "traceId": "dev-16",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 268,
+      "completionTokens": 111,
+      "cachedTokens": 240,
+      "credits": 0,
+      "costUsd": 0.0000601,
+      "latencyMs": 4329,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:27:05.770Z",
+      "traceId": "dev-16",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1626,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:27:06.936Z",
+      "traceId": "dev-16",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1153,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:27:08.044Z",
+      "traceId": "dev-16",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1095,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:27:09.736Z",
+      "traceId": "dev-16",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1681,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:27:11.253Z",
+      "traceId": "dev-16",
+      "step": "meta-search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1501,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:27:11.332Z",
+      "traceId": "dev-16",
+      "step": "meta-extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 71,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:27:13.258Z",
+      "traceId": "dev-16",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1884,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:27:17.451Z",
+      "traceId": "dev-16",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 4188,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:27:17.453Z",
+      "traceId": "dev-16",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 202,
+      "completionTokens": 7,
+      "cachedTokens": 160,
+      "credits": 0,
+      "costUsd": 0.0000223,
+      "latencyMs": 943,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:27:19.385Z",
+      "traceId": "dev-16",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 969,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:27:19.387Z",
+      "traceId": "dev-16",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 209,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.000023,
+      "latencyMs": 557,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:27:19.966Z",
+      "traceId": "dev-16",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 306,
+      "completionTokens": 141,
+      "cachedTokens": 256,
+      "credits": 0,
+      "costUsd": 0.0000729,
+      "latencyMs": 5754,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:27:26.766Z",
+      "traceId": "dev-16",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1025,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:27:27.659Z",
+      "traceId": "dev-16",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 871,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:27:28.709Z",
+      "traceId": "dev-16",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1033,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:27:31.320Z",
+      "traceId": "dev-16",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2592,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:27:41.488Z",
+      "traceId": "dev-16",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 10153,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:27:41.491Z",
+      "traceId": "dev-16",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 183,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00000183,
+      "latencyMs": 3717,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:27:45.213Z",
+      "traceId": "dev-16",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 37,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 3.7e-7,
+      "latencyMs": 5882,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:27:51.428Z",
+      "traceId": "dev-16",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 330,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:27:51.474Z",
+      "traceId": "dev-16",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 375,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:27:52.286Z",
+      "traceId": "dev-16",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 811,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:27:52.808Z",
+      "traceId": "dev-16",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 521,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:27:52.809Z",
+      "traceId": "dev-16",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-17T06:27:52.810Z",
+      "traceId": "dev-16",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-17T06:27:52.815Z",
+      "traceId": "dev-16",
+      "step": "page_type",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 1120,
+      "completionTokens": 8,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.00011439999999999999,
+      "latencyMs": 4556,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:27:57.397Z",
+      "traceId": "dev-16",
+      "step": "readouts",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 420,
+      "completionTokens": 23,
+      "cachedTokens": 368,
+      "credits": 0,
+      "costUsd": 0.000048899999999999996,
+      "latencyMs": 3889,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T06:28:01.290Z",
+      "traceId": "dev-16",
+      "step": "boundary",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 245,
+      "completionTokens": 6,
+      "cachedTokens": 144,
+      "credits": 0,
+      "costUsd": 0.0000263,
+      "latencyMs": 3151,
+      "status": "200",
+      "cacheHit": false
+    }
+  ],
+  "scopeNote": "Web pages only; print and paywalled origins are out of scope. Earliest source we found, not proof of first use.",
+  "otherNumbers": []
+}

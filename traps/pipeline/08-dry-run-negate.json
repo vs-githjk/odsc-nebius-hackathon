@@ -1,0 +1,17 @@
+{
+  "id": "dry-run-negate",
+  "kind": "pipeline",
+  "note": "The earliest page's sentence follows \"It is a myth that\". Since #110 the unmutated dry-run source already ends TRAIL_GOES_COLD (the 1975 PubMed page cites a DOI the replay cannot read), so this case passes without testing its trap; pz traps reports it as untested.",
+  "source": "spike/traces/dry-run.json",
+  "mutation": "negate",
+  "expect": {
+    "state": "TRAIL_GOES_COLD",
+    "noOrigin": true,
+    "falseCertainty": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

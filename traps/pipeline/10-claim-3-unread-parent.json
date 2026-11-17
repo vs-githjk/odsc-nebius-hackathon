@@ -1,0 +1,17 @@
+{
+  "id": "claim-3-unread-parent",
+  "kind": "pipeline",
+  "note": "The earliest page links, beside its sentence, to an earlier page that cannot be read.",
+  "source": "spike/traces/claim-3.json",
+  "mutation": "unread-parent",
+  "expect": {
+    "state": "TRAIL_GOES_COLD",
+    "noOrigin": true,
+    "falseCertainty": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

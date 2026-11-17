@@ -1,7 +1,14 @@
 # Handoff: ODSC x Nebius Hackathon (team Says Who)
 
-Last updated: Sun Nov 15 2026, by the main session (conductor).
+Last updated: Tue Nov 17 2026 01:20 ET, by the main session (conductor / XO).
 To resume in a new Claude Code chat opened in this folder, Vidyut says: **"I'm back, continue the master playbook"**. The new session reads this file, `plan/state.json` and `plan/decisions.md`, says where we are in three lines, and carries on.
+
+## Where we are (Tue Nov 17, 01:20 ET)
+- **The live pipeline is on main** (#191, merged 940cd17: Rohan's #107/#109/#189 integrated by XO on Vidyut's decision). `pz trace "<claim>"` runs live on Vidyut's machine: `DEV_LEDGER="$PWD/.cache/pz-ledger.json" node --env-file=.env --import tsx packages/pz/src/cli/pz.ts trace "<claim>" --out runs/x.json`. The $15 ledger (Nov 16 to 20, prior 0.10) lives in `.cache/pz-ledger.json` (git-ignored). About $0.10 spent so far; a trace costs about $0.001.
+- Live dating uses page metadata plus NCBI/Crossref registry dates, labelled on the card (decision Nov 17).
+- E2 dev run started 01:05 ET from the #191 worktree (`scratchpad/e2-devrun.log`); the score goes on #164/#2 and in the README.
+- Open blockers for Tue's run-through: #192 (bad spans: menus, "10 times" matched to "10 percent"; the UI headlines them), Rohan's review of #191, #184 claim box (Rishit), Anoop's doc PRs (#185, #172, #174, #188, #173 rebase).
+- Next: the 8 gallery traces live (Rohan confirmed no held-out overlap on #168), pick the hero trace, held-out run (#123), then the demo path and judge check.
 
 ## The event
 - ODSC x Nebius Hackathon, online, Oct 28 to Nov 20 2026. Internal deadline: Thu Nov 19, 23:59 PT (the exact official time is not published; the submission link comes by email).

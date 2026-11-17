@@ -6,17 +6,26 @@ import { ClientError } from "./errors.ts";
 
 export { ClientError } from "./errors.ts";
 
+// Polite and honest about who is asking. No email, no key.
+export const USER_AGENT = "patient-zero-trace/1.0 (research tool for tracing a claim to its first source; github.com/vs-githjk/odsc-nebius-hackathon)";
+
 export type ClientDeps = {
   fetch?: typeof fetch;
   usage: UsageLog;
   cache: Cache;
   budget?: Budget;
   traceId?: string | null;
+  // Waits between a request and its retry; tests inject a no-op.
+  sleep?: (ms: number) => Promise<void>;
+  tavilyAttempts?: {
+    reserve(maxCredits: number): string;
+    settle(id: string, credits: number): void;
+  };
 };
 
 export type Result<T> = { data: T; usage: UsageRow };
 
-type ClientRequest<T> = {
+export type ClientRequest<T> = {
   service: UsageRow["service"];
   endpoint: string;
   step: string;
@@ -27,6 +36,9 @@ type ClientRequest<T> = {
   maxCredits: number;
   timeoutMs: number;
   retryTimeouts?: boolean;
+  // Statuses beyond 429 and 5xx that are worth one more try (a rate-limited archive answers 403), and how long to wait first.
+  retryStatuses?: number[];
+  retryDelayMs?: number;
   usdPerCredit?: number;
   parse(body: string): { data: T; credits: number };
   secrets?: string[];
@@ -37,6 +49,23 @@ const MAX_ATTEMPTS = 2;
 
 const isRetryable = (status: number) => status === 429 || status >= 500;
 const scrub = (text: string, secrets: string[] = []) => secrets.reduce((out, s) => out.replaceAll(s, "[redacted]"), text);
+
+// A spend guard supplied by the caller (the shared ledger, a deadline) may throw its own errors. Anything that means
+// "the budget is spent" or "time is up" becomes a ClientError here, so the walk ends with a cap or a named failure and a
+// card, instead of the whole trace failing and the spend so far being lost.
+function reserveAttempt(deps: ClientDeps, maxCredits: number): string | undefined {
+  try {
+    return deps.tavilyAttempts?.reserve(maxCredits);
+  } catch (err) {
+    if (err instanceof ClientError) throw err;
+    const code = err && typeof err === "object" && "code" in err ? err.code : undefined;
+    if (code === "budget_exceeded") throw new ClientError("budget_exceeded", "tavily search: budget spent");
+    if (err instanceof Error && (err.name === "TimeoutError" || err.name === "AbortError")) {
+      throw new ClientError("network_error", "tavily search: time limit reached", { timedOut: true });
+    }
+    throw err;
+  }
+}
 
 export async function send<T>(deps: ClientDeps, req: ClientRequest<T>): Promise<Result<T>> {
   const fetchImpl = deps.fetch ?? fetch;
@@ -65,9 +94,9 @@ export async function send<T>(deps: ClientDeps, req: ClientRequest<T>): Promise<
     return { data, usage: row({ credits: 0, latencyMs: 0, status: "200", cacheHit: true }) };
   }
 
-  deps.budget?.beforeCall(req.maxCredits);
-
   for (let attempt = 1; ; attempt += 1) {
+    deps.budget?.beforeCall(req.maxCredits);
+    const reservation = req.service === "tavily" ? reserveAttempt(deps, req.maxCredits) : undefined;
     const last = attempt === MAX_ATTEMPTS;
     const started = performance.now();
     const latency = () => Math.round(performance.now() - started);
@@ -86,7 +115,10 @@ export async function send<T>(deps: ClientDeps, req: ClientRequest<T>): Promise<
     }
     if (!response.ok) {
       row({ credits: 0, latencyMs: latency(), status: String(response.status), cacheHit: false });
-      if (isRetryable(response.status) && !last) continue;
+      if ((isRetryable(response.status) || req.retryStatuses?.includes(response.status)) && !last) {
+        if (req.retryDelayMs) await (deps.sleep ?? ((ms) => new Promise<void>((resolve) => setTimeout(resolve, ms))))(req.retryDelayMs);
+        continue;
+      }
       throw new ClientError("http_error", `${req.service} ${req.endpoint}: HTTP ${response.status}`, {
         status: response.status,
       });
@@ -98,6 +130,7 @@ export async function send<T>(deps: ClientDeps, req: ClientRequest<T>): Promise<
       row({ credits: 0, latencyMs: latency(), status: "bad_response", cacheHit: false });
       throw new ClientError("bad_response", `${req.service} ${req.endpoint}: unexpected response body`);
     }
+    if (reservation !== undefined) deps.tavilyAttempts!.settle(reservation, parsed.credits);
     deps.budget?.spend(parsed.credits);
     deps.cache.set(key, { credits: parsed.credits, body: scrub(body, req.secrets), contentType: response.headers.get("content-type") });
     return {

@@ -6,6 +6,8 @@ import type { createWayback, FirstCapture } from "../clients/wayback.ts";
 // Body/search dates are accepted for callers' convenience but never trusted.
 export type DateEvidence = {
   metadata?: string | null;
+  // Where `metadata` came from when it is not the page's own meta tags: a scholarly registry (same trust, same cap).
+  metadataSource?: "registry_pubmed" | "registry_pmc" | "registry_crossref";
   byline?: string | null;
   bodyText?: string;
   tavily?: string | null;
@@ -26,7 +28,7 @@ export function dateEvidence(evidence: DateEvidence, capture: FirstCapture): Dat
   const byline = isoDay(evidence.byline);
   const published = metadata ?? byline;
   // Metadata has precedence; disagreements stay visible, not silently early-biased.
-  const source = metadata ? "metadata" : byline ? "byline" : "wayback_first_capture";
+  const source = metadata ? (evidence.metadataSource ?? "metadata") : byline ? "byline" : "wayback_first_capture";
   const firstCapture = capture.status === "found" ? isoDay(capture.firstCapture) : null;
   if (capture.status === "found" && !firstCapture) {
     throw new ClientError("bad_response", "wayback cdx: invalid first capture date");

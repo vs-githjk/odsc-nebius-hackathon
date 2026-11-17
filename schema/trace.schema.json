@@ -168,7 +168,10 @@
                   "metadata",
                   "byline",
                   "wayback_first_capture",
-                  "tavily"
+                  "tavily",
+                  "registry_pubmed",
+                  "registry_pmc",
+                  "registry_crossref"
                 ]
               },
               "firstCapture": {
@@ -318,6 +321,87 @@
             ]
           },
           "sameClaim": {
+            "anyOf": [
+              {
+                "type": "object",
+                "properties": {
+                  "questionId": {
+                    "type": "string"
+                  },
+                  "optionId": {
+                    "type": "string"
+                  },
+                  "probability": {
+                    "anyOf": [
+                      {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  },
+                  "top": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "optionId": {
+                          "type": "string"
+                        },
+                        "p": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 1
+                        }
+                      },
+                      "required": [
+                        "optionId",
+                        "p"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "model": {
+                    "type": "string"
+                  },
+                  "threshold": {
+                    "anyOf": [
+                      {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "questionId",
+                  "optionId",
+                  "probability",
+                  "top",
+                  "model",
+                  "threshold"
+                ],
+                "additionalProperties": false
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "foundViaMeta": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "boundary": {
             "anyOf": [
               {
                 "type": "object",
@@ -1075,7 +1159,9 @@
               "tokenfactory",
               "wayback",
               "fetch",
-              "jev"
+              "jev",
+              "ncbi",
+              "crossref"
             ]
           },
           "endpoint": {

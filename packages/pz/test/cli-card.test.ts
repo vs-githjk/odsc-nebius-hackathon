@@ -33,7 +33,7 @@ describe("T77 readable CLI card", () => {
     const t = load("sample-rich");
     const card = renderCard(t);
     for (const part of [t.claim.text.slice(0, 40), "Trail goes cold", "It stopped before searching further back.", "Decision table row 6 of 6",
-      "Harbor Zoo annual report 2019", "published 2019-12-15 (page metadata)", t.spans.find((s) => s.nodeId === "zoo-report")!.text.slice(0, 30),
+      "Harbor Zoo annual report 2019", "page says published 2019-12-15", t.spans.find((s) => s.nodeId === "zoo-report")!.text.slice(0, 30),
       "https://harborzoo.example/annual-report-2019", "5 pages read, in 4 groups", "42 credits, $0.12, 61 s", "SAMPLE"])
       expect(card.replace(/\n {9}/g, " "), part).toContain(part);
   });
@@ -78,7 +78,14 @@ describe("T77 readable CLI card", () => {
     const n = load("sample-rich").nodes[0]!;
     expect(dateWords({ ...n, date: { ...n.date, kind: "existed_by", value: "2020-01-02", source: "wayback_first_capture" } })).toBe("online by 2020-01-02 (first archive capture)");
     expect(dateWords({ ...n, date: { ...n.date, kind: "unconfirmed", value: null } })).toBe("date not confirmed");
-    expect(dateWords({ ...n, date: { ...n.date, conflictingDate: true } })).toBe("published 2019-12-15 (page metadata, other dates disagree)");
+    expect(dateWords({ ...n, date: { ...n.date, conflictingDate: true } })).toBe("page says published 2019-12-15 (other dates disagree)");
+    // The kind of evidence is always visible: the page's own claim, a registry's record, or only an archive capture.
+    const dated = (source: string, kind: "published" | "existed_by" = "published") => dateWords({ ...n, date: { ...n.date, kind, value: "2004-01-20", source, conflictingDate: false } as never });
+    expect(dated("metadata")).toBe("page says published 2004-01-20");
+    expect(dated("registry_pubmed")).toBe("published 2004-01-20 (PubMed)");
+    expect(dated("registry_pmc")).toBe("published 2004-01-20 (PubMed Central)");
+    expect(dated("registry_crossref")).toBe("published 2004-01-20 (Crossref)");
+    expect(dated("wayback_first_capture", "existed_by")).toBe("online by 2004-01-20 (first archive capture)");
     expect([money(0.12), money(0.0042), money(0)]).toEqual(["$0.12", "$0.0042", "$0.00"]);
     const cold = load("sample-rich");
     expect(endingSentence({ ...cold, earliest: { ...cold.earliest, earlierWindowSearches: 2 } })).toBe("No earlier page and no primary source turned up.");
