@@ -130,7 +130,7 @@ describe("T97 in the walk", () => {
     expect(trace.nodes.map((n) => n.url)).not.toContain("https://feed.example/meals");
     expect(verifyTrace(trace).failures.filter((f) => f.check === "other_numbers")).toEqual([]);
     const card = renderCard(trace);
-    expect(card).toContain("Possible variant\n         A similar sentence on blog.example (2021-06-01) uses 15, not 14:");
+    expect(card).toContain("Possible variant (right about 1 in 3 times on held-apart claims, E3 precision 0.37)\n         A similar sentence on blog.example (2021-06-01) uses 15, not 14:");
     // Vidyut, Nov 17: on E3 only 0.37 of these hits were the same claim, so the card never says one number became another.
     expect(card).not.toMatch(/became/i);
     expect(card).not.toContain("Numbers  ");

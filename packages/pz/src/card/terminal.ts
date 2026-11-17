@@ -156,11 +156,13 @@ export function renderCard(trace: Trace, { color = false }: { color?: boolean } 
   // T97: pages with a similar sentence that uses another number, worded from the fields only. Never "became": which
   // number came first is the dates' job, and on E3 only 0.37 of these hits were the same claim (eval/drift/README.md),
   // so each is shown as a possible variant (Vidyut, Nov 17). The label is wider than the column, so it gets its own line.
+  // E3 check of otherNumberSimilarity 0.75 (eval/drift/README.md): 14 of 38 hits were the same claim.
+  const E3_VARIANT_PRECISION = "0.37";
   const others = trace.otherNumbers ?? [];
   if (others.length) {
     out.push("");
     const claimNumber = trace.claim.atoms.number?.raw ?? "";
-    out.push(s.bold("Possible variant"));
+    out.push(`${s.bold("Possible variant")} ${s.dim(`(right about 1 in 3 times on held-apart claims, E3 precision ${E3_VARIANT_PRECISION})`)}`);
     others.slice(0, 2).forEach((o) => more(`A similar sentence on ${o.domain}${o.date ? ` (${o.date})` : ""} uses ${o.number}, not ${claimNumber}: "${o.sentence}"`));
     if (others.length > 2) more(`and ${others.length - 2} more page${others.length - 2 === 1 ? "" : "s"} with another number`, s.dim);
   }

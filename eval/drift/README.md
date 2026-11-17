@@ -47,7 +47,7 @@ E3 is never tuned on. The check runs once, at the value already set on E2:
 
 Recall holds up, but precision falls from 0.82 to 0.37: on claims it was not tuned on, a listed sentence is wrong more often than right. A listed page is never a node, so a false hit cannot change how a trace ends. It only adds a line to the card. Vidyut decided on Nov 17 that the line says "possible variant" and never "became" (`packages/pz/src/card/terminal.ts`), and the limits page cites this precision. The value stays 0.75: nothing is re-tuned on E3.
 
-Code's gate stops almost nothing on E3. Every candidate already names the subject, and all 284 false sentences pass it, so the cutoff alone decides. **The 24 false hits by kind:** pending one more run, `measure.ts --set=e3 --list`, which prints every hit from the cached vectors with no new requests.
+Code's gate stops almost nothing on E3. Every candidate already names the subject, and all 284 false sentences pass it, so the cutoff alone decides.
 
 ## Limits
 
