@@ -11,11 +11,11 @@ Team **Says Who**, ODSC x Nebius Hackathon 2026. Built on **Nebius Token Factory
 
 ## Where it stands
 
-Honest status as of this README:
+Honest status as of Nov 17, 2026:
 
-- **Built and tested with no network:** the engine stages below, the Token Factory and Tavily clients, the six-way stop-state table, the `pz verify` re-check, a planted trap set, keyless replay with a readable card, failure paths that replay keylessly, whole-answer mode, the origin card's checked sentence, and the trace view.
-- **Wiring in progress:** `engine/pipeline.ts` ([#130](https://github.com/vs-githjk/odsc-nebius-hackathon/issues/130)) joins the stages to the live clients, so `pz trace "<claim>"` runs end to end. Until it lands, `pz trace` replays recorded traces only.
-- **Not yet measured:** the first live dev run and then the held-out run are pending. The only end-to-end result so far is the first-week spike, which lost (see [Evaluation](#evaluation)). Some single parts are measured on E2 already, such as the second-model check under Limits.
+- **Runs live end to end:** `pz trace "<claim>"` searches with Tavily, reads and dates the pages, asks Token Factory the typed questions, decides the ending in code and prints a card (`engine/pipeline.ts`, [#191](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/191)). With no keys, every command here replays committed traces instead.
+- **First live dev run (E2, Nov 17):** recorded in [eval/dev-traces/](eval/dev-traces/) and scored in [eval/dev-score.md](eval/dev-score.md). Its last row is 0 false origins (+1 unverified), target cited 4/10, and earliest page Pass / Partial / Fail 1 / 0 / 8. Those are the same recordings, never walked again: the change from the first row comes from correcting the answer key (the same paper at another URL counts, and one podcast claim is scored apart) and from a stricter origin rule that the one recorded false origin no longer passes. The walk fixes from that run's failure analysis ([#192](https://github.com/vs-githjk/odsc-nebius-hackathon/issues/192)) are merged but not yet measured; a fresh live run is next. It is a weak score and we say so.
+- **Not yet measured:** the held-out run. The first-week spike, which lost, is under [Evaluation](#evaluation).
 
 ## Try it in two minutes, no API keys
 
