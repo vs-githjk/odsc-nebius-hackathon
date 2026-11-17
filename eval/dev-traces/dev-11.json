@@ -3,7 +3,7 @@
   "id": "dev-11",
   "mode": "LIVE",
   "synthetic": false,
-  "recordedAt": "2026-11-17T06:19:47.456Z",
+  "recordedAt": "2026-11-17T23:15:01.678Z",
   "claim": {
     "text": "Just 100 companies are responsible for 71% of global emissions.",
     "atoms": {
@@ -19,21 +19,25 @@
       "namedSource": null,
       "variants": [
         "one hundred"
-      ]
+      ],
+      "alsoNumber": {
+        "raw": "71%",
+        "canonical": "71%"
+      }
     }
   },
   "viralSentence": "Just 100 companies are responsible for 71% of global emissions.",
   "nodes": [
     {
       "id": "n1",
-      "url": "https://www.snopes.com/fact-check/100-corporations-greenhouse-gas",
-      "domain": "snopes.com",
-      "title": "Just 100 Corporations Are Responsible for Majority of World's Greenhouse Gases? | Snopes.com",
+      "url": "https://politifact.com/factchecks/2016/jun/21/hillary-clinton/yep-donald-trumps-companies-have-declared-bankrupt",
+      "domain": "politifact.com",
+      "title": "Yep, Donald Trump’s companies have declared bankruptcy…more than four times – PolitiFact",
       "date": {
         "kind": "existed_by",
-        "value": "2024-03-16",
+        "value": "2020-02-05",
         "source": "wayback_first_capture",
-        "firstCapture": "2024-03-16",
+        "firstCapture": "2020-02-05",
         "conflictingDate": false
       },
       "clusterId": "c-n1",
@@ -45,19 +49,15 @@
       "citesEarlier": true,
       "candidateParents": [
         {
-          "url": "https://www.theguardian.com/sustainable-business/2017/jul/10/100-fossil-fuel-companies-investors-responsible-71-global-emissions-cdp-study-climate-change",
-          "read": false
-        },
-        {
-          "url": "https://www.aramco.com",
+          "url": "http://www.nbcnews.com/id/6556470",
           "read": true
         },
         {
-          "url": "https://www.gazprom.com",
+          "url": "http://ecourses.tvcc.edu/webapps/discussionboard/do/conference?action=list_forums&course_id=_2116_1&nav=group_forum&group_id=_1711_1",
           "read": false
         },
         {
-          "url": "https://en.nioc.ir/portal/home",
+          "url": "http://money.cnn.com/2009/02/17/news/companies/trump_entertainment/index.htm?iid=EL",
           "read": false
         }
       ],
@@ -66,14 +66,14 @@
     },
     {
       "id": "n2",
-      "url": "https://www.factcheck.org/2026/04/what-do-we-know-about-birth-tourism",
-      "domain": "factcheck.org",
-      "title": "What Do We Know About 'Birth Tourism'? - FactCheck.org",
+      "url": "https://politifact.com/factchecks/2016/feb/26/marco-rubio/marco-rubio-says-donald-trump-had-pay-1-million-hi",
+      "domain": "politifact.com",
+      "title": "We Googled ‘Trump Polish workers.’ Here’s what we found – PolitiFact",
       "date": {
         "kind": "existed_by",
-        "value": "2026-04-16",
+        "value": "2020-08-13",
         "source": "wayback_first_capture",
-        "firstCapture": "2026-04-16",
+        "firstCapture": "2020-08-13",
         "conflictingDate": false
       },
       "clusterId": "c-n2",
@@ -82,218 +82,14 @@
       "read": true,
       "versionOf": null,
       "spanIds": [],
-      "citesEarlier": true,
-      "candidateParents": [
-        {
-          "url": "https://www.rickscott.senate.gov/services/files/5A2A9A3F-15E7-4EFD-ABCC-786E22B5A0CA",
-          "read": true
-        },
-        {
-          "url": "https://giving.aws.cloud.upenn.edu/?fastStart=simpleForm&program=ANS&fund=602014",
-          "read": false
-        },
-        {
-          "url": "https://www.usatoday.com/story/news/world/2015/04/01/china-usa-birth-tourists-business-strong/24887837",
-          "read": true
-        },
-        {
-          "url": "https://www.cnn.com/2019/01/31/asia/chinese-birth-tourism-arrest",
-          "read": true
-        }
-      ],
+      "citesEarlier": false,
+      "candidateParents": [],
       "pageType": null,
       "foundViaMeta": null
-    },
-    {
-      "id": "n3",
-      "url": "https://www.cdp.net/en/press-releases/new-report-shows-just-100-companies-are-source-of-over-70-of-emissions",
-      "domain": "cdp.net",
-      "title": "New report shows just 100 companies are source of over 70% of emissions - CDP",
-      "date": {
-        "kind": "existed_by",
-        "value": "2025-02-08",
-        "source": "wayback_first_capture",
-        "firstCapture": "2025-02-08",
-        "conflictingDate": false
-      },
-      "clusterId": "c-n3",
-      "evidence": "observed",
-      "meta": false,
-      "read": true,
-      "versionOf": null,
-      "spanIds": [
-        "s1"
-      ],
-      "citesEarlier": false,
-      "candidateParents": [],
-      "pageType": null,
-      "sameClaim": {
-        "questionId": "same_claim",
-        "optionId": "yes",
-        "probability": 0.9999993524052976,
-        "top": [
-          {
-            "optionId": "yes",
-            "p": 0.9999993524052976
-          },
-          {
-            "optionId": "no",
-            "p": 6.47594702638598e-7
-          },
-          {
-            "optionId": "__other__",
-            "p": 0
-          }
-        ],
-        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-        "threshold": null
-      },
-      "foundViaMeta": null,
-      "injection": null
-    },
-    {
-      "id": "n4",
-      "url": "https://www.slickcharts.com/nasdaq100",
-      "domain": "slickcharts.com",
-      "title": "Nasdaq 100 Companies by Weight",
-      "date": {
-        "kind": "existed_by",
-        "value": "2014-10-10",
-        "source": "wayback_first_capture",
-        "firstCapture": "2014-10-10",
-        "conflictingDate": false
-      },
-      "clusterId": "c-n4",
-      "evidence": "observed",
-      "meta": false,
-      "read": true,
-      "versionOf": null,
-      "spanIds": [
-        "s2"
-      ],
-      "citesEarlier": false,
-      "candidateParents": [],
-      "pageType": {
-        "questionId": "page_type",
-        "optionId": "dataset",
-        "probability": 0.9999996356982439,
-        "top": [
-          {
-            "optionId": "study",
-            "p": 3.059023205018258e-7
-          },
-          {
-            "optionId": "dataset",
-            "p": 0.9999996356982439
-          },
-          {
-            "optionId": "report",
-            "p": 4.691164021834418e-8
-          },
-          {
-            "optionId": "speaker",
-            "p": 0
-          },
-          {
-            "optionId": "news",
-            "p": 0
-          },
-          {
-            "optionId": "blog",
-            "p": 0
-          },
-          {
-            "optionId": "social",
-            "p": 0
-          },
-          {
-            "optionId": "other",
-            "p": 9.237449661970594e-9
-          },
-          {
-            "optionId": "__other__",
-            "p": 2.250345687571098e-9
-          }
-        ],
-        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-        "threshold": null
-      },
-      "sameClaim": {
-        "questionId": "same_claim",
-        "optionId": "no",
-        "probability": 0.9999997615833572,
-        "top": [
-          {
-            "optionId": "yes",
-            "p": 2.3823698121002582e-7
-          },
-          {
-            "optionId": "no",
-            "p": 0.9999997615833572
-          },
-          {
-            "optionId": "__other__",
-            "p": 1.7966150789305857e-10
-          }
-        ],
-        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-        "threshold": null
-      },
-      "foundViaMeta": null,
-      "boundary": {
-        "questionId": "boundary",
-        "optionId": "none",
-        "probability": 0.6220052431737498,
-        "top": [
-          {
-            "optionId": "print",
-            "p": 0.0005671902086566008
-          },
-          {
-            "optionId": "unsourced",
-            "p": 0.3774243693987398
-          },
-          {
-            "optionId": "none",
-            "p": 0.6220052431737498
-          },
-          {
-            "optionId": "__other__",
-            "p": 0.0000031972188537787716
-          }
-        ],
-        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-        "threshold": null
-      },
-      "injection": null
     }
   ],
-  "edges": [
-    {
-      "id": "e1",
-      "parentId": "n4",
-      "childId": "n3",
-      "kind": "inferred",
-      "parentSpanId": "s2",
-      "childSpanId": "s1",
-      "linkHref": null
-    }
-  ],
+  "edges": [],
   "clusters": [
-    {
-      "id": "c-n4",
-      "nodeIds": [
-        "n4"
-      ],
-      "rule": "single"
-    },
-    {
-      "id": "c-n3",
-      "nodeIds": [
-        "n3"
-      ],
-      "rule": "single"
-    },
     {
       "id": "c-n1",
       "nodeIds": [
@@ -309,345 +105,89 @@
       "rule": "single"
     }
   ],
-  "spans": [
-    {
-      "id": "s1",
-      "nodeId": "n3",
-      "text": "Press release Jul 10, 2017•Global New report shows just 100 companies are source of over 70% of emissions.",
-      "contextBefore": "",
-      "contextAfter": " Groundbreaking 'Carbon Majors' research finds 100 active fossil fuel producers including ExxonMobil, Shell, BHP Billiton and Gazprom are linked to 71% of industrial greenhouse gas emissions since 198",
-      "start": 0,
-      "end": 106,
-      "extractSha256": "0eb39fc17754cdc2c2a54f04b361255ae249f814bf3d6e4509d73f820a6968da",
-      "windowSha256": "dcde0238a81d1d825046e5385e7b324b80d66425693d75cbef7d894fac33bccf",
-      "fetchedAt": "2026-11-17T06:20:15.579Z",
-      "waybackUrl": "https://web.archive.org/web/20250208223957/https://www.cdp.net/en/press-releases/new-report-shows-just-100-companies-are-source-of-over-70-of-emissions",
-      "tier": "exact"
-    },
-    {
-      "id": "s2",
-      "nodeId": "n4",
-      "text": "Nasdaq 100 Companies.",
-      "contextBefore": "",
-      "contextAfter": " Explore the Nasdaq 100 index components, ranked by company weight from largest to smallest. While the index is heavily weighted toward technology companies, it also includes leading firms from sector",
-      "start": 0,
-      "end": 21,
-      "extractSha256": "8ac1dd87fa9981f9afa6ed0a990719bfd39c3c0177cc9c8513b0d1ae875fa1e8",
-      "windowSha256": "95fb7016f166b0f5f8fee7eb55c6e6b822dc012a2cc928f26301cff335c30224",
-      "fetchedAt": "2026-11-17T06:20:16.691Z",
-      "waybackUrl": "https://web.archive.org/web/20141010043229/https://www.slickcharts.com/nasdaq100",
-      "tier": "exact"
-    }
-  ],
-  "hops": [
-    {
-      "edgeId": "e1",
-      "readouts": [
-        {
-          "id": "number_changed",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "unit_changed",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "hedge_dropped",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "comparison_added",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "scope_widened",
-          "source": "inferred",
-          "value": "yes",
-          "probability": 0.991422485182567,
-          "disputed": false
-        },
-        {
-          "id": "attribution_shifted",
-          "source": "inferred",
-          "value": "yes",
-          "probability": 0.9968273169945328,
-          "disputed": false
-        },
-        {
-          "id": "context_stripped",
-          "source": "inferred",
-          "value": "yes",
-          "probability": 0.9399133275548792,
-          "disputed": false
-        }
-      ],
-      "wordDiff": [
-        {
-          "op": "add",
-          "text": "press"
-        },
-        {
-          "op": "add",
-          "text": "release"
-        },
-        {
-          "op": "add",
-          "text": "jul"
-        },
-        {
-          "op": "add",
-          "text": "10"
-        },
-        {
-          "op": "add",
-          "text": "2017•global"
-        },
-        {
-          "op": "add",
-          "text": "new"
-        },
-        {
-          "op": "add",
-          "text": "report"
-        },
-        {
-          "op": "add",
-          "text": "shows"
-        },
-        {
-          "op": "add",
-          "text": "just"
-        },
-        {
-          "op": "del",
-          "text": "nasdaq"
-        },
-        {
-          "op": "same",
-          "text": "100"
-        },
-        {
-          "op": "same",
-          "text": "companies"
-        },
-        {
-          "op": "add",
-          "text": "are"
-        },
-        {
-          "op": "add",
-          "text": "source"
-        },
-        {
-          "op": "add",
-          "text": "of"
-        },
-        {
-          "op": "add",
-          "text": "over"
-        },
-        {
-          "op": "add",
-          "text": "70"
-        },
-        {
-          "op": "add",
-          "text": "of"
-        },
-        {
-          "op": "add",
-          "text": "emissions"
-        }
-      ],
-      "faithful": false
-    }
-  ],
+  "spans": [],
+  "hops": [],
   "blame": [],
   "roots": {
-    "pages": 2,
-    "clusters": 2,
+    "pages": 0,
+    "clusters": 0,
     "rootsLinked": 0,
-    "clustersUnlinked": 2,
+    "clustersUnlinked": 0,
     "studiesFound": null,
-    "independentRoots": 2,
+    "independentRoots": 0,
     "copies": 0
   },
-  "redHopEdgeId": "e1",
+  "redHopEdgeId": null,
   "earliest": {
-    "nodeIds": [
-      "n4"
-    ],
-    "earlierWindowSearches": 4,
+    "nodeIds": [],
+    "earlierWindowSearches": 2,
     "earlierFound": 0
   },
   "failure": null,
   "budget": {
-    "credits": 15,
-    "usd": 0.0009295299999999999,
-    "ms": 119940,
+    "credits": 4,
+    "usd": 0.00003293,
+    "ms": 66647,
     "capHit": null
   },
   "decision": {
-    "state": "TRAIL_GOES_COLD",
-    "row": 6,
+    "state": "NO_PAGES_FOUND",
+    "row": 3,
     "reasons": [
-      "no earliest page states the same claim: the claim's atoms in a span and a confident same_claim yes",
-      "4 unread candidate parent(s)"
+      "no pages besides meta pages"
     ],
     "counts": {
-      "pages": 2,
-      "clusters": 2,
-      "unreadParents": 4,
-      "earlierWindowSearches": 4
+      "pages": 0,
+      "clusters": 0,
+      "unreadParents": 2,
+      "earlierWindowSearches": 2
     }
   },
   "searchLog": [
     {
-      "at": "2026-11-17T06:19:57.544Z",
-      "step": "search",
-      "query": "\"100\" companies",
-      "endDate": "2026-11-17",
-      "startDate": null,
-      "results": 10,
-      "kept": 10,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:19:58.728Z",
-      "step": "search",
-      "query": "100 companies responsible for 71% of global emissions",
-      "endDate": "2026-11-17",
-      "startDate": null,
-      "results": 10,
-      "kept": 10,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:20:00.676Z",
-      "step": "search",
-      "query": "\"71% of global emissions\" attributed to 100 companies",
-      "endDate": "2026-11-17",
-      "startDate": null,
-      "results": 10,
-      "kept": 10,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:20:01.711Z",
-      "step": "search",
-      "query": "100 companies responsible for 71% emissions study",
-      "endDate": "2026-11-17",
-      "startDate": null,
-      "results": 10,
-      "kept": 10,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:20:02.741Z",
-      "step": "meta-search",
-      "query": "\"100\" companies",
-      "endDate": "2026-11-17",
-      "startDate": null,
-      "results": 5,
-      "kept": 2,
-      "dropped": 3
-    },
-    {
-      "at": "2026-11-17T06:20:23.017Z",
-      "step": "search",
-      "query": "\"100\" companies",
-      "endDate": "2014-10-09",
-      "startDate": null,
-      "results": 5,
-      "kept": 5,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:20:24.201Z",
-      "step": "search",
-      "query": "100 companies responsible for 71% of global emissions",
-      "endDate": "2014-10-09",
-      "startDate": null,
-      "results": 9,
-      "kept": 9,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:20:25.304Z",
-      "step": "search",
-      "query": "71% of global emissions from 100 companies",
-      "endDate": "2014-10-09",
-      "startDate": null,
-      "results": 7,
-      "kept": 7,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:20:27.325Z",
-      "step": "search",
-      "query": "Nasdaq 100 companies emissions 71%",
-      "endDate": "2014-10-09",
-      "startDate": null,
-      "results": 8,
-      "kept": 8,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:20:39.663Z",
-      "step": "search",
-      "query": "\"100 companies are responsible for 71% of global emissions\"",
-      "endDate": "2014-10-09",
+      "at": "2026-11-17T23:15:34.641Z",
+      "step": "model",
+      "query": "query planner failed (network_error): code-only queries used for this window",
+      "endDate": null,
       "startDate": null,
       "results": 0,
       "kept": 0,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:20:41.076Z",
+      "at": "2026-11-17T23:15:36.235Z",
       "step": "search",
-      "query": "\"71% of global emissions\" from 100 companies",
-      "endDate": "2014-10-09",
+      "query": "\"one hundred\" compan",
+      "endDate": "2026-11-17",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:20:42.630Z",
+      "at": "2026-11-17T23:15:37.405Z",
       "step": "search",
-      "query": "100 companies responsible for 71% global emissions study",
-      "endDate": "2014-10-09",
+      "query": "\"one hundred\" compan study",
+      "endDate": "2026-11-17",
       "startDate": null,
-      "results": 9,
-      "kept": 8,
-      "dropped": 1
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
     },
     {
-      "at": "2026-11-17T06:20:43.843Z",
-      "step": "search",
-      "query": "71% of global emissions from 100 companies report",
-      "endDate": "2014-10-09",
+      "at": "2026-11-17T23:15:39.610Z",
+      "step": "meta-search",
+      "query": "\"one hundred\" compan",
+      "endDate": "2026-11-17",
       "startDate": null,
-      "results": 9,
-      "kept": 9,
-      "dropped": 0
+      "results": 5,
+      "kept": 2,
+      "dropped": 3
     }
   ],
   "usage": [
     {
-      "at": "2026-11-17T06:19:47.456Z",
+      "at": "2026-11-17T23:15:01.679Z",
       "traceId": "dev-11",
       "step": "tokenfactory",
       "service": "tokenfactory",
@@ -658,28 +198,28 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0.000029999999999999997,
-      "latencyMs": 1686,
+      "latencyMs": 2946,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:19:49.147Z",
+      "at": "2026-11-17T23:15:04.628Z",
       "traceId": "dev-11",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 275,
-      "completionTokens": 188,
+      "promptTokens": 0,
+      "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.00008389999999999999,
-      "latencyMs": 5407,
-      "status": "200",
+      "costUsd": 0,
+      "latencyMs": 30006,
+      "status": "network_error",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:19:57.544Z",
+      "at": "2026-11-17T23:15:36.234Z",
       "traceId": "dev-11",
       "step": "search",
       "service": "tavily",
@@ -690,12 +230,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 2981,
+      "latencyMs": 1575,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:19:58.728Z",
+      "at": "2026-11-17T23:15:37.404Z",
       "traceId": "dev-11",
       "step": "search",
       "service": "tavily",
@@ -706,44 +246,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1168,
+      "latencyMs": 1148,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:20:00.676Z",
-      "traceId": "dev-11",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1938,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:20:01.710Z",
-      "traceId": "dev-11",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1019,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:20:02.741Z",
+      "at": "2026-11-17T23:15:39.610Z",
       "traceId": "dev-11",
       "step": "meta-search",
       "service": "tavily",
@@ -754,12 +262,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1015,
+      "latencyMs": 2179,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:20:02.876Z",
+      "at": "2026-11-17T23:15:39.722Z",
       "traceId": "dev-11",
       "step": "meta-extract",
       "service": "tavily",
@@ -770,12 +278,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 118,
+      "latencyMs": 94,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:20:13.305Z",
+      "at": "2026-11-17T23:15:42.515Z",
       "traceId": "dev-11",
       "step": "extract",
       "service": "tavily",
@@ -786,12 +294,44 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 10402,
+      "latencyMs": 2738,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:20:15.579Z",
+      "at": "2026-11-17T23:15:42.548Z",
+      "traceId": "dev-11",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 207,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00000207,
+      "latencyMs": 11148,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T23:15:53.705Z",
+      "traceId": "dev-11",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 86,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 8.6e-7,
+      "latencyMs": 8532,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T23:16:07.542Z",
       "traceId": "dev-11",
       "step": "dating",
       "service": "wayback",
@@ -802,28 +342,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 2256,
+      "latencyMs": 5300,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:20:15.582Z",
-      "traceId": "dev-11",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 229,
-      "completionTokens": 7,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.000024999999999999998,
-      "latencyMs": 685,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:20:16.691Z",
+      "at": "2026-11-17T23:16:08.324Z",
       "traceId": "dev-11",
       "step": "dating",
       "service": "wayback",
@@ -834,471 +358,7 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 355,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:20:16.718Z",
-      "traceId": "dev-11",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 204,
-      "completionTokens": 7,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.000022499999999999998,
-      "latencyMs": 501,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:20:17.222Z",
-      "traceId": "dev-11",
-      "step": "tokenfactory",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 309,
-      "completionTokens": 185,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.0000864,
-      "latencyMs": 4479,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:20:23.016Z",
-      "traceId": "dev-11",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1299,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:20:24.198Z",
-      "traceId": "dev-11",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1160,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:20:25.304Z",
-      "traceId": "dev-11",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1069,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:20:27.325Z",
-      "traceId": "dev-11",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1996,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:20:32.789Z",
-      "traceId": "dev-11",
-      "step": "extract",
-      "service": "tavily",
-      "endpoint": "extract",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 5451,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:20:32.793Z",
-      "traceId": "dev-11",
-      "step": "tokenfactory",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 309,
-      "completionTokens": 217,
-      "cachedTokens": 304,
-      "credits": 0,
-      "costUsd": 0.000096,
-      "latencyMs": 5731,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:20:39.662Z",
-      "traceId": "dev-11",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1122,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:20:41.074Z",
-      "traceId": "dev-11",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1398,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:20:42.630Z",
-      "traceId": "dev-11",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1505,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:20:43.842Z",
-      "traceId": "dev-11",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1202,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:20:46.017Z",
-      "traceId": "dev-11",
-      "step": "extract",
-      "service": "tavily",
-      "endpoint": "extract",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 2160,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:20:46.068Z",
-      "traceId": "dev-11",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 2569,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.00002569,
-      "latencyMs": 6544,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:20:52.629Z",
-      "traceId": "dev-11",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 2315,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.00002315,
-      "latencyMs": 6102,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:20:58.741Z",
-      "traceId": "dev-11",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 815,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.00000815,
-      "latencyMs": 6266,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:21:05.058Z",
-      "traceId": "dev-11",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 7,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 7e-8,
-      "latencyMs": 8021,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:21:13.081Z",
-      "traceId": "dev-11",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 53,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 5.3e-7,
-      "latencyMs": 9113,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:21:22.199Z",
-      "traceId": "dev-11",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 79,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 7.900000000000001e-7,
-      "latencyMs": 9538,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:21:31.740Z",
-      "traceId": "dev-11",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 45,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 4.5000000000000003e-7,
-      "latencyMs": 4109,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:21:36.121Z",
-      "traceId": "dev-11",
-      "step": "dating",
-      "service": "fetch",
-      "endpoint": "page",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 267,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:21:36.718Z",
-      "traceId": "dev-11",
-      "step": "dating",
-      "service": "fetch",
-      "endpoint": "page",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 865,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:21:39.437Z",
-      "traceId": "dev-11",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 2717,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:21:45.663Z",
-      "traceId": "dev-11",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 6224,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:21:45.664Z",
-      "traceId": "dev-11",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 0,
-      "status": "200",
-      "cacheHit": true
-    },
-    {
-      "at": "2026-11-17T06:21:45.665Z",
-      "traceId": "dev-11",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 0,
-      "status": "200",
-      "cacheHit": true
-    },
-    {
-      "at": "2026-11-17T06:21:45.670Z",
-      "traceId": "dev-11",
-      "step": "page_type",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 4495,
-      "completionTokens": 7,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.00045159999999999997,
-      "latencyMs": 612,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:21:46.327Z",
-      "traceId": "dev-11",
-      "step": "readouts",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 428,
-      "completionTokens": 23,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.000049699999999999995,
-      "latencyMs": 698,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:21:47.033Z",
-      "traceId": "dev-11",
-      "step": "boundary",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 238,
-      "completionTokens": 6,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.0000256,
-      "latencyMs": 361,
+      "latencyMs": 782,
       "status": "200",
       "cacheHit": false
     }
