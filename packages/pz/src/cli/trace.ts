@@ -10,7 +10,7 @@ export async function traceCommand(args: string[], io = {
   try {
     const { values, positionals } = parseArgs({ args, allowPositionals: true, options: {
       "replay-of": { type: "string" }, pipeline: { type: "string" }, out: { type: "string" },
-      pages: { type: "string" }, events: { type: "boolean" },
+      pages: { type: "string" }, 
     } });
     const emit = (event: RunEvent) => io.write(JSON.stringify(event));
     let trace;
