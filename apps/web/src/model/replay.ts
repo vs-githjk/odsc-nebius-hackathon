@@ -1,0 +1,81 @@
+import type { Trace } from "pz/schema";
+import { endingSentence } from "./ending.ts";
+
+// One line of the recorded walk, replayed in the log rail. A page line lands that page on the band.
+export type ReplayLine = { kind: "search" | "follow" | "model" | "page" | "end"; text: string; nodeId?: string };
+
+const monthYear = new Intl.DateTimeFormat("en-US", { month: "long", year: "numeric", timeZone: "UTC" });
+const month = (iso: string) => monthYear.format(new Date(iso));
+const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`;
+const host = (url: string) => {
+  try {
+    return new URL(url).hostname.replace(/^www\./, "");
+  } catch {
+    return url;
+  }
+};
+
+function searchLine(s: Trace["searchLog"][number]): ReplayLine {
+  if (s.step === "follow") return { kind: "follow", text: `Followed a citation to ${host(s.query.split(" ")[0] ?? "")}.` };
+  if (s.step === "model") return { kind: "model", text: "A model call failed, so this step used code-only searches." };
+  const when = s.endDate ? `pages before ${month(s.endDate)}` : "no date limit";
+  // A query that carries its own quotes (an exact phrase) is shown as sent; any other is quoted.
+  const query = s.query.includes("\"") ? s.query : `“${s.query}”`;
+  return { kind: "search", text: `Searched for ${query}, ${when}: ${plural(s.results, "result", "results")}.` };
+}
+
+function pageLine(n: Trace["nodes"][number]): ReplayLine {
+  const when = n.date.value ? month(n.date.value) : "undated";
+  const what = n.meta ? "discusses the claim, kept off the path" : "states the claim";
+  return { kind: "page", nodeId: n.id, text: `Read ${n.domain}, ${when}: ${what}.` };
+}
+
+// The walk as it was recorded: each search in the order it ran, and after it the pages it reached, in the order they
+// were read. A trace stores no read time per page, so a page is placed after the last search whose window still
+// covers it (the walk steps back in time, one window at a time; a window ending on a date searches before it). A page
+// no recorded search covers was read before them, so it lands first. An undated page goes after the first search.
+// Ends with how the trace ended. Built only from stored fields, so a replay can never show what the walk did not do.
+export function replayLines(trace: Trace): ReplayLine[] {
+  const searches = trace.searchLog.filter((s) => s.step !== "follow" && s.step !== "model");
+  const windowOf = (n: Trace["nodes"][number]) => {
+    if (searches.length === 0) return -1;
+    if (!n.date.value) return 0;
+    let at = -1;
+    searches.forEach((s, i) => {
+      if (s.endDate === null || s.endDate > n.date.value!) at = i;
+    });
+    return at;
+  };
+  const pagesAfter = new Map<number, Trace["nodes"]>();
+  for (const n of trace.nodes) pagesAfter.set(windowOf(n), [...(pagesAfter.get(windowOf(n)) ?? []), n]);
+
+  const lines: ReplayLine[] = (pagesAfter.get(-1) ?? []).map(pageLine);
+  let w = -1;
+  for (const s of trace.searchLog) {
+    lines.push(searchLine(s));
+    if (s.step === "follow" || s.step === "model") continue;
+    w += 1;
+    for (const n of pagesAfter.get(w) ?? []) lines.push(pageLine(n));
+  }
+  lines.push({ kind: "end", text: endingSentence(trace) });
+  return lines;
+}
+
+// What the stage shows after the first `shown` lines: the pages landed so far and the counter.
+export function replayFrame(trace: Trace, lines: ReplayLine[], shown: number): { nodeIds: Set<string>; pages: number; clusters: number } {
+  const nodeIds = new Set(lines.slice(0, shown).flatMap((l) => (l.nodeId ? [l.nodeId] : [])));
+  const landed = trace.nodes.filter((n) => nodeIds.has(n.id) && !n.meta);
+  return { nodeIds, pages: landed.length, clusters: new Set(landed.map((n) => n.clusterId)).size };
+}
+
+// How long each line holds, in ms. A long walk is sped up so the whole replay fits in about seven seconds.
+export function lineMs(lines: ReplayLine[]): number {
+  return Math.round(Math.min(420, 7000 / Math.max(1, lines.length)));
+}
+
+// The recorded walk's own length, for the rail's footer: "The walk took 41 seconds."; null when it was not timed.
+export function walkTook(trace: Trace): string | null {
+  const s = Math.round(trace.budget.ms / 1000);
+  if (s <= 0) return null;
+  return s < 120 ? `The walk took ${plural(s, "second", "seconds")}.` : `The walk took ${plural(Math.round(s / 60), "minute", "minutes")}.`;
+}
