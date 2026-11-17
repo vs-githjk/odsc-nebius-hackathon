@@ -5,17 +5,16 @@ import type { Rules } from "./rules.ts";
 // #192 F4: a page can cite an earlier source in words, with no link: "In the November/December 2009 issue of World
 // Watch, Goodland and Anhang published...". citesEarlier counts links only, so such a page could end as the origin
 // (dev-13, the one false origin in the first live E2 run). Code alone, on the span itself (not the text around it,
-// which on interview pages holds unrelated dated facts): the span names a year before the page's own date AND
-// matches one of rules.json writtenCitationCues. The earlier year comes back so the reason can quote it.
-const YEAR = /(?<![\d.,])(1[5-9]\d{2}|20\d{2})(?![\d.,]*\d)/g;
-
+// which on interview pages holds unrelated dated facts): a rules.json writtenCitationCues pattern matches, and the
+// year inside that cited phrase (its `year` group) is before the page's own date. A year that is only part of the
+// data ("emissions since 1988, according to the Carbon Majors Report") never counts (XO on #196).
 export function writtenCitationYear(span: Pick<Trace["spans"][number], "text">, pageDate: string | null, rules: Pick<Rules, "writtenCitationCues">): number | null {
   const pageYear = pageDate ? Number(pageDate.slice(0, 4)) : NaN;
   if (!Number.isFinite(pageYear)) return null;
   const text = normalise(span.text);
-  if (!rules.writtenCitationCues.some((p) => new RegExp(p, "iu").test(text))) return null;
-  const earlier = [...text.matchAll(YEAR)].map((m) => Number(m[1])).filter((y) => y < pageYear);
-  return earlier.length ? Math.min(...earlier) : null;
+  const years = rules.writtenCitationCues.flatMap((p) => [...text.matchAll(new RegExp(p, "giu"))].map((m) => Number(m.groups?.year)))
+    .filter((y) => Number.isFinite(y) && y < pageYear);
+  return years.length ? Math.min(...years) : null;
 }
 
 // The earliest year a page's spans cite in words, or null.

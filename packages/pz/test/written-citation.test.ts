@@ -23,6 +23,13 @@ describe("#192 F4: an earlier source cited in words", () => {
     expect(writtenCitationYear({ text: DEV13 }, null, rules)).toBeNull();
   });
 
+  it("a year that is part of the data never counts, even next to a source (XO on #196)", () => {
+    const carbon = "100 companies are responsible for 71% of industrial emissions since 1988, according to the Carbon Majors Report.";
+    expect(writtenCitationYear({ text: carbon }, "2017-07-10", rules)).toBeNull();
+    expect(writtenCitationYear({ text: "The journal tracked deaths from 1990 to 2010 and found 51%." }, "2015-08-29", rules)).toBeNull();
+    expect(writtenCitationYear({ text: "Published in March 2013 in the journal, the study found 14.5%." }, "2015-08-29", rules)).toBe(2013);
+  });
+
   it("a number that only looks like a year is not one", () => {
     expect(writtenCitationYear({ text: "A study by the agency counted 1,999.5 tonnes and 2009.7 more." }, "2015-08-29", rules)).toBeNull();
   });
@@ -35,6 +42,13 @@ describe("#192 F4: an earlier source cited in words", () => {
     const d = decideStopState(t, rules);
     expect(d.state).toBe("TRAIL_GOES_COLD");
     expect(d.reasons).toContain("earliest page keeper-log cites an earlier source in words (2011)");
+  });
+
+  it("a true origin whose own span names its source next to a data year still wins", () => {
+    const t = fixture();
+    const span = t.spans.find((s) => s.nodeId === "keeper-log")!;
+    span.text = `${span.text.replace(/\.$/, "")} since 2011, according to the keepers' own journal.`;
+    expect(decideStopState(t, rules).state).toBe("ORIGIN_FOUND");
   });
 
   it("the text around the span is not read: interview pages carry unrelated dated facts there", () => {
