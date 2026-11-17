@@ -6,12 +6,14 @@ const DevClaim = z.object({
   id: z.string().regex(/^dev-\d{2}$/), text: z.string().min(10).max(200), seenAt: z.url(),
   topic: z.string().regex(/^[a-z]+$/), tracedOrigin: z.url().nullable(), tracedBy: z.url().nullable(),
   expected: z.enum(["origin", "cold", "unknown"]),
+  // #192 F3: other URLs of the same work, logged with evidence on #164; and a claim scored apart (dev-19). E2 only.
+  originAliases: z.array(z.url()).min(1).optional(), outOfScope: z.string().min(10).optional(),
 }).strict();
 
 const load = (file: string) => JSON.parse(readFileSync(new URL(`../../../eval/${file}`, import.meta.url), "utf8"));
 const claims = z.array(DevClaim).parse(load("dev-claims.json"));
 // E3 (T47): the check set. Same format, its own id prefix. E2 stays the tuning set.
-const E3Claim = DevClaim.extend({ id: z.string().regex(/^e3-\d{2}$/), expected: z.enum(["origin", "cold"]) }).strict();
+const E3Claim = DevClaim.omit({ originAliases: true, outOfScope: true }).extend({ id: z.string().regex(/^e3-\d{2}$/), expected: z.enum(["origin", "cold"]) }).strict();
 const e3 = z.array(E3Claim).parse(load("dev-claims-e3.json"));
 
 // Words from spike claims 1 to 6 (listed on #5). A dev claim must not be one of them.
@@ -27,7 +29,7 @@ describe("eval/dev-claims.json (E2)", () => {
     for (const c of claims) for (const re of SPIKE) expect(c.text).not.toMatch(re);
   });
   it("uses https URLs only", () => {
-    for (const c of claims) for (const u of [c.seenAt, c.tracedOrigin, c.tracedBy]) if (u) expect(u.startsWith("https://")).toBe(true);
+    for (const c of claims) for (const u of [c.seenAt, c.tracedOrigin, c.tracedBy, ...(c.originAliases ?? [])]) if (u) expect(u.startsWith("https://")).toBe(true);
   });
   it("has at least 4 claims expected to go cold", () => {
     expect(claims.filter((c) => c.expected === "cold").length).toBeGreaterThanOrEqual(4);
