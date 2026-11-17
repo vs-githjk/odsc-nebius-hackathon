@@ -1,0 +1,17 @@
+{
+  "id": "claim-3-empty-results",
+  "kind": "pipeline",
+  "note": "Every search comes back empty.",
+  "source": "spike/traces/claim-3.json",
+  "mutation": "empty-results",
+  "expect": {
+    "state": "NO_PAGES_FOUND",
+    "noOrigin": true,
+    "falseCertainty": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

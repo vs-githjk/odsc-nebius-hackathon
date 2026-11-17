@@ -126,3 +126,8 @@ Format: [LOCKED|REJECTED|PREFERENCE] decision | why | "Vidyut's words" | date
 [LOCKED] Voiceover test read and final take: Rohan (#175), replacing the earlier Anoop-first preference | Vidyut | "Voiceover, no, just give it to Rohan, it's fine. Make him do it." | 2026-11-16
 [LOCKED] Second model on same_claim (DeepSeek-V4-Pro-0813) stays OFF: measured on E2, it lost 23 of 60 true hits and removed 0 false hits | measured, #138 | XO measure run | 2026-11-16
 [LOCKED] #130 integration: XO merges Rohan's pushed draft with main (builder agent), Rohan reviews | Rohan missed 18:00 PT with no ETA; Tue run-through needs live traces | "XO merges it" | 2026-11-16
+[LOCKED] Other-number card line is softened to "possible variant" with the E3 precision cited; never "became" | E3 untuned precision 0.37 (E2 0.82) | "Soften to 'possible'" | 2026-11-17
+[LOCKED] Live dating uses page publication metadata (and NCBI/Crossref registry dates), labelled on the card as "page says published <date>" distinct from "archived by <date>"; limits page names the backdated-metadata trap | real 2004 papers showed as 2020 on archive-only dating | "Use it, label it" | 2026-11-17
+[LOCKED] Merge #191 (live pipeline) now, before Rohan's review; Rohan reviews on main and fixes go in follow-ups | Tue run-through needs it; reviewer PASS after 4 rounds | "Merge now" | 2026-11-17
+[LOCKED] E2 scoring: NO_PAGES_FOUND is not a correct cold ending for myth claims (stays a miss) | dev-03 kept no pages | "No, keep it a miss" | 2026-11-17
+[LOCKED] dev-19 (Spotify audio origin) stays in E2, scored separately as out of scope (web pages only), reported on the limits page; E2 origin total 10 | audio is outside scope | "Keep, mark out of scope" | 2026-11-17

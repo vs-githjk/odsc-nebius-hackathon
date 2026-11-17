@@ -1,0 +1,17 @@
+{
+  "id": "claim-3-tool-failure",
+  "kind": "pipeline",
+  "note": "Tavily search answers 503.",
+  "source": "spike/traces/claim-3.json",
+  "mutation": "tool-failure",
+  "expect": {
+    "state": "TOOL_FAILED",
+    "noOrigin": true,
+    "falseCertainty": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

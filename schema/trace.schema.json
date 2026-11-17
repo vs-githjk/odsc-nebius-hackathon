@@ -168,7 +168,10 @@
                   "metadata",
                   "byline",
                   "wayback_first_capture",
-                  "tavily"
+                  "tavily",
+                  "registry_pubmed",
+                  "registry_pmc",
+                  "registry_crossref"
                 ]
               },
               "firstCapture": {
@@ -390,6 +393,12 @@
               {
                 "type": "null"
               }
+            ]
+          },
+          "foundViaMeta": {
+            "type": [
+              "string",
+              "null"
             ]
           },
           "boundary": {
@@ -1150,7 +1159,9 @@
               "tokenfactory",
               "wayback",
               "fetch",
-              "jev"
+              "jev",
+              "ncbi",
+              "crossref"
             ]
           },
           "endpoint": {

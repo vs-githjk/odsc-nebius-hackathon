@@ -4,6 +4,8 @@ import { join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { PZ_VERSION } from "../index.ts";
 import { relock, runTraps } from "../traps/run.ts";
+import { runPipelineTraps } from "../traps/pipeline.ts";
+import { loadRules } from "../rules/index.ts";
 import { runVerify, type HistoricalManifest } from "../verify/index.ts";
 import { answerCommand } from "./answer.ts";
 import { formatDoctor, runDoctor } from "./doctor.ts";
@@ -52,7 +54,10 @@ if (command === "--version") {
   if (args.includes("--relock")) relock(paths);
   const { code, lines } = runTraps(paths);
   for (const line of lines) console.log(line);
-  process.exitCode = code;
+  // T30: the pipeline cases run the real walk and dating on planted webs built from the spike traces.
+  const pipeline = await runPipelineTraps({ root, casesDir: join(root, "traps/pipeline"), lockPath: join(root, "traps/pipeline.lock"), rules: loadRules(), relock: args.includes("--relock") });
+  for (const line of pipeline.lines) console.log(line);
+  process.exitCode = code || pipeline.code;
 } else if (command === "doctor") {
   const root = fileURLToPath(new URL("../../../../", import.meta.url));
   const { code, lines } = await runDoctor({ root, env: process.env, nodeVersion: process.version, network: args.includes("--network") });

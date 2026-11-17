@@ -25,7 +25,7 @@ export const Span = z.object({
 export type Span = z.infer<typeof Span>;
 export const DateInfo = z.object({
   kind: z.enum(["published", "existed_by", "unconfirmed"]), value: z.string().nullable(),
-  source: z.enum(["metadata", "byline", "wayback_first_capture", "tavily"]), firstCapture: z.string().nullable(), conflictingDate: z.boolean(),
+  source: z.enum(["metadata", "byline", "wayback_first_capture", "tavily", "registry_pubmed", "registry_pmc", "registry_crossref"]), firstCapture: z.string().nullable(), conflictingDate: z.boolean(),
 }).strict();
 export type DateInfo = z.infer<typeof DateInfo>;
 export const Node = z.object({
@@ -36,6 +36,9 @@ export const Node = z.object({
   // T36: the typed same_claim answer for this page's span. Absent or null means the gate did not run (no model),
   // which counts as unsure: such a page is never an origin.
   sameClaim: TypedAnswer.nullable().optional(),
+  // T49: the meta page (a fact-check or provenance page) whose citation led the walk here, or null. The page still
+  // stands on its own verbatim span; the meta page is a map and never an origin. Absent on traces before T49.
+  foundViaMeta: z.string().nullable().optional(),
   // T37: the typed boundary answer for an earliest page on a cold trail (print, unsourced, none). Absent or null
   // means not asked; code decides whether it counts.
   boundary: TypedAnswer.nullable().optional(),

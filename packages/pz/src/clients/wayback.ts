@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { ClientError, send, type ClientDeps } from "./http.ts";
+import { ClientError, USER_AGENT, send, type ClientDeps } from "./http.ts";
 
 const CDX_URL = "https://web.archive.org/cdx/search/cdx";
 export const WAYBACK_TIMEOUT_MS = 20_000;
@@ -33,6 +33,10 @@ export function createWayback(deps: ClientDeps & { timeoutMs?: number }) {
           maxCredits: 0,
           timeoutMs: deps.timeoutMs ?? WAYBACK_TIMEOUT_MS,
           retryTimeouts: true,
+          // The archive answers 403 or 429 to a burst: one retry after a short pause, with a named User-Agent.
+          retryStatuses: [403, 429],
+          retryDelayMs: 1500,
+          init: { headers: { "user-agent": USER_AGENT } },
           parse: (body) => ({ data: parseCdx(body), credits: 0 }),
         });
       } catch (err) {
