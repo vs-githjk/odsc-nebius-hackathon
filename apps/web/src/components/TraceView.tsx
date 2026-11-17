@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import type { Trace } from "pz/schema";
-import { hopInto, redStop } from "../model/hop.ts";
+import { hopInto, readoutsHead, redStop } from "../model/hop.ts";
 import { scrubberStops, stopNote } from "../model/scrubber.ts";
 import { ModeBadge } from "./ModeBadge.tsx";
 import { Scrubber, stopXs, xAt } from "./Scrubber.tsx";
@@ -84,7 +84,7 @@ export function TraceView({ trace }: { trace: Trace }) {
                 </p>
                 {into && (
                   <div className="readouts">
-                    <p className="readouts-head">{into.chips.length > 0 ? "What changed from the older page" : "Nothing we check for changed from the older page."}</p>
+                    <p className="readouts-head">{readoutsHead(into)}</p>
                     {into.chips.length > 0 && (
                       <ul className="readout-list" key={`${trace.id}-${open}`}>
                         {into.chips.map((c, n) => (

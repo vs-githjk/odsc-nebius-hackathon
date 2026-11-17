@@ -13,7 +13,8 @@ const LABELS: Record<Readout["id"], string> = {
 
 // One readout that fired on a hop. An unsure readout is drawn neutral, never as a change.
 export type Chip = { id: Readout["id"]; label: string; tag: string; tone: "changed" | "unsure"; disputed: boolean };
-export type HopView = { edgeId: string; red: boolean; chips: Chip[] };
+// inferred: no link joins the two pages; the older one is taken as the source by date alone.
+export type HopView = { edgeId: string; red: boolean; inferred: boolean; chips: Chip[] };
 
 const percent = (p: number | null) => (p === null ? "" : `, ${Math.round(p * 100)}%`);
 
@@ -31,13 +32,20 @@ export function hopInto(trace: Trace, stops: Stop[], i: number): HopView | null 
   if (!stop || !edge || edge.childSpanId !== stop.spanId) return null;
   const hop = trace.hops.find((h) => h.edgeId === edge.id);
   const chips = (hop?.readouts ?? []).filter((r) => r.value !== "no").map(chip);
-  return { edgeId: edge.id, red: edge.id === trace.redHopEdgeId, chips };
+  return { edgeId: edge.id, red: edge.id === trace.redHopEdgeId, inferred: edge.kind === "inferred", chips };
 }
 
 // The stop where the wording changed on the red hop, or -1 when the trace has none on the scrubber's path.
 export function redStop(trace: Trace, stops: Stop[]): number {
   if (trace.redHopEdgeId === null) return -1;
   return stops.findIndex((_, i) => hopInto(trace, stops, i)?.red === true);
+}
+
+// The line over the chips. When no link joins the pages, it says the older page is only inferred as the source
+// (XO on #181), so a "measured" chip is never read as measured against a linked source.
+export function readoutsHead(hop: HopView): string {
+  const what = hop.chips.length > 0 ? "What changed from the older page" : "Nothing we check for changed from the older page";
+  return hop.inferred ? `${what}, which is inferred as the source by date, with no link.` : hop.chips.length > 0 ? what : `${what}.`;
 }
 
 // Neighbouring words with the same mark joined, so a changed phrase reads as one run, not one box per word.

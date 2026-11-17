@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { loadTraces } from "../data/loadTraces.ts";
 import { lintText } from "../../../../packages/pz/src/cli/lint-copy.ts";
 import { scrubberStops, type Word } from "./scrubber.ts";
-import { hopInto, redStop, runs } from "./hop.ts";
+import { hopInto, readoutsHead, redStop, runs } from "./hop.ts";
 
 const { traces } = loadTraces();
 const byId = (id: string) => traces.find((t) => t.id === id)!;
@@ -53,6 +53,21 @@ describe("hopInto", () => {
       const stops = scrubberStops(t);
       for (let i = 0; i < stops.length; i++) for (const c of hopInto(t, stops, i)?.chips ?? []) expect(lintText(`${c.label} ${c.tag}`)).toEqual([]);
     }
+  });
+});
+
+describe("readoutsHead", () => {
+  it("says the older page is only inferred as the source when no link joins them (XO on #181)", () => {
+    const rich = byId("sample-rich");
+    const stops = scrubberStops(rich);
+    const red = hopInto(rich, stops, 1)!;
+    expect(red.inferred).toBe(true);
+    expect(readoutsHead(red)).toBe("What changed from the older page, which is inferred as the source by date, with no link.");
+    const linked = hopInto(rich, stops, 0)!;
+    expect(linked.inferred).toBe(false);
+    expect(readoutsHead(linked)).toBe("What changed from the older page");
+    expect(readoutsHead({ ...linked, chips: [] })).toBe("Nothing we check for changed from the older page.");
+    for (const h of [red, linked]) expect(lintText(readoutsHead(h))).toEqual([]);
   });
 });
 
