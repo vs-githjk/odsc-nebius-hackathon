@@ -9,7 +9,7 @@ import { createWayback } from "../clients/wayback.ts";
 import { findSpan } from "../match/verbatim.ts";
 import { clusterNodes, computeRoots, type Embed } from "./cluster.ts";
 import { findOtherNumber } from "./similar.ts";
-import { atomHit, claimHit, decideStopState, findInjection, isRange, normalise, parseNumbers, sameNumber, type Rules } from "../rules/index.ts";
+import { atomHit, claimHit, confidentYes, decideStopState, findInjection, isRange, normalise, parseNumbers, sameNumber, type Rules } from "../rules/index.ts";
 import type { Atoms, Cluster, DateInfo, Edge, Hop, Node, Readout, Span, Trace, UsageRow } from "../schema/index.ts";
 import type { UsageLog } from "../usage/log.ts";
 import { sameClaim, type SameClaimResult } from "../match/same-claim.ts";
@@ -79,7 +79,8 @@ const SOURCE_QUERIES_PER_WINDOW = 2;
 const META_PAGES = 2;
 const META_LINKS = 4;
 const MAX_QUERIES = 3;
-const MAX_SENTENCE_CHARS = 600;
+// F5: a claim is a sentence, not a page section; a longer run is glued text the line split did not catch.
+const MAX_SENTENCE_CHARS = 400;
 const SCOPE_NOTE = "Web pages only; print and paywalled origins are out of scope. Earliest source we found, not proof of first use.";
 
 const sha256 = (text: string) => createHash("sha256").update(text).digest("hex");
@@ -113,14 +114,22 @@ export function queriesFor(atoms: Atoms): string[] {
 // Markdown to the visible text, with where each link's words landed. Handles one level of parentheses in a url.
 // Marks a blank line while the text is cleaned; removed before the text is returned, its places kept as `breaks`.
 const PARAGRAPH = "";
+// F5 (#192): a single line break before what starts a new item (a capital, a digit, a list marker, a quote) is a
+// sentence boundary, so a nav row, a headline or a menu item is never glued to the sentence after it. A line that
+// starts in lower case continues the sentence above (a soft wrap). Removed like PARAGRAPH; its places are `lines`.
+const LINE = "";
 
-export function toPlain(markdown: string): { text: string; links: { href: string; start: number; end: number }[]; breaks: number[] } {
+export function toPlain(markdown: string): { text: string; links: { href: string; start: number; end: number }[]; breaks: number[]; lines: number[] } {
   // Headings end like sentences, and emphasis marks are not the page's words.
   // CRLF and lone CR line ends count as plain ones, so a Windows-style blank line still splits paragraphs (XO on #108).
   const unix = markdown.replace(/\r\n?/g, "\n");
   const headed = unix.trim().replace(/^#{1,6}[ \t]+(.*?)[ \t]*$/gm, (_, heading: string) => (/[.!?:]$/.test(heading) ? heading : `${heading}.`));
   // A blank line may hold any whitespace but a newline, a non-breaking space included.
-  const plainer = headed.replace(/[^\S\n]*\n[^\S\n]*\n\s*/g, ` ${PARAGRAPH}`);
+  const paragraphs = headed.replace(/[^\S\n]*\n[^\S\n]*\n\s*/g, ` ${PARAGRAPH}`);
+  // A line that ends a sentence ends it whatever comes next ("... Is a Myth." then "by Rebekah Goode").
+  const plainer = paragraphs
+    .replace(/(?<=[.!?]["')\]]?)[^\S\n]*\n[^\S\n]*/gu, ` ${LINE}`)
+    .replace(/[^\S\n]*\n[^\S\n]*(?=[*\u2022+-]\s|[\d"'(\[]|\p{Lu})/gu, ` ${LINE}`);
   const marked = normalise(plainer.replace(/\*\*|__/g, "")).replace(/!\[[^\]]*\]\((?:[^()]|\([^()]*\))*\)\s*/g, "").replace(/\[\s*\]\((?:[^()]|\([^()]*\))*\)\s*/g, "");
   const links: { href: string; start: number; end: number }[] = [];
   let withMarks = "";
@@ -134,15 +143,17 @@ export function toPlain(markdown: string): { text: string; links: { href: string
   withMarks += marked.slice(last);
   // Take the marks out, shifting each link by the marks before it.
   const breaks: number[] = [];
+  const lines: number[] = [];
   let text = "";
   for (const ch of withMarks) {
     if (ch === PARAGRAPH) breaks.push(text.length);
+    else if (ch === LINE) lines.push(text.length);
     else text += ch;
   }
-  const shift = (at: number) => at - [...withMarks.slice(0, at)].filter((c) => c === PARAGRAPH).length;
+  const shift = (at: number) => at - [...withMarks.slice(0, at)].filter((c) => c === PARAGRAPH || c === LINE).length;
   const shifted = links.map((l) => ({ ...l, start: shift(l.start), end: shift(l.end) }));
   const stable = normalise(text);
-  return stable === text ? { text, links: shifted, breaks } : { text: stable, links: [], breaks: [] };
+  return stable === text ? { text, links: shifted, breaks, lines } : { text: stable, links: [], breaks: [], lines: [] };
 }
 
 // The paragraph a position sits in, as [start, end) offsets.
@@ -162,15 +173,54 @@ export const pageKey = (url: string) => {
   }
 };
 
-function sentences(text: string): { text: string; start: number }[] {
+// Sentences, split at sentence ends and at every paragraph and line boundary (F5). A leading list marker is not part
+// of a sentence.
+export function sentences(text: string, cuts: number[] = []): { text: string; start: number }[] {
+  const ends = new Set<number>();
+  for (const m of text.matchAll(/(?<=[.!?]["')\]]?)\s+(?=["'(\[]?[\p{Lu}\d])/gu)) ends.add(m.index);
+  for (const c of cuts) if (c > 0 && c < text.length) ends.add(c);
   const out: { text: string; start: number }[] = [];
   let start = 0;
-  for (const m of text.matchAll(/(?<=[.!?]["')\]]?)\s+(?=["'(\[]?[\p{Lu}\d])/gu)) {
-    out.push({ text: text.slice(start, m.index), start });
-    start = m.index + m[0].length;
+  for (const end of [...[...ends].sort((a, b) => a - b), text.length]) {
+    const raw = text.slice(start, end);
+    const lead = raw.match(/^(?:\s|[*\u2022+|-]\s)*/)![0].length;
+    const body = raw.slice(lead).trimEnd();
+    if (body) out.push({ text: body, start: start + lead });
+    start = end;
   }
-  out.push({ text: text.slice(start), start });
   return out;
+}
+
+const SCRIPTS = [/\p{Script=Latin}/u, /\p{Script=Arabic}/u, /\p{Script=Han}/u, /[\p{Script=Hiragana}\p{Script=Katakana}]/u, /\p{Script=Cyrillic}/u,
+  /\p{Script=Greek}/u, /\p{Script=Hebrew}/u, /\p{Script=Devanagari}/u, /\p{Script=Hangul}/u, /\p{Script=Thai}/u];
+
+// F5: a menu, a share bar or a language list is not a sentence, even when the claim's number sits in it: two or more
+// inline list markers, or whole words in more than one script (a language menu: "English \u0627\u0644\u0639\u0631\u0628\u064a\u0629 \u4e2d\u6587"). Only words
+// written in a single script count, so lookalike letters inside Latin words ("It \u0456s \u0251lso", a real 1972 page in the
+// dry-run trap) are not a menu. Length is capped by MAX_SENTENCE_CHARS.
+export function menuLike(sentence: string): boolean {
+  if ((sentence.match(/(?:^|\s)[*\u2022|]\s/g) ?? []).length >= 2) return true;
+  const scripts = new Set<number>();
+  for (const word of sentence.split(/[^\p{L}]+/u)) {
+    const found = SCRIPTS.flatMap((s, i) => (s.test(word) ? [i] : []));
+    if (found.length === 1) scripts.add(found[0]!);
+  }
+  return scripts.size >= 2;
+}
+
+const STOP = new Set("the a an of to in on at by for and or but is are was were be it its this that with as from than".split(" "));
+const claimWords = (text: string) => normalise(text).toLowerCase().split(/[^\p{L}\p{N}%]+/u).filter((w) => w.length > 1 && !STOP.has(w));
+
+// F5: rank every sentence that states the claim, not the first one found: the share of the claim's own words it
+// carries, then the shorter sentence. Stable on ties, so page order breaks them.
+export function rankSentences<T extends { text: string }>(claimText: string, candidates: T[]): T[] {
+  const want = [...new Set(claimWords(claimText))];
+  const score = (s: string) => {
+    const have = new Set(claimWords(s));
+    return want.length === 0 ? 0 : want.filter((w) => have.has(w)).length / want.length;
+  };
+  return candidates.map((c, i) => ({ c, i, s: score(c.text) }))
+    .sort((a, b) => b.s - a.s || a.c.text.length - b.c.text.length || a.i - b.i).map((x) => x.c);
 }
 
 // A negation anywhere before the claim's number means the sentence does not assert it.
@@ -295,28 +345,52 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
   }
 
   async function readPage(url: string, title: string, raw: string, apiDate: string | null): Promise<boolean> {
-    const { text, links, breaks } = toPlain(raw);
-    const sentence = sentences(text).find(
-      (s) => s.text.length <= MAX_SENTENCE_CHARS && (atoms.number
-        ? s.text.toLowerCase().includes(lemma) && atomHit(s.text, atoms, rules.weakNumberMinSigDigits) && assertsNumber(s.text, atoms, rules.negationPrefixes)
-        : claimHit(s.text, atoms, rules)),
-    );
-    if (!sentence) {
+    const { text, links, breaks, lines } = toPlain(raw);
+    const all = sentences(text, [...breaks, ...lines]);
+    const states = (s: string) => s.length <= MAX_SENTENCE_CHARS && !menuLike(s) && (atoms.number
+      ? s.toLowerCase().includes(lemma) && atomHit(s, atoms, rules.weakNumberMinSigDigits) && assertsNumber(s, atoms, rules.negationPrefixes)
+      : claimHit(s, atoms, rules));
+    // F5 (#192): every sentence that states the claim, best first, each with its verbatim span.
+    const ranked = rankSentences(claim.text, all.filter((s) => states(s.text)))
+      .map((s) => ({ sentence: s, hit: findSpan(text, s.text, rules.negationPrefixes) }));
+    if (ranked.length === 0) {
       // T97: the same claim with another number? Listed for the reader only; the page never becomes a node.
       let other: Awaited<ReturnType<typeof findOtherNumber>> = null;
       if (deps.embed && atoms.number) {
-        try { other = await findOtherNumber(claim.text, atoms, sentences(text).map((x) => x.text), deps.embed, rules); }
+        try { other = await findOtherNumber(claim.text, atoms, all.map((x) => x.text), deps.embed, rules); }
         catch (err) { note({ step: "read", url, reason: `embeddings failed (${err instanceof Error ? err.message : "error"})` }); }
       }
       if (other) otherNumbers.push({ url, domain: hostOf(url), title, date: apiDate ? isoDate(apiDate) : null, ...other });
       note({ step: "read", url, kept: false, reason: other ? `same claim with another number (${other.number}, similarity ${other.similarity})` : "no sentence asserts the claim's atoms" });
       return false;
     }
-    const hit = findSpan(text, sentence.text, rules.negationPrefixes);
-    if (!("start" in hit)) {
-      note({ step: "read", url, kept: false, reason: `span ${hit.rejected}` });
+    const usable = ranked.flatMap((r) => ("start" in r.hit ? [{ sentence: r.sentence, hit: r.hit }] : []));
+    if (usable.length === 0) {
+      const first = ranked[0]!.hit;
+      note({ step: "read", url, kept: false, reason: `span ${"rejected" in first ? first.rejected : "not found"}` });
       return false;
     }
+    // F5: same_claim about the best sentence, and about the second best when the first gets no confident yes (the
+    // wrong sentence on the right page got a "no" on dev-10 and dev-18). The first answer stands when neither says yes.
+    let pick = usable[0]!;
+    let asked: SameClaimResult | null = null;
+    if (deps.askSameClaim) {
+      for (const [i, candidate] of usable.slice(0, 2).entries()) {
+        let answer: SameClaimResult | null = null;
+        try {
+          answer = await deps.askSameClaim({ claim: claim.text, sentence: candidate.sentence.text, atoms });
+        } catch (err) {
+          modelFailed(err, `same_claim on ${url}`, "no answer stored for this sentence");
+        }
+        if (i === 0) asked = answer;
+        if (answer && confidentYes(answer.typed, rules)) {
+          pick = candidate;
+          asked = answer;
+          break;
+        }
+      }
+    }
+    const { sentence, hit } = pick;
     const id = `n${nodes.length + 1}`;
     const contextBefore = text.slice(Math.max(0, hit.start - CONTEXT_CHARS), hit.start);
     const contextAfter = text.slice(hit.end, hit.end + CONTEXT_CHARS);
@@ -341,15 +415,7 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
 
     const clusterKey = `${normalise(title).toLowerCase()}|${sentence.text.toLowerCase()}`;
     if (!clusterKeys.has(clusterKey)) clusterKeys.set(clusterKey, `c${clusterKeys.size + 1}`);
-    // The typed same_claim answer for this page, when the walker was given the question (T36 gate, ruling on #106).
-    let asked: SameClaimResult | null = null;
-    if (deps.askSameClaim) {
-      try {
-        asked = await deps.askSameClaim({ claim: claim.text, sentence: sentence.text, atoms });
-      } catch (err) {
-        modelFailed(err, `same_claim on ${url}`, "no answer stored, so this page cannot be the origin");
-      }
-    }
+    // The typed same_claim answer for the chosen sentence (T36 gate, ruling on #106), asked above (F5).
     nodes.push({
       id, url, domain: hostOf(url), title, date, clusterId: clusterKeys.get(clusterKey)!,
       evidence: "observed", meta, read: true, versionOf: null, spanIds: [spanId], citesEarlier: parents.length > 0,

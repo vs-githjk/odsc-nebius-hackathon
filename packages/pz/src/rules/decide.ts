@@ -15,7 +15,7 @@ function confident(answer: TypedAnswer | null, rules: Rules): answer is TypedAns
 
 // T36: a same_claim "yes" counts only with a known confidence that clears the threshold. Absent, null ("no_model"),
 // "no", "unsure" and a "yes" whose confidence could not be read all block an origin.
-function confidentYes(answer: TypedAnswer | null | undefined, rules: Rules): boolean {
+export function confidentYes(answer: TypedAnswer | null | undefined, rules: Rules): boolean {
   return !!answer && answer.optionId === "yes" && answer.probability !== null && confident(answer, rules);
 }
 
