@@ -82,3 +82,4 @@
 
 - 2026-11-17 09:45 ET: morning check. No team activity since 01:50 ET. Merged #193 (.env.example comments) as 554ca60. #188: asked Anoop to cite #105 (last item). Re-reviews of #173, #185, #172, #174 running.
 - 2026-11-17 10:00 ET: #173 PASS, merged a3152c8. FIX: #172 (2H), #174 (1M), #185 (1M: E3 precision on the card). Posted ordered queues on #1, #3, #4.
+- 2026-11-17 10:20 ET: Rohan (via Vidyut): partial scorecard + budget_bound_exceeded done locally, no PR yet. Asked for a PR before F2.
