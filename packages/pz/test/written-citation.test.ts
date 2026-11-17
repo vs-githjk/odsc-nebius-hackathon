@@ -30,6 +30,14 @@ describe("#192 F4: an earlier source cited in words", () => {
     expect(writtenCitationYear({ text: "Published in March 2013 in the journal, the study found 14.5%." }, "2015-08-29", rules)).toBe(2013);
   });
 
+  it("a source word next to a data year, with no publishing verb, never counts (XO follow-up on #196)", () => {
+    expect(writtenCitationYear({ text: "Our survey in 2015 of 2,000 adults found 40% skip breakfast." }, "2016-03-01", rules)).toBeNull();
+    expect(writtenCitationYear({ text: "The analysis in 2015 dollars puts the cost at 40% more." }, "2016-03-01", rules)).toBeNull();
+    expect(writtenCitationYear({ text: "The number of papers published in 2010 rose by 30%." }, "2016-03-01", rules)).toBeNull();
+    expect(writtenCitationYear({ text: "A survey released in 2012 found 40% skip breakfast." }, "2016-03-01", rules)).toBe(2012);
+    expect(writtenCitationYear({ text: "The figure was first published in 2009." }, "2016-03-01", rules)).toBe(2009);
+  });
+
   it("a number that only looks like a year is not one", () => {
     expect(writtenCitationYear({ text: "A study by the agency counted 1,999.5 tonnes and 2009.7 more." }, "2015-08-29", rules)).toBeNull();
   });
