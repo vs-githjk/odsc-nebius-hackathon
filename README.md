@@ -13,9 +13,9 @@ Team **Says Who**, ODSC x Nebius Hackathon 2026. Built on **Nebius Token Factory
 
 Honest status as of this README:
 
-- **Built and tested with no network:** the engine stages below (all but spans, which is in review), the Token Factory and Tavily clients, the six-way stop-state table, the `pz verify` re-check, a planted trap set, keyless replay with a readable card, failure paths that replay keylessly, whole-answer mode, the origin card's checked sentence, and the trace view.
+- **Built and tested with no network:** the engine stages below, the Token Factory and Tavily clients, the six-way stop-state table, the `pz verify` re-check, a planted trap set, keyless replay with a readable card, failure paths that replay keylessly, whole-answer mode, the origin card's checked sentence, and the trace view.
 - **Wiring in progress:** `engine/pipeline.ts` ([#130](https://github.com/vs-githjk/odsc-nebius-hackathon/issues/130)) joins the stages to the live clients, so `pz trace "<claim>"` runs end to end. Until it lands, `pz trace` replays recorded traces only.
-- **Not yet measured:** the first live dev run and then the held-out run are pending. The only result so far is the first-week spike, which lost (see [Evaluation](#evaluation)).
+- **Not yet measured:** the first live dev run and then the held-out run are pending. The only end-to-end result so far is the first-week spike, which lost (see [Evaluation](#evaluation)). Some single parts are measured on E2 already, such as the second-model check under Limits.
 
 ## Try it in two minutes, no API keys
 
@@ -59,17 +59,17 @@ flowchart LR
 | intake | Finds each statistic in a pasted answer; code checks every claim is in the text | `Qwen/Qwen3-30B-A3B-Instruct-2507`, strict schema | built, tested offline |
 | fingerprint | Reads the claim's number by code; the model only copies parts of the claim (subject, unit, population, time, named source), and code drops anything not copied verbatim | same model | built, including claims with no plain number (quotes, ranges) |
 | plan queries | Proposes searches; code keeps only queries tied to the claim and rejects search operators | same model | built |
-| walk | Searches date windows further and further back, reads pages, keeps sentences that state the claim | Tavily `search`, `extract` | built; citation following in [#110](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/110) |
-| spans | Every edge between two pages rests on two verbatim sentences, one on each page | code | link-verified edges in [#108](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/108) |
+| walk | Searches date windows further and further back, reads pages, keeps sentences that state the claim | Tavily `search`, `extract` | built, including ranked citation following and searches for named sources ([#110](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/110)) |
+| spans | Every edge between two pages rests on two verbatim sentences, one on each page | code | built, with link-verified edges ([#108](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/108)) |
 | dating | Dates each page from its own metadata or byline, capped by its first Wayback capture | Wayback CDX | built |
-| clusters | Groups copies (versions, syndication, same byline, near duplicates) and counts roots | code, `Qwen/Qwen3-Embedding-8B` for reworded copies | built; embeddings in review ([#170](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/170)) |
+| clusters | Groups copies (versions, syndication, same byline, near duplicates) and counts roots | code, `Qwen/Qwen3-Embedding-8B` for reworded copies | built; the walk passes embeddings into clustering when it is given an embedder ([#170](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/170)), and the live pipeline (#130) supplies one |
 | readouts | Per hop: number, unit, hedge and comparison changes measured by code; scope, attribution and context asked as typed yes/no questions | same model, logprobs | built |
 | same claim | A page counts as stating the claim only if code finds the claim's number (or phrase) in the sentence **and** a typed question answers yes with known confidence | same model, logprobs | built |
 | stop state | Code picks one of six endings from the trace; the model never does | none | built |
 
 ### How many roots, not just how many pages
 
-Every trace counts the pages it found, how many independent roots they trace back to, and how many are copies: "Found on 23 pages: 3 independent roots, 1 origin. 20 are copies." An independent root is a group of copies with no verified link to an earlier page; every other page is a copy. Code counts it from the trace's own links, and `pz verify` recounts it (in review, [#167](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/167)). An unlinked group counts as its own root, so the count can run high when a copy does not cite its source.
+Every trace counts the pages it found, how many independent roots they trace back to, and how many are copies: "Found on 23 pages: 3 independent roots, 1 origin. 20 are copies." An independent root is a group of copies with no verified link to an earlier page; every other page is a copy. Code counts it from the trace's own links, and `pz verify` recounts it ([#167](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/167)). An unlinked group counts as its own root, so the count can run high when a copy does not cite its source.
 <!-- numbers ok: 23, 3, 1, 20 (an example sentence, not a result) -->
 
 ### Code decides how a trace ends
@@ -136,14 +136,14 @@ In week 0 a first walker with fixed rules and no model ran on six claims, graded
 | Claude | 4/4 | 2/2 | 5/6 |
 | Ours (spike) | 1/4 | 0/2 | 0/6 |
 
-It was the fastest (12 to 47 s) and lost on every claim. The grading was not fully blind: six claims, graded once, by one agent-assisted grader. The post-mortem ([eval/spike-postmortem.md](eval/spike-postmortem.md)) found two main causes. False matches on a common number became the "earliest" page on four claims, and exact-number searches never reached two targets. The engine above was built against those causes: the same-claim check, weak-number clause rules, model-planned queries, and citation following (in review, [#110](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/110)). The dev score will say whether it worked.
+It was the fastest (12 to 47 s) and lost on every claim. The grading was not fully blind: six claims, graded once, by one agent-assisted grader. The post-mortem ([eval/spike-postmortem.md](eval/spike-postmortem.md)) found two main causes. False matches on a common number became the "earliest" page on four claims, and exact-number searches never reached two targets. The engine above was built against those causes: the same-claim check, weak-number clause rules, model-planned queries, and citation following ([#110](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/110)). The dev score will say whether it worked.
 
 ## Token Factory and Tavily
 
 | Service | Used for | Status |
 |---|---|---|
 | Token Factory `Qwen/Qwen3-30B-A3B-Instruct-2507` | intake, fingerprint, query planning, typed readouts, page type, same claim | client built and tested offline; live calls from the first dev run |
-| Token Factory `Qwen/Qwen3-Embedding-8B` | near-duplicate clustering (replaced `BAAI/bge-en-icl`, which returned 404) <!-- numbers ok: 404 (HTTP status) --> | client built; not wired into clustering yet |
+| Token Factory `Qwen/Qwen3-Embedding-8B` | near-duplicate clustering (replaced `BAAI/bge-en-icl`, which returned 404) <!-- numbers ok: 404 (HTTP status) --> | built: wired into clustering and the other-number check; live calls start with the pipeline (#130) |
 | Tavily `search` | date-windowed exact-phrase searches | built; used by the spike walker |
 | Tavily `extract` | reading the pages a search returns | built |
 | Wayback CDX | first capture of each page, capping its date | built |
