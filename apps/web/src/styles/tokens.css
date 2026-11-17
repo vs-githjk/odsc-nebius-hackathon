@@ -534,3 +534,10 @@ a {
     padding: 0 18px;
   }
 }
+
+/* Arriving from the claim box: the trace is a recording, said once above the stage. */
+.matched {
+  margin: 0 0 14px;
+  color: var(--ink-2);
+  font-size: 15px;
+}

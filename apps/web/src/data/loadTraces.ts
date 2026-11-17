@@ -12,11 +12,16 @@ export function parseTraces(modules: Record<string, unknown>): Loaded {
     if (parsed.success) traces.push(parsed.data);
     else errors.push({ file, message: `${file} does not match the trace format, so it is not shown.` });
   }
-  traces.sort((a, b) => a.id.localeCompare(b.id));
+  // Real recordings first, then the invented samples; by id within each.
+  traces.sort((a, b) => Number(a.synthetic) - Number(b.synthetic) || a.id.localeCompare(b.id));
   return { traces, errors };
 }
 
-// Synthetic fixtures for now; real REPLAY traces join this list in T32.
+// The invented samples, plus every recorded real trace in traces/ and traces/gallery/ (XO on #184: fixtures/ stays
+// synthetic). A missing folder simply adds nothing.
 export function loadTraces(): Loaded {
-  return parseTraces(import.meta.glob("../../../../fixtures/traces/*.json", { eager: true, import: "default" }));
+  return parseTraces({
+    ...import.meta.glob("../../../../fixtures/traces/*.json", { eager: true, import: "default" }),
+    ...import.meta.glob(["../../../../traces/*.json", "../../../../traces/gallery/*.json"], { eager: true, import: "default" }),
+  });
 }

@@ -2,14 +2,16 @@ import { useEffect, useRef, useState, type FormEvent } from "react";
 import type { Trace } from "pz/schema";
 import { claimProblem, findTrace } from "../model/claimMatch.ts";
 
-type Outcome = { kind: "idle" } | { kind: "problem"; text: string } | { kind: "untraced"; claim: string };
+// try counts submits, so a repeated answer is a new node and screen readers announce it again.
+type Outcome = { kind: "idle" } | { kind: "problem"; text: string; try: number } | { kind: "untraced"; claim: string; try: number };
 
 // The claim box. A claim that matches a recorded trace opens it; anything else gets a calm answer, never a guess.
 // focusKey changes when the nav's "Trace a claim" is pressed, and the box takes focus.
-export function ClaimBox({ traces, focusKey }: { traces: Trace[]; focusKey: number }) {
+export function ClaimBox({ traces, focusKey, onMatch }: { traces: Trace[]; focusKey: number; onMatch(id: string): void }) {
   const input = useRef<HTMLTextAreaElement>(null);
   const [text, setText] = useState("");
   const [outcome, setOutcome] = useState<Outcome>({ kind: "idle" });
+  const tries = useRef(0);
 
   useEffect(() => {
     if (focusKey === 0) return;
@@ -22,10 +24,13 @@ export function ClaimBox({ traces, focusKey }: { traces: Trace[]; focusKey: numb
     const claim = text.trim();
     if (!claim) return input.current?.focus();
     const problem = claimProblem(claim);
-    if (problem) return setOutcome({ kind: "problem", text: problem });
+    tries.current += 1;
+    if (problem) return setOutcome({ kind: "problem", text: problem, try: tries.current });
     const trace = findTrace(claim, traces);
-    if (trace) window.location.hash = `#/t/${encodeURIComponent(trace.id)}`;
-    else setOutcome({ kind: "untraced", claim });
+    if (trace) {
+      onMatch(trace.id);
+      window.location.hash = `#/t/${encodeURIComponent(trace.id)}`;
+    } else setOutcome({ kind: "untraced", claim, try: tries.current });
   };
 
   return (
@@ -45,7 +50,8 @@ export function ClaimBox({ traces, focusKey }: { traces: Trace[]; focusKey: numb
             if (outcome.kind !== "idle") setOutcome({ kind: "idle" });
           }}
           onKeyDown={(e) => {
-            if (e.key === "Enter" && !e.shiftKey) submit(e);
+            // Enter while an input method is composing picks a character; it is not a submit.
+            if (e.key === "Enter" && !e.shiftKey && !e.nativeEvent.isComposing) submit(e);
           }}
         />
         <button className="btn claim-go" type="submit">
@@ -54,9 +60,13 @@ export function ClaimBox({ traces, focusKey }: { traces: Trace[]; focusKey: numb
       </div>
       <div id="claim-note" className="claim-note" aria-live="polite">
         {outcome.kind === "idle" && <p className="meta">Paste the sentence the number came in. Recorded traces open straight away.</p>}
-        {outcome.kind === "problem" && <p className="claim-problem">{outcome.text}</p>}
+        {outcome.kind === "problem" && (
+          <p key={outcome.try} className="claim-problem">
+            {outcome.text}
+          </p>
+        )}
         {outcome.kind === "untraced" && (
-          <div className="untraced">
+          <div key={outcome.try} className="untraced">
             <p className="untraced-title">Not traced yet</p>
             <p>
               No recorded trace has this claim. Traces are recorded one claim at a time from the command line, and every

@@ -12,6 +12,12 @@ describe("loadTraces", () => {
     ]);
   });
 
+  it("reads recorded traces from traces/ and traces/gallery/ beside the samples, and sorts real traces first", () => {
+    const real = { ...loadTraces().traces[0]!, id: "live-x", synthetic: false };
+    const { traces } = parseTraces({ "/f/fixtures/traces/sample-a.json": { ...real, id: "sample-a", synthetic: true }, "/f/traces/gallery/live-x.json": real });
+    expect(traces.map((t) => t.id)).toEqual(["live-x", "sample-a"]);
+  });
+
   it("a file that fails the schema becomes a plain error, not a trace", () => {
     const { traces, errors } = parseTraces({ "/x/broken.json": { id: "broken" } });
     expect(traces).toEqual([]);
@@ -37,7 +43,7 @@ describe("ModeBadge", () => {
     expect(badgeFor(replay)).toEqual({ label: "REPLAY", note: "recorded Nov 2, 2026" });
   });
 
-  it("[C14] a real LIVE trace reads LIVE", () => {
-    expect(badgeFor({ ...sample, synthetic: false, mode: "LIVE" }).label).toBe("LIVE");
+  it("[C14] a real LIVE trace reads LIVE, with the date it was recorded, since the web only shows recordings", () => {
+    expect(badgeFor({ ...sample, synthetic: false, mode: "LIVE", recordedAt: "2026-11-17T21:05:00Z" })).toEqual({ label: "LIVE", note: "recorded Nov 17, 2026" });
   });
 });
