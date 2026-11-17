@@ -1,7 +1,7 @@
 {
   "id": "dry-run-unread-parent",
   "kind": "pipeline",
-  "note": "The earliest page links, beside its sentence, to an earlier page that cannot be read.",
+  "note": "The earliest page links, beside its sentence, to an earlier page that cannot be read. Since #110 the unmutated dry-run source already ends TRAIL_GOES_COLD (the 1975 PubMed page cites a DOI the replay cannot read), so this case passes without testing its trap; pz traps reports it as untested.",
   "source": "spike/traces/dry-run.json",
   "mutation": "unread-parent",
   "expect": {

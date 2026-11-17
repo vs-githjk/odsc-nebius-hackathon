@@ -1,7 +1,7 @@
 {
   "id": "dry-run-nudge-number",
   "kind": "pipeline",
-  "note": "The earliest page's sentence gives the claim's number plus one.",
+  "note": "The earliest page's sentence gives the claim's number plus one. Since #110 the unmutated dry-run source already ends TRAIL_GOES_COLD (the 1975 PubMed page cites a DOI the replay cannot read), so this case passes without testing its trap; pz traps reports it as untested.",
   "source": "spike/traces/dry-run.json",
   "mutation": "nudge-number",
   "expect": {

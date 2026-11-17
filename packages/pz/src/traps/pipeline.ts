@@ -181,22 +181,32 @@ export async function runPipelineTraps(p: { root: string; casesDir: string; lock
     return { code: 1, lines: ["FAIL lock check: traps/pipeline changed since pipeline.lock; review the change, then run pz traps --relock"] };
   const files = readdirSync(p.casesDir).filter((f) => f.endsWith(".json")).sort();
   const lines: string[] = [];
-  const tally = { origin: 0, wrong: 0, gaps: [] as string[], failure: 0, failureOk: 0, dating: 0, datingOk: 0 };
+  const tally = { origin: 0, wrong: 0, gaps: [] as string[], untested: [] as string[], untestedSources: new Set<string>(), failure: 0, failureOk: 0, dating: 0, datingOk: 0 };
+  // Each source run once with no mutation. An origin case only tests its trap when the unmutated source ends on the
+  // planted origin; when it already ends some other way, the case is reported as untested, never counted as caught.
+  const controls = new Map<string, { state: StopState; reasons: string[] }>();
   for (const f of files) {
     const c = PipelineCase.parse(JSON.parse(readFileSync(join(p.casesDir, f), "utf8")));
     const r = await runPipelineCase(c, p.root, p.rules);
     const problems = judgeCase(c, r, p.rules);
-    if (ORIGIN_MUTATIONS.includes(c.mutation)) {
+    if (ORIGIN_MUTATIONS.includes(c.mutation) && !controls.has(c.source)) {
+      const { trace } = await runPipelineCase(c, p.root, p.rules, { mutate: false });
+      controls.set(c.source, { state: trace.decision.state, reasons: trace.decision.reasons });
+    }
+    if (ORIGIN_MUTATIONS.includes(c.mutation) && controls.get(c.source)!.state !== "ORIGIN_FOUND") { tally.untested.push(c.id); tally.untestedSources.add(c.source); }
+    else if (ORIGIN_MUTATIONS.includes(c.mutation)) {
       tally.origin++;
       if (r.state === "ORIGIN_FOUND") { tally.wrong++; if (c.expect.knownGap) tally.gaps.push(c.id); }
     } else if (FAILURE_MUTATIONS.includes(c.mutation)) { tally.failure++; if (!problems.length) tally.failureOk++; }
     else { tally.dating++; if (!problems.length) tally.datingOk++; }
     for (const problem of problems) lines.push(`FAIL ${c.id}: ${problem}`);
   }
+  const untestedWhy = [...tally.untestedSources].map((src) => `${src.replace(/^spike\/traces\/(.*)\.json$/, "$1")}: ${controls.get(src)!.state}, ${controls.get(src)!.reasons.join("; ")}`).join("; ");
   const rest = tally.origin - tally.gaps.length, restWrong = tally.wrong - tally.gaps.length;
   const ub = (n: number) => (bound(0, n) * 100).toFixed(1) + "%";
   lines.push(`pipeline: wrong origins ${tally.wrong} of ${tally.origin} cases that could end on one`
     + (tally.gaps.length ? `; ${tally.gaps.length} are the known gap (paraphrased negation, docs/limits.md), and the other ${rest} give ${restWrong}${restWrong === 0 ? ` (95% upper bound ${ub(rest)})` : ""}` : restWrong === 0 ? ` (95% upper bound ${ub(tally.origin)})` : "")
+    + (tally.untested.length ? `. ${tally.untested.length} more test nothing, because their source ends without an origin before any mutation (${untestedWhy})` : "")
     + `. Failure paths end as expected in ${tally.failureOk} of ${tally.failure}; planted dates are capped in ${tally.datingOk} of ${tally.dating}.`
     + ` The typed stub calls the planted page a study and says same claim everywhere; real walk and dating, no network, planted by us.`);
   return { code: lines.length === 1 ? 0 : 1, lines };
