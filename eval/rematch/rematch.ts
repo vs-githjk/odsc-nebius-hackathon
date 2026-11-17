@@ -30,18 +30,22 @@ export function draw(claims: { id: string }[], seed = SEED, n = 10): string[] {
 export const dirOf = (url: string) => dirname(fileURLToPath(url));
 export const REPO = resolve(dirOf(import.meta.url), "../..");
 
-// The real path, lower-cased: symlinks resolved through the nearest folder that exists (the key file itself usually
-// doesn't yet), and case folded, since macOS's default disk treats EVAL/K.JSON and eval/k.json as one file.
-function real(path: string): string {
+// The real path: symlinks resolved through the nearest folder that exists (the key file itself usually doesn't
+// yet). fold lower-cases it, since macOS's default disk treats EVAL/K.JSON and eval/k.json as one file.
+function real(path: string, fold = true): string {
   let dir = resolve(path), rest = "";
   while (!existsSync(dir) && dirname(dir) !== dir) { rest = rest ? join(basename(dir), rest) : basename(dir); dir = dirname(dir); }
-  return join(realpathSync.native(dir), rest).toLowerCase();
+  const at = join(realpathSync.native(dir), rest);
+  return fold ? at.toLowerCase() : at;
 }
 
-// Inside the repo and outside the git-ignored .cache/: where git could pick a grading key up.
+// Inside the repo and outside the git-ignored .cache/: where git could pick a grading key up. Being inside is judged
+// with case folded, so no spelling slips past. The .cache/ exemption is not: git ignores ".cache" exactly, and on a
+// case-sensitive disk REPO/.CACHE is another, unignored folder. An existing folder resolves to its real spelling,
+// so on macOS .CACHE is still the ignored .cache.
 export function insideGit(path: string, repo = REPO): boolean {
-  const at = real(path), root = real(repo);
-  return at.startsWith(root + "/") && !at.startsWith(join(root, ".cache") + "/");
+  if (!real(path).startsWith(real(repo) + "/")) return false;
+  return !real(path, false).startsWith(join(real(repo, false), ".cache") + "/");
 }
 
 // The facts of our trace in the spike's form shape. This is a fact sheet, never the form itself: every form, ours

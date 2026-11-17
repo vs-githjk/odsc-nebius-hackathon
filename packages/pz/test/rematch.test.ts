@@ -55,7 +55,12 @@ describe("T93 rematch", () => {
 
   it("the key guard sees through letter case and symlinks", () => {
     expect(insideGit(join(REPO.toUpperCase(), "eval", "k.json"))).toBe(true);
-    expect(insideGit(join(REPO, ".CACHE", "k.json"))).toBe(false);
+    // The exemption is for the ignored .cache folder only. With no folder of that name, .CACHE is refused (on a
+    // case-sensitive disk git would not ignore it); where .cache exists, any spelling of it resolves to it.
+    const repo = mkdtempSync(join(tmpdir(), "pz-case-"));
+    expect(insideGit(join(repo, ".CACHE", "k.json"), repo)).toBe(true);
+    mkdirSync(join(repo, ".cache"));
+    expect(insideGit(join(repo, ".cache", "k.json"), repo)).toBe(false);
     const link = join(mkdtempSync(join(tmpdir(), "pz-link-")), "repo-link");
     symlinkSync(REPO, link);
     expect(insideGit(join(link, "eval", "k.json"))).toBe(true);
