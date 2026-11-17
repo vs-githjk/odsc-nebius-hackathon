@@ -32,7 +32,7 @@ export function assertLiveRecording(record: unknown): asserts record is Recordin
   }
 }
 
-const NO_CALL_IDS = new Set(["dev-01", "dev-07", "dev-08", "dev-12"]);
+const NO_CALL_IDS = new Set(["dev-01", "dev-07", "dev-08", "dev-10", "dev-12"]); // dev-10 since #192 F5: "By 2050" is a year, not a number
 export function isNoCallCase(item: Case): boolean {
   return item.kind === "fingerprint" && NO_CALL_IDS.has(item.id) && claimNumber(item.source) === null;
 }

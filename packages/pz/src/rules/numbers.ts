@@ -95,14 +95,57 @@ const URL = /\bhttps?:\/\/\S+/g;
 // The clause rule and its comma limit were chosen on the E2 dev claims (eval/weak-atoms), never on spike claims.
 // Numbers written out in words ("eight spiders", "ten thousand steps") count too, as weak numbers (eval/same-claim);
 // words=false reads digits only, which is how the rule was before T36.
+// #192 F5: closed unit classes, read next to each number. A claim in percent ("10 percent", "9%") only matches a number
+// written as a percent ("10%", "10 percent", "ten per cent"), so "10 times more numerous glial cells" no longer states
+// "10 percent of their brains" (dev-03 on the first live run). A claim counted in times or folds never matches a
+// percent, and the reverse. Any other unit ("a day", "million") is not enforced: free text would cost recall
+// ("10,000 steps per day" against "a day").
+export type UnitClass = "percent" | "multiplier" | null;
+const PERCENT_AFTER = /^\s*(?:percent|per cent|pct)\b/iu;
+const MULTIPLIER_AFTER = /^(?:\s*(?:times|x)\b|-?fold\b)/iu;
+export function unitClassOf(unit: string | null | undefined): UnitClass {
+  if (!unit) return null;
+  if (/%|\bper ?cent\b|\bpct\b/iu.test(unit)) return "percent";
+  if (/\b(?:times|fold)\b|^x$/iu.test(unit.trim())) return "multiplier";
+  return null;
+}
+function numberClass(n: ParsedNumber, text: string): UnitClass {
+  if (n.percent) return "percent";
+  const after = text.slice(n.end);
+  if (PERCENT_AFTER.test(after)) return "percent";
+  if (MULTIPLIER_AFTER.test(after)) return "multiplier";
+  return null;
+}
+
+// "tenfold", "ten-fold", "two-fold", "twice": multiplier words that parseNumberWords does not read. Only a claim counted
+// in times or folds looks for them, as weak numbers with the multiplier class (XO on #197).
+const FOLD_WORDS: Record<string, number> = { two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, hundred: 100, thousand: 1000 };
+function multiplierWords(text: string): ParsedNumber[] {
+  const out: ParsedNumber[] = [];
+  for (const m of text.matchAll(/(?<![\p{L}\p{N}])(?:(two|three|four|five|six|seven|eight|nine|ten|hundred|thousand)-?fold|(twice|thrice))(?![\p{L}\p{N}])/giu)) {
+    const value = m[1] ? FOLD_WORDS[m[1].toLowerCase()]! : m[2]!.toLowerCase() === "twice" ? 2 : 3;
+    out.push({ raw: m[0], digits: String(value), value, decimals: 0, percent: false, start: m.index, end: m.index + m[0].length });
+  }
+  return out;
+}
+
 export function atomHit(sentence: string, atoms: Atoms, minSigDigits = 3, maxCommas = 2, words = true): boolean {
   if (!atoms.number) return false;
   const target = parseNumbers(atoms.number.canonical).numbers[0];
   if (!target) return false;
   const text = normalise(sentence.replace(URL, " "));
   const wordNumbers = words ? parseNumberWords(text) : [];
+  const want: UnitClass = target.percent ? "percent" : unitClassOf(atoms.unit);
+  if (want === "multiplier" && words) wordNumbers.push(...multiplierWords(text));
   const found = [...parseNumbers(text).numbers, ...wordNumbers];
-  const hits = found.filter((n) => sameNumber(n, target).equal);
+  const hits = found.filter((n) => {
+    const cls = numberClass(n, text);
+    // A bare fraction keeps the declared percent transform: 0.412 against 41.2%.
+    if (want === "percent") return cls === "percent" ? sameNumber({ ...n, percent: false }, { ...target, percent: false }).equal
+      : cls === null && target.percent && sameNumber(n, target).via === "percent";
+    if (want === "multiplier" && cls === "percent") return false;
+    return sameNumber(n, target).equal;
+  });
   if (hits.length === 0) return false;
   if (hits.some((n) => !wordNumbers.includes(n) && !isWeak(n, minSigDigits) && !isWeak(target, minSigDigits))) return true;
   const lemma = normalise(atoms.subjectLemma).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
