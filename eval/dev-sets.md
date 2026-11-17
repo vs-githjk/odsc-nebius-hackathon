@@ -11,6 +11,7 @@ Rules (T47, #98):
 - Tune on E2, report on both. Any change that helps E2 and hurts E3 is flagged in its PR.
 - Nothing is ever tuned on spike claims or held-out claims.
 - E3 shares no claim text or target with E2 and none of the six spike claims (`dev-claims.test.ts` checks both). The held-out exclusion check is Rohan's, since only the hash of `heldout.jsonl` is in the repo.
+- E2 labels may carry `originAliases`: other URLs of the same work as `tracedOrigin` (a locale path, a moved page, the PubMed record of the same paper, the co-publisher's copy of the same report). Each is logged with its evidence on #164. They count as the target for target cited and earliest Pass, and never widen Partial. `outOfScope` sets a claim apart from every headline count (dev-19, an audio origin, decided by Vidyut on Nov 17). E3 and the held-out set have neither.
 
 ## How E3 was built
 
