@@ -136,7 +136,7 @@ export async function replayDevBatch(
     run: async input => {
       const lines: string[] = [];
       let code = "trace_failed";
-      const status = await  join(opts.source, input.id + ".json")], {
+      const status = await traceCommand(["--json", "--replay-of", join(opts.source, input.id + ".json")], {
         write: line => lines.push(line),
         error: value => { code = value; },
       });
