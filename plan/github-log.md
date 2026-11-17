@@ -91,3 +91,4 @@
 - 2026-11-17 ~13:10 ET: merged #202 (per-test cache, ends flake) e9a03e0 and #198 (F6) 62bc407.
 - 2026-11-17 13:15 ET tick: #199 and #200 re-pushed, both in review. Anoop given #196 follow-up, traps README, #133 secret scan + plan/ privacy review.
 - 2026-11-17 13:45 ET: XO window. Merged #199 c63d9fa, #200 F1 61a4f3e, #203 F7 7658f8d, #208 walk replay 30a33a5, #206 partial dates 3365344. Closed #204 (missed real cues; keep main), #205 (Rishit fixed it in #200), #207 (lost to #208). #133 secret scan: clean. Tonight: dev-run with PZ_RECORD_DIR=runs/walk-record.
+- 2026-11-17 13:45 ET tick: Rishit opened #210 (small fixes) and pushed #186 and #184 fixes; reviews running for #209, #184, #210, #186. Tonight runbook added to HANDOFF.
