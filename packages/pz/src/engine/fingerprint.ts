@@ -25,9 +25,17 @@ const SPELLING: [string, string][] = [
   ["travelling", "traveling"], ["modelling", "modeling"], ["grey", "gray"], ["tyre", "tire"], ["ageing", "aging"],
 ];
 
-// Code reads the claim's number: digits first, then number words.
+// #192 F5: a bare year after a time word ("By 2050", "in 2015,") says when, not how many, so it is never the claim's
+// number. "By 2050 there will be more plastic than fish" then has no number and goes to the phrase step (T53), and
+// "In 2015, 9% of plastic was recycled" takes 9%. A four-digit number with no time word ("2000 calories") is kept.
+const YEAR_AFTER = /(?:^|[^\p{L}])(?:by|in|since|until|till|before|after|from|through|circa|around)\s+$/iu;
+export function isYear(text: string, n: { raw: string; start: number; percent: boolean }): boolean {
+  return !n.percent && /^(?:19|20)\d\d$/.test(n.raw) && YEAR_AFTER.test(text.slice(0, n.start));
+}
+
+// Code reads the claim's number: digits first (skipping years), then number words.
 export function claimNumber(text: string): ClaimNumber | null {
-  const parsed = parseNumbers(text).numbers[0];
+  const parsed = parseNumbers(text).numbers.find((n) => !isYear(text, n));
   if (parsed) return { raw: parsed.raw, canonical: canonicalKey(parsed) };
   const words = wordsToNumber(text);
   return words ? { raw: words.raw, canonical: String(words.value) } : null;

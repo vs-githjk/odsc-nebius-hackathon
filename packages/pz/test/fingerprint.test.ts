@@ -17,7 +17,10 @@ describe("fingerprint", () => {
   it("atoms reuse tokens from the claim on every dev claim with a recorded response", async () => {
     const ids = Object.keys(recorded.responses);
     expect(ids).toHaveLength(16);
-    for (const id of ids) {
+    // #192 F5: dev-10's only number is the year in "By 2050", so it stops at no_number with no call and goes to the
+    // phrase step; its recorded response is no longer used.
+    expect(await fingerprint(devClaims.find((c) => c.id === "dev-10")!.text, { client: clientFor(recorded.responses["dev-10"]!) })).toMatchObject({ atoms: null, reason: "no_number" });
+    for (const id of ids.filter((i) => i !== "dev-10")) {
       const claim = devClaims.find((c) => c.id === id)!.text;
       const { atoms, dropped, reason } = await fingerprint(claim, { client: clientFor(recorded.responses[id]!) });
       expect([id, reason, dropped]).toEqual([id, null, []]);
@@ -81,7 +84,7 @@ describe("variants", () => {
     expect(v("Walk 10,000 steps")).toEqual(["number_words:ten thousand", "number_commas:10000"]);
     expect(v("Only 9% of plastic")).toEqual(["number_words:nine percent", "percent_words:9 percent", "percent_words:9 per cent"]);
     expect(v("Humans use 10 percent of brains")).toEqual(["number_words:ten", "percent_words:10%", "percent_words:10 per cent"]);
-    expect(v("By 2050 there will be more plastic")).toEqual([]);
+    expect(claimNumber("By 2050 there will be more plastic")).toBeNull();
   });
 
   it("include spelling and compound variants", () => {
