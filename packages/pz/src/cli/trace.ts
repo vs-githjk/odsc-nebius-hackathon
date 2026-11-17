@@ -4,6 +4,7 @@ import { pathToFileURL } from "node:url";
 import { parseArgs } from "node:util";
 import type { Resolver } from "../engine/publication.ts";
 import { renderCard } from "../card/terminal.ts";
+import { createFileCache } from "../clients/cache.ts";
 import { recordTrace, replayTrace, runTrace, type Pipeline, type RunEvent, type Wayback } from "../engine/run.ts";
 
 const POST_WALK_MS = 120_000;
@@ -55,6 +56,8 @@ export async function traceCommand(args: string[], io: { write(line: string): vo
           pageFetch: (url, init) => transport(url, { ...init, signal: init?.signal ? AbortSignal.any([signal, init.signal]) : signal }),
           nebiusKey: env.NEBIUS_API_KEY,
           tavilyKey: env.TAVILY_API_KEY?.trim(),
+          // PZ_CACHE_DIR moves the HTTP cache (tests give each run its own); unset keeps .cache/http.
+          ...(env.PZ_CACHE_DIR?.trim() ? { cache: createFileCache(env.PZ_CACHE_DIR.trim()) } : {}),
         });
       } else {
         adapter = await import(pathToFileURL(resolve(values.pipeline)).href) as typeof adapter;
