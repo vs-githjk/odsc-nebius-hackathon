@@ -10,6 +10,8 @@ import { walkClaim, type SpikeClaim } from "../src/engine/walk.ts";
 import { atomHit, loadRules, phraseHit } from "../src/rules/index.ts";
 import { hasInjection, isNegated } from "../src/rules/negation.ts";
 import { createUsageLog } from "../src/usage/log.ts";
+import { readdirSync, readFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
 
 // T96 (#163): each open row of docs/limits.md, pinned as the engine behaves today. These tests pass while the gap is
 // open. When someone closes a gap, its test fails on purpose: flip the expectation, and update the row in
@@ -92,6 +94,12 @@ describe("docs/limits.md, open rows pinned as they behave today", () => {
 
   it("L12 the second model on same_claim is off", () => {
     expect(rules.secondSameClaimModel).toBeNull();
+  });
+
+  it("L14 nothing in the pipeline calls withBoundaries yet, so live runs never ask the boundary question", () => {
+    const src = fileURLToPath(new URL("../src/", import.meta.url));
+    const files = readdirSync(src, { recursive: true, encoding: "utf8" }).filter((f) => f.endsWith(".ts") && f !== join("engine", "boundary.ts"));
+    expect(files.filter((f) => readFileSync(join(src, f), "utf8").includes("withBoundaries"))).toEqual([]);
   });
 
   it("L13 a negation in wording the list doesn't know is not caught by code", () => {
