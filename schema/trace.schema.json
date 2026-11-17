@@ -104,6 +104,29 @@
                   "type": "null"
                 }
               ]
+            },
+            "alsoNumber": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "raw": {
+                      "type": "string"
+                    },
+                    "canonical": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "raw",
+                    "canonical"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "null"
+                }
+              ]
             }
           },
           "required": [

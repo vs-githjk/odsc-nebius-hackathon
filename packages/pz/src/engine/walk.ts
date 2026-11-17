@@ -9,7 +9,7 @@ import { createWayback } from "../clients/wayback.ts";
 import { findSpan } from "../match/verbatim.ts";
 import { clusterNodes, computeRoots, type Embed } from "./cluster.ts";
 import { findOtherNumber } from "./similar.ts";
-import { atomHit, claimHit, decideStopState, findInjection, isRange, normalise, parseNumbers, sameNumber, type Rules } from "../rules/index.ts";
+import { atomHit, claimHit, confidentNo, decideStopState, findInjection, isRange, normalise, parseNumbers, sameNumber, type Rules } from "../rules/index.ts";
 import type { Atoms, Cluster, DateInfo, Edge, Hop, Node, Readout, Span, Trace, UsageRow } from "../schema/index.ts";
 import type { UsageLog } from "../usage/log.ts";
 import { sameClaim, type SameClaimResult } from "../match/same-claim.ts";
@@ -270,7 +270,11 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
 
   const note = (line: Omit<LogLine, "at">) => log.push({ at: deps.now(), ...line });
   const excluded = (url: string) => rules.factCheckDomains.some((d) => hostOf(url) === d || hostOf(url).endsWith(`.${d}`));
-  const earliestDate = () => nodes.filter((n) => !n.meta && n.date.value).map((n) => n.date.value!).sort()[0] ?? null;
+  // F1 (#192): the trail runs through dated, non-meta pages that the model did not confidently call another claim. A
+  // confident same_claim "no" page (Nasdaq 100 in 2014 for a 2017 claim) stays on the trace but never becomes the
+  // earliest page, the planner's hop or the end of the next search window.
+  const onTrail = (n: Node) => !n.meta && n.date.value !== null && !confidentNo(n.sameClaim, rules);
+  const earliestDate = () => nodes.filter(onTrail).map((n) => n.date.value!).sort()[0] ?? null;
 
   async function dateFor(url: string, apiDate: string | null): Promise<{ date: DateInfo; waybackUrl: string | null }> {
     const api = apiDate && !Number.isNaN(Date.parse(apiDate)) ? new Date(apiDate).toISOString().slice(0, 10) : null;
@@ -440,7 +444,7 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
       const results = new Map<string, { title: string; date: string | null }>();
       earlierWindowSearches = 0;
       // The hop the planner works back from: the earliest dated page so far, with its span.
-      const hopNode = nodes.filter((n) => !n.meta && n.date.value).sort((a, b) => a.date.value!.localeCompare(b.date.value!))[0];
+      const hopNode = nodes.filter(onTrail).sort((a, b) => a.date.value!.localeCompare(b.date.value!))[0];
       const hopSpan = hopNode && spans.find((s) => s.id === hopNode.spanIds[0]);
       const planInput = {
         claim: claim.text, atoms, seen: [...sentQueries],
@@ -645,7 +649,7 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
     // One counter for the roots line and the T94 headline (the old inline count called linked-into clusters unlinked).
     roots: computeRoots(nodes, edges),
     redHopEdgeId: hops.find((h) => !h.faithful)?.edgeId ?? null,
-    earliest: { nodeIds: nodes.filter((n) => !n.meta && minDate !== null && n.date.value === minDate).map((n) => n.id), earlierWindowSearches, earlierFound },
+    earliest: { nodeIds: nodes.filter((n) => onTrail(n) && n.date.value === minDate).map((n) => n.id), earlierWindowSearches, earlierFound },
     failure,
     budget,
     decision: { state: "TRAIL_GOES_COLD", row: 6, reasons: [], counts: {} },

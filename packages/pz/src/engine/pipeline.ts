@@ -8,7 +8,7 @@ import type { ClientDeps } from "../clients/http.ts";
 import { type TavilySender, createTavily } from "../clients/tavily.ts";
 import { TokenFactoryError, createTokenFactoryClient } from "../clients/tokenfactory.ts";
 import { createWayback } from "../clients/wayback.ts";
-import { decideStopState, loadRules } from "../rules/index.ts";
+import { confidentNo, decideStopState, loadRules, type Rules } from "../rules/index.ts";
 import type { Atoms, Edge, Hop, Trace, UsageRow } from "../schema/index.ts";
 import { ask } from "../typed/ask.ts";
 import { createUsageLog } from "../usage/log.ts";
@@ -48,12 +48,13 @@ function withUsage(trace: Trace, rows: readonly UsageRow[]): Trace {
 // The clusters stage. Dates are final by now (the dating stage ran), so this is where the earliest pages, the
 // date-ordered edges and the root counts are settled. The walk already grouped reworded copies with its own embedding
 // call (deps.embed), so nothing is embedded again here.
-// - Earliest: the dated pages with the oldest date.
+// - Earliest: the dated pages with the oldest date. A page the model confidently called another claim (same_claim
+//   "no") is off the trail (F1, #192): it is never the earliest page and never the parent of an inferred edge.
 // - A link that points away from the oldest dated page cannot establish an earlier source, so an earliest page keeps
 //   no incoming edge (the verifier's `earliest` check).
 // - A dated page with no link-verified parent gets an inferred edge from the latest earlier page in another cluster.
-export function closeTrail(trace: Trace): Trace {
-  const dated = trace.nodes.filter((node) => !node.meta && node.date.value !== null);
+export function closeTrail(trace: Trace, rules: Pick<Rules, "confidenceThreshold"> = loadRules()): Trace {
+  const dated = trace.nodes.filter((node) => !node.meta && node.date.value !== null && !confidentNo(node.sameClaim, rules));
   const first = dated.map((node) => node.date.value!).sort()[0];
   const earliestIds = first === undefined ? [] : dated.filter((node) => node.date.value === first).map((node) => node.id);
   const earliest = new Set(earliestIds);
@@ -234,7 +235,7 @@ export function buildPipeline(parts: PipelineParts): { pipeline: Pipeline; wayba
     // needs a confident primary page type, and nothing else in the pipeline sets it. It reads the page the walk saved.
     // A failed call leaves the type unset, so that page cannot become the origin, and its attempts stay on the trace.
     async clusters(trace) {
-      const closed = closeTrail(trace);
+      const closed = closeTrail(trace, rules);
       const rows: UsageRow[] = [];
       const client = collecting(rows, "page_type");
       const nodes = [...closed.nodes];
