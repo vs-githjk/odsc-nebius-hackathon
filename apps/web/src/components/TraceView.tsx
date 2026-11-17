@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import type { Trace } from "pz/schema";
 import { hopInto, readoutsHead, redStop } from "../model/hop.ts";
 import { scrubberStops, stopNote } from "../model/scrubber.ts";
@@ -8,6 +8,7 @@ import { Sentence } from "./Sentence.tsx";
 import { StopCard } from "./StopCard.tsx";
 import { TimeField } from "./TimeField.tsx";
 import { TraceGraph } from "./TraceGraph.tsx";
+import { ReplayAgain, ReplayRail, useReplay } from "./WalkReplay.tsx";
 
 function useReducedMotion(): boolean {
   const query = "(prefers-reduced-motion: reduce)";
@@ -34,10 +35,12 @@ export function TraceView({ trace }: { trace: Trace }) {
     setOpen(0);
   }, [trace.id]);
 
-  const settle = (i: number) => {
+  const settle = useCallback((i: number) => {
     setPosition(i);
     setOpen(i);
-  };
+  }, []);
+  const replay = useReplay(trace, stops.length, reducedMotion, setPosition, settle);
+  const counts = replay.frame ?? trace.roots;
   const hop = stops[open];
   const note = hop ? stopNote(trace, stops, open) : null;
   const red = useMemo(() => redStop(trace, stops), [trace, stops]);
@@ -50,11 +53,13 @@ export function TraceView({ trace }: { trace: Trace }) {
       <div className="card stage">
         <div className="stage-head">
           <ModeBadge trace={trace} />
+          <ReplayAgain replay={replay} />
           <p className="counter">
-            <b>{trace.roots.pages}</b> {trace.roots.pages === 1 ? "page" : "pages"} <span aria-hidden="true">·</span> <b>{trace.roots.clusters}</b>{" "}
-            {trace.roots.clusters === 1 ? "cluster" : "clusters"}
+            <b>{counts.pages}</b> {counts.pages === 1 ? "page" : "pages"} <span aria-hidden="true">·</span> <b>{counts.clusters}</b>{" "}
+            {counts.clusters === 1 ? "cluster" : "clusters"}
           </p>
         </div>
+        <ReplayRail trace={trace} replay={replay} />
         {stops.length === 0 ? (
           <>
             <p className="quote sentence">{trace.viralSentence}</p>
@@ -63,9 +68,9 @@ export function TraceView({ trace }: { trace: Trace }) {
         ) : (
           <>
             <Sentence trace={trace} stops={stops} position={position} />
-            <TraceGraph trace={trace} activeSpanId={hop?.spanId ?? null} x={x} />
+            <TraceGraph trace={trace} activeSpanId={replay.frame ? null : hop?.spanId ?? null} x={x} landed={replay.frame?.nodeIds ?? null} />
             <Scrubber trace={trace} stops={stops} position={position} reducedMotion={reducedMotion} red={red} onMove={setPosition} onSettle={settle} />
-            {hop && note && (
+            {hop && note && !replay.frame && (
               <section className="hop-detail" aria-label="The page at this stop">
                 <p className="hop-when">
                   {when(hop.date, hop.precision)}
@@ -102,7 +107,7 @@ export function TraceView({ trace }: { trace: Trace }) {
           </>
         )}
         {/* The ending closes the stage: the card replaces the old one-line footnote (T85). */}
-        <StopCard trace={trace} />
+        {!replay.frame && <StopCard trace={trace} />}
       </div>
     </>
   );
