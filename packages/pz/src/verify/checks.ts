@@ -1,7 +1,7 @@
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { isDeepStrictEqual } from "node:util";
-import { decideStopState, isNegated, loadRules, normalise, type Rules } from "../rules/index.ts";
+import { confidentNo, decideStopState, isNegated, loadRules, normalise, type Rules } from "../rules/index.ts";
 import { claimHit } from "../rules/claim-hit.ts";
 import type { Trace } from "../schema/index.ts";
 import { otherNumberCandidate } from "../engine/similar.ts";
@@ -53,6 +53,7 @@ export function verifyTrace(trace: Trace, opts: { pagesDir?: string; rules?: Rul
   }
 
   // The stored earliest nodes must really be earliest: no page feeds into them, and no page outside their clusters is older.
+  // A page the model confidently called another claim is off the trail (F1, #192), so it may be older than the earliest.
   const earliest = trace.nodes.filter((n) => trace.earliest.nodeIds.includes(n.id));
   const earliestClusters = new Set(earliest.map((n) => n.clusterId));
   for (const n of earliest) {
@@ -61,7 +62,7 @@ export function verifyTrace(trace: Trace, opts: { pagesDir?: string; rules?: Rul
   }
   const firstDate = earliest.map((n) => n.date.value).filter((d): d is string => d !== null).sort()[0];
   for (const n of trace.nodes) {
-    if (firstDate && !n.meta && !earliestClusters.has(n.clusterId) && n.date.value !== null && n.date.value < firstDate)
+    if (firstDate && !n.meta && !confidentNo(n.sameClaim, rules) && !earliestClusters.has(n.clusterId) && n.date.value !== null && n.date.value < firstDate)
       fail("earliest", `node ${n.id} (${n.date.value}) is older than the earliest nodes (${firstDate})`);
   }
 
