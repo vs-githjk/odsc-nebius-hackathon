@@ -1,4 +1,6 @@
 import { randomUUID } from "node:crypto";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { createBudget } from "../clients/budget.ts";
 import { createFileCache, type Cache } from "../clients/cache.ts";
 import { ClientError } from "../clients/errors.ts";
@@ -10,6 +12,7 @@ import { decideStopState, loadRules } from "../rules/index.ts";
 import type { Atoms, Edge, Hop, Trace, UsageRow } from "../schema/index.ts";
 import { ask } from "../typed/ask.ts";
 import { createUsageLog } from "../usage/log.ts";
+import { pageType } from "../card/index.ts";
 import { computeRoots } from "./cluster.ts";
 import { withBoundaries } from "./boundary.ts";
 import { claimNumber, fingerprint } from "./fingerprint.ts";
@@ -22,6 +25,9 @@ import { plannerFor, sameClaimFor, walkStep } from "./walk.ts";
 
 type TokenFactory = ReturnType<typeof createTokenFactoryClient>;
 
+// The page_type question reads the start of the saved page: enough to tell a study from a blog, well inside the
+// per-attempt Token Factory ceiling.
+const PAGE_CHARS = 8000;
 const SCOPE_NOTE = "Web pages only; print and paywalled origins are out of scope. Earliest source we found, not proof of first use.";
 
 // Rows added by a later stage join the trace's usage, and the budget line is re-derived from every row the trace
@@ -94,8 +100,8 @@ function startTrace(id: string, text: string, rules: ReturnType<typeof loadRules
 }
 
 export type PipelineParts = {
-  chat: TokenFactory;
-  embed: TokenFactory;
+  chat: Pick<TokenFactory, "chat">;
+  embed: Pick<TokenFactory, "embed">;
   // Builds the Tavily client for one walk from the run's shared deps (usage log, cache, per-walk budget).
   tavily: (deps: ClientDeps) => ReturnType<typeof createTavily>;
   archiveFetch?: typeof fetch;
@@ -114,6 +120,7 @@ export function buildPipeline(parts: PipelineParts): { pipeline: Pipeline; wayba
   const usage = createUsageLog(parts.usagePath ? { path: parts.usagePath } : {});
   const base = { usage, cache: parts.cache ?? createFileCache(), traceId: id };
   const wayback = createWayback({ ...base, fetch: parts.archiveFetch });
+  const pagesDir = parts.pagesDir ?? "runs/pages";
 
   // Walk-stage model calls (the same_claim question) return no usage of their own, so each successful call's attempt
   // rows go to the run's usage log here. A failed call's rows are added by the walk's own fallback (modelFailed).
@@ -192,12 +199,35 @@ export function buildPipeline(parts: PipelineParts): { pipeline: Pipeline; wayba
         askSameClaim: sameClaimFor(walkChat("same_claim"), rules),
         embed: createEmbedder(walkEmbed, { traceId: id }),
         today: trace.recordedAt.slice(0, 10), now: () => new Date().toISOString(),
-        pagesDir: parts.pagesDir ?? "runs/pages",
+        pagesDir,
       };
     }),
 
     spans: spansStep(),
-    clusters: closeTrail,
+
+    // Dates are final, so settle the trail, then ask the page_type question about each earliest page (T19): an origin
+    // needs a confident primary page type, and nothing else in the pipeline sets it. It reads the page the walk saved.
+    // A failed call leaves the type unset, so that page cannot become the origin, and its attempts stay on the trace.
+    async clusters(trace) {
+      const closed = closeTrail(trace);
+      const rows: UsageRow[] = [];
+      const client = collecting(rows, "page_type");
+      const nodes = [...closed.nodes];
+      for (const nodeId of closed.earliest.nodeIds) {
+        const at = nodes.findIndex((node) => node.id === nodeId);
+        if (at < 0 || nodes[at]!.meta || !nodes[at]!.read) continue;
+        let text: string;
+        try { text = readFileSync(join(pagesDir, closed.id, `${nodeId}.txt`), "utf8"); } catch { continue; }
+        try {
+          const answer = await pageType(text.slice(0, PAGE_CHARS), (questions, page) =>
+            ask(questions, page, { client, threshold: rules.confidenceThreshold }));
+          nodes[at] = { ...nodes[at]!, pageType: answer };
+        } catch (error) {
+          if (!(error instanceof TokenFactoryError)) throw error;
+        }
+      }
+      return withUsage({ ...closed, nodes }, rows);
+    },
 
     async readouts(trace) {
       const rows: UsageRow[] = [];

@@ -147,15 +147,20 @@ export async function replayDevBatch(
 }
 
 type Budget = ReturnType<typeof openBudget>;
+// The production factory: the same stages as `pz trace`, behind the runner's ledger-guarded clients.
+const DEFAULT_PIPELINE = "eval/dev-pipeline.ts";
 type Caps = ReturnType<typeof loadRules>["caps"];
 type DevPipeline = {
-  pipeline: Omit<Pipeline, "clusters">;
+  // A factory that leaves out `clusters` gets the dev embedding step; the production factory (dev-pipeline.ts) supplies
+  // its own, so embeddings are paid for once.
+  pipeline: Omit<Pipeline, "clusters"> & { clusters?: Pipeline["clusters"] };
   wayback: Wayback;
 };
 type DevPipelineFactory = (input: Input, options: {
   caps: Caps;
   signal: AbortSignal;
   chatClient: Pick<ReturnType<typeof createTokenFactoryClient>, "chat">;
+  embeddingClient: Pick<ReturnType<typeof createTokenFactoryClient>, "embed">;
   createTavily: (deps: Omit<Parameters<typeof createTavily>[0], "fetch" | "tavilyAttempts">) => ReturnType<typeof createTavily>;
 }) =>
   Promise<DevPipeline> | DevPipeline;
@@ -275,10 +280,10 @@ export async function runLiveDevBatch(
         createPipeline ??= await opts.loadFactory();
         checkTime();
         const { pipeline, wayback } = await createPipeline(input, {
-          caps, signal, chatClient, createTavily: deps => createTavily(deps, sendTavily),
+          caps, signal, chatClient, embeddingClient, createTavily: deps => createTavily(deps, sendTavily),
         });
         checkTime();
-        return runTrace(input.text, { ...pipeline, clusters: devClusterStep(embeddingClient, loadRules()) }, { wayback });
+        return runTrace(input.text, { ...pipeline, clusters: pipeline.clusters ?? devClusterStep(embeddingClient, loadRules()) }, { wayback });
       };
       const trace = await Promise.race([execute(), deadline])
         .finally(() => signal.removeEventListener("abort", stop));
@@ -299,8 +304,8 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
       rehearse: { type: "string", multiple: true }, set: { type: "string" },
     } });
     const source = values["replay-from"] ?? process.env.DEV_REPLAY_DIR;
-    const pipeline = values.pipeline ?? process.env.DEV_PIPELINE;
     const ledger = values.ledger ?? process.env.DEV_LEDGER;
+    const pipeline = values.pipeline ?? process.env.DEV_PIPELINE ?? (ledger ? DEFAULT_PIPELINE : undefined);
     if ((source && (pipeline || ledger)) || (!source && (!pipeline || !ledger))) {
       console.error("Use DEV_REPLAY_DIR for replay, or DEV_PIPELINE and DEV_LEDGER for live evaluation.");
       process.exitCode = 1;
