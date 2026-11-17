@@ -21,6 +21,9 @@ describe("#192 F4: an earlier source cited in words", () => {
     expect(writtenCitationYear({ text: "A 2006 study by the FAO puts it at 18%." }, "2015-08-29", rules)).toBe(2006);
     expect(writtenCitationYear({ text: "According to a report published in 2013, it is 14.5%." }, "2015-08-29", rules)).toBe(2013);
     expect(writtenCitationYear({ text: DEV13 }, null, rules)).toBeNull();
+    // XO on #196: the 4th cue needs its verb. "a report released in 2013" cites; "the study in 2013 found" is a data year.
+    expect(writtenCitationYear({ text: "A report released in 2013 put it at 14.5%." }, "2015-08-29", rules)).toBe(2013);
+    expect(writtenCitationYear({ text: "The survey in 2013 found that 14.5% agreed." }, "2015-08-29", rules)).toBeNull();
   });
 
   it("a year that is part of the data never counts, even next to a source (XO on #196)", () => {
