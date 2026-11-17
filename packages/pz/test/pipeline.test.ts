@@ -17,7 +17,7 @@ import { Trace } from "../src/schema/index.ts";
 
 // The default `pz trace "<claim>"` path, end to end, with every provider stubbed: one fetch answers Token Factory
 // (chat and embeddings), Tavily and the Wayback CDX. Nothing here reaches the network or reads a key.
-type Page = { url: string; date: string; title?: string; text: string };
+type Page = { url: string; date: string; title?: string; text: string; searchable?: boolean; factCheck?: boolean };
 type World = {
   pages: Page[];
   tavily?: "ok" | 503;
@@ -46,6 +46,8 @@ function typedReply(fields: Record<string, string>) {
   };
 }
 
+const pageOf = (body: { messages: { content: string }[] }) => body.messages[1]?.content ?? "";
+
 function stub(world: World) {
   const calls: { url: string; step?: string; questions?: string[] }[] = [];
   const impl = (async (input: string | URL | Request, init?: RequestInit) => {
@@ -60,13 +62,14 @@ function stub(world: World) {
     const body = JSON.parse(String(init?.body ?? "{}"));
     if (url.endsWith("/search")) {
       if (world.tavily === 503) return new Response("unavailable", { status: 503 });
-      const results = world.pages.map((p) => ({
+      const only = body.include_domains as string[] | undefined;
+      const results = world.pages.filter((p) => p.searchable !== false && (only ? p.factCheck : !p.factCheck)).map((p) => ({
         url: p.url, title: p.title ?? "A page", content: p.text.slice(0, 80), score: 0.5, published_date: p.date,
       }));
       return new Response(JSON.stringify({ query: body.query, results, usage: { credits: 1 } }));
     }
     if (url.endsWith("/extract")) {
-      const results = world.pages.filter((p) => body.urls.includes(p.url)).map((p) => ({ url: p.url, title: p.title ?? "A page", raw_content: p.text }));
+      const results = world.pages.filter((p) => (body.urls as string[]).some((u) => p.url.replace("www.", "") === u.replace("www.", ""))).map((p) => ({ url: p.url, title: p.title ?? "A page", raw_content: p.text }));
       return new Response(JSON.stringify({ results, failed_results: [], usage: { credits: 1 } }));
     }
     if (url.endsWith("/v1/embeddings")) {
@@ -93,7 +96,7 @@ function stub(world: World) {
       const questions: { id: string; options: { id: string }[] }[] = JSON.parse(system);
       calls.push({ url, step: "typed", questions: questions.map((q) => q.id) });
       const fields = Object.fromEntries(questions.map((q) => [q.id,
-        q.id === "same_claim" ? (world.sameClaim ?? "yes") : q.id === "boundary" ? "none" : q.id === "page_type" ? "report"
+        q.id === "same_claim" ? (world.sameClaim ?? "yes") : q.id === "boundary" ? "none" : q.id === "page_type" ? (pageOf(body).includes("keepers recorded") ? "dataset" : "report")
           : q.options.some((o) => o.id === "no") ? "no" : q.options[0]!.id]));
       const typed = typedReply(fields);
       return reply(typed.content, typed.logprobs);
@@ -256,6 +259,31 @@ describe("default pz trace path, stubbed providers", () => {
     expect(replayed.mode).toBe("REPLAY");
     expect(replayed.decision).toEqual(recorded.decision);
     expect(replayed.usage).toEqual(recorded.usage);
+  });
+});
+
+describe("fact-check meta maps through the full pipeline (T49)", () => {
+  it("a fact-check page found by the domain-limited search leads to the origin, which keeps its own span", async () => {
+    const claim = zoo(unique());
+    const id = createHash("sha256").update(claim).digest("hex").slice(0, 10);
+    const dataset = `https://zoo.example/dataset-${id}`;
+    const pages: Page[] = [
+      { url: `https://blog.example/p-${id}`, date: "2021-03-01", text: `Wow: ${claim}` },
+      { url: `https://www.snopes.com/fact-check/${id}`, date: "2022-01-01", factCheck: true,
+        text: `Claim: ${claim} The figure traces to the [Harbor Zoo keeper dataset](${dataset}), which counted it.\n\nAbout this site: we rate viral content every day, with a small team of editors and reporters who answer reader questions and publish corrections openly when we get things wrong. Follow us on [social media](https://social.example/post) or browse [our other checks](https://www.snopes.com/archive).` },
+      { url: dataset, date: "2019-04-30", searchable: false, text: `Over 90 days the keepers recorded that ${claim}` },
+    ];
+    const t = run(claim, { pages }, { extra: ["--json"] });
+    expect(await t.go(t.args)).toBe(0);
+    const trace = Trace.parse(JSON.parse(t.out.join("")));
+    const map = trace.nodes.find((n) => n.domain === "snopes.com")!;
+    expect(map.meta).toBe(true);
+    const origin = trace.nodes.find((n) => n.url === dataset)!;
+    expect(origin.foundViaMeta).toBe(map.url);
+    expect(trace.spans.some((sp) => sp.nodeId === origin.id)).toBe(true);
+    expect(trace.earliest.nodeIds).toEqual([origin.id]);
+    expect(trace.decision.state).toBe("ORIGIN_FOUND");
+    expect(t.net.calls.filter((c) => c.url.endsWith("/search")).length).toBeGreaterThan(1);
   });
 });
 
