@@ -131,3 +131,4 @@ Format: [LOCKED|REJECTED|PREFERENCE] decision | why | "Vidyut's words" | date
 [LOCKED] Merge #191 (live pipeline) now, before Rohan's review; Rohan reviews on main and fixes go in follow-ups | Tue run-through needs it; reviewer PASS after 4 rounds | "Merge now" | 2026-11-17
 [LOCKED] E2 scoring: NO_PAGES_FOUND is not a correct cold ending for myth claims (stays a miss) | dev-03 kept no pages | "No, keep it a miss" | 2026-11-17
 [LOCKED] dev-19 (Spotify audio origin) stays in E2, scored separately as out of scope (web pages only), reported on the limits page; E2 origin total 10 | audio is outside scope | "Keep, mark out of scope" | 2026-11-17
+[PREFERENCE] Heavier work goes to Rishit from Nov 17 midday; Anoop is light (his usage is running low), Rohan keeps F2 | Rishit has shipped least so far | "give like a lot of the tasks from here to Rishit... more heavier stuff goes to Rishit now" | 2026-11-17

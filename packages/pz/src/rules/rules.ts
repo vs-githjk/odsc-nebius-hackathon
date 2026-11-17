@@ -16,6 +16,7 @@ export const Rules = z.object({
   clusterSimilarityThreshold: z.number().min(0).max(1),
   metaMaps: z.boolean(),
   printCues: z.array(z.string()),
+  writtenCitationCues: z.array(z.string()),
   editableDomains: z.array(z.string()),
   secondSameClaimModel: z.string().nullable(),
   otherNumberSimilarity: z.number().min(0).max(1),
