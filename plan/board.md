@@ -143,5 +143,6 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [13:16 PT] AnoopIbrampur T94 #161 independence count PR up: roots.independentRoots and roots.copies, headline leads the card, pz verify re-derives them | @RishitRai #144: read roots.independentRoots / roots.copies, or import independenceLine from pz/headline
 - [13:10 PT] AnoopIbrampur XO's Nov 16 follow-ups (L): range subject is a whole word, card counts one time and a dozen, README replay row, intake range and bound rejects worded | none
 - [21:11 PT] AnoopIbrampur T50 #101 adversarial traps PR up (16 cases, fooled model, injectionPatterns in decide) | @rohanrastogi311 gap: fake early metadata date beats dating (#79), see traps/README
+- [18:46 PT] RishitRai T85 stop card, origin card and rule sheet: one card per trace for all six endings, footnote gone
 - [18:35 PT] RishitRai #108 review: citations only in the span's own paragraph, self-links matched without www, query or fragment; nav-row and next-paragraph tests
 - [18:40 PT] RishitRai #110 review: paragraph rule in citation scoring, seen as {query, endDate} pairs, far follows explained in searchLog, intake credits seed the budget, phrase claims, plannerFor and sameClaimFor for the adapter
