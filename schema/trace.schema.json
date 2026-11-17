@@ -205,6 +205,14 @@
               },
               "conflictingDate": {
                 "type": "boolean"
+              },
+              "precision": {
+                "type": "string",
+                "enum": [
+                  "day",
+                  "month",
+                  "year"
+                ]
               }
             },
             "required": [

@@ -101,8 +101,10 @@ export function unbacked(sentence: string, spans: string[], earliestDates: strin
   return { numbers, quotes, names, dates };
 }
 
+// A partial registry date backs only what it gave: a year-only date backs "2020", never "December 31, 2020".
 export const earliestDates = (trace: Trace) =>
-  trace.nodes.filter((n) => trace.earliest.nodeIds.includes(n.id)).map((n) => n.date.value).filter((d): d is string => d !== null);
+  trace.nodes.filter((n) => trace.earliest.nodeIds.includes(n.id)).flatMap((n) => n.date.value === null ? []
+    : [n.date.precision === "year" ? n.date.value.slice(0, 4) : n.date.precision === "month" ? n.date.value.slice(0, 7) : n.date.value]);
 
 // Each counter must be 0. The trace has no card sentence until T28, so it is passed in when there is one.
 export function falseCertainty(trace: Trace, opts: { cardSentence?: string; rules?: Rules } = {}): FalseCertainty {

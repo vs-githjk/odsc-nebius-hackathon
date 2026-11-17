@@ -85,6 +85,10 @@ describe("T77 readable CLI card", () => {
     expect(dated("registry_pubmed")).toBe("published 2004-01-20 (PubMed)");
     expect(dated("registry_pmc")).toBe("published 2004-01-20 (PubMed Central)");
     expect(dated("registry_crossref")).toBe("published 2004-01-20 (Crossref)");
+    // A partial registry date is worded at the precision it has, never as a full day.
+    const partial = (source: string, value: string, precision: "month" | "year") => dateWords({ ...n, date: { ...n.date, kind: "published", value, source, precision, conflictingDate: false } as never });
+    expect(partial("registry_pubmed", "2020-12-31", "year")).toBe("published 2020 (PubMed)");
+    expect(partial("registry_crossref", "2020-06-30", "month")).toBe("published June 2020 (Crossref)");
     expect(dated("wayback_first_capture", "existed_by")).toBe("online by 2004-01-20 (first archive capture)");
     expect([money(0.12), money(0.0042), money(0)]).toEqual(["$0.12", "$0.0042", "$0.00"]);
     const cold = load("sample-rich");
