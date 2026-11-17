@@ -155,6 +155,9 @@ Every call writes a usage row: model, tokens, cached tokens, Tavily credits, dol
 - Web pages only. Print-only and paywalled origins are out of scope; the trail goes cold there and says so.
 - "Earliest source we found" is not "first use". Pages that were never indexed or archived cannot be found.
 - Claims need a number, a range or a distinctive phrase to match on.
+- One model answers every typed question. A second model family on same claim was built, measured on E2 and rejected: it lost 23 of 60 true matches and removed no false ones, so it stays off ([#178](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/178), [eval/same-claim/second-model.ts](eval/same-claim/second-model.ts)).
+
+<!-- numbers ok: 23, 60 (XO's live E2 measure of the second model on Nov 16, logged in plan/decisions.md) -->
 - Every known failure, with an example you can run, the rule that should catch it, whether it is caught today and who owns it: `docs/limits.md`, "Where Patient Zero is wrong" (in review, [#172](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/172)).
 
 ## Setup for live runs
