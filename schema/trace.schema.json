@@ -1058,6 +1058,50 @@
     },
     "scopeNote": {
       "type": "string"
+    },
+    "otherNumbers": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string"
+          },
+          "domain": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "date": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sentence": {
+            "type": "string"
+          },
+          "number": {
+            "type": "string"
+          },
+          "similarity": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          }
+        },
+        "required": [
+          "url",
+          "domain",
+          "title",
+          "date",
+          "sentence",
+          "number",
+          "similarity"
+        ],
+        "additionalProperties": false
+      }
     }
   },
   "required": [

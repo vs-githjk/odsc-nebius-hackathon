@@ -141,6 +141,16 @@ export function renderCard(trace: Trace, { color = false }: { color?: boolean } 
     ? `${plural(r.pages, "page")} read, in ${plural(r.clusters, "group")} of copies. Traced to ${plural(r.rootsLinked, "root")} we could link (${plural(r.clustersUnlinked, "cluster")} unlinked).`
     : "No pages read.");
 
+  // T97: pages that state the claim with another number, worded from the fields only. "Instead of", not "became":
+  // which number came first is the dates' job, and a page with another number may be the earlier one.
+  const others = trace.otherNumbers ?? [];
+  if (others.length) {
+    out.push("");
+    const claimNumber = trace.claim.atoms.number?.raw ?? "";
+    others.slice(0, 2).forEach((o, i) => field(i ? "" : "Numbers", `${o.number} instead of ${claimNumber} on ${o.domain}${o.date ? ` (${o.date})` : ""}: "${o.sentence}"`));
+    if (others.length > 2) more(`and ${others.length - 2} more page${others.length - 2 === 1 ? "" : "s"} with another number`, s.dim);
+  }
+
   out.push("");
   field("Cost", `${plural(trace.budget.credits, "credit")}, ${money(trace.budget.usd)}, ${Math.round(trace.budget.ms / 1000)} s`);
   const calls = new Map<string, number>();

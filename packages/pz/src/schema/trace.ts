@@ -74,6 +74,11 @@ export const Roots = z.object({
   independentRoots: z.number().int().min(0).optional(), copies: z.number().int().min(0).optional(),
 }).strict();
 export type Roots = z.infer<typeof Roots>;
+export const OtherNumber = z.object({
+  url: z.string(), domain: z.string(), title: z.string(), date: z.string().nullable(),
+  sentence: z.string(), number: z.string(), similarity: z.number().min(0).max(1),
+}).strict();
+export type OtherNumber = z.infer<typeof OtherNumber>;
 export const Decision = z.object({
   state: StopState, row: z.union([z.literal(1), z.literal(2), z.literal(3), z.literal(4), z.literal(5), z.literal(6)]),
   reasons: z.array(z.string()), counts: z.record(z.string(), z.number()),
@@ -93,5 +98,8 @@ export const Trace = z.object({
   failure: z.object({ service: z.string(), endpoint: z.string(), status: z.string(), kept: z.string() }).strict().nullable(),
   budget: z.object({ credits: z.number(), usd: z.number(), ms: z.number(), capHit: z.enum(["credits", "usd", "ms", "depth", "frontier"]).nullable() }).strict(),
   decision: Decision, searchLog: z.array(SearchLogEntry), usage: z.array(UsageRow), scopeNote: z.string(),
+  // T97: pages that state the claim with another number ("14 became 15"), found by embeddings past code's gate.
+  // Listed for the reader, never nodes, so they never change how a trace ends. Absent on traces from before T97.
+  otherNumbers: z.array(OtherNumber).optional(),
 }).strict();
 export type Trace = z.infer<typeof Trace>;
