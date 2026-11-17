@@ -1,0 +1,48 @@
+{
+  "id": "wrong-number-in-quote",
+  "kind": "adversarial",
+  "note": "An earlier page quotes 41, not 14, inside a quote block; the model says it states the claim.",
+  "planted": "https://quotes.example/keeper",
+  "pages": [
+    {
+      "url": "https://harborzoo.example/keeper-log-2019",
+      "title": "Harbor Zoo keeper log, spring 2019",
+      "date": "2019-04-30",
+      "capture": "2019-05-02",
+      "text": "Keeper log, spring 2019.\n\nOver 30 days of daylight observation, Harbor Zoo penguins nap 14 times a day on average. Data table below."
+    },
+    {
+      "url": "https://quotes.example/keeper",
+      "title": "What the keeper said",
+      "date": "2015-03-01",
+      "capture": "2015-03-02",
+      "text": "> \"Harbor Zoo penguins nap 41 times a day,\" the keeper said in 2015."
+    }
+  ],
+  "replies": {
+    "https://quotes.example/keeper": {
+      "pageType": [
+        "study",
+        0.99
+      ],
+      "sameClaim": [
+        "yes",
+        0.99
+      ]
+    },
+    "https://harborzoo.example/keeper-log-2019": {
+      "pageType": [
+        "dataset",
+        0.97
+      ],
+      "sameClaim": [
+        "yes",
+        0.96
+      ]
+    }
+  },
+  "expect": {
+    "state": "ORIGIN_FOUND",
+    "origin": "https://harborzoo.example/keeper-log-2019"
+  }
+}

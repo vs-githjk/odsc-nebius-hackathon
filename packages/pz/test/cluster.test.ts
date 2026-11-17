@@ -93,20 +93,20 @@ describe("computeRoots", () => {
 
   it("[C4] counts a root only through link-verified edges", () => {
     expect(computeRoots(nodes, [edge("e1", "a", "b", "explicit"), edge("e2", "b", "c", "explicit")]))
-      .toEqual({ pages: 3, clusters: 3, rootsLinked: 1, clustersUnlinked: 0, studiesFound: null });
+      .toEqual({ pages: 3, clusters: 3, rootsLinked: 1, clustersUnlinked: 0, studiesFound: null, independentRoots: 1, copies: 2 });
   });
 
   it("[C4] counts clusters joined only by inferred edges as unlinked", () => {
     expect(computeRoots(nodes, [edge("e1", "a", "b", "explicit"), edge("e2", "b", "c", "inferred")]))
-      .toEqual({ pages: 3, clusters: 3, rootsLinked: 1, clustersUnlinked: 1, studiesFound: null });
+      .toEqual({ pages: 3, clusters: 3, rootsLinked: 1, clustersUnlinked: 1, studiesFound: null, independentRoots: 2, copies: 1 });
     expect(computeRoots(nodes, [edge("e1", "a", "b", "inferred")]))
-      .toEqual({ pages: 3, clusters: 3, rootsLinked: 0, clustersUnlinked: 3, studiesFound: null });
+      .toEqual({ pages: 3, clusters: 3, rootsLinked: 0, clustersUnlinked: 3, studiesFound: null, independentRoots: 3, copies: 0 });
   });
 
   it("[C4] ignores edges inside one cluster and meta pages", () => {
     const merged = [node("a", { clusterId: "c-a" }), node("b", { clusterId: "c-a" }), node("m", { clusterId: "c-m", meta: true })];
     expect(computeRoots(merged, [edge("e1", "a", "b", "explicit"), edge("e2", "m", "a", "explicit")]))
-      .toEqual({ pages: 2, clusters: 1, rootsLinked: 0, clustersUnlinked: 1, studiesFound: null });
+      .toEqual({ pages: 2, clusters: 1, rootsLinked: 0, clustersUnlinked: 1, studiesFound: null, independentRoots: 1, copies: 1 });
   });
 });
 

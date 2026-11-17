@@ -6,9 +6,11 @@ import { askSameClaim } from "../typed/ask.ts";
 
 type Client = { chat(input: ChatInput): Promise<Result<ChatData>> };
 
-export type SameClaimReason = "no_atom" | "typed_no" | "typed_unsure" | "no_model";
+export type SameClaimReason = "no_atom" | "typed_no" | "typed_unsure" | "no_model" | "second_disagrees";
 export type SameClaimResult = {
   candidate: boolean; codeHit: boolean; typed: TypedAnswer | null; mode: "model" | "code_only"; reason: SameClaimReason | null;
+  // T79: the second model's answer, when rules.secondSameClaimModel is set and the first model said yes.
+  second?: TypedAnswer | null;
 };
 
 // T36: may this sentence make its page an origin candidate? Two layers, and both must pass.
@@ -38,5 +40,13 @@ export async function sameClaim(
   // ask turns a "yes" below the threshold into "unsure"; a "yes" whose confidence could not be read is not trusted either.
   const yes = typed.optionId === "yes" && typed.probability !== null;
   const reason = yes ? null : typed.optionId === "no" ? "typed_no" : "typed_unsure";
-  return { candidate: yes, codeHit: true, typed, mode: "model", reason };
+  const model = deps.rules.secondSameClaimModel;
+  if (!yes || model === null) return { candidate: yes, codeHit: true, typed, mode: "model", reason };
+  // T79: a second model family must agree. It is asked only when the first said yes, so it can only remove an
+  // origin, never add one. If it cannot answer (an error or a reply that fails the schema), that counts as unsure.
+  let second: TypedAnswer | null = null;
+  try { second = await askSameClaim({ claim: input.claim, sentence: input.sentence }, { client: deps.client, threshold: null, model }); }
+  catch (error) { if (!(error instanceof TokenFactoryError)) throw error; }
+  const agrees = second?.optionId === "yes";
+  return { candidate: agrees, codeHit: true, typed, mode: "model", reason: agrees ? null : "second_disagrees", second };
 }

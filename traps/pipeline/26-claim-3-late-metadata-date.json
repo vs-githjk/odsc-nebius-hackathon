@@ -1,10 +1,11 @@
 {
   "id": "claim-3-late-metadata-date",
   "kind": "pipeline",
-  "note": "The earliest page's metadata date is a year after its first capture.",
+  "note": "The earliest page's metadata date is a year after its first capture. On claim-3 that page is still the earliest page by its capture, so the honest ending is ORIGIN_FOUND on it with the date capped to existed_by and flagged.",
   "source": "spike/traces/claim-3.json",
   "mutation": "late-metadata-date",
   "expect": {
+    "state": "ORIGIN_FOUND",
     "dateCapped": true,
     "falseCertainty": [
       0,

@@ -21,7 +21,7 @@ import { bound } from "./bound.ts";
 // page a study and says "yes, same claim" everywhere, so only code can stop a planted origin. Nothing here is tuned
 // on the spike claims; the cases check that the pipeline stops honestly.
 
-export const MUTATIONS = ["nudge-number", "negate", "unread-parent", "cap-hit", "tool-failure", "empty-results", "late-metadata-date"] as const;
+export const MUTATIONS = ["nudge-number", "negate", "negate-paraphrase", "unread-parent", "cap-hit", "tool-failure", "empty-results", "late-metadata-date"] as const;
 export const PipelineCase = z.object({
   id: z.string(), kind: z.literal("pipeline"), note: z.string(),
   source: z.string(),   // a committed spike trace
@@ -31,6 +31,9 @@ export const PipelineCase = z.object({
     noOrigin: z.boolean().optional(),   // the planted page, and every page, must not end as the origin
     dateCapped: z.boolean().optional(), // the planted page's date is capped by its first capture and flagged
     falseCertainty: z.tuple([z.number(), z.number(), z.number(), z.number()]),
+    // A gap we know about and have not closed: the case still ends as a wrong origin, which the headline counts,
+    // and it fails the run the moment it stops doing so (so the note can't outlive the gap).
+    knownGap: z.string().optional(),
   }).strict(),
 }).strict();
 export type PipelineCase = z.infer<typeof PipelineCase>;
@@ -94,6 +97,10 @@ function plant(c: PipelineCase, trace: Trace): { pages: Page[]; planted: string;
     case "negate":
       out = swap(`It is a myth that ${sentence.charAt(0).toLowerCase()}${sentence.slice(1)}`);
       break;
+    case "negate-paraphrase":
+      // Wording that is in no rules.json list, so this tests the pipeline and not our own phrase list.
+      out = swap(`Researchers checked this, and it is simply untrue that ${sentence.charAt(0).toLowerCase()}${sentence.slice(1)}`);
+      break;
     case "unread-parent": {
       const parent = "https://earlier-source.example/report";
       out = swap(`${sentence} ([source](${parent}))`);
@@ -140,11 +147,20 @@ export async function runPipelineCase(c: PipelineCase, root: string, rules: Rule
   return { trace, state: decision.state, originUrl: trace.nodes.find((n) => n.id === originId)?.url ?? null, planted };
 }
 
+// Which cases can end on a wrong origin at all. Failure-path cases read no page or stop before any origin rule, and
+// the dating cases check the date cap, so neither belongs in the wrong-origin count.
+export const ORIGIN_MUTATIONS: readonly (typeof MUTATIONS)[number][] = ["nudge-number", "negate", "negate-paraphrase", "unread-parent"];
+export const FAILURE_MUTATIONS: readonly (typeof MUTATIONS)[number][] = ["cap-hit", "tool-failure", "empty-results"];
+
 // Every way a case can disagree with what it plants, as plain lines.
 export function judgeCase(c: PipelineCase, r: Awaited<ReturnType<typeof runPipelineCase>>, rules: Rules): string[] {
   const out: string[] = [];
-  if (c.expect.state && r.state !== c.expect.state) out.push(`state ${r.state}, case expects ${c.expect.state}`);
-  if (c.expect.noOrigin && r.state === "ORIGIN_FOUND") out.push(`ended ORIGIN_FOUND on ${r.originUrl}`);
+  if (c.expect.knownGap) {
+    if (r.state !== "ORIGIN_FOUND") out.push(`known gap closed (now ${r.state}); remove knownGap and update docs/limits.md`);
+  } else {
+    if (c.expect.state && r.state !== c.expect.state) out.push(`state ${r.state}, case expects ${c.expect.state}`);
+    if (c.expect.noOrigin && r.state === "ORIGIN_FOUND") out.push(`ended ORIGIN_FOUND on ${r.originUrl}`);
+  }
   if (c.expect.dateCapped) {
     const node = r.trace.nodes.find((n) => n.url === r.planted);
     if (!node || node.date.kind !== "existed_by" || !node.date.conflictingDate) out.push(`planted page's date not capped and flagged (${node ? JSON.stringify(node.date) : "no node"})`);
@@ -165,15 +181,23 @@ export async function runPipelineTraps(p: { root: string; casesDir: string; lock
     return { code: 1, lines: ["FAIL lock check: traps/pipeline changed since pipeline.lock; review the change, then run pz traps --relock"] };
   const files = readdirSync(p.casesDir).filter((f) => f.endsWith(".json")).sort();
   const lines: string[] = [];
-  let wrong = 0;
+  const tally = { origin: 0, wrong: 0, gaps: [] as string[], failure: 0, failureOk: 0, dating: 0, datingOk: 0 };
   for (const f of files) {
     const c = PipelineCase.parse(JSON.parse(readFileSync(join(p.casesDir, f), "utf8")));
     const r = await runPipelineCase(c, p.root, p.rules);
-    if (r.state === "ORIGIN_FOUND" && (c.expect.noOrigin || (c.expect.state && c.expect.state !== "ORIGIN_FOUND"))) wrong++;
-    for (const problem of judgeCase(c, r, p.rules)) lines.push(`FAIL ${c.id}: ${problem}`);
+    const problems = judgeCase(c, r, p.rules);
+    if (ORIGIN_MUTATIONS.includes(c.mutation)) {
+      tally.origin++;
+      if (r.state === "ORIGIN_FOUND") { tally.wrong++; if (c.expect.knownGap) tally.gaps.push(c.id); }
+    } else if (FAILURE_MUTATIONS.includes(c.mutation)) { tally.failure++; if (!problems.length) tally.failureOk++; }
+    else { tally.dating++; if (!problems.length) tally.datingOk++; }
+    for (const problem of problems) lines.push(`FAIL ${c.id}: ${problem}`);
   }
-  const n = files.length;
-  lines.push(`pipeline: wrong origins ${wrong} of ${n} (95% upper bound ${wrong === 0 ? (bound(0, n) * 100).toFixed(1) + "%" : "n/a"}), `
-    + `the typed stub calls the planted page a study, real walk and dating with no network, planted by us`);
+  const rest = tally.origin - tally.gaps.length, restWrong = tally.wrong - tally.gaps.length;
+  const ub = (n: number) => (bound(0, n) * 100).toFixed(1) + "%";
+  lines.push(`pipeline: wrong origins ${tally.wrong} of ${tally.origin} cases that could end on one`
+    + (tally.gaps.length ? `; ${tally.gaps.length} are the known gap (paraphrased negation, docs/limits.md), and the other ${rest} give ${restWrong}${restWrong === 0 ? ` (95% upper bound ${ub(rest)})` : ""}` : restWrong === 0 ? ` (95% upper bound ${ub(tally.origin)})` : "")
+    + `. Failure paths end as expected in ${tally.failureOk} of ${tally.failure}; planted dates are capped in ${tally.datingOk} of ${tally.dating}.`
+    + ` The typed stub calls the planted page a study and says same claim everywhere; real walk and dating, no network, planted by us.`);
   return { code: lines.length === 1 ? 0 : 1, lines };
 }

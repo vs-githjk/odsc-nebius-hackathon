@@ -23,5 +23,9 @@ b469fc52c1fc409ef11e1c6acf4e5ae45d2897c4135788f4b2307d4a643a2c00  16-dry-run-cap
 e77f161d3b4831669e9642a12cdd295a07a9d26d444051968a86dda3c497ce18  23-claim-5-empty-results.json
 827af854b69ae83f001ec92bb1752ca0ab40bd5a125a4cc235b8d9261138b782  24-dry-run-empty-results.json
 c4dc49c599edb849bb517e4285db0fffeae89b51d5568fcc8b6d9e8f3de6e79b  25-claim-2-late-metadata-date.json
-cf296542451b12580fa623ceeb2bdbc9bde74e68aecf36284ea81286d0cea7ba  26-claim-3-late-metadata-date.json
+ffa0661c1b557409a75afe5c0a2f48d40e972883aaa2efb6cdd910b93dc31420  26-claim-3-late-metadata-date.json
 48baeaebf791c7c9bcbeff5881011e7d22fcaf03cb02c18ac2b33d1ca073d210  27-claim-5-late-metadata-date.json
+635b83848364be3438422b20a0bf40638c3645a6502191f73d9bc90f95ecf90e  28-claim-2-negate-paraphrase.json
+f3a42a1c00d8d67ea737a7ba09bc99421699193da63c444a63b542728db848e7  29-claim-3-negate-paraphrase.json
+f029703ef5db1a43f03472fe4148bd6c5723a4b68954073784aca346b7232f50  30-claim-5-negate-paraphrase.json
+91aa6b38d87d4ebd4d5dda9f67109782380e0f4bcf9b96ee781253a8359708c7  31-dry-run-negate-paraphrase.json

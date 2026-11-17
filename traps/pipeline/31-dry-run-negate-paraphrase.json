@@ -1,0 +1,16 @@
+{
+  "id": "dry-run-negate-paraphrase",
+  "kind": "pipeline",
+  "note": "The earliest page's sentence follows \"Researchers checked this, and it is simply untrue that\", wording in no rules.json list. Code's negation check is literal, so only the typed same_claim answer can stop this; the stub says yes, so it ends ORIGIN_FOUND.",
+  "source": "spike/traces/dry-run.json",
+  "mutation": "negate-paraphrase",
+  "expect": {
+    "knownGap": "paraphrased negation: rules.json negationPrefixes matches its listed words only",
+    "falseCertainty": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

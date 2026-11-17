@@ -1,0 +1,48 @@
+{
+  "id": "meta-dressed-as-study",
+  "kind": "adversarial",
+  "note": "An earlier page discussing the claim as a myth, styled as a study; the model calls it a study.",
+  "planted": "https://studyhub.example/penguin-myth",
+  "pages": [
+    {
+      "url": "https://harborzoo.example/keeper-log-2019",
+      "title": "Harbor Zoo keeper log, spring 2019",
+      "date": "2019-04-30",
+      "capture": "2019-05-02",
+      "text": "Keeper log, spring 2019.\n\nOver 30 days of daylight observation, Harbor Zoo penguins nap 14 times a day on average. Data table below."
+    },
+    {
+      "url": "https://studyhub.example/penguin-myth",
+      "title": "A study of the penguin nap myth",
+      "date": "2015-05-01",
+      "capture": "2015-05-02",
+      "text": "Abstract. We examine the myth that Harbor Zoo penguins nap 14 times a day."
+    }
+  ],
+  "replies": {
+    "https://studyhub.example/penguin-myth": {
+      "pageType": [
+        "study",
+        0.99
+      ],
+      "sameClaim": [
+        "yes",
+        0.99
+      ]
+    },
+    "https://harborzoo.example/keeper-log-2019": {
+      "pageType": [
+        "dataset",
+        0.97
+      ],
+      "sameClaim": [
+        "yes",
+        0.96
+      ]
+    }
+  },
+  "expect": {
+    "state": "ORIGIN_FOUND",
+    "origin": "https://harborzoo.example/keeper-log-2019"
+  }
+}
