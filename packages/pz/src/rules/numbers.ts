@@ -124,7 +124,11 @@ const HEDGED_BEFORE = /(?:over|more than|about|around|nearly|almost|roughly|appr
 function otherNumberVetoes(text: string, atoms: Atoms): boolean {
   const also = atoms.alsoNumber && parseNumbers(atoms.alsoNumber.canonical).numbers[0];
   if (!also || !also.percent) return false;
-  const percents = parseNumbers(text).numbers.filter((n) => numberClass(n, text) === "percent");
+  // The claim's own number is never "another" percent (XO on #199): "Women now hold 25% of seats" states the 25% claim
+  // even though it leaves out "up from 11%".
+  const own = atoms.number && parseNumbers(atoms.number.canonical).numbers[0];
+  const isOwn = (n: ParsedNumber) => !!own && sameNumber({ ...n, percent: false }, { ...own, percent: false }).equal;
+  const percents = parseNumbers(text).numbers.filter((n) => numberClass(n, text) === "percent" && !isOwn(n));
   const same = (n: ParsedNumber) => sameNumber({ ...n, percent: false }, { ...also, percent: false }).equal;
   if (percents.some(same)) return false;
   return percents.some((n) => !HEDGED_BEFORE.test(text.slice(0, n.start)));
