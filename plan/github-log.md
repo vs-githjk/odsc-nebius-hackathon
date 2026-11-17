@@ -63,3 +63,8 @@
 - MIT LICENSE added. Decisions logged: public + MIT, rematch chats Anoop, voiceover Rohan, DeepSeek veto off.
 - New: #179 T99 case study (Anoop). Gallery vs held-out check asked of Rohan on #168.
 - Rohan: no activity since Nov 16 03:22Z; #130 due 18:00 PT, no PR yet.
+
+## Nov 16 22:30 ET pass (Rishit)
+- Reviewed 7 PRs (3 master-reviewer agents). Merged #183 ac69de6, #182 08bdfc0 (main 496 tests).
+- FIX: #108 [M] CRLF/nbsp blank line; #110 [H] TokenFactoryError crashes walk, [M] same CRLF; #184 [H] claimMatch false matches, [M] matched trace not labelled recorded; #180 [M] origin card wrong page, rule 5 wording; #181 [M] measured chips on inferred hop unlabelled.
+- Answered Rishit's fixture question: (b) separate recorded-traces glob. Noted #109 needs --json and budget double-count check (Rohan).

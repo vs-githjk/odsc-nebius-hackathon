@@ -107,7 +107,7 @@
 /* Positions on the band use the same inset as the scrubber track, so they line up with the handle. */
 .band-future,
 .band-now,
-.disc {
+.swarm {
   left: calc(var(--rail-pad) + var(--x) * (100% - 2 * var(--rail-pad)));
 }
 
@@ -148,34 +148,43 @@
   stroke-dasharray: 5 4;
 }
 
-.disc {
+.swarm {
   position: absolute;
   width: 0;
   height: 0;
+  transition: opacity 200ms ease;
 }
 
-.disc-dot {
+/* One dot per page. A copy published by the scrubber's point in time is filled in the ramp's colour for its
+   cluster; one not yet published is a ring. */
+.copy {
   position: absolute;
-  width: var(--disc);
-  height: var(--disc);
-  margin: calc(var(--disc) / -2) 0 0 calc(var(--disc) / -2);
+  width: var(--dot);
+  height: var(--dot);
+  margin: calc(var(--dot) / -2) 0 0 calc(var(--dot) / -2);
   border-radius: 50%;
-  background: color-mix(in srgb, var(--tone) 22%, var(--surface));
-  box-shadow: inset 0 0 0 2px var(--tone);
+  background: color-mix(in srgb, var(--tone) 78%, var(--surface));
+  box-shadow: 0 0 0 1.5px var(--surface);
+  transition: background-color 200ms ease, box-shadow 200ms ease;
 }
 
-.disc.later .disc-dot {
-  background: transparent;
-  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--tone) 55%, transparent);
+.copy.ring {
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--tone) 60%, transparent);
 }
 
-.disc.active .disc-dot {
-  box-shadow: inset 0 0 0 3px var(--ink);
-}
-
-.disc-label {
+.swarm-halo {
   position: absolute;
-  bottom: calc(var(--disc) / 2 + 6px);
+  width: calc(2 * var(--r) + 10px);
+  height: calc(2 * var(--r) + 10px);
+  margin: calc(-1 * var(--r) - 5px) 0 0 calc(-1 * var(--r) - 5px);
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 2px var(--ink);
+}
+
+.swarm-label {
+  position: absolute;
+  bottom: calc(var(--r) + 8px);
   padding: 0 4px;
   border-radius: 4px;
   /* A knockout in the band's own light so a label never sits on a link line. */
@@ -186,25 +195,26 @@
   white-space: nowrap;
 }
 
-.disc-label.middle {
+.swarm-label.middle {
   transform: translateX(-50%);
 }
 
-.disc-label.start {
-  left: calc(var(--disc) / -2);
+.swarm-label.start {
+  left: calc(var(--r) * -1);
 }
 
-.disc-label.end {
-  right: calc(var(--disc) / -2);
+.swarm-label.end {
+  right: calc(var(--r) * -1);
 }
 
-.disc.later .disc-label {
+.swarm.later .swarm-label {
   color: var(--ink-3);
   font-weight: 500;
 }
 
-.disc.active .disc-label {
+.swarm.active .swarm-label {
   color: var(--ink);
+  font-weight: 650;
 }
 
 .band-legend {
@@ -392,7 +402,9 @@
   .time-blob,
   .band-future,
   .band-now,
-  .sentence .w {
+  .sentence .w,
+  .swarm,
+  .copy {
     transition: none;
   }
 }
@@ -409,7 +421,7 @@
   }
 
   /* No text under 14 px on a phone (#69). */
-  .disc-label,
+  .swarm-label,
   .band-legend,
   .ticks,
   .pill,
@@ -419,6 +431,134 @@
 
   .band-inner {
     height: 190px;
+  }
+
+  /* Too narrow for every count: only the active cluster keeps its label, with its site and count. */
+  .swarm:not(.active) .swarm-label {
+    display: none;
+  }
+}
+
+/* The stop card (T85): the panel the band ends on. Colour stays for time; the tone only tints the title. */
+.stop-card {
+  margin-top: 28px;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+}
+
+.stop-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.stop-card.found .stop-title {
+  color: var(--good);
+}
+
+.stop-card.caution .stop-title {
+  color: var(--caution);
+}
+
+.stop-count {
+  margin: 6px 0 0;
+  color: var(--ink);
+  font-size: 17px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.stop-sentence {
+  margin: 4px 0 0;
+  color: var(--ink);
+  font-size: 17px;
+}
+
+.stop-searched {
+  margin: 10px 0 0;
+  color: var(--ink-2);
+  font-size: 15px;
+}
+
+.origin-quote {
+  margin: 14px 0 0;
+  padding-left: 14px;
+  border-left: 3px solid var(--deep);
+}
+
+.origin-quote .quote {
+  font-size: clamp(20px, 2vw, 26px);
+  line-height: 1.25;
+}
+
+.origin-quote footer {
+  margin-top: 6px;
+  color: var(--ink-2);
+  font-size: 15px;
+}
+
+.rule-sheet {
+  margin-top: 12px;
+}
+
+.rule-sheet summary {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  color: var(--action);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.rule-sheet summary:focus-visible {
+  outline: 2px solid var(--action);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+.rule-sheet ol {
+  display: grid;
+  gap: 6px;
+  margin: 4px 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--ink-2);
+  font-size: 15px;
+}
+
+.rule-sheet li {
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+.rule-sheet li.decided {
+  background: var(--bg-2);
+  color: var(--ink);
+}
+
+.rule-row {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.rule-mark {
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .stop-card {
+    padding: 16px;
+  }
+
+  .stop-searched,
+  .rule-sheet summary,
+  .rule-sheet ol,
+  .origin-quote footer {
+    font-size: 15px;
   }
 }
 
