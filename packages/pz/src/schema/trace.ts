@@ -107,7 +107,7 @@ export const Trace = z.object({
   failure: z.object({ service: z.string(), endpoint: z.string(), status: z.string(), kept: z.string() }).strict().nullable(),
   budget: z.object({ credits: z.number(), usd: z.number(), ms: z.number(), capHit: z.enum(["credits", "usd", "ms", "depth", "frontier"]).nullable() }).strict(),
   decision: Decision, searchLog: z.array(SearchLogEntry), usage: z.array(UsageRow), scopeNote: z.string(),
-  // T97: pages that state the claim with another number ("14 became 15"), found by embeddings past code's gate.
+  // T97: pages with a similar sentence that uses another number (a possible variant, never "14 became 15"), found by embeddings past code's gate.
   // Listed for the reader, never nodes, so they never change how a trace ends. Absent on traces from before T97.
   otherNumbers: z.array(OtherNumber).optional(),
 }).strict();
