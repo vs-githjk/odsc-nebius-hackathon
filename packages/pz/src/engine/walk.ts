@@ -9,7 +9,7 @@ import { createWayback } from "../clients/wayback.ts";
 import { findSpan } from "../match/verbatim.ts";
 import { clusterNodes, computeRoots, type Embed } from "./cluster.ts";
 import { findOtherNumber } from "./similar.ts";
-import { atomHit, claimHit, decideStopState, findInjection, isRange, normalise, parseNumbers, sameNumber, type Rules } from "../rules/index.ts";
+import { atomHit, claimHit, confidentNo, decideStopState, findInjection, isRange, normalise, parseNumbers, sameNumber, type Rules } from "../rules/index.ts";
 import type { Atoms, Cluster, DateInfo, Edge, Hop, Node, Readout, Span, Trace, UsageRow } from "../schema/index.ts";
 import type { UsageLog } from "../usage/log.ts";
 import { sameClaim, type SameClaimResult } from "../match/same-claim.ts";
@@ -75,6 +75,9 @@ const CONTEXT_CHARS = 200;
 const LINKS_PER_SPAN = 3;
 const LINKS_PER_ROUND = 3;
 const SOURCE_QUERIES_PER_WINDOW = 2;
+// F7 (#192): rounds in a row that only follow citations without reaching an earlier page. After this many the walk
+// stops following and ends as it would with no links left: a cold trail, not a cap hit.
+export const LINK_ROUNDS_WITHOUT_PROGRESS = 2;
 // T49: fact-check pages read as maps per trace, and the citations taken from each.
 const META_PAGES = 2;
 const META_LINKS = 4;
@@ -270,7 +273,11 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
 
   const note = (line: Omit<LogLine, "at">) => log.push({ at: deps.now(), ...line });
   const excluded = (url: string) => rules.factCheckDomains.some((d) => hostOf(url) === d || hostOf(url).endsWith(`.${d}`));
-  const earliestDate = () => nodes.filter((n) => !n.meta && n.date.value).map((n) => n.date.value!).sort()[0] ?? null;
+  // F1 (#192): the trail runs through dated, non-meta pages that the model did not confidently call another claim. A
+  // confident same_claim "no" page (Nasdaq 100 in 2014 for a 2017 claim) stays on the trace but never becomes the
+  // earliest page, the planner's hop or the end of the next search window.
+  const onTrail = (n: Node) => !n.meta && n.date.value !== null && !confidentNo(n.sameClaim, rules);
+  const earliestDate = () => nodes.filter(onTrail).map((n) => n.date.value!).sort()[0] ?? null;
 
   async function dateFor(url: string, apiDate: string | null): Promise<{ date: DateInfo; waybackUrl: string | null }> {
     const api = apiDate && !Number.isNaN(Date.parse(apiDate)) ? new Date(apiDate).toISOString().slice(0, 10) : null;
@@ -432,7 +439,12 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
   try {
     let endDate = deps.today;
     const plan = deps.planQueries ?? codePlanner;
-    for (let depth = 0; ; depth++) {
+    // F7: caps.depth counts steps back in time (rounds whose window moved back), not rounds. A round that only follows
+    // links and finds nothing earlier counts against LINK_ROUNDS_WITHOUT_PROGRESS instead, so a long citation chain on
+    // a cold claim cannot turn it into a depth-capped PARTIAL (dev-05, dev-06, dev-20) or eat the time cap.
+    let steps = 0;
+    let idleLinkRounds = 0;
+    for (let round = 0; ; round++) {
       if (outOfTime()) {
         capHit = "ms";
         break;
@@ -440,7 +452,7 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
       const results = new Map<string, { title: string; date: string | null }>();
       earlierWindowSearches = 0;
       // The hop the planner works back from: the earliest dated page so far, with its span.
-      const hopNode = nodes.filter((n) => !n.meta && n.date.value).sort((a, b) => a.date.value!.localeCompare(b.date.value!))[0];
+      const hopNode = nodes.filter(onTrail).sort((a, b) => a.date.value!.localeCompare(b.date.value!))[0];
       const hopSpan = hopNode && spans.find((s) => s.id === hopNode.spanIds[0]);
       const planInput = {
         claim: claim.text, atoms, seen: [...sentQueries],
@@ -523,7 +535,7 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
       }
 
       // T49: once per trace, fact-check pages that discuss the claim, read as maps before anything else.
-      if (depth === 0 && rules.metaMaps) {
+      if (round === 0 && rules.metaMaps) {
         const { data } = await deps.tavily.search({
           query: queries[0]!.query, exactMatch: true, endDate, includeRawContent: false, includePublishedDate: true, maxResults: 5, includeDomains: rules.factCheckDomains,
         }, { step: "meta-search" });
@@ -571,8 +583,15 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
       earlierFound = movedBack ? found : 0;
       const moreLinks = [...followQueue.keys(), ...metaQueue].some((u) => !seen.has(u));
       if (!movedBack && !moreLinks) break;
-      if (depth + 1 >= rules.caps.depth) {
-        capHit = "depth";
+      if (movedBack) {
+        idleLinkRounds = 0;
+        steps += 1;
+        if (steps >= rules.caps.depth) {
+          capHit = "depth";
+          break;
+        }
+      } else if (++idleLinkRounds >= LINK_ROUNDS_WITHOUT_PROGRESS) {
+        note({ step: "stop", reason: `followed citations for ${idleLinkRounds} rounds without reaching an earlier page; links left unfollowed` });
         break;
       }
       if (earliestNow) endDate = dayBefore(earliestNow);
@@ -645,7 +664,7 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
     // One counter for the roots line and the T94 headline (the old inline count called linked-into clusters unlinked).
     roots: computeRoots(nodes, edges),
     redHopEdgeId: hops.find((h) => !h.faithful)?.edgeId ?? null,
-    earliest: { nodeIds: nodes.filter((n) => !n.meta && minDate !== null && n.date.value === minDate).map((n) => n.id), earlierWindowSearches, earlierFound },
+    earliest: { nodeIds: nodes.filter((n) => onTrail(n) && n.date.value === minDate).map((n) => n.id), earlierWindowSearches, earlierFound },
     failure,
     budget,
     decision: { state: "TRAIL_GOES_COLD", row: 6, reasons: [], counts: {} },

@@ -15,6 +15,8 @@ export const Atoms = z.object({
   subjectLemma: z.string(), population: z.string().nullable(), time: z.string().nullable(),
   hedge: z.string().nullable(), namedSource: z.string().nullable(), variants: z.array(z.string()),
   phrase: z.string().min(1).nullable().optional(),
+  // #192 F5: a two-number claim's other number ("100 companies ... 71%"). A veto only: see numbers.ts atomHit.
+  alsoNumber: z.object({ raw: z.string(), canonical: z.string() }).strict().nullable().optional(),
 }).strict().refine((a) => a.number !== null || !!a.phrase, { message: "atoms need a number or a phrase" });
 export type Atoms = z.infer<typeof Atoms>;
 export const Span = z.object({
