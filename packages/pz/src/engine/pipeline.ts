@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { createBudget } from "../clients/budget.ts";
 import { createFileCache, type Cache } from "../clients/cache.ts";
+import { createFileTape, recordDirOf, recordPaths, recordingCache, recordingClient, writeClaimClock } from "../clients/tape.ts";
 import { ClientError } from "../clients/errors.ts";
 import type { ClientDeps } from "../clients/http.ts";
 import { type TavilySender, createTavily } from "../clients/tavily.ts";
@@ -81,14 +82,14 @@ export function closeTrail(trace: Trace): Trace {
 
 // The claim as the pipeline starts: no pages, no atoms beyond what code can read. A claim with no single number is
 // held by its own text until the fingerprint stage finds its phrase.
-function startTrace(id: string, text: string, rules: ReturnType<typeof loadRules>): Trace {
+function startTrace(id: string, text: string, rules: ReturnType<typeof loadRules>, recordedAt: string): Trace {
   const number = claimNumber(text);
   const atoms: Atoms = {
     number, ...(number ? {} : { phrase: text }), unit: null, subjectLemma: "", population: null, time: null, hedge: null, variants: [],
     namedSource: null,
   };
   const trace: Trace = {
-    schemaVersion: "1", id, mode: "LIVE", synthetic: false, recordedAt: new Date().toISOString(),
+    schemaVersion: "1", id, mode: "LIVE", synthetic: false, recordedAt,
     claim: { text, atoms }, viralSentence: text,
     nodes: [], edges: [], clusters: [], spans: [], hops: [], blame: [], redHopEdgeId: null,
     roots: { pages: 0, clusters: 0, rootsLinked: 0, clustersUnlinked: 0, studiesFound: null },
@@ -115,6 +116,8 @@ export type PipelineParts = {
   traceId?: string;
   pagesDir?: string;
   usagePath?: string;
+  // The run's clock. Replay pins it to the recorded day, because the search window ends "today" and is part of every cache key.
+  clock?: () => Date;
 };
 
 // The production pipeline from ready clients. One pipeline serves one trace: it holds that trace's usage log and clock.
@@ -124,7 +127,17 @@ export function buildPipeline(parts: PipelineParts): { pipeline: Pipeline; wayba
   const id = parts.traceId ?? randomUUID();
   const rules = loadRules();
   const usage = createUsageLog(parts.usagePath ? { path: parts.usagePath } : {});
-  const base = { usage, cache: parts.cache ?? createFileCache(), traceId: id, sleep: parts.sleep };
+  const clock = parts.clock ?? (() => new Date());
+  // PZ_RECORD_DIR turns any live run into a recording for eval/replay-walk.ts: HTTP responses are mirrored into the
+  // directory and every Token Factory reply is written to its tape.
+  const recordDir = recordDirOf();
+  const model = recordDir
+    ? recordingClient({ chat: parts.chat.chat, embed: parts.embed.embed }, createFileTape(recordPaths(recordDir).model))
+    : { chat: parts.chat.chat, embed: parts.embed.embed };
+  const chatClient: Pick<TokenFactory, "chat"> = { chat: model.chat };
+  const embedClient: Pick<TokenFactory, "embed"> = { embed: model.embed };
+  const cache = recordDir ? recordingCache(parts.cache ?? createFileCache(), recordPaths(recordDir).http) : parts.cache ?? createFileCache();
+  const base = { usage, cache, traceId: id, sleep: parts.sleep };
   const wayback = createWayback({ ...base, fetch: parts.archiveFetch });
   const pagesDir = parts.pagesDir ?? "runs/pages";
 
@@ -132,7 +145,7 @@ export function buildPipeline(parts: PipelineParts): { pipeline: Pipeline; wayba
   // rows go to the run's usage log here. A failed call's rows are added by the walk's own fallback (modelFailed).
   const walkChat = (step: string) => ({
     chat: async (input: Parameters<TokenFactory["chat"]>[0]) => {
-      const response = await parts.chat.chat(input, { step });
+      const response = await chatClient.chat(input, { step });
       for (const row of response.attempts) usage.append(row);
       return response;
     },
@@ -141,7 +154,7 @@ export function buildPipeline(parts: PipelineParts): { pipeline: Pipeline; wayba
   const walkEmbed = {
     embed: async (input: Parameters<TokenFactory["embed"]>[0], context?: Parameters<TokenFactory["embed"]>[1]) => {
       try {
-        const response = await parts.embed.embed(input, { ...context, step: "embed" });
+        const response = await embedClient.embed(input, { ...context, step: "embed" });
         for (const row of response.attempts) usage.append(row);
         return response;
       } catch (error) {
@@ -154,7 +167,7 @@ export function buildPipeline(parts: PipelineParts): { pipeline: Pipeline; wayba
   const collecting = (rows: UsageRow[], step: string) => ({
     chat: async (input: Parameters<TokenFactory["chat"]>[0]) => {
       try {
-        const response = await parts.chat.chat(input, { step });
+        const response = await chatClient.chat(input, { step });
         rows.push(...response.attempts);
         return response;
       } catch (error) {
@@ -171,10 +184,10 @@ export function buildPipeline(parts: PipelineParts): { pipeline: Pipeline; wayba
       return {
         tavily: parts.tavily({ ...base, budget }),
         wayback, usage, budget, rules,
-        planQueries: plannerFor(parts.chat, rules),
+        planQueries: plannerFor(chatClient, rules),
         askSameClaim: sameClaimFor(walkChat("same_claim"), rules),
         embed: createEmbedder(walkEmbed, { traceId: id }),
-        today: trace.recordedAt.slice(0, 10), now: () => new Date().toISOString(),
+        today: trace.recordedAt.slice(0, 10), now: () => clock().toISOString(),
         pagesDir,
       };
     });
@@ -184,7 +197,9 @@ export function buildPipeline(parts: PipelineParts): { pipeline: Pipeline; wayba
       startedAt = performance.now();
       const text = input.trim();
       if (!text) throw new ClientError("bad_response", "Empty claim");
-      return startTrace(id, text, rules);
+      const recordedAt = clock().toISOString();
+      if (recordDir) writeClaimClock(recordDir, id, recordedAt);
+      return startTrace(id, text, rules, recordedAt);
     },
 
     async fingerprint(trace) {
@@ -193,13 +208,13 @@ export function buildPipeline(parts: PipelineParts): { pipeline: Pipeline; wayba
       let atoms: Atoms;
       let rows: UsageRow[];
       if (number) {
-        const result = await fingerprint(text, { client: parts.chat, number });
+        const result = await fingerprint(text, { client: chatClient, number });
         if (!result.atoms) throw new ClientError("bad_response", "Claim fingerprint has no usable subject");
         atoms = result.atoms;
         rows = result.usage;
       } else {
         // T53: no single number, so the phrase drives matching. A named stop ends the run with a code, never a guess.
-        const result = await fingerprintPhrase(text, { client: parts.chat });
+        const result = await fingerprintPhrase(text, { client: chatClient });
         if (!result.atoms) {
           throw new ClientError(result.reason === "no_model" ? "not_configured" : "bad_response", `Phrase claim stopped: ${result.reason}`);
         }
