@@ -22,7 +22,10 @@ describe("TraceView", () => {
       } else {
         expect(html).toContain("No page with the claim");
       }
-      expect(html).toContain(`row ${trace.decision.row}`);
+      // Every trace ends on its stop card, with the deciding rule marked in the rule sheet (T85).
+      expect(html).toContain("How this was decided");
+      expect(html).toMatch(new RegExp(`aria-current="true"><span class="rule-row">Rule ${trace.decision.row}</span>`));
+      expect(html).not.toContain("foot-note");
       expect(html).toContain("SAMPLE");
     }
   });
