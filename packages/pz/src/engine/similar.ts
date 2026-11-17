@@ -14,7 +14,7 @@ import type { Embed } from "./cluster.ts";
 //   so the independence count (T94) stops counting a reworded copy as its own root;
 // - the same claim with another number: a page that fails the number rules but has a sentence with the claim's
 //   subject, a different number, and a vector at or above otherNumberSimilarity. It is listed on the trace and the
-//   card ("14 became 15 here"), never made a node, so it cannot change how a trace ends.
+//   card as a possible variant ("uses 15, not 14"), never made a node, so it cannot change how a trace ends.
 
 export const EMBED_MODEL = "Qwen/Qwen3-Embedding-8B";
 const BATCH = 32;
