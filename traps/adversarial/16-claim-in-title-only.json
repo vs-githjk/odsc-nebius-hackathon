@@ -1,0 +1,48 @@
+{
+  "id": "claim-in-title-only",
+  "kind": "adversarial",
+  "note": "An earlier page has the claim only in its title; no sentence on the page states it, so it never becomes a node.",
+  "planted": "https://penguinfacts.example/title-only",
+  "pages": [
+    {
+      "url": "https://harborzoo.example/keeper-log-2019",
+      "title": "Harbor Zoo keeper log, spring 2019",
+      "date": "2019-04-30",
+      "capture": "2019-05-02",
+      "text": "Keeper log, spring 2019.\n\nOver 30 days of daylight observation, Harbor Zoo penguins nap 14 times a day on average. Data table below."
+    },
+    {
+      "url": "https://penguinfacts.example/title-only",
+      "title": "Harbor Zoo penguins nap 14 times a day",
+      "date": "2014-01-01",
+      "capture": "2014-01-02",
+      "text": "Penguins are birds that live in colonies. Visit the zoo to see them rest."
+    }
+  ],
+  "replies": {
+    "https://penguinfacts.example/title-only": {
+      "pageType": [
+        "study",
+        0.99
+      ],
+      "sameClaim": [
+        "yes",
+        0.99
+      ]
+    },
+    "https://harborzoo.example/keeper-log-2019": {
+      "pageType": [
+        "dataset",
+        0.97
+      ],
+      "sameClaim": [
+        "yes",
+        0.96
+      ]
+    }
+  },
+  "expect": {
+    "state": "ORIGIN_FOUND",
+    "origin": "https://harborzoo.example/keeper-log-2019"
+  }
+}

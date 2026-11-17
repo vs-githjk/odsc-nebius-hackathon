@@ -61,6 +61,9 @@ export async function clusterNodes(input: ClusterInput, embed: Embed, rules: Rul
 // "Traced to N roots we could link (M clusters unlinked)". Only link-verified (explicit) edges between different
 // clusters count: a root has outgoing links and no incoming one; a cluster with no explicit link at all is unlinked,
 // even when an inferred edge joins it. Meta pages are not counted. studiesFound waits for page types (T28).
+// T94, the headline: an independent root is a cluster with no link-verified page before it (a linked root or an
+// unlinked cluster), and every other page is a copy: a member of a cluster after its first page, or a page that
+// links back to an earlier one. pages = independentRoots + copies. The walker, the card and pz verify all call this.
 export function computeRoots(nodes: Node[], edges: Edge[]): Roots {
   const pages = nodes.filter((n) => !n.meta);
   const clusterOf = new Map(pages.map((n) => [n.id, n.clusterId]));
@@ -69,11 +72,14 @@ export function computeRoots(nodes: Node[], edges: Edge[]): Roots {
     && clusterOf.get(e.parentId) !== clusterOf.get(e.childId));
   const from = new Set(links.map((e) => clusterOf.get(e.parentId)!));
   const into = new Set(links.map((e) => clusterOf.get(e.childId)!));
+  const independentRoots = [...clusters].filter((c) => !into.has(c)).length;
   return {
     pages: pages.length,
     clusters: clusters.size,
     rootsLinked: [...clusters].filter((c) => from.has(c) && !into.has(c)).length,
     clustersUnlinked: [...clusters].filter((c) => !from.has(c) && !into.has(c)).length,
     studiesFound: null,
+    independentRoots,
+    copies: pages.length - independentRoots,
   };
 }
