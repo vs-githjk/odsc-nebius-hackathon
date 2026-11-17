@@ -35,7 +35,7 @@ E3 is never tuned on. The check runs once, at the value already set on E2:
 
 1. Done by XO on Nov 16 at $0 (plain curl, no keys): `python3 -I eval/weak-atoms/fetch.py --set=e3` fetched 80 pages (79 HTML, 1 PDF skipped) into the git-ignored `.cache/weak-atoms-e3/`.
 2. Done by XO: `node --import tsx eval/drift/candidates.ts --set=e3` listed 308 candidate sentences across 21 claims into `e3/candidates.json`, using the claim atoms in `e3/atoms.json`. Those were written by hand from the claim texts: 22 of the 40 claims, leaving out quotes with no statistic and claims whose number is a word ("one million", "every seven seconds").
-3. To do: Anoop labels `e3/candidates.json` by hand into `e3/labels.json`, with the same rules as E2, before any E3 embedding is run.
+3. Done: `e3/labels.json` labels all 308 sentences, 24 true from 6 claims, checked by Anoop before any E3 embedding. It uses the same rules as E2, plus one for claims that pin a date. The true and borderline calls are in `e3/REVIEW.md`.
 4. To do, XO, live: `node --env-file=.env --import tsx eval/drift/measure.ts --set=e3` prints precision and recall at 0.75 only. It looks at no other cutoff and picks nothing. **Expected spend:** the claim texts plus the 308 sentences, about 330 short texts in batches of 32, so about 11 embedding requests. That is well under the $0.002 ceiling; the E2 run's 9 requests cost $0.00008.
 
 The E3 numbers go here, whatever they are.
