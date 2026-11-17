@@ -5,6 +5,7 @@ export type Stop = {
   spanId: string;
   text: string;
   date: string | null;
+  precision?: "day" | "month" | "year";
   url: string;
   tier: "exact" | "normalised";
   inferred: boolean;
@@ -45,7 +46,7 @@ function stopFor(trace: Trace, node: Node, spanId: string, edge: Edge | null): S
   const span = trace.spans.find((s) => s.id === spanId)!;
   const hop = edge && trace.hops.find((h) => h.edgeId === edge.id);
   return {
-    edgeId: edge?.id ?? null, spanId, text: span.text, date: node.date.value, url: node.url, tier: span.tier,
+    edgeId: edge?.id ?? null, spanId, text: span.text, date: node.date.value, ...(node.date.precision ? { precision: node.date.precision } : {}), url: node.url, tier: span.tier,
     inferred: edge?.kind === "inferred", unsure: Boolean(hop?.readouts.some((r) => r.value === "unsure")),
   };
 }

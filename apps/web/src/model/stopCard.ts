@@ -42,7 +42,8 @@ const TONES: Record<Trace["decision"]["state"], "found" | "cold" | "caution"> = 
 const rules = rulesJson as unknown as Rules;
 
 const monthYear = new Intl.DateTimeFormat("en-US", { month: "long", year: "numeric", timeZone: "UTC" });
-export const month = (iso: string) => monthYear.format(new Date(iso));
+// A year-only registry date reads "2020", never a month it does not know.
+export const month = (iso: string, precision?: "day" | "month" | "year") => (precision === "year" ? iso.slice(0, 4) : monthYear.format(new Date(iso)));
 const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`;
 
 export type StopCard = {
@@ -77,7 +78,7 @@ export function stopCard(trace: Trace): StopCard {
   if (trace.decision.state === "ORIGIN_FOUND") {
     // The page row 5 picked and the span on it that states the claim, never just the first earliest page (XO on #180).
     const pick = originPick(trace, rules);
-    if (pick) origin = { domain: pick.node.domain, when: pick.node.date.value ? month(pick.node.date.value) : "Undated", quote: pick.span.text, url: pick.node.url };
+    if (pick) origin = { domain: pick.node.domain, when: pick.node.date.value ? month(pick.node.date.value, pick.node.date.precision) : "Undated", quote: pick.span.text, url: pick.node.url };
   }
 
   return {

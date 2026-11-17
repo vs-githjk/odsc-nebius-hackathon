@@ -221,7 +221,7 @@ export function buildPipeline(parts: PipelineParts): { pipeline: Pipeline; wayba
       const work = async () => {
         for (let node = queue.shift(); node; node = queue.shift()) {
           const found = await evidence(node.url);
-          if (found) pages.push({ url: node.url, text: "", metadata: found.date, metadataSource: found.source === "metadata" ? undefined : found.source });
+          if (found) pages.push({ url: node.url, text: "", metadata: found.date, metadataSource: found.source === "metadata" ? undefined : found.source, metadataPrecision: found.precision === "day" ? undefined : found.precision });
         }
       };
       await Promise.all([work(), work()]);
