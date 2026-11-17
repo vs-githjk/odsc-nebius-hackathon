@@ -610,7 +610,9 @@
     "clusters": 3,
     "rootsLinked": 1,
     "clustersUnlinked": 0,
-    "studiesFound": null
+    "studiesFound": null,
+    "independentRoots": 1,
+    "copies": 2
   },
   "redHopEdgeId": null,
   "earliest": {
