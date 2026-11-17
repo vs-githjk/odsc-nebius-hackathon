@@ -25,7 +25,7 @@ export const Span = z.object({
 export type Span = z.infer<typeof Span>;
 export const DateInfo = z.object({
   kind: z.enum(["published", "existed_by", "unconfirmed"]), value: z.string().nullable(),
-  source: z.enum(["metadata", "byline", "wayback_first_capture", "tavily"]), firstCapture: z.string().nullable(), conflictingDate: z.boolean(),
+  source: z.enum(["metadata", "byline", "wayback_first_capture", "tavily", "registry_pubmed", "registry_pmc", "registry_crossref"]), firstCapture: z.string().nullable(), conflictingDate: z.boolean(),
 }).strict();
 export type DateInfo = z.infer<typeof DateInfo>;
 export const Node = z.object({

@@ -23,7 +23,35 @@ After the mutation, the runner stores the decision the rules give, as a pipeline
 
 Each case also lists the `pz verify` checks its planted problem must fire (`expect.verify`, empty when none should); the runner fails on any difference.
 
-Cases built from real spike data (kind `pipeline`) come later in T30.
+## Pipeline cases (T30)
+
+`traps/pipeline/` holds 31 cases that run the real pipeline, not just the decision table. Each case does three things:
+- It rebuilds a small web from a committed spike trace. Each page is its span with the context saved around it, at its recorded date and first capture.
+- It plants one of eight mutations: the plan's seven, plus a negation in wording that is in no rules.json list.
+- It runs Tavily search and extract, Wayback dating, verbatim spans and the walk with no network, then the decision table.
+
+The typed answers come from a stub that calls the planted page (the source's earliest page) a study and says "same claim" with 0.97 confidence everywhere. Only code can stop a planted origin. A test checks that without its mutation each source ends ORIGIN_FOUND on the planted page, so the case is something code has to catch. Since #110 the dry run no longer does (see below), and `pz traps` runs each source once unmutated to find this out. It prints:
+
+`pipeline: wrong origins 3 of 12 cases that could end on one; 3 are the known gap (paraphrased negation, docs/limits.md), and the other 9 give 0 (95% upper bound 28.3%). 4 more test nothing, because their source ends without an origin before any mutation (dry-run: TRAIL_GOES_COLD, 1 unread candidate parent(s)). Failure paths end as expected in 12 of 12; planted dates are capped in 3 of 3.`
+
+Only 16 cases can end on a wrong origin at all. The failure-path cases read no page or stop before any origin rule, and the dating cases check the date cap, so each group gets its own count.
+
+**The dry run tests nothing for those 4.** Since #110 (ranked citation following), the dry run's 1975 PubMed page has a DOI link beside its sentence, which counts as a cited parent. The replay has no copy of that page, so it stays unread, and an unread parent blocks any origin. The source ends `TRAIL_GOES_COLD` before anything is planted, so its nudge, negate, unread-parent and paraphrase cases pass without testing their trap. They are left out of the wrong-origin count, never counted as caught, and come back into it once that source ends on its origin again. That leaves 12 cases, 3 per mutation, on claims 2, 3 and 5.
+
+| Mutation | What it plants | Expected |
+|---|---|---|
+| nudge-number | The planted page's sentence gives the claim's number plus one | the page is dropped; `TRAIL_GOES_COLD` |
+| negate | The sentence follows "It is a myth that" | the span is rejected; `TRAIL_GOES_COLD` |
+| negate-paraphrase | The sentence follows "Researchers checked this, and it is simply untrue that" | **known gap:** ends `ORIGIN_FOUND` on claims 2, 3 and 5 (the dry run tests nothing here, see above). Code's negation check matches its listed words only, so only the typed same_claim answer can stop this, and the stub says yes. The cases fail the run once the gap closes. |
+| unread-parent | A link beside the sentence to an earlier page that cannot be read | an unread parent blocks an origin; `TRAIL_GOES_COLD` |
+| cap-hit | A credit cap of 1 | `PARTIAL` |
+| tool-failure | Tavily search answers 503 | `TOOL_FAILED` |
+| empty-results | Every search comes back empty | `NO_PAGES_FOUND` |
+| late-metadata-date | Metadata date a year after the first capture | the date is capped to the capture and flagged. On claim 3 the planted page is still the earliest by its capture, so it ends `ORIGIN_FOUND` with an `existed_by` date, the same as with no mutation. |
+
+Each mutation runs on four sources (spike claims 2, 3 and 5 and the dry run), the four whose planted page ended ORIGIN_FOUND without a mutation when the cases were written. That makes 32 cases, less one. The dry run's late-metadata-date case was left out, because there the planted page is never read: the per-round page cap reaches the source's other pages first, so the case would not test dating.
+
+These cases rebuild pages from the spans the spike saved, not the full pages, so they test how the pipeline stops, not how it searches. Nothing is tuned on the spike claims. `traps/pipeline.lock` holds the sha256 of each case, and `pz traps --relock` updates it.
 
 `traps.lock` holds the sha256 of every case file. If a case changes, `pz traps` fails until someone reviews it and runs `pz traps --relock`.
 

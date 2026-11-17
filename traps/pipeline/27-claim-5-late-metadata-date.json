@@ -1,0 +1,16 @@
+{
+  "id": "claim-5-late-metadata-date",
+  "kind": "pipeline",
+  "note": "The earliest page's metadata date is a year after its first capture.",
+  "source": "spike/traces/claim-5.json",
+  "mutation": "late-metadata-date",
+  "expect": {
+    "dateCapped": true,
+    "falseCertainty": [
+      0,
+      0,
+      0,
+      0
+    ]
+  }
+}

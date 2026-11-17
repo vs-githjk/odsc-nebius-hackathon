@@ -2,7 +2,7 @@ import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { isDeepStrictEqual } from "node:util";
 import { decideStopState, isNegated, loadRules, normalise, type Rules } from "../rules/index.ts";
-import { atomHit } from "../rules/numbers.ts";
+import { claimHit } from "../rules/claim-hit.ts";
 import type { Trace } from "../schema/index.ts";
 import { otherNumberCandidate } from "../engine/similar.ts";
 import { computeRoots } from "../engine/cluster.ts";
@@ -29,8 +29,8 @@ export function verifyTrace(trace: Trace, opts: { pagesDir?: string; rules?: Rul
     const before = failures.length;
     if (sha256(s.contextBefore + s.text + s.contextAfter) !== s.windowSha256) fail("window_hash", `span ${s.id}: window hash differs`);
     if (s.end - s.start !== s.text.length) fail("offsets", `span ${s.id}: ${s.start}..${s.end} does not fit ${s.text.length} characters`);
-    // Spans that back an edge must carry the claim's number; other spans must at least name the subject.
-    const atomsOk = onEdge.has(s.id) ? atomHit(s.text, trace.claim.atoms, rules.weakNumberMinSigDigits, rules.weakNumberMaxCommas) : normalise(s.text).toLowerCase().includes(lemma);
+    // Spans that back an edge must carry the claim (its number, or its phrase for a claim with none); other spans must at least name the subject.
+    const atomsOk = onEdge.has(s.id) ? claimHit(s.text, trace.claim.atoms, rules) : normalise(s.text).toLowerCase().includes(lemma);
     if (!atomsOk && !opts.historical) fail("atoms", `span ${s.id}: claim atoms not found under the number rules`);
     // Meta pages deny the claim on purpose; anywhere else a negated span cannot back the trace.
     if (!meta.has(s.nodeId) && isNegated(s, rules.negationPrefixes)) fail("negated", `span ${s.id}: preceded by a negation`);
