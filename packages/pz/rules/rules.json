@@ -51,6 +51,7 @@
   ],
   "factCheckDomains": ["snopes.com", "politifact.com", "factcheck.org", "fullfact.org", "leadstories.com", "checkyourfact.com", "africacheck.org", "truthorfiction.com", "quoteinvestigator.com"],
   "clusterSimilarityThreshold": 0.9,
+  "metaMaps": true,
   "printCues": [
     "\\bisbn\\b",
     "\\bpp?\\.\\s*\\d",
@@ -92,6 +93,7 @@
     "relative to"
   ],
   "notes": {
+    "metaMaps": "T49: one extra search per trace limited to factCheckDomains; up to two fact-check pages are read as meta nodes (never origins) and the pages they cite are read first. A page reached that way records foundViaMeta and still needs its own verbatim span. false turns it off.",
     "printCues": "T37: case-insensitive patterns that show the earliest page credits print (an ISBN, page or volume numbers, a journal, a book, a dated study). A typed boundary of print counts only if one matches the sentence or the text around it.",
     "editableDomains": "T37: pages anyone can edit. A typed boundary of unsourced counts only on one of these domains, and only when the page cites nothing beside the sentence.",
     "secondSameClaimModel": "T79: a second Token Factory model family that answers same_claim beside Qwen; an origin then needs its yes too, and any other answer, or none, counts as unsure. null is off. It is switched on (deepseek-ai/DeepSeek-V4-Pro-0813) only if eval/same-claim/second-model.ts shows fewer false hits on E2 without losing true ones.",

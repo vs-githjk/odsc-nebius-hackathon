@@ -1,7 +1,8 @@
 .PHONY: verify replay live dev-score judge doctor
 
 # Re-checks everything with no API keys: typecheck, tests, every committed trace, the trap set,
-# the copy lint, the number lint, the leakage test and the claims table.
+# the copy lint, the number lint (every number in README.md and llms.txt backed by a linked file), the leakage test
+# and the claims table.
 verify:
 	@start=$$(date +%s); \
 	npm run -s typecheck && \

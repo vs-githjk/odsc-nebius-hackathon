@@ -1,12 +1,13 @@
 # Patient Zero
 
-> Patient Zero is a research agent for reporters and fact-checkers, built by team Says Who for the ODSC x Nebius Hackathon 2026. Given a number, a quote or an AI answer, it will walk each claim backwards through time to the earliest source it can find, using Tavily for search and Nebius Token Factory for typed answers. Every edge in a trace rests on two verbatim spans, and code, not the model, decides which of six stop states a trace ends in. Today the repo holds the schema, the number rules, the stop-state table, the `pz verify` re-check, a planted trap set and `make verify`; live and replay traces are planned.
+> Patient Zero is a research agent for reporters and fact-checkers, built by team Says Who for the ODSC x Nebius Hackathon 2026. Given a number, a quote or an AI answer, it will walk each claim backwards through time to the earliest source it can find, using Tavily for search and Nebius Token Factory for typed answers. Every edge in a trace rests on two verbatim spans, and code, not the model, decides which of six stop states a trace ends in. Today the engine stages, the Token Factory and Tavily clients, the stop-state table, the `pz verify` re-check, a planted trap set and keyless replay are built and tested without network calls; the pipeline that runs them live is being built, and the first live dev run is Tue Nov 17.
 
 ## Start here
 
-- [README: run it](README.md#run-it)
-- [README: for judges](README.md#for-judges)
-- [README: what is real](README.md#what-is-real)
+- [README: try it](README.md#try-it-in-two-minutes-no-api-keys)
+- [README: where it stands](README.md#where-it-stands)
+- [README: how it works](README.md#how-it-works)
+- [README: evaluation](README.md#evaluation)
 - [README: for agents reading this repo](README.md#for-agents-reading-this-repo)
 
 ## Plan
