@@ -168,7 +168,10 @@
                   "metadata",
                   "byline",
                   "wayback_first_capture",
-                  "tavily"
+                  "tavily",
+                  "registry_pubmed",
+                  "registry_pmc",
+                  "registry_crossref"
                 ]
               },
               "firstCapture": {

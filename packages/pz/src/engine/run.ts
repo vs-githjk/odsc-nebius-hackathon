@@ -9,9 +9,9 @@ import { verifyTrace } from "../verify/checks.ts";
 
 export const STAGES = ["intake", "fingerprint", "walk", "spans", "dating", "clusters", "readouts", "card"] as const;
 export type Stage = typeof STAGES[number];
-export type PageInput = { url: string; text: string; metadata?: string | null; byline?: string | null };
+export type PageInput = { url: string; text: string; metadata?: string | null; byline?: string | null; metadataSource?: DateEvidence["metadataSource"] };
 export type Context = Readonly<{ input: string; pages: readonly Readonly<{
-  url: string; quotedText: string; metadata?: string | null; byline?: string | null;
+  url: string; quotedText: string; metadata?: string | null; byline?: string | null; metadataSource?: DateEvidence["metadataSource"];
 }>[] }>;
 export type Wayback = Pick<ReturnType<typeof createWayback>, "firstCapture">;
 type Step = (trace: Trace, context: Context) => Trace | Promise<Trace>;
@@ -36,7 +36,7 @@ export function datingStep(wayback: Wayback): Step {
     const nodes = [], usage = [...trace.usage];
     for (const node of trace.nodes) {
       const page = context.pages.find(page => page.url === node.url);
-      const evidence: DateEvidence = { metadata: page?.metadata, byline: page?.byline };
+      const evidence: DateEvidence = { metadata: page?.metadata, byline: page?.byline, metadataSource: page?.metadataSource };
       const dated = await dateNode(node, evidence, wayback);
       nodes.push(dated.node); usage.push(dated.usage);
     }
@@ -67,6 +67,7 @@ export async function runTrace(input: string, pipeline: Pipeline, opts: {
         url: page.url, quotedText: JSON.stringify(page.text),
         metadata: page.metadata === undefined ? previous?.metadata : page.metadata,
         byline: page.byline === undefined ? previous?.byline : page.byline,
+        metadataSource: page.metadataSource === undefined ? previous?.metadataSource : page.metadataSource,
       }));
     }
   };

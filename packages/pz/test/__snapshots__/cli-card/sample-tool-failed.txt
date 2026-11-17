@@ -12,7 +12,7 @@ Ending   A tool failed
          failure.
 
 Earliest Harbor Zoo annual report 2019
-         harborzoo.example, report, published 2019-12-15 (page metadata)
+         harborzoo.example, report, page says published 2019-12-15
          "Daylight observations found that our adult penguins nap about 14
          times a day."
          https://harborzoo.example/annual-report-2019

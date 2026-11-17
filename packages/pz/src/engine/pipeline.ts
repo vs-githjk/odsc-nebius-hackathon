@@ -220,8 +220,8 @@ export function buildPipeline(parts: PipelineParts): { pipeline: Pipeline; wayba
         for (let node = queue.shift(); node; node = queue.shift()) {
           let saved = "";
           try { saved = readFileSync(join(pagesDir, walked.id, `${node.id}.txt`), "utf8"); } catch { /* no saved page */ }
-          const metadata = await evidence(node.url, saved);
-          if (metadata) pages.push({ url: node.url, text: "", metadata });
+          const found = await evidence(node.url, saved);
+          if (found) pages.push({ url: node.url, text: "", metadata: found.date, metadataSource: found.source === "metadata" ? undefined : found.source });
         }
       };
       await Promise.all([work(), work()]);

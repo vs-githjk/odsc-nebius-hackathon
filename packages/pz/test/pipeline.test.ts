@@ -6,6 +6,7 @@ import { describe, expect, it } from "vitest";
 import { initializeBudget, openBudget } from "../../../eval/recordings/budget.ts";
 import { traceTransports } from "../../../eval/recordings/trace-transports.ts";
 import { createPipeline } from "../src/engine/pipeline.ts";
+import { dateWords } from "../src/card/terminal.ts";
 import { traceCommand } from "../src/cli/trace.ts";
 import { buildPipeline, closeTrail } from "../src/engine/pipeline.ts";
 import { PHRASE_PROMPT } from "../src/engine/phrase.ts";
@@ -333,7 +334,8 @@ describe("scholarly registry evidence (#79)", () => {
     const saved = join(t.dir, "pubmed.json");
     expect(await t.go(["--out", saved, ...t.args])).toBe(0);
     const trace = Trace.parse(JSON.parse(readFileSync(saved, "utf8")));
-    expect(trace.nodes[0]!.date).toMatchObject({ kind: "published", value: "2004-01-20", source: "metadata", firstCapture: "2020-06-24" });
+    expect(trace.nodes[0]!.date).toMatchObject({ kind: "published", value: "2004-01-20", source: "registry_pubmed", firstCapture: "2020-06-24" });
+    expect(dateWords(trace.nodes[0]!)).toBe("published 2004-01-20 (PubMed)");
     expect(trace.usage.filter((row) => row.service === "ncbi")).toEqual([expect.objectContaining({ endpoint: "esummary", step: "dating", credits: 0, costUsd: 0 })]);
     const never = (() => { throw new Error("network used on replay"); }) as typeof fetch;
     const out: string[] = [];

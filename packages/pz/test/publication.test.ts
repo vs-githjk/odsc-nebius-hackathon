@@ -67,7 +67,8 @@ describe("page fetching is public-only, logged and challenge-aware", () => {
     }) as typeof fetch;
     const usage = createUsageLog({ path: "/dev/null" });
     usage.append = (row) => { usage.rows.push(row); };
-    return { urls, usage, evidence: createEvidence({ fetch: inner, cache: cache(), usage, traceId: "t", resolve }) };
+    const found = createEvidence({ fetch: inner, cache: cache(), usage, traceId: "t", resolve });
+    return { urls, usage, found, evidence: async (...args: Parameters<typeof found>) => (await found(...args))?.date ?? null };
   }
   const json = (body: unknown) => () => new Response(JSON.stringify(body), { headers: { "content-type": "application/json" } });
   const page = (body: string) => () => new Response(body, { headers: { "content-type": "text/html" } });
@@ -79,6 +80,17 @@ describe("page fetching is public-only, logged and challenge-aware", () => {
     expect(t.urls).toEqual([esummary("pubmed", "14715035")]);
     expect(t.usage.rows).toHaveLength(1);
     expect(t.usage.rows[0]).toMatchObject({ service: "ncbi", endpoint: "esummary", step: "dating", credits: 0, costUsd: 0, cacheHit: false, status: "200" });
+  });
+
+  it("says which kind of evidence each date is: PubMed, PubMed Central, Crossref, or the page's own tags", async () => {
+    const pubmed = setup({ [esummary("pubmed", "7")]: json({ result: { "7": { pubdate: "2004 Jan 20" } } }) });
+    expect(await pubmed.found("https://pubmed.ncbi.nlm.nih.gov/7/")).toEqual({ date: "2004-01-20", source: "registry_pubmed" });
+    const pmc = setup({ [esummary("pmc", "8")]: json({ result: { "8": { pubdate: "2010 Mar 5" } } }) });
+    expect(await pmc.found("https://pmc.ncbi.nlm.nih.gov/articles/PMC8/")).toEqual({ date: "2010-03-05", source: "registry_pmc" });
+    const cr = setup({ "https://api.crossref.org/works/10.1%2Fz": json({ message: { issued: { "date-parts": [[2012, 4, 2]] } } }) });
+    expect(await cr.found("https://doi.org/10.1/z")).toEqual({ date: "2012-04-02", source: "registry_crossref" });
+    const own = setup({ "https://n.example/a": page(html('<meta name="citation_date" content="2008/02/03">')) });
+    expect(await own.found("https://n.example/a")).toEqual({ date: "2008-02-03", source: "metadata" });
   });
 
   it("dates a PMC page from esummary db=pmc, or from PubMed when the page names its PMID", async () => {
@@ -216,12 +228,12 @@ describe("the evidence pass has a time budget", () => {
     usage.append = (row) => { usage.rows.push(row); };
     const evidence = createEvidence({ fetch: inner, cache: { get: () => null, set: () => {} }, usage, traceId: "t", resolve: async () => ["93.184.216.34"], budgetMs: 700 });
     const started = Date.now();
-    const dates: (string | null)[] = [];
-    for (let i = 0; i < 40; i++) dates.push(await evidence(`https://p${i}.example/x`));
+    const dates: (string | undefined)[] = [];
+    for (let i = 0; i < 40; i++) dates.push((await evidence(`https://p${i}.example/x`))?.date);
     expect(Date.now() - started).toBeLessThan(1500);
     expect(calls).toBeGreaterThan(0);
     expect(calls).toBeLessThan(40);
-    expect(dates.slice(-1)[0]).toBeNull();
+    expect(dates.slice(-1)[0]).toBeUndefined();
     expect(dates[0]).toBe("2004-06-15");
   });
 });

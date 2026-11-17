@@ -201,6 +201,7 @@ export function crossrefDate(json: unknown): string | null {
 
 // `budgetMs` caps the time all lookups of one dating pass may take together: once it is spent, no new request starts and
 // each request's timeout is cut to what is left, so a slow pass cannot eat the time dating and page_type still need.
+export type Evidence = { date: string; source: "metadata" | "registry_pubmed" | "registry_pmc" | "registry_crossref" };
 export type EvidenceDeps = { fetch: typeof fetch; cache: Cache; usage: UsageLog; traceId: string; resolve?: Resolver; budgetMs?: number };
 
 // Where a page's own publication date can be found, in this order, stopping at the first date:
@@ -240,26 +241,27 @@ export function createEvidence(deps: EvidenceDeps) {
     return body;
   }, pageFetch);
 
-  return async function publicationFor(url: string, savedText = ""): Promise<string | null> {
+  return async function publicationFor(url: string, savedText = ""): Promise<Evidence | null> {
     let u: URL;
     try { u = new URL(url); } catch { return null; }
     const host = u.hostname.toLowerCase();
     const pubmed = host === "pubmed.ncbi.nlm.nih.gov" ? /^\/(?:\w+\/)?(\d+)/.exec(u.pathname)?.[1] : undefined;
     const pmc = /(?:^|\.)ncbi\.nlm\.nih\.gov$/.test(host) ? /\/(?:pmc\/)?articles\/PMC(\d+)/i.exec(u.pathname)?.[1] : undefined;
     const doi = /(?:^|\.)doi\.org$/.test(host) ? /^\/(10\.\d{4,9}\/.+)$/.exec(decodeURIComponent(u.pathname))?.[1] : undefined;
-    let found: string | null = null;
-    if (pubmed) found = await ncbi("pubmed", pubmed);
+    const registry = (date: string | null, source: Evidence["source"]): Evidence | null => (date ? { date, source } : null);
+    let found: Evidence | null = null;
+    if (pubmed) found = registry(await ncbi("pubmed", pubmed), "registry_pubmed");
     else if (pmc) {
       const pmid = /\bPMID:?\s*(\d{1,9})\b/.exec(savedText)?.[1];
-      found = pmid ? await ncbi("pubmed", pmid) : await ncbi("pmc", pmc);
-    } else if (doi) found = await crossref(doi);
+      found = pmid ? registry(await ncbi("pubmed", pmid), "registry_pubmed") : registry(await ncbi("pmc", pmc), "registry_pmc");
+    } else if (doi) found = registry(await crossref(doi), "registry_crossref");
     if (found) return found;
     const page = await html(url);
     if (!page) return null;
     const own = publicationDate(page);
-    if (own) return own;
+    if (own) return { date: own, source: "metadata" };
     const cited = /<meta\b[^>]*name\s*=\s*["']citation_doi["'][^>]*content\s*=\s*["'](10\.[^"']+)["']/i.exec(page)?.[1]
       ?? /<meta\b[^>]*content\s*=\s*["'](10\.[^"']+)["'][^>]*name\s*=\s*["']citation_doi["']/i.exec(page)?.[1];
-    return cited ? crossref(cited) : null;
+    return cited ? registry(await crossref(cited), "registry_crossref") : null;
   };
 }
