@@ -1,4 +1,4 @@
-import { existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, symlinkSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { execFileSync } from "node:child_process";
 import { join } from "node:path";
@@ -51,6 +51,20 @@ describe("T93 rematch", () => {
     expect(insideGit(`${spaced}/eval/rematch/key.json`, spaced)).toBe(true);
     expect(insideGit(`${spaced}/.cache/key.json`, spaced)).toBe(false);
     expect(insideGit("/elsewhere/key.json", spaced)).toBe(false);
+  });
+
+  it("the key guard sees through letter case and symlinks", () => {
+    expect(insideGit(join(REPO.toUpperCase(), "eval", "k.json"))).toBe(true);
+    // The exemption is for the ignored .cache folder only. With no folder of that name, .CACHE is refused (on a
+    // case-sensitive disk git would not ignore it); where .cache exists, any spelling of it resolves to it.
+    const repo = mkdtempSync(join(tmpdir(), "pz-case-"));
+    expect(insideGit(join(repo, ".CACHE", "k.json"), repo)).toBe(true);
+    mkdirSync(join(repo, ".cache"));
+    expect(insideGit(join(repo, ".cache", "k.json"), repo)).toBe(false);
+    const link = join(mkdtempSync(join(tmpdir(), "pz-link-")), "repo-link");
+    symlinkSync(REPO, link);
+    expect(insideGit(join(link, "eval", "k.json"))).toBe(true);
+    expect(insideGit(join(link, ".cache", "k.json"))).toBe(false);
   });
 
   it("keeps the key and the raw transcripts out of git", () => {

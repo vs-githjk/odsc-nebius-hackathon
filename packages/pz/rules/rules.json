@@ -64,7 +64,7 @@
   ],
   "editableDomains": ["wikipedia.org", "wikiquote.org", "wikia.com", "fandom.com", "wikihow.com", "everybodywiki.com"],
   "secondSameClaimModel": null,
-  "otherNumberSimilarity": 0.8,
+  "otherNumberSimilarity": 0.75,
   "hedgeWords": [
     "about",
     "around",
@@ -99,7 +99,7 @@
     "secondSameClaimModel": "T79: a second Token Factory model family that answers same_claim beside Qwen; an origin then needs its yes too, and any other answer, or none, counts as unsure. null is off. It is switched on (deepseek-ai/DeepSeek-V4-Pro-0813) only if eval/same-claim/second-model.ts shows fewer false hits on E2 without losing true ones.",
     "injectionPatterns": "T50: instruction-like text in a page, case-insensitive regular expressions. A page with one anywhere on it (the walker quotes it on the node) or in or around its span cannot be an origin, whatever the typed answers say. Written from the adversarial trap set, never from dev, spike or held-out pages.",
     "clusterSimilarityThreshold": "Placeholder. Set on the E2 dev set (#34) before the held-out run; Rohan never edits it.",
-    "otherNumberSimilarity": "T97: cosine between the claim and a page sentence, on Qwen3-Embedding-8B vectors, at or above which a sentence that names the claim's subject with a different number is listed as the same claim with another number. Placeholder until eval/drift/measure.ts runs on the 107 labelled E2 sentences (live, on Vidyut's machine); E3 is checked, never tuned on.",
+    "otherNumberSimilarity": "T97: cosine between the claim and a page sentence, on Qwen3-Embedding-8B vectors, at or above which a sentence that names the claim's subject with a different number is listed as the same claim with another number. Set to 0.75 from eval/drift/measure.ts on the 107 labelled E2 sentences (XO's live run, Nov 16): best F1 there, precision 0.82 and recall 0.64, against 0.71 and 0.36 at the old 0.8 placeholder. E3 is checked at this value with measure.ts --set=e3, never tuned on.",
     "hedgeWords": "Placeholder list for the hedge_dropped readout (T27). Check on the E2 dev set before the held-out run.",
     "maxQueriesPerHop": "Placeholder cap on planned search queries per hop (T35). Set on the E2 dev set within the credit cap; never on spike or held-out claims.",
     "comparisonWords": "Placeholder list for the comparison_added readout (T27). Check on the E2 dev set before the held-out run."
