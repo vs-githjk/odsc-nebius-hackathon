@@ -82,6 +82,19 @@ describe("T49 meta pages as maps", () => {
     expect(verifyTrace({ ...decided, decision: decideStopState(decided, rules) }).failures).toEqual([]);
   });
 
+  it("a fact-check page's citations have their own queue and are read before any scored citation", async () => {
+    // The blog cites a page of its own, beside its span; the dataset reached through the map must still be read first.
+    const citing = { ...blog, text: "Wow: penguins nap 14 times a day! [Our earlier post](https://blog2.example/naps) has more." };
+    const other: Page = { url: "https://blog2.example/naps", date: "2020-01-01", text: "Penguins nap 14 times a day, say fans.", searchable: false };
+    const { calls } = await walk([citing, check, dataset, other]);
+    const extracts = calls.filter((c) => c.endpoint === "extract").map((c) => c.body.urls as string[]);
+    const first = extracts.findIndex((u) => u.includes("https://zoo.example/dataset"));
+    const blogRead = extracts.findIndex((u) => u.includes("https://blog2.example/naps"));
+    expect(first).toBeGreaterThanOrEqual(0);
+    expect(extracts[first]![0]).toBe("https://zoo.example/dataset");
+    if (blogRead >= 0) expect(blogRead).toBeGreaterThanOrEqual(first);
+  });
+
   it("without the map, the dataset is never found", async () => {
     const { trace } = await walk([blog, check, dataset], { ...rules, metaMaps: false });
     expect(trace.nodes.map((n) => n.url)).not.toContain("https://zoo.example/dataset");

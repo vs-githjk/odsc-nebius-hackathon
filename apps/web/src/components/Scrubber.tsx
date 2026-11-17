@@ -57,11 +57,12 @@ type Props = {
   stops: Stop[];
   position: number;
   reducedMotion: boolean;
+  red: number; // the stop where the wording changed, or -1
   onMove(position: number): void;
   onSettle(index: number): void;
 };
 
-export function Scrubber({ trace, stops, position, reducedMotion, onMove, onSettle }: Props) {
+export function Scrubber({ trace, stops, position, reducedMotion, red, onMove, onSettle }: Props) {
   const track = useRef<HTMLDivElement>(null);
   const dragging = useRef(false);
   const xs = stopXs(trace, stops);
@@ -99,7 +100,7 @@ export function Scrubber({ trace, stops, position, reducedMotion, onMove, onSett
   const current = stops[index];
   const handleX = xAt(xs, position);
   return (
-    <div className="scrub">
+    <div className={red >= 0 ? "scrub has-red" : "scrub"}>
       <div className="track" ref={track} onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={up}>
         <div className="track-rest" />
         <div className="track-fill" style={{ ["--x" as string]: handleX }} />
@@ -113,8 +114,16 @@ export function Scrubber({ trace, stops, position, reducedMotion, onMove, onSett
             />
           ) : null,
         )}
+        {red >= 0 && red + 1 < stops.length && (
+          <span className="track-red" style={{ left: `${xs[red + 1]! * 100}%`, width: `${(xs[red]! - xs[red + 1]!) * 100}%` }} />
+        )}
+        {red >= 0 && (
+          <span className={`red-label ${xs[red]! < 0.15 ? "start" : xs[red]! > 0.85 ? "end" : "middle"}`} style={{ left: `${xs[red]! * 100}%` }}>
+            Wording changed here
+          </span>
+        )}
         {stops.map((s, i) => (
-          <span key={s.spanId} className={`stop${i === index ? " lit" : ""}`} style={{ left: `${xs[i]! * 100}%` }} />
+          <span key={s.spanId} className={`stop${i === index ? " lit" : ""}${i === red ? " red" : ""}`} style={{ left: `${xs[i]! * 100}%` }} />
         ))}
         <div
           className="handle"

@@ -22,7 +22,10 @@ describe("TraceView", () => {
       } else {
         expect(html).toContain("No page with the claim");
       }
-      expect(html).toContain(`row ${trace.decision.row}`);
+      // Every trace ends on its stop card, with the deciding rule marked in the rule sheet (T85).
+      expect(html).toContain("How this was decided");
+      expect(html).toMatch(new RegExp(`aria-current="true"><span class="rule-row">Rule ${trace.decision.row}</span>`));
+      expect(html).not.toContain("foot-note");
       expect(html).toContain("SAMPLE");
     }
   });
@@ -32,5 +35,26 @@ describe("TraceView", () => {
     const html = renderToStaticMarkup(<TraceView trace={rich} />);
     expect(html).toContain("link-verified");
     expect(html).toContain("inferred, no link");
+  });
+
+  it("marks the red hop in coral on the track and in the band, and shows the open stop's readout chips", () => {
+    const rich = traces.find((t) => t.id === "sample-rich")!;
+    const html = renderToStaticMarkup(<TraceView trace={rich} />);
+    expect(html).toContain("Wording changed here");
+    expect(html).toContain('class="track-red"');
+    expect(html).toMatch(/class="stop red"/);
+    expect(html).toContain("band-link inferred red");
+    expect(html).toContain('<span class="readout-label">Attribution shifted</span><span class="readout-tag">inferred, 74%</span>');
+    const plain = traces.find((t) => t.id === "sample-origin")!;
+    expect(renderToStaticMarkup(<TraceView trace={plain} />)).not.toContain("Wording changed here");
+  });
+
+  it("draws the band as swarms of copies, one dot per page, with the active cluster named by its site", () => {
+    const rich = traces.find((t) => t.id === "sample-rich")!;
+    const html = renderToStaticMarkup(<TraceView trace={rich} />);
+    const pages = rich.nodes.filter((n) => !n.meta && n.date.value).length;
+    expect(html.match(/class="copy( ring)?"/g)).toHaveLength(pages);
+    expect(html).toContain("chirp.example, 1 page");
+    expect(html).toContain('class="swarm-halo"');
   });
 });

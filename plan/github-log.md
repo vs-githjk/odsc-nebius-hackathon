@@ -63,3 +63,13 @@
 - MIT LICENSE added. Decisions logged: public + MIT, rematch chats Anoop, voiceover Rohan, DeepSeek veto off.
 - New: #179 T99 case study (Anoop). Gallery vs held-out check asked of Rohan on #168.
 - Rohan: no activity since Nov 16 03:22Z; #130 due 18:00 PT, no PR yet.
+
+## Nov 16 22:30 ET pass (Rishit)
+- Reviewed 7 PRs (3 master-reviewer agents). Merged #183 ac69de6, #182 08bdfc0 (main 496 tests).
+- FIX: #108 [M] CRLF/nbsp blank line; #110 [H] TokenFactoryError crashes walk, [M] same CRLF; #184 [H] claimMatch false matches, [M] matched trace not labelled recorded; #180 [M] origin card wrong page, rule 5 wording; #181 [M] measured chips on inferred hop unlabelled.
+- Answered Rishit's fixture question: (b) separate recorded-traces glob. Noted #109 needs --json and budget double-count check (Rohan).
+
+## Nov 16 23:05 ET pass (re-reviews)
+- 5 master-reviewer runs on 13 PRs. Merged: #108 acab513, #110 5639f72, #180 039befc, #171 9a48ce7, #177 a9aa0dd, #181 e5fec09 (XO hand-merged TraceView.test.tsx), #187 2c559f1 (XO: tests used URL.pathname, failed in spaced path).
+- FIX: #184 [H] one-word near-misses still match; #176 needs real re-merge after #110 (followQueue); #185 [M] spend line; #154, #172, #174 docs staleness; #173 PASS held for #172.
+- Main 568 tests, green in the spaced path.

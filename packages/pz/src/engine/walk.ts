@@ -3,19 +3,57 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import type { Budget } from "../clients/budget.ts";
 import { ClientError } from "../clients/errors.ts";
+import { TokenFactoryError } from "../clients/tokenfactory.ts";
 import { createTavily } from "../clients/tavily.ts";
 import { createWayback } from "../clients/wayback.ts";
 import { findSpan } from "../match/verbatim.ts";
 import { clusterNodes, computeRoots, type Embed } from "./cluster.ts";
 import { findOtherNumber } from "./similar.ts";
 import { atomHit, claimHit, decideStopState, findInjection, isRange, normalise, parseNumbers, sameNumber, type Rules } from "../rules/index.ts";
-import type { Atoms, Cluster, DateInfo, Edge, Hop, Node, Readout, Span, Trace } from "../schema/index.ts";
+import type { Atoms, Cluster, DateInfo, Edge, Hop, Node, Readout, Span, Trace, UsageRow } from "../schema/index.ts";
 import type { UsageLog } from "../usage/log.ts";
+import { sameClaim, type SameClaimResult } from "../match/same-claim.ts";
+import { citationsIn, namedSources, REACH } from "./citations.ts";
+import { planQueries, type SeenQuery } from "./queries.ts";
 
 export type SpikeClaim = { id: string; text: string; atoms: Atoms };
 export type LogLine = { at: string; step: string; url?: string; query?: string; kept?: boolean; reason?: string };
 
+// The query planner's shape, T35's planQueries (#104, #129): queries for one hop. `seen` lists every query already sent
+// with the endDate it was planned with, so a repeat is the same pair. The walker owns the window loop and sends the
+// earlier of a query's endDate and its own window end.
+export type PlannedQuery = { query: string; endDate: string | null; why: string };
+export type QueryPlanner = (input: {
+  claim: string;
+  atoms: Atoms;
+  hop: { url: string; date: string | null; span: string } | null;
+  seen: SeenQuery[];
+}) => Promise<{ queries: PlannedQuery[]; rejected: { query: string; reason: string }[]; usage: UsageRow[]; mode: "model" | "code_only" }>;
+
+type ModelClient = Parameters<typeof planQueries>[1]["client"];
+
+// T35's planner bound to a Token Factory client; with a null client it plans code-only queries.
+export const plannerFor = (client: ModelClient, rules: Rules): QueryPlanner => (input) => planQueries(input, { client, rules });
+
+// T36's same_claim question bound to a client, for the walker to ask on each page it reads (XO ruling on #106).
+export const sameClaimFor = (client: ModelClient, rules: Rules) => (input: { claim: string; sentence: string; atoms: Atoms }) =>
+  sameClaim(input, { client, rules });
+
+// The code-only planner: the claim's variant phrases with its subject, as before T35. It ignores `seen` on purpose,
+// because each window repeats these queries with an earlier end date.
+export const codePlanner: QueryPlanner = async ({ atoms }) => ({
+  queries: queriesFor(atoms).map((query) => ({ query, endDate: null, why: "variant" })),
+  rejected: [],
+  usage: [],
+  mode: "code_only",
+});
+
 export type WalkDeps = {
+  // T35's planner (plannerFor); the code-only planner when absent.
+  planQueries?: QueryPlanner;
+  // T36's same_claim question (sameClaimFor); its typed answer is stored on each page read. Absent means not asked,
+  // which decide treats as unsure, so no page can become the origin.
+  askSameClaim?: (input: { claim: string; sentence: string; atoms: Atoms }) => Promise<SameClaimResult>;
   tavily: ReturnType<typeof createTavily>;
   wayback: ReturnType<typeof createWayback>;
   usage: UsageLog;
@@ -34,9 +72,9 @@ export type WalkDeps = {
 };
 
 const CONTEXT_CHARS = 200;
-const LINK_REACH_CHARS = 150;
 const LINKS_PER_SPAN = 3;
-const LINKS_PER_ROUND = 2;
+const LINKS_PER_ROUND = 3;
+const SOURCE_QUERIES_PER_WINDOW = 2;
 // T49: fact-check pages read as maps per trace, and the citations taken from each.
 const META_PAGES = 2;
 const META_LINKS = 4;
@@ -45,7 +83,8 @@ const MAX_SENTENCE_CHARS = 600;
 const SCOPE_NOTE = "Web pages only; print and paywalled origins are out of scope. Earliest source we found, not proof of first use.";
 
 const sha256 = (text: string) => createHash("sha256").update(text).digest("hex");
-const canonUrl = (url: string) => url.replace(/#.*$/, "").replace(/\/$/, "");
+// One spelling per page: no fragment, no trailing slash.
+export const canonUrl = (url: string) => url.replace(/#.*$/, "").replace(/\/$/, "");
 const hostOf = (url: string) => new URL(url).hostname.replace(/^www\./, "");
 const dayBefore = (iso: string) => new Date(Date.parse(iso) - 86_400_000).toISOString().slice(0, 10);
 // Tavily sends RFC dates; undated pages sort last.
@@ -63,23 +102,56 @@ export function queriesFor(atoms: Atoms): string[] {
 }
 
 // Markdown to the visible text, with where each link's words landed. Handles one level of parentheses in a url.
-export function toPlain(markdown: string): { text: string; links: { href: string; start: number; end: number }[] } {
+// Marks a blank line while the text is cleaned; removed before the text is returned, its places kept as `breaks`.
+const PARAGRAPH = "";
+
+export function toPlain(markdown: string): { text: string; links: { href: string; start: number; end: number }[]; breaks: number[] } {
   // Headings end like sentences, and emphasis marks are not the page's words.
-  const plainer = markdown.replace(/^#{1,6}[ \t]+(.*?)[ \t]*$/gm, (_, heading: string) => (/[.!?:]$/.test(heading) ? heading : `${heading}.`));
-  const cleaned = normalise(plainer.replace(/\*\*|__/g, "")).replace(/!\[[^\]]*\]\((?:[^()]|\([^()]*\))*\)\s*/g, "").replace(/\[\s*\]\((?:[^()]|\([^()]*\))*\)\s*/g, "");
+  // CRLF and lone CR line ends count as plain ones, so a Windows-style blank line still splits paragraphs (XO on #108).
+  const unix = markdown.replace(/\r\n?/g, "\n");
+  const headed = unix.trim().replace(/^#{1,6}[ \t]+(.*?)[ \t]*$/gm, (_, heading: string) => (/[.!?:]$/.test(heading) ? heading : `${heading}.`));
+  // A blank line may hold any whitespace but a newline, a non-breaking space included.
+  const plainer = headed.replace(/[^\S\n]*\n[^\S\n]*\n\s*/g, ` ${PARAGRAPH}`);
+  const marked = normalise(plainer.replace(/\*\*|__/g, "")).replace(/!\[[^\]]*\]\((?:[^()]|\([^()]*\))*\)\s*/g, "").replace(/\[\s*\]\((?:[^()]|\([^()]*\))*\)\s*/g, "");
   const links: { href: string; start: number; end: number }[] = [];
-  let text = "";
+  let withMarks = "";
   let last = 0;
-  for (const m of cleaned.matchAll(/\[([^\]]*)\]\(((?:[^()\s]|\([^()\s]*\))*)(?:\s+"[^"]*")?\)/g)) {
-    text += cleaned.slice(last, m.index);
-    links.push({ href: m[2] ?? "", start: text.length, end: text.length + (m[1] ?? "").length });
-    text += m[1] ?? "";
+  for (const m of marked.matchAll(/\[([^\]]*)\]\(((?:[^()\s]|\([^()\s]*\))*)(?:\s+"[^"]*")?\)/g)) {
+    withMarks += marked.slice(last, m.index);
+    links.push({ href: m[2] ?? "", start: withMarks.length, end: withMarks.length + (m[1] ?? "").length });
+    withMarks += m[1] ?? "";
     last = m.index + m[0].length;
   }
-  text += cleaned.slice(last);
+  withMarks += marked.slice(last);
+  // Take the marks out, shifting each link by the marks before it.
+  const breaks: number[] = [];
+  let text = "";
+  for (const ch of withMarks) {
+    if (ch === PARAGRAPH) breaks.push(text.length);
+    else text += ch;
+  }
+  const shift = (at: number) => at - [...withMarks.slice(0, at)].filter((c) => c === PARAGRAPH).length;
+  const shifted = links.map((l) => ({ ...l, start: shift(l.start), end: shift(l.end) }));
   const stable = normalise(text);
-  return stable === text ? { text, links } : { text: stable, links: [] };
+  return stable === text ? { text, links: shifted, breaks } : { text: stable, links: [], breaks: [] };
 }
+
+// The paragraph a position sits in, as [start, end) offsets.
+export function paragraphAt(breaks: number[], at: number): [number, number] {
+  const start = Math.max(0, ...breaks.filter((b) => b <= at));
+  const end = Math.min(Number.POSITIVE_INFINITY, ...breaks.filter((b) => b > at));
+  return [start, end];
+}
+
+// A page's identity for self-link checks: no www, no query, no fragment, no trailing slash.
+export const pageKey = (url: string) => {
+  try {
+    const u = new URL(url);
+    return `${u.hostname.replace(/^www\./, "")}${u.pathname.replace(/\/$/, "")}`;
+  } catch {
+    return url;
+  }
+};
 
 function sentences(text: string): { text: string; start: number }[] {
   const out: { text: string; start: number }[] = [];
@@ -168,10 +240,17 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
   const nodeLinks = new Map<string, string[]>();
   const seen = new Set<string>();
   const searchLog: Trace["searchLog"] = [];
+  // What read pages cite, best score kept per url, and the sources they name; both feed the next windows.
+  const followQueue = new Map<string, number>();
+  const pendingSources: string[] = [];
+  const sentQueries: SeenQuery[] = [];
+  // Where each queued citation came from, so a followed page can say why it has no link-verified edge.
+  const citedBy = new Map<string, { from: string; near: boolean }>();
   const otherNumbers: NonNullable<Trace["otherNumbers"]> = [];
-  let pendingLinks: string[] = [];
-  // T49: a citation found on a meta page, mapped to that page's url. These are read before any other link.
+  // T49: a citation found on a meta page, mapped to that page's url, and the order they were found in. They have
+  // their own queue, read before anything in followQueue, so a fact-check page's map always goes first.
   const metaLinks = new Map<string, string>();
+  const metaQueue: string[] = [];
   let capHit: Trace["budget"]["capHit"] = null;
   let failure: Trace["failure"] = null;
   let earlierWindowSearches = 0;
@@ -204,7 +283,7 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
   }
 
   async function readPage(url: string, title: string, raw: string, apiDate: string | null): Promise<boolean> {
-    const { text, links } = toPlain(raw);
+    const { text, links, breaks } = toPlain(raw);
     const sentence = sentences(text).find(
       (s) => s.text.length <= MAX_SENTENCE_CHARS && (atoms.number
         ? s.text.toLowerCase().includes(lemma) && atomHit(s.text, atoms, rules.weakNumberMinSigDigits) && assertsNumber(s.text, atoms, rules.negationPrefixes)
@@ -242,22 +321,23 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
 
     const haystack = `${title} ${sentence.text}`.toLowerCase();
     const meta = rules.metaKeywords.some((k) => haystack.includes(k));
-    const nearby = links
-      .filter((l) => l.end >= hit.start - LINK_REACH_CHARS && l.start <= hit.end + LINK_REACH_CHARS)
-      .flatMap((l) => {
-        try {
-          const target = new URL(l.href, url);
-          return target.protocol.startsWith("http") ? [canonUrl(target.href)] : [];
-        } catch {
-          return [];
-        }
-      })
-      .filter((u) => hostOf(u) !== hostOf(url) && !excluded(u));
-    const parents = [...new Set(nearby)].slice(0, LINKS_PER_SPAN);
+    // Everything the page cites, ranked (T44). Citations beside the span are its candidate parents; every citation that
+    // scores high enough is queued to follow. Same-site citations count; self-links, share buttons and fact-checks never.
+    const cited = citationsIn({ text, links, breaks, pageUrl: url, span: hit, atoms, rules });
+    const parents = cited.filter((c) => c.near).map((c) => c.url).slice(0, LINKS_PER_SPAN);
     nodeLinks.set(id, parents);
 
     const clusterKey = `${normalise(title).toLowerCase()}|${sentence.text.toLowerCase()}`;
     if (!clusterKeys.has(clusterKey)) clusterKeys.set(clusterKey, `c${clusterKeys.size + 1}`);
+    // The typed same_claim answer for this page, when the walker was given the question (T36 gate, ruling on #106).
+    let asked: SameClaimResult | null = null;
+    if (deps.askSameClaim) {
+      try {
+        asked = await deps.askSameClaim({ claim: claim.text, sentence: sentence.text, atoms });
+      } catch (err) {
+        modelFailed(err, `same_claim on ${url}`, "no answer stored, so this page cannot be the origin");
+      }
+    }
     nodes.push({
       id, url, domain: hostOf(url), title, date, clusterId: clusterKeys.get(clusterKey)!,
       evidence: "observed", meta, read: true, versionOf: null, spanIds: [spanId], citesEarlier: parents.length > 0,
@@ -266,10 +346,29 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
       // through a meta page: only a page that can stand on its own span carries foundViaMeta.
       ...(rules.metaMaps ? { foundViaMeta: meta ? null : metaLinks.get(url) ?? null } : {}),
       injection: findInjection(title, text, rules.injectionPatterns),
+      ...(asked && { sameClaim: asked.typed }),
     });
-    if (!meta) pendingLinks.push(...parents.filter((p) => !seen.has(p)));
-    // T49: a meta page is off the path, but what it cites is a map to the origin.
-    else if (rules.metaMaps) for (const p of parents) if (!seen.has(p) && !metaLinks.has(p)) { metaLinks.set(p, url); pendingLinks.unshift(p); }
+    // A page reached through a citation that was not beside the citing page's span has no link-verified edge;
+    // the trace says so rather than leaving the reader to guess (XO note on #110).
+    const via = citedBy.get(url);
+    if (via && !via.near) {
+      searchLog.push({
+        at: deps.now(), step: "follow", query: `${url} cited by ${via.from}, not beside its span: no link-verified edge`,
+        endDate: null, startDate: null, results: 1, kept: 1, dropped: 0,
+      });
+    }
+    if (!meta) {
+      for (const c of cited) {
+        if (seen.has(c.url)) continue;
+        followQueue.set(c.url, Math.max(c.score, followQueue.get(c.url) ?? 0));
+        const prior = citedBy.get(c.url);
+        if (!prior || (c.near && !prior.near)) citedBy.set(c.url, { from: url, near: c.near });
+      }
+      for (const name of namedSources(sentence.text)) if (!pendingSources.includes(name)) pendingSources.push(name);
+    } else if (rules.metaMaps) {
+      // T49: a meta page is off the path, but what it cites is a map to the origin: its own queue, not followQueue.
+      for (const p of parents) if (!seen.has(p) && !metaLinks.has(p)) { metaLinks.set(p, url); metaQueue.push(p); }
+    }
     note({ step: "read", url, kept: true, reason: meta ? "meta page, off the path" : "span found" });
     return !meta;
   }
@@ -285,7 +384,7 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
       let target: string;
       try { const t = new URL(l.href, url); if (!t.protocol.startsWith("http")) return []; target = canonUrl(t.href); } catch { return []; }
       if (hostOf(target) === hostOf(url) || excluded(target)) return [];
-      const around = lower.slice(Math.max(0, l.start - LINK_REACH_CHARS), l.end + LINK_REACH_CHARS);
+      const around = lower.slice(Math.max(0, l.start - REACH), l.end + REACH);
       const score = (number && around.includes(number) ? 2 : 0) + (around.includes(lemma) ? 1 : 0);
       return [{ target, score, i }];
     });
@@ -302,15 +401,25 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
       clusterId: clusterKeys.get(`meta|${url}`)!, evidence: "observed", meta: true, read: true, versionOf: null, spanIds: [], citesEarlier: cited.length > 0,
       candidateParents: cited.map((p) => ({ url: p, read: seen.has(p) })), pageType: null, foundViaMeta: null,
     });
-    for (const p of [...cited].reverse()) if (!seen.has(p) && !metaLinks.has(p)) { metaLinks.set(p, url); pendingLinks.unshift(p); }
+    for (const p of cited) if (!seen.has(p) && !metaLinks.has(p)) { metaLinks.set(p, url); metaQueue.push(p); }
     note({ step: "read", url, kept: true, reason: `fact-check page read as a map, ${cited.length} citation(s) to follow` });
+  }
+
+  // A Token Factory failure in the planner or the same_claim question must not end the trace (XO on #110): the
+  // walk falls back to code-only queries or to no answer, keeps the failed call's usage rows, and says so on the trace.
+  function modelFailed(err: unknown, what: string, fallback: string): void {
+    if (!(err instanceof TokenFactoryError)) throw err;
+    for (const row of err.usage) deps.usage.append(row);
+    const reason = `${what} failed (${err.code}${err.status === null ? "" : ` ${err.status}`}): ${fallback}`;
+    note({ step: "model", kept: false, reason });
+    searchLog.push({ at: deps.now(), step: "model", query: reason, endDate: null, startDate: null, results: 0, kept: 0, dropped: 0 });
   }
 
   const outOfTime = () => Date.now() - started >= rules.caps.ms;
 
   try {
     let endDate = deps.today;
-    const queries = queriesFor(atoms);
+    const plan = deps.planQueries ?? codePlanner;
     for (let depth = 0; ; depth++) {
       if (outOfTime()) {
         capHit = "ms";
@@ -318,12 +427,41 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
       }
       const results = new Map<string, { title: string; date: string | null }>();
       earlierWindowSearches = 0;
-      const searches = queries.map((query) => ({ query, filter: false }));
+      // The hop the planner works back from: the earliest dated page so far, with its span.
+      const hopNode = nodes.filter((n) => !n.meta && n.date.value).sort((a, b) => a.date.value!.localeCompare(b.date.value!))[0];
+      const hopSpan = hopNode && spans.find((s) => s.id === hopNode.spanIds[0]);
+      const planInput = {
+        claim: claim.text, atoms, seen: [...sentQueries],
+        hop: hopNode && hopSpan ? { url: hopNode.url, date: hopNode.date.value, span: hopSpan.text } : null,
+      };
+      let planned: Awaited<ReturnType<QueryPlanner>>;
+      try {
+        planned = await plan(planInput);
+      } catch (err) {
+        modelFailed(err, "query planner", "code-only queries used for this window");
+        planned = await codePlanner(planInput);
+      }
+      for (const row of planned.usage) deps.usage.append(row);
+      for (const r of planned.rejected) note({ step: "plan", query: r.query, kept: false, reason: r.reason });
+      // A planner that returns nothing still leaves the window searched with the code queries.
+      const queries = planned.queries.length > 0 ? planned.queries : (await codePlanner({ claim: claim.text, atoms, hop: null, seen: [] })).queries;
+      // Sources the pages named ("according to ..."), searched for by name with the claim's phrase.
+      const phrase = atoms.variants[0] ?? atoms.phrase ?? (atoms.number ? [atoms.number.raw, atoms.unit].filter(Boolean).join(" ") : atoms.subjectLemma);
+      const bySource = pendingSources
+        .map((name) => `"${phrase}" ${name}`)
+        .filter((q) => !sentQueries.some((s) => s.query === q))
+        .slice(0, SOURCE_QUERIES_PER_WINDOW)
+        .map((query) => ({ query, endDate: null, why: "publisher" }));
+      const windowEnd = endDate;
+      const earlier = (d: string | null) => (d && d < windowEnd ? d : windowEnd);
+      // `planned` is the endDate the planner gave, recorded in `seen` as-is so its repeats match (#129).
+      const searches = [...queries, ...bySource].map((q) => ({ query: q.query, planned: q.endDate, end: earlier(q.endDate), filter: false }));
       // Two searches per window at least, so "nothing earlier" never rests on one call.
-      while (searches.length < rules.earlierWindowSearches) searches.push({ query: queries[0]!, filter: true });
-      for (const { query, filter } of searches) {
+      while (searches.length < rules.earlierWindowSearches) searches.push({ ...searches[0]!, filter: true });
+      for (const { query, planned, end: searchEnd, filter } of searches) {
+        if (!sentQueries.some((s) => s.query === query && s.endDate === planned)) sentQueries.push({ query, endDate: planned });
         const { data } = await deps.tavily.search({
-          query, exactMatch: true, endDate, includeRawContent: false, includePublishedDate: true, maxResults: 10,
+          query, exactMatch: true, endDate: searchEnd, includeRawContent: false, includePublishedDate: true, maxResults: 10,
           excludeDomains: rules.factCheckDomains, ...(filter && { filterByPublishedDate: true }),
         }, { step: "search" });
         earlierWindowSearches += 1;
@@ -331,17 +469,17 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
         for (const r of fresh) {
           results.set(canonUrl(r.url), { title: r.title ?? "", date: r.published_date ?? null });
         }
-        searchLog.push({ at: deps.now(), step: "search", query, endDate, startDate: null, results: data.results.length, kept: fresh.length, dropped: data.results.length - fresh.length });
-        note({ step: "search", query, reason: `end_date ${endDate}${filter ? ", filtered" : ""}, ${data.results.length} results` });
+        searchLog.push({ at: deps.now(), step: "search", query, endDate: searchEnd, startDate: null, results: data.results.length, kept: fresh.length, dropped: data.results.length - fresh.length });
+        note({ step: "search", query, reason: `end_date ${searchEnd}${filter ? ", filtered" : ""}, ${data.results.length} results` });
       }
 
       // T49: once per trace, fact-check pages that discuss the claim, read as maps before anything else.
       if (depth === 0 && rules.metaMaps) {
         const { data } = await deps.tavily.search({
-          query: queries[0]!, exactMatch: true, includeRawContent: false, includePublishedDate: true, maxResults: 5, includeDomains: rules.factCheckDomains,
+          query: queries[0]!.query, exactMatch: true, endDate, includeRawContent: false, includePublishedDate: true, maxResults: 5, includeDomains: rules.factCheckDomains,
         }, { step: "meta-search" });
         const maps = [...new Set(data.results.map((r) => canonUrl(r.url)).filter((u) => excluded(u) && !seen.has(u)))].slice(0, META_PAGES);
-        searchLog.push({ at: deps.now(), step: "meta-search", query: queries[0]!, endDate: null, startDate: null, results: data.results.length, kept: maps.length, dropped: data.results.length - maps.length });
+        searchLog.push({ at: deps.now(), step: "meta-search", query: queries[0]!.query, endDate, startDate: null, results: data.results.length, kept: maps.length, dropped: data.results.length - maps.length });
         if (maps.length) {
           const read = await deps.tavily.extract({ urls: maps, format: "markdown" }, { step: "meta-extract" });
           for (const u of maps) seen.add(u);
@@ -349,11 +487,15 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
         }
       }
 
-      // Links beside a span go first: they are the page's own citation of its parent. Citations from meta pages
-      // (T49) go before those.
-      const unseen = [...new Set(pendingLinks.filter((u) => !seen.has(u)))];
-      const links = [...unseen.filter((u) => metaLinks.has(u)), ...unseen.filter((u) => !metaLinks.has(u))].slice(0, LINKS_PER_ROUND);
-      pendingLinks = pendingLinks.filter((u) => !seen.has(u) && !links.includes(u));
+      // Citations from meta pages (T49) go first, in the order they were found; then the best-scored citations, since
+      // what pages cite is how the tools reach origins (T44).
+      const fromMaps = [...new Set(metaQueue.filter((u) => !seen.has(u)))].slice(0, LINKS_PER_ROUND);
+      const links = [...fromMaps, ...[...followQueue.entries()]
+        .filter(([u]) => !seen.has(u) && !fromMaps.includes(u))
+        .sort(([, a], [, b]) => b - a)
+        .slice(0, LINKS_PER_ROUND - fromMaps.length)
+        .map(([u]) => u)];
+      for (const u of links) { followQueue.delete(u); const i = metaQueue.indexOf(u); if (i >= 0) metaQueue.splice(i, 1); }
       const dated = [...results.entries()].sort(([ua, a], [ub, b]) => isoDate(a.date).localeCompare(isoDate(b.date)) || ua.localeCompare(ub));
       const fromSearch = dated.map(([u]) => u).filter((u) => !links.includes(u));
       const frontier = [...new Set([...links, ...fromSearch])].slice(0, rules.caps.frontier);
@@ -378,7 +520,7 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
       const earliestNow = earliestDate();
       const movedBack = earliestNow !== null && (earliestBefore === null || earliestNow < earliestBefore);
       earlierFound = movedBack ? found : 0;
-      const moreLinks = pendingLinks.some((u) => !seen.has(u));
+      const moreLinks = [...followQueue.keys(), ...metaQueue].some((u) => !seen.has(u));
       if (!movedBack && !moreLinks) break;
       if (depth + 1 >= rules.caps.depth) {
         capHit = "depth";
@@ -474,6 +616,8 @@ const UNDATED: DateInfo = { kind: "unconfirmed", value: null, source: "tavily", 
 export function walkStep<C>(build: (trace: Trace, context: C) => Omit<WalkDeps, "replayOf" | "cachedRun">): (trace: Trace, context: C) => Promise<Trace> {
   return async (trace, context) => {
     const deps = build(trace, context);
+    // The credits the earlier stages spent count against this run's cap (XO note on #110).
+    deps.budget.spend(trace.usage.reduce((sum, r) => sum + r.credits, 0));
     const { trace: walked } = await walkClaim({ id: trace.id, text: trace.claim.text, atoms: trace.claim.atoms }, { ...deps, cachedRun: "allow" });
     const draft: Trace = {
       ...walked,
@@ -488,6 +632,13 @@ export function walkStep<C>(build: (trace: Trace, context: C) => Omit<WalkDeps, 
       redHopEdgeId: null,
       earliest: { ...walked.earliest, nodeIds: [] },
       usage: [...trace.usage, ...walked.usage],
+    };
+    // The budget covers every row the trace carries, the earlier stages' included, and their time.
+    draft.budget = {
+      ...walked.budget,
+      credits: draft.usage.reduce((sum, r) => sum + r.credits, 0),
+      usd: draft.usage.reduce((sum, r) => sum + (r.service === "tokenfactory" ? r.costUsd : 0), 0),
+      ms: trace.budget.ms + walked.budget.ms,
     };
     return { ...draft, decision: decideStopState(draft, deps.rules) };
   };
