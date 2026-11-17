@@ -29,6 +29,26 @@ The challenge asks to see four things: a real question, real Token Factory and T
 | 1:55 to 2:05 | S10, who decides | The "How it works" diagram from the README | "The model answers the small questions. The code makes the call. And every link between two pages rests on a sentence quoted from each." | README diagram ([#154](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/154)) | ready when #154 merges |
 | 2:05 to 2:15 | S11, close | The origin card for the hero claim, then the repo link | "That's Patient Zero, from team Says Who, built on Nebius Token Factory and Tavily." | Web app card, repo URL | needs the real trace, and the repo public |
 
+## Checked against main (Tue Nov 17, about 17:30 ET)
+
+I walked each shot on main's web app (`npm run dev` in apps/web) and CLI. Steps that no longer match are marked **no**.
+
+| Shot | Matches main? | What main does today |
+|---|---|---|
+| S1 | not checkable | Needs the hero claim from tonight's run. |
+| S2 | **no** | The start page shows only the 7 SAMPLE traces, under "Live traces arrive with the engine; samples below." The claim box accepts text, but Enter or "Trace a claim" does nothing on main: the working claim box is Rishit's #184 (in review). No REPLAY trace can be opened in the app yet: `apps/web/src/data/loadTraces.ts` loads `fixtures/traces/` only. |
+| S3 | **no** | The walk replay (#186) plays as a rail of plain steps: "Read harborzoo.example, April 2019: states the claim." and "Searched for "...", pages before April 2019: 0 results." It doesn't name the service ("Tavily search") or show a Token Factory answer with its confidence ("page type, 0.94"). Either the voice line changes to match, or the rail gets the service and confidence. On a SAMPLE trace it says "Sample walk, made-up data", so the shot needs a REPLAY trace (see S2). |
+| S4 | yes, on samples | The scrubber, the time field and "Wording changed here" work (sample-rich). It needs a real trace with a wording change. |
+| S5 | **partly** | "Open the page" links the page's plain URL. It doesn't highlight the sentence (no text fragment or Wayback link), so the highlight has to come from the browser or the shot changes. |
+| S6 | yes | `make replay TRACE=eval/dev-traces/dev-02.json` prints "Trail goes cold ... Decision table row 6 of 6." But its quoted line is page menu text ("Subscribe Sign In Read the November Issue..."). Rishit's F5 spans (#209) should fix that, so re-check after tonight's run. The Cost line reads "11 credits, $0.0004": the dollar figure is Token Factory only (the unowned [M] on #192), so it looks like the whole cost. The web app's stop card also has "How this was decided" with rule 6. |
+| S7 | partly | `pz trace --answer` works. The answer screen (#149) is still open, so this is a CLI shot. |
+| S8 | **no** | The held-out run hasn't happened. The README eval row shows the E2 replay only. |
+| S9 | **check the line** | `make verify` passes with no keys. `pz traps` now prints two lines: "wrong origins 0 of 10 ... planted by us" and "pipeline: wrong origins 3 of 12 ... 3 are the known gap". "planted origins 0 of 24" (the adversarial set, #156) isn't a line `pz traps` prints, so either show the adversarial test or change the voice line. The 3 of 12 line has to stay if that output is on screen. The forced 503 replay (`fixtures/failure/traces/failure-tavily-503.json`) works. |
+| S10 | yes | The README has "How it works" with its diagram (#154 merged). |
+| S11 | not checkable | Needs the hero trace in the app (see S2) and the repo public. |
+
+**What blocks the most shots:** the app can't open a real trace (S2, S3, S5, S11). That needs `loadTraces` to include reviewed REPLAY traces, plus #184's claim box.
+
 ## What we can shoot now
 
 S6, S9 and S10 can be shot as soon as the open PRs merge. S1's pick, S2 to S5, S7 and S11 all need a reviewed trace from Monday's live run, replayed. S8 waits for the held-out run. Zero In, the Atlas and researcher mode stay out unless they get built, and even then they'd get ten seconds at most, after S11.
@@ -37,6 +57,6 @@ S6, S9 and S10 can be shot as soon as the open PRs merge. S1's pick, S2 to S5, S
 
 1. Hero claim: XO picks it from Tuesday's live traces. It has to end ORIGIN_FOUND on a page judges can open, and Vidyut sees it before we capture.
 2. Cold open: we re-shoot it on the hero claim.
-3. Voice: Anoop records it, with Rohan as backup. ElevenLabs is only a fallback, and only with Vidyut's account and OK.
+3. Voice: Anoop records it, with Rohan as backup. (Changed on Nov 16: Rohan records the voiceover, #175.) ElevenLabs is only a fallback, and only with Vidyut's account and OK.
 4. Length: it stays at 2:15 and nothing gets cut.
 5. If the held-out result is weak, S8 shows it as it is.
