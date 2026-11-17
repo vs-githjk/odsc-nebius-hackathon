@@ -5,7 +5,7 @@ import { ClientError } from "../clients/errors.ts";
 import { type TavilySender, createTavily } from "../clients/tavily.ts";
 import { createTokenFactoryClient } from "../clients/tokenfactory.ts";
 import { createWayback } from "../clients/wayback.ts";
-import { decideStopState, loadRules } from "../rules/index.ts";
+import { decideStopState, loadRules, type Rules } from "../rules/index.ts";
 import type { Atoms, Trace, UsageRow } from "../schema/index.ts";
 import { ask } from "../typed/ask.ts";
 import { createUsageLog } from "../usage/log.ts";
