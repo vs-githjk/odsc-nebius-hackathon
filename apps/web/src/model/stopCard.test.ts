@@ -1,11 +1,10 @@
 import { describe, expect, it } from "vitest";
 import { loadTraces } from "../data/loadTraces.ts";
+import { lintText } from "../../../../packages/pz/src/cli/lint-copy.ts";
 import { RULES, stopCard } from "./stopCard.ts";
 
 const { traces } = loadTraces();
 const byId = (id: string) => traces.find((t) => t.id === id)!;
-// The copy lint's banned words (plan.md Global Constraints), checked on every string the card shows.
-const BANNED = /independent sources|invented by|this outlet changed|proves|introduced by|[–—]/i;
 
 describe("stopCard", () => {
   it("[C16] each of the six endings gives its title and the rule row from the stored decision", () => {
@@ -41,12 +40,13 @@ describe("stopCard", () => {
     expect(stopCard(byId("sample-rich")).origin).toBeNull();
   });
 
+  // The copy lint itself checks every card string for banned phrases and dashes.
   it("no card string carries a banned phrase, a dash, an id or a code", () => {
     for (const t of traces) {
       const card = stopCard(t);
       const strings = [card.title, card.sentence, card.searched, ...card.rules.map((r) => r.text)];
       for (const s of strings) {
-        expect(s).not.toMatch(BANNED);
+        expect(lintText(s)).toEqual([]);
         expect(s).not.toMatch(/_|row \d/);
         for (const n of t.nodes) expect(s).not.toContain(n.id);
       }
