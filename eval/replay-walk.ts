@@ -9,7 +9,7 @@ import { parseArgs } from "node:util";
 import { createFileCache, DEFAULT_CACHE_DIR } from "../packages/pz/src/clients/cache.ts";
 import { createTavily } from "../packages/pz/src/clients/tavily.ts";
 import {
-  createFileTape, createMisses, missFetch, readClaimClock, readOnlyCaches, recordPaths, replayClient, type Misses,
+  createFileTape, createMisses, missFetch, readClaimClock, readOnlyCaches, recordPaths, replayClient, type Miss, type Misses,
 } from "../packages/pz/src/clients/tape.ts";
 import { buildPipeline } from "../packages/pz/src/engine/pipeline.ts";
 import { runTrace } from "../packages/pz/src/engine/run.ts";
@@ -53,13 +53,44 @@ export async function replayClaim(claim: { id: string; text: string }, opts: Rep
   return runTrace(claim.text, pipeline, { wayback });
 }
 
-export type ReplayReport = { replayed: number; failed: { id: string; reason: string }[]; misses: Misses };
+// A miss in words: the service and endpoint or host, never a body.
+function missName(miss: Miss): string {
+  if (miss.kind !== "http") return `model ${miss.kind}`;
+  try {
+    const url = new URL(miss.detail);
+    if (url.hostname.includes("tavily")) return `tavily ${url.pathname}`;
+    if (url.hostname === "web.archive.org") return "wayback";
+    return `page ${url.hostname}`;
+  } catch {
+    return "http";
+  }
+}
+const paid = (miss: Miss) => miss.kind !== "http" || missName(miss).startsWith("tavily ");
+const tally = (names: string[]) => {
+  const by = new Map<string, number>();
+  for (const n of names) by.set(n, (by.get(n) ?? 0) + 1);
+  return [...by].map(([n, k]) => `${n} x${k}`).join(", ");
+};
+
+// What one claim's replay is worth (ported from #207). A paid request (Tavily, a model call) missing from the recording
+// means the walk itself changed, so that claim needs a live run to be measured. A free lookup (a page, Wayback) is
+// recorded only when it succeeded live, so a miss there usually failed live as well and fails the same way here.
+export function fidelity(misses: Miss[]): string {
+  const changed = misses.filter(paid);
+  const free = misses.filter((m) => !paid(m));
+  if (changed.length) return `walk changed: ${changed.length} paid request(s) not recorded (${tally(changed.map(missName))})`;
+  return free.length ? `exact replay, $0 (${free.length} free lookup(s) not recorded: ${tally(free.map(missName))})` : "exact replay, $0";
+}
+export const exactReplay = (misses: Miss[]) => !misses.some(paid);
+
+export type ReplayReport = { replayed: number; exact: number; failed: { id: string; reason: string }[]; misses: Misses };
 
 export async function replayWalk(claims: DevClaim[], opts: Omit<ReplayOptions, "misses"> & { outDir: string; report?: (line: string) => void }): Promise<ReplayReport> {
   const misses = createMisses();
   const failed: ReplayReport["failed"] = [];
   mkdirSync(opts.outDir, { recursive: true });
   let replayed = 0;
+  let exact = 0;
   for (const claim of claims) {
     const path = join(opts.outDir, `${claim.id}.json`);
     rmSync(path, { force: true });
@@ -68,14 +99,17 @@ export async function replayWalk(claims: DevClaim[], opts: Omit<ReplayOptions, "
       const trace = await replayClaim(claim, { ...opts, misses });
       writeFileSync(path, JSON.stringify(trace, null, 2) + "\n");
       replayed++;
-      opts.report?.(`${claim.id}  ${trace.decision.state}  misses ${misses.count() - before}`);
+      const own = misses.list.slice(before);
+      if (exactReplay(own)) exact++;
+      opts.report?.(`${claim.id}  ${trace.decision.state}  ${fidelity(own)}`);
     } catch (error) {
       const reason = error instanceof Error ? error.message : "replay failed";
       failed.push({ id: claim.id, reason });
-      opts.report?.(`${claim.id}  FAILED (${reason})  misses ${misses.count() - before}`);
+      const own = misses.list.slice(before);
+      opts.report?.(`${claim.id}  FAILED (${reason})${own.length ? `  ${fidelity(own)}` : ""}`);
     }
   }
-  return { replayed, failed, misses };
+  return { replayed, exact, failed, misses };
 }
 
 export const missLine = (misses: Misses) =>
@@ -99,7 +133,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     for (const line of perClaimLines(scoreDir(outDir, claims))) console.log(line);
     console.log(`${set} replay:    ${headline(summarise(scoreDir(outDir, claims)))}`);
     if (existsSync(COMMITTED_TRACES)) console.log(`${set} committed: ${headline(summarise(scoreDir(COMMITTED_TRACES, claims)))}`);
-    console.log(`${missLine(report.misses)}; ${report.replayed} of ${claims.length} claims replayed${lacking.length ? `, ${lacking.length} without a recording (${lacking.map(c => c.id).join(", ")})` : ""}${report.failed.length ? `, ${report.failed.length} failed` : ""}`);
+    console.log(`${missLine(report.misses)}; ${report.replayed} of ${claims.length} claims replayed (${report.exact} exact)${lacking.length ? `, ${lacking.length} without a recording (${lacking.map(c => c.id).join(", ")})` : ""}${report.failed.length ? `, ${report.failed.length} failed` : ""}`);
     for (const miss of report.misses.list.slice(0, 5)) console.log(`  miss ${miss.kind}: ${miss.detail}`);
     if (report.failed.length) process.exitCode = 1;
   }

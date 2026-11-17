@@ -80,13 +80,15 @@ export function replayClient(tape: Tape, misses: Misses) {
     const entry = tape.get(key);
     if (!entry) {
       misses.add(kind, detail);
+      // PZ_REPLAY_DEBUG=1 prints the start of a missed model request's last message, to find which input changed.
+      if (process.env.PZ_REPLAY_DEBUG) console.error(`replay miss (${kind}): ${detail}`);
       throw new TokenFactoryError("network_error", null, []);
     }
     if (entry.kind === "error") throw new TokenFactoryError(entry.code, entry.status, entry.usage);
     return entry.result as T;
   };
   return {
-    chat: (async (input) => answer<ChatResult>("chat", chatKey(input), (input.messages.at(-1)?.content ?? "").slice(0, 80))) as Chat,
+    chat: (async (input) => answer<ChatResult>("chat", chatKey(input), (input.messages.at(-1)?.content ?? "").slice(0, process.env.PZ_REPLAY_DEBUG ? 400 : 80))) as Chat,
     embed: (async (input) => answer<EmbedResult>("embed", embedKey(input), String(Array.isArray(input.input) ? input.input[0] : input.input).slice(0, 80))) as Embed,
   };
 }
