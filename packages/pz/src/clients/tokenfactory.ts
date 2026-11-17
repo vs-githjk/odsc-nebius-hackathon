@@ -3,7 +3,7 @@ import { z } from "zod";
 import prices from "../../config/prices.json" with { type: "json" };
 import type { UsageRow } from "../schema/usage.ts";
 
-export type ErrorCode = "not_configured" | "http_error" | "network_error" | "bad_response";
+export type ErrorCode = "budget_bound_exceeded" | "budget_exceeded" | "not_configured" | "http_error" | "network_error" | "bad_response";
 export class TokenFactoryError extends Error {
   constructor(public readonly code: ErrorCode, public readonly status: number | null = null, public readonly usage: UsageRow[] = []) {
     super(`Token Factory ${code}${status === null ? "" : ` (${status})`}`);
@@ -19,7 +19,7 @@ const Embedding = z.object({ data: z.array(z.object({ index: count, embedding: z
 export type ChatData = { content: string; logprobs: z.infer<typeof Logprobs> | null; model: string };
 export type ChatInput = { model: string; messages: { role: "system" | "user" | "assistant"; content: string }[]; jsonSchema?: object; logprobs?: boolean; topLogprobs?: number; maxTokens: number };
 type Context = { traceId?: string; step?: string };
-type Options = Context & { fetch?: typeof globalThis.fetch; logUsage?: (row: UsageRow) => void | Promise<void>; sleep?: (ms: number) => Promise<void>; timeoutMs?: number };
+type Options = Context & { apiKey?: string; fetch?: typeof globalThis.fetch; logUsage?: (row: UsageRow) => void | Promise<void>; sleep?: (ms: number) => Promise<void>; timeoutMs?: number };
 export type Result<T> = { data: T; usage: UsageRow; attempts: UsageRow[] };
 const defaultLog = async (row: UsageRow) => {
   await mkdir("runs", { recursive: true });
@@ -33,7 +33,7 @@ export function createTokenFactoryClient(options: Options = {}) {
   const log = options.logUsage ?? defaultLog;
   const sleep = options.sleep ?? (ms => new Promise(resolve => setTimeout(resolve, ms)));
   async function request(endpoint: string, body: { model: string; [key: string]: unknown }, context: Context = {}) {
-    const key = process.env.NEBIUS_API_KEY?.trim();
+    const key = (options.apiKey ?? process.env.NEBIUS_API_KEY)?.trim();
     if (!key) throw new TokenFactoryError("not_configured");
     const price = Object.hasOwn(prices.models, body.model) ? (prices.models as Record<string, { input: number; output: number; cachedInput: number }>)[body.model] : undefined;
     if (!price) throw new TokenFactoryError("not_configured");
@@ -52,15 +52,24 @@ export function createTokenFactoryClient(options: Options = {}) {
     for (let attempt = 0; attempt < 2; attempt++) {
       const at = new Date().toISOString(), start = performance.now();
       let response: Response;
+      let boundExceeded = false;
       try {
         response = await fetch("https://api.tokenfactory.nebius.com/v1" + endpoint, {
           method: "POST", headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
           body: JSON.stringify(body), signal: AbortSignal.timeout(options.timeoutMs ?? 30_000),
         });
-      } catch {
-        const row = rowFor("network_error");
-        await record(row);
-        throw new TokenFactoryError("network_error", null, rows);
+      } catch (error) {
+        if (error && typeof error === "object" && "code" in error && error.code === "budget_exceeded") {
+          throw new TokenFactoryError("budget_exceeded", null, rows);
+        }
+        if (error && typeof error === "object" && "code" in error && error.code === "budget_bound_exceeded"
+            && "response" in error && error.response instanceof Response) {
+          response = error.response;
+          boundExceeded = true;
+        } else {
+          await record(rowFor("network_error"));
+          throw new TokenFactoryError("network_error", null, rows);
+        }
       }
       let raw: unknown;
       try { raw = await response.json(); } catch { raw = null; }
@@ -68,6 +77,7 @@ export function createTokenFactoryClient(options: Options = {}) {
       const u = parsedUsage.success ? parsedUsage.data : null;
       const row = rowFor(String(response.status), u);
       await record(row);
+      if (boundExceeded) throw new TokenFactoryError("budget_bound_exceeded", response.status, rows);
       if (!response.ok) {
         if (attempt === 0 && (response.status === 429 || response.status >= 500)) { await sleep(250); continue; }
         throw new TokenFactoryError("http_error", response.status, rows);
