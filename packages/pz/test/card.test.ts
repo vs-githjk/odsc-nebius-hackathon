@@ -125,3 +125,16 @@ describe("page type", () => {
     expect(JSON.parse(request.messages[1]!.content)).toEqual({ source_text: "Keeper log, April 2019." });
   });
 });
+
+describe("a partial registry date backs only what it gave (#206 review)", () => {
+  it("a year-only date backs '2020' but not a stated day or month", async () => {
+    const { earliestDates, unbacked } = await import("../src/verify/false-certainty.ts");
+    const trace = { earliest: { nodeIds: ["a"] }, nodes: [{ id: "a", date: { value: "2020-12-31", precision: "year" } }] } as unknown as Trace;
+    expect(earliestDates(trace)).toEqual(["2020"]);
+    expect(unbacked("It was published on December 31, 2020.", [], earliestDates(trace)).dates).toEqual(["December 31, 2020"]);
+    expect(unbacked("It was published in June 2020.", [], earliestDates(trace)).dates).toEqual(["June 2020"]);
+    const month = { ...trace, nodes: [{ id: "a", date: { value: "2020-06-30", precision: "month" } }] } as unknown as Trace;
+    expect(unbacked("It was published in June 2020.", [], earliestDates(month)).dates).toEqual([]);
+    expect(unbacked("It was published on June 30, 2020.", [], earliestDates(month)).dates).toEqual(["June 30, 2020"]);
+  });
+});

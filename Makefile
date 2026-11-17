@@ -1,7 +1,8 @@
-.PHONY: verify replay live dev-score judge doctor
+.PHONY: verify replay live dev-score dev-run replay-walk judge doctor
 
 # Re-checks everything with no API keys: typecheck, tests, every committed trace, the trap set,
-# the copy lint, the leakage test and the claims table.
+# the copy lint, the number lint (every number in README.md and llms.txt backed by a linked file), the leakage test
+# and the claims table.
 verify:
 	@start=$$(date +%s); \
 	npm run -s typecheck && \
@@ -10,6 +11,7 @@ verify:
 	if ls spike/traces/*.json >/dev/null 2>&1; then npm run -s pz -- verify spike/traces/*.json --historical spike/historical-traces.json; fi && \
 	npm run -s pz -- traps && \
 	node --import tsx packages/pz/src/cli/lint-copy.ts && \
+	node --import tsx packages/pz/src/cli/lint-numbers.ts && \
 	node --import tsx packages/pz/src/cli/leakage.ts && \
 	node --import tsx packages/pz/src/cli/claims.ts || exit 1; \
 	took=$$(( $$(date +%s) - start )); \
@@ -42,3 +44,13 @@ live:
 # Grades eval/dev-traces/ against the E2 dev claims and appends a dated row to eval/dev-score.md (T33).
 dev-score:
 	@node --import tsx eval/dev-score.ts
+
+# Reruns the whole pipeline for a dev set from a recording (PZ_RECORD_DIR on a live run), at $0, into runs/replay-walk/.
+# Prints the replay score, last night's committed score and "misses N". See eval/README.md.
+SET ?= E2
+replay-walk:
+	@node --import tsx eval/replay-walk.ts --set $(SET) $(ARGS)
+
+export DEV_REPLAY_DIR DEV_PIPELINE DEV_LEDGER
+dev-run:
+	@node --import tsx eval/dev-run.ts

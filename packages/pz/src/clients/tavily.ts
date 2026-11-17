@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { ClientError, send, type ClientDeps, type Result } from "./http.ts";
+import { ClientError, send, type ClientDeps, type ClientRequest, type Result } from "./http.ts";
 
 const BASE_URL = "https://api.tavily.com";
 const TIMEOUT_MS = 60_000;
@@ -49,17 +49,20 @@ export type SearchArgs = {
   includePublishedDate: boolean;
   maxResults: number;
   excludeDomains?: string[];
+  includeDomains?: string[];
   filterByPublishedDate?: boolean;
 };
 
 export type ExtractArgs = { urls: string[]; query?: string; format: "markdown" | "text" };
 
-export function createTavily(deps: ClientDeps & { apiKey?: string }) {
+export type TavilySender = <T>(deps: ClientDeps, request: ClientRequest<T>) => Promise<Result<T>>;
+
+export function createTavily(deps: ClientDeps & { apiKey?: string }, sender: TavilySender = send) {
   const apiKey = deps.apiKey ?? process.env.TAVILY_API_KEY ?? "";
 
   function post<T>(endpoint: "search" | "extract", body: object, maxCredits: number, step: string, schema: z.ZodType<T & { usage?: { credits: number } | undefined }>) {
     if (!apiKey) throw new ClientError("not_configured", "TAVILY_API_KEY is not set");
-    return send<T>(deps, {
+    return sender<T>(deps, {
       service: "tavily",
       endpoint,
       step,
@@ -83,15 +86,19 @@ export function createTavily(deps: ClientDeps & { apiKey?: string }) {
 
   return {
     async search(args: SearchArgs, { step = "search" }: { step?: string } = {}): Promise<Result<SearchResponse>> {
+      const query = straightQuotes(args.query);
       const body = {
-        query: args.query,
-        exact_match: args.exactMatch,
+        query,
+        // Tavily answers HTTP 400 to exact_match=true when the query holds no quoted phrase (live run, Nov 17), and a
+        // planner query can come back unquoted. Exact match only means something with a phrase, so send it only then.
+        exact_match: args.exactMatch && hasQuotedPhrase(query),
         ...(args.endDate !== undefined && { end_date: args.endDate }),
         ...(args.startDate !== undefined && { start_date: args.startDate }),
         include_raw_content: args.includeRawContent,
         include_published_date: args.includePublishedDate,
         max_results: args.maxResults,
         ...(args.excludeDomains?.length && { exclude_domains: args.excludeDomains }),
+        ...(args.includeDomains?.length && { include_domains: args.includeDomains }),
         ...(args.filterByPublishedDate !== undefined && { filter_by_published_date: args.filterByPublishedDate }),
         include_usage: true,
       };
@@ -108,4 +115,14 @@ export function createTavily(deps: ClientDeps & { apiKey?: string }) {
       return post("extract", body, Math.ceil(args.urls.length / URLS_PER_EXTRACT_CREDIT), step, ExtractResponse);
     },
   };
+}
+
+// Curly quotes from a model's query become straight ones, so Tavily sees the phrase.
+export function straightQuotes(query: string): string {
+  return query.replace(/[\u201C\u201D\u201E\u201F\u2033]/g, '"');
+}
+
+// True when the query holds at least one non-empty "quoted phrase".
+export function hasQuotedPhrase(query: string): boolean {
+  return /"[^"]*\S[^"]*"/.test(query);
 }

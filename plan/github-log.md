@@ -68,3 +68,34 @@
 - Reviewed 7 PRs (3 master-reviewer agents). Merged #183 ac69de6, #182 08bdfc0 (main 496 tests).
 - FIX: #108 [M] CRLF/nbsp blank line; #110 [H] TokenFactoryError crashes walk, [M] same CRLF; #184 [H] claimMatch false matches, [M] matched trace not labelled recorded; #180 [M] origin card wrong page, rule 5 wording; #181 [M] measured chips on inferred hop unlabelled.
 - Answered Rishit's fixture question: (b) separate recorded-traces glob. Noted #109 needs --json and budget double-count check (Rohan).
+
+## Nov 16 23:05 ET pass (re-reviews)
+- 5 master-reviewer runs on 13 PRs. Merged: #108 acab513, #110 5639f72, #180 039befc, #171 9a48ce7, #177 a9aa0dd, #181 e5fec09 (XO hand-merged TraceView.test.tsx), #187 2c559f1 (XO: tests used URL.pathname, failed in spaced path).
+- FIX: #184 [H] one-word near-misses still match; #176 needs real re-merge after #110 (followQueue); #185 [M] spend line; #154, #172, #174 docs staleness; #173 PASS held for #172.
+- Main 568 tests, green in the spaced path.
+
+## Nov 17 00:00-01:20 ET pass
+- Merged: #176 7b5542c, #154 b475f76, #191 940cd17 (live pipeline; XO integration of Rohan's stack, 4 review rounds, 6 live smoke runs). Closed #107 #109 #189 as included.
+- Live fixes found by smoke: Tavily exact_match 400 without quoted phrase; Wayback 403 crashing dating; PubMed cookie wall (NCBI/Crossref registry dates added); SSRF redirect guard.
+- E3 drift check live: precision 0.37 recall 0.58 at 0.75. Decisions: "possible variant" wording; metadata dates labelled; merge #191 now.
+- New: #192 span/headline quality. FIX lists: #184, #186, #185, #188, #172, #174, #173.
+
+- 2026-11-17 09:45 ET: morning check. No team activity since 01:50 ET. Merged #193 (.env.example comments) as 554ca60. #188: asked Anoop to cite #105 (last item). Re-reviews of #173, #185, #172, #174 running.
+- 2026-11-17 10:00 ET: #173 PASS, merged a3152c8. FIX: #172 (2H), #174 (1M), #185 (1M: E3 precision on the card). Posted ordered queues on #1, #3, #4.
+- 2026-11-17 10:20 ET: Rohan (via Vidyut): partial scorecard + budget_bound_exceeded done locally, no PR yet. Asked for a PR before F2.
+- 2026-11-17: Rohan (via Vidyut): +Crossref publisher DOI, validation reason; still local, no PR. Asked to push PR now, the F2 remainder as a second PR.
+- 2026-11-17 12:45 ET: merged #188 a848482, #185 7fcfb6e, #172 22a9880, #195 (F3) 2fa415f, #174 6e2a3da (after rerunning the flaky CI). FIX: #196 (1H over-fire), #197 (1M), #198 (1H, 1M). Flaky readouts test assigned to Rohan.
+- 2026-11-17 12:40 ET: Vidyut moves heavy work to Rishit. URGENT list on #1 (F1 both halves, take over #198, F7, a walk replay harness, F5 spans, #184 and #186, partial dates, small items). Anoop is light (#197 only). Rohan: PR, F2, flaky test, T72.
+- 2026-11-17 13:05 ET: merged #196 (F4) 39a0d26 after a flaky CI rerun. #199 FIX 1H (own number vetoes itself). XO opened #201 to fix the flaky pipeline test (cache collision); in review.
+- 2026-11-17 ~13:00 ET: merged #201 (4ad3a86) and #197 (F5) f0404dd. #198 PASS, waiting on #202 (XO: per-test HTTP cache, flake 0/10). FIX: #200 F1 closeTrail half (Rishit), #199 1H (Anoop). Owners restated on #1, #3, #4.
+- 2026-11-17 ~13:10 ET: merged #202 (per-test cache, ends flake) e9a03e0 and #198 (F6) 62bc407.
+- 2026-11-17 13:15 ET tick: #199 and #200 re-pushed, both in review. Anoop given #196 follow-up, traps README, #133 secret scan + plan/ privacy review.
+- 2026-11-17 13:45 ET: XO window. Merged #199 c63d9fa, #200 F1 61a4f3e, #203 F7 7658f8d, #208 walk replay 30a33a5, #206 partial dates 3365344. Closed #204 (missed real cues; keep main), #205 (Rishit fixed it in #200), #207 (lost to #208). #133 secret scan: clean. Tonight: dev-run with PZ_RECORD_DIR=runs/walk-record.
+- 2026-11-17 13:45 ET tick: Rishit opened #210 (small fixes) and pushed #186 and #184 fixes; reviews running for #209, #184, #210, #186. Tonight runbook added to HANDOFF.
+- 2026-11-17 13:55 ET tick: merged #186 32d6da7. FIX: #209 (1H wrap), #184 (1M formats), #210 (1H cue revert). Review of #211, #212 running. Rishit next: fixes, demo path walk, README numbers after the rerun.
+- 2026-11-17 14:10 ET tick: merged #211 e82d1be. FIX #212 (1M: 70% into rules.json). XO #213: README status and judge dev-score line current, in review (found by a fresh-clone README walk for #133).
+- 2026-11-17 14:15 ET tick: no new heads. #213 merged 371a6df (README status, judge dev line). T72 candidate prep posted on #131: hero candidate dev-10.
+- 2026-11-17 14:23 ET tick: no new heads (Rishit last push 13:58, Rohan none today).
+- 2026-11-17 14:35 ET tick: no new heads. Nudged Rishit (order: #212, #209, #210) and Rohan (push PR before 18:00; time reserve is now #212).
+- 2026-11-17 14:43 ET tick: no new heads.
+- 2026-11-17 15:10 ET: Vidyut gave the go for the 18:00 run (logged). Work posted for Rishit (#212, #209, #210 by 17:30), Rohan (push the PR by 17:30), Anoop (limits rows, submission refresh, demo script check). Scheduled: merge pass 17:31, live run 18:02.

@@ -2,7 +2,7 @@ import { z } from "zod";
 import { TokenFactoryError, type ChatData, type ChatInput, type Result } from "../clients/tokenfactory.ts";
 import { lintText } from "../cli/lint-copy.ts";
 import { QUESTIONS, type TypedAnswer } from "../schema/questions.ts";
-import type { DateInfo, Decision, Trace } from "../schema/index.ts";
+import { datePhrase, type DateInfo, type Decision, type Trace } from "../schema/index.ts";
 import { earliestDates, falseCertainty, originWords, unbacked } from "../verify/false-certainty.ts";
 
 type Client = { chat(input: ChatInput): Promise<Result<ChatData>> };
@@ -61,7 +61,7 @@ export async function buildCard(trace: Trace, { client }: { client: Client }): P
   const earliest = trace.earliest.nodeIds.flatMap((id) => {
     const node = trace.nodes.find((n) => n.id === id);
     const span = trace.spans.find((s) => s.nodeId === id);
-    return node && span ? [{ nodeId: id, url: node.url, domain: node.domain, date: node.date.value, dateKind: node.date.kind, spanId: span.id, checkedSentence: span.text }] : [];
+    return node && span ? [{ nodeId: id, url: node.url, domain: node.domain, date: node.date.value, precision: node.date.precision, dateKind: node.date.kind, spanId: span.id, checkedSentence: span.text }] : [];
   });
   const base = { state: trace.decision.state, row: trace.decision.row, earliest };
   if (!earliest.length) return { ...base, sentence: null, dropped: null };
@@ -69,7 +69,7 @@ export async function buildCard(trace: Trace, { client }: { client: Client }): P
   const result = await client.chat({ model: MODEL, messages: [
     { role: "system", content: CARD_PROMPT },
     { role: "user", content: JSON.stringify({ source_text: JSON.stringify({ claim: trace.claim.text, state: trace.decision.state,
-      earliest: earliest.map((e) => ({ domain: e.domain, date: e.date, date_kind: e.dateKind === "existed_by" ? "online_by" : e.dateKind, sentence: e.checkedSentence })) }) }) },
+      earliest: earliest.map((e) => ({ domain: e.domain, date: e.date === null ? null : datePhrase(e.date, e.precision), date_kind: e.dateKind === "existed_by" ? "online_by" : e.dateKind, sentence: e.checkedSentence })) }) }) },
   ], jsonSchema: CARD_SCHEMA, maxTokens: 200 });
   let sentence: string;
   try { sentence = Reply.parse(JSON.parse(result.data.content)).sentence.trim(); }

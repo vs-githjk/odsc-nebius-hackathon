@@ -10,7 +10,7 @@ Ending   Stopped early
          Decision table row 2 of 6.
 
 Earliest Harbor Zoo keeper log, spring 2019
-         harborzoo.example, dataset, published 2019-04-30 (page metadata)
+         harborzoo.example, dataset, page says published 2019-04-30
          "The adult penguins napped a median of 14 times a day during daylight
          hours."
          https://harborzoo.example/keeper-log-2019

@@ -1,0 +1,2158 @@
+[
+  {
+    "id": "e3-01-d01",
+    "claim": "e3-01",
+    "url": "https://futurism.com/alarms-ring-on-plastic-pollution-5-25-trillion-tons-are-in-our-oceans",
+    "sentence": "EcoWatch estimates that 40% of the world's ocean surface is not even ocean anymore, but plastic debris.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d02",
+    "claim": "e3-01",
+    "url": "https://futurism.com/alarms-ring-on-plastic-pollution-5-25-trillion-tons-are-in-our-oceans",
+    "sentence": "According to Plastic Change, these numbers will double in the next ten years if we don't act on it.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d03",
+    "claim": "e3-01",
+    "url": "https://futurism.com/alarms-ring-on-plastic-pollution-5-25-trillion-tons-are-in-our-oceans",
+    "sentence": "Newly-Evolved Microbes Could Be Eating 90% of Ocean Plastic",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d04",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "When comparing between four size classes, two microplastic <4.75 mm and meso- and macroplastic >4.75 mm, a tremendous loss of microplastics is observed from the sea surface compared to expected rates of fragmentation, suggesting there are mechanisms at play that remove <4.75 mm plastic particles from the ocean surface.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d05",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "Eriksen, Marcus; Reisser, Julia; Galgani, Francois; Moore, Charles; Ryan, Peter; Carson, Hank; Thiel, Martin (2014): Plastic Marine Pollution Global Dataset. figshare. http://dx.doi.org/10.6084/m9.figshare.1015289",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d06",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "Plastic pollution is globally distributed across all oceans due to its properties of buoyancy and durability, and the sorption of toxicants to plastic while traveling through the environment [1], [2], have led some researchers to claim that synthetic polymers in the ocean should be regarded as hazardous waste [3].",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d07",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "Generation and accumulation of plastic pollution also occurs in closed bays, gulfs and seas surrounded by densely populated coastlines and watersheds [10]-[13].",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d08",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "The impact of plastic pollution through ingestion and entanglement of marine fauna, ranging from zooplankton to cetaceans, seabirds and marine reptiles, are well documented [14].",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d09",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "Adsorption of persistent organic pollutants onto plastic and their transfer into the tissues and organs through ingestion [15] is impacting marine megafauna [16] as well as lower trophic-level organisms [17], [18] and their predators [19], [20].",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d10",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "Despite oceanographic model predictions of where debris might converge [24] estimates of regional and global abundance and weight of floating plastics have been limited to microplastics <5 mm [19], [25].",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d11",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "Using extensive published and new data, particularly from the Southern Hemisphere subtropical gyres and marine areas adjacent to populated regions [7], [10], [13], [26], corrected for wind-driven vertical mixing [27], we populated an oceanographic model of debris distribution [28] to estimate global distribution and count and weight densities of plastic pollution in all sampled size classes.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d12",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "The oceanographic model assumes that amounts of plastic entering the ocean depend on three principal variables: watershed outfalls, population density and maritime activity.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d13",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "We also compared plastic pollution levels between oceans and across four size classes: 0.33-1.00 mm (small microplastics), 1.01-4.75 mm (large microplastics), 4.76-200 mm (mesoplastic), and >200 mm (macroplastic) (Fig.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d14",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "Count density (pieces km-2; see colorbar) of marine plastic debris measured at 1571 stations from 680 net tows and 891 visual survey transects for each of four plastic size classes (0.33-1.00 mm, 1.01-4.75 mm, 4.76-200 mm, and >200 mm).",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d15",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "Using a dissecting microscope, microplastic was manually separated from natural debris, sorted through stacked Tyler sieves into three size classes [7], [10], [12], then counted individually and weighed together.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d16",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "The two categories labeled 'other fishing gear' and 'miscellaneous plastics' were assigned a very conservative weight of 10 g per item.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d17",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "In this study we determined abundances and mass of microplastics starting at the lowest size of 0.33 mm, which is a commonly used lower limit for pelagic microplastics [31].",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d18",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "Generally accepted microplastic boundaries are based on typical neuston net mesh size (0.33 mm) and an upper boundary of approximately 5.0 mm [31].",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d19",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "We have used 4.75 mm as our upper boundary for microplastic because this is a size for standard sieves used for sample analysis in most of the expeditions contributing data to this manuscript.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d20",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "Mesoplastic has a lower limit of 4.75 mm, and no defined upper limit.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d21",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "In this current study we set the upper boundary of mesoplastic at 200 mm, which represents a typical plastic water bottle, chosen because of its ubiquity in the ocean.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d22",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "Macroplastic has no established lower boundary, though we set it at 200 mm, while the upper boundary is unlimited.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d23",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "All these data were used to calibrate the numerical model prediction of plastic count and weight density [28].",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d24",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "We assumed smaller particle sizes for the largest size classes, while for the smallest size class (0.33 mm-1.00 mm) we assumed a conservative particle diameter of 0.8 mm - this is substantially larger than most microplastics collected at the sea surface.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d25",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "For example, in the North Pacific the modeled data show 0.33×1010 particles in the macroplastic size class.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d26",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "Using our estimated fragmentation ratio of 1∶16 between macro and mesoplastic, we expect 5.33×1010 particles in the mesoplastic size class for the entire North Pacific.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d27",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "Our estimates suggest that the two Northern Hemisphere ocean regions contain 55.6% of particles and 56.8% of plastic mass compared to the Southern Hemisphere, with the North Pacific containing 37.9% and 35.8% by particle count and mass, respectively.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d28",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "Although net tow durations varied, the majority of all tows (92.3%) contained plastic, and those locations without plastic were outside the central areas of the subtropical gyres.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d29",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "The 891 visual surveys revealed that foamed polystyrene items were the most frequently observed macroplastics (1116 out of 4291 items), while derelict fishing buoys accounted for most (58.3%) of the total macroplastic weight (Table S2).",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d30",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "The data from the four size classes (small microplastics, large microplastics, meso- and macroplastics) were run separately through the model, producing four maps each for count and weight density (Figs.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d31",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "Combining the two microplastic size classes, they account for 92.4% of the global particle count, and when compared to each other, the smallest microplastic category (0.33-1.00 mm) had roughly 40% fewer particles than larger microplastics (1.01-4.75 mm) (Table 1).",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d32",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "In this case our modeled data show 13×1010 mesoplastic particles, indicating our fragmentation rates underestimated the data-calibrated model results.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d33",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "The data showed the weight of plastic pollution globally was estimated to comprise 75.4% macroplastic, 11.4% mesoplastic, and 10.6% and 2.6% in the two microplastic size classes, respectively.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d34",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "Our data suggest that a minimum of 233,400 tons of larger plastic items are afloat in the world's oceans compared to 35,540 tons of microplastics.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d35",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "This had been shown for the northern hemisphere where long-term surface transport (years) leads to the accumulation of plastic litter in the center of the ocean basins [6], [7].",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d36",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "Surprisingly, the total amounts of plastics determined for the southern hemisphere oceans are within the same range as for the northern hemisphere oceans (Table 1), which is unexpected given that inputs are substantially higher in the northern than in the southern hemisphere [28].",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d37",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "This could mean that plastic pollution is moved more easily between oceanic gyres and between hemispheres than previously assumed [28], leading to redistribution of plastic items through transport via oceanic currents.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d38",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "Indeed, stranding of floating plastics on local seashores seems to be more important in the northern than in the southern hemisphere [28], [33].",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d39",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "A study using an 11-year data set in the North Pacific [9] estimates a weight of 21,290 metric tons of floating microplastic, and ours for the same region is 12,100 metric tons.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d40",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "A recent study on the global distribution of microplastic [25] suggests that the total floating microplastic load ranges between 7,000 and 35,000 metric tons, and ours is 35,500 metric tons.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d41",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "This study [25] also found a 100-fold discrepancy between expected microplastic weight and abundance and their observations, indicating a tremendous loss of microplastics.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d42",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "The similarities between our results and those of this study [25] gives us further confidence in our estimates and support our hypothesis that the ultimate fate of buoyant microplastics is not at the ocean surface.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d43",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "Fragmentation rates of already brittle microplastics may be very high, rapidly breaking small microplastics further down into ever smaller particles, making them unavailable for our nets (0.33 mm mesh opening).",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d44",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "Many recent studies also demonstrate that many more organisms ingest small plastic particles than previously thought, either directly or indirectly, i.e. via their prey organisms [34]-[36].",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d45",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "Numerous species ingest microplastics, and thereby make it available to higher-level predators or may otherwise contribute to the differential removal of small particles from the sea surface, e.g. by packaging microplastics into fecal pellets [37], thus enhancing sinking.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d46",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "Furthermore, there is increasing evidence that some microbes can biodegrade microplastic particles [38]-[40].",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d47",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "In this manner, incorporation of smaller plastics into marine food chains could not only generate impacts on the health of the involved organisms [17]-[20], but also contribute to the removal of small microplastics from the sea surface [37].",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d48",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "Plastics Europe, a trade organization representing plastic producers and manufactures, reported that 288 million tons of plastic were produced worldwide in 2012 [41].",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d49",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "Our estimate of the global weight of plastic pollution on the sea surface, from all size classes combined, is only 0.1% of the world annual production.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d50",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "The question \"Where is all the Plastic?\" [42] remains unanswered, highlighting the need to investigate the many processes that play a role in the dynamics of macro-, meso- and microplastics in the world's oceans.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d51",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "Linear regression of modeled vs. measured values (with correction for vertical distribution) of plastic pollution in terms of count density (A - pieces km-2) and weight density (B - weight km-2) for each of the four size classes.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d52",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "Weight density (g km-2) of marine plastic debris measured at 1333 stations from net tows and survey transects for each of the four size classes (0.33-1.00 mm, 1.01-4.75 mm, 4.76-200 mm, and >200 mm).",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d53",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "24 expeditions from 2007-13 contributed data collected at 1571 field locations, with count and weight data in four plastic size classes from six regions: North Pacific (NP), North Atlantic (NA), South Pacific (SP), South Atlantic (SA), Indian Ocean (IO), Mediterranean Sea (MED), and circumnaviating Australia (Au.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d54",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "4,291 macroplastic items (>200 mm) in nine categories were observed from all visual survey transects conducted in the North Pacific, South Pacific, South Atlantic, Indian Ocean, and Mediterranean Sea.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d55",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "Mean weights for macroplastic items (Extended Data Table 4) were used to determine percent weight distribution.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d56",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "The two categories labeled 'other fishing gear' and 'miscellaneous plastics' were not calculated from weighing items, rather they were assigned a very conservative weight of 10 g.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d57",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "(2014) Distribution of surface plastic debris in the eastern Pacific Ocean from an 11-year dataset.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d58",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "Lett in Appl Microbiol 51:205-211 Plastics Europe (2013) Plastics-the facts 2013: An analysis of European latest plastics production, demand and waste data.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-01-d59",
+    "claim": "e3-01",
+    "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0111913",
+    "sentence": "Available: www.plasticseurope.de/cust/documentrequest.aspx?DocID=59179 Accessed 2014 Jan 1.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-02-d01",
+    "claim": "e3-02",
+    "url": "https://waterstep.org/about-us/why-water/",
+    "sentence": "More than 1,000 children under the age of 5 die each day from illnesses caused by unsafe water, sanitation, and hygiene (UNICEF).",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-02-d02",
+    "claim": "e3-02",
+    "url": "https://waterstep.org/about-us/why-water/",
+    "sentence": "In the world's poorest countries, every 60 seconds a child dies from a diarrheal disease caused by unsafe water (UNICEF).",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-02-d03",
+    "claim": "e3-02",
+    "url": "https://waterstep.org/about-us/why-water/",
+    "sentence": "More than 200 million hours are spent each day collecting water, predominantly by women and children, often from polluted sources far from home (UNICEF).",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-02-d04",
+    "claim": "e3-02",
+    "url": "https://waterstep.org/about-us/why-water/",
+    "sentence": "Diarrheal diseases, largely preventable through basic hygiene practices like hand washing, account for about 88% of deaths attributable to unsafe water and sanitation (World Health Organization).",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-02-d05",
+    "claim": "e3-02",
+    "url": "https://waterstep.org/about-us/why-water/",
+    "sentence": "Improved access to safe water means children live past the age of five, and the physical burden on women and girls is significantly reduced.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-02-d06",
+    "claim": "e3-02",
+    "url": "https://waterstep.org/about-us/why-water/",
+    "sentence": "The WHO estimates that every $1 invested in water and sanitation can yield as much as $34 in economic and social benefits (UN Department of Economic and Social Affairs, 2009).",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-02-d07",
+    "claim": "e3-02",
+    "url": "https://www.who.int/news/item/18-06-2019-1-in-3-people-globally-do-not-have-access-to-safe-drinking-water-unicef-who",
+    "sentence": "The report reveals that 1.8 billion people have gained access to basic drinking water services since 2000, but there are vast inequalities in the accessibility, availability and quality of these services.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-02-d08",
+    "claim": "e3-02",
+    "url": "https://www.who.int/news/item/18-06-2019-1-in-3-people-globally-do-not-have-access-to-safe-drinking-water-unicef-who",
+    "sentence": "It is estimated that 1 in 10 people (785 million) still lack basic services, including the 144 million who drink untreated surface water.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-02-d09",
+    "claim": "e3-02",
+    "url": "https://www.who.int/news/item/18-06-2019-1-in-3-people-globally-do-not-have-access-to-safe-drinking-water-unicef-who",
+    "sentence": "**Basic services: Having a protected drinking water source that takes less than thirty minutes to collect water from, using an improved toilet or latrine that does not have to be shared with other households, and having handwashing facilities with soap and water in the home.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-03-d01",
+    "claim": "e3-03",
+    "url": "https://www.cbc.ca/news/health/air-pollution-kills-7-million-people-every-year-globally-who-finds-1.2585505",
+    "sentence": "The agency said air pollution is the cause of about one in eight deaths and has now become the single biggest environmental health risk.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-03-d02",
+    "claim": "e3-03",
+    "url": "https://www.cbc.ca/news/health/air-pollution-kills-7-million-people-every-year-globally-who-finds-1.2585505",
+    "sentence": "WHO estimated that there were about 4.3 million deaths in 2012 caused by indoor air pollution, mostly people cooking inside using wood and coal stoves in Asia.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-03-d03",
+    "claim": "e3-03",
+    "url": "https://www.cbc.ca/news/health/air-pollution-kills-7-million-people-every-year-globally-who-finds-1.2585505",
+    "sentence": "WHO said there were about 3.7 million deaths from outdoor air pollution in 2012, of which nearly 90 per cent were in developing countries.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-03-d04",
+    "claim": "e3-03",
+    "url": "https://www.who.int/news/item/25-03-2014-7-million-premature-deaths-annually-linked-to-air-pollution",
+    "sentence": "Regionally, low- and middle-income countries in the WHO South-East Asia and Western Pacific Regions had the largest air pollution-related burden in 2012, with a total of 3.3 million deaths linked to indoor air pollution and 2.6 million deaths related to outdoor air pollution.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-03-d05",
+    "claim": "e3-03",
+    "url": "https://www.who.int/news/item/25-03-2014-7-million-premature-deaths-annually-linked-to-air-pollution",
+    "sentence": "After analysing the risk factors and taking into account revisions in methodology, WHO estimates indoor air pollution was linked to 4.3 million deaths in 2012 in households cooking over coal, wood and biomass stoves.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-03-d06",
+    "claim": "e3-03",
+    "url": "https://www.who.int/news/item/25-03-2014-7-million-premature-deaths-annually-linked-to-air-pollution",
+    "sentence": "The new estimate is explained by better information about pollution exposures among the estimated 2.9 billion people living in homes using wood, coal or dung as their primary cooking fuel, as well as evidence about air pollution's role in the development of cardiovascular and respiratory diseases, and cancers.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-03-d07",
+    "claim": "e3-03",
+    "url": "https://www.who.int/news/item/25-03-2014-7-million-premature-deaths-annually-linked-to-air-pollution",
+    "sentence": "In the case of outdoor air pollution, WHO estimates there were 3.7 million deaths in 2012 from urban and rural sources worldwide.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-03-d08",
+    "claim": "e3-03",
+    "url": "https://www.who.int/news/item/25-03-2014-7-million-premature-deaths-annually-linked-to-air-pollution",
+    "sentence": "Later this year, WHO will release indoor air quality guidelines on household fuel combustion, as well as country data on outdoor and indoor air pollution exposures and related mortality, plus an update of air quality measurements in 1600 cities from all regions of the world.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-05-d01",
+    "claim": "e3-05",
+    "url": "https://pharmaceutical-journal.com/article/news/antimicrobial-resistance-will-lead-to-an-additional-10-million-deaths-each-year-worldwide-by-2050",
+    "sentence": "Drug-resistant infections will cost the world up to $100tn by 2050, says a new report.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-05-d02",
+    "claim": "e3-05",
+    "url": "https://pharmaceutical-journal.com/article/news/antimicrobial-resistance-will-lead-to-an-additional-10-million-deaths-each-year-worldwide-by-2050",
+    "sentence": "Few published studies have attempted to predict how many more people will get infections when prophylactic antibiotics do not work, so the review also attempted to estimate the economic value created for society of four high-volume routine medical interventions that are dependent on the availability of effective antibiotics to make them comparatively low-risk.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-06-d01",
+    "claim": "e3-06",
+    "url": "https://fortune.com/2024/04/08/world-generated-62-million-tonnes-electronic-waste-year-un-agencies-warn-tech-environment/",
+    "sentence": "Only 22% of that waste was formally recycled.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-06-d02",
+    "claim": "e3-06",
+    "url": "https://fortune.com/2024/04/08/world-generated-62-million-tonnes-electronic-waste-year-un-agencies-warn-tech-environment/",
+    "sentence": "Currently, only 42% of countries have e-waste legislation.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-06-d03",
+    "claim": "e3-06",
+    "url": "https://fortune.com/2024/04/08/world-generated-62-million-tonnes-electronic-waste-year-un-agencies-warn-tech-environment/",
+    "sentence": "The data show that those countries covered by legislation on average have an e-waste collection rate of 25%.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-06-d04",
+    "claim": "e3-06",
+    "url": "https://www.itu.int/en/mediacentre/Pages/PR-2024-03-20-e-waste-recycling.aspx",
+    "sentence": "Electronic waste rising five times faster than documented e-waste recycling: UN",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-06-d05",
+    "claim": "e3-06",
+    "url": "https://www.itu.int/en/mediacentre/Pages/PR-2024-03-20-e-waste-recycling.aspx",
+    "sentence": "​​E-waste up 82 per cent from 2010.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-06-d06",
+    "claim": "e3-06",
+    "url": "https://www.itu.int/en/mediacentre/Pages/PR-2024-03-20-e-waste-recycling.aspx",
+    "sentence": "E-waste on track to rise another 32 per cent, to 82 million tonnes, in 2030.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-06-d07",
+    "claim": "e3-06",
+    "url": "https://www.itu.int/en/mediacentre/Pages/PR-2024-03-20-e-waste-recycling.aspx",
+    "sentence": "Just 1 per cent of rare earth element demand is met by e-waste recycling.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-06-d08",
+    "claim": "e3-06",
+    "url": "https://www.itu.int/en/mediacentre/Pages/PR-2024-03-20-e-waste-recycling.aspx",
+    "sentence": "​The world's generation of electronic waste is rising five times faster than documented e-waste recycling, the UN's fourth Global E-waste Monitor (GEM) reveals today.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-06-d09",
+    "claim": "e3-06",
+    "url": "https://www.itu.int/en/mediacentre/Pages/PR-2024-03-20-e-waste-recycling.aspx",
+    "sentence": "Worldwide, the annual generation of e-waste is rising by 2.6 million tonnes annually, on track to reach 82 million tonnes by 2030, a further 33 per cent increase from the 2022 figure.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-06-d10",
+    "claim": "e3-06",
+    "url": "https://www.itu.int/en/mediacentre/Pages/PR-2024-03-20-e-waste-recycling.aspx",
+    "sentence": "The report foresees a drop in the documented collection and recycling rate from 22.3 per cent in 2022 to 20 per cent by 2030 due to the widening difference in recycling efforts relative to the staggering growth of e-waste generation worldwide.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-06-d11",
+    "claim": "e3-06",
+    "url": "https://www.itu.int/en/mediacentre/Pages/PR-2024-03-20-e-waste-recycling.aspx",
+    "sentence": "The report underlines that if countries could bring the e-waste collection and recycling rates to 60 per cent by 2030, the benefits - including through minimizing human health risks - would exceed costs by more than USD 38 billion.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-06-d12",
+    "claim": "e3-06",
+    "url": "https://www.itu.int/en/mediacentre/Pages/PR-2024-03-20-e-waste-recycling.aspx",
+    "sentence": "\"No more than 1 per cent of demand for essential rare earth elements is met by e-waste recycling.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-06-d13",
+    "claim": "e3-06",
+    "url": "https://www.itu.int/en/mediacentre/Pages/PR-2024-03-20-e-waste-recycling.aspx",
+    "sentence": "Improved e-waste management could result in a global net positive of USD 38 billion, representing a significant economic opportunity while addressing climate change and health impacts.\"",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-06-d14",
+    "claim": "e3-06",
+    "url": "https://www.itu.int/en/mediacentre/Pages/PR-2024-03-20-e-waste-recycling.aspx",
+    "sentence": "\"The Global E-waste Monitor shows that we are currently wasting USD 91 billion in valuable metals due to insufficient e-waste recycling.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-06-d15",
+    "claim": "e3-06",
+    "url": "https://www.itu.int/en/mediacentre/Pages/PR-2024-03-20-e-waste-recycling.aspx",
+    "sentence": "14 million tonnes (22.3 per cent): Estimated mass of e-waste trashed, mostly landfilled, in 2022",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-06-d16",
+    "claim": "e3-06",
+    "url": "https://www.itu.int/en/mediacentre/Pages/PR-2024-03-20-e-waste-recycling.aspx",
+    "sentence": "31 million tonnes: Estimated weight of metals embedded in e-waste in 2022, along with 17 million tonnes of plastics and 14 million tonnes of other materials (minerals, glass, composite materials, etc.)",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-06-d17",
+    "claim": "e3-06",
+    "url": "https://www.itu.int/en/mediacentre/Pages/PR-2024-03-20-e-waste-recycling.aspx",
+    "sentence": "USD 91 billion: The value of metals embedded in 2022 e-waste, including USD 19 billion in copper, USD 15 billion in gold, and USD 16 billion in iron.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-06-d18",
+    "claim": "e3-06",
+    "url": "https://www.itu.int/en/mediacentre/Pages/PR-2024-03-20-e-waste-recycling.aspx",
+    "sentence": "USD 28 billion: Value of secondary raw materials (mostly iron) reclaimed by \"urban mining\" of e-waste in 2022",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-06-d19",
+    "claim": "e3-06",
+    "url": "https://www.itu.int/en/mediacentre/Pages/PR-2024-03-20-e-waste-recycling.aspx",
+    "sentence": "900 million tonnes: Primary ore extraction avoided by reclaiming materials through documented e-waste recycling",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-06-d20",
+    "claim": "e3-06",
+    "url": "https://www.itu.int/en/mediacentre/Pages/PR-2024-03-20-e-waste-recycling.aspx",
+    "sentence": "93 million tonnes: CO2-equivalent emissions avoided by formal e-waste management - recaptured refrigerants (41 million tonnes), avoided metals mining (52 million tonnes)",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-06-d21",
+    "claim": "e3-06",
+    "url": "https://www.itu.int/en/mediacentre/Pages/PR-2024-03-20-e-waste-recycling.aspx",
+    "sentence": "~50 per cent (30 million tonnes): E-waste generated by Asian countries (of which relatively few have enacted legislation or established clear e-waste collection targets)",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-06-d22",
+    "claim": "e3-06",
+    "url": "https://www.itu.int/en/mediacentre/Pages/PR-2024-03-20-e-waste-recycling.aspx",
+    "sentence": "17.6 kg: Per capita e-waste generation in Europe, followed by Oceania (16.1 kg) and the Americas (14.1 kg).",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-06-d23",
+    "claim": "e3-06",
+    "url": "https://www.itu.int/en/mediacentre/Pages/PR-2024-03-20-e-waste-recycling.aspx",
+    "sentence": "16 million tonnes: E-waste collected and recycled outside of formal systems in high and upper-middle income countries that have developed e-waste management infrastructure.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-06-d24",
+    "claim": "e3-06",
+    "url": "https://www.itu.int/en/mediacentre/Pages/PR-2024-03-20-e-waste-recycling.aspx",
+    "sentence": "18 million tonnes: E-waste managed mostly by the informal sector in low and lower-middle income countries with no e-waste management infrastructure.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-06-d25",
+    "claim": "e3-06",
+    "url": "https://www.itu.int/en/mediacentre/Pages/PR-2024-03-20-e-waste-recycling.aspx",
+    "sentence": "5.1 million tonnes (8.2 per cent of the global total): E-waste shipped across borders in 2022, of which ~3.3 million tonnes (65 per cent) was shipped from high-income to middle- and low-income countries through uncontrolled, undocumented movements",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-06-d26",
+    "claim": "e3-06",
+    "url": "https://www.itu.int/en/mediacentre/Pages/PR-2024-03-20-e-waste-recycling.aspx",
+    "sentence": "33 per cent (20.4 million tonnes): Proportion of e-waste made up of small devices (e.g. toys, microwave ovens, vacuum cleaners, e-cigarettes), of which 12 per cent are recycled",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-06-d27",
+    "claim": "e3-06",
+    "url": "https://www.itu.int/en/mediacentre/Pages/PR-2024-03-20-e-waste-recycling.aspx",
+    "sentence": "4.6 million tonnes: E-waste in the small IT and telecommunication equipment category (e.g. laptops, mobile phones, GPS devices, routers), with only 22 per cent documented collection and recycling rate",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-06-d28",
+    "claim": "e3-06",
+    "url": "https://www.itu.int/en/mediacentre/Pages/PR-2024-03-20-e-waste-recycling.aspx",
+    "sentence": "81 countries had e-waste legislation in 2023, up from 78 in 2019.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-06-d29",
+    "claim": "e3-06",
+    "url": "https://www.itu.int/en/mediacentre/Pages/PR-2024-03-20-e-waste-recycling.aspx",
+    "sentence": "Of the 81 countries, 67 had a legal instrument governing e-waste management with provisions promoting extended producer responsibility (EPR).",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-06-d30",
+    "claim": "e3-06",
+    "url": "https://www.itu.int/en/mediacentre/Pages/PR-2024-03-20-e-waste-recycling.aspx",
+    "sentence": "The enforcement of e-waste policy, legislation and regulation \"remains a genuine challenge globally, and the stagnation of the global e-waste collection and recycling rate is likely exacerbated by the fact that only 46 countries have collection rate targets and only 36 have recycling rate targets.\"",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d01",
+    "claim": "e3-07",
+    "url": "https://longlevity.ai/blog/loneliness-and-longevity/",
+    "sentence": "(Nature Human Behaviour, 2023), a meta-analysis of 90 prospective cohorts covering roughly 2.2 million participants, found social isolation associated with about 32% higher all-cause mortality.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d02",
+    "claim": "e3-07",
+    "url": "https://longlevity.ai/blog/loneliness-and-longevity/",
+    "sentence": "The \"as deadly as smoking\" framing comes from Holt-Lunstad's meta-analytic work (first in 2010, refined in 2015) that put the effect size in context: the mortality risk of social isolation is comparable to the risk of smoking up to 15 cigarettes per day, and larger than the risk associated with obesity or physical inactivity.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d03",
+    "claim": "e3-07",
+    "url": "https://longlevity.ai/blog/loneliness-and-longevity/",
+    "sentence": "The odds-ratio for mortality from social isolation is comparable to smoking up to 15 cigarettes per day, per Holt-Lunstad 2010.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d04",
+    "claim": "e3-07",
+    "url": "https://longlevity.ai/blog/loneliness-and-longevity/",
+    "sentence": "An introvert with one or two close reliable relationships shows the same protective effect as an extrovert with a larger social network.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d05",
+    "claim": "e3-07",
+    "url": "https://longlevity.ai/blog/loneliness-and-longevity/",
+    "sentence": "A systematic review and meta-analysis of 90 cohort studies of social isolation, loneliness and mortality.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d06",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "Significant differences were found across the type of social measurement evaluated (p<0.001); the association was strongest for complex measures of social integration (OR = 1.91; 95% CI 1.63 to 2.23) and lowest for binary indicators of residential status (living alone versus with others) (OR = 1.19; 95% CI 0.99 to 1.44).",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d07",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "They point to a 1988 review of five prospective studies (investigations in which the characteristics of a population are determined and then the population is followed to see whether any of these characteristics are associated with specific outcomes) that showed that people with fewer social relationships die earlier on average than those with more social relationships.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d08",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "The researchers identified 148 prospective studies that provided data on individuals' mortality as a function of social relationships and extracted an \"effect size\" from each study.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d09",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "An effect size quantifies the size of a difference between two groups-here, the difference in the likelihood of death between groups that differ in terms of their social relationships.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d10",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "Put another way, an OR of 1.5 means that by the time half of a hypothetical sample of 100 people has died, there will be five more people alive with stronger social relationships than people with weaker social relationships.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d11",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "Two decades ago a causal association between social relationships and mortality was proposed after a review of five large prospective studies concluded that social relationships predict mortality [1].",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d12",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "This may be due in part to the fact that the literature has become unwieldy, with wide variation in how social relationships are measured across a large number of studies and disappointing clinical trials [2].",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d13",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "For instance, trends reveal reduced intergenerational living, greater social mobility, delayed marriage, dual-career families, increased single-residence households, and increased age-related disabilities [3],[4].",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d14",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "There are two general theoretical models that propose processes through which social relationships may influence health: the stress buffering and main effects models [5].",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d15",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "From this perspective, the term social support is used to refer to the real or perceived availability of social resources [6].",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d16",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "In addition, being part of a social network gives individuals meaningful roles that provide self-esteem and purpose to life [7],[8].",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d17",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "Despite striking differences, three major components of social relationships are consistently evaluated [5]: (a) the degree of integration in social networks [9], (b) the social interactions that are intended to be supportive (i.e., received social support), and (c) the beliefs and perceptions of support availability held by the individual (i.e., perceived social support).",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d18",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "The first subconstruct represents the structural aspects of social relationships and the latter two represent the functional aspects.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d19",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "Empirical data suggest the medical relevance of social relationships in improving patient care [13], increasing compliance with medical regimens [13], and promoting decreased length of hospitalization [14],[15].",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d20",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "Likewise, social relationships have been linked to the development [16],[17] and progression [18]-[21] of cardiovascular disease [22]-a leading cause of death globally.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d21",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "To identify published and unpublished studies of the association between social relationships and mortality, we used three techniques.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d22",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "We included in the meta-analysis studies that provided quantitative data regarding individuals' mortality as a function of social relationships, including both structural and functional aspects [23].",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d23",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "Across all studies we assigned OR values less than 1.00 to data indicative of increased mortality and OR values greater than 1.00 to data indicative of decreased mortality for individuals with relatively higher levels of social relationships.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d24",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "Given that structural versus functional components of social relationships may influence health in different ways [11],[12], the high degree of heterogeneity observed in the omnibus results may have been due in part to differences between the components of social relationships evaluated within and across studies.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d25",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "Table 2 provides definitions of the types and subtypes of social relationships evaluated.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d26",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "Sixty-three studies had data exclusive to structural measures of social relationships (see Figure 3).",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d27",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "To examine the most precise effect size estimates available and to increase the statistical power associated with this analysis, we shifted the unit of analysis [24] and extracted effect sizes within studies that were specific to measures of structural aspects of social relationships.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d28",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "That is, if a study contained effect sizes from both structural and functional types of social relationships, we extracted the structural types for this analysis (with identical subtypes aggregated), which resulted in a total of 230 unique effect sizes across 116 studies.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d29",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "Average random effects weighted odds ratios for the various subtypes of social relationships are reported in Table 4.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d30",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "Twenty-four studies had data exclusive to functional measures of social relationships (see Figure 4).",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d31",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "We extracted 87 unique effect sizes that were specific to measures of functional social relationships within 72 studies.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d32",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "Sixty-one studies had combined data of both structural and functional measures of social relationships (see Figure 5).",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d33",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "We extracted 64 unique effect sizes that evaluated combined structural and functional measures of social relationships within 61 studies.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d34",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "Cumulative empirical evidence across 148 independent studies indicates that individuals' experiences within social relationships significantly predict mortality.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d35",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "Multidimensional assessments of social integration yielded an even stronger association: a 91% increase in odds of survival.",
+    "sameClaimOtherNumber": true
+  },
+  {
+    "id": "e3-07-d36",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "The magnitude of risk reduction varied depending on the type of measurement of social relationships (see Table 4).",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d37",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "Because these studies included more than one type of social relationship measurement (e.g., network based inventories, marital status, etc.), such a measurement approach may better represent the multiple pathways (described earlier) by which social relationships influence health and mortality [182].",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d38",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "The reliability and validity of measurement likely explains this finding, and researchers are encouraged to use psychometrically sound measures of social relationships (e.g., Table 2).",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d39",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "The link between social relationships and mortality is currently much less understood than other risk factors; nonetheless there is substantial experimental, cross-sectional, and prospective evidence linking social relationships with multiple pathways associated with mortality (see [182] for review).",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d40",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "However, research suggests this is not the case, with negative social relationships linked to greater risk of mortality [184],[185].",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d41",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "For instance, marital status is widely used as a measure of social integration; however, a growing literature documents its divergent effects based on level of marital quality [186],[187].",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d42",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "Approximately two decades after the review by House and colleagues [1], a generation of empirical research validates their initial premise: Social relationships exert an independent influence on risk for mortality comparable with well established risk factors for mortality (Figure 6).",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d43",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "Some steps have already been taken identifying the psychological, behavioral, and physiological pathways linking social relationships to health [5],[182],[189].",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d44",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "Social relationships are linked to better health practices and to psychological processes, such as stress and depression, that influence health outcomes in their own right [190]; however, the influence of social relationships on health cannot be completely explained by these processes, as social relationships exert an independent effect.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d45",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "For instance, a number of studies indicate that social support is linked to better immune functioning [194]-[197] and to immune-mediated inflammatory processes [198].",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d46",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "Preliminary investigations have demonstrated some risk reduction through formalized social interventions [199].",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d47",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "While the evidence is mixed [2],[6], it should be noted that most social support interventions evaluated in the literature thus far are based on support provided from strangers; in contrast, evidence provided in this meta-analysis is based almost entirely on naturally occurring social relationships.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d48",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "Moreover, our analyses suggest that received support is less predictive of mortality than social integration (Table 4).",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d49",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "McPherson M, Smith-Lovin L (2006) Social Isolation in America: Changes in core discussion networks over two decades.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d50",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "Cornman JC, Goldman N, Glei DA, Weinstein M, Chang M (2003) Social ties and perceived support: Two dimensions of social relationships and health among the elderly in Taiwan.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d51",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "Gellert GA, Maxwell RM, Siegel BS (1993) Survival of breast cancer patients receiving adjunctive psychosocial support therapy: A 10-year follow-up study.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d52",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "Giles LC, Glonek GFV, Luszcz MA, Andrews GR (2004) Effects of social networks on 10 year survival in very old Australians: The Australian longitudinal study of aging.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d53",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "Giraldi T, Rodani MG, Cartel G, Grassi L (1997) Psychosocial factors and breast cancer: A 6-year Italian follow-up study.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d54",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "J Gerontol: Series B: Psychol Scis & Social Sciences 54B: 44-54.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d55",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "Murata C, Kondo T, Hori Y, Miyao D, Tamakoshi K (2005) Effects of social relationships on mortality among the elderly in a Japanese rural area: An 88-month follow-up study.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d56",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "Olsen RB, Olsen J, Gunner-Svensson F, Waldstrom B (1991) Social networks and longevity: A 14 year follow-up study among elderly in Denmark.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d57",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "(1993) Intercommunity variations in the association between social ties and mortality in the elderly: A comparative analysis of three communities.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d58",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "Welin L, Larsson B, Svardsudd K, Tibblin B, Tibblin G (1992) Social network and activities in relation to mortality from cardiovascular diseases, cancer, and other causes: A 12 year follow up of the Study of Men Born in 1913 and 1923.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-07-d59",
+    "claim": "e3-07",
+    "url": "https://journals.plos.org/plosmedicine/article?id=10.1371/journal.pmed.1000316",
+    "sentence": "(1997) Relation of social network characteristics to 5-year mortality among young-old versus old-old White women in an urban community.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-09-d01",
+    "claim": "e3-09",
+    "url": "https://www.missingkids.org/netsmartz/topics/smartphones",
+    "sentence": "The research also suggests that the omnipresence of smartphones helps strengthen friendships, with 62% of smartphone-owning teens reporting that texting allows them to keep in closer contact with close friends.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-09-d02",
+    "claim": "e3-09",
+    "url": "https://www.missingkids.org/netsmartz/topics/smartphones",
+    "sentence": "Additionally, having internet access via a smartphone may help teens make and maintain new friendships, with 57% reporting having made new friends online.2",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-09-d03",
+    "claim": "e3-09",
+    "url": "https://www.missingkids.org/netsmartz/topics/smartphones",
+    "sentence": "[1] Pew Research Center, \"Teens, Social Media & Technology 2023\"",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-09-d04",
+    "claim": "e3-09",
+    "url": "https://www.pewresearch.org/internet/2018/05/31/teens-social-media-technology-2018/",
+    "sentence": "Today, roughly half (51%) of U.S. teens ages 13 to 17 say they use Facebook, notably lower than the shares who use YouTube, Instagram or Snapchat.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-09-d05",
+    "claim": "e3-09",
+    "url": "https://www.pewresearch.org/internet/2018/05/31/teens-social-media-technology-2018/",
+    "sentence": "These mobile connections are in turn fueling more-persistent online activities: 45% of teens now say they are online on a near-constant basis.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-09-d06",
+    "claim": "e3-09",
+    "url": "https://www.pewresearch.org/internet/2018/05/31/teens-social-media-technology-2018/",
+    "sentence": "Minorities of teens describe that effect as mostly positive (31%) or mostly negative (24%), but the largest share (45%) says that effect has been neither positive nor negative.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-09-d07",
+    "claim": "e3-09",
+    "url": "https://www.pewresearch.org/internet/2018/05/31/teens-social-media-technology-2018/",
+    "sentence": "These are some of the main findings from the Center's survey of U.S. teens conducted March 7-April 10, 2018.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-09-d08",
+    "claim": "e3-09",
+    "url": "https://www.pewresearch.org/internet/2018/05/31/teens-social-media-technology-2018/",
+    "sentence": "The social media landscape in which teens reside looks markedly different than it did as recently as three years ago.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-09-d09",
+    "claim": "e3-09",
+    "url": "https://www.pewresearch.org/internet/2018/05/31/teens-social-media-technology-2018/",
+    "sentence": "In the Center's 2014-2015 survey of teen social media use, 71% of teens reported being Facebook users.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-09-d10",
+    "claim": "e3-09",
+    "url": "https://www.pewresearch.org/internet/2018/05/31/teens-social-media-technology-2018/",
+    "sentence": "No other platform was used by a clear majority of teens at the time: Around half (52%) of teens said they used Instagram, while 41% reported using Snapchat.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-09-d11",
+    "claim": "e3-09",
+    "url": "https://www.pewresearch.org/internet/2018/05/31/teens-social-media-technology-2018/",
+    "sentence": "Meanwhile, 51% of teens now say they use Facebook.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-09-d12",
+    "claim": "e3-09",
+    "url": "https://www.pewresearch.org/internet/2018/05/31/teens-social-media-technology-2018/",
+    "sentence": "Seven-in-ten teens living in households earning less than $30,000 a year say they use Facebook, compared with 36% whose annual family income is $75,000 or more.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-09-d13",
+    "claim": "e3-09",
+    "url": "https://www.pewresearch.org/internet/2018/05/31/teens-social-media-technology-2018/",
+    "sentence": "When it comes to which one of these online platforms teens use the most, roughly one-third say they visit Snapchat (35%) or YouTube (32%) most often, while 15% say the same of Instagram.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-09-d14",
+    "claim": "e3-09",
+    "url": "https://www.pewresearch.org/internet/2018/05/31/teens-social-media-technology-2018/",
+    "sentence": "By comparison, 10% of teens say Facebook is their most-used online platform, and even fewer cite Twitter, Reddit or Tumblr as the site they visit most often.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-09-d15",
+    "claim": "e3-09",
+    "url": "https://www.pewresearch.org/internet/2018/05/31/teens-social-media-technology-2018/",
+    "sentence": "Again, lower-income teens are far more likely than those from higher income households to say Facebook is the online platform they use most often (22% vs.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-09-d16",
+    "claim": "e3-09",
+    "url": "https://www.pewresearch.org/internet/2018/05/31/teens-social-media-technology-2018/",
+    "sentence": "Additionally, white teens (41%) are more likely than Hispanic (29%) or black (23%) teens to say Snapchat is the online platform they use most often, while black teens are more likely than whites to identify Facebook as their most used site (26% vs.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-09-d17",
+    "claim": "e3-09",
+    "url": "https://www.pewresearch.org/internet/2018/05/31/teens-social-media-technology-2018/",
+    "sentence": "A plurality of teens (45%) believe social media has a neither positive nor negative effect on people their age.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-09-d18",
+    "claim": "e3-09",
+    "url": "https://www.pewresearch.org/internet/2018/05/31/teens-social-media-technology-2018/",
+    "sentence": "Meanwhile, roughly three-in-ten teens (31%) say social media has had a mostly positive impact, while 24% describe its effect as mostly negative.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-09-d19",
+    "claim": "e3-09",
+    "url": "https://www.pewresearch.org/internet/2018/05/31/teens-social-media-technology-2018/",
+    "sentence": "Smaller shares argue that social media is a good venue for entertainment (9%), that it offers a space for self-expression (7%) or that it allows teens to get support from others (5%) or to learn new things in general (4%).",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-09-d20",
+    "claim": "e3-09",
+    "url": "https://www.pewresearch.org/internet/2018/05/31/teens-social-media-technology-2018/",
+    "sentence": "The top response (mentioned by 27% of these teens) is that social media has led to more bullying and the overall spread of rumors.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-09-d21",
+    "claim": "e3-09",
+    "url": "https://www.pewresearch.org/internet/2018/05/31/teens-social-media-technology-2018/",
+    "sentence": "\"Because teens are killing people all because of the things they see on social media or because of the things that happened on social media.\" (Girl, age 14)",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-09-d22",
+    "claim": "e3-09",
+    "url": "https://www.pewresearch.org/internet/2018/05/31/teens-social-media-technology-2018/",
+    "sentence": "Similar shares think social media distorts reality and gives teens an unrealistic view of other people's lives (15%), or that teens spend too much time on social media (14%).",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-09-d23",
+    "claim": "e3-09",
+    "url": "https://www.pewresearch.org/internet/2018/05/31/teens-social-media-technology-2018/",
+    "sentence": "Another 12% criticize social media for influencing teens to give in to peer pressure, while smaller shares express concerns that these sites could lead to psychological issues or drama.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-09-d24",
+    "claim": "e3-09",
+    "url": "https://www.pewresearch.org/internet/2018/05/31/teens-social-media-technology-2018/",
+    "sentence": "While 88% of teens report having access to a desktop or laptop computer at home, access varies greatly by income level.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-09-d25",
+    "claim": "e3-09",
+    "url": "https://www.pewresearch.org/internet/2018/05/31/teens-social-media-technology-2018/",
+    "sentence": "Fully 96% of teens from households with an annual income of $75,000 or more per year say they have access to a computer at home, but that share falls to 75% among those from households earning less than $30,000 a year.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-09-d26",
+    "claim": "e3-09",
+    "url": "https://www.pewresearch.org/internet/2018/05/31/teens-social-media-technology-2018/",
+    "sentence": "Teens who have a parent with a bachelor's degree or more are more likely to say they have access to a computer than teens whose parents have a high school diploma or less (94% vs.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-09-d27",
+    "claim": "e3-09",
+    "url": "https://www.pewresearch.org/internet/2018/05/31/teens-social-media-technology-2018/",
+    "sentence": "Some 45% of teens say they use the internet \"almost constantly,\" a figure that has nearly doubled from the 24% who said this in the 2014-2015 survey.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-09-d28",
+    "claim": "e3-09",
+    "url": "https://www.pewresearch.org/internet/2018/05/31/teens-social-media-technology-2018/",
+    "sentence": "Another 44% say they go online several times a day, meaning roughly nine-in-ten teens go online at least multiple times per day.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-09-d29",
+    "claim": "e3-09",
+    "url": "https://www.pewresearch.org/internet/2018/05/31/teens-social-media-technology-2018/",
+    "sentence": "Half of teenage girls (50%) are near-constant online users, compared with 39% of teenage boys.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-09-d30",
+    "claim": "e3-09",
+    "url": "https://www.pewresearch.org/internet/2018/05/31/teens-social-media-technology-2018/",
+    "sentence": "And Hispanic teens are more likely than whites to report using the internet almost constantly (54% vs.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-09-d31",
+    "claim": "e3-09",
+    "url": "https://www.pewresearch.org/internet/2018/05/31/teens-social-media-technology-2018/",
+    "sentence": "Overall, 84% of teens say they have or have access to a game console at home, and 90% say they play video games of any kind (whether on a computer, game console or cellphone).",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-09-d32",
+    "claim": "e3-09",
+    "url": "https://www.pewresearch.org/internet/2018/05/31/teens-social-media-technology-2018/",
+    "sentence": "And 85% of teens from households earning less than $30,000 a year now say they have a game console at home, up from 67% in 2014-2015.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-09-d33",
+    "claim": "e3-09",
+    "url": "https://www.pewresearch.org/internet/2018/05/31/teens-social-media-technology-2018/",
+    "sentence": "See The Associated Press-NORC Center for Public Affairs Research's 2017 report: http://apnorc.org/projects/Pages/HTML%20Reports/instagram-and-snapchat-are-most-popular-social-networks-for-teens.aspx#footnote-1↩",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-10-d01",
+    "claim": "e3-10",
+    "url": "https://www.scientificamerican.com/article/ai-will-drive-doubling-of-data-center-energy-demand-by-2030/",
+    "sentence": "Data centers accounted for about 1.5 percent of global electricity consumption in 2024, an amount expected to double by 2030 because of AI use",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-10-d02",
+    "claim": "e3-10",
+    "url": "https://www.scientificamerican.com/article/ai-will-drive-doubling-of-data-center-energy-demand-by-2030/",
+    "sentence": "A photo taken on December 23, 2023, shows Tencent's largest big data center and cloud computing base in East China, which is situated in the Jiangning Development Zone in Nanjing, Jiangsu Province, China.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-10-d03",
+    "claim": "e3-10",
+    "url": "https://www.scientificamerican.com/article/ai-will-drive-doubling-of-data-center-energy-demand-by-2030/",
+    "sentence": "By comparison, data centres consumed 415 TWh in 2024, roughly 1.5% of the world's total electricity consumption (see 'Global electricity growth').",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-10-d04",
+    "claim": "e3-10",
+    "url": "https://www.scientificamerican.com/article/ai-will-drive-doubling-of-data-center-energy-demand-by-2030/",
+    "sentence": "They found that servers for AI accounted for 24% of server electricity demand and 15% of total data centre energy demand in 2024.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-10-d05",
+    "claim": "e3-10",
+    "url": "https://www.scientificamerican.com/article/ai-will-drive-doubling-of-data-center-energy-demand-by-2030/",
+    "sentence": "The IEA report finds that the US, Europe, and China are collectively responsible for 85% of data centres' current energy consumption.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-10-d06",
+    "claim": "e3-10",
+    "url": "https://www.iea.org/news/ai-is-set-to-drive-surging-electricity-demand-from-data-centres-while-offering-the-potential-to-transform-how-the-energy-sector-works",
+    "sentence": "In advanced economies more broadly, data centres are projected to drive more than 20% of the growth in electricity demand between now and 2030, putting the power sector in those economies back on a growth footing after years of stagnating or declining demand in many of them.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-10-d07",
+    "claim": "e3-10",
+    "url": "https://www.iea.org/news/ai-is-set-to-drive-surging-electricity-demand-from-data-centres-while-offering-the-potential-to-transform-how-the-energy-sector-works",
+    "sentence": "\"Global electricity demand from data centres is set to more than double over the next five years, consuming as much electricity by 2030 as the whole of Japan does today.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-11-d01",
+    "claim": "e3-11",
+    "url": "https://linearb.io/blog/is-github-copilot-worth-it",
+    "sentence": "At its core, Copilot processes three key inputs to generate suggestions:",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-11-d02",
+    "claim": "e3-11",
+    "url": "https://linearb.io/blog/is-github-copilot-worth-it",
+    "sentence": "According to research published in Communications of the ACM, developers accept between 21.2% and 23.5% of Copilot suggestions, with higher acceptance rates during non-working hours when developers tackle less complex tasks.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-11-d03",
+    "claim": "e3-11",
+    "url": "https://linearb.io/blog/is-github-copilot-worth-it",
+    "sentence": "90% of developers reported feeling more fulfilled with their job when using Copilot",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-11-d04",
+    "claim": "e3-11",
+    "url": "https://linearb.io/blog/is-github-copilot-worth-it",
+    "sentence": "95% said they enjoyed coding more with Copilot's assistance",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-11-d05",
+    "claim": "e3-11",
+    "url": "https://linearb.io/blog/is-github-copilot-worth-it",
+    "sentence": "67% used Copilot at least 5 days per week, averaging 3.4 days of weekly usage",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-11-d06",
+    "claim": "e3-11",
+    "url": "https://linearb.io/blog/is-github-copilot-worth-it",
+    "sentence": "73% of developers report staying in flow state when using Copilot",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-11-d07",
+    "claim": "e3-11",
+    "url": "https://linearb.io/blog/is-github-copilot-worth-it",
+    "sentence": "Developers with access to Copilot experienced a 26.4% adoption increase within two weeks when they received targeted reminder emails.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-11-d08",
+    "claim": "e3-11",
+    "url": "https://linearb.io/blog/is-github-copilot-worth-it",
+    "sentence": "GitHub Copilot Business: $19/developer/month ($228/year)",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-11-d09",
+    "claim": "e3-11",
+    "url": "https://linearb.io/blog/is-github-copilot-worth-it",
+    "sentence": "GitHub Copilot Enterprise: $39/developer/month ($468/year)",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-11-d10",
+    "claim": "e3-11",
+    "url": "https://linearb.io/blog/is-github-copilot-worth-it",
+    "sentence": "According to Microsoft's financial reports, over 50,000 organizations have adopted GitHub Copilot, with 1.3 million paid subscribers representing 30% quarter-over-quarter growth.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-11-d11",
+    "claim": "e3-11",
+    "url": "https://linearb.io/blog/is-github-copilot-worth-it",
+    "sentence": "GitHub revenue increased 40% year-over-year, driven largely by Copilot adoption.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-11-d12",
+    "claim": "e3-11",
+    "url": "https://linearb.io/blog/is-github-copilot-worth-it",
+    "sentence": "If a developer making $120,000 annually saves just two hours per week through Copilot assistance, that's $2,400 in recovered productivity per year-a 10x return on the Business tier investment.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-11-d13",
+    "claim": "e3-11",
+    "url": "https://linearb.io/blog/is-github-copilot-worth-it",
+    "sentence": "Training and enablement: The Accenture study found 43% of developers rate Copilot \"extremely easy to use\", yet structured training significantly improves outcomes.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-11-d14",
+    "claim": "e3-11",
+    "url": "https://linearb.io/blog/is-github-copilot-worth-it",
+    "sentence": "Out the door, reviews for Copilot-heavy PRs take 26% longer as reviewers must check for AI-specific issues like inappropriate pattern usage and architectural misalignment.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-11-d15",
+    "claim": "e3-11",
+    "url": "https://linearb.io/blog/is-github-copilot-worth-it",
+    "sentence": "A semiconductor company assigned \"Copilot Champions\" from their pilot team to each expansion cohort, achieving 85% satisfaction rates compared to 60% for top-down training alone.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-11-d16",
+    "claim": "e3-11",
+    "url": "https://linearb.io/blog/is-github-copilot-worth-it",
+    "sentence": "Based on data from 50,000+ organizations using Copilot, enterprise teams typically see positive ROI within 3-6 months.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-11-d17",
+    "claim": "e3-11",
+    "url": "https://linearb.io/blog/is-github-copilot-worth-it",
+    "sentence": "GitHub Copilot Business ($19/user/month) provides core AI coding assistance with organizational license management and policy controls.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-11-d18",
+    "claim": "e3-11",
+    "url": "https://linearb.io/blog/is-github-copilot-worth-it",
+    "sentence": "GitHub Copilot Enterprise ($39/user/month) adds enhanced features including integration with your private repositories, advanced security controls, and customization based on your codebase patterns.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-11-d19",
+    "claim": "e3-11",
+    "url": "https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-on-developer-productivity-and-happiness/",
+    "sentence": "After early observations and interviews with users, we surveyed more than 2,000 developers to learn at scale about their experience using GitHub Copilot.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-11-d20",
+    "claim": "e3-11",
+    "url": "https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-on-developer-productivity-and-happiness/",
+    "sentence": "Developers reported that GitHub Copilot helped them stay in the flow (73%) and preserve mental effort during repetitive tasks (87%).",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-11-d21",
+    "claim": "e3-11",
+    "url": "https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-on-developer-productivity-and-happiness/",
+    "sentence": "The group that used GitHub Copilot had a higher rate of completing the task (78%, compared to 70% in the group without Copilot).",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-11-d22",
+    "claim": "e3-11",
+    "url": "https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-on-developer-productivity-and-happiness/",
+    "sentence": "Specifically, the developers using GitHub Copilot took on average 1 hour and 11 minutes to complete the task, while the developers who didn't use GitHub Copilot took on average 2 hours and 41 minutes.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-12-d01",
+    "claim": "e3-12",
+    "url": "https://www.npr.org/2022/11/15/1136709784/there-are-now-8-billion-people-on-earth-according-to-a-new-u-n-report",
+    "sentence": "Goldstone says that despite finite resources and climate change, the world could still manage with a population of 9 or even 10 billion as long as it's paying attention to \"what people are doing, how they live and which specific areas or groups are growing the fastest.\"",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-12-d02",
+    "claim": "e3-12",
+    "url": "https://www.un.org/en/desa/world-population-reach-8-billion-15-november-2022",
+    "sentence": "Amid falling growth rates, global population projected to peak around 10.4 billion in the 2080s",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-12-d03",
+    "claim": "e3-12",
+    "url": "https://www.un.org/en/desa/world-population-reach-8-billion-15-november-2022",
+    "sentence": "The global population is growing at its slowest rate since 1950, having fallen under 1 per cent in 2020.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-12-d04",
+    "claim": "e3-12",
+    "url": "https://www.un.org/en/desa/world-population-reach-8-billion-15-november-2022",
+    "sentence": "The latest projections by the United Nations suggest that the world's population could grow to around 8.5 billion in 2030 and 9.7 billion in 2050.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-12-d05",
+    "claim": "e3-12",
+    "url": "https://www.un.org/en/desa/world-population-reach-8-billion-15-november-2022",
+    "sentence": "Today, two-thirds of the global population lives in a country or area where lifetime fertility is below 2.1 births per woman, roughly the level required for zero growth in the long run for a population with low mortality.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-12-d06",
+    "claim": "e3-12",
+    "url": "https://www.un.org/en/desa/world-population-reach-8-billion-15-november-2022",
+    "sentence": "The populations of 61 countries or areas are projected to decrease by 1 per cent or more between 2022 and 2050, owing to sustained low levels of fertility and, in some cases, elevated rates of emigration.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-12-d07",
+    "claim": "e3-12",
+    "url": "https://www.un.org/en/desa/world-population-reach-8-billion-15-november-2022",
+    "sentence": "In most countries of sub-Saharan Africa, as well as in parts of Asia and Latin America and the Caribbean, the share of population at working age (between 25 and 64 years) has been increasing thanks to recent reductions in fertility.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-12-d08",
+    "claim": "e3-12",
+    "url": "https://www.un.org/en/desa/world-population-reach-8-billion-15-november-2022",
+    "sentence": "The share of global population at ages 65 and above is projected to rise from 10 per cent in 2022 to 16 per cent in 2050.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-12-d09",
+    "claim": "e3-12",
+    "url": "https://www.un.org/en/desa/world-population-reach-8-billion-15-november-2022",
+    "sentence": "The COVID-19 pandemic has affected all three components of population change.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-13-d01",
+    "claim": "e3-13",
+    "url": "https://easterncaribbean.un.org/en/246650-unesco-250-million-children-now-out-school",
+    "sentence": "If countries were on track with their national SDG 4 targets, six million more children would be in pre-school, 58 million more children and adolescents would be in school, and at least 1.7 million more primary school teachers would have been trained, according to the report.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-13-d02",
+    "claim": "e3-13",
+    "url": "https://easterncaribbean.un.org/en/246650-unesco-250-million-children-now-out-school",
+    "sentence": "Four out of five countries aimed to advance teacher training and professional development, seven out of 10 committed to increasing or improving their investment in education, and one in four committed to increase financial support and school meal provision.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-13-d03",
+    "claim": "e3-13",
+    "url": "https://easterncaribbean.un.org/en/246650-unesco-250-million-children-now-out-school",
+    "sentence": "To achieve SDG 4, a new child needs to be enrolled in school every 2 seconds between now and 2030,\" said the Director-General.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-13-d04",
+    "claim": "e3-13",
+    "url": "https://easterncaribbean.un.org/en/246650-unesco-250-million-children-now-out-school",
+    "sentence": "In the 31 low and lower-middle-income countries that measure learning progress at the end of primary school, Viet Nam is the only country where the majority of its children are achieving minimum proficiency in both reading and mathematics.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-13-d05",
+    "claim": "e3-13",
+    "url": "https://easterncaribbean.un.org/en/246650-unesco-250-million-children-now-out-school",
+    "sentence": "In an inclusive approach, countries were assisted in setting benchmarks to achieve by 2025 and 2030 for seven SDG 4 benchmarks on pre-primary education, school attendance, completion and learning, gender equity, learning proficiency, trained teachers, and public expenditure.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-14-d01",
+    "claim": "e3-14",
+    "url": "https://finance.yahoo.com/news/52-of-americans-say-theyre-concerned-about-growing-use-of-ai-pew-194429113.html",
+    "sentence": "That's a jump from last year when 38% of respondents said they were more concerned than excited.",
+    "sameClaimOtherNumber": true
+  },
+  {
+    "id": "e3-14-d02",
+    "claim": "e3-14",
+    "url": "https://finance.yahoo.com/news/52-of-americans-say-theyre-concerned-about-growing-use-of-ai-pew-194429113.html",
+    "sentence": "Some 37% of those surveyed said they were concerned in 2021.",
+    "sameClaimOtherNumber": true
+  },
+  {
+    "id": "e3-14-d03",
+    "claim": "e3-14",
+    "url": "https://www.pewresearch.org/short-reads/2023/08/28/growing-public-concern-about-the-role-of-artificial-intelligence-in-daily-life/",
+    "sentence": "Just 10% say they are more excited than concerned, while 36% say they feel an equal mix of these emotions.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-14-d04",
+    "claim": "e3-14",
+    "url": "https://www.pewresearch.org/short-reads/2023/08/28/growing-public-concern-about-the-role-of-artificial-intelligence-in-daily-life/",
+    "sentence": "The share of Americans who are mostly concerned about AI in daily life is up 14 percentage points since December 2022, when 38% expressed this view.",
+    "sameClaimOtherNumber": true
+  },
+  {
+    "id": "e3-14-d05",
+    "claim": "e3-14",
+    "url": "https://www.pewresearch.org/short-reads/2023/08/28/growing-public-concern-about-the-role-of-artificial-intelligence-in-daily-life/",
+    "sentence": "About six-in-ten adults ages 65 and older (61%) are mostly concerned about the growing use of AI in daily life, while 4% are mostly excited.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-14-d06",
+    "claim": "e3-14",
+    "url": "https://www.pewresearch.org/short-reads/2023/08/28/growing-public-concern-about-the-role-of-artificial-intelligence-in-daily-life/",
+    "sentence": "That gap is much smaller among those ages 18 to 29: 42% are more concerned and 17% are more excited.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-15-d01",
+    "claim": "e3-15",
+    "url": "https://maxdispatchservice.com/global-vehicle-accident-stats/",
+    "sentence": "Road crashes cost ≈3% of global GDP (~$1-1.8T/year).",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-15-d02",
+    "claim": "e3-15",
+    "url": "https://maxdispatchservice.com/global-vehicle-accident-stats/",
+    "sentence": "On average, this implies over 3,000 road deaths every day worldwide.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-15-d03",
+    "claim": "e3-15",
+    "url": "https://maxdispatchservice.com/global-vehicle-accident-stats/",
+    "sentence": "WHO notes that more than 2 deaths occur each minute on the world's roads - roughly 3,200 per day.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-15-d04",
+    "claim": "e3-15",
+    "url": "https://maxdispatchservice.com/global-vehicle-accident-stats/",
+    "sentence": "Great Britain (England, Scotland, Wales) had 1,645 road deaths in 2023.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-15-d05",
+    "claim": "e3-15",
+    "url": "https://maxdispatchservice.com/global-vehicle-accident-stats/",
+    "sentence": "WHO reports that over 50% of all road traffic deaths are among \"vulnerable road users\" - i.e., pedestrians, cyclists, and motorcyclists.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-15-d06",
+    "claim": "e3-15",
+    "url": "https://maxdispatchservice.com/global-vehicle-accident-stats/",
+    "sentence": "Thus, pedestrians, cyclists, and two/three-wheeler riders face a high risk of road accidents.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-15-d07",
+    "claim": "e3-15",
+    "url": "https://maxdispatchservice.com/global-vehicle-accident-stats/",
+    "sentence": "WHO estimates road crashes cost most countries ≈3% of GDP.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-15-d08",
+    "claim": "e3-15",
+    "url": "https://maxdispatchservice.com/global-vehicle-accident-stats/",
+    "sentence": "The 3% GDP figure underscores that road crashes impose an economic burden comparable to major health issues.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-15-d09",
+    "claim": "e3-15",
+    "url": "https://maxdispatchservice.com/global-vehicle-accident-stats/",
+    "sentence": "Every day on average 3,200+ people die worldwide in road crashes, and tens of thousands are injured.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-15-d10",
+    "claim": "e3-15",
+    "url": "https://maxdispatchservice.com/global-vehicle-accident-stats/",
+    "sentence": "USA: ~40,901 deaths in 2023 means about 112 deaths per day in U.S. road crashes.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-15-d11",
+    "claim": "e3-15",
+    "url": "https://maxdispatchservice.com/global-vehicle-accident-stats/",
+    "sentence": "(The UK road casualty count including NI is ~1,670/yr ⇒ ~4.6/day.)",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-15-d12",
+    "claim": "e3-15",
+    "url": "https://www.who.int/news/item/13-12-2023-despite-notable-progress-road-safety-remains-urgent-global-issue",
+    "sentence": "Yet with more than 2 deaths occurring per minute and over 3200 per day, road traffic crashes remain the leading killer of children and youth aged 5-29 years.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-15-d13",
+    "claim": "e3-15",
+    "url": "https://www.who.int/news/item/13-12-2023-despite-notable-progress-road-safety-remains-urgent-global-issue",
+    "sentence": "Among UN Member States, 108 countries reported a drop in road traffic-related deaths between 2010 and 2021.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-15-d14",
+    "claim": "e3-15",
+    "url": "https://www.who.int/news/item/13-12-2023-despite-notable-progress-road-safety-remains-urgent-global-issue",
+    "sentence": "Ten countries succeeded in reducing road traffic deaths by over 50%: Belarus, Brunei Darussalam, Denmark, Japan, Lithuania, Norway, Russian Federation, Trinidad and Tobago, United Arab Emirates and Venezuela.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-15-d15",
+    "claim": "e3-15",
+    "url": "https://www.who.int/news/item/13-12-2023-despite-notable-progress-road-safety-remains-urgent-global-issue",
+    "sentence": "The report shows that 28% of global road traffic deaths occurred in the WHO South-East Asia Region, 25% in the Western Pacific Region, 19% in the African Region, 12% in the Region of the Americas, 11% in the Eastern Mediterranean Region and 5% in the European Region.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-15-d16",
+    "claim": "e3-15",
+    "url": "https://www.who.int/news/item/13-12-2023-despite-notable-progress-road-safety-remains-urgent-global-issue",
+    "sentence": "Nine in 10 deaths occur in low- and middle-income countries, and fatalities in these countries are disproportionately higher when set against the number of vehicles and roads they have.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-15-d17",
+    "claim": "e3-15",
+    "url": "https://www.who.int/news/item/13-12-2023-despite-notable-progress-road-safety-remains-urgent-global-issue",
+    "sentence": "Fifty-three per cent of all road traffic fatalities are vulnerable road users including: pedestrians (23%); riders of powered two- and three-wheelers such as motorcycles (21%); cyclists (6%); and users of micro-mobility devices such as e-scooters (3%).",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-15-d18",
+    "claim": "e3-15",
+    "url": "https://www.who.int/news/item/13-12-2023-despite-notable-progress-road-safety-remains-urgent-global-issue",
+    "sentence": "Meanwhile, research indicates that 80% of the world's roads fail to meet pedestrian safety standards and just 0.2% have cycle lanes, leaving these road users dangerously exposed.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-15-d19",
+    "claim": "e3-15",
+    "url": "https://www.who.int/news/item/13-12-2023-despite-notable-progress-road-safety-remains-urgent-global-issue",
+    "sentence": "Of note, 23 of these countries modified their laws to meet WHO best practice since the Global status report on road safety 2018.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-15-d20",
+    "claim": "e3-15",
+    "url": "https://www.who.int/news/item/13-12-2023-despite-notable-progress-road-safety-remains-urgent-global-issue",
+    "sentence": "The report also reveals major gaps in ensuring safe road infrastructure, with just 51 countries - a quarter of UN Member States - having laws that require safety inspections that cover all road users.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-15-d21",
+    "claim": "e3-15",
+    "url": "https://www.who.int/news/item/13-12-2023-despite-notable-progress-road-safety-remains-urgent-global-issue",
+    "sentence": "Since 2007, Bloomberg Philanthropies has committed $500 million to support road safety interventions in low- and middle-income countries and cities across the world.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-15-d22",
+    "claim": "e3-15",
+    "url": "https://www.who.int/news/item/13-12-2023-despite-notable-progress-road-safety-remains-urgent-global-issue",
+    "sentence": "Road deaths fall by 21% globally but stronger action is needed to save lives",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-16-d01",
+    "claim": "e3-16",
+    "url": "https://fortune.com/well/2023/04/04/infertility-1-in-6-globally-who-ivf-cost/",
+    "sentence": "The WHO analyzed 133 existing studies on infertility, which included data from 1990 to 2021, to come up with the estimate, with the report marking the first time the organization has published research on the prevalence of fertility problems.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-16-d02",
+    "claim": "e3-16",
+    "url": "https://fortune.com/well/2023/04/04/infertility-1-in-6-globally-who-ivf-cost/",
+    "sentence": "Infertility is defined by the WHO as the failure to achieve pregnancy after 12 months or more of regular unprotected sex.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-16-d03",
+    "claim": "e3-16",
+    "url": "https://fortune.com/well/2023/04/04/infertility-1-in-6-globally-who-ivf-cost/",
+    "sentence": "Rates of infertility were comparable in wealthy and poor regions, the WHO said, with high-income countries having an estimated 17.8% rate of infertility prevalence, while low- and middle-income countries having a reported rate of 16.5%.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-16-d04",
+    "claim": "e3-16",
+    "url": "https://www.who.int/news/item/04-04-2023-1-in-6-people-globally-affected-by-infertility",
+    "sentence": "Infertility is a disease of the male or female reproductive system, defined by the failure to achieve a pregnancy after 12 months or more of regular unprotected sexual intercourse.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-17-d01",
+    "claim": "e3-17",
+    "url": "https://eagleeyewatchnews.com/2025/07/01/loneliness-kills-871000-people-every-year-globally-who/",
+    "sentence": "The report, which was released on Monday emphasized that approximately 1 in 6 people globally are affected by loneliness, with profound implications for their health and overall well-being.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-17-d02",
+    "claim": "e3-17",
+    "url": "https://eagleeyewatchnews.com/2025/07/01/loneliness-kills-871000-people-every-year-globally-who/",
+    "sentence": "This translates to about 100 deaths every hour linked to loneliness.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-17-d03",
+    "claim": "e3-17",
+    "url": "https://www.who.int/news/item/30-06-2025-social-connection-linked-to-improved-heath-and-reduced-risk-of-early-death",
+    "sentence": "The World Health Organization (WHO) Commission on Social Connection has released its global report revealing that 1 in 6 people worldwide is affected by loneliness, with significant impacts on health and well-being.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-17-d04",
+    "claim": "e3-17",
+    "url": "https://www.who.int/news/item/30-06-2025-social-connection-linked-to-improved-heath-and-reduced-risk-of-early-death",
+    "sentence": "Loneliness is linked to an estimated 100 deaths every hour-more than 871 000 deaths annually.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-18-d01",
+    "claim": "e3-18",
+    "url": "https://www.infoq.com/news/2020/06/openai-gpt3-language-model/",
+    "sentence": "OpenAI made headlines last year with GPT-2 and their decision not to release the 1.5 billion parameter version of the trained model due to \"concerns about malicious applications of the technology.\" GPT-2 is one of many large-scale NLP models based on the Transformer architecture.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-22-d01",
+    "claim": "e3-22",
+    "url": "https://quoteinvestigator.com/2013/06/10/showing-up/",
+    "sentence": "Ninety percent of success is just showing up.",
+    "sameClaimOtherNumber": true
+  },
+  {
+    "id": "e3-22-d02",
+    "claim": "e3-22",
+    "url": "https://quoteinvestigator.com/2013/06/10/showing-up/",
+    "sentence": "Seventy-five percent of life is showing up.",
+    "sameClaimOtherNumber": true
+  },
+  {
+    "id": "e3-22-d03",
+    "claim": "e3-22",
+    "url": "https://quoteinvestigator.com/2013/06/10/showing-up/",
+    "sentence": "In life, 50% of it is showing up.",
+    "sameClaimOtherNumber": true
+  },
+  {
+    "id": "e3-22-d04",
+    "claim": "e3-22",
+    "url": "https://quoteinvestigator.com/2013/06/10/showing-up/",
+    "sentence": "\"Woody Allen once said that '99 percent of life is showing up.' I'd put that shirt on every day.",
+    "sameClaimOtherNumber": true
+  },
+  {
+    "id": "e3-22-d05",
+    "claim": "e3-22",
+    "url": "https://quoteinvestigator.com/2013/06/10/showing-up/",
+    "sentence": "With a 45th reunion comes a new phase of competition, the one described by Woody Allen when he said \"Ninety percent of life is just showing up.\"",
+    "sameClaimOtherNumber": true
+  },
+  {
+    "id": "e3-22-d06",
+    "claim": "e3-22",
+    "url": "https://quoteinvestigator.com/2013/06/10/showing-up/",
+    "sentence": "Bush used the expression: \"Ninety percent of life is just showing up\", and New York Governor Mario Cuomo employed: \"Most of life is just a matter of showing up\".",
+    "sameClaimOtherNumber": true
+  },
+  {
+    "id": "e3-22-d07",
+    "claim": "e3-22",
+    "url": "https://quoteinvestigator.com/2013/06/10/showing-up/",
+    "sentence": "Acknowledgement: Great thanks to Jay who told QI about a cartoon in the Wall Street Journal of June 6, 2013 with the caption \"Actually, I've found 90 per cent of success isn't showing up, it's shutting up.\"",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-30-d01",
+    "claim": "e3-30",
+    "url": "https://www.metaquest.com.sg/post/are-humans-50-bananas",
+    "sentence": "So while it may be accurate to claim that humans and bananas share 40% to 50% of genes, the fact is that we only share 1% of our DNA with bananas!",
+    "sameClaimOtherNumber": true
+  },
+  {
+    "id": "e3-30-d02",
+    "claim": "e3-30",
+    "url": "https://www.metaquest.com.sg/post/are-humans-50-bananas",
+    "sentence": "Accessed March 30, 2023. https://www.thenakedscientists.com/articles/interviews/mythconception-we-share-half-our-dna-bananas",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-30-d03",
+    "claim": "e3-30",
+    "url": "https://www.snopes.com/fact-check/banana-human-genetics/",
+    "sentence": "This is where our lab's [The Dessimoz Lab at the University of Lausanne in Switzerland] expertise comes in: we maintain Orthologous Matrix, which is a method and database for finding orthologs between many species. [...] All the orthology-inference methods tested show a maximum of 25% of human genes to be orthologous to banana.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-30-d04",
+    "claim": "e3-30",
+    "url": "https://www.snopes.com/fact-check/banana-human-genetics/",
+    "sentence": "Based on comparisons of whole genome pairs between humans and zebrafish (which are much more closely related to humans than bananas), Glover argued, the shared DNA figure would be well below 1%.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-30-d05",
+    "claim": "e3-30",
+    "url": "https://www.snopes.com/fact-check/banana-human-genetics/",
+    "sentence": "\"The Banana Conjecture.\" Dessimoz Lab, 8 Dec.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-32-d01",
+    "claim": "e3-32",
+    "url": "https://www.snopes.com/fact-check/happiness-is-only-grin-deep/",
+    "sentence": "It takes 37 muscles to frown.",
+    "sameClaimOtherNumber": true
+  },
+  {
+    "id": "e3-32-d02",
+    "claim": "e3-32",
+    "url": "https://www.snopes.com/fact-check/happiness-is-only-grin-deep/",
+    "sentence": "And 22 muscles to smile.",
+    "sameClaimOtherNumber": true
+  },
+  {
+    "id": "e3-32-d03",
+    "claim": "e3-32",
+    "url": "https://www.snopes.com/fact-check/happiness-is-only-grin-deep/",
+    "sentence": "One deep-fried-Zen adage advises: \"It takes 13 muscles to smile and 33 to frown.",
+    "sameClaimOtherNumber": true
+  },
+  {
+    "id": "e3-32-d04",
+    "claim": "e3-32",
+    "url": "https://www.snopes.com/fact-check/happiness-is-only-grin-deep/",
+    "sentence": "\"You know the old adage that it only takes 10 muscles to smile but it takes 100 to frown,\" she said.",
+    "sameClaimOtherNumber": true
+  },
+  {
+    "id": "e3-32-d05",
+    "claim": "e3-32",
+    "url": "https://www.snopes.com/fact-check/happiness-is-only-grin-deep/",
+    "sentence": "According to doctors we use only four muscles to smile, but when we frown we use 64 muscles - 16 times more.",
+    "sameClaimOtherNumber": true
+  },
+  {
+    "id": "e3-32-d06",
+    "claim": "e3-32",
+    "url": "https://www.snopes.com/fact-check/happiness-is-only-grin-deep/",
+    "sentence": "It takes four muscles to smile, 20 to frown and roughly 317 to appear amused when a Celine Dion imitator, who happens to be a man, sings a song about, er, flatulence.",
+    "sameClaimOtherNumber": true
+  },
+  {
+    "id": "e3-32-d07",
+    "claim": "e3-32",
+    "url": "https://www.snopes.com/fact-check/happiness-is-only-grin-deep/",
+    "sentence": "Right there, you commit to selling to all employees - at cost, not a nickel of markup - company T-shirts that say, \"It only takes one muscle to smile and 37 muscles to frown.\"",
+    "sameClaimOtherNumber": true
+  },
+  {
+    "id": "e3-32-d08",
+    "claim": "e3-32",
+    "url": "https://www.snopes.com/fact-check/happiness-is-only-grin-deep/",
+    "sentence": "Don't they know it is said you use 35 muscles to frown and four to smile?",
+    "sameClaimOtherNumber": true
+  },
+  {
+    "id": "e3-32-d09",
+    "claim": "e3-32",
+    "url": "https://www.snopes.com/fact-check/happiness-is-only-grin-deep/",
+    "sentence": "Sonny Smith, Auburn's basketball coach, on his dour counterpart at the University of Alabama: ''It takes 15 muscles to smile and 65 muscles to frown.",
+    "sameClaimOtherNumber": true
+  },
+  {
+    "id": "e3-32-d10",
+    "claim": "e3-32",
+    "url": "https://www.snopes.com/fact-check/happiness-is-only-grin-deep/",
+    "sentence": "It takes 72 muscles to frown - only 14 to smile!\"",
+    "sameClaimOtherNumber": true
+  },
+  {
+    "id": "e3-32-d11",
+    "claim": "e3-32",
+    "url": "https://www.snopes.com/fact-check/happiness-is-only-grin-deep/",
+    "sentence": "Scientists have told us that it takes 41 muscles to frown and 17 to smile this leads to two conclusions:A) Scientists have WAY too much free time on their hands!",
+    "sameClaimOtherNumber": true
+  },
+  {
+    "id": "e3-32-d12",
+    "claim": "e3-32",
+    "url": "https://www.snopes.com/fact-check/happiness-is-only-grin-deep/",
+    "sentence": "It takes 50 muscles to make a frown - but only 13 to produce a smile.",
+    "sameClaimOtherNumber": true
+  },
+  {
+    "id": "e3-32-d13",
+    "claim": "e3-32",
+    "url": "https://www.snopes.com/fact-check/happiness-is-only-grin-deep/",
+    "sentence": "Besides, accurately inventorying the muscles involved wouldn't necessarily be the right way to go about determining if it's \"easier\" to smile than it is to frown, because it could well require greater exertion to flex one large muscle than to stress an array of smaller ones, in the same way that it is more physically taxing to move one stalled car than it is to displace five tricycles.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-34-d01",
+    "claim": "e3-34",
+    "url": "https://slate.com/technology/2020/11/whats-actually-happening-with-suicide-during-the-pandemic.html",
+    "sentence": "Suicide rates did not budge during the stay-at-home advisory period (March 23 until a phased reopening began in late May) in Massachusetts, which had one of the longest such periods of any state in the nation.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-34-d02",
+    "claim": "e3-34",
+    "url": "https://slate.com/technology/2020/11/whats-actually-happening-with-suicide-during-the-pandemic.html",
+    "sentence": "13, 2020: This article was updated to include an example of the viral tweet invoking the coronavirus lockdowns, to better reflect Tapper's Twitter exchange with Jeremy Faust, and to note that suicide rates were on the rise before the pandemic.",
+    "sameClaimOtherNumber": false
+  },
+  {
+    "id": "e3-36-d01",
+    "claim": "e3-36",
+    "url": "https://www.snopes.com/fact-check/aisle-of-man/",
+    "sentence": "- Asians: 60<",
+    "sameClaimOtherNumber": true
+  }
+]

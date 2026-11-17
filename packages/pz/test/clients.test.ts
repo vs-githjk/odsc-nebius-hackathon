@@ -90,6 +90,18 @@ describe("tavily", () => {
     });
   });
 
+  it("sends exact_match only when the query holds a quoted phrase, after straightening curly quotes", async () => {
+    const { impl, seen } = fakeFetch(() => new Response(recorded("search-empty")));
+    const { tavily } = setup(impl);
+    await tavily.search({ ...searchArgs, query: "10,000 steps daily health guideline origin" });
+    await tavily.search({ ...searchArgs, query: "\u201C10,000 steps\u201D origin" });
+    await tavily.search({ ...searchArgs, query: '"" steps' });
+    await tavily.search({ ...searchArgs, query: '"10,000" steps' });
+    const sent = seen.map((s) => JSON.parse(String(s.init.body)) as { query: string; exact_match: boolean });
+    expect(sent.map((b) => b.exact_match)).toEqual([false, true, false, true]);
+    expect(sent[1]?.query).toBe('"10,000 steps" origin');
+  });
+
   it("sends filter_by_published_date and start_date only when asked", async () => {
     const { impl, seen } = fakeFetch(() => new Response(recorded("search-empty")));
     const { tavily } = setup(impl);

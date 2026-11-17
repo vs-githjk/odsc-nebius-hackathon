@@ -1,7 +1,9 @@
 import type { Decision, Node, Trace, TypedAnswer } from "../schema/index.ts";
+import { BOUNDARY_REASONS, findBoundary } from "./boundary.ts";
 import { hasInjection, isInjected, isNegated } from "./negation.ts";
 import { normalise } from "./normalise.ts";
 import { claimHit } from "./claim-hit.ts";
+import { citesInWords } from "./written-citation.ts";
 import { atomHit, parseNumbers, sameNumber } from "./numbers.ts";
 import type { Rules } from "./rules.ts";
 
@@ -15,6 +17,13 @@ function confident(answer: TypedAnswer | null, rules: Rules): answer is TypedAns
 // "no", "unsure" and a "yes" whose confidence could not be read all block an origin.
 function confidentYes(answer: TypedAnswer | null | undefined, rules: Rules): boolean {
   return !!answer && answer.optionId === "yes" && answer.probability !== null && confident(answer, rules);
+}
+
+// F1 (#192): a confident same_claim "no" rules a page out of the trail. It is still a page we read, but it never becomes
+// the earliest page or sets how far back the walk searches. "unsure", absent and below-threshold answers rule nothing out.
+export function confidentNo(answer: TypedAnswer | null | undefined, rules: Pick<Rules, "confidenceThreshold">): boolean {
+  if (!answer || answer.optionId !== "no") return false;
+  return rules.confidenceThreshold === null || (answer.probability !== null && answer.probability >= rules.confidenceThreshold);
 }
 
 // T79: with a second model set, its answer must be a plain yes too. Disagreement, or no answer, is unsure. Its
@@ -44,6 +53,30 @@ function conflicting(trace: Trace, pages: Node[], rules: Rules): boolean {
   return agrees && differs;
 }
 
+// Row 5's page checks, in one place so the stop card quotes the very page decide picked (XO on #180).
+function originChecks(trace: Trace, pages: Node[], rules: Rules) {
+  const eligible = pages.filter((n) =>
+    trace.earliest.nodeIds.includes(n.id) && confident(n.pageType, rules) && rules.primaryPageTypes.includes(n.pageType.optionId)
+    && n.date.kind !== "unconfirmed" && !n.citesEarlier && citesInWords(trace, n, rules) === null
+    && !trace.spans.some((s) => s.nodeId === n.id && isNegated(s, rules.negationPrefixes)));
+  // T50: a page with an instruction aimed at a model anywhere on it (the walker quotes it on the node) or in or around
+  // its span is never an origin.
+  const candidates = eligible.filter((n) => !(n.injection && hasInjection(n.injection, rules.injectionPatterns))
+    && !trace.spans.some((s) => s.nodeId === n.id && isInjected(s, rules.injectionPatterns)));
+  // T36 same-claim check: a span on the page carries the claim's atoms (code) and the typed same_claim says yes.
+  const claimSpan = (n: Node) => trace.spans.find((s) => s.nodeId === n.id && claimHit(s.text, trace.claim.atoms, rules));
+  const statesClaim = (n: Node) => confidentYes(n.sameClaim, rules) && secondAgrees(n, rules) && claimSpan(n) !== undefined;
+  const origin = candidates.find(statesClaim);
+  return { eligible, candidates, origin, originSpan: origin ? claimSpan(origin)! : undefined };
+}
+
+// The page row 5 names as the origin and the span on it that states the claim, or null when no page passes. Only
+// meaningful on an ORIGIN_FOUND trace; decideStopState runs the same checks.
+export function originPick(trace: Trace, rules: Rules): { node: Node; span: Trace["spans"][number] } | null {
+  const { origin, originSpan } = originChecks(trace, trace.nodes.filter((n) => !n.meta), rules);
+  return origin && originSpan ? { node: origin, span: originSpan } : null;
+}
+
 // Rows are checked in order; the first row that holds wins. Pure: reads only the trace and the rules.
 export function decideStopState(trace: Trace, rules: Rules): Decision {
   const pages = trace.nodes.filter((n) => !n.meta);
@@ -59,18 +92,7 @@ export function decideStopState(trace: Trace, rules: Rules): Decision {
   if (pages.length === 0) return decide("NO_PAGES_FOUND", 3, ["no pages besides meta pages"]);
   if (conflicting(trace, pages, rules)) return decide("CONFLICTING", 4, ["earliest cluster gives different numbers beyond every transform"]);
 
-  const eligible = pages.filter((n) =>
-    trace.earliest.nodeIds.includes(n.id) && confident(n.pageType, rules) && rules.primaryPageTypes.includes(n.pageType.optionId)
-    && n.date.kind !== "unconfirmed" && !n.citesEarlier
-    && !trace.spans.some((s) => s.nodeId === n.id && isNegated(s, rules.negationPrefixes)));
-  // T50: a page with an instruction aimed at a model anywhere on it (the walker quotes it on the node) or in or around
-  // its span is never an origin.
-  const candidates = eligible.filter((n) => !(n.injection && hasInjection(n.injection, rules.injectionPatterns))
-    && !trace.spans.some((s) => s.nodeId === n.id && isInjected(s, rules.injectionPatterns)));
-  // T36 same-claim check: a span on the page carries the claim's atoms (code) and the typed same_claim says yes.
-  const statesClaim = (n: Node) => confidentYes(n.sameClaim, rules) && secondAgrees(n, rules)
-    && trace.spans.some((s) => s.nodeId === n.id && claimHit(s.text, trace.claim.atoms, rules));
-  const origin = candidates.find(statesClaim);
+  const { eligible, candidates, origin } = originChecks(trace, pages, rules);
   // The gate's reasons appear only when the gate is what blocks: some earliest page passes every other check.
   const notAsked = candidates.filter((n) => !n.sameClaim).length;
   // T79: pages the first model says yes on that the second model does not.
@@ -83,10 +105,16 @@ export function decideStopState(trace: Trace, rules: Rules): Decision {
       : vetoed > 0
         ? `the second model (${rules.secondSameClaimModel}) did not say yes on same_claim for ${vetoed} earliest page(s), which counts as unsure`
         : "no earliest page states the same claim: the claim's atoms in a span and a confident same_claim yes"),
+    ...pages.filter((n) => trace.earliest.nodeIds.includes(n.id)).flatMap((n) => {
+      const year = citesInWords(trace, n, rules);
+      return year === null ? [] : [`earliest page ${n.id} cites an earlier source in words (${year})`];
+    }),
     unreadParents > 0 && `${unreadParents} unread candidate parent(s)`,
     trace.earliest.earlierWindowSearches < rules.earlierWindowSearches && `fewer than ${rules.earlierWindowSearches} earlier-window searches`,
     trace.earliest.earlierFound > 0 && "earlier-window searches found earlier pages",
   ].filter((b): b is string => typeof b === "string");
   if (blockers.length === 0) return decide("ORIGIN_FOUND", 5, [`earliest page ${origin!.id} is a ${origin!.pageType!.optionId} with a confirmed date`]);
-  return decide("TRAIL_GOES_COLD", 6, blockers);
+  // T37: where the trail ends, when code can say so, goes first among the reasons.
+  const boundary = findBoundary(trace, rules);
+  return decide("TRAIL_GOES_COLD", 6, boundary ? [BOUNDARY_REASONS[boundary], ...blockers] : blockers);
 }

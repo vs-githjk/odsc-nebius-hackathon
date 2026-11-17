@@ -3,7 +3,7 @@ import { z } from "zod";
 const probability = z.number().min(0).max(1);
 const Option = z.object({ id: z.string().regex(/^[a-z][a-z0-9_]*$/).max(12), label: z.string() }).strict();
 export const Question = z.object({
-  id: z.enum(["scope_widened", "attribution_shifted", "context_stripped", "page_type", "same_claim"]),
+  id: z.enum(["scope_widened", "attribution_shifted", "context_stripped", "page_type", "same_claim", "boundary"]),
   kind: z.enum(["yesno", "choice"]), options: z.array(Option).min(1), instructions: z.string(),
 }).strict().refine(q => new Set(q.options.map(o => o.id)).size === q.options.length, { message: "Option ids must be unique" });
 export type Question = z.infer<typeof Question>;
@@ -56,6 +56,19 @@ export const SAME_CLAIM: Question = {
   id: "same_claim", kind: "yesno",
   options: yesNo("SENTENCE states the same claim", "SENTENCE uses the number for something else"),
   instructions: "`source_text` holds a CLAIM and a SENTENCE from a web page: does SENTENCE state the same claim as CLAIM, with the same subject, the same number and the same unit? A sentence that repeats the claim in order to question or debunk it still states it. A different subject, a different thing counted, or the number used as a date, a total or a citation is not the same claim." + RULES,
+};
+
+// T37. Asked on its own about the earliest page of a trace that went cold, with its sentence and the text around it.
+// Code decides whether the answer counts (rules.json printCues and editableDomains must agree); the model never picks
+// the ending.
+export const BOUNDARY: Question = {
+  id: "boundary", kind: "choice",
+  options: [
+    { id: "print", label: "The text credits a book, printed paper, journal article or study, and links no web copy of it" },
+    { id: "unsourced", label: "The page is one anyone can edit, such as a wiki, and gives no source for the claim" },
+    { id: "none", label: "Neither" },
+  ],
+  instructions: "`source_text` holds a CLAIM, and a SENTENCE with the TEXT around it from the earliest web page found for the claim: where does the trail end?" + RULES,
 };
 
 export function questionsToJsonSchema(questions: Question[]) {

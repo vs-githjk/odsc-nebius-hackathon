@@ -1,7 +1,21 @@
 # Handoff: ODSC x Nebius Hackathon (team Says Who)
 
-Last updated: Sun Nov 15 2026, by the main session (conductor).
+Last updated: Tue Nov 17 2026 01:20 ET, by the main session (conductor / XO).
 To resume in a new Claude Code chat opened in this folder, Vidyut says: **"I'm back, continue the master playbook"**. The new session reads this file, `plan/state.json` and `plan/decisions.md`, says where we are in three lines, and carries on.
+
+## Tonight's live E2 rerun (Tue Nov 17, 18:00 ET, needs Vidyut's go; about $2.50 of the $11.20 left)
+On main 3365344 or later: F1 (#200), F3 to F6 (#195 to #198), F5b (#199), F7 (#203), partial dates (#206) and the walk replay recorder (#208). Replay score before the rerun: false origins 0 (+1 unverified), target cited 4/10, earliest 1 Pass.
+1. `DEV_LEDGER="$PWD/.cache/pz-ledger.json" PZ_RECORD_DIR=runs/walk-record DEV_SET=E2 node --env-file=.env --import tsx eval/dev-run.ts`. Keep .cache/http as it is, so cached Tavily calls cost nothing.
+2. `node --import tsx eval/dev-score.ts --set E2`, then post the line on #164 and the spend on #2.
+3. `make replay-walk SET=E2`: should match step 2 with misses near 0. From then on every walk fix is scored at $0.
+4. Commit eval/dev-traces (not runs/), then pick 5 T72 candidates for Rohan (#131) and the hero trace.
+
+## Where we are (Tue Nov 17, 01:20 ET)
+- **The live pipeline is on main** (#191, merged 940cd17: Rohan's #107/#109/#189 integrated by XO on Vidyut's decision). `pz trace "<claim>"` runs live on Vidyut's machine: `DEV_LEDGER="$PWD/.cache/pz-ledger.json" node --env-file=.env --import tsx packages/pz/src/cli/pz.ts trace "<claim>" --out runs/x.json`. The $15 ledger (Nov 16 to 20, prior 0.10) lives in `.cache/pz-ledger.json` (git-ignored). About $0.10 spent so far; a trace costs about $0.001.
+- Live dating uses page metadata plus NCBI/Crossref registry dates, labelled on the card (decision Nov 17).
+- E2 dev run started 01:05 ET from the #191 worktree (`scratchpad/e2-devrun.log`); the score goes on #164/#2 and in the README.
+- Open blockers for Tue's run-through: #192 (bad spans: menus, "10 times" matched to "10 percent"; the UI headlines them), Rohan's review of #191, #184 claim box (Rishit), Anoop's doc PRs (#185, #172, #174, #188, #173 rebase).
+- Next: the 8 gallery traces live (Rohan confirmed no held-out overlap on #168), pick the hero trace, held-out run (#123), then the demo path and judge check.
 
 ## The event
 - ODSC x Nebius Hackathon, online, Oct 28 to Nov 20 2026. Internal deadline: Thu Nov 19, 23:59 PT (the exact official time is not published; the submission link comes by email).
