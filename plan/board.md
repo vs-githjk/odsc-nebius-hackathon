@@ -10,6 +10,7 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 |---|---|---|---|---|
 
 ## Log
+- [10:22 PT] RishitRai walk replay harness: Token Factory answers now recorded in the HTTP cache (pz trace always passes it), make replay-walk SET=E2 re-runs the whole pipeline offline at $0 and names every request the recording lacks | @vs-githjk run tonight's 18:00 rerun on this code and keep its .cache/http, or it cannot be replayed
 - [18:53 PT] RishitRai T83 red hop and readout chips: coral stop, segment and band edge with "Wording changed here", changed words as one run, chips measured or inferred N%, staggered 60 ms
 - [18:58 PT] RishitRai T82 band of copies: each cluster a swarm with one dot per page, copies not yet published at the handle are rings, the active cluster named by its site
 - [19:01 PT] RishitRai T81 sample rows as claims: the wording in Newsreader, the ending with a ramp dot, the earliest year and the page count, richest first

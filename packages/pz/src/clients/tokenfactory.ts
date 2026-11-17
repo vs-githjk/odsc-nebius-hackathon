@@ -2,6 +2,7 @@ import { appendFile, mkdir } from "node:fs/promises";
 import { z } from "zod";
 import prices from "../../config/prices.json" with { type: "json" };
 import type { UsageRow } from "../schema/usage.ts";
+import { cacheKey, type Cache } from "./cache.ts";
 
 export type ErrorCode = "budget_bound_exceeded" | "budget_exceeded" | "not_configured" | "http_error" | "network_error" | "bad_response";
 export class TokenFactoryError extends Error {
@@ -19,7 +20,9 @@ const Embedding = z.object({ data: z.array(z.object({ index: count, embedding: z
 export type ChatData = { content: string; logprobs: z.infer<typeof Logprobs> | null; model: string };
 export type ChatInput = { model: string; messages: { role: "system" | "user" | "assistant"; content: string }[]; jsonSchema?: object; logprobs?: boolean; topLogprobs?: number; maxTokens: number };
 type Context = { traceId?: string; step?: string };
-type Options = Context & { apiKey?: string; fetch?: typeof globalThis.fetch; logUsage?: (row: UsageRow) => void | Promise<void>; sleep?: (ms: number) => Promise<void>; timeoutMs?: number };
+// cache: answered requests are stored by endpoint and body (never the key), so a later run with the same request is
+// served from disk at no cost. That is what lets a recorded live run be replayed at $0 (walk replay harness, #192).
+type Options = Context & { cache?: Cache; apiKey?: string; fetch?: typeof globalThis.fetch; logUsage?: (row: UsageRow) => void | Promise<void>; sleep?: (ms: number) => Promise<void>; timeoutMs?: number };
 export type Result<T> = { data: T; usage: UsageRow; attempts: UsageRow[] };
 const defaultLog = async (row: UsageRow) => {
   await mkdir("runs", { recursive: true });
@@ -34,10 +37,21 @@ export function createTokenFactoryClient(options: Options = {}) {
   const sleep = options.sleep ?? (ms => new Promise(resolve => setTimeout(resolve, ms)));
   async function request(endpoint: string, body: { model: string; [key: string]: unknown }, context: Context = {}) {
     const key = (options.apiKey ?? process.env.NEBIUS_API_KEY)?.trim();
-    if (!key) throw new TokenFactoryError("not_configured");
     const price = Object.hasOwn(prices.models, body.model) ? (prices.models as Record<string, { input: number; output: number; cachedInput: number }>)[body.model] : undefined;
     if (!price) throw new TokenFactoryError("not_configured");
     const rows: UsageRow[] = [];
+    const stored = options.cache ? cacheKey({ service: "tokenfactory", endpoint, body }) : null;
+    const hit = stored ? options.cache!.get(stored) : null;
+    if (hit) {
+      const row: UsageRow = { at: new Date().toISOString(), traceId: context.traceId ?? options.traceId ?? null, step: context.step ?? options.step ?? "tokenfactory",
+        service: "tokenfactory", endpoint, model: body.model, promptTokens: 0, completionTokens: 0, cachedTokens: 0, credits: 0, costUsd: 0,
+        latencyMs: 0, status: "200", cacheHit: true };
+      rows.push(row);
+      try { await log(row); } catch { /* as below: the returned rows are authoritative */ }
+      return { raw: JSON.parse(hit.body) as unknown, usage: row, attempts: rows };
+    }
+    // The key is needed only for a request the cache cannot answer, so a replay runs with no key at all.
+    if (!key) throw new TokenFactoryError("not_configured");
     const redact = (value: unknown): unknown => {
       if (typeof value === "string") return value.split(key).join("[REDACTED]");
       if (Array.isArray(value)) return value.map(redact);
@@ -83,6 +97,7 @@ export function createTokenFactoryClient(options: Options = {}) {
         throw new TokenFactoryError("http_error", response.status, rows);
       }
       if (!u || (u.prompt_tokens_details?.cached_tokens ?? 0) > u.prompt_tokens || (endpoint === "/chat/completions" && u.completion_tokens === undefined)) throw new TokenFactoryError("bad_response", response.status, rows);
+      if (stored) options.cache!.set(stored, { credits: 0, body: JSON.stringify(redact(raw)), contentType: "application/json" });
       return { raw: redact(raw), usage: row, attempts: rows };
 
       function rowFor(status: string, usage: z.infer<typeof Usage> | null = null): UsageRow {

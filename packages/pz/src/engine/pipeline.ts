@@ -310,8 +310,9 @@ export function createPipeline(options: {
 } & ({ tavilySender: TavilySender; tavilyFetch?: never } | { tavilySender?: never; tavilyFetch: typeof fetch })) {
   const traceId = options.traceId ?? randomUUID();
   return buildPipeline({
-    chat: createTokenFactoryClient({ traceId, apiKey: options.nebiusKey, fetch: options.tokenFactoryFetch }),
-    embed: createTokenFactoryClient({ traceId, apiKey: options.nebiusKey, fetch: options.embeddingFetch }),
+    // With a cache, model answers are recorded beside the HTTP responses, so the run can be replayed at $0.
+    chat: createTokenFactoryClient({ traceId, apiKey: options.nebiusKey, fetch: options.tokenFactoryFetch, cache: options.cache }),
+    embed: createTokenFactoryClient({ traceId, apiKey: options.nebiusKey, fetch: options.embeddingFetch, cache: options.cache }),
     tavily: (deps) => createTavily({ ...deps, apiKey: options.tavilyKey, fetch: options.tavilyFetch }, options.tavilySender),
     archiveFetch: options.archiveFetch, pageFetch: options.pageFetch, resolveHost: options.resolveHost, sleep: options.sleep, cache: options.cache, traceId, pagesDir: options.pagesDir, usagePath: options.usagePath,
   });

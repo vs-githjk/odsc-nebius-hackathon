@@ -1,4 +1,4 @@
-.PHONY: verify replay live dev-score dev-run judge doctor
+.PHONY: verify replay live dev-score dev-run judge doctor replay-walk
 
 # Re-checks everything with no API keys: typecheck, tests, every committed trace, the trap set,
 # the copy lint, the number lint (every number in README.md and llms.txt backed by a linked file), the leakage test
@@ -44,6 +44,12 @@ live:
 # Grades eval/dev-traces/ against the E2 dev claims and appends a dated row to eval/dev-score.md (T33).
 dev-score:
 	@node --import tsx eval/dev-score.ts
+
+# Re-runs the whole pipeline, walk included, for each dev claim against a live run's recorded responses only ($0):
+# make replay-walk SET=E2 [CACHE=.cache/http]. Each claim says whether it was an exact replay or which paid requests
+# the recording lacks (the walk changed), then the usual dev-score lines.
+replay-walk:
+	@node --import tsx eval/replay-walk.ts --set "$(or $(SET),E2)" $(if $(CACHE),--cache "$(CACHE)")
 
 export DEV_REPLAY_DIR DEV_PIPELINE DEV_LEDGER
 dev-run:

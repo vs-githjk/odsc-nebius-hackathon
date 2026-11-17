@@ -5,6 +5,8 @@ import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { initializeBudget, openBudget } from "../../../eval/recordings/budget.ts";
 import { traceTransports } from "../../../eval/recordings/trace-transports.ts";
+import { fidelity, replayClaim } from "../../../eval/replay-walk.ts";
+import { createFileCache } from "../src/clients/cache.ts";
 import { createPipeline } from "../src/engine/pipeline.ts";
 import { dateWords } from "../src/card/terminal.ts";
 import { traceCommand } from "../src/cli/trace.ts";
@@ -520,5 +522,50 @@ describe("closeTrail", () => {
     expect(closed.edges.some((e) => e.childId === oldest.id)).toBe(false);
     expect(closed.edges).toEqual([expect.objectContaining({ id: "e1", kind: "inferred", parentId: oldest.id, childId: newer.id, linkHref: null })]);
     expect(closed.roots).toEqual(trace.roots);
+  });
+});
+
+// The walk replay harness (#192, make replay-walk): a live run with a cache records every answer, Token Factory's
+// included, and the offline replay reproduces the same trace without sending a single request.
+describe("walk replay harness", () => {
+  const record = async (claim: string, dir: string) => {
+    // With HTML, every page lookup succeeds live, so all of them are recorded.
+    const net = stub({ pages: pagesFor(claim).map((p) => ({ ...p, html: `<html><body><p>${p.text}</p></body></html>` })) });
+    const cache = createFileCache(join(dir, "http"));
+    const { pipeline, wayback } = createPipeline({
+      tokenFactoryFetch: net.fetch, embeddingFetch: net.fetch, tavilyFetch: net.fetch, archiveFetch: net.fetch, pageFetch: net.fetch,
+      // Keys long enough never to occur in page text: the pipeline redacts keys from what it sends, and "k" would not be.
+      resolveHost: async () => ["93.184.216.34"], nebiusKey: "test-nebius-key-7f3a", tavilyKey: "test-tavily-key-9c1e", cache, pagesDir: join(dir, "pages"), usagePath: join(dir, "usage.jsonl"),
+    });
+    return { trace: await runTrace(claim, pipeline, { wayback }), cache, net };
+  };
+  const summary = (t: Trace) => ({
+    state: t.decision.state, row: t.decision.row, roots: t.roots,
+    earliest: t.earliest.nodeIds.map((id) => t.nodes.find((n) => n.id === id)!.url),
+    urls: t.nodes.map((n) => n.url), spans: t.spans.map((s) => s.text),
+  });
+
+  it("replays a recorded run exactly, offline, with no key and no request sent", async () => {
+    const claim = zoo(unique());
+    const dir = mkdtempSync(join(tmpdir(), "pz-replay-walk-"));
+    const live = await record(claim, dir);
+    expect(live.net.calls.some((c) => c.url.endsWith("/chat/completions"))).toBe(true);
+    const replayed = await replayClaim(claim, { cache: live.cache, workDir: join(dir, "replay") });
+    expect(replayed.error).toBeNull();
+    expect(replayed.misses).toEqual([]);
+    expect(fidelity(replayed)).toBe("exact replay, $0");
+    expect(summary(replayed.trace!)).toEqual(summary(live.trace));
+    expect(replayed.trace!.usage.filter((r) => !r.cacheHit && (r.service === "tavily" || r.service === "tokenfactory"))).toEqual([]);
+  });
+
+  it("names every request the recording does not have instead of sending it", async () => {
+    const dir = mkdtempSync(join(tmpdir(), "pz-replay-walk-"));
+    const live = await record(zoo(unique()), dir);
+    // Another claim: its intake, searches and questions were never recorded.
+    const replayed = await replayClaim(zoo(unique()), { cache: live.cache, workDir: join(dir, "replay") });
+    expect(replayed.misses.length).toBeGreaterThan(0);
+    expect(replayed.misses.some((m) => m.startsWith("tokenfactory ") || m.startsWith("tavily "))).toBe(true);
+    expect(fidelity(replayed)).toMatch(/^walk changed: \d+ paid request\(s\) not recorded|^failed: /);
+    for (const m of replayed.misses) expect(m).not.toMatch(/replay-offline|Bearer/);
   });
 });
