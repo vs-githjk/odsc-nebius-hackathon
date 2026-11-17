@@ -1,0 +1,48 @@
+{
+  "id": "fact-check-domain",
+  "kind": "adversarial",
+  "note": "An earlier fact-check page on a listed fact-check domain; it never enters the trace.",
+  "planted": "https://www.snopes.com/fact-check/penguin-naps",
+  "pages": [
+    {
+      "url": "https://harborzoo.example/keeper-log-2019",
+      "title": "Harbor Zoo keeper log, spring 2019",
+      "date": "2019-04-30",
+      "capture": "2019-05-02",
+      "text": "Keeper log, spring 2019.\n\nOver 30 days of daylight observation, Harbor Zoo penguins nap 14 times a day on average. Data table below."
+    },
+    {
+      "url": "https://www.snopes.com/fact-check/penguin-naps",
+      "title": "Do penguins nap 14 times a day?",
+      "date": "2015-07-01",
+      "capture": "2015-07-02",
+      "text": "Claim: Harbor Zoo penguins nap 14 times a day."
+    }
+  ],
+  "replies": {
+    "https://www.snopes.com/fact-check/penguin-naps": {
+      "pageType": [
+        "study",
+        0.99
+      ],
+      "sameClaim": [
+        "yes",
+        0.99
+      ]
+    },
+    "https://harborzoo.example/keeper-log-2019": {
+      "pageType": [
+        "dataset",
+        0.97
+      ],
+      "sameClaim": [
+        "yes",
+        0.96
+      ]
+    }
+  },
+  "expect": {
+    "state": "ORIGIN_FOUND",
+    "origin": "https://harborzoo.example/keeper-log-2019"
+  }
+}

@@ -263,7 +263,8 @@ describe("review fixes", () => {
     expect(off.log.some((l) => l.url === check.url && l.kept === true)).toBe(false);
     const on = await run(world([older, check]).impl);
     const node = on.trace.nodes.find((n) => n.url === "https://snopes.com/fact-check/penguins" || n.url === check.url);
-    if (node) expect([node.meta, node.spanIds, on.trace.earliest.nodeIds.includes(node.id)]).toEqual([true, [], false]);
+    expect(node).toBeDefined();
+    expect([node!.meta, node!.spanIds, on.trace.earliest.nodeIds.includes(node!.id)]).toEqual([true, [], false]);
     expect(on.trace.spans.some((sp) => on.trace.nodes.find((n) => n.id === sp.nodeId)?.url.includes("snopes"))).toBe(false);
   });
 

@@ -6,7 +6,9 @@ import { ClientError } from "../clients/errors.ts";
 import { createTavily } from "../clients/tavily.ts";
 import { createWayback } from "../clients/wayback.ts";
 import { findSpan } from "../match/verbatim.ts";
-import { atomHit, claimHit, decideStopState, isRange, normalise, parseNumbers, sameNumber, type Rules } from "../rules/index.ts";
+import { clusterNodes, computeRoots, type Embed } from "./cluster.ts";
+import { findOtherNumber } from "./similar.ts";
+import { atomHit, claimHit, decideStopState, findInjection, isRange, normalise, parseNumbers, sameNumber, type Rules } from "../rules/index.ts";
 import type { Atoms, Cluster, DateInfo, Edge, Hop, Node, Readout, Span, Trace } from "../schema/index.ts";
 import type { UsageLog } from "../usage/log.ts";
 
@@ -26,6 +28,9 @@ export type WalkDeps = {
   replayOf?: Trace;
   // "allow" lets a run whose paid calls all came from the cache finish as a normal run (the pipeline replays elsewhere).
   cachedRun?: "refuse" | "allow";
+  // T97: Token Factory embeddings (createEmbedder). With it, reworded copies join one cluster and pages that state
+  // the claim with another number are listed; without it, the walk is exactly as before.
+  embed?: Embed;
 };
 
 const CONTEXT_CHARS = 200;
@@ -163,6 +168,7 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
   const nodeLinks = new Map<string, string[]>();
   const seen = new Set<string>();
   const searchLog: Trace["searchLog"] = [];
+  const otherNumbers: NonNullable<Trace["otherNumbers"]> = [];
   let pendingLinks: string[] = [];
   // T49: a citation found on a meta page, mapped to that page's url. These are read before any other link.
   const metaLinks = new Map<string, string>();
@@ -205,7 +211,14 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
         : claimHit(s.text, atoms, rules)),
     );
     if (!sentence) {
-      note({ step: "read", url, kept: false, reason: "no sentence asserts the claim's atoms" });
+      // T97: the same claim with another number? Listed for the reader only; the page never becomes a node.
+      let other: Awaited<ReturnType<typeof findOtherNumber>> = null;
+      if (deps.embed && atoms.number) {
+        try { other = await findOtherNumber(claim.text, atoms, sentences(text).map((x) => x.text), deps.embed, rules); }
+        catch (err) { note({ step: "read", url, reason: `embeddings failed (${err instanceof Error ? err.message : "error"})` }); }
+      }
+      if (other) otherNumbers.push({ url, domain: hostOf(url), title, date: apiDate ? isoDate(apiDate) : null, ...other });
+      note({ step: "read", url, kept: false, reason: other ? `same claim with another number (${other.number}, similarity ${other.similarity})` : "no sentence asserts the claim's atoms" });
       return false;
     }
     const hit = findSpan(text, sentence.text, rules.negationPrefixes);
@@ -249,7 +262,10 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
       id, url, domain: hostOf(url), title, date, clusterId: clusterKeys.get(clusterKey)!,
       evidence: "observed", meta, read: true, versionOf: null, spanIds: [spanId], citesEarlier: parents.length > 0,
       candidateParents: parents.map((p) => ({ url: p, read: seen.has(p) })), pageType: null,
-      ...(rules.metaMaps ? { foundViaMeta: metaLinks.get(url) ?? null } : {}),
+      // A page that is itself meta (it says "myth" or "debunk") is off the path, so it is never recorded as found
+      // through a meta page: only a page that can stand on its own span carries foundViaMeta.
+      ...(rules.metaMaps ? { foundViaMeta: meta ? null : metaLinks.get(url) ?? null } : {}),
+      injection: findInjection(title, text, rules.injectionPatterns),
     });
     if (!meta) pendingLinks.push(...parents.filter((p) => !seen.has(p)));
     // T49: a meta page is off the path, but what it cites is a map to the origin.
@@ -377,6 +393,20 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
     else failure = failureOf(err, nodes.length);
   }
 
+  // T97: with embeddings, reworded copies (spans at or above clusterSimilarityThreshold) join one cluster before any
+  // edge is drawn, so the independence count no longer counts each rewording as its own root. If the embedding call
+  // fails, the walk keeps its exact-wording clusters and says so in the log.
+  let regrouped: Cluster[] | null = null;
+  if (deps.embed && nodes.length > 1) {
+    try {
+      const grouped = await clusterNodes({ nodes, spans }, deps.embed, rules);
+      regrouped = grouped.clusters;
+      for (const n of nodes) n.clusterId = grouped.clusterOf[n.id]!;
+    } catch (err) {
+      note({ step: "cluster", reason: `embeddings failed (${err instanceof Error ? err.message : "error"}); exact-wording clusters kept` });
+    }
+  }
+
   // Edges run from each dated page to an earlier one: a link beside the span if it reaches one, else the nearest earlier cluster.
   const path = nodes.filter((n) => !n.meta && n.date.value).sort((a, b) => a.date.value!.localeCompare(b.date.value!));
   const edges: Edge[] = [];
@@ -397,16 +427,11 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
     hops.push({ edgeId: edge.id, readouts, wordDiff: wordDiff(parentSpan.text, childSpan.text), faithful: !readouts.some((r) => r.value === "yes") });
   }
 
-  const clusters: Cluster[] = [...clusterKeys.values()].map((id) => {
+  let clusters: Cluster[] = [...clusterKeys.values()].map((id) => {
     const nodeIds = nodes.filter((n) => n.clusterId === id).map((n) => n.id);
     return { id, nodeIds, rule: nodeIds.length > 1 ? "near_duplicate" : "single" };
   });
-  const clusterOf = (nodeId: string) => nodes.find((n) => n.id === nodeId)?.clusterId;
-  const explicit = edges.filter((e) => e.kind === "explicit");
-  const pageClusters = new Set(nodes.filter((n) => !n.meta).map((n) => n.clusterId));
-  const rootsLinked = [...pageClusters].filter(
-    (c) => explicit.some((e) => clusterOf(e.parentId) === c) && !explicit.some((e) => clusterOf(e.childId) === c),
-  ).length;
+  if (regrouped) clusters = regrouped;
   const minDate = earliestDate();
   const usd = deps.usage.rows.reduce((sum, r) => sum + (r.service === "tokenfactory" ? r.costUsd : 0), 0);
 
@@ -426,13 +451,15 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
     schemaVersion: "1", id: claim.id, mode: recorded ? "REPLAY" : "LIVE", synthetic: false, recordedAt: recorded?.recordedAt ?? deps.now(),
     claim: { text: claim.text, atoms }, viralSentence: claim.text,
     nodes, edges, clusters, spans, hops, blame: [],
-    roots: { pages: nodes.filter((n) => !n.meta).length, clusters: pageClusters.size, rootsLinked, clustersUnlinked: pageClusters.size - rootsLinked, studiesFound: null },
+    // One counter for the roots line and the T94 headline (the old inline count called linked-into clusters unlinked).
+    roots: computeRoots(nodes, edges),
     redHopEdgeId: hops.find((h) => !h.faithful)?.edgeId ?? null,
     earliest: { nodeIds: nodes.filter((n) => !n.meta && minDate !== null && n.date.value === minDate).map((n) => n.id), earlierWindowSearches, earlierFound },
     failure,
     budget,
     decision: { state: "TRAIL_GOES_COLD", row: 6, reasons: [], counts: {} },
     searchLog, usage: recorded ? [...recorded.usage, ...deps.usage.rows.filter((r) => !r.cacheHit)] : deps.usage.rows, scopeNote: SCOPE_NOTE,
+    ...(deps.embed ? { otherNumbers } : {}),
   };
   return { trace: { ...draft, decision: decideStopState(draft, rules) }, log };
 }

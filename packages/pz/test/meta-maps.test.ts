@@ -95,6 +95,16 @@ describe("T49 meta pages as maps", () => {
     expect(decideStopState(confident, rules).state).toBe("NO_PAGES_FOUND");
   });
 
+  it("a cited page that is itself meta (it says myth) is off the path and never carries foundViaMeta, so pz verify passes", async () => {
+    const mythy = { ...dataset, text: "Keepers tested the myth and found that the adult penguins nap 14 times a day." };
+    const { trace } = await walk([blog, check, mythy]);
+    const node = trace.nodes.find((n) => n.url === "https://zoo.example/dataset");
+    expect(node).toBeDefined();
+    expect([node!.meta, node!.foundViaMeta]).toEqual([true, null]);
+    const decided = typed(trace);
+    expect(verifyTrace({ ...decided, decision: decideStopState(decided, rules) }).failures).toEqual([]);
+  });
+
   it("the card says a fact-check page pointed the way, and pz verify checks the map really cites the page", async () => {
     const { trace } = await walk([blog, check, dataset]);
     const decided = typed(trace);

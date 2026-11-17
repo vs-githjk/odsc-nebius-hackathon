@@ -1,4 +1,4 @@
-.PHONY: verify replay live dev-score
+.PHONY: verify replay live dev-score judge doctor
 
 # Re-checks everything with no API keys: typecheck, tests, every committed trace, the trap set,
 # the copy lint, the leakage test and the claims table.
@@ -15,6 +15,19 @@ verify:
 	took=$$(( $$(date +%s) - start )); \
 	if [ $$took -gt 60 ]; then echo "make verify FAILED: took $$took s, over the 60 s budget (C17)"; exit 1; fi; \
 	echo "make verify passed in $$took s"
+
+# .env only when it exists, so a clean clone gets no warning about a missing file.
+ENV_FILE := $(if $(wildcard .env),--env-file=.env,)
+
+# Everything a judge needs from a clean clone with no keys, under 60 s (T95): pz doctor, every reviewed trace as a
+# card, pz verify on all of them, the trap lines and a one-line summary.
+judge:
+	@node $(ENV_FILE) --import tsx packages/pz/src/cli/pz.ts judge
+
+# Explains the setup: Node, npm ci, which keys are set (never their values), which stages run live. ARGS=--network
+# adds one free request per service whose key is set.
+doctor:
+	@node $(ENV_FILE) --import tsx packages/pz/src/cli/pz.ts doctor $(ARGS)
 
 TRACE ?= fixtures/traces/sample-rich.json
 
