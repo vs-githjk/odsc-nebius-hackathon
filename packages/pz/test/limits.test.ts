@@ -12,6 +12,8 @@ import { hasInjection, isNegated } from "../src/rules/negation.ts";
 import { createUsageLog } from "../src/usage/log.ts";
 import { readdirSync, readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
+import { dateWords } from "../src/card/terminal.ts";
+import type { Node } from "../src/schema/trace.ts";
 
 // T96 (#163): each open row of docs/limits.md, pinned as the engine behaves today. These tests pass while the gap is
 // open. When someone closes a gap, its test fails on purpose: flip the expectation, and update the row in
@@ -96,10 +98,18 @@ describe("docs/limits.md, open rows pinned as they behave today", () => {
     expect(rules.secondSameClaimModel).toBeNull();
   });
 
-  it("L14 nothing in the pipeline calls withBoundaries yet, so live runs never ask the boundary question", () => {
+  it("L14 (closed by #191) the live pipeline's card step asks the boundary question", () => {
     const src = fileURLToPath(new URL("../src/", import.meta.url));
     const files = readdirSync(src, { recursive: true, encoding: "utf8" }).filter((f) => f.endsWith(".ts") && f !== join("engine", "boundary.ts"));
-    expect(files.filter((f) => readFileSync(join(src, f), "utf8").includes("withBoundaries"))).toEqual([]);
+    expect(files.filter((f) => readFileSync(join(src, f), "utf8").includes("withBoundaries("))).toEqual([join("engine", "pipeline.ts")]);
+  });
+
+  it("L15 a registry date is trusted as a published date, and the card names the registry", () => {
+    const at = (source: Node["date"]["source"]) => dateWords({ date: { kind: "published", value: "2017-07-19", source, firstCapture: null, conflictingDate: false } } as Node);
+    expect(at("registry_pubmed")).toBe("published 2017-07-19 (PubMed)");
+    expect(at("registry_pmc")).toBe("published 2017-07-19 (PubMed Central)");
+    expect(at("registry_crossref")).toBe("published 2017-07-19 (Crossref)");
+    expect(at("metadata")).toBe("page says published 2017-07-19");
   });
 
   it("L13 a negation in wording the list doesn't know is not caught by code", () => {

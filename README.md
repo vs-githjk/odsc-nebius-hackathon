@@ -181,8 +181,6 @@ Every call writes a usage row: model, tokens, cached tokens, Tavily credits, dol
 | [traps/](traps/README.md) | the planted trap set |
 | [eval/](eval/dev-sets.md) | dev sets, scoring, the spike post-mortem |
 
-**Where Patient Zero is wrong:** [docs/limits.md](docs/limits.md) lists every failure we know of, each with an example you can run, the rule that should catch it, whether it is caught today and who owns the fix. Rows that name a test are pinned by it, so the page can't say one of those gaps is closed while it is still open. The rest (print origins, search coverage, the roots count) are explained, not tested.
-
 ## For agents reading this repo
 
 Start at [llms.txt](llms.txt). The working notes live in `plan/` while the build runs; `plan/README.md` says what every file there holds.
