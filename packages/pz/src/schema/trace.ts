@@ -36,6 +36,9 @@ export const Node = z.object({
   // T36: the typed same_claim answer for this page's span. Absent or null means the gate did not run (no model),
   // which counts as unsure: such a page is never an origin.
   sameClaim: TypedAnswer.nullable().optional(),
+  // T50: the first instruction-like stretch found anywhere on the page (rules.json injectionPatterns), quoted, or null.
+  // Absent on traces recorded before the check. A page with one is never an origin.
+  injection: z.string().nullable().optional(),
 }).strict();
 export type Node = z.infer<typeof Node>;
 export const Edge = z.object({

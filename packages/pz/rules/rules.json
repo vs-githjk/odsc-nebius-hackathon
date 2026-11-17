@@ -31,6 +31,24 @@
     "myth that",
     "it is a myth that"
   ],
+  "injectionPatterns": [
+    "\\b(?:ignore|disregard|forget) (?:all |any )?(?:of )?(?:your |the |my |all )?(?:previous|prior|above|earlier|preceding|original|system) (?:instructions|prompts?|directives|directions)\\b",
+    "\\b(?:ignore|disregard|forget) (?:your|all|all your|these|those) (?:instructions|prompts?|directives)\\b",
+    "\\b(?:ignore|disregard|forget) the (?:instructions|prompts?) (?:above|before this)\\b",
+    "\\b(?:ignore|disregard|forget) (?:everything|anything|all) (?:you(?:'ve| have)? (?:were|been|was) told|above|before|prior|previous)",
+    "\\b(?:ai|llm|language model|assistant|chatbot)s?\\b[^.]{0,20}\\b(?:reading|processing|parsing|summari[sz]ing|crawling) this\\b",
+    "\\btreat this (?:page|site|article|document|post|text) as\\b",
+    "\\bsystem prompt(?: override)?\\s*:",
+    "\\bsystem prompt override\\b",
+    "\\b(?:note|message) to (?:ai|llm|language model|assistant)s?\\b",
+    "\\b(?:classify|label|mark) this (?:page|site|article) as\\b",
+    "\\banswer (?:yes|study|dataset|report) to\\b",
+    "\\b(?:attention|hey|dear|calling all) (?:ai|llms?|language models?|assistants?|chatbots?|bots?|crawlers?)\\b",
+    "\\b(?:set aside|override|overrule|discard) (?:your|their|its|all|any) (?:earlier |previous |prior |original |existing )?(?:guidance|instructions|rules|directions|directives|prompts?)\\b",
+    "\\breport this (?:page|site|website|article|document) as (?:the|an?) (?:original|primary|peer-reviewed|study|source|authoritative)\\b",
+    "\\b(?:ai|llm|language model|assistant|chatbot)s?[.,:;!?]*\\s+(?:are you |if you are |you are |while )?reading this\\b",
+    "\\btreat (?:it|this) as (?:the|an?) (?:original|primary|peer-reviewed|authoritative)\\b"
+  ],
   "factCheckDomains": ["snopes.com", "politifact.com", "factcheck.org", "fullfact.org", "leadstories.com", "checkyourfact.com", "africacheck.org", "truthorfiction.com", "quoteinvestigator.com"],
   "clusterSimilarityThreshold": 0.9,
   "hedgeWords": [
@@ -61,6 +79,7 @@
     "relative to"
   ],
   "notes": {
+    "injectionPatterns": "T50: instruction-like text in a page, case-insensitive regular expressions. A page with one anywhere on it (the walker quotes it on the node) or in or around its span cannot be an origin, whatever the typed answers say. Written from the adversarial trap set, never from dev, spike or held-out pages.",
     "clusterSimilarityThreshold": "Placeholder. Set on the E2 dev set (#34) before the held-out run; Rohan never edits it.",
     "hedgeWords": "Placeholder list for the hedge_dropped readout (T27). Check on the E2 dev set before the held-out run.",
     "maxQueriesPerHop": "Placeholder cap on planned search queries per hop (T35). Set on the E2 dev set within the credit cap; never on spike or held-out claims.",
