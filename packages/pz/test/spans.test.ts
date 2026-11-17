@@ -153,6 +153,16 @@ describe("same paragraph only (#108 review)", () => {
     expect(t.edges).toEqual([]);
   });
 
+  // XO's probe on #108: the same menu row after a CRLF blank line, or a blank line holding a non-breaking space.
+  for (const [name, gap] of [["CRLF", "\r\n\r\n"], ["non-breaking space", "\n \n"], ["CRLF with a non-breaking space", "\r\n  \r\n"]] as const) {
+    it(`[C2] a menu row after a ${name} blank line is never a citation either`, async () => {
+      const child: Page = { url: "https://blog.example/new", date: "2020-05-01", text: `Report: penguins nap 14 times a day.${gap}[Home](/) | [Archive](/old) | [About](/about)` };
+      const t = await walkThenSpans([child, older]);
+      expect(nodeAt(t, child.url)?.candidateParents).toEqual([]);
+      expect(t.edges).toEqual([]);
+    });
+  }
+
   it("[C2] a cross-site link in the next paragraph is not a citation of the span either", async () => {
     const child: Page = { url: "https://news.example/new", date: "2020-05-01", text: "Report: penguins nap 14 times a day.\n\nRead [the blog](https://blog.example/old)." };
     const t = await walkThenSpans([child, older]);

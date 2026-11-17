@@ -6,6 +6,7 @@ import { Trace } from "pz/schema";
 import { createBudget } from "../src/clients/budget.ts";
 import { createFileCache } from "../src/clients/cache.ts";
 import { createTavily } from "../src/clients/tavily.ts";
+import { TokenFactoryError } from "../src/clients/tokenfactory.ts";
 import { createWayback } from "../src/clients/wayback.ts";
 import { spansStep } from "../src/engine/spans.ts";
 import { walkStep, type QueryPlanner } from "../src/engine/walk.ts";
@@ -146,6 +147,16 @@ describe("T44 review notes (#110)", () => {
     expect(w.extracted.some((u) => u.includes("shop.example") || u.includes("tickets.example"))).toBe(false);
   });
 
+  // XO [M] on #110: with a CRLF or non-breaking-space blank line the menu links scored 6 and took the follow slots.
+  for (const [name, gap] of [["CRLF", "\r\n\r\n"], ["non-breaking space", "\n \n"]] as const) {
+    it(`never follows a menu row after a ${name} blank line`, async () => {
+      const news: Page = { url: "https://news.example/new", date: "2020-05-01", text: `Report: penguins nap 14 times a day.${gap}[Shop](https://shop.example/) | [Tickets](https://tickets.example/)` };
+      const w = world([news]);
+      await walkStep(build(w.impl))(handedOver, {});
+      expect(w.extracted.some((u) => u.includes("shop.example") || u.includes("tickets.example"))).toBe(false);
+    });
+  }
+
   it("passes the planner every sent query as a {query, endDate} pair, with the planned date, not the window's", async () => {
     const seenByCall: unknown[] = [];
     const planner: QueryPlanner = async (input) => {
@@ -195,5 +206,46 @@ describe("T44 review notes (#110)", () => {
     const t = await walkStep(build(w.impl))(Trace.parse(claim), {});
     expect(Trace.parse(t)).toBeTruthy();
     expect(w.searches.some((q) => q.includes('"nap more than seals"'))).toBe(true);
+  });
+
+  // XO [H] on #110: a schema-failing model reply threw out of walkStep with no failure state and no usage rows.
+  const failedCall = { at: "2026-11-12T00:00:00.000Z", traceId: "neutral", step: "plan", service: "tokenfactory" as const, endpoint: "chat",
+    model: "m", promptTokens: 120, completionTokens: 30, cachedTokens: 0, credits: 0, costUsd: 0.0001, latencyMs: 40, status: "200", cacheHit: false };
+
+  it("a Token Factory error in the planner falls back to code-only queries, keeps its usage rows and says so", async () => {
+    const planner: QueryPlanner = async () => {
+      throw new TokenFactoryError("bad_response", 200, [failedCall]);
+    };
+    const news: Page = { url: "https://news.example/new", date: "2020-05-01", text: "Report: penguins nap 14 times a day." };
+    const w = world([news]);
+    const t = await walkStep(build(w.impl, planner))(handedOver, {});
+    expect(Trace.parse(t)).toBeTruthy();
+    expect(t.failure).toBeNull();
+    expect(w.searches.some((q) => q.includes("14 times"))).toBe(true);
+    expect(t.nodes.map((n) => n.url)).toContain(news.url);
+    expect(t.usage).toContainEqual(failedCall);
+    expect(t.searchLog.find((s) => s.step === "model")?.query).toBe("query planner failed (bad_response 200): code-only queries used for this window");
+  });
+
+  it("a Token Factory error in same_claim stores no answer for that page and the walk carries on", async () => {
+    const askSameClaim = async () => {
+      throw new TokenFactoryError("http_error", 503, [{ ...failedCall, step: "same_claim", status: "503" }]);
+    };
+    const news: Page = { url: "https://news.example/new", date: "2020-05-01", text: "Report: penguins nap 14 times a day." };
+    const deps = build(world([news]).impl);
+    const t = await walkStep(() => ({ ...deps(), askSameClaim }))(handedOver, {});
+    const node = t.nodes.find((n) => n.url === news.url);
+    expect(node).toBeDefined();
+    expect(node?.sameClaim).toBeUndefined();
+    expect(t.failure).toBeNull();
+    expect(t.usage.some((r) => r.step === "same_claim" && r.status === "503")).toBe(true);
+    expect(t.searchLog.some((s) => s.step === "model" && s.query.startsWith(`same_claim on ${news.url} failed (http_error 503)`))).toBe(true);
+  });
+
+  it("any other error still stops the walk loudly", async () => {
+    const planner: QueryPlanner = async () => {
+      throw new TypeError("a bug, not a model failure");
+    };
+    await expect(walkStep(build(world([]).impl, planner))(handedOver, {})).rejects.toThrow(TypeError);
   });
 });

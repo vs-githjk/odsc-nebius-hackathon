@@ -3,6 +3,7 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import type { Budget } from "../clients/budget.ts";
 import { ClientError } from "../clients/errors.ts";
+import { TokenFactoryError } from "../clients/tokenfactory.ts";
 import { createTavily } from "../clients/tavily.ts";
 import { createWayback } from "../clients/wayback.ts";
 import { findSpan } from "../match/verbatim.ts";
@@ -103,8 +104,11 @@ const PARAGRAPH = "";
 
 export function toPlain(markdown: string): { text: string; links: { href: string; start: number; end: number }[]; breaks: number[] } {
   // Headings end like sentences, and emphasis marks are not the page's words.
-  const headed = markdown.trim().replace(/^#{1,6}[ \t]+(.*?)[ \t]*$/gm, (_, heading: string) => (/[.!?:]$/.test(heading) ? heading : `${heading}.`));
-  const plainer = headed.replace(/[ \t]*\n[ \t]*\n\s*/g, ` ${PARAGRAPH}`);
+  // CRLF and lone CR line ends count as plain ones, so a Windows-style blank line still splits paragraphs (XO on #108).
+  const unix = markdown.replace(/\r\n?/g, "\n");
+  const headed = unix.trim().replace(/^#{1,6}[ \t]+(.*?)[ \t]*$/gm, (_, heading: string) => (/[.!?:]$/.test(heading) ? heading : `${heading}.`));
+  // A blank line may hold any whitespace but a newline, a non-breaking space included.
+  const plainer = headed.replace(/[^\S\n]*\n[^\S\n]*\n\s*/g, ` ${PARAGRAPH}`);
   const marked = normalise(plainer.replace(/\*\*|__/g, "")).replace(/!\[[^\]]*\]\((?:[^()]|\([^()]*\))*\)\s*/g, "").replace(/\[\s*\]\((?:[^()]|\([^()]*\))*\)\s*/g, "");
   const links: { href: string; start: number; end: number }[] = [];
   let withMarks = "";
@@ -319,7 +323,14 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
     const clusterKey = `${normalise(title).toLowerCase()}|${sentence.text.toLowerCase()}`;
     if (!clusterKeys.has(clusterKey)) clusterKeys.set(clusterKey, `c${clusterKeys.size + 1}`);
     // The typed same_claim answer for this page, when the walker was given the question (T36 gate, ruling on #106).
-    const asked = deps.askSameClaim ? await deps.askSameClaim({ claim: claim.text, sentence: sentence.text, atoms }) : null;
+    let asked: SameClaimResult | null = null;
+    if (deps.askSameClaim) {
+      try {
+        asked = await deps.askSameClaim({ claim: claim.text, sentence: sentence.text, atoms });
+      } catch (err) {
+        modelFailed(err, `same_claim on ${url}`, "no answer stored, so this page cannot be the origin");
+      }
+    }
     nodes.push({
       id, url, domain: hostOf(url), title, date, clusterId: clusterKeys.get(clusterKey)!,
       evidence: "observed", meta, read: true, versionOf: null, spanIds: [spanId], citesEarlier: parents.length > 0,
@@ -349,6 +360,16 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
     return !meta;
   }
 
+  // A Token Factory failure in the planner or the same_claim question must not end the trace (XO on #110): the
+  // walk falls back to code-only queries or to no answer, keeps the failed call's usage rows, and says so on the trace.
+  function modelFailed(err: unknown, what: string, fallback: string): void {
+    if (!(err instanceof TokenFactoryError)) throw err;
+    for (const row of err.usage) deps.usage.append(row);
+    const reason = `${what} failed (${err.code}${err.status === null ? "" : ` ${err.status}`}): ${fallback}`;
+    note({ step: "model", kept: false, reason });
+    searchLog.push({ at: deps.now(), step: "model", query: reason, endDate: null, startDate: null, results: 0, kept: 0, dropped: 0 });
+  }
+
   const outOfTime = () => Date.now() - started >= rules.caps.ms;
 
   try {
@@ -364,10 +385,17 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
       // The hop the planner works back from: the earliest dated page so far, with its span.
       const hopNode = nodes.filter((n) => !n.meta && n.date.value).sort((a, b) => a.date.value!.localeCompare(b.date.value!))[0];
       const hopSpan = hopNode && spans.find((s) => s.id === hopNode.spanIds[0]);
-      const planned = await plan({
+      const planInput = {
         claim: claim.text, atoms, seen: [...sentQueries],
         hop: hopNode && hopSpan ? { url: hopNode.url, date: hopNode.date.value, span: hopSpan.text } : null,
-      });
+      };
+      let planned: Awaited<ReturnType<QueryPlanner>>;
+      try {
+        planned = await plan(planInput);
+      } catch (err) {
+        modelFailed(err, "query planner", "code-only queries used for this window");
+        planned = await codePlanner(planInput);
+      }
       for (const row of planned.usage) deps.usage.append(row);
       for (const r of planned.rejected) note({ step: "plan", query: r.query, kept: false, reason: r.reason });
       // A planner that returns nothing still leaves the window searched with the code queries.
