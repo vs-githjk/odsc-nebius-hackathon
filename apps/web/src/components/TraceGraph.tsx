@@ -42,7 +42,7 @@ export function TraceGraph({ trace, activeSpanId, x }: { trace: Trace; activeSpa
             return (
               <path
                 key={e.id}
-                className={`band-link ${e.kind}`}
+                className={`band-link ${e.kind}${e.id === trace.redHopEdgeId ? " red" : ""}`}
                 d={`M ${a.x * 100} ${a.y * 100} Q ${mid} ${Math.min(a.y, b.y) * 100 - 6} ${b.x * 100} ${b.y * 100}`}
                 strokeDasharray={style.dash === "none" ? undefined : style.dash}
                 vectorEffect="non-scaling-stroke"
@@ -69,6 +69,7 @@ export function TraceGraph({ trace, activeSpanId, x }: { trace: Trace; activeSpa
       <figcaption className="band-legend">
         <span><i className="key solid" aria-hidden="true" />link-verified</span>
         <span><i className="key dashed" aria-hidden="true" />inferred, no link</span>
+        {trace.redHopEdgeId && <span><i className="key red" aria-hidden="true" />wording changed</span>}
       </figcaption>
     </figure>
   );

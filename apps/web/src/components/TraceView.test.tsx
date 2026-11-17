@@ -33,4 +33,16 @@ describe("TraceView", () => {
     expect(html).toContain("link-verified");
     expect(html).toContain("inferred, no link");
   });
+
+  it("marks the red hop in coral on the track and in the band, and shows the open stop's readout chips", () => {
+    const rich = traces.find((t) => t.id === "sample-rich")!;
+    const html = renderToStaticMarkup(<TraceView trace={rich} />);
+    expect(html).toContain("Wording changed here");
+    expect(html).toContain('class="track-red"');
+    expect(html).toMatch(/class="stop red"/);
+    expect(html).toContain("band-link inferred red");
+    expect(html).toContain('<span class="chip-label">Attribution shifted</span><span class="chip-tag">inferred, 74%</span>');
+    const plain = traces.find((t) => t.id === "sample-origin")!;
+    expect(renderToStaticMarkup(<TraceView trace={plain} />)).not.toContain("Wording changed here");
+  });
 });
