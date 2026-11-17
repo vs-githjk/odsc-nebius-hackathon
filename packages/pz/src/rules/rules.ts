@@ -14,6 +14,7 @@ export const Rules = z.object({
   injectionPatterns: z.array(z.string()),
   factCheckDomains: z.array(z.string()),
   clusterSimilarityThreshold: z.number().min(0).max(1),
+  secondSameClaimModel: z.string().nullable(),
   otherNumberSimilarity: z.number().min(0).max(1),
   hedgeWords: z.array(z.string()),
   comparisonWords: z.array(z.string()),
