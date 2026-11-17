@@ -25,12 +25,26 @@ const SPELLING: [string, string][] = [
   ["travelling", "traveling"], ["modelling", "modeling"], ["grey", "gray"], ["tyre", "tire"], ["ageing", "aging"],
 ];
 
-// Code reads the claim's number: digits first, then number words.
+// #192 F5: a year says when, not how many, so it is never the claim's number.
+// - A bare 1900 to 2099 number is skipped whenever the claim has any other number, digits or words (XO on #197): "the
+//   1990 study found 10%" takes 10%, "In 2019 and 2020, 30 percent" takes 30, "between 2000 and 2010, 40%" takes 40%.
+// - When years are the only numbers, one after a time word is still a year: "By 2050 there will be more plastic than
+//   fish" has no number and goes to the phrase step (T53). A lone four-digit count ("2000 calories a day") is kept.
+const YEAR_AFTER = /(?:^|[^\p{L}])(?:by|in|since|until|till|before|after|from|through|circa|around|between|and)\s+$/iu;
+const bareYear = (n: { raw: string; percent: boolean }) => !n.percent && /^(?:19|20)\d\d$/.test(n.raw);
+export function isYear(text: string, n: { raw: string; start: number; percent: boolean }): boolean {
+  return bareYear(n) && YEAR_AFTER.test(text.slice(0, n.start));
+}
+
+// Code reads the claim's number: digits first (skipping years), then number words.
 export function claimNumber(text: string): ClaimNumber | null {
-  const parsed = parseNumbers(text).numbers[0];
-  if (parsed) return { raw: parsed.raw, canonical: canonicalKey(parsed) };
+  const numbers = parseNumbers(text).numbers;
+  const count = numbers.find((n) => !bareYear(n));
+  if (count) return { raw: count.raw, canonical: canonicalKey(count) };
   const words = wordsToNumber(text);
-  return words ? { raw: words.raw, canonical: String(words.value) } : null;
+  if (words) return { raw: words.raw, canonical: String(words.value) };
+  const lone = numbers.find((n) => !isYear(text, n));
+  return lone ? { raw: lone.raw, canonical: canonicalKey(lone) } : null;
 }
 
 // Search variants of the claim's number and words, each tagged with the declared transform that made it.
