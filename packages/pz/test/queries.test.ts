@@ -101,8 +101,9 @@ describe("query planning", () => {
     const steps = { claim: claimText("dev-06"), atoms: await atomsFor("dev-06"), hop: null };
     expect(whyRejected("\"ten thousand\" walking", steps)).toBe("no_atom");
     // A strong number (three or more significant digits) is still enough alone.
-    const plastic2050 = { claim: claimText("dev-10"), atoms: await atomsFor("dev-10"), hop: null };
-    expect(whyRejected("2050 report", plastic2050)).toBeNull();
+    // (dev-10's 2050 was the old example; since #192 F5 a year is never the claim's number, so a made-up count stands in.)
+    const strong = { claim: "Harbor Zoo penguins nap 1,440 times a year.", atoms: { ...phones.atoms, number: { raw: "1,440", canonical: "1440" }, subjectLemma: "penguin" }, hop: null };
+    expect(whyRejected("1440 report", strong)).toBeNull();
     const altman = { claim: claimText("dev-19"), atoms: await atomsFor("dev-19"), hop: null };
     expect(whyRejected("Sam Altman RAM interview", altman)).toBeNull();
     expect(whyRejected("Sam Altmanesque", altman)).toBe("no_atom");
