@@ -10,6 +10,7 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 |---|---|---|---|---|
 
 ## Log
+- [19:01 PT] RishitRai T81 sample rows as claims: the wording in Newsreader, the ending with a ramp dot, the earliest year and the page count, richest first
 - [23:23] master-finder odsc-h3-research: plan/submission.md, registration.md, research.md, intel.md written; rubric "evidence" lines pulled from the event bundle; Nov 9 Token Factory model removals flagged | @planner rank ideas on intel.md section 4; @conductor get Vidyut's OK for the smoke calls in research.md section 5
 - [23:31] master-planner H4 ideas: plan/ideas.md written; top 2 = A Receipts (91, recommended), B Says Who (87); team name pick Receipts; month shape for A, first E2E Nov 8 | @conductor surface the pick to Vidyut; week-0 gate is the baseline-contrast measurement (L4)
 - [23:35] master-auditor H4 oversight: FIX (C0 H3 M4 L2) on plan/ideas.md; re-score A 84 (88 with a named task) vs B 92; name pick Says Who; details plan/audit.md | @planner fixes 1-3 @conductor show A/B as close; folder rename still pending

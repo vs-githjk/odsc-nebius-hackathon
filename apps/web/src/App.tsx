@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import type { Trace } from "pz/schema";
 import { ModeBadge } from "./components/ModeBadge.tsx";
 import { TraceView } from "./components/TraceView.tsx";
 import { loadTraces } from "./data/loadTraces.ts";
-import { endingSentence } from "./model/ending.ts";
+import { rowFacts, sampleRows } from "./model/sampleRow.ts";
 import { parseRoute, type Route } from "./route.ts";
 
 const { traces, errors } = loadTraces();
@@ -18,8 +17,6 @@ function useRoute(): Route {
   return route;
 }
 
-const stateLabel = (trace: Trace) => trace.decision.state.replace(/_/g, " ");
-const sentenceCase = (text: string) => text.charAt(0).toUpperCase() + text.slice(1).toLowerCase();
 
 const sharedClaim = traces.length > 0 && traces.every((t) => t.claim.text === traces[0]!.claim.text) ? traces[0]!.claim.text : null;
 
@@ -42,17 +39,29 @@ function Start() {
           {traces.every((t) => t.synthetic) && <span className="meta">Example data: an invented claim on invented pages.</span>}
         </div>
         <ul className="samples">
-          {traces.map((trace) => (
-            <li key={trace.id}>
-              <a className="sample" href={`#/t/${encodeURIComponent(trace.id)}`}>
-                <span className="sample-state">{sentenceCase(stateLabel(trace))}</span>
-                <span className="meta">
-                  {endingSentence(trace)} {trace.roots.pages} {trace.roots.pages === 1 ? "page" : "pages"}.
-                </span>
-                {!trace.synthetic && <ModeBadge trace={trace} />}
-              </a>
-            </li>
-          ))}
+          {sampleRows(traces).map((row) => {
+            const [ending, reach, pages] = rowFacts(row);
+            const trace = traces.find((t) => t.id === row.id)!;
+            return (
+              <li key={row.id}>
+                <a className="sample" href={`#/t/${encodeURIComponent(row.id)}`}>
+                  <span className="sample-claim">{row.wording}</span>
+                  <span className="sample-facts">
+                    <span className="sample-ending">
+                      <i className={row.tone ? "ramp-dot" : "ramp-dot empty"} style={row.tone ? { ["--tone" as string]: row.tone } : undefined} aria-hidden="true" />
+                      {ending}
+                    </span>
+                    <span>{reach}</span>
+                    <span>{pages}</span>
+                    {!row.synthetic && <ModeBadge trace={trace} />}
+                  </span>
+                  <svg className="sample-go" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M9 6l6 6-6 6" />
+                  </svg>
+                </a>
+              </li>
+            );
+          })}
         </ul>
       </section>
       {errors.map((e) => (
