@@ -117,6 +117,23 @@ function numberClass(n: ParsedNumber, text: string): UnitClass {
   return null;
 }
 
+// #192 F5: a two-number claim's other number is a veto only. When it is a percent ("100 companies ... 71%"), a
+// sentence that gives a different, plain percent ("100 companies ... 30%") states another claim. A hedged one ("over
+// 70%", "about 70%") is not plain and never vetoes: dev-11's own CDP release says "over 70%" for the 71% claim.
+const HEDGED_BEFORE = /(?:over|more than|about|around|nearly|almost|roughly|approximately|at least|up to|under|less than|some|~)\s*$/iu;
+function otherNumberVetoes(text: string, atoms: Atoms): boolean {
+  const also = atoms.alsoNumber && parseNumbers(atoms.alsoNumber.canonical).numbers[0];
+  if (!also || !also.percent) return false;
+  // The claim's own number is never "another" percent (XO on #199): "Women now hold 25% of seats" states the 25% claim
+  // even though it leaves out "up from 11%".
+  const own = atoms.number && parseNumbers(atoms.number.canonical).numbers[0];
+  const isOwn = (n: ParsedNumber) => !!own && sameNumber({ ...n, percent: false }, { ...own, percent: false }).equal;
+  const percents = parseNumbers(text).numbers.filter((n) => numberClass(n, text) === "percent" && !isOwn(n));
+  const same = (n: ParsedNumber) => sameNumber({ ...n, percent: false }, { ...also, percent: false }).equal;
+  if (percents.some(same)) return false;
+  return percents.some((n) => !HEDGED_BEFORE.test(text.slice(0, n.start)));
+}
+
 // "tenfold", "ten-fold", "two-fold", "twice": multiplier words that parseNumberWords does not read. Only a claim counted
 // in times or folds looks for them, as weak numbers with the multiplier class (XO on #197).
 const FOLD_WORDS: Record<string, number> = { two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, hundred: 100, thousand: 1000 };
@@ -131,6 +148,7 @@ function multiplierWords(text: string): ParsedNumber[] {
 
 export function atomHit(sentence: string, atoms: Atoms, minSigDigits = 3, maxCommas = 2, words = true): boolean {
   if (!atoms.number) return false;
+  if (otherNumberVetoes(normalise(sentence.replace(URL, " ")), atoms)) return false;
   const target = parseNumbers(atoms.number.canonical).numbers[0];
   if (!target) return false;
   const text = normalise(sentence.replace(URL, " "));

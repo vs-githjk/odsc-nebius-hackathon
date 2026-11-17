@@ -78,3 +78,35 @@ describe("#192 F5: a year is never the claim's number", () => {
     expect(isYear(text, { raw: "2050", start: text.indexOf("2050"), percent: false })).toBe(true);
   });
 });
+
+describe("#192 F5: a two-number claim keeps its other number, as a veto only", () => {
+  const dev11 = "Just 100 companies are responsible for 71% of global emissions.";
+  const companies = { ...atoms("100", "100", null, "compan"), alsoNumber: { raw: "71%", canonical: "71%" } } as Atoms;
+
+  it("the fingerprint keeps both numbers, and never a year as the second", async () => {
+    const { alsoNumber } = await import("../src/engine/fingerprint.ts");
+    expect(claimNumber(dev11)).toEqual({ raw: "100", canonical: "100" });
+    expect(alsoNumber(dev11, claimNumber(dev11)!)).toEqual({ raw: "71%", canonical: "71%" });
+    expect(alsoNumber("In 2015, 9% of plastic was recycled.", { raw: "9%", canonical: "9%" })).toBeNull();
+  });
+
+  it("dev-11's gold CDP release ('over 70%') still states the claim; a plain other percent does not", () => {
+    expect(hit("Press release Jul 10, 2017•Global New report shows just 100 companies are source of over 70% of emissions.", companies)).toBe(true);
+    expect(hit("Just 100 companies are responsible for 71 percent of global emissions.", companies)).toBe(true);
+    expect(hit("Just 100 companies are responsible for 30% of global plastic waste.", companies)).toBe(false);
+    expect(hit("Nasdaq 100 Companies.", companies)).toBe(true);
+  });
+
+  it("the claim's own number never vetoes, even when the page leaves out the second (XO on #199)", () => {
+    const seats = { ...atoms("25%", "25%", null, "women"), alsoNumber: { raw: "11%", canonical: "11%" } } as Atoms;
+    expect(claimNumber("Women hold 25% of seats, up from 11% in 1995.")).toEqual({ raw: "25%", canonical: "25%" });
+    expect(hit("Women now hold 25% of parliamentary seats worldwide.", seats)).toBe(true);
+    expect(hit("Women now hold 25% of seats, up from 15%.", seats)).toBe(false);
+    const plastic = { ...atoms("9%", "9%", null, "plastic"), alsoNumber: { raw: "12%", canonical: "12%" } } as Atoms;
+    expect(hit("Only 9% of plastic waste has ever been recycled.", plastic)).toBe(true);
+  });
+
+  it("a claim with one number is unchanged", () => {
+    expect(hit("Just 100 companies are responsible for 30% of global plastic waste.", atoms("100", "100", null, "compan"))).toBe(true);
+  });
+});
