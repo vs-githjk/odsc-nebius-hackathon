@@ -256,11 +256,16 @@ describe("review fixes", () => {
     for (const e of trace.edges) expect(date(e.parentId) < date(e.childId)).toBe(true);
   });
 
-  it("[C1] a fact-check domain never enters the trace", async () => {
+  it("[C1] a fact-check domain never enters the path: with metaMaps off it is never read, with it on it is only a meta map", async () => {
     const check: Page = { url: "https://www.snopes.com/fact-check/penguins", date: "2009-01-01", text: "Do penguins nap 14 times a day? Keepers say penguins nap 14 times a day." };
-    const { trace, log } = await run(world([older, check]).impl);
-    expect(trace.nodes.map((n) => n.url)).not.toContain(check.url);
-    expect(log.some((l) => l.url === check.url && l.kept === true)).toBe(false);
+    const off = await run(world([older, check]).impl, 150, { ...rules, metaMaps: false });
+    expect(off.trace.nodes.map((n) => n.url)).not.toContain(check.url);
+    expect(off.log.some((l) => l.url === check.url && l.kept === true)).toBe(false);
+    const on = await run(world([older, check]).impl);
+    const node = on.trace.nodes.find((n) => n.url === "https://snopes.com/fact-check/penguins" || n.url === check.url);
+    expect(node).toBeDefined();
+    expect([node!.meta, node!.spanIds, on.trace.earliest.nodeIds.includes(node!.id)]).toEqual([true, [], false]);
+    expect(on.trace.spans.some((sp) => on.trace.nodes.find((n) => n.id === sp.nodeId)?.url.includes("snopes"))).toBe(false);
   });
 
   it("[C14] a run served entirely from the cache is a REPLAY carrying the first run's date and usage rows", async () => {

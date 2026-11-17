@@ -1,3 +1,4 @@
+import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
 import { mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
@@ -140,7 +141,7 @@ describe("T51 the CLI", () => {
   it("pz trace takes --answer-replay-of=<file> as answer mode", async () => {
     const path = join(mkdtempSync(join(tmpdir(), "pz-answer-eq-")), "answer.json");
     writeFileSync(path, JSON.stringify(await run()));
-    const cwd = new URL("../../../", import.meta.url).pathname;
+    const cwd = fileURLToPath(new URL("../../../", import.meta.url));
     const out = execFileSync(process.execPath, ["--import", "tsx", "packages/pz/src/cli/pz.ts", "trace", `--answer-replay-of=${path}`], { cwd, encoding: "utf8" });
     expect(out).toContain("Patient Zero  answer mode  SAMPLE");
   }, 20_000);

@@ -1,9 +1,11 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type { Trace } from "pz/schema";
+import { hopInto, readoutsHead, redStop } from "../model/hop.ts";
 import { scrubberStops, stopNote } from "../model/scrubber.ts";
 import { ModeBadge } from "./ModeBadge.tsx";
 import { Scrubber, stopXs, xAt } from "./Scrubber.tsx";
 import { Sentence } from "./Sentence.tsx";
+import { StopCard } from "./StopCard.tsx";
 import { TimeField } from "./TimeField.tsx";
 import { TraceGraph } from "./TraceGraph.tsx";
 import { ReplayAgain, ReplayRail, useReplay } from "./WalkReplay.tsx";
@@ -20,7 +22,6 @@ function useReducedMotion(): boolean {
   return reduced;
 }
 
-const stateLabel = (trace: Trace) => trace.decision.state.replace(/_/g, " ");
 const monthYear = new Intl.DateTimeFormat("en-US", { month: "long", year: "numeric", timeZone: "UTC" });
 const when = (date: string | null) => (date ? monthYear.format(new Date(date)) : "Undated");
 
@@ -42,6 +43,8 @@ export function TraceView({ trace }: { trace: Trace }) {
   const counts = replay.frame ?? trace.roots;
   const hop = stops[open];
   const note = hop ? stopNote(trace, stops, open) : null;
+  const red = useMemo(() => redStop(trace, stops), [trace, stops]);
+  const into = hop ? hopInto(trace, stops, open) : null;
   const x = stops.length > 0 ? xAt(stopXs(trace, stops), position) : 1;
 
   return (
@@ -66,10 +69,13 @@ export function TraceView({ trace }: { trace: Trace }) {
           <>
             <Sentence trace={trace} stops={stops} position={position} />
             <TraceGraph trace={trace} activeSpanId={replay.frame ? null : hop?.spanId ?? null} x={x} landed={replay.frame?.nodeIds ?? null} />
-            <Scrubber trace={trace} stops={stops} position={position} reducedMotion={reducedMotion} onMove={setPosition} onSettle={settle} />
+            <Scrubber trace={trace} stops={stops} position={position} reducedMotion={reducedMotion} red={red} onMove={setPosition} onSettle={settle} />
             {hop && note && !replay.frame && (
               <section className="hop-detail" aria-label="The page at this stop">
-                <p className="hop-when">{when(hop.date)}</p>
+                <p className="hop-when">
+                  {when(hop.date)}
+                  {open === red && <span className="red-tag">Wording changed here</span>}
+                </p>
                 <p className="hop-page">
                   <span className="hop-name">{new URL(hop.url).hostname}</span>
                   <span className="pill">{hop.tier} match</span>
@@ -81,14 +87,27 @@ export function TraceView({ trace }: { trace: Trace }) {
                   {hop.unsure && "One readout on this hop is unsure. "}
                   <a href={hop.url} target="_blank" rel="noreferrer">Open the page</a>
                 </p>
+                {into && (
+                  <div className="readouts">
+                    <p className="readouts-head">{readoutsHead(into)}</p>
+                    {into.chips.length > 0 && (
+                      <ul className="readout-list" key={`${trace.id}-${open}`}>
+                        {into.chips.map((c, n) => (
+                          <li key={c.id} className={`readout ${c.tone}${c.disputed ? " disputed" : ""}`} style={{ ["--i" as string]: n }}>
+                            <span className="readout-label">{c.label}</span>
+                            <span className="readout-tag">{c.tag}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </div>
+                )}
               </section>
             )}
           </>
         )}
-        <p className="foot-note">
-          {trace.synthetic ? "Sample trace: an invented claim on invented pages. " : ""}
-          Ends {stateLabel(trace)}. How this was decided: row {trace.decision.row}.
-        </p>
+        {/* The ending closes the stage: the card replaces the old one-line footnote (T85). */}
+        {!replay.frame && <StopCard trace={trace} />}
       </div>
     </>
   );

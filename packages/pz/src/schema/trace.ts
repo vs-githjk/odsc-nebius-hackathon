@@ -15,6 +15,8 @@ export const Atoms = z.object({
   subjectLemma: z.string(), population: z.string().nullable(), time: z.string().nullable(),
   hedge: z.string().nullable(), namedSource: z.string().nullable(), variants: z.array(z.string()),
   phrase: z.string().min(1).nullable().optional(),
+  // #192 F5: a two-number claim's other number ("100 companies ... 71%"). A veto only: see numbers.ts atomHit.
+  alsoNumber: z.object({ raw: z.string(), canonical: z.string() }).strict().nullable().optional(),
 }).strict().refine((a) => a.number !== null || !!a.phrase, { message: "atoms need a number or a phrase" });
 export type Atoms = z.infer<typeof Atoms>;
 export const Span = z.object({
@@ -25,7 +27,7 @@ export const Span = z.object({
 export type Span = z.infer<typeof Span>;
 export const DateInfo = z.object({
   kind: z.enum(["published", "existed_by", "unconfirmed"]), value: z.string().nullable(),
-  source: z.enum(["metadata", "byline", "wayback_first_capture", "tavily"]), firstCapture: z.string().nullable(), conflictingDate: z.boolean(),
+  source: z.enum(["metadata", "byline", "wayback_first_capture", "tavily", "registry_pubmed", "registry_pmc", "registry_crossref"]), firstCapture: z.string().nullable(), conflictingDate: z.boolean(),
 }).strict();
 export type DateInfo = z.infer<typeof DateInfo>;
 export const Node = z.object({
@@ -36,6 +38,12 @@ export const Node = z.object({
   // T36: the typed same_claim answer for this page's span. Absent or null means the gate did not run (no model),
   // which counts as unsure: such a page is never an origin.
   sameClaim: TypedAnswer.nullable().optional(),
+  // T49: the meta page (a fact-check or provenance page) whose citation led the walk here, or null. The page still
+  // stands on its own verbatim span; the meta page is a map and never an origin. Absent on traces before T49.
+  foundViaMeta: z.string().nullable().optional(),
+  // T37: the typed boundary answer for an earliest page on a cold trail (print, unsourced, none). Absent or null
+  // means not asked; code decides whether it counts.
+  boundary: TypedAnswer.nullable().optional(),
   // T79: the same question answered by a second model family (rules.json secondSameClaimModel). When that rule is
   // set, an origin needs this to say yes as well; absent or null then counts as unsure.
   sameClaimSecond: TypedAnswer.nullable().optional(),
@@ -101,7 +109,7 @@ export const Trace = z.object({
   failure: z.object({ service: z.string(), endpoint: z.string(), status: z.string(), kept: z.string() }).strict().nullable(),
   budget: z.object({ credits: z.number(), usd: z.number(), ms: z.number(), capHit: z.enum(["credits", "usd", "ms", "depth", "frontier"]).nullable() }).strict(),
   decision: Decision, searchLog: z.array(SearchLogEntry), usage: z.array(UsageRow), scopeNote: z.string(),
-  // T97: pages that state the claim with another number ("14 became 15"), found by embeddings past code's gate.
+  // T97: pages with a similar sentence that uses another number (a possible variant, never "14 became 15"), found by embeddings past code's gate.
   // Listed for the reader, never nodes, so they never change how a trace ends. Absent on traces from before T97.
   otherNumbers: z.array(OtherNumber).optional(),
 }).strict();

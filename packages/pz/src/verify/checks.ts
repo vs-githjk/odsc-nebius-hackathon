@@ -1,13 +1,13 @@
 import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { isDeepStrictEqual } from "node:util";
-import { decideStopState, isNegated, loadRules, normalise, type Rules } from "../rules/index.ts";
-import { atomHit } from "../rules/numbers.ts";
+import { confidentNo, decideStopState, isNegated, loadRules, normalise, type Rules } from "../rules/index.ts";
+import { claimHit } from "../rules/claim-hit.ts";
 import type { Trace } from "../schema/index.ts";
 import { otherNumberCandidate } from "../engine/similar.ts";
 import { computeRoots } from "../engine/cluster.ts";
 
-export type Check = "window_hash" | "offsets" | "atoms" | "negated" | "earliest" | "date_cap" | "edge_spans" | "edge_kind" | "stop_state" | "page_hash" | "page_offsets" | "other_numbers" | "roots";
+export type Check = "window_hash" | "offsets" | "atoms" | "negated" | "earliest" | "date_cap" | "edge_spans" | "edge_kind" | "stop_state" | "page_hash" | "page_offsets" | "other_numbers" | "roots" | "via_meta";
 export type Failure = { traceId: string; check: Check; detail: string };
 export type TraceReport = { spans: number; spansOk: number; edgesWithoutTwoSpans: number; stateAgrees: boolean; failures: Failure[] };
 
@@ -29,8 +29,8 @@ export function verifyTrace(trace: Trace, opts: { pagesDir?: string; rules?: Rul
     const before = failures.length;
     if (sha256(s.contextBefore + s.text + s.contextAfter) !== s.windowSha256) fail("window_hash", `span ${s.id}: window hash differs`);
     if (s.end - s.start !== s.text.length) fail("offsets", `span ${s.id}: ${s.start}..${s.end} does not fit ${s.text.length} characters`);
-    // Spans that back an edge must carry the claim's number; other spans must at least name the subject.
-    const atomsOk = onEdge.has(s.id) ? atomHit(s.text, trace.claim.atoms, rules.weakNumberMinSigDigits, rules.weakNumberMaxCommas) : normalise(s.text).toLowerCase().includes(lemma);
+    // Spans that back an edge must carry the claim (its number, or its phrase for a claim with none); other spans must at least name the subject.
+    const atomsOk = onEdge.has(s.id) ? claimHit(s.text, trace.claim.atoms, rules) : normalise(s.text).toLowerCase().includes(lemma);
     if (!atomsOk && !opts.historical) fail("atoms", `span ${s.id}: claim atoms not found under the number rules`);
     // Meta pages deny the claim on purpose; anywhere else a negated span cannot back the trace.
     if (!meta.has(s.nodeId) && isNegated(s, rules.negationPrefixes)) fail("negated", `span ${s.id}: preceded by a negation`);
@@ -53,6 +53,7 @@ export function verifyTrace(trace: Trace, opts: { pagesDir?: string; rules?: Rul
   }
 
   // The stored earliest nodes must really be earliest: no page feeds into them, and no page outside their clusters is older.
+  // A page the model confidently called another claim is off the trail (F1, #192), so it may be older than the earliest.
   const earliest = trace.nodes.filter((n) => trace.earliest.nodeIds.includes(n.id));
   const earliestClusters = new Set(earliest.map((n) => n.clusterId));
   for (const n of earliest) {
@@ -61,7 +62,7 @@ export function verifyTrace(trace: Trace, opts: { pagesDir?: string; rules?: Rul
   }
   const firstDate = earliest.map((n) => n.date.value).filter((d): d is string => d !== null).sort()[0];
   for (const n of trace.nodes) {
-    if (firstDate && !n.meta && !earliestClusters.has(n.clusterId) && n.date.value !== null && n.date.value < firstDate)
+    if (firstDate && !n.meta && !confidentNo(n.sameClaim, rules) && !earliestClusters.has(n.clusterId) && n.date.value !== null && n.date.value < firstDate)
       fail("earliest", `node ${n.id} (${n.date.value}) is older than the earliest nodes (${firstDate})`);
   }
 
@@ -70,6 +71,15 @@ export function verifyTrace(trace: Trace, opts: { pagesDir?: string; rules?: Rul
     const { value, firstCapture, conflictingDate } = n.date;
     if (value !== null && firstCapture !== null && value > firstCapture && !conflictingDate)
       fail("date_cap", `node ${n.id}: date ${value} is later than its first capture ${firstCapture} and is not flagged`);
+  }
+
+  // T49: a page found through a meta page must point at a meta node in this trace that cites it, and is never meta itself.
+  for (const n of trace.nodes) {
+    if (!n.foundViaMeta) continue;
+    const map = trace.nodes.find((m) => m.url === n.foundViaMeta);
+    if (!map || !map.meta) fail("via_meta", `node ${n.id}: foundViaMeta ${n.foundViaMeta} is not a meta node in this trace`);
+    else if (!map.candidateParents.some((p) => p.url === n.url)) fail("via_meta", `node ${n.id}: meta node ${map.id} does not cite ${n.url}`);
+    if (n.meta) fail("via_meta", `node ${n.id}: a meta page cannot be found through another meta page and count`);
   }
 
   // T97: a page listed as the same claim with another number must pass code's own gate (the subject, not negated, a

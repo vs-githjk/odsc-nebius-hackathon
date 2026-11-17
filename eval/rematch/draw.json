@@ -1,0 +1,16 @@
+{
+  "seed": "T93 #160 rematch, drawn 2026-11-16",
+  "method": "rank every E3 claim by sha256(seed, NUL, id), keep the first 10",
+  "claims": [
+    "e3-02",
+    "e3-03",
+    "e3-07",
+    "e3-10",
+    "e3-16",
+    "e3-17",
+    "e3-32",
+    "e3-34",
+    "e3-36",
+    "e3-40"
+  ]
+}

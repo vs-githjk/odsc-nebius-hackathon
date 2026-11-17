@@ -10,7 +10,7 @@ import { fileURLToPath } from "node:url";
 // - list numbering at the start of a line, and numbers inside words or identifiers (Qwen3, T72, C17, 1440px)
 // - numbers named in a `<!-- numbers ok: 1440, 390 (screenshot sizes) -->` comment in the same section, so every
 //   exception is written down where a reviewer sees it.
-export const SCOPE = ["README.md", "llms.txt"];
+export const SCOPE = ["README.md", "llms.txt", "docs/submission.md"];
 
 const MONTHS = "jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:t(?:ember)?)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?";
 const DATE = new RegExp(String.raw`\b(?:${MONTHS})\.? \d{1,2}(?:, \d{4})?\b|\b\d{1,2} (?:${MONTHS}) \d{4}\b|\b\d{4}-\d{2}-\d{2}\b`, "giu");
@@ -75,9 +75,10 @@ function readLinkedFile(root: string) {
 }
 
 export function lintNumbersIn(root: string, scope = SCOPE): { code: number; lines: string[] } {
-  const lines = scope.filter((f) => existsSync(join(root, f))).flatMap((f) =>
+  const present = scope.filter((f) => existsSync(join(root, f)));
+  const lines = present.flatMap((f) =>
     lintNumbers(f, readFileSync(join(root, f), "utf8"), readLinkedFile(root)).map((p) => `FAIL ${relative(root, join(root, f))}:${p.line}: ${p.issue}`));
-  lines.push(`number lint: ${scope.length} files checked, ${lines.length} unbacked numbers`);
+  lines.push(`number lint: ${present.length} files checked, ${lines.length} unbacked numbers`);
   return { code: lines.length === 1 ? 0 : 1, lines };
 }
 
