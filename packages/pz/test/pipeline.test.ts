@@ -86,8 +86,10 @@ function stub(world: World) {
     if (url.endsWith("/v1/embeddings") && world.embedBad) return new Response(JSON.stringify({ data: [], usage: { prompt_tokens: 5 } }));
     if (url.endsWith("/v1/embeddings")) {
       const data = (body.input as string[]).map((text, index) => {
-        const slot = createHash("sha256").update(text).digest()[0]! % 64;
-        return { index, embedding: Array.from({ length: 64 }, (_, i) => (i === slot ? 1 : 0)) };
+        // 256 signs from the text's hash: the same text gives the same vector, and two different texts sit near
+        // cosine 0 (a one-hot slot of 64 collided 1 run in 64, joining two pages as near duplicates).
+        const bytes = createHash("sha256").update(text).digest();
+        return { index, embedding: Array.from({ length: 256 }, (_, i) => ((bytes[i >> 3]! >> (i & 7)) & 1 ? 1 : -1)) };
       });
       return new Response(JSON.stringify({ data, usage: { prompt_tokens: 20 } }));
     }
