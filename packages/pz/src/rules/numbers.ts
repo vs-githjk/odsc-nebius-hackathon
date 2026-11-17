@@ -130,6 +130,18 @@ function otherNumberVetoes(text: string, atoms: Atoms): boolean {
   return percents.some((n) => !HEDGED_BEFORE.test(text.slice(0, n.start)));
 }
 
+// "tenfold", "ten-fold", "two-fold", "twice": multiplier words that parseNumberWords does not read. Only a claim counted
+// in times or folds looks for them, as weak numbers with the multiplier class (XO on #197).
+const FOLD_WORDS: Record<string, number> = { two: 2, three: 3, four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, hundred: 100, thousand: 1000 };
+function multiplierWords(text: string): ParsedNumber[] {
+  const out: ParsedNumber[] = [];
+  for (const m of text.matchAll(/(?<![\p{L}\p{N}])(?:(two|three|four|five|six|seven|eight|nine|ten|hundred|thousand)-?fold|(twice|thrice))(?![\p{L}\p{N}])/giu)) {
+    const value = m[1] ? FOLD_WORDS[m[1].toLowerCase()]! : m[2]!.toLowerCase() === "twice" ? 2 : 3;
+    out.push({ raw: m[0], digits: String(value), value, decimals: 0, percent: false, start: m.index, end: m.index + m[0].length });
+  }
+  return out;
+}
+
 export function atomHit(sentence: string, atoms: Atoms, minSigDigits = 3, maxCommas = 2, words = true): boolean {
   if (!atoms.number) return false;
   if (otherNumberVetoes(normalise(sentence.replace(URL, " ")), atoms)) return false;
@@ -137,8 +149,9 @@ export function atomHit(sentence: string, atoms: Atoms, minSigDigits = 3, maxCom
   if (!target) return false;
   const text = normalise(sentence.replace(URL, " "));
   const wordNumbers = words ? parseNumberWords(text) : [];
-  const found = [...parseNumbers(text).numbers, ...wordNumbers];
   const want: UnitClass = target.percent ? "percent" : unitClassOf(atoms.unit);
+  if (want === "multiplier" && words) wordNumbers.push(...multiplierWords(text));
+  const found = [...parseNumbers(text).numbers, ...wordNumbers];
   const hits = found.filter((n) => {
     const cls = numberClass(n, text);
     // A bare fraction keeps the declared percent transform: 0.412 against 41.2%.

@@ -44,9 +44,30 @@ describe("#192 F5: units", () => {
   });
 });
 
+describe("#192 F5: multiplier words (XO on #197)", () => {
+  it("'tenfold', 'ten-fold', 'two-fold' and 'twice' match a claim counted in times", () => {
+    const brainCells = atoms("10", "10", "times", "cell");
+    expect(hit("Glial cells outnumber neurons tenfold.", brainCells)).toBe(true);
+    expect(hit("Glial cells are ten-fold more common.", brainCells)).toBe(true);
+    expect(hit("Glial cells are two-fold more common.", brainCells)).toBe(false);
+    const twice = atoms("2", "2", "times", "seal");
+    expect(hit("Penguins nap twice as often as the seals do.", twice)).toBe(true);
+    expect(hit("The seals grew two-fold.", twice)).toBe(true);
+    expect(hit("Penguins nap twice as often as the seals do.", atoms("2", "2", "percent", "seal"))).toBe(false);
+  });
+});
+
 describe("#192 F5: a year is never the claim's number", () => {
   it("dev-10: 'By 2050' has no number, so it goes to the phrase step", () => {
     expect(claimNumber("By 2050 there will be more plastic than fish in the ocean.")).toBeNull();
+  });
+
+  it("a bare year is skipped whenever the claim has another number (XO's three cases)", () => {
+    expect(claimNumber("The 1990 study found 10% of people agree.")).toEqual({ raw: "10%", canonical: "10%" });
+    expect(claimNumber("In 2019 and 2020, 30 percent of firms cut jobs.")).toEqual({ raw: "30", canonical: "30" });
+    expect(claimNumber("Between 2000 and 2010, emissions rose 40%.")).toEqual({ raw: "40%", canonical: "40%" });
+    expect(claimNumber("The 1990 study found ten species gone.")).toEqual({ raw: "ten", canonical: "10" });
+    expect(claimNumber("Between 2000 and 2010 nothing changed.")).toBeNull();
   });
 
   it("a year after a time word is skipped, a four-digit count is kept", () => {

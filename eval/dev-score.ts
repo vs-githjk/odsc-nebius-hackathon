@@ -10,10 +10,18 @@ import { loadRules } from "../packages/pz/src/rules/index.ts";
 import { Trace } from "../packages/pz/src/schema/index.ts";
 import { verifyTrace } from "../packages/pz/src/verify/index.ts";
 
-export type DevClaim = { id: string; text: string; expected: "origin" | "cold"; tracedOrigin: string | null; tracedBy: string | null };
+// originAliases: other URLs of the same work as tracedOrigin (a locale path, a moved page, the registry record of the
+// same paper, the co-publisher's copy of the same report). Dev labels only, each logged with its evidence on #164.
+// They count as the target for "target cited" and "earliest Pass"; "Partial" still means tracedOrigin's own site.
+// outOfScope: why the claim's origin is off the open web (Vidyut, Nov 17, #192). Its trace is shown apart and is
+// left out of every count in the headline.
+export type DevClaim = {
+  id: string; text: string; expected: "origin" | "cold"; tracedOrigin: string | null; tracedBy: string | null;
+  originAliases?: string[]; outOfScope?: string;
+};
 export type Grade = "Pass" | "Partial" | "Fail";
 export type ClaimScore = {
-  id: string; expected: DevClaim["expected"]; status: "scored" | "no trace" | "unverified" | "bad trace";
+  id: string; expected: DevClaim["expected"]; status: "scored" | "no trace" | "unverified" | "bad trace" | "out of scope";
   mode: Trace["mode"] | null; state: Trace["decision"]["state"] | null;
   falseOrigin: boolean; targetCited: boolean | null; earliest: Grade | null; coldCorrect: boolean | null;
   credits: number; seconds: number; reason?: string;
@@ -44,7 +52,7 @@ const hostOf = (url: string) => urlKey(url).split("/")[0]!;
 // - Cold correct: a cold claim ends TRAIL_GOES_COLD. A cold claim that ends anywhere else is not correct.
 export function scoreClaim(claim: DevClaim, trace: Trace | null): ClaimScore {
   const base = { id: claim.id, expected: claim.expected, falseOrigin: false, targetCited: null, earliest: null, coldCorrect: null, credits: 0, seconds: 0 };
-  if (!trace) return { ...base, status: "no trace", mode: null, state: null };
+  if (!trace) return { ...base, status: claim.outOfScope ? "out of scope" : "no trace", mode: null, state: null, ...(claim.outOfScope ? { reason: claim.outOfScope } : {}) };
   const run = { mode: trace.mode, state: trace.decision.state, credits: trace.budget.credits, seconds: Math.round(trace.budget.ms / 1000) };
   if (trace.id !== claim.id) return { ...base, ...run, status: "bad trace", reason: `trace id ${trace.id}` };
   if (trace.claim.text !== claim.text.trim()) return { ...base, ...run, status: "bad trace", reason: "trace does not match claim" };
@@ -52,13 +60,15 @@ export function scoreClaim(claim: DevClaim, trace: Trace | null): ClaimScore {
   if (failures.length) return { ...base, ...run, status: "unverified", reason: failures.map((f) => f.check).join(", ") };
 
   const earliest = trace.nodes.filter((n) => trace.earliest.nodeIds.includes(n.id));
-  const target = claim.tracedOrigin ? urlKey(claim.tracedOrigin) : null;
-  const pass = !!target && earliest.some((n) => urlKey(n.url) === target);
+  const targets = new Set(claim.tracedOrigin ? [claim.tracedOrigin, ...(claim.originAliases ?? [])].map(urlKey) : []);
+  const target = targets.size > 0;
+  const pass = earliest.some((n) => targets.has(urlKey(n.url)));
+  if (claim.outOfScope) return { ...base, ...run, status: "out of scope", reason: claim.outOfScope };
   const scored = { ...base, ...run, status: "scored" as const, falseOrigin: trace.decision.state === "ORIGIN_FOUND" && (claim.expected === "cold" || !pass) };
   if (claim.expected === "cold") return { ...scored, coldCorrect: trace.decision.state === "TRAIL_GOES_COLD" };
   return {
     ...scored,
-    targetCited: !!target && trace.nodes.some((n) => urlKey(n.url) === target),
+    targetCited: trace.nodes.some((n) => targets.has(urlKey(n.url))),
     earliest: pass ? "Pass" : target && earliest.some((n) => hostOf(n.url) === hostOf(claim.tracedOrigin!)) ? "Partial" : "Fail",
   };
 }
@@ -66,10 +76,11 @@ export function scoreClaim(claim: DevClaim, trace: Trace | null): ClaimScore {
 export type Summary = {
   traces: number; claims: number; scored: number; unverified: number; modes: string[];
   falseOrigins: number; unverifiedOrigins: number; targetCited: number; originClaims: number; pass: number; partial: number; fail: number;
-  coldCorrect: number; coldClaims: number; credits: number; seconds: number;
+  coldCorrect: number; coldClaims: number; credits: number; seconds: number; outOfScope: number;
 };
 
-export function summarise(scores: ClaimScore[]): Summary {
+export function summarise(all: ClaimScore[]): Summary {
+  const scores = all.filter((s) => s.status !== "out of scope");
   const scored = scores.filter((s) => s.status === "scored");
   const origin = scored.filter((s) => s.expected === "origin");
   const cold = scored.filter((s) => s.expected === "cold");
@@ -85,7 +96,8 @@ export function summarise(scores: ClaimScore[]): Summary {
     targetCited: count(origin, (s) => !!s.targetCited), originClaims: count(scores, (s) => s.expected === "origin"),
     pass: count(origin, (s) => s.earliest === "Pass"), partial: count(origin, (s) => s.earliest === "Partial"), fail: count(origin, (s) => s.earliest === "Fail"),
     coldCorrect: count(cold, (s) => !!s.coldCorrect), coldClaims: count(scores, (s) => s.expected === "cold"),
-    credits: scores.reduce((n, s) => n + s.credits, 0), seconds: scores.reduce((n, s) => n + s.seconds, 0),
+    credits: all.reduce((n, s) => n + s.credits, 0), seconds: all.reduce((n, s) => n + s.seconds, 0),
+    outOfScope: all.length - scores.length,
   };
 }
 
@@ -93,6 +105,7 @@ export function summarise(scores: ClaimScore[]): Summary {
 export function headline(s: Summary): string {
   return `false origins ${s.falseOrigins} (+${s.unverifiedOrigins} unverified ORIGIN_FOUND) | target cited ${s.targetCited}/${s.originClaims} | earliest ${s.pass} Pass, ${s.partial} Partial, ${s.fail} Fail`
     + ` | cold stops ${s.coldCorrect}/${s.coldClaims} | ${s.scored} of ${s.claims} claims scored (${s.unverified} unverified)`
+    + (s.outOfScope ? ` | ${s.outOfScope} out of scope, scored apart` : "")
     + ` | ${s.credits} credits, ${s.seconds} s | modes ${s.modes.join(", ") || "none"}`;
 }
 
@@ -126,7 +139,7 @@ const HEADER = "# Dev score\n\nOne row per set per `make dev-score` run, newest 
 export function appendRow(path: string, s: Summary, at: string, commit: string, set: string): void {
   if (!existsSync(path)) writeFileSync(path, HEADER);
   appendFileSync(path, `| ${at} | ${commit} | ${set} | ${s.falseOrigins} (+${s.unverifiedOrigins}) | ${s.targetCited}/${s.originClaims} | ${s.pass} / ${s.partial} / ${s.fail} | `
-    + `${s.coldCorrect}/${s.coldClaims} | ${s.scored} of ${s.claims} | ${s.credits} | ${s.seconds} | ${s.modes.join(", ") || "none"} |\n`);
+    + `${s.coldCorrect}/${s.coldClaims} | ${s.scored} of ${s.claims}${s.outOfScope ? ` (+${s.outOfScope} out of scope)` : ""} | ${s.credits} | ${s.seconds} | ${s.modes.join(", ") || "none"} |\n`);
 }
 
 export function perClaimLines(scores: ClaimScore[]): string[] {
