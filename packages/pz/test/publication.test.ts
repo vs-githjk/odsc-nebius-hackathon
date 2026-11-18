@@ -121,6 +121,9 @@ describe("page fetching is public-only, logged and challenge-aware", () => {
     const direct = setup({ "https://api.crossref.org/works/10.1000%2Fabc.1": json(work) });
     expect(await direct.evidence("https://doi.org/10.1000/abc.1")).toBe("2012-04-02");
     expect(direct.usage.rows[0]).toMatchObject({ service: "crossref", endpoint: "works", credits: 0, costUsd: 0 });
+    const publisher = setup({ "https://api.crossref.org/works/10.1000%2Fabc.1": json(work) });
+    expect(await publisher.evidence("https://www.science.org/doi/full/10.1000/abc.1")).toBe("2012-04-02");
+    expect(publisher.urls).toEqual(["https://api.crossref.org/works/10.1000%2Fabc.1"]);
     const viaMeta = setup({ "https://journal.example/a": page(html('<meta name="citation_doi" content="10.1000/abc.1">')), "https://api.crossref.org/works/10.1000%2Fabc.1": json(work) });
     expect(await viaMeta.evidence("https://journal.example/a")).toBe("2012-04-02");
     expect(viaMeta.usage.rows.map((r) => r.service)).toEqual(["fetch", "crossref"]);

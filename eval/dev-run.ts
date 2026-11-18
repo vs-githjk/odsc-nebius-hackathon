@@ -36,6 +36,12 @@ export function parseDevSet(rows: unknown, set: "E2" | "E3"): Input[] {
 
 const errorCodes = new Set(["budget_exceeded", "budget_bound_exceeded", "claim_timeout", "not_configured", "http_error", "network_error", "bad_response", "trace_failed"]);
 
+class InvalidDevTrace extends Error {
+  constructor(readonly reason: string) {
+    super("Invalid dev trace");
+  }
+}
+
 function codeOf(error: unknown): string {
   if (error && typeof error === "object" && "code" in error &&
       typeof error.code === "string" && errorCodes.has(error.code)) return error.code;
@@ -68,11 +74,15 @@ export async function runDevBatch(
   if (new Set(inputs.map(input => input.id)).size !== inputs.length) throw new Error("Duplicate dev claim id");
   const rules = loadRules();
   function verified(value: unknown, input: Input, acceptLive = false): Trace {
-    const trace = Trace.parse(value);
-    if (trace.synthetic || (trace.mode !== opts.mode && !(acceptLive && trace.mode === "LIVE")) || trace.id !== input.id ||
-        trace.claim.text !== input.text || verifyTrace(trace, { rules }).failures.length) {
-      throw new Error("Invalid dev trace");
+    const parsed = Trace.safeParse(value);
+    if (!parsed.success) throw new InvalidDevTrace("schema");
+    const trace = parsed.data;
+    if (trace.synthetic || (trace.mode !== opts.mode && !(acceptLive && trace.mode === "LIVE"))) {
+      throw new InvalidDevTrace("provenance");
     }
+    if (trace.id !== input.id || trace.claim.text !== input.text) throw new InvalidDevTrace("claim_mismatch");
+    const failures = verifyTrace(trace, { rules }).failures;
+    if (failures.length) throw new InvalidDevTrace([...new Set(failures.map(failure => failure.check))].join(", "));
     return trace;
   }
   function existing(input: Input): Trace | undefined {
@@ -115,7 +125,8 @@ export async function runDevBatch(
       recorded++;
     } catch (error) {
       const code = codeOf(error);
-      save(errorPath, { id: input.id, code });
+      const reason = error instanceof InvalidDevTrace ? error.reason : undefined;
+      save(errorPath, { id: input.id, code, reason });
       opts.report(JSON.stringify({ id: input.id, status: "failed", code }));
       failed++;
       if (code === "budget_exceeded" || code === "budget_bound_exceeded") break;
@@ -337,7 +348,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
         });
         console.log(JSON.stringify(result));
         if (result.failed || result.unattempted) process.exitCode = 1;
-        else if (!rehearsal) execFileSync(process.execPath, ["--import", "tsx", "eval/dev-score.ts", "--set", spec.set], { stdio: "inherit" });
+        if (!rehearsal) execFileSync(process.execPath, ["--import", "tsx", "eval/dev-score.ts", "--set", spec.set], { stdio: "inherit" });
       }
     }
   } catch (error) {
