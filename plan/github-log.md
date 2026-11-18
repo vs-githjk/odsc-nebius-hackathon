@@ -110,3 +110,4 @@
 - 22:40 ET: #226 merged 82d34ee; #222 FIX (byline <time> scope); #184 FIX (than/over); new Tavily key OK; Anoop tasks on #4.
 - 22:58 ET: #184 claim box PASS and merged. XO coding window closed 23:00; orchestration only.
 - 23:06 ET: #228 PASS merged. Rishit next: phrase claims in the claim box.
+- 2026-11-18 08:26 #222 re-review 257c9fd: FIX [M] teaser-only time confirms false date, [L] comments/scripts; posted
