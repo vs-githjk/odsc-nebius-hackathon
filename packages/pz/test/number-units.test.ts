@@ -58,8 +58,9 @@ describe("#192 F5: multiplier words (XO on #197)", () => {
 });
 
 describe("#192 F5: a year is never the claim's number", () => {
-  it("dev-10: 'By 2050' has no number, so it goes to the phrase step", () => {
-    expect(claimNumber("By 2050 there will be more plastic than fish in the ocean.")).toBeNull();
+  it("dev-10: a lone year stays the claim's number (the whole-sentence fallback lost the WEF report on Nov 17)", () => {
+    expect(claimNumber("By 2050 there will be more plastic than fish in the ocean.")).toEqual({ raw: "2050", canonical: "2050" });
+    expect(claimNumber("Plastic will triple by 2050.")).toEqual({ raw: "2050", canonical: "2050" });
   });
 
   it("a bare year is skipped whenever the claim has another number (XO's three cases)", () => {
