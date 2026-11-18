@@ -113,13 +113,13 @@ export async function fingerprintPhrase(text: string, { client }: { client: Clie
   return { atoms, variants, dropped, reason: null, usage: result.attempts };
 }
 
-// The head word of a subject the claim spells in several words: the last word before "of", "in", "on", "for" or
-// "from", else the last word. A single word is kept as it is; null when nothing usable is left.
+// The head word of a subject the claim spells in several words: the last word before a preposition ("of", "in",
+// "through", "from" and the like), else the last word. A single word is kept as it is; null when nothing usable is left.
 export function headWord(subject: string | null): string | null {
   if (!subject) return null;
   const words = subject.trim().split(/\s+/);
   if (words.length === 1) return words[0]!;
-  const cut = words.findIndex((w, i) => i > 0 && /^(?:of|in|on|for|from)$/i.test(w));
+  const cut = words.findIndex((w, i) => i > 0 && /^(?:of|in|on|for|from|through|to|at|with|by|about|into)$/i.test(w));
   const head = (cut > 0 ? words.slice(0, cut) : words).at(-1)!.replace(/[^\p{L}\p{N}'-]/gu, "");
   return head.length >= 3 && !/^(?:the|and|its|this|that|their|your|our|of|in|on|for|from)$/i.test(head) ? head : null;
 }

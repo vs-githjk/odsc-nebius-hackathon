@@ -72,6 +72,7 @@ describe("T53 fingerprintPhrase on the four E2 claims fingerprint() stops at no_
     expect([heat.reason, heat.atoms!.subjectLemma, heat.atoms!.phrase]).toEqual([null, "heat", "40 to 45 percent"]);
     expect(headWord("of the")).toBeNull();
     expect(headWord("plastic")).toBe("plastic");
+    expect(headWord("heat through your head")).toBe("heat");
   });
 
   it("stops with a named reason: has_number (no call), no_phrase, no_subject, no_model; other errors are not hidden", async () => {
