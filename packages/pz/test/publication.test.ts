@@ -129,6 +129,15 @@ describe("page fetching is public-only, logged and challenge-aware", () => {
     expect(viaMeta.usage.rows.map((r) => r.service)).toEqual(["fetch", "crossref"]);
   });
 
+  it("uses only a publication-marked time element as a dateline fallback", async () => {
+    const url = "https://news.example/a";
+    const unrelated = '<time datetime="1990-01-01">1990</time>';
+    const published = '<time itemprop="datePublished" datetime="2020-06-09">June 9</time>';
+    expect(await setup({ [url]: page(html(unrelated, published)) }).found(url))
+      .toEqual({ date: "2020-06-09", source: "byline" });
+    expect(await setup({ [url]: page(html(unrelated)) }).found(url)).toBeNull();
+  });
+
   it("reads a page's own meta tags and logs the page GET as a fetch row", async () => {
     const t = setup({ "https://news.example/a": page(html('<meta name="citation_publication_date" content="2008/02/03">')) });
     expect(await t.evidence("https://news.example/a")).toBe("2008-02-03");
