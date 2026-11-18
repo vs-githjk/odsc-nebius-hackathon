@@ -1,11 +1,11 @@
 import { execFileSync } from "node:child_process";
-import { cpSync, mkdirSync, mkdtempSync, writeFileSync } from "node:fs";
+import { cpSync, existsSync, mkdirSync, mkdtempSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { basename, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it, vi } from "vitest";
 import { formatDoctor, runDoctor } from "../src/cli/doctor.ts";
-import { devScore, heldOut, judgeTraces, runJudge } from "../src/cli/judge.ts";
+import { devScore, heldOut, JUDGE_DEV_TRACES, judgeTraces, runJudge } from "../src/cli/judge.ts";
 import { lintText } from "../src/cli/lint-copy.ts";
 
 const root = fileURLToPath(new URL("../../../", import.meta.url));
@@ -97,7 +97,22 @@ describe("T95 make judge", () => {
     mkdirSync(join(dir, "traces/gallery"), { recursive: true });
     cpSync(join(root, "fixtures/traces/sample-origin.json"), join(dir, "traces/a.json"));
     cpSync(join(root, "fixtures/traces/sample-rich.json"), join(dir, "traces/gallery/g1.json"));
-    expect(judgeTraces(dir)).toEqual({ paths: [join(dir, "traces/a.json"), join(dir, "traces/gallery/g1.json")], sample: false });
+    expect(judgeTraces(dir)).toEqual({ paths: [join(dir, "traces/a.json"), join(dir, "traces/gallery/g1.json")], sample: false, source: "reviewed" });
+  });
+
+  // XO judge pass (#2): with no reviewed traces, a judge sees recorded dev runs as REPLAY cards, not the penguin samples.
+  it("with no traces/, shows the picked recorded dev runs, then falls back to the samples only when none is committed", () => {
+    const repo = judgeTraces(root);
+    expect(repo.source).toBe("dev");
+    expect(repo.paths.map((p) => basename(p, ".json"))).toEqual(JUDGE_DEV_TRACES.filter((id) => existsSync(join(root, "eval/dev-traces", `${id}.json`))));
+    const dir = mkdtempSync(join(tmpdir(), "pz-judge-"));
+    mkdirSync(join(dir, "eval/dev-traces"), { recursive: true });
+    cpSync(join(root, "eval/dev-traces/dev-10.json"), join(dir, "eval/dev-traces/dev-10.json"));
+    expect(judgeTraces(dir)).toEqual({ paths: [join(dir, "eval/dev-traces/dev-10.json")], sample: false, source: "dev" });
+    const empty = mkdtempSync(join(tmpdir(), "pz-judge-"));
+    mkdirSync(join(empty, "fixtures/traces"), { recursive: true });
+    cpSync(join(root, "fixtures/traces/sample-rich.json"), join(empty, "fixtures/traces/sample-rich.json"));
+    expect(judgeTraces(empty)).toMatchObject({ sample: true, source: "sample" });
   });
 
   it("reads the dev score and held-out result only from their committed files", () => {
