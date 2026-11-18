@@ -110,3 +110,43 @@ describe("#192 F5: a two-number claim keeps its other number, as a veto only", (
     expect(hit("Just 100 companies are responsible for 30% of global plastic waste.", atoms("100", "100", null, "compan"))).toBe(true);
   });
 });
+
+describe("a number that measures is not the claim's count (dev-04, live run Nov 17)", () => {
+  // dev-04 as fingerprinted on that run (eval/dev-traces/dev-04.json).
+  const water = atoms("eight", "8", "a day", "glass");
+
+  it("the recorded MMWR span 'six 8 oz glasses of water' does not state 'eight glasses'", () => {
+    expect(hit("the incidence of this potential complication may be limited by drinking at least 48 oz (1.5 L) of fluid per 24-hour period (e.g., six 8 oz glasses of water throughout the day) (72).", water)).toBe(false);
+    expect(hit("Drink six 8-ounce glasses a day.", water)).toBe(false);
+    expect(hit("Pour 8 ml into each glass.", water)).toBe(false);
+  });
+
+  it("the count still matches, also next to its own measure", () => {
+    expect(hit("You should drink 8 glasses of water a day.", water)).toBe(true);
+    expect(hit("The 8x8 rule: drink eight 8-ounce glasses of water a day.", water)).toBe(true);
+    expect(hit("Drink eight glasses of water a day.", water)).toBe(true);
+  });
+
+  it("a claim counted in the measure itself still matches it", () => {
+    const ounces = atoms("64", "64", "ounces", "ounce");
+    expect(hit("Most adults need about 64 ounces of water a day.", ounces)).toBe(true);
+    const grams = atoms("25", "25", "g", "sugar");
+    expect(hit("Limit added sugar to 25 g a day.", grams)).toBe(true);
+  });
+});
+
+describe("measure words that are not measures", () => {
+  it("'8 in 10' and '1m users' still count", () => {
+    const dentists = atoms("8", "8", null, "dentist");
+    expect(hit("8 in 10 dentists recommend it.", dentists)).toBe(true);
+  });
+});
+
+describe("a claim counted in a spelled-out measure keeps the span's abbreviation (XO review of #216)", () => {
+  it("milligrams, pounds, kilometers and fluid ounces", () => {
+    expect(hit("Limit caffeine to 400 mg a day.", atoms("400", "400", "milligrams", "caffeine"))).toBe(true);
+    expect(hit("Students gain 10 lbs in college.", atoms("10", "10", "pounds", "student"))).toBe(true);
+    expect(hit("Walk 5 km every day.", atoms("5", "5", "kilometers", "walk"))).toBe(true);
+    expect(hit("Drink 8 fl oz of water every hour.", atoms("8", "8", "fluid ounces", "water"))).toBe(true);
+  });
+});
