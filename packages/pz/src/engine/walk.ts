@@ -87,8 +87,9 @@ export const LINK_ROUNDS_WITHOUT_PROGRESS = 2;
 const META_PAGES = 2;
 const META_LINKS = 4;
 const MAX_QUERIES = 3;
-// F5: a claim is a sentence, not a page section; a longer run is glued text the line split did not catch.
-const MAX_SENTENCE_CHARS = 400;
+// One cap for split and fallback sentences (XO on #209): main's 600. The line split and menuLike now catch glued nav
+// text, so the cap only has to stop a page section; a long real sentence (dev-13's, or one from a hard-wrapped PDF) stays.
+export const MAX_SENTENCE_CHARS = 600;
 const SCOPE_NOTE = "Web pages only; print and paywalled origins are out of scope. Earliest source we found, not proof of first use.";
 
 const sha256 = (text: string) => createHash("sha256").update(text).digest("hex");
