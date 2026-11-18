@@ -118,3 +118,4 @@
 - 2026-11-18 12:30 #229 merged 4093ac8, #230 merged 30a1956 (856/856, verify ok)
 - 2026-11-18 12:40 #222 f378860 checked: CI red is stale expectation at test:137; [M] div-itemscope teaser still confirms; posted
 - 2026-11-18 18:05 #233 (Rishit) to review; replay on ca430cc: 31 misses, posted on #164
+- 2026-11-18 18:03 #233 review 21310a1: FIX [M] page spans false-match phrase inputs, [L] hint text, [L] dead tsx test; posted
