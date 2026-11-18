@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { loadTraces } from "../data/loadTraces.ts";
 import { lintText } from "../../../../packages/pz/src/cli/lint-copy.ts";
-import { claimProblem, findTrace } from "./claimMatch.ts";
+import { claimProblem, findTrace, sameClaimWords } from "./claimMatch.ts";
 
 const { traces } = loadTraces();
 const CLAIM = "Harbor Zoo penguins nap 14 times a day, twice as often as the zoo's seals";
@@ -59,5 +59,37 @@ describe("claimProblem", () => {
     expect(claimProblem("Penguins nap 14 times a day")).toBeNull();
     expect(claimProblem("Penguins nap fourteen times a day")).toBeNull();
     for (const s of ["penguins nap a lot", "14 naps"]) expect(lintText(claimProblem(s)!)).toEqual([]);
+  });
+});
+
+describe("folding that keeps a recorded claim matchable (XO on #184, c56c2c6)", () => {
+  it("thousands commas: '10000 steps' is dev-06's '10,000 steps'", () => {
+    expect(sameClaimWords("You need to walk 10000 steps a day to stay healthy.", "You need to walk 10,000 steps a day to stay healthy.")).toBe(true);
+    expect(sameClaimWords("You need to walk 10,001 steps a day to stay healthy.", "You need to walk 10,000 steps a day to stay healthy.")).toBe(false);
+  });
+
+  it("percent forms: '9 percent', 'nine percent' and '9 per cent' are '9%'", () => {
+    const base = "Only 9% of all plastic ever made has been recycled.";
+    for (const w of ["Only 9 percent of all plastic ever made has been recycled.", "Only nine percent of all plastic ever made has been recycled.", "Only 9 per cent of all plastic ever made has been recycled."])
+      expect(sameClaimWords(w, base)).toBe(true);
+    expect(sameClaimWords("Only 19 percent of all plastic ever made has been recycled.", base)).toBe(false);
+  });
+
+  it("'per day', 'each day' and 'daily' are 'a day'; a plural is its singular", () => {
+    const base = "People check their phones 96 times a day.";
+    for (const w of ["People check their phones 96 times per day.", "People check their phones 96 times each day.", "People check their phone 96 times a day."])
+      expect(sameClaimWords(w, base)).toBe(true);
+    expect(sameClaimWords("People check their phones 96 times a week.", base)).toBe(false);
+  });
+
+  it("the one-word probes still never match", () => {
+    expect(sameClaimWords("Harbor Zoo penguins nap 14 times a day, twice as often as the zoo's lions", CLAIM)).toBe(false);
+    expect(sameClaimWords("Harbor Zoo penguins nap more than 14 times a day, twice as often as the zoo's seals", CLAIM)).toBe(false);
+  });
+});
+
+describe("the recorded E2 traces (#220)", () => {
+  it.runIf(traces.some((t) => t.id === "dev-06"))("'10000 steps' opens dev-06's recorded trace", () => {
+    expect(findTrace("You need to walk 10000 steps a day to stay healthy", traces)?.id).toBe("dev-06");
   });
 });

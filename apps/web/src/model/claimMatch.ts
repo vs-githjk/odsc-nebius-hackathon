@@ -5,7 +5,7 @@ import { sampleRows } from "./sampleRow.ts";
 // verbs a copy adds or drops without changing the claim (about, around, nearly, says, according to). Negations,
 // multipliers, number words, units, comparison words (more, fewer) and stance words (rarely, denied) are never here.
 const STOP = new Set(
-  "a an the of to in on at by for from with and or but as is are was were be been being it its this that these those than then so says said say according do does did has have had which who whom whose there their they them we our you your he she his her i my me about into over around nearly roughly approximately almost".split(" "),
+  "a an the of to in on at by for from with and or but as is are was were be been being it its this that these those than then so says said say according do does did has have had which who whom whose there their they them we our you your he she his her i my me about into over around nearly roughly approximately almost per each every".split(" "),
 );
 const NUMBER_WORDS: Record<string, string> = {
   zero: "0", one: "1", two: "2", three: "3", four: "4", five: "5", six: "6", seven: "7", eight: "8", nine: "9", ten: "10",
@@ -19,7 +19,7 @@ const UNITS: Record<string, string> = {
   second: "second", seconds: "second", minute: "minute", minutes: "minute", hour: "hour", hours: "hour", hourly: "hour",
   day: "day", days: "day", daily: "day", week: "week", weeks: "week", weekly: "week", month: "month", months: "month",
   monthly: "month", year: "year", years: "year", yearly: "year", annually: "year", decade: "decade", decades: "decade",
-  percent: "%", "%": "%", per: "per", cent: "cent",
+  percent: "%", "%": "%",
 };
 
 type Parsed = { content: string[]; numbers: string; multipliers: string; negations: string; units: string };
@@ -28,20 +28,27 @@ function parse(text: string): Parsed {
   const tokens = text
     .toLowerCase()
     .replace(/[‘’]/g, "'")
+    // Thousands commas go before the split, so "10,000" and "10000" are one number (XO on #184).
+    .replace(/(\d),(?=\d{3}(?!\d))/g, "$1")
+    // "percent", "per cent" and "%" are one unit.
+    .replace(/\bper\s*cent\b/g, "%")
     .replace(/(\d)\s*%/g, "$1 %")
     .replace(/n't\b/g, "nt")
     .split(/[^\p{L}\p{N}%.']+/u)
     .map((w) => w.replace(/^[.']+|[.']+$/g, "").replace(/'s$/, ""))
     .filter(Boolean)
     .map((w) => NUMBER_WORDS[w] ?? w.replace(/,/g, ""));
-  const content = tokens.filter((w) => !STOP.has(w));
+  // One form per word: a unit word as its unit ("daily", "days" and "day" are "day"; "percent" is "%"), and a plural as
+  // its singular ("phones", "phone"). Numbers and short words are left alone.
+  const fold = (w: string) => UNITS[w] ?? (w.length > 3 && w.endsWith("s") && !w.endsWith("ss") && !/\d/.test(w) ? w.slice(0, -1) : w);
+  const content = tokens.filter((w) => !STOP.has(w)).map(fold);
   const pick = (keep: (w: string) => boolean, as: (w: string) => string = (w) => w) => content.filter(keep).map(as).sort().join(" ");
   return {
     content,
     numbers: pick((w) => /\d/.test(w)),
     multipliers: pick((w) => MULTIPLIERS.has(w)),
     negations: pick((w) => NEGATIONS.has(w), () => "not"),
-    units: pick((w) => w in UNITS && UNITS[w] !== "per" && UNITS[w] !== "cent", (w) => UNITS[w]!),
+    units: pick((w) => Object.values(UNITS).includes(w)),
   };
 }
 
@@ -88,3 +95,6 @@ export function claimProblem(text: string): string | null {
   if (words.length < MIN_WORDS) return "Paste the whole sentence the number came in.";
   return null;
 }
+
+// Two wordings of one claim? The same comparison findTrace makes, on plain strings.
+export const sameClaimWords = (a: string, b: string): boolean => sameClaimText(parse(a), parse(b));

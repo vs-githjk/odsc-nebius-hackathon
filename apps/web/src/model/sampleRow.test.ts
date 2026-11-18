@@ -11,7 +11,7 @@ describe("sampleRow", () => {
   it("titles a row with the claim as a page words it, never with a state name or an id", () => {
     for (const t of traces) {
       const row = sampleRow(t);
-      expect(row.wording).toBe(scrubberStops(t)[0]?.text ?? t.claim.text);
+      expect(row.wording).toBe(t.synthetic ? (scrubberStops(t)[0]?.text ?? t.claim.text) : t.claim.text);
       expect(row.wording).not.toMatch(/[A-Z]{2,}_[A-Z]/);
       expect(row.wording).not.toContain(t.id);
     }
