@@ -1,6 +1,7 @@
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join, relative } from "node:path";
 import { renderCard } from "../card/terminal.ts";
+import { replayTrace } from "../engine/run.ts";
 import { Trace } from "../schema/index.ts";
 import { runTraps } from "../traps/run.ts";
 import { runVerify } from "../verify/index.ts";
@@ -13,11 +14,22 @@ import { formatDoctor, runDoctor, type DoctorDeps } from "./doctor.ts";
 const BUDGET_S = 60;
 const jsonIn = (dir: string) => (existsSync(dir) ? readdirSync(dir).filter((f) => f.endsWith(".json")).sort().map((f) => join(dir, f)) : []);
 
-// The traces a judge sees: the reviewed live traces under traces/ (#131) and traces/gallery/ (T92). Until those are
-// committed, the SAMPLE fixtures stand in, and the output says so.
-export function judgeTraces(root: string): { paths: string[]; sample: boolean } {
+// Recorded E2 dev runs a judge sees when no reviewed traces are committed under traces/ (XO judge pass, #2). Both end
+// cold on an earliest page a judge cannot contradict in one search: dev-11, CNBC on 2017-07-10, the day the CDP report
+// it quotes came out; dev-04, the Valtin paper on PubMed, dated November 2002 by the registry, quoting the "eight
+// 8-oz glasses" admonition. dev-10 (the hero) joins once Rohan's archive-date fix ends it on the WEF report
+// (decisions.md); dev-06's earliest span is a menu row and dev-14's ranks 2021 reprints over the 2019 release, so
+// neither is shown. A missing file is skipped.
+export const JUDGE_DEV_TRACES = ["dev-11", "dev-04"];
+
+// The traces a judge sees: the reviewed live traces under traces/ (#131) and traces/gallery/ (T92); else the recorded
+// dev runs above, replayed with no network; else the SAMPLE fixtures. The output says which.
+export function judgeTraces(root: string): { paths: string[]; sample: boolean; source: "reviewed" | "dev" | "sample" } {
   const real = [...jsonIn(join(root, "traces")), ...jsonIn(join(root, "traces/gallery"))];
-  return real.length ? { paths: real, sample: false } : { paths: jsonIn(join(root, "fixtures/traces")), sample: true };
+  if (real.length) return { paths: real, sample: false, source: "reviewed" };
+  const dev = JUDGE_DEV_TRACES.map((id) => join(root, "eval/dev-traces", `${id}.json`)).filter((f) => existsSync(f));
+  if (dev.length) return { paths: dev, sample: false, source: "dev" };
+  return { paths: jsonIn(join(root, "fixtures/traces")), sample: true, source: "sample" };
 }
 
 // The latest dated row of eval/dev-score.md (T33), as "X/Y", or null when the dev score has not been run.
@@ -55,12 +67,16 @@ export async function runJudge(deps: Omit<DoctorDeps, "network"> & { write?: (s:
     formatDoctor(doctor.lines).forEach(write);
     if (doctor.code) return 1;
 
-    const { paths, sample } = judgeTraces(root);
+    const { paths, sample, source } = judgeTraces(root);
     section(`${paths.length} trace${paths.length === 1 ? "" : "s"} as cards`);
-    if (sample) write("No reviewed live traces are committed yet (traces/), so these are the SAMPLE fixtures, written for the tests.");
+    if (source === "dev") write(`Recorded live runs on our E2 dev claims, replayed with no network calls and no keys: ${paths.map((p) => relative(root, p)).join(", ")}.`);
+    if (sample) write("No recorded traces are committed, so these are the SAMPLE fixtures, written for the tests.");
     for (const p of paths) {
       write(`\n-- ${relative(root, p)}`);
-      write(renderCard(Trace.parse(JSON.parse(readFileSync(p, "utf8")))));
+      // A real trace replays exactly as `pz trace --replay-of` does: checked, shown as REPLAY, and the card says when it was
+      // recorded.
+      const raw: unknown = JSON.parse(readFileSync(p, "utf8"));
+      write(renderCard(sample ? Trace.parse(raw) : replayTrace(raw)));
     }
 
     section("pz verify");
@@ -87,7 +103,7 @@ export async function runJudge(deps: Omit<DoctorDeps, "network"> & { write?: (s:
     if (took > BUDGET_S) { write(`FAIL make judge took ${took} s, over the ${BUDGET_S} s budget`); code = 1; }
     const dev = devScore(root), held = heldOut(root);
     section("summary");
-    write(`${paths.length} ${sample ? "SAMPLE " : ""}traces ${verified.code ? "checked, some FAILED" : "verified"}, `
+    write(`${paths.length} ${sample ? "SAMPLE " : source === "dev" ? "REPLAY " : ""}traces ${verified.code ? "checked, some FAILED" : "verified"}, `
       + `${Number.isNaN(planted) ? "planted origins unknown" : `${planted} planted origins`}, `
       + `dev score ${dev ?? "not run yet"}, held-out ${held ?? "not run yet"}. ${code ? "make judge FAILED" : "make judge passed"} in ${took} s.`);
     return code;

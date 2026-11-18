@@ -1,0 +1,10 @@
+{
+  "rulesAt": "ca430cc",
+  "note": "E2 run 3, recorded on ca430cc before #225 added the 'presents the claim as already said' reason; its stored decision keeps the reasons that run produced. State and row still match today's rules.",
+  "traces": [
+    {
+      "id": "dev-01",
+      "sha256": "be722637fa256fc01aecd48b95c9e221289587f674e852563dce7d2fa2245a4f"
+    }
+  ]
+}

@@ -1,11 +1,11 @@
 import { execFileSync } from "node:child_process";
-import { cpSync, mkdirSync, mkdtempSync, writeFileSync } from "node:fs";
+import { cpSync, existsSync, mkdirSync, mkdtempSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { basename, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it, vi } from "vitest";
 import { formatDoctor, runDoctor } from "../src/cli/doctor.ts";
-import { devScore, heldOut, judgeTraces, runJudge } from "../src/cli/judge.ts";
+import { devScore, heldOut, JUDGE_DEV_TRACES, judgeTraces, runJudge } from "../src/cli/judge.ts";
 import { lintText } from "../src/cli/lint-copy.ts";
 
 const root = fileURLToPath(new URL("../../../", import.meta.url));
@@ -87,7 +87,7 @@ describe("T95 make judge", () => {
     for (const part of ["== pz doctor", "== pz verify", "== planted traps", "stop state agrees", "Patient Zero  "]) expect(text).toContain(part);
     expect(text).not.toContain("trace_failed");
     expect(text).not.toMatch(/^\s+at .+:\d+:\d+\)?$/m);
-    expect(out.at(-1)).toMatch(/^\d+ (SAMPLE )?traces verified, 0 planted origins, dev score (not run yet|E\d: false origins \d+( \(\+\d+\))?, target cited \d+\/\d+, earliest \d+\/\d+ pass), held-out (not run yet|\d+\/\d+)\. make judge passed in \d+ s\.$/);
+    expect(out.at(-1)).toMatch(/^\d+ (SAMPLE |REPLAY )?traces verified, 0 planted origins, dev score (not run yet|E\d: false origins \d+( \(\+\d+\))?, target cited \d+\/\d+, earliest \d+\/\d+ pass), held-out (not run yet|\d+\/\d+)\. make judge passed in \d+ s\.$/);
   });
 
   it("says plainly when the SAMPLE fixtures stand in for reviewed live traces, and prefers traces/ when they exist", () => {
@@ -97,7 +97,24 @@ describe("T95 make judge", () => {
     mkdirSync(join(dir, "traces/gallery"), { recursive: true });
     cpSync(join(root, "fixtures/traces/sample-origin.json"), join(dir, "traces/a.json"));
     cpSync(join(root, "fixtures/traces/sample-rich.json"), join(dir, "traces/gallery/g1.json"));
-    expect(judgeTraces(dir)).toEqual({ paths: [join(dir, "traces/a.json"), join(dir, "traces/gallery/g1.json")], sample: false });
+    expect(judgeTraces(dir)).toEqual({ paths: [join(dir, "traces/a.json"), join(dir, "traces/gallery/g1.json")], sample: false, source: "reviewed" });
+  });
+
+  // XO judge pass (#2): with no reviewed traces, a judge sees recorded dev runs as REPLAY cards, not the penguin samples.
+  it("with no traces/, shows the picked recorded dev runs, then falls back to the samples only when none is committed", () => {
+    const repo = judgeTraces(root);
+    expect(repo.source).toBe("dev");
+    expect(repo.paths.map((p) => basename(p, ".json"))).toEqual(JUDGE_DEV_TRACES.filter((id) => existsSync(join(root, "eval/dev-traces", `${id}.json`))));
+    const dir = mkdtempSync(join(tmpdir(), "pz-judge-"));
+    mkdirSync(join(dir, "eval/dev-traces"), { recursive: true });
+    cpSync(join(root, "eval/dev-traces/dev-04.json"), join(dir, "eval/dev-traces/dev-04.json"));
+    expect(judgeTraces(dir)).toEqual({ paths: [join(dir, "eval/dev-traces/dev-04.json")], sample: false, source: "dev" });
+    // dev-10 waits for the archive-date fix (XO on #235): it is not shown even when its file is there.
+    expect(JUDGE_DEV_TRACES).not.toContain("dev-10");
+    const empty = mkdtempSync(join(tmpdir(), "pz-judge-"));
+    mkdirSync(join(empty, "fixtures/traces"), { recursive: true });
+    cpSync(join(root, "fixtures/traces/sample-rich.json"), join(empty, "fixtures/traces/sample-rich.json"));
+    expect(judgeTraces(empty)).toMatchObject({ sample: true, source: "sample" });
   });
 
   it("reads the dev score and held-out result only from their committed files", () => {
