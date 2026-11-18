@@ -139,3 +139,4 @@ Format: [LOCKED|REJECTED|PREFERENCE] decision | why | "Vidyut's words" | date
 [PREFERENCE] Work window extended to 23:00 ET Nov 17: Vidyut, XO, Rishit, Rohan | XO lost time waiting | "Now let's do it till 11 because you took a break." | 2026-11-17
 [LOCKED] Make the repo public now (Actions free on public repos; fixes CI billing block) | CI blocked by GitHub billing | "I can just make the repository public. I have no problem doing that." | 2026-11-17
 [LOCKED] XO coding stops at 23:00 ET Nov 17, then back to orchestration only | Vidyut | "At 11 o'clock sharp, we stop working and then we go back to orchestration" | 2026-11-17
+[LOCKED] Re-record dev-04 live alone (one claim, under $1) to replace the pre-#225 false-origin trace the app shows | app showed a wrong "Origin found" | "yes, and keep uo the orchestratio work, tag oeple and make sure theyre locked in" | 2026-11-18
