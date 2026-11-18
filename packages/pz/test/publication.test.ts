@@ -133,6 +133,12 @@ describe("page fetching is public-only, logged and challenge-aware", () => {
     expect(await setup({ [url]: page(html(unrelated, published)) }).found(url))
       .toEqual({ date: "2020-06-09", source: "byline" });
     expect(await setup({ [url]: page(html(unrelated)) }).found(url)).toBeNull();
+    const teaser = '<aside itemscope><time itemprop="datePublished" datetime="2009-03-01">March 1</time></aside>';
+    expect(await setup({ [url]: page(html(teaser, published)) }).found(url)).toBeNull();
+    const decoy = '<time data-itemprop="datePublished" datetime="2009-03-01">March 1</time>';
+    const withData = '<time itemprop="datePublished" data-datetime="2009-03-01" datetime="2020-06-09">June 9</time>';
+    expect(await setup({ [url]: page(html(decoy, withData)) }).found(url))
+      .toEqual({ date: "2020-06-09", source: "byline" });
   });
 
   it("reads a page's own meta tags and logs the page GET as a fetch row", async () => {
