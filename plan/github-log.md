@@ -107,3 +107,4 @@
 - 2026-11-17 22:35 ET: merged #220, #221, #223, #212, #210, #209; live run 3 scored (1 (+0), 3/10, 1/0/9, 7/9) merged #227; #225 prior-use cue in review; #224 held (subject check). Tavily key at 800/1000.
 - 22:23 ET: #225 merged (prior-use cue). Rescored run 3 traces on main: see #164.
 - 22:28 ET: repo public (Vidyut), CI rerun on #184, #226, #222; reviews running. Tavily key swap: Rishit sends key to Vidyut privately.
+- 22:40 ET: #226 merged 82d34ee; #222 FIX (byline <time> scope); #184 FIX (than/over); new Tavily key OK; Anoop tasks on #4.
