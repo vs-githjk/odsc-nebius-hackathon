@@ -103,3 +103,4 @@
 - 2026-11-17 18:40 ET: live E2 rerun done ($2.08; $9.15 left). Score 1 (+0) false origins, 2/10 cited, 0/0/10, cold 6/9. #215 merged e39de06 (traces, row, README). Replay misses 25. Posted #164, #2, #131 (T72), #1 (dev-04 false origin, cold regression, replay misses to Rishit).
 - 2026-11-17 20:25 ET: no new heads. Rohan: open PR, dev-07/08 bad_response, dev-11 no pages (#3). Anoop: loadTraces live traces (#4). Rishit nudged (#1).
 - 2026-11-17 20:55 ET: XO merged #216 a30dee8 (dev-04 false origin), #217 fd89247 (dev-10 lone year), #218 c4f3e14 (dev-11 code queries); live rehearsal dev-10 and dev-11 both cite target ($0.45, $8.70 left).
+- 2026-11-17 21:00 ET: XO merged #219 f3f2065 (dev-07/08 phrase subject head word). Tonight's XO fixes: #216, #217, #218, #219.
