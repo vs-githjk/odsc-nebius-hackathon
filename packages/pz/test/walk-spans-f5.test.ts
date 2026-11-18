@@ -156,3 +156,22 @@ describe("same_claim about the top two sentences (dev-10, dev-18)", () => {
     expect(r.sameClaim?.optionId).toBe("no");
   });
 });
+
+// XO on #209: hard-wrapped text (most PDFs) breaks lines mid-sentence. Each of these pages kept its node on main; with
+// only the line split they lost it. When no split sentence states the claim, the page is read by sentence ends alone.
+describe("hard-wrapped text falls back to whole sentences", () => {
+  const yes = () => answer("yes", 0.97);
+  it.each([
+    ["a line that ends mid-phrase before the number (dev-09 style)", "Keepers counted naps and found that penguins nap around\n14 times a day in the colony."],
+    ["a line that ends before a capitalised word", "Among the zoo penguins\nObserved by keepers, naps came 14 times a day."],
+    ["a line that ends on an abbreviation's full stop", "Penguins kept in the U.S.\nhave been seen to nap 14 times a day."],
+  ])("%s keeps its page and its whole sentence", async (_, text) => {
+    const r = await walkOne(text, yes);
+    expect(r.span).toBe(text.replace(/\n/g, " "));
+  });
+
+  it("the fallback still rejects menus", () => {
+    const { text } = toPlain("* Home * Penguins\n* 14 times a day * Shop");
+    expect(sentences(text).filter((s) => !menuLike(s.text)).map((s) => s.text)).toEqual([]);
+  });
+});

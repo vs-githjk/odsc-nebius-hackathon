@@ -360,8 +360,12 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
     const states = (s: string) => s.length <= MAX_SENTENCE_CHARS && !menuLike(s) && (atoms.number
       ? s.toLowerCase().includes(lemma) && atomHit(s, atoms, rules.weakNumberMinSigDigits) && assertsNumber(s, atoms, rules.negationPrefixes)
       : claimHit(s, atoms, rules));
-    // F5 (#192): every sentence that states the claim, best first, each with its verbatim span.
-    const ranked = rankSentences(claim.text, all.filter((s) => states(s.text)))
+    // F5 (#192): every sentence that states the claim, best first, each with its verbatim span. Hard-wrapped text (most
+    // PDFs) breaks lines mid-sentence, so when no line-split sentence states the claim, the page is read the way it was
+    // before F5: split at sentence ends only, still rejecting menus (XO on #209).
+    const split = all.filter((s) => states(s.text));
+    const pool = split.length > 0 ? split : sentences(text).filter((s) => states(s.text));
+    const ranked = rankSentences(claim.text, pool)
       .map((s) => ({ sentence: s, hit: findSpan(text, s.text, rules.negationPrefixes) }));
     if (ranked.length === 0) {
       // T97: the same claim with another number? Listed for the reader only; the page never becomes a node.
