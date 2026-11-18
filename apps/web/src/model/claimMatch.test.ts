@@ -57,7 +57,9 @@ describe("claimProblem", () => {
     expect(claimProblem("")).toBeNull();
     expect(claimProblem("14 naps")).toMatch(/whole sentence/);
     expect(claimProblem("Great Wall")).toMatch(/whole sentence/);
-    expect(claimProblem("penguins nap a lot")).toBeNull();
+    // Three content words ("penguins nap lot") are not yet a claim; five are.
+    expect(claimProblem("penguins nap a lot")).toMatch(/whole sentence/);
+    expect(claimProblem("penguins nap a lot more than seals")).toBeNull();
     expect(claimProblem("Penguins nap 14 times a day")).toBeNull();
     expect(claimProblem("Penguins nap fourteen times a day")).toBeNull();
     expect(lintText(claimProblem("14 naps")!)).toEqual([]);
@@ -155,5 +157,13 @@ describe("outcomeOf for short and phrase claims", () => {
   it("asks for the whole sentence for a short text, and says not traced yet for an unrecorded phrase claim", () => {
     expect(outcomeOf("14 naps", traces, 0)).toMatchObject({ kind: "problem", try: 1 });
     expect(outcomeOf("penguins nap a lot more than seals", traces, 0)).toMatchObject({ kind: "untraced", try: 1 });
+  });
+});
+
+describe("short texts by content words (XO on #235)", () => {
+  it("a bare subject asks for the whole sentence, like any text too short to be a claim", () => {
+    expect(claimProblem("The Great Wall of China")).toMatch(/whole sentence/);
+    expect(outcomeOf("The Great Wall of China", traces, 0)).toMatchObject({ kind: "problem" });
+    expect(claimProblem("The Great Wall of China is visible from space.")).toBeNull();
   });
 });

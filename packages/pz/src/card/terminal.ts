@@ -1,4 +1,5 @@
 import { datePhrase, type Node, type Trace } from "../schema/index.ts";
+import { menuLike } from "../engine/walk.ts";
 import { independenceLine } from "./headline.ts";
 
 // T77: one readable screen for `pz trace` and `make replay`, built only from the trace's own fields.
@@ -20,7 +21,8 @@ const CAPS: Record<NonNullable<Trace["budget"]["capHit"]>, string> = {
   credits: "credit cap", usd: "spending cap", ms: "time limit", depth: "step limit", frontier: "page limit",
 };
 
-const recordedDay = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
+// The team records on US Eastern time; a 22:02 ET run is "Nov 17 ET", not the UTC day after (XO on #235).
+const recordedDay = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "America/New_York" });
 
 const MODE_NOTE: Record<Trace["mode"], string> = {
   LIVE: "recorded from live calls",
@@ -121,7 +123,7 @@ export function renderCard(trace: Trace, { color = false }: { color?: boolean } 
 
   const badge = trace.mode === "SAMPLE" ? s.tone(trace.mode, "warn") : s.tone(trace.mode, trace.mode === "LIVE" ? "good" : "info");
   // A replay says when its recording was made (XO on #235): the card is not today's search.
-  const note = trace.mode === "REPLAY" ? `${MODE_NOTE.REPLAY}, recorded ${recordedDay.format(new Date(trace.recordedAt))}` : MODE_NOTE[trace.mode];
+  const note = trace.mode === "REPLAY" ? `${MODE_NOTE.REPLAY}, recorded ${recordedDay.format(new Date(trace.recordedAt))} ET` : MODE_NOTE[trace.mode];
   out.push(`${s.bold("Patient Zero")}  ${badge} ${s.dim(note)}`);
   out.push("");
   // T94: the independence count leads the card.
@@ -137,7 +139,14 @@ export function renderCard(trace: Trace, { color = false }: { color?: boolean } 
     more(`${SERVICES[f.service as keyof typeof SERVICES] ?? f.service} ${f.endpoint} returned ${f.status}. Kept: ${f.kept}.`);
   }
 
-  const earliest = trace.earliest.nodeIds.map((id) => trace.nodes.find((n) => n.id === id)).filter((n): n is Node => !!n);
+  const all = trace.earliest.nodeIds.map((id) => trace.nodes.find((n) => n.id === id)).filter((n): n is Node => !!n);
+  // One earliest page in full, preferring one whose sentence is not menu or page furniture; the others on the same date
+  // are named on one line (XO on #235: dev-11's Fortune nav row). CONFLICTING shows every earliest page, because the
+  // disagreement between them is the point.
+  const spanOf = (n: Node) => trace.spans.find((sp) => sp.nodeId === n.id)?.text ?? "";
+  const ordered = [...all].sort((a, b) => Number(menuLike(spanOf(a))) - Number(menuLike(spanOf(b))));
+  const earliest = trace.decision.state === "CONFLICTING" ? all : ordered.slice(0, 1);
+  const sameDate = trace.decision.state === "CONFLICTING" ? [] : ordered.slice(1);
   out.push("");
   if (!earliest.length) field("Earliest", "No page to show.");
   earliest.forEach((node, i) => {
@@ -151,6 +160,7 @@ export function renderCard(trace: Trace, { color = false }: { color?: boolean } 
     more(node.url, s.dim);
     if (i < earliest.length - 1) out.push("");
   });
+  if (sameDate.length) more(`Also earliest, same date: ${sameDate.map((n) => n.domain).join(", ")}.`, s.dim);
 
   out.push("");
   const r = trace.roots;
