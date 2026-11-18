@@ -231,7 +231,7 @@ export function crossrefDated(json: unknown): Dated | null {
 
 // `budgetMs` caps the time all lookups of one dating pass may take together: once it is spent, no new request starts and
 // each request's timeout is cut to what is left, so a slow pass cannot eat the time dating and page_type still need.
-export type Evidence = { date: string; precision?: Precision; source: "metadata" | "byline" | "registry_pubmed" | "registry_pmc" | "registry_crossref" };
+export type Evidence = { date: string; precision?: Precision; source: "metadata" | "registry_pubmed" | "registry_pmc" | "registry_crossref" };
 export type EvidenceDeps = { fetch: typeof fetch; cache: Cache; usage: UsageLog; traceId: string; resolve?: Resolver; budgetMs?: number };
 
 // Where a page's own publication date can be found, in this order, stopping at the first date:
@@ -298,14 +298,6 @@ export function createEvidence(deps: EvidenceDeps) {
     if (own) return { date: own, source: "metadata" };
     const cited = /<meta\b[^>]*name\s*=\s*["']citation_doi["'][^>]*content\s*=\s*["'](10\.[^"']+)["']/i.exec(page)?.[1]
       ?? /<meta\b[^>]*content\s*=\s*["'](10\.[^"']+)["'][^>]*name\s*=\s*["']citation_doi["']/i.exec(page)?.[1];
-    const fromRegistry = cited ? registry(await crossref(cited), "registry_crossref") : null;
-    if (fromRegistry) return fromRegistry;
-    // Only explicitly marked publication datelines are evidence.
-    for (const [tag] of page.matchAll(/<time\b[^>]*>/gi)) {
-      if (attr(tag, "itemprop")?.toLowerCase() !== "datepublished") continue;
-      const datetime = attr(tag, "datetime");
-      if (datetime) return { date: clean(datetime), source: "byline" };
-    }
-    return null;
+    return cited ? registry(await crossref(cited), "registry_crossref") : null;
   };
 }
