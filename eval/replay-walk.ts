@@ -91,6 +91,9 @@ export async function replayWalk(claims: DevClaim[], opts: Omit<ReplayOptions, "
   mkdirSync(opts.outDir, { recursive: true });
   let replayed = 0;
   let exact = 0;
+  // Every miss by claim, written beside the replayed traces: the request a code change (or a gap in the recording)
+  // made the replay ask for. Model misses keep the start of their last message, HTTP misses their URL.
+  const byClaim: Record<string, Miss[]> = {};
   for (const claim of claims) {
     const path = join(opts.outDir, `${claim.id}.json`);
     rmSync(path, { force: true });
@@ -100,17 +103,22 @@ export async function replayWalk(claims: DevClaim[], opts: Omit<ReplayOptions, "
       writeFileSync(path, JSON.stringify(trace, null, 2) + "\n");
       replayed++;
       const own = misses.list.slice(before);
+      if (own.length) byClaim[claim.id] = own;
       if (exactReplay(own)) exact++;
       opts.report?.(`${claim.id}  ${trace.decision.state}  ${fidelity(own)}`);
     } catch (error) {
       const reason = error instanceof Error ? error.message : "replay failed";
       failed.push({ id: claim.id, reason });
       const own = misses.list.slice(before);
+      if (own.length) byClaim[claim.id] = own;
       opts.report?.(`${claim.id}  FAILED (${reason})${own.length ? `  ${fidelity(own)}` : ""}`);
     }
   }
+  writeFileSync(join(opts.outDir, MISSES_FILE), `${JSON.stringify(byClaim, null, 2)}\n`);
   return { replayed, exact, failed, misses };
 }
+
+export const MISSES_FILE = "replay-misses.json";
 
 export const missLine = (misses: Misses) =>
   `misses ${misses.count()} (model ${misses.count("chat") + misses.count("embed")}, http ${misses.count("http")})`;
@@ -135,6 +143,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     if (existsSync(COMMITTED_TRACES)) console.log(`${set} committed: ${headline(summarise(scoreDir(COMMITTED_TRACES, claims)))}`);
     console.log(`${missLine(report.misses)}; ${report.replayed} of ${claims.length} claims replayed (${report.exact} exact)${lacking.length ? `, ${lacking.length} without a recording (${lacking.map(c => c.id).join(", ")})` : ""}${report.failed.length ? `, ${report.failed.length} failed` : ""}`);
     for (const miss of report.misses.list.slice(0, 5)) console.log(`  miss ${miss.kind}: ${miss.detail}`);
+    if (report.misses.count()) console.log(`  every miss, by claim: ${join(outDir, MISSES_FILE)}`);
     if (report.failed.length) process.exitCode = 1;
   }
 }
