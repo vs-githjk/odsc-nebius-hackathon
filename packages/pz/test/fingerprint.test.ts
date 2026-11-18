@@ -83,6 +83,7 @@ describe("variants", () => {
     expect(v("Only 9% of plastic")).toEqual(["number_words:nine percent", "percent_words:9 percent", "percent_words:9 per cent"]);
     expect(v("Humans use 10 percent of brains")).toEqual(["number_words:ten", "percent_words:10%", "percent_words:10 per cent"]);
     expect(claimNumber("By 2050 there will be more plastic")).toEqual({ raw: "2050", canonical: "2050" });
+    expect(v("By 2050 there will be more plastic")).toEqual([]);
   });
 
   it("include spelling and compound variants", () => {
