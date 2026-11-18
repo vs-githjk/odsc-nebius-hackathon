@@ -3,7 +3,7 @@ import { existsSync, mkdtempSync, readdirSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { replayClaim, replayWalk } from "../../../eval/replay-walk.ts";
+import { fidelity, replayClaim, replayWalk } from "../../../eval/replay-walk.ts";
 import { createFileCache } from "../src/clients/cache.ts";
 import { createMisses, recordPaths } from "../src/clients/tape.ts";
 import { FINGERPRINT_PROMPT } from "../src/engine/fingerprint.ts";
@@ -146,6 +146,22 @@ describe("walk replay from a recording", () => {
     // The changed walk goes on to ask things the recording never saw (an earlier-window search, a same_claim on the
     // other page): those are counted, and that count is the replay's fidelity.
     expect(misses.count()).toBeGreaterThan(0);
+    // Those paid requests make the claim a changed walk, not a $0 measurement (ported from #207).
+    expect(fidelity(misses.list)).toMatch(/^walk changed: \d+ paid request\(s\) not recorded \(/);
+  });
+
+  it("says per claim whether it was an exact replay, and counts paid misses apart from free ones (from #207)", async () => {
+    expect(fidelity([])).toBe("exact replay, $0");
+    expect(fidelity([{ kind: "http", detail: "https://web.archive.org/cdx/search/cdx?url=x" }, { kind: "http", detail: "https://news.example/a" }]))
+      .toBe("exact replay, $0 (2 free lookup(s) not recorded: wayback x1, page news.example x1)");
+    expect(fidelity([{ kind: "http", detail: "https://api.tavily.com/search" }, { kind: "chat", detail: "source_text ..." }, { kind: "http", detail: "https://news.example/a" }]))
+      .toBe("walk changed: 2 paid request(s) not recorded (tavily /search x1, model chat x1)");
+    const dir = mkdtempSync(join(tmpdir(), "pz-replay-"));
+    await record(dir);
+    const lines: string[] = [];
+    const report = await replayWalk([{ ...CLAIM, expected: "origin" as const, tracedOrigin: null, tracedBy: null }], { recordDir: dir, scratch: join(dir, "s4"), outDir: join(dir, "out4"), report: (l) => lines.push(l) });
+    expect(report.exact).toBe(1);
+    expect(lines).toEqual([expect.stringMatching(/ {2}exact replay, \$0$/)]);
   });
 
   it("reports a claim the recording lacks as failed, not run", async () => {

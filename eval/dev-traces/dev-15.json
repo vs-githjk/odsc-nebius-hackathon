@@ -3,7 +3,7 @@
   "id": "dev-15",
   "mode": "LIVE",
   "synthetic": false,
-  "recordedAt": "2026-11-17T06:26:05.461Z",
+  "recordedAt": "2026-11-17T23:20:53.447Z",
   "claim": {
     "text": "Training a single AI model can emit as much carbon as five cars in their lifetimes.",
     "atoms": {
@@ -26,14 +26,14 @@
   "nodes": [
     {
       "id": "n1",
-      "url": "https://www.factcheck.org/person/greta-thunberg",
-      "domain": "factcheck.org",
-      "title": "Greta Thunberg Archives - FactCheck.org",
+      "url": "https://politifact.com/factchecks/2013/apr/03/kirk-watson/kirk-watson-says-29-texas-cities-use-carbon-monoxi",
+      "domain": "politifact.com",
+      "title": "Kirk Watson says 29 Texas cities use carbon monoxide to euthanize dogs and cats – PolitiFact",
       "date": {
         "kind": "existed_by",
-        "value": "2020-10-01",
+        "value": "2020-07-22",
         "source": "wayback_first_capture",
-        "firstCapture": "2020-10-01",
+        "firstCapture": "2020-07-22",
         "conflictingDate": false
       },
       "clusterId": "c-n1",
@@ -42,21 +42,38 @@
       "read": true,
       "versionOf": null,
       "spanIds": [],
-      "citesEarlier": false,
-      "candidateParents": [],
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "http://www.statesman.com/news/news/watsons-pet-euthanasia-bill-advances/nWxTB",
+          "read": false
+        },
+        {
+          "url": "http://www.statutes.legis.state.tx.us/Docs/HS/htm/HS.821.htm",
+          "read": true
+        },
+        {
+          "url": "http://www.thln.org/index.cfm?pageID=AE00D696-3048-C277-112FB11F72EDD941",
+          "read": false
+        },
+        {
+          "url": "http://info.sos.state.tx.us/pls/pub/readtac$ext.TacPage?sl=R&app=9&p_dir=&p_rloc=&p_tloc=&p_ploc=&pg=1&p_tac=&ti=25&pt=1&ch=169&rl=84",
+          "read": false
+        }
+      ],
       "pageType": null,
       "foundViaMeta": null
     },
     {
       "id": "n2",
-      "url": "https://www.factcheck.org/2010/06/eruption-corruption",
-      "domain": "factcheck.org",
-      "title": "Eruption Corruption - FactCheck.org",
+      "url": "https://quoteinvestigator.com/2022/08/08/five-people",
+      "domain": "quoteinvestigator.com",
+      "title": "Quote Origin: You Are the Average of the Five People You Spend the Most Time With – Quote Investigator®",
       "date": {
-        "kind": "existed_by",
-        "value": "2010-06-30",
+        "kind": "unconfirmed",
+        "value": null,
         "source": "wayback_first_capture",
-        "firstCapture": "2010-06-30",
+        "firstCapture": null,
         "conflictingDate": false
       },
       "clusterId": "c-n2",
@@ -65,25 +82,8 @@
       "read": true,
       "versionOf": null,
       "spanIds": [],
-      "citesEarlier": true,
-      "candidateParents": [
-        {
-          "url": "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.factcheck.org%2F2010%2F06%2Feruption-corruption%2F%3Futm_source%3Dfacebook%26utm_medium%3Dsocial%26utm_campaign%3Dsocial-pug&t=Eruption%20Corruption",
-          "read": false
-        },
-        {
-          "url": "http://hvo.wr.usgs.gov/volcanowatch/2007/07_02_15.html",
-          "read": false
-        },
-        {
-          "url": "http://volcanoes.usgs.gov/hazards/gas/climate.php",
-          "read": false
-        },
-        {
-          "url": "http://www.pewclimate.org/facts-and-figures/international/historical",
-          "read": false
-        }
-      ],
+      "citesEarlier": false,
+      "candidateParents": [],
       "pageType": null,
       "foundViaMeta": null
     }
@@ -125,9 +125,9 @@
   },
   "failure": null,
   "budget": {
-    "credits": 10,
-    "usd": 0.00015727,
-    "ms": 51953,
+    "credits": 11,
+    "usd": 0.00016889999999999999,
+    "ms": 51643,
     "capHit": null
   },
   "decision": {
@@ -139,13 +139,13 @@
     "counts": {
       "pages": 0,
       "clusters": 0,
-      "unreadParents": 4,
+      "unreadParents": 3,
       "earlierWindowSearches": 4
     }
   },
   "searchLog": [
     {
-      "at": "2026-11-17T06:26:13.721Z",
+      "at": "2026-11-17T23:21:00.858Z",
       "step": "search",
       "query": "\"five\" carbon",
       "endDate": "2026-11-17",
@@ -155,7 +155,7 @@
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:26:14.977Z",
+      "at": "2026-11-17T23:21:02.483Z",
       "step": "search",
       "query": "five cars in their lifetimes carbon emission AI training",
       "endDate": "2026-11-17",
@@ -165,9 +165,9 @@
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:26:16.844Z",
+      "at": "2026-11-17T23:21:04.221Z",
       "step": "search",
-      "query": "carbon footprint of training one AI model equivalent to five cars",
+      "query": "as much carbon as five cars in their lifetimes AI model",
       "endDate": "2026-11-17",
       "startDate": null,
       "results": 10,
@@ -175,9 +175,9 @@
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:26:18.636Z",
+      "at": "2026-11-17T23:21:05.843Z",
       "step": "search",
-      "query": "AI model training carbon emissions five cars lifetime study",
+      "query": "AI model training carbon footprint five cars lifetime",
       "endDate": "2026-11-17",
       "startDate": null,
       "results": 10,
@@ -185,7 +185,7 @@
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:26:20.291Z",
+      "at": "2026-11-17T23:21:06.522Z",
       "step": "meta-search",
       "query": "\"five\" carbon",
       "endDate": "2026-11-17",
@@ -195,49 +195,59 @@
       "dropped": 3
     },
     {
-      "at": "2026-11-17T06:26:41.074Z",
+      "at": "2026-11-17T23:21:16.349Z",
       "step": "search",
-      "query": "five cars lifetime carbon emission AI model training",
-      "endDate": "2026-11-17",
-      "startDate": null,
-      "results": 10,
-      "kept": 8,
-      "dropped": 2
-    },
-    {
-      "at": "2026-11-17T06:26:42.476Z",
-      "step": "search",
-      "query": "as much carbon as five cars in their lifetimes AI training",
-      "endDate": "2026-11-17",
-      "startDate": null,
-      "results": 10,
-      "kept": 8,
-      "dropped": 2
-    },
-    {
-      "at": "2026-11-17T06:26:43.577Z",
-      "step": "search",
-      "query": "five cars lifetime CO2 AI model training study",
-      "endDate": "2026-11-17",
-      "startDate": null,
-      "results": 10,
-      "kept": 8,
-      "dropped": 2
-    },
-    {
-      "at": "2026-11-17T06:26:45.544Z",
-      "step": "search",
-      "query": "carbon emissions from training one AI model compared to five cars",
+      "query": "\"Training a single AI model\" emits as much carbon as five cars",
       "endDate": "2026-11-17",
       "startDate": null,
       "results": 10,
       "kept": 9,
       "dropped": 1
+    },
+    {
+      "at": "2026-11-17T23:21:18.568Z",
+      "step": "search",
+      "query": "\"as much carbon as five cars in their lifetimes\" AI training",
+      "endDate": "2026-11-17",
+      "startDate": null,
+      "results": 10,
+      "kept": 8,
+      "dropped": 2
+    },
+    {
+      "at": "2026-11-17T23:21:20.428Z",
+      "step": "search",
+      "query": "AI model training carbon emissions five cars lifetime",
+      "endDate": "2026-11-17",
+      "startDate": null,
+      "results": 10,
+      "kept": 8,
+      "dropped": 2
+    },
+    {
+      "at": "2026-11-17T23:21:22.058Z",
+      "step": "search",
+      "query": "study on AI training carbon footprint five cars",
+      "endDate": "2026-11-17",
+      "startDate": null,
+      "results": 10,
+      "kept": 8,
+      "dropped": 2
+    },
+    {
+      "at": "2026-11-17T23:21:45.089Z",
+      "step": "dating",
+      "query": "wayback unavailable for https://quoteinvestigator.com/2022/08/08/five-people: http_error 403; date from the page's own evidence only",
+      "endDate": null,
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
     }
   ],
   "usage": [
     {
-      "at": "2026-11-17T06:26:05.461Z",
+      "at": "2026-11-17T23:20:53.447Z",
       "traceId": "dev-15",
       "step": "tokenfactory",
       "service": "tokenfactory",
@@ -245,15 +255,15 @@
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 166,
       "completionTokens": 52,
-      "cachedTokens": 128,
+      "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0.0000322,
-      "latencyMs": 2202,
+      "latencyMs": 2379,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:26:07.671Z",
+      "at": "2026-11-17T23:20:55.828Z",
       "traceId": "dev-15",
       "step": "tokenfactory",
       "service": "tokenfactory",
@@ -261,15 +271,15 @@
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 276,
       "completionTokens": 109,
-      "cachedTokens": 240,
+      "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0.000060299999999999995,
-      "latencyMs": 4837,
+      "latencyMs": 3553,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:26:13.720Z",
+      "at": "2026-11-17T23:21:00.857Z",
       "traceId": "dev-15",
       "step": "search",
       "service": "tavily",
@@ -280,12 +290,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1191,
+      "latencyMs": 1443,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:26:14.977Z",
+      "at": "2026-11-17T23:21:02.483Z",
       "traceId": "dev-15",
       "step": "search",
       "service": "tavily",
@@ -296,12 +306,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1241,
+      "latencyMs": 1600,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:26:16.843Z",
+      "at": "2026-11-17T23:21:04.220Z",
       "traceId": "dev-15",
       "step": "search",
       "service": "tavily",
@@ -312,12 +322,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1858,
+      "latencyMs": 1725,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:26:18.636Z",
+      "at": "2026-11-17T23:21:05.842Z",
       "traceId": "dev-15",
       "step": "search",
       "service": "tavily",
@@ -328,12 +338,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1779,
+      "latencyMs": 1600,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:26:20.290Z",
+      "at": "2026-11-17T23:21:06.522Z",
       "traceId": "dev-15",
       "step": "meta-search",
       "service": "tavily",
@@ -344,12 +354,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1641,
+      "latencyMs": 654,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:26:20.373Z",
+      "at": "2026-11-17T23:21:06.619Z",
       "traceId": "dev-15",
       "step": "meta-extract",
       "service": "tavily",
@@ -360,12 +370,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 65,
+      "latencyMs": 81,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:26:30.526Z",
+      "at": "2026-11-17T23:21:07.975Z",
       "traceId": "dev-15",
       "step": "extract",
       "service": "tavily",
@@ -374,14 +384,14 @@
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 10133,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1320,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:26:30.529Z",
+      "at": "2026-11-17T23:21:07.979Z",
       "traceId": "dev-15",
       "step": "embed",
       "service": "tokenfactory",
@@ -392,28 +402,28 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 6.3e-7,
-      "latencyMs": 4793,
+      "latencyMs": 3523,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:26:35.326Z",
+      "at": "2026-11-17T23:21:11.511Z",
       "traceId": "dev-15",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 276,
-      "completionTokens": 111,
-      "cachedTokens": 240,
+      "completionTokens": 145,
+      "cachedTokens": 272,
       "credits": 0,
-      "costUsd": 0.000060899999999999996,
-      "latencyMs": 4325,
+      "costUsd": 0.0000711,
+      "latencyMs": 3057,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:26:41.073Z",
+      "at": "2026-11-17T23:21:16.348Z",
       "traceId": "dev-15",
       "step": "search",
       "service": "tavily",
@@ -424,12 +434,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1402,
+      "latencyMs": 1762,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:26:42.476Z",
+      "at": "2026-11-17T23:21:18.567Z",
       "traceId": "dev-15",
       "step": "search",
       "service": "tavily",
@@ -440,12 +450,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1386,
+      "latencyMs": 2194,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:26:43.577Z",
+      "at": "2026-11-17T23:21:20.428Z",
       "traceId": "dev-15",
       "step": "search",
       "service": "tavily",
@@ -456,12 +466,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1088,
+      "latencyMs": 1838,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:26:45.544Z",
+      "at": "2026-11-17T23:21:22.057Z",
       "traceId": "dev-15",
       "step": "search",
       "service": "tavily",
@@ -472,12 +482,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1956,
+      "latencyMs": 1605,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:26:46.265Z",
+      "at": "2026-11-17T23:21:23.294Z",
       "traceId": "dev-15",
       "step": "extract",
       "service": "tavily",
@@ -488,12 +498,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 706,
+      "latencyMs": 1205,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:26:46.287Z",
+      "at": "2026-11-17T23:21:23.321Z",
       "traceId": "dev-15",
       "step": "embed",
       "service": "tokenfactory",
@@ -504,12 +514,28 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0.00000324,
-      "latencyMs": 1713,
+      "latencyMs": 1551,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:26:49.520Z",
+      "at": "2026-11-17T23:21:24.883Z",
+      "traceId": "dev-15",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 143,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00000143,
+      "latencyMs": 8736,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T23:21:43.412Z",
       "traceId": "dev-15",
       "step": "dating",
       "service": "wayback",
@@ -520,12 +546,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 1516,
+      "latencyMs": 9792,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:26:57.412Z",
+      "at": "2026-11-17T23:21:45.089Z",
       "traceId": "dev-15",
       "step": "dating",
       "service": "wayback",
@@ -536,8 +562,8 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 7889,
-      "status": "200",
+      "latencyMs": 0,
+      "status": "http_error 403",
       "cacheHit": false
     }
   ],

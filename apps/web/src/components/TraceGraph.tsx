@@ -4,8 +4,11 @@ import { edgeStyle, heat } from "../model/scrubber.ts";
 
 // The band: each cluster a swarm of its copies, one dot per page. The scrubber's position is a hairline, and any copy
 // not yet published at that point is drawn as a ring.
-export function TraceGraph({ trace, activeSpanId, x }: { trace: Trace; activeSpanId: string | null; x: number }) {
-  const all = swarms(trace);
+// landed: during a replay, the pages that have landed so far; the rest are not drawn yet. Null shows every page.
+export function TraceGraph({ trace, activeSpanId, x, landed = null }: { trace: Trace; activeSpanId: string | null; x: number; landed?: Set<string> | null }) {
+  const all = swarms(trace)
+    .map((s) => (landed ? { ...s, copies: s.copies.filter((c) => landed.has(c.nodeId)) } : s))
+    .filter((s) => s.copies.length > 0);
   const at = new Map(all.map((d) => [d.id, d]));
   const clusterOf = (nodeId: string) => trace.nodes.find((n) => n.id === nodeId)?.clusterId;
   const activeNode = trace.spans.find((s) => s.id === activeSpanId)?.nodeId;
@@ -15,7 +18,7 @@ export function TraceGraph({ trace, activeSpanId, x }: { trace: Trace; activeSpa
     .filter((l): l is { e: (typeof trace.edges)[number]; a: Swarm; b: Swarm } => Boolean(l.a && l.b && l.a !== l.b));
 
   return (
-    <figure className="band" aria-label={`${all.length} clusters of pages on a time axis, past on the left, one dot per page`}>
+    <figure className={landed ? "band replaying" : "band"} aria-label={`${all.length} clusters of pages on a time axis, past on the left, one dot per page`}>
       <div className="band-inner">
         <div className="band-future" style={{ ["--x" as string]: x }} />
         <div className="band-now" style={{ ["--x" as string]: x }} />
