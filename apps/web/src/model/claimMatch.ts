@@ -98,7 +98,10 @@ export function findTrace(text: string, traces: Trace[]): Trace | null {
     const trace = traces.find((t) => t.id === row.id)!;
     // A phrase claim also opens by its recorded phrase (atoms.phrase), the words the walk searched for (XO on #228).
     const phrase = trace.claim.atoms.number === null && trace.claim.atoms.phrase ? [trace.claim.atoms.phrase] : [];
-    if ([trace.claim.text, trace.viralSentence, ...phrase, ...trace.spans.map((s) => s.text)].some((w) => sameClaimText(asked, parse(w)))) return trace;
+    // A phrase claim is matched only against the claim, its viral sentence and its phrase, never against page spans: a
+    // span is raw page text (a masthead, a menu), and with no number to pin it a headline could match (XO on #233).
+    const spans = asked.numbers === "" ? [] : trace.spans.map((s) => s.text);
+    if ([trace.claim.text, trace.viralSentence, ...phrase, ...spans].some((w) => sameClaimText(asked, parse(w)))) return trace;
   }
   return null;
 }

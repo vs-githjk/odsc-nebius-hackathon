@@ -143,7 +143,17 @@ describe.runIf(["dev-01", "dev-08", "dev-12"].every((id) => traces.some((t) => t
     ["words shuffled", "Insanity is expecting different results and doing the same thing over and over again."],
     ["one changed word", "Insanity is doing the same thing over and over again and expecting the same results."],
     ["another landmark", "The Great Pyramid of Giza is the only man-made structure visible from space."],
+    // XO on #233: a masthead span on a recorded page; a phrase claim is never matched against page spans.
+    ["a newspaper headline on a recorded page", "Democracy Dies in Darkness. Some facts for Donald Trump about the Great Wall of China."],
   ])("never opens a trace for %s", (_, text) => {
     expect(findTrace(text, traces)).toBeNull();
+  });
+});
+
+// Moved from claimBox.test.tsx (XO on #233): one submit of the claim box, short text and an unrecorded phrase claim.
+describe("outcomeOf for short and phrase claims", () => {
+  it("asks for the whole sentence for a short text, and says not traced yet for an unrecorded phrase claim", () => {
+    expect(outcomeOf("14 naps", traces, 0)).toMatchObject({ kind: "problem", try: 1 });
+    expect(outcomeOf("penguins nap a lot more than seals", traces, 0)).toMatchObject({ kind: "untraced", try: 1 });
   });
 });

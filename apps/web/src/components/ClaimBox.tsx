@@ -39,7 +39,7 @@ export function ClaimBox({ traces, focusKey, onMatch }: { traces: Trace[]; focus
           rows={1}
           value={text}
           placeholder="Paste a statistic or a quote"
-          aria-label="A claim with a number in it"
+          aria-label="A claim to trace"
           aria-describedby="claim-note"
           onChange={(e) => {
             setText(e.target.value);
@@ -54,7 +54,7 @@ export function ClaimBox({ traces, focusKey, onMatch }: { traces: Trace[]; focus
         </button>
       </div>
       <div id="claim-note" className="claim-note" aria-live="polite">
-        {outcome.kind === "idle" && <p className="meta">Paste the sentence the number came in. Recorded traces open straight away.</p>}
+        {outcome.kind === "idle" && <p className="meta">Paste the claim as you saw it, the whole sentence. Recorded traces open straight away.</p>}
         {outcome.kind === "problem" && (
           <p key={outcome.try} className="claim-problem">
             {outcome.text}

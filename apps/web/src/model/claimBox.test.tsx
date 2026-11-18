@@ -19,9 +19,6 @@ describe("outcomeOf (one submit)", () => {
   it("opens a recorded trace, prompts in plain words, or says not traced yet", () => {
     expect(outcomeOf(CLAIM, traces, 0)).toEqual({ kind: "open", id: "sample-rich" });
     expect(outcomeOf("   ", traces, 0)).toEqual({ kind: "empty" });
-    expect(outcomeOf("14 naps", traces, 0)).toMatchObject({ kind: "problem", try: 1 });
-    // A claim with no number is a phrase claim: looked up, and "not traced yet" when no recording has it.
-    expect(outcomeOf("penguins nap a lot more than seals", traces, 0)).toMatchObject({ kind: "untraced", try: 1 });
     expect(outcomeOf("Lightning strikes 8 million times a day", traces, 0)).toMatchObject({ kind: "untraced", try: 1 });
   });
 
