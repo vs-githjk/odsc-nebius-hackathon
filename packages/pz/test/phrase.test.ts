@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import { describe, expect, it, vi } from "vitest";
 import { TokenFactoryError, type ChatInput } from "../src/clients/tokenfactory.ts";
 import { fingerprint } from "../src/engine/fingerprint.ts";
-import { claimRange, fingerprintPhrase, PHRASE_PROMPT, rangeForms } from "../src/engine/phrase.ts";
+import { claimRange, fingerprintPhrase, headWord, PHRASE_PROMPT, rangeForms } from "../src/engine/phrase.ts";
 import { codeQuery, whyRejected } from "../src/engine/queries.ts";
 import { queriesFor } from "../src/engine/walk.ts";
 import { claimHit, loadRules, phraseHit } from "../src/rules/index.ts";
@@ -63,6 +63,15 @@ describe("T53 fingerprintPhrase on the four E2 claims fingerprint() stops at no_
     expect(wall.atoms!.phrase).toBe("only man-made structure visible from space");
     const card = await fingerprintPhrase(dev["dev-12"]!, { client: clientFor(reply(["A CREDIT CARD'S WORTH OF PLASTIC"], "plastic")) });
     expect(card.atoms!.phrase).toBe("a credit card's worth of plastic");
+  });
+
+  it("a subject of several words keeps its head word (dev-07 and dev-08 replies on the Nov 17 live run)", async () => {
+    const wall = await fingerprintPhrase(dev["dev-08"]!, { client: clientFor(reply(["The Great Wall of China is the only man-made structure visible from space"], "Great Wall of China")) });
+    expect([wall.reason, wall.atoms!.subjectLemma]).toEqual([null, "wall"]);
+    const heat = await fingerprintPhrase(dev["dev-07"]!, { client: clientFor(reply(["You lose 40 to 45 percent of your body heat through your head"], "body heat")) });
+    expect([heat.reason, heat.atoms!.subjectLemma, heat.atoms!.phrase]).toEqual([null, "heat", "40 to 45 percent"]);
+    expect(headWord("of the")).toBeNull();
+    expect(headWord("plastic")).toBe("plastic");
   });
 
   it("stops with a named reason: has_number (no call), no_phrase, no_subject, no_model; other errors are not hidden", async () => {

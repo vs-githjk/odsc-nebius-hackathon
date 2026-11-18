@@ -101,12 +101,25 @@ export async function fingerprintPhrase(text: string, { client }: { client: Clie
   const longest = kept.sort((a, b) => words(b).length - words(a).length || b.length - a.length)[0];
   const phrase = range?.raw ?? longest;
   if (!phrase) return none("no_phrase", result.attempts, dropped);
-  const subject = inClaim(text, parts.subject);
-  if (!subject || /\s/.test(subject)) return none("no_subject", result.attempts, dropped);
+  // A subject of several words keeps its head word, copied from the claim: "Great Wall of China" gives "Wall",
+  // "body heat" gives "heat". dev-07 and dev-08 stopped here with no trace on the Nov 17 live run.
+  const subject = headWord(inClaim(text, parts.subject));
+  if (!subject) return none("no_subject", result.attempts, dropped);
   const variants = range ? rangeForms(range) : [];
   const atoms: Atoms = {
     number: null, phrase, unit: range?.unit ?? null, subjectLemma: lemma(subject), population: null, time: null, hedge: null,
     namedSource: null, variants: variants.map((v) => v.text),
   };
   return { atoms, variants, dropped, reason: null, usage: result.attempts };
+}
+
+// The head word of a subject the claim spells in several words: the last word before "of", "in", "on", "for" or
+// "from", else the last word. A single word is kept as it is; null when nothing usable is left.
+export function headWord(subject: string | null): string | null {
+  if (!subject) return null;
+  const words = subject.trim().split(/\s+/);
+  if (words.length === 1) return words[0]!;
+  const cut = words.findIndex((w, i) => i > 0 && /^(?:of|in|on|for|from)$/i.test(w));
+  const head = (cut > 0 ? words.slice(0, cut) : words).at(-1)!.replace(/[^\p{L}\p{N}'-]/gu, "");
+  return head.length >= 3 && !/^(?:the|and|its|this|that|their|your|our|of|in|on|for|from)$/i.test(head) ? head : null;
 }
