@@ -91,3 +91,16 @@
 - 2026-11-17 ~13:10 ET: merged #202 (per-test cache, ends flake) e9a03e0 and #198 (F6) 62bc407.
 - 2026-11-17 13:15 ET tick: #199 and #200 re-pushed, both in review. Anoop given #196 follow-up, traps README, #133 secret scan + plan/ privacy review.
 - 2026-11-17 13:45 ET: XO window. Merged #199 c63d9fa, #200 F1 61a4f3e, #203 F7 7658f8d, #208 walk replay 30a33a5, #206 partial dates 3365344. Closed #204 (missed real cues; keep main), #205 (Rishit fixed it in #200), #207 (lost to #208). #133 secret scan: clean. Tonight: dev-run with PZ_RECORD_DIR=runs/walk-record.
+- 2026-11-17 13:45 ET tick: Rishit opened #210 (small fixes) and pushed #186 and #184 fixes; reviews running for #209, #184, #210, #186. Tonight runbook added to HANDOFF.
+- 2026-11-17 13:55 ET tick: merged #186 32d6da7. FIX: #209 (1H wrap), #184 (1M formats), #210 (1H cue revert). Review of #211, #212 running. Rishit next: fixes, demo path walk, README numbers after the rerun.
+- 2026-11-17 14:10 ET tick: merged #211 e82d1be. FIX #212 (1M: 70% into rules.json). XO #213: README status and judge dev-score line current, in review (found by a fresh-clone README walk for #133).
+- 2026-11-17 14:15 ET tick: no new heads. #213 merged 371a6df (README status, judge dev line). T72 candidate prep posted on #131: hero candidate dev-10.
+- 2026-11-17 14:23 ET tick: no new heads (Rishit last push 13:58, Rohan none today).
+- 2026-11-17 14:35 ET tick: no new heads. Nudged Rishit (order: #212, #209, #210) and Rohan (push PR before 18:00; time reserve is now #212).
+- 2026-11-17 14:43 ET tick: no new heads.
+- 2026-11-17 15:10 ET: Vidyut gave the go for the 18:00 run (logged). Work posted for Rishit (#212, #209, #210 by 17:30), Rohan (push the PR by 17:30), Anoop (limits rows, submission refresh, demo script check). Scheduled: merge pass 17:31, live run 18:02.
+- 2026-11-17 17:35 ET: pre-run pass. #214 (Anoop, L16 caps row) PASS, merged ea2a69b. Rishit #212, #209, #210, #184 no new heads since the 13:4x fix lists, wait for after the run. Rohan PR not opened. #158 script checked against main by Anoop; held for Vidyut's approval.
+- 2026-11-17 18:40 ET: live E2 rerun done ($2.08; $9.15 left). Score 1 (+0) false origins, 2/10 cited, 0/0/10, cold 6/9. #215 merged e39de06 (traces, row, README). Replay misses 25. Posted #164, #2, #131 (T72), #1 (dev-04 false origin, cold regression, replay misses to Rishit).
+- 2026-11-17 20:25 ET: no new heads. Rohan: open PR, dev-07/08 bad_response, dev-11 no pages (#3). Anoop: loadTraces live traces (#4). Rishit nudged (#1).
+- 2026-11-17 20:55 ET: XO merged #216 a30dee8 (dev-04 false origin), #217 fd89247 (dev-10 lone year), #218 c4f3e14 (dev-11 code queries); live rehearsal dev-10 and dev-11 both cite target ($0.45, $8.70 left).
+- 2026-11-17 21:00 ET: XO merged #219 f3f2065 (dev-07/08 phrase subject head word). Tonight's XO fixes: #216, #217, #218, #219.

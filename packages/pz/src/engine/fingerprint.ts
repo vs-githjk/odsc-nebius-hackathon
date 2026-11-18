@@ -28,8 +28,8 @@ const SPELLING: [string, string][] = [
 // #192 F5: a year says when, not how many, so it is never the claim's number.
 // - A bare 1900 to 2099 number is skipped whenever the claim has any other number, digits or words (XO on #197): "the
 //   1990 study found 10%" takes 10%, "In 2019 and 2020, 30 percent" takes 30, "between 2000 and 2010, 40%" takes 40%.
-// - When years are the only numbers, one after a time word is still a year: "By 2050 there will be more plastic than
-//   fish" has no number and goes to the phrase step (T53). A lone four-digit count ("2000 calories a day") is kept.
+// - A forecast's lone target year after "by" is kept as the number ("By 2050 there will be more plastic than fish").
+//   Otherwise a year after a time word is still a year. A lone four-digit count ("2000 calories a day") is kept.
 const YEAR_AFTER = /(?:^|[^\p{L}])(?:by|in|since|until|till|before|after|from|through|circa|around|between|and)\s+$/iu;
 const bareYear = (n: { raw: string; percent: boolean }) => !n.percent && /^(?:19|20)\d\d$/.test(n.raw);
 export function isYear(text: string, n: { raw: string; start: number; percent: boolean }): boolean {
@@ -50,6 +50,12 @@ export function claimNumber(text: string): ClaimNumber | null {
   if (count) return { raw: count.raw, canonical: canonicalKey(count) };
   const words = wordsToNumber(text);
   if (words) return { raw: words.raw, canonical: String(words.value) };
+  // A forecast's target year is the claim's number when it is the only one ("By 2050 there will be more plastic than
+  // fish"). Without it the claim falls to its whole sentence, which every query must quote and every page must repeat
+  // word for word, and dev-10 lost the WEF report on the Nov 17 live run. Any other time word ("Since 2010 a million
+  // jobs were lost") and two years ("Between 2000 and 2010") still give no number.
+  const only = numbers.length === 1 ? numbers[0]! : null;
+  if (only && /(?:^|[^\p{L}])by\s+$/iu.test(text.slice(0, only.start))) return { raw: only.raw, canonical: canonicalKey(only) };
   const lone = numbers.find((n) => !isYear(text, n));
   return lone ? { raw: lone.raw, canonical: canonicalKey(lone) } : null;
 }

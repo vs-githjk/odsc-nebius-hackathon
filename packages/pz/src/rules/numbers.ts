@@ -146,6 +146,14 @@ function multiplierWords(text: string): ParsedNumber[] {
   return out;
 }
 
+// A number written right before a unit of volume, mass or length measures something; it does not count the claim's
+// subject. dev-04 on the Nov 17 live run: "six 8 oz glasses of water" was taken as "eight glasses". The rule holds only
+// when the claim itself is not counted in a measure ("64 ounces of water", "25 g of sugar").
+const MEASURE_AFTER = /^\s*-?\s*(?:oz|ounces?|fl\.?\s*oz|ml|millilit(?:er|re)s?|cl|dl|l|lit(?:er|re)s?|mg|g|grams?|kg|kilograms?|lbs?|mm|cm|km|inch(?:es)?|ft|feet|foot)(?![\p{L}\p{N}])/iu;
+// The claim's own unit or subject, spelled out or abbreviated, anywhere in it: "400 milligrams" backs a span's "400 mg".
+const MEASURE_WORD = /(?<![\p{L}])(?:oz|ounces?|fl|ml|millilit(?:er|re)s?|cl|dl|l|lit(?:er|re)s?|mg|milligrams?|g|grams?|kg|kilograms?|lbs?|pounds?|mm|millimet(?:er|re)s?|cm|centimet(?:er|re)s?|km|kilomet(?:er|re)s?|met(?:er|re)s?|inch(?:es)?|ft|feet|foot|miles?)(?![\p{L}])/iu;
+const isMeasure = (s: string | null | undefined) => !!s && MEASURE_WORD.test(s);
+
 export function atomHit(sentence: string, atoms: Atoms, minSigDigits = 3, maxCommas = 2, words = true): boolean {
   if (!atoms.number) return false;
   if (otherNumberVetoes(normalise(sentence.replace(URL, " ")), atoms)) return false;
@@ -155,7 +163,8 @@ export function atomHit(sentence: string, atoms: Atoms, minSigDigits = 3, maxCom
   const wordNumbers = words ? parseNumberWords(text) : [];
   const want: UnitClass = target.percent ? "percent" : unitClassOf(atoms.unit);
   if (want === "multiplier" && words) wordNumbers.push(...multiplierWords(text));
-  const found = [...parseNumbers(text).numbers, ...wordNumbers];
+  const measured = isMeasure(atoms.unit) || isMeasure(atoms.subjectLemma);
+  const found = [...parseNumbers(text).numbers, ...wordNumbers].filter((n) => measured || !MEASURE_AFTER.test(text.slice(n.end)));
   const hits = found.filter((n) => {
     const cls = numberClass(n, text);
     // A bare fraction keeps the declared percent transform: 0.412 against 41.2%.

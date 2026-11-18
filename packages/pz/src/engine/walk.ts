@@ -14,7 +14,7 @@ import type { Atoms, Cluster, DateInfo, Edge, Hop, Node, Readout, Span, Trace, U
 import type { UsageLog } from "../usage/log.ts";
 import { sameClaim, type SameClaimResult } from "../match/same-claim.ts";
 import { citationsIn, namedSources, REACH } from "./citations.ts";
-import { planQueries, queryKey, whyRejected, type SeenQuery } from "./queries.ts";
+import { codeQuery, planQueries, queryKey, whyRejected, type SeenQuery } from "./queries.ts";
 
 export type SpikeClaim = { id: string; text: string; atoms: Atoms };
 export type LogLine = { at: string; step: string; url?: string; query?: string; kept?: boolean; reason?: string };
@@ -41,8 +41,11 @@ export const sameClaimFor = (client: ModelClient, rules: Rules) => (input: { cla
 
 // The code-only planner: the claim's variant phrases with its subject, as before T35. It ignores `seen` on purpose,
 // because each window repeats these queries with an earlier end date.
-export const codePlanner: QueryPlanner = async ({ atoms }) => ({
-  queries: queriesFor(atoms).map((query) => ({ query, endDate: null, why: "variant" })),
+// The code query comes first, as the planner's does: the number as the claim writes it and the claim's own subject
+// word ("100" companies). queriesFor's variant queries follow; alone they gave dev-11 only "one hundred" compan when
+// the planner failed on the Nov 17 live run, and it found no pages.
+export const codePlanner: QueryPlanner = async ({ claim, atoms }) => ({
+  queries: [...new Set([codeQuery(claim, atoms), ...queriesFor(atoms)])].map((query) => ({ query, endDate: null, why: "variant" as const })),
   rejected: [],
   usage: [],
   mode: "code_only",
@@ -103,7 +106,7 @@ const isoDate = (date: string | null) => (date && !Number.isNaN(Date.parse(date)
 // the same search twice (dev-12 sent one quoted phrase 8 times): the claim's first quoted search plus "study",
 // "report" or "survey". Each must pass the same query rules as the planner's (queries.ts whyRejected).
 export function studyQueries(claim: string, atoms: Atoms): string[] {
-  const first = queriesFor(atoms)[0];
+  const first = codeQuery(claim, atoms);
   if (!first) return [];
   return ["study", "report", "survey"].map((w) => `${first} ${w}`).filter((q) => whyRejected(q, { claim, atoms, hop: null }) === null);
 }
