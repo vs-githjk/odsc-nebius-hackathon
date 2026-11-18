@@ -146,6 +146,12 @@ function multiplierWords(text: string): ParsedNumber[] {
   return out;
 }
 
+// A number written right before a unit of volume, mass or length measures something; it does not count the claim's
+// subject. dev-04 on the Nov 17 live run: "six 8 oz glasses of water" was taken as "eight glasses". The rule holds only
+// when the claim itself is not counted in a measure ("64 ounces of water", "25 g of sugar").
+const MEASURE_AFTER = /^\s*-?\s*(?:oz|ounces?|fl\.?\s*oz|ml|millilit(?:er|re)s?|cl|dl|l|lit(?:er|re)s?|mg|g|grams?|kg|kilograms?|lbs?|mm|cm|km|inch(?:es)?|ft|feet|foot)(?![\p{L}\p{N}])/iu;
+const isMeasure = (s: string | null | undefined) => !!s && MEASURE_AFTER.test(s);
+
 export function atomHit(sentence: string, atoms: Atoms, minSigDigits = 3, maxCommas = 2, words = true): boolean {
   if (!atoms.number) return false;
   if (otherNumberVetoes(normalise(sentence.replace(URL, " ")), atoms)) return false;
@@ -155,7 +161,8 @@ export function atomHit(sentence: string, atoms: Atoms, minSigDigits = 3, maxCom
   const wordNumbers = words ? parseNumberWords(text) : [];
   const want: UnitClass = target.percent ? "percent" : unitClassOf(atoms.unit);
   if (want === "multiplier" && words) wordNumbers.push(...multiplierWords(text));
-  const found = [...parseNumbers(text).numbers, ...wordNumbers];
+  const measured = isMeasure(atoms.unit) || isMeasure(atoms.subjectLemma);
+  const found = [...parseNumbers(text).numbers, ...wordNumbers].filter((n) => measured || !MEASURE_AFTER.test(text.slice(n.end)));
   const hits = found.filter((n) => {
     const cls = numberClass(n, text);
     // A bare fraction keeps the declared percent transform: 0.412 against 41.2%.
