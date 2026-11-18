@@ -106,3 +106,4 @@
 - 2026-11-17 21:00 ET: XO merged #219 f3f2065 (dev-07/08 phrase subject head word). Tonight's XO fixes: #216, #217, #218, #219.
 - 2026-11-17 22:35 ET: merged #220, #221, #223, #212, #210, #209; live run 3 scored (1 (+0), 3/10, 1/0/9, 7/9) merged #227; #225 prior-use cue in review; #224 held (subject check). Tavily key at 800/1000.
 - 22:23 ET: #225 merged (prior-use cue). Rescored run 3 traces on main: see #164.
+- 22:28 ET: repo public (Vidyut), CI rerun on #184, #226, #222; reviews running. Tavily key swap: Rishit sends key to Vidyut privately.
