@@ -112,6 +112,8 @@ export function recordingCache(base: Cache, dir: string): Cache {
       return hit;
     },
     set(key, value) { base.set(key, value); mirror.set(key, value); },
+    // Only the recording keeps a failure; the live cache (base) never does, so the next live run tries again.
+    recordFailure(key, failure) { mirror.set(key, { credits: 0, body: "", contentType: null, failure }); },
   };
 }
 

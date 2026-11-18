@@ -64,6 +64,8 @@ export type WalkDeps = {
   rules: Rules;
   today: string;
   now: () => string;
+  // Milliseconds for the time cap; Date.now when absent. Tests pass a stub clock.
+  clockMs?: () => number;
   pagesDir: string;
   // The trace this run replays, when every call is served from the cache.
   replayOf?: Trace;
@@ -247,7 +249,8 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
   const { atoms } = claim;
   const { rules } = deps;
   const lemma = normalise(atoms.subjectLemma).toLowerCase();
-  const started = Date.now();
+  const clock = deps.clockMs ?? Date.now;
+  const started = clock();
   const log: LogLine[] = [];
   const nodes: Node[] = [];
   const spans: Span[] = [];
@@ -437,7 +440,8 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
     searchLog.push({ at: deps.now(), step: "model", query: reason, endDate: null, startDate: null, results: 0, kept: 0, dropped: 0 });
   }
 
-  const outOfTime = () => Date.now() - started >= rules.caps.ms;
+  // #192 F2 time reserve: no new round after rules.caps.walkShare of caps.ms, so the card still gets written.
+  const outOfTime = () => clock() - started >= rules.caps.ms * rules.caps.walkShare;
 
   try {
     let endDate = deps.today;
@@ -658,7 +662,7 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
   const recorded = replayed && deps.replayOf ? deps.replayOf : null;
   const budget: Trace["budget"] = recorded
     ? { credits: recorded.budget.credits, usd: recorded.budget.usd, ms: recorded.budget.ms, capHit }
-    : { credits: deps.usage.rows.reduce((sum, r) => sum + r.credits, 0), usd, ms: Date.now() - started, capHit };
+    : { credits: deps.usage.rows.reduce((sum, r) => sum + r.credits, 0), usd, ms: clock() - started, capHit };
 
   const draft: Trace = {
     schemaVersion: "1", id: claim.id, mode: recorded ? "REPLAY" : "LIVE", synthetic: false, recordedAt: recorded?.recordedAt ?? deps.now(),

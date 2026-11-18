@@ -99,3 +99,31 @@ describe("F7: the depth cap counts steps back, not link rounds (#192)", () => {
     expect(extracted).not.toContain("https://site2018.example/report");
   });
 });
+
+describe("time reserve: a trail that keeps stepping back stops at 70% of the time cap (#192 F2, dev-05)", () => {
+  it("starts no round after caps.walkShare (0.7) of caps.ms, and says it stopped at the time cap", async () => {
+    // Forty years of pages, each a step back, so only the clock can end this walk. Each search costs 40 s.
+    const years = Array.from({ length: 40 }, (_, i) => 2024 - i);
+    const steps: Page[] = years.map((y, i) => ({ url: `https://site${y}.example/report`, date: `${y}-03-01`, text: `Keepers at pool number ${String.fromCharCode(97 + (i % 26))} said penguins nap 14 times a day.`, searchable: true }));
+    const r: Rules = { ...base, caps: { ...base.caps, depth: 100, ms: 300_000 } };
+    const w = world(steps);
+    let now = 0;
+    const timed = (async (input: string | URL | Request, init?: RequestInit) => {
+      if (String(input).endsWith("/search")) now += 40_000;
+      return w.impl(input, init);
+    }) as typeof fetch;
+    const t = await walkStep(() => {
+      const usage = createUsageLog({ path: join(dir, "usage.jsonl") });
+      const b = { fetch: timed, usage, cache: createFileCache(join(dir, "http")), budget: createBudget(5000), traceId: "f7-time" };
+      return {
+        tavily: createTavily({ ...b, apiKey: "test-key" }), wayback: createWayback(b), usage, budget: b.budget, rules: r,
+        today: "2026-11-12", now: () => "2026-11-12T00:00:00.000Z", pagesDir: join(dir, "pages"), clockMs: () => now,
+      };
+    })(handed, {});
+    expect(t.budget.capHit).toBe("ms");
+    // The last round started before 210 s; it may finish past it, but the walk never runs on to the 300 s cap.
+    expect(r.caps.walkShare).toBe(0.7);
+    expect(now).toBeGreaterThanOrEqual(300_000 * r.caps.walkShare);
+    expect(now).toBeLessThan(300_000);
+  });
+});
