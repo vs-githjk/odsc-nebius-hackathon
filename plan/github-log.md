@@ -108,3 +108,4 @@
 - 22:23 ET: #225 merged (prior-use cue). Rescored run 3 traces on main: see #164.
 - 22:28 ET: repo public (Vidyut), CI rerun on #184, #226, #222; reviews running. Tavily key swap: Rishit sends key to Vidyut privately.
 - 22:40 ET: #226 merged 82d34ee; #222 FIX (byline <time> scope); #184 FIX (than/over); new Tavily key OK; Anoop tasks on #4.
+- 22:58 ET: #184 claim box PASS and merged. XO coding window closed 23:00; orchestration only.
