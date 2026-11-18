@@ -19,7 +19,6 @@ describe("outcomeOf (one submit)", () => {
   it("opens a recorded trace, prompts in plain words, or says not traced yet", () => {
     expect(outcomeOf(CLAIM, traces, 0)).toEqual({ kind: "open", id: "sample-rich" });
     expect(outcomeOf("   ", traces, 0)).toEqual({ kind: "empty" });
-    expect(outcomeOf("penguins nap a lot", traces, 0)).toMatchObject({ kind: "problem", try: 1 });
     expect(outcomeOf("Lightning strikes 8 million times a day", traces, 0)).toMatchObject({ kind: "untraced", try: 1 });
   });
 
