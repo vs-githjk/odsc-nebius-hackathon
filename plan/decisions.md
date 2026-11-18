@@ -136,3 +136,4 @@ Format: [LOCKED|REJECTED|PREFERENCE] decision | why | "Vidyut's words" | date
 [LOCKED] Live E2 rerun at 18:00 ET Nov 17, recorded (PZ_RECORD_DIR), about $2.50 of the $11.20 left; XO runs it | Vidyut gave the go | "Within the test round is at 6. You have my permission for that" | 2026-11-17
 [PREFERENCE] XO codes 20:27 to 22:30 ET Nov 17 on the dev-04 false origin and the cold regression; Rishit keeps replay misses and his PRs | tonight's live run got worse | "We again do our own work for the next hour... Work till again, let's say like 10:30 p.m." | 2026-11-17
 [LOCKED] Full live E2 rerun on main after the Nov 17 fixes (about $2.10) | score tonight's four fixes | "Yes, run it now. I'd say run it now. It's $2" | 2026-11-17
+[PREFERENCE] Work window extended to 23:00 ET Nov 17: Vidyut, XO, Rishit, Rohan | XO lost time waiting | "Now let's do it till 11 because you took a break." | 2026-11-17
