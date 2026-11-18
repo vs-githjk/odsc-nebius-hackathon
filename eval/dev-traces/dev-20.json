@@ -3,7 +3,7 @@
   "id": "dev-20",
   "mode": "LIVE",
   "synthetic": false,
-  "recordedAt": "2026-11-17T23:27:44.087Z",
+  "recordedAt": "2026-11-18T03:12:05.173Z",
   "claim": {
     "text": "Florida found arsenic in 60% of popular Halloween candies.",
     "atoms": {
@@ -68,14 +68,14 @@
     },
     {
       "id": "n2",
-      "url": "https://africacheck.org/sites/default/files/Ministry-of-Water-Kenya-Strategic-Plan-2018-2022-Final-Version-Dec2018.pdf",
-      "domain": "africacheck.org",
-      "title": "",
+      "url": "https://politifact.com/factchecks/2011/nov/01/barack-obama/barack-obama-says-60-percent-his-promises-are-done",
+      "domain": "politifact.com",
+      "title": "Barack Obama says 60 percent of his promises are ‘done’ – PolitiFact",
       "date": {
         "kind": "existed_by",
-        "value": "2022-07-06",
+        "value": "2020-05-02",
         "source": "wayback_first_capture",
-        "firstCapture": "2022-07-06",
+        "firstCapture": "2020-05-02",
         "conflictingDate": false
       },
       "clusterId": "c-n2",
@@ -115,19 +115,19 @@
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "no",
-        "probability": 0.9995694428947637,
+        "probability": 0.9980732445107544,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.00043055710523634354
+            "p": 0.0019267343935248436
           },
           {
             "optionId": "no",
-            "p": 0.9995694428947637
+            "p": 0.9980732445107544
           },
           {
             "optionId": "__other__",
-            "p": 0
+            "p": 2.1095720725838873e-8
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -162,19 +162,19 @@
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "no",
-        "probability": 0.9999999928058667,
+        "probability": 0.9999999987498471,
         "top": [
           {
             "optionId": "yes",
-            "p": 7.194133215947335e-9
+            "p": 1.2501529267059551e-9
           },
           {
             "optionId": "no",
-            "p": 0.9999999928058667
+            "p": 0.9999999987498471
           },
           {
             "optionId": "__other__",
-            "p": 1.1102230246251565e-16
+            "p": 0
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -209,15 +209,15 @@
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "no",
-        "probability": 0.9999999928058667,
+        "probability": 0.9999999987498471,
         "top": [
           {
             "optionId": "yes",
-            "p": 7.194133292830838e-9
+            "p": 1.2501529669563195e-9
           },
           {
             "optionId": "no",
-            "p": 0.9999999928058667
+            "p": 0.9999999987498471
           },
           {
             "optionId": "__other__",
@@ -280,7 +280,7 @@
       "end": 527,
       "extractSha256": "9429be2ce8de5f1ab2f5110ffc3b6e2e23e4508c45a23bdd0897cc1344e54473",
       "windowSha256": "ec10208ae44e7b93d04ce31c6b7afbbff0eee041afa6350f5e9c9f6e4e538373",
-      "fetchedAt": "2026-11-17T23:28:24.397Z",
+      "fetchedAt": "2026-11-18T03:12:19.645Z",
       "waybackUrl": "https://web.archive.org/web/20171026043717/https://www.nydailynews.com/life-style/popular-baby-formulas-foods-arsenic-lead-bpa-article-1.3587740",
       "tier": "exact"
     },
@@ -294,7 +294,7 @@
       "end": 1621,
       "extractSha256": "608dba7eda309c3238ec1343f4c8074178340c04600b95ec22b944f356997cd7",
       "windowSha256": "c78d53bb31624171c8d0c7379942cd5ab414528829cc9b9896d15e8c443cc743",
-      "fetchedAt": "2026-11-17T23:28:26.808Z",
+      "fetchedAt": "2026-11-18T03:12:24.317Z",
       "waybackUrl": null,
       "tier": "exact"
     },
@@ -308,7 +308,7 @@
       "end": 9194,
       "extractSha256": "50a9ac5325e82668e11abec4ca2be212566da4141d6ef89b140f41e408ca6d84",
       "windowSha256": "fa548787339eceffe3cb4837f9916e8ca47d6fe4d36b459b084b85b015be4d7c",
-      "fetchedAt": "2026-11-17T23:28:29.280Z",
+      "fetchedAt": "2026-11-18T03:12:25.512Z",
       "waybackUrl": "https://web.archive.org/web/20180602124351/https://www.jpmph.org/journal/view.php?doi=10.3961%2Fjpmph.14.036",
       "tier": "exact"
     }
@@ -327,14 +327,14 @@
   "redHopEdgeId": null,
   "earliest": {
     "nodeIds": [],
-    "earlierWindowSearches": 4,
+    "earlierWindowSearches": 2,
     "earlierFound": 0
   },
   "failure": null,
   "budget": {
-    "credits": 11,
-    "usd": 0.00025377,
-    "ms": 67103,
+    "credits": 8,
+    "usd": 0.00026838999999999997,
+    "ms": 32185,
     "capHit": null
   },
   "decision": {
@@ -348,104 +348,84 @@
       "pages": 3,
       "clusters": 3,
       "unreadParents": 1,
-      "earlierWindowSearches": 4
+      "earlierWindowSearches": 2
     }
   },
   "searchLog": [
     {
-      "at": "2026-11-17T23:28:18.727Z",
+      "at": "2026-11-18T03:12:10.967Z",
       "step": "search",
       "query": "\"60%\" arsenic",
-      "endDate": "2026-11-17",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:28:19.689Z",
+      "at": "2026-11-18T03:12:12.945Z",
       "step": "search",
-      "query": "arsenic in 60% of popular Halloween candies Florida",
-      "endDate": "2026-11-17",
+      "query": "arsenic in 60% of Halloween candies Florida",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:28:21.145Z",
+      "at": "2026-11-18T03:12:14.265Z",
       "step": "search",
       "query": "60% of Halloween candy tested positive for arsenic Florida",
-      "endDate": "2026-11-17",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:28:22.225Z",
+      "at": "2026-11-18T03:12:17.232Z",
       "step": "search",
-      "query": "Florida study on arsenic levels in Halloween candy",
-      "endDate": "2026-11-17",
+      "query": "Florida Department of Health arsenic in Halloween candy study",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:28:23.288Z",
+      "at": "2026-11-18T03:12:19.497Z",
       "step": "meta-search",
       "query": "\"60%\" arsenic",
-      "endDate": "2026-11-17",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 5,
       "kept": 2,
       "dropped": 3
     },
     {
-      "at": "2026-11-17T23:28:42.323Z",
+      "at": "2026-11-18T03:12:29.723Z",
       "step": "search",
-      "query": "60% of popular Halloween candies arsenic Florida",
-      "endDate": "2026-11-17",
+      "query": "arsenic in popular Halloween candies Florida 60 percent",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:28:43.530Z",
+      "at": "2026-11-18T03:12:31.323Z",
       "step": "search",
-      "query": "arsenic in 60% of Halloween candy Florida",
-      "endDate": "2026-11-17",
+      "query": "\"60%\" arsenic study",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 10,
-      "kept": 10,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T23:28:44.735Z",
-      "step": "search",
-      "query": "Florida testing Halloween candy for arsenic 60%",
-      "endDate": "2026-11-17",
-      "startDate": null,
-      "results": 10,
-      "kept": 10,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T23:28:45.846Z",
-      "step": "search",
-      "query": "study on arsenic levels in Halloween candy Florida",
-      "endDate": "2026-11-17",
-      "startDate": null,
-      "results": 10,
-      "kept": 10,
-      "dropped": 0
+      "kept": 9,
+      "dropped": 1
     }
   ],
   "usage": [
     {
-      "at": "2026-11-17T23:27:44.087Z",
+      "at": "2026-11-18T03:12:05.173Z",
       "traceId": "dev-20",
       "step": "tokenfactory",
       "service": "tokenfactory",
@@ -456,28 +436,28 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0.000030299999999999998,
-      "latencyMs": 14266,
+      "latencyMs": 835,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:27:58.357Z",
+      "at": "2026-11-18T03:12:06.011Z",
       "traceId": "dev-20",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 272,
-      "completionTokens": 145,
-      "cachedTokens": 0,
+      "completionTokens": 148,
+      "cachedTokens": 240,
       "credits": 0,
-      "costUsd": 0.0000707,
-      "latencyMs": 18318,
+      "costUsd": 0.00007159999999999999,
+      "latencyMs": 2461,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:28:18.726Z",
+      "at": "2026-11-18T03:12:10.967Z",
       "traceId": "dev-20",
       "step": "search",
       "service": "tavily",
@@ -488,12 +468,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 2027,
+      "latencyMs": 2476,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:28:19.688Z",
+      "at": "2026-11-18T03:12:12.945Z",
       "traceId": "dev-20",
       "step": "search",
       "service": "tavily",
@@ -504,12 +484,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 946,
+      "latencyMs": 1966,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:28:21.144Z",
+      "at": "2026-11-18T03:12:14.265Z",
       "traceId": "dev-20",
       "step": "search",
       "service": "tavily",
@@ -520,12 +500,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1428,
+      "latencyMs": 1301,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:28:22.224Z",
+      "at": "2026-11-18T03:12:17.232Z",
       "traceId": "dev-20",
       "step": "search",
       "service": "tavily",
@@ -536,12 +516,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1055,
+      "latencyMs": 2946,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:28:23.287Z",
+      "at": "2026-11-18T03:12:19.496Z",
       "traceId": "dev-20",
       "step": "meta-search",
       "service": "tavily",
@@ -552,12 +532,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1037,
+      "latencyMs": 2245,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:28:23.497Z",
+      "at": "2026-11-18T03:12:19.615Z",
       "traceId": "dev-20",
       "step": "meta-extract",
       "service": "tavily",
@@ -566,14 +546,14 @@
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 187,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 99,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:28:23.794Z",
+      "at": "2026-11-18T03:12:19.642Z",
       "traceId": "dev-20",
       "step": "extract",
       "service": "tavily",
@@ -582,14 +562,14 @@
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 265,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:28:24.396Z",
+      "at": "2026-11-18T03:12:19.645Z",
       "traceId": "dev-20",
       "step": "dating",
       "service": "wayback",
@@ -600,12 +580,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 599,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:28:24.399Z",
+      "at": "2026-11-18T03:12:19.645Z",
       "traceId": "dev-20",
       "step": "same_claim",
       "service": "tokenfactory",
@@ -613,15 +593,15 @@
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 253,
       "completionTokens": 7,
-      "cachedTokens": 0,
+      "cachedTokens": 160,
       "credits": 0,
       "costUsd": 0.0000274,
-      "latencyMs": 602,
+      "latencyMs": 529,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:28:25.139Z",
+      "at": "2026-11-18T03:12:20.386Z",
       "traceId": "dev-20",
       "step": "embed",
       "service": "tokenfactory",
@@ -632,12 +612,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0.00000224,
-      "latencyMs": 564,
+      "latencyMs": 1564,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:28:25.709Z",
+      "at": "2026-11-18T03:12:21.954Z",
       "traceId": "dev-20",
       "step": "embed",
       "service": "tokenfactory",
@@ -648,12 +628,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0.0000019200000000000003,
-      "latencyMs": 441,
+      "latencyMs": 2336,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:28:26.808Z",
+      "at": "2026-11-18T03:12:24.317Z",
       "traceId": "dev-20",
       "step": "dating",
       "service": "wayback",
@@ -664,12 +644,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 638,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:28:26.809Z",
+      "at": "2026-11-18T03:12:24.318Z",
       "traceId": "dev-20",
       "step": "same_claim",
       "service": "tokenfactory",
@@ -677,15 +657,15 @@
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 242,
       "completionTokens": 7,
-      "cachedTokens": 176,
+      "cachedTokens": 160,
       "credits": 0,
       "costUsd": 0.0000263,
-      "latencyMs": 395,
+      "latencyMs": 342,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:28:29.278Z",
+      "at": "2026-11-18T03:12:25.512Z",
       "traceId": "dev-20",
       "step": "dating",
       "service": "wayback",
@@ -696,12 +676,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 1315,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:28:29.326Z",
+      "at": "2026-11-18T03:12:25.533Z",
       "traceId": "dev-20",
       "step": "same_claim",
       "service": "tokenfactory",
@@ -712,28 +692,28 @@
       "cachedTokens": 176,
       "credits": 0,
       "costUsd": 0.0000269,
-      "latencyMs": 415,
+      "latencyMs": 302,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:28:29.750Z",
+      "at": "2026-11-18T03:12:25.841Z",
       "traceId": "dev-20",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 272,
-      "completionTokens": 118,
-      "cachedTokens": 0,
+      "completionTokens": 150,
+      "cachedTokens": 240,
       "credits": 0,
-      "costUsd": 0.0000626,
-      "latencyMs": 11392,
+      "costUsd": 0.00007219999999999999,
+      "latencyMs": 2416,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:28:42.322Z",
+      "at": "2026-11-18T03:12:29.723Z",
       "traceId": "dev-20",
       "step": "search",
       "service": "tavily",
@@ -744,12 +724,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1160,
+      "latencyMs": 1446,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:28:43.530Z",
+      "at": "2026-11-18T03:12:31.323Z",
       "traceId": "dev-20",
       "step": "search",
       "service": "tavily",
@@ -760,44 +740,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1179,
+      "latencyMs": 1579,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:28:44.734Z",
-      "traceId": "dev-20",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1187,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:28:45.845Z",
-      "traceId": "dev-20",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1090,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:28:46.732Z",
+      "at": "2026-11-18T03:12:32.088Z",
       "traceId": "dev-20",
       "step": "extract",
       "service": "tavily",
@@ -806,14 +754,30 @@
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 856,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 749,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:28:46.742Z",
+      "at": "2026-11-18T03:12:32.092Z",
+      "traceId": "dev-20",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 412,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00000412,
+      "latencyMs": 868,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:12:32.971Z",
       "traceId": "dev-20",
       "step": "embed",
       "service": "tokenfactory",
@@ -824,12 +788,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0.00000372,
-      "latencyMs": 789,
+      "latencyMs": 1472,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:28:47.537Z",
+      "at": "2026-11-18T03:12:34.447Z",
       "traceId": "dev-20",
       "step": "embed",
       "service": "tokenfactory",
@@ -840,12 +804,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0.0000016900000000000001,
-      "latencyMs": 375,
+      "latencyMs": 2087,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:28:48.117Z",
+      "at": "2026-11-18T03:12:36.555Z",
       "traceId": "dev-20",
       "step": "dating",
       "service": "fetch",
@@ -856,76 +820,44 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 201,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-18T03:12:36.571Z",
+      "traceId": "dev-20",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-18T03:12:36.778Z",
+      "traceId": "dev-20",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 222,
       "status": "403",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:28:48.960Z",
-      "traceId": "dev-20",
-      "step": "dating",
-      "service": "fetch",
-      "endpoint": "page",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 1044,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:28:50.508Z",
-      "traceId": "dev-20",
-      "step": "dating",
-      "service": "fetch",
-      "endpoint": "page",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 2391,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:28:50.918Z",
-      "traceId": "dev-20",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 409,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:28:51.187Z",
-      "traceId": "dev-20",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 268,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:28:51.188Z",
+      "at": "2026-11-18T03:12:36.782Z",
       "traceId": "dev-20",
       "step": "dating",
       "service": "wayback",
@@ -941,7 +873,23 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:28:51.189Z",
+      "at": "2026-11-18T03:12:37.356Z",
+      "traceId": "dev-20",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 574,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:12:37.357Z",
       "traceId": "dev-20",
       "step": "dating",
       "service": "wayback",
@@ -957,7 +905,23 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:28:51.189Z",
+      "at": "2026-11-18T03:12:37.357Z",
+      "traceId": "dev-20",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-18T03:12:37.358Z",
       "traceId": "dev-20",
       "step": "dating",
       "service": "wayback",

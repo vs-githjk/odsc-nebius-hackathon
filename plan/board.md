@@ -10,6 +10,7 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 |---|---|---|---|---|
 
 ## Log
+- [10:31 PT] RishitRai F5 #192 spans: line breaks end nav rows, headlines and list items; menus and language lists are not sentences; matching sentences ranked by the claim's words; same_claim asked about the top 2
 - [19:48 PT] RishitRai T86 live walk replay: the recorded searches and page reads play back in a log rail, pages land on the band, the counter ticks, the handle walks to the earliest page; Skip; once per visit, never under reduced motion
 - [10:15 PT] RishitRai F7 #192 depth cap: caps.depth counts steps back in time; link rounds that reach nothing earlier stop after 2 in a row, cold not PARTIAL (dev-05, 06, 20)
 - [09:38 PT] RishitRai F1 #192 walk half: confident same_claim no pages never set the search window, the planner hop or walkClaim's earliest; confidentNo exported for closeTrail; pz verify knows the rule. Replay what-if (earliest half via closeTrail): earliest 1 to 2 Pass, 0 new false origins | @rohanrastogi311 closeTrail: use confidentNo from pz rules
