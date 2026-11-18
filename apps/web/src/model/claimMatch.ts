@@ -78,6 +78,9 @@ export function sameClaimText(a: Parsed, b: Parsed): boolean {
   if (a.numbers !== b.numbers || a.multipliers !== b.multipliers || a.negations !== b.negations || a.units !== b.units) return false;
   if (!same(a.content, b.content)) return false;
   if (a.parts.length !== b.parts.length || a.parts.some((part, i) => !same(part, b.parts[i]!))) return false;
+  // A phrase claim (no number, T53) has nothing to anchor a reordering on, so its content words must match in order:
+  // "the only structure visible from space" is one claim, its words shuffled are not.
+  if (a.numbers === "") return a.content.join(" ") === b.content.join(" ");
   const [[headA, tailA], [headB, tailB]] = [sides(a.content), sides(b.content)];
   // After the first number the words keep their order too (XO on #184): "of your head heat through your body" is not
   // "of your body heat through your head". Only the subject side may be reordered ("Penguins at Harbor Zoo nap").
@@ -89,21 +92,23 @@ export function sameClaimText(a: Parsed, b: Parsed): boolean {
 // claim is not traced yet instead of opening the wrong trace.
 export function findTrace(text: string, traces: Trace[]): Trace | null {
   const asked = parse(text);
-  if (asked.content.length < MIN_WORDS || asked.numbers === "") return null;
+  // At least MIN_WORDS content words, number or not: a bare subject ("The Great Wall of China") never opens a trace.
+  if (asked.content.length < MIN_WORDS) return null;
   for (const row of sampleRows(traces)) {
     const trace = traces.find((t) => t.id === row.id)!;
-    if ([trace.claim.text, trace.viralSentence, ...trace.spans.map((s) => s.text)].some((w) => sameClaimText(asked, parse(w)))) return trace;
+    // A phrase claim also opens by its recorded phrase (atoms.phrase), the words the walk searched for (XO on #228).
+    const phrase = trace.claim.atoms.number === null && trace.claim.atoms.phrase ? [trace.claim.atoms.phrase] : [];
+    if ([trace.claim.text, trace.viralSentence, ...phrase, ...trace.spans.map((s) => s.text)].some((w) => sameClaimText(asked, parse(w)))) return trace;
   }
   return null;
 }
 
-// Why the box would not look: no number in it, or too short to be a claim.
+// Why the box would not look: too short to be a claim. A claim with no number is a phrase claim (T53), so it is looked
+// up like any other and, when no recorded trace has it, says "Not traced yet".
 export function claimProblem(text: string): string | null {
-  const parsed = parse(text);
   const words = text.trim().split(/\s+/).filter(Boolean);
   if (words.length === 0) return null;
-  if (parsed.numbers === "") return "Patient Zero traces claims with a number in them. Add the number as you saw it.";
-  if (words.length < MIN_WORDS) return "Paste the whole sentence the number came in.";
+  if (words.length < MIN_WORDS) return "Paste the whole sentence the claim came in.";
   return null;
 }
 

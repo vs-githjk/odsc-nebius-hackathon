@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { loadTraces } from "../data/loadTraces.ts";
 import { lintText } from "../../../../packages/pz/src/cli/lint-copy.ts";
 import { claimProblem, findTrace, sameClaimWords } from "./claimMatch.ts";
+import { outcomeOf } from "./claimBox.ts";
 
 const { traces } = loadTraces();
 const CLAIM = "Harbor Zoo penguins nap 14 times a day, twice as often as the zoo's seals";
@@ -52,13 +53,14 @@ describe("findTrace", () => {
 });
 
 describe("claimProblem", () => {
-  it("asks for a number, then for the whole sentence, in plain words", () => {
+  it("asks for the whole sentence when a text is too short to be a claim; a claim with no number is a phrase claim", () => {
     expect(claimProblem("")).toBeNull();
-    expect(claimProblem("penguins nap a lot")).toMatch(/number/);
     expect(claimProblem("14 naps")).toMatch(/whole sentence/);
+    expect(claimProblem("Great Wall")).toMatch(/whole sentence/);
+    expect(claimProblem("penguins nap a lot")).toBeNull();
     expect(claimProblem("Penguins nap 14 times a day")).toBeNull();
     expect(claimProblem("Penguins nap fourteen times a day")).toBeNull();
-    for (const s of ["penguins nap a lot", "14 naps"]) expect(lintText(claimProblem(s)!)).toEqual([]);
+    expect(lintText(claimProblem("14 naps")!)).toEqual([]);
   });
 });
 
@@ -116,5 +118,32 @@ describe("word order after the first number (XO on #184, follow-up)", () => {
     expect(sameClaimWords("You lose 40 to 45 percent of your head heat through your body.", "You lose 40 to 45 percent of your body heat through your head.")).toBe(false);
     expect(findTrace("You lose 40 to 45 percent of your head heat through your body.", traces)).toBeNull();
     expect(sameClaimWords("You lose 40 to 45 percent of your body heat through your head!", "You lose 40 to 45 percent of your body heat through your head.")).toBe(true);
+  });
+});
+
+// XO on #228 and #2: phrase claims (no digit) open their recorded trace, with the same care against a wrong match.
+describe.runIf(["dev-01", "dev-08", "dev-12"].every((id) => traces.some((t) => t.id === id)))("phrase claims with no number", () => {
+  it.each([
+    ["dev-01", "Insanity is doing the same thing over and over again and expecting different results."],
+    ["dev-01", "insanity is doing the same thing over and over again, and expecting different results!"],
+    ["dev-01", "Insanity is doing the same thing over and over again"],
+    ["dev-08", "The Great Wall of China is the only man-made structure visible from space."],
+    ["dev-12", "You eat a credit card's worth of plastic every week."],
+    ["dev-12", "You eat a credit card’s worth of plastic a week"],
+  ])("opens %s for %s", (id, text) => {
+    expect(findTrace(text, traces)?.id).toBe(id);
+    expect(outcomeOf(text, traces, 0)).toEqual({ kind: "open", id });
+  });
+
+  it.each([
+    ["a bare subject", "The Great Wall of China"],
+    ["a negation", "The Great Wall of China is not the only man-made structure visible from space."],
+    ["another unit", "You eat a credit card's worth of plastic every month."],
+    ["another object", "You eat a credit card's worth of plastic every week, and a spoon of sand."],
+    ["words shuffled", "Insanity is expecting different results and doing the same thing over and over again."],
+    ["one changed word", "Insanity is doing the same thing over and over again and expecting the same results."],
+    ["another landmark", "The Great Pyramid of Giza is the only man-made structure visible from space."],
+  ])("never opens a trace for %s", (_, text) => {
+    expect(findTrace(text, traces)).toBeNull();
   });
 });
