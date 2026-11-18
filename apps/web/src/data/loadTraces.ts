@@ -21,11 +21,13 @@ export function parseTraces(modules: Record<string, unknown>): Loaded {
   return { traces, errors };
 }
 
-// The invented samples, plus the recorded E2 dev traces from the live runs (eval/dev-traces, dev-NN.json; the
-// .error.json files are failed runs with no trace). Real traces show REPLAY with their recorded date, samples SAMPLE.
+// The invented samples, the recorded E2 dev traces from the live runs (eval/dev-traces, dev-NN.json; the .error.json
+// files are failed runs with no trace), and any recorded trace in traces/ and traces/gallery/ (XO on #184). Real traces
+// show REPLAY with their recorded date, samples SAMPLE. A missing folder simply adds nothing.
 export function loadTraces(): Loaded {
   return parseTraces({
     ...import.meta.glob("../../../../fixtures/traces/*.json", { eager: true, import: "default" }),
     ...import.meta.glob("../../../../eval/dev-traces/dev-[0-9][0-9].json", { eager: true, import: "default" }),
+    ...import.meta.glob(["../../../../traces/*.json", "../../../../traces/gallery/*.json"], { eager: true, import: "default" }),
   });
 }

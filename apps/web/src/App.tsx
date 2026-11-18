@@ -1,8 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
+import type { Trace } from "pz/schema";
+import { independenceLine } from "pz/headline";
+import { ClaimBox } from "./components/ClaimBox.tsx";
 import { ModeBadge } from "./components/ModeBadge.tsx";
 import { TraceView } from "./components/TraceView.tsx";
 import { loadTraces } from "./data/loadTraces.ts";
-import { rowFacts, sampleRows } from "./model/sampleRow.ts";
+import { isPlainClick, matchedNote } from "./model/claimBox.ts";
+import { heroTrace, rowFacts, sampleRow, sampleRows } from "./model/sampleRow.ts";
 import { parseRoute, type Route } from "./route.ts";
 
 const { traces, errors } = loadTraces();
@@ -17,22 +21,30 @@ function useRoute(): Route {
   return route;
 }
 
+const hero = heroTrace(traces);
 
-const sharedClaim = traces.length > 0 && traces.every((t) => t.claim.text === traces[0]!.claim.text) ? traces[0]!.claim.text : null;
+// The hero is a real recorded trace when there is one: its claim, its count and how far back it went. The invented
+// samples never lead; they sit under Samples.
+function Hero() {
+  if (!hero) return <h1 className="hero-quote">Where did this number start?</h1>;
+  const row = sampleRow(hero);
+  return (
+    <a className="hero" href={`#/t/${encodeURIComponent(hero.id)}`}>
+      <h1 className="hero-quote">{`“${hero.claim.text}”`}</h1>
+      <p className="hero-count">
+        {independenceLine(hero)}
+        {row.earliestYear !== null && ` Back to ${row.earliestYear}.`} <span className="hero-open">See the trace</span>
+      </p>
+    </a>
+  );
+}
 
-function Start() {
+function Start({ focusKey, onMatch }: { focusKey: number; onMatch(id: string): void }) {
   return (
     <main className="wrap section stack">
-      {sharedClaim ? (
-        <h1 className="hero-quote">{`“${sharedClaim}”`}</h1>
-      ) : (
-        <h1 className="k">Where did this number start?</h1>
-      )}
+      <Hero />
       <p className="lead">Patient Zero walks a claim back through time to the earliest page it can find, and shows every step.</p>
-      <label className="field">
-        <input className="input" type="text" placeholder="Paste a statistic or a quote" aria-describedby="live-note" disabled />
-        <span id="live-note" className="meta field-note">Recorded traces from our live runs and invented samples below.</span>
-      </label>
+      <ClaimBox traces={traces} focusKey={focusKey} onMatch={onMatch} />
       <section aria-labelledby="samples-heading">
         <div className="samples-head">
           <h2 id="samples-heading">Traces</h2>
@@ -76,11 +88,18 @@ function Start() {
   );
 }
 
-function TraceRoute({ id }: { id: string }) {
-  const trace = traces.find((t) => t.id === id);
+// matched: the claim box opened this trace for a pasted claim, so the page says it is a recording (or a sample), not a
+// fresh trace. A real trace's way back is plain "Back": the samples are not where it came from (#192 B).
+export function TraceRoute({ id, matched, all = traces }: { id: string; matched: boolean; all?: Trace[] }) {
+  const trace = all.find((t) => t.id === id);
   return (
     <main className="wrap trace-page">
-      <a className="back" href="#/">Back to the samples</a>
+      <a className="back" href="#/">{trace && !trace.synthetic ? "Back" : "Back to the samples"}</a>
+      {trace && matched && (
+        <p className="matched" role="status">
+          {matchedNote(trace)}
+        </p>
+      )}
       {trace ? <TraceView trace={trace} /> : <p className="error" role="alert">No trace called {id}.</p>}
     </main>
   );
@@ -88,6 +107,20 @@ function TraceRoute({ id }: { id: string }) {
 
 export function App() {
   const route = useRoute();
+  const [focusKey, setFocusKey] = useState(0);
+  const [matchedId, setMatchedId] = useState<string | null>(null);
+  // The note belongs to the arrival only: leaving the trace clears it.
+  useEffect(() => {
+    if (route.name !== "trace" || route.id !== matchedId) setMatchedId(null);
+  }, [route]);
+  // "Trace a claim" goes to the start page and puts the cursor in the claim box. A modified or middle click is left
+  // to the browser (a new tab or window).
+  const traceAClaim = (e: MouseEvent<HTMLAnchorElement>) => {
+    if (!isPlainClick(e)) return;
+    e.preventDefault();
+    if (route.name !== "start") window.location.hash = "#/";
+    setFocusKey((k) => k + 1);
+  };
   return (
     <>
       <nav className="nav" aria-label="Main">
@@ -96,10 +129,16 @@ export function App() {
             <span className="wordmark-ring" aria-hidden="true" />
             Patient Zero
           </a>
-          <a className="btn small" href="#/">Trace a claim</a>
+          <a className="btn small" href="#/" onClick={traceAClaim}>
+            Trace a claim
+          </a>
         </div>
       </nav>
-      {route.name === "trace" ? <TraceRoute id={route.id} /> : <Start />}
+      {route.name === "trace" ? (
+        <TraceRoute id={route.id} matched={route.id === matchedId} />
+      ) : (
+        <Start focusKey={focusKey} onMatch={setMatchedId} />
+      )}
     </>
   );
 }

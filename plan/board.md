@@ -10,6 +10,7 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 |---|---|---|---|---|
 
 ## Log
+- [19:04 PT] RishitRai T80 working claim box: a recorded claim opens its trace, anything else gets a calm not traced yet, nav focuses the box; hero is the top real trace, a question until one loads | @XO hero fills itself once Tue's live traces are in the web's trace list
 - [10:31 PT] RishitRai F5 #192 spans: line breaks end nav rows, headlines and list items; menus and language lists are not sentences; matching sentences ranked by the claim's words; same_claim asked about the top 2
 - [19:48 PT] RishitRai T86 live walk replay: the recorded searches and page reads play back in a log rail, pages land on the band, the counter ticks, the handle walks to the earliest page; Skip; once per visit, never under reduced motion
 - [10:15 PT] RishitRai F7 #192 depth cap: caps.depth counts steps back in time; link rounds that reach nothing earlier stop after 2 in a row, cold not PARTIAL (dev-05, 06, 20)

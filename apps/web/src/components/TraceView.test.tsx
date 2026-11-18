@@ -2,6 +2,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { beforeAll, describe, expect, it } from "vitest";
 import { loadTraces } from "../data/loadTraces.ts";
 import { scrubberStops } from "../model/scrubber.ts";
+import { badgeFor } from "./badge.ts";
 import { TraceView } from "./TraceView.tsx";
 
 beforeAll(() => {
@@ -18,7 +19,7 @@ describe("TraceView", () => {
       const first = scrubberStops(trace)[0];
       if (first) {
         expect(html).toContain('role="slider"');
-        for (const word of first.text.split(" ").slice(0, 3)) expect(html).toContain(word.replace(/&/g, "&amp;").replace(/'/g, "&#x27;"));
+        for (const word of first.text.split(" ").slice(0, 3)) expect(html).toContain(word.replace(/&/g, "&amp;").replace(/'/g, "&#x27;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;"));
       } else {
         expect(html).toContain("No page with the claim");
       }
@@ -26,7 +27,8 @@ describe("TraceView", () => {
       expect(html).toContain("How this was decided");
       expect(html).toMatch(new RegExp(`aria-current="true"><span class="rule-row">Rule ${trace.decision.row}</span>`));
       expect(html).not.toContain("foot-note");
-      expect(html).toContain("SAMPLE");
+      // Samples read SAMPLE; the recorded E2 traces (#220) read REPLAY.
+      expect(html).toContain(badgeFor(trace).label);
     }
   });
 
