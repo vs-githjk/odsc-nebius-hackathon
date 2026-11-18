@@ -87,7 +87,7 @@ describe("T95 make judge", () => {
     for (const part of ["== pz doctor", "== pz verify", "== planted traps", "stop state agrees", "Patient Zero  "]) expect(text).toContain(part);
     expect(text).not.toContain("trace_failed");
     expect(text).not.toMatch(/^\s+at .+:\d+:\d+\)?$/m);
-    expect(out.at(-1)).toMatch(/^\d+ (SAMPLE )?traces verified, 0 planted origins, dev score (not run yet|E\d: false origins \d+( \(\+\d+\))?, target cited \d+\/\d+, earliest \d+\/\d+ pass), held-out (not run yet|\d+\/\d+)\. make judge passed in \d+ s\.$/);
+    expect(out.at(-1)).toMatch(/^\d+ (SAMPLE |REPLAY )?traces verified, 0 planted origins, dev score (not run yet|E\d: false origins \d+( \(\+\d+\))?, target cited \d+\/\d+, earliest \d+\/\d+ pass), held-out (not run yet|\d+\/\d+)\. make judge passed in \d+ s\.$/);
   });
 
   it("says plainly when the SAMPLE fixtures stand in for reviewed live traces, and prefers traces/ when they exist", () => {
