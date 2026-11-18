@@ -22,7 +22,7 @@ Honest status as of Nov 17, 2026:
 ```sh
 git clone https://github.com/vs-githjk/odsc-nebius-hackathon.git && cd odsc-nebius-hackathon
 npm ci
-make judge                      # setup check, every committed trace as a card, pz verify, traps, one summary line
+make judge                      # setup check, two recorded runs replayed as cards, pz verify, traps, one summary line
 ```
 
 Then, if you want more:

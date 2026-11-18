@@ -9,7 +9,7 @@ verify:
 	npm run -s typecheck && \
 	mkdir -p runs && npx vitest run --reporter=default --reporter=json --outputFile.json=runs/vitest.json && \
 	npm run -s pz -- verify fixtures/traces/*.json fixtures/failure/traces/*.json && \
-	if ls eval/dev-traces/dev-[0-9][0-9].json >/dev/null 2>&1; then npm run -s pz -- verify eval/dev-traces/dev-[0-9][0-9].json; fi && \
+	if ls eval/dev-traces/dev-[0-9][0-9].json >/dev/null 2>&1; then npm run -s pz -- verify eval/dev-traces/dev-[0-9][0-9].json --historical eval/dev-traces/historical.json; fi && \
 	if ls spike/traces/*.json >/dev/null 2>&1; then npm run -s pz -- verify spike/traces/*.json --historical spike/historical-traces.json; fi && \
 	npm run -s pz -- traps && \
 	node --import tsx packages/pz/src/cli/lint-copy.ts && \

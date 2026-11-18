@@ -2213,7 +2213,6 @@
     "row": 6,
     "reasons": [
       "no earliest page with a confirmed date, a primary page type, no earlier citation and no negated span",
-      "earliest page n7 presents the claim as already said (\"you've heard\")",
       "1 unread candidate parent(s)"
     ],
     "counts": {
