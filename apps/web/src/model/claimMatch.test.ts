@@ -110,3 +110,11 @@ describe("XO on #184 (4689534)", () => {
     expect(findTrace("By 2050 there will be more plastic than fish in the ocean.", traces)?.id).toBe("dev-10");
   });
 });
+
+describe("word order after the first number (XO on #184, follow-up)", () => {
+  it("'head heat through your body' is not dev-07's 'body heat through your head'", () => {
+    expect(sameClaimWords("You lose 40 to 45 percent of your head heat through your body.", "You lose 40 to 45 percent of your body heat through your head.")).toBe(false);
+    expect(findTrace("You lose 40 to 45 percent of your head heat through your body.", traces)).toBeNull();
+    expect(sameClaimWords("You lose 40 to 45 percent of your body heat through your head!", "You lose 40 to 45 percent of your body heat through your head.")).toBe(true);
+  });
+});

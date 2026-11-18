@@ -79,7 +79,9 @@ export function sameClaimText(a: Parsed, b: Parsed): boolean {
   if (!same(a.content, b.content)) return false;
   if (a.parts.length !== b.parts.length || a.parts.some((part, i) => !same(part, b.parts[i]!))) return false;
   const [[headA, tailA], [headB, tailB]] = [sides(a.content), sides(b.content)];
-  return same(headA, headB) && same(tailA, tailB);
+  // After the first number the words keep their order too (XO on #184): "of your head heat through your body" is not
+  // "of your body heat through your head". Only the subject side may be reordered ("Penguins at Harbor Zoo nap").
+  return same(headA, headB) && tailA.join(" ") === tailB.join(" ");
 }
 
 // The recorded trace for a typed or pasted claim: one whose claim, or the wording on one of its pages, states the same
