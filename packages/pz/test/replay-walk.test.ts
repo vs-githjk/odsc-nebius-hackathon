@@ -3,7 +3,7 @@ import { existsSync, mkdtempSync, readdirSync, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { fidelity, MISSES_FILE, replayClaim, replayWalk } from "../../../eval/replay-walk.ts";
+import { fidelity, missTable, MISSES_FILE, replayClaim, replayWalk, selectClaims } from "../../../eval/replay-walk.ts";
 import { createFileCache } from "../src/clients/cache.ts";
 import { createMisses, recordPaths } from "../src/clients/tape.ts";
 import { FINGERPRINT_PROMPT } from "../src/engine/fingerprint.ts";
@@ -221,5 +221,31 @@ describe("replay miss file", () => {
     const byClaim = JSON.parse(readFileSync(join(dir, "m2", MISSES_FILE), "utf8"));
     expect(Object.keys(byClaim)).toEqual([CLAIM.id]);
     expect(byClaim[CLAIM.id].length).toBeGreaterThan(0);
+  });
+});
+
+describe("replay tooling for walk changes (#164)", () => {
+  const claim = { ...CLAIM, expected: "origin" as const, tracedOrigin: null, tracedBy: null };
+  const other = { id: "dev-98", text: "Harbor Zoo penguins nap 12 times a day.", expected: "cold" as const, tracedOrigin: null, tracedBy: null };
+
+  it("--claims replays only the listed claims, and rejects an id that is not in the set", () => {
+    expect(selectClaims([claim, other], undefined).map(c => c.id)).toEqual([CLAIM.id, "dev-98"]);
+    expect(selectClaims([claim, other], " dev-98 ").map(c => c.id)).toEqual(["dev-98"]);
+    expect(selectClaims([claim, other], `${CLAIM.id},dev-98`).map(c => c.id)).toEqual([CLAIM.id, "dev-98"]);
+    expect(() => selectClaims([claim, other], "dev-98,dev-77")).toThrow(/unknown claim id\(s\): dev-77/);
+  });
+
+  it("the report ends with a per-claim miss table: state, paid and free misses, verdict", async () => {
+    const dir = mkdtempSync(join(tmpdir(), "pz-replay-"));
+    await record(dir);
+    const report = await replayWalk([claim, other], { recordDir: dir, scratch: join(dir, "t1"), outDir: join(dir, "t1") });
+    expect(report.rows).toEqual([
+      { id: CLAIM.id, state: expect.any(String), paid: 0, free: 0, verdict: "exact" },
+      { id: "dev-98", state: null, paid: 0, free: 0, verdict: "failed" },
+    ]);
+    const table = missTable(report.rows);
+    expect(table[0]).toMatch(/^claim +state +paid +free +verdict$/);
+    expect(table[1]).toMatch(new RegExp(`^${CLAIM.id} +[A-Z_]+ +0 +0 +exact$`));
+    expect(table[2]).toMatch(/^dev-98 +- +0 +0 +failed$/);
   });
 });

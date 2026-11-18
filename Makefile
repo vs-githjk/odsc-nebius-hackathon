@@ -46,10 +46,11 @@ dev-score:
 	@node --import tsx eval/dev-score.ts
 
 # Reruns the whole pipeline for a dev set from a recording (PZ_RECORD_DIR on a live run), at $0, into runs/replay-walk/.
-# Prints the replay score, last night's committed score and "misses N". See eval/README.md.
+# Prints the replay score, last night's committed score, "misses N" and a per-claim miss table. CLAIMS=dev-02,dev-05 replays
+# only those claims (for example the ones recorded in one run). See eval/README.md.
 SET ?= E2
 replay-walk:
-	@node --import tsx eval/replay-walk.ts --set $(SET) $(ARGS)
+	@node --import tsx eval/replay-walk.ts --set $(SET) $(if $(CLAIMS),--claims $(CLAIMS)) $(ARGS)
 
 export DEV_REPLAY_DIR DEV_PIPELINE DEV_LEDGER
 dev-run:

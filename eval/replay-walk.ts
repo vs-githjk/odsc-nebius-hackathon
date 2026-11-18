@@ -83,7 +83,33 @@ export function fidelity(misses: Miss[]): string {
 }
 export const exactReplay = (misses: Miss[]) => !misses.some(paid);
 
-export type ReplayReport = { replayed: number; exact: number; failed: { id: string; reason: string }[]; misses: Misses };
+// One row per replayed claim: its stop state (null when it failed), paid and free misses, and the verdict line.
+export type ClaimRow = { id: string; state: string | null; paid: number; free: number; verdict: string };
+export type ReplayReport = { replayed: number; exact: number; failed: { id: string; reason: string }[]; misses: Misses; rows: ClaimRow[] };
+
+const rowFor = (id: string, state: string | null, own: Miss[]): ClaimRow => {
+  const p = own.filter(paid).length;
+  return { id, state, paid: p, free: own.length - p, verdict: state === null ? "failed" : p === 0 ? "exact" : "walk changed" };
+};
+
+// The per-claim miss table (#164): which claims a walk change made drift, at a glance.
+export function missTable(rows: ClaimRow[]): string[] {
+  const pad = (v: string, n: number) => v.padEnd(n);
+  return [
+    `${pad("claim", 8)}${pad("state", 17)}${pad("paid", 6)}${pad("free", 6)}verdict`,
+    ...rows.map((r) => `${pad(r.id, 8)}${pad(r.state ?? "-", 17)}${pad(String(r.paid), 6)}${pad(String(r.free), 6)}${r.verdict}`),
+  ];
+}
+
+// --claims dev-02,dev-05: replay only those claims (for example the ones whose recording clocks are from the same run).
+// Unknown ids are an error, never silently dropped.
+export function selectClaims(claims: DevClaim[], spec: string | undefined): DevClaim[] {
+  if (!spec?.trim()) return claims;
+  const ids = spec.split(",").map((x) => x.trim()).filter(Boolean);
+  const unknown = ids.filter((id) => !claims.some((c) => c.id === id));
+  if (unknown.length) throw new Error(`unknown claim id(s): ${unknown.join(", ")}`);
+  return claims.filter((c) => ids.includes(c.id));
+}
 
 export async function replayWalk(claims: DevClaim[], opts: Omit<ReplayOptions, "misses"> & { outDir: string; report?: (line: string) => void }): Promise<ReplayReport> {
   const misses = createMisses();
@@ -91,6 +117,7 @@ export async function replayWalk(claims: DevClaim[], opts: Omit<ReplayOptions, "
   mkdirSync(opts.outDir, { recursive: true });
   let replayed = 0;
   let exact = 0;
+  const rows: ClaimRow[] = [];
   // Every miss by claim, written beside the replayed traces: the request a code change (or a gap in the recording)
   // made the replay ask for. Model misses keep the start of their last message, HTTP misses their URL.
   const byClaim: Record<string, Miss[]> = {};
@@ -105,17 +132,19 @@ export async function replayWalk(claims: DevClaim[], opts: Omit<ReplayOptions, "
       const own = misses.list.slice(before);
       if (own.length) byClaim[claim.id] = own;
       if (exactReplay(own)) exact++;
+      rows.push(rowFor(claim.id, trace.decision.state, own));
       opts.report?.(`${claim.id}  ${trace.decision.state}  ${fidelity(own)}`);
     } catch (error) {
       const reason = error instanceof Error ? error.message : "replay failed";
       failed.push({ id: claim.id, reason });
       const own = misses.list.slice(before);
       if (own.length) byClaim[claim.id] = own;
+      rows.push(rowFor(claim.id, null, own));
       opts.report?.(`${claim.id}  FAILED (${reason})${own.length ? `  ${fidelity(own)}` : ""}`);
     }
   }
   writeFileSync(join(opts.outDir, MISSES_FILE), `${JSON.stringify(byClaim, null, 2)}\n`);
-  return { replayed, exact, failed, misses };
+  return { replayed, exact, failed, misses, rows };
 }
 
 export const MISSES_FILE = "replay-misses.json";
@@ -124,10 +153,10 @@ export const missLine = (misses: Misses) =>
   `misses ${misses.count()} (model ${misses.count("chat") + misses.count("embed")}, http ${misses.count("http")})`;
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-  const { values } = parseArgs({ options: { set: { type: "string" }, record: { type: "string" }, out: { type: "string" }, "http-dir": { type: "string", multiple: true } } });
+  const { values } = parseArgs({ options: { set: { type: "string" }, claims: { type: "string" }, record: { type: "string" }, out: { type: "string" }, "http-dir": { type: "string", multiple: true } } });
   const [entry] = devSetsToScore(values.set ?? "E2");
   const { set, file } = entry!;
-  const claims: DevClaim[] = JSON.parse(readFileSync(file, "utf8"));
+  const claims: DevClaim[] = selectClaims(JSON.parse(readFileSync(file, "utf8")), values.claims ?? process.env.CLAIMS);
   const recordDir = resolve(values.record ?? process.env.PZ_RECORD_DIR ?? DEFAULT_RECORD_DIR);
   const outDir = resolve(values.out ?? join("runs", "replay-walk", set));
   const extra = (values["http-dir"] ?? [DEFAULT_CACHE_DIR]).map(dir => resolve(dir));
@@ -144,6 +173,8 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     console.log(`${missLine(report.misses)}; ${report.replayed} of ${claims.length} claims replayed (${report.exact} exact)${lacking.length ? `, ${lacking.length} without a recording (${lacking.map(c => c.id).join(", ")})` : ""}${report.failed.length ? `, ${report.failed.length} failed` : ""}`);
     for (const miss of report.misses.list.slice(0, 5)) console.log(`  miss ${miss.kind}: ${miss.detail}`);
     if (report.misses.count()) console.log(`  every miss, by claim: ${join(outDir, MISSES_FILE)}`);
+    console.log("");
+    for (const line of missTable(report.rows)) console.log(line);
     if (report.failed.length) process.exitCode = 1;
   }
 }
