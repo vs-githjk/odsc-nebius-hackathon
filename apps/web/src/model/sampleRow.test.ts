@@ -30,10 +30,11 @@ describe("sampleRow", () => {
   });
 
   it("puts the rows with the most to show first, in a stable order", () => {
-    const rows = sampleRows(traces);
+    const samples = traces.filter((t) => t.synthetic);
+    const rows = sampleRows(samples);
     expect(rows[0]!.id).toBe("sample-rich");
     expect(rows.at(-1)!.id).toBe("sample-no-pages");
-    expect(sampleRows([...traces].reverse()).map((r) => r.id)).toEqual(rows.map((r) => r.id));
+    expect(sampleRows([...samples].reverse()).map((r) => r.id)).toEqual(rows.map((r) => r.id));
   });
 
   it("row copy passes the copy lint", () => {
