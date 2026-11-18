@@ -3,6 +3,7 @@
     "credits": 150,
     "usd": 0.5,
     "ms": 300000,
+    "walkShare": 0.7,
     "depth": 8,
     "frontier": 5
   },
@@ -100,6 +101,7 @@
     "relative to"
   ],
   "notes": {
+    "caps.walkShare": "#192 F2 time reserve (#212): no new walk round starts once this share of caps.ms has passed; a round already running finishes. The rest of caps.ms is left for dating, page_type, readouts and the card, so a deep trail that keeps stepping back (dev-05) ends with a card, recorded as a time cap hit. 0.7 of 300 s is 210 s; a stub trail ran to 360 s with no reserve.",
     "metaMaps": "T49: one extra search per trace limited to factCheckDomains; up to two fact-check pages are read as meta nodes (never origins) and the pages they cite are read first. A page reached that way records foundViaMeta and still needs its own verbatim span. false turns it off.",
     "printCues": "T37: case-insensitive patterns that show the earliest page credits print (an ISBN, page or volume numbers, a journal, a book, a dated study). A typed boundary of print counts only if one matches the sentence or the text around it.",
     "writtenCitationCues": "#192 F4: case-insensitive patterns for an earlier source cited in words, each with a named group `year` that sits inside the cited phrase ('2009 issue of', 'published in 2013', 'a 2006 study'). When that year is before the page's own date, the page counts as citing earlier and is never an origin. A data year elsewhere in the span ('since 1988, according to the Carbon Majors Report') never counts. Set from dev-13's span on E2; E3 is not looked at.",

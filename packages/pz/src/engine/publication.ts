@@ -277,7 +277,12 @@ export function createEvidence(deps: EvidenceDeps) {
     const host = u.hostname.toLowerCase();
     const pubmed = host === "pubmed.ncbi.nlm.nih.gov" ? /^\/(?:\w+\/)?(\d+)/.exec(u.pathname)?.[1] : undefined;
     const pmc = /(?:^|\.)ncbi\.nlm\.nih\.gov$/.test(host) ? /\/(?:pmc\/)?articles\/PMC(\d+)/i.exec(u.pathname)?.[1] : undefined;
-    const doi = /(?:^|\.)doi\.org$/.test(host) ? /^\/(10\.\d{4,9}\/.+)$/.exec(decodeURIComponent(u.pathname))?.[1] : undefined;
+    let path = u.pathname;
+    try { path = decodeURIComponent(path); } catch { /* malformed escape: keep the original path */ }
+    const doiPath = /(?:^|\.)doi\.org$/.test(host)
+      ? path.replace(/^\//, "")
+      : /^\/doi\/(?:abs\/|full\/|pdf\/|epdf\/)?(10\..+)$/i.exec(path)?.[1];
+    const doi = doiPath && /^10\.\d{4,9}\/[^\s?#]+$/i.test(doiPath) ? doiPath : undefined;
     const registry = (found: Dated | null, source: Evidence["source"]): Evidence | null => (found ? { date: found.date, ...(found.precision === "day" ? {} : { precision: found.precision }), source } : null);
     let found: Evidence | null = null;
     if (pubmed) found = registry(await ncbi("pubmed", pubmed), "registry_pubmed");

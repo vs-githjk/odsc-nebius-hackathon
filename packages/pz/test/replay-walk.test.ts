@@ -1,9 +1,9 @@
 import { createHash } from "node:crypto";
-import { existsSync, mkdtempSync, readdirSync } from "node:fs";
+import { existsSync, mkdtempSync, readdirSync, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { fidelity, replayClaim, replayWalk } from "../../../eval/replay-walk.ts";
+import { fidelity, MISSES_FILE, replayClaim, replayWalk } from "../../../eval/replay-walk.ts";
 import { createFileCache } from "../src/clients/cache.ts";
 import { createMisses, recordPaths } from "../src/clients/tape.ts";
 import { FINGERPRINT_PROMPT } from "../src/engine/fingerprint.ts";
@@ -32,8 +32,13 @@ function typedReply(fields: Record<string, string>) {
     top_logprobs: top.map(([t, logprob]) => ({ token: t, bytes: [...Buffer.from(t)], logprob })) })) } };
 }
 
+// Requests the live world fails, by URL test: a 404 page, a Wayback lookup that times out (replay-misses fix).
+let failing: { test: (url: string) => boolean; fail: () => Response | never }[] = [];
+
 const world = (async (input: string | URL | Request, init?: RequestInit) => {
   const url = String(input);
+  const failure = failing.find(f => f.test(url));
+  if (failure) return failure.fail();
   if (url.includes("/cdx/")) {
     const page = pages.find(p => p.url === new URL(url).searchParams.get("url"));
     return new Response(JSON.stringify(page ? [["timestamp", "original"], [`${page.date.replaceAll("-", "")}000000`, page.url]] : []));
@@ -87,7 +92,10 @@ async function record(dir: string) {
   }
 }
 
-afterEach(() => vi.unstubAllGlobals());
+afterEach(() => {
+  vi.unstubAllGlobals();
+  failing = [];
+});
 
 describe("walk replay from a recording", () => {
   it("replays one recorded claim end to end with zero network and zero misses", async () => {
@@ -172,5 +180,46 @@ describe("walk replay from a recording", () => {
     const report = await replayWalk(claims, { recordDir: dir, scratch: join(dir, "s3"), outDir: join(dir, "out") });
     expect(report.replayed).toBe(1);
     expect(report.failed.map(f => f.id)).toEqual(["dev-98"]);
+  });
+
+  it("replays a lookup that failed live as the same failure, not as a miss (tonight's 21 http misses)", async () => {
+    const blog = pages[1]!;
+    failing = [
+      { test: (url) => url === blog.url, fail: () => new Response("not found", { status: 404 }) },
+      { test: (url) => url.includes("/cdx/") && url.includes(encodeURIComponent(blog.url)), fail: () => { throw Object.assign(new Error("timed out"), { name: "TimeoutError" }); } },
+    ];
+    const dir = mkdtempSync(join(tmpdir(), "pz-replay-"));
+    const live = await record(dir);
+    failing = [];
+    const misses = createMisses();
+    const replayed = await replayClaim(CLAIM, { recordDir: dir, scratch: join(dir, "scratch-f"), misses });
+    expect(misses.list).toEqual([]);
+    const shape = (t: typeof live) => ({ state: t.decision.state, nodes: t.nodes.map(n => [n.url, n.date]), earliest: t.earliest.nodeIds });
+    expect(shape(replayed)).toEqual(shape(live));
+  });
+
+  it("a normal live cache never stores a failure, so a transient error is retried on the next live run", async () => {
+    const blog = pages[1]!;
+    failing = [{ test: (url) => url === blog.url, fail: () => new Response("busy", { status: 503 }) }];
+    const dir = mkdtempSync(join(tmpdir(), "pz-replay-"));
+    await record(dir);
+    const live = createFileCache(join(dir, "live-cache"));
+    const stored = readdirSync(join(dir, "live-cache")).map(f => live.get(f.replace(/.json$/, "")));
+    expect(stored.some(e => e && "failure" in e)).toBe(false);
+  });
+});
+
+describe("replay miss file", () => {
+  it("writes every miss by claim beside the replayed traces, and an empty map for an exact replay", async () => {
+    const dir = mkdtempSync(join(tmpdir(), "pz-replay-"));
+    await record(dir);
+    const claim = { ...CLAIM, expected: "origin" as const, tracedOrigin: null, tracedBy: null };
+    await replayWalk([claim], { recordDir: dir, scratch: join(dir, "m1"), outDir: join(dir, "m1") });
+    expect(JSON.parse(readFileSync(join(dir, "m1", MISSES_FILE), "utf8"))).toEqual({});
+    const changed = { ...claim, text: `Really, ${CLAIM.text}` };
+    await replayWalk([changed], { recordDir: dir, scratch: join(dir, "m2"), outDir: join(dir, "m2") }).catch(() => null);
+    const byClaim = JSON.parse(readFileSync(join(dir, "m2", MISSES_FILE), "utf8"));
+    expect(Object.keys(byClaim)).toEqual([CLAIM.id]);
+    expect(byClaim[CLAIM.id].length).toBeGreaterThan(0);
   });
 });
