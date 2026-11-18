@@ -81,10 +81,10 @@
     "\\bfirst (?:reported|published) in\\s+(?<year>(?:1[5-9]|20)\\d{2})\\b"
   ],
   "priorUseCues": [
-    "\\b(?:admonition|adage|old saying|conventional wisdom|folk wisdom|rule of thumb)\\b",
+    "\\b(?:admonition|adage|old saying|conventional wisdom|folk wisdom)\\b",
     "\\b(?:commonly|widely|often|frequently|oft)[- ](?:said|cited|quoted|repeated|heard|held|believed|claimed|stated|recommended|given)\\b",
-    "\\b(?:common|popular|familiar|standard|ubiquitous) (?:advice|belief|notion|claim|recommendation|saying|refrain)\\b",
-    "\\b(?:we|you)(?:'ve| have)? (?:all |probably |likely |often )?(?:been told|heard)\\b",
+    "\\bthe (?:seemingly |oft-repeated )?(?:common|popular|familiar|ubiquitous) (?:advice|belief|notion|claim|recommendation|saying|refrain)\\b",
+    "\\b(?:we|you)(?:'ve| have) (?:all |probably |likely |often )?(?:been told|heard)\\b",
     "\\bit is (?:often|commonly|widely|frequently) (?:said|claimed|believed|stated)\\b"
   ],
   "editableDomains": [

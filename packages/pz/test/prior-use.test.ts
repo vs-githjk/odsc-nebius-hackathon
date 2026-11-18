@@ -21,6 +21,10 @@ describe("a page that presents the claim as already said is never its origin (de
     expect(said("We recommend that adults drink eight glasses of water a day.")).toBeNull();
     expect(said("Our survey found 71% of emissions came from 100 companies.")).toBeNull();
     expect(said("The study says this is common in older adults.")).toBeNull();
+    expect(said("We heard from 1,200 workers; 71% said they would quit.")).toBeNull();
+    expect(said("As a rule of thumb, adults should drink eight glasses a day.")).toBeNull();
+    expect(said("Our standard recommendation is 150 minutes a week.")).toBeNull();
+    expect(said("This is not a common belief among doctors.")).toBeNull();
   });
 
   it("the committed SAMPLE origin traces still end ORIGIN_FOUND", () => {
