@@ -122,3 +122,5 @@
 - 2026-11-18 18:12 plan to submission posted on #2, pinged #1 #3 #4; Anoop owns Pages deploy prep
 - 2026-11-18 18:20 judge 66/100; fixes posted on #2 (Rohan dating+L19, Rishit make judge real traces, Anoop README/submission)
 - 2026-11-18 18:20 reviewing #232 #233 #234 #235; urgent pings to Rohan (#3) and Anoop (#4); hero = dev-10 LOCKED
+- 2026-11-18 18:25 #232 review 5d3512e: FIX [M] README:17 #225 overclaim, [L] label; refresh list posted
+- 2026-11-18 18:28 #234 review e19bbf6: FIX [M] subset labels, [L] empty ids, [L] CLAIMS env; posted
