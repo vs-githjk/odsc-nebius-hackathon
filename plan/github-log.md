@@ -111,3 +111,7 @@
 - 22:58 ET: #184 claim box PASS and merged. XO coding window closed 23:00; orchestration only.
 - 23:06 ET: #228 PASS merged. Rishit next: phrase claims in the claim box.
 - 2026-11-18 08:26 #222 re-review 257c9fd: FIX [M] teaser-only time confirms false date, [L] comments/scripts; posted
+- 2026-11-18 11:57 #230 review 80f672f: FIX [M] stale #225 line, [L] run time; posted
+- 2026-11-18 11:59 #229 review a64bc77: FIX [M] L18 scope understated, [L] contextBefore; posted
+- 2026-11-18 12:09 dev-04 live re-record (Vidyut go), $0.30, ledger $8.35/15; #231 merged cb77a08
+- 2026-11-18 12:15 #222 f378860 CI red (own test); tagged Rohan. Rishit pinged on #1 (13h quiet). Anoop next items on #4
