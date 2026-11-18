@@ -59,6 +59,7 @@ const pageOf = (body: { messages: { content: string }[] }) => body.messages[1]?.
 
 function stub(world: World) {
   const calls: { url: string; step?: string; questions?: string[] }[] = [];
+  const slots = new Map<string, number>();
   const impl = (async (input: string | URL | Request, init?: RequestInit) => {
     const url = String(input);
     calls.push({ url });
@@ -85,8 +86,16 @@ function stub(world: World) {
     }
     if (url.endsWith("/v1/embeddings") && world.embedBad) return new Response(JSON.stringify({ data: [], usage: { prompt_tokens: 5 } }));
     if (url.endsWith("/v1/embeddings")) {
+      // One slot per distinct text, starting from its hash and probing past taken slots: the same text always gets the
+      // same vector, and two different texts never share one. Before, two pages' sentences collided about 1 run in 64
+      // (the claim number is random), landed in one cluster, and closeTrail rightly drew no edge (flaky CI on #200).
       const data = (body.input as string[]).map((text, index) => {
-        const slot = createHash("sha256").update(text).digest()[0]! % 64;
+        let slot = slots.get(text);
+        if (slot === undefined) {
+          slot = createHash("sha256").update(text).digest()[0]! % 64;
+          while ([...slots.values()].includes(slot)) slot = (slot + 1) % 64;
+          slots.set(text, slot);
+        }
         return { index, embedding: Array.from({ length: 64 }, (_, i) => (i === slot ? 1 : 0)) };
       });
       return new Response(JSON.stringify({ data, usage: { prompt_tokens: 20 } }));

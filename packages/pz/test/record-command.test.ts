@@ -38,8 +38,7 @@ describe("T38 recording command", () => {
     const manifest = join(t.root, "eval/dev-claims.json");
     const e2Manifest = fileURLToPath(new URL("../../../eval/dev-claims.json", import.meta.url));
     writeFileSync(manifest, readFileSync(e2Manifest));
-    // #192 F5: dev-10 ("By 2050") has no number now, so it is a zero-call fingerprint case too.
-    const expectedIds = ["dev-01", "dev-07", "dev-08", "dev-10", "dev-12"];
+    const expectedIds = ["dev-01", "dev-07", "dev-08", "dev-12"];
 
     expect(await recordDevCommand(["--plan"], t.io, t.deps)).toBe(0);
     expect(JSON.parse(t.lines[0]!).fingerprintWithoutNumber).toEqual(expectedIds);
@@ -112,7 +111,7 @@ describe("T38 recording command", () => {
     operations.fingerprint = (source, deps) => zeroSources.has(source) ? fingerprint(source, deps) : operation(source, deps);
     const zeroSources = new Set<string>();
     const cases = loadT38Cases(t.root);
-    for (const item of cases.filter(item => item.kind === "fingerprint" && ["dev-01", "dev-07", "dev-08", "dev-10", "dev-12"].includes(item.id))) {
+    for (const item of cases.filter(item => item.kind === "fingerprint" && ["dev-01", "dev-07", "dev-08", "dev-12"].includes(item.id))) {
       zeroSources.add(item.source);
     }
     await recordCases(cases.slice(0, 1), { provenance: "LIVE", operations,
@@ -134,18 +133,18 @@ describe("T38 recording command", () => {
       writeRecording(prior, { ...cases[1]!, provenance: "LIVE", status: "failed", recordedAt: usage.at,
         calls: [], usage: [usage], errorCode: "network_error" });
       expect(await recordDevCommand(args, t.io, deps)).toBe(0);
-      expect(JSON.parse(t.lines[0]!)).toEqual({ mode: "LIVE", recorded: 19, noCall: 5, reused: 1 });
-      expect(chat).toHaveBeenCalledTimes(19);
+      expect(JSON.parse(t.lines[0]!)).toEqual({ mode: "LIVE", recorded: 20, noCall: 4, reused: 1 });
+      expect(chat).toHaveBeenCalledTimes(20);
       expect(readFileSync(join(out, "intake/01-plain.json"), "utf8")).toBe(original);
       expect(JSON.parse(readFileSync(join(prior, "intake/02-paraphrase.json"), "utf8")).status).toBe("failed");
       const zeroPath = join(out, "fingerprint/dev-01.json");
       const noCall = JSON.parse(readFileSync(zeroPath, "utf8"));
       expect(noCall).toMatchObject({ provenance: "NO_CALL", calls: [], usage: [], output: { reason: "no_number" } });
       expect(await recordDevCommand(["--replay", out], t.io, deps)).toBe(0);
-      expect(JSON.parse(t.lines.at(-1)!)).toEqual({ mode: "REPLAY", replayed: 25, live: 20 });
+      expect(JSON.parse(t.lines.at(-1)!)).toEqual({ mode: "REPLAY", replayed: 25, live: 21 });
       writeFileSync(zeroPath, JSON.stringify({ ...noCall, provenance: "LIVE" }));
       expect(await recordDevCommand(["--replay", out], t.io, deps)).toBe(1);
-      expect(chat).toHaveBeenCalledTimes(19);
+      expect(chat).toHaveBeenCalledTimes(20);
     } finally {
       vi.unstubAllEnvs();
     }

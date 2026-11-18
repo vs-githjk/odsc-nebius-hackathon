@@ -11,6 +11,9 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 
 ## Log
 - [10:31 PT] RishitRai F5 #192 spans: line breaks end nav rows, headlines and list items; menus and language lists are not sentences; matching sentences ranked by the claim's words; same_claim asked about the top 2
+- [19:48 PT] RishitRai T86 live walk replay: the recorded searches and page reads play back in a log rail, pages land on the band, the counter ticks, the handle walks to the earliest page; Skip; once per visit, never under reduced motion
+- [10:15 PT] RishitRai F7 #192 depth cap: caps.depth counts steps back in time; link rounds that reach nothing earlier stop after 2 in a row, cold not PARTIAL (dev-05, 06, 20)
+- [09:38 PT] RishitRai F1 #192 walk half: confident same_claim no pages never set the search window, the planner hop or walkClaim's earliest; confidentNo exported for closeTrail; pz verify knows the rule. Replay what-if (earliest half via closeTrail): earliest 1 to 2 Pass, 0 new false origins | @rohanrastogi311 closeTrail: use confidentNo from pz rules
 - [18:53 PT] RishitRai T83 red hop and readout chips: coral stop, segment and band edge with "Wording changed here", changed words as one run, chips measured or inferred N%, staggered 60 ms
 - [18:58 PT] RishitRai T82 band of copies: each cluster a swarm with one dot per page, copies not yet published at the handle are rings, the active cluster named by its site
 - [19:01 PT] RishitRai T81 sample rows as claims: the wording in Newsreader, the ending with a ramp dot, the earliest year and the page count, richest first

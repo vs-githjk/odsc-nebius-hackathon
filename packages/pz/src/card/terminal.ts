@@ -1,4 +1,4 @@
-import type { Node, Trace } from "../schema/index.ts";
+import { datePhrase, type Node, type Trace } from "../schema/index.ts";
 import { independenceLine } from "./headline.ts";
 
 // T77: one readable screen for `pz trace` and `make replay`, built only from the trace's own fields.
@@ -69,11 +69,12 @@ const REGISTRY = { registry_pubmed: "PubMed", registry_pmc: "PubMed Central", re
 export function dateWords(node: Node): string {
   const d = node.date;
   if (d.kind === "unconfirmed" || !d.value) return "date not confirmed";
+  const day = datePhrase(d.value, d.precision);
   const disagree = d.conflictingDate ? ", other dates disagree" : "";
-  if (d.kind === "published" && d.source === "metadata") return `page says published ${d.value}${d.conflictingDate ? " (other dates disagree)" : ""}`;
-  if (d.kind === "published" && d.source in REGISTRY) return `published ${d.value} (${REGISTRY[d.source as keyof typeof REGISTRY]}${disagree})`;
+  if (d.kind === "published" && d.source === "metadata") return `page says published ${day}${d.conflictingDate ? " (other dates disagree)" : ""}`;
+  if (d.kind === "published" && d.source in REGISTRY) return `published ${day} (${REGISTRY[d.source as keyof typeof REGISTRY]}${disagree})`;
   const from = { metadata: "page metadata", byline: "byline", wayback_first_capture: "first archive capture", tavily: "search result", ...REGISTRY }[d.source];
-  const what = d.kind === "published" ? `published ${d.value}` : `online by ${d.value}`;
+  const what = d.kind === "published" ? `published ${day}` : `online by ${day}`;
   return `${what} (${from}${disagree})`;
 }
 

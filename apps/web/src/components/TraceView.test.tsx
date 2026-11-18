@@ -30,6 +30,14 @@ describe("TraceView", () => {
     }
   });
 
+  it("first renders the finished trace, with the replay offered rather than forced (T86)", () => {
+    const rich = traces.find((t) => t.id === "sample-rich")!;
+    const html = renderToStaticMarkup(<TraceView trace={rich} />);
+    expect(html).toContain("Replay the walk");
+    expect(html).not.toContain("replay-rail");
+    expect(html.match(/class="copy( ring)?"/g)).toHaveLength(rich.nodes.filter((n) => !n.meta && n.date.value).length);
+  });
+
   it("[C3] the graph labels edges by kind in text, not only by stroke", () => {
     const rich = traces.find((t) => t.id === "sample-rich")!;
     const html = renderToStaticMarkup(<TraceView trace={rich} />);

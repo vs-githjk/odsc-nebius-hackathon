@@ -9,12 +9,12 @@ import { createWayback } from "../clients/wayback.ts";
 import { findSpan } from "../match/verbatim.ts";
 import { clusterNodes, computeRoots, type Embed } from "./cluster.ts";
 import { findOtherNumber } from "./similar.ts";
-import { atomHit, claimHit, confidentYes, decideStopState, findInjection, isRange, normalise, parseNumbers, sameNumber, type Rules } from "../rules/index.ts";
+import { atomHit, claimHit, confidentNo, confidentYes, decideStopState, findInjection, isRange, normalise, parseNumbers, sameNumber, type Rules } from "../rules/index.ts";
 import type { Atoms, Cluster, DateInfo, Edge, Hop, Node, Readout, Span, Trace, UsageRow } from "../schema/index.ts";
 import type { UsageLog } from "../usage/log.ts";
 import { sameClaim, type SameClaimResult } from "../match/same-claim.ts";
 import { citationsIn, namedSources, REACH } from "./citations.ts";
-import { planQueries, queryKey, whyRejected, type SeenQuery } from "./queries.ts";
+import { codeQuery, planQueries, queryKey, whyRejected, type SeenQuery } from "./queries.ts";
 
 export type SpikeClaim = { id: string; text: string; atoms: Atoms };
 export type LogLine = { at: string; step: string; url?: string; query?: string; kept?: boolean; reason?: string };
@@ -41,8 +41,11 @@ export const sameClaimFor = (client: ModelClient, rules: Rules) => (input: { cla
 
 // The code-only planner: the claim's variant phrases with its subject, as before T35. It ignores `seen` on purpose,
 // because each window repeats these queries with an earlier end date.
-export const codePlanner: QueryPlanner = async ({ atoms }) => ({
-  queries: queriesFor(atoms).map((query) => ({ query, endDate: null, why: "variant" })),
+// The code query comes first, as the planner's does: the number as the claim writes it and the claim's own subject
+// word ("100" companies). queriesFor's variant queries follow; alone they gave dev-11 only "one hundred" compan when
+// the planner failed on the Nov 17 live run, and it found no pages.
+export const codePlanner: QueryPlanner = async ({ claim, atoms }) => ({
+  queries: [...new Set([codeQuery(claim, atoms), ...queriesFor(atoms)])].map((query) => ({ query, endDate: null, why: "variant" as const })),
   rejected: [],
   usage: [],
   mode: "code_only",
@@ -75,6 +78,9 @@ const CONTEXT_CHARS = 200;
 const LINKS_PER_SPAN = 3;
 const LINKS_PER_ROUND = 3;
 const SOURCE_QUERIES_PER_WINDOW = 2;
+// F7 (#192): rounds in a row that only follow citations without reaching an earlier page. After this many the walk
+// stops following and ends as it would with no links left: a cold trail, not a cap hit.
+export const LINK_ROUNDS_WITHOUT_PROGRESS = 2;
 // T49: fact-check pages read as maps per trace, and the citations taken from each.
 const META_PAGES = 2;
 const META_LINKS = 4;
@@ -95,7 +101,7 @@ const isoDate = (date: string | null) => (date && !Number.isNaN(Date.parse(date)
 // the same search twice (dev-12 sent one quoted phrase 8 times): the claim's first quoted search plus "study",
 // "report" or "survey". Each must pass the same query rules as the planner's (queries.ts whyRejected).
 export function studyQueries(claim: string, atoms: Atoms): string[] {
-  const first = queriesFor(atoms)[0];
+  const first = codeQuery(claim, atoms);
   if (!first) return [];
   return ["study", "report", "survey"].map((w) => `${first} ${w}`).filter((q) => whyRejected(q, { claim, atoms, hop: null }) === null);
 }
@@ -320,7 +326,11 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
 
   const note = (line: Omit<LogLine, "at">) => log.push({ at: deps.now(), ...line });
   const excluded = (url: string) => rules.factCheckDomains.some((d) => hostOf(url) === d || hostOf(url).endsWith(`.${d}`));
-  const earliestDate = () => nodes.filter((n) => !n.meta && n.date.value).map((n) => n.date.value!).sort()[0] ?? null;
+  // F1 (#192): the trail runs through dated, non-meta pages that the model did not confidently call another claim. A
+  // confident same_claim "no" page (Nasdaq 100 in 2014 for a 2017 claim) stays on the trace but never becomes the
+  // earliest page, the planner's hop or the end of the next search window.
+  const onTrail = (n: Node) => !n.meta && n.date.value !== null && !confidentNo(n.sameClaim, rules);
+  const earliestDate = () => nodes.filter(onTrail).map((n) => n.date.value!).sort()[0] ?? null;
 
   async function dateFor(url: string, apiDate: string | null): Promise<{ date: DateInfo; waybackUrl: string | null }> {
     const api = apiDate && !Number.isNaN(Date.parse(apiDate)) ? new Date(apiDate).toISOString().slice(0, 10) : null;
@@ -498,7 +508,12 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
   try {
     let endDate = deps.today;
     const plan = deps.planQueries ?? codePlanner;
-    for (let depth = 0; ; depth++) {
+    // F7: caps.depth counts steps back in time (rounds whose window moved back), not rounds. A round that only follows
+    // links and finds nothing earlier counts against LINK_ROUNDS_WITHOUT_PROGRESS instead, so a long citation chain on
+    // a cold claim cannot turn it into a depth-capped PARTIAL (dev-05, dev-06, dev-20) or eat the time cap.
+    let steps = 0;
+    let idleLinkRounds = 0;
+    for (let round = 0; ; round++) {
       if (outOfTime()) {
         capHit = "ms";
         break;
@@ -506,7 +521,7 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
       const results = new Map<string, { title: string; date: string | null }>();
       earlierWindowSearches = 0;
       // The hop the planner works back from: the earliest dated page so far, with its span.
-      const hopNode = nodes.filter((n) => !n.meta && n.date.value).sort((a, b) => a.date.value!.localeCompare(b.date.value!))[0];
+      const hopNode = nodes.filter(onTrail).sort((a, b) => a.date.value!.localeCompare(b.date.value!))[0];
       const hopSpan = hopNode && spans.find((s) => s.id === hopNode.spanIds[0]);
       const planInput = {
         claim: claim.text, atoms, seen: [...sentQueries],
@@ -589,7 +604,7 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
       }
 
       // T49: once per trace, fact-check pages that discuss the claim, read as maps before anything else.
-      if (depth === 0 && rules.metaMaps) {
+      if (round === 0 && rules.metaMaps) {
         const { data } = await deps.tavily.search({
           query: queries[0]!.query, exactMatch: true, endDate, includeRawContent: false, includePublishedDate: true, maxResults: 5, includeDomains: rules.factCheckDomains,
         }, { step: "meta-search" });
@@ -637,8 +652,15 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
       earlierFound = movedBack ? found : 0;
       const moreLinks = [...followQueue.keys(), ...metaQueue].some((u) => !seen.has(u));
       if (!movedBack && !moreLinks) break;
-      if (depth + 1 >= rules.caps.depth) {
-        capHit = "depth";
+      if (movedBack) {
+        idleLinkRounds = 0;
+        steps += 1;
+        if (steps >= rules.caps.depth) {
+          capHit = "depth";
+          break;
+        }
+      } else if (++idleLinkRounds >= LINK_ROUNDS_WITHOUT_PROGRESS) {
+        note({ step: "stop", reason: `followed citations for ${idleLinkRounds} rounds without reaching an earlier page; links left unfollowed` });
         break;
       }
       if (earliestNow) endDate = dayBefore(earliestNow);
@@ -711,7 +733,7 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
     // One counter for the roots line and the T94 headline (the old inline count called linked-into clusters unlinked).
     roots: computeRoots(nodes, edges),
     redHopEdgeId: hops.find((h) => !h.faithful)?.edgeId ?? null,
-    earliest: { nodeIds: nodes.filter((n) => !n.meta && minDate !== null && n.date.value === minDate).map((n) => n.id), earlierWindowSearches, earlierFound },
+    earliest: { nodeIds: nodes.filter((n) => onTrail(n) && n.date.value === minDate).map((n) => n.id), earlierWindowSearches, earlierFound },
     failure,
     budget,
     decision: { state: "TRAIL_GOES_COLD", row: 6, reasons: [], counts: {} },

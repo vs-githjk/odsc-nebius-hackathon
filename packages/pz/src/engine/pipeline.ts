@@ -3,12 +3,13 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { createBudget } from "../clients/budget.ts";
 import { createFileCache, type Cache } from "../clients/cache.ts";
+import { createFileTape, recordDirOf, recordPaths, recordingCache, recordingClient, writeClaimClock } from "../clients/tape.ts";
 import { ClientError } from "../clients/errors.ts";
 import type { ClientDeps } from "../clients/http.ts";
 import { type TavilySender, createTavily } from "../clients/tavily.ts";
 import { TokenFactoryError, createTokenFactoryClient } from "../clients/tokenfactory.ts";
 import { createWayback } from "../clients/wayback.ts";
-import { decideStopState, loadRules } from "../rules/index.ts";
+import { confidentNo, decideStopState, loadRules, type Rules } from "../rules/index.ts";
 import type { Atoms, Edge, Hop, Trace, UsageRow } from "../schema/index.ts";
 import { ask } from "../typed/ask.ts";
 import { createUsageLog } from "../usage/log.ts";
@@ -48,12 +49,13 @@ function withUsage(trace: Trace, rows: readonly UsageRow[]): Trace {
 // The clusters stage. Dates are final by now (the dating stage ran), so this is where the earliest pages, the
 // date-ordered edges and the root counts are settled. The walk already grouped reworded copies with its own embedding
 // call (deps.embed), so nothing is embedded again here.
-// - Earliest: the dated pages with the oldest date.
+// - Earliest: the dated pages with the oldest date. A page the model confidently called another claim (same_claim
+//   "no") is off the trail (F1, #192): it is never the earliest page and never the parent of an inferred edge.
 // - A link that points away from the oldest dated page cannot establish an earlier source, so an earliest page keeps
 //   no incoming edge (the verifier's `earliest` check).
 // - A dated page with no link-verified parent gets an inferred edge from the latest earlier page in another cluster.
-export function closeTrail(trace: Trace): Trace {
-  const dated = trace.nodes.filter((node) => !node.meta && node.date.value !== null);
+export function closeTrail(trace: Trace, rules: Pick<Rules, "confidenceThreshold"> = loadRules()): Trace {
+  const dated = trace.nodes.filter((node) => !node.meta && node.date.value !== null && !confidentNo(node.sameClaim, rules));
   const first = dated.map((node) => node.date.value!).sort()[0];
   const earliestIds = first === undefined ? [] : dated.filter((node) => node.date.value === first).map((node) => node.id);
   const earliest = new Set(earliestIds);
@@ -81,14 +83,14 @@ export function closeTrail(trace: Trace): Trace {
 
 // The claim as the pipeline starts: no pages, no atoms beyond what code can read. A claim with no single number is
 // held by its own text until the fingerprint stage finds its phrase.
-function startTrace(id: string, text: string, rules: ReturnType<typeof loadRules>): Trace {
+function startTrace(id: string, text: string, rules: ReturnType<typeof loadRules>, recordedAt: string): Trace {
   const number = claimNumber(text);
   const atoms: Atoms = {
     number, ...(number ? {} : { phrase: text }), unit: null, subjectLemma: "", population: null, time: null, hedge: null, variants: [],
     namedSource: null,
   };
   const trace: Trace = {
-    schemaVersion: "1", id, mode: "LIVE", synthetic: false, recordedAt: new Date().toISOString(),
+    schemaVersion: "1", id, mode: "LIVE", synthetic: false, recordedAt,
     claim: { text, atoms }, viralSentence: text,
     nodes: [], edges: [], clusters: [], spans: [], hops: [], blame: [], redHopEdgeId: null,
     roots: { pages: 0, clusters: 0, rootsLinked: 0, clustersUnlinked: 0, studiesFound: null },
@@ -115,6 +117,10 @@ export type PipelineParts = {
   traceId?: string;
   pagesDir?: string;
   usagePath?: string;
+  // The run's clock. Replay pins it to the recorded day, because the search window ends "today" and is part of every cache key.
+  clock?: () => Date;
+  // false turns PZ_RECORD_DIR off for this pipeline: a replay must never write to the recording it reads.
+  record?: boolean;
 };
 
 // The production pipeline from ready clients. One pipeline serves one trace: it holds that trace's usage log and clock.
@@ -124,7 +130,17 @@ export function buildPipeline(parts: PipelineParts): { pipeline: Pipeline; wayba
   const id = parts.traceId ?? randomUUID();
   const rules = loadRules();
   const usage = createUsageLog(parts.usagePath ? { path: parts.usagePath } : {});
-  const base = { usage, cache: parts.cache ?? createFileCache(), traceId: id, sleep: parts.sleep };
+  const clock = parts.clock ?? (() => new Date());
+  // PZ_RECORD_DIR turns any live run into a recording for eval/replay-walk.ts: HTTP responses are mirrored into the
+  // directory and every Token Factory reply is written to its tape.
+  const recordDir = parts.record === false ? null : recordDirOf();
+  const model = recordDir
+    ? recordingClient({ chat: parts.chat.chat, embed: parts.embed.embed }, createFileTape(recordPaths(recordDir).model))
+    : { chat: parts.chat.chat, embed: parts.embed.embed };
+  const chatClient: Pick<TokenFactory, "chat"> = { chat: model.chat };
+  const embedClient: Pick<TokenFactory, "embed"> = { embed: model.embed };
+  const cache = recordDir ? recordingCache(parts.cache ?? createFileCache(), recordPaths(recordDir).http) : parts.cache ?? createFileCache();
+  const base = { usage, cache, traceId: id, sleep: parts.sleep };
   const wayback = createWayback({ ...base, fetch: parts.archiveFetch });
   const pagesDir = parts.pagesDir ?? "runs/pages";
 
@@ -132,7 +148,7 @@ export function buildPipeline(parts: PipelineParts): { pipeline: Pipeline; wayba
   // rows go to the run's usage log here. A failed call's rows are added by the walk's own fallback (modelFailed).
   const walkChat = (step: string) => ({
     chat: async (input: Parameters<TokenFactory["chat"]>[0]) => {
-      const response = await parts.chat.chat(input, { step });
+      const response = await chatClient.chat(input, { step });
       for (const row of response.attempts) usage.append(row);
       return response;
     },
@@ -141,7 +157,7 @@ export function buildPipeline(parts: PipelineParts): { pipeline: Pipeline; wayba
   const walkEmbed = {
     embed: async (input: Parameters<TokenFactory["embed"]>[0], context?: Parameters<TokenFactory["embed"]>[1]) => {
       try {
-        const response = await parts.embed.embed(input, { ...context, step: "embed" });
+        const response = await embedClient.embed(input, { ...context, step: "embed" });
         for (const row of response.attempts) usage.append(row);
         return response;
       } catch (error) {
@@ -154,7 +170,7 @@ export function buildPipeline(parts: PipelineParts): { pipeline: Pipeline; wayba
   const collecting = (rows: UsageRow[], step: string) => ({
     chat: async (input: Parameters<TokenFactory["chat"]>[0]) => {
       try {
-        const response = await parts.chat.chat(input, { step });
+        const response = await chatClient.chat(input, { step });
         rows.push(...response.attempts);
         return response;
       } catch (error) {
@@ -171,10 +187,10 @@ export function buildPipeline(parts: PipelineParts): { pipeline: Pipeline; wayba
       return {
         tavily: parts.tavily({ ...base, budget }),
         wayback, usage, budget, rules,
-        planQueries: plannerFor(parts.chat, rules),
+        planQueries: plannerFor(chatClient, rules),
         askSameClaim: sameClaimFor(walkChat("same_claim"), rules),
         embed: createEmbedder(walkEmbed, { traceId: id }),
-        today: trace.recordedAt.slice(0, 10), now: () => new Date().toISOString(),
+        today: trace.recordedAt.slice(0, 10), now: () => clock().toISOString(),
         pagesDir,
       };
     });
@@ -184,7 +200,9 @@ export function buildPipeline(parts: PipelineParts): { pipeline: Pipeline; wayba
       startedAt = performance.now();
       const text = input.trim();
       if (!text) throw new ClientError("bad_response", "Empty claim");
-      return startTrace(id, text, rules);
+      const recordedAt = clock().toISOString();
+      if (recordDir) writeClaimClock(recordDir, id, recordedAt);
+      return startTrace(id, text, rules, recordedAt);
     },
 
     async fingerprint(trace) {
@@ -193,13 +211,13 @@ export function buildPipeline(parts: PipelineParts): { pipeline: Pipeline; wayba
       let atoms: Atoms;
       let rows: UsageRow[];
       if (number) {
-        const result = await fingerprint(text, { client: parts.chat, number });
+        const result = await fingerprint(text, { client: chatClient, number });
         if (!result.atoms) throw new ClientError("bad_response", "Claim fingerprint has no usable subject");
         atoms = result.atoms;
         rows = result.usage;
       } else {
         // T53: no single number, so the phrase drives matching. A named stop ends the run with a code, never a guess.
-        const result = await fingerprintPhrase(text, { client: parts.chat });
+        const result = await fingerprintPhrase(text, { client: chatClient });
         if (!result.atoms) {
           throw new ClientError(result.reason === "no_model" ? "not_configured" : "bad_response", `Phrase claim stopped: ${result.reason}`);
         }
@@ -221,7 +239,7 @@ export function buildPipeline(parts: PipelineParts): { pipeline: Pipeline; wayba
       const work = async () => {
         for (let node = queue.shift(); node; node = queue.shift()) {
           const found = await evidence(node.url);
-          if (found) pages.push({ url: node.url, text: "", metadata: found.date, metadataSource: found.source === "metadata" ? undefined : found.source });
+          if (found) pages.push({ url: node.url, text: "", metadata: found.date, metadataSource: found.source === "metadata" ? undefined : found.source, metadataPrecision: found.precision === "day" ? undefined : found.precision });
         }
       };
       await Promise.all([work(), work()]);
@@ -234,7 +252,7 @@ export function buildPipeline(parts: PipelineParts): { pipeline: Pipeline; wayba
     // needs a confident primary page type, and nothing else in the pipeline sets it. It reads the page the walk saved.
     // A failed call leaves the type unset, so that page cannot become the origin, and its attempts stay on the trace.
     async clusters(trace) {
-      const closed = closeTrail(trace);
+      const closed = closeTrail(trace, rules);
       const rows: UsageRow[] = [];
       const client = collecting(rows, "page_type");
       const nodes = [...closed.nodes];

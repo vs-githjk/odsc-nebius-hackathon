@@ -3,7 +3,7 @@
   "id": "dev-18",
   "mode": "LIVE",
   "synthetic": false,
-  "recordedAt": "2026-11-17T06:33:04.472Z",
+  "recordedAt": "2026-11-17T23:26:13.762Z",
   "claim": {
     "text": "95% of generative AI pilots at companies are failing.",
     "atoms": {
@@ -28,14 +28,14 @@
   "nodes": [
     {
       "id": "n1",
-      "url": "https://africacheck.org/sites/default/files/media/documents/2022-02/Annual_Report_2015.pdf",
-      "domain": "africacheck.org",
-      "title": "",
+      "url": "https://fullfact.org/election-2024/snp-manifesto",
+      "domain": "fullfact.org",
+      "title": "SNP 2024 manifesto: fact checked – Full Fact",
       "date": {
         "kind": "existed_by",
-        "value": "2022-05-13",
+        "value": "2024-06-14",
         "source": "wayback_first_capture",
-        "firstCapture": "2022-05-13",
+        "firstCapture": "2024-06-14",
         "conflictingDate": false
       },
       "clusterId": "c-n1",
@@ -44,21 +44,38 @@
       "read": true,
       "versionOf": null,
       "spanIds": [],
-      "citesEarlier": false,
-      "candidateParents": [],
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/healthcaresystem/articles/accidentandemergencywaittimesacrosstheuk/2024-02-28",
+          "read": true
+        },
+        {
+          "url": "https://www.scotrail.co.uk/off-peak-fares-all-day-long",
+          "read": false
+        },
+        {
+          "url": "https://www.transport.gov.scot/news/peak-rail-fares-pilot-extended",
+          "read": true
+        },
+        {
+          "url": "https://s3-eu-west-2.amazonaws.com/www.snp.org/uploads/2024/06/2024-06-17-SNP-UK-Election-Manifesto-2024.pdf",
+          "read": true
+        }
+      ],
       "pageType": null,
       "foundViaMeta": null
     },
     {
       "id": "n2",
-      "url": "https://africacheck.org/sites/default/files/STATE-OF-THE-JUDICIARY-AND-THE-ADMINISTRATION-OF-JUSTICE-ANNUAL-REPORT-.pdf",
+      "url": "https://africacheck.org/sites/default/files/media/documents/2022-02/Annual_Report_2015.pdf",
       "domain": "africacheck.org",
-      "title": "[PDF] state of the judiciary and the administration of justice - Africa Check",
+      "title": "",
       "date": {
         "kind": "existed_by",
-        "value": "2022-10-15",
+        "value": "2022-05-13",
         "source": "wayback_first_capture",
-        "firstCapture": "2022-10-15",
+        "firstCapture": "2022-05-13",
         "conflictingDate": false
       },
       "clusterId": "c-n2",
@@ -74,14 +91,14 @@
     },
     {
       "id": "n3",
-      "url": "https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo",
-      "domain": "fortune.com",
-      "title": "MIT report: 95% of generative AI pilots at companies are failing | Fortune",
+      "url": "https://finance.yahoo.com/news/mit-report-95-generative-ai-105412686.html",
+      "domain": "finance.yahoo.com",
+      "title": "MIT report: 95% of generative AI pilots at companies are failing",
       "date": {
         "kind": "published",
         "value": "2025-08-18",
         "source": "metadata",
-        "firstCapture": "2025-08-18",
+        "firstCapture": "2025-08-19",
         "conflictingDate": false
       },
       "clusterId": "c-n3",
@@ -92,48 +109,112 @@
       "spanIds": [
         "s1"
       ],
-      "citesEarlier": true,
-      "candidateParents": [
-        {
-          "url": "https://fortune.com/2026/11/14/alpha-school-ai-students-tuition-learning-goals/?itm_source=parsely-api",
-          "read": true
-        }
-      ],
-      "pageType": null,
-      "sameClaim": {
-        "questionId": "same_claim",
-        "optionId": "no",
-        "probability": 0.9997387617836914,
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": {
+        "questionId": "page_type",
+        "optionId": "news",
+        "probability": 0.9995600982634429,
         "top": [
           {
-            "optionId": "yes",
-            "p": 0.0002611903563787743
+            "optionId": "study",
+            "p": 0.0000013703551782411512
           },
           {
-            "optionId": "no",
-            "p": 0.9997387617836914
+            "optionId": "dataset",
+            "p": 0
+          },
+          {
+            "optionId": "report",
+            "p": 0.0004305530035811292
+          },
+          {
+            "optionId": "speaker",
+            "p": 0
+          },
+          {
+            "optionId": "news",
+            "p": 0.9995600982634429
+          },
+          {
+            "optionId": "blog",
+            "p": 0.000007885849575784838
+          },
+          {
+            "optionId": "social",
+            "p": 0
+          },
+          {
+            "optionId": "other",
+            "p": 0
           },
           {
             "optionId": "__other__",
-            "p": 4.7859929908078414e-8
+            "p": 9.252822186223142e-8
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.999999999989184,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.999999999989184
+          },
+          {
+            "optionId": "no",
+            "p": 1.0815941864914042e-11
+          },
+          {
+            "optionId": "__other__",
+            "p": 1.1102230246251565e-16
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
         "threshold": null
       },
       "foundViaMeta": null,
+      "boundary": {
+        "questionId": "boundary",
+        "optionId": "print",
+        "probability": 0.9999912616037882,
+        "top": [
+          {
+            "optionId": "print",
+            "p": 0.9999912616037882
+          },
+          {
+            "optionId": "unsourced",
+            "p": 0.0000017755609732829575
+          },
+          {
+            "optionId": "none",
+            "p": 0.000006962835238555782
+          },
+          {
+            "optionId": "__other__",
+            "p": 0
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
       "injection": null
     },
     {
       "id": "n4",
-      "url": "https://www.youtube.com/watch?v=EAibojfXslQ",
-      "domain": "youtube.com",
-      "title": "MIT Report: Why 95% of Generative AI Pilots Are Failing",
+      "url": "https://abcnews.com/Business/airlines-attract-diverse-pilots-amid-shortage/story?id=84316653",
+      "domain": "abcnews.com",
+      "title": "Airlines look to attract more diverse pilots amid shortage  - ABC News",
       "date": {
         "kind": "published",
-        "value": "2025-08-20",
+        "value": "2022-07-30",
         "source": "metadata",
-        "firstCapture": "2025-08-21",
+        "firstCapture": null,
         "conflictingDate": false
       },
       "clusterId": "c-n4",
@@ -149,20 +230,20 @@
       "pageType": null,
       "sameClaim": {
         "questionId": "same_claim",
-        "optionId": "yes",
-        "probability": 0.9999952149054822,
+        "optionId": "no",
+        "probability": 0.9999999804443177,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.9999952149054822
+            "p": 1.9555682220858862e-8
           },
           {
             "optionId": "no",
-            "p": 0.000004785094518016819
+            "p": 0.9999999804443177
           },
           {
             "optionId": "__other__",
-            "p": 0
+            "p": 1.1102230246251565e-16
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -173,14 +254,14 @@
     },
     {
       "id": "n5",
-      "url": "https://www.youtube.com/watch?v=5QzqyrnL010",
+      "url": "https://www.youtube.com/watch?v=Yuxj9djAFzA",
       "domain": "youtube.com",
-      "title": "No, 95% of AI Pilots Aren't Failing",
+      "title": "95% Of Pilots Would Never Attempt This Journey | Dangerous Flights | Wonder",
       "date": {
         "kind": "published",
-        "value": "2025-08-22",
+        "value": "2022-12-24",
         "source": "metadata",
-        "firstCapture": "2025-08-22",
+        "firstCapture": "2022-12-26",
         "conflictingDate": false
       },
       "clusterId": "c-n5",
@@ -197,15 +278,15 @@
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "no",
-        "probability": 0.9992903296827245,
+        "probability": 0.9999999956365375,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.0007096703172757297
+            "p": 4.363462505054895e-9
           },
           {
             "optionId": "no",
-            "p": 0.9992903296827245
+            "p": 0.9999999956365375
           },
           {
             "optionId": "__other__",
@@ -216,344 +297,11 @@
         "threshold": null
       },
       "foundViaMeta": null,
-      "injection": null
-    },
-    {
-      "id": "n6",
-      "url": "https://www.legal.io/blog/5719519/MIT-Report-Finds-95-of-AI-Pilots-Fail-to-Deliver-ROI-Exposing-GenAI-Divide",
-      "domain": "legal.io",
-      "title": "MIT Report Finds 95% of AI Pilots Fail to Deliver ROI, Exposing “GenAI Divide”",
-      "date": {
-        "kind": "existed_by",
-        "value": "2026-05-30",
-        "source": "wayback_first_capture",
-        "firstCapture": "2026-05-30",
-        "conflictingDate": false
-      },
-      "clusterId": "c-n6",
-      "evidence": "observed",
-      "meta": false,
-      "read": true,
-      "versionOf": null,
-      "spanIds": [
-        "s4"
-      ],
-      "citesEarlier": false,
-      "candidateParents": [],
-      "pageType": null,
-      "sameClaim": {
-        "questionId": "same_claim",
-        "optionId": "yes",
-        "probability": 0.999989867845983,
-        "top": [
-          {
-            "optionId": "yes",
-            "p": 0.999989867845983
-          },
-          {
-            "optionId": "no",
-            "p": 0.000010129987868766033
-          },
-          {
-            "optionId": "__other__",
-            "p": 2.166148260762668e-9
-          }
-        ],
-        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-        "threshold": null
-      },
-      "foundViaMeta": null,
-      "injection": null
-    },
-    {
-      "id": "n7",
-      "url": "https://www.youtube.com/watch?v=6IyZqJNFYsg",
-      "domain": "youtube.com",
-      "title": "Why 95% of AI Pilots Fail, Building Effective Agents, Computer Use, and MCP",
-      "date": {
-        "kind": "published",
-        "value": "2025-09-02",
-        "source": "metadata",
-        "firstCapture": "2025-09-03",
-        "conflictingDate": false
-      },
-      "clusterId": "c-n7",
-      "evidence": "observed",
-      "meta": false,
-      "read": true,
-      "versionOf": null,
-      "spanIds": [
-        "s5"
-      ],
-      "citesEarlier": false,
-      "candidateParents": [],
-      "pageType": null,
-      "sameClaim": {
-        "questionId": "same_claim",
-        "optionId": "no",
-        "probability": 0.9997965511688399,
-        "top": [
-          {
-            "optionId": "yes",
-            "p": 0.00020342705009970927
-          },
-          {
-            "optionId": "no",
-            "p": 0.9997965511688399
-          },
-          {
-            "optionId": "__other__",
-            "p": 2.178106039973926e-8
-          }
-        ],
-        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-        "threshold": null
-      },
-      "foundViaMeta": null,
-      "injection": "come back tomorrow and ask and think they're asking the same question, [22:09] hey LLM or you know, hey, hey agent for me, you know, go give me this answer. If they c"
-    },
-    {
-      "id": "n8",
-      "url": "https://askthepilot.com/two-pilots-one-pilot-no-pilots",
-      "domain": "askthepilot.com",
-      "title": "Two Pilots, One Pilot, No Pilots",
-      "date": {
-        "kind": "published",
-        "value": "2023-01-17",
-        "source": "metadata",
-        "firstCapture": "2023-01-17",
-        "conflictingDate": false
-      },
-      "clusterId": "c-n8",
-      "evidence": "observed",
-      "meta": false,
-      "read": true,
-      "versionOf": null,
-      "spanIds": [
-        "s6"
-      ],
-      "citesEarlier": false,
-      "candidateParents": [],
-      "pageType": null,
-      "sameClaim": {
-        "questionId": "same_claim",
-        "optionId": "no",
-        "probability": 0.9999785428119987,
-        "top": [
-          {
-            "optionId": "yes",
-            "p": 0.00002144495977240526
-          },
-          {
-            "optionId": "no",
-            "p": 0.9999785428119987
-          },
-          {
-            "optionId": "__other__",
-            "p": 1.222822887392283e-8
-          }
-        ],
-        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-        "threshold": null
-      },
-      "foundViaMeta": null,
-      "injection": null
-    },
-    {
-      "id": "n9",
-      "url": "https://abcnews.com/Business/airlines-attract-diverse-pilots-amid-shortage/story?id=84316653",
-      "domain": "abcnews.com",
-      "title": "Airlines look to attract more diverse pilots amid shortage  - ABC News",
-      "date": {
-        "kind": "published",
-        "value": "2022-07-30",
-        "source": "metadata",
-        "firstCapture": null,
-        "conflictingDate": false
-      },
-      "clusterId": "c-n9",
-      "evidence": "observed",
-      "meta": false,
-      "read": true,
-      "versionOf": null,
-      "spanIds": [
-        "s7"
-      ],
-      "citesEarlier": false,
-      "candidateParents": [],
-      "pageType": {
-        "questionId": "page_type",
-        "optionId": "news",
-        "probability": 0.9999785298841507,
-        "top": [
-          {
-            "optionId": "study",
-            "p": 0
-          },
-          {
-            "optionId": "dataset",
-            "p": 0
-          },
-          {
-            "optionId": "report",
-            "p": 0.000021444957927164752
-          },
-          {
-            "optionId": "speaker",
-            "p": 0
-          },
-          {
-            "optionId": "news",
-            "p": 0.9999785298841507
-          },
-          {
-            "optionId": "blog",
-            "p": 2.2159024387037267e-8
-          },
-          {
-            "optionId": "social",
-            "p": 0
-          },
-          {
-            "optionId": "other",
-            "p": 2.9988978416666965e-9
-          },
-          {
-            "optionId": "__other__",
-            "p": 0
-          }
-        ],
-        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-        "threshold": null
-      },
-      "sameClaim": {
-        "questionId": "same_claim",
-        "optionId": "no",
-        "probability": 0.9999999804443177,
-        "top": [
-          {
-            "optionId": "yes",
-            "p": 1.9555682338045996e-8
-          },
-          {
-            "optionId": "no",
-            "p": 0.9999999804443177
-          },
-          {
-            "optionId": "__other__",
-            "p": 0
-          }
-        ],
-        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-        "threshold": null
-      },
-      "foundViaMeta": null,
-      "boundary": {
-        "questionId": "boundary",
-        "optionId": "unsourced",
-        "probability": 0.9396522134163585,
-        "top": [
-          {
-            "optionId": "print",
-            "p": 0.0002781722130984631
-          },
-          {
-            "optionId": "unsourced",
-            "p": 0.9396522134163585
-          },
-          {
-            "optionId": "none",
-            "p": 0.060069109318974946
-          },
-          {
-            "optionId": "__other__",
-            "p": 5.050515681226386e-7
-          }
-        ],
-        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-        "threshold": null
-      },
       "injection": null
     }
   ],
-  "edges": [
-    {
-      "id": "e1",
-      "parentId": "n9",
-      "childId": "n8",
-      "kind": "inferred",
-      "parentSpanId": "s7",
-      "childSpanId": "s6",
-      "linkHref": null
-    },
-    {
-      "id": "e2",
-      "parentId": "n8",
-      "childId": "n3",
-      "kind": "inferred",
-      "parentSpanId": "s6",
-      "childSpanId": "s1",
-      "linkHref": null
-    },
-    {
-      "id": "e3",
-      "parentId": "n3",
-      "childId": "n4",
-      "kind": "inferred",
-      "parentSpanId": "s1",
-      "childSpanId": "s2",
-      "linkHref": null
-    },
-    {
-      "id": "e4",
-      "parentId": "n4",
-      "childId": "n5",
-      "kind": "inferred",
-      "parentSpanId": "s2",
-      "childSpanId": "s3",
-      "linkHref": null
-    },
-    {
-      "id": "e5",
-      "parentId": "n5",
-      "childId": "n7",
-      "kind": "inferred",
-      "parentSpanId": "s3",
-      "childSpanId": "s5",
-      "linkHref": null
-    },
-    {
-      "id": "e6",
-      "parentId": "n7",
-      "childId": "n6",
-      "kind": "inferred",
-      "parentSpanId": "s5",
-      "childSpanId": "s4",
-      "linkHref": null
-    }
-  ],
+  "edges": [],
   "clusters": [
-    {
-      "id": "c-n9",
-      "nodeIds": [
-        "n9"
-      ],
-      "rule": "single"
-    },
-    {
-      "id": "c-n8",
-      "nodeIds": [
-        "n8"
-      ],
-      "rule": "single"
-    },
-    {
-      "id": "c-n3",
-      "nodeIds": [
-        "n3"
-      ],
-      "rule": "single"
-    },
     {
       "id": "c-n4",
       "nodeIds": [
@@ -569,16 +317,9 @@
       "rule": "single"
     },
     {
-      "id": "c-n6",
+      "id": "c-n3",
       "nodeIds": [
-        "n6"
-      ],
-      "rule": "single"
-    },
-    {
-      "id": "c-n7",
-      "nodeIds": [
-        "n7"
+        "n3"
       ],
       "rule": "single"
     },
@@ -601,90 +342,20 @@
     {
       "id": "s1",
       "nodeId": "n3",
-      "text": "Half of its K-8 students missed the math target NewslettersCFO Daily MIT report: 95% of generative AI pilots at companies are failing.",
-      "contextBefore": "CEO says air traffic control systems are so outdated that some commercial flight routes were faster in the 1950s than they are today 3. Wealthy parents pay $75,000 for Alpha's two-hour AI school day. ",
-      "contextAfter": " By Sheryl Estrada Sheryl Estrada Senior writer and author of CFO Daily By Sheryl Estrada Sheryl Estrada Senior writer and author of CFO Daily August 18, 2025, 6:54 AM ET Getty Images Add Fortune on G",
-      "start": 828,
-      "end": 962,
-      "extractSha256": "5892ac331d67a187696d571de30f9d22da3ea9a180b9c696527835875642ecdc",
-      "windowSha256": "d0931b37371b57d28475b3dc1b03538955e38e7ff0857146a0e5c5ce51581b85",
-      "fetchedAt": "2026-11-17T06:33:25.053Z",
-      "waybackUrl": "https://web.archive.org/web/20250818115513/https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo",
+      "text": "MIT report: 95% of generative AI pilots at companies are failing.",
+      "contextBefore": " 14. ETF Report 15. FA Corner 16. More to Watch 1. Must-watch Interviews 2. Mag 7 3. Fed Watch 1. Crypto 2. AI Trending * Stock market today * Bank app outages * Nvidia live updates * S&P 500 streak? ",
+      "contextAfter": " Fortune · Getty Images Sheryl Estrada 3 min read Good morning. Companies are betting on AI-yet nearly all enterprise pilots are stuck at the starting line. *The GenAI Divide: State of AI in Business ",
+      "start": 2716,
+      "end": 2781,
+      "extractSha256": "b6c273993de985db6890227a4067c80f7c79ee6cded916357e68d1f29076f92d",
+      "windowSha256": "9d059d40b75697d3eeacca8ded0e9a68c9e9365c310a6115d6e2d2dcb8cf9e34",
+      "fetchedAt": "2026-11-17T23:26:32.348Z",
+      "waybackUrl": "https://web.archive.org/web/20250819170916/https://finance.yahoo.com/news/mit-report-95-generative-ai-105412686.html",
       "tier": "exact"
     },
     {
       "id": "s2",
       "nodeId": "n4",
-      "text": "MIT Report: Why 95% of Generative AI Pilots Are Failing.",
-      "contextBefore": "",
-      "contextAfter": " Channel: Decoding Data Science. 3.1K subscribers 25 likes Description. 2,434 views Posted: 2025-08-20 A shocking MIT & Fortune report reveals that 95% of Generative AI pilots at companies are failing",
-      "start": 0,
-      "end": 56,
-      "extractSha256": "9b059be416a8d3346bade4abf87c34c2038240e9040ac874a2abf3173b4f3dc5",
-      "windowSha256": "c258aadd948168ae95a06ecd62cd49114e05693331d2cb3448743767eb24987f",
-      "fetchedAt": "2026-11-17T06:33:26.390Z",
-      "waybackUrl": "https://web.archive.org/web/20250821041257/https://www.youtube.com/watch?v=EAibojfXslQ",
-      "tier": "exact"
-    },
-    {
-      "id": "s3",
-      "nodeId": "n5",
-      "text": "No, 95% of AI Pilots Aren't Failing.",
-      "contextBefore": "",
-      "contextAfter": " Channel: The AI Daily Brief: Artificial Intelligence News (verified). 586K subscribers Description. 90,857 views Posted: 2025-08-22 Today, we're breaking down the MIT study claiming 95% of generative",
-      "start": 0,
-      "end": 36,
-      "extractSha256": "aed13782f84e4b6954feae3c385f6c44d196d32362503917f832a2732478243c",
-      "windowSha256": "0949de110c4b274709d9bb22b0641eaf83c43a8ff42dccf88a72d85d51666996",
-      "fetchedAt": "2026-11-17T06:33:30.167Z",
-      "waybackUrl": "https://web.archive.org/web/20250822224659/https://www.youtube.com/watch?v=5QzqyrnL010",
-      "tier": "exact"
-    },
-    {
-      "id": "s4",
-      "nodeId": "n6",
-      "text": "Aug 23, 2025 MIT Report Finds 95% of AI Pilots Fail to Deliver ROI, Exposing \"GenAI Divide\".",
-      "contextBefore": "mHire top legal talent, manage outside counsel, benchmark rates, and more. --- Don't have an account? Request Enterprise Demo Search. --- * All * Jobs * News * Apps * Organizations * People Legal.io. ",
-      "contextAfter": " A July 2025 MIT study finds 95% of enterprise AI deployments fail to deliver value. Back-office automation and vendor partnerships emerge as key to success. Key points: * MIT report finds $30-40B in ",
-      "start": 838,
-      "end": 930,
-      "extractSha256": "e3c9a3f3d7a430fd9b3580443cccdd85c79d97443dea6d03f940403f2c2533be",
-      "windowSha256": "d1e60737927a28e70c67685517bafc4a25710b7350739bf35f0ec1a6621843fe",
-      "fetchedAt": "2026-11-17T06:33:39.415Z",
-      "waybackUrl": "https://web.archive.org/web/20260530183744/https://www.legal.io/blog/5719519/MIT-Report-Finds-95-of-AI-Pilots-Fail-to-Deliver-ROI-Exposing-GenAI-Divide",
-      "tier": "exact"
-    },
-    {
-      "id": "s5",
-      "nodeId": "n7",
-      "text": "Why 95% of AI Pilots Fail, Building Effective Agents, Computer Use, and MCP.",
-      "contextBefore": "",
-      "contextAfter": " Channel: AnswerRocket. 395 subscribers 2 likes Description. 159 views Posted: 2025-09-02 Is your enterprise AI pilot part of the 95% that's failing? MIT's latest research just confirmed what many sus",
-      "start": 0,
-      "end": 76,
-      "extractSha256": "58044f30b59dc013c7f5d0d49c57b91e2934f523279429641449f87af2270e3b",
-      "windowSha256": "1694f67e6ec3494e097471ea46162abb616731deebd2043f387e415dca23fed8",
-      "fetchedAt": "2026-11-17T06:33:42.991Z",
-      "waybackUrl": "https://web.archive.org/web/20250903102556/https://www.youtube.com/watch?v=6IyZqJNFYsg",
-      "tier": "exact"
-    },
-    {
-      "id": "s6",
-      "nodeId": "n8",
-      "text": "It's another one of those things where once you get into the details it's a lot harder than it first looks even to get to where it could be done with absolutely \\_no\\_ pilot interaction with the aircraft or ground controllers between pushback and runway threshold even 95% of the time.",
-      "contextBefore": "eck. And most importantly, it's vastly easier to make it fail to a safe situation since the aircraft can't fall out of the sky. But even this, once you look at it closely, seems desperately far away. ",
-      "contextAfter": " And getting from there to 100%, where it can recover the system from something like a flat tire, is \\_much\\_ more work. (Sorry for the separate post; I wanted to add this as a reply to my earlier pos",
-      "start": 8569,
-      "end": 8854,
-      "extractSha256": "17884738414eae2e9521d91b80b5e69b0922abec18906c781d795ee965f957a3",
-      "windowSha256": "57fb6bae7bd78ba8efe8871656dde603737ad1c09f07da7838c95a04dce1403d",
-      "fetchedAt": "2026-11-17T06:34:00.114Z",
-      "waybackUrl": "https://web.archive.org/web/20230117164826/https://askthepilot.com/two-pilots-one-pilot-no-pilots",
-      "tier": "exact"
-    },
-    {
-      "id": "s7",
-      "nodeId": "n9",
       "text": "At least 95% of the roughly 158,000 pilots employed in the United States are men, according to the Bureau of Labor Statistics.",
       "contextBefore": "t more diverse pilots amid shortage. Airlines look to recruit more diverse pilots amid a labor shortage. For decades, the aviation industry has carried the reputation of being overtly male and white. ",
       "contextAfter": " \"This is a very male-dominated industry,\" said Dana Donati, a former pilot with Republic Airways. Donati recalls being one of two females in her college aviation courses and during her early officer ",
@@ -692,1248 +363,68 @@
       "end": 423,
       "extractSha256": "9f00863e54f07825512d931b95e7db8b01a757f8418d30e870cd875bef1d594a",
       "windowSha256": "00e8cf932a0dd8bbfa070b0d2b662ee91163a4300deba3ca5cf7980042667d78",
-      "fetchedAt": "2026-11-17T06:34:17.346Z",
+      "fetchedAt": "2026-11-17T23:26:46.914Z",
       "waybackUrl": null,
+      "tier": "exact"
+    },
+    {
+      "id": "s3",
+      "nodeId": "n5",
+      "text": "95% Of Pilots Would Never Attempt This Journey | Dangerous Flights | Wonder.",
+      "contextBefore": "",
+      "contextAfter": " Channel: Wonder (verified). 2.32M subscribers 417 likes Description. 33,895 views Posted: 2022-12-24 Flying over the freezing north, passing through Greenland and in to Canada is causing serious conc",
+      "start": 0,
+      "end": 76,
+      "extractSha256": "e4a5e9908bb68301ac133d4fb684348db7ad09533649f12ad4b90da536a582ff",
+      "windowSha256": "1d1f50ec5f90fbdf053a4e09047d2d8c6bb937bf79514393958418c8b3e056ef",
+      "fetchedAt": "2026-11-17T23:26:47.817Z",
+      "waybackUrl": "https://web.archive.org/web/20221226215341/https://www.youtube.com/watch?v=Yuxj9djAFzA",
       "tier": "exact"
     }
   ],
-  "hops": [
-    {
-      "edgeId": "e1",
-      "readouts": [
-        {
-          "id": "number_changed",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "unit_changed",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "hedge_dropped",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "comparison_added",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "scope_widened",
-          "source": "inferred",
-          "value": "no",
-          "probability": 0.8807970473423538,
-          "disputed": false
-        },
-        {
-          "id": "attribution_shifted",
-          "source": "inferred",
-          "value": "yes",
-          "probability": 0.8175744337895086,
-          "disputed": false
-        },
-        {
-          "id": "context_stripped",
-          "source": "inferred",
-          "value": "yes",
-          "probability": 0.9997965520875818,
-          "disputed": false
-        }
-      ],
-      "wordDiff": [
-        {
-          "op": "add",
-          "text": "it's"
-        },
-        {
-          "op": "add",
-          "text": "another"
-        },
-        {
-          "op": "add",
-          "text": "one"
-        },
-        {
-          "op": "del",
-          "text": "at"
-        },
-        {
-          "op": "del",
-          "text": "least"
-        },
-        {
-          "op": "del",
-          "text": "95"
-        },
-        {
-          "op": "same",
-          "text": "of"
-        },
-        {
-          "op": "add",
-          "text": "those"
-        },
-        {
-          "op": "add",
-          "text": "things"
-        },
-        {
-          "op": "add",
-          "text": "where"
-        },
-        {
-          "op": "add",
-          "text": "once"
-        },
-        {
-          "op": "add",
-          "text": "you"
-        },
-        {
-          "op": "add",
-          "text": "get"
-        },
-        {
-          "op": "add",
-          "text": "into"
-        },
-        {
-          "op": "same",
-          "text": "the"
-        },
-        {
-          "op": "add",
-          "text": "details"
-        },
-        {
-          "op": "add",
-          "text": "it's"
-        },
-        {
-          "op": "add",
-          "text": "a"
-        },
-        {
-          "op": "add",
-          "text": "lot"
-        },
-        {
-          "op": "add",
-          "text": "harder"
-        },
-        {
-          "op": "add",
-          "text": "than"
-        },
-        {
-          "op": "add",
-          "text": "it"
-        },
-        {
-          "op": "add",
-          "text": "first"
-        },
-        {
-          "op": "add",
-          "text": "looks"
-        },
-        {
-          "op": "add",
-          "text": "even"
-        },
-        {
-          "op": "add",
-          "text": "to"
-        },
-        {
-          "op": "add",
-          "text": "get"
-        },
-        {
-          "op": "del",
-          "text": "roughly"
-        },
-        {
-          "op": "del",
-          "text": "158,000"
-        },
-        {
-          "op": "del",
-          "text": "pilots"
-        },
-        {
-          "op": "del",
-          "text": "employed"
-        },
-        {
-          "op": "del",
-          "text": "in"
-        },
-        {
-          "op": "del",
-          "text": "the"
-        },
-        {
-          "op": "del",
-          "text": "united"
-        },
-        {
-          "op": "del",
-          "text": "states"
-        },
-        {
-          "op": "del",
-          "text": "are"
-        },
-        {
-          "op": "del",
-          "text": "men"
-        },
-        {
-          "op": "del",
-          "text": "according"
-        },
-        {
-          "op": "same",
-          "text": "to"
-        },
-        {
-          "op": "add",
-          "text": "where"
-        },
-        {
-          "op": "add",
-          "text": "it"
-        },
-        {
-          "op": "add",
-          "text": "could"
-        },
-        {
-          "op": "add",
-          "text": "be"
-        },
-        {
-          "op": "add",
-          "text": "done"
-        },
-        {
-          "op": "add",
-          "text": "with"
-        },
-        {
-          "op": "add",
-          "text": "absolutely"
-        },
-        {
-          "op": "add",
-          "text": "no"
-        },
-        {
-          "op": "add",
-          "text": "pilot"
-        },
-        {
-          "op": "add",
-          "text": "interaction"
-        },
-        {
-          "op": "add",
-          "text": "with"
-        },
-        {
-          "op": "same",
-          "text": "the"
-        },
-        {
-          "op": "add",
-          "text": "aircraft"
-        },
-        {
-          "op": "add",
-          "text": "or"
-        },
-        {
-          "op": "add",
-          "text": "ground"
-        },
-        {
-          "op": "add",
-          "text": "controllers"
-        },
-        {
-          "op": "add",
-          "text": "between"
-        },
-        {
-          "op": "add",
-          "text": "pushback"
-        },
-        {
-          "op": "add",
-          "text": "and"
-        },
-        {
-          "op": "add",
-          "text": "runway"
-        },
-        {
-          "op": "add",
-          "text": "threshold"
-        },
-        {
-          "op": "add",
-          "text": "even"
-        },
-        {
-          "op": "add",
-          "text": "95"
-        },
-        {
-          "op": "del",
-          "text": "bureau"
-        },
-        {
-          "op": "same",
-          "text": "of"
-        },
-        {
-          "op": "add",
-          "text": "the"
-        },
-        {
-          "op": "add",
-          "text": "time"
-        },
-        {
-          "op": "del",
-          "text": "labor"
-        },
-        {
-          "op": "del",
-          "text": "statistics"
-        }
-      ],
-      "faithful": false
-    },
-    {
-      "edgeId": "e2",
-      "readouts": [
-        {
-          "id": "number_changed",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "unit_changed",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "hedge_dropped",
-          "source": "measured",
-          "value": "yes",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "comparison_added",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "scope_widened",
-          "source": "inferred",
-          "value": "yes",
-          "probability": 0.9820137810980619,
-          "disputed": false
-        },
-        {
-          "id": "attribution_shifted",
-          "source": "inferred",
-          "value": "yes",
-          "probability": 0.9999785439545748,
-          "disputed": false
-        },
-        {
-          "id": "context_stripped",
-          "source": "inferred",
-          "value": "yes",
-          "probability": 0.9999785429211184,
-          "disputed": false
-        }
-      ],
-      "wordDiff": [
-        {
-          "op": "add",
-          "text": "half"
-        },
-        {
-          "op": "del",
-          "text": "it's"
-        },
-        {
-          "op": "del",
-          "text": "another"
-        },
-        {
-          "op": "del",
-          "text": "one"
-        },
-        {
-          "op": "same",
-          "text": "of"
-        },
-        {
-          "op": "add",
-          "text": "its"
-        },
-        {
-          "op": "add",
-          "text": "k-8"
-        },
-        {
-          "op": "add",
-          "text": "students"
-        },
-        {
-          "op": "add",
-          "text": "missed"
-        },
-        {
-          "op": "del",
-          "text": "those"
-        },
-        {
-          "op": "del",
-          "text": "things"
-        },
-        {
-          "op": "del",
-          "text": "where"
-        },
-        {
-          "op": "del",
-          "text": "once"
-        },
-        {
-          "op": "del",
-          "text": "you"
-        },
-        {
-          "op": "del",
-          "text": "get"
-        },
-        {
-          "op": "del",
-          "text": "into"
-        },
-        {
-          "op": "same",
-          "text": "the"
-        },
-        {
-          "op": "add",
-          "text": "math"
-        },
-        {
-          "op": "add",
-          "text": "target"
-        },
-        {
-          "op": "add",
-          "text": "newsletterscfo"
-        },
-        {
-          "op": "add",
-          "text": "daily"
-        },
-        {
-          "op": "add",
-          "text": "mit"
-        },
-        {
-          "op": "add",
-          "text": "report"
-        },
-        {
-          "op": "del",
-          "text": "details"
-        },
-        {
-          "op": "del",
-          "text": "it's"
-        },
-        {
-          "op": "del",
-          "text": "a"
-        },
-        {
-          "op": "del",
-          "text": "lot"
-        },
-        {
-          "op": "del",
-          "text": "harder"
-        },
-        {
-          "op": "del",
-          "text": "than"
-        },
-        {
-          "op": "del",
-          "text": "it"
-        },
-        {
-          "op": "del",
-          "text": "first"
-        },
-        {
-          "op": "del",
-          "text": "looks"
-        },
-        {
-          "op": "del",
-          "text": "even"
-        },
-        {
-          "op": "del",
-          "text": "to"
-        },
-        {
-          "op": "del",
-          "text": "get"
-        },
-        {
-          "op": "del",
-          "text": "to"
-        },
-        {
-          "op": "del",
-          "text": "where"
-        },
-        {
-          "op": "del",
-          "text": "it"
-        },
-        {
-          "op": "del",
-          "text": "could"
-        },
-        {
-          "op": "del",
-          "text": "be"
-        },
-        {
-          "op": "del",
-          "text": "done"
-        },
-        {
-          "op": "del",
-          "text": "with"
-        },
-        {
-          "op": "del",
-          "text": "absolutely"
-        },
-        {
-          "op": "del",
-          "text": "no"
-        },
-        {
-          "op": "del",
-          "text": "pilot"
-        },
-        {
-          "op": "del",
-          "text": "interaction"
-        },
-        {
-          "op": "del",
-          "text": "with"
-        },
-        {
-          "op": "del",
-          "text": "the"
-        },
-        {
-          "op": "del",
-          "text": "aircraft"
-        },
-        {
-          "op": "del",
-          "text": "or"
-        },
-        {
-          "op": "del",
-          "text": "ground"
-        },
-        {
-          "op": "del",
-          "text": "controllers"
-        },
-        {
-          "op": "del",
-          "text": "between"
-        },
-        {
-          "op": "del",
-          "text": "pushback"
-        },
-        {
-          "op": "del",
-          "text": "and"
-        },
-        {
-          "op": "del",
-          "text": "runway"
-        },
-        {
-          "op": "del",
-          "text": "threshold"
-        },
-        {
-          "op": "del",
-          "text": "even"
-        },
-        {
-          "op": "same",
-          "text": "95"
-        },
-        {
-          "op": "same",
-          "text": "of"
-        },
-        {
-          "op": "add",
-          "text": "generative"
-        },
-        {
-          "op": "add",
-          "text": "ai"
-        },
-        {
-          "op": "add",
-          "text": "pilots"
-        },
-        {
-          "op": "add",
-          "text": "at"
-        },
-        {
-          "op": "add",
-          "text": "companies"
-        },
-        {
-          "op": "add",
-          "text": "are"
-        },
-        {
-          "op": "add",
-          "text": "failing"
-        },
-        {
-          "op": "del",
-          "text": "the"
-        },
-        {
-          "op": "del",
-          "text": "time"
-        }
-      ],
-      "faithful": false
-    },
-    {
-      "edgeId": "e3",
-      "readouts": [
-        {
-          "id": "number_changed",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "unit_changed",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "hedge_dropped",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "comparison_added",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "scope_widened",
-          "source": "inferred",
-          "value": "yes",
-          "probability": 0.6791786994824615,
-          "disputed": false
-        },
-        {
-          "id": "attribution_shifted",
-          "source": "inferred",
-          "value": "yes",
-          "probability": 0.9914224839485979,
-          "disputed": false
-        },
-        {
-          "id": "context_stripped",
-          "source": "inferred",
-          "value": "no",
-          "probability": 0.4999999990530808,
-          "disputed": false
-        }
-      ],
-      "wordDiff": [
-        {
-          "op": "del",
-          "text": "half"
-        },
-        {
-          "op": "del",
-          "text": "of"
-        },
-        {
-          "op": "del",
-          "text": "its"
-        },
-        {
-          "op": "del",
-          "text": "k-8"
-        },
-        {
-          "op": "del",
-          "text": "students"
-        },
-        {
-          "op": "del",
-          "text": "missed"
-        },
-        {
-          "op": "del",
-          "text": "the"
-        },
-        {
-          "op": "del",
-          "text": "math"
-        },
-        {
-          "op": "del",
-          "text": "target"
-        },
-        {
-          "op": "del",
-          "text": "newsletterscfo"
-        },
-        {
-          "op": "del",
-          "text": "daily"
-        },
-        {
-          "op": "same",
-          "text": "mit"
-        },
-        {
-          "op": "same",
-          "text": "report"
-        },
-        {
-          "op": "add",
-          "text": "why"
-        },
-        {
-          "op": "same",
-          "text": "95"
-        },
-        {
-          "op": "same",
-          "text": "of"
-        },
-        {
-          "op": "same",
-          "text": "generative"
-        },
-        {
-          "op": "same",
-          "text": "ai"
-        },
-        {
-          "op": "same",
-          "text": "pilots"
-        },
-        {
-          "op": "del",
-          "text": "at"
-        },
-        {
-          "op": "del",
-          "text": "companies"
-        },
-        {
-          "op": "same",
-          "text": "are"
-        },
-        {
-          "op": "same",
-          "text": "failing"
-        }
-      ],
-      "faithful": false
-    },
-    {
-      "edgeId": "e4",
-      "readouts": [
-        {
-          "id": "number_changed",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "unit_changed",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "hedge_dropped",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "comparison_added",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "scope_widened",
-          "source": "inferred",
-          "value": "no",
-          "probability": 0.7772998569190562,
-          "disputed": false
-        },
-        {
-          "id": "attribution_shifted",
-          "source": "inferred",
-          "value": "yes",
-          "probability": 0.7310585435699074,
-          "disputed": false
-        },
-        {
-          "id": "context_stripped",
-          "source": "inferred",
-          "value": "yes",
-          "probability": 0.8519528003402678,
-          "disputed": false
-        }
-      ],
-      "wordDiff": [
-        {
-          "op": "add",
-          "text": "no"
-        },
-        {
-          "op": "del",
-          "text": "mit"
-        },
-        {
-          "op": "del",
-          "text": "report"
-        },
-        {
-          "op": "del",
-          "text": "why"
-        },
-        {
-          "op": "same",
-          "text": "95"
-        },
-        {
-          "op": "same",
-          "text": "of"
-        },
-        {
-          "op": "del",
-          "text": "generative"
-        },
-        {
-          "op": "same",
-          "text": "ai"
-        },
-        {
-          "op": "same",
-          "text": "pilots"
-        },
-        {
-          "op": "add",
-          "text": "aren't"
-        },
-        {
-          "op": "del",
-          "text": "are"
-        },
-        {
-          "op": "same",
-          "text": "failing"
-        }
-      ],
-      "faithful": false
-    },
-    {
-      "edgeId": "e5",
-      "readouts": [
-        {
-          "id": "number_changed",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "unit_changed",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "hedge_dropped",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "comparison_added",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "scope_widened",
-          "source": "inferred",
-          "value": "yes",
-          "probability": 0.9525740788728184,
-          "disputed": false
-        },
-        {
-          "id": "attribution_shifted",
-          "source": "inferred",
-          "value": "no",
-          "probability": 0.8519528000209412,
-          "disputed": false
-        },
-        {
-          "id": "context_stripped",
-          "source": "inferred",
-          "value": "yes",
-          "probability": 0.9241418073028423,
-          "disputed": false
-        }
-      ],
-      "wordDiff": [
-        {
-          "op": "add",
-          "text": "why"
-        },
-        {
-          "op": "del",
-          "text": "no"
-        },
-        {
-          "op": "same",
-          "text": "95"
-        },
-        {
-          "op": "same",
-          "text": "of"
-        },
-        {
-          "op": "same",
-          "text": "ai"
-        },
-        {
-          "op": "same",
-          "text": "pilots"
-        },
-        {
-          "op": "add",
-          "text": "fail"
-        },
-        {
-          "op": "add",
-          "text": "building"
-        },
-        {
-          "op": "add",
-          "text": "effective"
-        },
-        {
-          "op": "add",
-          "text": "agents"
-        },
-        {
-          "op": "add",
-          "text": "computer"
-        },
-        {
-          "op": "add",
-          "text": "use"
-        },
-        {
-          "op": "add",
-          "text": "and"
-        },
-        {
-          "op": "add",
-          "text": "mcp"
-        },
-        {
-          "op": "del",
-          "text": "aren't"
-        },
-        {
-          "op": "del",
-          "text": "failing"
-        }
-      ],
-      "faithful": false
-    },
-    {
-      "edgeId": "e6",
-      "readouts": [
-        {
-          "id": "number_changed",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "unit_changed",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "hedge_dropped",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "comparison_added",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "scope_widened",
-          "source": "inferred",
-          "value": "yes",
-          "probability": 0.9992903296953269,
-          "disputed": false
-        },
-        {
-          "id": "attribution_shifted",
-          "source": "inferred",
-          "value": "yes",
-          "probability": 0.9999999928058669,
-          "disputed": false
-        },
-        {
-          "id": "context_stripped",
-          "source": "inferred",
-          "value": "no",
-          "probability": 0.9947798743620155,
-          "disputed": false
-        }
-      ],
-      "wordDiff": [
-        {
-          "op": "add",
-          "text": "aug"
-        },
-        {
-          "op": "add",
-          "text": "23"
-        },
-        {
-          "op": "add",
-          "text": "2025"
-        },
-        {
-          "op": "add",
-          "text": "mit"
-        },
-        {
-          "op": "add",
-          "text": "report"
-        },
-        {
-          "op": "add",
-          "text": "finds"
-        },
-        {
-          "op": "del",
-          "text": "why"
-        },
-        {
-          "op": "same",
-          "text": "95"
-        },
-        {
-          "op": "same",
-          "text": "of"
-        },
-        {
-          "op": "same",
-          "text": "ai"
-        },
-        {
-          "op": "same",
-          "text": "pilots"
-        },
-        {
-          "op": "same",
-          "text": "fail"
-        },
-        {
-          "op": "add",
-          "text": "to"
-        },
-        {
-          "op": "add",
-          "text": "deliver"
-        },
-        {
-          "op": "add",
-          "text": "roi"
-        },
-        {
-          "op": "add",
-          "text": "exposing"
-        },
-        {
-          "op": "add",
-          "text": "genai"
-        },
-        {
-          "op": "add",
-          "text": "divide"
-        },
-        {
-          "op": "del",
-          "text": "building"
-        },
-        {
-          "op": "del",
-          "text": "effective"
-        },
-        {
-          "op": "del",
-          "text": "agents"
-        },
-        {
-          "op": "del",
-          "text": "computer"
-        },
-        {
-          "op": "del",
-          "text": "use"
-        },
-        {
-          "op": "del",
-          "text": "and"
-        },
-        {
-          "op": "del",
-          "text": "mcp"
-        }
-      ],
-      "faithful": false
-    }
-  ],
+  "hops": [],
   "blame": [],
   "roots": {
-    "pages": 7,
-    "clusters": 7,
+    "pages": 3,
+    "clusters": 3,
     "rootsLinked": 0,
-    "clustersUnlinked": 7,
+    "clustersUnlinked": 3,
     "studiesFound": null,
-    "independentRoots": 7,
+    "independentRoots": 3,
     "copies": 0
   },
-  "redHopEdgeId": "e1",
+  "redHopEdgeId": null,
   "earliest": {
     "nodeIds": [
-      "n9"
+      "n3"
     ],
-    "earlierWindowSearches": 5,
+    "earlierWindowSearches": 4,
     "earlierFound": 0
   },
   "failure": null,
   "budget": {
-    "credits": 17,
-    "usd": 0.0009475400000000001,
-    "ms": 126360,
+    "credits": 11,
+    "usd": 0.00048599,
+    "ms": 65103,
     "capHit": null
   },
   "decision": {
     "state": "TRAIL_GOES_COLD",
     "row": 6,
     "reasons": [
-      "no earliest page with a confirmed date, a primary page type, no earlier citation and no negated span"
+      "no earliest page with a confirmed date, a primary page type, no earlier citation and no negated span",
+      "1 unread candidate parent(s)"
     ],
     "counts": {
-      "pages": 7,
-      "clusters": 7,
-      "unreadParents": 0,
-      "earlierWindowSearches": 5
+      "pages": 3,
+      "clusters": 3,
+      "unreadParents": 1,
+      "earlierWindowSearches": 4
     }
   },
   "searchLog": [
     {
-      "at": "2026-11-17T06:33:09.138Z",
+      "at": "2026-11-17T23:26:22.682Z",
       "step": "search",
       "query": "\"95%\" pilots",
       "endDate": "2026-11-17",
@@ -1943,9 +434,9 @@
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:33:10.200Z",
+      "at": "2026-11-17T23:26:23.912Z",
       "step": "search",
-      "query": "\"95% of generative AI pilots\" failing company",
+      "query": "95% of generative AI pilots at companies failing",
       "endDate": "2026-11-17",
       "startDate": null,
       "results": 10,
@@ -1953,9 +444,9 @@
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:33:19.693Z",
+      "at": "2026-11-17T23:26:25.314Z",
       "step": "search",
-      "query": "\"generative AI pilots at companies\" failing 95%",
+      "query": "\"95% of generative AI pilots\" failing at companies",
       "endDate": "2026-11-17",
       "startDate": null,
       "results": 10,
@@ -1963,9 +454,9 @@
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:33:20.707Z",
+      "at": "2026-11-17T23:26:26.959Z",
       "step": "search",
-      "query": "95% failure rate generative AI pilots enterprise study",
+      "query": "95% generative AI pilot failures company study",
       "endDate": "2026-11-17",
       "startDate": null,
       "results": 10,
@@ -1973,7 +464,7 @@
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:33:22.178Z",
+      "at": "2026-11-17T23:26:28.643Z",
       "step": "meta-search",
       "query": "\"95%\" pilots",
       "endDate": "2026-11-17",
@@ -1983,17 +474,17 @@
       "dropped": 3
     },
     {
-      "at": "2026-11-17T06:33:49.297Z",
+      "at": "2026-11-17T23:26:41.367Z",
       "step": "search",
       "query": "\"95%\" pilots",
       "endDate": "2025-08-17",
       "startDate": null,
-      "results": 9,
+      "results": 10,
       "kept": 9,
-      "dropped": 0
+      "dropped": 1
     },
     {
-      "at": "2026-11-17T06:33:50.818Z",
+      "at": "2026-11-17T23:26:42.253Z",
       "step": "search",
       "query": "\"95% of generative AI pilots at companies are failing\"",
       "endDate": "2025-08-17",
@@ -2003,111 +494,93 @@
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:33:51.918Z",
+      "at": "2026-11-17T23:26:43.286Z",
       "step": "search",
-      "query": "\"95% of generative AI pilots at companies are failing\" MIT report",
+      "query": "\"MIT report: 95% of generative AI pilots at companies are failing\"",
       "endDate": "2025-08-17",
       "startDate": null,
-      "results": 9,
-      "kept": 9,
+      "results": 8,
+      "kept": 8,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:33:53.179Z",
+      "at": "2026-11-17T23:26:44.376Z",
       "step": "search",
-      "query": "MIT report 95% generative AI pilot failures",
+      "query": "MIT generative AI pilot failure rate 95%",
       "endDate": "2025-08-17",
       "startDate": null,
       "results": 10,
-      "kept": 10,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:34:24.597Z",
-      "step": "search",
-      "query": "\"95%\" pilots",
-      "endDate": "2022-07-29",
-      "startDate": null,
-      "results": 9,
-      "kept": 7,
-      "dropped": 2
-    },
-    {
-      "at": "2026-11-17T06:34:25.539Z",
-      "step": "search",
-      "query": "\"95% of generative AI pilots at companies are failing\"",
-      "endDate": "2022-07-29",
-      "startDate": null,
-      "results": 9,
       "kept": 9,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:34:26.499Z",
-      "step": "search",
-      "query": "\"95% of generative AI pilots\" failing",
-      "endDate": "2022-07-29",
-      "startDate": null,
-      "results": 9,
-      "kept": 9,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:34:27.630Z",
-      "step": "search",
-      "query": "95% of AI pilot projects failing in companies",
-      "endDate": "2022-07-29",
-      "startDate": null,
-      "results": 9,
-      "kept": 9,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:34:28.992Z",
-      "step": "search",
-      "query": "\"ninety-five percent\" Bureau of Labor Statistics",
-      "endDate": "2022-07-29",
-      "startDate": null,
-      "results": 10,
-      "kept": 10,
-      "dropped": 0
+      "dropped": 1
     }
   ],
   "usage": [
     {
-      "at": "2026-11-17T06:33:04.473Z",
+      "at": "2026-11-17T23:26:13.762Z",
       "traceId": "dev-18",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 161,
-      "completionTokens": 50,
+      "completionTokens": 51,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.0000311,
-      "latencyMs": 976,
+      "costUsd": 0.0000314,
+      "latencyMs": 3315,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:33:05.453Z",
+      "at": "2026-11-17T23:26:17.082Z",
       "traceId": "dev-18",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 271,
-      "completionTokens": 207,
-      "cachedTokens": 240,
+      "completionTokens": 117,
+      "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.0000892,
-      "latencyMs": 2291,
+      "costUsd": 0.0000622,
+      "latencyMs": 4107,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:33:09.138Z",
+      "at": "2026-11-17T23:26:22.682Z",
+      "traceId": "dev-18",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1472,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T23:26:23.912Z",
+      "traceId": "dev-18",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1214,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T23:26:25.314Z",
       "traceId": "dev-18",
       "step": "search",
       "service": "tavily",
@@ -2123,7 +596,7 @@
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:33:10.200Z",
+      "at": "2026-11-17T23:26:26.959Z",
       "traceId": "dev-18",
       "step": "search",
       "service": "tavily",
@@ -2134,44 +607,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1047,
+      "latencyMs": 1620,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:33:19.693Z",
-      "traceId": "dev-18",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 9473,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:33:20.706Z",
-      "traceId": "dev-18",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1003,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:33:22.177Z",
+      "at": "2026-11-17T23:26:28.643Z",
       "traceId": "dev-18",
       "step": "meta-search",
       "service": "tavily",
@@ -2182,12 +623,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1454,
+      "latencyMs": 1662,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:33:22.502Z",
+      "at": "2026-11-17T23:26:28.848Z",
       "traceId": "dev-18",
       "step": "meta-extract",
       "service": "tavily",
@@ -2196,14 +637,14 @@
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 306,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 185,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:33:22.709Z",
+      "at": "2026-11-17T23:26:30.241Z",
       "traceId": "dev-18",
       "step": "extract",
       "service": "tavily",
@@ -2212,14 +653,30 @@
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 127,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1330,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:33:25.053Z",
+      "at": "2026-11-17T23:26:30.285Z",
+      "traceId": "dev-18",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 751,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00000751,
+      "latencyMs": 1191,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T23:26:32.348Z",
       "traceId": "dev-18",
       "step": "dating",
       "service": "wayback",
@@ -2230,172 +687,60 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 2334,
+      "latencyMs": 834,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:33:25.057Z",
+      "at": "2026-11-17T23:26:32.359Z",
       "traceId": "dev-18",
       "step": "same_claim",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 224,
+      "promptTokens": 208,
       "completionTokens": 7,
-      "cachedTokens": 160,
+      "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.0000245,
-      "latencyMs": 607,
+      "costUsd": 0.000022899999999999998,
+      "latencyMs": 663,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:33:26.389Z",
+      "at": "2026-11-17T23:26:33.031Z",
       "traceId": "dev-18",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 26,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 699,
+      "costUsd": 2.6e-7,
+      "latencyMs": 395,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:33:26.392Z",
-      "traceId": "dev-18",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 209,
-      "completionTokens": 7,
-      "cachedTokens": 176,
-      "credits": 0,
-      "costUsd": 0.000023,
-      "latencyMs": 397,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:33:30.166Z",
-      "traceId": "dev-18",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 3357,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:33:30.169Z",
-      "traceId": "dev-18",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 206,
-      "completionTokens": 7,
-      "cachedTokens": 160,
-      "credits": 0,
-      "costUsd": 0.0000227,
-      "latencyMs": 471,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:33:39.414Z",
-      "traceId": "dev-18",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 8759,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:33:39.418Z",
-      "traceId": "dev-18",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 227,
-      "completionTokens": 7,
-      "cachedTokens": 176,
-      "credits": 0,
-      "costUsd": 0.0000248,
-      "latencyMs": 646,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:33:42.991Z",
-      "traceId": "dev-18",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 2917,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:33:42.993Z",
-      "traceId": "dev-18",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 212,
-      "completionTokens": 7,
-      "cachedTokens": 160,
-      "credits": 0,
-      "costUsd": 0.0000233,
-      "latencyMs": 621,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:33:43.618Z",
+      "at": "2026-11-17T23:26:33.427Z",
       "traceId": "dev-18",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 328,
-      "completionTokens": 151,
-      "cachedTokens": 256,
+      "promptTokens": 313,
+      "completionTokens": 154,
+      "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.0000781,
-      "latencyMs": 3911,
+      "costUsd": 0.0000775,
+      "latencyMs": 6535,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:33:49.296Z",
+      "at": "2026-11-17T23:26:41.366Z",
       "traceId": "dev-18",
       "step": "search",
       "service": "tavily",
@@ -2406,12 +751,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1746,
+      "latencyMs": 1376,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:33:50.817Z",
+      "at": "2026-11-17T23:26:42.253Z",
       "traceId": "dev-18",
       "step": "search",
       "service": "tavily",
@@ -2422,12 +767,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1500,
+      "latencyMs": 868,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:33:51.917Z",
+      "at": "2026-11-17T23:26:43.285Z",
       "traceId": "dev-18",
       "step": "search",
       "service": "tavily",
@@ -2438,12 +783,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1081,
+      "latencyMs": 1013,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:33:53.179Z",
+      "at": "2026-11-17T23:26:44.376Z",
       "traceId": "dev-18",
       "step": "search",
       "service": "tavily",
@@ -2454,12 +799,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1248,
+      "latencyMs": 1061,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:33:53.935Z",
+      "at": "2026-11-17T23:26:44.729Z",
       "traceId": "dev-18",
       "step": "extract",
       "service": "tavily",
@@ -2470,28 +815,28 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 736,
+      "latencyMs": 326,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:33:53.947Z",
+      "at": "2026-11-17T23:26:44.739Z",
       "traceId": "dev-18",
       "step": "embed",
       "service": "tokenfactory",
       "endpoint": "/embeddings",
       "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 1264,
+      "promptTokens": 1250,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.000012640000000000001,
-      "latencyMs": 5489,
+      "costUsd": 0.0000125,
+      "latencyMs": 1079,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:34:00.110Z",
+      "at": "2026-11-17T23:26:46.914Z",
       "traceId": "dev-18",
       "step": "dating",
       "service": "wayback",
@@ -2502,60 +847,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 611,
+      "latencyMs": 1074,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:34:00.116Z",
-      "traceId": "dev-18",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 254,
-      "completionTokens": 7,
-      "cachedTokens": 176,
-      "credits": 0,
-      "costUsd": 0.0000275,
-      "latencyMs": 446,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:34:00.587Z",
-      "traceId": "dev-18",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 21,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 2.1e-7,
-      "latencyMs": 15582,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:34:17.346Z",
-      "traceId": "dev-18",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 1171,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:34:17.347Z",
+      "at": "2026-11-17T23:26:46.916Z",
       "traceId": "dev-18",
       "step": "same_claim",
       "service": "tokenfactory",
@@ -2566,156 +863,60 @@
       "cachedTokens": 176,
       "credits": 0,
       "costUsd": 0.0000246,
-      "latencyMs": 567,
+      "latencyMs": 463,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:34:17.932Z",
+      "at": "2026-11-17T23:26:47.816Z",
       "traceId": "dev-18",
-      "step": "tokenfactory",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 434,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-17T23:26:47.818Z",
+      "traceId": "dev-18",
+      "step": "same_claim",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 330,
-      "completionTokens": 199,
-      "cachedTokens": 272,
+      "promptTokens": 209,
+      "completionTokens": 7,
+      "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.00009269999999999999,
-      "latencyMs": 5687,
+      "costUsd": 0.000023,
+      "latencyMs": 527,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:34:24.597Z",
-      "traceId": "dev-18",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 949,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:34:25.539Z",
-      "traceId": "dev-18",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 929,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:34:26.498Z",
-      "traceId": "dev-18",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 946,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:34:27.629Z",
-      "traceId": "dev-18",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1115,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:34:28.992Z",
-      "traceId": "dev-18",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1341,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:34:30.778Z",
-      "traceId": "dev-18",
-      "step": "extract",
-      "service": "tavily",
-      "endpoint": "extract",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1777,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:34:30.846Z",
+      "at": "2026-11-17T23:26:48.347Z",
       "traceId": "dev-18",
       "step": "embed",
       "service": "tokenfactory",
       "endpoint": "/embeddings",
       "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 237,
+      "promptTokens": 72,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.00000237,
-      "latencyMs": 958,
+      "costUsd": 7.2e-7,
+      "latencyMs": 530,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:34:31.817Z",
-      "traceId": "dev-18",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 222,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.00000222,
-      "latencyMs": 5573,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:34:37.596Z",
+      "at": "2026-11-17T23:26:49.161Z",
       "traceId": "dev-18",
       "step": "dating",
       "service": "fetch",
@@ -2726,12 +927,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 199,
+      "latencyMs": 275,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:34:38.174Z",
+      "at": "2026-11-17T23:26:49.181Z",
       "traceId": "dev-18",
       "step": "dating",
       "service": "fetch",
@@ -2742,12 +943,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 776,
+      "latencyMs": 295,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:34:38.246Z",
+      "at": "2026-11-17T23:26:49.960Z",
       "traceId": "dev-18",
       "step": "dating",
       "service": "fetch",
@@ -2758,76 +959,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 647,
+      "latencyMs": 798,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:34:38.561Z",
-      "traceId": "dev-18",
-      "step": "dating",
-      "service": "fetch",
-      "endpoint": "page",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 384,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:34:38.850Z",
-      "traceId": "dev-18",
-      "step": "dating",
-      "service": "fetch",
-      "endpoint": "page",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 602,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:34:39.031Z",
-      "traceId": "dev-18",
-      "step": "dating",
-      "service": "fetch",
-      "endpoint": "page",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 178,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:34:39.350Z",
-      "traceId": "dev-18",
-      "step": "dating",
-      "service": "fetch",
-      "endpoint": "page",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 787,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:34:44.331Z",
+      "at": "2026-11-17T23:26:50.239Z",
       "traceId": "dev-18",
       "step": "dating",
       "service": "wayback",
@@ -2838,12 +975,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 4978,
+      "latencyMs": 277,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:35:05.344Z",
+      "at": "2026-11-17T23:27:04.372Z",
       "traceId": "dev-18",
       "step": "dating",
       "service": "wayback",
@@ -2854,12 +991,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 1007,
+      "latencyMs": 14132,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:35:05.345Z",
+      "at": "2026-11-17T23:27:04.375Z",
       "traceId": "dev-18",
       "step": "dating",
       "service": "wayback",
@@ -2875,7 +1012,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:35:05.346Z",
+      "at": "2026-11-17T23:27:04.398Z",
       "traceId": "dev-18",
       "step": "dating",
       "service": "wayback",
@@ -2891,7 +1028,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:35:05.346Z",
+      "at": "2026-11-17T23:27:04.401Z",
       "traceId": "dev-18",
       "step": "dating",
       "service": "wayback",
@@ -2907,194 +1044,34 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:35:05.347Z",
-      "traceId": "dev-18",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 0,
-      "status": "200",
-      "cacheHit": true
-    },
-    {
-      "at": "2026-11-17T06:35:05.347Z",
-      "traceId": "dev-18",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 0,
-      "status": "200",
-      "cacheHit": true
-    },
-    {
-      "at": "2026-11-17T06:35:05.347Z",
-      "traceId": "dev-18",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 0,
-      "status": "200",
-      "cacheHit": true
-    },
-    {
-      "at": "2026-11-17T06:35:05.347Z",
-      "traceId": "dev-18",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 0,
-      "status": "200",
-      "cacheHit": true
-    },
-    {
-      "at": "2026-11-17T06:35:05.351Z",
+      "at": "2026-11-17T23:27:04.412Z",
       "traceId": "dev-18",
       "step": "page_type",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 1221,
+      "promptTokens": 1867,
       "completionTokens": 8,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.0001245,
-      "latencyMs": 669,
+      "costUsd": 0.0001891,
+      "latencyMs": 13369,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:35:06.037Z",
-      "traceId": "dev-18",
-      "step": "readouts",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 482,
-      "completionTokens": 23,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.0000551,
-      "latencyMs": 843,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:35:06.883Z",
-      "traceId": "dev-18",
-      "step": "readouts",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 481,
-      "completionTokens": 23,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.000054999999999999995,
-      "latencyMs": 839,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:35:07.725Z",
-      "traceId": "dev-18",
-      "step": "readouts",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 436,
-      "completionTokens": 23,
-      "cachedTokens": 368,
-      "credits": 0,
-      "costUsd": 0.0000505,
-      "latencyMs": 808,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:35:08.534Z",
-      "traceId": "dev-18",
-      "step": "readouts",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 418,
-      "completionTokens": 23,
-      "cachedTokens": 368,
-      "credits": 0,
-      "costUsd": 0.0000487,
-      "latencyMs": 532,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:35:09.069Z",
-      "traceId": "dev-18",
-      "step": "readouts",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 421,
-      "completionTokens": 23,
-      "cachedTokens": 368,
-      "credits": 0,
-      "costUsd": 0.000049,
-      "latencyMs": 501,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:35:09.572Z",
-      "traceId": "dev-18",
-      "step": "readouts",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 442,
-      "completionTokens": 23,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.000051099999999999995,
-      "latencyMs": 840,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:35:10.418Z",
+      "at": "2026-11-17T23:27:17.785Z",
       "traceId": "dev-18",
       "step": "boundary",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 326,
-      "completionTokens": 7,
+      "promptTokens": 325,
+      "completionTokens": 6,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.000034699999999999996,
-      "latencyMs": 413,
+      "costUsd": 0.0000343,
+      "latencyMs": 1077,
       "status": "200",
       "cacheHit": false
     }
