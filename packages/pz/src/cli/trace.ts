@@ -73,7 +73,7 @@ export async function traceCommand(args: string[], io: { write(line: string): vo
     return 0;
   } catch (error) {
     // Only known code literals may leave this boundary, never provider messages.
-    const codes = new Set(["not_configured", "http_error", "network_error", "bad_response", "budget_exceeded"]);
+    const codes = new Set(["not_configured", "http_error", "network_error", "bad_response", "budget_exceeded", "budget_bound_exceeded"]);
     const code = error && typeof error === "object" && "code" in error && typeof error.code === "string"
       && codes.has(error.code) ? error.code : "trace_failed";
     io.error(code);

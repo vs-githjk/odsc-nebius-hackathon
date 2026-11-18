@@ -31,15 +31,20 @@ function Start() {
       <p className="lead">Patient Zero walks a claim back through time to the earliest page it can find, and shows every step.</p>
       <label className="field">
         <input className="input" type="text" placeholder="Paste a statistic or a quote" aria-describedby="live-note" disabled />
-        <span id="live-note" className="meta field-note">Live traces arrive with the engine; samples below.</span>
+        <span id="live-note" className="meta field-note">Recorded traces from our live runs and invented samples below.</span>
       </label>
       <section aria-labelledby="samples-heading">
         <div className="samples-head">
-          <h2 id="samples-heading">Samples</h2>
-          {traces.every((t) => t.synthetic) && <span className="meta">Example data: an invented claim on invented pages.</span>}
+          <h2 id="samples-heading">Traces</h2>
+          <span className="meta">
+            {traces.every((t) => t.synthetic)
+              ? "Example data: an invented claim on invented pages."
+              : "REPLAY rows are recorded live runs on our dev claims, replayed from the recording. SAMPLE rows are invented claims on invented pages."}
+          </span>
         </div>
         <ul className="samples">
-          {sampleRows(traces).map((row) => {
+          {/* Real recordings first, then the samples, each ordered by what it has to show. */}
+          {[...sampleRows(traces.filter((t) => !t.synthetic)), ...sampleRows(traces.filter((t) => t.synthetic))].map((row) => {
             const [ending, reach, pages] = rowFacts(row);
             const trace = traces.find((t) => t.id === row.id)!;
             return (
@@ -53,7 +58,7 @@ function Start() {
                     </span>
                     <span>{reach}</span>
                     <span>{pages}</span>
-                    {!row.synthetic && <ModeBadge trace={trace} />}
+                    <ModeBadge trace={trace} />
                   </span>
                   <svg className="sample-go" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M9 6l6 6-6 6" />
