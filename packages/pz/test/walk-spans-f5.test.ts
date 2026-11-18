@@ -7,7 +7,7 @@ import { createBudget } from "../src/clients/budget.ts";
 import { createFileCache } from "../src/clients/cache.ts";
 import { createTavily } from "../src/clients/tavily.ts";
 import { createWayback } from "../src/clients/wayback.ts";
-import { menuLike, rankSentences, sentences, toPlain, walkStep } from "../src/engine/walk.ts";
+import { MAX_SENTENCE_CHARS, menuLike, rankSentences, sentences, toPlain, walkStep } from "../src/engine/walk.ts";
 import { loadRules } from "../src/rules/index.ts";
 import { createUsageLog } from "../src/usage/log.ts";
 
@@ -173,5 +173,28 @@ describe("hard-wrapped text falls back to whole sentences", () => {
   it("the fallback still rejects menus", () => {
     const { text } = toPlain("* Home * Penguins\n* 14 times a day * Shop");
     expect(sentences(text).filter((s) => !menuLike(s.text)).map((s) => s.text)).toEqual([]);
+  });
+});
+
+describe("one sentence cap for split and fallback sentences (XO on #209)", () => {
+  const long = (n: number) => `Keepers found that penguins nap 14 times a day, ${"and they watched them through every season of the year ".repeat(n).trim()}.`;
+  it("is main's 600 characters", () => {
+    expect(MAX_SENTENCE_CHARS).toBe(600);
+  });
+
+  it("keeps a long real sentence under the cap, split or hard-wrapped, and drops a run over it", async () => {
+    const under = long(8);
+    expect(under.length).toBeGreaterThan(400);
+    expect(under.length).toBeLessThanOrEqual(600);
+    expect((await walkOne(under, () => answer("yes", 0.97))).span).toBe(under);
+    // Each walk gets its own HTTP cache: the page URL is the same, and a cached page would answer the next walk.
+    dir = mkdtempSync(join(tmpdir(), "pz-f5-"));
+    const wrapped = under.replace("penguins nap", "penguins\nnap");
+    expect((await walkOne(wrapped, () => answer("yes", 0.97))).span).toBe(under);
+    dir = mkdtempSync(join(tmpdir(), "pz-f5-"));
+    const over = long(12);
+    expect(over.length).toBeGreaterThan(600);
+    // No sentence under the cap states the claim, so the page gives no node.
+    await expect(walkOne(over, () => answer("yes", 0.97))).rejects.toThrow();
   });
 });
