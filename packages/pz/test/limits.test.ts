@@ -122,6 +122,27 @@ describe("docs/limits.md, open rows pinned as they behave today", () => {
     }
   });
 
+  it("L17 a number before a listed unit of measure is not the count; unlisted units still pass", () => {
+    const water = { number: { raw: "eight", canonical: "8" }, unit: null, subjectLemma: "glass", population: null, time: null, hedge: null, namedSource: null, variants: [] } as SpikeClaim["atoms"];
+    const hit = (s: string) => atomHit(s, water, rules.weakNumberMinSigDigits, rules.weakNumberMaxCommas);
+    expect(hit("Drink six 8 oz glasses of water a day.")).toBe(false);
+    expect(hit("Drink eight glasses of water a day.")).toBe(true);
+    // Still missed: units off the list.
+    expect(hit("Carry six 8 pound glass jars a day.")).toBe(true);
+    expect(hit("Fill two 8 gallon glass drums a day.")).toBe(true);
+  });
+
+  it("L18 a page that presents the claim as already said is never the origin; other wordings still pass", () => {
+    const sample: Trace = JSON.parse(readFileSync(fileURLToPath(new URL("../../../fixtures/traces/sample-origin.json", import.meta.url)), "utf8"));
+    const withSpan = (text: string) => ({ ...sample, spans: sample.spans.map((s) => (s.nodeId === "keeper-log" ? { ...s, text } : s)) });
+    const own = sample.spans.find((s) => s.nodeId === "keeper-log")!.text;
+    const blocked = decideStopState(withSpan(`The seemingly ubiquitous admonition says it: ${own}`), rules);
+    expect(blocked.state).not.toBe("ORIGIN_FOUND");
+    expect(blocked.reasons.some((r) => /presents the claim as already said/.test(r))).toBe(true);
+    // Still missed: a wording that is not on the list.
+    expect(decideStopState(withSpan(`You may have read that ${own.charAt(0).toLowerCase()}${own.slice(1)}`), rules).state).toBe("ORIGIN_FOUND");
+  });
+
   it("L13 a negation in wording the list doesn't know is not caught by code", () => {
     expect(isNegated({ contextBefore: "Researchers checked this, and it is simply untrue that ", text: "penguins nap 14 times a day." }, rules.negationPrefixes)).toBe(false);
   });
