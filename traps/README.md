@@ -34,7 +34,7 @@ The typed answers come from a stub that calls the planted page (the source's ear
 
 `pipeline: wrong origins 3 of 12 cases that could end on one; 3 are the known gap (paraphrased negation, docs/limits.md), and the other 9 give 0 (95% upper bound 28.3%). 4 more test nothing, because their source ends without an origin before any mutation (dry-run: TRAIL_GOES_COLD, 1 unread candidate parent(s)). Failure paths end as expected in 12 of 12; planted dates are capped in 3 of 3.`
 
-Only 16 cases can end on a wrong origin at all, and 12 of them are counted: the 4 dry-run cases end cold before any trap is planted, so they test nothing yet. The failure-path cases read no page or stop before any origin rule, and the dating cases check the date cap, so each group gets its own count.
+12 cases can end on a wrong origin, and all 12 are counted. The 4 dry-run cases would make 16, but they end cold before any trap is planted, so they test nothing yet. The failure-path cases read no page or stop before any origin rule, and the dating cases check the date cap, so each group gets its own count.
 
 **The dry run tests nothing for those 4.** Since #110 (ranked citation following), the dry run's 1975 PubMed page has a DOI link beside its sentence, which counts as a cited parent. The replay has no copy of that page, so it stays unread, and an unread parent blocks any origin. The source ends `TRAIL_GOES_COLD` before anything is planted, so its nudge, negate, unread-parent and paraphrase cases pass without testing their trap. They are left out of the wrong-origin count, never counted as caught, and come back into it once that source ends on its origin again. That leaves 12 cases, 3 per mutation, on claims 2, 3 and 5.
 

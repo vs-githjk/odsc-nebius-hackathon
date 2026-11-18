@@ -19,7 +19,7 @@ describe("TraceView", () => {
       const first = scrubberStops(trace)[0];
       if (first) {
         expect(html).toContain('role="slider"');
-        for (const word of first.text.split(" ").slice(0, 3)) expect(html).toContain(word.replace(/&/g, "&amp;").replace(/'/g, "&#x27;"));
+        for (const word of first.text.split(" ").slice(0, 3)) expect(html).toContain(word.replace(/&/g, "&amp;").replace(/'/g, "&#x27;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;"));
       } else {
         expect(html).toContain("No page with the claim");
       }
