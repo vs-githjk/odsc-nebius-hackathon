@@ -124,3 +124,4 @@
 - 2026-11-18 18:20 reviewing #232 #233 #234 #235; urgent pings to Rohan (#3) and Anoop (#4); hero = dev-10 LOCKED
 - 2026-11-18 18:25 #232 review 5d3512e: FIX [M] README:17 #225 overclaim, [L] label; refresh list posted
 - 2026-11-18 18:28 #234 review e19bbf6: FIX [M] subset labels, [L] empty ids, [L] CLAIMS env; posted
+- 2026-11-18 18:35 #233 merged (re-review PASS, 882/882)
