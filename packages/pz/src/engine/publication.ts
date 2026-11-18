@@ -296,7 +296,9 @@ export function createEvidence(deps: EvidenceDeps) {
     const fromRegistry = cited ? registry(await crossref(cited), "registry_crossref") : null;
     if (fromRegistry) return fromRegistry;
     // Only explicitly marked publication datelines are evidence.
-    const datelines = [...page.matchAll(/<time\b[^>]*>/gi)]
+    const articleHtml = page.replace(/<!--[\s\S]*?(?:-->|$)/g, "")
+      .replace(/<(script|aside|nav|footer)\b[^>]*>[\s\S]*?(?:<\/\1\s*>|$)/gi, "");
+    const datelines = [...articleHtml.matchAll(/<time\b[^>]*>/gi)]
       .filter(([tag]) => attr(tag, "itemprop")?.toLowerCase() === "datepublished");
     if (datelines.length !== 1) return null;
     const datetime = attr(datelines[0]![0], "datetime");
