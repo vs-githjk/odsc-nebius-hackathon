@@ -3,7 +3,7 @@
   "id": "dev-01",
   "mode": "LIVE",
   "synthetic": false,
-  "recordedAt": "2026-11-17T23:02:41.985Z",
+  "recordedAt": "2026-11-18T02:54:35.357Z",
   "claim": {
     "text": "Insanity is doing the same thing over and over again and expecting different results.",
     "atoms": {
@@ -15,7 +15,7 @@
       "hedge": null,
       "namedSource": null,
       "variants": [],
-      "phrase": "Insanity is doing the same thing over and over again and expecting different results"
+      "phrase": "Insanity is doing the same thing over and over again"
     }
   },
   "viralSentence": "Insanity is doing the same thing over and over again and expecting different results.",
@@ -82,17 +82,17 @@
     },
     {
       "id": "n3",
-      "url": "https://www.benlinders.com/2010/insanity",
-      "domain": "benlinders.com",
-      "title": "Insanity",
+      "url": "https://www.mentalfloss.com/posts/definition-of-insanity-albert-einstein",
+      "domain": "mentalfloss.com",
+      "title": "‘Definition of Insanity’: Did Albert Einstein Really Coin This Famous Phrase?",
       "date": {
         "kind": "published",
-        "value": "2010-09-01",
+        "value": "2024-06-04",
         "source": "metadata",
-        "firstCapture": "2013-12-19",
+        "firstCapture": "2024-06-04",
         "conflictingDate": false
       },
-      "clusterId": "c-n6",
+      "clusterId": "c-n3",
       "evidence": "observed",
       "meta": false,
       "read": true,
@@ -100,21 +100,26 @@
       "spanIds": [
         "s1"
       ],
-      "citesEarlier": false,
-      "candidateParents": [],
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "https://www.mentalfloss.com/authors/jake-rossen",
+          "read": true
+        }
+      ],
       "pageType": null,
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "yes",
-        "probability": 0.9999999999942106,
+        "probability": 0.9999994956523428,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.9999999999942106
+            "p": 0.9999994956523428
           },
           {
             "optionId": "no",
-            "p": 5.78935694069648e-12
+            "p": 5.043476573662678e-7
           },
           {
             "optionId": "__other__",
@@ -124,19 +129,19 @@
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
         "threshold": null
       },
-      "foundViaMeta": null,
+      "foundViaMeta": "https://quoteinvestigator.com/media",
       "injection": null
     },
     {
       "id": "n4",
-      "url": "https://freakonomics.com/2009/05/quotes-uncovered-did-an-economist-really-coin-free-lunch",
-      "domain": "freakonomics.com",
-      "title": "Quotes Uncovered: Did an Economist Really Coin \"Free Lunch\"? - Freakonomics",
+      "url": "https://www.violinist.com/blog/BClapton/200610/5859",
+      "domain": "violinist.com",
+      "title": "The definition of insanity is doing the same thing over and over again and expecting a different result. Albert Einstein",
       "date": {
-        "kind": "published",
-        "value": "2009-05-07",
-        "source": "metadata",
-        "firstCapture": "2022-01-27",
+        "kind": "existed_by",
+        "value": "2006-10-23",
+        "source": "wayback_first_capture",
+        "firstCapture": "2006-10-23",
         "conflictingDate": false
       },
       "clusterId": "c-n4",
@@ -147,30 +152,25 @@
       "spanIds": [
         "s2"
       ],
-      "citesEarlier": true,
-      "candidateParents": [
-        {
-          "url": "http://www.amazon.com/Yale-Book-Quotations-Fred-Shapiro/dp/0300107986",
-          "read": false
-        }
-      ],
+      "citesEarlier": false,
+      "candidateParents": [],
       "pageType": null,
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "yes",
-        "probability": 0.9399133359700624,
+        "probability": 0.999999974890007,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.9399133359700624
+            "p": 0.999999974890007
           },
           {
             "optionId": "no",
-            "p": 0.060086649095680206
+            "p": 2.5109992868137764e-8
           },
           {
             "optionId": "__other__",
-            "p": 1.4934257386300942e-8
+            "p": 1.1102230246251565e-16
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -181,14 +181,14 @@
     },
     {
       "id": "n5",
-      "url": "https://addieleecounseling.com",
-      "domain": "addieleecounseling.com",
-      "title": "Addie Lee Counseling",
+      "url": "https://www.azquotes.com/quotes/topics/definition-of-insanity.html",
+      "domain": "azquotes.com",
+      "title": "TOP 25 DEFINITION OF INSANITY QUOTES | A-Z Quotes",
       "date": {
         "kind": "existed_by",
-        "value": "2015-09-26",
+        "value": "2015-09-24",
         "source": "wayback_first_capture",
-        "firstCapture": "2015-09-26",
+        "firstCapture": "2015-09-24",
         "conflictingDate": false
       },
       "clusterId": "c-n5",
@@ -205,15 +205,15 @@
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "yes",
-        "probability": 0.9999999998973812,
+        "probability": 0.9959298622123653,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.9999999998973812
+            "p": 0.9959298622123653
           },
           {
             "optionId": "no",
-            "p": 1.0261879725436115e-10
+            "p": 0.004070137787634741
           },
           {
             "optionId": "__other__",
@@ -228,17 +228,17 @@
     },
     {
       "id": "n6",
-      "url": "https://unefemme.net/2008/12",
-      "domain": "unefemme.net",
-      "title": "December 2008 - une femme x susan blakey",
+      "url": "https://acaringcounselor.com/couples-counseling",
+      "domain": "acaringcounselor.com",
+      "title": "Couples Counseling | Humanistic | Coral Springs, FL 33065",
       "date": {
         "kind": "existed_by",
-        "value": "2014-03-12",
+        "value": "2013-07-23",
         "source": "wayback_first_capture",
-        "firstCapture": "2014-03-12",
-        "conflictingDate": false
+        "firstCapture": "2013-07-23",
+        "conflictingDate": true
       },
-      "clusterId": "c-n6",
+      "clusterId": "c-n8",
       "evidence": "observed",
       "meta": false,
       "read": true,
@@ -252,15 +252,15 @@
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "yes",
-        "probability": 0.9999999999572222,
+        "probability": 0.9999999999666846,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.9999999999572222
+            "p": 0.9999999999666846
           },
           {
             "optionId": "no",
-            "p": 4.277788082403917e-11
+            "p": 3.331544636840722e-11
           },
           {
             "optionId": "__other__",
@@ -275,53 +275,6 @@
     },
     {
       "id": "n7",
-      "url": "https://lindseypollak.com/how-to-get-a-good-job-in-a-bad-economy-7-recession-strategies",
-      "domain": "lindseypollak.com",
-      "title": "How to Get a Good Job in a Bad Economy: 7 Recession Strategies - Multigenerational Work Expert and Speaker, Lindsey Pollak",
-      "date": {
-        "kind": "published",
-        "value": "2008-10-19",
-        "source": "metadata",
-        "firstCapture": "2016-03-23",
-        "conflictingDate": false
-      },
-      "clusterId": "c-n7",
-      "evidence": "observed",
-      "meta": false,
-      "read": true,
-      "versionOf": null,
-      "spanIds": [
-        "s5"
-      ],
-      "citesEarlier": false,
-      "candidateParents": [],
-      "pageType": null,
-      "sameClaim": {
-        "questionId": "same_claim",
-        "optionId": "yes",
-        "probability": 0.9999999847700203,
-        "top": [
-          {
-            "optionId": "yes",
-            "p": 0.9999999847700203
-          },
-          {
-            "optionId": "no",
-            "p": 1.522997981047338e-8
-          },
-          {
-            "optionId": "__other__",
-            "p": 0
-          }
-        ],
-        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-        "threshold": null
-      },
-      "foundViaMeta": null,
-      "injection": null
-    },
-    {
-      "id": "n8",
       "url": "https://djcoregon.com/news/2000/01/14/get-your-health-on-track-you-may-be-ready-for-a-personal-fitness-coach",
       "domain": "djcoregon.com",
       "title": "Get your health on track– You may be ready for a personal fitness coach – Daily Journal of Commerce",
@@ -332,13 +285,13 @@
         "firstCapture": null,
         "conflictingDate": false
       },
-      "clusterId": "c-n8",
+      "clusterId": "c-n7",
       "evidence": "observed",
       "meta": false,
       "read": true,
       "versionOf": null,
       "spanIds": [
-        "s6"
+        "s5"
       ],
       "citesEarlier": false,
       "candidateParents": [],
@@ -412,23 +365,23 @@
       "boundary": {
         "questionId": "boundary",
         "optionId": "print",
-        "probability": 0.9938142834483019,
+        "probability": 0.9957351957067696,
         "top": [
           {
             "optionId": "print",
-            "p": 0.9938142834483019
+            "p": 0.9957351957067696
           },
           {
             "optionId": "unsourced",
-            "p": 0.0059260328548892864
+            "p": 0.004085972756553071
           },
           {
             "optionId": "none",
-            "p": 0.0002596836968087365
+            "p": 0.00017882266893388377
           },
           {
             "optionId": "__other__",
-            "p": 1.1102230246251565e-16
+            "p": 8.867743428453423e-9
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -437,16 +390,63 @@
       "injection": null
     },
     {
+      "id": "n8",
+      "url": "https://terrasyst.com?lang=en",
+      "domain": "terrasyst.com",
+      "title": "My Blog – My WordPress Blog",
+      "date": {
+        "kind": "unconfirmed",
+        "value": null,
+        "source": "wayback_first_capture",
+        "firstCapture": null,
+        "conflictingDate": false
+      },
+      "clusterId": "c-n8",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s6"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.999999999994891,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.999999999994891
+          },
+          {
+            "optionId": "no",
+            "p": 5.1090892146936656e-12
+          },
+          {
+            "optionId": "__other__",
+            "p": 0
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    },
+    {
       "id": "n9",
-      "url": "https://acaringcounselor.com/couples-counseling",
-      "domain": "acaringcounselor.com",
-      "title": "Couples Counseling | Humanistic | Coral Springs, FL 33065",
+      "url": "https://www.strategy-business.com/article/18387",
+      "domain": "strategy-business.com",
+      "title": "The Four Phases of Continuous Sourcing",
       "date": {
         "kind": "existed_by",
-        "value": "2013-07-23",
+        "value": "2015-06-22",
         "source": "wayback_first_capture",
-        "firstCapture": "2013-07-23",
-        "conflictingDate": true
+        "firstCapture": "2015-06-22",
+        "conflictingDate": false
       },
       "clusterId": "c-n9",
       "evidence": "observed",
@@ -462,19 +462,19 @@
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "yes",
-        "probability": 0.9999999999666846,
+        "probability": 0.9999977350420972,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.9999999999666846
+            "p": 0.9999977350420972
           },
           {
             "optionId": "no",
-            "p": 3.331544769437223e-11
+            "p": 0.000002260325101731067
           },
           {
             "optionId": "__other__",
-            "p": 0
+            "p": 4.632801031689837e-9
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -485,14 +485,14 @@
     },
     {
       "id": "n10",
-      "url": "https://bkean.org/mandate",
-      "domain": "bkean.org",
-      "title": "mandate – Bkean Foundation For Abatement Of Poverty In Africa",
+      "url": "https://rfilkov.com/category/wise-thoughts",
+      "domain": "rfilkov.com",
+      "title": "Wise Thoughts | RF Solutions - Technology, Health and More",
       "date": {
         "kind": "existed_by",
-        "value": "2026-03-05",
+        "value": "2014-07-18",
         "source": "wayback_first_capture",
-        "firstCapture": "2026-03-05",
+        "firstCapture": "2014-07-18",
         "conflictingDate": false
       },
       "clusterId": "c-n10",
@@ -508,16 +508,63 @@
       "pageType": null,
       "sameClaim": {
         "questionId": "same_claim",
-        "optionId": "yes",
-        "probability": 0.9999999943972036,
+        "optionId": "no",
+        "probability": 0.7310585349570142,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.9999999943972036
+            "p": 0.2689414068305028
           },
           {
             "optionId": "no",
-            "p": 5.6027964464331784e-9
+            "p": 0.7310585349570142
+          },
+          {
+            "optionId": "__other__",
+            "p": 5.821248294513026e-8
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    },
+    {
+      "id": "n11",
+      "url": "https://www.westgard.com/essays/guest-essay/guest2.html",
+      "domain": "westgard.com",
+      "title": "Understanding Quality - Westgard QC",
+      "date": {
+        "kind": "published",
+        "value": "2022-08-01",
+        "source": "metadata",
+        "firstCapture": "2024-10-14",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n11",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s9"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9999999998082829,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9999999998082829
+          },
+          {
+            "optionId": "no",
+            "p": 1.9171715347479367e-10
           },
           {
             "optionId": "__other__",
@@ -534,15 +581,6 @@
   "edges": [
     {
       "id": "e1",
-      "parentId": "n8",
-      "childId": "n7",
-      "kind": "inferred",
-      "parentSpanId": "s6",
-      "childSpanId": "s5",
-      "linkHref": null
-    },
-    {
-      "id": "e2",
       "parentId": "n7",
       "childId": "n4",
       "kind": "inferred",
@@ -551,80 +589,66 @@
       "linkHref": null
     },
     {
-      "id": "e3",
+      "id": "e2",
       "parentId": "n4",
-      "childId": "n3",
-      "kind": "inferred",
-      "parentSpanId": "s2",
-      "childSpanId": "s1",
-      "linkHref": null
-    },
-    {
-      "id": "e4",
-      "parentId": "n3",
-      "childId": "n9",
-      "kind": "inferred",
-      "parentSpanId": "s1",
-      "childSpanId": "s7",
-      "linkHref": null
-    },
-    {
-      "id": "e5",
-      "parentId": "n9",
       "childId": "n6",
       "kind": "inferred",
-      "parentSpanId": "s7",
+      "parentSpanId": "s2",
       "childSpanId": "s4",
       "linkHref": null
     },
     {
-      "id": "e6",
+      "id": "e3",
       "parentId": "n6",
-      "childId": "n5",
+      "childId": "n9",
       "kind": "inferred",
       "parentSpanId": "s4",
+      "childSpanId": "s7",
+      "linkHref": null
+    },
+    {
+      "id": "e4",
+      "parentId": "n9",
+      "childId": "n5",
+      "kind": "inferred",
+      "parentSpanId": "s7",
       "childSpanId": "s3",
       "linkHref": null
     },
     {
-      "id": "e7",
+      "id": "e5",
       "parentId": "n5",
-      "childId": "n10",
+      "childId": "n11",
       "kind": "inferred",
       "parentSpanId": "s3",
-      "childSpanId": "s8",
+      "childSpanId": "s9",
+      "linkHref": null
+    },
+    {
+      "id": "e6",
+      "parentId": "n11",
+      "childId": "n3",
+      "kind": "inferred",
+      "parentSpanId": "s9",
+      "childSpanId": "s1",
       "linkHref": null
     }
   ],
   "clusters": [
     {
-      "id": "c-n5",
+      "id": "c-n11",
       "nodeIds": [
-        "n5"
+        "n11"
       ],
       "rule": "single"
     },
     {
-      "id": "c-n7",
+      "id": "c-n8",
       "nodeIds": [
-        "n7"
-      ],
-      "rule": "single"
-    },
-    {
-      "id": "c-n6",
-      "nodeIds": [
-        "n6",
-        "n3"
+        "n8",
+        "n6"
       ],
       "rule": "near_duplicate"
-    },
-    {
-      "id": "c-n4",
-      "nodeIds": [
-        "n4"
-      ],
-      "rule": "single"
     },
     {
       "id": "c-n9",
@@ -634,9 +658,30 @@
       "rule": "single"
     },
     {
+      "id": "c-n5",
+      "nodeIds": [
+        "n5"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n4",
+      "nodeIds": [
+        "n4"
+      ],
+      "rule": "single"
+    },
+    {
       "id": "c-n10",
       "nodeIds": [
         "n10"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n3",
+      "nodeIds": [
+        "n3"
       ],
       "rule": "single"
     },
@@ -655,9 +700,9 @@
       "rule": "single"
     },
     {
-      "id": "c-n8",
+      "id": "c-n7",
       "nodeIds": [
-        "n8"
+        "n7"
       ],
       "rule": "single"
     }
@@ -666,76 +711,62 @@
     {
       "id": "s1",
       "nodeId": "n3",
-      "text": "One that has hit me, and that I use a lot is the definition of insanity (attributed wrongly by many people to Albert Einstein): \"Insanity is doing the same thing over and over again and expecting different results\".",
-      "contextBefore": "Close Insanity. * Post author:Ben Linders * Post published: * Post category:All (English/Nederlands) / English Articles * Post comments:3 Comments Sometimes you hear a quote that really get's to you. ",
-      "contextAfter": " If you don't like the result, then it might help if you change the things you do. Stopping insanity. There is a solution available that can be used against insanity, by Bob Newhart: (Ok, it's a \"good",
-      "start": 3667,
-      "end": 3882,
-      "extractSha256": "938b1ecde1c7d65def0a69396458c5e306e373c729768cac339cbda87019e6bb",
-      "windowSha256": "f83aeb414069b0f8f55fa72d06e34c9c434f5961415601787d4e2ee1d6d432d4",
-      "fetchedAt": "2026-11-17T23:02:59.175Z",
-      "waybackUrl": "https://web.archive.org/web/20131219174156/https://www.benlinders.com/2010/insanity",
+      "text": "ByJake Rossen| Add us as a preferred source Albert Einstein is credited with more famous quotations than he actually came up with. | George Rinhart/GettyImages \"The definition of insanity is doing the same thing over and over again and expecting a different result.\"",
+      "contextBefore": "3%2C670%2C20.9%0A%09%09%22%2F%3E%0A%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A) 'Definition of Insanity': Did Albert Einstein Really Coin This Famous Phrase? Misattributions to Einstein abound. Is this one of them? ",
+      "contextAfter": " It's a well-circulated quote-often printed on inspirational posters adorning classroom and office walls-that gets invoked when someone wants to point to the futility of making the same mistake over a",
+      "start": 2383,
+      "end": 2649,
+      "extractSha256": "d473e4cb7a063d8fd93d175ea0713414bfb902aa7e29a2996029599797481aad",
+      "windowSha256": "58514d1a0e2ad3bd28bd05b7d95772a4ceea627f03a2d7d72ad0a07b3ed145b4",
+      "fetchedAt": "2026-11-18T02:54:54.993Z",
+      "waybackUrl": "https://web.archive.org/web/20240604220336/https://www.mentalfloss.com/posts/definition-of-insanity-albert-einstein",
       "tier": "exact"
     },
     {
       "id": "s2",
       "nodeId": "n4",
-      "text": "Kursad asked: > \"The definition of insanity is doing the same thing over and over again and expecting different results,\" is attributed to Einstein, Ben Franklin, and Rita Mae Brown.",
-      "contextBefore": "try to trace the origins, using *The Yale Book of Quotations* and more recent research by me. Hundreds of people have responded via comments or e-mails. I am responding as best I can, a few per week. ",
-      "contextAfter": " From what I can tell, Brown is the most likely, but I still would like to know. *The Yale Book of Quotations*, which attempts to trace all famous quotations to their earliest occurrences, quotes Brow",
-      "start": 532,
-      "end": 714,
-      "extractSha256": "8e71d16aab15f49a3935d90de20d094f4676577767fe2a8a1d4bf4d89d430b7e",
-      "windowSha256": "91f47f8e5cca29fccaf79059bffaf1122b2de37481dd3b9a6c4a284767ed706e",
-      "fetchedAt": "2026-11-17T23:03:07.386Z",
-      "waybackUrl": "https://web.archive.org/web/20220127000038/https://freakonomics.com/2009/05/quotes-uncovered-did-an-economist-really-coin-free-lunch",
+      "text": "Find them here: Violinist.com - Violin Blogs - Ben Clapton - Blog Entry Printer-friendly version The definition of insanity is doing the same thing over and over again and expecting a different result.",
+      "contextBefore": "Welcome, Guest! · Register Log In We have thousands of human-written stories, discussions, interviews and reviews from today through the past 20+ years. ",
+      "contextAfter": " Albert Einstein. *October 7, 2006 at 4:10 AM* We were talking a bit about practice techniques in String Class yesterday. To start off with, let's see what a fairly typical practice session would be? ",
+      "start": 153,
+      "end": 354,
+      "extractSha256": "bf86df9f28caee06cc9b9b85babb16b62b659a9d2e429f7011da14e6feef171b",
+      "windowSha256": "d74a3b8e12e0e28779c9bf0d4ed890f4bf3496a13c91ec7dd0cf92e6028c1f36",
+      "fetchedAt": "2026-11-18T02:54:55.901Z",
+      "waybackUrl": "https://web.archive.org/web/20061023035419/https://www.violinist.com/blog/BClapton/200610/5859",
       "tier": "exact"
     },
     {
       "id": "s3",
       "nodeId": "n5",
-      "text": "Albert Einstein said that \"Insanity is doing the same thing over and over again and expecting different results.\"",
-      "contextBefore": "Addie Lee Counseling. Addie Lee Counseling. \"Mental Health is not a destination, but a process.\". I'm Here to Listen Supporting your well-being. Purpose Statement. ",
-      "contextAfter": " I find that this quote probably best fits my idea of what therapy is really all about. Bottom line, you have been doing what you are doing and are not happy. Maybe you have even tried a few different",
-      "start": 164,
-      "end": 277,
-      "extractSha256": "c459481c25e89b4da2d0b50ffa8d51da1338401be73f5e0058d50a96e85ca9d7",
-      "windowSha256": "b491fb4ca3177cbcdcff9f38fbaa97a1db4b276868672bc258a523ab6a838bda",
-      "fetchedAt": "2026-11-17T23:03:08.415Z",
-      "waybackUrl": "https://web.archive.org/web/20150926003238/https://addieleecounseling.com",
+      "text": "4 303 Copy quote Show source * If the definition of insanity is doing the same thing over and over again expecting different results, then liberalism is a form of insanity.",
+      "contextBefore": " Insanity 27 Copy quote * Insanity in individuals is something rare - but in groups, parties, nations and epochs, it is the rule. Friedrich Nietzsche Depression, Crazy, Party Beyond Good and Evil Ch. ",
+      "contextAfter": " James Cook Insanity, Different, Definitions 15 Copy quote * Isn't killing people in the name of God a pretty good definition of insanity? Arthur C. Clarke Atheist, Names, People 66 Copy quote * The d",
+      "start": 1192,
+      "end": 1364,
+      "extractSha256": "fe149fd0dfff4bfab30e3272a7816634c8fef3db72c58c352cf74d896a4dfd27",
+      "windowSha256": "b2c96061a0de81be358e142d5f8b76e9b7864588bec28ff91939d689f756e797",
+      "fetchedAt": "2026-11-18T02:55:06.259Z",
+      "waybackUrl": "https://web.archive.org/web/20150924222152/https://www.azquotes.com/quotes/topics/definition-of-insanity.html",
       "tier": "exact"
     },
     {
       "id": "s4",
       "nodeId": "n6",
-      "text": "The definition of insanity is doing the same thing over and over again and expecting different results - attr.",
-      "contextBefore": "but une femme... Foulard de la semaine. Holy cow, look at this gorgeous scarf! It was a Hanukkah present from mon mari! He really was listening to those hints I was dropping.... Open Letter to Oprah. ",
-      "contextAfter": " Albert Einstein Oprah honey, Oy, here... Happy Hanukkah!!!. Tonight we celebrate the first night of Hanukkah with extended family. We'll light the candles, the kids will open their first gifts, and t",
-      "start": 1112,
-      "end": 1222,
-      "extractSha256": "c60dc2aeaf994e657ab088c60109600a520b1328e0305e960869e30f88a0215f",
-      "windowSha256": "1edb1768f6f57c22327894c5f8087e4de94cbfad6365d47a52be1cd9bfd56ddb",
-      "fetchedAt": "2026-11-17T23:03:08.992Z",
-      "waybackUrl": "https://web.archive.org/web/20140312175734/https://unefemme.net/2008/12",
+      "text": "Remember: \"Insanity is doing the same thing over and over again and expecting different results.\".",
+      "contextBefore": "s can create distance and disconnection where there was once compassion and support. It is at this point that many couples call for help wanting to learn how to change and improve their relationship. ",
+      "contextAfter": " Research Proves Counseling does help! With divorce rates at 50% or higher in remarried couples, we face the most severe challenges to relationship stability. Research shows that on average, couples w",
+      "start": 425,
+      "end": 523,
+      "extractSha256": "43bc6302f0860dd0b5a4d38e7bcbd4e40219a3547c809403c0fccc51d224495f",
+      "windowSha256": "0f3748bdde2e5d0e25eddbfbe3ce0c5ee1294934304d194fe9b61b5a9f3e0fad",
+      "fetchedAt": "2026-11-18T02:55:06.932Z",
+      "waybackUrl": "https://web.archive.org/web/20130723110715/https://acaringcounselor.com/couples-counseling",
       "tier": "exact"
     },
     {
       "id": "s5",
       "nodeId": "n7",
-      "text": "As Albert Einstein said, the definition of insanity is doing the same thing over and over again and expecting different results.To get a job in a bad economy, you have to cast a wider net and be more creative than ever.",
-      "contextBefore": " same people at our association meetings, setting up the same keywords on the same employment websites, writing the same phrases in every cover letter. STOP! The same old stuff will no longer cut it. ",
-      "contextAfter": " Try some new and different keyword searches as you look for jobs online. Challenge yourself to attend networking events in totally new industries, towns or social circles. Start looking in the newspa",
-      "start": 1283,
-      "end": 1502,
-      "extractSha256": "a71d8557cb6a9980a5038ebde5c0ac87bdf3fb534065fbfa8dcb4630559c321a",
-      "windowSha256": "bcabc569b99d59871db9da67d53d181aa8cea06a421f4c95472eebd973925007",
-      "fetchedAt": "2026-11-17T23:03:09.825Z",
-      "waybackUrl": "https://web.archive.org/web/20160323210209/https://lindseypollak.com/how-to-get-a-good-job-in-a-bad-economy-7-recession-strategies",
-      "tier": "exact"
-    },
-    {
-      "id": "s6",
-      "nodeId": "n8",
       "text": "Just when I realized I had to do something different (you've heard the saying, \"The definition of insanity is doing the same thing over and over again and expecting different results\"), Russ Dyer, from Princeton Athletic Club, came up with another of his brilliant ideas.",
       "contextBefore": "my condo complex. However, in spite of my regime, nothing was happening. Swimming seemed easy and body shape stayed the same. Well, I have to admit some of the skirts in my closet were feeling tight. ",
       "contextAfter": " He said \"Kathy, I know you know exercise is important. What if I line you up with a personal coach, then you'll understand how it works?\" After some discussion we decided it was great idea and I woul",
@@ -743,36 +774,64 @@
       "end": 1176,
       "extractSha256": "1ab02e577a89c3d2b879a2ee2a0bb5c62ebf9adb9d6bd2697ce09a078a74af4c",
       "windowSha256": "359e513fa1dad7d4554cc0693ec2308664936847c45c21dce87ce38f71af7249",
-      "fetchedAt": "2026-11-17T23:03:22.382Z",
+      "fetchedAt": "2026-11-18T02:55:07.356Z",
+      "waybackUrl": null,
+      "tier": "exact"
+    },
+    {
+      "id": "s6",
+      "nodeId": "n8",
+      "text": "Insanity is doing the same thing over and over again and expecting different results.",
+      "contextBefore": "s Institute (Climate Watch, 2020) \"Agricultural soils are net emitters of CO2!\" The fight against anthropogenic climate change can only be successful if we are able to remove CO2 from the atmosphere. ",
+      "contextAfter": " Albert Einstein Our goal - A new approach. Do something else, do it differently! Our aim is to restore soil and sequester CO2, which not only protects agriculture but also the climate. Restored circu",
+      "start": 750,
+      "end": 835,
+      "extractSha256": "850a2877a9b3555d8609fdfa3ed00b1a93bec42a3fa678ed37417dbd5db08629",
+      "windowSha256": "ec23a29e28ce3618a8bd864019ddef6e5cb8b3112a6483316c91181986d2feec",
+      "fetchedAt": "2026-11-18T02:55:21.064Z",
       "waybackUrl": null,
       "tier": "exact"
     },
     {
       "id": "s7",
       "nodeId": "n9",
-      "text": "Remember: \"Insanity is doing the same thing over and over again and expecting different results.\".",
-      "contextBefore": "s can create distance and disconnection where there was once compassion and support. It is at this point that many couples call for help wanting to learn how to change and improve their relationship. ",
-      "contextAfter": " Research Proves Counseling does help! With divorce rates at 50% or higher in remarried couples, we face the most severe challenges to relationship stability. Research shows that on average, couples w",
-      "start": 463,
-      "end": 561,
-      "extractSha256": "164dfcd2fcc388be4a543b8e18b8bd07f9359a25f675078f49b8a6c1cd269614",
-      "windowSha256": "0f3748bdde2e5d0e25eddbfbe3ce0c5ee1294934304d194fe9b61b5a9f3e0fad",
-      "fetchedAt": "2026-11-17T23:03:24.367Z",
-      "waybackUrl": "https://web.archive.org/web/20130723110715/https://acaringcounselor.com/couples-counseling",
+      "text": "Others might cite Rita Mae Brown, the American writer and playwright who observed, \"Insanity is doing the same thing over and over again, but expecting different results.\"",
+      "contextBefore": "ate equivalent of Lewis Carroll's \"Wonderland\" - facing a CEO and lamenting, like the Queen of Hearts in *Through the Looking-Glass*, \"it takes all the running you can do, to keep in the same place.\" ",
+      "contextAfter": " Through our frontline experience with many purchasing executives, we've heard mandates from CEOs who expect miracles. Though it may feel like a fantasy, expectations for ongoing improvement have unfo",
+      "start": 12346,
+      "end": 12517,
+      "extractSha256": "403b108443e9547150c0b83851251d76c721afc7239dc9dab12ab72bb4cdae58",
+      "windowSha256": "aab63b6918320124bd41d81290ac96ad2bc5cdc9f2550a3b76736de4131ca7b9",
+      "fetchedAt": "2026-11-18T02:55:22.115Z",
+      "waybackUrl": "https://web.archive.org/web/20150622141943/https://www.strategy-business.com/article/18387",
       "tier": "exact"
     },
     {
       "id": "s8",
       "nodeId": "n10",
-      "text": "In pursuit of genuine and measurable results, we believe in doing things differently, as Albert Einstein famously said, \"Insanity is doing the same thing over and over again and expecting different results.\"* *The Bkean Foundation,* *established on October 22, 2004, dedicated over a decade to conducting comprehensive sociological and economic research aimed at understanding the root causes of extreme poverty, hunger, inadequate education, poor health, and severe deprivation, particularly among African children.",
-      "contextBefore": "ionship that utilizes products and raw materials produced by Bkean indigent African youth.* *Bkean has a different approach and ideology for addressing poverty in Africa compared to traditional NGOs. ",
-      "contextAfter": " The findings of this extensive research revealed that the primary contributors to these issues were pervasive widespread institutional corruption and vested interests both locally and internationally",
-      "start": 746,
-      "end": 1262,
-      "extractSha256": "43036da8c481b70a684af768c83d0a0185fba196bcba1f5c8deab4bbf0044204",
-      "windowSha256": "f8375703b91b88a530387bce39a7b87e6c75601a2321fc4961d874f59ea785c8",
-      "fetchedAt": "2026-11-17T23:03:25.114Z",
-      "waybackUrl": "https://web.archive.org/web/20260305194643/https://bkean.org/mandate",
+      "text": "Insanity is doing the same thing over and over again and expecting...",
+      "contextBefore": "nowledge is experience. Imagination is more important than knowledge. There are only two ways to live your life. One is as though nothing is a miracle. The other is as though everything is a miracle. ",
+      "contextAfter": " Steve Jobs's Evergreens. \"The only way to do great work is to love what you do. If you haven't found it yet, keep looking. Don't settle. As with all matters of the heart. you'll know when you find it",
+      "start": 469,
+      "end": 538,
+      "extractSha256": "7da532f4bea18b8721c988635c745575e4710cc0612efdb747e062a3d026b7c9",
+      "windowSha256": "880774ab5986f63fe9db8a418997a8ad36910776fe46e496afb4b69800486929",
+      "fetchedAt": "2026-11-18T02:55:25.256Z",
+      "waybackUrl": "https://web.archive.org/web/20140718100504/https://rfilkov.com/category/wise-thoughts",
+      "tier": "exact"
+    },
+    {
+      "id": "s9",
+      "nodeId": "n11",
+      "text": "As an anonymous writer once put it, \"Insanity is doing the same thing over and over again, yet expecting different results.\"",
+      "contextBefore": ". *Quality* is constantly evolving! Consequently, we must continue to explore and develop new ways by which to define and measure it. We must learn and quickly adopt proven QC, QA, and TQM practices. ",
+      "contextAfter": " In dealing with quality, we are inclined to \"talk the talk\" and \"do the did.\" 3. *Quality* is less of a competitive tool than an absolute necessity to compete! Arguments made through the years by She",
+      "start": 9269,
+      "end": 9393,
+      "extractSha256": "1d32e15033ca52b4bf87816af388c8d4239cdad5f43a38787105c84efff39b62",
+      "windowSha256": "b64777e5150e0ab1d9a3b783fb2c8d16d270a61ce9d234af21ea02e28ac70c13",
+      "fetchedAt": "2026-11-18T02:55:31.781Z",
+      "waybackUrl": "https://web.archive.org/web/20241014205223/https://www.westgard.com/essays/guest-essay/guest2.html",
       "tier": "exact"
     }
   ],
@@ -811,41 +870,73 @@
         {
           "id": "scope_widened",
           "source": "inferred",
-          "value": "yes",
-          "probability": 0.9399133404757549,
+          "value": "no",
+          "probability": 0.7310585353711883,
           "disputed": false
         },
         {
           "id": "attribution_shifted",
           "source": "inferred",
           "value": "yes",
-          "probability": 0.999999998394772,
+          "probability": 0.9999898677927637,
           "disputed": false
         },
         {
           "id": "context_stripped",
           "source": "inferred",
-          "value": "no",
-          "probability": 0.6224593298814652,
+          "value": "yes",
+          "probability": 0.9933071487469868,
           "disputed": false
         }
       ],
       "wordDiff": [
         {
           "op": "add",
-          "text": "as"
+          "text": "find"
         },
         {
           "op": "add",
-          "text": "albert"
+          "text": "them"
         },
         {
           "op": "add",
-          "text": "einstein"
+          "text": "here"
         },
         {
           "op": "add",
-          "text": "said"
+          "text": "violinist.com"
+        },
+        {
+          "op": "add",
+          "text": "violin"
+        },
+        {
+          "op": "add",
+          "text": "blogs"
+        },
+        {
+          "op": "add",
+          "text": "ben"
+        },
+        {
+          "op": "add",
+          "text": "clapton"
+        },
+        {
+          "op": "add",
+          "text": "blog"
+        },
+        {
+          "op": "add",
+          "text": "entry"
+        },
+        {
+          "op": "add",
+          "text": "printer-friendly"
+        },
+        {
+          "op": "add",
+          "text": "version"
         },
         {
           "op": "del",
@@ -964,92 +1055,16 @@
           "text": "expecting"
         },
         {
+          "op": "add",
+          "text": "a"
+        },
+        {
           "op": "same",
           "text": "different"
         },
         {
           "op": "add",
-          "text": "results.to"
-        },
-        {
-          "op": "add",
-          "text": "get"
-        },
-        {
-          "op": "add",
-          "text": "a"
-        },
-        {
-          "op": "add",
-          "text": "job"
-        },
-        {
-          "op": "add",
-          "text": "in"
-        },
-        {
-          "op": "add",
-          "text": "a"
-        },
-        {
-          "op": "add",
-          "text": "bad"
-        },
-        {
-          "op": "add",
-          "text": "economy"
-        },
-        {
-          "op": "add",
-          "text": "you"
-        },
-        {
-          "op": "add",
-          "text": "have"
-        },
-        {
-          "op": "add",
-          "text": "to"
-        },
-        {
-          "op": "add",
-          "text": "cast"
-        },
-        {
-          "op": "add",
-          "text": "a"
-        },
-        {
-          "op": "add",
-          "text": "wider"
-        },
-        {
-          "op": "add",
-          "text": "net"
-        },
-        {
-          "op": "add",
-          "text": "and"
-        },
-        {
-          "op": "add",
-          "text": "be"
-        },
-        {
-          "op": "add",
-          "text": "more"
-        },
-        {
-          "op": "add",
-          "text": "creative"
-        },
-        {
-          "op": "add",
-          "text": "than"
-        },
-        {
-          "op": "add",
-          "text": "ever"
+          "text": "result"
         },
         {
           "op": "del",
@@ -1149,59 +1164,87 @@
           "id": "scope_widened",
           "source": "inferred",
           "value": "no",
-          "probability": 0.49999999120282407,
+          "probability": 0.9998766053805688,
           "disputed": false
         },
         {
           "id": "attribution_shifted",
           "source": "inferred",
-          "value": "yes",
-          "probability": 0.9999999999771028,
+          "value": "no",
+          "probability": 0.6791786926753501,
           "disputed": false
         },
         {
           "id": "context_stripped",
           "source": "inferred",
-          "value": "yes",
-          "probability": 0.7310585358922574,
+          "value": "no",
+          "probability": 0.9933071486468942,
           "disputed": false
         }
       ],
       "wordDiff": [
         {
           "op": "add",
-          "text": "kursad"
-        },
-        {
-          "op": "add",
-          "text": "asked"
+          "text": "remember"
         },
         {
           "op": "del",
-          "text": "as"
+          "text": "find"
         },
         {
           "op": "del",
-          "text": "albert"
+          "text": "them"
         },
         {
           "op": "del",
-          "text": "einstein"
+          "text": "here"
         },
         {
           "op": "del",
-          "text": "said"
+          "text": "violinist.com"
         },
         {
-          "op": "same",
+          "op": "del",
+          "text": "violin"
+        },
+        {
+          "op": "del",
+          "text": "blogs"
+        },
+        {
+          "op": "del",
+          "text": "ben"
+        },
+        {
+          "op": "del",
+          "text": "clapton"
+        },
+        {
+          "op": "del",
+          "text": "blog"
+        },
+        {
+          "op": "del",
+          "text": "entry"
+        },
+        {
+          "op": "del",
+          "text": "printer-friendly"
+        },
+        {
+          "op": "del",
+          "text": "version"
+        },
+        {
+          "op": "del",
           "text": "the"
         },
         {
-          "op": "same",
+          "op": "del",
           "text": "definition"
         },
         {
-          "op": "same",
+          "op": "del",
           "text": "of"
         },
         {
@@ -1253,6 +1296,10 @@
           "text": "expecting"
         },
         {
+          "op": "del",
+          "text": "a"
+        },
+        {
           "op": "same",
           "text": "different"
         },
@@ -1261,120 +1308,8 @@
           "text": "results"
         },
         {
-          "op": "add",
-          "text": "is"
-        },
-        {
-          "op": "add",
-          "text": "attributed"
-        },
-        {
           "op": "del",
-          "text": "results.to"
-        },
-        {
-          "op": "del",
-          "text": "get"
-        },
-        {
-          "op": "del",
-          "text": "a"
-        },
-        {
-          "op": "del",
-          "text": "job"
-        },
-        {
-          "op": "del",
-          "text": "in"
-        },
-        {
-          "op": "del",
-          "text": "a"
-        },
-        {
-          "op": "del",
-          "text": "bad"
-        },
-        {
-          "op": "del",
-          "text": "economy"
-        },
-        {
-          "op": "del",
-          "text": "you"
-        },
-        {
-          "op": "del",
-          "text": "have"
-        },
-        {
-          "op": "same",
-          "text": "to"
-        },
-        {
-          "op": "add",
-          "text": "einstein"
-        },
-        {
-          "op": "add",
-          "text": "ben"
-        },
-        {
-          "op": "add",
-          "text": "franklin"
-        },
-        {
-          "op": "del",
-          "text": "cast"
-        },
-        {
-          "op": "del",
-          "text": "a"
-        },
-        {
-          "op": "del",
-          "text": "wider"
-        },
-        {
-          "op": "del",
-          "text": "net"
-        },
-        {
-          "op": "same",
-          "text": "and"
-        },
-        {
-          "op": "add",
-          "text": "rita"
-        },
-        {
-          "op": "add",
-          "text": "mae"
-        },
-        {
-          "op": "add",
-          "text": "brown"
-        },
-        {
-          "op": "del",
-          "text": "be"
-        },
-        {
-          "op": "del",
-          "text": "more"
-        },
-        {
-          "op": "del",
-          "text": "creative"
-        },
-        {
-          "op": "del",
-          "text": "than"
-        },
-        {
-          "op": "del",
-          "text": "ever"
+          "text": "result"
         }
       ],
       "faithful": false
@@ -1414,44 +1349,60 @@
           "id": "scope_widened",
           "source": "inferred",
           "value": "no",
-          "probability": 0.9959298621840442,
+          "probability": 0.9998415637632936,
           "disputed": false
         },
         {
           "id": "attribution_shifted",
           "source": "inferred",
           "value": "yes",
-          "probability": 0.9999985695307364,
+          "probability": 0.999999999996021,
           "disputed": false
         },
         {
           "id": "context_stripped",
           "source": "inferred",
           "value": "no",
-          "probability": 0.9933071486462091,
+          "probability": 0.9999898673126576,
           "disputed": false
         }
       ],
       "wordDiff": [
         {
           "op": "add",
-          "text": "one"
+          "text": "others"
         },
         {
           "op": "add",
-          "text": "that"
+          "text": "might"
         },
         {
           "op": "add",
-          "text": "has"
+          "text": "cite"
         },
         {
           "op": "add",
-          "text": "hit"
+          "text": "rita"
         },
         {
           "op": "add",
-          "text": "me"
+          "text": "mae"
+        },
+        {
+          "op": "add",
+          "text": "brown"
+        },
+        {
+          "op": "add",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "american"
+        },
+        {
+          "op": "add",
+          "text": "writer"
         },
         {
           "op": "add",
@@ -1459,86 +1410,22 @@
         },
         {
           "op": "add",
-          "text": "that"
+          "text": "playwright"
         },
         {
           "op": "add",
-          "text": "i"
+          "text": "who"
         },
         {
           "op": "add",
-          "text": "use"
-        },
-        {
-          "op": "add",
-          "text": "a"
-        },
-        {
-          "op": "add",
-          "text": "lot"
-        },
-        {
-          "op": "add",
-          "text": "is"
+          "text": "observed"
         },
         {
           "op": "del",
-          "text": "kursad"
-        },
-        {
-          "op": "del",
-          "text": "asked"
+          "text": "remember"
         },
         {
           "op": "same",
-          "text": "the"
-        },
-        {
-          "op": "same",
-          "text": "definition"
-        },
-        {
-          "op": "same",
-          "text": "of"
-        },
-        {
-          "op": "same",
-          "text": "insanity"
-        },
-        {
-          "op": "add",
-          "text": "attributed"
-        },
-        {
-          "op": "add",
-          "text": "wrongly"
-        },
-        {
-          "op": "add",
-          "text": "by"
-        },
-        {
-          "op": "add",
-          "text": "many"
-        },
-        {
-          "op": "add",
-          "text": "people"
-        },
-        {
-          "op": "add",
-          "text": "to"
-        },
-        {
-          "op": "add",
-          "text": "albert"
-        },
-        {
-          "op": "add",
-          "text": "einstein"
-        },
-        {
-          "op": "add",
           "text": "insanity"
         },
         {
@@ -1578,7 +1465,11 @@
           "text": "again"
         },
         {
-          "op": "same",
+          "op": "add",
+          "text": "but"
+        },
+        {
+          "op": "del",
           "text": "and"
         },
         {
@@ -1592,46 +1483,6 @@
         {
           "op": "same",
           "text": "results"
-        },
-        {
-          "op": "del",
-          "text": "is"
-        },
-        {
-          "op": "del",
-          "text": "attributed"
-        },
-        {
-          "op": "del",
-          "text": "to"
-        },
-        {
-          "op": "del",
-          "text": "einstein"
-        },
-        {
-          "op": "del",
-          "text": "ben"
-        },
-        {
-          "op": "del",
-          "text": "franklin"
-        },
-        {
-          "op": "del",
-          "text": "and"
-        },
-        {
-          "op": "del",
-          "text": "rita"
-        },
-        {
-          "op": "del",
-          "text": "mae"
-        },
-        {
-          "op": "del",
-          "text": "brown"
         }
       ],
       "faithful": false
@@ -1656,7 +1507,7 @@
         {
           "id": "hedge_dropped",
           "source": "measured",
-          "value": "no",
+          "value": "yes",
           "probability": null,
           "disputed": false
         },
@@ -1670,49 +1521,97 @@
         {
           "id": "scope_widened",
           "source": "inferred",
-          "value": "no",
-          "probability": 0.9990889486393524,
+          "value": "yes",
+          "probability": 0.9975273770585491,
           "disputed": false
         },
         {
           "id": "attribution_shifted",
           "source": "inferred",
           "value": "yes",
-          "probability": 0.9999985694931832,
+          "probability": 0.9992903296953288,
           "disputed": false
         },
         {
           "id": "context_stripped",
           "source": "inferred",
-          "value": "yes",
-          "probability": 0.8175744308826236,
+          "value": "no",
+          "probability": 0.8807970468846236,
           "disputed": false
         }
       ],
       "wordDiff": [
         {
           "op": "add",
-          "text": "remember"
+          "text": "4"
+        },
+        {
+          "op": "add",
+          "text": "303"
+        },
+        {
+          "op": "add",
+          "text": "copy"
+        },
+        {
+          "op": "add",
+          "text": "quote"
+        },
+        {
+          "op": "add",
+          "text": "show"
+        },
+        {
+          "op": "add",
+          "text": "source"
+        },
+        {
+          "op": "add",
+          "text": "if"
         },
         {
           "op": "del",
-          "text": "one"
+          "text": "others"
         },
         {
           "op": "del",
-          "text": "that"
+          "text": "might"
         },
         {
           "op": "del",
-          "text": "has"
+          "text": "cite"
         },
         {
           "op": "del",
-          "text": "hit"
+          "text": "rita"
         },
         {
           "op": "del",
-          "text": "me"
+          "text": "mae"
+        },
+        {
+          "op": "del",
+          "text": "brown"
+        },
+        {
+          "op": "same",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "definition"
+        },
+        {
+          "op": "add",
+          "text": "of"
+        },
+        {
+          "op": "del",
+          "text": "american"
+        },
+        {
+          "op": "del",
+          "text": "writer"
         },
         {
           "op": "del",
@@ -1720,78 +1619,18 @@
         },
         {
           "op": "del",
-          "text": "that"
+          "text": "playwright"
         },
         {
           "op": "del",
-          "text": "i"
+          "text": "who"
         },
         {
           "op": "del",
-          "text": "use"
-        },
-        {
-          "op": "del",
-          "text": "a"
-        },
-        {
-          "op": "del",
-          "text": "lot"
-        },
-        {
-          "op": "del",
-          "text": "is"
-        },
-        {
-          "op": "del",
-          "text": "the"
-        },
-        {
-          "op": "del",
-          "text": "definition"
-        },
-        {
-          "op": "del",
-          "text": "of"
+          "text": "observed"
         },
         {
           "op": "same",
-          "text": "insanity"
-        },
-        {
-          "op": "del",
-          "text": "attributed"
-        },
-        {
-          "op": "del",
-          "text": "wrongly"
-        },
-        {
-          "op": "del",
-          "text": "by"
-        },
-        {
-          "op": "del",
-          "text": "many"
-        },
-        {
-          "op": "del",
-          "text": "people"
-        },
-        {
-          "op": "del",
-          "text": "to"
-        },
-        {
-          "op": "del",
-          "text": "albert"
-        },
-        {
-          "op": "del",
-          "text": "einstein"
-        },
-        {
-          "op": "del",
           "text": "insanity"
         },
         {
@@ -1831,8 +1670,8 @@
           "text": "again"
         },
         {
-          "op": "same",
-          "text": "and"
+          "op": "del",
+          "text": "but"
         },
         {
           "op": "same",
@@ -1845,6 +1684,34 @@
         {
           "op": "same",
           "text": "results"
+        },
+        {
+          "op": "add",
+          "text": "then"
+        },
+        {
+          "op": "add",
+          "text": "liberalism"
+        },
+        {
+          "op": "add",
+          "text": "is"
+        },
+        {
+          "op": "add",
+          "text": "a"
+        },
+        {
+          "op": "add",
+          "text": "form"
+        },
+        {
+          "op": "add",
+          "text": "of"
+        },
+        {
+          "op": "add",
+          "text": "insanity"
         }
       ],
       "faithful": false
@@ -1884,40 +1751,92 @@
           "id": "scope_widened",
           "source": "inferred",
           "value": "no",
-          "probability": 0.9999417087272898,
+          "probability": 0.9399133254009492,
           "disputed": false
         },
         {
           "id": "attribution_shifted",
           "source": "inferred",
           "value": "yes",
-          "probability": 0.999998569503303,
+          "probability": 0.9999998808251801,
           "disputed": false
         },
         {
           "id": "context_stripped",
           "source": "inferred",
           "value": "no",
-          "probability": 0.9999977350285647,
+          "probability": 0.962673073050835,
           "disputed": false
         }
       ],
       "wordDiff": [
         {
           "op": "add",
-          "text": "the"
+          "text": "as"
         },
         {
           "op": "add",
-          "text": "definition"
+          "text": "an"
         },
         {
           "op": "add",
-          "text": "of"
+          "text": "anonymous"
+        },
+        {
+          "op": "add",
+          "text": "writer"
+        },
+        {
+          "op": "add",
+          "text": "once"
+        },
+        {
+          "op": "add",
+          "text": "put"
+        },
+        {
+          "op": "add",
+          "text": "it"
         },
         {
           "op": "del",
-          "text": "remember"
+          "text": "4"
+        },
+        {
+          "op": "del",
+          "text": "303"
+        },
+        {
+          "op": "del",
+          "text": "copy"
+        },
+        {
+          "op": "del",
+          "text": "quote"
+        },
+        {
+          "op": "del",
+          "text": "show"
+        },
+        {
+          "op": "del",
+          "text": "source"
+        },
+        {
+          "op": "del",
+          "text": "if"
+        },
+        {
+          "op": "del",
+          "text": "the"
+        },
+        {
+          "op": "del",
+          "text": "definition"
+        },
+        {
+          "op": "del",
+          "text": "of"
         },
         {
           "op": "same",
@@ -1960,8 +1879,8 @@
           "text": "again"
         },
         {
-          "op": "same",
-          "text": "and"
+          "op": "add",
+          "text": "yet"
         },
         {
           "op": "same",
@@ -1976,8 +1895,32 @@
           "text": "results"
         },
         {
-          "op": "add",
-          "text": "attr"
+          "op": "del",
+          "text": "then"
+        },
+        {
+          "op": "del",
+          "text": "liberalism"
+        },
+        {
+          "op": "del",
+          "text": "is"
+        },
+        {
+          "op": "del",
+          "text": "a"
+        },
+        {
+          "op": "del",
+          "text": "form"
+        },
+        {
+          "op": "del",
+          "text": "of"
+        },
+        {
+          "op": "del",
+          "text": "insanity"
         }
       ],
       "faithful": false
@@ -2017,341 +1960,44 @@
           "id": "scope_widened",
           "source": "inferred",
           "value": "no",
-          "probability": 0.99477987432908,
+          "probability": 0.9990889486289792,
           "disputed": false
         },
         {
           "id": "attribution_shifted",
           "source": "inferred",
           "value": "yes",
-          "probability": 0.999999999994891,
+          "probability": 0.9999999999985363,
           "disputed": false
         },
         {
           "id": "context_stripped",
           "source": "inferred",
           "value": "no",
-          "probability": 0.9999832985701739,
+          "probability": 0.9959298622113254,
           "disputed": false
         }
       ],
       "wordDiff": [
         {
           "op": "add",
-          "text": "albert"
+          "text": "byjake"
         },
         {
           "op": "add",
-          "text": "einstein"
+          "text": "rossen"
         },
         {
           "op": "add",
-          "text": "said"
+          "text": "add"
         },
         {
           "op": "add",
-          "text": "that"
-        },
-        {
-          "op": "del",
-          "text": "the"
-        },
-        {
-          "op": "del",
-          "text": "definition"
-        },
-        {
-          "op": "del",
-          "text": "of"
+          "text": "us"
         },
         {
           "op": "same",
-          "text": "insanity"
-        },
-        {
-          "op": "same",
-          "text": "is"
-        },
-        {
-          "op": "same",
-          "text": "doing"
-        },
-        {
-          "op": "same",
-          "text": "the"
-        },
-        {
-          "op": "same",
-          "text": "same"
-        },
-        {
-          "op": "same",
-          "text": "thing"
-        },
-        {
-          "op": "same",
-          "text": "over"
-        },
-        {
-          "op": "same",
-          "text": "and"
-        },
-        {
-          "op": "same",
-          "text": "over"
-        },
-        {
-          "op": "same",
-          "text": "again"
-        },
-        {
-          "op": "same",
-          "text": "and"
-        },
-        {
-          "op": "same",
-          "text": "expecting"
-        },
-        {
-          "op": "same",
-          "text": "different"
-        },
-        {
-          "op": "same",
-          "text": "results"
-        },
-        {
-          "op": "del",
-          "text": "attr"
-        }
-      ],
-      "faithful": false
-    },
-    {
-      "edgeId": "e7",
-      "readouts": [
-        {
-          "id": "number_changed",
-          "source": "measured",
-          "value": "unsure",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "unit_changed",
-          "source": "measured",
-          "value": "unsure",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "hedge_dropped",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "comparison_added",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "scope_widened",
-          "source": "inferred",
-          "value": "no",
-          "probability": 0.9933071486523937,
-          "disputed": false
-        },
-        {
-          "id": "attribution_shifted",
-          "source": "inferred",
-          "value": "yes",
-          "probability": 0.9890130586682873,
-          "disputed": false
-        },
-        {
-          "id": "context_stripped",
-          "source": "inferred",
-          "value": "no",
-          "probability": 0.9820137577616096,
-          "disputed": false
-        }
-      ],
-      "wordDiff": [
-        {
-          "op": "add",
-          "text": "in"
-        },
-        {
-          "op": "add",
-          "text": "pursuit"
-        },
-        {
-          "op": "add",
-          "text": "of"
-        },
-        {
-          "op": "add",
-          "text": "genuine"
-        },
-        {
-          "op": "add",
-          "text": "and"
-        },
-        {
-          "op": "add",
-          "text": "measurable"
-        },
-        {
-          "op": "add",
-          "text": "results"
-        },
-        {
-          "op": "add",
-          "text": "we"
-        },
-        {
-          "op": "add",
-          "text": "believe"
-        },
-        {
-          "op": "add",
-          "text": "in"
-        },
-        {
-          "op": "add",
-          "text": "doing"
-        },
-        {
-          "op": "add",
-          "text": "things"
-        },
-        {
-          "op": "add",
-          "text": "differently"
-        },
-        {
-          "op": "add",
           "text": "as"
-        },
-        {
-          "op": "same",
-          "text": "albert"
-        },
-        {
-          "op": "same",
-          "text": "einstein"
-        },
-        {
-          "op": "add",
-          "text": "famously"
-        },
-        {
-          "op": "same",
-          "text": "said"
-        },
-        {
-          "op": "del",
-          "text": "that"
-        },
-        {
-          "op": "same",
-          "text": "insanity"
-        },
-        {
-          "op": "same",
-          "text": "is"
-        },
-        {
-          "op": "same",
-          "text": "doing"
-        },
-        {
-          "op": "same",
-          "text": "the"
-        },
-        {
-          "op": "same",
-          "text": "same"
-        },
-        {
-          "op": "same",
-          "text": "thing"
-        },
-        {
-          "op": "same",
-          "text": "over"
-        },
-        {
-          "op": "same",
-          "text": "and"
-        },
-        {
-          "op": "same",
-          "text": "over"
-        },
-        {
-          "op": "same",
-          "text": "again"
-        },
-        {
-          "op": "same",
-          "text": "and"
-        },
-        {
-          "op": "same",
-          "text": "expecting"
-        },
-        {
-          "op": "same",
-          "text": "different"
-        },
-        {
-          "op": "same",
-          "text": "results"
-        },
-        {
-          "op": "add",
-          "text": "the"
-        },
-        {
-          "op": "add",
-          "text": "bkean"
-        },
-        {
-          "op": "add",
-          "text": "foundation"
-        },
-        {
-          "op": "add",
-          "text": "established"
-        },
-        {
-          "op": "add",
-          "text": "on"
-        },
-        {
-          "op": "add",
-          "text": "october"
-        },
-        {
-          "op": "add",
-          "text": "22"
-        },
-        {
-          "op": "add",
-          "text": "2004"
-        },
-        {
-          "op": "add",
-          "text": "dedicated"
-        },
-        {
-          "op": "add",
-          "text": "over"
         },
         {
           "op": "add",
@@ -2359,47 +2005,75 @@
         },
         {
           "op": "add",
-          "text": "decade"
+          "text": "preferred"
         },
         {
           "op": "add",
-          "text": "to"
+          "text": "source"
         },
         {
           "op": "add",
-          "text": "conducting"
+          "text": "albert"
         },
         {
           "op": "add",
-          "text": "comprehensive"
+          "text": "einstein"
         },
         {
           "op": "add",
-          "text": "sociological"
+          "text": "is"
         },
         {
           "op": "add",
-          "text": "and"
+          "text": "credited"
         },
         {
           "op": "add",
-          "text": "economic"
+          "text": "with"
         },
         {
           "op": "add",
-          "text": "research"
+          "text": "more"
         },
         {
           "op": "add",
-          "text": "aimed"
+          "text": "famous"
         },
         {
           "op": "add",
-          "text": "at"
+          "text": "quotations"
         },
         {
           "op": "add",
-          "text": "understanding"
+          "text": "than"
+        },
+        {
+          "op": "add",
+          "text": "he"
+        },
+        {
+          "op": "add",
+          "text": "actually"
+        },
+        {
+          "op": "add",
+          "text": "came"
+        },
+        {
+          "op": "add",
+          "text": "up"
+        },
+        {
+          "op": "add",
+          "text": "with"
+        },
+        {
+          "op": "add",
+          "text": "george"
+        },
+        {
+          "op": "add",
+          "text": "rinhart/gettyimages"
         },
         {
           "op": "add",
@@ -2407,71 +2081,103 @@
         },
         {
           "op": "add",
-          "text": "root"
-        },
-        {
-          "op": "add",
-          "text": "causes"
+          "text": "definition"
         },
         {
           "op": "add",
           "text": "of"
         },
         {
-          "op": "add",
-          "text": "extreme"
+          "op": "del",
+          "text": "an"
         },
         {
-          "op": "add",
-          "text": "poverty"
+          "op": "del",
+          "text": "anonymous"
         },
         {
-          "op": "add",
-          "text": "hunger"
+          "op": "del",
+          "text": "writer"
         },
         {
-          "op": "add",
-          "text": "inadequate"
+          "op": "del",
+          "text": "once"
         },
         {
-          "op": "add",
-          "text": "education"
+          "op": "del",
+          "text": "put"
         },
         {
-          "op": "add",
-          "text": "poor"
+          "op": "del",
+          "text": "it"
         },
         {
-          "op": "add",
-          "text": "health"
+          "op": "same",
+          "text": "insanity"
+        },
+        {
+          "op": "same",
+          "text": "is"
+        },
+        {
+          "op": "same",
+          "text": "doing"
+        },
+        {
+          "op": "same",
+          "text": "the"
+        },
+        {
+          "op": "same",
+          "text": "same"
+        },
+        {
+          "op": "same",
+          "text": "thing"
+        },
+        {
+          "op": "same",
+          "text": "over"
+        },
+        {
+          "op": "same",
+          "text": "and"
+        },
+        {
+          "op": "same",
+          "text": "over"
+        },
+        {
+          "op": "same",
+          "text": "again"
         },
         {
           "op": "add",
           "text": "and"
         },
         {
-          "op": "add",
-          "text": "severe"
+          "op": "del",
+          "text": "yet"
+        },
+        {
+          "op": "same",
+          "text": "expecting"
         },
         {
           "op": "add",
-          "text": "deprivation"
+          "text": "a"
+        },
+        {
+          "op": "same",
+          "text": "different"
         },
         {
           "op": "add",
-          "text": "particularly"
+          "text": "result"
         },
         {
-          "op": "add",
-          "text": "among"
-        },
-        {
-          "op": "add",
-          "text": "african"
-        },
-        {
-          "op": "add",
-          "text": "children"
+          "op": "del",
+          "text": "results"
         }
       ],
       "faithful": false
@@ -2479,27 +2185,27 @@
   ],
   "blame": [],
   "roots": {
-    "pages": 8,
-    "clusters": 7,
+    "pages": 9,
+    "clusters": 8,
     "rootsLinked": 0,
-    "clustersUnlinked": 7,
+    "clustersUnlinked": 8,
     "studiesFound": null,
-    "independentRoots": 7,
+    "independentRoots": 8,
     "copies": 1
   },
   "redHopEdgeId": "e1",
   "earliest": {
     "nodeIds": [
-      "n8"
+      "n7"
     ],
     "earlierWindowSearches": 2,
     "earlierFound": 0
   },
   "failure": null,
   "budget": {
-    "credits": 10,
-    "usd": 0.0010706,
-    "ms": 70676,
+    "credits": 15,
+    "usd": 0.00120172,
+    "ms": 75783,
     "capHit": null
   },
   "decision": {
@@ -2507,88 +2213,128 @@
     "row": 6,
     "reasons": [
       "no earliest page with a confirmed date, a primary page type, no earlier citation and no negated span",
-      "2 unread candidate parent(s)"
+      "1 unread candidate parent(s)"
     ],
     "counts": {
-      "pages": 8,
-      "clusters": 7,
-      "unreadParents": 2,
+      "pages": 9,
+      "clusters": 8,
+      "unreadParents": 1,
       "earlierWindowSearches": 2
     }
   },
   "searchLog": [
     {
-      "at": "2026-11-17T23:02:50.919Z",
+      "at": "2026-11-18T02:54:50.781Z",
+      "step": "search",
+      "query": "\"Insanity is doing the same thing over and over again\"",
+      "endDate": "2026-11-18",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-18T02:54:52.132Z",
       "step": "search",
       "query": "\"Insanity is doing the same thing over and over again and expecting different results\"",
-      "endDate": "2026-11-17",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:02:52.461Z",
-      "step": "search",
-      "query": "\"Insanity is doing the same thing over and over again and expecting different results\" study",
-      "endDate": "2026-11-17",
-      "startDate": null,
-      "results": 10,
-      "kept": 10,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T23:02:53.732Z",
+      "at": "2026-11-18T02:54:53.284Z",
       "step": "meta-search",
-      "query": "\"Insanity is doing the same thing over and over again and expecting different results\"",
-      "endDate": "2026-11-17",
+      "query": "\"Insanity is doing the same thing over and over again\"",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 5,
       "kept": 2,
       "dropped": 3
     },
     {
-      "at": "2026-11-17T23:03:02.575Z",
+      "at": "2026-11-18T02:55:00.533Z",
+      "step": "search",
+      "query": "\"Insanity is doing the same thing over and over again\"",
+      "endDate": "2006-10-06",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-18T02:55:02.204Z",
+      "step": "search",
+      "query": "\"Insanity is doing the same thing over and over again\" study",
+      "endDate": "2006-10-06",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-18T02:55:12.032Z",
+      "step": "search",
+      "query": "\"Insanity is doing the same thing over and over again\"",
+      "endDate": "2005-06-19",
+      "startDate": null,
+      "results": 10,
+      "kept": 8,
+      "dropped": 2
+    },
+    {
+      "at": "2026-11-18T02:55:13.381Z",
+      "step": "search",
+      "query": "\"If the definition of insanity is doing the same thing over and over again expecting different results\" earliest use",
+      "endDate": "2005-06-19",
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-18T02:55:29.465Z",
+      "step": "search",
+      "query": "\"Insanity is doing the same thing over and over again\"",
+      "endDate": "1997-11-14",
+      "startDate": null,
+      "results": 1,
+      "kept": 1,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-18T02:55:31.126Z",
       "step": "search",
       "query": "\"Insanity is doing the same thing over and over again and expecting different results\"",
-      "endDate": "2010-08-31",
+      "endDate": "1997-11-14",
       "startDate": null,
-      "results": 10,
-      "kept": 10,
+      "results": 4,
+      "kept": 4,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:03:03.588Z",
+      "at": "2026-11-18T02:55:35.752Z",
       "step": "search",
-      "query": "\"Insanity is doing the same thing over and over again and expecting different results\" study",
-      "endDate": "2010-08-31",
+      "query": "\"Insanity is doing the same thing over and over again\"",
+      "endDate": "1996-12-01",
       "startDate": null,
-      "results": 10,
-      "kept": 10,
+      "results": 0,
+      "kept": 0,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:03:13.854Z",
+      "at": "2026-11-18T02:55:37.670Z",
       "step": "search",
-      "query": "\"Insanity is doing the same thing over and over again and expecting different results\"",
-      "endDate": "2008-04-24",
+      "query": "\"Insanity is doing the same thing over and over again\" study",
+      "endDate": "1996-12-01",
       "startDate": null,
-      "results": 10,
-      "kept": 10,
+      "results": 0,
+      "kept": 0,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:03:15.091Z",
-      "step": "search",
-      "query": "\"Insanity is doing the same thing over and over again and expecting different results\" study",
-      "endDate": "2008-04-24",
-      "startDate": null,
-      "results": 10,
-      "kept": 10,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T23:03:45.601Z",
+      "at": "2026-11-18T02:55:44.424Z",
       "step": "dating",
       "query": "wayback unavailable for https://quoteinvestigator.com/media: http_error 403; date from the page's own evidence only",
       "endDate": null,
@@ -2598,7 +2344,7 @@
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:03:47.278Z",
+      "at": "2026-11-18T02:55:46.231Z",
       "step": "dating",
       "query": "wayback unavailable for https://quoteinvestigator.com/2017/03/23/same: http_error 403; date from the page's own evidence only",
       "endDate": null,
@@ -2610,39 +2356,39 @@
   ],
   "usage": [
     {
-      "at": "2026-11-17T23:02:41.992Z",
+      "at": "2026-11-18T02:54:35.368Z",
       "traceId": "dev-01",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 148,
-      "completionTokens": 32,
+      "completionTokens": 35,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.000024399999999999997,
-      "latencyMs": 5658,
+      "costUsd": 0.0000253,
+      "latencyMs": 11129,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:02:47.660Z",
+      "at": "2026-11-18T02:54:46.508Z",
       "traceId": "dev-01",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 274,
-      "completionTokens": 120,
+      "completionTokens": 147,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.0000634,
-      "latencyMs": 1864,
+      "costUsd": 0.0000715,
+      "latencyMs": 2856,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:02:50.918Z",
+      "at": "2026-11-18T02:54:50.781Z",
       "traceId": "dev-01",
       "step": "search",
       "service": "tavily",
@@ -2653,12 +2399,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1370,
+      "latencyMs": 1394,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:02:52.460Z",
+      "at": "2026-11-18T02:54:52.131Z",
       "traceId": "dev-01",
       "step": "search",
       "service": "tavily",
@@ -2669,12 +2415,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1522,
+      "latencyMs": 1329,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:02:53.732Z",
+      "at": "2026-11-18T02:54:53.284Z",
       "traceId": "dev-01",
       "step": "meta-search",
       "service": "tavily",
@@ -2685,12 +2431,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1256,
+      "latencyMs": 1132,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:02:53.832Z",
+      "at": "2026-11-18T02:54:53.293Z",
       "traceId": "dev-01",
       "step": "meta-extract",
       "service": "tavily",
@@ -2699,110 +2445,14 @@
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 88,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:02:56.134Z",
-      "traceId": "dev-01",
-      "step": "extract",
-      "service": "tavily",
-      "endpoint": "extract",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 2170,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:02:59.175Z",
-      "traceId": "dev-01",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 2995,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:02:59.185Z",
-      "traceId": "dev-01",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 242,
-      "completionTokens": 7,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.0000263,
-      "latencyMs": 518,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:02:59.717Z",
-      "traceId": "dev-01",
-      "step": "tokenfactory",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 346,
-      "completionTokens": 142,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.0000772,
-      "latencyMs": 1762,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:03:02.574Z",
-      "traceId": "dev-01",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1079,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:03:03.587Z",
-      "traceId": "dev-01",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 973,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:03:06.748Z",
+      "at": "2026-11-18T02:54:53.883Z",
       "traceId": "dev-01",
       "step": "extract",
       "service": "tavily",
@@ -2813,12 +2463,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 3144,
+      "latencyMs": 434,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:03:07.386Z",
+      "at": "2026-11-18T02:54:54.993Z",
       "traceId": "dev-01",
       "step": "dating",
       "service": "wayback",
@@ -2829,204 +2479,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 636,
+      "latencyMs": 1097,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:03:07.387Z",
-      "traceId": "dev-01",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 235,
-      "completionTokens": 7,
-      "cachedTokens": 176,
-      "credits": 0,
-      "costUsd": 0.000025600000000000002,
-      "latencyMs": 592,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:03:08.415Z",
-      "traceId": "dev-01",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 425,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:03:08.416Z",
-      "traceId": "dev-01",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 219,
-      "completionTokens": 7,
-      "cachedTokens": 176,
-      "credits": 0,
-      "costUsd": 0.000024,
-      "latencyMs": 332,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:03:08.992Z",
-      "traceId": "dev-01",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 242,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:03:08.993Z",
-      "traceId": "dev-01",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 214,
-      "completionTokens": 7,
-      "cachedTokens": 176,
-      "credits": 0,
-      "costUsd": 0.000023500000000000002,
-      "latencyMs": 342,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:03:09.825Z",
-      "traceId": "dev-01",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 487,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:03:09.825Z",
-      "traceId": "dev-01",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 239,
-      "completionTokens": 7,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.000026,
-      "latencyMs": 1040,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:03:10.867Z",
-      "traceId": "dev-01",
-      "step": "tokenfactory",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 323,
-      "completionTokens": 150,
-      "cachedTokens": 256,
-      "credits": 0,
-      "costUsd": 0.0000773,
-      "latencyMs": 1512,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:03:13.854Z",
-      "traceId": "dev-01",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1462,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:03:15.089Z",
-      "traceId": "dev-01",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1222,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:03:21.737Z",
-      "traceId": "dev-01",
-      "step": "extract",
-      "service": "tavily",
-      "endpoint": "extract",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 6621,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:03:22.381Z",
-      "traceId": "dev-01",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 613,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:03:22.383Z",
+      "at": "2026-11-18T02:54:54.996Z",
       "traceId": "dev-01",
       "step": "same_claim",
       "service": "tokenfactory",
@@ -3034,15 +2492,15 @@
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 251,
       "completionTokens": 7,
-      "cachedTokens": 176,
+      "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0.0000272,
-      "latencyMs": 481,
+      "latencyMs": 547,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:03:24.367Z",
+      "at": "2026-11-18T02:54:55.900Z",
       "traceId": "dev-01",
       "step": "dating",
       "service": "wayback",
@@ -3053,12 +2511,140 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 1497,
+      "latencyMs": 335,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:03:24.367Z",
+      "at": "2026-11-18T02:54:55.904Z",
+      "traceId": "dev-01",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 236,
+      "completionTokens": 7,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.000025699999999999998,
+      "latencyMs": 341,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:54:56.258Z",
+      "traceId": "dev-01",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 342,
+      "completionTokens": 147,
+      "cachedTokens": 256,
+      "credits": 0,
+      "costUsd": 0.0000783,
+      "latencyMs": 2792,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:55:00.532Z",
+      "traceId": "dev-01",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1454,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:55:02.203Z",
+      "traceId": "dev-01",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1642,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:55:05.086Z",
+      "traceId": "dev-01",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2859,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:55:06.259Z",
+      "traceId": "dev-01",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1132,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:55:06.267Z",
+      "traceId": "dev-01",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 230,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.0000251,
+      "latencyMs": 642,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:55:06.932Z",
+      "traceId": "dev-01",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-18T02:55:06.932Z",
       "traceId": "dev-01",
       "step": "same_claim",
       "service": "tokenfactory",
@@ -3069,12 +2655,12 @@
       "cachedTokens": 176,
       "credits": 0,
       "costUsd": 0.0000238,
-      "latencyMs": 246,
+      "latencyMs": 410,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:03:25.114Z",
+      "at": "2026-11-18T02:55:07.356Z",
       "traceId": "dev-01",
       "step": "dating",
       "service": "wayback",
@@ -3085,44 +2671,348 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 496,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:03:25.115Z",
+      "at": "2026-11-18T02:55:07.357Z",
       "traceId": "dev-01",
       "step": "same_claim",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 297,
+      "promptTokens": 251,
       "completionTokens": 7,
       "cachedTokens": 176,
       "credits": 0,
-      "costUsd": 0.0000318,
-      "latencyMs": 370,
+      "costUsd": 0.0000272,
+      "latencyMs": 340,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:03:25.486Z",
+      "at": "2026-11-18T02:55:07.699Z",
+      "traceId": "dev-01",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 335,
+      "completionTokens": 169,
+      "cachedTokens": 272,
+      "credits": 0,
+      "costUsd": 0.00008419999999999999,
+      "latencyMs": 2449,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:55:12.031Z",
+      "traceId": "dev-01",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1864,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:55:13.380Z",
+      "traceId": "dev-01",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1335,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:55:20.552Z",
+      "traceId": "dev-01",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 7145,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:55:21.064Z",
+      "traceId": "dev-01",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 507,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:55:21.065Z",
+      "traceId": "dev-01",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 210,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.000023100000000000002,
+      "latencyMs": 730,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:55:22.115Z",
+      "traceId": "dev-01",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 301,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:55:22.116Z",
+      "traceId": "dev-01",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 231,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.0000252,
+      "latencyMs": 291,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:55:25.256Z",
+      "traceId": "dev-01",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 2847,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:55:25.257Z",
+      "traceId": "dev-01",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 209,
+      "completionTokens": 7,
+      "cachedTokens": 192,
+      "credits": 0,
+      "costUsd": 0.000023,
+      "latencyMs": 332,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:55:25.590Z",
+      "traceId": "dev-01",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 316,
+      "completionTokens": 156,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.0000784,
+      "latencyMs": 2608,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:55:29.465Z",
+      "traceId": "dev-01",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1252,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:55:31.126Z",
+      "traceId": "dev-01",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1639,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:55:31.294Z",
+      "traceId": "dev-01",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 153,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:55:31.781Z",
+      "traceId": "dev-01",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 446,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:55:31.783Z",
+      "traceId": "dev-01",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 224,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.000024500000000000003,
+      "latencyMs": 485,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:55:32.271Z",
+      "traceId": "dev-01",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 325,
+      "completionTokens": 147,
+      "cachedTokens": 272,
+      "credits": 0,
+      "costUsd": 0.00007659999999999999,
+      "latencyMs": 2095,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:55:35.752Z",
+      "traceId": "dev-01",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1371,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:55:37.670Z",
+      "traceId": "dev-01",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1900,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:55:37.671Z",
       "traceId": "dev-01",
       "step": "embed",
       "service": "tokenfactory",
       "endpoint": "/embeddings",
       "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 350,
+      "promptTokens": 302,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.0000035,
-      "latencyMs": 9080,
+      "costUsd": 0.00000302,
+      "latencyMs": 1586,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:03:35.232Z",
+      "at": "2026-11-18T02:55:39.637Z",
       "traceId": "dev-01",
       "step": "dating",
       "service": "fetch",
@@ -3133,12 +3023,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 631,
+      "latencyMs": 367,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:03:35.466Z",
+      "at": "2026-11-18T02:55:39.695Z",
       "traceId": "dev-01",
       "step": "dating",
       "service": "fetch",
@@ -3149,12 +3039,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 232,
+      "latencyMs": 426,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:03:37.698Z",
+      "at": "2026-11-18T02:55:39.712Z",
       "traceId": "dev-01",
       "step": "dating",
       "service": "fetch",
@@ -3165,12 +3055,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 2229,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:03:39.333Z",
+      "at": "2026-11-18T02:55:39.725Z",
       "traceId": "dev-01",
       "step": "dating",
       "service": "fetch",
@@ -3181,12 +3071,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 1632,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:03:40.075Z",
+      "at": "2026-11-18T02:55:39.976Z",
       "traceId": "dev-01",
       "step": "dating",
       "service": "fetch",
@@ -3197,12 +3087,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 741,
+      "latencyMs": 338,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:03:40.409Z",
+      "at": "2026-11-18T02:55:40.469Z",
       "traceId": "dev-01",
       "step": "dating",
       "service": "fetch",
@@ -3213,12 +3103,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 5808,
+      "latencyMs": 493,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:03:40.598Z",
+      "at": "2026-11-18T02:55:41.354Z",
       "traceId": "dev-01",
       "step": "dating",
       "service": "fetch",
@@ -3229,12 +3119,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 522,
+      "latencyMs": 885,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:03:43.741Z",
+      "at": "2026-11-18T02:55:42.434Z",
       "traceId": "dev-01",
       "step": "dating",
       "service": "fetch",
@@ -3245,12 +3135,28 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 3331,
+      "latencyMs": 2708,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:03:45.601Z",
+      "at": "2026-11-18T02:55:42.562Z",
+      "traceId": "dev-01",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1207,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:55:44.424Z",
       "traceId": "dev-01",
       "step": "dating",
       "service": "wayback",
@@ -3266,7 +3172,7 @@
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:03:47.278Z",
+      "at": "2026-11-18T02:55:46.231Z",
       "traceId": "dev-01",
       "step": "dating",
       "service": "wayback",
@@ -3282,7 +3188,7 @@
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:03:47.279Z",
+      "at": "2026-11-18T02:55:46.232Z",
       "traceId": "dev-01",
       "step": "dating",
       "service": "wayback",
@@ -3298,7 +3204,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:03:47.280Z",
+      "at": "2026-11-18T02:55:46.239Z",
       "traceId": "dev-01",
       "step": "dating",
       "service": "wayback",
@@ -3314,7 +3220,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:03:47.280Z",
+      "at": "2026-11-18T02:55:46.240Z",
       "traceId": "dev-01",
       "step": "dating",
       "service": "wayback",
@@ -3330,7 +3236,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:03:47.281Z",
+      "at": "2026-11-18T02:55:46.240Z",
       "traceId": "dev-01",
       "step": "dating",
       "service": "wayback",
@@ -3346,7 +3252,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:03:47.281Z",
+      "at": "2026-11-18T02:55:46.243Z",
       "traceId": "dev-01",
       "step": "dating",
       "service": "wayback",
@@ -3362,7 +3268,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:03:47.282Z",
+      "at": "2026-11-18T02:55:46.244Z",
       "traceId": "dev-01",
       "step": "dating",
       "service": "wayback",
@@ -3378,7 +3284,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:03:47.282Z",
+      "at": "2026-11-18T02:55:46.244Z",
       "traceId": "dev-01",
       "step": "dating",
       "service": "wayback",
@@ -3394,7 +3300,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:03:47.283Z",
+      "at": "2026-11-18T02:55:46.245Z",
       "traceId": "dev-01",
       "step": "dating",
       "service": "wayback",
@@ -3410,7 +3316,23 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:03:47.288Z",
+      "at": "2026-11-18T02:55:46.246Z",
+      "traceId": "dev-01",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-18T02:55:46.248Z",
       "traceId": "dev-01",
       "step": "page_type",
       "service": "tokenfactory",
@@ -3421,60 +3343,60 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0.000202,
-      "latencyMs": 687,
+      "latencyMs": 637,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:03:47.992Z",
+      "at": "2026-11-18T02:55:46.899Z",
       "traceId": "dev-01",
       "step": "readouts",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 487,
+      "promptTokens": 484,
       "completionTokens": 23,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.000055599999999999996,
-      "latencyMs": 653,
+      "costUsd": 0.000055299999999999996,
+      "latencyMs": 711,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:03:48.652Z",
+      "at": "2026-11-18T02:55:47.613Z",
       "traceId": "dev-01",
       "step": "readouts",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 471,
+      "promptTokens": 450,
       "completionTokens": 23,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.000054,
-      "latencyMs": 856,
+      "costUsd": 0.000051899999999999994,
+      "latencyMs": 548,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:03:49.513Z",
+      "at": "2026-11-18T02:55:48.162Z",
       "traceId": "dev-01",
       "step": "readouts",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 474,
+      "promptTokens": 445,
       "completionTokens": 23,
       "cachedTokens": 368,
       "credits": 0,
-      "costUsd": 0.0000543,
-      "latencyMs": 523,
+      "costUsd": 0.000051399999999999996,
+      "latencyMs": 502,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:03:50.038Z",
+      "at": "2026-11-18T02:55:48.668Z",
       "traceId": "dev-01",
       "step": "readouts",
       "service": "tokenfactory",
@@ -3485,60 +3407,44 @@
       "cachedTokens": 368,
       "credits": 0,
       "costUsd": 0.000052499999999999995,
-      "latencyMs": 548,
+      "latencyMs": 805,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:03:50.589Z",
+      "at": "2026-11-18T02:55:49.474Z",
       "traceId": "dev-01",
       "step": "readouts",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 428,
+      "promptTokens": 451,
       "completionTokens": 23,
       "cachedTokens": 368,
       "credits": 0,
-      "costUsd": 0.000049699999999999995,
-      "latencyMs": 493,
+      "costUsd": 0.000052,
+      "latencyMs": 604,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:03:51.086Z",
+      "at": "2026-11-18T02:55:50.080Z",
       "traceId": "dev-01",
       "step": "readouts",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 430,
+      "promptTokens": 470,
       "completionTokens": 23,
       "cachedTokens": 368,
       "credits": 0,
-      "costUsd": 0.0000499,
-      "latencyMs": 411,
+      "costUsd": 0.000053899999999999996,
+      "latencyMs": 600,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:03:51.501Z",
-      "traceId": "dev-01",
-      "step": "readouts",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 511,
-      "completionTokens": 23,
-      "cachedTokens": 368,
-      "credits": 0,
-      "costUsd": 0.000057999999999999994,
-      "latencyMs": 633,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:03:52.143Z",
+      "at": "2026-11-18T02:55:50.684Z",
       "traceId": "dev-01",
       "step": "boundary",
       "service": "tokenfactory",
@@ -3549,7 +3455,7 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0.000040600000000000004,
-      "latencyMs": 514,
+      "latencyMs": 455,
       "status": "200",
       "cacheHit": false
     }

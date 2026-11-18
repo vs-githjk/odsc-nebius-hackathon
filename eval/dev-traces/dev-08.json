@@ -1,0 +1,1212 @@
+{
+  "schemaVersion": "1",
+  "id": "dev-08",
+  "mode": "LIVE",
+  "synthetic": false,
+  "recordedAt": "2026-11-18T02:59:43.305Z",
+  "claim": {
+    "text": "The Great Wall of China is the only man-made structure visible from space.",
+    "atoms": {
+      "number": null,
+      "unit": null,
+      "subjectLemma": "wall",
+      "population": null,
+      "time": null,
+      "hedge": null,
+      "namedSource": null,
+      "variants": [],
+      "phrase": "The Great Wall of China"
+    }
+  },
+  "viralSentence": "The Great Wall of China is the only man-made structure visible from space.",
+  "nodes": [
+    {
+      "id": "n1",
+      "url": "https://politifact.com/factchecks/2016/mar/07/donald-trump/donald-trump-right-great-wall-china-2000-years-old",
+      "domain": "politifact.com",
+      "title": "Is Donald Trump right that the Great Wall of China is 2,000 years old and 13,000 miles long? – PolitiFact",
+      "date": {
+        "kind": "existed_by",
+        "value": "2020-09-01",
+        "source": "wayback_first_capture",
+        "firstCapture": "2020-09-01",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n1",
+      "evidence": "observed",
+      "meta": true,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [],
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "http://time.com/4245134/super-tuesday-donald-trump-victory-speech-transcript-full-text",
+          "read": false
+        },
+        {
+          "url": "http://www.dailymail.co.uk/news/article-2155457/Miles-The-Great-Wall-China-13-170-miles-long--thats-twice-length-previous-estimates.html",
+          "read": true
+        },
+        {
+          "url": "http://whc.unesco.org/en/list/438",
+          "read": true
+        },
+        {
+          "url": "https://www.washingtonpost.com/news/worldviews/wp/2016/03/02/some-facts-for-donald-trump-about-the-great-wall-of-china",
+          "read": true
+        }
+      ],
+      "pageType": null,
+      "foundViaMeta": null
+    },
+    {
+      "id": "n2",
+      "url": "https://www.politifact.com/factchecks/2016/mar/07/donald-trump/donald-trump-right-great-wall-china-2000-years-old",
+      "domain": "politifact.com",
+      "title": "Is Donald Trump right that the Great Wall of China is 2,000 years old and 13,000 miles long? – PolitiFact",
+      "date": {
+        "kind": "existed_by",
+        "value": "2020-09-01",
+        "source": "wayback_first_capture",
+        "firstCapture": "2020-09-01",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n2",
+      "evidence": "observed",
+      "meta": true,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [],
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "http://time.com/4245134/super-tuesday-donald-trump-victory-speech-transcript-full-text",
+          "read": false
+        },
+        {
+          "url": "http://www.dailymail.co.uk/news/article-2155457/Miles-The-Great-Wall-China-13-170-miles-long--thats-twice-length-previous-estimates.html",
+          "read": true
+        },
+        {
+          "url": "http://whc.unesco.org/en/list/438",
+          "read": true
+        },
+        {
+          "url": "https://www.washingtonpost.com/news/worldviews/wp/2016/03/02/some-facts-for-donald-trump-about-the-great-wall-of-china",
+          "read": true
+        }
+      ],
+      "pageType": null,
+      "foundViaMeta": null
+    },
+    {
+      "id": "n3",
+      "url": "https://www.scientificamerican.com/article/is-chinas-great-wall-visible-from-space",
+      "domain": "scientificamerican.com",
+      "title": "Is China's Great Wall Visible from Space? | Scientific American",
+      "date": {
+        "kind": "published",
+        "value": "2008-02-21",
+        "source": "metadata",
+        "firstCapture": "2014-03-04",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n3",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s1"
+      ],
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "https://www.scientificamerican.com/getsciam",
+          "read": true
+        }
+      ],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "no",
+        "probability": 0.9990889486178937,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.0009110513821062779
+          },
+          {
+            "optionId": "no",
+            "p": 0.9990889486178937
+          },
+          {
+            "optionId": "__other__",
+            "p": 1.1102230246251565e-16
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    },
+    {
+      "id": "n4",
+      "url": "https://www.nasa.gov/image-article/great-wall",
+      "domain": "nasa.gov",
+      "title": "Great Wall - NASA",
+      "date": {
+        "kind": "existed_by",
+        "value": "2023-12-13",
+        "source": "wayback_first_capture",
+        "firstCapture": "2023-12-13",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n4",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s2"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "no",
+        "probability": 0.9999417087257159,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.0000582912742840697
+          },
+          {
+            "optionId": "no",
+            "p": 0.9999417087257159
+          },
+          {
+            "optionId": "__other__",
+            "p": 1.1102230246251565e-16
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    },
+    {
+      "id": "n5",
+      "url": "http://www.dailymail.co.uk/news/article-2155457/Miles-The-Great-Wall-China-13-170-miles-long--thats-twice-length-previous-estimates.html",
+      "domain": "dailymail.co.uk",
+      "title": "Miles out: The Great Wall of China is 13,170 miles long... that's more than twice the length of previous estimates | Daily Mail Online",
+      "date": {
+        "kind": "existed_by",
+        "value": "2012-06-07",
+        "source": "wayback_first_capture",
+        "firstCapture": "2012-06-07",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n5",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s3"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "no",
+        "probability": 0.999999958600624,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 4.1399375941473385e-8
+          },
+          {
+            "optionId": "no",
+            "p": 0.999999958600624
+          },
+          {
+            "optionId": "__other__",
+            "p": 1.1102230246251565e-16
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": "https://politifact.com/factchecks/2016/mar/07/donald-trump/donald-trump-right-great-wall-china-2000-years-old",
+      "injection": null
+    },
+    {
+      "id": "n6",
+      "url": "https://study.com/academy/lesson/video/why-was-the-great-wall-of-china-built.html",
+      "domain": "study.com",
+      "title": "Great Wall of China | Origins, History & Timeline - Video | Study.com",
+      "date": {
+        "kind": "existed_by",
+        "value": "2025-07-24",
+        "source": "wayback_first_capture",
+        "firstCapture": "2025-07-24",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n6",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s4"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "no",
+        "probability": 0.9999645961419408,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.00003535625426310132
+          },
+          {
+            "optionId": "no",
+            "p": 0.9999645961419408
+          },
+          {
+            "optionId": "__other__",
+            "p": 4.760379612722687e-8
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    },
+    {
+      "id": "n7",
+      "url": "https://www.nature.com/articles/s40494-024-01198-1",
+      "domain": "nature.com",
+      "title": "Temporal and spatial distribution characteristics of the Ming Great Wall | npj Heritage Science",
+      "date": {
+        "kind": "published",
+        "value": "2024-03-07",
+        "source": "metadata",
+        "firstCapture": "2025-08-05",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n7",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s5"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "no",
+        "probability": 0.9999982118683558,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.0000017603429776195369
+          },
+          {
+            "optionId": "no",
+            "p": 0.9999982118683558
+          },
+          {
+            "optionId": "__other__",
+            "p": 2.7788666590033984e-8
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    },
+    {
+      "id": "n8",
+      "url": "https://www.washingtonpost.com/news/worldviews/wp/2016/03/02/some-facts-for-donald-trump-about-the-great-wall-of-china",
+      "domain": "washingtonpost.com",
+      "title": "Some facts for Donald Trump about the Great Wall of China - The Washington Post",
+      "date": {
+        "kind": "existed_by",
+        "value": "2016-03-03",
+        "source": "wayback_first_capture",
+        "firstCapture": "2016-03-03",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n8",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s6"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "no",
+        "probability": 0.9999998807934594,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 1.1253517544225439e-7
+          },
+          {
+            "optionId": "no",
+            "p": 0.9999998807934594
+          },
+          {
+            "optionId": "__other__",
+            "p": 6.671365238020144e-9
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": "https://politifact.com/factchecks/2016/mar/07/donald-trump/donald-trump-right-great-wall-china-2000-years-old",
+      "injection": null
+    }
+  ],
+  "edges": [],
+  "clusters": [
+    {
+      "id": "c-n3",
+      "nodeIds": [
+        "n3"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n4",
+      "nodeIds": [
+        "n4"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n5",
+      "nodeIds": [
+        "n5"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n8",
+      "nodeIds": [
+        "n8"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n6",
+      "nodeIds": [
+        "n6"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n7",
+      "nodeIds": [
+        "n7"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n1",
+      "nodeIds": [
+        "n1"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n2",
+      "nodeIds": [
+        "n2"
+      ],
+      "rule": "single"
+    }
+  ],
+  "spans": [
+    {
+      "id": "s1",
+      "nodeId": "n3",
+      "text": "By purchasing a subscription you are helping to ensure the future of impactful stories about the discoveries and ideas shaping our world today. --- Choose a legend: The Great Wall of China is the one of the few man-made structures visible from orbit.",
+      "contextBefore": "as visible from orbit as modern desert roads By Mara Hvistendahl --- On supporting science journalism. If you're enjoying this article, consider supporting our award-winning journalism bysubscribing. ",
+      "contextAfter": " Or, more remarkably, it's the only human artifact on Earth visible from the moon. Both are false, say astronauts and remote-sensing specialists. Although the Great Wall spans some 4,500 miles (7,200 ",
+      "start": 464,
+      "end": 714,
+      "extractSha256": "262d2537da0fbdbaa2ae05ec9179bfb9696bb41c850bc849f19acd4785cce480",
+      "windowSha256": "f54b4eba87e3c0495a547baa5d5ca42bc57324c6dfe9a7017d1fd8b599c8e471",
+      "fetchedAt": "2026-11-18T02:59:59.815Z",
+      "waybackUrl": "https://web.archive.org/web/20140304045814/https://www.scientificamerican.com/article/is-chinas-great-wall-visible-from-space",
+      "tier": "exact"
+    },
+    {
+      "id": "s2",
+      "nodeId": "n4",
+      "text": "NASA The Great Wall of China and Inner Mongolia are featured in this image photographed by Expedition 10 Commander Leroy Chiao on the International Space Station.",
+      "contextBefore": " de la misión lunar Artemis II. Agenda diaria de la misión a la Luna de Artemis II de la NASA. La NASA refuerza Artemis: añade una misión y perfecciona su arquitectura general. 1 min read Great Wall. ",
+      "contextAfter": " Despite myths to the contrary, the wall isn't visible from the moon, and is difficult or impossible to see from Earth orbit without the high-powered lenses used for this photo. *Image Credit: NASA* N",
+      "start": 2479,
+      "end": 2641,
+      "extractSha256": "5695dc86e3a4d885bd81344ac15e9020354c3b0dc089e53356364cf9df379e88",
+      "windowSha256": "c916b3317f1744e64f65d3058aa10975f52b0aa6cc5f6bc32897d29450d47b72",
+      "fetchedAt": "2026-11-18T03:00:01.461Z",
+      "waybackUrl": "https://web.archive.org/web/20231213164735/https://www.nasa.gov/image-article/great-wall",
+      "tier": "exact"
+    },
+    {
+      "id": "s3",
+      "nodeId": "n5",
+      "text": "Miles out: The Great Wall of China is 13,170 miles long... that's more than twice the length of previous estimates | Daily Mail Online News.",
+      "contextBefore": "",
+      "contextAfter": " US EditionSelect Edition UK US AU IE You're viewing the US editionYou can switch to the UK, AU or IE homepage at any time using this menu. Okay Login * Home * Showbiz * News * Sports * Politics * Opi",
+      "start": 0,
+      "end": 140,
+      "extractSha256": "0827f9ade81a4d8a1a8506087b5abcc113fcf02085b96bfdb00e5f1bd86813ed",
+      "windowSha256": "71794e5aa187e20edf0252468373bc4bda2248e9bc18369a13e496f17cf50620",
+      "fetchedAt": "2026-11-18T03:00:03.147Z",
+      "waybackUrl": "https://web.archive.org/web/20120607025056/http://www.dailymail.co.uk/news/article-2155457/Miles-The-Great-Wall-China-13-170-miles-long--thats-twice-length-previous-estimates.html",
+      "tier": "exact"
+    },
+    {
+      "id": "s4",
+      "nodeId": "n6",
+      "text": "Your next lesson will play in 10 seconds * 0:04 The Great Wall of China * 0:39 Origins of the Great Wall * 2:31 The Stone Wall * 4:04 China's Borders Change * 4:42 Lesson Summary QuizCourseSaveTimeline 16K views What our learners say.",
+      "contextBefore": "oming up next:_ Medieval Japan | Religion, Government & Economy You're on a roll. Keep up the good work! Take QuizWatch Next Lesson Replay Just checking in. Are you still watching? Yes! Keep playing. ",
+      "contextAfter": " Create an account I liked that Study.com broke things down and explained each topic clearly and in an easily accessible way. It saved time when preparing for exams. AD Alida D. Student, Dumont, New J",
+      "start": 4893,
+      "end": 5127,
+      "extractSha256": "52a8bd0b4673b872a9f59a6d40e417e139890eaa0ffc3f0d4c59b86529e3d0e8",
+      "windowSha256": "2029c352396db642f2f7b070272e33300e7b4323ac02ba75f4258f2eda126162",
+      "fetchedAt": "2026-11-18T03:00:15.502Z",
+      "waybackUrl": "https://web.archive.org/web/20250724085342/https://study.com/academy/lesson/video/why-was-the-great-wall-of-china-built.html",
+      "tier": "exact"
+    },
+    {
+      "id": "s5",
+      "nodeId": "n7",
+      "text": "The Great Wall of China is an ancient military defense project with the longest cumulative construction time in the world [1].In the history of China, more than 20 vassal states and dynasties built the \"Great Wall\" along their frontiers to safeguard their territories.",
+      "contextBefore": "nimum cumulative resistance. Value evaluation model (VEM) of ancient Chinese military settlement heritage: a case study of Liaoxi Corridor in the Ming Dynasty. Explore related subjects. Introduction. ",
+      "contextAfter": " The Great Wall built during the Ming Dynasty (1368-1644) is China's most representative World Heritage Site. The Great Wall was widely distributed along the northern borderland of ancient China in Mi",
+      "start": 2558,
+      "end": 2826,
+      "extractSha256": "b97ed68aac96d42bd3ab411c5d27e1546cb7b093ef823b4142cbbcb0ddf74262",
+      "windowSha256": "8a859128c2ddac103c013b57285864b52eeec55f0bd1b440479460b25053c52a",
+      "fetchedAt": "2026-11-18T03:00:16.479Z",
+      "waybackUrl": "https://web.archive.org/web/20250805035617/https://www.nature.com/articles/s40494-024-01198-1",
+      "tier": "exact"
+    },
+    {
+      "id": "s6",
+      "nodeId": "n8",
+      "text": "Democracy Dies in Darkness Some facts for Donald Trump about the Great Wall of China.",
+      "contextBefore": "",
+      "contextAfter": " The section of the Great Wall that includes the Nan-K'ou pass leading to Mongolia. (Thomas Child/Stephan Loewentheil Historical Photography of China Collection) By Ishaan Tharoor During his latest va",
+      "start": 0,
+      "end": 85,
+      "extractSha256": "dcfbd3628f11daa61f7613a1f200e963c4792141a8505a602239ce081c6c8d58",
+      "windowSha256": "73f5aa3a8504d9ab02605861c8a6e7f0e37ceb2e7f37049bd7170331616a4ad8",
+      "fetchedAt": "2026-11-18T03:00:17.084Z",
+      "waybackUrl": "https://web.archive.org/web/20160303101735/https://www.washingtonpost.com/news/worldviews/wp/2016/03/02/some-facts-for-donald-trump-about-the-great-wall-of-china",
+      "tier": "exact"
+    }
+  ],
+  "hops": [],
+  "blame": [],
+  "roots": {
+    "pages": 6,
+    "clusters": 6,
+    "rootsLinked": 0,
+    "clustersUnlinked": 6,
+    "studiesFound": null,
+    "independentRoots": 6,
+    "copies": 0
+  },
+  "redHopEdgeId": null,
+  "earliest": {
+    "nodeIds": [],
+    "earlierWindowSearches": 2,
+    "earlierFound": 0
+  },
+  "failure": null,
+  "budget": {
+    "credits": 6,
+    "usd": 0.00031637000000000006,
+    "ms": 39241,
+    "capHit": null
+  },
+  "decision": {
+    "state": "TRAIL_GOES_COLD",
+    "row": 6,
+    "reasons": [
+      "no earliest page with a confirmed date, a primary page type, no earlier citation and no negated span",
+      "2 unread candidate parent(s)"
+    ],
+    "counts": {
+      "pages": 6,
+      "clusters": 6,
+      "unreadParents": 2,
+      "earlierWindowSearches": 2
+    }
+  },
+  "searchLog": [
+    {
+      "at": "2026-11-18T02:59:47.835Z",
+      "step": "search",
+      "query": "\"The Great Wall of China\"",
+      "endDate": "2026-11-18",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-18T02:59:49.505Z",
+      "step": "search",
+      "query": "The Great Wall of China visible from space claim origin",
+      "endDate": "2026-11-18",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-18T02:59:51.348Z",
+      "step": "meta-search",
+      "query": "\"The Great Wall of China\"",
+      "endDate": "2026-11-18",
+      "startDate": null,
+      "results": 5,
+      "kept": 2,
+      "dropped": 3
+    },
+    {
+      "at": "2026-11-18T03:00:09.438Z",
+      "step": "search",
+      "query": "\"The Great Wall of China\" study",
+      "endDate": "2026-11-18",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    }
+  ],
+  "usage": [
+    {
+      "at": "2026-11-18T02:59:43.306Z",
+      "traceId": "dev-08",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 147,
+      "completionTokens": 32,
+      "cachedTokens": 112,
+      "credits": 0,
+      "costUsd": 0.0000243,
+      "latencyMs": 587,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:59:43.896Z",
+      "traceId": "dev-08",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 273,
+      "completionTokens": 108,
+      "cachedTokens": 240,
+      "credits": 0,
+      "costUsd": 0.0000597,
+      "latencyMs": 2133,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:59:47.835Z",
+      "traceId": "dev-08",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1787,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:59:49.505Z",
+      "traceId": "dev-08",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1620,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:59:51.348Z",
+      "traceId": "dev-08",
+      "step": "meta-search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1820,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:59:51.470Z",
+      "traceId": "dev-08",
+      "step": "meta-extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 104,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:59:58.561Z",
+      "traceId": "dev-08",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 7022,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:59:59.815Z",
+      "traceId": "dev-08",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1250,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:59:59.816Z",
+      "traceId": "dev-08",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 240,
+      "completionTokens": 7,
+      "cachedTokens": 160,
+      "credits": 0,
+      "costUsd": 0.0000261,
+      "latencyMs": 694,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:00:01.461Z",
+      "traceId": "dev-08",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 948,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:00:01.461Z",
+      "traceId": "dev-08",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 224,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.000024500000000000003,
+      "latencyMs": 624,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:00:03.147Z",
+      "traceId": "dev-08",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 794,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:00:03.148Z",
+      "traceId": "dev-08",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 229,
+      "completionTokens": 7,
+      "cachedTokens": 160,
+      "credits": 0,
+      "costUsd": 0.000025,
+      "latencyMs": 522,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:00:03.672Z",
+      "traceId": "dev-08",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 273,
+      "completionTokens": 159,
+      "cachedTokens": 240,
+      "credits": 0,
+      "costUsd": 0.00007500000000000001,
+      "latencyMs": 3417,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:00:09.438Z",
+      "traceId": "dev-08",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2334,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:00:14.930Z",
+      "traceId": "dev-08",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 5475,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:00:15.502Z",
+      "traceId": "dev-08",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 555,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:00:15.503Z",
+      "traceId": "dev-08",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 266,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.000028700000000000003,
+      "latencyMs": 558,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:00:16.479Z",
+      "traceId": "dev-08",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 346,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:00:16.480Z",
+      "traceId": "dev-08",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 252,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.000027300000000000003,
+      "latencyMs": 376,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:00:17.084Z",
+      "traceId": "dev-08",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 225,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:00:17.084Z",
+      "traceId": "dev-08",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 210,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.000023100000000000002,
+      "latencyMs": 289,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:00:17.374Z",
+      "traceId": "dev-08",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 267,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00000267,
+      "latencyMs": 2204,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:00:20.079Z",
+      "traceId": "dev-08",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 493,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:00:20.152Z",
+      "traceId": "dev-08",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 72,
+      "status": "403",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:00:20.259Z",
+      "traceId": "dev-08",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 107,
+      "status": "403",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:00:20.347Z",
+      "traceId": "dev-08",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 762,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:00:20.553Z",
+      "traceId": "dev-08",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 205,
+      "status": "network_error",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:00:21.653Z",
+      "traceId": "dev-08",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1394,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:00:22.192Z",
+      "traceId": "dev-08",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 538,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:00:22.543Z",
+      "traceId": "dev-08",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 351,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:00:22.544Z",
+      "traceId": "dev-08",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-18T03:00:22.544Z",
+      "traceId": "dev-08",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-18T03:00:22.545Z",
+      "traceId": "dev-08",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-18T03:00:22.545Z",
+      "traceId": "dev-08",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-18T03:00:22.545Z",
+      "traceId": "dev-08",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-18T03:00:22.546Z",
+      "traceId": "dev-08",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    }
+  ],
+  "scopeNote": "Web pages only; print and paywalled origins are out of scope. Earliest source we found, not proof of first use.",
+  "otherNumbers": []
+}
