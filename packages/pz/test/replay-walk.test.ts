@@ -3,7 +3,7 @@ import { existsSync, mkdtempSync, readdirSync, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { fidelity, missTable, MISSES_FILE, replayClaim, replayWalk, selectClaims } from "../../../eval/replay-walk.ts";
+import { fidelity, missTable, MISSES_FILE, replayClaim, replayWalk, selectClaims, setLabel } from "../../../eval/replay-walk.ts";
 import { createFileCache } from "../src/clients/cache.ts";
 import { createMisses, recordPaths } from "../src/clients/tape.ts";
 import { FINGERPRINT_PROMPT } from "../src/engine/fingerprint.ts";
@@ -247,5 +247,18 @@ describe("replay tooling for walk changes (#164)", () => {
     expect(table[0]).toMatch(/^claim +state +paid +free +verdict$/);
     expect(table[1]).toMatch(new RegExp(`^${CLAIM.id} +[A-Z_]+ +0 +0 +exact$`));
     expect(table[2]).toMatch(/^dev-98 +- +0 +0 +failed$/);
+  });
+});
+
+describe("a filtered replay reads as a subset (XO on #234)", () => {
+  const all = Array.from({ length: 20 }, (_, i) => ({ id: `dev-${String(i + 1).padStart(2, "0")}`, text: "x", expected: "cold" as const, tracedOrigin: null, tracedBy: null }));
+  it("labels the score lines as a subset with its size and ids, and the full set by its name", () => {
+    expect(setLabel("E2", selectClaims(all, "dev-02,dev-05"), all)).toBe("E2 subset (2 of 20: dev-02, dev-05)");
+    expect(setLabel("E2", selectClaims(all, undefined), all)).toBe("E2");
+  });
+
+  it("a --claims list with no ids is an error, not a run with nothing to replay", () => {
+    expect(() => selectClaims(all, ",")).toThrow("no claim ids in --claims");
+    expect(() => selectClaims(all, " , ,")).toThrow("no claim ids in --claims");
   });
 });

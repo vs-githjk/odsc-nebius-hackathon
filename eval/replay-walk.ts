@@ -106,9 +106,16 @@ export function missTable(rows: ClaimRow[]): string[] {
 export function selectClaims(claims: DevClaim[], spec: string | undefined): DevClaim[] {
   if (!spec?.trim()) return claims;
   const ids = spec.split(",").map((x) => x.trim()).filter(Boolean);
+  if (ids.length === 0) throw new Error("no claim ids in --claims");
   const unknown = ids.filter((id) => !claims.some((c) => c.id === id));
   if (unknown.length) throw new Error(`unknown claim id(s): ${unknown.join(", ")}`);
   return claims.filter((c) => ids.includes(c.id));
+}
+
+// The label on the score lines. A filtered run is a subset, never read as the set's result (XO on #234):
+// "E2 subset (2 of 20: dev-02, dev-05)".
+export function setLabel(set: string, selected: DevClaim[], all: DevClaim[]): string {
+  return selected.length === all.length ? set : `${set} subset (${selected.length} of ${all.length}: ${selected.map((c) => c.id).join(", ")})`;
 }
 
 export async function replayWalk(claims: DevClaim[], opts: Omit<ReplayOptions, "misses"> & { outDir: string; report?: (line: string) => void }): Promise<ReplayReport> {
@@ -156,7 +163,12 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const { values } = parseArgs({ options: { set: { type: "string" }, claims: { type: "string" }, record: { type: "string" }, out: { type: "string" }, "http-dir": { type: "string", multiple: true } } });
   const [entry] = devSetsToScore(values.set ?? "E2");
   const { set, file } = entry!;
-  const claims: DevClaim[] = selectClaims(JSON.parse(readFileSync(file, "utf8")), values.claims ?? process.env.CLAIMS);
+  const all: DevClaim[] = JSON.parse(readFileSync(file, "utf8"));
+  // PZ_REPLAY_CLAIMS, not a bare CLAIMS, so a stray variable never turns a run into a subset; a filter always says so.
+  const filter = values.claims ?? process.env.PZ_REPLAY_CLAIMS;
+  const claims = selectClaims(all, filter);
+  const label = setLabel(set, claims, all);
+  if (claims.length !== all.length) console.log(`Filtered by ${values.claims !== undefined ? "--claims" : "PZ_REPLAY_CLAIMS"}: ${claims.length} of ${all.length} claims selected.`);
   const recordDir = resolve(values.record ?? process.env.PZ_RECORD_DIR ?? DEFAULT_RECORD_DIR);
   const outDir = resolve(values.out ?? join("runs", "replay-walk", set));
   const extra = (values["http-dir"] ?? [DEFAULT_CACHE_DIR]).map(dir => resolve(dir));
@@ -168,8 +180,8 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   } else {
     const report = await replayWalk(claims.filter(claim => !lacking.includes(claim)), { recordDir, scratch: outDir, outDir, extraHttpDirs: extra, report: line => console.log(line) });
     for (const line of perClaimLines(scoreDir(outDir, claims))) console.log(line);
-    console.log(`${set} replay:    ${headline(summarise(scoreDir(outDir, claims)))}`);
-    if (existsSync(COMMITTED_TRACES)) console.log(`${set} committed: ${headline(summarise(scoreDir(COMMITTED_TRACES, claims)))}`);
+    console.log(`${label} replay:    ${headline(summarise(scoreDir(outDir, claims)))}`);
+    if (existsSync(COMMITTED_TRACES)) console.log(`${label} committed: ${headline(summarise(scoreDir(COMMITTED_TRACES, claims)))}`);
     console.log(`${missLine(report.misses)}; ${report.replayed} of ${claims.length} claims replayed (${report.exact} exact)${lacking.length ? `, ${lacking.length} without a recording (${lacking.map(c => c.id).join(", ")})` : ""}${report.failed.length ? `, ${report.failed.length} failed` : ""}`);
     for (const miss of report.misses.list.slice(0, 5)) console.log(`  miss ${miss.kind}: ${miss.detail}`);
     if (report.misses.count()) console.log(`  every miss, by claim: ${join(outDir, MISSES_FILE)}`);
