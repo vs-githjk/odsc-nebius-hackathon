@@ -12,7 +12,7 @@ import type { UsageLog } from "../usage/log.ts";
 const NAMES = ["citation_publication_date", "citation_date", "article:published_time", "datepublished", "dc.date", "dc.date.issued"];
 
 const attr = (tag: string, name: string) =>
-  new RegExp(`\\b${name}\\s*=\\s*(?:"([^"]*)"|'([^']*)')`, "i").exec(tag)?.slice(1).find((v) => v !== undefined) ?? null;
+  new RegExp(`\\s${name}\\s*=\\s*(?:"([^"]*)"|'([^']*)')`, "i").exec(tag)?.slice(1).find((v) => v !== undefined) ?? null;
 
 // Scholarly sites write 2004/06/15; that is the same calendar day as 2004-06-15, so only the separator changes. A
 // partial date (2004/06) stays partial and dating.ts leaves it unconfirmed.
@@ -296,11 +296,10 @@ export function createEvidence(deps: EvidenceDeps) {
     const fromRegistry = cited ? registry(await crossref(cited), "registry_crossref") : null;
     if (fromRegistry) return fromRegistry;
     // Only explicitly marked publication datelines are evidence.
-    for (const [tag] of page.matchAll(/<time\b[^>]*>/gi)) {
-      if (attr(tag, "itemprop")?.toLowerCase() !== "datepublished") continue;
-      const datetime = attr(tag, "datetime");
-      if (datetime) return { date: clean(datetime), source: "byline" };
-    }
-    return null;
+    const datelines = [...page.matchAll(/<time\b[^>]*>/gi)]
+      .filter(([tag]) => attr(tag, "itemprop")?.toLowerCase() === "datepublished");
+    if (datelines.length !== 1) return null;
+    const datetime = attr(datelines[0]![0], "datetime");
+    return datetime ? { date: clean(datetime), source: "byline" } : null;
   };
 }
