@@ -7,7 +7,7 @@ import { createBudget } from "../src/clients/budget.ts";
 import { createFileCache } from "../src/clients/cache.ts";
 import { createTavily } from "../src/clients/tavily.ts";
 import { createWayback } from "../src/clients/wayback.ts";
-import { LINK_ROUNDS_WITHOUT_PROGRESS, WALK_TIME_SHARE, walkStep } from "../src/engine/walk.ts";
+import { LINK_ROUNDS_WITHOUT_PROGRESS, walkStep } from "../src/engine/walk.ts";
 import { decideStopState, loadRules, type Rules } from "../src/rules/index.ts";
 import { createUsageLog } from "../src/usage/log.ts";
 
@@ -101,7 +101,7 @@ describe("F7: the depth cap counts steps back, not link rounds (#192)", () => {
 });
 
 describe("time reserve: a trail that keeps stepping back stops at 70% of the time cap (#192 F2, dev-05)", () => {
-  it("starts no round after 70% of caps.ms, and says it stopped at the time cap", async () => {
+  it("starts no round after caps.walkShare (0.7) of caps.ms, and says it stopped at the time cap", async () => {
     // Forty years of pages, each a step back, so only the clock can end this walk. Each search costs 40 s.
     const years = Array.from({ length: 40 }, (_, i) => 2024 - i);
     const steps: Page[] = years.map((y, i) => ({ url: `https://site${y}.example/report`, date: `${y}-03-01`, text: `Keepers at pool number ${String.fromCharCode(97 + (i % 26))} said penguins nap 14 times a day.`, searchable: true }));
@@ -122,7 +122,8 @@ describe("time reserve: a trail that keeps stepping back stops at 70% of the tim
     })(handed, {});
     expect(t.budget.capHit).toBe("ms");
     // The last round started before 210 s; it may finish past it, but the walk never runs on to the 300 s cap.
-    expect(now).toBeGreaterThanOrEqual(300_000 * WALK_TIME_SHARE);
+    expect(r.caps.walkShare).toBe(0.7);
+    expect(now).toBeGreaterThanOrEqual(300_000 * r.caps.walkShare);
     expect(now).toBeLessThan(300_000);
   });
 });

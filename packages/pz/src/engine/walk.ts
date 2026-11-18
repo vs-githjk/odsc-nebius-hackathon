@@ -83,10 +83,6 @@ const SOURCE_QUERIES_PER_WINDOW = 2;
 // F7 (#192): rounds in a row that only follow citations without reaching an earlier page. After this many the walk
 // stops following and ends as it would with no links left: a cold trail, not a cap hit.
 export const LINK_ROUNDS_WITHOUT_PROGRESS = 2;
-// #192 F2 time reserve: no new round starts after this share of caps.ms. A round already running finishes, and the
-// rest of the cap is left for dating, page_type, readouts and the card, so a deep trail that keeps stepping back
-// (dev-05, uncapped rounds since F7) ends with a card rather than at the run's deadline. The stop is a time cap hit.
-export const WALK_TIME_SHARE = 0.7;
 // T49: fact-check pages read as maps per trace, and the citations taken from each.
 const META_PAGES = 2;
 const META_LINKS = 4;
@@ -444,7 +440,8 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
     searchLog.push({ at: deps.now(), step: "model", query: reason, endDate: null, startDate: null, results: 0, kept: 0, dropped: 0 });
   }
 
-  const outOfTime = () => clock() - started >= rules.caps.ms * WALK_TIME_SHARE;
+  // #192 F2 time reserve: no new round after rules.caps.walkShare of caps.ms, so the card still gets written.
+  const outOfTime = () => clock() - started >= rules.caps.ms * rules.caps.walkShare;
 
   try {
     let endDate = deps.today;
