@@ -141,3 +141,12 @@ describe("measure words that are not measures", () => {
     expect(hit("8 in 10 dentists recommend it.", dentists)).toBe(true);
   });
 });
+
+describe("a claim counted in a spelled-out measure keeps the span's abbreviation (XO review of #216)", () => {
+  it("milligrams, pounds, kilometers and fluid ounces", () => {
+    expect(hit("Limit caffeine to 400 mg a day.", atoms("400", "400", "milligrams", "caffeine"))).toBe(true);
+    expect(hit("Students gain 10 lbs in college.", atoms("10", "10", "pounds", "student"))).toBe(true);
+    expect(hit("Walk 5 km every day.", atoms("5", "5", "kilometers", "walk"))).toBe(true);
+    expect(hit("Drink 8 fl oz of water every hour.", atoms("8", "8", "fluid ounces", "water"))).toBe(true);
+  });
+});
