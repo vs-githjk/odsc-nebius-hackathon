@@ -139,6 +139,16 @@ describe("docs/limits.md, open rows pinned as they behave today", () => {
     const blocked = decideStopState(withSpan(`The seemingly ubiquitous admonition says it: ${own}`), rules);
     expect(blocked.state).not.toBe("ORIGIN_FOUND");
     expect(blocked.reasons.some((r) => /presents the claim as already said/.test(r))).toBe(true);
+    // The other way: a cue on another page that shares the earliest slot ends the trail cold, though keeper-log is the origin.
+    const otherEarliest = sample.nodes.find((n) => n.id !== "keeper-log" && sample.spans.some((x) => x.nodeId === n.id))!;
+    const shared = {
+      ...sample,
+      earliest: { ...sample.earliest, nodeIds: [...sample.earliest.nodeIds, otherEarliest.id] },
+      spans: sample.spans.map((x) => (x.nodeId === otherEarliest.id ? { ...x, text: `It is often said that ${x.text}` } : x)),
+    };
+    const sharedDecision = decideStopState(shared, rules);
+    expect(sharedDecision.state).not.toBe("ORIGIN_FOUND");
+    expect(sharedDecision.reasons).toEqual([`earliest page ${otherEarliest.id} presents the claim as already said ("often said")`]);
     // Still missed: a wording that is not on the list.
     expect(decideStopState(withSpan(`You may have read that ${own.charAt(0).toLowerCase()}${own.slice(1)}`), rules).state).toBe("ORIGIN_FOUND");
   });
