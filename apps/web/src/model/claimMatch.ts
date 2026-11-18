@@ -5,7 +5,7 @@ import { sampleRows } from "./sampleRow.ts";
 // verbs a copy adds or drops without changing the claim (about, around, nearly, says, according to). Negations,
 // multipliers, number words, units, comparison words (more, fewer) and stance words (rarely, denied) are never here.
 const STOP = new Set(
-  "a an the of to in on at by for from with and or but as is are was were be been being it its this that these those than then so says said say according do does did has have had which who whom whose there their they them we our you your he she his her i my me about into over around nearly roughly approximately almost per each every".split(" "),
+  "a an the of to in on at by for from with and or but as is are was were be been being it its this that these those than then so says said say according do does did has have had which who whom whose there their they them we our you your he she his her i my me about into around nearly roughly approximately almost per each every".split(" "),
 );
 const NUMBER_WORDS: Record<string, string> = {
   zero: "0", one: "1", two: "2", three: "3", four: "4", five: "5", six: "6", seven: "7", eight: "8", nine: "9", ten: "10",
@@ -22,7 +22,7 @@ const UNITS: Record<string, string> = {
   percent: "%", "%": "%",
 };
 
-type Parsed = { content: string[]; numbers: string; multipliers: string; negations: string; units: string };
+type Parsed = { content: string[]; parts: string[][]; numbers: string; multipliers: string; negations: string; units: string };
 
 function parse(text: string): Parsed {
   const tokens = text
@@ -42,9 +42,17 @@ function parse(text: string): Parsed {
   // its singular ("phones", "phone"). Numbers and short words are left alone.
   const fold = (w: string) => UNITS[w] ?? (w.length > 3 && w.endsWith("s") && !w.endsWith("ss") && !/\d/.test(w) ? w.slice(0, -1) : w);
   const content = tokens.filter((w) => !STOP.has(w)).map(fold);
+  // The content words on each side of every "than", in order: "more plastic than fish" is not "more fish than plastic"
+  // (XO on #184), though "than" itself folds away.
+  const parts: string[][] = [[]];
+  for (const w of tokens) {
+    if (w === "than") parts.push([]);
+    else if (!STOP.has(w)) parts[parts.length - 1]!.push(fold(w));
+  }
   const pick = (keep: (w: string) => boolean, as: (w: string) => string = (w) => w) => content.filter(keep).map(as).sort().join(" ");
   return {
     content,
+    parts,
     numbers: pick((w) => /\d/.test(w)),
     multipliers: pick((w) => MULTIPLIERS.has(w)),
     negations: pick((w) => NEGATIONS.has(w), () => "not"),
@@ -69,6 +77,7 @@ const MIN_WORDS = 4;
 export function sameClaimText(a: Parsed, b: Parsed): boolean {
   if (a.numbers !== b.numbers || a.multipliers !== b.multipliers || a.negations !== b.negations || a.units !== b.units) return false;
   if (!same(a.content, b.content)) return false;
+  if (a.parts.length !== b.parts.length || a.parts.some((part, i) => !same(part, b.parts[i]!))) return false;
   const [[headA, tailA], [headB, tailB]] = [sides(a.content), sides(b.content)];
   return same(headA, headB) && same(tailA, tailB);
 }

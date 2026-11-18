@@ -93,3 +93,20 @@ describe("the recorded E2 traces (#220)", () => {
     expect(findTrace("You need to walk 10000 steps a day to stay healthy", traces)?.id).toBe("dev-06");
   });
 });
+
+describe("XO on #184 (4689534)", () => {
+  it("a reversed comparison is a different claim: 'more fish than plastic' never opens dev-10", () => {
+    expect(sameClaimWords("By 2050 there will be more fish than plastic in the ocean.", "By 2050 there will be more plastic than fish in the ocean.")).toBe(false);
+    expect(sameClaimWords("By 2050 there will be more plastic than fish in the ocean!", "By 2050 there will be more plastic than fish in the ocean.")).toBe(true);
+    expect(findTrace("By 2050 there will be more fish than plastic in the ocean.", traces)).toBeNull();
+  });
+
+  it("'over' is not folded: 'over 300 million jobs' never opens dev-16's '300 million jobs'", () => {
+    expect(sameClaimWords("AI could replace over 300 million jobs.", "AI could replace 300 million jobs.")).toBe(false);
+    expect(findTrace("AI could replace over 300 million jobs.", traces)).toBeNull();
+  });
+
+  it.runIf(traces.some((t) => t.id === "dev-10"))("the claim as asked still opens dev-10", () => {
+    expect(findTrace("By 2050 there will be more plastic than fish in the ocean.", traces)?.id).toBe("dev-10");
+  });
+});
