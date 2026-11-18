@@ -99,7 +99,7 @@ export async function fingerprintPhrase(text: string, { client }: { client: Clie
   }
   const range = claimRange(text);
   const longest = kept.sort((a, b) => words(b).length - words(a).length || b.length - a.length)[0];
-  const phrase = range?.raw ?? longest;
+  const phrase = range?.raw ?? (longest ? afterSubject(text, longest, inClaim(text, parts.subject)) : undefined);
   if (!phrase) return none("no_phrase", result.attempts, dropped);
   // A subject of several words keeps its head word, copied from the claim: "Great Wall of China" gives "Wall",
   // "body heat" gives "heat". dev-07 and dev-08 stopped here with no trace on the Nov 17 live run.
@@ -122,4 +122,20 @@ export function headWord(subject: string | null): string | null {
   const cut = words.findIndex((w, i) => i > 0 && /^(?:of|in|on|for|from|through|to|at|with|by|about|into)$/i.test(w));
   const head = (cut > 0 ? words.slice(0, cut) : words).at(-1)!.replace(/[^\p{L}\p{N}'-]/gu, "");
   return head.length >= 3 && !/^(?:the|and|its|this|that|their|your|our|of|in|on|for|from)$/i.test(head) ? head : null;
+}
+
+// A run that is the whole claim makes every query quote the full sentence and every page repeat it word for word
+// (dev-08 on the Nov 17 live run: "The Great Wall of China is the only man-made structure visible from space").
+// When the claim opens with its subject and a linking verb, the words after them are the distinctive run:
+// "the only man-made structure visible from space". Any other run is kept as the model gave it.
+const LINK = /^(?:is|are|was|were|has|have|had|can|will|does|do)\s+/iu;
+export function afterSubject(claim: string, run: string, subject: string | null): string {
+  const bare = (s: string) => normalise(s).replace(/[.!?]+$/u, "").trim().toLowerCase();
+  if (!subject || bare(run) !== bare(claim)) return run;
+  const body = normalise(run).replace(/[.!?]+$/u, "").trim();
+  const start = body.toLowerCase().replace(/^the\s+/u, "");
+  const offset = body.length - start.length;
+  if (!start.startsWith(subject.toLowerCase())) return run;
+  const rest = body.slice(offset + subject.length).trim().replace(LINK, "");
+  return words(rest).length >= MIN_PHRASE_WORDS ? rest : run;
 }
