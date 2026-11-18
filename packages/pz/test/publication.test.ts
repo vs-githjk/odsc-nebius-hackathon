@@ -135,6 +135,10 @@ describe("page fetching is public-only, logged and challenge-aware", () => {
     expect(await setup({ [url]: page(html(unrelated)) }).found(url)).toBeNull();
     const teaser = '<aside itemscope><time itemprop="datePublished" datetime="2009-03-01">March 1</time></aside>';
     expect(await setup({ [url]: page(html(teaser, published)) }).found(url)).toBeNull();
+    expect(await setup({ [url]: page(html('<p>Posted June 9, 2020</p>', teaser)) }).found(url)).toBeNull();
+    for (const hidden of ['<!-- ' + published + ' -->', '<script type="text/template">' + published + '</script>']) {
+      expect(await setup({ [url]: page(html(hidden)) }).found(url)).toBeNull();
+    }
     const decoy = '<time data-itemprop="datePublished" datetime="2009-03-01">March 1</time>';
     const withData = '<time itemprop="datePublished" data-datetime="2009-03-01" datetime="2020-06-09">June 9</time>';
     expect(await setup({ [url]: page(html(decoy, withData)) }).found(url))
