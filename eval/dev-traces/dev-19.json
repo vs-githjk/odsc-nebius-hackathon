@@ -3,7 +3,7 @@
   "id": "dev-19",
   "mode": "LIVE",
   "synthetic": false,
-  "recordedAt": "2026-11-17T23:27:18.881Z",
+  "recordedAt": "2026-11-18T03:11:37.048Z",
   "claim": {
     "text": "Sam Altman says the RAM in your PC is only used about 5% of the time.",
     "atoms": {
@@ -88,14 +88,14 @@
     },
     {
       "id": "n3",
-      "url": "https://geekawhat.com/is-32gb-of-ddr5-ram-necessary",
-      "domain": "geekawhat.com",
-      "title": "Is 32GB of DDR5 RAM Necessary? - GeekaWhat",
+      "url": "https://stackoverflow.com/questions/48750199/google-colaboratory-misleading-information-about-its-gpu-only-5-ram-available",
+      "domain": "stackoverflow.com",
+      "title": "python - Google Colaboratory: misleading information about its GPU (only 5% RAM available to some users) - Stack Overflow",
       "date": {
-        "kind": "published",
-        "value": "2026-02-14",
-        "source": "metadata",
-        "firstCapture": "2026-03-09",
+        "kind": "existed_by",
+        "value": "2018-11-27",
+        "source": "wayback_first_capture",
+        "firstCapture": "2018-11-27",
         "conflictingDate": false
       },
       "clusterId": "c-n3",
@@ -112,19 +112,19 @@
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "no",
-        "probability": 0.999925142202706,
+        "probability": 0.9241418058454068,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.00007484626851375597
+            "p": 0.07585817328602604
           },
           {
             "optionId": "no",
-            "p": 0.999925142202706
+            "p": 0.9241418058454068
           },
           {
             "optionId": "__other__",
-            "p": 1.1528780263780902e-8
+            "p": 2.0868567096599122e-8
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -162,15 +162,15 @@
     {
       "id": "s1",
       "nodeId": "n3",
-      "text": "Call of Duty: Black Ops 7 (@ 1080p High) In *COD,* 16 GB of RAM averages 149.1 FPS, and 32GB averages 156.5 FPS; this equates to around a 5% performance uplift with double the base level of RAM.",
-      "contextBefore": "enecks on the head before they appear. The graphics cards used were the AMD Radeon RX 9060 XT 16GB for 1080p, the AMD Radeon RX 9070 XT 16GB for 1440p, and the NVIDIA GeForce RTX 5080 for 4K testing. ",
-      "contextAfter": " Strangely enough, there was tighter frame pacing in our 16GB runs, where the game's overall stability seems to be slightly handled better. Cyberpunk 2077 (@ 1080p High) For the 16GB benchmark in *Cyb",
-      "start": 5157,
-      "end": 5351,
-      "extractSha256": "18b610178dab36c72b1d43acc361804437de836c06183c5d5867d1142489bf4e",
-      "windowSha256": "cb321e11f82e263694422cca264aea80e7cf8db10cf73e49ff58c36feee760d6",
-      "fetchedAt": "2026-11-17T23:27:41.022Z",
-      "waybackUrl": "https://web.archive.org/web/20260309184155/https://geekawhat.com/is-32gb-of-ddr5-ram-necessary",
+      "text": "No matter how you slice it, if you are in the same boat as I and were to run the debug code you'd see that you still get a total of 5% of GPU RAM (as of this update still).",
+      "contextBefore": " this is from India and he gets the whole thing! note: please don't send any more suggestions on how to kill the potentially stuck/runaway/parallel notebooks that might be consuming parts of the GPU. ",
+      "contextAfter": "",
+      "start": 2444,
+      "end": 2616,
+      "extractSha256": "1b113e34537a5baa0be77d38b2779e1e274984f2e89343f2a77e5e9c228e0a7c",
+      "windowSha256": "3a70dd30096ff69c78e8177c03d3a8636df89686b08b52e33f4631c4ee75e9de",
+      "fetchedAt": "2026-11-18T03:12:04.551Z",
+      "waybackUrl": "https://web.archive.org/web/20181127221601/https://stackoverflow.com/questions/48750199/google-colaboratory-misleading-information-about-its-gpu-only-5-ram-available",
       "tier": "exact"
     }
   ],
@@ -193,9 +193,9 @@
   },
   "failure": null,
   "budget": {
-    "credits": 7,
-    "usd": 0.00014123,
-    "ms": 25197,
+    "credits": 5,
+    "usd": 0.00012182,
+    "ms": 28120,
     "capHit": null
   },
   "decision": {
@@ -214,50 +214,50 @@
   },
   "searchLog": [
     {
-      "at": "2026-11-17T23:27:27.169Z",
+      "at": "2026-11-18T03:11:41.689Z",
       "step": "search",
       "query": "\"5%\" ram",
-      "endDate": "2026-11-17",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:27:28.237Z",
+      "at": "2026-11-18T03:11:43.766Z",
       "step": "search",
-      "query": "Sam Altman RAM usage 5% of the time",
-      "endDate": "2026-11-17",
+      "query": "5% of PC RAM usage Sam Altman quote",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:27:30.132Z",
+      "at": "2026-11-18T03:11:45.417Z",
       "step": "search",
       "query": "Sam Altman says PC RAM used 5% of time",
-      "endDate": "2026-11-17",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:27:31.616Z",
+      "at": "2026-11-18T03:11:47.253Z",
       "step": "search",
-      "query": "Sam Altman PC RAM utilization study",
-      "endDate": "2026-11-17",
+      "query": "Sam Altman RAM utilization 5% figure",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:27:33.435Z",
+      "at": "2026-11-18T03:11:49.885Z",
       "step": "meta-search",
       "query": "\"5%\" ram",
-      "endDate": "2026-11-17",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 5,
       "kept": 2,
@@ -266,7 +266,7 @@
   ],
   "usage": [
     {
-      "at": "2026-11-17T23:27:18.881Z",
+      "at": "2026-11-18T03:11:37.049Z",
       "traceId": "dev-19",
       "step": "tokenfactory",
       "service": "tokenfactory",
@@ -274,31 +274,31 @@
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 168,
       "completionTokens": 48,
-      "cachedTokens": 0,
+      "cachedTokens": 128,
       "credits": 0,
       "costUsd": 0.0000312,
-      "latencyMs": 2523,
+      "latencyMs": 995,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:27:21.409Z",
+      "at": "2026-11-18T03:11:38.052Z",
       "traceId": "dev-19",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 278,
-      "completionTokens": 116,
+      "completionTokens": 109,
       "cachedTokens": 240,
       "credits": 0,
-      "costUsd": 0.0000626,
-      "latencyMs": 4385,
+      "costUsd": 0.00006049999999999999,
+      "latencyMs": 1895,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:27:27.169Z",
+      "at": "2026-11-18T03:11:41.688Z",
       "traceId": "dev-19",
       "step": "search",
       "service": "tavily",
@@ -309,12 +309,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1343,
+      "latencyMs": 1677,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:27:28.236Z",
+      "at": "2026-11-18T03:11:43.764Z",
       "traceId": "dev-19",
       "step": "search",
       "service": "tavily",
@@ -325,12 +325,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1038,
+      "latencyMs": 1949,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:27:30.131Z",
+      "at": "2026-11-18T03:11:45.416Z",
       "traceId": "dev-19",
       "step": "search",
       "service": "tavily",
@@ -341,12 +341,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1870,
+      "latencyMs": 1606,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:27:31.615Z",
+      "at": "2026-11-18T03:11:47.253Z",
       "traceId": "dev-19",
       "step": "search",
       "service": "tavily",
@@ -357,12 +357,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1462,
+      "latencyMs": 1818,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:27:33.435Z",
+      "at": "2026-11-18T03:11:49.885Z",
       "traceId": "dev-19",
       "step": "meta-search",
       "service": "tavily",
@@ -373,12 +373,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1791,
+      "latencyMs": 2616,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:27:33.563Z",
+      "at": "2026-11-18T03:11:49.896Z",
       "traceId": "dev-19",
       "step": "meta-extract",
       "service": "tavily",
@@ -387,14 +387,14 @@
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 107,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:27:39.070Z",
+      "at": "2026-11-18T03:11:56.728Z",
       "traceId": "dev-19",
       "step": "extract",
       "service": "tavily",
@@ -403,46 +403,46 @@
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 5459,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 6732,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:27:39.073Z",
+      "at": "2026-11-18T03:11:56.730Z",
       "traceId": "dev-19",
       "step": "embed",
       "service": "tokenfactory",
       "endpoint": "/embeddings",
       "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 157,
+      "promptTokens": 216,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.00000157,
-      "latencyMs": 644,
+      "costUsd": 0.00000216,
+      "latencyMs": 1931,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:27:39.723Z",
+      "at": "2026-11-18T03:11:58.677Z",
       "traceId": "dev-19",
       "step": "embed",
       "service": "tokenfactory",
       "endpoint": "/embeddings",
       "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 1511,
+      "promptTokens": 136,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.000015110000000000001,
-      "latencyMs": 614,
+      "costUsd": 0.0000013600000000000001,
+      "latencyMs": 2902,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:27:41.022Z",
+      "at": "2026-11-18T03:12:04.551Z",
       "traceId": "dev-19",
       "step": "dating",
       "service": "wayback",
@@ -453,44 +453,28 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 656,
+      "latencyMs": 2967,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:27:41.023Z",
+      "at": "2026-11-18T03:12:04.552Z",
       "traceId": "dev-19",
       "step": "same_claim",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 267,
+      "promptTokens": 245,
       "completionTokens": 7,
-      "cachedTokens": 0,
+      "cachedTokens": 160,
       "credits": 0,
-      "costUsd": 0.0000288,
-      "latencyMs": 603,
+      "costUsd": 0.0000266,
+      "latencyMs": 328,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:27:41.636Z",
-      "traceId": "dev-19",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 195,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.00000195,
-      "latencyMs": 417,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:27:43.390Z",
+      "at": "2026-11-18T03:12:05.165Z",
       "traceId": "dev-19",
       "step": "dating",
       "service": "fetch",
@@ -501,12 +485,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 1334,
-      "status": "200",
+      "latencyMs": 283,
+      "status": "403",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:27:43.648Z",
+      "at": "2026-11-18T03:12:05.167Z",
       "traceId": "dev-19",
       "step": "dating",
       "service": "wayback",
@@ -517,12 +501,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 257,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:27:44.075Z",
+      "at": "2026-11-18T03:12:05.168Z",
       "traceId": "dev-19",
       "step": "dating",
       "service": "wayback",
@@ -533,12 +517,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 426,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:27:44.077Z",
+      "at": "2026-11-18T03:12:05.168Z",
       "traceId": "dev-19",
       "step": "dating",
       "service": "wayback",

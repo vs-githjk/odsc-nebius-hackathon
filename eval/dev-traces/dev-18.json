@@ -3,7 +3,7 @@
   "id": "dev-18",
   "mode": "LIVE",
   "synthetic": false,
-  "recordedAt": "2026-11-17T23:26:13.762Z",
+  "recordedAt": "2026-11-18T03:11:04.651Z",
   "claim": {
     "text": "95% of generative AI pilots at companies are failing.",
     "atoms": {
@@ -52,7 +52,7 @@
         },
         {
           "url": "https://www.scotrail.co.uk/off-peak-fares-all-day-long",
-          "read": false
+          "read": true
         },
         {
           "url": "https://www.transport.gov.scot/news/peak-rail-fares-pilot-extended",
@@ -114,11 +114,11 @@
       "pageType": {
         "questionId": "page_type",
         "optionId": "news",
-        "probability": 0.9995600982634429,
+        "probability": 0.999551648221496,
         "top": [
           {
             "optionId": "study",
-            "p": 0.0000013703551782411512
+            "p": 9.418223383801707e-7
           },
           {
             "optionId": "dataset",
@@ -126,7 +126,7 @@
           },
           {
             "optionId": "report",
-            "p": 0.0004305530035811292
+            "p": 0.00043054930813091603
           },
           {
             "optionId": "speaker",
@@ -134,11 +134,11 @@
           },
           {
             "optionId": "news",
-            "p": 0.9995600982634429
+            "p": 0.999551648221496
           },
           {
             "optionId": "blog",
-            "p": 0.000007885849575784838
+            "p": 0.000016694200394855284
           },
           {
             "optionId": "social",
@@ -150,7 +150,7 @@
           },
           {
             "optionId": "__other__",
-            "p": 9.252822186223142e-8
+            "p": 1.664476398932635e-7
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -159,41 +159,15 @@
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "yes",
-        "probability": 0.999999999989184,
+        "probability": 0.9999999999969011,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.999999999989184
+            "p": 0.9999999999969011
           },
           {
             "optionId": "no",
-            "p": 1.0815941864914042e-11
-          },
-          {
-            "optionId": "__other__",
-            "p": 1.1102230246251565e-16
-          }
-        ],
-        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-        "threshold": null
-      },
-      "foundViaMeta": null,
-      "boundary": {
-        "questionId": "boundary",
-        "optionId": "print",
-        "probability": 0.9999912616037882,
-        "top": [
-          {
-            "optionId": "print",
-            "p": 0.9999912616037882
-          },
-          {
-            "optionId": "unsourced",
-            "p": 0.0000017755609732829575
-          },
-          {
-            "optionId": "none",
-            "p": 0.000006962835238555782
+            "p": 3.0988194102962943e-12
           },
           {
             "optionId": "__other__",
@@ -203,18 +177,44 @@
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
         "threshold": null
       },
+      "foundViaMeta": null,
+      "boundary": {
+        "questionId": "boundary",
+        "optionId": "print",
+        "probability": 0.9999961853172863,
+        "top": [
+          {
+            "optionId": "print",
+            "p": 0.9999961853172863
+          },
+          {
+            "optionId": "unsourced",
+            "p": 0.0000017798952034697037
+          },
+          {
+            "optionId": "none",
+            "p": 0.0000019950050369361675
+          },
+          {
+            "optionId": "__other__",
+            "p": 3.9782473315597144e-8
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
       "injection": null
     },
     {
       "id": "n4",
-      "url": "https://abcnews.com/Business/airlines-attract-diverse-pilots-amid-shortage/story?id=84316653",
-      "domain": "abcnews.com",
-      "title": "Airlines look to attract more diverse pilots amid shortage  - ABC News",
+      "url": "https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo",
+      "domain": "fortune.com",
+      "title": "MIT report: 95% of generative AI pilots at companies are failing | Fortune",
       "date": {
         "kind": "published",
-        "value": "2022-07-30",
+        "value": "2025-08-18",
         "source": "metadata",
-        "firstCapture": null,
+        "firstCapture": "2025-08-18",
         "conflictingDate": false
       },
       "clusterId": "c-n4",
@@ -225,25 +225,30 @@
       "spanIds": [
         "s2"
       ],
-      "citesEarlier": false,
-      "candidateParents": [],
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "https://fortune.com/2026/11/14/alpha-school-ai-students-tuition-learning-goals/?itm_source=parsely-api",
+          "read": true
+        }
+      ],
       "pageType": null,
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "no",
-        "probability": 0.9999999804443177,
+        "probability": 0.9997387617836914,
         "top": [
           {
             "optionId": "yes",
-            "p": 1.9555682220858862e-8
+            "p": 0.0002611903563787743
           },
           {
             "optionId": "no",
-            "p": 0.9999999804443177
+            "p": 0.9997387617836914
           },
           {
             "optionId": "__other__",
-            "p": 1.1102230246251565e-16
+            "p": 4.7859929908078414e-8
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -254,14 +259,14 @@
     },
     {
       "id": "n5",
-      "url": "https://www.youtube.com/watch?v=Yuxj9djAFzA",
-      "domain": "youtube.com",
-      "title": "95% Of Pilots Would Never Attempt This Journey | Dangerous Flights | Wonder",
+      "url": "https://abcnews.com/Business/airlines-attract-diverse-pilots-amid-shortage/story?id=84316653",
+      "domain": "abcnews.com",
+      "title": "Airlines look to attract more diverse pilots amid shortage  - ABC News",
       "date": {
         "kind": "published",
-        "value": "2022-12-24",
+        "value": "2022-07-30",
         "source": "metadata",
-        "firstCapture": "2022-12-26",
+        "firstCapture": null,
         "conflictingDate": false
       },
       "clusterId": "c-n5",
@@ -278,15 +283,15 @@
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "no",
-        "probability": 0.9999999956365375,
+        "probability": 0.9999999748900077,
         "top": [
           {
             "optionId": "yes",
-            "p": 4.363462505054895e-9
+            "p": 2.5109992402705214e-8
           },
           {
             "optionId": "no",
-            "p": 0.9999999956365375
+            "p": 0.9999999748900077
           },
           {
             "optionId": "__other__",
@@ -303,13 +308,6 @@
   "edges": [],
   "clusters": [
     {
-      "id": "c-n4",
-      "nodeIds": [
-        "n4"
-      ],
-      "rule": "single"
-    },
-    {
       "id": "c-n5",
       "nodeIds": [
         "n5"
@@ -320,6 +318,13 @@
       "id": "c-n3",
       "nodeIds": [
         "n3"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n4",
+      "nodeIds": [
+        "n4"
       ],
       "rule": "single"
     },
@@ -349,13 +354,27 @@
       "end": 2781,
       "extractSha256": "b6c273993de985db6890227a4067c80f7c79ee6cded916357e68d1f29076f92d",
       "windowSha256": "9d059d40b75697d3eeacca8ded0e9a68c9e9365c310a6115d6e2d2dcb8cf9e34",
-      "fetchedAt": "2026-11-17T23:26:32.348Z",
+      "fetchedAt": "2026-11-18T03:11:18.531Z",
       "waybackUrl": "https://web.archive.org/web/20250819170916/https://finance.yahoo.com/news/mit-report-95-generative-ai-105412686.html",
       "tier": "exact"
     },
     {
       "id": "s2",
       "nodeId": "n4",
+      "text": "Half of its K-8 students missed the math target NewslettersCFO Daily MIT report: 95% of generative AI pilots at companies are failing.",
+      "contextBefore": "CEO says air traffic control systems are so outdated that some commercial flight routes were faster in the 1950s than they are today 3. Wealthy parents pay $75,000 for Alpha's two-hour AI school day. ",
+      "contextAfter": " By Sheryl Estrada Sheryl Estrada Senior writer and author of CFO Daily By Sheryl Estrada Sheryl Estrada Senior writer and author of CFO Daily August 18, 2025, 6:54 AM ET Getty Images Add Fortune on G",
+      "start": 828,
+      "end": 962,
+      "extractSha256": "5892ac331d67a187696d571de30f9d22da3ea9a180b9c696527835875642ecdc",
+      "windowSha256": "d0931b37371b57d28475b3dc1b03538955e38e7ff0857146a0e5c5ce51581b85",
+      "fetchedAt": "2026-11-18T03:11:19.599Z",
+      "waybackUrl": "https://web.archive.org/web/20250818115513/https://fortune.com/2025/08/18/mit-report-95-percent-generative-ai-pilots-at-companies-failing-cfo",
+      "tier": "exact"
+    },
+    {
+      "id": "s3",
+      "nodeId": "n5",
       "text": "At least 95% of the roughly 158,000 pilots employed in the United States are men, according to the Bureau of Labor Statistics.",
       "contextBefore": "t more diverse pilots amid shortage. Airlines look to recruit more diverse pilots amid a labor shortage. For decades, the aviation industry has carried the reputation of being overtly male and white. ",
       "contextAfter": " \"This is a very male-dominated industry,\" said Dana Donati, a former pilot with Republic Airways. Donati recalls being one of two females in her college aviation courses and during her early officer ",
@@ -363,22 +382,8 @@
       "end": 423,
       "extractSha256": "9f00863e54f07825512d931b95e7db8b01a757f8418d30e870cd875bef1d594a",
       "windowSha256": "00e8cf932a0dd8bbfa070b0d2b662ee91163a4300deba3ca5cf7980042667d78",
-      "fetchedAt": "2026-11-17T23:26:46.914Z",
+      "fetchedAt": "2026-11-18T03:11:32.445Z",
       "waybackUrl": null,
-      "tier": "exact"
-    },
-    {
-      "id": "s3",
-      "nodeId": "n5",
-      "text": "95% Of Pilots Would Never Attempt This Journey | Dangerous Flights | Wonder.",
-      "contextBefore": "",
-      "contextAfter": " Channel: Wonder (verified). 2.32M subscribers 417 likes Description. 33,895 views Posted: 2022-12-24 Flying over the freezing north, passing through Greenland and in to Canada is causing serious conc",
-      "start": 0,
-      "end": 76,
-      "extractSha256": "e4a5e9908bb68301ac133d4fb684348db7ad09533649f12ad4b90da536a582ff",
-      "windowSha256": "1d1f50ec5f90fbdf053a4e09047d2d8c6bb937bf79514393958418c8b3e056ef",
-      "fetchedAt": "2026-11-17T23:26:47.817Z",
-      "waybackUrl": "https://web.archive.org/web/20221226215341/https://www.youtube.com/watch?v=Yuxj9djAFzA",
       "tier": "exact"
     }
   ],
@@ -403,152 +408,151 @@
   },
   "failure": null,
   "budget": {
-    "credits": 11,
-    "usd": 0.00048599,
-    "ms": 65103,
+    "credits": 10,
+    "usd": 0.00046998,
+    "ms": 32335,
     "capHit": null
   },
   "decision": {
     "state": "TRAIL_GOES_COLD",
     "row": 6,
     "reasons": [
-      "no earliest page with a confirmed date, a primary page type, no earlier citation and no negated span",
-      "1 unread candidate parent(s)"
+      "no earliest page with a confirmed date, a primary page type, no earlier citation and no negated span"
     ],
     "counts": {
       "pages": 3,
       "clusters": 3,
-      "unreadParents": 1,
+      "unreadParents": 0,
       "earlierWindowSearches": 4
     }
   },
   "searchLog": [
     {
-      "at": "2026-11-17T23:26:22.682Z",
+      "at": "2026-11-18T03:11:09.366Z",
       "step": "search",
       "query": "\"95%\" pilots",
-      "endDate": "2026-11-17",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:26:23.912Z",
-      "step": "search",
-      "query": "95% of generative AI pilots at companies failing",
-      "endDate": "2026-11-17",
-      "startDate": null,
-      "results": 10,
-      "kept": 10,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T23:26:25.314Z",
+      "at": "2026-11-18T03:11:10.554Z",
       "step": "search",
       "query": "\"95% of generative AI pilots\" failing at companies",
-      "endDate": "2026-11-17",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:26:26.959Z",
+      "at": "2026-11-18T03:11:12.325Z",
       "step": "search",
-      "query": "95% generative AI pilot failures company study",
-      "endDate": "2026-11-17",
+      "query": "\"generative AI pilots\" at companies failing",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:26:28.643Z",
-      "step": "meta-search",
-      "query": "\"95%\" pilots",
-      "endDate": "2026-11-17",
-      "startDate": null,
-      "results": 5,
-      "kept": 2,
-      "dropped": 3
-    },
-    {
-      "at": "2026-11-17T23:26:41.367Z",
+      "at": "2026-11-18T03:11:13.373Z",
       "step": "search",
-      "query": "\"95%\" pilots",
-      "endDate": "2025-08-17",
-      "startDate": null,
-      "results": 10,
-      "kept": 9,
-      "dropped": 1
-    },
-    {
-      "at": "2026-11-17T23:26:42.253Z",
-      "step": "search",
-      "query": "\"95% of generative AI pilots at companies are failing\"",
-      "endDate": "2025-08-17",
+      "query": "95% of generative AI pilots failing study",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 7,
       "kept": 7,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:26:43.286Z",
-      "step": "search",
-      "query": "\"MIT report: 95% of generative AI pilots at companies are failing\"",
-      "endDate": "2025-08-17",
+      "at": "2026-11-18T03:11:16.162Z",
+      "step": "meta-search",
+      "query": "\"95%\" pilots",
+      "endDate": "2026-11-18",
       "startDate": null,
-      "results": 8,
-      "kept": 8,
-      "dropped": 0
+      "results": 5,
+      "kept": 2,
+      "dropped": 3
     },
     {
-      "at": "2026-11-17T23:26:44.376Z",
+      "at": "2026-11-18T03:11:21.894Z",
       "step": "search",
-      "query": "MIT generative AI pilot failure rate 95%",
+      "query": "\"95%\" pilots",
       "endDate": "2025-08-17",
       "startDate": null,
       "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-18T03:11:23.798Z",
+      "step": "search",
+      "query": "\"95% of generative AI pilots at companies are failing\" MIT report",
+      "endDate": "2025-08-17",
+      "startDate": null,
+      "results": 6,
+      "kept": 6,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-18T03:11:25.755Z",
+      "step": "search",
+      "query": "\"MIT report: 95% of generative AI pilots at companies are failing\" older wording",
+      "endDate": "2025-08-17",
+      "startDate": null,
+      "results": 1,
+      "kept": 1,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-18T03:11:27.885Z",
+      "step": "search",
+      "query": "MIT generative AI pilot failure rate study",
+      "endDate": "2025-08-17",
+      "startDate": null,
+      "results": 9,
       "kept": 9,
-      "dropped": 1
+      "dropped": 0
     }
   ],
   "usage": [
     {
-      "at": "2026-11-17T23:26:13.762Z",
+      "at": "2026-11-18T03:11:04.651Z",
       "traceId": "dev-18",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 161,
-      "completionTokens": 51,
-      "cachedTokens": 0,
+      "completionTokens": 50,
+      "cachedTokens": 128,
       "credits": 0,
-      "costUsd": 0.0000314,
-      "latencyMs": 3315,
+      "costUsd": 0.0000311,
+      "latencyMs": 899,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:26:17.082Z",
+      "at": "2026-11-18T03:11:05.554Z",
       "traceId": "dev-18",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 271,
-      "completionTokens": 117,
-      "cachedTokens": 0,
+      "completionTokens": 112,
+      "cachedTokens": 240,
       "credits": 0,
-      "costUsd": 0.0000622,
-      "latencyMs": 4107,
+      "costUsd": 0.0000607,
+      "latencyMs": 1850,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:26:22.682Z",
+      "at": "2026-11-18T03:11:09.365Z",
       "traceId": "dev-18",
       "step": "search",
       "service": "tavily",
@@ -559,12 +563,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1472,
+      "latencyMs": 1939,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:26:23.912Z",
+      "at": "2026-11-18T03:11:10.553Z",
       "traceId": "dev-18",
       "step": "search",
       "service": "tavily",
@@ -575,12 +579,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1214,
+      "latencyMs": 1165,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:26:25.314Z",
+      "at": "2026-11-18T03:11:12.324Z",
       "traceId": "dev-18",
       "step": "search",
       "service": "tavily",
@@ -591,12 +595,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1383,
+      "latencyMs": 1740,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:26:26.959Z",
+      "at": "2026-11-18T03:11:13.373Z",
       "traceId": "dev-18",
       "step": "search",
       "service": "tavily",
@@ -607,12 +611,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1620,
+      "latencyMs": 1032,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:26:28.643Z",
+      "at": "2026-11-18T03:11:16.162Z",
       "traceId": "dev-18",
       "step": "meta-search",
       "service": "tavily",
@@ -623,12 +627,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1662,
+      "latencyMs": 2769,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:26:28.848Z",
+      "at": "2026-11-18T03:11:16.189Z",
       "traceId": "dev-18",
       "step": "meta-extract",
       "service": "tavily",
@@ -637,14 +641,14 @@
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 185,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:26:30.241Z",
+      "at": "2026-11-18T03:11:16.429Z",
       "traceId": "dev-18",
       "step": "extract",
       "service": "tavily",
@@ -653,30 +657,30 @@
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 1330,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 169,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:26:30.285Z",
+      "at": "2026-11-18T03:11:16.492Z",
       "traceId": "dev-18",
       "step": "embed",
       "service": "tokenfactory",
       "endpoint": "/embeddings",
       "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 751,
+      "promptTokens": 40,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.00000751,
-      "latencyMs": 1191,
+      "costUsd": 4e-7,
+      "latencyMs": 2022,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:26:32.348Z",
+      "at": "2026-11-18T03:11:18.530Z",
       "traceId": "dev-18",
       "step": "dating",
       "service": "wayback",
@@ -687,12 +691,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 834,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:26:32.359Z",
+      "at": "2026-11-18T03:11:18.544Z",
       "traceId": "dev-18",
       "step": "same_claim",
       "service": "tokenfactory",
@@ -700,47 +704,79 @@
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 208,
       "completionTokens": 7,
-      "cachedTokens": 0,
+      "cachedTokens": 160,
       "credits": 0,
       "costUsd": 0.000022899999999999998,
-      "latencyMs": 663,
+      "latencyMs": 411,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:26:33.031Z",
+      "at": "2026-11-18T03:11:19.599Z",
       "traceId": "dev-18",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 26,
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 2.6e-7,
-      "latencyMs": 395,
+      "costUsd": 0,
+      "latencyMs": 614,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:26:33.427Z",
+      "at": "2026-11-18T03:11:19.601Z",
+      "traceId": "dev-18",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 224,
+      "completionTokens": 7,
+      "cachedTokens": 160,
+      "credits": 0,
+      "costUsd": 0.0000245,
+      "latencyMs": 387,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:11:19.991Z",
       "traceId": "dev-18",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 313,
-      "completionTokens": 154,
+      "completionTokens": 125,
+      "cachedTokens": 240,
+      "credits": 0,
+      "costUsd": 0.00006879999999999999,
+      "latencyMs": 1891,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:11:21.893Z",
+      "traceId": "dev-18",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.0000775,
-      "latencyMs": 6535,
+      "costUsd": 0,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:26:41.366Z",
+      "at": "2026-11-18T03:11:23.798Z",
       "traceId": "dev-18",
       "step": "search",
       "service": "tavily",
@@ -751,12 +787,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1376,
+      "latencyMs": 1868,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:26:42.253Z",
+      "at": "2026-11-18T03:11:25.755Z",
       "traceId": "dev-18",
       "step": "search",
       "service": "tavily",
@@ -767,12 +803,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 868,
+      "latencyMs": 1934,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:26:43.285Z",
+      "at": "2026-11-18T03:11:27.884Z",
       "traceId": "dev-18",
       "step": "search",
       "service": "tavily",
@@ -783,28 +819,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1013,
+      "latencyMs": 2095,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:26:44.376Z",
-      "traceId": "dev-18",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1061,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:26:44.729Z",
+      "at": "2026-11-18T03:11:28.155Z",
       "traceId": "dev-18",
       "step": "extract",
       "service": "tavily",
@@ -815,12 +835,28 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 326,
+      "latencyMs": 222,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:26:44.739Z",
+      "at": "2026-11-18T03:11:28.163Z",
+      "traceId": "dev-18",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 21,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 2.1e-7,
+      "latencyMs": 2080,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:11:30.257Z",
       "traceId": "dev-18",
       "step": "embed",
       "service": "tokenfactory",
@@ -831,12 +867,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0.0000125,
-      "latencyMs": 1079,
+      "latencyMs": 2083,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:26:46.914Z",
+      "at": "2026-11-18T03:11:32.426Z",
       "traceId": "dev-18",
       "step": "dating",
       "service": "wayback",
@@ -847,12 +883,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 1074,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:26:46.916Z",
+      "at": "2026-11-18T03:11:32.452Z",
       "traceId": "dev-18",
       "step": "same_claim",
       "service": "tokenfactory",
@@ -863,60 +899,28 @@
       "cachedTokens": 176,
       "credits": 0,
       "costUsd": 0.0000246,
-      "latencyMs": 463,
+      "latencyMs": 869,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:26:47.816Z",
-      "traceId": "dev-18",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 434,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:26:47.818Z",
-      "traceId": "dev-18",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 209,
-      "completionTokens": 7,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.000023,
-      "latencyMs": 527,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:26:48.347Z",
+      "at": "2026-11-18T03:11:33.339Z",
       "traceId": "dev-18",
       "step": "embed",
       "service": "tokenfactory",
       "endpoint": "/embeddings",
       "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 72,
+      "promptTokens": 87,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 7.2e-7,
-      "latencyMs": 530,
+      "costUsd": 8.7e-7,
+      "latencyMs": 2071,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:26:49.161Z",
+      "at": "2026-11-18T03:11:35.495Z",
       "traceId": "dev-18",
       "step": "dating",
       "service": "fetch",
@@ -927,12 +931,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 275,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:26:49.181Z",
+      "at": "2026-11-18T03:11:35.654Z",
       "traceId": "dev-18",
       "step": "dating",
       "service": "fetch",
@@ -943,12 +947,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 295,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:26:49.960Z",
+      "at": "2026-11-18T03:11:35.856Z",
       "traceId": "dev-18",
       "step": "dating",
       "service": "fetch",
@@ -959,44 +963,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 798,
+      "latencyMs": 361,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:26:50.239Z",
-      "traceId": "dev-18",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 277,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:27:04.372Z",
-      "traceId": "dev-18",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 14132,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:27:04.375Z",
+      "at": "2026-11-18T03:11:35.865Z",
       "traceId": "dev-18",
       "step": "dating",
       "service": "wayback",
@@ -1012,7 +984,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:27:04.398Z",
+      "at": "2026-11-18T03:11:35.870Z",
       "traceId": "dev-18",
       "step": "dating",
       "service": "wayback",
@@ -1028,7 +1000,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:27:04.401Z",
+      "at": "2026-11-18T03:11:35.871Z",
       "traceId": "dev-18",
       "step": "dating",
       "service": "wayback",
@@ -1044,7 +1016,39 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:27:04.412Z",
+      "at": "2026-11-18T03:11:35.894Z",
+      "traceId": "dev-18",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-18T03:11:35.898Z",
+      "traceId": "dev-18",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-18T03:11:35.900Z",
       "traceId": "dev-18",
       "step": "page_type",
       "service": "tokenfactory",
@@ -1052,15 +1056,15 @@
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 1867,
       "completionTokens": 8,
-      "cachedTokens": 0,
+      "cachedTokens": 176,
       "credits": 0,
       "costUsd": 0.0001891,
-      "latencyMs": 13369,
+      "latencyMs": 489,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:27:17.785Z",
+      "at": "2026-11-18T03:11:36.393Z",
       "traceId": "dev-18",
       "step": "boundary",
       "service": "tokenfactory",
@@ -1068,10 +1072,10 @@
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 325,
       "completionTokens": 6,
-      "cachedTokens": 0,
+      "cachedTokens": 144,
       "credits": 0,
       "costUsd": 0.0000343,
-      "latencyMs": 1077,
+      "latencyMs": 578,
       "status": "200",
       "cacheHit": false
     }
