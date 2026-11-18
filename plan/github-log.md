@@ -115,3 +115,4 @@
 - 2026-11-18 11:59 #229 review a64bc77: FIX [M] L18 scope understated, [L] contextBefore; posted
 - 2026-11-18 12:09 dev-04 live re-record (Vidyut go), $0.30, ledger $8.35/15; #231 merged cb77a08
 - 2026-11-18 12:15 #222 f378860 CI red (own test); tagged Rohan. Rishit pinged on #1 (13h quiet). Anoop next items on #4
+- 2026-11-18 12:30 #229 merged 4093ac8, #230 merged 30a1956 (856/856, verify ok)
