@@ -3,6 +3,17 @@
 Last updated: Tue Nov 17 2026 01:20 ET, by the main session (conductor / XO).
 To resume in a new Claude Code chat opened in this folder, Vidyut says: **"I'm back, continue the master playbook"**. The new session reads this file, `plan/state.json` and `plan/decisions.md`, says where we are in three lines, and carries on.
 
+## End of Nov 17 (22:35 ET)
+Third live E2 run (21:55, after #216 to #219): false origins 1, target cited 3/10, earliest 1/0/9, cold stops 7/9 (#227). #225 (283cabe) then blocks pages that present the claim as already said; rescored, false origins 0 (+1 unverified), cold 6/9 because dev-01's recorded reasons gain a line.
+Merged tonight: #216 to #221, #223, #225, #227, Rishit's #212, #210, #209. Held: #224 (dev-08 phrase; needs a typed trimmed flag or shorter model runs, see the PR).
+Spend: $8.05 of $15. **Tavily key near its 1000-credit limit (alert at 800, about 970 used after run 3): Vidyut raises it on the dashboard before any further live run.**
+Open: Rohan (#3) dev-10 earliest dating, dev-03 bad_response, #221 tests. Rishit (#1) #184 claim box, 400 vs 600 char cap, replay-walk on run 3's recording.
+
+## After the Nov 17 live run (21:00 ET)
+Live E2 rerun at 18:02 on 5cb6fd8: false origins 1, target cited 2/10, earliest 0/0/10, cold stops 6/9 (#215; #164). $2.08; ledger $6.30 spent, $8.70 left after a $0.45 two-claim rehearsal.
+XO fixed the four regressions it found, all merged with review: #216 (dev-04 '6 8 oz glasses' false origin), #217 (dev-10 lone forecast year), #218 (dev-11 code-only queries), #219 (dev-07/08 several-word phrase subject). Rehearsal: dev-10 and dev-11 both cite their target again.
+Next: a full live E2 rerun on main f3f2065 or later needs Vidyut's go (about $2.10). Open: dev-10 earliest is a news story a day before the WEF PDF's archive capture (Rohan, F2); dev-08's phrase is the whole sentence; replay misses 25 (Rishit).
+
 ## Tonight's live E2 rerun (Tue Nov 17, 18:00 ET, needs Vidyut's go; about $2.50 of the $11.20 left)
 On main 3365344 or later: F1 (#200), F3 to F6 (#195 to #198), F5b (#199), F7 (#203), partial dates (#206) and the walk replay recorder (#208). Replay score before the rerun: false origins 0 (+1 unverified), target cited 4/10, earliest 1 Pass.
 1. `DEV_LEDGER="$PWD/.cache/pz-ledger.json" PZ_RECORD_DIR=runs/walk-record DEV_SET=E2 node --env-file=.env --import tsx eval/dev-run.ts`. Keep .cache/http as it is, so cached Tavily calls cost nothing.

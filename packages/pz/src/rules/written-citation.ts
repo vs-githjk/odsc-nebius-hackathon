@@ -22,3 +22,17 @@ export function citesInWords(trace: Pick<Trace, "spans">, n: Node, rules: Pick<R
   const years = trace.spans.filter((s) => s.nodeId === n.id).map((s) => writtenCitationYear(s, n.date.value, rules)).filter((y): y is number => y !== null);
   return years.length ? Math.min(...years) : null;
 }
+
+// A page that presents the claim as already said ("the seemingly ubiquitous admonition to drink at least eight 8-oz
+// glasses", "you have probably heard") repeats it, so it is never the origin. rules.json priorUseCues, on the page's
+// own spans. dev-04 on the second live E2 run, Nov 17: a 2002 paper quoting the advice to question it ended as the origin.
+export function presentsAsPrior(trace: Pick<Trace, "spans">, n: Node, rules: Pick<Rules, "priorUseCues">): string | null {
+  for (const s of trace.spans.filter((x) => x.nodeId === n.id)) {
+    const text = normalise(s.text);
+    for (const p of rules.priorUseCues) {
+      const m = new RegExp(p, "iu").exec(text);
+      if (m) return m[0];
+    }
+  }
+  return null;
+}

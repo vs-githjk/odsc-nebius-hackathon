@@ -3,7 +3,7 @@
   "id": "dev-04",
   "mode": "LIVE",
   "synthetic": false,
-  "recordedAt": "2026-11-17T06:05:46.441Z",
+  "recordedAt": "2026-11-18T02:56:33.273Z",
   "claim": {
     "text": "You should drink eight glasses of water a day.",
     "atoms": {
@@ -49,14 +49,14 @@
     },
     {
       "id": "n2",
-      "url": "https://www.snopes.com/fact-check/does-luxottica-own-80-of-the-eyeglass-industry",
+      "url": "https://www.snopes.com/fact-check/heart-attacks-and-water",
       "domain": "snopes.com",
-      "title": "Does Luxottica Own 80% of the Eyeglass Industry? | Snopes.com",
+      "title": "Will Drinking Water in the Mornings Prevent Heart Attacks and Cure Diseases? | Snopes.com",
       "date": {
         "kind": "existed_by",
-        "value": "2021-12-30",
+        "value": "2022-03-27",
         "source": "wayback_first_capture",
-        "firstCapture": "2021-12-30",
+        "firstCapture": "2022-03-27",
         "conflictingDate": false
       },
       "clusterId": "c-n2",
@@ -65,25 +65,8 @@
       "read": true,
       "versionOf": null,
       "spanIds": [],
-      "citesEarlier": true,
-      "candidateParents": [
-        {
-          "url": "https://portal.eyemedvisioncare.com/wps/portal/em/eyemed/about/media/!ut/p/b1/jY_LCsIwFES_yNxpQ2OybCuaKC3FItZspIpIwbQuRPHvTV1J8XV3A2eGc8lSRbatr82xvjRdW5_6bMXWKJHKJIghJ5mCmQotS-gQ4B7YvAKABEyezIqFjoAs-q-PDxfjV39Ottk5dts7BhaFXAmvwCVUiEDSmuxgYBmMez-Vpl4PBR8Cbx54Al8Mc925A53dqrqXZvQA3BLXjA!!/dl4/d5/L2dBISEvZ0FBIS9nQSEh",
-          "read": false
-        },
-        {
-          "url": "https://www.trutv.com/shows/adam-ruins-everything/blog/adams-sources/adam-ruins-malls.html",
-          "read": true
-        },
-        {
-          "url": "https://www.forbes.com/sites/anaswanson/2014/09/10/meet-the-four-eyed-eight-tentacled-monopoly-that-is-making-your-glasses-so-expensive",
-          "read": false
-        },
-        {
-          "url": "https://www.forbes.com/sites/deancrutchfield/2012/11/27/luxottica-sees-itself-as-king-raising-questions-about-brand-authenticity",
-          "read": false
-        }
-      ],
+      "citesEarlier": false,
+      "candidateParents": [],
       "pageType": null,
       "foundViaMeta": null
     },
@@ -97,7 +80,8 @@
         "value": "2002-11-30",
         "source": "registry_pubmed",
         "firstCapture": "2020-03-07",
-        "conflictingDate": false
+        "conflictingDate": false,
+        "precision": "month"
       },
       "clusterId": "c-n3",
       "evidence": "observed",
@@ -109,19 +93,63 @@
       ],
       "citesEarlier": false,
       "candidateParents": [],
-      "pageType": null,
+      "pageType": {
+        "questionId": "page_type",
+        "optionId": "study",
+        "probability": 0.9999999988810069,
+        "top": [
+          {
+            "optionId": "study",
+            "p": 0.9999999988810069
+          },
+          {
+            "optionId": "dataset",
+            "p": 0
+          },
+          {
+            "optionId": "report",
+            "p": 1.103256030649312e-9
+          },
+          {
+            "optionId": "speaker",
+            "p": 0
+          },
+          {
+            "optionId": "news",
+            "p": 0
+          },
+          {
+            "optionId": "blog",
+            "p": 0
+          },
+          {
+            "optionId": "social",
+            "p": 0
+          },
+          {
+            "optionId": "other",
+            "p": 1.5737102082695837e-11
+          },
+          {
+            "optionId": "__other__",
+            "p": 0
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "yes",
-        "probability": 0.999999958600624,
+        "probability": 0.9999999677581334,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.999999958600624
+            "p": 0.9999999677581334
           },
           {
             "optionId": "no",
-            "p": 4.139937590692742e-8
+            "p": 3.2241866564585704e-8
           },
           {
             "optionId": "__other__",
@@ -136,43 +164,48 @@
     },
     {
       "id": "n4",
-      "url": "https://www.latimes.com/archives/la-xpm-1998-jun-15-he-60038-story.html",
-      "domain": "latimes.com",
-      "title": "What About Water? - Los Angeles Times",
+      "url": "https://slate.com/news-and-politics/2008/04/who-says-you-need-to-drink-eight-glasses-of-water-a-day.html",
+      "domain": "slate.com",
+      "title": "Who says you need to drink eight glasses of water a day?",
       "date": {
-        "kind": "unconfirmed",
-        "value": null,
+        "kind": "existed_by",
+        "value": "2019-05-04",
         "source": "wayback_first_capture",
-        "firstCapture": null,
+        "firstCapture": "2019-05-04",
         "conflictingDate": false
       },
       "clusterId": "c-n4",
       "evidence": "observed",
-      "meta": false,
+      "meta": true,
       "read": true,
       "versionOf": null,
       "spanIds": [
         "s2"
       ],
-      "citesEarlier": false,
-      "candidateParents": [],
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "https://slate.com/plus",
+          "read": true
+        }
+      ],
       "pageType": null,
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "no",
-        "probability": 0.7310585368167954,
+        "probability": 0.7310585351787052,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.26894142159946954
+            "p": 0.2689414089182594
           },
           {
             "optionId": "no",
-            "p": 0.7310585368167954
+            "p": 0.7310585351787052
           },
           {
             "optionId": "__other__",
-            "p": 4.1583735010952694e-8
+            "p": 5.590303531199936e-8
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -183,14 +216,14 @@
     },
     {
       "id": "n5",
-      "url": "https://www.nytimes.com/1979/09/23/archives/the-redglasses-look-anatomy-of-a-fad.html",
-      "domain": "nytimes.com",
-      "title": "THE RED‐GLASSES LOOK: ANATOMY OF A FAD - The New York Times",
+      "url": "https://www.healthline.com/nutrition/8-glasses-of-water-per-day",
+      "domain": "healthline.com",
+      "title": "Drink 8 Glasses of Water a Day: Fact or Fiction?",
       "date": {
         "kind": "published",
-        "value": "1979-09-23",
+        "value": "2016-11-08",
         "source": "metadata",
-        "firstCapture": "2018-03-30",
+        "firstCapture": "2017-08-07",
         "conflictingDate": false
       },
       "clusterId": "c-n5",
@@ -201,119 +234,102 @@
       "spanIds": [
         "s3"
       ],
-      "citesEarlier": false,
-      "candidateParents": [],
-      "pageType": {
-        "questionId": "page_type",
-        "optionId": "news",
-        "probability": 0.9380879979367874,
-        "top": [
-          {
-            "optionId": "study",
-            "p": 0.001244636900249757
-          },
-          {
-            "optionId": "dataset",
-            "p": 0
-          },
-          {
-            "optionId": "report",
-            "p": 0.0599699642467025
-          },
-          {
-            "optionId": "speaker",
-            "p": 0
-          },
-          {
-            "optionId": "news",
-            "p": 0.9380879979367874
-          },
-          {
-            "optionId": "blog",
-            "p": 0.00058792484198524
-          },
-          {
-            "optionId": "social",
-            "p": 0
-          },
-          {
-            "optionId": "other",
-            "p": 0.0000702176089960393
-          },
-          {
-            "optionId": "__other__",
-            "p": 0.0000392584652790795
-          }
-        ],
-        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-        "threshold": null
-      },
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "https://www.healthline.com/nutrition",
+          "read": true
+        }
+      ],
+      "pageType": null,
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "no",
-        "probability": 0.9999998807907889,
+        "probability": 0.999992110735306,
         "top": [
           {
             "optionId": "yes",
-            "p": 8.764248363454105e-8
+            "p": 0.000007889264693947384
           },
           {
             "optionId": "no",
-            "p": 0.9999998807907889
+            "p": 0.999992110735306
           },
           {
             "optionId": "__other__",
-            "p": 3.156672745419087e-8
+            "p": 0
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
         "threshold": null
       },
       "foundViaMeta": null,
-      "boundary": {
-        "questionId": "boundary",
-        "optionId": "unsourced",
-        "probability": 0.6224616385069537,
+      "injection": null
+    },
+    {
+      "id": "n6",
+      "url": "https://www.healthline.com/nutrition/drinking-water-helps-with-weight-loss",
+      "domain": "healthline.com",
+      "title": "How Drinking More Water Can Help You Lose Weight",
+      "date": {
+        "kind": "published",
+        "value": "2017-06-04",
+        "source": "metadata",
+        "firstCapture": "2017-08-04",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n6",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s4"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9999999748900086,
         "top": [
           {
-            "optionId": "print",
-            "p": 6.645958260269065e-7
+            "optionId": "yes",
+            "p": 0.9999999748900086
           },
           {
-            "optionId": "unsourced",
-            "p": 0.6224616385069537
-          },
-          {
-            "optionId": "none",
-            "p": 0.377537471446427
+            "optionId": "no",
+            "p": 2.5109991308976382e-8
           },
           {
             "optionId": "__other__",
-            "p": 2.2545079325642092e-7
+            "p": 1.1102230246251565e-16
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
         "threshold": null
       },
+      "foundViaMeta": null,
       "injection": null
     }
   ],
   "edges": [
     {
       "id": "e1",
-      "parentId": "n5",
-      "childId": "n3",
+      "parentId": "n3",
+      "childId": "n6",
       "kind": "inferred",
-      "parentSpanId": "s3",
-      "childSpanId": "s1",
+      "parentSpanId": "s1",
+      "childSpanId": "s4",
       "linkHref": null
     }
   ],
   "clusters": [
     {
-      "id": "c-n5",
+      "id": "c-n3",
       "nodeIds": [
-        "n5"
+        "n3"
       ],
       "rule": "single"
     },
@@ -325,9 +341,16 @@
       "rule": "single"
     },
     {
-      "id": "c-n3",
+      "id": "c-n5",
       "nodeIds": [
-        "n3"
+        "n5"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n6",
+      "nodeIds": [
+        "n6"
       ],
       "rule": "single"
     },
@@ -357,36 +380,50 @@
       "end": 573,
       "extractSha256": "4d0af0069110045105e9b875c53275ac1023640b4a57dca2ee0beff160885159",
       "windowSha256": "a86f16e1b300de945510dbd4108fd65699cd2587d465c2b2e9b6ecd3754f89c0",
-      "fetchedAt": "2026-11-17T06:06:07.941Z",
+      "fetchedAt": "2026-11-18T02:56:45.531Z",
       "waybackUrl": "https://web.archive.org/web/20200307152749/https://pubmed.ncbi.nlm.nih.gov/12376390",
       "tier": "exact"
     },
     {
       "id": "s2",
       "nodeId": "n4",
-      "text": "A survey of 3,003 Americans shows that: \\* Americans consume 12.8 8-ounce servings of beverages each day, but only 4.6 are water. \\* 65% of Americans know that eight 8-ounce glasses of water is the recommended daily serving. \\* However, only 21% drink eight or more glasses a day. \\* 35% drink three or fewer servings a day. \\* 9% drink no water at all. \\* St.",
-      "contextBefore": " drink it, you'd have better luck with a horse. And don't even get us started on the fact that people need even more water during exercise, roughly an extra 4 ounces for every 15 minutes of activity. ",
-      "contextAfter": " Louis residents drink the least water of any of the participating cities in the survey. \\* Several cities, including Los Angeles, Miami, Tampa and St. Louis, tend to avoid their tap water more than t",
-      "start": 329,
-      "end": 689,
-      "extractSha256": "50a069c3f16012b7da2a14033b2789aefc33f208bd53f1197dadee61d8883891",
-      "windowSha256": "d98feb31c74c569b06adbdfb3ae4ce3b8983d75f2113de4bd57421c12603321e",
-      "fetchedAt": "2026-11-17T06:06:32.487Z",
-      "waybackUrl": null,
+      "text": "Become a member to share 10 free articles a month.Become a Plus Member A recent editorial (PDF) in the *Journal of the American Society for Nephrology* is getting wide press coverage for debunking the so-called \"8x8\" theory-the popularly held belief that drinking eight 8-ounce glasses of water daily helps remove toxins, improve skin tone, and increase satiety, among other health benefits.",
+      "contextBefore": "ember Comment You have remaining gift available this month. This gift link is valid through . There was an error with your gift link. Please try again. Only Slate Plus members can gift Slate stories. ",
+      "contextAfter": " The authors chalk up the belief to folklore, and newspaper reports claim ignorance as to its provenance. Just how long has this idea been around? Two-hundred years, at least. The most commonly cited ",
+      "start": 690,
+      "end": 1081,
+      "extractSha256": "df4f2356d508651d869a027444688303857de4efcee4afb39e9516af70bc1b15",
+      "windowSha256": "896fa0af3f822a6458cf52230a2c3aaf7b6d275ee73a7ee00971c9ec140ee493",
+      "fetchedAt": "2026-11-18T02:56:46.873Z",
+      "waybackUrl": "https://web.archive.org/web/20190504084330/https://slate.com/news-and-politics/2008/04/who-says-you-need-to-drink-eight-glasses-of-water-a-day.html",
       "tier": "exact"
     },
     {
       "id": "s3",
       "nodeId": "n5",
-      "text": "But with Hong Kong knockoffs of $35 designer glasses available at $8 a pair, sunglasses have been so democratized that the first meaning hardly applies.",
-      "contextBefore": "ion sunglasses lies in their unique ability to make two visual statements simultaneously: \"I want to be alone\" and \"Notice me.\" Traditionally, these are attitudes ascribed to the rich and celebrated. ",
-      "contextAfter": " In 1979, sunglasses are about being noticed. Until very recently, almost all efforts to use eyeglasses as attention-getters were colorrelated. In 1971, the United States Army announced that regulatio",
-      "start": 5603,
-      "end": 5755,
-      "extractSha256": "214e2618670742e575f6ddee2fa8691e34425c514170a1b935acfc1e656e8a7f",
-      "windowSha256": "3fc8575f87f98fc7dd8d75cb4401396e01ff0fc4ca65e05d21f2c457728f533c",
-      "fetchedAt": "2026-11-17T06:06:46.560Z",
-      "waybackUrl": "https://web.archive.org/web/20180330234852/https://www.nytimes.com/1979/09/23/archives/the-redglasses-look-anatomy-of-a-fad.html",
+      "text": "Nutrition Drink 8 Glasses of Water a Day: Fact or Fiction?",
+      "contextBefore": "",
+      "contextAfter": " Medically reviewed by Kim Chin, RD - Written by Hrefna Palsdottir, MS - Updated on November 20, 2023 Eight glasses a day may not actually be based on science. This varies for everyone, and you can ge",
+      "start": 0,
+      "end": 58,
+      "extractSha256": "6d0f82e924f351a1a984905183f0fa87036046e82b1131b0633e191139699f3b",
+      "windowSha256": "433746be2d7be39a678d24c762c928edca17951117e09e54393db5619d96bac9",
+      "fetchedAt": "2026-11-18T02:56:47.761Z",
+      "waybackUrl": "https://web.archive.org/web/20170807094349/https://www.healthline.com/nutrition/8-glasses-of-water-per-day",
+      "tier": "exact"
+    },
+    {
+      "id": "s4",
+      "nodeId": "n6",
+      "text": "Many health authorities recommend drinking eight 8-oz glasses of water (about 2 L) per day.",
+      "contextBefore": "er was the beverage of choice rather than high caloric options. This, once again, suggests that water consumption itself did not cause weight loss. How much water should I drink a day to lose weight? ",
+      "contextAfter": " However, a In addition, water requirements actually Keep in mind that you also get water from many foods and beverages, such as coffee, tea, meat, fish, milk, and especially fruits and vegetables. As",
+      "start": 3441,
+      "end": 3532,
+      "extractSha256": "b5520e573e6d6e27d9ff042438f0545c58f411bb4eb65e7b219496978c7e5412",
+      "windowSha256": "7737b6a3b5880da0497ab6f474c804ab1ba43f644b21c49325347f7c96469c59",
+      "fetchedAt": "2026-11-18T02:57:11.010Z",
+      "waybackUrl": "https://web.archive.org/web/20170804231717/https://www.healthline.com/nutrition/drinking-water-helps-with-weight-loss",
       "tier": "exact"
     }
   ],
@@ -404,7 +441,7 @@
         {
           "id": "unit_changed",
           "source": "measured",
-          "value": "yes",
+          "value": "no",
           "probability": null,
           "disputed": false
         },
@@ -425,265 +462,213 @@
         {
           "id": "scope_widened",
           "source": "inferred",
-          "value": "no",
-          "probability": 0.9947798743153135,
+          "value": "yes",
+          "probability": 0.9890130584308128,
           "disputed": false
         },
         {
           "id": "attribution_shifted",
           "source": "inferred",
           "value": "yes",
-          "probability": 0.9046505348055291,
+          "probability": 0.9959298622229332,
           "disputed": false
         },
         {
           "id": "context_stripped",
           "source": "inferred",
-          "value": "yes",
-          "probability": 0.562176502403389,
+          "value": "no",
+          "probability": 0.8175744308778873,
           "disputed": false
         }
       ],
       "wordDiff": [
         {
           "op": "add",
+          "text": "many"
+        },
+        {
+          "op": "add",
+          "text": "health"
+        },
+        {
+          "op": "add",
+          "text": "authorities"
+        },
+        {
+          "op": "add",
+          "text": "recommend"
+        },
+        {
+          "op": "add",
+          "text": "drinking"
+        },
+        {
+          "op": "del",
           "text": "despite"
         },
         {
-          "op": "add",
+          "op": "del",
           "text": "the"
         },
         {
-          "op": "add",
+          "op": "del",
           "text": "seemingly"
         },
         {
-          "op": "add",
+          "op": "del",
           "text": "ubiquitous"
         },
         {
-          "op": "add",
+          "op": "del",
           "text": "admonition"
         },
         {
-          "op": "add",
+          "op": "del",
           "text": "to"
         },
         {
-          "op": "add",
+          "op": "del",
           "text": "drink"
         },
         {
-          "op": "add",
+          "op": "del",
           "text": "at"
         },
         {
-          "op": "add",
+          "op": "del",
           "text": "least"
         },
         {
-          "op": "add",
+          "op": "same",
           "text": "eight"
         },
         {
-          "op": "add",
+          "op": "same",
           "text": "8-oz"
         },
         {
-          "op": "add",
+          "op": "same",
           "text": "glasses"
-        },
-        {
-          "op": "del",
-          "text": "but"
-        },
-        {
-          "op": "del",
-          "text": "with"
-        },
-        {
-          "op": "del",
-          "text": "hong"
-        },
-        {
-          "op": "del",
-          "text": "kong"
-        },
-        {
-          "op": "del",
-          "text": "knockoffs"
         },
         {
           "op": "same",
           "text": "of"
         },
         {
-          "op": "add",
+          "op": "same",
           "text": "water"
         },
         {
-          "op": "del",
-          "text": "35"
+          "op": "add",
+          "text": "about"
+        },
+        {
+          "op": "add",
+          "text": "2"
+        },
+        {
+          "op": "add",
+          "text": "l"
+        },
+        {
+          "op": "add",
+          "text": "per"
         },
         {
           "op": "del",
-          "text": "designer"
-        },
-        {
-          "op": "del",
-          "text": "glasses"
-        },
-        {
-          "op": "del",
-          "text": "available"
-        },
-        {
-          "op": "del",
-          "text": "at"
-        },
-        {
-          "op": "del",
-          "text": "8"
-        },
-        {
-          "op": "same",
           "text": "a"
         },
         {
-          "op": "add",
+          "op": "same",
           "text": "day"
         },
         {
-          "op": "add",
+          "op": "del",
           "text": "with"
         },
         {
-          "op": "add",
+          "op": "del",
           "text": "an"
         },
         {
-          "op": "add",
+          "op": "del",
           "text": "accompanying"
         },
         {
-          "op": "add",
+          "op": "del",
           "text": "reminder"
         },
         {
           "op": "del",
-          "text": "pair"
-        },
-        {
-          "op": "del",
-          "text": "sunglasses"
-        },
-        {
-          "op": "del",
-          "text": "have"
-        },
-        {
-          "op": "del",
-          "text": "been"
-        },
-        {
-          "op": "del",
-          "text": "so"
-        },
-        {
-          "op": "del",
-          "text": "democratized"
-        },
-        {
-          "op": "same",
           "text": "that"
         },
         {
-          "op": "add",
+          "op": "del",
           "text": "beverages"
         },
         {
-          "op": "add",
+          "op": "del",
           "text": "containing"
         },
         {
-          "op": "add",
+          "op": "del",
           "text": "caffeine"
         },
         {
-          "op": "add",
+          "op": "del",
           "text": "and"
         },
         {
-          "op": "add",
+          "op": "del",
           "text": "alcohol"
         },
         {
-          "op": "add",
+          "op": "del",
           "text": "do"
         },
         {
-          "op": "add",
+          "op": "del",
           "text": "not"
         },
         {
-          "op": "add",
+          "op": "del",
           "text": "count"
         },
         {
-          "op": "add",
+          "op": "del",
           "text": "rigorous"
         },
         {
-          "op": "add",
+          "op": "del",
           "text": "proof"
         },
         {
-          "op": "add",
+          "op": "del",
           "text": "for"
         },
         {
-          "op": "add",
+          "op": "del",
           "text": "this"
         },
         {
-          "op": "add",
+          "op": "del",
           "text": "counsel"
         },
         {
-          "op": "add",
+          "op": "del",
           "text": "appears"
         },
         {
-          "op": "add",
+          "op": "del",
           "text": "to"
         },
         {
-          "op": "add",
+          "op": "del",
           "text": "be"
         },
         {
-          "op": "add",
+          "op": "del",
           "text": "lacking"
-        },
-        {
-          "op": "del",
-          "text": "the"
-        },
-        {
-          "op": "del",
-          "text": "first"
-        },
-        {
-          "op": "del",
-          "text": "meaning"
-        },
-        {
-          "op": "del",
-          "text": "hardly"
-        },
-        {
-          "op": "del",
-          "text": "applies"
         }
       ],
       "faithful": false
@@ -702,95 +687,94 @@
   "redHopEdgeId": "e1",
   "earliest": {
     "nodeIds": [
-      "n5"
+      "n3"
     ],
     "earlierWindowSearches": 4,
     "earlierFound": 0
   },
   "failure": null,
   "budget": {
-    "credits": 18,
-    "usd": 0.0008121799999999999,
-    "ms": 83793,
+    "credits": 11,
+    "usd": 0.0005382599999999999,
+    "ms": 40640,
     "capHit": null
   },
   "decision": {
-    "state": "TRAIL_GOES_COLD",
-    "row": 6,
+    "state": "ORIGIN_FOUND",
+    "row": 5,
     "reasons": [
-      "no earliest page with a confirmed date, a primary page type, no earlier citation and no negated span",
-      "3 unread candidate parent(s)"
+      "earliest page n3 is a study with a confirmed date"
     ],
     "counts": {
       "pages": 3,
       "clusters": 3,
-      "unreadParents": 3,
+      "unreadParents": 0,
       "earlierWindowSearches": 4
     }
   },
   "searchLog": [
     {
-      "at": "2026-11-17T06:05:59.236Z",
+      "at": "2026-11-18T02:56:39.070Z",
       "step": "search",
       "query": "\"eight\" glasses",
-      "endDate": "2026-11-17",
-      "startDate": null,
-      "results": 10,
-      "kept": 10,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:06:00.979Z",
-      "step": "search",
-      "query": "\"eight glasses of water a day\" earliest source",
-      "endDate": "2026-11-17",
-      "startDate": null,
-      "results": 10,
-      "kept": 10,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:06:02.577Z",
-      "step": "search",
-      "query": "\"eight glasses of water\" first published claim",
-      "endDate": "2026-11-17",
-      "startDate": null,
-      "results": 10,
-      "kept": 10,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:06:03.606Z",
-      "step": "search",
-      "query": "eight glasses water daily recommendation origin",
-      "endDate": "2026-11-17",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 9,
       "kept": 9,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:06:04.645Z",
+      "at": "2026-11-18T02:56:41.057Z",
+      "step": "search",
+      "query": "\"eight glasses of water a day\" earliest source",
+      "endDate": "2026-11-18",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-18T02:56:42.334Z",
+      "step": "search",
+      "query": "\"eight glasses of water\" first published claim",
+      "endDate": "2026-11-18",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-18T02:56:43.580Z",
+      "step": "search",
+      "query": "eight glasses water daily recommendation publisher",
+      "endDate": "2026-11-18",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-18T02:56:45.262Z",
       "step": "meta-search",
       "query": "\"eight\" glasses",
-      "endDate": "2026-11-17",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 5,
       "kept": 2,
       "dropped": 3
     },
     {
-      "at": "2026-11-17T06:06:27.107Z",
+      "at": "2026-11-18T02:56:52.859Z",
       "step": "search",
       "query": "\"eight\" glasses",
       "endDate": "2002-10-31",
       "startDate": null,
-      "results": 10,
-      "kept": 9,
+      "results": 9,
+      "kept": 8,
       "dropped": 1
     },
     {
-      "at": "2026-11-17T06:06:29.518Z",
+      "at": "2026-11-18T02:56:52.862Z",
       "step": "search",
       "query": "\"drink at least eight 8-oz glasses of water a day\" earliest source",
       "endDate": "2002-10-31",
@@ -800,9 +784,9 @@
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:06:30.432Z",
+      "at": "2026-11-18T02:56:52.867Z",
       "step": "search",
-      "query": "\"eight 8-oz glasses of water a day\" origin of advice",
+      "query": "\"eight 8-oz glasses of water a day\" origin study",
       "endDate": "2002-10-31",
       "startDate": null,
       "results": 2,
@@ -810,89 +794,69 @@
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:06:31.226Z",
+      "at": "2026-11-18T02:56:52.872Z",
       "step": "search",
-      "query": "\"eight 8-oz glasses of water a day\" first published recommendation",
+      "query": "eight 8-oz glasses water day recommendation first published",
       "endDate": "2002-10-31",
-      "startDate": null,
-      "results": 2,
-      "kept": 2,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:06:40.081Z",
-      "step": "search",
-      "query": "\"eight\" glasses",
-      "endDate": "1998-06-14",
       "startDate": null,
       "results": 10,
       "kept": 9,
       "dropped": 1
     },
     {
-      "at": "2026-11-17T06:06:41.730Z",
+      "at": "2026-11-18T02:57:03.153Z",
       "step": "search",
-      "query": "\"eight glasses of water a day\" recommendation origin",
-      "endDate": "1998-06-14",
+      "query": "eight 8-oz glasses of water a day claim origin",
+      "endDate": "2002-10-31",
       "startDate": null,
       "results": 10,
-      "kept": 10,
-      "dropped": 0
+      "kept": 9,
+      "dropped": 1
     },
     {
-      "at": "2026-11-17T06:06:44.747Z",
+      "at": "2026-11-18T02:57:04.619Z",
       "step": "search",
-      "query": "\"eight 8-ounce glasses of water\" recommended daily serving",
-      "endDate": "1998-06-14",
-      "startDate": null,
-      "results": 3,
-      "kept": 3,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:06:53.362Z",
-      "step": "search",
-      "query": "\"eight\" glasses",
-      "endDate": "1979-09-22",
-      "startDate": null,
-      "results": 10,
-      "kept": 10,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:06:54.475Z",
-      "step": "search",
-      "query": "\"eight glasses of water a day\" earliest origin",
-      "endDate": "1979-09-22",
+      "query": "\"eight 8-oz glasses of water a day\" first published",
+      "endDate": "2002-10-31",
       "startDate": null,
       "results": 2,
       "kept": 2,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:06:55.553Z",
+      "at": "2026-11-18T02:57:06.634Z",
       "step": "search",
-      "query": "\"drink eight glasses of water a day\" first published",
-      "endDate": "1979-09-22",
+      "query": "origin of eight glasses of water a day advice",
+      "endDate": "2002-10-31",
       "startDate": null,
       "results": 9,
-      "kept": 9,
-      "dropped": 0
+      "kept": 8,
+      "dropped": 1
     },
     {
-      "at": "2026-11-17T06:06:56.803Z",
+      "at": "2026-11-18T02:57:08.545Z",
       "step": "search",
-      "query": "eight glasses water a day health recommendation",
-      "endDate": "1979-09-22",
+      "query": "eight 8-oz glasses water day study source",
+      "endDate": "2002-10-31",
       "startDate": null,
-      "results": 8,
-      "kept": 8,
+      "results": 10,
+      "kept": 9,
+      "dropped": 1
+    },
+    {
+      "at": "2026-11-18T02:57:11.904Z",
+      "step": "follow",
+      "query": "https://www.healthline.com/nutrition/drinking-water-helps-with-weight-loss cited by https://www.healthline.com/nutrition/8-glasses-of-water-per-day, not beside its span: no link-verified edge",
+      "endDate": null,
+      "startDate": null,
+      "results": 1,
+      "kept": 1,
       "dropped": 0
     }
   ],
   "usage": [
     {
-      "at": "2026-11-17T06:05:46.441Z",
+      "at": "2026-11-18T02:56:33.274Z",
       "traceId": "dev-04",
       "step": "tokenfactory",
       "service": "tokenfactory",
@@ -900,31 +864,31 @@
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 158,
       "completionTokens": 48,
-      "cachedTokens": 128,
+      "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0.000030199999999999995,
-      "latencyMs": 1824,
+      "latencyMs": 924,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:05:48.268Z",
+      "at": "2026-11-18T02:56:34.200Z",
       "traceId": "dev-04",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 268,
-      "completionTokens": 213,
+      "completionTokens": 185,
       "cachedTokens": 240,
       "credits": 0,
-      "costUsd": 0.0000907,
-      "latencyMs": 8447,
+      "costUsd": 0.0000823,
+      "latencyMs": 3605,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:05:59.236Z",
+      "at": "2026-11-18T02:56:39.069Z",
       "traceId": "dev-04",
       "step": "search",
       "service": "tavily",
@@ -935,12 +899,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 2512,
+      "latencyMs": 1245,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:06:00.979Z",
+      "at": "2026-11-18T02:56:41.057Z",
       "traceId": "dev-04",
       "step": "search",
       "service": "tavily",
@@ -951,12 +915,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1737,
+      "latencyMs": 1970,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:06:02.575Z",
+      "at": "2026-11-18T02:56:42.334Z",
       "traceId": "dev-04",
       "step": "search",
       "service": "tavily",
@@ -967,12 +931,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1588,
+      "latencyMs": 1262,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:06:03.606Z",
+      "at": "2026-11-18T02:56:43.580Z",
       "traceId": "dev-04",
       "step": "search",
       "service": "tavily",
@@ -983,12 +947,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1003,
+      "latencyMs": 1225,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:06:04.645Z",
+      "at": "2026-11-18T02:56:45.262Z",
       "traceId": "dev-04",
       "step": "meta-search",
       "service": "tavily",
@@ -999,12 +963,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1033,
+      "latencyMs": 1658,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:06:04.712Z",
+      "at": "2026-11-18T02:56:45.267Z",
       "traceId": "dev-04",
       "step": "meta-extract",
       "service": "tavily",
@@ -1015,12 +979,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 63,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:06:06.761Z",
+      "at": "2026-11-18T02:56:45.515Z",
       "traceId": "dev-04",
       "step": "extract",
       "service": "tavily",
@@ -1031,12 +995,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 2038,
+      "latencyMs": 228,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:06:07.940Z",
+      "at": "2026-11-18T02:56:45.531Z",
       "traceId": "dev-04",
       "step": "dating",
       "service": "wayback",
@@ -1047,12 +1011,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 1175,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:06:07.943Z",
+      "at": "2026-11-18T02:56:45.532Z",
       "traceId": "dev-04",
       "step": "same_claim",
       "service": "tokenfactory",
@@ -1063,44 +1027,204 @@
       "cachedTokens": 160,
       "credits": 0,
       "costUsd": 0.0000258,
-      "latencyMs": 1540,
+      "latencyMs": 569,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:06:09.497Z",
+      "at": "2026-11-18T02:56:46.873Z",
       "traceId": "dev-04",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 327,
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.00000327,
-      "latencyMs": 2703,
+      "costUsd": 0,
+      "latencyMs": 750,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:06:12.206Z",
+      "at": "2026-11-18T02:56:46.876Z",
+      "traceId": "dev-04",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 279,
+      "completionTokens": 7,
+      "cachedTokens": 160,
+      "credits": 0,
+      "costUsd": 0.00003,
+      "latencyMs": 378,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:56:47.761Z",
+      "traceId": "dev-04",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 490,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:56:47.763Z",
+      "traceId": "dev-04",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 204,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.0000225,
+      "latencyMs": 372,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:56:48.136Z",
       "traceId": "dev-04",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 343,
-      "completionTokens": 304,
-      "cachedTokens": 240,
+      "completionTokens": 237,
+      "cachedTokens": 256,
       "credits": 0,
-      "costUsd": 0.0001255,
-      "latencyMs": 12141,
+      "costUsd": 0.00010539999999999999,
+      "latencyMs": 4711,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:06:27.107Z",
+      "at": "2026-11-18T02:56:52.859Z",
+      "traceId": "dev-04",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-18T02:56:52.861Z",
+      "traceId": "dev-04",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-18T02:56:52.867Z",
+      "traceId": "dev-04",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-18T02:56:52.872Z",
+      "traceId": "dev-04",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-18T02:56:53.785Z",
+      "traceId": "dev-04",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 893,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:56:54.071Z",
+      "traceId": "dev-04",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 359,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00000359,
+      "latencyMs": 4313,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:56:58.388Z",
+      "traceId": "dev-04",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 343,
+      "completionTokens": 161,
+      "cachedTokens": 336,
+      "credits": 0,
+      "costUsd": 0.00008259999999999999,
+      "latencyMs": 2822,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:57:03.153Z",
       "traceId": "dev-04",
       "step": "search",
       "service": "tavily",
@@ -1111,12 +1235,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 2749,
+      "latencyMs": 1927,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:06:29.517Z",
+      "at": "2026-11-18T02:57:04.619Z",
       "traceId": "dev-04",
       "step": "search",
       "service": "tavily",
@@ -1127,12 +1251,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 2400,
+      "latencyMs": 1451,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:06:30.425Z",
+      "at": "2026-11-18T02:57:06.634Z",
       "traceId": "dev-04",
       "step": "search",
       "service": "tavily",
@@ -1143,12 +1267,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 898,
+      "latencyMs": 2000,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:06:31.225Z",
+      "at": "2026-11-18T02:57:08.545Z",
       "traceId": "dev-04",
       "step": "search",
       "service": "tavily",
@@ -1159,12 +1283,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 781,
+      "latencyMs": 1894,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:06:31.955Z",
+      "at": "2026-11-18T02:57:09.942Z",
       "traceId": "dev-04",
       "step": "extract",
       "service": "tavily",
@@ -1175,12 +1299,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 721,
+      "latencyMs": 1380,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:06:32.487Z",
+      "at": "2026-11-18T02:57:11.010Z",
       "traceId": "dev-04",
       "step": "dating",
       "service": "wayback",
@@ -1191,284 +1315,44 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 527,
+      "latencyMs": 1034,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:06:32.489Z",
+      "at": "2026-11-18T02:57:11.010Z",
       "traceId": "dev-04",
       "step": "same_claim",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 305,
+      "promptTokens": 210,
       "completionTokens": 7,
       "cachedTokens": 176,
       "credits": 0,
-      "costUsd": 0.0000326,
-      "latencyMs": 562,
+      "costUsd": 0.000023100000000000002,
+      "latencyMs": 885,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:06:33.054Z",
-      "traceId": "dev-04",
-      "step": "tokenfactory",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 404,
-      "completionTokens": 212,
-      "cachedTokens": 256,
-      "credits": 0,
-      "costUsd": 0.00010400000000000001,
-      "latencyMs": 6064,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:06:40.080Z",
-      "traceId": "dev-04",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 946,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:06:41.730Z",
-      "traceId": "dev-04",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1638,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:06:44.747Z",
-      "traceId": "dev-04",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 3010,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:06:46.163Z",
-      "traceId": "dev-04",
-      "step": "extract",
-      "service": "tavily",
-      "endpoint": "extract",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1404,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:06:46.559Z",
-      "traceId": "dev-04",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 381,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:06:46.562Z",
-      "traceId": "dev-04",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 220,
-      "completionTokens": 7,
-      "cachedTokens": 160,
-      "credits": 0,
-      "costUsd": 0.0000241,
-      "latencyMs": 686,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:06:47.255Z",
-      "traceId": "dev-04",
-      "step": "tokenfactory",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 325,
-      "completionTokens": 194,
-      "cachedTokens": 256,
-      "credits": 0,
-      "costUsd": 0.0000907,
-      "latencyMs": 5017,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:06:53.361Z",
-      "traceId": "dev-04",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1075,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:06:54.474Z",
-      "traceId": "dev-04",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1101,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:06:55.553Z",
-      "traceId": "dev-04",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1066,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:06:56.803Z",
-      "traceId": "dev-04",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1239,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:06:57.521Z",
-      "traceId": "dev-04",
-      "step": "extract",
-      "service": "tavily",
-      "endpoint": "extract",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 705,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:06:57.672Z",
+      "at": "2026-11-18T02:57:11.904Z",
       "traceId": "dev-04",
       "step": "embed",
       "service": "tokenfactory",
       "endpoint": "/embeddings",
       "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 48,
+      "promptTokens": 87,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 4.800000000000001e-7,
-      "latencyMs": 1185,
+      "costUsd": 8.7e-7,
+      "latencyMs": 597,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:06:58.864Z",
-      "traceId": "dev-04",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 193,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.00000193,
-      "latencyMs": 6451,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:07:05.453Z",
-      "traceId": "dev-04",
-      "step": "dating",
-      "service": "fetch",
-      "endpoint": "page",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 134,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:07:05.470Z",
+      "at": "2026-11-18T02:57:12.508Z",
       "traceId": "dev-04",
       "step": "dating",
       "service": "ncbi",
@@ -1479,12 +1363,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 152,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:07:06.103Z",
+      "at": "2026-11-18T02:57:12.787Z",
       "traceId": "dev-04",
       "step": "dating",
       "service": "fetch",
@@ -1495,44 +1379,28 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 649,
+      "latencyMs": 279,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:07:06.693Z",
+      "at": "2026-11-18T02:57:12.792Z",
       "traceId": "dev-04",
       "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
+      "service": "fetch",
+      "endpoint": "page",
       "model": null,
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 588,
+      "latencyMs": 284,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:07:08.257Z",
-      "traceId": "dev-04",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 1563,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:07:08.258Z",
+      "at": "2026-11-18T02:57:12.798Z",
       "traceId": "dev-04",
       "step": "dating",
       "service": "wayback",
@@ -1548,7 +1416,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:07:08.258Z",
+      "at": "2026-11-18T02:57:12.800Z",
       "traceId": "dev-04",
       "step": "dating",
       "service": "wayback",
@@ -1564,7 +1432,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:07:08.259Z",
+      "at": "2026-11-18T02:57:12.801Z",
       "traceId": "dev-04",
       "step": "dating",
       "service": "wayback",
@@ -1580,50 +1448,82 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:07:08.266Z",
+      "at": "2026-11-18T02:57:12.801Z",
+      "traceId": "dev-04",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-18T02:57:12.802Z",
+      "traceId": "dev-04",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-18T02:57:12.802Z",
+      "traceId": "dev-04",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-18T02:57:12.805Z",
       "traceId": "dev-04",
       "step": "page_type",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 1916,
-      "completionTokens": 8,
-      "cachedTokens": 176,
+      "promptTokens": 773,
+      "completionTokens": 7,
+      "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.000194,
-      "latencyMs": 492,
+      "costUsd": 0.00007939999999999999,
+      "latencyMs": 457,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:07:08.785Z",
+      "at": "2026-11-18T02:57:13.274Z",
       "traceId": "dev-04",
       "step": "readouts",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 466,
+      "promptTokens": 456,
       "completionTokens": 23,
       "cachedTokens": 368,
       "credits": 0,
-      "costUsd": 0.0000535,
-      "latencyMs": 931,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:07:09.720Z",
-      "traceId": "dev-04",
-      "step": "boundary",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 333,
-      "completionTokens": 7,
-      "cachedTokens": 144,
-      "credits": 0,
-      "costUsd": 0.00003539999999999999,
-      "latencyMs": 513,
+      "costUsd": 0.000052499999999999995,
+      "latencyMs": 638,
       "status": "200",
       "cacheHit": false
     }

@@ -3,7 +3,7 @@
   "id": "dev-13",
   "mode": "LIVE",
   "synthetic": false,
-  "recordedAt": "2026-11-17T06:23:12.211Z",
+  "recordedAt": "2026-11-18T03:04:28.167Z",
   "claim": {
     "text": "Livestock is responsible for 51% of global greenhouse gas emissions.",
     "atoms": {
@@ -51,61 +51,37 @@
     },
     {
       "id": "n2",
-      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10915186",
-      "domain": "pmc.ncbi.nlm.nih.gov",
-      "title": "Impact of livestock industry on climate change: Case Study in South Korea — A review",
+      "url": "https://africacheck.org/sites/default/files/media/documents/2025-03/Kenya-President%20Ruto-Midterm%20Scorecard.pdf",
+      "domain": "africacheck.org",
+      "title": "",
       "date": {
-        "kind": "published",
-        "value": "2023-11-01",
-        "source": "registry_pmc",
-        "firstCapture": "2025-01-17",
+        "kind": "existed_by",
+        "value": "2025-03-27",
+        "source": "wayback_first_capture",
+        "firstCapture": "2025-03-27",
         "conflictingDate": false
       },
       "clusterId": "c-n2",
       "evidence": "observed",
-      "meta": false,
+      "meta": true,
       "read": true,
       "versionOf": null,
-      "spanIds": [
-        "s1"
-      ],
+      "spanIds": [],
       "citesEarlier": false,
       "candidateParents": [],
       "pageType": null,
-      "sameClaim": {
-        "questionId": "same_claim",
-        "optionId": "yes",
-        "probability": 0.8175744451508894,
-        "top": [
-          {
-            "optionId": "yes",
-            "p": 0.8175744451508894
-          },
-          {
-            "optionId": "no",
-            "p": 0.18242550315233727
-          },
-          {
-            "optionId": "__other__",
-            "p": 5.1696773306630917e-8
-          }
-        ],
-        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-        "threshold": null
-      },
-      "foundViaMeta": null,
-      "injection": null
+      "foundViaMeta": null
     },
     {
       "id": "n3",
-      "url": "https://www.fao.org/4/x5547e/x5547e25.htm",
-      "domain": "fao.org",
-      "title": "9.5 The livestock sector",
+      "url": "https://awellfedworld.org/world-watch-magazine",
+      "domain": "awellfedworld.org",
+      "title": "World Watch Magazine (2009) - A Well-Fed World",
       "date": {
-        "kind": "unconfirmed",
-        "value": null,
-        "source": "wayback_first_capture",
-        "firstCapture": null,
+        "kind": "published",
+        "value": "2010-01-02",
+        "source": "metadata",
+        "firstCapture": "2022-09-28",
         "conflictingDate": false
       },
       "clusterId": "c-n3",
@@ -114,33 +90,107 @@
       "read": true,
       "versionOf": null,
       "spanIds": [
-        "s2"
+        "s1"
       ],
-      "citesEarlier": false,
-      "candidateParents": [],
-      "pageType": null,
-      "sameClaim": {
-        "questionId": "same_claim",
-        "optionId": "no",
-        "probability": 0.9999999943972029,
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "https://awellfedworld.org/wp-content/uploads/pdf/UNGlobalWarmingReport.pdf",
+          "read": true
+        }
+      ],
+      "pageType": {
+        "questionId": "page_type",
+        "optionId": "study",
+        "probability": 0.9626720760757507,
         "top": [
           {
-            "optionId": "yes",
-            "p": 5.602797041466276e-9
+            "optionId": "study",
+            "p": 0.9626720760757507
           },
           {
-            "optionId": "no",
-            "p": 0.9999999943972029
+            "optionId": "dataset",
+            "p": 0
+          },
+          {
+            "optionId": "report",
+            "p": 0.03732684353616975
+          },
+          {
+            "optionId": "speaker",
+            "p": 0
+          },
+          {
+            "optionId": "news",
+            "p": 3.3369378746736906e-7
+          },
+          {
+            "optionId": "blog",
+            "p": 1.227590840558778e-7
+          },
+          {
+            "optionId": "social",
+            "p": 0
+          },
+          {
+            "optionId": "other",
+            "p": 4.855215958764528e-7
           },
           {
             "optionId": "__other__",
-            "p": 1.1102230246251565e-16
+            "p": 1.3841361212740821e-7
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9999996424531261,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9999996424531261
+          },
+          {
+            "optionId": "no",
+            "p": 3.0590233316599135e-7
+          },
+          {
+            "optionId": "__other__",
+            "p": 5.164454075501368e-8
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
         "threshold": null
       },
       "foundViaMeta": null,
+      "boundary": {
+        "questionId": "boundary",
+        "optionId": "unsourced",
+        "probability": 0.9932566687618746,
+        "top": [
+          {
+            "optionId": "print",
+            "p": 0.0035818529160582405
+          },
+          {
+            "optionId": "unsourced",
+            "p": 0.9932566687618746
+          },
+          {
+            "optionId": "none",
+            "p": 0.0031611829068462728
+          },
+          {
+            "optionId": "__other__",
+            "p": 2.9541522084119975e-7
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
       "injection": null
     },
     {
@@ -161,98 +211,7 @@
       "read": true,
       "versionOf": null,
       "spanIds": [
-        "s3"
-      ],
-      "citesEarlier": false,
-      "candidateParents": [],
-      "pageType": {
-        "questionId": "page_type",
-        "optionId": "speaker",
-        "probability": 0.999995866298609,
-        "top": [
-          {
-            "optionId": "study",
-            "p": 1.3440307372998224e-8
-          },
-          {
-            "optionId": "dataset",
-            "p": 0
-          },
-          {
-            "optionId": "report",
-            "p": 8.315231658208759e-7
-          },
-          {
-            "optionId": "speaker",
-            "p": 0.999995866298609
-          },
-          {
-            "optionId": "news",
-            "p": 0
-          },
-          {
-            "optionId": "blog",
-            "p": 0
-          },
-          {
-            "optionId": "social",
-            "p": 0.0000032887379177073735
-          },
-          {
-            "optionId": "other",
-            "p": 0
-          },
-          {
-            "optionId": "__other__",
-            "p": 1.1102230246251565e-16
-          }
-        ],
-        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-        "threshold": null
-      },
-      "sameClaim": {
-        "questionId": "same_claim",
-        "optionId": "yes",
-        "probability": 0.999999999994891,
-        "top": [
-          {
-            "optionId": "yes",
-            "p": 0.999999999994891
-          },
-          {
-            "optionId": "no",
-            "p": 5.1090898645829845e-12
-          },
-          {
-            "optionId": "__other__",
-            "p": 0
-          }
-        ],
-        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-        "threshold": null
-      },
-      "foundViaMeta": null,
-      "injection": null
-    },
-    {
-      "id": "n5",
-      "url": "https://journals.law.harvard.edu/elr/2015/10/26/elrs-a-leading-cause-of-everything-one-industry-that-is-destroying-our-planet-and-our-ability-to-thrive-on-it",
-      "domain": "journals.law.harvard.edu",
-      "title": "[ELRS] A Leading Cause of Everything: One Industry That Is Destroying Our Planet and Our Ability to Thrive on It – Harvard Environmental Law Review",
-      "date": {
-        "kind": "published",
-        "value": "2015-10-26",
-        "source": "metadata",
-        "firstCapture": "2025-11-03",
-        "conflictingDate": false
-      },
-      "clusterId": "c-n5",
-      "evidence": "observed",
-      "meta": false,
-      "read": true,
-      "versionOf": null,
-      "spanIds": [
-        "s4"
+        "s2"
       ],
       "citesEarlier": false,
       "candidateParents": [],
@@ -260,19 +219,19 @@
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "yes",
-        "probability": 0.9999999999705993,
+        "probability": 0.9999999999954912,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.9999999999705993
+            "p": 0.9999999999954912
           },
           {
             "optionId": "no",
-            "p": 2.94007805000661e-11
+            "p": 4.508756316421437e-12
           },
           {
             "optionId": "__other__",
-            "p": 0
+            "p": 1.1102230246251565e-16
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -285,49 +244,26 @@
   "edges": [
     {
       "id": "e1",
-      "parentId": "n4",
-      "childId": "n5",
+      "parentId": "n3",
+      "childId": "n4",
       "kind": "inferred",
-      "parentSpanId": "s3",
-      "childSpanId": "s4",
-      "linkHref": null
-    },
-    {
-      "id": "e2",
-      "parentId": "n5",
-      "childId": "n2",
-      "kind": "inferred",
-      "parentSpanId": "s4",
-      "childSpanId": "s1",
+      "parentSpanId": "s1",
+      "childSpanId": "s2",
       "linkHref": null
     }
   ],
   "clusters": [
     {
-      "id": "c-n4",
-      "nodeIds": [
-        "n4"
-      ],
-      "rule": "single"
-    },
-    {
-      "id": "c-n5",
-      "nodeIds": [
-        "n5"
-      ],
-      "rule": "single"
-    },
-    {
-      "id": "c-n2",
-      "nodeIds": [
-        "n2"
-      ],
-      "rule": "single"
-    },
-    {
       "id": "c-n3",
       "nodeIds": [
         "n3"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n4",
+      "nodeIds": [
+        "n4"
       ],
       "rule": "single"
     },
@@ -337,39 +273,32 @@
         "n1"
       ],
       "rule": "single"
+    },
+    {
+      "id": "c-n2",
+      "nodeIds": [
+        "n2"
+      ],
+      "rule": "single"
     }
   ],
   "spans": [
     {
       "id": "s1",
-      "nodeId": "n2",
-      "text": "DOES THE LIVESTOCK SECTOR CONSTITUTE 51% OF WORLDWIDE GREENHOUSE GAS EMISSIONS?",
-      "contextBefore": "y of Environment [8] were overestimated by more than 4 times compared to the RDA data (The Ministry of Environment estimated 2.99 tons GHG/head/yr, while the RDA estimated around 600 kg GHG/head/yr). ",
-      "contextAfter": " In 2009, the Worldwatch Institute [17], a private environmental research institute, released a report claiming that the livestock sector was responsible for 51% of total GHG emissions. This assertion",
-      "start": 10897,
-      "end": 10976,
-      "extractSha256": "a44dade593407dd87dae1901a50fccaf8c1bb8e2498f49860d6c8e7a6a47510e",
-      "windowSha256": "6c59fb9430279531c6fd15f2441b88363ae44553f118a2e39fb7804ba9db5077",
-      "fetchedAt": "2026-11-17T06:23:39.880Z",
-      "waybackUrl": "https://web.archive.org/web/20250117023656/https://pmc.ncbi.nlm.nih.gov/articles/PMC10915186",
+      "nodeId": "n3",
+      "text": "Authors of this article recalculated the FAO report and counter that the livestock sector is responsible for 51% of human-caused greenhouse gas emissions. --- November 2009 - Original Article.",
+      "contextBefore": "article is a recalculation of the seminal UN-FAO 2006 report - *Livestock's Long Shadow* where livestock were reported to produce more greenhouse gases than *all* transportation combined - 18% (PDF). ",
+      "contextAfter": " The lead article \"Livestock and Climate Change\" in the Nov/Dec 2009 issue of *World Watch Magazine* (a publication of the Worldwatch Institute) describes a new case for powerful action that can be ta",
+      "start": 664,
+      "end": 856,
+      "extractSha256": "96a73aee01f72be988255c3757ad2e114eb28aa378a37e855ebdf3af8098696e",
+      "windowSha256": "92d3d74aa3d90dbaa6d5695bf326a61be42e17ca42855b5ee30fba4a86a08fcd",
+      "fetchedAt": "2026-11-18T03:04:41.450Z",
+      "waybackUrl": "https://web.archive.org/web/20220928181803/https://awellfedworld.org/world-watch-magazine",
       "tier": "exact"
     },
     {
       "id": "s2",
-      "nodeId": "n3",
-      "text": "Of marketed livestock production by value, about 51% consists of stock for slaughter and 35% of dairy products.",
-      "contextBefore": "keting. Although they account for less than 10% of export earnings, livestock products are important domestically, contributing 23% of the gross value of marketed agricultural production (Table 9.4). ",
-      "contextAfter": " The remainder is divided among hides, skins, wool and eggs. However, most of the livestock industry is outside the money economy since 75% of milk production, 80% of beef and over 90% of goat and she",
-      "start": 1959,
-      "end": 2070,
-      "extractSha256": "9538771f4b9bc6c1a49a9988275ed160f849fab5c3376efd6f6dc020cc80022a",
-      "windowSha256": "058c59c3a035237898874653f0f5e1dccc6a59f3b60fa2906b0d52a0efb59a31",
-      "fetchedAt": "2026-11-17T06:23:40.841Z",
-      "waybackUrl": null,
-      "tier": "exact"
-    },
-    {
-      "id": "s3",
       "nodeId": "n4",
       "text": "In the November/December 2009 issue of the *World Watch* journal, Goodland and co-author Jeff Anhang published the shocking estimate of \"at least 51%\" of global greenhouse gas emissions attributable to the lifecycle and supply chain of livestock products (meaning all meats, dairy, and by-products).",
       "contextBefore": "ronmental conservation. He is the co-author of *Amazon Jungle-Green Hell to Red Desert?: An Ecological Discussion of the Environmental Impact of the Highway Construction Program in the Amazon Basin*. ",
@@ -378,22 +307,8 @@
       "end": 903,
       "extractSha256": "adfbf5a2bad84d6af25b5a33fad6cc1340c7f33eb68b6223cc227a5865b56960",
       "windowSha256": "a26152c15c358b559e6f82372c2dd06afb7e95a6279fdc311957feaf60857c94",
-      "fetchedAt": "2026-11-17T06:23:53.970Z",
+      "fetchedAt": "2026-11-18T03:04:44.773Z",
       "waybackUrl": "https://web.archive.org/web/20150829005126/https://responsibleeatingandliving.com/favorites/robert-goodland-interview",
-      "tier": "exact"
-    },
-    {
-      "id": "s4",
-      "nodeId": "n5",
-      "text": "A more recent and comprehensive study published by Worldwatch Institute, however, finds that livestock and their byproducts actually account for 51% of worldwide human-related greenhouse gas emissions annually.",
-      "contextBefore": "ilable for grazing. [[2]](#_ftnref2) Henning Steinfeld et al., FAO, Livestock's Long Shadow: Environmental Issues and Options (2006), *available at* http://www.fao.org/docrep/010/a0701e/a0701e00.htm. ",
-      "contextAfter": " Robert Goodland & Jeff Anhang, *Livestock and Climate Change*, World Watch Magazine, November/December 2009, at 11. [[3]](#_ftnref3) David Tilman & Michael Clark, *Global Diets Link Environmental Sus",
-      "start": 12307,
-      "end": 12517,
-      "extractSha256": "882cfd8a1344518b8417e4381b1ed0c833a9b5631ca53174be6f05ed1d4ebe4f",
-      "windowSha256": "8bda944ade6f76dfcdf8c8a1a3fc427144777e9b020f7e3b8444d6b3a053acbc",
-      "fetchedAt": "2026-11-17T06:24:02.262Z",
-      "waybackUrl": "https://web.archive.org/web/20251103054331/https://journals.law.harvard.edu/elr/2015/10/26/elrs-a-leading-cause-of-everything-one-industry-that-is-destroying-our-planet-and-our-ability-to-thrive-on-it",
       "tier": "exact"
     }
   ],
@@ -432,49 +347,261 @@
         {
           "id": "scope_widened",
           "source": "inferred",
-          "value": "no",
-          "probability": 0.6791786843662027,
+          "value": "yes",
+          "probability": 0.7772998614505815,
           "disputed": false
         },
         {
           "id": "attribution_shifted",
           "source": "inferred",
           "value": "yes",
-          "probability": 0.9990888912904775,
+          "probability": 0.9859363736462553,
           "disputed": false
         },
         {
           "id": "context_stripped",
           "source": "inferred",
           "value": "no",
-          "probability": 0.9984987894983494,
+          "probability": 0.9995694429069326,
           "disputed": false
         }
       ],
       "wordDiff": [
         {
           "op": "add",
-          "text": "a"
-        },
-        {
-          "op": "add",
-          "text": "more"
-        },
-        {
-          "op": "add",
-          "text": "recent"
-        },
-        {
-          "op": "del",
           "text": "in"
         },
         {
-          "op": "del",
+          "op": "add",
           "text": "the"
         },
         {
-          "op": "del",
+          "op": "add",
           "text": "november/december"
+        },
+        {
+          "op": "add",
+          "text": "2009"
+        },
+        {
+          "op": "add",
+          "text": "issue"
+        },
+        {
+          "op": "del",
+          "text": "authors"
+        },
+        {
+          "op": "same",
+          "text": "of"
+        },
+        {
+          "op": "del",
+          "text": "this"
+        },
+        {
+          "op": "del",
+          "text": "article"
+        },
+        {
+          "op": "del",
+          "text": "recalculated"
+        },
+        {
+          "op": "same",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "world"
+        },
+        {
+          "op": "add",
+          "text": "watch"
+        },
+        {
+          "op": "add",
+          "text": "journal"
+        },
+        {
+          "op": "add",
+          "text": "goodland"
+        },
+        {
+          "op": "del",
+          "text": "fao"
+        },
+        {
+          "op": "del",
+          "text": "report"
+        },
+        {
+          "op": "same",
+          "text": "and"
+        },
+        {
+          "op": "add",
+          "text": "co-author"
+        },
+        {
+          "op": "add",
+          "text": "jeff"
+        },
+        {
+          "op": "add",
+          "text": "anhang"
+        },
+        {
+          "op": "add",
+          "text": "published"
+        },
+        {
+          "op": "del",
+          "text": "counter"
+        },
+        {
+          "op": "del",
+          "text": "that"
+        },
+        {
+          "op": "same",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "shocking"
+        },
+        {
+          "op": "add",
+          "text": "estimate"
+        },
+        {
+          "op": "add",
+          "text": "of"
+        },
+        {
+          "op": "add",
+          "text": "at"
+        },
+        {
+          "op": "add",
+          "text": "least"
+        },
+        {
+          "op": "del",
+          "text": "livestock"
+        },
+        {
+          "op": "del",
+          "text": "sector"
+        },
+        {
+          "op": "del",
+          "text": "is"
+        },
+        {
+          "op": "del",
+          "text": "responsible"
+        },
+        {
+          "op": "del",
+          "text": "for"
+        },
+        {
+          "op": "same",
+          "text": "51"
+        },
+        {
+          "op": "same",
+          "text": "of"
+        },
+        {
+          "op": "add",
+          "text": "global"
+        },
+        {
+          "op": "del",
+          "text": "human-caused"
+        },
+        {
+          "op": "same",
+          "text": "greenhouse"
+        },
+        {
+          "op": "same",
+          "text": "gas"
+        },
+        {
+          "op": "same",
+          "text": "emissions"
+        },
+        {
+          "op": "add",
+          "text": "attributable"
+        },
+        {
+          "op": "add",
+          "text": "to"
+        },
+        {
+          "op": "add",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "lifecycle"
+        },
+        {
+          "op": "add",
+          "text": "and"
+        },
+        {
+          "op": "add",
+          "text": "supply"
+        },
+        {
+          "op": "add",
+          "text": "chain"
+        },
+        {
+          "op": "add",
+          "text": "of"
+        },
+        {
+          "op": "add",
+          "text": "livestock"
+        },
+        {
+          "op": "add",
+          "text": "products"
+        },
+        {
+          "op": "add",
+          "text": "meaning"
+        },
+        {
+          "op": "add",
+          "text": "all"
+        },
+        {
+          "op": "add",
+          "text": "meats"
+        },
+        {
+          "op": "add",
+          "text": "dairy"
+        },
+        {
+          "op": "add",
+          "text": "and"
+        },
+        {
+          "op": "add",
+          "text": "by-products"
+        },
+        {
+          "op": "del",
+          "text": "november"
         },
         {
           "op": "del",
@@ -482,420 +609,11 @@
         },
         {
           "op": "del",
-          "text": "issue"
+          "text": "original"
         },
         {
           "op": "del",
-          "text": "of"
-        },
-        {
-          "op": "del",
-          "text": "the"
-        },
-        {
-          "op": "del",
-          "text": "world"
-        },
-        {
-          "op": "del",
-          "text": "watch"
-        },
-        {
-          "op": "del",
-          "text": "journal"
-        },
-        {
-          "op": "del",
-          "text": "goodland"
-        },
-        {
-          "op": "same",
-          "text": "and"
-        },
-        {
-          "op": "add",
-          "text": "comprehensive"
-        },
-        {
-          "op": "add",
-          "text": "study"
-        },
-        {
-          "op": "del",
-          "text": "co-author"
-        },
-        {
-          "op": "del",
-          "text": "jeff"
-        },
-        {
-          "op": "del",
-          "text": "anhang"
-        },
-        {
-          "op": "same",
-          "text": "published"
-        },
-        {
-          "op": "add",
-          "text": "by"
-        },
-        {
-          "op": "add",
-          "text": "worldwatch"
-        },
-        {
-          "op": "add",
-          "text": "institute"
-        },
-        {
-          "op": "add",
-          "text": "however"
-        },
-        {
-          "op": "add",
-          "text": "finds"
-        },
-        {
-          "op": "add",
-          "text": "that"
-        },
-        {
-          "op": "add",
-          "text": "livestock"
-        },
-        {
-          "op": "add",
-          "text": "and"
-        },
-        {
-          "op": "add",
-          "text": "their"
-        },
-        {
-          "op": "add",
-          "text": "byproducts"
-        },
-        {
-          "op": "add",
-          "text": "actually"
-        },
-        {
-          "op": "add",
-          "text": "account"
-        },
-        {
-          "op": "add",
-          "text": "for"
-        },
-        {
-          "op": "del",
-          "text": "the"
-        },
-        {
-          "op": "del",
-          "text": "shocking"
-        },
-        {
-          "op": "del",
-          "text": "estimate"
-        },
-        {
-          "op": "del",
-          "text": "of"
-        },
-        {
-          "op": "del",
-          "text": "at"
-        },
-        {
-          "op": "del",
-          "text": "least"
-        },
-        {
-          "op": "same",
-          "text": "51"
-        },
-        {
-          "op": "same",
-          "text": "of"
-        },
-        {
-          "op": "add",
-          "text": "worldwide"
-        },
-        {
-          "op": "add",
-          "text": "human-related"
-        },
-        {
-          "op": "del",
-          "text": "global"
-        },
-        {
-          "op": "same",
-          "text": "greenhouse"
-        },
-        {
-          "op": "same",
-          "text": "gas"
-        },
-        {
-          "op": "same",
-          "text": "emissions"
-        },
-        {
-          "op": "add",
-          "text": "annually"
-        },
-        {
-          "op": "del",
-          "text": "attributable"
-        },
-        {
-          "op": "del",
-          "text": "to"
-        },
-        {
-          "op": "del",
-          "text": "the"
-        },
-        {
-          "op": "del",
-          "text": "lifecycle"
-        },
-        {
-          "op": "del",
-          "text": "and"
-        },
-        {
-          "op": "del",
-          "text": "supply"
-        },
-        {
-          "op": "del",
-          "text": "chain"
-        },
-        {
-          "op": "del",
-          "text": "of"
-        },
-        {
-          "op": "del",
-          "text": "livestock"
-        },
-        {
-          "op": "del",
-          "text": "products"
-        },
-        {
-          "op": "del",
-          "text": "meaning"
-        },
-        {
-          "op": "del",
-          "text": "all"
-        },
-        {
-          "op": "del",
-          "text": "meats"
-        },
-        {
-          "op": "del",
-          "text": "dairy"
-        },
-        {
-          "op": "del",
-          "text": "and"
-        },
-        {
-          "op": "del",
-          "text": "by-products"
-        }
-      ],
-      "faithful": false
-    },
-    {
-      "edgeId": "e2",
-      "readouts": [
-        {
-          "id": "number_changed",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "unit_changed",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "hedge_dropped",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "comparison_added",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "scope_widened",
-          "source": "inferred",
-          "value": "no",
-          "probability": 0.7310585357959294,
-          "disputed": false
-        },
-        {
-          "id": "attribution_shifted",
-          "source": "inferred",
-          "value": "yes",
-          "probability": 0.9997387615687009,
-          "disputed": false
-        },
-        {
-          "id": "context_stripped",
-          "source": "inferred",
-          "value": "yes",
-          "probability": 0.9890130584523258,
-          "disputed": false
-        }
-      ],
-      "wordDiff": [
-        {
-          "op": "add",
-          "text": "does"
-        },
-        {
-          "op": "add",
-          "text": "the"
-        },
-        {
-          "op": "del",
-          "text": "a"
-        },
-        {
-          "op": "del",
-          "text": "more"
-        },
-        {
-          "op": "del",
-          "text": "recent"
-        },
-        {
-          "op": "del",
-          "text": "and"
-        },
-        {
-          "op": "del",
-          "text": "comprehensive"
-        },
-        {
-          "op": "del",
-          "text": "study"
-        },
-        {
-          "op": "del",
-          "text": "published"
-        },
-        {
-          "op": "del",
-          "text": "by"
-        },
-        {
-          "op": "del",
-          "text": "worldwatch"
-        },
-        {
-          "op": "del",
-          "text": "institute"
-        },
-        {
-          "op": "del",
-          "text": "however"
-        },
-        {
-          "op": "del",
-          "text": "finds"
-        },
-        {
-          "op": "del",
-          "text": "that"
-        },
-        {
-          "op": "same",
-          "text": "livestock"
-        },
-        {
-          "op": "add",
-          "text": "sector"
-        },
-        {
-          "op": "add",
-          "text": "constitute"
-        },
-        {
-          "op": "del",
-          "text": "and"
-        },
-        {
-          "op": "del",
-          "text": "their"
-        },
-        {
-          "op": "del",
-          "text": "byproducts"
-        },
-        {
-          "op": "del",
-          "text": "actually"
-        },
-        {
-          "op": "del",
-          "text": "account"
-        },
-        {
-          "op": "del",
-          "text": "for"
-        },
-        {
-          "op": "same",
-          "text": "51"
-        },
-        {
-          "op": "same",
-          "text": "of"
-        },
-        {
-          "op": "same",
-          "text": "worldwide"
-        },
-        {
-          "op": "del",
-          "text": "human-related"
-        },
-        {
-          "op": "same",
-          "text": "greenhouse"
-        },
-        {
-          "op": "same",
-          "text": "gas"
-        },
-        {
-          "op": "same",
-          "text": "emissions"
-        },
-        {
-          "op": "del",
-          "text": "annually"
+          "text": "article"
         }
       ],
       "faithful": false
@@ -903,178 +621,128 @@
   ],
   "blame": [],
   "roots": {
-    "pages": 4,
-    "clusters": 4,
+    "pages": 2,
+    "clusters": 2,
     "rootsLinked": 0,
-    "clustersUnlinked": 4,
+    "clustersUnlinked": 2,
     "studiesFound": null,
-    "independentRoots": 4,
+    "independentRoots": 2,
     "copies": 0
   },
   "redHopEdgeId": "e1",
   "earliest": {
     "nodeIds": [
-      "n4"
+      "n3"
     ],
-    "earlierWindowSearches": 5,
+    "earlierWindowSearches": 4,
     "earlierFound": 0
   },
   "failure": null,
   "budget": {
-    "credits": 18,
-    "usd": 0.0007133599999999999,
-    "ms": 88648,
+    "credits": 11,
+    "usd": 0.0008099699999999999,
+    "ms": 95689,
     "capHit": null
   },
   "decision": {
-    "state": "ORIGIN_FOUND",
-    "row": 5,
+    "state": "TRAIL_GOES_COLD",
+    "row": 6,
     "reasons": [
-      "earliest page n4 is a speaker with a confirmed date"
+      "no earliest page with a confirmed date, a primary page type, no earlier citation and no negated span"
     ],
     "counts": {
-      "pages": 4,
-      "clusters": 4,
+      "pages": 2,
+      "clusters": 2,
       "unreadParents": 0,
-      "earlierWindowSearches": 5
+      "earlierWindowSearches": 4
     }
   },
   "searchLog": [
     {
-      "at": "2026-11-17T06:23:19.386Z",
+      "at": "2026-11-18T03:04:32.816Z",
       "step": "search",
       "query": "\"51%\" livestock",
-      "endDate": "2026-11-17",
-      "startDate": null,
-      "results": 10,
-      "kept": 10,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:23:20.753Z",
-      "step": "search",
-      "query": "51% of global greenhouse gas emissions from livestock",
-      "endDate": "2026-11-17",
-      "startDate": null,
-      "results": 10,
-      "kept": 10,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:23:21.928Z",
-      "step": "search",
-      "query": "livestock responsible for 51% greenhouse gas emissions",
-      "endDate": "2026-11-17",
-      "startDate": null,
-      "results": 10,
-      "kept": 10,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:23:23.485Z",
-      "step": "search",
-      "query": "51% of global emissions from animal agriculture",
-      "endDate": "2026-11-17",
-      "startDate": null,
-      "results": 10,
-      "kept": 10,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:23:24.974Z",
-      "step": "meta-search",
-      "query": "\"51%\" livestock",
-      "endDate": "2026-11-17",
-      "startDate": null,
-      "results": 5,
-      "kept": 2,
-      "dropped": 3
-    },
-    {
-      "at": "2026-11-17T06:23:46.675Z",
-      "step": "search",
-      "query": "\"51%\" livestock",
-      "endDate": "2023-10-31",
-      "startDate": null,
-      "results": 10,
-      "kept": 10,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:23:49.167Z",
-      "step": "search",
-      "query": "\"51% of global greenhouse gas emissions\" livestock",
-      "endDate": "2023-10-31",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 9,
       "kept": 9,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:23:51.650Z",
+      "at": "2026-11-18T03:04:34.023Z",
       "step": "search",
-      "query": "\"51% of worldwide greenhouse gas emissions\" livestock sector",
-      "endDate": "2023-10-31",
-      "startDate": null,
-      "results": 3,
-      "kept": 3,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:23:52.715Z",
-      "step": "search",
-      "query": "livestock sector 51% greenhouse gas emissions study",
-      "endDate": "2023-10-31",
-      "startDate": null,
-      "results": 10,
-      "kept": 8,
-      "dropped": 2
-    },
-    {
-      "at": "2026-11-17T06:24:09.207Z",
-      "step": "search",
-      "query": "\"51%\" livestock",
-      "endDate": "2011-10-26",
-      "startDate": null,
-      "results": 10,
-      "kept": 7,
-      "dropped": 3
-    },
-    {
-      "at": "2026-11-17T06:24:10.849Z",
-      "step": "search",
-      "query": "\"51%\" of global greenhouse gas emissions livestock lifecycle",
-      "endDate": "2011-10-26",
-      "startDate": null,
-      "results": 10,
-      "kept": 9,
-      "dropped": 1
-    },
-    {
-      "at": "2026-11-17T06:24:12.791Z",
-      "step": "search",
-      "query": "\"at least 51%\" attributable to livestock products supply chain",
-      "endDate": "2011-10-26",
+      "query": "51% of global greenhouse gas emissions from livestock",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:24:14.462Z",
+      "at": "2026-11-18T03:04:35.594Z",
       "step": "search",
-      "query": "Goodland Anhang 51% greenhouse gas emissions livestock World Watch",
-      "endDate": "2011-10-26",
+      "query": "livestock responsible for 51% greenhouse gas emissions",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 10,
-      "kept": 8,
-      "dropped": 2
+      "kept": 10,
+      "dropped": 0
     },
     {
-      "at": "2026-11-17T06:24:15.672Z",
+      "at": "2026-11-18T03:04:36.998Z",
       "step": "search",
-      "query": "\"fifty-one percent\" Worldwatch Institute",
-      "endDate": "2011-10-26",
+      "query": "51% of global emissions from animal agriculture",
+      "endDate": "2026-11-18",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-18T03:04:40.299Z",
+      "step": "meta-search",
+      "query": "\"51%\" livestock",
+      "endDate": "2026-11-18",
+      "startDate": null,
+      "results": 5,
+      "kept": 2,
+      "dropped": 3
+    },
+    {
+      "at": "2026-11-18T03:04:53.598Z",
+      "step": "search",
+      "query": "\"51%\" livestock",
+      "endDate": "2009-11-05",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-18T03:04:56.483Z",
+      "step": "search",
+      "query": "51% of global greenhouse gas emissions livestock",
+      "endDate": "2009-11-05",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-18T03:04:59.636Z",
+      "step": "search",
+      "query": "livestock sector responsible for 51% human-caused emissions",
+      "endDate": "2009-11-05",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-18T03:05:01.654Z",
+      "step": "search",
+      "query": "FAO report livestock greenhouse gas emissions 51%",
+      "endDate": "2009-11-05",
       "startDate": null,
       "results": 10,
       "kept": 10,
@@ -1083,7 +751,7 @@
   ],
   "usage": [
     {
-      "at": "2026-11-17T06:23:12.211Z",
+      "at": "2026-11-18T03:04:28.168Z",
       "traceId": "dev-13",
       "step": "tokenfactory",
       "service": "tokenfactory",
@@ -1091,31 +759,31 @@
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 164,
       "completionTokens": 49,
-      "cachedTokens": 0,
+      "cachedTokens": 128,
       "credits": 0,
       "costUsd": 0.0000311,
-      "latencyMs": 1428,
+      "latencyMs": 934,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:23:13.645Z",
+      "at": "2026-11-18T03:04:29.106Z",
       "traceId": "dev-13",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 274,
-      "completionTokens": 167,
+      "completionTokens": 171,
       "cachedTokens": 240,
       "credits": 0,
-      "costUsd": 0.0000775,
-      "latencyMs": 3941,
+      "costUsd": 0.0000787,
+      "latencyMs": 2721,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:23:19.385Z",
+      "at": "2026-11-18T03:04:32.816Z",
       "traceId": "dev-13",
       "step": "search",
       "service": "tavily",
@@ -1126,12 +794,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1772,
+      "latencyMs": 961,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:23:20.753Z",
+      "at": "2026-11-18T03:04:34.022Z",
       "traceId": "dev-13",
       "step": "search",
       "service": "tavily",
@@ -1142,12 +810,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1353,
+      "latencyMs": 1186,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:23:21.927Z",
+      "at": "2026-11-18T03:04:35.594Z",
       "traceId": "dev-13",
       "step": "search",
       "service": "tavily",
@@ -1158,12 +826,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1158,
+      "latencyMs": 1548,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:23:23.484Z",
+      "at": "2026-11-18T03:04:36.998Z",
       "traceId": "dev-13",
       "step": "search",
       "service": "tavily",
@@ -1174,12 +842,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1539,
+      "latencyMs": 1377,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:23:24.974Z",
+      "at": "2026-11-18T03:04:40.296Z",
       "traceId": "dev-13",
       "step": "meta-search",
       "service": "tavily",
@@ -1190,12 +858,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1477,
+      "latencyMs": 3276,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:23:25.453Z",
+      "at": "2026-11-18T03:04:40.450Z",
       "traceId": "dev-13",
       "step": "meta-extract",
       "service": "tavily",
@@ -1204,14 +872,14 @@
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 462,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:23:25.857Z",
+      "at": "2026-11-18T03:04:40.849Z",
       "traceId": "dev-13",
       "step": "extract",
       "service": "tavily",
@@ -1222,12 +890,44 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 326,
+      "latencyMs": 241,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:23:25.872Z",
+      "at": "2026-11-18T03:04:41.442Z",
+      "traceId": "dev-13",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 577,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:04:41.466Z",
+      "traceId": "dev-13",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 236,
+      "completionTokens": 7,
+      "cachedTokens": 160,
+      "credits": 0,
+      "costUsd": 0.000025699999999999998,
+      "latencyMs": 675,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:04:42.173Z",
       "traceId": "dev-13",
       "step": "embed",
       "service": "tokenfactory",
@@ -1238,28 +938,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0.00001566,
-      "latencyMs": 7577,
+      "latencyMs": 2551,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:23:33.473Z",
-      "traceId": "dev-13",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 510,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.0000051,
-      "latencyMs": 5846,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:23:39.879Z",
+      "at": "2026-11-18T03:04:44.773Z",
       "traceId": "dev-13",
       "step": "dating",
       "service": "wayback",
@@ -1270,172 +954,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 535,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:23:39.882Z",
-      "traceId": "dev-13",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 221,
-      "completionTokens": 7,
-      "cachedTokens": 160,
-      "credits": 0,
-      "costUsd": 0.0000242,
-      "latencyMs": 383,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:23:40.840Z",
-      "traceId": "dev-13",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 559,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:23:40.843Z",
-      "traceId": "dev-13",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 220,
-      "completionTokens": 7,
-      "cachedTokens": 160,
-      "credits": 0,
-      "costUsd": 0.0000241,
-      "latencyMs": 533,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:23:41.400Z",
-      "traceId": "dev-13",
-      "step": "tokenfactory",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 328,
-      "completionTokens": 146,
-      "cachedTokens": 240,
-      "credits": 0,
-      "costUsd": 0.00007659999999999999,
-      "latencyMs": 4236,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:23:46.674Z",
-      "traceId": "dev-13",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1015,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:23:49.166Z",
-      "traceId": "dev-13",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 2477,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:23:51.650Z",
-      "traceId": "dev-13",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 2465,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:23:52.715Z",
-      "traceId": "dev-13",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1048,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:23:52.884Z",
-      "traceId": "dev-13",
-      "step": "extract",
-      "service": "tavily",
-      "endpoint": "extract",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 155,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:23:53.969Z",
-      "traceId": "dev-13",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 1080,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:23:53.970Z",
+      "at": "2026-11-18T03:04:44.774Z",
       "traceId": "dev-13",
       "step": "same_claim",
       "service": "tokenfactory",
@@ -1446,76 +970,44 @@
       "cachedTokens": 176,
       "credits": 0,
       "costUsd": 0.000028400000000000003,
-      "latencyMs": 600,
+      "latencyMs": 673,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:23:54.583Z",
+      "at": "2026-11-18T03:04:45.465Z",
       "traceId": "dev-13",
       "step": "embed",
       "service": "tokenfactory",
       "endpoint": "/embeddings",
       "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 586,
+      "promptTokens": 510,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.00000586,
-      "latencyMs": 2332,
+      "costUsd": 0.0000051,
+      "latencyMs": 4557,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:24:02.261Z",
-      "traceId": "dev-13",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 5334,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:24:02.264Z",
-      "traceId": "dev-13",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 231,
-      "completionTokens": 7,
-      "cachedTokens": 176,
-      "credits": 0,
-      "costUsd": 0.0000252,
-      "latencyMs": 565,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:24:02.832Z",
+      "at": "2026-11-18T03:04:50.054Z",
       "traceId": "dev-13",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 368,
-      "completionTokens": 157,
-      "cachedTokens": 256,
+      "promptTokens": 343,
+      "completionTokens": 118,
+      "cachedTokens": 240,
       "credits": 0,
-      "costUsd": 0.0000839,
-      "latencyMs": 4760,
+      "costUsd": 0.0000697,
+      "latencyMs": 2127,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:24:09.207Z",
+      "at": "2026-11-18T03:04:53.598Z",
       "traceId": "dev-13",
       "step": "search",
       "service": "tavily",
@@ -1526,12 +1018,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1592,
+      "latencyMs": 1395,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:24:10.849Z",
+      "at": "2026-11-18T03:04:56.482Z",
       "traceId": "dev-13",
       "step": "search",
       "service": "tavily",
@@ -1542,12 +1034,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1630,
+      "latencyMs": 2865,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:24:12.791Z",
+      "at": "2026-11-18T03:04:59.635Z",
       "traceId": "dev-13",
       "step": "search",
       "service": "tavily",
@@ -1558,12 +1050,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1931,
+      "latencyMs": 3097,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:24:14.462Z",
+      "at": "2026-11-18T03:05:01.653Z",
       "traceId": "dev-13",
       "step": "search",
       "service": "tavily",
@@ -1574,28 +1066,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1658,
+      "latencyMs": 1953,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:24:15.672Z",
-      "traceId": "dev-13",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1198,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:24:16.454Z",
+      "at": "2026-11-18T03:05:02.329Z",
       "traceId": "dev-13",
       "step": "extract",
       "service": "tavily",
@@ -1606,108 +1082,300 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 765,
+      "latencyMs": 528,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:24:16.658Z",
+      "at": "2026-11-18T03:05:02.709Z",
       "traceId": "dev-13",
       "step": "embed",
       "service": "tokenfactory",
       "endpoint": "/embeddings",
       "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 84,
+      "promptTokens": 1809,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 8.4e-7,
-      "latencyMs": 3308,
+      "costUsd": 0.00001809,
+      "latencyMs": 2660,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:24:20.014Z",
+      "at": "2026-11-18T03:05:05.404Z",
       "traceId": "dev-13",
       "step": "embed",
       "service": "tokenfactory",
       "endpoint": "/embeddings",
       "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 53,
+      "promptTokens": 1736,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 5.3e-7,
-      "latencyMs": 3002,
+      "costUsd": 0.00001736,
+      "latencyMs": 3610,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:24:23.018Z",
+      "at": "2026-11-18T03:05:09.049Z",
       "traceId": "dev-13",
       "step": "embed",
       "service": "tokenfactory",
       "endpoint": "/embeddings",
       "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 295,
+      "promptTokens": 1991,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.00000295,
-      "latencyMs": 7459,
+      "costUsd": 0.00001991,
+      "latencyMs": 1714,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:24:30.486Z",
+      "at": "2026-11-18T03:05:10.785Z",
       "traceId": "dev-13",
       "step": "embed",
       "service": "tokenfactory",
       "endpoint": "/embeddings",
       "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 54,
+      "promptTokens": 1836,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 5.4e-7,
-      "latencyMs": 4760,
+      "costUsd": 0.00001836,
+      "latencyMs": 2931,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:24:35.249Z",
+      "at": "2026-11-18T03:05:13.748Z",
       "traceId": "dev-13",
       "step": "embed",
       "service": "tokenfactory",
       "endpoint": "/embeddings",
       "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 158,
+      "promptTokens": 1824,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.0000015800000000000001,
-      "latencyMs": 463,
+      "costUsd": 0.00001824,
+      "latencyMs": 1896,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:24:35.862Z",
+      "at": "2026-11-18T03:05:15.669Z",
       "traceId": "dev-13",
-      "step": "dating",
-      "service": "ncbi",
-      "endpoint": "esummary",
-      "model": null,
-      "promptTokens": 0,
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 1648,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 146,
+      "costUsd": 0.00001648,
+      "latencyMs": 2618,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:24:36.022Z",
+      "at": "2026-11-18T03:05:18.315Z",
+      "traceId": "dev-13",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 1494,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.000014940000000000001,
+      "latencyMs": 1521,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:05:19.863Z",
+      "traceId": "dev-13",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 1478,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00001478,
+      "latencyMs": 3118,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:05:23.008Z",
+      "traceId": "dev-13",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 1609,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00001609,
+      "latencyMs": 2684,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:05:25.713Z",
+      "traceId": "dev-13",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 1760,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.0000176,
+      "latencyMs": 3917,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:05:29.658Z",
+      "traceId": "dev-13",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 1469,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00001469,
+      "latencyMs": 6720,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:05:36.422Z",
+      "traceId": "dev-13",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 1473,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00001473,
+      "latencyMs": 3530,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:05:39.977Z",
+      "traceId": "dev-13",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 1612,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00001612,
+      "latencyMs": 2055,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:05:42.053Z",
+      "traceId": "dev-13",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 1572,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.000015720000000000002,
+      "latencyMs": 1492,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:05:43.573Z",
+      "traceId": "dev-13",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 1164,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00001164,
+      "latencyMs": 2146,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:05:45.755Z",
+      "traceId": "dev-13",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 1181,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00001181,
+      "latencyMs": 2767,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:05:48.702Z",
+      "traceId": "dev-13",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 1346,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00001346,
+      "latencyMs": 5080,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:05:53.828Z",
+      "traceId": "dev-13",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 109,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00000109,
+      "latencyMs": 6040,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:05:59.931Z",
       "traceId": "dev-13",
       "step": "dating",
       "service": "fetch",
@@ -1718,12 +1386,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 306,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:24:36.276Z",
+      "at": "2026-11-18T03:06:02.037Z",
       "traceId": "dev-13",
       "step": "dating",
       "service": "fetch",
@@ -1734,44 +1402,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 253,
+      "latencyMs": 2160,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:24:37.091Z",
-      "traceId": "dev-13",
-      "step": "dating",
-      "service": "fetch",
-      "endpoint": "page",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 1229,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:24:37.806Z",
-      "traceId": "dev-13",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 712,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:24:37.807Z",
+      "at": "2026-11-18T03:06:02.076Z",
       "traceId": "dev-13",
       "step": "dating",
       "service": "wayback",
@@ -1787,7 +1423,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:24:37.807Z",
+      "at": "2026-11-18T03:06:02.110Z",
       "traceId": "dev-13",
       "step": "dating",
       "service": "wayback",
@@ -1803,7 +1439,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:24:37.808Z",
+      "at": "2026-11-18T03:06:02.139Z",
       "traceId": "dev-13",
       "step": "dating",
       "service": "wayback",
@@ -1819,7 +1455,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:24:37.809Z",
+      "at": "2026-11-18T03:06:02.168Z",
       "traceId": "dev-13",
       "step": "dating",
       "service": "wayback",
@@ -1835,54 +1471,73 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:24:37.815Z",
+      "at": "2026-11-18T03:06:02.208Z",
       "traceId": "dev-13",
       "step": "page_type",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 1993,
+      "promptTokens": 1868,
       "completionTokens": 8,
-      "cachedTokens": 0,
+      "cachedTokens": 176,
       "credits": 0,
-      "costUsd": 0.0002017,
-      "latencyMs": 590,
+      "costUsd": 0.0001892,
+      "latencyMs": 454,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:24:38.432Z",
+      "at": "2026-11-18T03:06:02.688Z",
       "traceId": "dev-13",
       "step": "readouts",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 489,
+      "promptTokens": 496,
       "completionTokens": 23,
       "cachedTokens": 368,
       "credits": 0,
-      "costUsd": 0.000055799999999999994,
-      "latencyMs": 1321,
+      "costUsd": 0.0000565,
+      "latencyMs": 708,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:24:39.756Z",
+      "at": "2026-11-18T03:06:03.402Z",
       "traceId": "dev-13",
-      "step": "readouts",
+      "step": "boundary",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 449,
-      "completionTokens": 23,
-      "cachedTokens": 368,
+      "promptTokens": 367,
+      "completionTokens": 7,
+      "cachedTokens": 144,
       "credits": 0,
-      "costUsd": 0.0000518,
-      "latencyMs": 1099,
+      "costUsd": 0.000038799999999999994,
+      "latencyMs": 455,
       "status": "200",
       "cacheHit": false
     }
   ],
   "scopeNote": "Web pages only; print and paywalled origins are out of scope. Earliest source we found, not proof of first use.",
-  "otherNumbers": []
+  "otherNumbers": [
+    {
+      "url": "https://awellfedworld.org/wp-content/uploads/Livestock-Climate-Change-Anhang-Goodland.pdf",
+      "domain": "awellfedworld.org",
+      "title": "Livestock and Climate Change cows, pigs, and chickens?",
+      "date": "2009-12-15",
+      "sentence": "Livestock's Long Shadow, the widely-cited 2006 report by the United Nations Food and Agriculture Organi-zation (FAO), estimates that 7,516 million metric tons per year of CO2 equivalents (CO2e), or 18 percent of annual worldwide GHG emissions, are attributable to cattle, buffalo, sheep, goats, camels, horses, pigs, and poultry.",
+      "number": "7,516",
+      "similarity": 0.77
+    },
+    {
+      "url": "https://awellfedworld.org/wp-content/uploads/pdf/UNGlobalWarmingReport.pdf",
+      "domain": "awellfedworld.org",
+      "title": "",
+      "date": null,
+      "sentence": "The livestock sector is a major player, responsible for 18 percent of greenhouse gas emissions measured in CO2 equivalent.",
+      "number": "18",
+      "similarity": 0.795
+    }
+  ]
 }

@@ -3,7 +3,7 @@
   "id": "dev-14",
   "mode": "LIVE",
   "synthetic": false,
-  "recordedAt": "2026-11-17T06:24:40.873Z",
+  "recordedAt": "2026-11-18T03:06:03.909Z",
   "claim": {
     "text": "Americans check their phones 96 times a day.",
     "atoms": {
@@ -12,7 +12,7 @@
         "canonical": "96"
       },
       "unit": "times a day",
-      "subjectLemma": "phone",
+      "subjectLemma": "time",
       "population": "Americans",
       "time": null,
       "hedge": null,
@@ -50,15 +50,15 @@
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "yes",
-        "probability": 0.9999999999515263,
+        "probability": 0.9999999999666846,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.9999999999515263
+            "p": 0.9999999999666846
           },
           {
             "optionId": "no",
-            "p": 4.847368919631837e-11
+            "p": 3.3315447305643465e-11
           },
           {
             "optionId": "__other__",
@@ -73,17 +73,17 @@
     },
     {
       "id": "n2",
-      "url": "https://www.asurion.com/connect/news/tech-usage",
-      "domain": "asurion.com",
-      "title": "Americans Now Check Their Phones 352 Times Per Day | Asurion",
+      "url": "https://www.fox13news.com/news/americans-check-their-smartphones-96-times-a-day-survey-says",
+      "domain": "fox13news.com",
+      "title": "Americans check their smartphones 96 times a day, survey says | FOX 13 Tampa Bay",
       "date": {
-        "kind": "existed_by",
-        "value": "2022-05-23",
-        "source": "wayback_first_capture",
-        "firstCapture": "2022-05-23",
+        "kind": "published",
+        "value": "2021-09-28",
+        "source": "metadata",
+        "firstCapture": "2021-09-28",
         "conflictingDate": false
       },
-      "clusterId": "c-n2",
+      "clusterId": "c-n1",
       "evidence": "observed",
       "meta": false,
       "read": true,
@@ -93,19 +93,63 @@
       ],
       "citesEarlier": false,
       "candidateParents": [],
-      "pageType": null,
+      "pageType": {
+        "questionId": "page_type",
+        "optionId": "news",
+        "probability": 0.9999999878986893,
+        "top": [
+          {
+            "optionId": "study",
+            "p": 4.8473686428912454e-11
+          },
+          {
+            "optionId": "dataset",
+            "p": 0
+          },
+          {
+            "optionId": "report",
+            "p": 1.1861119996260505e-8
+          },
+          {
+            "optionId": "speaker",
+            "p": 0
+          },
+          {
+            "optionId": "news",
+            "p": 0.9999999878986893
+          },
+          {
+            "optionId": "blog",
+            "p": 1.9171714886914273e-10
+          },
+          {
+            "optionId": "social",
+            "p": 0
+          },
+          {
+            "optionId": "other",
+            "p": 0
+          },
+          {
+            "optionId": "__other__",
+            "p": 0
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "yes",
-        "probability": 0.9959298622149727,
+        "probability": 0.9999999994788586,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.9959298622149727
+            "p": 0.9999999994788586
           },
           {
             "optionId": "no",
-            "p": 0.004070137785027334
+            "p": 5.211412971320424e-10
           },
           {
             "optionId": "__other__",
@@ -116,19 +160,44 @@
         "threshold": null
       },
       "foundViaMeta": null,
+      "boundary": {
+        "questionId": "boundary",
+        "optionId": "print",
+        "probability": 0.999996494444232,
+        "top": [
+          {
+            "optionId": "print",
+            "p": 0.999996494444232
+          },
+          {
+            "optionId": "unsourced",
+            "p": 2.1659134861784704e-7
+          },
+          {
+            "optionId": "none",
+            "p": 0.0000032889644194222705
+          },
+          {
+            "optionId": "__other__",
+            "p": 0
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
       "injection": null
     },
     {
       "id": "n3",
-      "url": "https://www.zippia.com/advice/smartphone-usage-statistics",
-      "domain": "zippia.com",
-      "title": "20 Vital Smartphone Usage Statistics [2026]: Facts, Data, and Trends On Mobile Use In The U.S. - Zippia",
+      "url": "https://www.asurion.com/connect/news/tech-usage",
+      "domain": "asurion.com",
+      "title": "Americans Now Check Their Phones 352 Times Per Day | Asurion",
       "date": {
         "kind": "existed_by",
-        "value": "2022-08-27",
+        "value": "2022-05-23",
         "source": "wayback_first_capture",
-        "firstCapture": "2022-08-27",
-        "conflictingDate": true
+        "firstCapture": "2022-05-23",
+        "conflictingDate": false
       },
       "clusterId": "c-n3",
       "evidence": "observed",
@@ -144,15 +213,62 @@
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "yes",
-        "probability": 0.99999999999886,
+        "probability": 0.998830489697967,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.99999999999886
+            "p": 0.998830489697967
           },
           {
             "optionId": "no",
-            "p": 1.1399921081742409e-12
+            "p": 0.0011695103020329112
+          },
+          {
+            "optionId": "__other__",
+            "p": 1.1102230246251565e-16
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    },
+    {
+      "id": "n4",
+      "url": "https://www.zippia.com/advice/smartphone-usage-statistics",
+      "domain": "zippia.com",
+      "title": "20 Vital Smartphone Usage Statistics [2026]: Facts, Data, and Trends On Mobile Use In The U.S. - Zippia",
+      "date": {
+        "kind": "existed_by",
+        "value": "2022-08-27",
+        "source": "wayback_first_capture",
+        "firstCapture": "2022-08-27",
+        "conflictingDate": true
+      },
+      "clusterId": "c-n4",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s4"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9999999999975866,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9999999999975866
+          },
+          {
+            "optionId": "no",
+            "p": 2.4133633838506315e-12
           },
           {
             "optionId": "__other__",
@@ -166,7 +282,7 @@
       "injection": null
     },
     {
-      "id": "n4",
+      "id": "n5",
       "url": "https://www.q13fox.com/news/americans-check-their-smartphones-96-times-a-day-survey-says",
       "domain": "q13fox.com",
       "title": "Americans check their smartphones 96 times a day, survey says | FOX 13 Seattle",
@@ -177,20 +293,20 @@
         "firstCapture": "2021-09-28",
         "conflictingDate": false
       },
-      "clusterId": "c-n4",
+      "clusterId": "c-n5",
       "evidence": "observed",
       "meta": false,
       "read": true,
       "versionOf": null,
       "spanIds": [
-        "s4"
+        "s5"
       ],
       "citesEarlier": false,
       "candidateParents": [],
       "pageType": {
         "questionId": "page_type",
         "optionId": "news",
-        "probability": 0.9999999984537924,
+        "probability": 0.999999998861391,
         "top": [
           {
             "optionId": "study",
@@ -202,7 +318,7 @@
           },
           {
             "optionId": "report",
-            "p": 6.691586076468469e-10
+            "p": 6.691586079722098e-10
           },
           {
             "optionId": "speaker",
@@ -210,11 +326,11 @@
           },
           {
             "optionId": "news",
-            "p": 0.9999999984537924
+            "p": 0.999999998861391
           },
           {
             "optionId": "blog",
-            "p": 8.592166600139314e-10
+            "p": 4.599055370699909e-10
           },
           {
             "optionId": "social",
@@ -222,7 +338,7 @@
           },
           {
             "optionId": "other",
-            "p": 1.7832472868640934e-11
+            "p": 9.545034906335934e-12
           },
           {
             "optionId": "__other__",
@@ -235,15 +351,15 @@
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "yes",
-        "probability": 0.9999999999915765,
+        "probability": 0.9999999987498471,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.9999999999915765
+            "p": 0.9999999987498471
           },
           {
             "optionId": "no",
-            "p": 8.423464492605506e-12
+            "p": 1.250152940112146e-9
           },
           {
             "optionId": "__other__",
@@ -257,23 +373,23 @@
       "boundary": {
         "questionId": "boundary",
         "optionId": "print",
-        "probability": 0.9999959469005546,
+        "probability": 0.9999914069246684,
         "top": [
           {
             "optionId": "print",
-            "p": 0.9999959469005546
+            "p": 0.9999914069246684
           },
           {
             "optionId": "unsourced",
-            "p": 7.410128253043701e-7
+            "p": 0.0000016308304447192566
           },
           {
             "optionId": "none",
-            "p": 0.0000032888636176538074
+            "p": 0.000006962244886921811
           },
           {
             "optionId": "__other__",
-            "p": 2.3223002409977767e-8
+            "p": 0
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -285,29 +401,29 @@
   "edges": [
     {
       "id": "e1",
-      "parentId": "n4",
+      "parentId": "n5",
       "childId": "n1",
       "kind": "inferred",
-      "parentSpanId": "s4",
+      "parentSpanId": "s5",
       "childSpanId": "s1",
       "linkHref": null
     },
     {
       "id": "e2",
       "parentId": "n1",
-      "childId": "n2",
+      "childId": "n3",
       "kind": "inferred",
       "parentSpanId": "s1",
-      "childSpanId": "s2",
+      "childSpanId": "s3",
       "linkHref": null
     },
     {
       "id": "e3",
-      "parentId": "n2",
-      "childId": "n3",
+      "parentId": "n3",
+      "childId": "n4",
       "kind": "inferred",
-      "parentSpanId": "s2",
-      "childSpanId": "s3",
+      "parentSpanId": "s3",
+      "childSpanId": "s4",
       "linkHref": null
     }
   ],
@@ -315,21 +431,15 @@
     {
       "id": "c-n1",
       "nodeIds": [
-        "n1"
-      ],
-      "rule": "single"
-    },
-    {
-      "id": "c-n4",
-      "nodeIds": [
-        "n4"
-      ],
-      "rule": "single"
-    },
-    {
-      "id": "c-n2",
-      "nodeIds": [
+        "n1",
         "n2"
+      ],
+      "rule": "near_duplicate"
+    },
+    {
+      "id": "c-n5",
+      "nodeIds": [
+        "n5"
       ],
       "rule": "single"
     },
@@ -337,6 +447,13 @@
       "id": "c-n3",
       "nodeIds": [
         "n3"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n4",
+      "nodeIds": [
+        "n4"
       ],
       "rule": "single"
     }
@@ -352,13 +469,27 @@
       "end": 44,
       "extractSha256": "54e8377dbe49c6f2347f8e017317cd1f96ad02b08ea826c0bb0df977e863c638",
       "windowSha256": "5b61600f14d5d0b67d078d816a525ba58cd2d625eaa12526ac7ca9ef02d74482",
-      "fetchedAt": "2026-11-17T06:25:09.984Z",
+      "fetchedAt": "2026-11-18T03:06:17.075Z",
       "waybackUrl": "https://web.archive.org/web/20211201151813/https://www.asurion.com/press-releases/americans-check-their-phones-96-times-a-day",
       "tier": "exact"
     },
     {
       "id": "s2",
       "nodeId": "n2",
+      "text": "Americans check their smartphones 96 times a day, survey says.",
+      "contextBefore": "",
+      "contextAfter": " NASHVILLE, Tenn. - New research shows the U.S. is deep into the digital age with data showing Americans check their phones 96 times a day. That's once every 10 minutes, according to global tech care ",
+      "start": 0,
+      "end": 62,
+      "extractSha256": "3db76b5cb2ba3ac9c71017132c087c22ffe90c5ab0dde777146879ac4a59a555",
+      "windowSha256": "81142728cd04c9ce72e1fad074ae9a946d9b905b0357782c43e69bdb05c74c35",
+      "fetchedAt": "2026-11-18T03:06:17.507Z",
+      "waybackUrl": "https://web.archive.org/web/20210928233528/https://www.fox13news.com/news/americans-check-their-smartphones-96-times-a-day-survey-says",
+      "tier": "exact"
+    },
+    {
+      "id": "s3",
+      "nodeId": "n3",
       "text": "Whether we're sending text messages, capturing content or bringing up digital vaccination cards, it's a nearly 4-fold increase from a similar survey conducted by Asurion before the pandemic in 2019, when Americans said they checked their phones 96 times a day\\*\\*.",
       "contextBefore": " can't seem to put their phones down and are reaching for their device an average of 352 times a day - once every two minutes and 43 seconds -according to new research by tech care company Asurion\\*. ",
       "contextAfter": " \"From video chatting with loved ones to conducting contactless payments, mobile banking and even bringing up menus at restaurants, the pandemic has certainly put our smartphones at the center of it a",
@@ -366,13 +497,13 @@
       "end": 848,
       "extractSha256": "745251029a98b9e36803e38bcb2d074a8e46ee6b557ff0e98cca3e5c1bb6a5bb",
       "windowSha256": "1b8957fbc76744f73154103522c7150aa4459b9e09ae8d980c42a67f297d324c",
-      "fetchedAt": "2026-11-17T06:25:20.866Z",
+      "fetchedAt": "2026-11-18T03:06:18.580Z",
       "waybackUrl": "https://web.archive.org/web/20220523173908/https://www.asurion.com/connect/news/tech-usage",
       "tier": "exact"
     },
     {
-      "id": "s3",
-      "nodeId": "n3",
+      "id": "s4",
+      "nodeId": "n4",
       "text": "According to our comprehensive research: * 81.6% of Americans, equating to over 270 million individuals, owned a smartphone as of 2026. * The average American now spends 5 hours and 24 minutes on their mobile device each day. * On average, Americans check their phones 96 times per day, roughly once every ten minutes. * Globally, there are approximately 6.92 billion smartphone users, which constitutes about 86.29% of the world's population as of 2026. * As of 2022, 59.16% of website traffic originated from mobile devices.",
       "contextBefore": "and entertainment. As navigation aids and social platforms, their usage continues to rise steadily. To provide insights into smartphone usage in the U.S., we've compiled the most relevant statistics. ",
       "contextAfter": " For a deeper understanding, we categorized the data into the following areas: Reliance and Addictiveness | Mobile Commerce | Trends and Projections General Smartphone Usage Statistics. With 81.6% of ",
@@ -380,21 +511,21 @@
       "end": 2721,
       "extractSha256": "9e16f4a522c89bf7f895d80b0819d67b8e0d584b8a4c5374f3c6873ea320ec86",
       "windowSha256": "4cfb3507d0e5bc54dbb85dca15311affa0d2f8cc1a21902ff21287871786144c",
-      "fetchedAt": "2026-11-17T06:25:33.171Z",
+      "fetchedAt": "2026-11-18T03:06:22.274Z",
       "waybackUrl": "https://web.archive.org/web/20220827102059/https://www.zippia.com/advice/smartphone-usage-statistics",
       "tier": "exact"
     },
     {
-      "id": "s4",
-      "nodeId": "n4",
-      "text": "NASHVILLE, Tenn. - New research shows the U.S. is deep into the digital age with data showing Americans check their phones 96 times a day.",
-      "contextBefore": "21 2:33 PM PDT Published September 28, 2021 1:02 PM PDT Share * Copy Link * Email * Facebook * Twitter * LinkedIn * Reddit That's once every 10 minutes, according to global tech care company Asurion. ",
-      "contextAfter": " That's once every 10 minutes, according to global tech care company Asurion. The company also said it's a 20% increase from a similar survey researchers conducted two years ago. However, Asurion said",
-      "start": 432,
-      "end": 570,
+      "id": "s5",
+      "nodeId": "n5",
+      "text": "Expand / Collapse search River Flood Warning from TUE 6:05 PM PST until WED 5:00 AM PST, Mason County Americans check their smartphones 96 times a day, survey says.",
+      "contextBefore": "",
+      "contextAfter": " By Chris Williams FOX TV Digital Team News Updated September 28, 2021 2:33 PM PDT Published September 28, 2021 1:02 PM PDT Share * Copy Link * Email * Facebook * Twitter * LinkedIn * Reddit That's on",
+      "start": 0,
+      "end": 164,
       "extractSha256": "6ebc00d6aaa44d5ad603dcd078e58af76d0833d6d30001dfed1b3ca575422f87",
-      "windowSha256": "e9647ecbac5ee90655e2043e6580bb7578c46e320bc8a14cee592ff4f4e78b82",
-      "fetchedAt": "2026-11-17T06:25:42.891Z",
+      "windowSha256": "ea1c9d1a15d701f188f70cb302da8e80c2afdc61cf20a703261e01ea6f3bea52",
+      "fetchedAt": "2026-11-18T03:06:27.481Z",
       "waybackUrl": "https://web.archive.org/web/20210928205121/https://www.q13fox.com/news/americans-check-their-smartphones-96-times-a-day-survey-says",
       "tier": "exact"
     }
@@ -434,89 +565,97 @@
         {
           "id": "scope_widened",
           "source": "inferred",
-          "value": "no",
-          "probability": 0.9968273168985372,
+          "value": "yes",
+          "probability": 0.952574126764137,
           "disputed": false
         },
         {
           "id": "attribution_shifted",
           "source": "inferred",
-          "value": "yes",
-          "probability": 0.5621765008871246,
+          "value": "no",
+          "probability": 0.9046505126477357,
           "disputed": false
         },
         {
           "id": "context_stripped",
           "source": "inferred",
           "value": "yes",
-          "probability": 0.5621765012946564,
+          "probability": 0.9706877673419302,
           "disputed": false
         }
       ],
       "wordDiff": [
         {
           "op": "del",
-          "text": "nashville"
+          "text": "expand"
         },
         {
           "op": "del",
-          "text": "tenn"
+          "text": "collapse"
         },
         {
           "op": "del",
-          "text": "new"
+          "text": "search"
         },
         {
           "op": "del",
-          "text": "research"
+          "text": "river"
         },
         {
           "op": "del",
-          "text": "shows"
+          "text": "flood"
         },
         {
           "op": "del",
-          "text": "the"
+          "text": "warning"
         },
         {
           "op": "del",
-          "text": "u.s"
+          "text": "from"
         },
         {
           "op": "del",
-          "text": "is"
+          "text": "tue"
         },
         {
           "op": "del",
-          "text": "deep"
+          "text": "6:05"
         },
         {
           "op": "del",
-          "text": "into"
+          "text": "pm"
         },
         {
           "op": "del",
-          "text": "the"
+          "text": "pst"
         },
         {
           "op": "del",
-          "text": "digital"
+          "text": "until"
         },
         {
           "op": "del",
-          "text": "age"
+          "text": "wed"
         },
         {
           "op": "del",
-          "text": "with"
+          "text": "5:00"
         },
         {
           "op": "del",
-          "text": "data"
+          "text": "am"
         },
         {
           "op": "del",
-          "text": "showing"
+          "text": "pst"
+        },
+        {
+          "op": "del",
+          "text": "mason"
+        },
+        {
+          "op": "del",
+          "text": "county"
         },
         {
           "op": "same",
@@ -531,8 +670,12 @@
           "text": "their"
         },
         {
-          "op": "same",
+          "op": "add",
           "text": "phones"
+        },
+        {
+          "op": "del",
+          "text": "smartphones"
         },
         {
           "op": "same",
@@ -549,6 +692,14 @@
         {
           "op": "same",
           "text": "day"
+        },
+        {
+          "op": "del",
+          "text": "survey"
+        },
+        {
+          "op": "del",
+          "text": "says"
         }
       ],
       "faithful": false
@@ -588,21 +739,21 @@
           "id": "scope_widened",
           "source": "inferred",
           "value": "no",
-          "probability": 0.6224593272126526,
+          "probability": 0.7772998556529459,
           "disputed": false
         },
         {
           "id": "attribution_shifted",
           "source": "inferred",
           "value": "yes",
-          "probability": 0.9996646499688258,
+          "probability": 0.999088948643192,
           "disputed": false
         },
         {
           "id": "context_stripped",
           "source": "inferred",
           "value": "no",
-          "probability": 0.8807970468852102,
+          "probability": 0.880797046884472,
           "disputed": false
         }
       ],
@@ -813,21 +964,21 @@
           "id": "scope_widened",
           "source": "inferred",
           "value": "no",
-          "probability": 0.6791786849778944,
+          "probability": 0.49999999686914015,
           "disputed": false
         },
         {
           "id": "attribution_shifted",
           "source": "inferred",
           "value": "yes",
-          "probability": 0.9997965573407003,
+          "probability": 0.9997387656334272,
           "disputed": false
         },
         {
           "id": "context_stripped",
           "source": "inferred",
           "value": "no",
-          "probability": 0.8807970469260298,
+          "probability": 0.9626730730531032,
           "disputed": false
         }
       ],
@@ -1294,27 +1445,28 @@
   ],
   "blame": [],
   "roots": {
-    "pages": 4,
+    "pages": 5,
     "clusters": 4,
     "rootsLinked": 0,
     "clustersUnlinked": 4,
     "studiesFound": null,
     "independentRoots": 4,
-    "copies": 0
+    "copies": 1
   },
   "redHopEdgeId": "e1",
   "earliest": {
     "nodeIds": [
-      "n4"
+      "n2",
+      "n5"
     ],
     "earlierWindowSearches": 4,
     "earlierFound": 0
   },
   "failure": null,
   "budget": {
-    "credits": 11,
-    "usd": 0.0006692099999999999,
-    "ms": 84576,
+    "credits": 7,
+    "usd": 0.0007296299999999998,
+    "ms": 41367,
     "capHit": null
   },
   "decision": {
@@ -1324,7 +1476,7 @@
       "no earliest page with a confirmed date, a primary page type, no earlier citation and no negated span"
     ],
     "counts": {
-      "pages": 4,
+      "pages": 5,
       "clusters": 4,
       "unreadParents": 0,
       "earlierWindowSearches": 4
@@ -1332,59 +1484,59 @@
   },
   "searchLog": [
     {
-      "at": "2026-11-17T06:24:49.577Z",
+      "at": "2026-11-18T03:06:09.096Z",
       "step": "search",
-      "query": "\"96 times a day\" phones",
-      "endDate": "2026-11-17",
+      "query": "\"96 times a day\"",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:24:50.524Z",
+      "at": "2026-11-18T03:06:10.748Z",
       "step": "search",
-      "query": "\"96 times a day\" Americans phone check",
-      "endDate": "2026-11-17",
+      "query": "\"96 times a day\" Americans check phones",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:24:52.001Z",
+      "at": "2026-11-18T03:06:12.464Z",
       "step": "search",
-      "query": "\"check their phones\" 96 times daily",
-      "endDate": "2026-11-17",
+      "query": "\"Americans check their phones\" 96 times daily",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:24:53.207Z",
+      "at": "2026-11-18T03:06:13.913Z",
       "step": "search",
-      "query": "96 phone checks per day Americans study",
-      "endDate": "2026-11-17",
+      "query": "\"96 times a day\" phone checking Americans study",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:24:55.211Z",
+      "at": "2026-11-18T03:06:15.577Z",
       "step": "meta-search",
-      "query": "\"96 times a day\" phones",
-      "endDate": "2026-11-17",
+      "query": "\"96 times a day\"",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 0,
       "kept": 0,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:25:38.873Z",
+      "at": "2026-11-18T03:06:25.357Z",
       "step": "search",
-      "query": "\"96 times a day\" phones",
+      "query": "\"96 times a day\"",
       "endDate": "2019-11-20",
       "startDate": null,
       "results": 10,
@@ -1392,7 +1544,7 @@
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:25:39.814Z",
+      "at": "2026-11-18T03:06:25.362Z",
       "step": "search",
       "query": "\"Americans check their phones 96 times a day\"",
       "endDate": "2019-11-20",
@@ -1402,19 +1554,9 @@
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:25:40.740Z",
+      "at": "2026-11-18T03:06:25.366Z",
       "step": "search",
-      "query": "Asurion Americans check phones 96 times a day study",
-      "endDate": "2019-11-20",
-      "startDate": null,
-      "results": 10,
-      "kept": 10,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:25:41.992Z",
-      "step": "search",
-      "query": "study on Americans phone checking 96 times daily",
+      "query": "Asurion 96 phone checks per day study",
       "endDate": "2019-11-20",
       "startDate": null,
       "results": 10,
@@ -1422,7 +1564,17 @@
       "dropped": 1
     },
     {
-      "at": "2026-11-17T06:25:43.678Z",
+      "at": "2026-11-18T03:06:25.374Z",
+      "step": "search",
+      "query": "96 times a day phone usage study Americans",
+      "endDate": "2019-11-20",
+      "startDate": null,
+      "results": 10,
+      "kept": 9,
+      "dropped": 1
+    },
+    {
+      "at": "2026-11-18T03:06:27.777Z",
       "step": "follow",
       "query": "https://www.q13fox.com/news/americans-check-their-smartphones-96-times-a-day-survey-says cited by https://www.zippia.com/advice/smartphone-usage-statistics, not beside its span: no link-verified edge",
       "endDate": null,
@@ -1434,7 +1586,7 @@
   ],
   "usage": [
     {
-      "at": "2026-11-17T06:24:40.873Z",
+      "at": "2026-11-18T03:06:03.910Z",
       "traceId": "dev-14",
       "step": "tokenfactory",
       "service": "tokenfactory",
@@ -1445,28 +1597,28 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0.0000297,
-      "latencyMs": 2282,
+      "latencyMs": 1228,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:24:43.160Z",
+      "at": "2026-11-18T03:06:05.148Z",
       "traceId": "dev-14",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 269,
-      "completionTokens": 105,
+      "completionTokens": 140,
       "cachedTokens": 240,
       "credits": 0,
-      "costUsd": 0.000058399999999999997,
-      "latencyMs": 4227,
+      "costUsd": 0.0000689,
+      "latencyMs": 2372,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:24:49.576Z",
+      "at": "2026-11-18T03:06:09.096Z",
       "traceId": "dev-14",
       "step": "search",
       "service": "tavily",
@@ -1477,12 +1629,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 2167,
+      "latencyMs": 1526,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:24:50.523Z",
+      "at": "2026-11-18T03:06:10.747Z",
       "traceId": "dev-14",
       "step": "search",
       "service": "tavily",
@@ -1493,12 +1645,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 929,
+      "latencyMs": 1631,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:24:52.001Z",
+      "at": "2026-11-18T03:06:12.463Z",
       "traceId": "dev-14",
       "step": "search",
       "service": "tavily",
@@ -1509,12 +1661,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1460,
+      "latencyMs": 1699,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:24:53.206Z",
+      "at": "2026-11-18T03:06:13.912Z",
       "traceId": "dev-14",
       "step": "search",
       "service": "tavily",
@@ -1525,12 +1677,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1191,
+      "latencyMs": 1431,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:24:55.211Z",
+      "at": "2026-11-18T03:06:15.577Z",
       "traceId": "dev-14",
       "step": "meta-search",
       "service": "tavily",
@@ -1541,12 +1693,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1994,
+      "latencyMs": 1645,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:24:55.393Z",
+      "at": "2026-11-18T03:06:15.714Z",
       "traceId": "dev-14",
       "step": "extract",
       "service": "tavily",
@@ -1557,60 +1709,28 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 167,
+      "latencyMs": 120,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:24:56.154Z",
+      "at": "2026-11-18T03:06:15.717Z",
       "traceId": "dev-14",
       "step": "embed",
       "service": "tokenfactory",
       "endpoint": "/embeddings",
       "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 1684,
+      "promptTokens": 87,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.00001684,
-      "latencyMs": 4941,
+      "costUsd": 8.7e-7,
+      "latencyMs": 1341,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:25:01.108Z",
-      "traceId": "dev-14",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 1706,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.00001706,
-      "latencyMs": 1074,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:25:02.209Z",
-      "traceId": "dev-14",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 1294,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.00001294,
-      "latencyMs": 6857,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:25:09.983Z",
+      "at": "2026-11-18T03:06:17.074Z",
       "traceId": "dev-14",
       "step": "dating",
       "service": "wayback",
@@ -1621,12 +1741,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 869,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:25:09.986Z",
+      "at": "2026-11-18T03:06:17.080Z",
       "traceId": "dev-14",
       "step": "same_claim",
       "service": "tokenfactory",
@@ -1637,12 +1757,12 @@
       "cachedTokens": 160,
       "credits": 0,
       "costUsd": 0.0000221,
-      "latencyMs": 732,
+      "latencyMs": 405,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:25:20.866Z",
+      "at": "2026-11-18T03:06:17.506Z",
       "traceId": "dev-14",
       "step": "dating",
       "service": "wayback",
@@ -1653,12 +1773,44 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 10128,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-18T03:06:17.508Z",
+      "traceId": "dev-14",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 203,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.000022400000000000002,
+      "latencyMs": 298,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:25:20.866Z",
+      "at": "2026-11-18T03:06:18.578Z",
+      "traceId": "dev-14",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 769,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:06:18.582Z",
       "traceId": "dev-14",
       "step": "same_claim",
       "service": "tokenfactory",
@@ -1666,47 +1818,15 @@
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 250,
       "completionTokens": 7,
-      "cachedTokens": 160,
+      "cachedTokens": 176,
       "credits": 0,
-      "costUsd": 0.000027099999999999998,
-      "latencyMs": 998,
+      "costUsd": 0.0000271,
+      "latencyMs": 311,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:25:21.895Z",
-      "traceId": "dev-14",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 1314,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.00001314,
-      "latencyMs": 4804,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:25:26.707Z",
-      "traceId": "dev-14",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 1148,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.00001148,
-      "latencyMs": 5674,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:25:33.170Z",
+      "at": "2026-11-18T03:06:22.273Z",
       "traceId": "dev-14",
       "step": "dating",
       "service": "wayback",
@@ -1717,12 +1837,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 728,
+      "latencyMs": 3354,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:25:33.177Z",
+      "at": "2026-11-18T03:06:22.283Z",
       "traceId": "dev-14",
       "step": "same_claim",
       "service": "tokenfactory",
@@ -1733,28 +1853,28 @@
       "cachedTokens": 176,
       "credits": 0,
       "costUsd": 0.0000353,
-      "latencyMs": 483,
+      "latencyMs": 451,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:25:33.669Z",
+      "at": "2026-11-18T03:06:22.741Z",
       "traceId": "dev-14",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 306,
-      "completionTokens": 115,
-      "cachedTokens": 256,
+      "completionTokens": 142,
+      "cachedTokens": 240,
       "credits": 0,
-      "costUsd": 0.0000651,
-      "latencyMs": 4029,
+      "costUsd": 0.00007319999999999999,
+      "latencyMs": 2607,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:25:38.872Z",
+      "at": "2026-11-18T03:06:25.357Z",
       "traceId": "dev-14",
       "step": "search",
       "service": "tavily",
@@ -1763,14 +1883,14 @@
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1158,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:25:39.814Z",
+      "at": "2026-11-18T03:06:25.362Z",
       "traceId": "dev-14",
       "step": "search",
       "service": "tavily",
@@ -1779,14 +1899,14 @@
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 927,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:25:40.740Z",
+      "at": "2026-11-18T03:06:25.366Z",
       "traceId": "dev-14",
       "step": "search",
       "service": "tavily",
@@ -1795,14 +1915,14 @@
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 913,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:25:41.992Z",
+      "at": "2026-11-18T03:06:25.374Z",
       "traceId": "dev-14",
       "step": "search",
       "service": "tavily",
@@ -1811,14 +1931,14 @@
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1238,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:25:42.164Z",
+      "at": "2026-11-18T03:06:25.570Z",
       "traceId": "dev-14",
       "step": "extract",
       "service": "tavily",
@@ -1829,12 +1949,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 155,
+      "latencyMs": 175,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:25:42.891Z",
+      "at": "2026-11-18T03:06:27.480Z",
       "traceId": "dev-14",
       "step": "dating",
       "service": "wayback",
@@ -1845,108 +1965,76 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 724,
+      "latencyMs": 1909,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:25:42.894Z",
+      "at": "2026-11-18T03:06:27.482Z",
       "traceId": "dev-14",
       "step": "same_claim",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 223,
+      "promptTokens": 233,
       "completionTokens": 7,
       "cachedTokens": 176,
       "credits": 0,
-      "costUsd": 0.0000244,
-      "latencyMs": 782,
+      "costUsd": 0.0000254,
+      "latencyMs": 295,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:25:43.712Z",
+      "at": "2026-11-18T03:06:27.793Z",
       "traceId": "dev-14",
       "step": "embed",
       "service": "tokenfactory",
       "endpoint": "/embeddings",
       "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 1656,
+      "promptTokens": 379,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.00001656,
-      "latencyMs": 1790,
+      "costUsd": 0.00000379,
+      "latencyMs": 5972,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:25:45.514Z",
+      "at": "2026-11-18T03:06:33.771Z",
       "traceId": "dev-14",
       "step": "embed",
       "service": "tokenfactory",
       "endpoint": "/embeddings",
       "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 535,
+      "promptTokens": 141,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.0000053500000000000004,
-      "latencyMs": 2131,
+      "costUsd": 0.00000141,
+      "latencyMs": 1398,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:25:47.657Z",
+      "at": "2026-11-18T03:06:35.176Z",
       "traceId": "dev-14",
       "step": "embed",
       "service": "tokenfactory",
       "endpoint": "/embeddings",
       "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 185,
+      "promptTokens": 276,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.00000185,
-      "latencyMs": 2819,
+      "costUsd": 0.0000027600000000000003,
+      "latencyMs": 3675,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:25:50.526Z",
-      "traceId": "dev-14",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 548,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.00000548,
-      "latencyMs": 4349,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:25:54.879Z",
-      "traceId": "dev-14",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 251,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.00000251,
-      "latencyMs": 4247,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:25:59.639Z",
+      "at": "2026-11-18T03:06:38.902Z",
       "traceId": "dev-14",
       "step": "dating",
       "service": "fetch",
@@ -1957,12 +2045,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 504,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:25:59.645Z",
+      "at": "2026-11-18T03:06:38.935Z",
       "traceId": "dev-14",
       "step": "dating",
       "service": "fetch",
@@ -1973,12 +2061,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 510,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:26:00.179Z",
+      "at": "2026-11-18T03:06:39.519Z",
       "traceId": "dev-14",
       "step": "dating",
       "service": "fetch",
@@ -1989,12 +2077,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 534,
+      "latencyMs": 582,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:26:00.353Z",
+      "at": "2026-11-18T03:06:39.782Z",
       "traceId": "dev-14",
       "step": "dating",
       "service": "fetch",
@@ -2005,12 +2093,28 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 713,
+      "latencyMs": 843,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:26:00.357Z",
+      "at": "2026-11-18T03:06:40.394Z",
+      "traceId": "dev-14",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 873,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:06:40.397Z",
       "traceId": "dev-14",
       "step": "dating",
       "service": "wayback",
@@ -2026,7 +2130,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:26:00.358Z",
+      "at": "2026-11-18T03:06:40.401Z",
       "traceId": "dev-14",
       "step": "dating",
       "service": "wayback",
@@ -2042,7 +2146,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:26:00.359Z",
+      "at": "2026-11-18T03:06:40.410Z",
       "traceId": "dev-14",
       "step": "dating",
       "service": "wayback",
@@ -2058,7 +2162,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:26:00.359Z",
+      "at": "2026-11-18T03:06:40.413Z",
       "traceId": "dev-14",
       "step": "dating",
       "service": "wayback",
@@ -2074,7 +2178,39 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:26:00.364Z",
+      "at": "2026-11-18T03:06:40.413Z",
+      "traceId": "dev-14",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-18T03:06:40.450Z",
+      "traceId": "dev-14",
+      "step": "page_type",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 852,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.00008730000000000001,
+      "latencyMs": 453,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:06:40.931Z",
       "traceId": "dev-14",
       "step": "page_type",
       "service": "tokenfactory",
@@ -2085,28 +2221,28 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0.0000986,
-      "latencyMs": 569,
+      "latencyMs": 390,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:26:00.961Z",
+      "at": "2026-11-18T03:06:41.326Z",
       "traceId": "dev-14",
       "step": "readouts",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 430,
+      "promptTokens": 440,
       "completionTokens": 23,
       "cachedTokens": 368,
       "credits": 0,
-      "costUsd": 0.0000499,
-      "latencyMs": 1332,
+      "costUsd": 0.0000509,
+      "latencyMs": 656,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:26:02.296Z",
+      "at": "2026-11-18T03:06:41.985Z",
       "traceId": "dev-14",
       "step": "readouts",
       "service": "tokenfactory",
@@ -2117,12 +2253,12 @@
       "cachedTokens": 368,
       "credits": 0,
       "costUsd": 0.0000526,
-      "latencyMs": 1385,
+      "latencyMs": 666,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:26:03.684Z",
+      "at": "2026-11-18T03:06:42.654Z",
       "traceId": "dev-14",
       "step": "readouts",
       "service": "tokenfactory",
@@ -2130,30 +2266,65 @@
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 589,
       "completionTokens": 23,
-      "cachedTokens": 0,
+      "cachedTokens": 368,
       "credits": 0,
       "costUsd": 0.0000658,
-      "latencyMs": 1327,
+      "latencyMs": 713,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:26:05.016Z",
+      "at": "2026-11-18T03:06:43.370Z",
       "traceId": "dev-14",
       "step": "boundary",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 352,
+      "promptTokens": 253,
       "completionTokens": 6,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.000037000000000000005,
-      "latencyMs": 423,
+      "costUsd": 0.000027099999999999998,
+      "latencyMs": 1478,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:06:44.849Z",
+      "traceId": "dev-14",
+      "step": "boundary",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 326,
+      "completionTokens": 6,
+      "cachedTokens": 160,
+      "credits": 0,
+      "costUsd": 0.0000344,
+      "latencyMs": 425,
       "status": "200",
       "cacheHit": false
     }
   ],
   "scopeNote": "Web pages only; print and paywalled origins are out of scope. Earliest source we found, not proof of first use.",
-  "otherNumbers": []
+  "otherNumbers": [
+    {
+      "url": "https://nypost.com/2017/11/08/americans-check-their-phones-80-times-a-day-study",
+      "domain": "nypost.com",
+      "title": "Americans check their phones 80 times a day: study | New York Post",
+      "date": "2017-11-08",
+      "sentence": "Lifestyle Americans check their phones 80 times a day: study.",
+      "number": "80",
+      "similarity": 0.861
+    },
+    {
+      "url": "https://time.com/4147614/smartphone-usage-us-2015",
+      "domain": "time.com",
+      "title": "Americans Check Their Phones 8 Billion Times Per Day",
+      "date": "2015-12-15",
+      "sentence": "On average, people in the United States across all age groups check their phones 46 times per day, according to Deloitte.",
+      "number": "46",
+      "similarity": 0.836
+    }
+  ]
 }

@@ -3,6 +3,7 @@
     "credits": 150,
     "usd": 0.5,
     "ms": 300000,
+    "walkShare": 0.7,
     "depth": 8,
     "frontier": 5
   },
@@ -49,7 +50,17 @@
     "\\b(?:ai|llm|language model|assistant|chatbot)s?[.,:;!?]*\\s+(?:are you |if you are |you are |while )?reading this\\b",
     "\\btreat (?:it|this) as (?:the|an?) (?:original|primary|peer-reviewed|authoritative)\\b"
   ],
-  "factCheckDomains": ["snopes.com", "politifact.com", "factcheck.org", "fullfact.org", "leadstories.com", "checkyourfact.com", "africacheck.org", "truthorfiction.com", "quoteinvestigator.com"],
+  "factCheckDomains": [
+    "snopes.com",
+    "politifact.com",
+    "factcheck.org",
+    "fullfact.org",
+    "leadstories.com",
+    "checkyourfact.com",
+    "africacheck.org",
+    "truthorfiction.com",
+    "quoteinvestigator.com"
+  ],
   "clusterSimilarityThreshold": 0.9,
   "metaMaps": true,
   "printCues": [
@@ -69,7 +80,21 @@
     "\\b(?:study|report|paper|survey|article|analysis|book)\\s+(?:published|released|issued)?\\s*in\\s+(?<year>(?:1[5-9]|20)\\d{2})\\b",
     "\\bfirst (?:reported|published) in\\s+(?<year>(?:1[5-9]|20)\\d{2})\\b"
   ],
-  "editableDomains": ["wikipedia.org", "wikiquote.org", "wikia.com", "fandom.com", "wikihow.com", "everybodywiki.com"],
+  "priorUseCues": [
+    "\\b(?:admonition|adage|old saying|conventional wisdom|folk wisdom)\\b",
+    "\\b(?:commonly|widely|often|frequently|oft)[- ](?:said|cited|quoted|repeated|heard|held|believed|claimed|stated|recommended|given)\\b",
+    "\\bthe (?:seemingly |oft-repeated )?(?:common|popular|familiar|ubiquitous) (?:advice|belief|notion|claim|recommendation|saying|refrain)\\b",
+    "\\b(?:we|you)(?:'ve| have) (?:all |probably |likely |often )?(?:been told|heard)\\b",
+    "\\bit is (?:often|commonly|widely|frequently) (?:said|claimed|believed|stated)\\b"
+  ],
+  "editableDomains": [
+    "wikipedia.org",
+    "wikiquote.org",
+    "wikia.com",
+    "fandom.com",
+    "wikihow.com",
+    "everybodywiki.com"
+  ],
   "secondSameClaimModel": null,
   "otherNumberSimilarity": 0.75,
   "hedgeWords": [
@@ -100,6 +125,7 @@
     "relative to"
   ],
   "notes": {
+    "caps.walkShare": "#192 F2 time reserve (#212): no new walk round starts once this share of caps.ms has passed; a round already running finishes. The rest of caps.ms is left for dating, page_type, readouts and the card, so a deep trail that keeps stepping back (dev-05) ends with a card, recorded as a time cap hit. 0.7 of 300 s is 210 s; a stub trail ran to 360 s with no reserve.",
     "metaMaps": "T49: one extra search per trace limited to factCheckDomains; up to two fact-check pages are read as meta nodes (never origins) and the pages they cite are read first. A page reached that way records foundViaMeta and still needs its own verbatim span. false turns it off.",
     "printCues": "T37: case-insensitive patterns that show the earliest page credits print (an ISBN, page or volume numbers, a journal, a book, a dated study). A typed boundary of print counts only if one matches the sentence or the text around it.",
     "writtenCitationCues": "#192 F4: case-insensitive patterns for an earlier source cited in words, each with a named group `year` that sits inside the cited phrase ('2009 issue of', 'published in 2013', 'a 2006 study'). When that year is before the page's own date, the page counts as citing earlier and is never an origin. A data year elsewhere in the span ('since 1988, according to the Carbon Majors Report') never counts. Set from dev-13's span on E2; E3 is not looked at.",
@@ -110,6 +136,7 @@
     "otherNumberSimilarity": "T97: cosine between the claim and a page sentence, on Qwen3-Embedding-8B vectors, at or above which a sentence that names the claim's subject with a different number is listed as the same claim with another number. Set to 0.75 from eval/drift/measure.ts on the 107 labelled E2 sentences (XO's live run, Nov 16): best F1 there, precision 0.82 and recall 0.64, against 0.71 and 0.36 at the old 0.8 placeholder. E3 is checked at this value with measure.ts --set=e3, never tuned on.",
     "hedgeWords": "Placeholder list for the hedge_dropped readout (T27). Check on the E2 dev set before the held-out run.",
     "maxQueriesPerHop": "Placeholder cap on planned search queries per hop (T35). Set on the E2 dev set within the credit cap; never on spike or held-out claims.",
-    "comparisonWords": "Placeholder list for the comparison_added readout (T27). Check on the E2 dev set before the held-out run."
+    "comparisonWords": "Placeholder list for the comparison_added readout (T27). Check on the E2 dev set before the held-out run.",
+    "priorUseCues": "Wording in a span that presents the claim as already said or circulating ('the seemingly ubiquitous admonition to drink eight glasses', 'you have probably heard'). Such a page repeats the claim; it is never its origin. Added after dev-04 ended ORIGIN_FOUND on a 2002 paper that quotes the advice to question it (second live E2 run, Nov 17)."
   }
 }

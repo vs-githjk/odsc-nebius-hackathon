@@ -68,7 +68,7 @@
     {
       "at": "2026-11-15T08:00:00.000Z",
       "step": "search",
-      "query": "\"fourteen\" penguin",
+      "query": "\"14 times a day\" penguins",
       "endDate": "2026-11-15",
       "startDate": null,
       "results": 0,
@@ -78,7 +78,7 @@
     {
       "at": "2026-11-15T08:00:00.000Z",
       "step": "search",
-      "query": "\"fourteen\" penguin study",
+      "query": "\"fourteen\" penguin",
       "endDate": "2026-11-15",
       "startDate": null,
       "results": 0,
@@ -88,7 +88,7 @@
     {
       "at": "2026-11-15T08:00:00.000Z",
       "step": "meta-search",
-      "query": "\"fourteen\" penguin",
+      "query": "\"14 times a day\" penguins",
       "endDate": "2026-11-15",
       "startDate": null,
       "results": 0,

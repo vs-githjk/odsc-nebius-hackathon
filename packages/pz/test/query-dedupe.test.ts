@@ -96,3 +96,15 @@ describe("#192 F6: queries", () => {
     expect(billed(usage)).toBeLessThanOrEqual(9);
   });
 });
+
+describe("code-only queries use the claim's own words (dev-11, Nov 17 live run)", () => {
+  it("the planner-failed path searches \"100\" companies first, not \"one hundred\" compan", async () => {
+    const { codePlanner } = await import("../src/engine/walk.ts");
+    const claim = "Just 100 companies are responsible for 71% of global emissions.";
+    const atoms = { number: { raw: "100", canonical: "100" }, unit: null, subjectLemma: "compan", population: "global emissions", time: null,
+      hedge: null, namedSource: null, variants: ["one hundred"], alsoNumber: { raw: "71%", canonical: "71%" } } as Atoms;
+    const { queries } = await codePlanner({ claim, atoms, hop: null, seen: [] });
+    expect(queries[0]!.query).toBe('"100" companies');
+    expect(studyQueries(claim, atoms)[0]).toBe('"100" companies study');
+  });
+});

@@ -3,7 +3,7 @@
   "id": "dev-07",
   "mode": "LIVE",
   "synthetic": false,
-  "recordedAt": "2026-11-17T06:13:07.255Z",
+  "recordedAt": "2026-11-18T02:59:08.919Z",
   "claim": {
     "text": "You lose 40 to 45 percent of your body heat through your head.",
     "atoms": {
@@ -31,14 +31,14 @@
   "nodes": [
     {
       "id": "n1",
-      "url": "https://politifact.com/factchecks/2021/feb/12/alma-adams/democrats-say-40-people-college-debt-didnt-get-deg",
-      "domain": "politifact.com",
-      "title": "Democrats say 40% of people with college debt didn’t get degrees – PolitiFact",
+      "url": "https://www.factcheck.org/2016/11/trumps-tax-cut-claims",
+      "domain": "factcheck.org",
+      "title": "Trump's Tax Cut Claims - FactCheck.org",
       "date": {
         "kind": "existed_by",
-        "value": "2021-02-17",
+        "value": "2016-11-05",
         "source": "wayback_first_capture",
-        "firstCapture": "2021-02-17",
+        "firstCapture": "2016-11-05",
         "conflictingDate": false
       },
       "clusterId": "c-n1",
@@ -54,14 +54,14 @@
     },
     {
       "id": "n2",
-      "url": "https://www.factcheck.org/2012/09/dependency-and-romneys-47-percenters",
-      "domain": "factcheck.org",
-      "title": "Dependency and Romney's 47 Percenters - FactCheck.org",
+      "url": "https://politifact.com/factchecks/2019/jan/29/howard-schultz/checking-howard-schultzs-claim-40-percent-american",
+      "domain": "politifact.com",
+      "title": "Checking Howard Schultz’s claim that 40 percent of Americans don’t have $400 in the bank – PolitiFact",
       "date": {
         "kind": "existed_by",
-        "value": "2012-09-19",
+        "value": "2020-08-13",
         "source": "wayback_first_capture",
-        "firstCapture": "2012-09-19",
+        "firstCapture": "2020-08-13",
         "conflictingDate": false
       },
       "clusterId": "c-n2",
@@ -100,7 +100,7 @@
       "pageType": {
         "questionId": "page_type",
         "optionId": "other",
-        "probability": 0.7826795873086562,
+        "probability": 0.8017860560032731,
         "top": [
           {
             "optionId": "study",
@@ -112,7 +112,7 @@
           },
           {
             "optionId": "report",
-            "p": 0.030347782340603806
+            "p": 0.05125647076077435
           },
           {
             "optionId": "speaker",
@@ -120,23 +120,23 @@
           },
           {
             "optionId": "news",
-            "p": 0.00985248241573118
+            "p": 0.006121712445835605
           },
           {
             "optionId": "blog",
-            "p": 0.17463942946807812
+            "p": 0.1393295330599553
           },
           {
             "optionId": "social",
-            "p": 0.0015109271142046958
+            "p": 0.001205436652827853
           },
           {
             "optionId": "other",
-            "p": 0.7826795873086562
+            "p": 0.8017860560032731
           },
           {
             "optionId": "__other__",
-            "p": 0.0009697913527260127
+            "p": 0.0003007910773338285
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -145,19 +145,19 @@
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "yes",
-        "probability": 0.9999952149054956,
+        "probability": 0.9999898673833203,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.9999952149054956
+            "p": 0.9999898673833203
           },
           {
             "optionId": "no",
-            "p": 0.000004785094504507887
+            "p": 0.00001012998735708693
           },
           {
             "optionId": "__other__",
-            "p": 0
+            "p": 2.629322648495247e-9
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -167,23 +167,23 @@
       "boundary": {
         "questionId": "boundary",
         "optionId": "print",
-        "probability": 0.9998866951671636,
+        "probability": 0.9999429034267997,
         "top": [
           {
             "optionId": "print",
-            "p": 0.9998866951671636
+            "p": 0.9999429034267997
           },
           {
             "optionId": "unsourced",
-            "p": 0.0000966050285910455
+            "p": 0.00004560756338734772
           },
           {
             "optionId": "none",
-            "p": 0.000016699804245368673
+            "p": 0.000011478243081581806
           },
           {
             "optionId": "__other__",
-            "p": 1.1102230246251565e-16
+            "p": 1.0766731395328577e-8
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -217,19 +217,66 @@
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "yes",
-        "probability": 0.9999991656134876,
+        "probability": 0.9999989271984118,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.9999991656134876
+            "p": 0.9999989271984118
           },
           {
             "optionId": "no",
-            "p": 8.315279423574737e-7
+            "p": 0.0000010677030061437284
           },
           {
             "optionId": "__other__",
-            "p": 2.858570047337139e-9
+            "p": 5.0985821120619335e-9
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    },
+    {
+      "id": "n5",
+      "url": "https://www.livescience.com/5218-5-surprising-holiday-health-myths.html",
+      "domain": "livescience.com",
+      "title": "5 Surprising Holiday Health Myths | Live Science",
+      "date": {
+        "kind": "existed_by",
+        "value": "2012-07-03",
+        "source": "wayback_first_capture",
+        "firstCapture": "2012-07-03",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n5",
+      "evidence": "observed",
+      "meta": true,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s3"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9995694429068462,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9995694429068462
+          },
+          {
+            "optionId": "no",
+            "p": 0.0004305570931536088
+          },
+          {
+            "optionId": "__other__",
+            "p": 1.1102230246251565e-16
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -251,6 +298,13 @@
     }
   ],
   "clusters": [
+    {
+      "id": "c-n5",
+      "nodeIds": [
+        "n5"
+      ],
+      "rule": "single"
+    },
     {
       "id": "c-n3",
       "nodeIds": [
@@ -291,7 +345,7 @@
       "end": 3328,
       "extractSha256": "e9c7906b18c6fbc4060f56d3cdedd6da9b44ceafec8401a0cd84fa375c6b7c61",
       "windowSha256": "a43dc6fb021e2d0c7ebefa9b92a2a255285a74e796336214441cc090db9bcf00",
-      "fetchedAt": "2026-11-17T06:13:21.562Z",
+      "fetchedAt": "2026-11-18T02:59:24.198Z",
       "waybackUrl": "https://web.archive.org/web/20130703051648/https://www.livescience.com/34411-body-heat-loss-head.html",
       "tier": "exact"
     },
@@ -305,8 +359,22 @@
       "end": 1104,
       "extractSha256": "0038b773acfd12cb96ea7b5ee938375d386ea12fd31b4be077611e49a9995c74",
       "windowSha256": "085dcf14331f766ce638b5be9b20ce28bc6608d94112fea0115f12c20c76f349",
-      "fetchedAt": "2026-11-17T06:13:22.805Z",
+      "fetchedAt": "2026-11-18T02:59:25.223Z",
       "waybackUrl": "https://web.archive.org/web/20210420164813/https://www.onemedical.com/blog/healthy-living/body-heat",
+      "tier": "exact"
+    },
+    {
+      "id": "s3",
+      "nodeId": "n5",
+      "text": "Army Field Manual claims \"40 to 45 percent of body heat\" is lost through the head, the researchers write in this week's article, but it is simply not true.",
+      "contextBefore": "o call the poison control center when any non-food plant is eaten, she said. Myth 4: You lose most of your body heat through your head. Your mother said it. Every hat salesman touts it. Even the U.S. ",
+      "contextAfter": " Body heat leaves from any skin surface in proportion to the area exposed, said Vreeman. As for people who claim a hat renders shorts acceptable in cold weather? \"Those people are being very, very foo",
+      "start": 5389,
+      "end": 5544,
+      "extractSha256": "3d27577e5813718890445f7e6ba8a665361732c0a85f741abc0e5600c01739fb",
+      "windowSha256": "102c04c3b360fef0f0dce20516b4b70ee02b4c1925fad1ade9a8aa94279ae139",
+      "fetchedAt": "2026-11-18T02:59:38.887Z",
+      "waybackUrl": "https://web.archive.org/web/20120703101752/https://www.livescience.com/5218-5-surprising-holiday-health-myths.html",
       "tier": "exact"
     }
   ],
@@ -346,21 +414,21 @@
           "id": "scope_widened",
           "source": "inferred",
           "value": "no",
-          "probability": 0.6224593181848065,
+          "probability": 0.6224593145180991,
           "disputed": false
         },
         {
           "id": "attribution_shifted",
           "source": "inferred",
           "value": "yes",
-          "probability": 0.9999997615982209,
+          "probability": 0.9999997615965056,
           "disputed": false
         },
         {
           "id": "context_stripped",
           "source": "inferred",
           "value": "no",
-          "probability": 0.9890130582884148,
+          "probability": 0.9933071486499646,
           "disputed": false
         }
       ],
@@ -601,9 +669,9 @@
   },
   "failure": null,
   "budget": {
-    "credits": 12,
-    "usd": 0.00048981,
-    "ms": 38390,
+    "credits": 13,
+    "usd": 0.0005041099999999999,
+    "ms": 34372,
     "capHit": null
   },
   "decision": {
@@ -621,57 +689,57 @@
   },
   "searchLog": [
     {
-      "at": "2026-11-17T06:13:13.957Z",
+      "at": "2026-11-18T02:59:15.948Z",
       "step": "search",
       "query": "\"40 to 45 percent\" head",
-      "endDate": "2026-11-17",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:13:15.935Z",
+      "at": "2026-11-18T02:59:17.715Z",
       "step": "search",
-      "query": "\"40 to 45 percent\" of body heat lost through head",
-      "endDate": "2026-11-17",
+      "query": "\"40 to 45 percent\" of body heat through head",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:13:16.897Z",
+      "at": "2026-11-18T02:59:18.989Z",
+      "step": "search",
+      "query": "\"lose 40 to 45 percent\" body heat through head",
+      "endDate": "2026-11-18",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-18T02:59:20.919Z",
       "step": "search",
       "query": "\"40 to 45 percent\" heat loss head",
-      "endDate": "2026-11-17",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:13:17.836Z",
-      "step": "search",
-      "query": "\"40 to 45 percent\" body heat through head",
-      "endDate": "2026-11-17",
-      "startDate": null,
-      "results": 10,
-      "kept": 10,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:13:19.471Z",
+      "at": "2026-11-18T02:59:22.961Z",
       "step": "meta-search",
       "query": "\"40 to 45 percent\" head",
-      "endDate": "2026-11-17",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 5,
       "kept": 2,
       "dropped": 3
     },
     {
-      "at": "2026-11-17T06:13:28.021Z",
+      "at": "2026-11-18T02:59:29.626Z",
       "step": "search",
       "query": "\"40 to 45 percent\" head",
       "endDate": "2013-01-31",
@@ -681,7 +749,7 @@
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:13:29.238Z",
+      "at": "2026-11-18T02:59:31.342Z",
       "step": "search",
       "query": "\"40 to 45 percent of body heat\" lost through head",
       "endDate": "2013-01-31",
@@ -691,7 +759,7 @@
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:13:30.220Z",
+      "at": "2026-11-18T02:59:32.938Z",
       "step": "search",
       "query": "\"40 to 45 percent of body heat\" through head Army Field Manual",
       "endDate": "2013-01-31",
@@ -701,7 +769,7 @@
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:13:32.578Z",
+      "at": "2026-11-18T02:59:35.695Z",
       "step": "search",
       "query": "Army Field Manual \"40 to 45 percent\" head heat loss",
       "endDate": "2013-01-31",
@@ -711,19 +779,19 @@
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:13:35.148Z",
+      "at": "2026-11-18T02:59:37.870Z",
       "step": "search",
       "query": "\"40 to 45%\" British Medical Journal",
       "endDate": "2013-01-31",
       "startDate": null,
-      "results": 9,
-      "kept": 9,
+      "results": 8,
+      "kept": 8,
       "dropped": 0
     }
   ],
   "usage": [
     {
-      "at": "2026-11-17T06:13:07.255Z",
+      "at": "2026-11-18T02:59:08.921Z",
       "traceId": "dev-07",
       "step": "tokenfactory",
       "service": "tokenfactory",
@@ -734,28 +802,28 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0.000025199999999999996,
-      "latencyMs": 1047,
+      "latencyMs": 1042,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:13:08.309Z",
+      "at": "2026-11-18T02:59:09.968Z",
       "traceId": "dev-07",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 276,
-      "completionTokens": 241,
-      "cachedTokens": 0,
+      "completionTokens": 233,
+      "cachedTokens": 240,
       "credits": 0,
-      "costUsd": 0.00009989999999999999,
-      "latencyMs": 4598,
+      "costUsd": 0.00009749999999999998,
+      "latencyMs": 3919,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:13:13.957Z",
+      "at": "2026-11-18T02:59:15.948Z",
       "traceId": "dev-07",
       "step": "search",
       "service": "tavily",
@@ -766,12 +834,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1038,
+      "latencyMs": 2035,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:13:15.934Z",
+      "at": "2026-11-18T02:59:17.715Z",
       "traceId": "dev-07",
       "step": "search",
       "service": "tavily",
@@ -782,12 +850,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1964,
+      "latencyMs": 1751,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:13:16.896Z",
+      "at": "2026-11-18T02:59:18.989Z",
       "traceId": "dev-07",
       "step": "search",
       "service": "tavily",
@@ -798,12 +866,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 947,
+      "latencyMs": 1244,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:13:17.835Z",
+      "at": "2026-11-18T02:59:20.919Z",
       "traceId": "dev-07",
       "step": "search",
       "service": "tavily",
@@ -814,12 +882,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 925,
+      "latencyMs": 1899,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:13:19.471Z",
+      "at": "2026-11-18T02:59:22.960Z",
       "traceId": "dev-07",
       "step": "meta-search",
       "service": "tavily",
@@ -830,12 +898,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1621,
+      "latencyMs": 1988,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:13:19.572Z",
+      "at": "2026-11-18T02:59:23.146Z",
       "traceId": "dev-07",
       "step": "meta-extract",
       "service": "tavily",
@@ -844,14 +912,14 @@
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 86,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 127,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:13:19.800Z",
+      "at": "2026-11-18T02:59:23.482Z",
       "traceId": "dev-07",
       "step": "extract",
       "service": "tavily",
@@ -862,12 +930,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 170,
+      "latencyMs": 242,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:13:21.561Z",
+      "at": "2026-11-18T02:59:24.198Z",
       "traceId": "dev-07",
       "step": "dating",
       "service": "wayback",
@@ -878,12 +946,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 1742,
+      "latencyMs": 707,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:13:21.566Z",
+      "at": "2026-11-18T02:59:24.199Z",
       "traceId": "dev-07",
       "step": "same_claim",
       "service": "tokenfactory",
@@ -894,12 +962,12 @@
       "cachedTokens": 160,
       "credits": 0,
       "costUsd": 0.000025699999999999998,
-      "latencyMs": 795,
+      "latencyMs": 747,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:13:22.804Z",
+      "at": "2026-11-18T02:59:25.223Z",
       "traceId": "dev-07",
       "step": "dating",
       "service": "wayback",
@@ -910,12 +978,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 421,
+      "latencyMs": 274,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:13:22.806Z",
+      "at": "2026-11-18T02:59:25.224Z",
       "traceId": "dev-07",
       "step": "same_claim",
       "service": "tokenfactory",
@@ -926,28 +994,28 @@
       "cachedTokens": 176,
       "credits": 0,
       "costUsd": 0.000027000000000000002,
-      "latencyMs": 298,
+      "latencyMs": 433,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:13:23.139Z",
+      "at": "2026-11-18T02:59:25.668Z",
       "traceId": "dev-07",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 341,
-      "completionTokens": 194,
+      "completionTokens": 164,
       "cachedTokens": 240,
       "credits": 0,
-      "costUsd": 0.0000923,
-      "latencyMs": 3865,
+      "costUsd": 0.00008329999999999999,
+      "latencyMs": 2531,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:13:28.020Z",
+      "at": "2026-11-18T02:59:29.626Z",
       "traceId": "dev-07",
       "step": "search",
       "service": "tavily",
@@ -958,12 +1026,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 999,
+      "latencyMs": 1405,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:13:29.237Z",
+      "at": "2026-11-18T02:59:31.342Z",
       "traceId": "dev-07",
       "step": "search",
       "service": "tavily",
@@ -974,12 +1042,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1204,
+      "latencyMs": 1698,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:13:30.219Z",
+      "at": "2026-11-18T02:59:32.938Z",
       "traceId": "dev-07",
       "step": "search",
       "service": "tavily",
@@ -990,12 +1058,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 966,
+      "latencyMs": 1586,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:13:32.577Z",
+      "at": "2026-11-18T02:59:35.694Z",
       "traceId": "dev-07",
       "step": "search",
       "service": "tavily",
@@ -1006,12 +1074,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 2343,
+      "latencyMs": 2739,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:13:35.147Z",
+      "at": "2026-11-18T02:59:37.870Z",
       "traceId": "dev-07",
       "step": "search",
       "service": "tavily",
@@ -1022,12 +1090,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 2556,
+      "latencyMs": 2151,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:13:35.756Z",
+      "at": "2026-11-18T02:59:38.246Z",
       "traceId": "dev-07",
       "step": "extract",
       "service": "tavily",
@@ -1038,12 +1106,44 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 594,
+      "latencyMs": 364,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:13:35.911Z",
+      "at": "2026-11-18T02:59:38.887Z",
+      "traceId": "dev-07",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 502,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:59:38.888Z",
+      "traceId": "dev-07",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 236,
+      "completionTokens": 7,
+      "cachedTokens": 192,
+      "credits": 0,
+      "costUsd": 0.000025699999999999998,
+      "latencyMs": 544,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:59:39.433Z",
       "traceId": "dev-07",
       "step": "embed",
       "service": "tokenfactory",
@@ -1054,12 +1154,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 9.1e-7,
-      "latencyMs": 4169,
+      "latencyMs": 1497,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:13:40.307Z",
+      "at": "2026-11-18T02:59:41.119Z",
       "traceId": "dev-07",
       "step": "dating",
       "service": "fetch",
@@ -1070,28 +1170,28 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 223,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:13:42.444Z",
-      "traceId": "dev-07",
-      "step": "dating",
-      "service": "fetch",
-      "endpoint": "page",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 2360,
+      "latencyMs": 187,
       "status": "403",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:13:43.412Z",
+      "at": "2026-11-18T02:59:41.150Z",
+      "traceId": "dev-07",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 218,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T02:59:41.439Z",
       "traceId": "dev-07",
       "step": "dating",
       "service": "wayback",
@@ -1102,12 +1202,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 965,
+      "latencyMs": 287,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:13:43.874Z",
+      "at": "2026-11-18T02:59:41.802Z",
       "traceId": "dev-07",
       "step": "dating",
       "service": "wayback",
@@ -1118,12 +1218,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 461,
+      "latencyMs": 362,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:13:43.875Z",
+      "at": "2026-11-18T02:59:41.803Z",
       "traceId": "dev-07",
       "step": "dating",
       "service": "wayback",
@@ -1139,7 +1239,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:13:43.876Z",
+      "at": "2026-11-18T02:59:41.805Z",
       "traceId": "dev-07",
       "step": "dating",
       "service": "wayback",
@@ -1155,7 +1255,23 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:13:43.882Z",
+      "at": "2026-11-18T02:59:41.805Z",
+      "traceId": "dev-07",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-18T02:59:41.806Z",
       "traceId": "dev-07",
       "step": "page_type",
       "service": "tokenfactory",
@@ -1163,15 +1279,15 @@
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 1252,
       "completionTokens": 8,
-      "cachedTokens": 0,
+      "cachedTokens": 176,
       "credits": 0,
       "costUsd": 0.0001276,
-      "latencyMs": 492,
+      "latencyMs": 538,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:13:44.390Z",
+      "at": "2026-11-18T02:59:42.346Z",
       "traceId": "dev-07",
       "step": "readouts",
       "service": "tokenfactory",
@@ -1182,12 +1298,12 @@
       "cachedTokens": 368,
       "credits": 0,
       "costUsd": 0.000054699999999999995,
-      "latencyMs": 843,
+      "latencyMs": 561,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:13:45.237Z",
+      "at": "2026-11-18T02:59:42.908Z",
       "traceId": "dev-07",
       "step": "boundary",
       "service": "tokenfactory",
@@ -1195,10 +1311,10 @@
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 347,
       "completionTokens": 6,
-      "cachedTokens": 0,
+      "cachedTokens": 144,
       "credits": 0,
       "costUsd": 0.0000365,
-      "latencyMs": 405,
+      "latencyMs": 382,
       "status": "200",
       "cacheHit": false
     }

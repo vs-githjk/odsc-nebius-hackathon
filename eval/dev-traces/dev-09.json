@@ -3,7 +3,7 @@
   "id": "dev-09",
   "mode": "LIVE",
   "synthetic": false,
-  "recordedAt": "2026-11-17T06:13:46.927Z",
+  "recordedAt": "2026-11-18T03:00:22.553Z",
   "claim": {
     "text": "Only 9% of all plastic ever made has been recycled.",
     "atoms": {
@@ -28,6 +28,46 @@
   "nodes": [
     {
       "id": "n1",
+      "url": "https://www.snopes.com/news/2021/09/23/mcdonalds-plastic-happy-meal",
+      "domain": "snopes.com",
+      "title": "McDonald's Has Pledged to Reduce Plastic Use in Happy Meal Toys by 2025 | Snopes.com",
+      "date": {
+        "kind": "existed_by",
+        "value": "2022-09-30",
+        "source": "wayback_first_capture",
+        "firstCapture": "2022-09-30",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n1",
+      "evidence": "observed",
+      "meta": true,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [],
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "https://corporate.mcdonalds.com/corpmcd/en-us/our-stories/article/OurStories.reducing-plastictoys.html",
+          "read": false
+        },
+        {
+          "url": "https://www.insider.com/mcdonalds-says-its-phasing-out-its-plastic-happy-meal-toys-2021-9",
+          "read": true
+        },
+        {
+          "url": "https://www.happymeal.com",
+          "read": true
+        },
+        {
+          "url": "https://www.cbsnews.com/news/mcdonalds-plastic-toys-reduction-happy-meals-2025",
+          "read": true
+        }
+      ],
+      "pageType": null,
+      "foundViaMeta": null
+    },
+    {
+      "id": "n2",
       "url": "https://africacheck.org/sites/default/files/media/documents/2022-08/Kenya%20Kwanza%20UDA%20Manifesto%202022.pdf",
       "domain": "africacheck.org",
       "title": "[PDF] Kenya Kwanza UDA Manifesto 2022.pdf - Africa Check",
@@ -38,102 +78,19 @@
         "firstCapture": "2022-11-30",
         "conflictingDate": false
       },
-      "clusterId": "c-n1",
-      "evidence": "observed",
-      "meta": true,
-      "read": true,
-      "versionOf": null,
-      "spanIds": [],
-      "citesEarlier": false,
-      "candidateParents": [],
-      "pageType": null,
-      "foundViaMeta": null
-    },
-    {
-      "id": "n2",
-      "url": "https://www.snopes.com/fact-check/clay-matthews-plastic-surgery",
-      "domain": "snopes.com",
-      "title": "Do images show former NFL star Clay Matthews after plastic surgery? | Snopes.com",
-      "date": {
-        "kind": "existed_by",
-        "value": "2026-09-13",
-        "source": "wayback_first_capture",
-        "firstCapture": "2026-09-13",
-        "conflictingDate": false
-      },
       "clusterId": "c-n2",
       "evidence": "observed",
       "meta": true,
       "read": true,
       "versionOf": null,
       "spanIds": [],
-      "citesEarlier": true,
-      "candidateParents": [
-        {
-          "url": "https://x.com/NFL_DovKleiman/status/2095945114665234548",
-          "read": true
-        },
-        {
-          "url": "https://www.tmz.com/2026/09/09/clay-matthews-explains-his-new-look",
-          "read": true
-        },
-        {
-          "url": "https://web.archive.org/web/20260910184942/https://www.tmz.com/2026/09/09/clay-matthews-explains-his-new-look",
-          "read": true
-        }
-      ],
+      "citesEarlier": false,
+      "candidateParents": [],
       "pageType": null,
       "foundViaMeta": null
     },
     {
       "id": "n3",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/28776036",
-      "domain": "pubmed.ncbi.nlm.nih.gov",
-      "title": "Production, use, and fate of all plastics ever made.",
-      "date": {
-        "kind": "published",
-        "value": "2017-07-19",
-        "source": "registry_pubmed",
-        "firstCapture": "2020-03-16",
-        "conflictingDate": false
-      },
-      "clusterId": "c-n3",
-      "evidence": "observed",
-      "meta": false,
-      "read": true,
-      "versionOf": null,
-      "spanIds": [
-        "s1"
-      ],
-      "citesEarlier": false,
-      "candidateParents": [],
-      "pageType": null,
-      "sameClaim": {
-        "questionId": "same_claim",
-        "optionId": "yes",
-        "probability": 0.9999999973534264,
-        "top": [
-          {
-            "optionId": "yes",
-            "p": 0.9999999973534264
-          },
-          {
-            "optionId": "no",
-            "p": 2.6465737120246913e-9
-          },
-          {
-            "optionId": "__other__",
-            "p": 0
-          }
-        ],
-        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-        "threshold": null
-      },
-      "foundViaMeta": null,
-      "injection": null
-    },
-    {
-      "id": "n4",
       "url": "https://www.science.org/doi/10.1126/sciadv.1700782",
       "domain": "science.org",
       "title": "Production, use, and fate of all plastics ever made | Science Advances",
@@ -150,82 +107,26 @@
       "read": true,
       "versionOf": null,
       "spanIds": [
-        "s2"
+        "s1"
       ],
       "citesEarlier": false,
       "candidateParents": [],
-      "pageType": null,
-      "sameClaim": {
-        "questionId": "same_claim",
-        "optionId": "yes",
-        "probability": 0.9999999992417439,
-        "top": [
-          {
-            "optionId": "yes",
-            "p": 0.9999999992417439
-          },
-          {
-            "optionId": "no",
-            "p": 7.582560476702421e-10
-          },
-          {
-            "optionId": "__other__",
-            "p": 1.1102230246251565e-16
-          }
-        ],
-        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-        "threshold": null
-      },
-      "foundViaMeta": null,
-      "injection": null
-    },
-    {
-      "id": "n5",
-      "url": "http://plasticwastesolutions.com/reduce-our-plastic-usage",
-      "domain": "plasticwastesolutions.com",
-      "title": "Reduce Our Plastic Usage - Plastic Waste Solutions",
-      "date": {
-        "kind": "existed_by",
-        "value": "2012-07-06",
-        "source": "wayback_first_capture",
-        "firstCapture": "2012-07-06",
-        "conflictingDate": false
-      },
-      "clusterId": "c-n5",
-      "evidence": "observed",
-      "meta": false,
-      "read": true,
-      "versionOf": null,
-      "spanIds": [
-        "s3"
-      ],
-      "citesEarlier": true,
-      "candidateParents": [
-        {
-          "url": "http://earth911.com/news/2009/03/09/waste-hierarchy-whos-on-top-in-the-game-of-trash",
-          "read": false
-        },
-        {
-          "url": "http://www.epa.gov/osw/conserve/materials/plastics.htm",
-          "read": false
-        }
-      ],
       "pageType": {
         "questionId": "page_type",
-        "optionId": "blog",
-        "probability": 0.9999948104069608,
+        "optionId": "study",
+        "probability": 0.9999999983314207,
         "top": [
           {
             "optionId": "study",
-            "p": 4.36343700748092e-9
+            "p": 0.9999999983314207
           },
           {
             "optionId": "dataset",
-            "p": 0
+            "p": 5.4927883409694057e-11
           },
           {
             "optionId": "report",
-            "p": 0.000003726635164964517
+            "p": 1.6052280522674857e-9
           },
           {
             "optionId": "speaker",
@@ -233,11 +134,11 @@
           },
           {
             "optionId": "news",
-            "p": 8.764197512576152e-8
+            "p": 0
           },
           {
             "optionId": "blog",
-            "p": 0.9999948104069608
+            "p": 0
           },
           {
             "optionId": "social",
@@ -245,11 +146,11 @@
           },
           {
             "optionId": "other",
-            "p": 0.0000013709524619369922
+            "p": 8.423463739155728e-12
           },
           {
             "optionId": "__other__",
-            "p": 2.220446049250313e-16
+            "p": 0
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -257,20 +158,20 @@
       },
       "sameClaim": {
         "questionId": "same_claim",
-        "optionId": "no",
-        "probability": 0.9999991655401711,
+        "optionId": "yes",
+        "probability": 0.9999999990263799,
         "top": [
           {
             "optionId": "yes",
-            "p": 8.315281288313534e-7
+            "p": 0.9999999990263799
           },
           {
             "optionId": "no",
-            "p": 0.9999991655401711
+            "p": 9.736200659176557e-10
           },
           {
             "optionId": "__other__",
-            "p": 2.9317001049022906e-9
+            "p": 0
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -280,66 +181,93 @@
       "boundary": {
         "questionId": "boundary",
         "optionId": "print",
-        "probability": 0.9983255337980153,
+        "probability": 0.999999991460404,
         "top": [
           {
             "optionId": "print",
-            "p": 0.9983255337980153
+            "p": 0.999999991460404
           },
           {
             "optionId": "unsourced",
-            "p": 0.0013392730228156738
+            "p": 3.8757556711006305e-10
           },
           {
             "optionId": "none",
-            "p": 0.0003349782101104849
+            "p": 8.152020644826577e-9
           },
           {
             "optionId": "__other__",
-            "p": 2.1496905855400428e-7
+            "p": 0
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
         "threshold": null
       },
       "injection": null
-    }
-  ],
-  "edges": [
-    {
-      "id": "e1",
-      "parentId": "n5",
-      "childId": "n3",
-      "kind": "inferred",
-      "parentSpanId": "s3",
-      "childSpanId": "s1",
-      "linkHref": null
     },
     {
-      "id": "e2",
-      "parentId": "n5",
-      "childId": "n4",
-      "kind": "inferred",
-      "parentSpanId": "s3",
-      "childSpanId": "s2",
-      "linkHref": null
+      "id": "n4",
+      "url": "https://www.aipma.net/new/Past-Events/Presentation/02July21-1.pdf",
+      "domain": "aipma.net",
+      "title": "Plastic Waste in India an Overview",
+      "date": {
+        "kind": "existed_by",
+        "value": "2026-02-18",
+        "source": "wayback_first_capture",
+        "firstCapture": "2026-02-18",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n4",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s2"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "no",
+        "probability": 0.9999977350330734,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.000002260325393103341
+          },
+          {
+            "optionId": "no",
+            "p": 0.9999977350330734
+          },
+          {
+            "optionId": "__other__",
+            "p": 4.641533490890026e-9
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
     }
   ],
+  "edges": [],
   "clusters": [
     {
-      "id": "c-n5",
+      "id": "c-n4",
       "nodeIds": [
-        "n5"
+        "n4"
       ],
       "rule": "single"
     },
     {
       "id": "c-n3",
       "nodeIds": [
-        "n3",
-        "n4"
+        "n3"
       ],
-      "rule": "syndicated"
+      "rule": "single"
     },
     {
       "id": "c-n1",
@@ -362,572 +290,122 @@
       "nodeId": "n3",
       "text": "As of 2015, approximately 6300 Mt of plastic waste had been generated, around 9% of which had been recycled, 12% was incinerated, and 79% was accumulated in landfills or the natural environment.",
       "contextBefore": ", and additives, we present the first global analysis of all mass-produced plastics ever manufactured. We estimate that 8300 million metric tons (Mt) as of virgin plastics have been produced to date. ",
-      "contextAfter": " If current production and waste management trends continue, roughly 12,000 Mt of plastic waste will be in landfills or in the natural environment by 2050.",
-      "start": 851,
-      "end": 1045,
-      "extractSha256": "7de0e78f6c8bf8834a460ac55b050756ee5cf90312457543b7bf16bf59195243",
-      "windowSha256": "2a35239dec233d1d39df8a28648666920af98bd9cadee591a7f2e987543b1c45",
-      "fetchedAt": "2026-11-17T06:14:02.568Z",
-      "waybackUrl": "https://web.archive.org/web/20200316011856/https://pubmed.ncbi.nlm.nih.gov/28776036",
-      "tier": "exact"
-    },
-    {
-      "id": "s2",
-      "nodeId": "n4",
-      "text": "As of 2015, approximately 6300 Mt of plastic waste had been generated, around 9% of which had been recycled, 12% was incinerated, and 79% was accumulated in landfills or the natural environment.",
-      "contextBefore": ", and additives, we present the first global analysis of all mass-produced plastics ever manufactured. We estimate that 8300 million metric tons (Mt) as of virgin plastics have been produced to date. ",
       "contextAfter": " If current production and waste management trends continue, roughly 12,000 Mt of plastic waste will be in landfills or in the natural environment by 2050. INTRODUCTION. A world without plastics, or s",
       "start": 1134,
       "end": 1328,
       "extractSha256": "3b8c46d1e721509ec48ca19c7e450b798683001acc488970f210b731b2094298",
       "windowSha256": "e98d84165ace9dc5af46ee27f50baae7cad2ca8d4cf23f8ececbb6d5a66f952b",
-      "fetchedAt": "2026-11-17T06:14:03.489Z",
+      "fetchedAt": "2026-11-18T03:00:48.703Z",
       "waybackUrl": "https://web.archive.org/web/20210831190627/https://www.science.org/doi/10.1126/sciadv.1700782",
       "tier": "exact"
     },
     {
-      "id": "s3",
-      "nodeId": "n5",
-      "text": "In 2009 in the USA only 9% of plastic waste was recycled.",
-      "contextBefore": " and using all or part of it to make another product. The US EPA estimates that 75 percent of our waste is recyclable, which goes well beyond what is tossed in the recycling bin at home or at school. ",
-      "contextAfter": " Low national plastic recycling rates have been attributed to the complexity of sorting and processing, unfavourable economics and consumer confusion about which plastics can actually be recycled. Rec",
-      "start": 6492,
-      "end": 6549,
-      "extractSha256": "07e7ca08f9cf86ff918c725eb8f9031e3be5890e1f24ae914e2bfc85534b10e0",
-      "windowSha256": "196e02e2dffb58934537965e38e20c062bec0658e18aeb7915497ffdf8e8df73",
-      "fetchedAt": "2026-11-17T06:14:32.066Z",
-      "waybackUrl": "https://web.archive.org/web/20120706084039/http://plasticwastesolutions.com/reduce-our-plastic-usage",
+      "id": "s2",
+      "nodeId": "n4",
+      "text": "Source Plastics Waste Materials Source: http://www.cleanup.org.au/rubbishreport06/sources_rubbish.html Challenges for Plastic Waste Management Globally Plastic wastage is growing at an annual rate of 9% globally.",
+      "contextBefore": "per day. • According to the Central Pollution Control Board in India, 60 major India cities produce combined 25,940 tones of plastic waste every day. • 60% Of the Waste produced is recycled in India. ",
+      "contextAfter": " By 2040, there will be 1.3 billion tones of plastic wastes present in the environment globally. Only 14% of the world's plastic waste is recycled. Plastic wastage is growing at an annual rate of 9%. ",
+      "start": 1062,
+      "end": 1274,
+      "extractSha256": "55ba867b352854b13ab9010f21751a23acbf6ef79f58a4a5e8ce0fff87fcb220",
+      "windowSha256": "b27dfcb094669a78bf9c73e2ccfda89ac743d91b2e2b2a5f65993706928f65c0",
+      "fetchedAt": "2026-11-18T03:01:13.732Z",
+      "waybackUrl": "https://web.archive.org/web/20260218214531/https://www.aipma.net/new/Past-Events/Presentation/02July21-1.pdf",
       "tier": "exact"
     }
   ],
-  "hops": [
-    {
-      "edgeId": "e1",
-      "readouts": [
-        {
-          "id": "number_changed",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "unit_changed",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "hedge_dropped",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "comparison_added",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "scope_widened",
-          "source": "inferred",
-          "value": "yes",
-          "probability": 0.977022627690844,
-          "disputed": false
-        },
-        {
-          "id": "attribution_shifted",
-          "source": "inferred",
-          "value": "no",
-          "probability": 0.9626730730545989,
-          "disputed": false
-        },
-        {
-          "id": "context_stripped",
-          "source": "inferred",
-          "value": "no",
-          "probability": 0.9525741259116672,
-          "disputed": false
-        }
-      ],
-      "wordDiff": [
-        {
-          "op": "add",
-          "text": "as"
-        },
-        {
-          "op": "add",
-          "text": "of"
-        },
-        {
-          "op": "add",
-          "text": "2015"
-        },
-        {
-          "op": "add",
-          "text": "approximately"
-        },
-        {
-          "op": "add",
-          "text": "6300"
-        },
-        {
-          "op": "add",
-          "text": "mt"
-        },
-        {
-          "op": "del",
-          "text": "in"
-        },
-        {
-          "op": "del",
-          "text": "2009"
-        },
-        {
-          "op": "del",
-          "text": "in"
-        },
-        {
-          "op": "del",
-          "text": "the"
-        },
-        {
-          "op": "del",
-          "text": "usa"
-        },
-        {
-          "op": "del",
-          "text": "only"
-        },
-        {
-          "op": "del",
-          "text": "9"
-        },
-        {
-          "op": "same",
-          "text": "of"
-        },
-        {
-          "op": "same",
-          "text": "plastic"
-        },
-        {
-          "op": "same",
-          "text": "waste"
-        },
-        {
-          "op": "add",
-          "text": "had"
-        },
-        {
-          "op": "add",
-          "text": "been"
-        },
-        {
-          "op": "add",
-          "text": "generated"
-        },
-        {
-          "op": "add",
-          "text": "around"
-        },
-        {
-          "op": "add",
-          "text": "9"
-        },
-        {
-          "op": "add",
-          "text": "of"
-        },
-        {
-          "op": "add",
-          "text": "which"
-        },
-        {
-          "op": "add",
-          "text": "had"
-        },
-        {
-          "op": "add",
-          "text": "been"
-        },
-        {
-          "op": "add",
-          "text": "recycled"
-        },
-        {
-          "op": "add",
-          "text": "12"
-        },
-        {
-          "op": "same",
-          "text": "was"
-        },
-        {
-          "op": "add",
-          "text": "incinerated"
-        },
-        {
-          "op": "add",
-          "text": "and"
-        },
-        {
-          "op": "add",
-          "text": "79"
-        },
-        {
-          "op": "add",
-          "text": "was"
-        },
-        {
-          "op": "add",
-          "text": "accumulated"
-        },
-        {
-          "op": "add",
-          "text": "in"
-        },
-        {
-          "op": "add",
-          "text": "landfills"
-        },
-        {
-          "op": "add",
-          "text": "or"
-        },
-        {
-          "op": "add",
-          "text": "the"
-        },
-        {
-          "op": "add",
-          "text": "natural"
-        },
-        {
-          "op": "add",
-          "text": "environment"
-        },
-        {
-          "op": "del",
-          "text": "recycled"
-        }
-      ],
-      "faithful": false
-    },
-    {
-      "edgeId": "e2",
-      "readouts": [
-        {
-          "id": "number_changed",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "unit_changed",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "hedge_dropped",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "comparison_added",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "scope_widened",
-          "source": "inferred",
-          "value": "yes",
-          "probability": 0.977022627690844,
-          "disputed": false
-        },
-        {
-          "id": "attribution_shifted",
-          "source": "inferred",
-          "value": "no",
-          "probability": 0.9626730730545989,
-          "disputed": false
-        },
-        {
-          "id": "context_stripped",
-          "source": "inferred",
-          "value": "no",
-          "probability": 0.9525741259116672,
-          "disputed": false
-        }
-      ],
-      "wordDiff": [
-        {
-          "op": "add",
-          "text": "as"
-        },
-        {
-          "op": "add",
-          "text": "of"
-        },
-        {
-          "op": "add",
-          "text": "2015"
-        },
-        {
-          "op": "add",
-          "text": "approximately"
-        },
-        {
-          "op": "add",
-          "text": "6300"
-        },
-        {
-          "op": "add",
-          "text": "mt"
-        },
-        {
-          "op": "del",
-          "text": "in"
-        },
-        {
-          "op": "del",
-          "text": "2009"
-        },
-        {
-          "op": "del",
-          "text": "in"
-        },
-        {
-          "op": "del",
-          "text": "the"
-        },
-        {
-          "op": "del",
-          "text": "usa"
-        },
-        {
-          "op": "del",
-          "text": "only"
-        },
-        {
-          "op": "del",
-          "text": "9"
-        },
-        {
-          "op": "same",
-          "text": "of"
-        },
-        {
-          "op": "same",
-          "text": "plastic"
-        },
-        {
-          "op": "same",
-          "text": "waste"
-        },
-        {
-          "op": "add",
-          "text": "had"
-        },
-        {
-          "op": "add",
-          "text": "been"
-        },
-        {
-          "op": "add",
-          "text": "generated"
-        },
-        {
-          "op": "add",
-          "text": "around"
-        },
-        {
-          "op": "add",
-          "text": "9"
-        },
-        {
-          "op": "add",
-          "text": "of"
-        },
-        {
-          "op": "add",
-          "text": "which"
-        },
-        {
-          "op": "add",
-          "text": "had"
-        },
-        {
-          "op": "add",
-          "text": "been"
-        },
-        {
-          "op": "add",
-          "text": "recycled"
-        },
-        {
-          "op": "add",
-          "text": "12"
-        },
-        {
-          "op": "same",
-          "text": "was"
-        },
-        {
-          "op": "add",
-          "text": "incinerated"
-        },
-        {
-          "op": "add",
-          "text": "and"
-        },
-        {
-          "op": "add",
-          "text": "79"
-        },
-        {
-          "op": "add",
-          "text": "was"
-        },
-        {
-          "op": "add",
-          "text": "accumulated"
-        },
-        {
-          "op": "add",
-          "text": "in"
-        },
-        {
-          "op": "add",
-          "text": "landfills"
-        },
-        {
-          "op": "add",
-          "text": "or"
-        },
-        {
-          "op": "add",
-          "text": "the"
-        },
-        {
-          "op": "add",
-          "text": "natural"
-        },
-        {
-          "op": "add",
-          "text": "environment"
-        },
-        {
-          "op": "del",
-          "text": "recycled"
-        }
-      ],
-      "faithful": false
-    }
-  ],
+  "hops": [],
   "blame": [],
   "roots": {
-    "pages": 3,
+    "pages": 2,
     "clusters": 2,
     "rootsLinked": 0,
     "clustersUnlinked": 2,
     "studiesFound": null,
     "independentRoots": 2,
-    "copies": 1
+    "copies": 0
   },
-  "redHopEdgeId": "e1",
+  "redHopEdgeId": null,
   "earliest": {
     "nodeIds": [
-      "n5"
+      "n3"
     ],
-    "earlierWindowSearches": 4,
+    "earlierWindowSearches": 3,
     "earlierFound": 0
   },
   "failure": null,
   "budget": {
-    "credits": 19,
-    "usd": 0.00073145,
-    "ms": 99481,
+    "credits": 10,
+    "usd": 0.00058945,
+    "ms": 57853,
     "capHit": null
   },
   "decision": {
     "state": "TRAIL_GOES_COLD",
     "row": 6,
     "reasons": [
-      "no earliest page with a confirmed date, a primary page type, no earlier citation and no negated span",
-      "2 unread candidate parent(s)"
+      "1 unread candidate parent(s)"
     ],
     "counts": {
-      "pages": 3,
+      "pages": 2,
       "clusters": 2,
-      "unreadParents": 2,
-      "earlierWindowSearches": 4
+      "unreadParents": 1,
+      "earlierWindowSearches": 3
     }
   },
   "searchLog": [
     {
-      "at": "2026-11-17T06:13:53.533Z",
+      "at": "2026-11-18T03:00:29.757Z",
       "step": "search",
       "query": "\"9%\" plastic",
-      "endDate": "2026-11-17",
+      "endDate": "2026-11-18",
+      "startDate": null,
+      "results": 8,
+      "kept": 8,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-18T03:00:31.889Z",
+      "step": "search",
+      "query": "\"Only 9% of all plastic ever made has been recycled\"",
+      "endDate": "2026-11-18",
+      "startDate": null,
+      "results": 6,
+      "kept": 6,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-18T03:00:33.891Z",
+      "step": "search",
+      "query": "\"9% of all plastic ever made has been recycled\"",
+      "endDate": "2026-11-18",
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-18T03:00:36.226Z",
+      "step": "search",
+      "query": "plastic recycling rate global cumulative 9%",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:13:54.648Z",
-      "step": "search",
-      "query": "\"Only 9% of all plastic ever made has been recycled.\" variant",
-      "endDate": "2026-11-17",
-      "startDate": null,
-      "results": 9,
-      "kept": 9,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:13:56.235Z",
-      "step": "search",
-      "query": "\"Only 9% of all plastic ever made has been recycled\" older_wording",
-      "endDate": "2026-11-17",
-      "startDate": null,
-      "results": 10,
-      "kept": 10,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:13:57.780Z",
-      "step": "search",
-      "query": "9% of all plastic ever made recycled publisher",
-      "endDate": "2026-11-17",
-      "startDate": null,
-      "results": 10,
-      "kept": 10,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:13:59.744Z",
+      "at": "2026-11-18T03:00:39.343Z",
       "step": "meta-search",
       "query": "\"9%\" plastic",
-      "endDate": "2026-11-17",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 5,
       "kept": 2,
       "dropped": 3
     },
     {
-      "at": "2026-11-17T06:14:06.371Z",
+      "at": "2026-11-18T03:00:52.538Z",
       "step": "search",
       "query": "\"9%\" plastic",
       "endDate": "2017-07-18",
@@ -937,9 +415,19 @@
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:14:08.323Z",
+      "at": "2026-11-18T03:00:52.541Z",
       "step": "search",
-      "query": "9% of all plastic ever made recycled variant",
+      "query": "\"Only 9% of all plastic ever made has been recycled\"",
+      "endDate": "2017-07-18",
+      "startDate": null,
+      "results": 1,
+      "kept": 1,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-18T03:00:52.543Z",
+      "step": "search",
+      "query": "\"9% of which had been recycled\" plastic waste 2015",
       "endDate": "2017-07-18",
       "startDate": null,
       "results": 7,
@@ -947,19 +435,29 @@
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:14:11.498Z",
+      "at": "2026-11-18T03:00:55.050Z",
       "step": "search",
-      "query": "9% of plastic waste recycled 2015 older wording",
+      "query": "plastic recycling rate 9% 2015 science.org",
       "endDate": "2017-07-18",
       "startDate": null,
-      "results": 10,
-      "kept": 10,
+      "results": 8,
+      "kept": 8,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:14:13.051Z",
+      "at": "2026-11-18T03:01:10.274Z",
       "step": "search",
-      "query": "9% plastic ever made recycled publisher",
+      "query": "approximately 6300 Mt of plastic waste had been generated 9% recycled",
+      "endDate": "2017-07-18",
+      "startDate": null,
+      "results": 8,
+      "kept": 8,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-18T03:01:11.168Z",
+      "step": "search",
+      "query": "Plastic recycling rate 9% 6300 Mt waste 2015",
       "endDate": "2017-07-18",
       "startDate": null,
       "results": 9,
@@ -967,89 +465,19 @@
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:14:23.684Z",
+      "at": "2026-11-18T03:01:12.557Z",
       "step": "search",
-      "query": "9% of all plastic ever made recycled",
+      "query": "plastic ever made recycled 9% 6300 million tonnes",
       "endDate": "2017-07-18",
       "startDate": null,
       "results": 8,
       "kept": 8,
       "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:14:25.822Z",
-      "step": "search",
-      "query": "9% of plastic waste recycled 2015",
-      "endDate": "2017-07-18",
-      "startDate": null,
-      "results": 8,
-      "kept": 8,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:14:27.227Z",
-      "step": "search",
-      "query": "Plastic recycling rate 9% 2015 study",
-      "endDate": "2017-07-18",
-      "startDate": null,
-      "results": 8,
-      "kept": 8,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:14:28.720Z",
-      "step": "search",
-      "query": "9% of plastic ever made recycled publisher",
-      "endDate": "2017-07-18",
-      "startDate": null,
-      "results": 8,
-      "kept": 6,
-      "dropped": 2
-    },
-    {
-      "at": "2026-11-17T06:14:35.044Z",
-      "step": "search",
-      "query": "\"9%\" plastic",
-      "endDate": "2012-01-31",
-      "startDate": null,
-      "results": 10,
-      "kept": 10,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:14:36.374Z",
-      "step": "search",
-      "query": "\"Only 9% of all plastic ever made has been recycled\"",
-      "endDate": "2012-01-31",
-      "startDate": null,
-      "results": 9,
-      "kept": 7,
-      "dropped": 2
-    },
-    {
-      "at": "2026-11-17T06:14:38.025Z",
-      "step": "search",
-      "query": "\"In 2009 in the USA only 9% of plastic waste was recycled\"",
-      "endDate": "2012-01-31",
-      "startDate": null,
-      "results": 9,
-      "kept": 7,
-      "dropped": 2
-    },
-    {
-      "at": "2026-11-17T06:14:39.705Z",
-      "step": "search",
-      "query": "plastic recycling study 9% figure 2009",
-      "endDate": "2012-01-31",
-      "startDate": null,
-      "results": 9,
-      "kept": 7,
-      "dropped": 2
     }
   ],
   "usage": [
     {
-      "at": "2026-11-17T06:13:46.927Z",
+      "at": "2026-11-18T03:00:22.553Z",
       "traceId": "dev-09",
       "step": "tokenfactory",
       "service": "tokenfactory",
@@ -1060,28 +488,28 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0.000030499999999999996,
-      "latencyMs": 1134,
+      "latencyMs": 1073,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:13:48.067Z",
+      "at": "2026-11-18T03:00:23.632Z",
       "traceId": "dev-09",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 271,
-      "completionTokens": 116,
+      "completionTokens": 166,
       "cachedTokens": 240,
       "credits": 0,
-      "costUsd": 0.0000619,
-      "latencyMs": 4479,
+      "costUsd": 0.0000769,
+      "latencyMs": 3900,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:13:53.531Z",
+      "at": "2026-11-18T03:00:29.757Z",
       "traceId": "dev-09",
       "step": "search",
       "service": "tavily",
@@ -1092,12 +520,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 966,
+      "latencyMs": 2202,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:13:54.648Z",
+      "at": "2026-11-18T03:00:31.889Z",
       "traceId": "dev-09",
       "step": "search",
       "service": "tavily",
@@ -1108,12 +536,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1102,
+      "latencyMs": 2113,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:13:56.234Z",
+      "at": "2026-11-18T03:00:33.891Z",
       "traceId": "dev-09",
       "step": "search",
       "service": "tavily",
@@ -1124,12 +552,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1573,
+      "latencyMs": 1981,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:13:57.779Z",
+      "at": "2026-11-18T03:00:36.226Z",
       "traceId": "dev-09",
       "step": "search",
       "service": "tavily",
@@ -1140,12 +568,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1529,
+      "latencyMs": 2317,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:13:59.743Z",
+      "at": "2026-11-18T03:00:39.342Z",
       "traceId": "dev-09",
       "step": "meta-search",
       "service": "tavily",
@@ -1156,12 +584,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1950,
+      "latencyMs": 3098,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:13:59.924Z",
+      "at": "2026-11-18T03:00:39.364Z",
       "traceId": "dev-09",
       "step": "meta-extract",
       "service": "tavily",
@@ -1172,12 +600,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 163,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:14:01.454Z",
+      "at": "2026-11-18T03:00:45.713Z",
       "traceId": "dev-09",
       "step": "extract",
       "service": "tavily",
@@ -1188,12 +616,44 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1501,
+      "latencyMs": 6326,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:14:02.567Z",
+      "at": "2026-11-18T03:00:45.718Z",
+      "traceId": "dev-09",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 408,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00000408,
+      "latencyMs": 2090,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:00:47.825Z",
+      "traceId": "dev-09",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 312,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00000312,
+      "latencyMs": 701,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:00:48.703Z",
       "traceId": "dev-09",
       "step": "dating",
       "service": "wayback",
@@ -1204,12 +664,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 1108,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:14:02.570Z",
+      "at": "2026-11-18T03:00:48.709Z",
       "traceId": "dev-09",
       "step": "same_claim",
       "service": "tokenfactory",
@@ -1220,60 +680,76 @@
       "cachedTokens": 160,
       "credits": 0,
       "costUsd": 0.000026799999999999998,
-      "latencyMs": 468,
+      "latencyMs": 576,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:14:03.488Z",
+      "at": "2026-11-18T03:00:49.296Z",
       "traceId": "dev-09",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 351,
+      "completionTokens": 163,
+      "cachedTokens": 240,
+      "credits": 0,
+      "costUsd": 0.000084,
+      "latencyMs": 3227,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:00:52.535Z",
+      "traceId": "dev-09",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
       "model": null,
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 318,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:14:03.499Z",
+      "at": "2026-11-18T03:00:52.541Z",
       "traceId": "dev-09",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 247,
-      "completionTokens": 7,
-      "cachedTokens": 240,
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.0000268,
-      "latencyMs": 271,
+      "costUsd": 0,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:14:03.793Z",
+      "at": "2026-11-18T03:00:52.543Z",
       "traceId": "dev-09",
-      "step": "tokenfactory",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 355,
-      "completionTokens": 107,
-      "cachedTokens": 240,
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.0000676,
-      "latencyMs": 1298,
+      "costUsd": 0,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:14:06.370Z",
+      "at": "2026-11-18T03:00:55.049Z",
       "traceId": "dev-09",
       "step": "search",
       "service": "tavily",
@@ -1284,60 +760,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1263,
+      "latencyMs": 2495,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:14:08.322Z",
-      "traceId": "dev-09",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1934,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:14:11.498Z",
-      "traceId": "dev-09",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 3163,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:14:13.051Z",
-      "traceId": "dev-09",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1543,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:14:13.683Z",
+      "at": "2026-11-18T03:00:55.056Z",
       "traceId": "dev-09",
       "step": "extract",
       "service": "tavily",
@@ -1346,62 +774,62 @@
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 619,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:14:13.685Z",
+      "at": "2026-11-18T03:00:55.061Z",
       "traceId": "dev-09",
       "step": "embed",
       "service": "tokenfactory",
       "endpoint": "/embeddings",
       "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 113,
+      "promptTokens": 1104,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.00000113,
-      "latencyMs": 6379,
+      "costUsd": 0.000011040000000000001,
+      "latencyMs": 862,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:14:20.078Z",
+      "at": "2026-11-18T03:00:55.941Z",
       "traceId": "dev-09",
       "step": "embed",
       "service": "tokenfactory",
       "endpoint": "/embeddings",
       "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 201,
+      "promptTokens": 158,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.0000020100000000000002,
-      "latencyMs": 759,
+      "costUsd": 0.0000015800000000000001,
+      "latencyMs": 9079,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:14:20.840Z",
+      "at": "2026-11-18T03:01:05.022Z",
       "traceId": "dev-09",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 355,
-      "completionTokens": 117,
+      "promptTokens": 351,
+      "completionTokens": 141,
       "cachedTokens": 256,
       "credits": 0,
-      "costUsd": 0.0000706,
-      "latencyMs": 1708,
+      "costUsd": 0.0000774,
+      "latencyMs": 3198,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:14:23.683Z",
+      "at": "2026-11-18T03:01:10.273Z",
       "traceId": "dev-09",
       "step": "search",
       "service": "tavily",
@@ -1412,12 +840,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1116,
+      "latencyMs": 2036,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:14:25.822Z",
+      "at": "2026-11-18T03:01:11.167Z",
       "traceId": "dev-09",
       "step": "search",
       "service": "tavily",
@@ -1428,12 +856,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 2125,
+      "latencyMs": 873,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:14:27.227Z",
+      "at": "2026-11-18T03:01:12.557Z",
       "traceId": "dev-09",
       "step": "search",
       "service": "tavily",
@@ -1444,28 +872,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1387,
+      "latencyMs": 1371,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:14:28.720Z",
-      "traceId": "dev-09",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1479,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:14:30.974Z",
+      "at": "2026-11-18T03:01:13.192Z",
       "traceId": "dev-09",
       "step": "extract",
       "service": "tavily",
@@ -1476,12 +888,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 2242,
+      "latencyMs": 617,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:14:32.065Z",
+      "at": "2026-11-18T03:01:13.732Z",
       "traceId": "dev-09",
       "step": "dating",
       "service": "wayback",
@@ -1492,188 +904,60 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 1027,
+      "latencyMs": 536,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:14:32.082Z",
+      "at": "2026-11-18T03:01:13.733Z",
       "traceId": "dev-09",
       "step": "same_claim",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 210,
+      "promptTokens": 237,
       "completionTokens": 7,
-      "cachedTokens": 176,
+      "cachedTokens": 160,
       "credits": 0,
-      "costUsd": 0.000023100000000000002,
-      "latencyMs": 453,
+      "costUsd": 0.0000258,
+      "latencyMs": 615,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:14:32.538Z",
-      "traceId": "dev-09",
-      "step": "tokenfactory",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 318,
-      "completionTokens": 125,
-      "cachedTokens": 272,
-      "credits": 0,
-      "costUsd": 0.0000693,
-      "latencyMs": 1265,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:14:35.043Z",
-      "traceId": "dev-09",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1223,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:14:36.374Z",
-      "traceId": "dev-09",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1316,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:14:38.025Z",
-      "traceId": "dev-09",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1637,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:14:39.704Z",
-      "traceId": "dev-09",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1665,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:14:42.303Z",
-      "traceId": "dev-09",
-      "step": "extract",
-      "service": "tavily",
-      "endpoint": "extract",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 2585,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:14:42.327Z",
+      "at": "2026-11-18T03:01:14.349Z",
       "traceId": "dev-09",
       "step": "embed",
       "service": "tokenfactory",
       "endpoint": "/embeddings",
       "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 633,
+      "promptTokens": 99,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.00000633,
-      "latencyMs": 4357,
+      "costUsd": 9.9e-7,
+      "latencyMs": 1342,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:14:46.701Z",
+      "at": "2026-11-18T03:01:15.693Z",
       "traceId": "dev-09",
       "step": "embed",
       "service": "tokenfactory",
       "endpoint": "/embeddings",
       "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 1321,
+      "promptTokens": 104,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.00001321,
-      "latencyMs": 6660,
+      "costUsd": 0.00000104,
+      "latencyMs": 2258,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:14:53.375Z",
-      "traceId": "dev-09",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 530,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.0000053,
-      "latencyMs": 16588,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:15:09.973Z",
-      "traceId": "dev-09",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 77,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 7.7e-7,
-      "latencyMs": 776,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:15:10.846Z",
+      "at": "2026-11-18T03:01:18.150Z",
       "traceId": "dev-09",
       "step": "dating",
       "service": "fetch",
@@ -1684,28 +968,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 94,
+      "latencyMs": 195,
       "status": "403",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:15:10.896Z",
-      "traceId": "dev-09",
-      "step": "dating",
-      "service": "ncbi",
-      "endpoint": "esummary",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 144,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:15:14.626Z",
+      "at": "2026-11-18T03:01:19.372Z",
       "traceId": "dev-09",
       "step": "dating",
       "service": "fetch",
@@ -1716,44 +984,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 3780,
-      "status": "200",
+      "latencyMs": 1416,
+      "status": "bad_response",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:15:19.199Z",
-      "traceId": "dev-09",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 4568,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:15:24.702Z",
-      "traceId": "dev-09",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 5502,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:15:24.703Z",
+      "at": "2026-11-18T03:01:19.376Z",
       "traceId": "dev-09",
       "step": "dating",
       "service": "wayback",
@@ -1769,7 +1005,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:15:24.704Z",
+      "at": "2026-11-18T03:01:19.379Z",
       "traceId": "dev-09",
       "step": "dating",
       "service": "wayback",
@@ -1785,7 +1021,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:15:24.705Z",
+      "at": "2026-11-18T03:01:19.380Z",
       "traceId": "dev-09",
       "step": "dating",
       "service": "wayback",
@@ -1801,70 +1037,64 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:15:24.712Z",
+      "at": "2026-11-18T03:01:19.380Z",
+      "traceId": "dev-09",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-18T03:01:19.387Z",
       "traceId": "dev-09",
       "step": "page_type",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 1867,
+      "promptTokens": 2039,
       "completionTokens": 8,
       "cachedTokens": 176,
       "credits": 0,
-      "costUsd": 0.0001891,
-      "latencyMs": 564,
+      "costUsd": 0.0002063,
+      "latencyMs": 495,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:15:25.303Z",
-      "traceId": "dev-09",
-      "step": "readouts",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 460,
-      "completionTokens": 23,
-      "cachedTokens": 368,
-      "credits": 0,
-      "costUsd": 0.0000529,
-      "latencyMs": 413,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:15:25.741Z",
-      "traceId": "dev-09",
-      "step": "readouts",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 460,
-      "completionTokens": 23,
-      "cachedTokens": 368,
-      "credits": 0,
-      "costUsd": 0.0000529,
-      "latencyMs": 334,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:15:26.080Z",
+      "at": "2026-11-18T03:01:19.884Z",
       "traceId": "dev-09",
       "step": "boundary",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 294,
+      "promptTokens": 381,
       "completionTokens": 6,
-      "cachedTokens": 144,
+      "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.0000312,
-      "latencyMs": 325,
+      "costUsd": 0.0000399,
+      "latencyMs": 522,
       "status": "200",
       "cacheHit": false
     }
   ],
   "scopeNote": "Web pages only; print and paywalled origins are out of scope. Earliest source we found, not proof of first use.",
-  "otherNumbers": []
+  "otherNumbers": [
+    {
+      "url": "https://www.nationalgeographic.com/science/article/plastic-produced-recycling-waste-ocean-trash-debris-environment",
+      "domain": "nationalgeographic.com",
+      "title": "A whopping 91% of plastic isn't recycled | National Geographic",
+      "date": "2017-07-19",
+      "sentence": "A whopping 91% of plastic isn't recycled.",
+      "number": "91%",
+      "similarity": 0.864
+    }
+  ]
 }

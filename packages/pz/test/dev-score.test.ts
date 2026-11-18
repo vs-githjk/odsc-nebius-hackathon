@@ -84,6 +84,14 @@ describe("dev score", () => {
     expect(summarise([scoreClaim(audio, null)])).toMatchObject({ claims: 0, outOfScope: 1 });
   });
 
+  it("decides out of scope before anything else, so a bad or unverified trace of it is still scored apart (XO on #192)", () => {
+    const audio = claims.find((c) => c.id === "dev-19")!;
+    const unverified = asDev("sample-origin", "dev-19");
+    unverified.spans[0]!.text = unverified.spans[0]!.text.replace("14", "15");
+    expect(scoreClaim(audio, unverified)).toMatchObject({ status: "out of scope", reason: audio.outOfScope });
+    expect(scoreClaim(audio, asDev("sample-origin", "dev-03"))).toMatchObject({ status: "out of scope" });
+  });
+
   it("never scores a trace that fails pz verify, or one filed under the wrong claim", () => {
     const bad = asDev("sample-origin", "dev-14", { "keeper-log": originClaim.tracedOrigin! });
     bad.spans[0]!.text = bad.spans[0]!.text.replace("14", "15");

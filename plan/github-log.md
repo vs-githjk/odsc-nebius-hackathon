@@ -99,3 +99,15 @@
 - 2026-11-17 14:35 ET tick: no new heads. Nudged Rishit (order: #212, #209, #210) and Rohan (push PR before 18:00; time reserve is now #212).
 - 2026-11-17 14:43 ET tick: no new heads.
 - 2026-11-17 15:10 ET: Vidyut gave the go for the 18:00 run (logged). Work posted for Rishit (#212, #209, #210 by 17:30), Rohan (push the PR by 17:30), Anoop (limits rows, submission refresh, demo script check). Scheduled: merge pass 17:31, live run 18:02.
+- 2026-11-17 17:35 ET: pre-run pass. #214 (Anoop, L16 caps row) PASS, merged ea2a69b. Rishit #212, #209, #210, #184 no new heads since the 13:4x fix lists, wait for after the run. Rohan PR not opened. #158 script checked against main by Anoop; held for Vidyut's approval.
+- 2026-11-17 18:40 ET: live E2 rerun done ($2.08; $9.15 left). Score 1 (+0) false origins, 2/10 cited, 0/0/10, cold 6/9. #215 merged e39de06 (traces, row, README). Replay misses 25. Posted #164, #2, #131 (T72), #1 (dev-04 false origin, cold regression, replay misses to Rishit).
+- 2026-11-17 20:25 ET: no new heads. Rohan: open PR, dev-07/08 bad_response, dev-11 no pages (#3). Anoop: loadTraces live traces (#4). Rishit nudged (#1).
+- 2026-11-17 20:55 ET: XO merged #216 a30dee8 (dev-04 false origin), #217 fd89247 (dev-10 lone year), #218 c4f3e14 (dev-11 code queries); live rehearsal dev-10 and dev-11 both cite target ($0.45, $8.70 left).
+- 2026-11-17 21:00 ET: XO merged #219 f3f2065 (dev-07/08 phrase subject head word). Tonight's XO fixes: #216, #217, #218, #219.
+- 2026-11-17 22:35 ET: merged #220, #221, #223, #212, #210, #209; live run 3 scored (1 (+0), 3/10, 1/0/9, 7/9) merged #227; #225 prior-use cue in review; #224 held (subject check). Tavily key at 800/1000.
+- 22:23 ET: #225 merged (prior-use cue). Rescored run 3 traces on main: see #164.
+- 22:28 ET: repo public (Vidyut), CI rerun on #184, #226, #222; reviews running. Tavily key swap: Rishit sends key to Vidyut privately.
+- 22:40 ET: #226 merged 82d34ee; #222 FIX (byline <time> scope); #184 FIX (than/over); new Tavily key OK; Anoop tasks on #4.
+- 22:58 ET: #184 claim box PASS and merged. XO coding window closed 23:00; orchestration only.
+- 23:06 ET: #228 PASS merged. Rishit next: phrase claims in the claim box.
+- 2026-11-18 08:26 #222 re-review 257c9fd: FIX [M] teaser-only time confirms false date, [L] comments/scripts; posted

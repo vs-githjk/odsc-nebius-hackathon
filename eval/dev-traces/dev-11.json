@@ -3,7 +3,7 @@
   "id": "dev-11",
   "mode": "LIVE",
   "synthetic": false,
-  "recordedAt": "2026-11-17T06:19:47.456Z",
+  "recordedAt": "2026-11-18T03:02:20.135Z",
   "claim": {
     "text": "Just 100 companies are responsible for 71% of global emissions.",
     "atoms": {
@@ -19,7 +19,11 @@
       "namedSource": null,
       "variants": [
         "one hundred"
-      ]
+      ],
+      "alsoNumber": {
+        "raw": "71%",
+        "canonical": "71%"
+      }
     }
   },
   "viralSentence": "Just 100 companies are responsible for 71% of global emissions.",
@@ -66,14 +70,14 @@
     },
     {
       "id": "n2",
-      "url": "https://www.factcheck.org/2026/04/what-do-we-know-about-birth-tourism",
-      "domain": "factcheck.org",
-      "title": "What Do We Know About 'Birth Tourism'? - FactCheck.org",
+      "url": "https://politifact.com/factchecks/2022/jul/22/instagram-posts/no-100-corporations-do-not-produce-70-total-greenh",
+      "domain": "politifact.com",
+      "title": "No, 100 corporations do not produce 70% of total greenhouse gas emissions – PolitiFact",
       "date": {
         "kind": "existed_by",
-        "value": "2026-04-16",
+        "value": "2022-07-22",
         "source": "wayback_first_capture",
-        "firstCapture": "2026-04-16",
+        "firstCapture": "2022-07-22",
         "conflictingDate": false
       },
       "clusterId": "c-n2",
@@ -85,19 +89,19 @@
       "citesEarlier": true,
       "candidateParents": [
         {
-          "url": "https://www.rickscott.senate.gov/services/files/5A2A9A3F-15E7-4EFD-ABCC-786E22B5A0CA",
+          "url": "https://cdn.cdp.net/cdp-production/cms/reports/documents/000/002/327/original/Carbon-Majors-Report-2017.pdf?1501833772",
           "read": true
         },
         {
-          "url": "https://giving.aws.cloud.upenn.edu/?fastStart=simpleForm&program=ANS&fund=602014",
+          "url": "https://www.theguardian.com/sustainable-business/2017/jul/10/100-fossil-fuel-companies-investors-responsible-71-global-emissions-cdp-study-climate-change",
           "read": false
         },
         {
-          "url": "https://www.usatoday.com/story/news/world/2015/04/01/china-usa-birth-tourists-business-strong/24887837",
+          "url": "https://www.cnbc.com/2017/07/10/just-100-firms-attributable-for-71-percent-of-global-emissions-report-says.html",
           "read": true
         },
         {
-          "url": "https://www.cnn.com/2019/01/31/asia/chinese-birth-tourism-arrest",
+          "url": "https://fortune.com/2017/07/10/climate-change-green-house-gases",
           "read": true
         }
       ],
@@ -106,14 +110,14 @@
     },
     {
       "id": "n3",
-      "url": "https://www.cdp.net/en/press-releases/new-report-shows-just-100-companies-are-source-of-over-70-of-emissions",
-      "domain": "cdp.net",
-      "title": "New report shows just 100 companies are source of over 70% of emissions - CDP",
+      "url": "https://climateaccountability.org/pdf/CarbonMajorsUpdate%20CAI%20PR%2010Jul17.pdf",
+      "domain": "climateaccountability.org",
+      "title": "100 companies the source of 71% of emissions 1988-2015",
       "date": {
         "kind": "existed_by",
-        "value": "2025-02-08",
+        "value": "2025-08-14",
         "source": "wayback_first_capture",
-        "firstCapture": "2025-02-08",
+        "firstCapture": "2025-08-14",
         "conflictingDate": false
       },
       "clusterId": "c-n3",
@@ -130,15 +134,15 @@
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "yes",
-        "probability": 0.9999993524052976,
+        "probability": 0.9999999468421447,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.9999993524052976
+            "p": 0.9999999468421447
           },
           {
             "optionId": "no",
-            "p": 6.47594702638598e-7
+            "p": 5.3157855334038866e-8
           },
           {
             "optionId": "__other__",
@@ -153,14 +157,14 @@
     },
     {
       "id": "n4",
-      "url": "https://www.slickcharts.com/nasdaq100",
-      "domain": "slickcharts.com",
-      "title": "Nasdaq 100 Companies by Weight",
+      "url": "https://www.twn.my/title2/resurgence/2017/321/eco1.htm",
+      "domain": "twn.my",
+      "title": "100 companies responsible for over 70% of global greenhouse gas emissions",
       "date": {
         "kind": "existed_by",
-        "value": "2014-10-10",
+        "value": "2019-07-20",
         "source": "wayback_first_capture",
-        "firstCapture": "2014-10-10",
+        "firstCapture": "2019-07-20",
         "conflictingDate": false
       },
       "clusterId": "c-n4",
@@ -173,22 +177,69 @@
       ],
       "citesEarlier": false,
       "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9999999987498465,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9999999987498465
+          },
+          {
+            "optionId": "no",
+            "p": 1.2501535792697934e-9
+          },
+          {
+            "optionId": "__other__",
+            "p": 0
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    },
+    {
+      "id": "n5",
+      "url": "https://www.cnbc.com/2017/07/10/just-100-firms-attributable-for-71-percent-of-global-emissions-report-says.html",
+      "domain": "cnbc.com",
+      "title": "Just 100 firms attributable for 71% of global emissions, report says",
+      "date": {
+        "kind": "existed_by",
+        "value": "2017-07-10",
+        "source": "wayback_first_capture",
+        "firstCapture": "2017-07-10",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n5",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s3"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
       "pageType": {
         "questionId": "page_type",
-        "optionId": "dataset",
-        "probability": 0.9999996356982439,
+        "optionId": "report",
+        "probability": 0.998830467883899,
         "top": [
           {
             "optionId": "study",
-            "p": 3.059023205018258e-7
+            "p": 1.7237628486531495e-8
           },
           {
             "optionId": "dataset",
-            "p": 0.9999996356982439
+            "p": 0
           },
           {
             "optionId": "report",
-            "p": 4.691164021834418e-8
+            "p": 0.998830467883899
           },
           {
             "optionId": "speaker",
@@ -196,7 +247,7 @@
           },
           {
             "optionId": "news",
-            "p": 0
+            "p": 0.001169514121104093
           },
           {
             "optionId": "blog",
@@ -208,11 +259,11 @@
           },
           {
             "optionId": "other",
-            "p": 9.237449661970594e-9
+            "p": 7.573685386376911e-10
           },
           {
             "optionId": "__other__",
-            "p": 2.250345687571098e-9
+            "p": 0
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -220,57 +271,234 @@
       },
       "sameClaim": {
         "questionId": "same_claim",
-        "optionId": "no",
-        "probability": 0.9999997615833572,
+        "optionId": "yes",
+        "probability": 0.999999984770017,
         "top": [
           {
             "optionId": "yes",
-            "p": 2.3823698121002582e-7
+            "p": 0.999999984770017
           },
           {
             "optionId": "no",
-            "p": 0.9999997615833572
+            "p": 1.5229983140728177e-8
           },
           {
             "optionId": "__other__",
-            "p": 1.7966150789305857e-10
+            "p": 0
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
         "threshold": null
       },
-      "foundViaMeta": null,
+      "foundViaMeta": "https://politifact.com/factchecks/2022/jul/22/instagram-posts/no-100-corporations-do-not-produce-70-total-greenh",
       "boundary": {
         "questionId": "boundary",
-        "optionId": "none",
-        "probability": 0.6220052431737498,
+        "optionId": "print",
+        "probability": 0.999997854237364,
         "top": [
           {
             "optionId": "print",
-            "p": 0.0005671902086566008
+            "p": 0.999997854237364
           },
           {
             "optionId": "unsourced",
-            "p": 0.3774243693987398
+            "p": 1.1553391518045111e-7
           },
           {
             "optionId": "none",
-            "p": 0.6220052431737498
+            "p": 0.0000019948792050155227
           },
           {
             "optionId": "__other__",
-            "p": 0.0000031972188537787716
+            "p": 3.534951575900891e-8
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
         "threshold": null
       },
       "injection": null
+    },
+    {
+      "id": "n6",
+      "url": "https://fortune.com/2017/07/10/climate-change-green-house-gases",
+      "domain": "fortune.com",
+      "title": "Just 100 Companies Are Responsible for 71% of Global Carbon Emissions | Fortune",
+      "date": {
+        "kind": "published",
+        "value": "2017-07-10",
+        "source": "metadata",
+        "firstCapture": "2017-07-10",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n6",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s4"
+      ],
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "https://fortune.com/2026/11/16/delta-ceo-ed-bastian-atlanta-laguardia-flight-1950s-faa/?itm_source=parsely-api",
+          "read": false
+        }
+      ],
+      "pageType": {
+        "questionId": "page_type",
+        "optionId": "news",
+        "probability": 0.9999815264269315,
+        "top": [
+          {
+            "optionId": "study",
+            "p": 0
+          },
+          {
+            "optionId": "dataset",
+            "p": 0
+          },
+          {
+            "optionId": "report",
+            "p": 0.00001670139779779585
+          },
+          {
+            "optionId": "speaker",
+            "p": 0
+          },
+          {
+            "optionId": "news",
+            "p": 0.9999815264269315
+          },
+          {
+            "optionId": "blog",
+            "p": 0.0000017603143769869115
+          },
+          {
+            "optionId": "social",
+            "p": 0
+          },
+          {
+            "optionId": "other",
+            "p": 1.1860893662430914e-8
+          },
+          {
+            "optionId": "__other__",
+            "p": 0
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9999038976049137,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9999038976049137
+          },
+          {
+            "optionId": "no",
+            "p": 0.00009610239508616952
+          },
+          {
+            "optionId": "__other__",
+            "p": 1.1102230246251565e-16
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": "https://politifact.com/factchecks/2022/jul/22/instagram-posts/no-100-corporations-do-not-produce-70-total-greenh",
+      "boundary": {
+        "questionId": "boundary",
+        "optionId": "unsourced",
+        "probability": 0.986958869379241,
+        "top": [
+          {
+            "optionId": "print",
+            "p": 0.0006183919013630699
+          },
+          {
+            "optionId": "unsourced",
+            "p": 0.986958869379241
+          },
+          {
+            "optionId": "none",
+            "p": 0.012421927145601202
+          },
+          {
+            "optionId": "__other__",
+            "p": 8.115737947234081e-7
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "injection": null
+    },
+    {
+      "id": "n7",
+      "url": "https://unctad.org/system/files/official-document/wir2017_en.pdf",
+      "domain": "unctad.org",
+      "title": "World Investment Report 2017",
+      "date": {
+        "kind": "existed_by",
+        "value": "2020-11-08",
+        "source": "wayback_first_capture",
+        "firstCapture": "2020-11-08",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n7",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s5"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "no",
+        "probability": 0.9999999881388798,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 1.1861120266766811e-8
+          },
+          {
+            "optionId": "no",
+            "p": 0.9999999881388798
+          },
+          {
+            "optionId": "__other__",
+            "p": 0
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
     }
   ],
   "edges": [
     {
       "id": "e1",
+      "parentId": "n6",
+      "childId": "n4",
+      "kind": "inferred",
+      "parentSpanId": "s4",
+      "childSpanId": "s2",
+      "linkHref": null
+    },
+    {
+      "id": "e2",
       "parentId": "n4",
       "childId": "n3",
       "kind": "inferred",
@@ -281,9 +509,9 @@
   ],
   "clusters": [
     {
-      "id": "c-n4",
+      "id": "c-n7",
       "nodeIds": [
-        "n4"
+        "n7"
       ],
       "rule": "single"
     },
@@ -291,6 +519,27 @@
       "id": "c-n3",
       "nodeIds": [
         "n3"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n4",
+      "nodeIds": [
+        "n4"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n5",
+      "nodeIds": [
+        "n5"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n6",
+      "nodeIds": [
+        "n6"
       ],
       "rule": "single"
     },
@@ -313,29 +562,71 @@
     {
       "id": "s1",
       "nodeId": "n3",
-      "text": "Press release Jul 10, 2017•Global New report shows just 100 companies are source of over 70% of emissions.",
+      "text": "Richard Heede Climate Accountability Institute 1626 Gateway Road, Snowmass, heede@climateaccountability.org www.climateaccountability.org Colorado, 81654, USA 970-343-0707 PRESS RELEASE - 10 JULY 2017 Carbon Majors: 100 companies the source of 71% of emissions 1988-2015 The Climate Accountability Institute and CDP announce the release of the updated Carbon Majors Dataset 2017.",
       "contextBefore": "",
-      "contextAfter": " Groundbreaking 'Carbon Majors' research finds 100 active fossil fuel producers including ExxonMobil, Shell, BHP Billiton and Gazprom are linked to 71% of industrial greenhouse gas emissions since 198",
+      "contextAfter": " These three reports quantify the pivotal role of the producers of oil, natural gas, and coal in driving global carbon dioxide emissions and highlight the risks and opportunities of companies to aide ",
       "start": 0,
-      "end": 106,
-      "extractSha256": "0eb39fc17754cdc2c2a54f04b361255ae249f814bf3d6e4509d73f820a6968da",
-      "windowSha256": "dcde0238a81d1d825046e5385e7b324b80d66425693d75cbef7d894fac33bccf",
-      "fetchedAt": "2026-11-17T06:20:15.579Z",
-      "waybackUrl": "https://web.archive.org/web/20250208223957/https://www.cdp.net/en/press-releases/new-report-shows-just-100-companies-are-source-of-over-70-of-emissions",
+      "end": 379,
+      "extractSha256": "f4e132fc70579e10c8e5b9af15dcf51cf8b58d35d6035068e2f6db80a9733d0b",
+      "windowSha256": "539fc4899004d57eff91f7944f27c57ae8d55970f980c69851bdd793372a1f8b",
+      "fetchedAt": "2026-11-18T03:02:40.468Z",
+      "waybackUrl": "https://web.archive.org/web/20250814053158/https://climateaccountability.org/pdf/CarbonMajorsUpdate%20CAI%20PR%2010Jul17.pdf",
       "tier": "exact"
     },
     {
       "id": "s2",
       "nodeId": "n4",
-      "text": "Nasdaq 100 Companies.",
+      "text": "| | | | | --- | --- | --- | | TWN | THIRD WORLD RESURGENCE | ARCHIVE | | | | THIRD WORLD RESURGENCE --- | | 100 companies responsible for over 70% of global greenhouse gas emissions The decision of the US, the worlds second largest carbon emitter, to withdraw from the 2015 Paris climate treaty has engendered a sense of despair as to whether the problem of climate change can really be tackled.",
       "contextBefore": "",
-      "contextAfter": " Explore the Nasdaq 100 index components, ranked by company weight from largest to smallest. While the index is heavily weighted toward technology companies, it also includes leading firms from sector",
+      "contextAfter": " However, a recent report which reveals a highly concentrated picture of carbon emissions  with just 100 fossil fuel producers being responsible for more than 70% of industrial emissions  offers hop",
       "start": 0,
-      "end": 21,
-      "extractSha256": "8ac1dd87fa9981f9afa6ed0a990719bfd39c3c0177cc9c8513b0d1ae875fa1e8",
-      "windowSha256": "95fb7016f166b0f5f8fee7eb55c6e6b822dc012a2cc928f26301cff335c30224",
-      "fetchedAt": "2026-11-17T06:20:16.691Z",
-      "waybackUrl": "https://web.archive.org/web/20141010043229/https://www.slickcharts.com/nasdaq100",
+      "end": 396,
+      "extractSha256": "a6e9cf319b460af169e4e2f45bdd807c82b232d4d3bd4051003ab14a2eaa1b99",
+      "windowSha256": "7757e33facd969c0163a014f6481cfaad6763a5f2c833be5fc9283ac41c41840",
+      "fetchedAt": "2026-11-18T03:02:41.592Z",
+      "waybackUrl": "https://web.archive.org/web/20190720013425/https://www.twn.my/title2/resurgence/2017/321/eco1.htm",
+      "tier": "exact"
+    },
+    {
+      "id": "s3",
+      "nodeId": "n5",
+      "text": "Just 100 companies have been identified as accountable for more than 70 percent of the world's greenhouse gas emissions, according to a report published Monday.",
+      "contextBefore": "",
+      "contextAfter": " The Carbon Majors Report, published in collaboration with the Climate Accountability Institute, found that more than half of industrial emissions worldwide could be sourced to only 25 corporate or st",
+      "start": 0,
+      "end": 160,
+      "extractSha256": "5b3364fb6af384812f3a2d51f798e95a0ce28b2181e3e31d59e9f5b3b0d9d188",
+      "windowSha256": "fe6712aaf7279fca43a52d55763dd91b9e821b6fb17e7253ea25b5ca9f2a2207",
+      "fetchedAt": "2026-11-18T03:03:01.524Z",
+      "waybackUrl": "https://web.archive.org/web/20170710151430/https://www.cnbc.com/2017/07/10/just-100-firms-attributable-for-71-percent-of-global-emissions-report-says.html",
+      "tier": "exact"
+    },
+    {
+      "id": "s4",
+      "nodeId": "n6",
+      "text": "'Absurd': Delta CEO says it takes longer to fly from ATL to LGA today than in the 1950s These 100 Companies Are Responsible for Most of the World's Carbon Emissions.",
+      "contextBefore": "nk account and airline tickets are under attack from rogue AI 2. Sam Bankman-Fried's former employer Jane Street poised for $35 billion windfall from purchase of Anthropic shares in FTX bankruptcy 3. ",
+      "contextAfter": " By Lucinda Shen Lucinda Shen By Lucinda Shen Lucinda Shen July 10, 2017, 9:17 AM ET Add Fortune on Google for similar content. About 100 companies have been responsible for about 71% of the world's g",
+      "start": 698,
+      "end": 863,
+      "extractSha256": "7862eadf926bb18374092a487f6c2bac478f853a80c0b48656481bfbc910ad7a",
+      "windowSha256": "109d08a1a495ce353107fa94da343cb96278405a808f01f7c0d1db2c4a757415",
+      "fetchedAt": "2026-11-18T03:03:22.731Z",
+      "waybackUrl": "https://web.archive.org/web/20170710133946/https://fortune.com/2017/07/10/climate-change-green-house-gases",
+      "tier": "exact"
+    },
+    {
+      "id": "s5",
+      "nodeId": "n7",
+      "text": "Between 2010 and 2015, the number of tech companies in UNCTAD's ranking of the top 100 MNEs more than doubled.",
+      "contextBefore": "gital economy, calls for targeted investment policies. The weight of information and communication technology (ICT) MNEs in international production has increased dramatically in the last five years. ",
+      "contextAfter": " The assets of these MNEs increased by 65 per cent and their operating revenues and employees by about 30 per cent, against flat trends for other top 100 MNEs. The importance of digital MNEs - includi",
+      "start": 33506,
+      "end": 33616,
+      "extractSha256": "d31baf54bac235809466a322a76e1c710c34902fee28f05264a44ca7b5f19171",
+      "windowSha256": "1fe2091a42b65fcc6c7905855e34fec9bf3d2b6162fd0687dcf57a4c8cc39c90",
+      "fetchedAt": "2026-11-18T03:03:26.660Z",
+      "waybackUrl": "https://web.archive.org/web/20201108154015/https://unctad.org/system/files/official-document/wir2017_en.pdf",
       "tier": "exact"
     }
   ],
@@ -375,64 +666,132 @@
           "id": "scope_widened",
           "source": "inferred",
           "value": "yes",
-          "probability": 0.991422485182567,
+          "probability": 0.5621765080501622,
           "disputed": false
         },
         {
           "id": "attribution_shifted",
           "source": "inferred",
           "value": "yes",
-          "probability": 0.9968273169945328,
+          "probability": 0.9525741269319418,
           "disputed": false
         },
         {
           "id": "context_stripped",
           "source": "inferred",
           "value": "yes",
-          "probability": 0.9399133275548792,
+          "probability": 0.6224593332749105,
           "disputed": false
         }
       ],
       "wordDiff": [
         {
           "op": "add",
-          "text": "press"
+          "text": "twn"
         },
         {
           "op": "add",
-          "text": "release"
+          "text": "third"
         },
         {
           "op": "add",
-          "text": "jul"
+          "text": "world"
         },
         {
           "op": "add",
-          "text": "10"
+          "text": "resurgence"
         },
         {
           "op": "add",
-          "text": "2017•global"
+          "text": "archive"
         },
         {
           "op": "add",
-          "text": "new"
+          "text": "third"
         },
         {
           "op": "add",
-          "text": "report"
+          "text": "world"
         },
         {
           "op": "add",
-          "text": "shows"
-        },
-        {
-          "op": "add",
-          "text": "just"
+          "text": "resurgence"
         },
         {
           "op": "del",
-          "text": "nasdaq"
+          "text": "'absurd'"
+        },
+        {
+          "op": "del",
+          "text": "delta"
+        },
+        {
+          "op": "del",
+          "text": "ceo"
+        },
+        {
+          "op": "del",
+          "text": "says"
+        },
+        {
+          "op": "del",
+          "text": "it"
+        },
+        {
+          "op": "del",
+          "text": "takes"
+        },
+        {
+          "op": "del",
+          "text": "longer"
+        },
+        {
+          "op": "del",
+          "text": "to"
+        },
+        {
+          "op": "del",
+          "text": "fly"
+        },
+        {
+          "op": "del",
+          "text": "from"
+        },
+        {
+          "op": "del",
+          "text": "atl"
+        },
+        {
+          "op": "del",
+          "text": "to"
+        },
+        {
+          "op": "del",
+          "text": "lga"
+        },
+        {
+          "op": "del",
+          "text": "today"
+        },
+        {
+          "op": "del",
+          "text": "than"
+        },
+        {
+          "op": "del",
+          "text": "in"
+        },
+        {
+          "op": "del",
+          "text": "the"
+        },
+        {
+          "op": "del",
+          "text": "1950s"
+        },
+        {
+          "op": "del",
+          "text": "these"
         },
         {
           "op": "same",
@@ -443,16 +802,16 @@
           "text": "companies"
         },
         {
-          "op": "add",
+          "op": "del",
           "text": "are"
         },
         {
-          "op": "add",
-          "text": "source"
+          "op": "same",
+          "text": "responsible"
         },
         {
-          "op": "add",
-          "text": "of"
+          "op": "same",
+          "text": "for"
         },
         {
           "op": "add",
@@ -468,7 +827,616 @@
         },
         {
           "op": "add",
+          "text": "global"
+        },
+        {
+          "op": "add",
+          "text": "greenhouse"
+        },
+        {
+          "op": "add",
+          "text": "gas"
+        },
+        {
+          "op": "add",
           "text": "emissions"
+        },
+        {
+          "op": "add",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "decision"
+        },
+        {
+          "op": "del",
+          "text": "most"
+        },
+        {
+          "op": "same",
+          "text": "of"
+        },
+        {
+          "op": "same",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "us"
+        },
+        {
+          "op": "add",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "worlds"
+        },
+        {
+          "op": "add",
+          "text": "second"
+        },
+        {
+          "op": "add",
+          "text": "largest"
+        },
+        {
+          "op": "del",
+          "text": "world's"
+        },
+        {
+          "op": "same",
+          "text": "carbon"
+        },
+        {
+          "op": "add",
+          "text": "emitter"
+        },
+        {
+          "op": "add",
+          "text": "to"
+        },
+        {
+          "op": "add",
+          "text": "withdraw"
+        },
+        {
+          "op": "add",
+          "text": "from"
+        },
+        {
+          "op": "add",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "2015"
+        },
+        {
+          "op": "add",
+          "text": "paris"
+        },
+        {
+          "op": "add",
+          "text": "climate"
+        },
+        {
+          "op": "add",
+          "text": "treaty"
+        },
+        {
+          "op": "add",
+          "text": "has"
+        },
+        {
+          "op": "add",
+          "text": "engendered"
+        },
+        {
+          "op": "add",
+          "text": "a"
+        },
+        {
+          "op": "add",
+          "text": "sense"
+        },
+        {
+          "op": "add",
+          "text": "of"
+        },
+        {
+          "op": "add",
+          "text": "despair"
+        },
+        {
+          "op": "add",
+          "text": "as"
+        },
+        {
+          "op": "add",
+          "text": "to"
+        },
+        {
+          "op": "add",
+          "text": "whether"
+        },
+        {
+          "op": "add",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "problem"
+        },
+        {
+          "op": "add",
+          "text": "of"
+        },
+        {
+          "op": "add",
+          "text": "climate"
+        },
+        {
+          "op": "add",
+          "text": "change"
+        },
+        {
+          "op": "add",
+          "text": "can"
+        },
+        {
+          "op": "add",
+          "text": "really"
+        },
+        {
+          "op": "add",
+          "text": "be"
+        },
+        {
+          "op": "add",
+          "text": "tackled"
+        },
+        {
+          "op": "del",
+          "text": "emissions"
+        }
+      ],
+      "faithful": false
+    },
+    {
+      "edgeId": "e2",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "scope_widened",
+          "source": "inferred",
+          "value": "yes",
+          "probability": 0.6224593592438065,
+          "disputed": false
+        },
+        {
+          "id": "attribution_shifted",
+          "source": "inferred",
+          "value": "yes",
+          "probability": 0.9999999468421502,
+          "disputed": false
+        },
+        {
+          "id": "context_stripped",
+          "source": "inferred",
+          "value": "no",
+          "probability": 0.985936373457743,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "richard"
+        },
+        {
+          "op": "add",
+          "text": "heede"
+        },
+        {
+          "op": "add",
+          "text": "climate"
+        },
+        {
+          "op": "add",
+          "text": "accountability"
+        },
+        {
+          "op": "add",
+          "text": "institute"
+        },
+        {
+          "op": "add",
+          "text": "1626"
+        },
+        {
+          "op": "add",
+          "text": "gateway"
+        },
+        {
+          "op": "add",
+          "text": "road"
+        },
+        {
+          "op": "add",
+          "text": "snowmass"
+        },
+        {
+          "op": "add",
+          "text": "heede@climateaccountability.org"
+        },
+        {
+          "op": "add",
+          "text": "www.climateaccountability.org"
+        },
+        {
+          "op": "add",
+          "text": "colorado"
+        },
+        {
+          "op": "add",
+          "text": "81654"
+        },
+        {
+          "op": "add",
+          "text": "usa"
+        },
+        {
+          "op": "add",
+          "text": "970-343-0707"
+        },
+        {
+          "op": "add",
+          "text": "press"
+        },
+        {
+          "op": "add",
+          "text": "release"
+        },
+        {
+          "op": "add",
+          "text": "10"
+        },
+        {
+          "op": "add",
+          "text": "july"
+        },
+        {
+          "op": "add",
+          "text": "2017"
+        },
+        {
+          "op": "add",
+          "text": "carbon"
+        },
+        {
+          "op": "add",
+          "text": "majors"
+        },
+        {
+          "op": "del",
+          "text": "twn"
+        },
+        {
+          "op": "del",
+          "text": "third"
+        },
+        {
+          "op": "del",
+          "text": "world"
+        },
+        {
+          "op": "del",
+          "text": "resurgence"
+        },
+        {
+          "op": "del",
+          "text": "archive"
+        },
+        {
+          "op": "del",
+          "text": "third"
+        },
+        {
+          "op": "del",
+          "text": "world"
+        },
+        {
+          "op": "del",
+          "text": "resurgence"
+        },
+        {
+          "op": "same",
+          "text": "100"
+        },
+        {
+          "op": "same",
+          "text": "companies"
+        },
+        {
+          "op": "add",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "source"
+        },
+        {
+          "op": "add",
+          "text": "of"
+        },
+        {
+          "op": "add",
+          "text": "71"
+        },
+        {
+          "op": "del",
+          "text": "responsible"
+        },
+        {
+          "op": "del",
+          "text": "for"
+        },
+        {
+          "op": "del",
+          "text": "over"
+        },
+        {
+          "op": "del",
+          "text": "70"
+        },
+        {
+          "op": "same",
+          "text": "of"
+        },
+        {
+          "op": "del",
+          "text": "global"
+        },
+        {
+          "op": "del",
+          "text": "greenhouse"
+        },
+        {
+          "op": "del",
+          "text": "gas"
+        },
+        {
+          "op": "same",
+          "text": "emissions"
+        },
+        {
+          "op": "add",
+          "text": "1988-2015"
+        },
+        {
+          "op": "same",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "climate"
+        },
+        {
+          "op": "add",
+          "text": "accountability"
+        },
+        {
+          "op": "add",
+          "text": "institute"
+        },
+        {
+          "op": "add",
+          "text": "and"
+        },
+        {
+          "op": "add",
+          "text": "cdp"
+        },
+        {
+          "op": "add",
+          "text": "announce"
+        },
+        {
+          "op": "add",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "release"
+        },
+        {
+          "op": "del",
+          "text": "decision"
+        },
+        {
+          "op": "same",
+          "text": "of"
+        },
+        {
+          "op": "same",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "updated"
+        },
+        {
+          "op": "del",
+          "text": "us"
+        },
+        {
+          "op": "del",
+          "text": "the"
+        },
+        {
+          "op": "del",
+          "text": "worlds"
+        },
+        {
+          "op": "del",
+          "text": "second"
+        },
+        {
+          "op": "del",
+          "text": "largest"
+        },
+        {
+          "op": "same",
+          "text": "carbon"
+        },
+        {
+          "op": "add",
+          "text": "majors"
+        },
+        {
+          "op": "add",
+          "text": "dataset"
+        },
+        {
+          "op": "add",
+          "text": "2017"
+        },
+        {
+          "op": "del",
+          "text": "emitter"
+        },
+        {
+          "op": "del",
+          "text": "to"
+        },
+        {
+          "op": "del",
+          "text": "withdraw"
+        },
+        {
+          "op": "del",
+          "text": "from"
+        },
+        {
+          "op": "del",
+          "text": "the"
+        },
+        {
+          "op": "del",
+          "text": "2015"
+        },
+        {
+          "op": "del",
+          "text": "paris"
+        },
+        {
+          "op": "del",
+          "text": "climate"
+        },
+        {
+          "op": "del",
+          "text": "treaty"
+        },
+        {
+          "op": "del",
+          "text": "has"
+        },
+        {
+          "op": "del",
+          "text": "engendered"
+        },
+        {
+          "op": "del",
+          "text": "a"
+        },
+        {
+          "op": "del",
+          "text": "sense"
+        },
+        {
+          "op": "del",
+          "text": "of"
+        },
+        {
+          "op": "del",
+          "text": "despair"
+        },
+        {
+          "op": "del",
+          "text": "as"
+        },
+        {
+          "op": "del",
+          "text": "to"
+        },
+        {
+          "op": "del",
+          "text": "whether"
+        },
+        {
+          "op": "del",
+          "text": "the"
+        },
+        {
+          "op": "del",
+          "text": "problem"
+        },
+        {
+          "op": "del",
+          "text": "of"
+        },
+        {
+          "op": "del",
+          "text": "climate"
+        },
+        {
+          "op": "del",
+          "text": "change"
+        },
+        {
+          "op": "del",
+          "text": "can"
+        },
+        {
+          "op": "del",
+          "text": "really"
+        },
+        {
+          "op": "del",
+          "text": "be"
+        },
+        {
+          "op": "del",
+          "text": "tackled"
         }
       ],
       "faithful": false
@@ -476,178 +1444,178 @@
   ],
   "blame": [],
   "roots": {
-    "pages": 2,
-    "clusters": 2,
+    "pages": 5,
+    "clusters": 5,
     "rootsLinked": 0,
-    "clustersUnlinked": 2,
+    "clustersUnlinked": 5,
     "studiesFound": null,
-    "independentRoots": 2,
+    "independentRoots": 5,
     "copies": 0
   },
   "redHopEdgeId": "e1",
   "earliest": {
     "nodeIds": [
-      "n4"
+      "n5",
+      "n6"
     ],
     "earlierWindowSearches": 4,
     "earlierFound": 0
   },
   "failure": null,
   "budget": {
-    "credits": 15,
-    "usd": 0.0009295299999999999,
-    "ms": 119940,
+    "credits": 12,
+    "usd": 0.00083943,
+    "ms": 85887,
     "capHit": null
   },
   "decision": {
     "state": "TRAIL_GOES_COLD",
     "row": 6,
     "reasons": [
-      "no earliest page states the same claim: the claim's atoms in a span and a confident same_claim yes",
-      "4 unread candidate parent(s)"
+      "5 unread candidate parent(s)"
     ],
     "counts": {
-      "pages": 2,
-      "clusters": 2,
-      "unreadParents": 4,
+      "pages": 5,
+      "clusters": 5,
+      "unreadParents": 5,
       "earlierWindowSearches": 4
     }
   },
   "searchLog": [
     {
-      "at": "2026-11-17T06:19:57.544Z",
+      "at": "2026-11-18T03:02:26.712Z",
       "step": "search",
       "query": "\"100\" companies",
-      "endDate": "2026-11-17",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:19:58.728Z",
+      "at": "2026-11-18T03:02:28.976Z",
       "step": "search",
       "query": "100 companies responsible for 71% of global emissions",
-      "endDate": "2026-11-17",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:20:00.676Z",
+      "at": "2026-11-18T03:02:30.950Z",
       "step": "search",
-      "query": "\"71% of global emissions\" attributed to 100 companies",
-      "endDate": "2026-11-17",
+      "query": "71% of global emissions from 100 companies",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:20:01.711Z",
+      "at": "2026-11-18T03:02:33.991Z",
       "step": "search",
-      "query": "100 companies responsible for 71% emissions study",
-      "endDate": "2026-11-17",
+      "query": "100 companies 71% global emissions study",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:20:02.741Z",
+      "at": "2026-11-18T03:02:34.063Z",
       "step": "meta-search",
       "query": "\"100\" companies",
-      "endDate": "2026-11-17",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 5,
       "kept": 2,
       "dropped": 3
     },
     {
-      "at": "2026-11-17T06:20:23.017Z",
+      "at": "2026-11-18T03:02:44.278Z",
       "step": "search",
       "query": "\"100\" companies",
-      "endDate": "2014-10-09",
-      "startDate": null,
-      "results": 5,
-      "kept": 5,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:20:24.201Z",
-      "step": "search",
-      "query": "100 companies responsible for 71% of global emissions",
-      "endDate": "2014-10-09",
-      "startDate": null,
-      "results": 9,
-      "kept": 9,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:20:25.304Z",
-      "step": "search",
-      "query": "71% of global emissions from 100 companies",
-      "endDate": "2014-10-09",
+      "endDate": "2010-07-16",
       "startDate": null,
       "results": 7,
       "kept": 7,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:20:27.325Z",
+      "at": "2026-11-18T03:02:47.255Z",
       "step": "search",
-      "query": "Nasdaq 100 companies emissions 71%",
-      "endDate": "2014-10-09",
-      "startDate": null,
-      "results": 8,
-      "kept": 8,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:20:39.663Z",
-      "step": "search",
-      "query": "\"100 companies are responsible for 71% of global emissions\"",
-      "endDate": "2014-10-09",
-      "startDate": null,
-      "results": 0,
-      "kept": 0,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:20:41.076Z",
-      "step": "search",
-      "query": "\"71% of global emissions\" from 100 companies",
-      "endDate": "2014-10-09",
-      "startDate": null,
-      "results": 10,
-      "kept": 10,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T06:20:42.630Z",
-      "step": "search",
-      "query": "100 companies responsible for 71% global emissions study",
-      "endDate": "2014-10-09",
-      "startDate": null,
-      "results": 9,
-      "kept": 8,
-      "dropped": 1
-    },
-    {
-      "at": "2026-11-17T06:20:43.843Z",
-      "step": "search",
-      "query": "71% of global emissions from 100 companies report",
-      "endDate": "2014-10-09",
+      "query": "100 companies responsible for 71% of global emissions 1988-2015",
+      "endDate": "2010-07-16",
       "startDate": null,
       "results": 9,
       "kept": 9,
       "dropped": 0
+    },
+    {
+      "at": "2026-11-18T03:02:48.914Z",
+      "step": "search",
+      "query": "100 companies the source of 71% of emissions 1988-2015",
+      "endDate": "2010-07-16",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-18T03:02:52.057Z",
+      "step": "search",
+      "query": "Carbon Majors Dataset 100 companies 71% emissions 2017",
+      "endDate": "2010-07-16",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-18T03:03:08.846Z",
+      "step": "search",
+      "query": "\"100 companies\" responsible for \"71%\" of global emissions",
+      "endDate": "2010-07-16",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-18T03:03:12.041Z",
+      "step": "search",
+      "query": "\"Carbon Majors\" 100 companies 71% emissions 1988-2015",
+      "endDate": "2010-07-16",
+      "startDate": null,
+      "results": 3,
+      "kept": 3,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-18T03:03:18.189Z",
+      "step": "search",
+      "query": "Climate Accountability Institute 100 companies 71% emissions study",
+      "endDate": "2010-07-16",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-18T03:03:21.391Z",
+      "step": "search",
+      "query": "100 companies 71% global emissions research paper 2017",
+      "endDate": "2010-07-16",
+      "startDate": null,
+      "results": 9,
+      "kept": 8,
+      "dropped": 1
     }
   ],
   "usage": [
     {
-      "at": "2026-11-17T06:19:47.456Z",
+      "at": "2026-11-18T03:02:20.135Z",
       "traceId": "dev-11",
       "step": "tokenfactory",
       "service": "tokenfactory",
@@ -655,31 +1623,47 @@
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 165,
       "completionTokens": 45,
-      "cachedTokens": 0,
+      "cachedTokens": 128,
       "credits": 0,
       "costUsd": 0.000029999999999999997,
-      "latencyMs": 1686,
+      "latencyMs": 1169,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:19:49.147Z",
+      "at": "2026-11-18T03:02:21.307Z",
       "traceId": "dev-11",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 275,
-      "completionTokens": 188,
+      "completionTokens": 245,
+      "cachedTokens": 240,
+      "credits": 0,
+      "costUsd": 0.000101,
+      "latencyMs": 5112,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:02:26.710Z",
+      "traceId": "dev-11",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.00008389999999999999,
-      "latencyMs": 5407,
+      "costUsd": 0,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:19:57.544Z",
+      "at": "2026-11-18T03:02:28.975Z",
       "traceId": "dev-11",
       "step": "search",
       "service": "tavily",
@@ -690,12 +1674,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 2981,
+      "latencyMs": 2077,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:19:58.728Z",
+      "at": "2026-11-18T03:02:30.939Z",
       "traceId": "dev-11",
       "step": "search",
       "service": "tavily",
@@ -706,12 +1690,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1168,
+      "latencyMs": 1475,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:20:00.676Z",
+      "at": "2026-11-18T03:02:33.991Z",
       "traceId": "dev-11",
       "step": "search",
       "service": "tavily",
@@ -722,28 +1706,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1938,
+      "latencyMs": 2642,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:20:01.710Z",
-      "traceId": "dev-11",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1019,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:20:02.741Z",
+      "at": "2026-11-18T03:02:34.062Z",
       "traceId": "dev-11",
       "step": "meta-search",
       "service": "tavily",
@@ -752,14 +1720,14 @@
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1015,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:20:02.876Z",
+      "at": "2026-11-18T03:02:34.123Z",
       "traceId": "dev-11",
       "step": "meta-extract",
       "service": "tavily",
@@ -770,172 +1738,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 118,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:20:13.305Z",
-      "traceId": "dev-11",
-      "step": "extract",
-      "service": "tavily",
-      "endpoint": "extract",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 10402,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:20:15.579Z",
-      "traceId": "dev-11",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 2256,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:20:15.582Z",
-      "traceId": "dev-11",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 229,
-      "completionTokens": 7,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.000024999999999999998,
-      "latencyMs": 685,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:20:16.691Z",
-      "traceId": "dev-11",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 355,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:20:16.718Z",
-      "traceId": "dev-11",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 204,
-      "completionTokens": 7,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.000022499999999999998,
-      "latencyMs": 501,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:20:17.222Z",
-      "traceId": "dev-11",
-      "step": "tokenfactory",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 309,
-      "completionTokens": 185,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.0000864,
-      "latencyMs": 4479,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:20:23.016Z",
-      "traceId": "dev-11",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1299,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:20:24.198Z",
-      "traceId": "dev-11",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1160,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:20:25.304Z",
-      "traceId": "dev-11",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1069,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:20:27.325Z",
-      "traceId": "dev-11",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1996,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:20:32.789Z",
+      "at": "2026-11-18T03:02:40.435Z",
       "traceId": "dev-11",
       "step": "extract",
       "service": "tavily",
@@ -946,284 +1754,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 5451,
+      "latencyMs": 5988,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:20:32.793Z",
-      "traceId": "dev-11",
-      "step": "tokenfactory",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 309,
-      "completionTokens": 217,
-      "cachedTokens": 304,
-      "credits": 0,
-      "costUsd": 0.000096,
-      "latencyMs": 5731,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:20:39.662Z",
-      "traceId": "dev-11",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1122,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:20:41.074Z",
-      "traceId": "dev-11",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1398,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:20:42.630Z",
-      "traceId": "dev-11",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1505,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:20:43.842Z",
-      "traceId": "dev-11",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1202,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:20:46.017Z",
-      "traceId": "dev-11",
-      "step": "extract",
-      "service": "tavily",
-      "endpoint": "extract",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 2160,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:20:46.068Z",
-      "traceId": "dev-11",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 2569,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.00002569,
-      "latencyMs": 6544,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:20:52.629Z",
-      "traceId": "dev-11",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 2315,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.00002315,
-      "latencyMs": 6102,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:20:58.741Z",
-      "traceId": "dev-11",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 815,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.00000815,
-      "latencyMs": 6266,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:21:05.058Z",
-      "traceId": "dev-11",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 7,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 7e-8,
-      "latencyMs": 8021,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:21:13.081Z",
-      "traceId": "dev-11",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 53,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 5.3e-7,
-      "latencyMs": 9113,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:21:22.199Z",
-      "traceId": "dev-11",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 79,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 7.900000000000001e-7,
-      "latencyMs": 9538,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:21:31.740Z",
-      "traceId": "dev-11",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 45,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 4.5000000000000003e-7,
-      "latencyMs": 4109,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:21:36.121Z",
-      "traceId": "dev-11",
-      "step": "dating",
-      "service": "fetch",
-      "endpoint": "page",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 267,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:21:36.718Z",
-      "traceId": "dev-11",
-      "step": "dating",
-      "service": "fetch",
-      "endpoint": "page",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 865,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:21:39.437Z",
-      "traceId": "dev-11",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 2717,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:21:45.663Z",
-      "traceId": "dev-11",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 6224,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:21:45.664Z",
+      "at": "2026-11-18T03:02:40.467Z",
       "traceId": "dev-11",
       "step": "dating",
       "service": "wayback",
@@ -1239,7 +1775,167 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:21:45.665Z",
+      "at": "2026-11-18T03:02:40.469Z",
+      "traceId": "dev-11",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 312,
+      "completionTokens": 7,
+      "cachedTokens": 160,
+      "credits": 0,
+      "costUsd": 0.000033299999999999996,
+      "latencyMs": 569,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:02:41.592Z",
+      "traceId": "dev-11",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 545,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:02:41.594Z",
+      "traceId": "dev-11",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 297,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.0000318,
+      "latencyMs": 411,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:02:42.009Z",
+      "traceId": "dev-11",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 418,
+      "completionTokens": 166,
+      "cachedTokens": 240,
+      "credits": 0,
+      "costUsd": 0.0000916,
+      "latencyMs": 2210,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:02:44.277Z",
+      "traceId": "dev-11",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-18T03:02:47.255Z",
+      "traceId": "dev-11",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2922,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:02:48.912Z",
+      "traceId": "dev-11",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1599,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:02:52.056Z",
+      "traceId": "dev-11",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2790,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:02:58.706Z",
+      "traceId": "dev-11",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 6291,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:02:58.707Z",
+      "traceId": "dev-11",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 50,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 5e-7,
+      "latencyMs": 2791,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:03:01.523Z",
       "traceId": "dev-11",
       "step": "dating",
       "service": "wayback",
@@ -1255,50 +1951,498 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:21:45.670Z",
+      "at": "2026-11-18T03:03:01.526Z",
+      "traceId": "dev-11",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 228,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.0000249,
+      "latencyMs": 462,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:03:01.992Z",
+      "traceId": "dev-11",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 418,
+      "completionTokens": 177,
+      "cachedTokens": 256,
+      "credits": 0,
+      "costUsd": 0.0000949,
+      "latencyMs": 4656,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:03:08.843Z",
+      "traceId": "dev-11",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1493,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:03:12.040Z",
+      "traceId": "dev-11",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 3022,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:03:18.187Z",
+      "traceId": "dev-11",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 3195,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:03:21.391Z",
+      "traceId": "dev-11",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2992,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:03:22.649Z",
+      "traceId": "dev-11",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1166,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:03:22.731Z",
+      "traceId": "dev-11",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-18T03:03:22.738Z",
+      "traceId": "dev-11",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 240,
+      "completionTokens": 7,
+      "cachedTokens": 160,
+      "credits": 0,
+      "costUsd": 0.0000261,
+      "latencyMs": 752,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:03:23.562Z",
+      "traceId": "dev-11",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 133,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00000133,
+      "latencyMs": 2487,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:03:26.658Z",
+      "traceId": "dev-11",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 489,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:03:26.662Z",
+      "traceId": "dev-11",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 233,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.0000254,
+      "latencyMs": 1116,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:03:27.847Z",
+      "traceId": "dev-11",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 340,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.0000034,
+      "latencyMs": 2317,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:03:30.465Z",
+      "traceId": "dev-11",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 275,
+      "status": "bad_response",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:03:30.806Z",
+      "traceId": "dev-11",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-18T03:03:30.972Z",
+      "traceId": "dev-11",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-18T03:03:32.042Z",
+      "traceId": "dev-11",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1851,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:03:35.395Z",
+      "traceId": "dev-11",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 4421,
+      "status": "bad_response",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:03:35.705Z",
+      "traceId": "dev-11",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-18T03:03:35.745Z",
+      "traceId": "dev-11",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-18T03:03:35.788Z",
+      "traceId": "dev-11",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-18T03:03:35.910Z",
+      "traceId": "dev-11",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-18T03:03:35.914Z",
+      "traceId": "dev-11",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-18T03:03:35.915Z",
+      "traceId": "dev-11",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-18T03:03:35.919Z",
+      "traceId": "dev-11",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-18T03:03:35.925Z",
       "traceId": "dev-11",
       "step": "page_type",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 4495,
-      "completionTokens": 7,
+      "promptTokens": 708,
+      "completionTokens": 8,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.00045159999999999997,
-      "latencyMs": 612,
+      "costUsd": 0.0000732,
+      "latencyMs": 1422,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:21:46.327Z",
+      "at": "2026-11-18T03:03:37.350Z",
+      "traceId": "dev-11",
+      "step": "page_type",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 1024,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.00010449999999999999,
+      "latencyMs": 1192,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:03:38.612Z",
       "traceId": "dev-11",
       "step": "readouts",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 428,
+      "promptTokens": 532,
       "completionTokens": 23,
-      "cachedTokens": 0,
+      "cachedTokens": 368,
       "credits": 0,
-      "costUsd": 0.000049699999999999995,
-      "latencyMs": 698,
+      "costUsd": 0.0000601,
+      "latencyMs": 2376,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:21:47.033Z",
+      "at": "2026-11-18T03:03:41.070Z",
+      "traceId": "dev-11",
+      "step": "readouts",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 604,
+      "completionTokens": 23,
+      "cachedTokens": 368,
+      "credits": 0,
+      "costUsd": 0.0000673,
+      "latencyMs": 1105,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:03:42.200Z",
       "traceId": "dev-11",
       "step": "boundary",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 238,
+      "promptTokens": 284,
       "completionTokens": 6,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.0000256,
-      "latencyMs": 361,
+      "costUsd": 0.0000302,
+      "latencyMs": 1471,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:03:43.677Z",
+      "traceId": "dev-11",
+      "step": "boundary",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 378,
+      "completionTokens": 7,
+      "cachedTokens": 144,
+      "credits": 0,
+      "costUsd": 0.000039899999999999994,
+      "latencyMs": 2336,
       "status": "200",
       "cacheHit": false
     }

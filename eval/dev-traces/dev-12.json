@@ -3,7 +3,7 @@
   "id": "dev-12",
   "mode": "LIVE",
   "synthetic": false,
-  "recordedAt": "2026-11-17T06:21:47.406Z",
+  "recordedAt": "2026-11-18T03:03:46.313Z",
   "claim": {
     "text": "You eat a credit card's worth of plastic every week.",
     "atoms": {
@@ -22,72 +22,103 @@
   "nodes": [
     {
       "id": "n1",
-      "url": "https://fullfact.org/health/credit-card-microplastic-week",
-      "domain": "fullfact.org",
-      "title": "You do not inhale a credit card’s worth of microplastic every week – Full Fact",
+      "url": "https://nautil.us/you-eat-a-credits-card-worth-of-plastic-every-week-238481",
+      "domain": "nautil.us",
+      "title": "You Eat a Credit Card’s Worth of Plastic Every Week - Nautilus",
       "date": {
-        "kind": "existed_by",
-        "value": "2024-03-15",
-        "source": "wayback_first_capture",
-        "firstCapture": "2024-03-15",
+        "kind": "published",
+        "value": "2022-05-19",
+        "source": "metadata",
+        "firstCapture": "2022-11-22",
         "conflictingDate": false
       },
       "clusterId": "c-n1",
       "evidence": "observed",
-      "meta": true,
+      "meta": false,
       "read": true,
       "versionOf": null,
-      "spanIds": [],
-      "citesEarlier": true,
-      "candidateParents": [
-        {
-          "url": "https://www.bbc.com/reel/video/p0h7vcts/we-inhale-a-credit-card-s-worth-of-microplastics-each-week",
-          "read": true
-        },
-        {
-          "url": "https://web.archive.org/web/20240206101632/https:/www.bbc.com/future/article/20240110-microplastics-are-everywhere-is-it-possible-to-reduce-our-exposure",
-          "read": true
-        },
-        {
-          "url": "https://uk.news.yahoo.com/microplastic-warning-food-drink-154916573.html?guccounter=2&guce_referrer=aHR0cHM6Ly9sLmZhY2Vib29rLmNvbS8&guce_referrer_sig=AQAAAN3XQyPJdsRkmQ-ibd7zABQpt5nsGk0VERsfI-RK1xDMxXz34U6IGL0A_no7niwHy8PMTtXgkmO1LTR_sxgDv6GOtqaWtEDTWT9S3oL_PwVC6uqCLlbANM92JD17u_n7thgouPBJ0GYrunGlL5jcHhPXQJS19MX0jyOTafqR_KA2",
-          "read": true
-        },
-        {
-          "url": "https://www.thesun.co.uk/health/22751068/where-toxic-microplastics-end-up-in-body-nose-throat",
-          "read": false
-        }
+      "spanIds": [
+        "s1"
       ],
-      "pageType": null,
-      "foundViaMeta": null
-    },
-    {
-      "id": "n2",
-      "url": "https://www.snopes.com/fact-check/elon-musk-cbd-gummies-reverse-dementia",
-      "domain": "snopes.com",
-      "title": "Did Elon Musk Create CBD Gummies that 'Reverse Dementia'? | Snopes.com",
-      "date": {
-        "kind": "existed_by",
-        "value": "2023-05-18",
-        "source": "wayback_first_capture",
-        "firstCapture": "2023-05-18",
-        "conflictingDate": false
-      },
-      "clusterId": "c-n2",
-      "evidence": "observed",
-      "meta": true,
-      "read": true,
-      "versionOf": null,
-      "spanIds": [],
       "citesEarlier": false,
       "candidateParents": [],
       "pageType": null,
-      "foundViaMeta": null
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9999999966017321,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9999999966017321
+          },
+          {
+            "optionId": "no",
+            "p": 3.3982678932437234e-9
+          },
+          {
+            "optionId": "__other__",
+            "p": 0
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    },
+    {
+      "id": "n2",
+      "url": "https://www.honeybeesuite.com/hidden-microplastics-the-next-genuine-threat-to-honey-bees",
+      "domain": "honeybeesuite.com",
+      "title": "A looming honey bee threat: colorful little microplastic particles - Honey Bee Suite",
+      "date": {
+        "kind": "existed_by",
+        "value": "2023-01-02",
+        "source": "wayback_first_capture",
+        "firstCapture": "2023-01-02",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n3",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s2"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9999999999969011,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9999999999969011
+          },
+          {
+            "optionId": "no",
+            "p": 3.0988193034376107e-12
+          },
+          {
+            "optionId": "__other__",
+            "p": 0
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
     },
     {
       "id": "n3",
-      "url": "https://www.facebook.com/Plastivision/posts/you-eat-a-credit-cards-worth-of-plastic-every-weekits-a-claim-that-went-viral-sp/1170935841742822",
-      "domain": "facebook.com",
-      "title": "PlastiVision",
+      "url": "https://www.euronews.com/2022/04/20/your-weekly-wash-is-releasing-thousands-of-microplastics-into-the-sea",
+      "domain": "euronews.com",
+      "title": "Your weekly wash releases harmful microplastics into the sea - here's how to stop it | Euronews",
       "date": {
         "kind": "unconfirmed",
         "value": null,
@@ -101,23 +132,23 @@
       "read": true,
       "versionOf": null,
       "spanIds": [
-        "s1"
+        "s3"
       ],
       "citesEarlier": false,
       "candidateParents": [],
       "pageType": null,
       "sameClaim": {
         "questionId": "same_claim",
-        "optionId": "no",
-        "probability": 0.9992903296464414,
+        "optionId": "yes",
+        "probability": 0.999999999987744,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.0007096703535588735
+            "p": 0.999999999987744
           },
           {
             "optionId": "no",
-            "p": 0.9992903296464414
+            "p": 1.2256069329080181e-11
           },
           {
             "optionId": "__other__",
@@ -132,34 +163,34 @@
     },
     {
       "id": "n4",
-      "url": "https://nautil.us/you-eat-a-credits-card-worth-of-plastic-every-week-238481",
-      "domain": "nautil.us",
-      "title": "You Eat a Credit Card’s Worth of Plastic Every Week - Nautilus",
+      "url": "https://www.euronews.com/green/2022/04/20/your-weekly-wash-is-releasing-thousands-of-microplastics-into-the-sea",
+      "domain": "euronews.com",
+      "title": "Your weekly wash releases harmful microplastics into the sea - here's how to stop it | Euronews",
       "date": {
-        "kind": "published",
-        "value": "2022-05-19",
-        "source": "metadata",
-        "firstCapture": "2022-11-22",
+        "kind": "existed_by",
+        "value": "2022-04-20",
+        "source": "wayback_first_capture",
+        "firstCapture": "2022-04-20",
         "conflictingDate": false
       },
-      "clusterId": "c-n4",
+      "clusterId": "c-n3",
       "evidence": "observed",
       "meta": false,
       "read": true,
       "versionOf": null,
       "spanIds": [
-        "s2"
+        "s4"
       ],
       "citesEarlier": false,
       "candidateParents": [],
       "pageType": {
         "questionId": "page_type",
         "optionId": "news",
-        "probability": 0.9910866555991411,
+        "probability": 0.9993072781886866,
         "top": [
           {
             "optionId": "study",
-            "p": 0.0000036934370097236448
+            "p": 0
           },
           {
             "optionId": "dataset",
@@ -167,7 +198,7 @@
           },
           {
             "optionId": "report",
-            "p": 0.008574581476877964
+            "p": 0.00020332734896292228
           },
           {
             "optionId": "speaker",
@@ -175,23 +206,23 @@
           },
           {
             "optionId": "news",
-            "p": 0.9910866555991411
+            "p": 0.9993072781886866
           },
           {
             "optionId": "blog",
-            "p": 0.0003324726042545
+            "p": 0.00043044420638406076
           },
           {
             "optionId": "social",
-            "p": 0
+            "p": 4.4477676994006456e-7
           },
           {
             "optionId": "other",
-            "p": 0.0000015396536114287493
+            "p": 0.00005825426081074303
           },
           {
             "optionId": "__other__",
-            "p": 0.0000010572291052612925
+            "p": 2.5121838576058764e-7
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -200,15 +231,15 @@
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "yes",
-        "probability": 0.9999999998973812,
+        "probability": 0.999999999987744,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.9999999998973812
+            "p": 0.999999999987744
           },
           {
             "optionId": "no",
-            "p": 1.0261879961492171e-10
+            "p": 1.2256068587336317e-11
           },
           {
             "optionId": "__other__",
@@ -222,19 +253,19 @@
       "boundary": {
         "questionId": "boundary",
         "optionId": "print",
-        "probability": 0.9968980431856784,
+        "probability": 0.999997650265292,
         "top": [
           {
             "optionId": "print",
-            "p": 0.9968980431856784
+            "p": 0.999997650265292
           },
           {
             "optionId": "unsourced",
-            "p": 0.0011773464754054003
+            "p": 0.0000014074911038072737
           },
           {
             "optionId": "none",
-            "p": 0.0019246103389161024
+            "p": 9.422436041196671e-7
           },
           {
             "optionId": "__other__",
@@ -245,160 +276,37 @@
         "threshold": null
       },
       "injection": null
-    },
-    {
-      "id": "n5",
-      "url": "https://www.tastingtable.com/1862759/why-plastic-cutting-board-dangerous",
-      "domain": "tastingtable.com",
-      "title": "Are Plastic Cutting Boards Dangerous To Use?",
-      "date": {
-        "kind": "published",
-        "value": "2025-05-25",
-        "source": "metadata",
-        "firstCapture": "2025-06-23",
-        "conflictingDate": false
-      },
-      "clusterId": "c-n5",
-      "evidence": "observed",
-      "meta": false,
-      "read": true,
-      "versionOf": null,
-      "spanIds": [
-        "s3"
-      ],
-      "citesEarlier": true,
-      "candidateParents": [
-        {
-          "url": "https://www.tastingtable.com/1062298/you-probably-eat-a-credit-cards-worth-of-plastic-every-week",
-          "read": true
-        }
-      ],
-      "pageType": null,
-      "sameClaim": {
-        "questionId": "same_claim",
-        "optionId": "yes",
-        "probability": 0.9999999998308102,
-        "top": [
-          {
-            "optionId": "yes",
-            "p": 0.9999999998308102
-          },
-          {
-            "optionId": "no",
-            "p": 1.691898379038752e-10
-          },
-          {
-            "optionId": "__other__",
-            "p": 0
-          }
-        ],
-        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-        "threshold": null
-      },
-      "foundViaMeta": null,
-      "injection": null
-    },
-    {
-      "id": "n6",
-      "url": "https://balloonmission.org/reference-sources",
-      "domain": "balloonmission.org",
-      "title": "Reference Sources – Balloon Mission – Where do balloons go?",
-      "date": {
-        "kind": "existed_by",
-        "value": "2024-05-25",
-        "source": "wayback_first_capture",
-        "firstCapture": "2024-05-25",
-        "conflictingDate": false
-      },
-      "clusterId": "c-n6",
-      "evidence": "observed",
-      "meta": false,
-      "read": true,
-      "versionOf": null,
-      "spanIds": [
-        "s4"
-      ],
-      "citesEarlier": true,
-      "candidateParents": [
-        {
-          "url": "https://www.rd.com/article/birthday-balloon-danger",
-          "read": false
-        }
-      ],
-      "pageType": null,
-      "sameClaim": {
-        "questionId": "same_claim",
-        "optionId": "yes",
-        "probability": 0.9999999992417439,
-        "top": [
-          {
-            "optionId": "yes",
-            "p": 0.9999999992417439
-          },
-          {
-            "optionId": "no",
-            "p": 7.582561086584868e-10
-          },
-          {
-            "optionId": "__other__",
-            "p": 0
-          }
-        ],
-        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-        "threshold": null
-      },
-      "foundViaMeta": null,
-      "injection": null
     }
   ],
   "edges": [
     {
       "id": "e1",
       "parentId": "n4",
-      "childId": "n6",
+      "childId": "n1",
       "kind": "inferred",
-      "parentSpanId": "s2",
-      "childSpanId": "s4",
+      "parentSpanId": "s4",
+      "childSpanId": "s1",
       "linkHref": null
     },
     {
       "id": "e2",
-      "parentId": "n6",
-      "childId": "n5",
+      "parentId": "n1",
+      "childId": "n2",
       "kind": "inferred",
-      "parentSpanId": "s4",
-      "childSpanId": "s3",
+      "parentSpanId": "s1",
+      "childSpanId": "s2",
       "linkHref": null
     }
   ],
   "clusters": [
     {
-      "id": "c-n4",
-      "nodeIds": [
-        "n4"
-      ],
-      "rule": "single"
-    },
-    {
-      "id": "c-n6",
-      "nodeIds": [
-        "n6"
-      ],
-      "rule": "single"
-    },
-    {
-      "id": "c-n5",
-      "nodeIds": [
-        "n5"
-      ],
-      "rule": "single"
-    },
-    {
       "id": "c-n3",
       "nodeIds": [
-        "n3"
+        "n3",
+        "n4",
+        "n2"
       ],
-      "rule": "single"
+      "rule": "syndicated"
     },
     {
       "id": "c-n1",
@@ -406,33 +314,12 @@
         "n1"
       ],
       "rule": "single"
-    },
-    {
-      "id": "c-n2",
-      "nodeIds": [
-        "n2"
-      ],
-      "rule": "single"
     }
   ],
   "spans": [
     {
       "id": "s1",
-      "nodeId": "n3",
-      "text": "Monday, May 5, 2025 at 4:41 AM May 5, 2025 · \"You eat a credit card's worth of plastic every week.\"",
-      "contextBefore": "Log In Log In Forgot Account? PlastiVision's Post. * * * PlastiVision. ",
-      "contextAfter": " It's a claim that went viral - sparking fear, headlines, and confusion. But what does science really say? A 2019 study by the University of Newcastle, commissioned by WWF, estimated that humans inges",
-      "start": 71,
-      "end": 170,
-      "extractSha256": "5a0052f267bd5e6275ba2d22bb9d4fd29626dfa3eb21c7940bca16afc1690d67",
-      "windowSha256": "e6d21e59dc031ecea9a7059cba930c0816ba62185bc7ee08ccfd74f9dc40d5a1",
-      "fetchedAt": "2026-11-17T06:22:02.105Z",
-      "waybackUrl": null,
-      "tier": "exact"
-    },
-    {
-      "id": "s2",
-      "nodeId": "n4",
+      "nodeId": "n1",
       "text": "Skip to Content SubscribeLog In Log InSubscribe * Nautilus Facebook * Nautilus X (formerly Twitter) * Nautilus TikTok * Nautilus YouTube * Nautilus Bluesky * Nautilus Instagram Subscribe to skip adsAdvertisement Health You Eat a Credit Card's Worth of Plastic Every Week.",
       "contextBefore": "",
       "contextAfter": " What is our hidden consumption of microplastics doing to our health? KG By Katharine Gammon 11:08 PM CDT on May 18, 2022 Add Nautilus to Google *After this article was published, a reanalysis of the ",
@@ -440,36 +327,50 @@
       "end": 271,
       "extractSha256": "bfe9f194eb8ce544c916fa910afa67b43d91cc5f8eedd8f5031aa38e2447896e",
       "windowSha256": "10794767558894ae37d0aaf3e76e1b968d3af92ed6b1f943a4a4daf9e79b3c36",
-      "fetchedAt": "2026-11-17T06:22:11.564Z",
+      "fetchedAt": "2026-11-18T03:03:58.574Z",
       "waybackUrl": "https://web.archive.org/web/20221122213859/https://nautil.us/you-eat-a-credits-card-worth-of-plastic-every-week-238481",
       "tier": "exact"
     },
     {
+      "id": "s2",
+      "nodeId": "n2",
+      "text": "You eat a credit card's worth of plastic every week.",
+      "contextBefore": " 7. Hartline, N.L., *et al.* (2016). Microfiber masses recovered from conventional machine washing of new or aged garments. *Environmental Science & Technology* 50, 11532-11538. 8. Gammon, K. (2022). ",
+      "contextAfter": " Nautilus.<https://nautil.us/you-eat-a-credits-card-worth-of-plastic-every-week-17950/> 9. Li, L.; Luo, Y.; Li, R.; Zhou, Q.; Peijnenburg, W.J.G.M.; Yin, N.; Yang, J.; Tu, C.; Zhang, Y. (2020). Effect",
+      "start": 15771,
+      "end": 15823,
+      "extractSha256": "943c0f5c7a99853dfea47f270a26d74ec9fb368f0e7f6ca5672f32b9061af12c",
+      "windowSha256": "bd841b54cf0155f80a1e5a51f2b9436222e62881e9a2f8ffac8382ffeb41985c",
+      "fetchedAt": "2026-11-18T03:04:00.157Z",
+      "waybackUrl": "https://web.archive.org/web/20230102213421/https://www.honeybeesuite.com/hidden-microplastics-the-next-genuine-threat-to-honey-bees",
+      "tier": "exact"
+    },
+    {
       "id": "s3",
-      "nodeId": "n5",
-      "text": "It's commonly said that you eat a credit card's worth of plastic every week, and while the jury's still out on that claim, it's a startling revelation to think about how much plastic could enter our bodies just from cooking dinner.",
-      "contextBefore": "effects on metabolic function, endocrine disruption, colon cancer, as well as heart attacks and stroke. Once these plastic particles enter your system, there's no proven way of removing them, either. ",
-      "contextAfter": " How to reduce your exposure to cutting board microplastics. Kilito Chan/Getty Images You might be wondering what you can do to limit your exposure to microplastics in the kitchen. Unfortunately, avoi",
-      "start": 1543,
-      "end": 1774,
-      "extractSha256": "790380c5a1c0fe4c5bb463af6a03512ca8f908e084897e5977b007757d8d8510",
-      "windowSha256": "6bde3ffa5a3b0cec6f7acee6983c0dd2e83e382b050b8040174d255f091ee555",
-      "fetchedAt": "2026-11-17T06:22:12.862Z",
-      "waybackUrl": "https://web.archive.org/web/20250623044852/https://www.tastingtable.com/1862759/why-plastic-cutting-board-dangerous",
+      "nodeId": "n3",
+      "text": "You eat a credit card's worth of plastic every week, says a new study.",
+      "contextBefore": "d by the Fraunhofer research institute, Guppy Friend is one such device. Its tiny mesh keeps the fibres inside the bag allowing you to dispose of them properly once your clothing is clean. Read more. ",
+      "contextAfter": " French anti-PFAS campaigners awarded €1.2 million Earthshot Prize. Italian olive farmers turn to avocados - but is there enough water? Top stories. French anti-PFAS campaigners awarded €1.2 million E",
+      "start": 4186,
+      "end": 4256,
+      "extractSha256": "39d58c91cbff7b4a17b2b5623fbdf6ac27547f4928c9f85dd3762a7a57a4f06f",
+      "windowSha256": "7016b42d63a78cfdd66a769cc10016feaf21f149646d6c9bc89a9ef0c0861954",
+      "fetchedAt": "2026-11-18T03:04:10.872Z",
+      "waybackUrl": null,
       "tier": "exact"
     },
     {
       "id": "s4",
-      "nodeId": "n6",
-      "text": "View Article \"You Eat a Credit Card's worth of Plastic Every Week.\"",
-      "contextBefore": "ne 16, 2022. View Article \"The problem with birthday balloons no one talks about.\" Readers Digest. June 13, 2022. View Article \"State Balloon Release Laws\" Connecticut General Assembly. May 22, 2022. ",
-      "contextAfter": " Nautilus. May 18, 2022. View Article \"Popular graduation balloons dangerous if released, energy companies warn.\" NY Post. May 15, 2022 View Article \"This is Why Releasing Balloons May Soon be banned ",
-      "start": 6743,
-      "end": 6810,
-      "extractSha256": "0ffbe4dcf29ec49390cf260d5c65e166d2955935dbaf25d031685ee79510226f",
-      "windowSha256": "e33015867db4573be1b00958e7b1e4d570e2921be4881338831b3309dc463c13",
-      "fetchedAt": "2026-11-17T06:22:13.642Z",
-      "waybackUrl": "https://web.archive.org/web/20240525060012/https://balloonmission.org/reference-sources",
+      "nodeId": "n4",
+      "text": "You eat a credit card's worth of plastic every week, says a new study.",
+      "contextBefore": "d by the Fraunhofer research institute, Guppy Friend is one such device. Its tiny mesh keeps the fibres inside the bag allowing you to dispose of them properly once your clothing is clean. Read more. ",
+      "contextAfter": " French anti-PFAS campaigners awarded €1.2 million Earthshot Prize. Italian olive farmers turn to avocados - but is there enough water? Top stories. French anti-PFAS campaigners awarded €1.2 million E",
+      "start": 4186,
+      "end": 4256,
+      "extractSha256": "39d58c91cbff7b4a17b2b5623fbdf6ac27547f4928c9f85dd3762a7a57a4f06f",
+      "windowSha256": "7016b42d63a78cfdd66a769cc10016feaf21f149646d6c9bc89a9ef0c0861954",
+      "fetchedAt": "2026-11-18T03:04:12.706Z",
+      "waybackUrl": "https://web.archive.org/web/20220420063342/https://www.euronews.com/green/2022/04/20/your-weekly-wash-is-releasing-thousands-of-microplastics-into-the-sea",
       "tier": "exact"
     }
   ],
@@ -509,33 +410,242 @@
           "id": "scope_widened",
           "source": "inferred",
           "value": "no",
-          "probability": 0.9968273169024656,
+          "probability": 0.9399133255595786,
           "disputed": false
         },
         {
           "id": "attribution_shifted",
           "source": "inferred",
-          "value": "no",
-          "probability": 0.9706877672716278,
+          "value": "yes",
+          "probability": 0.9525741265483465,
           "disputed": false
         },
         {
           "id": "context_stripped",
           "source": "inferred",
           "value": "no",
-          "probability": 0.9890130583897061,
+          "probability": 0.9859363735080056,
           "disputed": false
         }
       ],
       "wordDiff": [
         {
           "op": "add",
-          "text": "view"
+          "text": "skip"
         },
         {
           "op": "add",
-          "text": "article"
+          "text": "to"
         },
+        {
+          "op": "add",
+          "text": "content"
+        },
+        {
+          "op": "add",
+          "text": "subscribelog"
+        },
+        {
+          "op": "add",
+          "text": "in"
+        },
+        {
+          "op": "add",
+          "text": "log"
+        },
+        {
+          "op": "add",
+          "text": "insubscribe"
+        },
+        {
+          "op": "add",
+          "text": "nautilus"
+        },
+        {
+          "op": "add",
+          "text": "facebook"
+        },
+        {
+          "op": "add",
+          "text": "nautilus"
+        },
+        {
+          "op": "add",
+          "text": "x"
+        },
+        {
+          "op": "add",
+          "text": "formerly"
+        },
+        {
+          "op": "add",
+          "text": "twitter"
+        },
+        {
+          "op": "add",
+          "text": "nautilus"
+        },
+        {
+          "op": "add",
+          "text": "tiktok"
+        },
+        {
+          "op": "add",
+          "text": "nautilus"
+        },
+        {
+          "op": "add",
+          "text": "youtube"
+        },
+        {
+          "op": "add",
+          "text": "nautilus"
+        },
+        {
+          "op": "add",
+          "text": "bluesky"
+        },
+        {
+          "op": "add",
+          "text": "nautilus"
+        },
+        {
+          "op": "add",
+          "text": "instagram"
+        },
+        {
+          "op": "add",
+          "text": "subscribe"
+        },
+        {
+          "op": "add",
+          "text": "to"
+        },
+        {
+          "op": "add",
+          "text": "skip"
+        },
+        {
+          "op": "add",
+          "text": "adsadvertisement"
+        },
+        {
+          "op": "add",
+          "text": "health"
+        },
+        {
+          "op": "same",
+          "text": "you"
+        },
+        {
+          "op": "same",
+          "text": "eat"
+        },
+        {
+          "op": "same",
+          "text": "a"
+        },
+        {
+          "op": "same",
+          "text": "credit"
+        },
+        {
+          "op": "same",
+          "text": "card's"
+        },
+        {
+          "op": "same",
+          "text": "worth"
+        },
+        {
+          "op": "same",
+          "text": "of"
+        },
+        {
+          "op": "same",
+          "text": "plastic"
+        },
+        {
+          "op": "same",
+          "text": "every"
+        },
+        {
+          "op": "same",
+          "text": "week"
+        },
+        {
+          "op": "del",
+          "text": "says"
+        },
+        {
+          "op": "del",
+          "text": "a"
+        },
+        {
+          "op": "del",
+          "text": "new"
+        },
+        {
+          "op": "del",
+          "text": "study"
+        }
+      ],
+      "faithful": false
+    },
+    {
+      "edgeId": "e2",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "unsure",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "unsure",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "scope_widened",
+          "source": "inferred",
+          "value": "no",
+          "probability": 0.9990889486280897,
+          "disputed": false
+        },
+        {
+          "id": "attribution_shifted",
+          "source": "inferred",
+          "value": "no",
+          "probability": 0.9947798743642986,
+          "disputed": false
+        },
+        {
+          "id": "context_stripped",
+          "source": "inferred",
+          "value": "no",
+          "probability": 0.9968273169199523,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
         {
           "op": "del",
           "text": "skip"
@@ -682,248 +792,19 @@
         }
       ],
       "faithful": false
-    },
-    {
-      "edgeId": "e2",
-      "readouts": [
-        {
-          "id": "number_changed",
-          "source": "measured",
-          "value": "unsure",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "unit_changed",
-          "source": "measured",
-          "value": "unsure",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "hedge_dropped",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "comparison_added",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "scope_widened",
-          "source": "inferred",
-          "value": "no",
-          "probability": 0.9525741261723384,
-          "disputed": false
-        },
-        {
-          "id": "attribution_shifted",
-          "source": "inferred",
-          "value": "yes",
-          "probability": 0.7772998611765105,
-          "disputed": false
-        },
-        {
-          "id": "context_stripped",
-          "source": "inferred",
-          "value": "no",
-          "probability": 0.6224593298753975,
-          "disputed": false
-        }
-      ],
-      "wordDiff": [
-        {
-          "op": "add",
-          "text": "it's"
-        },
-        {
-          "op": "add",
-          "text": "commonly"
-        },
-        {
-          "op": "add",
-          "text": "said"
-        },
-        {
-          "op": "add",
-          "text": "that"
-        },
-        {
-          "op": "del",
-          "text": "view"
-        },
-        {
-          "op": "del",
-          "text": "article"
-        },
-        {
-          "op": "same",
-          "text": "you"
-        },
-        {
-          "op": "same",
-          "text": "eat"
-        },
-        {
-          "op": "same",
-          "text": "a"
-        },
-        {
-          "op": "same",
-          "text": "credit"
-        },
-        {
-          "op": "same",
-          "text": "card's"
-        },
-        {
-          "op": "same",
-          "text": "worth"
-        },
-        {
-          "op": "same",
-          "text": "of"
-        },
-        {
-          "op": "same",
-          "text": "plastic"
-        },
-        {
-          "op": "same",
-          "text": "every"
-        },
-        {
-          "op": "same",
-          "text": "week"
-        },
-        {
-          "op": "add",
-          "text": "and"
-        },
-        {
-          "op": "add",
-          "text": "while"
-        },
-        {
-          "op": "add",
-          "text": "the"
-        },
-        {
-          "op": "add",
-          "text": "jury's"
-        },
-        {
-          "op": "add",
-          "text": "still"
-        },
-        {
-          "op": "add",
-          "text": "out"
-        },
-        {
-          "op": "add",
-          "text": "on"
-        },
-        {
-          "op": "add",
-          "text": "that"
-        },
-        {
-          "op": "add",
-          "text": "claim"
-        },
-        {
-          "op": "add",
-          "text": "it's"
-        },
-        {
-          "op": "add",
-          "text": "a"
-        },
-        {
-          "op": "add",
-          "text": "startling"
-        },
-        {
-          "op": "add",
-          "text": "revelation"
-        },
-        {
-          "op": "add",
-          "text": "to"
-        },
-        {
-          "op": "add",
-          "text": "think"
-        },
-        {
-          "op": "add",
-          "text": "about"
-        },
-        {
-          "op": "add",
-          "text": "how"
-        },
-        {
-          "op": "add",
-          "text": "much"
-        },
-        {
-          "op": "add",
-          "text": "plastic"
-        },
-        {
-          "op": "add",
-          "text": "could"
-        },
-        {
-          "op": "add",
-          "text": "enter"
-        },
-        {
-          "op": "add",
-          "text": "our"
-        },
-        {
-          "op": "add",
-          "text": "bodies"
-        },
-        {
-          "op": "add",
-          "text": "just"
-        },
-        {
-          "op": "add",
-          "text": "from"
-        },
-        {
-          "op": "add",
-          "text": "cooking"
-        },
-        {
-          "op": "add",
-          "text": "dinner"
-        }
-      ],
-      "faithful": false
     }
   ],
   "blame": [],
   "roots": {
     "pages": 4,
-    "clusters": 4,
+    "clusters": 2,
     "rootsLinked": 0,
-    "clustersUnlinked": 4,
+    "clustersUnlinked": 2,
     "studiesFound": null,
-    "independentRoots": 4,
-    "copies": 0
+    "independentRoots": 2,
+    "copies": 2
   },
-  "redHopEdgeId": "e2",
+  "redHopEdgeId": "e1",
   "earliest": {
     "nodeIds": [
       "n4"
@@ -933,98 +814,57 @@
   },
   "failure": null,
   "budget": {
-    "credits": 11,
-    "usd": 0.00088125,
-    "ms": 84791,
+    "credits": 9,
+    "usd": 0.0006372899999999999,
+    "ms": 41773,
     "capHit": null
   },
   "decision": {
     "state": "TRAIL_GOES_COLD",
     "row": 6,
     "reasons": [
-      "no earliest page with a confirmed date, a primary page type, no earlier citation and no negated span",
-      "2 unread candidate parent(s)"
+      "no earliest page with a confirmed date, a primary page type, no earlier citation and no negated span"
     ],
     "counts": {
       "pages": 4,
-      "clusters": 4,
-      "unreadParents": 2,
+      "clusters": 2,
+      "unreadParents": 0,
       "earlierWindowSearches": 2
     }
   },
   "searchLog": [
     {
-      "at": "2026-11-17T06:21:52.231Z",
+      "at": "2026-11-18T03:03:53.035Z",
       "step": "search",
       "query": "\"You eat a credit card's worth of plastic every week\"",
-      "endDate": "2026-11-17",
+      "endDate": "2026-11-18",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:21:53.179Z",
+      "at": "2026-11-18T03:03:54.885Z",
       "step": "search",
-      "query": "\"You eat a credit card's worth of plastic every week\"",
-      "endDate": "2026-11-17",
+      "query": "\"You eat a credit card's worth of plastic every week\" study",
+      "endDate": "2026-11-18",
       "startDate": null,
-      "results": 2,
-      "kept": 2,
+      "results": 10,
+      "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:21:54.694Z",
+      "at": "2026-11-18T03:03:58.083Z",
       "step": "meta-search",
       "query": "\"You eat a credit card's worth of plastic every week\"",
-      "endDate": "2026-11-17",
+      "endDate": "2026-11-18",
       "startDate": null,
-      "results": 5,
-      "kept": 2,
-      "dropped": 3
-    },
-    {
-      "at": "2026-11-17T06:22:07.338Z",
-      "step": "search",
-      "query": "\"You eat a credit card's worth of plastic every week\"",
-      "endDate": "2025-10-24",
-      "startDate": null,
-      "results": 9,
-      "kept": 8,
-      "dropped": 1
-    },
-    {
-      "at": "2026-11-17T06:22:09.152Z",
-      "step": "search",
-      "query": "\"You eat a credit card's worth of plastic every week\" 2025",
-      "endDate": "2025-10-24",
-      "startDate": null,
-      "results": 7,
-      "kept": 7,
+      "results": 0,
+      "kept": 0,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T06:22:18.953Z",
-      "step": "search",
-      "query": "\"You eat a credit card's worth of plastic every week\"",
-      "endDate": "2022-05-18",
-      "startDate": null,
-      "results": 9,
-      "kept": 7,
-      "dropped": 2
-    },
-    {
-      "at": "2026-11-17T06:22:19.865Z",
-      "step": "search",
-      "query": "\"you eat a credit card's worth of plastic every week\" study",
-      "endDate": "2022-05-18",
-      "startDate": null,
-      "results": 9,
-      "kept": 7,
-      "dropped": 2
-    },
-    {
-      "at": "2026-11-17T06:22:31.226Z",
+      "at": "2026-11-18T03:04:04.369Z",
       "step": "search",
       "query": "\"You eat a credit card's worth of plastic every week\"",
       "endDate": "2022-05-18",
@@ -1034,71 +874,71 @@
       "dropped": 3
     },
     {
-      "at": "2026-11-17T06:22:32.337Z",
+      "at": "2026-11-18T03:04:07.830Z",
       "step": "search",
-      "query": "\"You eat a credit card's worth of plastic every week\"",
+      "query": "\"you eat a credit card's worth of plastic every week\" early source",
       "endDate": "2022-05-18",
       "startDate": null,
-      "results": 2,
-      "kept": 0,
-      "dropped": 2
+      "results": 6,
+      "kept": 5,
+      "dropped": 1
     },
     {
-      "at": "2026-11-17T06:22:40.281Z",
+      "at": "2026-11-18T03:04:21.371Z",
       "step": "search",
       "query": "\"You eat a credit card's worth of plastic every week\"",
-      "endDate": "2022-05-18",
+      "endDate": "2020-03-22",
       "startDate": null,
-      "results": 9,
-      "kept": 4,
-      "dropped": 5
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
     },
     {
-      "at": "2026-11-17T06:22:40.281Z",
+      "at": "2026-11-18T03:04:23.236Z",
       "step": "search",
-      "query": "\"You eat a credit card's worth of plastic every week\"",
-      "endDate": "2022-05-18",
+      "query": "\"You eat a credit card's worth of plastic every week\" study",
+      "endDate": "2020-03-22",
       "startDate": null,
-      "results": 2,
-      "kept": 0,
+      "results": 7,
+      "kept": 5,
       "dropped": 2
     }
   ],
   "usage": [
     {
-      "at": "2026-11-17T06:21:47.406Z",
+      "at": "2026-11-18T03:03:46.316Z",
       "traceId": "dev-12",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 144,
-      "completionTokens": 51,
+      "completionTokens": 25,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.000029699999999999997,
-      "latencyMs": 1222,
+      "costUsd": 0.000021899999999999997,
+      "latencyMs": 1760,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:21:48.634Z",
+      "at": "2026-11-18T03:03:48.095Z",
       "traceId": "dev-12",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 270,
-      "completionTokens": 132,
-      "cachedTokens": 0,
+      "completionTokens": 137,
+      "cachedTokens": 240,
       "credits": 0,
-      "costUsd": 0.00006659999999999999,
-      "latencyMs": 2617,
+      "costUsd": 0.0000681,
+      "latencyMs": 3178,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:21:52.230Z",
+      "at": "2026-11-18T03:03:53.034Z",
       "traceId": "dev-12",
       "step": "search",
       "service": "tavily",
@@ -1109,12 +949,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 967,
+      "latencyMs": 1323,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:21:53.179Z",
+      "at": "2026-11-18T03:03:54.884Z",
       "traceId": "dev-12",
       "step": "search",
       "service": "tavily",
@@ -1125,12 +965,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 932,
+      "latencyMs": 1392,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:21:54.694Z",
+      "at": "2026-11-18T03:03:58.082Z",
       "traceId": "dev-12",
       "step": "meta-search",
       "service": "tavily",
@@ -1141,28 +981,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1497,
+      "latencyMs": 3030,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:21:54.770Z",
-      "traceId": "dev-12",
-      "step": "meta-extract",
-      "service": "tavily",
-      "endpoint": "extract",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 66,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:22:01.532Z",
+      "at": "2026-11-18T03:03:58.445Z",
       "traceId": "dev-12",
       "step": "extract",
       "service": "tavily",
@@ -1173,12 +997,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 6744,
+      "latencyMs": 270,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:22:02.105Z",
+      "at": "2026-11-18T03:03:58.573Z",
       "traceId": "dev-12",
       "step": "dating",
       "service": "wayback",
@@ -1189,108 +1013,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 564,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:22:02.108Z",
-      "traceId": "dev-12",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 235,
-      "completionTokens": 7,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.0000256,
-      "latencyMs": 546,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:22:02.662Z",
-      "traceId": "dev-12",
-      "step": "tokenfactory",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 335,
-      "completionTokens": 141,
-      "cachedTokens": 256,
-      "credits": 0,
-      "costUsd": 0.0000758,
-      "latencyMs": 3704,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:22:07.338Z",
-      "traceId": "dev-12",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 953,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:22:09.152Z",
-      "traceId": "dev-12",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1799,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:22:10.856Z",
-      "traceId": "dev-12",
-      "step": "extract",
-      "service": "tavily",
-      "endpoint": "extract",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1694,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:22:11.563Z",
-      "traceId": "dev-12",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 677,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:22:11.568Z",
+      "at": "2026-11-18T03:03:58.588Z",
       "traceId": "dev-12",
       "step": "same_claim",
       "service": "tokenfactory",
@@ -1298,15 +1026,15 @@
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 247,
       "completionTokens": 7,
-      "cachedTokens": 0,
+      "cachedTokens": 160,
       "credits": 0,
       "costUsd": 0.000026799999999999998,
-      "latencyMs": 700,
+      "latencyMs": 1280,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:22:12.862Z",
+      "at": "2026-11-18T03:04:00.156Z",
       "traceId": "dev-12",
       "step": "dating",
       "service": "wayback",
@@ -1317,28 +1045,92 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 580,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:22:12.863Z",
+      "at": "2026-11-18T03:04:00.159Z",
       "traceId": "dev-12",
       "step": "same_claim",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 238,
+      "promptTokens": 202,
       "completionTokens": 7,
       "cachedTokens": 176,
       "credits": 0,
-      "costUsd": 0.000025900000000000003,
-      "latencyMs": 353,
+      "costUsd": 0.0000223,
+      "latencyMs": 743,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:22:13.641Z",
+      "at": "2026-11-18T03:04:00.907Z",
+      "traceId": "dev-12",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 352,
+      "completionTokens": 180,
+      "cachedTokens": 256,
+      "credits": 0,
+      "costUsd": 0.0000892,
+      "latencyMs": 3304,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:04:04.368Z",
+      "traceId": "dev-12",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-18T03:04:07.829Z",
+      "traceId": "dev-12",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 3199,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:04:08.533Z",
+      "traceId": "dev-12",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 255,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:04:10.869Z",
       "traceId": "dev-12",
       "step": "dating",
       "service": "wayback",
@@ -1349,124 +1141,76 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 405,
+      "latencyMs": 2332,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:22:13.645Z",
+      "at": "2026-11-18T03:04:10.873Z",
       "traceId": "dev-12",
       "step": "same_claim",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 209,
+      "promptTokens": 207,
       "completionTokens": 7,
-      "cachedTokens": 176,
+      "cachedTokens": 192,
       "credits": 0,
-      "costUsd": 0.000023,
-      "latencyMs": 331,
+      "costUsd": 0.0000228,
+      "latencyMs": 1367,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:22:13.978Z",
+      "at": "2026-11-18T03:04:12.705Z",
       "traceId": "dev-12",
-      "step": "tokenfactory",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 352,
-      "completionTokens": 155,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.00008170000000000001,
-      "latencyMs": 3960,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:22:18.951Z",
-      "traceId": "dev-12",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 990,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:22:19.865Z",
-      "traceId": "dev-12",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 899,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:22:25.592Z",
-      "traceId": "dev-12",
-      "step": "extract",
-      "service": "tavily",
-      "endpoint": "extract",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
       "model": null,
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 5711,
+      "latencyMs": 460,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:22:25.595Z",
+      "at": "2026-11-18T03:04:12.708Z",
+      "traceId": "dev-12",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 207,
+      "completionTokens": 7,
+      "cachedTokens": 160,
+      "credits": 0,
+      "costUsd": 0.0000228,
+      "latencyMs": 935,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:04:13.647Z",
       "traceId": "dev-12",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 352,
-      "completionTokens": 248,
-      "cachedTokens": 351,
+      "promptTokens": 313,
+      "completionTokens": 224,
+      "cachedTokens": 272,
       "credits": 0,
-      "costUsd": 0.0001096,
-      "latencyMs": 5627,
+      "costUsd": 0.00009849999999999998,
+      "latencyMs": 4148,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:22:31.226Z",
-      "traceId": "dev-12",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 0,
-      "status": "200",
-      "cacheHit": true
-    },
-    {
-      "at": "2026-11-17T06:22:32.337Z",
+      "at": "2026-11-18T03:04:21.371Z",
       "traceId": "dev-12",
       "step": "search",
       "service": "tavily",
@@ -1477,12 +1221,28 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1102,
+      "latencyMs": 3214,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:22:36.074Z",
+      "at": "2026-11-18T03:04:23.236Z",
+      "traceId": "dev-12",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1797,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:04:23.380Z",
       "traceId": "dev-12",
       "step": "extract",
       "service": "tavily",
@@ -1493,92 +1253,28 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 3721,
+      "latencyMs": 126,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:22:36.179Z",
-      "traceId": "dev-12",
-      "step": "tokenfactory",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 352,
-      "completionTokens": 158,
-      "cachedTokens": 351,
-      "credits": 0,
-      "costUsd": 0.0000826,
-      "latencyMs": 4098,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:22:40.280Z",
-      "traceId": "dev-12",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 0,
-      "status": "200",
-      "cacheHit": true
-    },
-    {
-      "at": "2026-11-17T06:22:40.281Z",
-      "traceId": "dev-12",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 0,
-      "status": "200",
-      "cacheHit": true
-    },
-    {
-      "at": "2026-11-17T06:22:47.843Z",
-      "traceId": "dev-12",
-      "step": "extract",
-      "service": "tavily",
-      "endpoint": "extract",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 7544,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:22:47.891Z",
+      "at": "2026-11-18T03:04:23.409Z",
       "traceId": "dev-12",
       "step": "embed",
       "service": "tokenfactory",
       "endpoint": "/embeddings",
       "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 165,
+      "promptTokens": 89,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.00000165,
-      "latencyMs": 12760,
+      "costUsd": 8.900000000000001e-7,
+      "latencyMs": 1925,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:23:00.816Z",
+      "at": "2026-11-18T03:04:25.566Z",
       "traceId": "dev-12",
       "step": "dating",
       "service": "fetch",
@@ -1589,12 +1285,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 157,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:23:01.016Z",
+      "at": "2026-11-18T03:04:25.824Z",
       "traceId": "dev-12",
       "step": "dating",
       "service": "fetch",
@@ -1605,12 +1301,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 198,
+      "latencyMs": 257,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:23:01.168Z",
+      "at": "2026-11-18T03:04:25.947Z",
       "traceId": "dev-12",
       "step": "dating",
       "service": "fetch",
@@ -1621,12 +1317,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 510,
-      "status": "200",
+      "latencyMs": 380,
+      "status": "403",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:23:04.211Z",
+      "at": "2026-11-18T03:04:26.008Z",
       "traceId": "dev-12",
       "step": "dating",
       "service": "fetch",
@@ -1637,44 +1333,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 3194,
+      "latencyMs": 183,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:23:05.230Z",
-      "traceId": "dev-12",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 1017,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:23:09.456Z",
-      "traceId": "dev-12",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 4225,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:23:09.458Z",
+      "at": "2026-11-18T03:04:26.011Z",
       "traceId": "dev-12",
       "step": "dating",
       "service": "wayback",
@@ -1690,7 +1354,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:23:09.458Z",
+      "at": "2026-11-18T03:04:26.012Z",
       "traceId": "dev-12",
       "step": "dating",
       "service": "wayback",
@@ -1706,7 +1370,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:23:09.459Z",
+      "at": "2026-11-18T03:04:26.013Z",
       "traceId": "dev-12",
       "step": "dating",
       "service": "wayback",
@@ -1722,7 +1386,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:23:09.459Z",
+      "at": "2026-11-18T03:04:26.013Z",
       "traceId": "dev-12",
       "step": "dating",
       "service": "wayback",
@@ -1738,66 +1402,66 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T06:23:09.467Z",
+      "at": "2026-11-18T03:04:26.016Z",
       "traceId": "dev-12",
       "step": "page_type",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 1883,
+      "promptTokens": 1244,
       "completionTokens": 8,
       "cachedTokens": 176,
       "credits": 0,
-      "costUsd": 0.0001907,
-      "latencyMs": 861,
+      "costUsd": 0.0001268,
+      "latencyMs": 383,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:23:10.374Z",
+      "at": "2026-11-18T03:04:26.400Z",
       "traceId": "dev-12",
       "step": "readouts",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 461,
-      "completionTokens": 23,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.000052999999999999994,
-      "latencyMs": 687,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T06:23:11.071Z",
-      "traceId": "dev-12",
-      "step": "readouts",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 450,
+      "promptTokens": 459,
       "completionTokens": 23,
       "cachedTokens": 368,
       "credits": 0,
-      "costUsd": 0.000051899999999999994,
-      "latencyMs": 757,
+      "costUsd": 0.000052799999999999996,
+      "latencyMs": 557,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T06:23:11.829Z",
+      "at": "2026-11-18T03:04:26.992Z",
+      "traceId": "dev-12",
+      "step": "readouts",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 454,
+      "completionTokens": 23,
+      "cachedTokens": 368,
+      "credits": 0,
+      "costUsd": 0.0000523,
+      "latencyMs": 545,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-18T03:04:27.541Z",
       "traceId": "dev-12",
       "step": "boundary",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 349,
+      "promptTokens": 303,
       "completionTokens": 6,
-      "cachedTokens": 0,
+      "cachedTokens": 144,
       "credits": 0,
-      "costUsd": 0.000036700000000000004,
-      "latencyMs": 364,
+      "costUsd": 0.0000321,
+      "latencyMs": 537,
       "status": "200",
       "cacheHit": false
     }
