@@ -3,6 +3,18 @@
 Last updated: Tue Nov 17 2026 01:20 ET, by the main session (conductor / XO).
 To resume in a new Claude Code chat opened in this folder, Vidyut says: **"I'm back, continue the master playbook"**. The new session reads this file, `plan/state.json` and `plan/decisions.md`, says where we are in three lines, and carries on.
 
+## After the Nov 17 live run (21:00 ET)
+Live E2 rerun at 18:02 on 5cb6fd8: false origins 1, target cited 2/10, earliest 0/0/10, cold stops 6/9 (#215; #164). $2.08; ledger $6.30 spent, $8.70 left after a $0.45 two-claim rehearsal.
+XO fixed the four regressions it found, all merged with review: #216 (dev-04 '6 8 oz glasses' false origin), #217 (dev-10 lone forecast year), #218 (dev-11 code-only queries), #219 (dev-07/08 several-word phrase subject). Rehearsal: dev-10 and dev-11 both cite their target again.
+Next: a full live E2 rerun on main f3f2065 or later needs Vidyut's go (about $2.10). Open: dev-10 earliest is a news story a day before the WEF PDF's archive capture (Rohan, F2); dev-08's phrase is the whole sentence; replay misses 25 (Rishit).
+
+## Tonight's live E2 rerun (Tue Nov 17, 18:00 ET, needs Vidyut's go; about $2.50 of the $11.20 left)
+On main 3365344 or later: F1 (#200), F3 to F6 (#195 to #198), F5b (#199), F7 (#203), partial dates (#206) and the walk replay recorder (#208). Replay score before the rerun: false origins 0 (+1 unverified), target cited 4/10, earliest 1 Pass.
+1. `DEV_LEDGER="$PWD/.cache/pz-ledger.json" PZ_RECORD_DIR=runs/walk-record DEV_SET=E2 node --env-file=.env --import tsx eval/dev-run.ts`. Keep .cache/http as it is, so cached Tavily calls cost nothing.
+2. `node --import tsx eval/dev-score.ts --set E2`, then post the line on #164 and the spend on #2.
+3. `make replay-walk SET=E2`: should match step 2 with misses near 0. From then on every walk fix is scored at $0.
+4. Commit eval/dev-traces (not runs/), then pick 5 T72 candidates for Rohan (#131) and the hero trace.
+
 ## Where we are (Tue Nov 17, 01:20 ET)
 - **The live pipeline is on main** (#191, merged 940cd17: Rohan's #107/#109/#189 integrated by XO on Vidyut's decision). `pz trace "<claim>"` runs live on Vidyut's machine: `DEV_LEDGER="$PWD/.cache/pz-ledger.json" node --env-file=.env --import tsx packages/pz/src/cli/pz.ts trace "<claim>" --out runs/x.json`. The $15 ledger (Nov 16 to 20, prior 0.10) lives in `.cache/pz-ledger.json` (git-ignored). About $0.10 spent so far; a trace costs about $0.001.
 - Live dating uses page metadata plus NCBI/Crossref registry dates, labelled on the card (decision Nov 17).

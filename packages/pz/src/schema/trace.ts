@@ -28,8 +28,19 @@ export type Span = z.infer<typeof Span>;
 export const DateInfo = z.object({
   kind: z.enum(["published", "existed_by", "unconfirmed"]), value: z.string().nullable(),
   source: z.enum(["metadata", "byline", "wayback_first_capture", "tavily", "registry_pubmed", "registry_pmc", "registry_crossref"]), firstCapture: z.string().nullable(), conflictingDate: z.boolean(),
+  // How much of `value` the source gave. A registry that says only "2020" or "2020 Jun" is stored as the last day of that
+  // period (so ordering never puts it too early), and this says the day is not known. Absent means "day".
+  precision: z.enum(["day", "month", "year"]).optional(),
 }).strict();
 export type DateInfo = z.infer<typeof DateInfo>;
+const MONTH_NAMES = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+// A stored date in words at the precision its source gave: "2020", "June 2020", or the full "2020-06-30".
+export function datePhrase(value: string, precision?: DateInfo["precision"]): string {
+  if (precision === "year") return value.slice(0, 4);
+  const month = MONTH_NAMES[Number(value.slice(5, 7)) - 1];
+  if (precision === "month" && month) return `${month} ${value.slice(0, 4)}`;
+  return value;
+}
 export const Node = z.object({
   id: z.string(), url: z.string(), domain: z.string(), title: z.string(), date: DateInfo,
   clusterId: z.string(), evidence: z.enum(["observed", "inferred", "conflicting", "unknown"]),

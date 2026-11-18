@@ -2,6 +2,7 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { beforeAll, describe, expect, it } from "vitest";
 import { loadTraces } from "../data/loadTraces.ts";
 import { scrubberStops } from "../model/scrubber.ts";
+import { badgeFor } from "./badge.ts";
 import { TraceView } from "./TraceView.tsx";
 
 beforeAll(() => {
@@ -26,8 +27,17 @@ describe("TraceView", () => {
       expect(html).toContain("How this was decided");
       expect(html).toMatch(new RegExp(`aria-current="true"><span class="rule-row">Rule ${trace.decision.row}</span>`));
       expect(html).not.toContain("foot-note");
-      expect(html).toContain("SAMPLE");
+      // Samples read SAMPLE; the recorded E2 traces (#220) read REPLAY.
+      expect(html).toContain(badgeFor(trace).label);
     }
+  });
+
+  it("first renders the finished trace, with the replay offered rather than forced (T86)", () => {
+    const rich = traces.find((t) => t.id === "sample-rich")!;
+    const html = renderToStaticMarkup(<TraceView trace={rich} />);
+    expect(html).toContain("Replay the walk");
+    expect(html).not.toContain("replay-rail");
+    expect(html.match(/class="copy( ring)?"/g)).toHaveLength(rich.nodes.filter((n) => !n.meta && n.date.value).length);
   });
 
   it("[C3] the graph labels edges by kind in text, not only by stroke", () => {

@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { dateEvidence } from "../src/engine/dating.ts";
 import { createUsageLog } from "../src/usage/log.ts";
-import { isPrivateAddress, crossrefDate, createEvidence, isPublicPage, looksLikeChallenge, ncbiDate, publicationDate, safeFetch } from "../src/engine/publication.ts";
+import { isPrivateAddress, crossrefDate, crossrefDated, ncbiDated, createEvidence, isPublicPage, looksLikeChallenge, ncbiDate, publicationDate, safeFetch } from "../src/engine/publication.ts";
 
 const head = (...tags: string[]) => `<html><head><title>x</title>${tags.join("\n")}</head><body>The 10,000 steps claim.</body></html>`;
 
@@ -43,6 +43,15 @@ describe("registry dates", () => {
     expect(ncbiDate(ncbi("2004 Jun", "2004 Feb 29"), "1")).toBe("2004-02-29");
     expect(ncbiDate(ncbi("2004 Spring"), "1")).toBeNull();
     expect(ncbiDate({}, "1")).toBeNull();
+  });
+  it("says how much of the date the registry gave, and keeps the last-day value for ordering", () => {
+    expect(ncbiDated(ncbi("2020"), "1")).toEqual({ date: "2020-12-31", precision: "year" });
+    expect(ncbiDated(ncbi("2020 Jun"), "1")).toEqual({ date: "2020-06-30", precision: "month" });
+    expect(ncbiDated(ncbi("2020 Jun 15"), "1")).toEqual({ date: "2020-06-15", precision: "day" });
+    expect(ncbiDated(ncbi("2020 Jun", "2020 Feb 29"), "1")).toEqual({ date: "2020-02-29", precision: "day" });
+    expect(crossrefDated({ message: { issued: { "date-parts": [[2020]] } } })).toEqual({ date: "2020-12-31", precision: "year" });
+    expect(crossrefDated({ message: { issued: { "date-parts": [[2020, 6]] } } })).toEqual({ date: "2020-06-30", precision: "month" });
+    expect(crossrefDated({ message: { issued: { "date-parts": [[2020, 6, 9]] } } })).toEqual({ date: "2020-06-09", precision: "day" });
   });
   it("takes the earliest of print, online and issued from Crossref", () => {
     const work = { message: { "published-print": { "date-parts": [[2005, 3, 1]] }, "published-online": { "date-parts": [[2004, 11, 9]] }, issued: { "date-parts": [[2005]] } } };
@@ -93,6 +102,13 @@ describe("page fetching is public-only, logged and challenge-aware", () => {
     expect(await own.found("https://n.example/a")).toEqual({ date: "2008-02-03", source: "metadata" });
   });
 
+  it("passes a partial registry date's precision along, and says nothing extra for a full day", async () => {
+    const y = setup({ [esummary("pubmed", "5")]: json({ result: { "5": { pubdate: "2020" } } }) });
+    expect(await y.found("https://pubmed.ncbi.nlm.nih.gov/5/")).toEqual({ date: "2020-12-31", precision: "year", source: "registry_pubmed" });
+    const m = setup({ "https://api.crossref.org/works/10.1000%2Fm": json({ message: { issued: { "date-parts": [[2020, 6]] } } }) });
+    expect(await m.found("https://doi.org/10.1000/m")).toEqual({ date: "2020-06-30", precision: "month", source: "registry_crossref" });
+  });
+
   it("dates a PMC page from its own PMC record, never from a PMID printed in its text (that may be a cited reference)", async () => {
     const t = setup({ [esummary("pmc", "1234567")]: json({ result: { "1234567": { pubdate: "2010 Mar 5" } } }),
       [esummary("pubmed", "999")]: json({ result: { "999": { pubdate: "1987 Dec 1" } } }) });
@@ -105,6 +121,9 @@ describe("page fetching is public-only, logged and challenge-aware", () => {
     const direct = setup({ "https://api.crossref.org/works/10.1000%2Fabc.1": json(work) });
     expect(await direct.evidence("https://doi.org/10.1000/abc.1")).toBe("2012-04-02");
     expect(direct.usage.rows[0]).toMatchObject({ service: "crossref", endpoint: "works", credits: 0, costUsd: 0 });
+    const publisher = setup({ "https://api.crossref.org/works/10.1000%2Fabc.1": json(work) });
+    expect(await publisher.evidence("https://www.science.org/doi/full/10.1000/abc.1")).toBe("2012-04-02");
+    expect(publisher.urls).toEqual(["https://api.crossref.org/works/10.1000%2Fabc.1"]);
     const viaMeta = setup({ "https://journal.example/a": page(html('<meta name="citation_doi" content="10.1000/abc.1">')), "https://api.crossref.org/works/10.1000%2Fabc.1": json(work) });
     expect(await viaMeta.evidence("https://journal.example/a")).toBe("2012-04-02");
     expect(viaMeta.usage.rows.map((r) => r.service)).toEqual(["fetch", "crossref"]);
