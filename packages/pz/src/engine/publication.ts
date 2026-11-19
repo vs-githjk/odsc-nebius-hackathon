@@ -298,10 +298,25 @@ export function createEvidence(deps: EvidenceDeps) {
     // Only explicitly marked publication datelines are evidence.
     const articleHtml = page.replace(/<!--[\s\S]*?(?:-->|$)/g, "")
       .replace(/<(script|aside|nav|footer)\b[^>]*>[\s\S]*?(?:<\/\1\s*>|$)/gi, "");
-    const datelines = [...articleHtml.matchAll(/<time\b[^>]*>/gi)]
-      .filter(([tag]) => attr(tag, "itemprop")?.toLowerCase() === "datepublished");
+    // A marked date inside a microdata item may belong to a related article.
+    // This fallback only accepts unscoped datelines; scoped articles can still
+    // supply their own date through the structured metadata path above.
+    const stack: { name: string; scoped: boolean }[] = [];
+    const datelines: string[] = [];
+    for (const [tag] of articleHtml.matchAll(/<\/?[a-z][^>]*>/gi)) {
+      const name = /^<\/?([a-z][a-z0-9:-]*)/i.exec(tag)?.[1]?.toLowerCase();
+      if (!name) continue;
+      if (tag.startsWith("</")) {
+        const index = stack.map((entry) => entry.name).lastIndexOf(name);
+        if (index >= 0) stack.length = index;
+        continue;
+      }
+      const scoped = stack.some((entry) => entry.scoped) || /\sitemscope(?:\s|=|\/?>)/i.test(tag);
+      if (name === "time" && !scoped && attr(tag, "itemprop")?.toLowerCase() === "datepublished") datelines.push(tag);
+      if (!/\/\s*>$/.test(tag) && !/^(area|base|br|col|embed|hr|img|input|link|meta|param|source|track|wbr)$/.test(name)) stack.push({ name, scoped });
+    }
     if (datelines.length !== 1) return null;
-    const datetime = attr(datelines[0]![0], "datetime");
+    const datetime = attr(datelines[0]!, "datetime");
     return datetime ? { date: clean(datetime), source: "byline" } : null;
   };
 }
