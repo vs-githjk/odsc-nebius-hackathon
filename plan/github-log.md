@@ -130,3 +130,4 @@
 - 2026-11-18 18:55 #235 merged 81fca96 (887/887); polish to Rishit #1, README note to Anoop #232
 - 2026-11-18 19:48 #232 review ea990c8: FIX M3 L4 copy edits (reach not dating, tuning-set caveat); posted
 - 2026-11-18 19:55 Anoop pointed to #232 fixes; archive-date fix reassigned to Rishit (#1), Rohan silent 7h, urgent on #3
+- 2026-11-18 21:05 #232 merged 1d7e775; #237 review: FIX M2 L1 (perms, Google Fonts, pins)
