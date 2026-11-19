@@ -14,6 +14,15 @@ export function ClaimBox({ traces, focusKey, onMatch, onLive }: { traces: Trace[
   const live = mode === "live";
   const [progress, setProgress] = useState<string | null>(null);
   const [failure, setFailure] = useState("");
+  const [elapsed, setElapsed] = useState(0);
+  const isRunning = progress !== null;
+  useEffect(() => {
+    if (!isRunning) return;
+    const started = Date.now();
+    setElapsed(0);
+    const timer = setInterval(() => setElapsed(Math.floor((Date.now() - started) / 1000)), 1000);
+    return () => clearInterval(timer);
+  }, [isRunning]);
   const running = useRef<AbortController | null>(null);
   useEffect(() => {
     let active = true;
@@ -89,16 +98,20 @@ export function ClaimBox({ traces, focusKey, onMatch, onLive }: { traces: Trace[
           <div key={outcome.try} className="untraced">
             <p className="untraced-title">Not traced yet</p>
             {live ? <>
-              <p>Runs real searches and costs a few cents. Usually about 40 seconds, sometimes nearly five minutes.</p>
+              <p className="meta live-cost">Runs real searches and costs a few cents. Usually about 40 seconds, sometimes nearly five minutes.</p>
               <button className="btn" type="button" disabled={progress !== null} onClick={() => void startLive()}>Trace it live</button>
-            </> : mode === "paused" ? <p>{PAUSED}</p> : (
+            </> : mode === "paused" ? null : (
               <p>No recorded trace has this claim yet. Every recorded trace is listed below.</p>
             )}
           </div>
         )}
-        {mode === "paused" && outcome.kind !== "untraced" && <p>{PAUSED}</p>}
-        {progress && <div role="status"><p>{progress}</p><button className="btn small" type="button" onClick={() => { running.current?.abort(); setProgress(null); }}>Cancel trace</button></div>}
-        {failure && <p role="alert">{failure}</p>}
+        {mode === "paused" && <p className="paused-note meta"><span className="status-dot" aria-hidden="true" />{PAUSED}</p>}
+        {progress && <div className="untraced live-progress">
+          <div className="live-stage" role="status"><span className="progress-indicator" aria-hidden="true" /><p className="untraced-title">{progress}</p></div>
+          <span className="meta live-elapsed" aria-live="off">{elapsed} seconds elapsed</span>
+          <button className="btn secondary" type="button" onClick={() => { running.current?.abort(); setProgress(null); }}>Cancel trace</button>
+        </div>}
+        {failure && <p className="untraced live-failure" role="alert">{failure}</p>}
       </div>
     </form>
   );

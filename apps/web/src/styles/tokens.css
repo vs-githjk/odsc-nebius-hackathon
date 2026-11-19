@@ -553,3 +553,155 @@ a {
   flex-wrap: wrap;
   gap: 16px;
 }
+
+/* Recorded suggestions share the trace list's claim type and hairlines. */
+.challenges .sample-facts {
+  color: var(--ink-2);
+}
+
+.btn.secondary {
+  border: 1px solid var(--line-2);
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.btn.secondary:hover {
+  background: var(--bg-2);
+  border-color: var(--ink-3);
+}
+
+.btn:focus-visible,
+.sample:focus-visible {
+  outline: 2px solid var(--action);
+  outline-offset: 3px;
+}
+
+.untraced .btn {
+  margin-top: 12px;
+}
+
+.live-cost {
+  max-width: 65ch;
+  color: var(--ink-2);
+}
+
+.claim-note .paused-note {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: 8px;
+  color: var(--ink-2);
+}
+
+.status-dot {
+  flex: 0 0 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ink-3);
+}
+
+.claim-note .live-progress,
+.claim-note .live-failure {
+  margin-top: 12px;
+}
+
+.live-progress {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 4px 18px;
+}
+
+.live-stage {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.progress-indicator {
+  flex: 0 0 16px;
+  height: 16px;
+  border: 2px solid var(--line-2);
+  border-top-color: var(--ink-2);
+  border-radius: 50%;
+  animation: trace-progress 1.4s linear infinite;
+}
+
+.live-elapsed {
+  grid-column: 1;
+  padding-left: 26px;
+  font-variant-numeric: tabular-nums;
+}
+
+.live-progress .btn {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  margin-top: 0;
+}
+
+.live-failure {
+  color: var(--caution);
+}
+
+.how-page > p {
+  max-width: 65ch;
+  color: var(--ink-2);
+}
+
+.endings {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+
+.endings > div {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) minmax(0, 2fr);
+  gap: 12px 32px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.endings dt {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+/* A full ramp marks the glossary, without assigning dates to ending states. */
+.endings .ramp-dot {
+  flex: 0 0 10px;
+  background: var(--ramp);
+}
+
+.endings dd {
+  max-width: 65ch;
+  margin: 0;
+  color: var(--ink-2);
+}
+
+@keyframes trace-progress {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progress-indicator { animation: none; }
+  .sample-claim, .sample-go { transition: none; }
+  .sample:hover .sample-go, .sample:focus-visible .sample-go { transform: none; }
+}
+
+@media (max-width: 600px) {
+  .endings > div {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 18px 0;
+  }
+
+  .live-progress { grid-template-columns: minmax(0, 1fr); }
+  .live-progress .btn {
+    grid-column: 1;
+    grid-row: auto;
+    justify-self: start;
+    margin-top: 8px;
+  }
+}

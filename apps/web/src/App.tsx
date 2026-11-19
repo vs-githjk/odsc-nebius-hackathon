@@ -47,7 +47,27 @@ function Start({ focusKey, onMatch, onLive }: { focusKey: number; onMatch(id: st
       <Hero />
       <p className="lead">Patient Zero walks a claim back through time to the earliest page it can find, and shows every step.</p>
       <ClaimBox traces={traces} focusKey={focusKey} onMatch={onMatch} onLive={onLive} />
-      <section aria-label="Try these"><h2>Try these</h2><p>Recorded traces, free to open.</p><ul>{challengeTraces(traces).map(t => <li key={t.id}><a href={`#/t/${encodeURIComponent(t.id)}`}>{t.claim.text}</a></li>)}</ul></section>
+      <section aria-labelledby="challenges-heading">
+        <div className="samples-head">
+          <h2 id="challenges-heading">Try these</h2>
+          <span className="meta">Recorded traces, free to open.</span>
+        </div>
+        <ul className="samples challenges">
+          {challengeTraces(traces).map(t => {
+            const row = sampleRow(t);
+            const reason = (t.otherNumbers?.length ?? 0) > 0
+              ? "Another page gives a different number"
+              : row.ending;
+            return <li key={t.id}>
+              <a className="sample" href={`#/t/${encodeURIComponent(t.id)}`}>
+                <span className="sample-claim">{t.claim.text}</span>
+                <span className="sample-facts">{reason}</span>
+                <svg className="sample-go" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg>
+              </a>
+            </li>;
+          })}
+        </ul>
+      </section>
       <section aria-labelledby="samples-heading">
         <div className="samples-head">
           <h2 id="samples-heading">Traces</h2>
