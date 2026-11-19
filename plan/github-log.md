@@ -156,3 +156,4 @@
 - 2026-11-19 17:05 ET: #258 (live link) merged with a failing numbers-lint check (XO error: merge ran before checks); fixed by #261, main green again. Repo homepage now patient-0.vercel.app.
 - 2026-11-19 17:15 ET: value-first front-end brief posted on #257 and #259 (Vidyut's call).
 - 2026-11-19 17:20 ET: Anoop pushed #260 value-first pass (24a80b8) + shared quote helper. Nudged Rishit (#259 ack, 21:00 draft), Rohan (#222 cutoff 21:00, #250 go-or-skip by 21:00).
+- 2026-11-19 17:55 ET: reviewed #262 (Rishit app inside draft): FIX x8 (focus ring, cut-off background, copies-vs-roots weak, replay empty state, why-checkable strip, emoji chain, samples, live-run screenshots).
