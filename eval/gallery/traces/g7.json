@@ -1,0 +1,1458 @@
+{
+  "schemaVersion": "1",
+  "id": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+  "mode": "LIVE",
+  "synthetic": false,
+  "recordedAt": "2026-11-19T17:35:28.256Z",
+  "claim": {
+    "text": "People remember 10% of what they read but 90% of what they teach others.",
+    "atoms": {
+      "number": {
+        "raw": "10%",
+        "canonical": "10%"
+      },
+      "unit": null,
+      "subjectLemma": "what",
+      "population": "people",
+      "time": null,
+      "hedge": null,
+      "namedSource": null,
+      "variants": [
+        "ten percent",
+        "10 percent",
+        "10 per cent"
+      ],
+      "alsoNumber": {
+        "raw": "90%",
+        "canonical": "90%"
+      }
+    }
+  },
+  "viralSentence": "People remember 10% of what they read but 90% of what they teach others.",
+  "nodes": [
+    {
+      "id": "n1",
+      "url": "https://fullfact.org/news/recall-petition-threshold",
+      "domain": "fullfact.org",
+      "title": "The threshold for a recall petition to succeed is 10% of voters, not 10,000 – Full Fact",
+      "date": {
+        "kind": "unconfirmed",
+        "value": null,
+        "source": "wayback_first_capture",
+        "firstCapture": "2023-06-12",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n1",
+      "evidence": "observed",
+      "meta": true,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [],
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "https://commonslibrary.parliament.uk/research-briefings/sn05089",
+          "read": false
+        },
+        {
+          "url": "https://researchbriefings.files.parliament.uk/documents/SN05089/SN05089.pdf",
+          "read": true
+        },
+        {
+          "url": "https://www.bbc.co.uk/news/uk-politics-65863336",
+          "read": true
+        }
+      ],
+      "pageType": null,
+      "foundViaMeta": null
+    },
+    {
+      "id": "n2",
+      "url": "https://www.factcheck.org/2024/11/trumps-agenda-tariffs",
+      "domain": "factcheck.org",
+      "title": "Trump's Agenda: Tariffs - FactCheck.org",
+      "date": {
+        "kind": "unconfirmed",
+        "value": null,
+        "source": "wayback_first_capture",
+        "firstCapture": "2024-11-21",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n2",
+      "evidence": "observed",
+      "meta": true,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [],
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "https://www.youtube.com/watch?v=DI8ifwwwoj0",
+          "read": true
+        },
+        {
+          "url": "https://archive.org/details/FBC_20240204_160000_Sunday_Morning_Futures_With_Maria_Bartiromo/start/660/end/720",
+          "read": true
+        },
+        {
+          "url": "https://www.washingtonpost.com/business/2024/01/27/trump-china-trade-war",
+          "read": true
+        },
+        {
+          "url": "https://perma.cc/9YEL-RU5D",
+          "read": false
+        }
+      ],
+      "pageType": null,
+      "foundViaMeta": null
+    },
+    {
+      "id": "n3",
+      "url": "https://www.teachkidsart.net/going-for-90",
+      "domain": "teachkidsart.net",
+      "title": "Going for the 90% • TeachKidsArt",
+      "date": {
+        "kind": "published",
+        "value": "2009-02-10",
+        "source": "metadata",
+        "firstCapture": "2013-06-22",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n3",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s1"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": {
+        "questionId": "page_type",
+        "optionId": "blog",
+        "probability": 0.9999999925924283,
+        "top": [
+          {
+            "optionId": "study",
+            "p": 1.3176514172489493e-10
+          },
+          {
+            "optionId": "dataset",
+            "p": 0
+          },
+          {
+            "optionId": "report",
+            "p": 5.211412449284629e-10
+          },
+          {
+            "optionId": "speaker",
+            "p": 0
+          },
+          {
+            "optionId": "news",
+            "p": 4.058652096410937e-10
+          },
+          {
+            "optionId": "blog",
+            "p": 0.9999999925924283
+          },
+          {
+            "optionId": "social",
+            "p": 0
+          },
+          {
+            "optionId": "other",
+            "p": 6.348800069014489e-9
+          },
+          {
+            "optionId": "__other__",
+            "p": 0
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9706877674615327,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9706877674615327
+          },
+          {
+            "optionId": "no",
+            "p": 0.02931223253846714
+          },
+          {
+            "optionId": "__other__",
+            "p": 1.1102230246251565e-16
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "boundary": {
+        "questionId": "boundary",
+        "optionId": "unsourced",
+        "probability": 0.9975904467439722,
+        "top": [
+          {
+            "optionId": "print",
+            "p": 0.0009096562378422628
+          },
+          {
+            "optionId": "unsourced",
+            "p": 0.9975904467439722
+          },
+          {
+            "optionId": "none",
+            "p": 0.0014998818489072219
+          },
+          {
+            "optionId": "__other__",
+            "p": 1.5169278277937792e-8
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "injection": null
+    },
+    {
+      "id": "n4",
+      "url": "https://elearningindustry.com/cone-of-experience-what-really-is",
+      "domain": "elearningindustry.com",
+      "title": "What Is the Cone of Experience? Cone of Learning Explained",
+      "date": {
+        "kind": "published",
+        "value": "2017-08-28",
+        "source": "metadata",
+        "firstCapture": "2019-05-19",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n4",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s2"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9999998555019727,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9999998555019727
+          },
+          {
+            "optionId": "no",
+            "p": 1.4449802730460133e-7
+          },
+          {
+            "optionId": "__other__",
+            "p": 0
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    },
+    {
+      "id": "n5",
+      "url": "https://www.diduask.com",
+      "domain": "diduask.com",
+      "title": "The CHRISTIAN EDUCATION Page",
+      "date": {
+        "kind": "unconfirmed",
+        "value": null,
+        "source": "wayback_first_capture",
+        "firstCapture": "2004-10-11",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n5",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s3"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "no",
+        "probability": 0.99999773506188,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.0000022603257690678634
+          },
+          {
+            "optionId": "no",
+            "p": 0.99999773506188
+          },
+          {
+            "optionId": "__other__",
+            "p": 4.612350834598544e-9
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "parentId": "n3",
+      "childId": "n4",
+      "kind": "inferred",
+      "parentSpanId": "s1",
+      "childSpanId": "s2",
+      "linkHref": null
+    }
+  ],
+  "clusters": [
+    {
+      "id": "c-n5",
+      "nodeIds": [
+        "n5"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n3",
+      "nodeIds": [
+        "n3"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n4",
+      "nodeIds": [
+        "n4"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n1",
+      "nodeIds": [
+        "n1"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n2",
+      "nodeIds": [
+        "n2"
+      ],
+      "rule": "single"
+    }
+  ],
+  "spans": [
+    {
+      "id": "s1",
+      "nodeId": "n3",
+      "text": "Most everyone has heard the inspiring education statistic, \"We remember 10% of what we hear, 20% of what we read, 50% of what we do, 75% of what we discuss and 90% of what we teach.\"",
+      "contextBefore": " my TIP of the Month! a resource for teachers & families a resource for teachers & families Philosophy | Tips for Teaching Art Going for the 90%. ByCheryl Trowbridge Published Last Updated 0 Comments ",
+      "contextAfter": " Well surprisingly, I learned there is actually no scientific basis for these percentages! (For one example, check out the article: \"Debunk This: People Remember 10% of What They Read\".) Even so, I be",
+      "start": 219,
+      "end": 401,
+      "extractSha256": "206dbec8b62cc4ff38b1635d1a6212fa50762c66bfe7712067dec118ab7b93ab",
+      "windowSha256": "8f6a4109f35bb7099a0a5af3c9c98298bc1a217a07b2deede0febd52f8f38c13",
+      "fetchedAt": "2026-11-19T17:35:50.513Z",
+      "waybackUrl": "https://web.archive.org/web/20130622035835/https://www.teachkidsart.net/going-for-90",
+      "tier": "exact"
+    },
+    {
+      "id": "s2",
+      "nodeId": "n4",
+      "text": "Typical examples claim that people remember 10% of what they read, 20% of what they hear, 50% of what they discuss, and as much as 90% of what they teach to others.",
+      "contextBefore": "one. The Cone Of Learning Myth: Are Retention Percentages Real? The most widely recognized version of Dale's Cone of Learning includes retention percentages attached to different learning activities. ",
+      "contextAfter": " These figures have appeared in countless presentations, training manuals, conference materials, and educational resources. Despite their popularity, there is no credible evidence supporting these pre",
+      "start": 8477,
+      "end": 8641,
+      "extractSha256": "8f1220f4cfa0e6593f67b1e7c0525044a6a37ee224958068f74a85ec743457f1",
+      "windowSha256": "eb5d2a9dc0289d3ce3a09eccb19d70cdce0760406259f9fd11249cf34b958fd3",
+      "fetchedAt": "2026-11-19T17:35:51.654Z",
+      "waybackUrl": "https://web.archive.org/web/20190519035240/https://elearningindustry.com/cone-of-experience-what-really-is",
+      "tier": "exact"
+    },
+    {
+      "id": "s3",
+      "nodeId": "n5",
+      "text": "However eating too much pie is OK because the sin of pi is always zero.\" - copied We remember: 10% of what we hear, 30% of what we read, 50% of what we see, 90% of what we do Prostitutes are in no danger of finding their present life so satisfactory that they cannot turn to God: the proud, the avaricious, the self-righteous, are in that danger. -- C.S.",
+      "contextBefore": "A pat on the back is only a few inches higher than a kick in the pants. -- Office Truisms Strong and bitter words indicate a weak cause.-- Chinese cookie \"Eating too much cake is the sin of gluttony. ",
+      "contextAfter": " Lewis Time is a dressmaker specializing in alterations.--Faith Baldwin \"That's the real trouble with the world, too many people grow up\" -Walt Disney Without the dark we would never see the stars. --",
+      "start": 88135,
+      "end": 88489,
+      "extractSha256": "b153098d788af82f67f2a2a5b046c3833b0c82bc74ef99727d23d63ed0260fef",
+      "windowSha256": "848531ea10dca0f3efabf6a35e0e3a6e85bf084533a2b8a52c219ef9d5f31d67",
+      "fetchedAt": "2026-11-19T17:36:31.053Z",
+      "waybackUrl": "https://web.archive.org/web/20041011140108/https://www.diduask.com",
+      "tier": "exact"
+    }
+  ],
+  "hops": [
+    {
+      "edgeId": "e1",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "scope_widened",
+          "source": "inferred",
+          "value": "no",
+          "probability": 0.8807970469857553,
+          "disputed": false
+        },
+        {
+          "id": "attribution_shifted",
+          "source": "inferred",
+          "value": "yes",
+          "probability": 0.9947798743652407,
+          "disputed": false
+        },
+        {
+          "id": "context_stripped",
+          "source": "inferred",
+          "value": "yes",
+          "probability": 0.9706877675330312,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "typical"
+        },
+        {
+          "op": "add",
+          "text": "examples"
+        },
+        {
+          "op": "add",
+          "text": "claim"
+        },
+        {
+          "op": "add",
+          "text": "that"
+        },
+        {
+          "op": "add",
+          "text": "people"
+        },
+        {
+          "op": "del",
+          "text": "most"
+        },
+        {
+          "op": "del",
+          "text": "everyone"
+        },
+        {
+          "op": "del",
+          "text": "has"
+        },
+        {
+          "op": "del",
+          "text": "heard"
+        },
+        {
+          "op": "del",
+          "text": "the"
+        },
+        {
+          "op": "del",
+          "text": "inspiring"
+        },
+        {
+          "op": "del",
+          "text": "education"
+        },
+        {
+          "op": "del",
+          "text": "statistic"
+        },
+        {
+          "op": "del",
+          "text": "we"
+        },
+        {
+          "op": "same",
+          "text": "remember"
+        },
+        {
+          "op": "same",
+          "text": "10"
+        },
+        {
+          "op": "same",
+          "text": "of"
+        },
+        {
+          "op": "same",
+          "text": "what"
+        },
+        {
+          "op": "add",
+          "text": "they"
+        },
+        {
+          "op": "add",
+          "text": "read"
+        },
+        {
+          "op": "del",
+          "text": "we"
+        },
+        {
+          "op": "del",
+          "text": "hear"
+        },
+        {
+          "op": "same",
+          "text": "20"
+        },
+        {
+          "op": "same",
+          "text": "of"
+        },
+        {
+          "op": "same",
+          "text": "what"
+        },
+        {
+          "op": "add",
+          "text": "they"
+        },
+        {
+          "op": "add",
+          "text": "hear"
+        },
+        {
+          "op": "del",
+          "text": "we"
+        },
+        {
+          "op": "del",
+          "text": "read"
+        },
+        {
+          "op": "same",
+          "text": "50"
+        },
+        {
+          "op": "same",
+          "text": "of"
+        },
+        {
+          "op": "same",
+          "text": "what"
+        },
+        {
+          "op": "add",
+          "text": "they"
+        },
+        {
+          "op": "del",
+          "text": "we"
+        },
+        {
+          "op": "del",
+          "text": "do"
+        },
+        {
+          "op": "del",
+          "text": "75"
+        },
+        {
+          "op": "del",
+          "text": "of"
+        },
+        {
+          "op": "del",
+          "text": "what"
+        },
+        {
+          "op": "del",
+          "text": "we"
+        },
+        {
+          "op": "same",
+          "text": "discuss"
+        },
+        {
+          "op": "same",
+          "text": "and"
+        },
+        {
+          "op": "add",
+          "text": "as"
+        },
+        {
+          "op": "add",
+          "text": "much"
+        },
+        {
+          "op": "add",
+          "text": "as"
+        },
+        {
+          "op": "same",
+          "text": "90"
+        },
+        {
+          "op": "same",
+          "text": "of"
+        },
+        {
+          "op": "same",
+          "text": "what"
+        },
+        {
+          "op": "add",
+          "text": "they"
+        },
+        {
+          "op": "del",
+          "text": "we"
+        },
+        {
+          "op": "same",
+          "text": "teach"
+        },
+        {
+          "op": "add",
+          "text": "to"
+        },
+        {
+          "op": "add",
+          "text": "others"
+        }
+      ],
+      "faithful": false
+    }
+  ],
+  "blame": [],
+  "roots": {
+    "pages": 3,
+    "clusters": 3,
+    "rootsLinked": 0,
+    "clustersUnlinked": 3,
+    "studiesFound": null,
+    "independentRoots": 3,
+    "copies": 0
+  },
+  "redHopEdgeId": "e1",
+  "earliest": {
+    "nodeIds": [
+      "n3"
+    ],
+    "earlierWindowSearches": 2,
+    "earlierFound": 0
+  },
+  "failure": null,
+  "budget": {
+    "credits": 10,
+    "usd": 0.0006538399999999999,
+    "ms": 72620,
+    "capHit": null
+  },
+  "decision": {
+    "state": "TRAIL_GOES_COLD",
+    "row": 6,
+    "reasons": [
+      "no earliest page with a confirmed date, a primary page type, no earlier citation and no negated span",
+      "2 unread candidate parent(s)"
+    ],
+    "counts": {
+      "pages": 3,
+      "clusters": 3,
+      "unreadParents": 2,
+      "earlierWindowSearches": 2
+    }
+  },
+  "searchLog": [
+    {
+      "at": "2026-11-19T17:35:35.469Z",
+      "step": "search",
+      "query": "\"10%\" what",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:35:37.084Z",
+      "step": "search",
+      "query": "\"10% of what they read\" \"90% of what they teach\"",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:35:40.324Z",
+      "step": "search",
+      "query": "\"people remember 10% of what they read\" \"90% of what they teach\"",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 6,
+      "kept": 6,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:35:42.720Z",
+      "step": "search",
+      "query": "\"10% of what they read\" \"90% of what they teach\" study",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:35:44.472Z",
+      "step": "meta-search",
+      "query": "\"10%\" what",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 5,
+      "kept": 2,
+      "dropped": 3
+    },
+    {
+      "at": "2026-11-19T17:36:02.209Z",
+      "step": "search",
+      "query": "\"10%\" what",
+      "endDate": "2009-02-10",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:36:03.398Z",
+      "step": "search",
+      "query": "\"10%\" what study",
+      "endDate": "2009-02-10",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:36:17.994Z",
+      "step": "search",
+      "query": "\"We remember 10% of what we hear\" origin",
+      "endDate": "2009-02-10",
+      "startDate": null,
+      "results": 3,
+      "kept": 3,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:36:37.001Z",
+      "step": "dating",
+      "query": "https://fullfact.org/news/recall-petition-threshold: the node has no span to look for in the capture; no date from the first capture",
+      "endDate": null,
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:36:37.502Z",
+      "step": "dating",
+      "query": "https://www.factcheck.org/2024/11/trumps-agenda-tariffs: the node has no span to look for in the capture; no date from the first capture",
+      "endDate": null,
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:36:39.136Z",
+      "step": "dating",
+      "query": "https://www.diduask.com: capture 20041011140108 could not be read (network_error); no date from the first capture",
+      "endDate": null,
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    }
+  ],
+  "usage": [
+    {
+      "at": "2026-11-19T17:35:28.261Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 169,
+      "completionTokens": 44,
+      "cachedTokens": 128,
+      "credits": 0,
+      "costUsd": 0.000030099999999999996,
+      "latencyMs": 1040,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:35:29.309Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 279,
+      "completionTokens": 231,
+      "cachedTokens": 240,
+      "credits": 0,
+      "costUsd": 0.00009719999999999999,
+      "latencyMs": 3751,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:35:35.468Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2378,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:35:37.083Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1593,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:35:40.324Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 3216,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:35:42.720Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2372,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:35:44.471Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "meta-search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1725,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:35:44.837Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "meta-extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 308,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:35:45.990Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1095,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:35:46.042Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 78,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 7.8e-7,
+      "latencyMs": 2475,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:35:48.527Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 230,
+      "completionTokens": 7,
+      "cachedTokens": 160,
+      "credits": 0,
+      "costUsd": 0.0000251,
+      "latencyMs": 312,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:35:48.843Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 260,
+      "completionTokens": 7,
+      "cachedTokens": 192,
+      "credits": 0,
+      "costUsd": 0.0000281,
+      "latencyMs": 944,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:35:50.513Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 724,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:35:50.616Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 248,
+      "completionTokens": 7,
+      "cachedTokens": 192,
+      "credits": 0,
+      "costUsd": 0.0000269,
+      "latencyMs": 440,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:35:51.653Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 596,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:35:51.661Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 61,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 6.1e-7,
+      "latencyMs": 5248,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:35:56.913Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 363,
+      "completionTokens": 222,
+      "cachedTokens": 272,
+      "credits": 0,
+      "costUsd": 0.00010289999999999998,
+      "latencyMs": 4111,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:36:02.209Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1155,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:36:03.397Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1164,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:36:08.365Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 4934,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:36:08.372Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 158,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.0000015800000000000001,
+      "latencyMs": 3978,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:36:12.355Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 363,
+      "completionTokens": 232,
+      "cachedTokens": 352,
+      "credits": 0,
+      "costUsd": 0.0001059,
+      "latencyMs": 4186,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:36:17.984Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1380,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:36:22.899Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 4856,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:36:29.052Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 299,
+      "completionTokens": 7,
+      "cachedTokens": 160,
+      "credits": 0,
+      "costUsd": 0.000032,
+      "latencyMs": 670,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:36:29.724Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 299,
+      "completionTokens": 7,
+      "cachedTokens": 288,
+      "credits": 0,
+      "costUsd": 0.000032,
+      "latencyMs": 750,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:36:31.051Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 573,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:36:31.304Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 207,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00000207,
+      "latencyMs": 892,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:36:32.459Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 253,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:36:32.725Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 265,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:36:36.486Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 4280,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:36:37.000Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 505,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:36:37.501Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 500,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:36:37.503Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T17:36:37.504Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T17:36:37.505Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T17:36:39.141Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "page_type",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 679,
+      "completionTokens": 8,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.0000703,
+      "latencyMs": 670,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:36:39.837Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "readouts",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 493,
+      "completionTokens": 23,
+      "cachedTokens": 368,
+      "credits": 0,
+      "costUsd": 0.0000562,
+      "latencyMs": 629,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:36:40.476Z",
+      "traceId": "d6033215-44e1-4149-9ef5-a6adf32a3a82",
+      "step": "boundary",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 400,
+      "completionTokens": 7,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00004209999999999999,
+      "latencyMs": 399,
+      "status": "200",
+      "cacheHit": false
+    }
+  ],
+  "scopeNote": "Web pages only; print and paywalled origins are out of scope. Earliest source we found, not proof of first use.",
+  "otherNumbers": []
+}

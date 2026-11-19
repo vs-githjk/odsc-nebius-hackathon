@@ -1,0 +1,3039 @@
+{
+  "schemaVersion": "1",
+  "id": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+  "mode": "LIVE",
+  "synthetic": false,
+  "recordedAt": "2026-11-19T17:36:41.254Z",
+  "claim": {
+    "text": "It takes 10,000 hours of practice to master any skill.",
+    "atoms": {
+      "number": {
+        "raw": "10,000",
+        "canonical": "10000"
+      },
+      "unit": "hours",
+      "subjectLemma": "hour",
+      "population": "any skill",
+      "time": null,
+      "hedge": null,
+      "namedSource": null,
+      "variants": [
+        "ten thousand",
+        "10000"
+      ]
+    }
+  },
+  "viralSentence": "It takes 10,000 hours of practice to master any skill.",
+  "nodes": [
+    {
+      "id": "n1",
+      "url": "https://www.snopes.com/fact-check/maricopa-county-apologize-trump",
+      "domain": "snopes.com",
+      "title": "Maricopa County didn't apologize to Trump after uncovering fraud in 2020 election, despite claims | Snopes.com",
+      "date": {
+        "kind": "unconfirmed",
+        "value": null,
+        "source": "wayback_first_capture",
+        "firstCapture": "2026-10-15",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n1",
+      "evidence": "observed",
+      "meta": true,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [],
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "https://www.azag.gov/press-release/arizona-attorney-generals-office-releases-documents-related-2020-election",
+          "read": true
+        }
+      ],
+      "pageType": null,
+      "foundViaMeta": null
+    },
+    {
+      "id": "n2",
+      "url": "https://www.factcheck.org/2023/03/explaining-the-missing-context-of-tucker-carlsons-jan-6-presentation",
+      "domain": "factcheck.org",
+      "title": "Explaining the Missing Context of Tucker Carlson's Jan. 6 Presentation - FactCheck.org",
+      "date": {
+        "kind": "unconfirmed",
+        "value": null,
+        "source": "wayback_first_capture",
+        "firstCapture": "2023-03-11",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n2",
+      "evidence": "observed",
+      "meta": true,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [],
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "https://www.washingtonpost.com/local/public-safety/brian-sicknick-death-strokes/2021/04/19/36d2d310-617e-11eb-afbe-9a11a127d146_story.html",
+          "read": true
+        },
+        {
+          "url": "https://twitter.com/oliverdarcy/status/1632952103764148225",
+          "read": true
+        },
+        {
+          "url": "https://www.hbo.com/movies/four-hours-at-the-capitol",
+          "read": false
+        },
+        {
+          "url": "https://www.govinfo.gov/content/pkg/GPO-J6-TRANSCRIPT-CTRL0000038864/pdf/GPO-J6-TRANSCRIPT-CTRL0000038864.pdf",
+          "read": true
+        }
+      ],
+      "pageType": null,
+      "foundViaMeta": null
+    },
+    {
+      "id": "n3",
+      "url": "https://www.azag.gov/press-release/arizona-attorney-generals-office-releases-documents-related-2020-election",
+      "domain": "azag.gov",
+      "title": "Arizona Attorney General’s Office Releases Documents Related to 2020 Election Investigations | Attorney General's Office",
+      "date": {
+        "kind": "existed_by",
+        "value": "2025-10-06",
+        "source": "wayback_first_capture",
+        "firstCapture": "2025-10-06",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n3",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s1"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "no",
+        "probability": 0.99999949565233,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 5.043476698214153e-7
+          },
+          {
+            "optionId": "no",
+            "p": 0.99999949565233
+          },
+          {
+            "optionId": "__other__",
+            "p": 1.1102230246251565e-16
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": "https://www.snopes.com/fact-check/maricopa-county-apologize-trump",
+      "injection": null
+    },
+    {
+      "id": "n4",
+      "url": "https://problogservice.com/2012/03/15/what-malcolm-gladwell-really-said-about-the-10000-hour-rule",
+      "domain": "problogservice.com",
+      "title": "What Malcolm Gladwell REALLY Said About The 10,000 Hour Rule",
+      "date": {
+        "kind": "published",
+        "value": "2012-03-15",
+        "source": "metadata",
+        "firstCapture": "2012-03-19",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n4",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s2"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "no",
+        "probability": 0.9990889486387806,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.0009110513612193017
+          },
+          {
+            "optionId": "no",
+            "p": 0.9990889486387806
+          },
+          {
+            "optionId": "__other__",
+            "p": 1.1102230246251565e-16
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    },
+    {
+      "id": "n5",
+      "url": "https://stevenpressfield.com/2013/08/the-10000-hour-rule",
+      "domain": "stevenpressfield.com",
+      "title": "Writing Wednesdays: The 10,000 Hour Rule",
+      "date": {
+        "kind": "published",
+        "value": "2013-08-14",
+        "source": "metadata",
+        "firstCapture": "2013-08-16",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n5",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s3"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": {
+        "questionId": "page_type",
+        "optionId": "blog",
+        "probability": 0.9995666237248106,
+        "top": [
+          {
+            "optionId": "study",
+            "p": 0
+          },
+          {
+            "optionId": "dataset",
+            "p": 0
+          },
+          {
+            "optionId": "report",
+            "p": 0
+          },
+          {
+            "optionId": "speaker",
+            "p": 0.00043120319211496376
+          },
+          {
+            "optionId": "news",
+            "p": 0
+          },
+          {
+            "optionId": "blog",
+            "p": 0.9995666237248106
+          },
+          {
+            "optionId": "social",
+            "p": 0.000001759582625193391
+          },
+          {
+            "optionId": "other",
+            "p": 1.1248646112049501e-7
+          },
+          {
+            "optionId": "__other__",
+            "p": 3.010139880688101e-7
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9999999999987081,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9999999999987081
+          },
+          {
+            "optionId": "no",
+            "p": 1.291780656282379e-12
+          },
+          {
+            "optionId": "__other__",
+            "p": 1.1102230246251565e-16
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "boundary": {
+        "questionId": "boundary",
+        "optionId": "print",
+        "probability": 0.999437306568049,
+        "top": [
+          {
+            "optionId": "print",
+            "p": 0.999437306568049
+          },
+          {
+            "optionId": "unsourced",
+            "p": 0.000383202041611909
+          },
+          {
+            "optionId": "none",
+            "p": 0.00017945920109030741
+          },
+          {
+            "optionId": "__other__",
+            "p": 3.218924882197882e-8
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "injection": null
+    },
+    {
+      "id": "n6",
+      "url": "https://www.scribd.com/document/40262786/Practice-Makes-Perfect-With-the-10000-Hour-Rule",
+      "domain": "scribd.com",
+      "title": "Mastering Skills: The 10000 Hour Rule | PDF | Science | Neuroscience",
+      "date": {
+        "kind": "existed_by",
+        "value": "2025-08-16",
+        "source": "wayback_first_capture",
+        "firstCapture": "2025-08-16",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n6",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s4"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9999999999993898,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9999999999993898
+          },
+          {
+            "optionId": "no",
+            "p": 6.10194115531825e-13
+          },
+          {
+            "optionId": "__other__",
+            "p": 0
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    },
+    {
+      "id": "n7",
+      "url": "https://dokumen.pub/the-science-of-motorsport-2018015448-9781138301788-9781138301795-9780203732311.html",
+      "domain": "dokumen.pub",
+      "title": "The Science of Motorsport 2018015448, 9781138301788, 9781138301795, 9780203732311 - DOKUMEN.PUB",
+      "date": {
+        "kind": "unconfirmed",
+        "value": null,
+        "source": "wayback_first_capture",
+        "firstCapture": null,
+        "conflictingDate": false
+      },
+      "clusterId": "c-n7",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s5"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9999999999377585,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9999999999377585
+          },
+          {
+            "optionId": "no",
+            "p": 6.224147964040111e-11
+          },
+          {
+            "optionId": "__other__",
+            "p": 1.1102230246251565e-16
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    },
+    {
+      "id": "n8",
+      "url": "https://patents.google.com/patent/WO1994010715A1/en",
+      "domain": "patents.google.com",
+      "title": "WO1994010715A1 - Platinum-rhodium-iron catalyst - Google Patents",
+      "date": {
+        "kind": "published",
+        "value": "1993-10-20",
+        "source": "metadata",
+        "firstCapture": "2019-12-24",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n8",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s6"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "no",
+        "probability": 0.9999999468421487,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 5.315785114044031e-8
+          },
+          {
+            "optionId": "no",
+            "p": 0.9999999468421487
+          },
+          {
+            "optionId": "__other__",
+            "p": 2.220446049250313e-16
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    },
+    {
+      "id": "n9",
+      "url": "https://www.academia.edu/944389/National_Television_Violence_Study_Executive_Summary_Editor_University_of_California_Santa_Barbara_",
+      "domain": "academia.edu",
+      "title": "National Television Violence Study: Executive Summary (Editor/University of California, Santa Barbara)",
+      "date": {
+        "kind": "unconfirmed",
+        "value": null,
+        "source": "wayback_first_capture",
+        "firstCapture": "2014-07-07",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n9",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s7"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "no",
+        "probability": 0.9999999677581325,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 3.224186734730754e-8
+          },
+          {
+            "optionId": "no",
+            "p": 0.9999999677581325
+          },
+          {
+            "optionId": "__other__",
+            "p": 1.1102230246251565e-16
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    },
+    {
+      "id": "n10",
+      "url": "https://arxiv.org/pdf/2408.12538",
+      "domain": "arxiv.org",
+      "title": "Effect of Requirements Analyst Experience on Elicitation ... - arXiv",
+      "date": {
+        "kind": "existed_by",
+        "value": "2024-09-18",
+        "source": "wayback_first_capture",
+        "firstCapture": "2024-09-18",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n10",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s8"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9999993524054172,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9999993524054172
+          },
+          {
+            "optionId": "no",
+            "p": 6.475945828236821e-7
+          },
+          {
+            "optionId": "__other__",
+            "p": 0
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    },
+    {
+      "id": "n11",
+      "url": "https://atu.dk/sites/default/files/aktiviteter/howe_davidson_myth_0.pdf",
+      "domain": "atu.dk",
+      "title": "Innate talents: reality or myth? - ATU",
+      "date": {
+        "kind": "unconfirmed",
+        "value": null,
+        "source": "wayback_first_capture",
+        "firstCapture": null,
+        "conflictingDate": false
+      },
+      "clusterId": "c-n11",
+      "evidence": "observed",
+      "meta": true,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s9"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9999991657823074,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9999991657823074
+          },
+          {
+            "optionId": "no",
+            "p": 8.315279497561393e-7
+          },
+          {
+            "optionId": "__other__",
+            "p": 2.68974287287449e-9
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "parentId": "n5",
+      "childId": "n10",
+      "kind": "inferred",
+      "parentSpanId": "s3",
+      "childSpanId": "s8",
+      "linkHref": null
+    },
+    {
+      "id": "e2",
+      "parentId": "n10",
+      "childId": "n6",
+      "kind": "inferred",
+      "parentSpanId": "s8",
+      "childSpanId": "s4",
+      "linkHref": null
+    }
+  ],
+  "clusters": [
+    {
+      "id": "c-n8",
+      "nodeIds": [
+        "n8"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n9",
+      "nodeIds": [
+        "n9"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n7",
+      "nodeIds": [
+        "n7"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n6",
+      "nodeIds": [
+        "n6"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n4",
+      "nodeIds": [
+        "n4"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n5",
+      "nodeIds": [
+        "n5"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n10",
+      "nodeIds": [
+        "n10"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n3",
+      "nodeIds": [
+        "n3"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n1",
+      "nodeIds": [
+        "n1"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n11",
+      "nodeIds": [
+        "n11"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n2",
+      "nodeIds": [
+        "n2"
+      ],
+      "rule": "single"
+    }
+  ],
+  "spans": [
+    {
+      "id": "s1",
+      "nodeId": "n3",
+      "text": "Despite Arizona Attorney General Office (AAGO) agents and support staff spending over 10,000 hours investigating voting irregularities and alleged instances of illegal voting by high-profile election deniers, a September 2022 summary prepared by AAGO's Special Investigations Section stated:",
+      "contextBefore": "ments Related to 2020 Election Investigations. PHOENIX - Today, Arizona Attorney General Kris Mayes released documents related to the investigations into the handling of the 2020 election in Arizona. ",
+      "contextAfter": " *In each instance and in each matter, the aforementioned parties did not provide any evidence to support their allegations. The information that was provided was speculative in many instances and whe",
+      "start": 351,
+      "end": 642,
+      "extractSha256": "e907988deac4dc3a224c37a6079abdf03a13235c1d43e0fb9eb9f471c1d68863",
+      "windowSha256": "768e7384342697ab7227b7a7bb92fd8d968525f12eba7a973daafac205ff1538",
+      "fetchedAt": "2026-11-19T17:36:56.994Z",
+      "waybackUrl": "https://web.archive.org/web/20251006084655/https://www.azag.gov/press-release/arizona-attorney-generals-office-releases-documents-related-2020-election",
+      "tier": "exact"
+    },
+    {
+      "id": "s2",
+      "nodeId": "n4",
+      "text": "My point is, it doesn't take 10,000 hours of deliberate practice to become an expert.",
+      "contextBefore": "bout a special skill or knowledge in a particular field. They are not the freakishly good. The world class. The first-name-only celebrities. Those are the \"outliers.\" The \"experts\" are everyone else. ",
+      "contextAfter": " It takes less than that. Don't get me wrong, you have to know a lot about your field. You have to have spent thousands of hours doing it. But that's not the 10,000 hour rule. Sorry, no related conten",
+      "start": 2933,
+      "end": 3018,
+      "extractSha256": "e0476447996f5ea9ef961643b945d2e5d8c319274f53a80b2544ba8f17e5013e",
+      "windowSha256": "a118c3e07eb595953dacd193421ffa338ac7627d31ca7b9bebe6be4c5f792fa4",
+      "fetchedAt": "2026-11-19T17:36:58.537Z",
+      "waybackUrl": "https://web.archive.org/web/20120319003451/https://problogservice.com/2012/03/15/what-malcolm-gladwell-really-said-about-the-10000-hour-rule",
+      "tier": "exact"
+    },
+    {
+      "id": "s3",
+      "nodeId": "n5",
+      "text": "The rule says that in order for an individual to master any complex skill, be it brain surgery or playing the cello, she must put in 10,000 hours of focused practice.",
+      "contextBefore": "ed of those 10,000 hours.* I'm not sure whether Malcolm Gladwell was the first to identify this principle or was simply responsible for popularizing it. But his name is definitely associated with it. ",
+      "contextAfter": " Since a thousand hours seems to be more or less the maximum we humans can handle in one year, ten thousand hours equals ten years. Of course there are exceptions. Tatum O'Neal won an Oscar at age nin",
+      "start": 421,
+      "end": 587,
+      "extractSha256": "94febdecd668f1739a5b8b879400f0c48543f91f93e20c5617db7a4c74cabb0f",
+      "windowSha256": "f0b1f06d03797f2c35f24be4a702b11b6fe340bdd528a148125c80c2107e132b",
+      "fetchedAt": "2026-11-19T17:36:59.723Z",
+      "waybackUrl": "https://web.archive.org/web/20130816165459/https://stevenpressfield.com/2013/08/the-10000-hour-rule",
+      "tier": "exact"
+    },
+    {
+      "id": "s4",
+      "nodeId": "n6",
+      "text": "The document discusses the 10,000 hour rule, which suggests that it takes approximately 10,000 hours of deliberate practice to achieve mastery in a skill or field.",
+      "contextBefore": "Mastering Skills: The 10000 Hour Rule. ",
+      "contextAfter": " It was popularized by Malcolm Gladwell based on research by Anders Ericsson in the early 1990s. The document provides background on Ericsson and his research, examines examples of the rule, and lists",
+      "start": 39,
+      "end": 202,
+      "extractSha256": "e8adfb6d0d9ec2022f616c133ccf78019f44e79ec616c29700d5c8233f5f6455",
+      "windowSha256": "fe87914df2f0d9f89b04b925ba9bb75c4414f1492739b18588298944475ab503",
+      "fetchedAt": "2026-11-19T17:37:32.404Z",
+      "waybackUrl": "https://web.archive.org/web/20250816023022/https://www.scribd.com/document/40262786/Practice-Makes-Perfect-With-the-10000-Hour-Rule",
+      "tier": "exact"
+    },
+    {
+      "id": "s5",
+      "nodeId": "n7",
+      "text": "In particular, there is an extensive body of resear highlighting the role of extended amounts of deliberate practice (Ericsson, Krampe, & TesRömer, 1993; the famed \"10,000 hour rule\") in the development of expertise - deliberate in that su activities are intentionally focused on skill improvement and learning, rather than simply \"going through the motions.\"",
+      "contextBefore": " requires both an understanding of the key perceptual-cognitive meanisms that allow experts to consistently perform at su a high level, but also the processes by whi these meanisms are developed. ",
+      "contextAfter": " Of particular importance for perceptual-cognitive aspects of expertise, whi are shown to be critical for complex, dynamic activities su as motorsport racing, is an explicit focus in these deliberat",
+      "start": 231114,
+      "end": 231476,
+      "extractSha256": "dd9d41ca47f9b00d02928607da55aac9504a9b425848a5897cdccb4ccb08c880",
+      "windowSha256": "15a8960e3d7e1d8a0f4878705fdc0d7e4f4ae6962101af3c8f3ee6bd5226b09b",
+      "fetchedAt": "2026-11-19T17:37:53.322Z",
+      "waybackUrl": null,
+      "tier": "exact"
+    },
+    {
+      "id": "s6",
+      "nodeId": "n8",
+      "text": "the catalyst of the present invention can maintain an activity above about 40 mA/mg platinum for over 10,000 hours of fuel cell operation.",
+      "contextBefore": "ssure). * prior art catalysts who possess initial mass activities of up to about 50 mA/mg of platinum, typically have activities below about 40 mA/mg after about 1,000 hours of fuel cell operation. * ",
+      "contextAfter": " Additionally, it is believed that the catalyst stability and mass activity will be much greater if the fuel cell is operated at about 300°F, up to about 0.8 volts, and atmospheric pressure, and the m",
+      "start": 20138,
+      "end": 20276,
+      "extractSha256": "ea66eeac4f0447205b35a6d2f67d482b3596bf4d5f26e7790a4021ef023a0ba6",
+      "windowSha256": "35918d85de5e5cac3f003a2fbdab55c6d60d202387160013fc439c98f1c0a4a1",
+      "fetchedAt": "2026-11-19T17:38:07.769Z",
+      "waybackUrl": "https://web.archive.org/web/20191224233332/https://patents.google.com/patent/WO1994010715A1/en",
+      "tier": "exact"
+    },
+    {
+      "id": "s7",
+      "nodeId": "n9",
+      "text": "The National Television Violence Study involved over 10,000 hours of programming analyzed across three years.",
+      "contextBefore": "ndations for mitigating the risks associated with exposure to violent content, particularly by highlighting contextual features that influence audience perceptions and reactions. Key takeaways. AI 1. ",
+      "contextAfter": " 2. Televised violence consistently influences aggressive behaviors, desensitization, and fear in viewers, particularly children. 3. Contextual features like justified violence and attractive perpetra",
+      "start": 3406,
+      "end": 3515,
+      "extractSha256": "862329b278ca119968d107d1813d7557ad1d27d0df89edfbd94cd60503b9960a",
+      "windowSha256": "dba5d8a3e1a937b94942fbff1b14c0ca9a8a8fabd6e0ce05f0dcdc703eaa4f5d",
+      "fetchedAt": "2026-11-19T17:38:10.498Z",
+      "waybackUrl": "https://web.archive.org/web/20140707153634/https://www.academia.edu/944389/National_Television_Violence_Study_Executive_Summary_Editor_University_of_California_Santa_Barbara_",
+      "tier": "exact"
+    },
+    {
+      "id": "s8",
+      "nodeId": "n10",
+      "text": "It is well-established that it takes about 10 years or 10,000 working hours to gain the required experience [28], [29], although this is a variable figure that depends on the area and type of instruction received [30].",
+      "contextBefore": "n proven to perform better in RE. Two1 high quality studies, namely [14] and [27], confirm that expert analysts have specialized knowledge and use more complex rea-soning than inexperienced analysts. ",
+      "contextAfter": " In fact, shorter times are specified for SE. Campbell and Bello [31] claim that programmers need (at least) two years to become ex-perts in Smalltalk. Sim et al. [32] consider that five years of expe",
+      "start": 6522,
+      "end": 6740,
+      "extractSha256": "ff21c8b8a856b1bc2f4100f2f4315dc79b3abcbd36d81461aed188d565df8bd4",
+      "windowSha256": "f5c1e86ec7fe9383c175aba910a1ab8a0c24bd12aaf7af7569877767d678177c",
+      "fetchedAt": "2026-11-19T17:38:14.000Z",
+      "waybackUrl": "https://web.archive.org/web/20240918182355/https://arxiv.org/pdf/2408.12538",
+      "tier": "exact"
+    },
+    {
+      "id": "s9",
+      "nodeId": "n11",
+      "text": "This is especially true when it is noted that experts routinely begin before the age of 6 years and put in more than 10 years or 10,000 hours of practice (Ericsson & Crutcher 1990).",
+      "contextBefore": "mirable job of countering argu-ments for talent. If practice is what it takes to be an expert, however, then motivation to practice and early emotional connec-tion to that experience must be crucial. ",
+      "contextAfter": " With notable exceptions (Scanlan et al. 1993; Sloboda 1991; Sosniak 1990), this is an area largely avoided by those steeped in traditional experimental psychology. If the key's not there, the light w",
+      "start": 204730,
+      "end": 204911,
+      "extractSha256": "bfc1195a2c607bd29b9958524a1c2484fb0dbdc041e67ac0f78c729abe9da320",
+      "windowSha256": "90e57ebc548eecef796bb90a8a96deba2190558e5d0851044440ab1a5473f1c0",
+      "fetchedAt": "2026-11-19T17:38:14.748Z",
+      "waybackUrl": null,
+      "tier": "exact"
+    }
+  ],
+  "hops": [
+    {
+      "edgeId": "e1",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "scope_widened",
+          "source": "inferred",
+          "value": "yes",
+          "probability": 0.9997387629463107,
+          "disputed": false
+        },
+        {
+          "id": "attribution_shifted",
+          "source": "inferred",
+          "value": "yes",
+          "probability": 0.9999251457846359,
+          "disputed": false
+        },
+        {
+          "id": "context_stripped",
+          "source": "inferred",
+          "value": "no",
+          "probability": 0.9947798743622318,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "it"
+        },
+        {
+          "op": "add",
+          "text": "is"
+        },
+        {
+          "op": "add",
+          "text": "well-established"
+        },
+        {
+          "op": "del",
+          "text": "the"
+        },
+        {
+          "op": "del",
+          "text": "rule"
+        },
+        {
+          "op": "del",
+          "text": "says"
+        },
+        {
+          "op": "same",
+          "text": "that"
+        },
+        {
+          "op": "del",
+          "text": "in"
+        },
+        {
+          "op": "del",
+          "text": "order"
+        },
+        {
+          "op": "del",
+          "text": "for"
+        },
+        {
+          "op": "del",
+          "text": "an"
+        },
+        {
+          "op": "del",
+          "text": "individual"
+        },
+        {
+          "op": "del",
+          "text": "to"
+        },
+        {
+          "op": "del",
+          "text": "master"
+        },
+        {
+          "op": "del",
+          "text": "any"
+        },
+        {
+          "op": "del",
+          "text": "complex"
+        },
+        {
+          "op": "del",
+          "text": "skill"
+        },
+        {
+          "op": "del",
+          "text": "be"
+        },
+        {
+          "op": "same",
+          "text": "it"
+        },
+        {
+          "op": "add",
+          "text": "takes"
+        },
+        {
+          "op": "add",
+          "text": "about"
+        },
+        {
+          "op": "add",
+          "text": "10"
+        },
+        {
+          "op": "add",
+          "text": "years"
+        },
+        {
+          "op": "del",
+          "text": "brain"
+        },
+        {
+          "op": "del",
+          "text": "surgery"
+        },
+        {
+          "op": "same",
+          "text": "or"
+        },
+        {
+          "op": "del",
+          "text": "playing"
+        },
+        {
+          "op": "del",
+          "text": "the"
+        },
+        {
+          "op": "del",
+          "text": "cello"
+        },
+        {
+          "op": "del",
+          "text": "she"
+        },
+        {
+          "op": "del",
+          "text": "must"
+        },
+        {
+          "op": "del",
+          "text": "put"
+        },
+        {
+          "op": "del",
+          "text": "in"
+        },
+        {
+          "op": "same",
+          "text": "10,000"
+        },
+        {
+          "op": "add",
+          "text": "working"
+        },
+        {
+          "op": "same",
+          "text": "hours"
+        },
+        {
+          "op": "add",
+          "text": "to"
+        },
+        {
+          "op": "add",
+          "text": "gain"
+        },
+        {
+          "op": "add",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "required"
+        },
+        {
+          "op": "add",
+          "text": "experience"
+        },
+        {
+          "op": "add",
+          "text": "28"
+        },
+        {
+          "op": "add",
+          "text": "29"
+        },
+        {
+          "op": "add",
+          "text": "although"
+        },
+        {
+          "op": "add",
+          "text": "this"
+        },
+        {
+          "op": "add",
+          "text": "is"
+        },
+        {
+          "op": "add",
+          "text": "a"
+        },
+        {
+          "op": "add",
+          "text": "variable"
+        },
+        {
+          "op": "add",
+          "text": "figure"
+        },
+        {
+          "op": "add",
+          "text": "that"
+        },
+        {
+          "op": "add",
+          "text": "depends"
+        },
+        {
+          "op": "add",
+          "text": "on"
+        },
+        {
+          "op": "add",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "area"
+        },
+        {
+          "op": "add",
+          "text": "and"
+        },
+        {
+          "op": "add",
+          "text": "type"
+        },
+        {
+          "op": "same",
+          "text": "of"
+        },
+        {
+          "op": "add",
+          "text": "instruction"
+        },
+        {
+          "op": "add",
+          "text": "received"
+        },
+        {
+          "op": "add",
+          "text": "30"
+        },
+        {
+          "op": "del",
+          "text": "focused"
+        },
+        {
+          "op": "del",
+          "text": "practice"
+        }
+      ],
+      "faithful": false
+    },
+    {
+      "edgeId": "e2",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "scope_widened",
+          "source": "inferred",
+          "value": "yes",
+          "probability": 0.9999952149055026,
+          "disputed": false
+        },
+        {
+          "id": "attribution_shifted",
+          "source": "inferred",
+          "value": "yes",
+          "probability": 0.9626730731308805,
+          "disputed": false
+        },
+        {
+          "id": "context_stripped",
+          "source": "inferred",
+          "value": "yes",
+          "probability": 0.9914224780398245,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "document"
+        },
+        {
+          "op": "add",
+          "text": "discusses"
+        },
+        {
+          "op": "add",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "10,000"
+        },
+        {
+          "op": "add",
+          "text": "hour"
+        },
+        {
+          "op": "add",
+          "text": "rule"
+        },
+        {
+          "op": "add",
+          "text": "which"
+        },
+        {
+          "op": "add",
+          "text": "suggests"
+        },
+        {
+          "op": "del",
+          "text": "it"
+        },
+        {
+          "op": "del",
+          "text": "is"
+        },
+        {
+          "op": "del",
+          "text": "well-established"
+        },
+        {
+          "op": "same",
+          "text": "that"
+        },
+        {
+          "op": "same",
+          "text": "it"
+        },
+        {
+          "op": "same",
+          "text": "takes"
+        },
+        {
+          "op": "add",
+          "text": "approximately"
+        },
+        {
+          "op": "del",
+          "text": "about"
+        },
+        {
+          "op": "del",
+          "text": "10"
+        },
+        {
+          "op": "del",
+          "text": "years"
+        },
+        {
+          "op": "del",
+          "text": "or"
+        },
+        {
+          "op": "same",
+          "text": "10,000"
+        },
+        {
+          "op": "del",
+          "text": "working"
+        },
+        {
+          "op": "same",
+          "text": "hours"
+        },
+        {
+          "op": "add",
+          "text": "of"
+        },
+        {
+          "op": "add",
+          "text": "deliberate"
+        },
+        {
+          "op": "add",
+          "text": "practice"
+        },
+        {
+          "op": "same",
+          "text": "to"
+        },
+        {
+          "op": "add",
+          "text": "achieve"
+        },
+        {
+          "op": "add",
+          "text": "mastery"
+        },
+        {
+          "op": "add",
+          "text": "in"
+        },
+        {
+          "op": "del",
+          "text": "gain"
+        },
+        {
+          "op": "del",
+          "text": "the"
+        },
+        {
+          "op": "del",
+          "text": "required"
+        },
+        {
+          "op": "del",
+          "text": "experience"
+        },
+        {
+          "op": "del",
+          "text": "28"
+        },
+        {
+          "op": "del",
+          "text": "29"
+        },
+        {
+          "op": "del",
+          "text": "although"
+        },
+        {
+          "op": "del",
+          "text": "this"
+        },
+        {
+          "op": "del",
+          "text": "is"
+        },
+        {
+          "op": "same",
+          "text": "a"
+        },
+        {
+          "op": "add",
+          "text": "skill"
+        },
+        {
+          "op": "add",
+          "text": "or"
+        },
+        {
+          "op": "add",
+          "text": "field"
+        },
+        {
+          "op": "del",
+          "text": "variable"
+        },
+        {
+          "op": "del",
+          "text": "figure"
+        },
+        {
+          "op": "del",
+          "text": "that"
+        },
+        {
+          "op": "del",
+          "text": "depends"
+        },
+        {
+          "op": "del",
+          "text": "on"
+        },
+        {
+          "op": "del",
+          "text": "the"
+        },
+        {
+          "op": "del",
+          "text": "area"
+        },
+        {
+          "op": "del",
+          "text": "and"
+        },
+        {
+          "op": "del",
+          "text": "type"
+        },
+        {
+          "op": "del",
+          "text": "of"
+        },
+        {
+          "op": "del",
+          "text": "instruction"
+        },
+        {
+          "op": "del",
+          "text": "received"
+        },
+        {
+          "op": "del",
+          "text": "30"
+        }
+      ],
+      "faithful": false
+    }
+  ],
+  "blame": [],
+  "roots": {
+    "pages": 8,
+    "clusters": 8,
+    "rootsLinked": 0,
+    "clustersUnlinked": 8,
+    "studiesFound": null,
+    "independentRoots": 8,
+    "copies": 0
+  },
+  "redHopEdgeId": "e1",
+  "earliest": {
+    "nodeIds": [
+      "n5"
+    ],
+    "earlierWindowSearches": 4,
+    "earlierFound": 0
+  },
+  "failure": null,
+  "budget": {
+    "credits": 25,
+    "usd": 0.00113433,
+    "ms": 114079,
+    "capHit": null
+  },
+  "decision": {
+    "state": "TRAIL_GOES_COLD",
+    "row": 6,
+    "reasons": [
+      "no earliest page with a confirmed date, a primary page type, no earlier citation and no negated span",
+      "1 unread candidate parent(s)"
+    ],
+    "counts": {
+      "pages": 8,
+      "clusters": 8,
+      "unreadParents": 1,
+      "earlierWindowSearches": 4
+    }
+  },
+  "searchLog": [
+    {
+      "at": "2026-11-19T17:36:48.725Z",
+      "step": "search",
+      "query": "\"10,000 hours\"",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:36:49.836Z",
+      "step": "search",
+      "query": "\"10,000 hours of practice\" to master any skill",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:36:50.903Z",
+      "step": "search",
+      "query": "\"10,000 hours\" practice to master a skill",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:36:52.058Z",
+      "step": "search",
+      "query": "\"10,000 hours\" to become an expert in a field",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:36:53.443Z",
+      "step": "meta-search",
+      "query": "\"10,000 hours\"",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 3,
+      "kept": 2,
+      "dropped": 1
+    },
+    {
+      "at": "2026-11-19T17:37:04.529Z",
+      "step": "search",
+      "query": "\"10,000 hours\"",
+      "endDate": "2013-08-13",
+      "startDate": null,
+      "results": 9,
+      "kept": 8,
+      "dropped": 1
+    },
+    {
+      "at": "2026-11-19T17:37:05.633Z",
+      "step": "search",
+      "query": "10,000 hours of practice to master a complex skill",
+      "endDate": "2013-08-13",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:37:06.794Z",
+      "step": "search",
+      "query": "10,000 hours of focused practice to master a skill",
+      "endDate": "2013-08-13",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:37:08.126Z",
+      "step": "search",
+      "query": "10,000 hours rule for mastering any skill publisher Anders Ericsson",
+      "endDate": "2013-08-13",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:37:24.712Z",
+      "step": "search",
+      "query": "10,000 hours rule for mastering a skill publisher Anders Ericsson",
+      "endDate": "2013-08-13",
+      "startDate": null,
+      "results": 10,
+      "kept": 8,
+      "dropped": 2
+    },
+    {
+      "at": "2026-11-19T17:37:27.289Z",
+      "step": "search",
+      "query": "10,000 hours study mastery skill performance research",
+      "endDate": "2013-08-13",
+      "startDate": null,
+      "results": 9,
+      "kept": 8,
+      "dropped": 1
+    },
+    {
+      "at": "2026-11-19T17:37:29.086Z",
+      "step": "search",
+      "query": "10,000 hours to master any skill topic complex skill",
+      "endDate": "2013-08-13",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:37:37.321Z",
+      "step": "search",
+      "query": "\"10,000 hours\"",
+      "endDate": "2006-05-06",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:37:38.535Z",
+      "step": "search",
+      "query": "\"10,000 hours\" rule mastery skill deliberate practice",
+      "endDate": "2006-05-06",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:37:39.958Z",
+      "step": "search",
+      "query": "\"10,000 hour rule\" suggests approximately 10,000 hours deliberate practice",
+      "endDate": "2006-05-06",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:37:41.151Z",
+      "step": "search",
+      "query": "Anders Ericsson 10,000 hour rule mastery research",
+      "endDate": "2006-05-06",
+      "startDate": null,
+      "results": 10,
+      "kept": 9,
+      "dropped": 1
+    },
+    {
+      "at": "2026-11-19T17:37:58.581Z",
+      "step": "search",
+      "query": "\"10,000 hours\"",
+      "endDate": "2001-04-26",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:37:59.674Z",
+      "step": "search",
+      "query": "\"10,000 hour rule\" Ericsson Krampe Tesch-Römer 1993",
+      "endDate": "2001-04-26",
+      "startDate": null,
+      "results": 4,
+      "kept": 4,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:38:01.632Z",
+      "step": "search",
+      "query": "\"extended amounts of deliberate practice\" 10,000 hours 1993",
+      "endDate": "2001-04-26",
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:38:03.168Z",
+      "step": "search",
+      "query": "Ericsson Krampe Tesch-Römer 1993 \"10,000 hour rule\"",
+      "endDate": "2001-04-26",
+      "startDate": null,
+      "results": 8,
+      "kept": 7,
+      "dropped": 1
+    },
+    {
+      "at": "2026-11-19T17:38:21.806Z",
+      "step": "dating",
+      "query": "https://www.snopes.com/fact-check/maricopa-county-apologize-trump: the node has no span to look for in the capture; no date from the first capture",
+      "endDate": null,
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:38:23.605Z",
+      "step": "dating",
+      "query": "https://www.factcheck.org/2023/03/explaining-the-missing-context-of-tucker-carlsons-jan-6-presentation: the node has no span to look for in the capture; no date from the first capture",
+      "endDate": null,
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:38:33.192Z",
+      "step": "dating",
+      "query": "https://www.academia.edu/944389/National_Television_Violence_Study_Executive_Summary_Editor_University_of_California_Santa_Barbara_: the first capture (2014-07-07) does not hold the claim's sentence; no date from the first capture",
+      "endDate": null,
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    }
+  ],
+  "usage": [
+    {
+      "at": "2026-11-19T17:36:41.259Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 165,
+      "completionTokens": 45,
+      "cachedTokens": 128,
+      "credits": 0,
+      "costUsd": 0.000029999999999999997,
+      "latencyMs": 1322,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:36:42.589Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 275,
+      "completionTokens": 221,
+      "cachedTokens": 240,
+      "credits": 0,
+      "costUsd": 0.0000938,
+      "latencyMs": 4607,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:36:48.724Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1493,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:36:49.835Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1078,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:36:50.902Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1025,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:36:52.057Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1130,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:36:53.442Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "meta-search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1347,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:36:53.588Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "meta-extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 102,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:36:55.009Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1346,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:36:55.023Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 253,
+      "completionTokens": 7,
+      "cachedTokens": 160,
+      "credits": 0,
+      "costUsd": 0.0000274,
+      "latencyMs": 554,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:36:56.325Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 743,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:36:56.990Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "capture",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 665,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:36:57.006Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 219,
+      "completionTokens": 7,
+      "cachedTokens": 160,
+      "credits": 0,
+      "costUsd": 0.000023999999999999997,
+      "latencyMs": 621,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:36:57.632Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 237,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.0000258,
+      "latencyMs": 519,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:36:58.536Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 385,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:36:58.657Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 236,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.0000257,
+      "latencyMs": 669,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:36:59.722Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 393,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:36:59.736Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 343,
+      "completionTokens": 136,
+      "cachedTokens": 256,
+      "credits": 0,
+      "costUsd": 0.0000751,
+      "latencyMs": 3683,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:37:04.529Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1078,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:37:05.633Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1073,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:37:06.793Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1138,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:37:08.125Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1292,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:37:12.960Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 4806,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:37:13.015Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 92,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 9.2e-7,
+      "latencyMs": 6911,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:37:19.936Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 343,
+      "completionTokens": 132,
+      "cachedTokens": 336,
+      "credits": 0,
+      "costUsd": 0.0000739,
+      "latencyMs": 2885,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:37:24.711Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1856,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:37:27.288Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2543,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:37:29.086Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1764,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:37:30.025Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 912,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:37:30.028Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 235,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.000025600000000000002,
+      "latencyMs": 632,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:37:32.404Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1741,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:37:32.414Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 340,
+      "completionTokens": 168,
+      "cachedTokens": 272,
+      "credits": 0,
+      "costUsd": 0.00008439999999999999,
+      "latencyMs": 3761,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:37:37.317Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1105,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:37:38.534Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1171,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:37:39.957Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1391,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:37:41.146Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1140,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:37:43.883Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2699,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:37:45.170Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 598,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00000598,
+      "latencyMs": 6121,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:37:51.355Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 292,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.000031299999999999995,
+      "latencyMs": 559,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:37:53.321Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1405,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:37:53.354Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 392,
+      "completionTokens": 194,
+      "cachedTokens": 272,
+      "credits": 0,
+      "costUsd": 0.0000974,
+      "latencyMs": 3598,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:37:58.581Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1596,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:37:59.670Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1060,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:38:01.631Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1897,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:38:03.167Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1513,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:38:05.863Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2653,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:38:05.993Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 229,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.000025,
+      "latencyMs": 636,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:38:06.630Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 235,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.000025600000000000002,
+      "latencyMs": 385,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:38:07.769Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 752,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:38:07.886Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 217,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.0000238,
+      "latencyMs": 515,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:38:08.402Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 220,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.0000241,
+      "latencyMs": 374,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:38:10.498Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1721,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:38:10.528Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 251,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.0000272,
+      "latencyMs": 402,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:38:11.355Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 424,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:38:13.990Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "capture",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 2635,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:38:14.051Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 248,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.0000269,
+      "latencyMs": 396,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:38:14.747Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 298,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:38:14.768Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 373,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.0000037300000000000003,
+      "latencyMs": 2566,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:38:18.961Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1606,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:38:19.973Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 2618,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:38:20.501Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 527,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:38:20.606Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 101,
+      "status": "403",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:38:20.792Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1828,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:38:20.986Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 379,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:38:21.025Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 233,
+      "status": "403",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:38:21.196Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 208,
+      "status": "bad_response",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:38:21.805Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 600,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:38:23.604Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1798,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:38:23.608Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T17:38:23.610Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "capture",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T17:38:23.614Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T17:38:23.615Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T17:38:23.615Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T17:38:32.692Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "capture",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 9075,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:38:32.699Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T17:38:32.700Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T17:38:32.701Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T17:38:33.179Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "capture",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 477,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:38:33.192Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T17:38:33.194Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "capture",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T17:38:33.214Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T17:38:33.227Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "page_type",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 2072,
+      "completionTokens": 8,
+      "cachedTokens": 192,
+      "credits": 0,
+      "costUsd": 0.0002096,
+      "latencyMs": 573,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:38:33.828Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "readouts",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 482,
+      "completionTokens": 23,
+      "cachedTokens": 368,
+      "credits": 0,
+      "costUsd": 0.0000551,
+      "latencyMs": 546,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:38:34.380Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "readouts",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 479,
+      "completionTokens": 23,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.0000548,
+      "latencyMs": 556,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:38:34.945Z",
+      "traceId": "f9587993-c863-4ecb-823c-fd5153c5acd2",
+      "step": "boundary",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 354,
+      "completionTokens": 6,
+      "cachedTokens": 144,
+      "credits": 0,
+      "costUsd": 0.0000372,
+      "latencyMs": 385,
+      "status": "200",
+      "cacheHit": false
+    }
+  ],
+  "scopeNote": "Web pages only; print and paywalled origins are out of scope. Earliest source we found, not proof of first use.",
+  "otherNumbers": []
+}
