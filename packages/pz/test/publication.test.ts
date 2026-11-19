@@ -24,6 +24,9 @@ describe("publicationDate reads only what the page declares about itself", () =>
   it("ignores broken JSON-LD and meta tags with no content", () => {
     expect(publicationDate(head('<script type="application/ld+json">{oops</script>', '<meta name="citation_date">'))).toBeNull();
   });
+  it("does not read publication attributes embedded in another attribute's value", () => {
+    expect(publicationDate(head('<meta title=" name=\'citation_date\' content=\'1990-01-01\' ">'))).toBeNull();
+  });
   it("hands #79's dating the value unchanged: a partial date stays unconfirmed, a later date is capped by the capture", () => {
     const capture = { status: "found" as const, firstCapture: "2020-06-24", timestamp: "20200624000000" };
     expect(dateEvidence({ metadata: publicationDate(head('<meta name="citation_publication_date" content="2004/06/15">')) }, capture))
@@ -168,6 +171,7 @@ describe("page fetching is public-only, logged and challenge-aware", () => {
     const url = "https://news.example/a";
     const real = '<time itemprop="datePublished" datetime="2020-06-09">June 9</time>';
     const old = '<time itemprop="datePublished" datetime="2009-03-01">Old</time>';
+    expect(await setup({ [url]: page(html('<time title=" itemprop=\'datePublished\' datetime=\'2009-03-01\' ">Teaser</time>')) }).found(url)).toBeNull();
     for (const candidate of [
       '<article><footer>' + real + '</footer></article><div class="related">' + old + '</div>',
       '<nav class="breadcrumb">' + real + '</nav>' + old,
