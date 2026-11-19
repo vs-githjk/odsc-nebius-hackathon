@@ -161,3 +161,5 @@ Format: [LOCKED|REJECTED|PREFERENCE] decision | why | "Vidyut's words" | date
 [LOCKED] Demo script #158 version B approved (A only if dev-10 lands on WEF); storyboard approve still separate | "Script. We can check that out. Sure." | 2026-11-19
 [LOCKED] Submit: XO final judge Fri 08:00 ET, Vidyut presses Submit by 11:00 ET | "Yeah, that's fine. Go for it." | 2026-11-19
 [PREFERENCE] Hold the video storyboard and Vercel prep for a few hours until team PRs land; then do it all together | team work still in flight | "Now we wait for a few more hours until everything is gone a little bit smoother, and then we will do all of it." | 2026-11-19
+[LOCKED] #222 gets one more round: Rohan locks in on it, thorough, his Claude on Opus at high effort; ships only if the next review finds no false-earlier path | Vidyut wants the dateline feature | "Ship it. I want him to try one more round. Make sure he's very thorough with it... just tell his thing to focus on that... An Opus" | 2026-11-19
+[LOCKED] Script version A with the honest cold ending (dev-10 earliest = WEF Jan 2016, card says The trail goes cold) | "All right, cool." | 2026-11-19
