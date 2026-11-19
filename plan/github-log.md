@@ -148,3 +148,4 @@
 - 11-19 08:37 XO: E2 live rerun 4 merged #245 ($1.98, dev-10 ends WEF Jan 2016); Anoop hero -> dev-10, #158 version A
 - 11-19 08:44 XO: S7 live answer run merged #246 ($0.21); ledger $10.54/15; gallery waits on Rohan overlap check; held-out on Rohan
 - 12:49 XO: #247 FIX (C vercel .ts imports), #222 FIX round 3 (recommend hold), gallery #252 merged (G4 false origin, G6 failed), #249 merged, Anoop: 2 doc fixes + gallery grading
+- 13:15 XO: merged #251 (CI green; local timeouts from machine load), #158 (script v A); reviewing #247 round 2, #253, #254, #255; #250 held-out running on Rohan's machine; #222 final round
