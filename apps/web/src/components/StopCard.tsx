@@ -15,6 +15,7 @@ export function StopCard({ trace }: { trace: Trace }) {
       <h2 className="trace-section-title">The ending</h2>
       <h3 className="stop-title"><span className={tone ? "ramp-dot" : "ramp-dot empty"} style={{ ["--tone" as string]: tone ?? "var(--ink-3)" }} aria-hidden="true" />{card.title}</h3>
       <p className="stop-sentence">{card.sentence}</p>
+      {trace.decision.state !== "ORIGIN_FOUND" && <p className="stop-restraint">No origin is named on purpose: the evidence does not meet the origin rules.</p>}
       <div className="stop-earliest"><span className="meta">Earliest page we found</span>
         {earliest.length ? earliest.map(node => <p className="earliest-row" key={node.id}>
           <strong>{node.date.value ? month(node.date.value, node.date.precision) : "Undated"}</strong>

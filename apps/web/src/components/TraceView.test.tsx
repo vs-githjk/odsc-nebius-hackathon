@@ -4,6 +4,8 @@ import { loadTraces } from "../data/loadTraces.ts";
 import { scrubberStops } from "../model/scrubber.ts";
 import { badgeFor } from "./badge.ts";
 import { TraceView } from "./TraceView.tsx";
+import { independence, independenceLine } from "pz/headline";
+import { traceCost } from "../../../../packages/pz/src/usage/cost.ts";
 
 beforeAll(() => {
   // No DOM in these tests: give the reduced-motion hook a stand-in.
@@ -57,16 +59,38 @@ describe("TraceView", () => {
     expect(html).toContain("inferred, no link");
   });
 
-  it("marks the red hop in coral on the track and in the band, and shows the open stop's readout chips", () => {
+  it("marks the red hop and starts the receipt without claiming a later hop exists", () => {
     const rich = traces.find((t) => t.id === "sample-rich")!;
     const html = renderToStaticMarkup(<TraceView trace={rich} />);
     expect(html).toContain("Wording changed here");
     expect(html).toContain('class="track-red"');
     expect(html).toMatch(/class="stop red"/);
     expect(html).toContain("band-link inferred red");
-    expect(html).toContain('<span class="readout-label">Attribution shifted</span><span class="readout-tag">inferred, 74%</span>');
+    expect(html).toContain("This is the latest page in the walk.");
+    expect(html).toContain("How dated");
     const plain = traces.find((t) => t.id === "sample-origin")!;
     expect(renderToStaticMarkup(<TraceView trace={plain} />)).not.toContain("Wording changed here");
+  });
+
+  it("shows the shared headline counts, matching dots, deliberate stops and recorded cost", () => {
+    for (const trace of traces) {
+      const html = renderToStaticMarkup(<TraceView trace={trace} />);
+      const counts = independence(trace);
+      expect(html).toContain(independenceLine(trace));
+      expect(html.match(/class="root-dot"/g) ?? []).toHaveLength(counts.independentRoots);
+      expect(html.match(/class="root-dot hollow"/g) ?? []).toHaveLength(counts.copies);
+      expect(html.includes("No origin is named on purpose")).toBe(trace.decision.state !== "ORIGIN_FOUND");
+      if (trace.mode === "REPLAY" && trace.usage.length) expect(html).toContain(`Recorded run cost $${traceCost(trace).totalUsd.toFixed(3)}`);
+      else expect(html).not.toContain("Recorded run cost");
+    }
+  });
+
+  it("omits cost for recordings without usage and retains live credits", () => {
+    const trace = traces.find(t => t.id === "dev-10")!;
+    expect(renderToStaticMarkup(<TraceView trace={{ ...trace, usage: [] }} />)).not.toContain("Recorded run cost");
+    const live = renderToStaticMarkup(<TraceView trace={{ ...trace, mode: "LIVE" }} />);
+    expect(live).toContain(`Cost $${traceCost(trace).totalUsd.toFixed(3)} (${trace.budget.credits} Tavily credits)`);
+    expect(live).not.toContain("Recorded run cost");
   });
 
   it("draws the band as swarms of copies, one dot per page, with the active cluster named by its site", () => {

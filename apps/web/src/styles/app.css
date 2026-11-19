@@ -4,10 +4,10 @@ main h1 { scroll-margin-top: 120px; }
 .back { display: inline-flex; align-items: center; min-height: 44px; }
 .stage-head { min-height: 44px; }
 .stage-head > .meta { min-height: 24px; font-variant-numeric: tabular-nums; }
-.stage-head .trace-cost { flex: 1 1 280px; }
+.stage-head .trace-cost { flex: 1 0 100%; }
 .trace-roots .counter { min-height: 30px; font-variant-numeric: tabular-nums; }
 .stage .ticks, .stage .pill, .stage .band-legend, .stage .swarm-label, .stage .readout-tag, .stage .red-label { font-size: 14px; }
-.stop-earliest .earliest-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0 12px; margin: 0; min-height: 44px; }
+.stop-earliest .earliest-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0 16px; margin: 0; min-height: 48px; }
 .earliest-row strong { flex: 0 0 auto; font-size: 14px; }
 .stop-earliest .earliest-row a { display: flex; align-items: center; min-width: 0; max-width: 100%; min-height: 44px; padding: 0; font-size: 14px; overflow-wrap: anywhere; }
 .claim-box .live-progress { scroll-margin-top: 120px; gap: 12px; }

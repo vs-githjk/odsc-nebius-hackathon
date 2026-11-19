@@ -932,6 +932,39 @@
   .stage .replay-lines { scroll-behavior: auto; }
 }
 .scrub-steps { display: none; }
+/* Evidence receipts share the page's theme tokens and do not animate. */
+.stage-head { justify-content: flex-start; gap: 8px; }
+.stage-head .chip { flex-wrap: wrap; white-space: normal; }
+.stage-head .replay-again { margin: 0 0 0 auto; padding-inline: 8px; }
+.stage .stop-sentence { margin-block: 16px 8px; font-size: 20px; font-weight: 600; color: var(--ink); }
+.stop-restraint { margin: 0; color: var(--ink-2); font-size: 16px; }
+.roots-summary { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; width: 100%; margin-top: 24px; padding: 16px; text-align: left; border: 1px solid var(--line-2); border-radius: 12px; background: var(--bg-2); color: var(--ink); font: 500 16px/1.5 var(--font-ui); cursor: pointer; }
+.roots-summary:hover { border-color: var(--action); }
+.root-dots { display: flex; flex-wrap: wrap; gap: 4px; }
+.root-dot { width: 8px; height: 8px; border: 1px solid var(--ink-2); border-radius: 50%; background: var(--ink-2); }
+.root-dot.hollow { background: transparent; }
+.trace-roots { scroll-margin-top: 120px; }
+.roots-explanation { max-width: 72ch; color: var(--ink-2); }
+.evidence-receipt { margin-top: 24px; padding: 24px; border: 1px solid var(--line-2); border-radius: 12px; background: var(--surface); }
+.receipt-heading { margin: 0; }
+.evidence-receipt .sentence { margin-top: 8px; }
+.trace-timeline .evidence-receipt .hop-detail { padding: 0; border: 0; margin-top: 24px; }
+.receipt-rows { margin: 16px 0 0; }
+.receipt-rows > div { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 16px; padding-block: 16px; border-top: 1px solid var(--line); }
+.receipt-rows dt { color: var(--ink-3); font: 500 14px/1.5 var(--font-ui); }
+.receipt-rows dd { margin: 0; font-size: 16px; color: var(--ink); }
+.receipt-rows p { margin: 0; }
+.receipt-rows p + p { margin-top: 8px; }
+.receipt-variants { margin-top: 16px; overflow-wrap: anywhere; }
+.receipt-variants summary { cursor: pointer; padding-block: 8px; }
+.receipt-variants li + li { margin-top: 16px; }
+.receipt-variants p { margin-top: 8px; }
+@media (max-width: 600px) {
+  .stage-head .chip { max-width: 168px; }
+  .evidence-receipt { padding: 16px; }
+  .receipt-rows > div { grid-template-columns: 80px minmax(0, 1fr); gap: 8px; }
+  .roots-summary { padding: 16px; }
+}
 @media (max-width: 600px) {
   /* The selected date is in the hop detail. Dense absolute tick labels cannot fit a phone. */
   .trace-timeline .ticks { display: none; }
