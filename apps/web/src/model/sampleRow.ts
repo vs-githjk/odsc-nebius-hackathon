@@ -56,9 +56,14 @@ export function rowFacts(row: SampleRow): string[] {
   return [row.ending, row.earliestYear === null ? "No dated page" : `Back to ${row.earliestYear}`, row.pages === 1 ? "1 page" : `${row.pages} pages`];
 }
 
-// The start page's hero: the recorded real trace with the most to show. Samples are invented, so they never lead;
-// with no real trace loaded the page asks its question instead.
+// The start page's hero is pinned, not picked by page count (decision 146; XO on #4, Nov 19): dev-10, which since the
+// Nov 19 live run ends on the WEF "New Plastics Economy" report of January 2016. The auto-pick had led with dev-17,
+// whose card dated a 2023 sentence to 2019. If the pinned trace isn't loaded, the real trace with the most to show
+// leads instead. Samples are invented, so they never lead; with no real trace the page asks its question.
+export const HERO_ID = "dev-10";
 export function heroTrace(traces: Trace[]): Trace | null {
+  const pinned = traces.find((t) => t.id === HERO_ID && !t.synthetic);
+  if (pinned) return pinned;
   const id = sampleRows(traces.filter((t) => !t.synthetic))[0]?.id;
   return traces.find((t) => t.id === id) ?? null;
 }
