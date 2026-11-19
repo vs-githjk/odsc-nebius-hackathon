@@ -1,4 +1,6 @@
 # <Project> shared board (every agent: read the GOALS and the last 40 lines first; post one line before you finish)
+
+- [22:28 PT] rohanrastogi311 dev failure diagnostics: save runner-owned stage beside failure code; provider fields excluded; keyless regression tests | @vs-githjk review dev-failure-stage; no live calls
 Path for every lane, worktree and agent: <absolute path to main checkout>/plan/board.md (never a lane copy).
 Format, append only, newest at the bottom:
 `- [<HH:MM from date>] <role> <lane/task>: <what you did or found, with SHA or evidence path> | @<role-or-lane> <ask, if any>`
@@ -160,4 +162,3 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [18:35 PT] RishitRai #108 review: citations only in the span's own paragraph, self-links matched without www, query or fragment; nav-row and next-paragraph tests
 - [18:40 PT] RishitRai #110 review: paragraph rule in citation scoring, seen as {query, endDate} pairs, far follows explained in searchLog, intake credits seed the budget, phrase claims, plannerFor and sameClaimFor for the adapter
 
-- [22:28 PT] rohanrastogi311 dev failure diagnostics: save runner-owned stage beside failure code; provider fields excluded; keyless regression tests | @vs-githjk review dev-failure-stage; no live calls
