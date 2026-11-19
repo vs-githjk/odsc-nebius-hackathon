@@ -150,8 +150,13 @@ export function renderCard(trace: Trace, { color = false }: { color?: boolean } 
   const spanOf = (n: Node) => trace.spans.find((sp) => sp.nodeId === n.id)?.text ?? "";
   // On ORIGIN_FOUND the page decide picked comes first (XO on #236: a tied news page listed first must not push the
   // origin into "Also earliest"), then pages whose sentence is not menu text.
-  const origin = trace.decision.state === "ORIGIN_FOUND" ? originPick(trace, loadRules())?.node.id : undefined;
-  const ordered = [...all].sort((a, b) => Number(b.id === origin) - Number(a.id === origin) || Number(menuLike(spanOf(a))) - Number(menuLike(spanOf(b))));
+  const rules = loadRules();
+  const origin = trace.decision.state === "ORIGIN_FOUND" ? originPick(trace, rules)?.node.id : undefined;
+  // On a tie with no origin, a primary page (study, dataset, report, the speaker's own words) leads a news repeat:
+  // dev-10's WEF report and a blog post share 2016-01-20, and the card should show the report, as the app does.
+  const primary = (n: Node) => Number(!!n.pageType && rules.primaryPageTypes.includes(n.pageType.optionId));
+  const ordered = [...all].sort((a, b) => Number(b.id === origin) - Number(a.id === origin)
+    || Number(menuLike(spanOf(a))) - Number(menuLike(spanOf(b))) || primary(b) - primary(a));
   const earliest = trace.decision.state === "CONFLICTING" ? all : ordered.slice(0, 1);
   const sameDate = trace.decision.state === "CONFLICTING" ? [] : ordered.slice(1);
   out.push("");
