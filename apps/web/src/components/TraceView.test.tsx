@@ -13,6 +13,16 @@ beforeAll(() => {
 describe("TraceView", () => {
   const { traces } = loadTraces();
 
+  it("puts the claim and verdict before the timeline, then copies and roots", () => {
+    const html = renderToStaticMarkup(<TraceView trace={traces.find(t => t.id === "sample-rich")!} />);
+    const positions = ['class="quote trace-claim"', 'aria-label="How this trace ended"', 'aria-label="Timeline of pages"', 'aria-label="Copies and roots"'].map(marker => html.indexOf(marker));
+    expect(positions.every(position => position >= 0)).toBe(true);
+    expect(positions).toEqual([...positions].sort((a, b) => a - b));
+    expect(html.match(/aria-label="How this trace ended"/g)).toHaveLength(1);
+    expect(html).toContain("Earliest page we found");
+    expect(html).toContain('class="ramp-dot"');
+  });
+
   it("[C25] renders every fixture, starting on the newest stop's own words", () => {
     for (const trace of traces) {
       const html = renderToStaticMarkup(<TraceView trace={trace} />);

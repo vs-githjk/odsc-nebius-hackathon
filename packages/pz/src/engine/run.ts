@@ -11,7 +11,7 @@ import { verifyTrace } from "../verify/checks.ts";
 export const STAGES = ["intake", "fingerprint", "walk", "spans", "dating", "clusters", "readouts", "card"] as const;
 export type Stage = typeof STAGES[number];
 export type PageInput = { url: string; text: string; metadata?: string | null; byline?: string | null; metadataSource?: DateEvidence["metadataSource"]; metadataPrecision?: DateEvidence["metadataPrecision"] };
-export type Context = Readonly<{ input: string; pages: readonly Readonly<{
+export type Context = Readonly<{ input: string; onPageRead?: (url: string) => void; pages: readonly Readonly<{
   url: string; quotedText: string; metadata?: string | null; byline?: string | null; metadataSource?: DateEvidence["metadataSource"]; metadataPrecision?: DateEvidence["metadataPrecision"];
 }>[] }>;
 export type Wayback = Pick<ReturnType<typeof createWayback>, "firstCapture"> & Partial<Pick<ReturnType<typeof createWayback>, "captureBody" | "captureVersions">>;
@@ -26,6 +26,7 @@ export type Pipeline = {
 } & Record<Exclude<Stage, "intake" | "dating" | "walk" | "spans">, Step>;
 export type RunEvent = { sequence: number } & (
   | { type: "stage"; stage: Stage; status: "started" | "completed" | "failed" }
+  | { type: "progress"; pages: number; hosts: string[] }
   | { type: "trace"; trace: Trace }
 );
 type Emit = (event: RunEvent) => void;
@@ -71,7 +72,7 @@ function checked(value: unknown): Trace {
 }
 
 export async function runTrace(input: string, pipeline: Pipeline, opts: {
-  wayback: Wayback; pages?: readonly PageInput[]; emit?: Emit;
+  wayback: Wayback; pages?: readonly PageInput[]; emit?: Emit; liveProgress?: boolean;
 }): Promise<Trace> {
   for (const stage of STAGES) {
     if (stage !== "dating" && typeof pipeline?.[stage] !== "function") throw new Error(`Missing pipeline stage: ${stage}`);
@@ -95,12 +96,22 @@ export async function runTrace(input: string, pipeline: Pipeline, opts: {
   let datedNodes: Map<string, { url: string; date: Trace["nodes"][number]["date"] }> | undefined;
   let trace: Trace | undefined;
   let sequence = 0;
+  const readPages = new Set<string>();
+  const hosts: string[] = [];
+  const onPageRead = opts.liveProgress && opts.emit ? (url: string) => {
+    let host: string;
+    try { host = new URL(url).hostname; } catch { return; }
+    if (readPages.has(url)) return;
+    readPages.add(url);
+    hosts.push(host);
+    opts.emit?.({ sequence: sequence++, type: "progress", pages: readPages.size, hosts: hosts.slice(-3) });
+  } : undefined;
   for (const stage of STAGES) {
     opts.emit?.({ sequence: sequence++, type: "stage", stage, status: "started" });
     try {
       // Snapshot before calling: adapters may mutate their input in place.
       const incomingUsage = structuredClone(trace?.usage ?? []);
-      const context: Context = Object.freeze({ input, pages: Object.freeze([...pages.values()]) });
+      const context: Context = Object.freeze({ input, ...(onPageRead ? { onPageRead } : {}), pages: Object.freeze([...pages.values()]) });
       const result = await (stage === "intake" ? pipeline.intake(context)
         : stage === "dating" ? date(trace!, context) : pipeline[stage](trace!, context));
       const next = Trace.parse("trace" in result ? result.trace : result);

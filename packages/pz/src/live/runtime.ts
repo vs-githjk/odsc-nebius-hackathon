@@ -94,7 +94,7 @@ export function pipelineRunner(env: Record<string, string | undefined>, transpor
         const result = await card(trace, context);
         return capHit ? { ...result, budget: { ...result.budget, capHit } } : result;
       };
-      return await runTrace(claim, adapter.pipeline, { wayback: adapter.wayback, emit });
+      return await runTrace(claim, adapter.pipeline, { wayback: adapter.wayback, emit, liveProgress: true });
     } finally { rmSync(dir, { recursive: true, force: true }); }
   };
 }

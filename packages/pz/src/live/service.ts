@@ -4,7 +4,7 @@ import { Trace } from "../schema/index.ts";
 import type { RunEvent } from "../engine/run.ts";
 import { hash, liveEnabled, micros, type LiveStore } from "./store.ts";
 
-export type LiveEvent = Extract<RunEvent, { type: "stage" }> | { type: "trace"; trace: Trace } | { type: "error"; code: string; message: string };
+export type LiveEvent = Extract<RunEvent, { type: "stage" | "progress" }> | { type: "trace"; trace: Trace } | { type: "error"; code: string; message: string };
 export type Runner = (claim: string, signal: AbortSignal, emit: (event: RunEvent) => void, charge: (usd: number) => void) => Promise<Trace>;
 export type LiveDeps = { env: Record<string, string | undefined>; store: LiveStore | null; run: Runner; now?: () => number; deadlineMs?: number };
 export const RESERVATION = liveBudget({}).reservation;
@@ -73,7 +73,10 @@ export function liveService(deps: LiveDeps) {
                 else signal.addEventListener("abort", () => reject(new Error("aborted")), { once: true });
               });
               result = await Promise.race([deps.run(input, signal, event => {
-                if (!signal.aborted && event.type === "stage") emit(event);
+                if (signal.aborted) return;
+                if (event.type === "stage") emit(event);
+                if (event.type === "progress") emit({ type: "progress", sequence: event.sequence,
+                  pages: event.pages, hosts: event.hosts.slice(-3).filter(host => /^[a-z0-9.-]+$/i.test(host)) });
               }, usd => { spent = usd; }), stopped]);
               signal.throwIfAborted();
               // The runner tracks all attempts, including uncertain charges omitted from trace usage.
