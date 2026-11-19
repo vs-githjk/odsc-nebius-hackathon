@@ -11,8 +11,13 @@ import type { UsageLog } from "../usage/log.ts";
 
 const NAMES = ["citation_publication_date", "citation_date", "article:published_time", "datepublished", "dc.date", "dc.date.issued"];
 
-const attr = (tag: string, name: string) =>
-  new RegExp(`\\s${name}\\s*=\\s*(?:"([^"]*)"|'([^']*)')`, "i").exec(tag)?.slice(1).find((v) => v !== undefined) ?? null;
+const attr = (tag: string, name: string) => {
+  // Consume whole values so attribute-like text inside a quoted value cannot become evidence.
+  for (const m of tag.matchAll(/\s([^\s"'<>/=]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|[^\s"'=<>`]+))?/g)) {
+    if (m[1]!.toLowerCase() === name.toLowerCase()) return m[2] ?? m[3] ?? null;
+  }
+  return null;
+};
 
 // Scholarly sites write 2004/06/15; that is the same calendar day as 2004-06-15, so only the separator changes. A
 // partial date (2004/06) stays partial and dating.ts leaves it unconfirmed.
