@@ -77,14 +77,15 @@ describe("dating", () => {
     usage.append = row => { usage.rows.push(row); };
     let calls = 0;
     const wayback = createWayback({ usage, cache: { get: key => rows.get(key) ?? null, set: (key, val) => { rows.set(key, val); } }, fetch: (async input => {
+      if (String(input).includes("/web/")) return new Response("<p>Coast news said it.</p>", { headers: { "content-type": "text/html" } });
       calls++;
       const url = new URL(String(input));
       expect(url.searchParams.get("filter")).toBe("statuscode:200");
       expect(url.searchParams.get("url")).toBe(original.url);
       return new Response(readFileSync(new URL("./recorded/wayback/first-capture.json", import.meta.url), "utf8"));
     }) as typeof fetch });
-    const a = await dateNode(original, { metadata: "2005-01-01" }, wayback);
-    const b = await dateNode(original, { metadata: "2005-01-01" }, wayback);
+    const a = await dateNode(original, { metadata: "2005-01-01" }, wayback, ["Coast news said it"]);
+    const b = await dateNode(original, { metadata: "2005-01-01" }, wayback, ["Coast news said it"]);
     expect(a.node.date).toMatchObject({ kind: "existed_by", value: "2001-03-31", conflictingDate: true });
     expect(a.usage).toMatchObject({ service: "wayback", step: "dating", cacheHit: false });
     expect(b.usage).toMatchObject({ cacheHit: true });

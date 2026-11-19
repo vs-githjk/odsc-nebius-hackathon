@@ -70,6 +70,12 @@ function stub(world: World) {
       const rows = page ? [["timestamp", "original"], [`${page.date.replaceAll("-", "")}000000`, page.url]] : [];
       return new Response(JSON.stringify(rows));
     }
+    // L19: the first capture is read to see that it holds the claim. Here every capture holds what the page says today.
+    const capture = /^https:\/\/web\.archive\.org\/web\/\d+id_\/(.+)$/.exec(url);
+    if (capture) {
+      const page = world.pages.find((p) => p.url === capture[1]);
+      return page ? new Response(page.text.replace(/\[([^\]]*)\]\([^)]*\)/g, "$1"), { headers: { "content-type": "text/html" } }) : new Response("missing", { status: 404 });
+    }
     const body = JSON.parse(String(init?.body ?? "{}"));
     if (url.endsWith("/search")) {
       world.onSearch?.(calls.filter((c) => c.url.endsWith("/search")).length);

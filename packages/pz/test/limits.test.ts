@@ -35,6 +35,9 @@ function walk(pages: Page[], cdx: "ok" | "down" = "ok") {
       const page = pages.find((p) => p.url === new URL(url).searchParams.get("url"));
       return new Response(JSON.stringify(page?.capture ? [["timestamp", "original"], [`${page.capture.replace(/-/g, "")}000000`, page.url]] : [["timestamp", "original"]]));
     }
+    // L19: the first capture is read; here every capture holds what the page says.
+    const capture = /^https:\/\/web\.archive\.org\/web\/\d+id_\/(.+)$/.exec(url);
+    if (capture) return new Response(pages.find((p) => p.url === capture[1])?.text ?? "", { headers: { "content-type": "text/html" } });
     const body = JSON.parse(String(init?.body));
     if (url.endsWith("/search")) {
       const results = pages.filter((p) => !body.end_date || (p.date !== null && p.date <= body.end_date))

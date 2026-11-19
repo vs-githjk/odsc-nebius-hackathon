@@ -43,6 +43,8 @@ const world = (async (input: string | URL | Request, init?: RequestInit) => {
     const page = pages.find(p => p.url === new URL(url).searchParams.get("url"));
     return new Response(JSON.stringify(page ? [["timestamp", "original"], [`${page.date.replaceAll("-", "")}000000`, page.url]] : []));
   }
+  const capture = /^https:\/\/web\.archive\.org\/web\/\d+id_\/(.+)$/.exec(url);
+  if (capture) return new Response(pages.find(p => p.url === capture[1])?.text ?? "", { headers: { "content-type": "text/html" } });
   const body = JSON.parse(String(init?.body ?? "{}"));
   if (url.endsWith("/search")) {
     const results = pages.map(p => ({ url: p.url, title: "A page", content: p.text.slice(0, 80), score: 0.5, published_date: p.date }));

@@ -35,6 +35,8 @@ function world(pages: Page[]) {
       const target = new URL(url).searchParams.get("url") ?? "";
       return new Response(JSON.stringify(target.includes("zoo.example/dataset") ? [["timestamp", "original"], ["20190501000000", target]] : [["timestamp", "original"]]));
     }
+    const capture = /^https:\/\/web\.archive\.org\/web\/\d+id_\/(.+)$/.exec(url);
+    if (capture) return new Response(pages.find((p) => p.url === capture[1])?.text ?? "", { headers: { "content-type": "text/html" } });
     const body = JSON.parse(String(init?.body));
     calls.push({ endpoint: url.split("/").at(-1)!, body });
     if (url.endsWith("/search")) {

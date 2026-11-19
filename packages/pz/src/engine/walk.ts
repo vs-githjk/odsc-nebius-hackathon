@@ -6,6 +6,7 @@ import { ClientError } from "../clients/errors.ts";
 import { TokenFactoryError } from "../clients/tokenfactory.ts";
 import { createTavily } from "../clients/tavily.ts";
 import { createWayback } from "../clients/wayback.ts";
+import { captureHoldsClaim } from "./capture.ts";
 import { findSpan } from "../match/verbatim.ts";
 import { clusterNodes, computeRoots, type Embed } from "./cluster.ts";
 import { findOtherNumber } from "./similar.ts";
@@ -336,13 +337,15 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
   const onTrail = (n: Node) => !n.meta && n.date.value !== null && !confidentNo(n.sameClaim, rules);
   const earliestDate = () => nodes.filter(onTrail).map((n) => n.date.value!).sort()[0] ?? null;
 
-  async function dateFor(url: string, apiDate: string | null): Promise<{ date: DateInfo; waybackUrl: string | null }> {
+  async function dateFor(url: string, apiDate: string | null, spanTexts: string[]): Promise<{ date: DateInfo; waybackUrl: string | null }> {
     const api = apiDate && !Number.isNaN(Date.parse(apiDate)) ? new Date(apiDate).toISOString().slice(0, 10) : null;
     let firstCapture: string | null = null;
     let waybackUrl: string | null = null;
+    let capture: Extract<Awaited<ReturnType<typeof deps.wayback.firstCapture>>["data"], { status: "found" }> | null = null;
     try {
       const { data } = await deps.wayback.firstCapture(url);
       if (data.status === "found") {
+        capture = data;
         firstCapture = data.firstCapture;
         waybackUrl = `https://web.archive.org/web/${data.timestamp}/${url}`;
       }
@@ -350,6 +353,16 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
       // Wayback being down costs us the cap on a date, never the trace.
       if (!(err instanceof ClientError)) throw err;
       note({ step: "dating", url, reason: `wayback ${err.code}` });
+    }
+    // L19: a first capture dates the sentence only if it holds it. Otherwise the page keeps the search API's date, or none.
+    if (firstCapture && (!api || firstCapture < api) && capture && typeof deps.wayback.captureBody === "function") {
+      const verdict = await captureHoldsClaim(deps.wayback, url, capture, spanTexts);
+      if (!verdict.holds) {
+        note({ step: "dating", url, reason: `${verdict.why}; no date from the first capture` });
+        const shown = api && api > firstCapture ? null : firstCapture;
+        if (api) return { waybackUrl: null, date: { kind: "published", value: api, source: "tavily", firstCapture: shown, conflictingDate: false } };
+        return { waybackUrl: null, date: { kind: "unconfirmed", value: null, source: "tavily", firstCapture: shown, conflictingDate: false } };
+      }
     }
     if (firstCapture && (!api || firstCapture < api)) {
       return { waybackUrl, date: { kind: "existed_by", value: firstCapture, source: "wayback_first_capture", firstCapture, conflictingDate: api !== null } };
@@ -412,7 +425,7 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
     const id = `n${nodes.length + 1}`;
     const contextBefore = text.slice(Math.max(0, hit.start - CONTEXT_CHARS), hit.start);
     const contextAfter = text.slice(hit.end, hit.end + CONTEXT_CHARS);
-    const { date, waybackUrl } = await dateFor(url, apiDate);
+    const { date, waybackUrl } = await dateFor(url, apiDate, [sentence.text]);
     const spanId = `s${spans.length + 1}`;
     spans.push({
       id: spanId, nodeId: id, text: sentence.text, contextBefore, contextAfter, start: hit.start, end: hit.end,
