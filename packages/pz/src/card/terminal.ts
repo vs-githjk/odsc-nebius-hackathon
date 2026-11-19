@@ -1,3 +1,4 @@
+import { traceCost } from "../usage/cost.ts";
 import { datePhrase, type Node, type Trace } from "../schema/index.ts";
 import { menuLike } from "../engine/walk.ts";
 import { independenceLine } from "./headline.ts";
@@ -183,7 +184,9 @@ export function renderCard(trace: Trace, { color = false }: { color?: boolean } 
   }
 
   out.push("");
-  field("Cost", `${plural(trace.budget.credits, "credit")}, ${money(trace.budget.usd)}, ${Math.round(trace.budget.ms / 1000)} s`);
+  // #165: the total includes Tavily (credits at the list price) as well as Token Factory, from the usage rows.
+  const cost = traceCost(trace);
+  field("Cost", `${money(cost.totalUsd)} (${plural(cost.credits, "Tavily credit")}, ${money(cost.modelUsd)} model), ${Math.round(cost.seconds)} s`);
   const calls = new Map<string, number>();
   for (const u of trace.usage) if (!u.cacheHit) calls.set(SERVICES[u.service], (calls.get(SERVICES[u.service]) ?? 0) + 1);
   if (calls.size) more([...calls].map(([name, n]) => `${name} ${plural(n, "call")}`).join(", "), s.dim);

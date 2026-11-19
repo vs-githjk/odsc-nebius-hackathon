@@ -34,7 +34,7 @@ describe("T77 readable CLI card", () => {
     const card = renderCard(t);
     for (const part of [t.claim.text.slice(0, 40), "Trail goes cold", "It stopped before searching further back.", "Decision table row 6 of 6",
       "Harbor Zoo annual report 2019", "page says published 2019-12-15", t.spans.find((s) => s.nodeId === "zoo-report")!.text.slice(0, 30),
-      "https://harborzoo.example/annual-report-2019", "5 pages read, in 4 groups", "42 credits, $0.12, 61 s", "SAMPLE"])
+      "https://harborzoo.example/annual-report-2019", "5 pages read, in 4 groups", "$0.34 (42 Tavily credits, $0.00 model), 61 s", "SAMPLE"])
       expect(card.replace(/\n {9}/g, " "), part).toContain(part);
   });
 

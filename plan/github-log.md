@@ -128,3 +128,19 @@
 - 2026-11-18 18:40 #235 review a1befe0: FIX [H] dev-10 false 2013 date on judge card, [M] dev-01 silent rewrite, [M] dev-14; posted. Wayback evidence to Rohan #3
 - 2026-11-18 18:45 #234 merged (re-review PASS, 886/886)
 - 2026-11-18 18:55 #235 merged 81fca96 (887/887); polish to Rishit #1, README note to Anoop #232
+- 2026-11-18 19:48 #232 review ea990c8: FIX M3 L4 copy edits (reach not dating, tuning-set caveat); posted
+- 2026-11-18 19:55 Anoop pointed to #232 fixes; archive-date fix reassigned to Rishit (#1), Rohan silent 7h, urgent on #3
+- 2026-11-18 21:05 #232 merged 1d7e775; #237 review: FIX M2 L1 (perms, Google Fonts, pins)
+- 2026-11-18 21:08 #236 review c32ebf1: FIX M origin hidden on tie, L recordedAt throw; posted
+- 2026-11-18 21:18 Rishit out of usage until 22:00; reviewing #237 fix round and #158 demo script
+- 2026-11-18 21:25 #237 merged (dispatch-only Pages workflow; not run; Pages switch-on waits for Vidyut)
+- 2026-11-18 21:35 #158 demo walk: FIX H3 M3 L2 to Anoop; rail label item to Rishit
+- 2026-11-18 23:45 Anoop tonight: #158 fixes, replay.ts:29 rail wording (moved from Rishit), SLOT list
+- 2026-11-18 23:55 #238 merged d69962b (910/910); HANDOFF updated
+- 2026-11-19 00:10 #239 review d368cad: FIX M null-p yes, L 1.00; posted
+- 2026-11-19 00:15 #240 merged (perf.md, all numbers confirmed); follow-ups to Anoop #4
+- 2026-11-19 00:18 #158 re-walk f6bf372: 6/11 pass; FIX S4B S5B (CNBC not in app), S9 SAMPLE, S3 timing; 2 Vidyut decisions flagged
+- 2026-11-19 00:50 #239 merged e71286d, #241 merged 64f7be0; #158 fixes checked, awaits Vidyut; closed for the night
+- 2026-11-19 01:50 Pages ON (run 44472819452, site 200); #242 merged 5519f1d; #222 FIX M1 L1 posted; Rohan: rematch chats + gallery grading; grader moved to Anoop/Rishit
+- 2026-11-19 02:10 Live Vercel app assigned to Rishit (#1, spec posted); S7 back in (answer run in morning); backup hero framing LOCKED
+- 2026-11-19 02:20 Rishit sole focus: live app (guide + challenges, $2 cap); #236 to Anoop

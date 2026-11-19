@@ -24,10 +24,25 @@ function searchLine(s: Trace["searchLog"][number]): ReplayLine {
   return { kind: "search", text: `Searched for ${query}, ${when}: ${plural(s.results, "result", "results")}.` };
 }
 
+// What the page line says about the page, from what the trace recorded for it, never more (XO on #4): a page that
+// discusses the claim is kept off the path; otherwise the typed same_claim answer stored on the page, with its
+// confidence; with no stored answer, nothing is claimed about the page at all.
+export function pageVerdict(n: Trace["nodes"][number]): string | null {
+  if (n.meta) return "discusses the claim, kept off the path";
+  const a = n.sameClaim;
+  if (!a) return null;
+  // Never more than decide counts (decide.ts confidentYes): a yes with no readable confidence does not count, and
+  // "unsure" comes from the confidence bar, not from the model. 0.995 and above shows as ">0.99", never as certainty.
+  const p = (x: number) => (x >= 0.995 ? ">0.99" : x.toFixed(2));
+  if (a.optionId === "yes") return a.probability === null ? "not confirmed (model: yes, confidence not recorded)" : `states the claim (model: yes, ${p(a.probability)})`;
+  if (a.optionId === "no") return `a different claim (model: no${a.probability === null ? "" : `, ${p(a.probability)}`})`;
+  return "not confirmed (below the confidence bar)";
+}
+
 function pageLine(n: Trace["nodes"][number]): ReplayLine {
   const when = n.date.value ? month(n.date.value) : "undated";
-  const what = n.meta ? "discusses the claim, kept off the path" : "states the claim";
-  return { kind: "page", nodeId: n.id, text: `Read ${n.domain}, ${when}: ${what}.` };
+  const what = pageVerdict(n);
+  return { kind: "page", nodeId: n.id, text: what ? `Read ${n.domain}, ${when}: ${what}.` : `Read ${n.domain}, ${when}.` };
 }
 
 // The walk as it was recorded: each search in the order it ran, and after it the pages it reached, in the order they

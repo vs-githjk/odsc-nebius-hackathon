@@ -167,7 +167,7 @@ describe("trace orchestration and replay", () => {
     const path = join(dir, "pipeline.mjs");
     const errors: string[] = [];
     const io = { write: () => {}, error: (s: string) => { errors.push(s); } };
-    for (const code of ["budget_exceeded", "network_error", "http_error", "provider-secret"]) {
+    for (const code of ["budget_exceeded", "budget_bound_exceeded", "network_error", "http_error", "provider-secret"]) {
       writeFileSync(path, `export const wayback = { firstCapture: async () => { throw new Error("unexpected"); } }; export const pipeline = Object.fromEntries(${JSON.stringify(STAGES)}.map(s => [s, async () => { throw Object.assign(new Error("secret response body"), {code:${JSON.stringify(code)}}) }]));`);
       // Unique modules avoid the import cache between code cases.
       const unique = join(dir, code + ".mjs"); writeFileSync(unique, readFileSync(path));

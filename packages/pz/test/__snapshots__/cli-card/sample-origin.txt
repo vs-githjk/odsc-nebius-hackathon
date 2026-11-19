@@ -18,7 +18,7 @@ Earliest Harbor Zoo keeper log, spring 2019
 Roots    3 pages read, in 3 groups of copies. Traced to 1 root we could link
          (0 clusters unlinked).
 
-Cost     24 credits, $0.06, 38 s
+Cost     $0.19 (24 Tavily credits, $0.00 model), 38 s
 
 Synthetic: an invented claim on invented pages.
 Raw trace: add --json (make replay ARGS=--json).
