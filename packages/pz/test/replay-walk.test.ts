@@ -3,7 +3,7 @@ import { existsSync, mkdtempSync, readdirSync, readFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { fidelity, MISSES_FILE, replayClaim, replayWalk } from "../../../eval/replay-walk.ts";
+import { fidelity, missTable, MISSES_FILE, replayClaim, replayWalk, selectClaims, setLabel } from "../../../eval/replay-walk.ts";
 import { createFileCache } from "../src/clients/cache.ts";
 import { createMisses, recordPaths } from "../src/clients/tape.ts";
 import { FINGERPRINT_PROMPT } from "../src/engine/fingerprint.ts";
@@ -43,6 +43,8 @@ const world = (async (input: string | URL | Request, init?: RequestInit) => {
     const page = pages.find(p => p.url === new URL(url).searchParams.get("url"));
     return new Response(JSON.stringify(page ? [["timestamp", "original"], [`${page.date.replaceAll("-", "")}000000`, page.url]] : []));
   }
+  const capture = /^https:\/\/web\.archive\.org\/web\/\d+id_\/(.+)$/.exec(url);
+  if (capture) return new Response(pages.find(p => p.url === capture[1])?.text ?? "", { headers: { "content-type": "text/html" } });
   const body = JSON.parse(String(init?.body ?? "{}"));
   if (url.endsWith("/search")) {
     const results = pages.map(p => ({ url: p.url, title: "A page", content: p.text.slice(0, 80), score: 0.5, published_date: p.date }));
@@ -221,5 +223,44 @@ describe("replay miss file", () => {
     const byClaim = JSON.parse(readFileSync(join(dir, "m2", MISSES_FILE), "utf8"));
     expect(Object.keys(byClaim)).toEqual([CLAIM.id]);
     expect(byClaim[CLAIM.id].length).toBeGreaterThan(0);
+  });
+});
+
+describe("replay tooling for walk changes (#164)", () => {
+  const claim = { ...CLAIM, expected: "origin" as const, tracedOrigin: null, tracedBy: null };
+  const other = { id: "dev-98", text: "Harbor Zoo penguins nap 12 times a day.", expected: "cold" as const, tracedOrigin: null, tracedBy: null };
+
+  it("--claims replays only the listed claims, and rejects an id that is not in the set", () => {
+    expect(selectClaims([claim, other], undefined).map(c => c.id)).toEqual([CLAIM.id, "dev-98"]);
+    expect(selectClaims([claim, other], " dev-98 ").map(c => c.id)).toEqual(["dev-98"]);
+    expect(selectClaims([claim, other], `${CLAIM.id},dev-98`).map(c => c.id)).toEqual([CLAIM.id, "dev-98"]);
+    expect(() => selectClaims([claim, other], "dev-98,dev-77")).toThrow(/unknown claim id\(s\): dev-77/);
+  });
+
+  it("the report ends with a per-claim miss table: state, paid and free misses, verdict", async () => {
+    const dir = mkdtempSync(join(tmpdir(), "pz-replay-"));
+    await record(dir);
+    const report = await replayWalk([claim, other], { recordDir: dir, scratch: join(dir, "t1"), outDir: join(dir, "t1") });
+    expect(report.rows).toEqual([
+      { id: CLAIM.id, state: expect.any(String), paid: 0, free: 0, verdict: "exact" },
+      { id: "dev-98", state: null, paid: 0, free: 0, verdict: "failed" },
+    ]);
+    const table = missTable(report.rows);
+    expect(table[0]).toMatch(/^claim +state +paid +free +verdict$/);
+    expect(table[1]).toMatch(new RegExp(`^${CLAIM.id} +[A-Z_]+ +0 +0 +exact$`));
+    expect(table[2]).toMatch(/^dev-98 +- +0 +0 +failed$/);
+  });
+});
+
+describe("a filtered replay reads as a subset (XO on #234)", () => {
+  const all = Array.from({ length: 20 }, (_, i) => ({ id: `dev-${String(i + 1).padStart(2, "0")}`, text: "x", expected: "cold" as const, tracedOrigin: null, tracedBy: null }));
+  it("labels the score lines as a subset with its size and ids, and the full set by its name", () => {
+    expect(setLabel("E2", selectClaims(all, "dev-02,dev-05"), all)).toBe("E2 subset (2 of 20: dev-02, dev-05)");
+    expect(setLabel("E2", selectClaims(all, undefined), all)).toBe("E2");
+  });
+
+  it("a --claims list with no ids is an error, not a run with nothing to replay", () => {
+    expect(() => selectClaims(all, ",")).toThrow("no claim ids in --claims");
+    expect(() => selectClaims(all, " , ,")).toThrow("no claim ids in --claims");
   });
 });

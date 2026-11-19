@@ -20,6 +20,8 @@ const CAPS: Record<NonNullable<Trace["budget"]["capHit"]>, string> = {
   credits: "credit cap", usd: "spending cap", ms: "time limit", depth: "step limit", frontier: "page limit",
 };
 
+const recordedDay = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
+
 const MODE_NOTE: Record<Trace["mode"], string> = {
   LIVE: "recorded from live calls",
   REPLAY: "replayed from a recording, no network calls",
@@ -118,7 +120,9 @@ export function renderCard(trace: Trace, { color = false }: { color?: boolean } 
   const more = (text: string, style: (x: string) => string = (x) => x) => wrap(text, LABEL).forEach((l) => out.push(pad + style(l)));
 
   const badge = trace.mode === "SAMPLE" ? s.tone(trace.mode, "warn") : s.tone(trace.mode, trace.mode === "LIVE" ? "good" : "info");
-  out.push(`${s.bold("Patient Zero")}  ${badge} ${s.dim(MODE_NOTE[trace.mode])}`);
+  // A replay says when its recording was made (XO on #235): the card is not today's search.
+  const note = trace.mode === "REPLAY" ? `${MODE_NOTE.REPLAY}, recorded ${recordedDay.format(new Date(trace.recordedAt))}` : MODE_NOTE[trace.mode];
+  out.push(`${s.bold("Patient Zero")}  ${badge} ${s.dim(note)}`);
   out.push("");
   // T94: the independence count leads the card.
   for (const l of wrap(independenceLine(trace), 0)) out.push(s.bold(l));

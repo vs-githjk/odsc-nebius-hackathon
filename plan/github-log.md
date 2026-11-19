@@ -117,3 +117,23 @@
 - 2026-11-18 12:15 #222 f378860 CI red (own test); tagged Rohan. Rishit pinged on #1 (13h quiet). Anoop next items on #4
 - 2026-11-18 12:30 #229 merged 4093ac8, #230 merged 30a1956 (856/856, verify ok)
 - 2026-11-18 12:40 #222 f378860 checked: CI red is stale expectation at test:137; [M] div-itemscope teaser still confirms; posted
+- 2026-11-18 18:05 #233 (Rishit) to review; replay on ca430cc: 31 misses, posted on #164
+- 2026-11-18 18:03 #233 review 21310a1: FIX [M] page spans false-match phrase inputs, [L] hint text, [L] dead tsx test; posted
+- 2026-11-18 18:12 plan to submission posted on #2, pinged #1 #3 #4; Anoop owns Pages deploy prep
+- 2026-11-18 18:20 judge 66/100; fixes posted on #2 (Rohan dating+L19, Rishit make judge real traces, Anoop README/submission)
+- 2026-11-18 18:20 reviewing #232 #233 #234 #235; urgent pings to Rohan (#3) and Anoop (#4); hero = dev-10 LOCKED
+- 2026-11-18 18:25 #232 review 5d3512e: FIX [M] README:17 #225 overclaim, [L] label; refresh list posted
+- 2026-11-18 18:28 #234 review e19bbf6: FIX [M] subset labels, [L] empty ids, [L] CLAIMS env; posted
+- 2026-11-18 18:35 #233 merged (re-review PASS, 882/882)
+- 2026-11-18 18:40 #235 review a1befe0: FIX [H] dev-10 false 2013 date on judge card, [M] dev-01 silent rewrite, [M] dev-14; posted. Wayback evidence to Rohan #3
+- 2026-11-18 18:45 #234 merged (re-review PASS, 886/886)
+- 2026-11-18 18:55 #235 merged 81fca96 (887/887); polish to Rishit #1, README note to Anoop #232
+- 2026-11-18 19:48 #232 review ea990c8: FIX M3 L4 copy edits (reach not dating, tuning-set caveat); posted
+- 2026-11-18 19:55 Anoop pointed to #232 fixes; archive-date fix reassigned to Rishit (#1), Rohan silent 7h, urgent on #3
+- 2026-11-18 21:05 #232 merged 1d7e775; #237 review: FIX M2 L1 (perms, Google Fonts, pins)
+- 2026-11-18 21:08 #236 review c32ebf1: FIX M origin hidden on tie, L recordedAt throw; posted
+- 2026-11-18 21:18 Rishit out of usage until 22:00; reviewing #237 fix round and #158 demo script
+- 2026-11-18 21:25 #237 merged (dispatch-only Pages workflow; not run; Pages switch-on waits for Vidyut)
+- 2026-11-18 21:35 #158 demo walk: FIX H3 M3 L2 to Anoop; rail label item to Rishit
+- 2026-11-18 23:45 Anoop tonight: #158 fixes, replay.ts:29 rail wording (moved from Rishit), SLOT list
+- 2026-11-18 23:55 #238 merged d69962b (910/910); HANDOFF updated

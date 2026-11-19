@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { ClientError, USER_AGENT, send, type ClientDeps } from "./http.ts";
+import { MIN_PDF_TEXT_CHARS, pdfText } from "./pdf-text.ts";
 
 const CDX_URL = "https://web.archive.org/cdx/search/cdx";
 export const WAYBACK_TIMEOUT_MS = 20_000;
@@ -19,8 +20,130 @@ function parseCdx(body: string): FirstCapture {
   return { status: "found", firstCapture, timestamp };
 }
 
+// What a capture held, as far as the dating check can read it. "binary" (a PDF, an image, a zip) has no text here.
+export type CaptureBody = { kind: "html" | "text" | "pdf" | "binary"; text: string };
+// Whether the archive holds more than one distinct file for a url (counted only up to two).
+export type CaptureVersions = { versions: "one" | "changed" };
+const MAX_CAPTURE_CHARS = 3_000_000;
+const TEXTUAL = /html|xml|json|^text\//i;
+const StoredCapture = z.object({ kind: z.enum(["html", "text", "pdf", "binary"]), text: z.string() });
+
+export const MAX_CAPTURE_BYTES = 25 * 2 ** 20;
+
+// The body as bytes, or null when it is longer than `cap` (read in chunks and cancelled, never held whole).
+async function readCapped(res: Response, cap: number): Promise<Uint8Array | null> {
+  const declared = Number(res.headers.get("content-length"));
+  if (Number.isFinite(declared) && declared > cap) {
+    await res.body?.cancel();
+    return null;
+  }
+  if (!res.body) return new Uint8Array(0);
+  const reader = res.body.getReader();
+  const chunks: Uint8Array[] = [];
+  let total = 0;
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    total += value.length;
+    if (total > cap) {
+      await reader.cancel();
+      return null;
+    }
+    chunks.push(value);
+  }
+  return Buffer.concat(chunks);
+}
+
+const CAPTURE_TIMESTAMP = /^https?:\/\/web\.archive\.org\/web\/(\d+)id_\//;
+const MAX_HOPS = 2;
+
+// The archive answers an id_ request with a redirect to the same capture when the url is not in its own spelling
+// (a trailing slash, www). That redirect is followed, by hand, at most twice. A redirect to any other timestamp (or
+// host) is a different capture: the 3xx response is returned as it is, and the caller cannot verify.
+async function followSameCapture(fetchImpl: typeof fetch, url: string, init?: RequestInit): Promise<Response> {
+  const wanted = CAPTURE_TIMESTAMP.exec(url)?.[1];
+  let current = url;
+  for (let hop = 0; ; hop++) {
+    const res = await fetchImpl(current, init);
+    if (res.status < 300 || res.status > 399 || hop === MAX_HOPS) return res;
+    const location = res.headers.get("location");
+    let target: string;
+    try {
+      target = new URL(location ?? "", current).toString();
+    } catch {
+      return res;
+    }
+    if (!location || !wanted || CAPTURE_TIMESTAMP.exec(target)?.[1] !== wanted) return res;
+    await res.body?.cancel();
+    current = target;
+  }
+}
+
+// The stored body is JSON so a cache hit returns the same CaptureBody, and a binary file is never stored.
+function wrapCaptureBody(fetchImpl: typeof fetch): typeof fetch {
+  return (async (input: string | URL | Request, init?: RequestInit) => {
+    const res = await followSameCapture(fetchImpl, String(input), init);
+    if (!res.ok) return res;
+    const contentType = res.headers.get("content-type");
+    const bytes = await readCapped(res, MAX_CAPTURE_BYTES);
+    // Too large to read here: a plain file, never loaded whole.
+    if (!bytes) return new Response(JSON.stringify({ kind: "binary", text: "" }), { status: res.status, headers: { "content-type": "application/json" } });
+    const head = Buffer.from(bytes.subarray(0, 2000)).toString("latin1");
+    let stored: { kind: CaptureBody["kind"]; text: string };
+    if (/^\s*%PDF-/.test(head)) {
+      // A PDF is read for its text; one that gives too little (fonts we cannot decode) is a plain file.
+      const text = pdfText(bytes);
+      stored = text.length >= MIN_PDF_TEXT_CHARS ? { kind: "pdf", text: text.slice(0, MAX_CAPTURE_CHARS) } : { kind: "binary", text: "" };
+    } else if (head.slice(0, 500).includes("\u0000") || (contentType && !TEXTUAL.test(contentType))) {
+      stored = { kind: "binary", text: "" };
+    } else {
+      const text = Buffer.from(bytes).toString("utf8").slice(0, MAX_CAPTURE_CHARS);
+      stored = { kind: /html|xml/i.test(contentType ?? "") || /<(?:html|body|head|!doctype)/i.test(head) ? "html" : "text", text };
+    }
+    const body = JSON.stringify(stored);
+    return new Response(body, { status: res.status, headers: { "content-type": "application/json" } });
+  }) as typeof fetch;
+}
+
 export function createWayback(deps: ClientDeps & { timeoutMs?: number }) {
   return {
+    // The archive's own copy of a capture, without the replay toolbar or rewritten links (the id_ form).
+    async captureBody(url: string, timestamp: string, { step = "dating" }: { step?: string } = {}) {
+      const captureUrl = `https://web.archive.org/web/${timestamp}id_/${url}`;
+      return send<CaptureBody>({ ...deps, fetch: wrapCaptureBody(deps.fetch ?? fetch) }, {
+        service: "wayback",
+        endpoint: "capture",
+        step,
+        url: captureUrl,
+        cacheInput: { service: "wayback", url: captureUrl },
+        maxCredits: 0,
+        timeoutMs: deps.timeoutMs ?? WAYBACK_TIMEOUT_MS,
+        retryTimeouts: true,
+        retryStatuses: [403, 429],
+        retryDelayMs: 1500,
+        // A redirect to another timestamp is a different capture: it cannot be checked (the response is not ok).
+        init: { headers: { "user-agent": USER_AGENT }, redirect: "manual" },
+        parse: (body) => ({ data: StoredCapture.parse(JSON.parse(body)), credits: 0 }),
+      });
+    },
+    // One CDX question: does the archive hold more than one distinct file for this url (the digest changed)?
+    async captureVersions(url: string, { step = "dating" }: { step?: string } = {}) {
+      const params = new URLSearchParams({ url, matchType: "exact", limit: "2", output: "json", fl: "timestamp,digest", filter: "statuscode:200", collapse: "digest" });
+      return send<CaptureVersions>(deps, {
+        service: "wayback",
+        endpoint: "cdx",
+        step,
+        url: `${CDX_URL}?${params}`,
+        cacheInput: { service: "wayback", url, filter: "statuscode:200", fl: "digest", collapse: "digest" },
+        maxCredits: 0,
+        timeoutMs: deps.timeoutMs ?? WAYBACK_TIMEOUT_MS,
+        retryTimeouts: true,
+        retryStatuses: [403, 429],
+        retryDelayMs: 1500,
+        init: { headers: { "user-agent": USER_AGENT } },
+        parse: (body) => ({ data: { versions: CdxRows.parse(JSON.parse(body)).length > 2 ? "changed" : "one" }, credits: 0 }),
+      });
+    },
     async firstCapture(url: string, { step = "dating" }: { step?: string } = {}) {
       const params = new URLSearchParams({ url, matchType: "exact", limit: "1", output: "json", fl: "timestamp,original", filter: "statuscode:200" });
       try {

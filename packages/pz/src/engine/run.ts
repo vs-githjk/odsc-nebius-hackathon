@@ -14,7 +14,7 @@ export type PageInput = { url: string; text: string; metadata?: string | null; b
 export type Context = Readonly<{ input: string; pages: readonly Readonly<{
   url: string; quotedText: string; metadata?: string | null; byline?: string | null; metadataSource?: DateEvidence["metadataSource"]; metadataPrecision?: DateEvidence["metadataPrecision"];
 }>[] }>;
-export type Wayback = Pick<ReturnType<typeof createWayback>, "firstCapture">;
+export type Wayback = Pick<ReturnType<typeof createWayback>, "firstCapture"> & Partial<Pick<ReturnType<typeof createWayback>, "captureBody" | "captureVersions">>;
 type Step = (trace: Trace, context: Context) => Trace | Promise<Trace>;
 // Adapters are the integration seam while T21 to T28 land. No default fabricates a live result.
 type PageStepResult = Trace | { trace: Trace; pages: readonly PageInput[] };
@@ -39,8 +39,10 @@ export function datingStep(wayback: Wayback): Step {
       const page = context.pages.find(page => page.url === node.url);
       const evidence: DateEvidence = { metadata: page?.metadata, byline: page?.byline, metadataSource: page?.metadataSource, metadataPrecision: page?.metadataPrecision };
       try {
-        const dated = await dateNode(node, evidence, wayback);
-        nodes.push(dated.node); usage.push(dated.usage);
+        const spanTexts = trace.spans.filter((s) => node.spanIds.includes(s.id)).map((s) => s.text);
+        const dated = await dateNode(node, evidence, wayback, spanTexts);
+        nodes.push(dated.node); usage.push(dated.usage, ...dated.extraUsage);
+        if (dated.note) searchLog.push({ at: new Date().toISOString(), step: "dating", query: dated.note, endDate: null, startDate: null, results: 0, kept: 0, dropped: 0 });
       } catch (error) {
         // One page's archive lookup failing (rate limit, outage, timeout) never ends the trace. With no capture there is
         // nothing to cap the page's own publication evidence with, which is #79's "pending" case: the evidence is kept
