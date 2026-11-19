@@ -137,3 +137,6 @@
 - 2026-11-18 21:35 #158 demo walk: FIX H3 M3 L2 to Anoop; rail label item to Rishit
 - 2026-11-18 23:45 Anoop tonight: #158 fixes, replay.ts:29 rail wording (moved from Rishit), SLOT list
 - 2026-11-18 23:55 #238 merged d69962b (910/910); HANDOFF updated
+- 2026-11-19 00:10 #239 review d368cad: FIX M null-p yes, L 1.00; posted
+- 2026-11-19 00:15 #240 merged (perf.md, all numbers confirmed); follow-ups to Anoop #4
+- 2026-11-19 00:18 #158 re-walk f6bf372: 6/11 pass; FIX S4B S5B (CNBC not in app), S9 SAMPLE, S3 timing; 2 Vidyut decisions flagged
