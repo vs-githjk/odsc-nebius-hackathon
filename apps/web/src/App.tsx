@@ -2,6 +2,7 @@ import { useEffect, useState, type MouseEvent } from "react";
 import type { Trace } from "pz/schema";
 import { independenceLine } from "pz/headline";
 import { HowItWorks } from "./components/HowItWorks.tsx";
+import { ThemeToggle } from "./components/ThemeToggle.tsx";
 import { challengeTraces } from "./model/live.ts";
 import { ClaimBox } from "./components/ClaimBox.tsx";
 import { ModeBadge } from "./components/ModeBadge.tsx";
@@ -156,6 +157,7 @@ export function App() {
           </a>
           <div className="nav-links">
           <a href="#/how">How it works</a>
+          <ThemeToggle />
           <a className="btn small" href="#/" onClick={traceAClaim}>
             Trace a claim
           </a>
