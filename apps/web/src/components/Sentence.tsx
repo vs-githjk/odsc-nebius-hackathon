@@ -1,5 +1,5 @@
 import type { Trace } from "pz/schema";
-import { cleanQuoteWords } from "../model/quote.ts";
+import { cleanQuoteWords } from "../model/quoteClean.ts";
 import { runs } from "../model/hop.ts";
 import { wordsAt, wordsLeaving, type Stop } from "../model/scrubber.ts";
 

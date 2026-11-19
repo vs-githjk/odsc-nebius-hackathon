@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { cleanQuote, cleanQuoteWords } from "./quote.ts";
+import { cleanQuote, cleanQuoteWords } from "./quoteClean.ts";
 
 describe("display quote cleanup", () => {
   const claim = "By 2050 there will be more plastic than fish in the ocean.";

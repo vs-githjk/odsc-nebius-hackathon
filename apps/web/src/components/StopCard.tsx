@@ -1,5 +1,5 @@
 import type { Trace } from "pz/schema";
-import { cleanQuote } from "../model/quote.ts";
+import { cleanQuote } from "../model/quoteClean.ts";
 import { sampleRow } from "../model/sampleRow.ts";
 import { month, stopCard } from "../model/stopCard.ts";
 
