@@ -61,7 +61,7 @@ export function useReplay(trace: Trace, stopCount: number, reducedMotion: boolea
   }, [walkTo, reducedMotion, finish]);
 
   useLayoutEffect(() => {
-    if (autoplays(seen(trace.id), reducedMotion)) start();
+    if (trace.mode !== "LIVE" && autoplays(seen(trace.id), reducedMotion)) start();
     else {
       setShown(lines.length);
       setPhase("done");

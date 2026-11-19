@@ -4,7 +4,8 @@ import { ClientError, send, type ClientDeps, type ClientRequest, type Result } f
 const BASE_URL = "https://api.tavily.com";
 const TIMEOUT_MS = 60_000;
 // Pay-as-you-go list price from the Tavily credits page, 2026-11-01.
-export const USD_PER_CREDIT = 0.008;
+import { USD_PER_CREDIT } from "../usage/pricing.ts";
+export { USD_PER_CREDIT };
 // From spike/tavily-probe.md: basic search 1 credit, basic extract 1 credit per 5 urls.
 const SEARCH_MAX_CREDITS = 1;
 const URLS_PER_EXTRACT_CREDIT = 5;

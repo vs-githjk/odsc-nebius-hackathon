@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { traceCost } from "../../../../packages/pz/src/usage/cost.ts";
 import type { Trace } from "pz/schema";
 import { hopInto, readoutsHead, redStop } from "../model/hop.ts";
 import { scrubberStops, stopNote } from "../model/scrubber.ts";
@@ -53,6 +54,7 @@ export function TraceView({ trace }: { trace: Trace }) {
       <div className="card stage">
         <div className="stage-head">
           <ModeBadge trace={trace} />
+          {trace.mode === "LIVE" && <span className="meta">Cost ${traceCost(trace).totalUsd.toFixed(3)} ({trace.budget.credits} Tavily credits)</span>}
           <ReplayAgain replay={replay} />
           <p className="counter">
             <b>{counts.pages}</b> {counts.pages === 1 ? "page" : "pages"} <span aria-hidden="true">·</span> <b>{counts.clusters}</b>{" "}

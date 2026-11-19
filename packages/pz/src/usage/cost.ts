@@ -1,4 +1,4 @@
-import { USD_PER_CREDIT } from "../clients/tavily.ts";
+import { USD_PER_CREDIT } from "./pricing.ts";
 import type { Trace } from "../schema/index.ts";
 
 // #165: what a trace cost and how long it took, from its own fields. budget.usd on a live trace sums Token Factory only
