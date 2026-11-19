@@ -1,0 +1,10 @@
+{
+  "status": "blocked_by_automatic_approval_review",
+  "reason": "Destination-specific user approval for private held-out claim transmission is required.",
+  "traces": 0,
+  "score": null,
+  "reservedOrSpentUsd": 0.01,
+  "unsettledReservations": 1,
+  "actualChargeConfirmed": false,
+  "rerun": false
+}
