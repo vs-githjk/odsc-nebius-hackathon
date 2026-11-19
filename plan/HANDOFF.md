@@ -154,3 +154,10 @@ Next, in order (when Vidyut says "go"):
 - Push plan updates to the private repo as part of the approved GitHub setup; nothing public, no deploys, no spending beyond what is approved.
 
 - Nov 7: main has T1 to T10 (minus T11), T13, T14, T18, T19, T26, E1 hash, E2. Open: #50 T11 and #62 T15 (Rishit fixes), T20 publish (Rohan), #38 and #52 after grading. New: #64 T21 and #65 T22 (Anoop), #66 T23 and #67 T24 (Rishit), #68 T25 (Rohan). T28 and T29 unassigned, Vidyut's call. Held-out run Nov 13 needs T29.
+
+## End of Nov 18 (23:55 ET)
+- Merged tonight: #229 #230 #231 #232 #233 #234 #235 #237 #238. Judge pass 18:06: 66/100 (fixes since: README refresh #232, make judge real traces #235, archive-date L19 #238).
+- #238 (XO, Vidyut's go): a first Wayback capture dates a page only if it holds the claim. Real captures: dev-10 ocean_plastics 2013 withheld, dev-17 pulse 2019 withheld, WEF PDF 2016-01-20 kept. Committed traces not re-dated; walk-record replay misses the new capture fetches.
+- Open: #236 Rishit (origin hidden on tie, recordedAt throw); #158 Anoop (script fixes, A/B hero shots); Anoop replay.ts:29 rail wording; #222 Rohan (red, publication.test.ts:137), Rohan silent since Nov 18 03:12.
+- Spend: $8.35 of $15. Hero LOCKED dev-10 if it ends on WEF, else a cold trace with checked dates.
+- Morning (Vidyut decides, in order): final live E2 run (~$2) to see #238's effect, Pages switch-on (#237 merged, dispatch-only), #158 script approval, submit timing. Morning report at 07:13.
