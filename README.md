@@ -211,7 +211,7 @@ Vidyut sets the keys in Vercel. Set these server environment variables, never cl
 | `LIVE_USD_CAP` | Shared dollar cap, default `2` |
 | `LIVE_TRACE_CREDITS` | Tavily credits per trace, default `40`, clamped to the rules credit cap |
 | `LIVE_TRACE_MODEL_USD` | Token Factory dollars per trace, default `0.05`, clamped to the rules model cap |
-| `LIVE_ENABLED` | Set `false` to disable live; enabled when omitted and all keys are configured |
+| `LIVE_ENABLED` | Set `false`, `0`, `off` or `no` (any case) to disable live; enabled when omitted and all keys are configured |
 | `LIVE_PER_IP_PER_HOUR` | Default `2`, per IP in fixed hourly windows |
 | `LIVE_PER_DAY` | Default `30`, shared fixed UTC daily window |
 

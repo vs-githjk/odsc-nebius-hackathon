@@ -2,7 +2,7 @@ import { randomUUID } from "node:crypto";
 import { liveBudget } from "./budget.ts";
 import { Trace } from "../schema/index.ts";
 import type { RunEvent } from "../engine/run.ts";
-import { hash, micros, type LiveStore } from "./store.ts";
+import { hash, liveEnabled, micros, type LiveStore } from "./store.ts";
 
 export type LiveEvent = Extract<RunEvent, { type: "stage" }> | { type: "trace"; trace: Trace } | { type: "error"; code: string; message: string };
 export type Runner = (claim: string, signal: AbortSignal, emit: (event: RunEvent) => void, charge: (usd: number) => void) => Promise<Trace>;
@@ -20,12 +20,12 @@ export function liveService(deps: LiveDeps) {
   async function status() {
     let reason: "disabled" | "cap" | "not_configured" | null = null;
     let spentUsd = 0;
-    if (deps.env.LIVE_ENABLED === "false") reason = "disabled";
+    if (!liveEnabled(deps.env.LIVE_ENABLED)) reason = "disabled";
     else if (!deps.store || !deps.env.NEBIUS_API_KEY?.trim() || !deps.env.TAVILY_API_KEY?.trim()) reason = "not_configured";
     else try {
       spentUsd = Number(await deps.store.get("pz:spent_micros") ?? 0) / 1e6;
       if (!Number.isFinite(spentUsd) || spentUsd < 0) throw new Error("invalid_store");
-      if (await deps.store.get("pz:live_enabled") === "false") reason = "disabled";
+      if (!liveEnabled(await deps.store.get("pz:live_enabled"))) reason = "disabled";
       else if (micros(spentUsd) + micros(reservation) > micros(capUsd)) reason = "cap";
     } catch { reason = "not_configured"; spentUsd = 0; }
     return { live: reason === null, reason, capUsd, spentUsd };
@@ -54,7 +54,7 @@ export function liveService(deps: LiveDeps) {
       if (cached) return new Response(safe({ type: "trace", trace: Trace.parse(JSON.parse(cached)) }) + "\n", { headers });
       if (!available.live) return fail("cap", 503);
       const id = randomUUID(), time = now();
-      const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || request.headers.get("x-real-ip") || "unknown";
+      const ip = request.headers.get("x-real-ip")?.trim() || request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "unknown";
       const admitted = await store.admit({ id, ip: hash(ip), hour: Math.floor(time / 3600000), day: Math.floor(time / 86400000),
         perIp: Math.floor(number(deps.env.LIVE_PER_IP_PER_HOUR, 2)), perDay: Math.floor(number(deps.env.LIVE_PER_DAY, 30)), cap: micros(capUsd), amount: micros(reservation) });
       if (admitted !== "ok") return fail(admitted, admitted === "rate_limit" ? 429 : 503);

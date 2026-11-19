@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from "vitest";
 import { readFileSync } from "node:fs";
 import { Trace } from "../src/schema/index.ts";
 import { liveService, RESERVATION, type Runner } from "../src/live/service.ts";
-import { hash, memoryStore, micros, redisStore } from "../src/live/store.ts";
+import { ADMIT, SETTLE, hash, memoryStore, micros, redisStore } from "../src/live/store.ts";
 import { liveBudget } from "../src/live/budget.ts";
 import { loadRules } from "../src/rules/index.ts";
 import { pipelineRunner } from "../src/live/runtime.ts";
@@ -185,7 +185,11 @@ describe("live service", () => {
     const transport: typeof fetch = async (_url, init) => { expect(init?.signal).toBeDefined(); calls.push(JSON.parse(String(init?.body)) as unknown[]); return Response.json({ result: calls.length === 1 ? "ok" : 1 }); };
     const store = redisStore("https://redis.invalid", "test-redis-secret", transport);
     expect(await store.admit({ id: "one", ip: "hashed", hour: 0, day: 0, cap: 2000000, amount: 1700000, perIp: 2, perDay: 30 })).toBe("ok");
-    await store.settle("one", 120000); expect(calls.every(call => call[0] === "EVAL")).toBe(true);
+    await store.settle("one", 120000);
+    expect(calls).toEqual([
+      ["EVAL", ADMIT, 4, "pz:spent_micros", "pz:ip:hashed:0", "pz:day:0", "pz:reservation:one", 1700000, 2000000, 2, 30],
+      ["EVAL", SETTLE, 2, "pz:spent_micros", "pz:reservation:one", 120000],
+    ]);
     const bad = redisStore("https://redis.invalid", "test-redis-secret", async () => Response.json({ error: env.NEBIUS_API_KEY }));
     await expect(bad.get("x")).rejects.toThrow("store_unavailable");
   });
@@ -227,4 +231,98 @@ describe("live service", () => {
     time = 7200001; expect(await store.get("pz:ip:ip:0")).toBeNull();
   });
 
+});
+
+
+describe("live review regressions", () => {
+  const admission = { id: "one", ip: "hashed", hour: 12, day: 3, cap: 2000000, amount: 370000, perIp: 2, perDay: 30 };
+
+  it("pins the exact production admission Lua including its cap guard", () => {
+    expect(ADMIT).toBe(`
+local enabled = string.lower((redis.call('GET','pz:live_enabled') or ''):match('^%s*(.-)%s*$'))
+if enabled == '0' or enabled == 'false' or enabled == 'off' or enabled == 'no' then return 'disabled' end
+local spent = tonumber(redis.call('GET',KEYS[1]) or '0')
+if spent + tonumber(ARGV[1]) > tonumber(ARGV[2]) then return 'cap' end
+if tonumber(redis.call('GET',KEYS[2]) or '0') >= tonumber(ARGV[3]) or tonumber(redis.call('GET',KEYS[3]) or '0') >= tonumber(ARGV[4]) then return 'rate_limit' end
+redis.call('INCRBY',KEYS[1],ARGV[1])
+redis.call('SET',KEYS[4],ARGV[1])
+if redis.call('INCR',KEYS[2]) == 1 then redis.call('EXPIRE',KEYS[2],7200) end
+if redis.call('INCR',KEYS[3]) == 1 then redis.call('EXPIRE',KEYS[3],172800) end
+return 'ok'`);
+  });
+
+  it("pins the exact production settlement Lua", () => {
+    expect(SETTLE).toBe(`
+local reserved = redis.call('GET',KEYS[2])
+if not reserved then return 0 end
+redis.call('INCRBY',KEYS[1],tonumber(ARGV[1])-tonumber(reserved))
+redis.call('DEL',KEYS[2])
+return 1`);
+  });
+
+  it.each(["0", "false", "FALSE", " off ", "no"])("disables environment and Redis switches for %j", async value => {
+    const local = setup({ LIVE_ENABLED: value });
+    expect(await local.service.status()).toMatchObject({ live: false, reason: "disabled" });
+    expect((await local.service.trace(request())).status).toBe(503);
+    expect(local.run).not.toHaveBeenCalled();
+    const remote = setup();
+    await remote.store.set("pz:live_enabled", value, 60);
+    expect(await remote.service.status()).toMatchObject({ live: false, reason: "disabled" });
+    expect((await remote.service.trace(request())).status).toBe(503);
+    expect(remote.run).not.toHaveBeenCalled();
+    expect(await remote.store.admit(admission)).toBe("disabled");
+    expect(await remote.store.get("pz:spent_micros")).toBeNull();
+  });
+
+  it.each(["true", undefined, "", "anything"])("keeps environment and Redis switches on for %j", async value => {
+    const { service, store } = setup({ LIVE_ENABLED: value });
+    if (value !== undefined) await store.set("pz:live_enabled", value, 60);
+    expect(await service.status()).toMatchObject({ live: true, reason: null });
+    const response = await service.trace(request());
+    expect(response.status).toBe(200);
+    await response.text();
+    expect(await store.admit(admission)).toBe("ok");
+  });
+
+  it.each([
+    ["192.0.2.9", "192.0.2.9"],
+    [undefined, "192.0.2.1"],
+  ])("prefers x-real-ip %j then the first forwarded entry", async (realIp, expected) => {
+    const { service, store } = setup();
+    const admit = vi.spyOn(store, "admit");
+    const req = request();
+    if (realIp !== undefined) req.headers.set("x-real-ip", realIp);
+    const response = await service.trace(req);
+    expect(response.status).toBe(200);
+    await response.text();
+    expect(admit).toHaveBeenCalledWith(expect.objectContaining({ ip: hash(expected!) }));
+  });
+
+  it.each(["failure", "timeout"])("Redis admit fails closed on fetch %s", async mode => {
+    const timeout = AbortSignal.timeout.bind(AbortSignal);
+    const timeoutSpy = vi.spyOn(AbortSignal, "timeout").mockImplementation(() => timeout(5));
+    const transport: typeof fetch = async (_url, init) => {
+      const args = JSON.parse(String(init?.body)) as unknown[];
+      if (args[0] === "GET") return Response.json({ result: null });
+      expect(args).toEqual(["EVAL", ADMIT, 4, "pz:spent_micros", expect.any(String), expect.any(String), expect.any(String), 370000, 2000000, 2, 30]);
+      if (mode === "failure") throw new TypeError("fetch failed");
+      const signal = init!.signal!;
+      return new Promise<Response>((_resolve, reject) => {
+        signal.addEventListener("abort", () => reject(signal.reason), { once: true });
+      });
+    };
+    try {
+      const store = redisStore("https://redis.invalid", "", transport);
+      await expect(store.admit(admission)).rejects.toThrow();
+      const run = vi.fn<Runner>();
+      const service = liveService({ env, store, run });
+      const response = await service.trace(request());
+      expect(response.status).toBe(503);
+      expect((await events(response))[0].code).toBe("trace_failed");
+      expect(run).not.toHaveBeenCalled();
+      expect(timeoutSpy).toHaveBeenCalledWith(3000);
+    } finally {
+      timeoutSpy.mockRestore();
+    }
+  });
 });

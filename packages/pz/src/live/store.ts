@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 
 export const hash = (value: string) => createHash("sha256").update(value).digest("hex");
 export const micros = (usd: number) => Math.ceil(usd * 1e6);
+export const liveEnabled = (value: string | null | undefined) => !["0", "false", "off", "no"].includes(value?.trim().toLowerCase() ?? "");
 export type Admission = { id: string; ip: string; hour: number; day: number; perIp: number; perDay: number; cap: number; amount: number };
 export interface LiveStore {
   get(key: string): Promise<string | null>;
@@ -10,8 +11,9 @@ export interface LiveStore {
   settle(id: string, actual: number): Promise<void>;
 }
 // Admission, counters and reservation are one transaction across all function instances.
-const ADMIT = `
-if redis.call('GET','pz:live_enabled') == 'false' then return 'disabled' end
+export const ADMIT = `
+local enabled = string.lower((redis.call('GET','pz:live_enabled') or ''):match('^%s*(.-)%s*$'))
+if enabled == '0' or enabled == 'false' or enabled == 'off' or enabled == 'no' then return 'disabled' end
 local spent = tonumber(redis.call('GET',KEYS[1]) or '0')
 if spent + tonumber(ARGV[1]) > tonumber(ARGV[2]) then return 'cap' end
 if tonumber(redis.call('GET',KEYS[2]) or '0') >= tonumber(ARGV[3]) or tonumber(redis.call('GET',KEYS[3]) or '0') >= tonumber(ARGV[4]) then return 'rate_limit' end
@@ -20,7 +22,7 @@ redis.call('SET',KEYS[4],ARGV[1])
 if redis.call('INCR',KEYS[2]) == 1 then redis.call('EXPIRE',KEYS[2],7200) end
 if redis.call('INCR',KEYS[3]) == 1 then redis.call('EXPIRE',KEYS[3],172800) end
 return 'ok'`;
-const SETTLE = `
+export const SETTLE = `
 local reserved = redis.call('GET',KEYS[2])
 if not reserved then return 0 end
 redis.call('INCRBY',KEYS[1],tonumber(ARGV[1])-tonumber(reserved))
@@ -54,7 +56,7 @@ export function memoryStore(now = Date.now): LiveStore {
   return {
     async get(key) { return get(key); }, async set(key, value, ttl) { put(key, value, ttl); },
     async admit(a) {
-      if (get("pz:live_enabled") === "false") return "disabled";
+      if (!liveEnabled(get("pz:live_enabled"))) return "disabled";
       const spent = Number(get("pz:spent_micros") ?? 0);
       if (spent + a.amount > a.cap) return "cap";
       const ip = `pz:ip:${a.ip}:${a.hour}`, day = `pz:day:${a.day}`;
