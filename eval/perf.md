@@ -7,6 +7,7 @@ Target: a median trace under 30 s and under $0.02.
 - **Median time: 42 s** (not met).
 - **Median cost: $0.08** (not met): Tavily $0.08 (10.5 credits), Token Factory $0.0006.
 - 20 traces. Tavily is almost all of the cost.
+- Includes dev-19, scored apart as out of scope in eval/dev-claims.json. Without it, the median is 42 s and $0.09.
 
 ## Where the time goes
 
