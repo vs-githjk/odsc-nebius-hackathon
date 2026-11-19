@@ -135,3 +135,4 @@
 - 2026-11-18 21:18 Rishit out of usage until 22:00; reviewing #237 fix round and #158 demo script
 - 2026-11-18 21:25 #237 merged (dispatch-only Pages workflow; not run; Pages switch-on waits for Vidyut)
 - 2026-11-18 21:35 #158 demo walk: FIX H3 M3 L2 to Anoop; rail label item to Rishit
+- 2026-11-18 23:45 Anoop tonight: #158 fixes, replay.ts:29 rail wording (moved from Rishit), SLOT list
