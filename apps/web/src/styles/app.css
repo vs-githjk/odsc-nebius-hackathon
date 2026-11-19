@@ -1,5 +1,6 @@
 /* App surfaces share the existing light and dark theme palette. */
-main h1:focus, main :focus-visible { outline: 2px solid var(--action); outline-offset: 4px; }
+[tabindex="-1"]:focus { outline: none; }
+main :focus-visible { outline: 2px solid var(--action); outline-offset: 4px; }
 main h1 { scroll-margin-top: 120px; }
 .back { display: inline-flex; align-items: center; min-height: 44px; }
 .stage-head { min-height: 44px; }
@@ -28,4 +29,32 @@ main h1 { scroll-margin-top: 120px; }
   .claim-box .live-progress { gap: 8px; }
   .live-stages li { min-height: 36px; padding: 5px 0; }
   .recent-traces { padding: 16px; }
+}
+
+/* Keep the decorative field behind content in a stable page stacking context. */
+body { isolation: isolate; }
+.time-field { mask-image: linear-gradient(to bottom, transparent, black 12%, black 80%, transparent); }
+.roots-measure { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 16px; margin: 24px 0; font: 400 17px/1.4 var(--font-ui); }
+.roots-measure b { font-size: clamp(32px, 4vw, 48px); font-weight: 600; font-variant-numeric: tabular-nums; }
+.root-rows, .root-copies { list-style: none; padding: 0; margin: 0; }
+.root-rows > li { border-top: 1px solid var(--line-2); padding: 20px 0; }
+.root-page { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; min-width: 0; font-size: 15px; overflow-wrap: anywhere; }
+.root-page > a { font-weight: 600; }
+.root-page a { padding-block: 8px; }
+.page-proof { color: var(--ink-2); font-size: 14px; }
+.root-copies { margin: 12px 0 0 12px; padding-left: 20px; border-left: 2px solid var(--line-2); }
+.root-copies li + li { margin-top: 16px; }
+.root-relation { margin: 4px 0; color: var(--ink-2); font-size: 14px; }
+.check-strip { margin-top: 20px; }
+.check-strip h3 { margin: 0 0 8px; font-size: 16px; font-weight: 600; }
+.check-row { border-top: 1px solid var(--line); padding: 8px 0; }
+.check-row p { margin: 4px 0 8px; color: var(--ink-2); font-size: 14px; overflow-wrap: anywhere; }
+.graph-detail { margin-top: 16px; border-top: 1px solid var(--line-2); }
+.graph-detail summary { padding-block: 14px; cursor: pointer; font-size: 15px; color: var(--action); }
+.graph-detail .band { margin-top: 8px; }
+.graph-detail .band-inner { height: 180px; }
+@media (max-width: 600px) {
+  .root-page { gap: 0 12px; }
+  .root-page .page-proof { flex-basis: 100%; }
+  .root-copies { margin-left: 4px; padding-left: 12px; }
 }

@@ -2,7 +2,7 @@ import { datePhrase, type Node, type Span, type Trace } from "pz/schema";
 import { hopInto, type Chip } from "./hop.ts";
 import type { Stop } from "./scrubber.ts";
 
-export function dateEvidence(node: Node, span?: Span): { label: string; url: string | null } {
+export function dateEvidence(node: Node, span?: Span, short = false): { label: string; url: string | null } {
   const date = node.date;
   if (!date.value) return { label: "Undated", url: null };
   const sources: Record<Node["date"]["source"], string> = {
@@ -18,6 +18,13 @@ export function dateEvidence(node: Node, span?: Span): { label: string; url: str
   const timestamp = date.firstCapture && /^\d{14}$/.test(date.firstCapture) ? date.firstCapture : null;
   const url = archive ? captureUrl ?? (timestamp ? `https://web.archive.org/web/${timestamp}/${node.url}` : null) : null;
   const caveat = date.conflictingDate ? " Date evidence conflicts." : "";
+  if (short) {
+    const labels: Record<Node["date"]["source"], string> = {
+      metadata: "Page metadata", byline: "Byline", wayback_first_capture: "First Wayback capture (existed by)",
+      tavily: "Search result", registry_pubmed: "PubMed registry", registry_pmc: "PubMed Central registry", registry_crossref: "Crossref registry",
+    };
+    return { label: `${date.kind === "unconfirmed" ? "Unconfirmed: " : ""}${labels[date.source]}${caveat}`, url };
+  }
   return { label: `${qualifier} ${sources[date.source]}, ${datePhrase(date.value, date.precision)}.${archive ? " Archived by this date; publication date is not established." : ""}${caveat}`, url };
 }
 

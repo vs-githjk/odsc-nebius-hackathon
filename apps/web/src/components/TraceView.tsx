@@ -11,6 +11,7 @@ import { Sentence } from "./Sentence.tsx";
 import { StopCard } from "./StopCard.tsx";
 import { RecentTraces } from "./RecentTraces.tsx";
 import { TimeField } from "./TimeField.tsx";
+import { Roots } from "./Roots.tsx";
 import { TraceGraph } from "./TraceGraph.tsx";
 import { ReplayAgain, ReplayRail, useReplay } from "./WalkReplay.tsx";
 
@@ -44,7 +45,7 @@ export function TraceView({ trace }: { trace: Trace }) {
     setOpen(i);
   }, []);
   const replay = useReplay(trace, stops.length, reducedMotion, setPosition, settle);
-  const counts = replay.frame ?? trace.roots;
+
   const hop = stops[open];
   const note = hop ? stopNote(trace, stops, open) : null;
   const red = useMemo(() => redStop(trace, stops), [trace, stops]);
@@ -136,12 +137,13 @@ export function TraceView({ trace }: { trace: Trace }) {
         <section id="copies-and-roots" tabIndex={-1} className="trace-roots" aria-label="Copies and roots">
           <h2 className="trace-section-title">Copies and roots</h2>
           <p className="roots-explanation">An independent root is a group of copies with no verified link to an earlier page; every other page is a copy.</p>
-          <p className="counter">
-            <b>{counts.pages}</b> {counts.pages === 1 ? "page" : "pages"}{" · "}
-            <b>{counts.clusters}</b> {counts.clusters === 1 ? "cluster" : "clusters"}
-          </p>
           <ReplayRail trace={trace} replay={replay} />
-          <TraceGraph trace={trace} activeSpanId={replay.frame ? null : hop?.spanId ?? null} x={x} landed={replay.frame?.nodeIds ?? null} />
+          {replay.frame && replay.frame.pages === 0 ? <p className="meta">Waiting for the first page in the recorded walk.</p> : <>
+            <Roots trace={replay.frame ? { ...trace, nodes: trace.nodes.filter(n => replay.frame!.nodeIds.has(n.id)), roots: { ...trace.roots, independentRoots: undefined, copies: undefined } } : trace} />
+            {roots.pages > 0 && <details className="graph-detail"><summary>Show the graph</summary>
+              <TraceGraph trace={trace} activeSpanId={replay.frame ? null : hop?.spanId ?? null} x={x} landed={replay.frame?.nodeIds ?? null} />
+            </details>}
+          </>}
         </section>
       </div>
       <RecentTraces trace={trace} />
