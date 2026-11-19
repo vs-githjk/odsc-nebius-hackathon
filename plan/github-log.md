@@ -144,3 +144,4 @@
 - 2026-11-19 01:50 Pages ON (run 44472819452, site 200); #242 merged 5519f1d; #222 FIX M1 L1 posted; Rohan: rematch chats + gallery grading; grader moved to Anoop/Rishit
 - 2026-11-19 02:10 Live Vercel app assigned to Rishit (#1, spec posted); S7 back in (answer run in morning); backup hero framing LOCKED
 - 2026-11-19 02:20 Rishit sole focus: live app (guide + challenges, $2 cap); #236 to Anoop
+- 11-19 07:20 XO AM: merged #243, #244; closed #236; FIX #222 (strip-before-count false-earlier); judge 71/100; Anoop hero pin dev-11 + README; Rohan rematch urgent
