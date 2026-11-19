@@ -153,3 +153,6 @@
 - 13:28 XO: merged #247 live app (PASS r2); deploy next with Vidyut
 - 2026-11-19 16:01 ET: merged #255 (Anoop, submission slots: public repo, Pages URL, E3 not run live) aa496ec. #222 no push since final-round brief (due 16:30). #250 blocked: Rohan's agent auto-review refused to send held-out text to Nebius without his approval; no spend, no score.
 - 2026-11-19 16:35 ET: merged #256 (XO, light/dark toggle). Vercel live at patient-0.vercel.app: status ok, smoke trace $0.056 settled in Upstash, cache replay free. Landing page issue to Anoop (Vidyut's call). #250 unblock note to Rohan.
+- 2026-11-19 17:05 ET: #258 (live link) merged with a failing numbers-lint check (XO error: merge ran before checks); fixed by #261, main green again. Repo homepage now patient-0.vercel.app.
+- 2026-11-19 17:15 ET: value-first front-end brief posted on #257 and #259 (Vidyut's call).
+- 2026-11-19 17:20 ET: Anoop pushed #260 value-first pass (24a80b8) + shared quote helper. Nudged Rishit (#259 ack, 21:00 draft), Rohan (#222 cutoff 21:00, #250 go-or-skip by 21:00).
