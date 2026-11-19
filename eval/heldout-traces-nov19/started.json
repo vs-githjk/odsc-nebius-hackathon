@@ -1,0 +1,50 @@
+{
+  "engine": "18dc514043cf14126c526df268bbcbc4cfa92cd5",
+  "startedAt": "2026-11-19T17:32:36.925Z",
+  "expectedHash": "a10897c8bc4637eaaf5e40301596aef6564eb1226ad62126e27ac3b2b0b95354",
+  "actualHash": "a10897c8bc4637eaaf5e40301596aef6564eb1226ad62126e27ac3b2b0b95354",
+  "matched": true,
+  "allocationUsd": 1.5,
+  "mapping": [
+    {
+      "id": "dev-01",
+      "claimId": "heldout-01"
+    },
+    {
+      "id": "dev-02",
+      "claimId": "heldout-02"
+    },
+    {
+      "id": "dev-03",
+      "claimId": "heldout-03"
+    },
+    {
+      "id": "dev-04",
+      "claimId": "heldout-04"
+    },
+    {
+      "id": "dev-05",
+      "claimId": "heldout-05"
+    },
+    {
+      "id": "dev-06",
+      "claimId": "heldout-06"
+    },
+    {
+      "id": "dev-07",
+      "claimId": "heldout-07"
+    },
+    {
+      "id": "dev-08",
+      "claimId": "heldout-08"
+    },
+    {
+      "id": "dev-09",
+      "claimId": "heldout-09"
+    },
+    {
+      "id": "dev-10",
+      "claimId": "heldout-10"
+    }
+  ]
+}
