@@ -161,3 +161,4 @@ Next, in order (when Vidyut says "go"):
 - Open: #236 Rishit (origin hidden on tie, recordedAt throw); #158 Anoop (script fixes, A/B hero shots); Anoop replay.ts:29 rail wording; #222 Rohan (red, publication.test.ts:137), Rohan silent since Nov 18 03:12.
 - Spend: $8.35 of $15. Hero LOCKED dev-10 if it ends on WEF, else a cold trace with checked dates.
 - Morning (Vidyut decides, in order): final live E2 run (~$2) to see #238's effect, Pages switch-on (#237 merged, dispatch-only), #158 script approval, submit timing. Morning report at 07:13.
+- Morning, also for Vidyut (from #158 re-walk 00:12): (a) demo script cuts S7 against his Nov 16 'nothing gets cut'; (b) version B ends cold against 'hero claim has to end ORIGIN_FOUND'. Rematch hand chats (#160, Anoop, no spend) and gallery 8 claims (#159, ~$0.70 live) await his yes/no. #240 merged (median 42 s, $0.08/trace; targets missed).
