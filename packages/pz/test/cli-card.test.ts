@@ -54,7 +54,8 @@ describe("T77 readable CLI card", () => {
       { ...row, service: "tokenfactory", cacheHit: false }, { ...row, service: "tokenfactory", cacheHit: false },
       { ...row, service: "tavily", cacheHit: false }, { ...row, service: "tavily", cacheHit: true }] };
     const card = renderCard(live);
-    expect(card).toContain("REPLAY replayed from a recording, no network calls");
+    // A replay says when its recording was made (XO on #235).
+    expect(card).toMatch(/REPLAY replayed from a recording, no network calls, recorded [A-Z][a-z]{2} \d{1,2}, \d{4}/);
     expect(card).toContain("Token Factory 2 calls, Tavily 1 call");
     expect(renderCard(t)).toContain("SAMPLE an invented example, not a real search");
   });
