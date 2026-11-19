@@ -6,15 +6,15 @@ Team **Says Who**, ODSC x Nebius Hackathon 2026. Built on **Nebius Token Factory
 
 ![The trace view on a sample trace, 1440 px, light](docs/screenshots/ui-pass/rich-1440-light.png)
 
-*The trace view, shown on an invented sample claim. A real trace replaces it once the first live run is reviewed.*
+*The trace view, shown on an invented sample claim. The app also opens every committed E2 dev trace the same way, labelled REPLAY with its recorded date ([#220](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/220)).*
 <!-- numbers ok: 1440 (screenshot width in the file name) -->
 
 ## Where it stands
 
-Honest status as of Nov 17, 2026:
+Honest status as of Nov 18, 2026:
 
 - **Runs live end to end:** `pz trace "<claim>"` searches with Tavily, reads and dates the pages, asks Token Factory the typed questions, decides the ending in code and prints a card (`engine/pipeline.ts`, [#191](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/191)). With no keys, every command here replays committed traces instead.
-- **Live dev runs (E2, Nov 17):** recorded in [eval/dev-traces/](eval/dev-traces/) and scored in [eval/dev-score.md](eval/dev-score.md). The first run, rescored after answer-key corrections, gave 0 false origins (+1 unverified), target cited 4/10 and earliest page Pass / Partial / Fail 1 / 0 / 8. The second, the first with the walk fixes from [#192](https://github.com/vs-githjk/odsc-nebius-hackathon/issues/192), dropped to 1 false origin, target cited 2/10 and earliest 0 / 0 / 10. Four fixes for what it showed went in that evening, and the third run gave 1 false origin, target cited 3/10, earliest 1 / 0 / 9 and correct cold stops 7/9. Its false origin is dev-04 (eight glasses of water): a 2002 paper that quotes the advice in order to question it. It is a weak score and we say so.
+- **Live dev runs (E2, Nov 17 to 18):** recorded in [eval/dev-traces/](eval/dev-traces/) and scored in [eval/dev-score.md](eval/dev-score.md). The first run, rescored after answer-key corrections, gave 0 false origins (+1 unverified), target cited 4/10 and earliest page Pass / Partial / Fail 1 / 0 / 8. The second, the first with the walk fixes from [#192](https://github.com/vs-githjk/odsc-nebius-hackathon/issues/192), dropped to 1 false origin, target cited 2/10 and earliest 0 / 0 / 10. Four fixes for what it showed went in that evening, and the third run gave 1 false origin, target cited 3/10, earliest 1 / 0 / 9 and correct cold stops 7/9. Its false origin was dev-04 (eight glasses of water): a 2002 paper that quotes the advice in order to question it. After [#225](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/225), which stops a page from being the origin when its span presents the claim as already said (a cue list in rules.json), dev-03 and dev-04 were re-recorded on Nov 18 and the other claims kept (run 3 plus 2 re-records): **0 false origins, and 8 of 9 cold claims end cold, correctly**, on E2, the set we tune on ([#225](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/225) was written for dev-04's miss); E3 and the held-out set have not run yet. It also gives target cited 3/10 and earliest 1 / 0 / 9. When Patient Zero can't back an origin, it says the trail goes cold instead of naming one. The weak part is finding and dating the origin itself: no recorded trace ends on its true origin yet, not even the claims that have one on the web. On 7 of 10 the walk never reaches the origin page; where it does, dating can still rank a later page first (a first archive capture dates a page's URL, not the sentence on it; see [docs/limits.md](docs/limits.md)).
 - **Not yet measured:** the held-out run. The first-week spike, which lost, is under [Evaluation](#evaluation).
 
 ## Try it in two minutes, no API keys
@@ -62,7 +62,7 @@ flowchart LR
 | walk | Searches date windows further and further back, reads pages, keeps sentences that state the claim | Tavily `search`, `extract` | built, including ranked citation following and searches for named sources ([#110](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/110)) |
 | spans | Every edge between two pages rests on two verbatim sentences, one on each page | code | built, with link-verified edges ([#108](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/108)) |
 | dating | Dates each page from its own metadata or byline, capped by its first Wayback capture | Wayback CDX | built |
-| clusters | Groups copies (versions, syndication, same byline, near duplicates) and counts roots | code, `Qwen/Qwen3-Embedding-8B` for reworded copies | built; the walk passes embeddings into clustering when it is given an embedder ([#170](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/170)), and the live pipeline (#130) supplies one |
+| clusters | Groups copies (versions, syndication, same byline, near duplicates) and counts roots | code, `Qwen/Qwen3-Embedding-8B` for reworded copies | built; the walk passes embeddings into clustering when it is given an embedder ([#170](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/170)), and the live pipeline ([#191](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/191)) supplies one |
 | readouts | Per hop: number, unit, hedge and comparison changes measured by code; scope, attribution and context asked as typed yes/no questions | same model, logprobs | built |
 | same claim | A page counts as stating the claim only if code finds the claim's number (or phrase) in the sentence **and** a typed question answers yes with known confidence | same model, logprobs | built |
 | stop state | Code picks one of six endings from the trace; the model never does | none | built |
@@ -88,13 +88,13 @@ The model answers narrow typed questions. Code reads the trace and picks the end
 ### Why each step can be checked
 
 - **Two verbatim spans per edge.** `pz verify` re-opens each saved page, re-finds every sentence at its offsets and hashes, and recomputes the stop state ([packages/pz/src/verify/checks.ts](packages/pz/src/verify/checks.ts)). `make verify` runs it on every committed trace.
-- **Typed questions, not free text.** Every model call uses a strict JSON schema. Confidence comes from the first-token logprobs of the answer, so a low-confidence "yes" becomes "unsure" ([packages/pz/src/typed/](packages/pz/src/typed/ask.ts)).
+- **Typed questions, not free text.** Every model call uses a strict JSON schema. Confidence comes from the first-token logprobs of the answer, and "unsure" never makes an origin. The cutoff below which a "yes" stops counting is not set yet (`confidenceThreshold` is null in rules.json; limits L6), so today any "yes" with a known probability counts ([packages/pz/src/typed/](packages/pz/src/typed/ask.ts)).
 - **Page text is data.** Claims and pages go to the model inside a `source_text` field, and every prompt says so. Tests plant instructions inside claims and sentences and check they stay data. A planted trap set checks the counters for false certainty ([traps/README.md](traps/README.md)).
 - **The card cannot overclaim.** The card's one sentence is dropped if it uses a number, name, quote or date not in the spans, or says "origin" on a trace that did not end `ORIGIN_FOUND` ([packages/pz/src/card/index.ts](packages/pz/src/card/index.ts)).
 
 ## A trace, walked step by step
 
-*Lands with the first reviewed live trace from the first dev run (T72).* It will show one real claim from paste to stop state: each search and its date window, each page kept or dropped and why, each hop's readouts, and every Token Factory and Tavily call with its tokens, credits, cost and latency.
+*Lands with the hero trace once it ends on its origin.* It will show one real claim from paste to stop state: each search and its date window, each page kept or dropped and why, each hop's readouts, and every Token Factory and Tavily call with its tokens, credits, cost and latency. Until then, any recorded run can be walked the same way: `make replay TRACE=eval/dev-traces/dev-11.json` prints its card, and the app replays its walk step by step.
 
 The per-call table is generated from the trace file's own usage rows, so every figure can be checked against the file:
 
@@ -119,8 +119,8 @@ These two are labelled synthetic: the claim is the invented Harbor Zoo one, and 
 
 | Set | Claims | Use | Result |
 |---|---|---|---|
-| E2 dev ([eval/dev-claims.json](eval/dev-claims.json)) | 20: 11 with a web origin, 9 that go cold | Rules, cutoffs and prompts are tuned here only | pending (first live run) |
-| E3 check ([eval/dev-claims-e3.json](eval/dev-claims-e3.json)) | 40: 18 with a web origin, 22 that go cold | Check only, nothing tuned on it | pending (first live run) |
+| E2 dev ([eval/dev-claims.json](eval/dev-claims.json)) | 20: 11 with a web origin, 9 that go cold | Rules, cutoffs and prompts are tuned here only | Latest row in [eval/dev-score.md](eval/dev-score.md), run 3 plus 2 re-records (Nov 18): false origins 0, target cited 3/10, earliest 1 Pass, 0 Partial, 9 Fail, cold stops 8/9, 18 of 19 scored (1 out of scope). Every earlier run is a row in the same file. |
+| E3 check ([eval/dev-claims-e3.json](eval/dev-claims-e3.json)) | 40: 18 with a web origin, 22 that go cold | Check only, nothing tuned on it | not run live yet |
 | Held-out | 10, private; its hash was committed on Nov 8, before most stages were built (the decision table, number rules and clients came first) ([eval/heldout.sha256](eval/heldout.sha256)) | Run once, on a frozen engine | pending |
 
 `make dev-score` grades a set of traces the way the spike was graded ([eval/dev-score.ts](eval/dev-score.ts)).
@@ -142,13 +142,13 @@ It was the fastest (12 to 47 s) and lost on every claim. The grading was not ful
 
 | Service | Used for | Status |
 |---|---|---|
-| Token Factory `Qwen/Qwen3-30B-A3B-Instruct-2507` | intake, fingerprint, query planning, typed readouts, page type, same claim | client built and tested offline; live calls from the first dev run |
-| Token Factory `Qwen/Qwen3-Embedding-8B` | near-duplicate clustering (replaced `BAAI/bge-en-icl`, which returned 404) <!-- numbers ok: 404 (HTTP status) --> | built: wired into clustering and the other-number check; live calls start with the pipeline (#130) |
-| Tavily `search` | date-windowed exact-phrase searches | built; used by the spike walker |
-| Tavily `extract` | reading the pages a search returns | built |
-| Wayback CDX | first capture of each page, capping its date | built |
+| Token Factory `Qwen/Qwen3-30B-A3B-Instruct-2507` | intake, fingerprint, query planning, typed readouts, page type, same claim | live in every dev run since Nov 17; every call is a usage row on the trace |
+| Token Factory `Qwen/Qwen3-Embedding-8B` | near-duplicate clustering (replaced `BAAI/bge-en-icl`, which returned 404) <!-- numbers ok: 404 (HTTP status) --> | live: wired into clustering and the other-number check in the pipeline |
+| Tavily `search` | date-windowed exact-phrase searches | live in every dev run since Nov 17 |
+| Tavily `extract` | reading the pages a search returns | live in every dev run since Nov 17 |
+| Wayback CDX | first capture of each page, capping its date | live: every dev trace's usage rows include its Wayback lookups |
 
-Every call writes a usage row: model, tokens, cached tokens, Tavily credits, dollars, latency, status and cache hit ([packages/pz/src/schema/usage.ts](packages/pz/src/schema/usage.ts)). The usage report across the dev run is T58 ([#116](https://github.com/vs-githjk/odsc-nebius-hackathon/issues/116)), and lands with that run.
+Every call writes a usage row: model, tokens, cached tokens, Tavily credits, dollars, latency, status and cache hit ([packages/pz/src/schema/usage.ts](packages/pz/src/schema/usage.ts)). The usage report across the dev runs is T58 ([#116](https://github.com/vs-githjk/odsc-nebius-hackathon/issues/116)), not written yet; every figure it will use is already a usage row in [eval/dev-traces/](eval/dev-traces/).
 
 ## Limits
 
