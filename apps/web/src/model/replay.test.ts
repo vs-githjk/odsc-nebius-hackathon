@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import type { Trace } from "pz/schema";
 import { loadTraces } from "../data/loadTraces.ts";
 import { lintText } from "../../../../packages/pz/src/cli/lint-copy.ts";
-import { afterTick, autoplays, lineMs, railHead, replayFrame, replayLines, startPhase, walkTook } from "./replay.ts";
+import { afterTick, autoplays, lineMs, pageVerdict, railHead, replayFrame, replayLines, startPhase, walkTook } from "./replay.ts";
 
 const { traces } = loadTraces();
 const byId = (id: string) => traces.find((t) => t.id === id)!;
@@ -24,6 +24,31 @@ describe("replayLines", () => {
     expect(lines[6]!.text).toBe("Searched for “Harbor Zoo penguins nap 14 times a day, twice as often as the zoo's seals”, pages before December 2019: 0 results.");
     expect(lines.filter((l) => l.kind === "page").map((l) => l.nodeId)).toEqual(rich.nodes.map((n) => n.id));
     expect(lines.find((l) => l.nodeId === "myth-page")!.text).toBe("Read checkdesk.example, March 2023: discusses the claim, kept off the path.");
+  });
+
+  it("says what the trace recorded about each page, never more (XO on #4)", () => {
+    const base = byId("sample-rich");
+    const page = base.nodes.find((n) => !n.meta && n.sameClaim)!;
+    const yes = { ...page.sameClaim!, optionId: "yes", probability: 0.987 };
+    expect(pageVerdict({ ...page, sameClaim: yes })).toBe("states the claim (model: yes, 0.99)");
+    expect(pageVerdict({ ...page, sameClaim: { ...yes, optionId: "no", probability: 0.97 } })).toBe("a different claim (model: no, 0.97)");
+    expect(pageVerdict({ ...page, sameClaim: { ...yes, optionId: "unsure" } })).toBe("not confirmed (below the confidence bar)");
+    // decide.ts confidentYes refuses a yes whose confidence could not be read, so the rail does not claim it either.
+    expect(pageVerdict({ ...page, sameClaim: { ...yes, probability: null } })).toBe("not confirmed (model: yes, confidence not recorded)");
+    expect(pageVerdict({ ...page, sameClaim: { ...yes, probability: 0.9999 } })).toBe("states the claim (model: yes, >0.99)");
+    expect(pageVerdict({ ...page, sameClaim: { ...yes, probability: 0.994 } })).toBe("states the claim (model: yes, 0.99)");
+    // No stored answer: the line names the page and its date and says nothing about it.
+    const unasked = { ...base, nodes: base.nodes.map((n) => (n.id === page.id ? { ...n, sameClaim: null } : n)) };
+    expect(replayLines(unasked).find((l) => l.nodeId === page.id)!.text).toMatch(/^Read [^:]+, [A-Z][a-z]+ \d{4}\.$/);
+  });
+
+  it("dev-10: the WEF report's line says the model answered no, not that it states the claim", () => {
+    const dev10 = byId("dev-10");
+    const wef = dev10.nodes.find((n) => n.domain === "www3.weforum.org")!;
+    expect(wef.sameClaim?.optionId).toBe("no");
+    const line = replayLines(dev10).find((l) => l.nodeId === wef.id)!.text;
+    expect(line).toMatch(/^Read www3\.weforum\.org, January 2016: a different claim \(model: no, (?:>0\.99|\d\.\d{2})\)\.$/);
+    for (const l of replayLines(dev10)) expect(lintText(l.text)).toEqual([]);
   });
 
   it("puts each page after the last search whose window still covers it, and pages no search covers first", () => {
