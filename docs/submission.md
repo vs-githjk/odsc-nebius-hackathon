@@ -44,7 +44,7 @@ A reporter or fact-checker with one number and a deadline. Today they paste the 
   - 0 of 24 fake-origin pages written to fool the model ([traps/README.md](../traps/README.md), [#156](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/156));
   - through the real walk and dating with no network: of 12 cases that test a trap that could end on a wrong origin, 3 end on one, and all 3 are a known gap. A negation in new wording passes code, so only the typed same-claim answer can stop it. The other 9 give 0 (95% upper bound 28.3%). 4 more cases test nothing for now, because their source ends cold before any trap is planted ([#173](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/173)).
   - These are planted by us. They are not an accuracy number.
-- **Gallery:** 8 famous viral statistics, with their true origins researched by hand and committed before any trace ran ([eval/gallery/answers.md](../eval/gallery/answers.md)). Result: [SLOT: hits, partials and misses from #159].
+- **Gallery:** 8 famous viral statistics, with their true origins researched by hand and committed before any trace ran ([eval/gallery/answers.md](../eval/gallery/answers.md)). Result, graded against those answers ([docs/gallery.md](gallery.md)): 2 HIT, 1 PARTIAL, 4 MISS and 1 not graded (a tool failure at intake) out of 8. On the 4 claims with a findable origin: 0 HIT, 1 PARTIAL, 3 MISS, and one miss (G4) is a false origin, a list page whose metadata date predates the paper it lists.
 - **Rematch** against ChatGPT, Claude and Perplexity on 10 drawn E3 claims, graded blind ([#171](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/171)). Result: [SLOT: per-tool totals from #160, losses included].
 
 ### The first-week spike, told straight
