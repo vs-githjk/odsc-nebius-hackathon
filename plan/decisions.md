@@ -160,3 +160,4 @@ Format: [LOCKED|REJECTED|PREFERENCE] decision | why | "Vidyut's words" | date
 [LOCKED] Deploy approved: Vercel live app once Rishit's PR passes review (Vidyut pastes keys) | Pages already on | "GitHub is approved." | 2026-11-19
 [LOCKED] Demo script #158 version B approved (A only if dev-10 lands on WEF); storyboard approve still separate | "Script. We can check that out. Sure." | 2026-11-19
 [LOCKED] Submit: XO final judge Fri 08:00 ET, Vidyut presses Submit by 11:00 ET | "Yeah, that's fine. Go for it." | 2026-11-19
+[PREFERENCE] Hold the video storyboard and Vercel prep for a few hours until team PRs land; then do it all together | team work still in flight | "Now we wait for a few more hours until everything is gone a little bit smoother, and then we will do all of it." | 2026-11-19
