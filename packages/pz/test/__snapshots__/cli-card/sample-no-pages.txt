@@ -13,7 +13,7 @@ Earliest No page to show.
 
 Roots    No pages read.
 
-Cost     24 credits, $0.06, 38 s
+Cost     $0.19 (24 Tavily credits, $0.00 model), 38 s
 
 Synthetic: an invented claim on invented pages.
 Raw trace: add --json (make replay ARGS=--json).
