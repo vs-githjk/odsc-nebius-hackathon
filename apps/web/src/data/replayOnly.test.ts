@@ -29,4 +29,12 @@ describe("replay-only web app", () => {
     const imports = files.flatMap(({ text }) => [...text.matchAll(/from\s+"(pz[^"]*)"/g)].map((m) => m[1]!));
     expect([...new Set(imports)].sort()).toEqual(["pz/headline", "pz/schema"]);
   });
+
+  it("loads nothing from another site: no outside URL in index.html or the styles (src, href, @import, url())", () => {
+    const web = fileURLToPath(new URL("../../", import.meta.url));
+    const styles = readdirSync(join(web, "src/styles")).filter((f) => f.endsWith(".css")).map((f) => join("src/styles", f));
+    const outside = /(?:\bsrc|\bhref)\s*=\s*["']https?:|@import\s+(?:url\()?["']?https?:|url\(\s*["']?https?:/i;
+    const hits = ["index.html", ...styles].filter((f) => outside.test(readFileSync(join(web, f), "utf8")));
+    expect(hits).toEqual([]);
+  });
 });
