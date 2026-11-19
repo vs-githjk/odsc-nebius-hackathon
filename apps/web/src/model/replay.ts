@@ -31,10 +31,12 @@ export function pageVerdict(n: Trace["nodes"][number]): string | null {
   if (n.meta) return "discusses the claim, kept off the path";
   const a = n.sameClaim;
   if (!a) return null;
-  const p = a.probability === null ? "" : `, ${a.probability.toFixed(2)}`;
-  if (a.optionId === "yes") return `states the claim (model: yes${p})`;
-  if (a.optionId === "no") return `a different claim (model: no${p})`;
-  return "not confirmed (model: unsure)";
+  // Never more than decide counts (decide.ts confidentYes): a yes with no readable confidence does not count, and
+  // "unsure" comes from the confidence bar, not from the model. 0.995 and above shows as ">0.99", never as certainty.
+  const p = (x: number) => (x >= 0.995 ? ">0.99" : x.toFixed(2));
+  if (a.optionId === "yes") return a.probability === null ? "not confirmed (model: yes, confidence not recorded)" : `states the claim (model: yes, ${p(a.probability)})`;
+  if (a.optionId === "no") return `a different claim (model: no${a.probability === null ? "" : `, ${p(a.probability)}`})`;
+  return "not confirmed (below the confidence bar)";
 }
 
 function pageLine(n: Trace["nodes"][number]): ReplayLine {

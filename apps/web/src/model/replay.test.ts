@@ -32,8 +32,11 @@ describe("replayLines", () => {
     const yes = { ...page.sameClaim!, optionId: "yes", probability: 0.987 };
     expect(pageVerdict({ ...page, sameClaim: yes })).toBe("states the claim (model: yes, 0.99)");
     expect(pageVerdict({ ...page, sameClaim: { ...yes, optionId: "no", probability: 0.97 } })).toBe("a different claim (model: no, 0.97)");
-    expect(pageVerdict({ ...page, sameClaim: { ...yes, optionId: "unsure" } })).toBe("not confirmed (model: unsure)");
-    expect(pageVerdict({ ...page, sameClaim: { ...yes, probability: null } })).toBe("states the claim (model: yes)");
+    expect(pageVerdict({ ...page, sameClaim: { ...yes, optionId: "unsure" } })).toBe("not confirmed (below the confidence bar)");
+    // decide.ts confidentYes refuses a yes whose confidence could not be read, so the rail does not claim it either.
+    expect(pageVerdict({ ...page, sameClaim: { ...yes, probability: null } })).toBe("not confirmed (model: yes, confidence not recorded)");
+    expect(pageVerdict({ ...page, sameClaim: { ...yes, probability: 0.9999 } })).toBe("states the claim (model: yes, >0.99)");
+    expect(pageVerdict({ ...page, sameClaim: { ...yes, probability: 0.994 } })).toBe("states the claim (model: yes, 0.99)");
     // No stored answer: the line names the page and its date and says nothing about it.
     const unasked = { ...base, nodes: base.nodes.map((n) => (n.id === page.id ? { ...n, sameClaim: null } : n)) };
     expect(replayLines(unasked).find((l) => l.nodeId === page.id)!.text).toMatch(/^Read [^:]+, [A-Z][a-z]+ \d{4}\.$/);
@@ -44,7 +47,7 @@ describe("replayLines", () => {
     const wef = dev10.nodes.find((n) => n.domain === "www3.weforum.org")!;
     expect(wef.sameClaim?.optionId).toBe("no");
     const line = replayLines(dev10).find((l) => l.nodeId === wef.id)!.text;
-    expect(line).toMatch(/^Read www3\.weforum\.org, January 2016: a different claim \(model: no, \d\.\d{2}\)\.$/);
+    expect(line).toMatch(/^Read www3\.weforum\.org, January 2016: a different claim \(model: no, (?:>0\.99|\d\.\d{2})\)\.$/);
     for (const l of replayLines(dev10)) expect(lintText(l.text)).toEqual([]);
   });
 
