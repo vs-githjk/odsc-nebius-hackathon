@@ -249,10 +249,10 @@
   max-width: 70ch;
 }
 
-/* Try these. */
+/* Try these: a 2 by 2 grid, so four cards never leave an orphan. */
 .lp-tries {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
   margin: 20px 0 0;
   padding: 0;
@@ -472,14 +472,14 @@
 
 /* Entrance: the hero settles in once, on load. */
 @media (prefers-reduced-motion: no-preference) {
-  .lp-hero .wrap > * {
+  .lp-hero-copy > * {
     animation: lp-rise 600ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
   }
 
-  .lp-hero .wrap > :nth-child(2) { animation-delay: 60ms; }
-  .lp-hero .wrap > :nth-child(3) { animation-delay: 120ms; }
-  .lp-hero .wrap > :nth-child(4) { animation-delay: 180ms; }
-  .lp-hero .wrap > :nth-child(5) { animation-delay: 240ms; }
+  .lp-hero-copy > :nth-child(2) { animation-delay: 60ms; }
+  .lp-hero-copy > :nth-child(3) { animation-delay: 120ms; }
+  .lp-hero-copy > :nth-child(4) { animation-delay: 180ms; }
+  .lp-hero-copy > :nth-child(5) { animation-delay: 240ms; }
 }
 
 @keyframes lp-rise {
@@ -856,4 +856,255 @@
   .lp-vs-row:nth-child(2) > span:first-child {
     border-top: 0;
   }
+}
+
+
+/* Hero: copy on the left, the product on the right. */
+.lp-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 40px;
+  align-items: center;
+}
+
+@media (min-width: 1100px) {
+  .lp-hero-grid {
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
+    gap: 56px;
+  }
+
+  .lp-hero-grid .lp-title {
+    font-size: clamp(44px, 4.6vw, 72px);
+  }
+}
+
+.lp-hero-trace {
+  display: grid;
+  gap: 14px;
+  padding: clamp(18px, 2.2vw, 28px);
+  color: var(--ink);
+  text-decoration: none;
+  box-shadow: var(--shadow);
+  transition: border-color 160ms ease, transform 160ms ease;
+}
+
+.lp-hero-trace:hover,
+.lp-hero-trace:focus-visible {
+  border-color: var(--action);
+}
+
+.lp-hero-trace:focus-visible {
+  outline: 2px solid var(--action);
+  outline-offset: 3px;
+}
+
+.lp-ht-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 12px;
+  align-items: center;
+}
+
+.lp-ht-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--ink-2);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.lp-ht-live i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--hot);
+}
+
+.lp-ht-claim {
+  font: italic 400 clamp(20px, 1.8vw, 24px) / 1.25 var(--font-quote);
+  text-wrap: balance;
+}
+
+.lp-ht-stops {
+  position: relative;
+  display: grid;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lp-ht-stops::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 6px;
+  width: 2px;
+  background: linear-gradient(var(--hot), var(--warm), var(--cold), var(--deep));
+  opacity: 0.45;
+  transform-origin: top;
+}
+
+.lp-ht-stops li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 14px auto minmax(0, 1fr);
+  gap: 2px 12px;
+  align-items: baseline;
+}
+
+.lp-ht-dot {
+  grid-row: 1 / span 2;
+  align-self: start;
+  width: 14px;
+  height: 14px;
+  margin-top: 3px;
+  border-radius: 50%;
+  background: var(--tone);
+  box-shadow: 0 0 0 4px var(--surface);
+}
+
+.lp-ht-when {
+  font-weight: 650;
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.lp-ht-where {
+  color: var(--ink-3);
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lp-ht-text {
+  grid-column: 2 / -1;
+  color: var(--ink-2);
+  font: italic 400 15px / 1.35 var(--font-quote);
+}
+
+.lp-ht-end {
+  display: grid;
+  gap: 12px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--line-2);
+}
+
+.lp-ht-verdict {
+  display: grid;
+  gap: 2px;
+  padding: 10px 14px;
+  border-left: 4px solid var(--cold);
+  border-radius: 10px;
+  background: var(--bg-2);
+  font-size: 15px;
+}
+
+.lp-ht-verdict strong {
+  font-size: 17px;
+}
+
+.lp-ht-roots {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  font-size: 15px;
+  color: var(--ink-2);
+}
+
+.lp-ht-roots strong {
+  color: var(--ink);
+}
+
+.lp-ht-roots .lp-roots-dots {
+  margin: 0;
+}
+
+.lp-ht-roots .lp-roots-dots i {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+}
+
+.lp-ht-roots .lp-dot-root {
+  background: var(--action);
+}
+
+.lp-ht-roots .lp-dot-copy {
+  box-shadow: inset 0 0 0 2px var(--ink-3);
+}
+
+/* The walk back: each stop lands in turn, newest first, then the ending. */
+@media (prefers-reduced-motion: no-preference) {
+  .lp-ht-stops::before {
+    animation: lp-grow 1600ms 300ms ease-out both;
+  }
+
+  .lp-ht-stops li,
+  .lp-ht-end {
+    animation: lp-land 480ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: calc(400ms + var(--i) * 380ms);
+  }
+
+  .lp-ht-stops li .lp-ht-dot {
+    animation: lp-pulse 700ms ease-out both;
+    animation-delay: calc(400ms + var(--i) * 380ms);
+  }
+
+  .lp-ht-live i {
+    animation: lp-blink 1.6s ease-in-out infinite;
+  }
+}
+
+@keyframes lp-grow {
+  from { transform: scaleY(0); }
+}
+
+@keyframes lp-land {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+}
+
+@keyframes lp-pulse {
+  0% { box-shadow: 0 0 0 4px var(--surface), 0 0 0 4px color-mix(in srgb, var(--tone) 50%, transparent); }
+  100% { box-shadow: 0 0 0 4px var(--surface), 0 0 0 14px transparent; }
+}
+
+@keyframes lp-blink {
+  50% { opacity: 0.35; }
+}
+
+@media (max-width: 600px) {
+  .lp-tries {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .lp-ht-stops li {
+    grid-template-columns: 14px minmax(0, 1fr);
+  }
+
+  .lp-ht-where {
+    grid-column: 2;
+  }
+
+  .lp-ht-text {
+    grid-column: 2;
+  }
+}
+
+.samples-head .lp-h2 {
+  margin: 0;
+  font-size: clamp(30px, 3.6vw, 48px);
+  font-weight: 650;
 }

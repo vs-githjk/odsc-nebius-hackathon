@@ -2,13 +2,12 @@ import type { ReactNode } from "react";
 import type { Trace } from "pz/schema";
 import { independence } from "pz/headline";
 import { ClaimBox } from "./ClaimBox.tsx";
-import shotLight from "../assets/trace-dev10-light.png";
-import shotDark from "../assets/trace-dev10-dark.png";
 import { S7, answerPieces } from "../model/answerCheck.ts";
 import { challengeTraces } from "../model/live.ts";
 import { sampleRow } from "../model/sampleRow.ts";
 import { scrubberStops, dateToX, heat } from "../model/scrubber.ts";
 import { stopCard } from "../model/stopCard.ts";
+import { previewQuote } from "../model/quote.ts";
 
 const REPO = "https://github.com/vs-githjk/odsc-nebius-hackathon";
 const blob = (path: string) => `${REPO}/blob/main/${path}`;
@@ -74,10 +73,48 @@ function Stops({ trace }: { trace: Trace }) {
           <span className="lp-stop-dot" aria-hidden="true" />
           <span className="lp-stop-when">{when(s.date, s.precision)} <span className="lp-stop-how">{dateSource(trace, s.url)}</span></span>
           <span className="lp-stop-where">{domainOf(s.url)}</span>
-          <span className="lp-stop-text">{s.text.length > 150 ? `${s.text.slice(0, 147).trimEnd()}...` : s.text}</span>
+          <span className="lp-stop-text">{previewQuote(s.text, 150)}</span>
         </li>
       ))}
     </ol>
+  );
+}
+
+// The hero's product shot: the hero trace walking back, newest page first, one stop at a time, to the card it ends
+// on and its page count. All of it is read from the recorded trace.
+function HeroTrace({ trace }: { trace: Trace }) {
+  const stops = scrubberStops(trace);
+  const card = stopCard(trace);
+  const { pages, independentRoots, copies } = independence(trace);
+  const years = stops.map((s) => s.date?.slice(0, 4)).filter(Boolean);
+  return (
+    <a className="lp-hero-trace card" href={traceHref(trace)} aria-label={`Open the recorded trace: ${trace.claim.text}`}>
+      <span className="lp-ht-head">
+        <span className="lp-ht-live"><i aria-hidden="true" />Recorded trace, replayed</span>
+        {years.length > 1 && <span className="meta">{years[0]} back to {years[years.length - 1]}</span>}
+      </span>
+      <span className="lp-ht-claim">{`“${trace.claim.text}”`}</span>
+      <ol className="lp-ht-stops">
+        {stops.map((s, i) => (
+          <li key={`${s.spanId}-${i}`} style={{ ["--i" as string]: i, ["--tone" as string]: s.date ? heat(dateToX(trace, s.date)) : "var(--ink-3)" }}>
+            <i className="lp-ht-dot" aria-hidden="true" />
+            <span className="lp-ht-when">{when(s.date, s.precision)}</span>
+            <span className="lp-ht-where">{domainOf(s.url)}</span>
+            <span className="lp-ht-text">{previewQuote(s.text, 90)}</span>
+          </li>
+        ))}
+      </ol>
+      <span className="lp-ht-end" style={{ ["--i" as string]: stops.length }}>
+        <span className="lp-ht-verdict"><strong>{card.title}</strong><span>{card.sentence}</span></span>
+        <span className="lp-ht-roots" aria-label={`${pages} pages, ${independentRoots} separate roots, ${copies} copies`}>
+          <span className="lp-roots-dots" aria-hidden="true">
+            {Array.from({ length: independentRoots }, (_, k) => <i key={`r${k}`} className="lp-dot-root" />)}
+            {Array.from({ length: copies }, (_, k) => <i key={`c${k}`} className="lp-dot-copy" />)}
+          </span>
+          <span><strong>{pages} pages</strong>, {independentRoots} roots, {copies} copies</span>
+        </span>
+      </span>
+    </a>
   );
 }
 
@@ -145,7 +182,8 @@ export function Landing({ traces, hero, focusKey, onMatch, onLive }: {
   return (
     <main className="lp">
       <section className="lp-hero">
-        <div className="wrap">
+        <div className="wrap lp-hero-grid">
+          <div className="lp-hero-copy">
           <p className="lp-eyebrow">For viral stats with no source</p>
           <h1 className="lp-title">Perplexity finds you a source. <em>Patient Zero shows you whether to trust it.</em></h1>
           <p className="lead lp-lead">Paste a claim or a whole AI answer. Patient Zero walks each number back through time to the earliest web page it can find, shows the exact sentence on every page, counts how many are only copies, and says so when the trail goes cold.</p>
@@ -153,6 +191,8 @@ export function Landing({ traces, hero, focusKey, onMatch, onLive }: {
             <ClaimBox traces={traces} focusKey={focusKey} onMatch={onMatch} onLive={onLive} />
           </div>
           <div className="lp-hero-ramp ramp" aria-hidden="true" />
+          </div>
+          {hero && <HeroTrace trace={hero} />}
         </div>
       </section>
 
@@ -223,13 +263,6 @@ export function Landing({ traces, hero, focusKey, onMatch, onLive }: {
         <div className="wrap">
           <p className="lp-eyebrow">How it works</p>
           <h2 id="lp-how" className="lp-h2">Four steps, and code decides the ending</h2>
-          {hero && (
-            <a className="lp-figure card" href={traceHref(hero)}>
-              <img className="lp-shot lp-shot-light" src={shotLight} width={729} height={425} alt="The trace view on the recorded plastic claim: the report's own sentence above a time axis from 2016 to 2024, one dot per page." />
-              <img className="lp-shot lp-shot-dark" src={shotDark} width={729} height={425} alt="" aria-hidden="true" />
-              <span className="meta lp-figure-cap">The trace view on the recorded plastic claim: one dot per page, the past on the left. Open it to scrub through time.</span>
-            </a>
-          )}
           <ol className="lp-steps">
             {steps.map((s) => (
               <li key={s.n} className="card">
