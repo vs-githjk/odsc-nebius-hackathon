@@ -149,3 +149,6 @@ Format: [LOCKED|REJECTED|PREFERENCE] decision | why | "Vidyut's words" | date
 [LOCKED] Rematch (#160) and gallery (#159) both go ahead tonight, given to Rohan | strongest added evidence | "the rematch in the gallery. Yeah, to both. Give them to Rohan now" | 2026-11-19
 [LOCKED] Deadlines approved: code freeze Thu Nov 19 23:59 PT (Fri 02:59 ET); submission closes Fri Nov 20 23:59 ET; submit ideally Friday morning | "I approve with the submit time... I'd say Friday morning ideally" | 2026-11-19
 [PREFERENCE] Demo video made by master-creator (Thu or Fri), not hand-recorded | "you are taking the video... I have a whole master creator for that" | 2026-11-19
+[LOCKED] Rematch (#160) blind grading goes to Anoop | Rohan collects the chats, so he can't grade blind | "The rematch blind, give it to Anoop" | 2026-11-19
+[LOCKED] Video after the morning run; Vidyut records the voiceover and approves the storyboard (master-creator) | "Video, we'll do it afterwards. I'll do the voiceover and storyboard" | 2026-11-19
+[PREFERENCE] Demo script: take XO's recommended framing on the two open items (cut S7; if dev-10 does not land on WEF, version B framed as "it stops and says so instead of making something up") | "I want the best framing though, so yeah" | 2026-11-19
