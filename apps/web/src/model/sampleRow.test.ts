@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { loadTraces } from "../data/loadTraces.ts";
 import { lintText } from "../../../../packages/pz/src/cli/lint-copy.ts";
-import { heroTrace, rowFacts, sampleRow, sampleRows } from "./sampleRow.ts";
+import { HERO_ID, heroTrace, rowFacts, sampleRow, sampleRows } from "./sampleRow.ts";
 import { scrubberStops } from "./scrubber.ts";
 
 const { traces } = loadTraces();
@@ -50,5 +50,15 @@ describe("heroTrace", () => {
     expect(heroTrace([...samples, real("live-a", 3), real("live-b", 9)])?.id).toBe("live-b");
     // With the recorded E2 traces loaded (#220), the hero is a real one.
     if (traces.some((t) => !t.synthetic)) expect(heroTrace(traces)?.synthetic).toBe(false);
+  });
+
+  it("is pinned to dev-10, the WEF report trace, never dev-17 (decision 146)", () => {
+    expect(HERO_ID).toBe("dev-10");
+    expect(heroTrace(traces)?.id).toBe("dev-10");
+    // The pin wins over page count: a real trace with more pages does not displace it.
+    const big = { ...byId("dev-17"), id: "dev-99", roots: { ...byId("dev-17").roots, pages: 999 } };
+    expect(heroTrace([...traces, big])?.id).toBe("dev-10");
+    // A sample can never take the pinned id's place.
+    expect(heroTrace([{ ...byId("sample-rich"), id: "dev-10" }])).toBeNull();
   });
 });
