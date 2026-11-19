@@ -162,3 +162,4 @@ Next, in order (when Vidyut says "go"):
 - Spend: $8.35 of $15. Hero LOCKED dev-10 if it ends on WEF, else a cold trace with checked dates.
 - Morning (Vidyut decides, in order): final live E2 run (~$2) to see #238's effect, Pages switch-on (#237 merged, dispatch-only), #158 script approval, submit timing. Morning report at 07:13.
 - Morning, also for Vidyut (from #158 re-walk 00:12): (a) demo script cuts S7 against his Nov 16 'nothing gets cut'; (b) version B ends cold against 'hero claim has to end ORIGIN_FOUND'. Rematch hand chats (#160, Anoop, no spend) and gallery 8 claims (#159, ~$0.70 live) await his yes/no. #240 merged (median 42 s, $0.08/trace; targets missed).
+- 00:50 Nov 19 close: #239 and #241 merged (915/915). #158 fixes in (S4/S5 B follow the app, S9 SAMPLE allowed and labelled, 'Needs Vidyut's OK' section at top); left open for Vidyut's 'approve'. Open: #236 Rishit, #222 Rohan. Night over; morning report 07:13.
