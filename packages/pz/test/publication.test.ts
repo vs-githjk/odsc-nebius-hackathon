@@ -134,7 +134,11 @@ describe("page fetching is public-only, logged and challenge-aware", () => {
       .toEqual({ date: "2020-06-09", source: "byline" });
     expect(await setup({ [url]: page(html(unrelated)) }).found(url)).toBeNull();
     const teaser = '<aside itemscope><time itemprop="datePublished" datetime="2009-03-01">March 1</time></aside>';
-    expect(await setup({ [url]: page(html(teaser, published)) }).found(url)).toBeNull();
+    // The sidebar is excluded, leaving the article's one valid dateline.
+    expect(await setup({ [url]: page(html(teaser, published)) }).found(url)).toEqual({ date: "2020-06-09", source: "byline" });
+    const related = '<div class="related" itemscope itemtype="https://schema.org/NewsArticle">' + published + "</div>";
+    expect(await setup({ [url]: page(html("<p>Posted June 9, 2020</p>", related)) }).found(url)).toBeNull();
+    expect(await setup({ [url]: page(html(related, published)) }).found(url)).toEqual({ date: "2020-06-09", source: "byline" });
     expect(await setup({ [url]: page(html('<p>Posted June 9, 2020</p>', teaser)) }).found(url)).toBeNull();
     for (const hidden of ['<!-- ' + published + ' -->', '<script type="text/template">' + published + '</script>']) {
       expect(await setup({ [url]: page(html(hidden)) }).found(url)).toBeNull();
