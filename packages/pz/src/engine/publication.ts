@@ -297,12 +297,11 @@ export function createEvidence(deps: EvidenceDeps) {
     if (fromRegistry) return fromRegistry;
     // Only explicitly marked publication datelines are evidence.
     const articleHtml = page.replace(/<!--[\s\S]*?(?:-->|$)/g, "")
-      .replace(/<(script|aside|nav|footer)\b[^>]*>[\s\S]*?(?:<\/\1\s*>|$)/gi, "");
-    // A marked date inside a microdata item may belong to a related article.
-    // This fallback only accepts unscoped datelines; scoped articles can still
-    // supply their own date through the structured metadata path above.
+      .replace(/<(script|template|textarea|noscript|aside|nav|footer)\b[^>]*>[\s\S]*?(?:<\/\1\s*>|$)/gi, "");
+    // Count scoped dates too: dropping an article's scoped date before counting
+    // could leave an unrelated unscoped teaser as the sole candidate.
     const stack: { name: string; scoped: boolean }[] = [];
-    const datelines: string[] = [];
+    const datelines: { tag: string; scoped: boolean }[] = [];
     for (const [tag] of articleHtml.matchAll(/<\/?[a-z][^>]*>/gi)) {
       const name = /^<\/?([a-z][a-z0-9:-]*)/i.exec(tag)?.[1]?.toLowerCase();
       if (!name) continue;
@@ -312,11 +311,11 @@ export function createEvidence(deps: EvidenceDeps) {
         continue;
       }
       const scoped = stack.some((entry) => entry.scoped) || /\sitemscope(?:\s|=|\/?>)/i.test(tag);
-      if (name === "time" && !scoped && attr(tag, "itemprop")?.toLowerCase() === "datepublished") datelines.push(tag);
+      if (name === "time" && attr(tag, "itemprop")?.toLowerCase() === "datepublished") datelines.push({ tag, scoped });
       if (!/\/\s*>$/.test(tag) && !/^(area|base|br|col|embed|hr|img|input|link|meta|param|source|track|wbr)$/.test(name)) stack.push({ name, scoped });
     }
-    if (datelines.length !== 1) return null;
-    const datetime = attr(datelines[0]!, "datetime");
+    if (datelines.length !== 1 || datelines[0]!.scoped) return null;
+    const datetime = attr(datelines[0]!.tag, "datetime");
     return datetime ? { date: clean(datetime), source: "byline" } : null;
   };
 }
