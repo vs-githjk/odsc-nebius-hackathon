@@ -13,7 +13,7 @@ import { qwenChatFetch } from "./record-dev.ts";
 import { createTokenFactoryClient } from "../packages/pz/src/clients/tokenfactory.ts";
 import { createTavily } from "../packages/pz/src/clients/tavily.ts";
 import { send, type ClientDeps, type ClientRequest } from "../packages/pz/src/clients/http.ts";
-import { runTrace, type Pipeline, type Wayback } from "../packages/pz/src/engine/run.ts";
+import { runTrace, type Pipeline, type Stage, type Wayback } from "../packages/pz/src/engine/run.ts";
 import { loadRules } from "../packages/pz/src/rules/index.ts";
 import { Trace } from "../packages/pz/src/schema/index.ts";
 import { traceCommand } from "../packages/pz/src/cli/trace.ts";
@@ -39,6 +39,14 @@ const errorCodes = new Set(["budget_exceeded", "budget_bound_exceeded", "claim_t
 class InvalidDevTrace extends Error {
   constructor(readonly reason: string) {
     super("Invalid dev trace");
+  }
+}
+
+// Only this runner can attach a stage to a saved failure. Provider-supplied
+// messages and arbitrary `stage` properties must never enter the error file.
+class DevRunFailure extends Error {
+  constructor(readonly code: string, readonly stage: Stage | "setup" | "verify") {
+    super("Dev run failed");
   }
 }
 
@@ -126,8 +134,9 @@ export async function runDevBatch(
     } catch (error) {
       const code = codeOf(error);
       const reason = error instanceof InvalidDevTrace ? error.reason : undefined;
-      save(errorPath, { id: input.id, code, reason });
-      opts.report(JSON.stringify({ id: input.id, status: "failed", code }));
+      const stage = error instanceof DevRunFailure ? error.stage : undefined;
+      save(errorPath, { id: input.id, code, reason, stage });
+      opts.report(JSON.stringify({ id: input.id, status: "failed", code, stage }));
       failed++;
       if (code === "budget_exceeded" || code === "budget_bound_exceeded") break;
     }
@@ -289,6 +298,7 @@ export async function runLiveDevBatch(
         stop = () => reject(timeout());
         signal.addEventListener("abort", stop, { once: true });
       });
+      let stage: Stage | "setup" | "verify" = "setup";
       const execute = async () => {
         createPipeline ??= await opts.loadFactory();
         checkTime();
@@ -296,9 +306,16 @@ export async function runLiveDevBatch(
           caps, signal, chatClient, embeddingClient, pageFetch: fetch, createTavily: deps => createTavily(deps, sendTavily),
         });
         checkTime();
-        return runTrace(input.text, { ...pipeline, clusters: pipeline.clusters ?? devClusterStep(embeddingClient, loadRules()) }, { wayback });
+        return runTrace(input.text, { ...pipeline, clusters: pipeline.clusters ?? devClusterStep(embeddingClient, loadRules()) }, {
+          wayback,
+          emit: event => {
+            if (event.type === "stage" && event.status === "started") stage = event.stage;
+            else if (event.type === "trace") stage = "verify";
+          },
+        });
       };
       const trace = await Promise.race([execute(), deadline])
+        .catch(error => { throw new DevRunFailure(codeOf(error), stage); })
         .finally(() => signal.removeEventListener("abort", stop));
       checkTime();
       if (trace.budget.usd > caps.usd || trace.budget.credits > caps.credits) {

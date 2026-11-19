@@ -3,7 +3,7 @@
   "id": "dev-06",
   "mode": "LIVE",
   "synthetic": false,
-  "recordedAt": "2026-11-18T02:58:01.111Z",
+  "recordedAt": "2026-11-19T13:17:36.702Z",
   "claim": {
     "text": "You need to walk 10,000 steps a day to stay healthy.",
     "atoms": {
@@ -31,8 +31,8 @@
       "domain": "snopes.com",
       "title": "Do We Really Need to Walk 10,000 Steps a Day? | Snopes.com",
       "date": {
-        "kind": "existed_by",
-        "value": "2022-01-22",
+        "kind": "unconfirmed",
+        "value": null,
         "source": "wayback_first_capture",
         "firstCapture": "2022-01-22",
         "conflictingDate": false
@@ -71,8 +71,8 @@
       "domain": "snopes.com",
       "title": "'Diesel Brothers' Facebook Giveaway Scam Targets Users After Rittenhouse Acquittal | Snopes.com",
       "date": {
-        "kind": "existed_by",
-        "value": "2021-11-23",
+        "kind": "unconfirmed",
+        "value": null,
         "source": "wayback_first_capture",
         "firstCapture": "2021-11-23",
         "conflictingDate": false
@@ -127,19 +127,19 @@
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "yes",
-        "probability": 0.9999982120509076,
+        "probability": 0.9999999990263799,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.9999982120509076
+            "p": 0.9999999990263799
           },
           {
             "optionId": "no",
-            "p": 0.000001760342975444879
+            "p": 9.736200927784883e-10
           },
           {
             "optionId": "__other__",
-            "p": 2.7606116947964665e-8
+            "p": 0
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -173,16 +173,16 @@
       "pageType": null,
       "sameClaim": {
         "questionId": "same_claim",
-        "optionId": "no",
-        "probability": 0.9998766053769579,
+        "optionId": "yes",
+        "probability": 0.9999999999842628,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.0001233946230420425
+            "p": 0.9999999999842628
           },
           {
             "optionId": "no",
-            "p": 0.9998766053769579
+            "p": 1.5737102681540427e-11
           },
           {
             "optionId": "__other__",
@@ -197,14 +197,14 @@
     },
     {
       "id": "n5",
-      "url": "https://www.uclahealth.org/news/article/ask-the-doctors-whats-the-big-deal-about-10000-steps-a-day",
-      "domain": "uclahealth.org",
-      "title": "Ask the Doctors - What's the big deal about 10,000 steps a day? | UCLA Health",
+      "url": "https://www.kumc.edu/about/news/news-archive/jama-study-ten-thousand-steps.html",
+      "domain": "kumc.edu",
+      "title": "10,000 steps might really be the ‘magic pill’ everyone is seeking",
       "date": {
         "kind": "existed_by",
-        "value": "2024-05-25",
+        "value": "2022-12-08",
         "source": "wayback_first_capture",
-        "firstCapture": "2024-05-25",
+        "firstCapture": "2022-12-08",
         "conflictingDate": false
       },
       "clusterId": "c-n5",
@@ -221,19 +221,19 @@
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "no",
-        "probability": 0.9999985694929852,
+        "probability": 0.9999645961136749,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.0000013709578078614831
+            "p": 0.00003535625401285145
           },
           {
             "optionId": "no",
-            "p": 0.9999985694929852
+            "p": 0.9999645961136749
           },
           {
             "optionId": "__other__",
-            "p": 5.9549207009901295e-8
+            "p": 4.763231220561437e-8
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -244,14 +244,14 @@
     },
     {
       "id": "n6",
-      "url": "https://www.pbs.org/americaswalking/health/health20percentboost.html",
-      "domain": "pbs.org",
-      "title": "America's Walking: The 20% Boost Program: Fit Walking into Your Life",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/17152246",
+      "domain": "pubmed.ncbi.nlm.nih.gov",
+      "title": "Effects of a 10,000 steps per day goal in overweight adults.",
       "date": {
         "kind": "existed_by",
-        "value": "2002-04-11",
+        "value": "2020-06-19",
         "source": "wayback_first_capture",
-        "firstCapture": "2002-04-11",
+        "firstCapture": "2020-06-19",
         "conflictingDate": false
       },
       "clusterId": "c-n6",
@@ -264,63 +264,19 @@
       ],
       "citesEarlier": false,
       "candidateParents": [],
-      "pageType": {
-        "questionId": "page_type",
-        "optionId": "study",
-        "probability": 0.9945285923733562,
-        "top": [
-          {
-            "optionId": "study",
-            "p": 0.9945285923733562
-          },
-          {
-            "optionId": "dataset",
-            "p": 0.004605580823520771
-          },
-          {
-            "optionId": "report",
-            "p": 0.0004283857478182114
-          },
-          {
-            "optionId": "speaker",
-            "p": 0
-          },
-          {
-            "optionId": "news",
-            "p": 0
-          },
-          {
-            "optionId": "blog",
-            "p": 0.000006924210716507052
-          },
-          {
-            "optionId": "social",
-            "p": 0
-          },
-          {
-            "optionId": "other",
-            "p": 0.0004283857478182114
-          },
-          {
-            "optionId": "__other__",
-            "p": 0.0000021310967700527428
-          }
-        ],
-        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-        "threshold": null
-      },
+      "pageType": null,
       "sameClaim": {
         "questionId": "same_claim",
-        "optionId": "yes",
-        "probability": 0.9999999998506905,
+        "optionId": "no",
+        "probability": 0.9968273168750147,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.9999999998506905
+            "p": 0.0031726831249856416
           },
           {
             "optionId": "no",
-            "p": 1.49309489171355e-10
+            "p": 0.9968273168750147
           },
           {
             "optionId": "__other__",
@@ -331,45 +287,19 @@
         "threshold": null
       },
       "foundViaMeta": null,
-      "boundary": {
-        "questionId": "boundary",
-        "optionId": "print",
-        "probability": 0.9999973786526299,
-        "top": [
-          {
-            "optionId": "print",
-            "p": 0.9999973786526299
-          },
-          {
-            "optionId": "unsourced",
-            "p": 3.8590593882824335e-8
-          },
-          {
-            "optionId": "none",
-            "p": 0.0000025612814430465682
-          },
-          {
-            "optionId": "__other__",
-            "p": 2.1475333178422318e-8
-          }
-        ],
-        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-        "threshold": null
-      },
       "injection": null
     },
     {
       "id": "n7",
-      "url": "https://pubmed.ncbi.nlm.nih.gov/11131268",
-      "domain": "pubmed.ncbi.nlm.nih.gov",
-      "title": "Walking 10,000 steps/day or more reduces blood pressure and sympathetic nerve activity in mild essential hypertension.",
+      "url": "http://www.thewalkingsite.com/10000steps.html",
+      "domain": "thewalkingsite.com",
+      "title": "THE WALKING SITE",
       "date": {
-        "kind": "published",
-        "value": "2000-11-30",
-        "source": "registry_pubmed",
-        "firstCapture": "2021-03-10",
-        "conflictingDate": false,
-        "precision": "month"
+        "kind": "unconfirmed",
+        "value": null,
+        "source": "wayback_first_capture",
+        "firstCapture": "2004-09-28",
+        "conflictingDate": false
       },
       "clusterId": "c-n7",
       "evidence": "observed",
@@ -384,20 +314,20 @@
       "pageType": null,
       "sameClaim": {
         "questionId": "same_claim",
-        "optionId": "no",
-        "probability": 0.924141805609237,
+        "optionId": "yes",
+        "probability": 0.999999999996021,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.075858172407311
+            "p": 0.999999999996021
           },
           {
             "optionId": "no",
-            "p": 0.924141805609237
+            "p": 3.9789632293418546e-12
           },
           {
             "optionId": "__other__",
-            "p": 2.1983452058726982e-8
+            "p": 1.1102230246251565e-16
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -408,14 +338,14 @@
     },
     {
       "id": "n8",
-      "url": "http://www.laketravispodiatry.com/html/didyouknow.htm",
-      "domain": "laketravispodiatry.com",
-      "title": "Lake Travis Podiatry | Patrick Corrigan DPM | (512) 263-8655",
+      "url": "https://www.physio-pedia.com/Arches_of_the_Foot",
+      "domain": "physio-pedia.com",
+      "title": "Arches of the Foot - Physiopedia",
       "date": {
-        "kind": "existed_by",
-        "value": "2009-12-24",
+        "kind": "unconfirmed",
+        "value": null,
         "source": "wayback_first_capture",
-        "firstCapture": "2009-12-24",
+        "firstCapture": "2017-02-23",
         "conflictingDate": false
       },
       "clusterId": "c-n8",
@@ -431,20 +361,278 @@
       "pageType": null,
       "sameClaim": {
         "questionId": "same_claim",
-        "optionId": "no",
-        "probability": 0.9988304894935972,
+        "optionId": "yes",
+        "probability": 0.7772998440065915,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.0011695105064029804
+            "p": 0.7772998440065915
           },
           {
             "optionId": "no",
-            "p": 0.9988304894935972
+            "p": 0.22270012089209762
+          },
+          {
+            "optionId": "__other__",
+            "p": 3.5101310968954635e-8
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    },
+    {
+      "id": "n9",
+      "url": "https://dokumen.pub/handbook-of-obesity-volume-1-epidemiology-etiology-and-physiopathology-4nbsped-9781032558622-9781003437673-9781032047126-9781003437734.html",
+      "domain": "dokumen.pub",
+      "title": "Handbook of Obesity - Volume 1: Epidemiology, Etiology, and Physiopathology [4 ed.] 9781032558622, 9781003437673, 9781032047126, 9781003437734 - DOKUMEN.PUB",
+      "date": {
+        "kind": "unconfirmed",
+        "value": null,
+        "source": "wayback_first_capture",
+        "firstCapture": null,
+        "conflictingDate": false
+      },
+      "clusterId": "c-n9",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s7"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9995694429047487,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9995694429047487
+          },
+          {
+            "optionId": "no",
+            "p": 0.00043055709525122545
+          },
+          {
+            "optionId": "__other__",
+            "p": 1.1102230246251565e-16
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    },
+    {
+      "id": "n10",
+      "url": "https://www.govinfo.gov/content/pkg/GOVPUB-HE20_100-PURL-LPS39913/pdf/GOVPUB-HE20_100-PURL-LPS39913.pdf",
+      "domain": "govinfo.gov",
+      "title": "211224 Get Fit",
+      "date": {
+        "kind": "unconfirmed",
+        "value": null,
+        "source": "wayback_first_capture",
+        "firstCapture": "2026-07-17",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n10",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s8"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "no",
+        "probability": 0.9999982118659768,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.0000017603429998014443
+          },
+          {
+            "optionId": "no",
+            "p": 0.9999982118659768
+          },
+          {
+            "optionId": "__other__",
+            "p": 2.7791023371470658e-8
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    },
+    {
+      "id": "n11",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/7555502",
+      "domain": "pubmed.ncbi.nlm.nih.gov",
+      "title": "Daily walking combined with diet therapy is a useful means for obese NIDDM patients not only to reduce body weight but also to improve insulin sensitivity.",
+      "date": {
+        "kind": "published",
+        "value": "1995-06-30",
+        "source": "registry_pubmed",
+        "firstCapture": "2020-08-16",
+        "conflictingDate": false,
+        "precision": "month"
+      },
+      "clusterId": "c-n11",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s9"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": {
+        "questionId": "page_type",
+        "optionId": "study",
+        "probability": 0.9999999999909663,
+        "top": [
+          {
+            "optionId": "study",
+            "p": 0.9999999999909663
+          },
+          {
+            "optionId": "dataset",
+            "p": 6.10193667738932e-13
+          },
+          {
+            "optionId": "report",
+            "p": 8.423463754170463e-12
+          },
+          {
+            "optionId": "speaker",
+            "p": 0
+          },
+          {
+            "optionId": "news",
+            "p": 0
+          },
+          {
+            "optionId": "blog",
+            "p": 0
+          },
+          {
+            "optionId": "social",
+            "p": 0
+          },
+          {
+            "optionId": "other",
+            "p": 0
           },
           {
             "optionId": "__other__",
             "p": 0
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9999038976074567,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9999038976074567
+          },
+          {
+            "optionId": "no",
+            "p": 0.00009610239254331034
+          },
+          {
+            "optionId": "__other__",
+            "p": 0
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "boundary": {
+        "questionId": "boundary",
+        "optionId": "print",
+        "probability": 0.9999980926550052,
+        "top": [
+          {
+            "optionId": "print",
+            "p": 0.9999980926550052
+          },
+          {
+            "optionId": "unsourced",
+            "p": 8.946127324798946e-8
+          },
+          {
+            "optionId": "none",
+            "p": 0.0000017605346713509444
+          },
+          {
+            "optionId": "__other__",
+            "p": 5.7349050175403704e-8
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "injection": null
+    },
+    {
+      "id": "n12",
+      "url": "https://www.latimes.com/archives/la-xpm-1991-08-02-vw-320-story.html",
+      "domain": "latimes.com",
+      "title": "Make Sure Those Boots Were Made for Walking - Los Angeles Times",
+      "date": {
+        "kind": "unconfirmed",
+        "value": null,
+        "source": "wayback_first_capture",
+        "firstCapture": null,
+        "conflictingDate": false
+      },
+      "clusterId": "c-n12",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s10"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9241418088763593,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9241418088763593
+          },
+          {
+            "optionId": "no",
+            "p": 0.07585817152138785
+          },
+          {
+            "optionId": "__other__",
+            "p": 1.9602252820938304e-8
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -457,19 +645,35 @@
   "edges": [
     {
       "id": "e1",
-      "parentId": "n6",
+      "parentId": "n11",
+      "childId": "n4",
+      "kind": "inferred",
+      "parentSpanId": "s9",
+      "childSpanId": "s2",
+      "linkHref": null
+    },
+    {
+      "id": "e2",
+      "parentId": "n4",
       "childId": "n3",
       "kind": "inferred",
-      "parentSpanId": "s4",
+      "parentSpanId": "s2",
       "childSpanId": "s1",
       "linkHref": null
     }
   ],
   "clusters": [
     {
-      "id": "c-n7",
+      "id": "c-n12",
       "nodeIds": [
-        "n7"
+        "n12"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n11",
+      "nodeIds": [
+        "n11"
       ],
       "rule": "single"
     },
@@ -481,9 +685,30 @@
       "rule": "single"
     },
     {
+      "id": "c-n9",
+      "nodeIds": [
+        "n9"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n10",
+      "nodeIds": [
+        "n10"
+      ],
+      "rule": "single"
+    },
+    {
       "id": "c-n6",
       "nodeIds": [
         "n6"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n7",
+      "nodeIds": [
+        "n7"
       ],
       "rule": "single"
     },
@@ -495,16 +720,16 @@
       "rule": "single"
     },
     {
-      "id": "c-n5",
+      "id": "c-n3",
       "nodeIds": [
-        "n5"
+        "n3"
       ],
       "rule": "single"
     },
     {
-      "id": "c-n3",
+      "id": "c-n5",
       "nodeIds": [
-        "n3"
+        "n5"
       ],
       "rule": "single"
     },
@@ -527,85 +752,141 @@
     {
       "id": "s1",
       "nodeId": "n3",
-      "text": "\"Happy feet\": evaluating the benefits of a 100-day 10,000 step challenge on mental health and wellbeing.",
-      "contextBefore": "",
-      "contextAfter": " K T Hallam, S Bilsborough, M de Courten BMC psychiatry · 2018-01-24 · 18(1):19 · DOI: 10.1186/s12888-018-1609-y · PMID: 29361921 · PMCID: PMC5781328 Publication type: Evaluation Study, Journal Articl",
-      "start": 0,
-      "end": 104,
+      "text": "Evidence is beginning to highlight the value of promoting walking, particularly focusing on the Japanese mark of obtaining 10,000 steps per day.",
+      "contextBefore": "udy, Journal Article, Research Support, Non-U.S. Gov't Background. An increased awareness of the health benefits of walking has emerged with the development and refinement of accelerometer equipment. ",
+      "contextAfter": " Workplace based step challenges have become popular to engage large cohorts in increasing their daily physical activity in a sustainable and enjoyable way. Findings are now highlighting the positive ",
+      "start": 485,
+      "end": 629,
       "extractSha256": "64e9e77f829784d8cb632a7ad545a193623c2e01069127db79f7c7786ad53309",
-      "windowSha256": "5c82b7ee0d1952f99bab4fd0861760799763528e0a85ab2ddfd275cd61b1184a",
-      "fetchedAt": "2026-11-18T02:58:12.814Z",
+      "windowSha256": "8ac0cb35ce9b93c78c7bd240b39ae415e3cfcdb159b84de9bca19aa401f7c7e3",
+      "fetchedAt": "2026-11-19T13:17:55.080Z",
       "waybackUrl": "https://web.archive.org/web/20200819081721/https://pubmed.ncbi.nlm.nih.gov/29361921",
       "tier": "exact"
     },
     {
       "id": "s2",
       "nodeId": "n4",
-      "text": "Effects of 10,000 steps a day on physical and mental health in overweight participants in a community setting: a preliminary study.",
-      "contextBefore": "",
-      "contextAfter": " Kornanong Yuenyongchaiwat Brazilian Journal of Physical Therapy · 2016-06-16 · 20(4):367-373 · DOI: 10.1590/bjpt-rbf.2014.0160 · PMID: 27556393 · PMCID: PMC5015672 ABSTRACT. Background. Being overwei",
-      "start": 0,
-      "end": 131,
+      "text": "During the 12-week intervention, the participants were instructed to walk at least 10,000 steps per day and record their steps in their diary.",
+      "contextBefore": " (Yamax SW-200). The participants were asked to wear their sealed pedometer during the working day for 5 days whilst following their normal daily routine and then record the details in their booklet. ",
+      "contextAfter": " At the end of week 12, body weight, POMS, BMI, WC, WHR, %BF, and LBM were assessed again. Statistical analysis. Sample size calculations indicated that 30 participants were needed to complete the stu",
+      "start": 5988,
+      "end": 6130,
       "extractSha256": "8554b29e6e07226ac1f0a481ce5f7bac897ef88035c8ea889d3238acdecf0e45",
-      "windowSha256": "e512b1057e2aa80ab6e50465ee2a33d87444ba2d21289fbe0465879a7c5901da",
-      "fetchedAt": "2026-11-18T02:58:13.570Z",
+      "windowSha256": "9627ea85a2c0214d519e6a545926a29510349fb57a5100433e9201e902c57a55",
+      "fetchedAt": "2026-11-19T13:17:55.690Z",
       "waybackUrl": "https://web.archive.org/web/20241001081556/https://pmc.ncbi.nlm.nih.gov/articles/PMC5015672",
       "tier": "exact"
     },
     {
       "id": "s3",
       "nodeId": "n5",
-      "text": "* English * العربية * 中文 * Italiano * 日本語 * 한국어 * فارسی * Русский * Español * Tiếng Việt * English * العربية * 中文 * Italiano * 日本語 * 한국어 * فارسی * Русский * Español * Tiếng Việt Ask the Doctors - What's the big deal about 10,000 steps a day?",
-      "contextBefore": "",
-      "contextAfter": " June 5, 2018 By Ask the Doctors 3 min read Dear Doctors: My New Year's resolution is to get more exercise and, I hope, lose a few pounds. Walking is an activity I know I can stick with, but I keep he",
-      "start": 0,
-      "end": 241,
-      "extractSha256": "52bc2b054a679b369f06ec79a5b5475faa557cf9173c4b23e2571fb93451fe64",
-      "windowSha256": "32607518e5b252ae3aa1a7beea94b5b883fc4e73f2d3a56fae4e6b2887551da0",
-      "fetchedAt": "2026-11-18T02:58:15.009Z",
-      "waybackUrl": "https://web.archive.org/web/20240525080557/https://www.uclahealth.org/news/article/ask-the-doctors-whats-the-big-deal-about-10000-steps-a-day",
+      "text": "If you want to lose weight, walk 10,000 steps a day.",
+      "contextBefore": " A large contributor to many health problems is linked to excess body weight, which suggests that weight loss will help to reduce those health risks. However, weight loss can be challenging for many. ",
+      "contextAfter": " \"For patients interested in weight loss, when coupled with a modest reduction in calorie intake, progressing to 10,000 steps per day has also been shown to enhance long-term weight loss and the preve",
+      "start": 4698,
+      "end": 4750,
+      "extractSha256": "91ae1aee747cc0b4637698b111259b975341e24db0f09cd17db36bd88e4289c2",
+      "windowSha256": "669cef58805335f393f42bd8b0d77fdd1e82750c441a6aea62413527bff29451",
+      "fetchedAt": "2026-11-19T13:17:57.198Z",
+      "waybackUrl": "https://web.archive.org/web/20221208185251/https://www.kumc.edu/about/news/news-archive/jama-study-ten-thousand-steps.html",
       "tier": "exact"
     },
     {
       "id": "s4",
       "nodeId": "n6",
-      "text": "Quick Fit 15-Minute Exercise Program | | | 18-Week Walk a Marathon Program | | | | | | 22-Week Faster Walking Marathon Program | | | | | | 20% Boost Program | | | | | | Pre-Walk Warm-Up Routine | | | | | | 3-Minute Post Walk Stretch Routine | | | | | | 4 Tips for Faster Walking Technique | | | | | | Strengthening Exercises | | | | | | | | --- | | [Email this link to a friend](javascript:pop('/americaswalking/email/email_link.html?url=' + location))Printer Friendly Version | | The 20% Boost Program: Fit Walking into Your Life The realistic way to build up to 10,000 steps a day.",
-      "contextBefore": "- Women's Health Quiz | | | | | | | | | | NEW! - Body Mass Index Calculator | | | | | | | | | | | | What's Inside | | | | --- | --- | | | NEW! Dr. Coopers Cholesterol-Lowering Advice | | | | | | NEW! ",
-      "contextAfter": " The Program The goal of taking 10,000 steps in a day is a rough equivalent to the Surgeon General's recommendation to accumulate 30 minutes of activity most days of the week. It should be enough to r",
-      "start": 2364,
-      "end": 2947,
-      "extractSha256": "6640cb55ce81700b83f9fda1662a00f665c6abc4faaf85f5bd4c0c4b82492047",
-      "windowSha256": "12bbb524f005360f650f0574afe056d6416e733ca98a2628fc43bef6e0218328",
-      "fetchedAt": "2026-11-18T02:58:31.049Z",
-      "waybackUrl": "https://web.archive.org/web/20020411130806/https://www.pbs.org/americaswalking/health/health20percentboost.html",
+      "text": "Effects of a 10,000 steps per day goal in overweight adults.",
+      "contextBefore": "",
+      "contextAfter": " Patrick L Schneider, David R Bassett, Dixie L Thompson, Nicolaas P Pronk, Kenneth M Bielak American journal of health promotion : AJHP · 2006-01-01 · 21(2):85-9 · DOI: 10.4278/0890-1171-21.2.85 · PMI",
+      "start": 0,
+      "end": 60,
+      "extractSha256": "d8bf83ba789a636f5f34a106e1b34b30ef24919bb7dd7f120cb928025193619d",
+      "windowSha256": "8d675d1c9cbe82d3b0f57353688992aebd7286563afc1b3effaff7c1821c18b3",
+      "fetchedAt": "2026-11-19T13:18:12.958Z",
+      "waybackUrl": "https://web.archive.org/web/20200619072241/https://pubmed.ncbi.nlm.nih.gov/17152246",
       "tier": "exact"
     },
     {
       "id": "s5",
       "nodeId": "n7",
-      "text": "Walking 10,000 steps/day or more reduces blood pressure and sympathetic nerve activity in mild essential hypertension.",
-      "contextBefore": "",
-      "contextAfter": " M Iwane, M Arita, S Tomimoto, O Satani, M Matsumoto, K Miyashita, I Nishio Hypertension research : official journal of the Japanese Society of Hypertension · 2000-11-01 · 23(6):573-80 · DOI: 10.1291/",
-      "start": 0,
-      "end": 118,
-      "extractSha256": "a2563ace408cb3d8a39e62e058fafcaa12870ad94b67b041febbc255fb92bdc9",
-      "windowSha256": "1c63b228f1a6da10ec43e3061698c86fd5bb95a369738600433ed40cf216f495",
-      "fetchedAt": "2026-11-18T02:58:52.970Z",
-      "waybackUrl": "https://web.archive.org/web/20210310080902/https://pubmed.ncbi.nlm.nih.gov/11131268",
+      "text": "You may have heard the general recommendation to walk 10,000 steps per day.",
+      "contextBefore": "ing | | F.A.Q. | | Injuries | | Marathon Walking | | Motivation | | Nutrition | | Racewalking | | Shoes & Gear | | Stretching | | Treadmill | | 10,000 STEPS A DAY How many steps do you walk each day? ",
+      "contextAfter": " There is nothing magic about this number, but it is a goal to get you started and keep you motivated. You simply start tracking your steps and gradually increase over a period of time. How far is 10,",
+      "start": 579,
+      "end": 654,
+      "extractSha256": "62b6e5939cc6371ee2b74ba8c828b7a1d33a491de653c9316552409e1112e131",
+      "windowSha256": "88c6f105014f3dd445c454b134c288ad752a2d0c0c0a3f1ab2096738016b8ebf",
+      "fetchedAt": "2026-11-19T13:18:14.069Z",
+      "waybackUrl": null,
       "tier": "exact"
     },
     {
       "id": "s6",
       "nodeId": "n8",
-      "text": "People take on average 10,000 steps in a day, adding up to 115,000 miles in a lifetime, enough to circle the planet four times.",
-      "contextBefore": "f ways. 4. The 52 bones in your feet make up about one quarter of all the bones in your body. 5. Women have about four times as many foot problems as men; wearing high heels often are the culprit. 6. ",
-      "contextAfter": " 7. There are times when you're walking that the pressure on your feet exceeds your body weight, and when you're running, it can be three or four times your weight. 8. Shopping for shoes is best done ",
-      "start": 806,
-      "end": 933,
-      "extractSha256": "53701f87161325a28ae2bf0bf73aeed3c2a1c8185c4013473d2e9e52ccc971bf",
-      "windowSha256": "6bcc642e045d7c0ac5f84c2a5a7bfa930aedbbdc99052a571c5f3f88c4e7dcbf",
-      "fetchedAt": "2026-11-18T02:59:01.886Z",
-      "waybackUrl": "https://web.archive.org/web/20091224135114/http://www.laketravispodiatry.com/html/didyouknow.htm",
+      "text": "On average, we walk 10000 steps per day, 1000000 steps per year and 115000 miles in our lifetime.",
+      "contextBefore": "ese patients. This is probably related to the complexity and multiplicity of joints in this part of the body. There are 26 bones, 33 Joints, more than 100 ligaments, tendons and muscles in each foot. ",
+      "contextAfter": " The foot stands 3-4 times body weight during running[[3]](#cite_note-3) As an example a person with a low longitudinal arch, or flat feet often stands and walks with their feet in a pronated position",
+      "start": 5839,
+      "end": 5936,
+      "extractSha256": "22cf3d43db553cfb87b22e18b31b438d254c65ab91d02bfabcfda392c1d095a2",
+      "windowSha256": "d2db739ba66f9f4fe833901ff5becff7b24b32579c92a3befa328d51cee0dca9",
+      "fetchedAt": "2026-11-19T13:18:57.514Z",
+      "waybackUrl": "https://web.archive.org/web/20170223131127/https://www.physio-pedia.com/Arches_of_the_Foot",
+      "tier": "exact"
+    },
+    {
+      "id": "s7",
+      "nodeId": "n9",
+      "text": "Sigmund et al. found that reaching the 10,000 steps per day recommendation reduces the odds of having overweight or obesity [68].",
+      "contextBefore": "eased from 5 • Worldwide and Regional Prevalence of Obesity 51 TABLE 5.1 Global Prevalence of Overweight/Obesity in Different Age Groups AGE GROUP Preschool children (180 minutes of screen time [67]. ",
+      "contextAfter": " One systematic review examining seven longitudinal studies found agreement among six of these studies that there is a negative relationship between LTPA participation and adiposity in children [69]. ",
+      "start": 177603,
+      "end": 177732,
+      "extractSha256": "bf2b69fb7b0009b0df307c356aec55f7cafdc62cf6d28ed118f419d90c41b70e",
+      "windowSha256": "27cbe5cf911b870ce1f825c772c7359bde096afdcad0990ba27b65f4c36f0b03",
+      "fetchedAt": "2026-11-19T13:18:58.725Z",
+      "waybackUrl": null,
+      "tier": "exact"
+    },
+    {
+      "id": "s8",
+      "nodeId": "n10",
+      "text": "By completing a minimum of 10,000 steps per day you can earn the PALA.",
+      "contextBefore": "awarded to children who are active for 60 minutes, at least 5 days a week, for 6 weeks. An additional way to earn the PALA is by using a pedometer that measures the number of steps you take in a day. ",
+      "contextAfter": " When you earn this award, hopefully, you will have begun to lead an active lifestyle that will continue throughout your life. 7 GET FIT! GET FIT! Physical Fitness Physical fitness is made up of many ",
+      "start": 12026,
+      "end": 12096,
+      "extractSha256": "2b9044f470206dcdc8989ec4c51d2c318c98f695be66b966190e8b8a2b3ab8f0",
+      "windowSha256": "9473d691ed7f2d8fd027371f4e3c3ac5f90e912734bc3c1588f370bac60b9eff",
+      "fetchedAt": "2026-11-19T13:19:02.412Z",
+      "waybackUrl": "https://web.archive.org/web/20260717201723/https://www.govinfo.gov/content/pkg/GOVPUB-HE20_100-PURL-LPS39913/pdf/GOVPUB-HE20_100-PURL-LPS39913.pdf",
+      "tier": "exact"
+    },
+    {
+      "id": "s9",
+      "nodeId": "n11",
+      "text": "Group DE was instructed to walk at least 10,000 steps/day on a flat field as monitored by pedometer (19,200 +/- 2,100 steps/day), and group D was told to maintain a normal daily routine (4,500 +/- 290 steps/day).",
+      "contextBefore": " patients. Research Design And Methods. Subjects were divided into two groups: 10 patients were managed by diet alone (group D), and 14 patients were placed in the diet and exercise group (group DE). ",
+      "contextAfter": " A glucose clamp procedure at an insulin infusion rate of 40 microU.min-2.min-1 was performed before and after the 6- to 8-week training program. Mean serum insulin concentrations ranged from 720 to 7",
+      "start": 820,
+      "end": 1032,
+      "extractSha256": "0085f5ce122c2d99cfe451af78c0be64eb2ae11504b073b87398da91e33da527",
+      "windowSha256": "6a2d6d62559fa738bcd78bca4979b7b2c0bf59a577afd2959a5e31c95a7ed49b",
+      "fetchedAt": "2026-11-19T13:19:31.481Z",
+      "waybackUrl": "https://web.archive.org/web/20200816212100/https://pubmed.ncbi.nlm.nih.gov/7555502",
+      "tier": "exact"
+    },
+    {
+      "id": "s10",
+      "nodeId": "n12",
+      "text": "\"You're going to take 10,000 steps a day--that's no exaggeration--on a backpacking trip,\" he said.",
+      "contextBefore": "g bags, lanterns and clothing, both for day hikers and those who are going to be out on the trails for a week or more.\" Jundanian stresses the importance of proper footgear above all other equipment. ",
+      "contextAfter": " \"If your boots don't fit, and they're carrying your own weight plus a pack with 50 or 60 pounds of equipment, you'll be very uncomfortable.\" The right type of boot is as important as fit, he believes",
+      "start": 2162,
+      "end": 2260,
+      "extractSha256": "9215002eeb72808cf11225a631fdfeebee5962428eff2d6a4ae02d46b1d22194",
+      "windowSha256": "6ee709f7d1886cafcad3b602eb75f327b81065d20111d210b6321c671e57f6a5",
+      "fetchedAt": "2026-11-19T13:19:47.731Z",
+      "waybackUrl": null,
       "tier": "exact"
     }
   ],
@@ -630,7 +911,7 @@
         {
           "id": "hedge_dropped",
           "source": "measured",
-          "value": "yes",
+          "value": "no",
           "probability": null,
           "disputed": false
         },
@@ -644,37 +925,29 @@
         {
           "id": "scope_widened",
           "source": "inferred",
-          "value": "no",
-          "probability": 0.6791786902379566,
+          "value": "yes",
+          "probability": 0.7310585499828198,
           "disputed": false
         },
         {
           "id": "attribution_shifted",
           "source": "inferred",
           "value": "yes",
-          "probability": 0.8175744310953235,
+          "probability": 0.6224593302760699,
           "disputed": false
         },
         {
           "id": "context_stripped",
           "source": "inferred",
           "value": "yes",
-          "probability": 0.9999038976078893,
+          "probability": 0.9994471757226245,
           "disputed": false
         }
       ],
       "wordDiff": [
         {
           "op": "add",
-          "text": "happy"
-        },
-        {
-          "op": "add",
-          "text": "feet"
-        },
-        {
-          "op": "add",
-          "text": "evaluating"
+          "text": "during"
         },
         {
           "op": "add",
@@ -682,251 +955,55 @@
         },
         {
           "op": "add",
-          "text": "benefits"
+          "text": "12-week"
         },
         {
           "op": "add",
-          "text": "of"
+          "text": "intervention"
+        },
+        {
+          "op": "add",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "participants"
+        },
+        {
+          "op": "add",
+          "text": "were"
         },
         {
           "op": "del",
-          "text": "quick"
+          "text": "group"
         },
         {
           "op": "del",
-          "text": "fit"
+          "text": "de"
         },
         {
           "op": "del",
-          "text": "15-minute"
+          "text": "was"
         },
         {
-          "op": "del",
-          "text": "exercise"
+          "op": "same",
+          "text": "instructed"
         },
         {
-          "op": "del",
-          "text": "program"
+          "op": "same",
+          "text": "to"
         },
         {
-          "op": "del",
-          "text": "18-week"
-        },
-        {
-          "op": "del",
+          "op": "same",
           "text": "walk"
         },
         {
           "op": "same",
-          "text": "a"
+          "text": "at"
         },
         {
-          "op": "add",
-          "text": "100-day"
-        },
-        {
-          "op": "del",
-          "text": "marathon"
-        },
-        {
-          "op": "del",
-          "text": "program"
-        },
-        {
-          "op": "del",
-          "text": "22-week"
-        },
-        {
-          "op": "del",
-          "text": "faster"
-        },
-        {
-          "op": "del",
-          "text": "walking"
-        },
-        {
-          "op": "del",
-          "text": "marathon"
-        },
-        {
-          "op": "del",
-          "text": "program"
-        },
-        {
-          "op": "del",
-          "text": "20"
-        },
-        {
-          "op": "del",
-          "text": "boost"
-        },
-        {
-          "op": "del",
-          "text": "program"
-        },
-        {
-          "op": "del",
-          "text": "pre-walk"
-        },
-        {
-          "op": "del",
-          "text": "warm-up"
-        },
-        {
-          "op": "del",
-          "text": "routine"
-        },
-        {
-          "op": "del",
-          "text": "3-minute"
-        },
-        {
-          "op": "del",
-          "text": "post"
-        },
-        {
-          "op": "del",
-          "text": "walk"
-        },
-        {
-          "op": "del",
-          "text": "stretch"
-        },
-        {
-          "op": "del",
-          "text": "routine"
-        },
-        {
-          "op": "del",
-          "text": "4"
-        },
-        {
-          "op": "del",
-          "text": "tips"
-        },
-        {
-          "op": "del",
-          "text": "for"
-        },
-        {
-          "op": "del",
-          "text": "faster"
-        },
-        {
-          "op": "del",
-          "text": "walking"
-        },
-        {
-          "op": "del",
-          "text": "technique"
-        },
-        {
-          "op": "del",
-          "text": "strengthening"
-        },
-        {
-          "op": "del",
-          "text": "exercises"
-        },
-        {
-          "op": "del",
-          "text": "email"
-        },
-        {
-          "op": "del",
-          "text": "this"
-        },
-        {
-          "op": "del",
-          "text": "link"
-        },
-        {
-          "op": "del",
-          "text": "to"
-        },
-        {
-          "op": "del",
-          "text": "a"
-        },
-        {
-          "op": "del",
-          "text": "friend](javascript:pop('/americaswalking/email/email_link.html?url='"
-        },
-        {
-          "op": "del",
-          "text": "location))printer"
-        },
-        {
-          "op": "del",
-          "text": "friendly"
-        },
-        {
-          "op": "del",
-          "text": "version"
-        },
-        {
-          "op": "del",
-          "text": "the"
-        },
-        {
-          "op": "del",
-          "text": "20"
-        },
-        {
-          "op": "del",
-          "text": "boost"
-        },
-        {
-          "op": "del",
-          "text": "program"
-        },
-        {
-          "op": "del",
-          "text": "fit"
-        },
-        {
-          "op": "del",
-          "text": "walking"
-        },
-        {
-          "op": "del",
-          "text": "into"
-        },
-        {
-          "op": "del",
-          "text": "your"
-        },
-        {
-          "op": "del",
-          "text": "life"
-        },
-        {
-          "op": "del",
-          "text": "the"
-        },
-        {
-          "op": "del",
-          "text": "realistic"
-        },
-        {
-          "op": "del",
-          "text": "way"
-        },
-        {
-          "op": "del",
-          "text": "to"
-        },
-        {
-          "op": "del",
-          "text": "build"
-        },
-        {
-          "op": "del",
-          "text": "up"
-        },
-        {
-          "op": "del",
-          "text": "to"
+          "op": "same",
+          "text": "least"
         },
         {
           "op": "same",
@@ -934,35 +1011,23 @@
         },
         {
           "op": "add",
-          "text": "step"
+          "text": "steps"
         },
         {
           "op": "add",
-          "text": "challenge"
+          "text": "per"
         },
         {
           "op": "add",
-          "text": "on"
-        },
-        {
-          "op": "add",
-          "text": "mental"
-        },
-        {
-          "op": "add",
-          "text": "health"
-        },
-        {
-          "op": "add",
-          "text": "and"
-        },
-        {
-          "op": "add",
-          "text": "wellbeing"
+          "text": "day"
         },
         {
           "op": "del",
-          "text": "steps"
+          "text": "steps/day"
+        },
+        {
+          "op": "del",
+          "text": "on"
         },
         {
           "op": "del",
@@ -970,7 +1035,332 @@
         },
         {
           "op": "del",
+          "text": "flat"
+        },
+        {
+          "op": "del",
+          "text": "field"
+        },
+        {
+          "op": "del",
+          "text": "as"
+        },
+        {
+          "op": "del",
+          "text": "monitored"
+        },
+        {
+          "op": "del",
+          "text": "by"
+        },
+        {
+          "op": "del",
+          "text": "pedometer"
+        },
+        {
+          "op": "del",
+          "text": "19,200"
+        },
+        {
+          "op": "del",
+          "text": "2,100"
+        },
+        {
+          "op": "del",
+          "text": "steps/day"
+        },
+        {
+          "op": "same",
+          "text": "and"
+        },
+        {
+          "op": "add",
+          "text": "record"
+        },
+        {
+          "op": "add",
+          "text": "their"
+        },
+        {
+          "op": "add",
+          "text": "steps"
+        },
+        {
+          "op": "add",
+          "text": "in"
+        },
+        {
+          "op": "add",
+          "text": "their"
+        },
+        {
+          "op": "add",
+          "text": "diary"
+        },
+        {
+          "op": "del",
+          "text": "group"
+        },
+        {
+          "op": "del",
+          "text": "d"
+        },
+        {
+          "op": "del",
+          "text": "was"
+        },
+        {
+          "op": "del",
+          "text": "told"
+        },
+        {
+          "op": "del",
+          "text": "to"
+        },
+        {
+          "op": "del",
+          "text": "maintain"
+        },
+        {
+          "op": "del",
+          "text": "a"
+        },
+        {
+          "op": "del",
+          "text": "normal"
+        },
+        {
+          "op": "del",
+          "text": "daily"
+        },
+        {
+          "op": "del",
+          "text": "routine"
+        },
+        {
+          "op": "del",
+          "text": "4,500"
+        },
+        {
+          "op": "del",
+          "text": "290"
+        },
+        {
+          "op": "del",
+          "text": "steps/day"
+        }
+      ],
+      "faithful": false
+    },
+    {
+      "edgeId": "e2",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "scope_widened",
+          "source": "inferred",
+          "value": "yes",
+          "probability": 0.99944717518037,
+          "disputed": false
+        },
+        {
+          "id": "attribution_shifted",
+          "source": "inferred",
+          "value": "yes",
+          "probability": 0.9820137605480302,
+          "disputed": false
+        },
+        {
+          "id": "context_stripped",
+          "source": "inferred",
+          "value": "yes",
+          "probability": 0.9626730753780465,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "evidence"
+        },
+        {
+          "op": "add",
+          "text": "is"
+        },
+        {
+          "op": "add",
+          "text": "beginning"
+        },
+        {
+          "op": "add",
+          "text": "to"
+        },
+        {
+          "op": "add",
+          "text": "highlight"
+        },
+        {
+          "op": "del",
+          "text": "during"
+        },
+        {
+          "op": "same",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "value"
+        },
+        {
+          "op": "add",
+          "text": "of"
+        },
+        {
+          "op": "add",
+          "text": "promoting"
+        },
+        {
+          "op": "add",
+          "text": "walking"
+        },
+        {
+          "op": "add",
+          "text": "particularly"
+        },
+        {
+          "op": "add",
+          "text": "focusing"
+        },
+        {
+          "op": "add",
+          "text": "on"
+        },
+        {
+          "op": "del",
+          "text": "12-week"
+        },
+        {
+          "op": "del",
+          "text": "intervention"
+        },
+        {
+          "op": "same",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "japanese"
+        },
+        {
+          "op": "add",
+          "text": "mark"
+        },
+        {
+          "op": "add",
+          "text": "of"
+        },
+        {
+          "op": "add",
+          "text": "obtaining"
+        },
+        {
+          "op": "del",
+          "text": "participants"
+        },
+        {
+          "op": "del",
+          "text": "were"
+        },
+        {
+          "op": "del",
+          "text": "instructed"
+        },
+        {
+          "op": "del",
+          "text": "to"
+        },
+        {
+          "op": "del",
+          "text": "walk"
+        },
+        {
+          "op": "del",
+          "text": "at"
+        },
+        {
+          "op": "del",
+          "text": "least"
+        },
+        {
+          "op": "same",
+          "text": "10,000"
+        },
+        {
+          "op": "same",
+          "text": "steps"
+        },
+        {
+          "op": "same",
+          "text": "per"
+        },
+        {
+          "op": "same",
           "text": "day"
+        },
+        {
+          "op": "del",
+          "text": "and"
+        },
+        {
+          "op": "del",
+          "text": "record"
+        },
+        {
+          "op": "del",
+          "text": "their"
+        },
+        {
+          "op": "del",
+          "text": "steps"
+        },
+        {
+          "op": "del",
+          "text": "in"
+        },
+        {
+          "op": "del",
+          "text": "their"
+        },
+        {
+          "op": "del",
+          "text": "diary"
         }
       ],
       "faithful": false
@@ -978,27 +1368,27 @@
   ],
   "blame": [],
   "roots": {
-    "pages": 6,
-    "clusters": 6,
+    "pages": 10,
+    "clusters": 10,
     "rootsLinked": 0,
-    "clustersUnlinked": 6,
+    "clustersUnlinked": 10,
     "studiesFound": null,
-    "independentRoots": 6,
+    "independentRoots": 10,
     "copies": 0
   },
   "redHopEdgeId": "e1",
   "earliest": {
     "nodeIds": [
-      "n6"
+      "n11"
     ],
-    "earlierWindowSearches": 3,
+    "earlierWindowSearches": 4,
     "earlierFound": 0
   },
   "failure": null,
   "budget": {
-    "credits": 14,
-    "usd": 0.0008784699999999999,
-    "ms": 67789,
+    "credits": 35,
+    "usd": 0.0012001000000000002,
+    "ms": 173853,
     "capHit": null
   },
   "decision": {
@@ -1008,137 +1398,357 @@
       "5 unread candidate parent(s)"
     ],
     "counts": {
-      "pages": 6,
-      "clusters": 6,
+      "pages": 10,
+      "clusters": 10,
       "unreadParents": 5,
-      "earlierWindowSearches": 3
+      "earlierWindowSearches": 4
     }
   },
   "searchLog": [
     {
-      "at": "2026-11-18T02:58:06.292Z",
+      "at": "2026-11-19T13:17:44.665Z",
       "step": "search",
       "query": "\"10,000\" steps",
-      "endDate": "2026-11-18",
+      "endDate": "2026-11-19",
       "startDate": null,
       "results": 9,
       "kept": 9,
       "dropped": 0
     },
     {
-      "at": "2026-11-18T02:58:07.390Z",
+      "at": "2026-11-19T13:17:46.258Z",
       "step": "search",
-      "query": "\"10,000 steps a day\" to stay healthy",
-      "endDate": "2026-11-18",
+      "query": "10,000 steps a day health benefit",
+      "endDate": "2026-11-19",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-18T02:58:10.261Z",
+      "at": "2026-11-19T13:17:47.681Z",
       "step": "search",
-      "query": "\"10,000 steps\" daily for health",
-      "endDate": "2026-11-18",
+      "query": "walking 10,000 steps daily for health",
+      "endDate": "2026-11-19",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-18T02:58:11.459Z",
+      "at": "2026-11-19T13:17:49.445Z",
       "step": "search",
-      "query": "\"10,000 steps a day\" health recommendation",
-      "endDate": "2026-11-18",
+      "query": "10,000 steps a day origin health",
+      "endDate": "2026-11-19",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-18T02:58:11.992Z",
+      "at": "2026-11-19T13:17:51.712Z",
       "step": "meta-search",
       "query": "\"10,000\" steps",
-      "endDate": "2026-11-18",
+      "endDate": "2026-11-19",
       "startDate": null,
       "results": 5,
       "kept": 2,
       "dropped": 3
     },
     {
-      "at": "2026-11-18T02:58:20.274Z",
+      "at": "2026-11-19T13:18:03.937Z",
       "step": "search",
       "query": "\"10,000\" steps",
-      "endDate": "2020-08-18",
-      "startDate": null,
-      "results": 10,
-      "kept": 8,
-      "dropped": 2
-    },
-    {
-      "at": "2026-11-18T02:58:21.854Z",
-      "step": "search",
-      "query": "10,000 steps a day to stay healthy variant",
-      "endDate": "2020-08-18",
-      "startDate": null,
-      "results": 10,
-      "kept": 10,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-18T02:58:24.355Z",
-      "step": "search",
-      "query": "\"Happy feet\" 10,000 step challenge mental health older wording",
-      "endDate": "2020-08-18",
+      "endDate": "2016-06-15",
       "startDate": null,
       "results": 9,
       "kept": 9,
       "dropped": 0
     },
     {
-      "at": "2026-11-18T02:58:25.829Z",
+      "at": "2026-11-19T13:18:06.099Z",
       "step": "search",
-      "query": "10,000 steps a day health recommendation publisher",
-      "endDate": "2020-08-18",
-      "startDate": null,
-      "results": 10,
-      "kept": 9,
-      "dropped": 1
-    },
-    {
-      "at": "2026-11-18T02:58:36.408Z",
-      "step": "search",
-      "query": "\"10,000\" steps",
-      "endDate": "2002-03-30",
+      "query": "\"10,000 steps per day\" to stay healthy",
+      "endDate": "2016-06-15",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-18T02:58:37.993Z",
+      "at": "2026-11-19T13:18:07.899Z",
       "step": "search",
-      "query": "\"10,000 steps a day\" 20% Boost Program pbs.org",
-      "endDate": "2002-03-30",
+      "query": "\"at least 10,000 steps per day\" intervention",
+      "endDate": "2016-06-15",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:18:09.848Z",
+      "step": "search",
+      "query": "10,000 steps per day health recommendation",
+      "endDate": "2016-06-15",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:18:21.803Z",
+      "step": "search",
+      "query": "\"10,000\" steps",
+      "endDate": "2006-03-14",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:18:23.377Z",
+      "step": "search",
+      "query": "10,000 steps per day recommendation origin",
+      "endDate": "2006-03-14",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:18:25.223Z",
+      "step": "search",
+      "query": "\"walk 10,000 steps per day\" earliest source",
+      "endDate": "2006-03-14",
+      "startDate": null,
+      "results": 3,
+      "kept": 3,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:18:27.373Z",
+      "step": "search",
+      "query": "\"10,000 steps per day\" recommendation older wording",
+      "endDate": "2006-03-14",
       "startDate": null,
       "results": 7,
       "kept": 7,
       "dropped": 0
     },
     {
-      "at": "2026-11-18T02:58:39.106Z",
+      "at": "2026-11-19T13:18:48.344Z",
       "step": "search",
-      "query": "10,000 steps a day health benefit walking topic",
-      "endDate": "2002-03-30",
+      "query": "\"10,000 steps a day\" recommendation origin",
+      "endDate": "2006-03-14",
       "startDate": null,
       "results": 9,
       "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:18:50.734Z",
+      "step": "search",
+      "query": "\"10,000 steps per day\" health recommendation history",
+      "endDate": "2006-03-14",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:18:53.253Z",
+      "step": "search",
+      "query": "10,000 steps daily health guideline publisher",
+      "endDate": "2006-03-14",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:18:55.566Z",
+      "step": "search",
+      "query": "study on 10,000 steps per day health benefit",
+      "endDate": "2006-03-14",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:19:07.958Z",
+      "step": "search",
+      "query": "\"10,000\" steps",
+      "endDate": "2001-01-30",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:19:10.252Z",
+      "step": "search",
+      "query": "10,000 steps per day health benefit",
+      "endDate": "2001-01-30",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:19:11.919Z",
+      "step": "search",
+      "query": "10000 steps per day average walking",
+      "endDate": "2001-01-30",
+      "startDate": null,
+      "results": 8,
+      "kept": 8,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:19:13.672Z",
+      "step": "search",
+      "query": "10,000 steps per day Japan study",
+      "endDate": "2001-01-30",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:19:36.428Z",
+      "step": "search",
+      "query": "\"10,000\" steps",
+      "endDate": "1995-05-31",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:19:37.937Z",
+      "step": "search",
+      "query": "10,000 steps a day to stay healthy",
+      "endDate": "1995-05-31",
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:19:39.420Z",
+      "step": "search",
+      "query": "\"walk at least 10,000 steps/day\" pedometer",
+      "endDate": "1995-05-31",
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:19:42.262Z",
+      "step": "search",
+      "query": "10,000 steps daily health benefit research",
+      "endDate": "1995-05-31",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:19:52.171Z",
+      "step": "search",
+      "query": "\"10,000\" steps",
+      "endDate": "1991-08-01",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:19:54.557Z",
+      "step": "search",
+      "query": "10,000 steps a day health claim origin",
+      "endDate": "1991-08-01",
+      "startDate": null,
+      "results": 9,
+      "kept": 6,
+      "dropped": 3
+    },
+    {
+      "at": "2026-11-19T13:19:56.400Z",
+      "step": "search",
+      "query": "10,000 steps a day Japan pedometer study",
+      "endDate": "1991-08-01",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:19:58.898Z",
+      "step": "search",
+      "query": "10,000 steps a day research study origin",
+      "endDate": "1991-08-01",
+      "startDate": null,
+      "results": 8,
+      "kept": 7,
+      "dropped": 1
+    },
+    {
+      "at": "2026-11-19T13:20:22.889Z",
+      "step": "dating",
+      "query": "https://www.snopes.com/news/2021/02/02/do-we-really-need-to-walk-10000-steps-a-day: the node has no span to look for in the capture; no date from the first capture",
+      "endDate": null,
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:20:22.892Z",
+      "step": "dating",
+      "query": "https://www.snopes.com/fact-check/diesel-brothers-facebook-giveaway: the node has no span to look for in the capture; no date from the first capture",
+      "endDate": null,
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:20:25.731Z",
+      "step": "dating",
+      "query": "http://www.thewalkingsite.com/10000steps.html: the first capture (2004-09-28) does not hold the claim's sentence; no date from the first capture",
+      "endDate": null,
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:20:26.725Z",
+      "step": "dating",
+      "query": "https://www.physio-pedia.com/Arches_of_the_Foot: the first capture (2017-02-23) does not hold the claim's sentence; no date from the first capture",
+      "endDate": null,
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:20:27.766Z",
+      "step": "dating",
+      "query": "https://www.govinfo.gov/content/pkg/GOVPUB-HE20_100-PURL-LPS39913/pdf/GOVPUB-HE20_100-PURL-LPS39913.pdf: the first capture (2026-07-17) does not hold the claim's sentence; no date from the first capture",
+      "endDate": null,
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
       "dropped": 0
     }
   ],
   "usage": [
     {
-      "at": "2026-11-18T02:58:01.112Z",
+      "at": "2026-11-19T13:17:36.703Z",
       "traceId": "dev-06",
       "step": "tokenfactory",
       "service": "tokenfactory",
@@ -1146,31 +1756,31 @@
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 166,
       "completionTokens": 47,
-      "cachedTokens": 128,
+      "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0.0000307,
-      "latencyMs": 941,
+      "latencyMs": 1539,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:58:02.061Z",
+      "at": "2026-11-19T13:17:38.254Z",
       "traceId": "dev-06",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 276,
-      "completionTokens": 204,
+      "completionTokens": 176,
       "cachedTokens": 240,
       "credits": 0,
-      "costUsd": 0.00008879999999999999,
-      "latencyMs": 3801,
+      "costUsd": 0.0000804,
+      "latencyMs": 5240,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:58:06.291Z",
+      "at": "2026-11-19T13:17:44.665Z",
       "traceId": "dev-06",
       "step": "search",
       "service": "tavily",
@@ -1181,12 +1791,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 414,
+      "latencyMs": 1138,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:58:07.390Z",
+      "at": "2026-11-19T13:17:46.257Z",
       "traceId": "dev-06",
       "step": "search",
       "service": "tavily",
@@ -1197,12 +1807,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1083,
+      "latencyMs": 1566,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:58:10.260Z",
+      "at": "2026-11-19T13:17:47.681Z",
       "traceId": "dev-06",
       "step": "search",
       "service": "tavily",
@@ -1213,12 +1823,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 2857,
+      "latencyMs": 1395,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:58:11.459Z",
+      "at": "2026-11-19T13:17:49.444Z",
       "traceId": "dev-06",
       "step": "search",
       "service": "tavily",
@@ -1229,12 +1839,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1175,
+      "latencyMs": 1736,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:58:11.992Z",
+      "at": "2026-11-19T13:17:51.711Z",
       "traceId": "dev-06",
       "step": "meta-search",
       "service": "tavily",
@@ -1245,12 +1855,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 513,
+      "latencyMs": 2237,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:58:12.052Z",
+      "at": "2026-11-19T13:17:51.719Z",
       "traceId": "dev-06",
       "step": "meta-extract",
       "service": "tavily",
@@ -1266,7 +1876,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-18T02:58:12.805Z",
+      "at": "2026-11-19T13:17:52.494Z",
       "traceId": "dev-06",
       "step": "extract",
       "service": "tavily",
@@ -1277,44 +1887,28 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 732,
+      "latencyMs": 746,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:58:12.814Z",
-      "traceId": "dev-06",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 0,
-      "status": "200",
-      "cacheHit": true
-    },
-    {
-      "at": "2026-11-18T02:58:12.816Z",
+      "at": "2026-11-19T13:17:52.504Z",
       "traceId": "dev-06",
       "step": "same_claim",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 227,
+      "promptTokens": 226,
       "completionTokens": 7,
       "cachedTokens": 160,
       "credits": 0,
-      "costUsd": 0.0000248,
-      "latencyMs": 744,
+      "costUsd": 0.0000247,
+      "latencyMs": 697,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:58:13.569Z",
+      "at": "2026-11-19T13:17:53.206Z",
       "traceId": "dev-06",
       "step": "dating",
       "service": "wayback",
@@ -1330,7 +1924,71 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-18T02:58:13.572Z",
+      "at": "2026-11-19T13:17:55.079Z",
+      "traceId": "dev-06",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "capture",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1873,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:17:55.111Z",
+      "traceId": "dev-06",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 230,
+      "completionTokens": 7,
+      "cachedTokens": 160,
+      "credits": 0,
+      "costUsd": 0.0000251,
+      "latencyMs": 573,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:17:55.690Z",
+      "traceId": "dev-06",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:17:55.719Z",
+      "traceId": "dev-06",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 215,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.0000236,
+      "latencyMs": 653,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:17:56.374Z",
       "traceId": "dev-06",
       "step": "same_claim",
       "service": "tokenfactory",
@@ -1341,12 +1999,12 @@
       "cachedTokens": 176,
       "credits": 0,
       "costUsd": 0.0000246,
-      "latencyMs": 340,
+      "latencyMs": 368,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:58:15.009Z",
+      "at": "2026-11-19T13:17:57.198Z",
       "traceId": "dev-06",
       "step": "dating",
       "service": "wayback",
@@ -1357,172 +2015,828 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 1092,
+      "latencyMs": 455,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:58:15.010Z",
+      "at": "2026-11-19T13:17:57.202Z",
+      "traceId": "dev-06",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 338,
+      "completionTokens": 157,
+      "cachedTokens": 240,
+      "credits": 0,
+      "costUsd": 0.0000809,
+      "latencyMs": 5267,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:18:03.936Z",
+      "traceId": "dev-06",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1445,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:18:06.098Z",
+      "traceId": "dev-06",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2138,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:18:07.898Z",
+      "traceId": "dev-06",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1766,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:18:09.848Z",
+      "traceId": "dev-06",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1921,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:18:10.974Z",
+      "traceId": "dev-06",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1106,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:18:10.983Z",
       "traceId": "dev-06",
       "step": "same_claim",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 282,
+      "promptTokens": 214,
       "completionTokens": 7,
       "cachedTokens": 176,
       "credits": 0,
-      "costUsd": 0.0000303,
-      "latencyMs": 358,
+      "costUsd": 0.000023500000000000002,
+      "latencyMs": 813,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:58:15.371Z",
+      "at": "2026-11-19T13:18:11.797Z",
+      "traceId": "dev-06",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 233,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.0000254,
+      "latencyMs": 522,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:18:12.958Z",
+      "traceId": "dev-06",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 637,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:18:12.961Z",
+      "traceId": "dev-06",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 216,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.0000237,
+      "latencyMs": 404,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:18:13.701Z",
+      "traceId": "dev-06",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 332,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:18:14.068Z",
+      "traceId": "dev-06",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "capture",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 366,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:18:14.070Z",
+      "traceId": "dev-06",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 323,
+      "completionTokens": 183,
+      "cachedTokens": 272,
+      "credits": 0,
+      "costUsd": 0.0000872,
+      "latencyMs": 6208,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:18:21.803Z",
+      "traceId": "dev-06",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1505,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:18:23.377Z",
+      "traceId": "dev-06",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1558,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:18:25.223Z",
+      "traceId": "dev-06",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1830,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:18:27.373Z",
+      "traceId": "dev-06",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2120,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:18:37.681Z",
+      "traceId": "dev-06",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 10276,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:18:37.691Z",
+      "traceId": "dev-06",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 135,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00000135,
+      "latencyMs": 1699,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:18:39.394Z",
+      "traceId": "dev-06",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 323,
+      "completionTokens": 221,
+      "cachedTokens": 256,
+      "credits": 0,
+      "costUsd": 0.0000986,
+      "latencyMs": 7021,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:18:48.343Z",
+      "traceId": "dev-06",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1886,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:18:50.734Z",
+      "traceId": "dev-06",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2353,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:18:53.252Z",
+      "traceId": "dev-06",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2496,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:18:55.566Z",
+      "traceId": "dev-06",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2289,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:18:56.434Z",
+      "traceId": "dev-06",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 851,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:18:56.446Z",
+      "traceId": "dev-06",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 235,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.000025600000000000002,
+      "latencyMs": 545,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:18:57.514Z",
+      "traceId": "dev-06",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 521,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:18:57.584Z",
+      "traceId": "dev-06",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 230,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.0000251,
+      "latencyMs": 869,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:18:58.723Z",
+      "traceId": "dev-06",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 269,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:18:58.753Z",
+      "traceId": "dev-06",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 218,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.0000239,
+      "latencyMs": 437,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:19:02.412Z",
+      "traceId": "dev-06",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 3221,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:19:02.415Z",
+      "traceId": "dev-06",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 342,
+      "completionTokens": 147,
+      "cachedTokens": 272,
+      "credits": 0,
+      "costUsd": 0.0000783,
+      "latencyMs": 3501,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:19:07.958Z",
+      "traceId": "dev-06",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2012,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:19:10.252Z",
+      "traceId": "dev-06",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2278,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:19:11.918Z",
+      "traceId": "dev-06",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1651,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:19:13.671Z",
+      "traceId": "dev-06",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1736,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:19:14.049Z",
+      "traceId": "dev-06",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 206,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:19:14.627Z",
+      "traceId": "dev-06",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 244,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00000244,
+      "latencyMs": 6637,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:19:21.271Z",
+      "traceId": "dev-06",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 266,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.000028700000000000003,
+      "latencyMs": 610,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:19:31.481Z",
+      "traceId": "dev-06",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 9599,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:19:31.513Z",
+      "traceId": "dev-06",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 373,
+      "completionTokens": 161,
+      "cachedTokens": 272,
+      "credits": 0,
+      "costUsd": 0.0000856,
+      "latencyMs": 3642,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:19:36.427Z",
+      "traceId": "dev-06",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1252,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:19:37.937Z",
+      "traceId": "dev-06",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1489,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:19:39.415Z",
+      "traceId": "dev-06",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1447,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:19:42.261Z",
+      "traceId": "dev-06",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2815,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:19:42.562Z",
+      "traceId": "dev-06",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 280,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:19:42.609Z",
+      "traceId": "dev-06",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 786,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.000007860000000000001,
+      "latencyMs": 2002,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:19:44.673Z",
+      "traceId": "dev-06",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 226,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00000226,
+      "latencyMs": 968,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:19:45.652Z",
+      "traceId": "dev-06",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 231,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.0000252,
+      "latencyMs": 407,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:19:47.731Z",
+      "traceId": "dev-06",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1671,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:19:47.733Z",
       "traceId": "dev-06",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 333,
-      "completionTokens": 161,
-      "cachedTokens": 256,
-      "credits": 0,
-      "costUsd": 0.00008159999999999999,
-      "latencyMs": 3166,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T02:58:20.274Z",
-      "traceId": "dev-06",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1689,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T02:58:21.853Z",
-      "traceId": "dev-06",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1545,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T02:58:24.334Z",
-      "traceId": "dev-06",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 2461,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T02:58:25.829Z",
-      "traceId": "dev-06",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1456,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T02:58:30.202Z",
-      "traceId": "dev-06",
-      "step": "extract",
-      "service": "tavily",
-      "endpoint": "extract",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 4358,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T02:58:31.046Z",
-      "traceId": "dev-06",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 788,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T02:58:31.054Z",
-      "traceId": "dev-06",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 367,
-      "completionTokens": 7,
-      "cachedTokens": 160,
-      "credits": 0,
-      "costUsd": 0.000038799999999999994,
-      "latencyMs": 625,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T02:58:31.681Z",
-      "traceId": "dev-06",
-      "step": "tokenfactory",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 471,
-      "completionTokens": 179,
+      "completionTokens": 163,
       "cachedTokens": 272,
       "credits": 0,
-      "costUsd": 0.00010079999999999998,
-      "latencyMs": 3146,
+      "costUsd": 0.00008219999999999999,
+      "latencyMs": 2812,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:58:36.408Z",
+      "at": "2026-11-19T13:19:52.170Z",
       "traceId": "dev-06",
       "step": "search",
       "service": "tavily",
@@ -1533,12 +2847,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1562,
+      "latencyMs": 1603,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:58:37.990Z",
+      "at": "2026-11-19T13:19:54.556Z",
       "traceId": "dev-06",
       "step": "search",
       "service": "tavily",
@@ -1549,12 +2863,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1565,
+      "latencyMs": 2365,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:58:39.105Z",
+      "at": "2026-11-19T13:19:56.400Z",
       "traceId": "dev-06",
       "step": "search",
       "service": "tavily",
@@ -1565,12 +2879,28 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1079,
+      "latencyMs": 1713,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:58:49.913Z",
+      "at": "2026-11-19T13:19:58.898Z",
+      "traceId": "dev-06",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2456,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:19:59.446Z",
       "traceId": "dev-06",
       "step": "extract",
       "service": "tavily",
@@ -1581,108 +2911,92 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 10792,
+      "latencyMs": 523,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:58:49.965Z",
+      "at": "2026-11-19T13:19:59.735Z",
       "traceId": "dev-06",
       "step": "embed",
       "service": "tokenfactory",
       "endpoint": "/embeddings",
       "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 93,
+      "promptTokens": 64,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 9.3e-7,
-      "latencyMs": 2999,
+      "costUsd": 6.4e-7,
+      "latencyMs": 3485,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:58:52.970Z",
-      "traceId": "dev-06",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 0,
-      "status": "200",
-      "cacheHit": true
-    },
-    {
-      "at": "2026-11-18T02:58:52.971Z",
-      "traceId": "dev-06",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 220,
-      "completionTokens": 7,
-      "cachedTokens": 176,
-      "credits": 0,
-      "costUsd": 0.0000241,
-      "latencyMs": 274,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T02:59:01.885Z",
-      "traceId": "dev-06",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 8638,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T02:59:01.887Z",
-      "traceId": "dev-06",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 236,
-      "completionTokens": 7,
-      "cachedTokens": 176,
-      "credits": 0,
-      "costUsd": 0.0000257,
-      "latencyMs": 668,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T02:59:02.557Z",
+      "at": "2026-11-19T13:20:03.422Z",
       "traceId": "dev-06",
       "step": "embed",
       "service": "tokenfactory",
       "endpoint": "/embeddings",
       "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 384,
+      "promptTokens": 439,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.0000038400000000000005,
-      "latencyMs": 3574,
+      "costUsd": 0.00000439,
+      "latencyMs": 834,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:59:06.163Z",
+      "at": "2026-11-19T13:20:04.370Z",
+      "traceId": "dev-06",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 158,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.0000015800000000000001,
+      "latencyMs": 7048,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:20:11.493Z",
+      "traceId": "dev-06",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 63,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 6.3e-7,
+      "latencyMs": 629,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:20:12.130Z",
+      "traceId": "dev-06",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 325,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.0000032500000000000002,
+      "latencyMs": 8923,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:20:21.078Z",
       "traceId": "dev-06",
       "step": "dating",
       "service": "ncbi",
@@ -1698,7 +3012,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-18T02:59:06.175Z",
+      "at": "2026-11-19T13:20:21.082Z",
       "traceId": "dev-06",
       "step": "dating",
       "service": "ncbi",
@@ -1714,7 +3028,23 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-18T02:59:06.295Z",
+      "at": "2026-11-19T13:20:21.286Z",
+      "traceId": "dev-06",
+      "step": "dating",
+      "service": "ncbi",
+      "endpoint": "esummary",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 204,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:20:21.475Z",
       "traceId": "dev-06",
       "step": "dating",
       "service": "fetch",
@@ -1725,12 +3055,92 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 120,
+      "latencyMs": 189,
+      "status": "bad_response",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:20:21.624Z",
+      "traceId": "dev-06",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 542,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:20:21.660Z",
+      "traceId": "dev-06",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 185,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:20:21.868Z",
+      "traceId": "dev-06",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 207,
       "status": "403",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:59:06.320Z",
+      "at": "2026-11-19T13:20:22.240Z",
+      "traceId": "dev-06",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 371,
+      "status": "bad_response",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:20:22.398Z",
+      "traceId": "dev-06",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 773,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:20:22.515Z",
       "traceId": "dev-06",
       "step": "dating",
       "service": "ncbi",
@@ -1741,12 +3151,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 0,
+      "latencyMs": 275,
       "status": "200",
-      "cacheHit": true
+      "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:59:06.569Z",
+      "at": "2026-11-19T13:20:22.884Z",
       "traceId": "dev-06",
       "step": "dating",
       "service": "fetch",
@@ -1757,28 +3167,108 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 249,
+      "latencyMs": 486,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:59:07.125Z",
+      "at": "2026-11-19T13:20:22.889Z",
       "traceId": "dev-06",
       "step": "dating",
-      "service": "fetch",
-      "endpoint": "page",
+      "service": "wayback",
+      "endpoint": "cdx",
       "model": null,
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 950,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:20:22.892Z",
+      "traceId": "dev-06",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:20:22.892Z",
+      "traceId": "dev-06",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:20:22.894Z",
+      "traceId": "dev-06",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:20:22.896Z",
+      "traceId": "dev-06",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:20:23.609Z",
+      "traceId": "dev-06",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "capture",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 712,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:59:07.284Z",
+      "at": "2026-11-19T13:20:23.610Z",
       "traceId": "dev-06",
       "step": "dating",
       "service": "wayback",
@@ -1794,7 +3284,23 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-18T02:59:07.321Z",
+      "at": "2026-11-19T13:20:25.723Z",
+      "traceId": "dev-06",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "capture",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 2112,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:20:25.727Z",
       "traceId": "dev-06",
       "step": "dating",
       "service": "wayback",
@@ -1810,7 +3316,23 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-18T02:59:07.326Z",
+      "at": "2026-11-19T13:20:25.731Z",
+      "traceId": "dev-06",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "capture",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:20:25.732Z",
       "traceId": "dev-06",
       "step": "dating",
       "service": "wayback",
@@ -1826,7 +3348,23 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-18T02:59:07.329Z",
+      "at": "2026-11-19T13:20:26.724Z",
+      "traceId": "dev-06",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "capture",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 991,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:20:26.727Z",
       "traceId": "dev-06",
       "step": "dating",
       "service": "wayback",
@@ -1842,7 +3380,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-18T02:59:07.330Z",
+      "at": "2026-11-19T13:20:26.730Z",
       "traceId": "dev-06",
       "step": "dating",
       "service": "wayback",
@@ -1858,7 +3396,23 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-18T02:59:07.330Z",
+      "at": "2026-11-19T13:20:27.764Z",
+      "traceId": "dev-06",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "capture",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1034,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:20:27.767Z",
       "traceId": "dev-06",
       "step": "dating",
       "service": "wayback",
@@ -1874,7 +3428,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-18T02:59:07.331Z",
+      "at": "2026-11-19T13:20:27.767Z",
       "traceId": "dev-06",
       "step": "dating",
       "service": "wayback",
@@ -1890,66 +3444,66 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-18T02:59:07.331Z",
-      "traceId": "dev-06",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 0,
-      "status": "200",
-      "cacheHit": true
-    },
-    {
-      "at": "2026-11-18T02:59:07.342Z",
+      "at": "2026-11-19T13:20:27.769Z",
       "traceId": "dev-06",
       "step": "page_type",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 2700,
-      "completionTokens": 7,
+      "promptTokens": 996,
+      "completionTokens": 8,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.0002721,
-      "latencyMs": 519,
+      "costUsd": 0.000102,
+      "latencyMs": 716,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:59:07.865Z",
+      "at": "2026-11-19T13:20:28.509Z",
       "traceId": "dev-06",
       "step": "readouts",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 587,
+      "promptTokens": 487,
       "completionTokens": 23,
-      "cachedTokens": 368,
+      "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.00006560000000000001,
-      "latencyMs": 590,
+      "costUsd": 0.000055599999999999996,
+      "latencyMs": 723,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:59:08.459Z",
+      "at": "2026-11-19T13:20:29.253Z",
+      "traceId": "dev-06",
+      "step": "readouts",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 449,
+      "completionTokens": 23,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.0000518,
+      "latencyMs": 948,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:20:30.212Z",
       "traceId": "dev-06",
       "step": "boundary",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 640,
+      "promptTokens": 415,
       "completionTokens": 6,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.0000658,
-      "latencyMs": 440,
+      "costUsd": 0.0000433,
+      "latencyMs": 342,
       "status": "200",
       "cacheHit": false
     }

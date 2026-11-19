@@ -3,7 +3,7 @@
   "id": "dev-10",
   "mode": "LIVE",
   "synthetic": false,
-  "recordedAt": "2026-11-18T03:01:20.416Z",
+  "recordedAt": "2026-11-19T13:22:11.863Z",
   "claim": {
     "text": "By 2050 there will be more plastic than fish in the ocean.",
     "atoms": {
@@ -28,8 +28,8 @@
       "domain": "snopes.com",
       "title": "Unpacking long-standing claim oceans will contain more plastic than fish by 2050 | Snopes.com",
       "date": {
-        "kind": "existed_by",
-        "value": "2025-03-30",
+        "kind": "unconfirmed",
+        "value": null,
         "source": "wayback_first_capture",
         "firstCapture": "2025-03-30",
         "conflictingDate": false
@@ -68,8 +68,8 @@
       "domain": "snopes.com",
       "title": "Did a Sperm Whale Die After Swallowing 64 Pounds of Plastic Debris? | Snopes.com",
       "date": {
-        "kind": "existed_by",
-        "value": "2021-11-07",
+        "kind": "unconfirmed",
+        "value": null,
         "source": "wayback_first_capture",
         "firstCapture": "2021-11-07",
         "conflictingDate": false
@@ -104,12 +104,12 @@
     },
     {
       "id": "n3",
-      "url": "https://x.com/UN/status/1862542791399575562",
+      "url": "https://x.com/iaeaorg/status/1875150113813008472",
       "domain": "x.com",
-      "title": "United Nations on X: \"By 2050, there could be more plastic than fish in the ocean. Leaders are coming together to craft a new international agreement on plastic pollution to protect people’s health, economies, and the planet. More on these critical discussions from @UNEP: https://t.co/geeFVhDVCq\" / X",
+      "title": "IAEA - International Atomic Energy Agency ⚛️ on X: \"⚠️By 2050, oceans will have more plastic than fish, unless we take action. On #WorldOceansDay, watch how our #NUTECplastics initiative takes advantage of the latest radiation technology to help beat plastic pollution.\" / X",
       "date": {
         "kind": "published",
-        "value": "2024-11-29",
+        "value": "2025-01-03",
         "source": "metadata",
         "firstCapture": "2025-03-30",
         "conflictingDate": false
@@ -122,30 +122,21 @@
       "spanIds": [
         "s1"
       ],
-      "citesEarlier": true,
-      "candidateParents": [
-        {
-          "url": "https://x.com/i/jf/onboarding/web?mode=login&redirect_after_login=%2FUN%2Fstatus%2F1862542791399575562",
-          "read": false
-        },
-        {
-          "url": "https://x.com/i/jf/onboarding/web?mode=signup&redirect_after_login=%2FUN%2Fstatus%2F1862542791399575562",
-          "read": false
-        }
-      ],
+      "citesEarlier": false,
+      "candidateParents": [],
       "pageType": null,
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "yes",
-        "probability": 0.9999999994094695,
+        "probability": 0.9999999999622486,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.9999999994094695
+            "p": 0.9999999999622486
           },
           {
             "optionId": "no",
-            "p": 5.905305801867985e-10
+            "p": 3.7751348361127353e-11
           },
           {
             "optionId": "__other__",
@@ -160,17 +151,17 @@
     },
     {
       "id": "n4",
-      "url": "https://x.com/iaeaorg/status/1875150113813008472",
+      "url": "https://x.com/UN/status/1862542791399575562",
       "domain": "x.com",
-      "title": "IAEA - International Atomic Energy Agency ⚛️ on X: \"⚠️By 2050, oceans will have more plastic than fish, unless we take action. On #WorldOceansDay, watch how our #NUTECplastics initiative takes advantage of the latest radiation technology to help beat plastic pollution.\" / X",
+      "title": "United Nations on X: \"By 2050, there could be more plastic than fish in the ocean. Leaders are coming together to craft a new international agreement on plastic pollution to protect people’s health, economies, and the planet. More on these critical discussions from @UNEP: https://t.co/geeFVhDVCq\" / X",
       "date": {
         "kind": "published",
-        "value": "2025-01-03",
+        "value": "2024-11-29",
         "source": "metadata",
         "firstCapture": "2025-03-30",
         "conflictingDate": false
       },
-      "clusterId": "c-n4",
+      "clusterId": "c-n9",
       "evidence": "observed",
       "meta": false,
       "read": true,
@@ -178,30 +169,21 @@
       "spanIds": [
         "s2"
       ],
-      "citesEarlier": true,
-      "candidateParents": [
-        {
-          "url": "https://x.com/i/jf/onboarding/web?mode=login&redirect_after_login=%2Fiaeaorg%2Fstatus%2F1875150113813008472",
-          "read": false
-        },
-        {
-          "url": "https://x.com/i/jf/onboarding/web?mode=signup&redirect_after_login=%2Fiaeaorg%2Fstatus%2F1875150113813008472",
-          "read": true
-        }
-      ],
+      "citesEarlier": false,
+      "candidateParents": [],
       "pageType": null,
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "yes",
-        "probability": 0.9999999999915765,
+        "probability": 0.999999999987744,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.9999999999915765
+            "p": 0.999999999987744
           },
           {
             "optionId": "no",
-            "p": 8.423465890594419e-12
+            "p": 1.2256074899910374e-11
           },
           {
             "optionId": "__other__",
@@ -216,14 +198,14 @@
     },
     {
       "id": "n5",
-      "url": "https://www.bbc.com/news/magazine-35562253",
-      "domain": "bbc.com",
-      "title": "Will there be more fish or plastic in the sea in 2050? - BBC News",
+      "url": "https://environmentaljusticetv.wordpress.com/2016/01/20/there-will-be-more-plastic-than-fish-in-the-ocean-by-2050",
+      "domain": "environmentaljusticetv.wordpress.com",
+      "title": "There Will Be More Plastic Than Fish in the Ocean by 2050 – Transition Studies",
       "date": {
         "kind": "published",
-        "value": "2016-02-15",
+        "value": "2016-01-20",
         "source": "metadata",
-        "firstCapture": "2016-02-15",
+        "firstCapture": "2021-09-20",
         "conflictingDate": false
       },
       "clusterId": "c-n5",
@@ -236,44 +218,113 @@
       ],
       "citesEarlier": false,
       "candidateParents": [],
-      "pageType": null,
-      "sameClaim": {
-        "questionId": "same_claim",
-        "optionId": "no",
-        "probability": 0.999999880791144,
+      "pageType": {
+        "questionId": "page_type",
+        "optionId": "news",
+        "probability": 0.9984233690205895,
         "top": [
           {
-            "optionId": "yes",
-            "p": 6.825603465845666e-8
+            "optionId": "study",
+            "p": 7.32664219313004e-7
           },
           {
-            "optionId": "no",
-            "p": 0.999999880791144
+            "optionId": "dataset",
+            "p": 0
+          },
+          {
+            "optionId": "report",
+            "p": 0.00150106885571292
+          },
+          {
+            "optionId": "speaker",
+            "p": 0
+          },
+          {
+            "optionId": "news",
+            "p": 0.9984233690205895
+          },
+          {
+            "optionId": "blog",
+            "p": 0.00007473378210839766
+          },
+          {
+            "optionId": "social",
+            "p": 0
+          },
+          {
+            "optionId": "other",
+            "p": 0
           },
           {
             "optionId": "__other__",
-            "p": 5.0952821295524586e-8
+            "p": 9.567736991566989e-8
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.999999999986112,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.999999999986112
+          },
+          {
+            "optionId": "no",
+            "p": 1.3887945528324302e-11
+          },
+          {
+            "optionId": "__other__",
+            "p": 1.1102230246251565e-16
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
         "threshold": null
       },
       "foundViaMeta": null,
+      "boundary": {
+        "questionId": "boundary",
+        "optionId": "print",
+        "probability": 0.9999969005680498,
+        "top": [
+          {
+            "optionId": "print",
+            "p": 0.9999969005680498
+          },
+          {
+            "optionId": "unsourced",
+            "p": 1.9048303707102316e-7
+          },
+          {
+            "optionId": "none",
+            "p": 0.000002902591050802178
+          },
+          {
+            "optionId": "__other__",
+            "p": 6.3578622366833315e-9
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
       "injection": null
     },
     {
       "id": "n6",
-      "url": "https://www3.weforum.org/docs/WEF_The_New_Plastics_Economy.pdf",
-      "domain": "www3.weforum.org",
-      "title": "",
+      "url": "https://matadornetwork.com/pulse/study-plastic-in-oceans",
+      "domain": "matadornetwork.com",
+      "title": "Study: the Oceans Will Hold More Plastic Than Fish by 2050",
       "date": {
-        "kind": "existed_by",
-        "value": "2016-01-20",
-        "source": "wayback_first_capture",
-        "firstCapture": "2016-01-20",
+        "kind": "published",
+        "value": "2016-01-26",
+        "source": "metadata",
+        "firstCapture": "2016-01-27",
         "conflictingDate": false
       },
-      "clusterId": "c-n6",
+      "clusterId": "c-n5",
       "evidence": "observed",
       "meta": false,
       "read": true,
@@ -286,38 +337,38 @@
       "pageType": null,
       "sameClaim": {
         "questionId": "same_claim",
-        "optionId": "no",
-        "probability": 0.9999921107345151,
+        "optionId": "yes",
+        "probability": 0.99999999999886,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.000007889265484789919
+            "p": 0.99999999999886
           },
           {
             "optionId": "no",
-            "p": 0.9999921107345151
+            "p": 1.139992504546598e-12
           },
           {
             "optionId": "__other__",
-            "p": 1.1102230246251565e-16
+            "p": 0
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
         "threshold": null
       },
-      "foundViaMeta": "https://www.snopes.com/fact-check/sperm-whale-die-swallowing-64-pounds-plastic-debris",
+      "foundViaMeta": null,
       "injection": null
     },
     {
       "id": "n7",
-      "url": "https://www.biologicaldiversity.org/campaigns/ocean_plastics",
-      "domain": "biologicaldiversity.org",
-      "title": "Ocean Plastics Pollution",
+      "url": "https://www3.weforum.org/docs/WEF_The_New_Plastics_Economy.pdf",
+      "domain": "www3.weforum.org",
+      "title": "The New Plastics Economy Rethinking the future of plastics",
       "date": {
         "kind": "existed_by",
-        "value": "2013-06-13",
+        "value": "2016-01-20",
         "source": "wayback_first_capture",
-        "firstCapture": "2013-06-13",
+        "firstCapture": "2016-01-20",
         "conflictingDate": false
       },
       "clusterId": "c-n7",
@@ -333,11 +384,11 @@
       "pageType": {
         "questionId": "page_type",
         "optionId": "report",
-        "probability": 0.999999736938928,
+        "probability": 0.9999999994851667,
         "top": [
           {
             "optionId": "study",
-            "p": 2.5109990938665456e-8
+            "p": 4.5990553761585103e-10
           },
           {
             "optionId": "dataset",
@@ -345,7 +396,7 @@
           },
           {
             "optionId": "report",
-            "p": 0.999999736938928
+            "p": 0.9999999994851667
           },
           {
             "optionId": "speaker",
@@ -353,11 +404,11 @@
           },
           {
             "optionId": "news",
-            "p": 8.152020513583544e-9
+            "p": 0
           },
           {
             "optionId": "blog",
-            "p": 1.9555680605948538e-8
+            "p": 0
           },
           {
             "optionId": "social",
@@ -365,7 +416,7 @@
           },
           {
             "optionId": "other",
-            "p": 2.1024338005725036e-7
+            "p": 5.492788347976257e-11
           },
           {
             "optionId": "__other__",
@@ -378,15 +429,15 @@
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "yes",
-        "probability": 0.9999999999925664,
+        "probability": 0.9968273169324336,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.9999999999925664
+            "p": 0.9968273169324336
           },
           {
             "optionId": "no",
-            "p": 7.433683592076045e-12
+            "p": 0.003172683067566382
           },
           {
             "optionId": "__other__",
@@ -396,27 +447,27 @@
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
         "threshold": null
       },
-      "foundViaMeta": null,
+      "foundViaMeta": "https://www.snopes.com/fact-check/sperm-whale-die-swallowing-64-pounds-plastic-debris",
       "boundary": {
         "questionId": "boundary",
         "optionId": "print",
-        "probability": 0.9999997571829233,
+        "probability": 0.9999976158197796,
         "top": [
           {
             "optionId": "print",
-            "p": 0.9999997571829233
+            "p": 0.9999976158197796
           },
           {
             "optionId": "unsourced",
-            "p": 3.255795537479073e-8
+            "p": 6.935915750347185e-8
           },
           {
             "optionId": "none",
-            "p": 2.1025912141545512e-7
+            "p": 0.0000022603800235277045
           },
           {
             "optionId": "__other__",
-            "p": 0
+            "p": 5.444103934326705e-8
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -426,17 +477,17 @@
     },
     {
       "id": "n8",
-      "url": "https://x.com/i/jf/onboarding/web?mode=signup&redirect_after_login=%2Fiaeaorg%2Fstatus%2F1875150113813008472",
-      "domain": "x.com",
-      "title": "IAEA - International Atomic Energy Agency ⚛️ on X: \"⚠️By 2050, oceans will have more plastic than fish, unless we take action. On #WorldOceansDay, watch…\"",
+      "url": "https://allforblue.org/pdf/Module2_Lesson2.pdf",
+      "domain": "allforblue.org",
+      "title": "Ocean Pollution & Art",
       "date": {
         "kind": "unconfirmed",
         "value": null,
         "source": "wayback_first_capture",
-        "firstCapture": null,
+        "firstCapture": "2023-04-01",
         "conflictingDate": false
       },
-      "clusterId": "c-n4",
+      "clusterId": "c-n8",
       "evidence": "observed",
       "meta": false,
       "read": true,
@@ -450,19 +501,113 @@
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "yes",
-        "probability": 0.9999999999666846,
+        "probability": 0.9999999994094697,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.9999999999666846
+            "p": 0.9999999994094697
           },
           {
             "optionId": "no",
-            "p": 3.331544784114085e-11
+            "p": 5.905304619697541e-10
           },
           {
             "optionId": "__other__",
             "p": 0
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    },
+    {
+      "id": "n9",
+      "url": "https://midlandsmosaic.wordpress.com",
+      "domain": "midlandsmosaic.wordpress.com",
+      "title": "Midlands Mosaic – colourful conversations about the characters, creatures and countryside of Kwa-Zulu Natal",
+      "date": {
+        "kind": "unconfirmed",
+        "value": null,
+        "source": "wayback_first_capture",
+        "firstCapture": "2018-08-07",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n9",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s7"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9999994956523467,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9999994956523467
+          },
+          {
+            "optionId": "no",
+            "p": 5.043476533300594e-7
+          },
+          {
+            "optionId": "__other__",
+            "p": 0
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    },
+    {
+      "id": "n10",
+      "url": "https://pubs.acs.org/esthag/article/44/6/1888/924259/Options-for-Achieving-a-50-Cut-in-Industrial",
+      "domain": "pubs.acs.org",
+      "title": "Options for Achieving a 50% Cut in Industrial Carbon Emissions by 2050 | Environmental Science & Technology | ACS Publications",
+      "date": {
+        "kind": "unconfirmed",
+        "value": null,
+        "source": "wayback_first_capture",
+        "firstCapture": null,
+        "conflictingDate": false
+      },
+      "clusterId": "c-n10",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s8"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "no",
+        "probability": 0.9999999804443186,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 1.9555681183597155e-8
+          },
+          {
+            "optionId": "no",
+            "p": 0.9999999804443186
+          },
+          {
+            "optionId": "__other__",
+            "p": 2.220446049250313e-16
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -475,59 +620,69 @@
   "edges": [
     {
       "id": "e1",
-      "parentId": "n8",
-      "childId": "n4",
-      "kind": "explicit",
-      "parentSpanId": "s6",
-      "childSpanId": "s2",
-      "linkHref": "https://x.com/i/jf/onboarding/web?mode=signup&redirect_after_login=%2Fiaeaorg%2Fstatus%2F1875150113813008472"
+      "parentId": "n7",
+      "childId": "n6",
+      "kind": "inferred",
+      "parentSpanId": "s5",
+      "childSpanId": "s4",
+      "linkHref": null
     },
     {
       "id": "e2",
-      "parentId": "n7",
+      "parentId": "n6",
+      "childId": "n4",
+      "kind": "inferred",
+      "parentSpanId": "s4",
+      "childSpanId": "s2",
+      "linkHref": null
+    },
+    {
+      "id": "e3",
+      "parentId": "n4",
       "childId": "n3",
       "kind": "inferred",
-      "parentSpanId": "s5",
+      "parentSpanId": "s2",
       "childSpanId": "s1",
       "linkHref": null
     }
   ],
   "clusters": [
     {
+      "id": "c-n10",
+      "nodeIds": [
+        "n10"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n8",
+      "nodeIds": [
+        "n8"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n9",
+      "nodeIds": [
+        "n9",
+        "n4"
+      ],
+      "rule": "near_duplicate"
+    },
+    {
+      "id": "c-n5",
+      "nodeIds": [
+        "n5",
+        "n6"
+      ],
+      "rule": "near_duplicate"
+    },
+    {
       "id": "c-n7",
       "nodeIds": [
         "n7"
       ],
       "rule": "single"
-    },
-    {
-      "id": "c-n6",
-      "nodeIds": [
-        "n6"
-      ],
-      "rule": "single"
-    },
-    {
-      "id": "c-n5",
-      "nodeIds": [
-        "n5"
-      ],
-      "rule": "single"
-    },
-    {
-      "id": "c-n3",
-      "nodeIds": [
-        "n3"
-      ],
-      "rule": "single"
-    },
-    {
-      "id": "c-n4",
-      "nodeIds": [
-        "n4",
-        "n8"
-      ],
-      "rule": "near_duplicate"
     },
     {
       "id": "c-n1",
@@ -542,90 +697,125 @@
         "n2"
       ],
       "rule": "single"
+    },
+    {
+      "id": "c-n3",
+      "nodeIds": [
+        "n3"
+      ],
+      "rule": "single"
     }
   ],
   "spans": [
     {
       "id": "s1",
       "nodeId": "n3",
-      "text": "Log inSign up United Nations on X: \"By 2050, there could be more plastic than fish in the ocean.",
-      "contextBefore": "Log inSign up Post. ",
-      "contextAfter": " Leaders are coming together to craft a new international agreement on plastic pollution to protect people's health, economies, and the planet. More on these critical discussions from @UNEP: https://t",
-      "start": 20,
-      "end": 116,
-      "extractSha256": "a523730c90f588aabec68a9a694a87cbfa5989b51387374ec0d6db104d121349",
-      "windowSha256": "280f6bef21b2b58be5b46329e8a2f4ea5a9a5c9effb435bb9803bd1372ddedaa",
-      "fetchedAt": "2026-11-18T03:01:28.128Z",
-      "waybackUrl": "https://web.archive.org/web/20250330004046/https://x.com/UN/status/1862542791399575562",
+      "text": "⚠️By 2050, oceans will have more plastic than fish, unless we take action.",
+      "contextBefore": "Log inSign up Post. Log inSign up IAEA - International Atomic Energy Agency ⚛️ on X: \"",
+      "contextAfter": " On #WorldOceansDay, watch how our #NUTECplastics initiative takes advantage of the latest radiation technology to help beat plastic pollution.\". Conversation. IAEA - International Atomic Energy Agenc",
+      "start": 86,
+      "end": 160,
+      "extractSha256": "7e81a8ec3f0d0d20ae651813f533d2ce854f97edb4d98e10ab4ddfd01ba3aed7",
+      "windowSha256": "53a4d666bbb6c8ae03d2e56325951ff81034cd92a96b8034dad3f4b6460afe15",
+      "fetchedAt": "2026-11-19T13:22:32.068Z",
+      "waybackUrl": null,
       "tier": "exact"
     },
     {
       "id": "s2",
       "nodeId": "n4",
-      "text": "Log inSign up IAEA - International Atomic Energy Agency ⚛️ on X: \"⚠️By 2050, oceans will have more plastic than fish, unless we take action.",
-      "contextBefore": "Log inSign up Post. ",
-      "contextAfter": " On #WorldOceansDay, watch how our #NUTECplastics initiative takes advantage of the latest radiation technology to help beat plastic pollution.\". Conversation. IAEA - International Atomic Energy Agenc",
-      "start": 20,
-      "end": 160,
-      "extractSha256": "7e81a8ec3f0d0d20ae651813f533d2ce854f97edb4d98e10ab4ddfd01ba3aed7",
-      "windowSha256": "53a4d666bbb6c8ae03d2e56325951ff81034cd92a96b8034dad3f4b6460afe15",
-      "fetchedAt": "2026-11-18T03:01:28.442Z",
-      "waybackUrl": "https://web.archive.org/web/20250330005559/https://x.com/iaeaorg/status/1875150113813008472",
+      "text": "By 2050, there could be more plastic than fish in the ocean.",
+      "contextBefore": "Log inSign up Post. Log inSign up United Nations on X: \"",
+      "contextAfter": " Leaders are coming together to craft a new international agreement on plastic pollution to protect people's health, economies, and the planet. More on these critical discussions from @UNEP: https://t",
+      "start": 56,
+      "end": 116,
+      "extractSha256": "fb0e23f7129851281ac559e2755e8c47b1ad747da7383956c323481afa7eb824",
+      "windowSha256": "280f6bef21b2b58be5b46329e8a2f4ea5a9a5c9effb435bb9803bd1372ddedaa",
+      "fetchedAt": "2026-11-19T13:22:34.561Z",
+      "waybackUrl": null,
       "tier": "exact"
     },
     {
       "id": "s3",
       "nodeId": "n5",
-      "text": "Will there be more fish or plastic in the sea in 2050?",
-      "contextBefore": "",
-      "contextAfter": " A recent claim that there will be more plastic than fish in the sea by 2050 was intended to highlight a pollution crisis in the oceans. The problem really does exist, but do the figures hold water, o",
-      "start": 0,
-      "end": 54,
-      "extractSha256": "6a1ac055b1fda2fe900645a3998973d77f1fb0175903fba68f7b4e57290360f0",
-      "windowSha256": "89405223203fb43ba123c2f530123ec9c14819a5645393e1cfe62293cc9b420e",
-      "fetchedAt": "2026-11-18T03:01:31.234Z",
-      "waybackUrl": "https://web.archive.org/web/20160215125700/https://www.bbc.com/news/magazine-35562253",
+      "text": "There Will Be More Plastic Than Fish in the Ocean by 2050.",
+      "contextBefore": "Menu. Transition Studies. Exploring Transitions to a Just and Sustainable Future on a Finite Planet. ",
+      "contextAfter": " Cole Mellino | January 20, 2016 10:11 am There will be more plastic than fish in the ocean by 2050, warned the Ellen MacArthur Foundation in a report published Tuesday. The report, *The New Plastics ",
+      "start": 101,
+      "end": 159,
+      "extractSha256": "88b0422135d3ed7a6f08c2366c2925ea394781e79821552675a19eeaef16fa97",
+      "windowSha256": "f4da87ec352d88274b6f00960e71278e0254cef754771dec12e6d905c1002358",
+      "fetchedAt": "2026-11-19T13:22:36.431Z",
+      "waybackUrl": "https://web.archive.org/web/20210920050858/https://environmentaljusticetv.wordpress.com/2016/01/20/there-will-be-more-plastic-than-fish-in-the-ocean-by-2050",
       "tier": "exact"
     },
     {
       "id": "s4",
       "nodeId": "n6",
-      "text": "As pointed out in this report, plastic production has increased from 15 million tonnes in the sixties to 311 million tonnes in 2014 and is expected to triple by 2050, when it would account for 20% of global annual oil consumption.",
-      "contextBefore": "on \"It is high time to implement the circular economy principles in the plastic sector. Increasing plastic recycling would capture significant material value and help reduce greenhouse gas emissions. ",
-      "contextAfter": " These are exactly the reasons why Veolia, which is already actively engaged in promoting circular solutions, welcomes and supports the New Plastics Economy.\" Antoine Frérot, CEO, Veolia \"The New Plas",
-      "start": 7272,
-      "end": 7502,
-      "extractSha256": "00ca48f018be06b2009e71c9d32061a626ed6d4658e383630efe1cf0e22d70ef",
-      "windowSha256": "9b870f6e5b0348949fbf150f748f9f2595f95df7aa831b59f8a1664598202589",
-      "fetchedAt": "2026-11-18T03:01:41.503Z",
-      "waybackUrl": "https://web.archive.org/web/20160120070441/https://www3.weforum.org/docs/WEF_The_New_Plastics_Economy.pdf",
+      "text": "Study: the Oceans Will Hold More Plastic Than Fish by 2050.",
+      "contextBefore": "t Matador + Careers + Advertise * For Travelers + Newsletter + Destinations + Videos + Creator: The Podcast + No Blackout Dates Podcast + Contribute + GuideGeek * ES Photo: Larina Marina/Shutterstock ",
+      "contextAfter": " Travel by Colin Heinrich Jan 26, 2016 Batten down your grandkids' hatches, everybody. 2050 is shaping up to be a pretty grim year for humanity. Forecasted oil shortages, an urban density predicted to",
+      "start": 399,
+      "end": 458,
+      "extractSha256": "36898d681d4b5911622a5a761a6d7ba832172c1807190cc69d595ae1a4f4d41c",
+      "windowSha256": "d5ecbe96b1c508bc61256f9f92f4022ab2add569dfa4ca0a02a38b443d56c950",
+      "fetchedAt": "2026-11-19T13:22:41.152Z",
+      "waybackUrl": "https://web.archive.org/web/20160127100359/https://matadornetwork.com/pulse/study-plastic-in-oceans",
       "tier": "exact"
     },
     {
       "id": "s5",
       "nodeId": "n7",
-      "text": "At current rates plastic is expected to outweigh all the fish in the sea by 2050.",
-      "contextBefore": "umulating in our oceans and on our beaches has become a global crisis. Billions of pounds of plastic can be found in swirling convergences that make up about 40 percent of the world's ocean surfaces. ",
-      "contextAfter": " Plastics pollution has a direct and deadly effect on wildlife. Thousands of seabirds and sea turtles, seals and other marine mammals are killed each year after ingesting plastic or getting entangled ",
-      "start": 285,
-      "end": 366,
-      "extractSha256": "804228b7686b90c8b9af9ea923e048e787091e4589cd5ef29c0c8977104b5f48",
-      "windowSha256": "467cd82686ba3f1969739ab188ad93cd0e97e104f7a1e1ae82cb471c1676a52d",
-      "fetchedAt": "2026-11-18T03:01:43.808Z",
-      "waybackUrl": "https://web.archive.org/web/20130613160753/https://www.biologicaldiversity.org/campaigns/ocean_plastics",
+      "text": "In a business-as-usual scenario, the ocean is expected to contain 1 tonne of plastic for every 3 tonnes of fish by 2025, and by 2050, more plastics than fish (by weight).",
+      "contextBefore": "mates suggest that plastic packaging represents the major share of this leakage. The best research currently available estimates that there are over 150 million tonnes of plastics in the ocean today. ",
+      "contextAfter": " The production of plastics draws on fossil feedstocks, with a significant carbon impact that will become even more significant with the projected surge in consumption. Over 90% of plastics produced a",
+      "start": 21284,
+      "end": 21454,
+      "extractSha256": "00ca48f018be06b2009e71c9d32061a626ed6d4658e383630efe1cf0e22d70ef",
+      "windowSha256": "bce2180bcceab71982c5d35fd8667f590eadc590c9f3151eefdcb27bd056a3c3",
+      "fetchedAt": "2026-11-19T13:22:54.780Z",
+      "waybackUrl": "https://web.archive.org/web/20160120070441/https://www3.weforum.org/docs/WEF_The_New_Plastics_Economy.pdf",
       "tier": "exact"
     },
     {
       "id": "s6",
       "nodeId": "n8",
-      "text": "IAEA - International Atomic Energy Agency ⚛️ on X: \"⚠️By 2050, oceans will have more plastic than fish, unless we take action.",
-      "contextBefore": "",
-      "contextAfter": " On #WorldOceansDay, watch...\". ⚠️By 2050, oceans will have more plastic than fish, unless we take action. On #WorldOceansDay, watch how our #NUTECplastics initiative takes advantage of the latest rad",
-      "start": 0,
-      "end": 126,
-      "extractSha256": "5b544436fff48ce11ccba8d9d27d0dcdcb3460847fcd5d050c264a11254cd45a",
-      "windowSha256": "1f3504aa5253d7d61148ac608443a88d6d1c3d4477fc03fc75e00c44c3ca400a",
-      "fetchedAt": "2026-11-18T03:02:10.030Z",
+      "text": "By 2050, there could be more plastic than fish in the ocean.\" - United Nations, 2021.",
+      "contextBefore": "ological damage (Karagas et al. 2012; Ha et al. 2017) q \"Plastic waste can take anywhere from 20 to 500 years to decompose, and even then, it never fully disappears. It just gets smaller and smaller. ",
+      "contextAfter": " Art OIL SPILL Daniel Beltrá, Oil Spill #12. An aerial view of the oil leaked from the Deepwater Horizon wellhead in 2010. The BP-leased oil platform exploded and sank after burning, leaking more than",
+      "start": 1579,
+      "end": 1664,
+      "extractSha256": "c9a2c8f3ce02c3b6997324234fdd6d163399425b735cc983908e212d0e36a0c8",
+      "windowSha256": "0a0fa17ff69d345b6f349b69d38c820e12ea80af901e8ac89af8115f97939084",
+      "fetchedAt": "2026-11-19T13:23:20.848Z",
+      "waybackUrl": "https://web.archive.org/web/20230401133112/https://allforblue.org/pdf/Module2_Lesson2.pdf",
+      "tier": "exact"
+    },
+    {
+      "id": "s7",
+      "nodeId": "n9",
+      "text": "Or that by 2050 scientists predict there will be more plastic than fish in the ocean?",
+      "contextBefore": "se requirements was to learn the names of 2000 plants.... Read More Trashion Trumps Fast Fashion. Did you have any idea that globally about 100 million tonnes of textile waste is generated each year? ",
+      "contextAfter": " Or that about 6% of the total landfill in South Africa is textile waste? There is one ton of plastic for... Read More * Subscribe Subscribed Midlands Mosaic Have a WordPress.com account? Log in now. ",
+      "start": 3532,
+      "end": 3617,
+      "extractSha256": "79cb1e66d2776d8d8c996ada6598b03a9d85393305bd748da52717ecb730640f",
+      "windowSha256": "58f963b88ec3fbc8e5b28e59e1f8482d5f4bf95f5218f4605c2c91adcafdcac3",
+      "fetchedAt": "2026-11-19T13:23:21.390Z",
+      "waybackUrl": "https://web.archive.org/web/20180807143603/https://midlandsmosaic.wordpress.com",
+      "tier": "exact"
+    },
+    {
+      "id": "s8",
+      "nodeId": "n10",
+      "text": "In addition, for plastics, emissions *e*5 are reduced in 2050 by the assumed offsetting benefits of heat recovery from plastics incineration.",
+      "contextBefore": "gy supplies are \"de-carbonized\" (reducing *e*1-*e*4), and the energy intensity and yield of all downstream processes are also improved by 20% (further reducing *e*2-*e*4 and also reducing α3 and α4). ",
+      "contextAfter": " The other four scenarios adopt 2050CEE as a baseline and make further changes. 2050CCS applies increasing levels of CCS to all emissions (i.e., both process emissions from combustion and reactions an",
+      "start": 12080,
+      "end": 12221,
+      "extractSha256": "e5d2c27d2552c2e842587abae442b249b6c860306fe55d97d75377d15fa55d34",
+      "windowSha256": "58f1a6c79877935d625edd445525d1bcfe57132ffc8b346e210b6ffef3e2c03a",
+      "fetchedAt": "2026-11-19T13:23:35.828Z",
       "waybackUrl": null,
       "tier": "exact"
     }
@@ -644,7 +834,7 @@
         {
           "id": "unit_changed",
           "source": "measured",
-          "value": "no",
+          "value": "yes",
           "probability": null,
           "disputed": false
         },
@@ -665,97 +855,125 @@
         {
           "id": "scope_widened",
           "source": "inferred",
-          "value": "no",
-          "probability": 0.9999999994094697,
+          "value": "yes",
+          "probability": 0.9706877681101795,
           "disputed": false
         },
         {
           "id": "attribution_shifted",
           "source": "inferred",
-          "value": "no",
-          "probability": 0.9999991655356648,
+          "value": "yes",
+          "probability": 0.9999938014102496,
           "disputed": false
         },
         {
           "id": "context_stripped",
           "source": "inferred",
           "value": "no",
-          "probability": 0.9999999928058669,
+          "probability": 0.6224593298885512,
           "disputed": false
         }
       ],
       "wordDiff": [
         {
           "op": "add",
-          "text": "log"
+          "text": "study"
+        },
+        {
+          "op": "del",
+          "text": "in"
+        },
+        {
+          "op": "del",
+          "text": "a"
+        },
+        {
+          "op": "del",
+          "text": "business-as-usual"
+        },
+        {
+          "op": "del",
+          "text": "scenario"
+        },
+        {
+          "op": "same",
+          "text": "the"
         },
         {
           "op": "add",
-          "text": "insign"
-        },
-        {
-          "op": "add",
-          "text": "up"
-        },
-        {
-          "op": "same",
-          "text": "iaea"
-        },
-        {
-          "op": "same",
-          "text": "international"
-        },
-        {
-          "op": "same",
-          "text": "atomic"
-        },
-        {
-          "op": "same",
-          "text": "energy"
-        },
-        {
-          "op": "same",
-          "text": "agency"
-        },
-        {
-          "op": "same",
-          "text": "on"
-        },
-        {
-          "op": "same",
-          "text": "x"
-        },
-        {
-          "op": "same",
-          "text": "by"
-        },
-        {
-          "op": "same",
-          "text": "2050"
-        },
-        {
-          "op": "same",
           "text": "oceans"
         },
         {
-          "op": "same",
+          "op": "add",
           "text": "will"
         },
         {
-          "op": "same",
-          "text": "have"
+          "op": "add",
+          "text": "hold"
         },
         {
-          "op": "same",
+          "op": "add",
           "text": "more"
+        },
+        {
+          "op": "del",
+          "text": "ocean"
+        },
+        {
+          "op": "del",
+          "text": "is"
+        },
+        {
+          "op": "del",
+          "text": "expected"
+        },
+        {
+          "op": "del",
+          "text": "to"
+        },
+        {
+          "op": "del",
+          "text": "contain"
+        },
+        {
+          "op": "del",
+          "text": "1"
+        },
+        {
+          "op": "del",
+          "text": "tonne"
+        },
+        {
+          "op": "del",
+          "text": "of"
         },
         {
           "op": "same",
           "text": "plastic"
         },
         {
-          "op": "same",
+          "op": "add",
           "text": "than"
+        },
+        {
+          "op": "del",
+          "text": "for"
+        },
+        {
+          "op": "del",
+          "text": "every"
+        },
+        {
+          "op": "del",
+          "text": "3"
+        },
+        {
+          "op": "del",
+          "text": "tonnes"
+        },
+        {
+          "op": "del",
+          "text": "of"
         },
         {
           "op": "same",
@@ -763,22 +981,50 @@
         },
         {
           "op": "same",
-          "text": "unless"
+          "text": "by"
+        },
+        {
+          "op": "del",
+          "text": "2025"
+        },
+        {
+          "op": "del",
+          "text": "and"
+        },
+        {
+          "op": "del",
+          "text": "by"
         },
         {
           "op": "same",
-          "text": "we"
+          "text": "2050"
         },
         {
-          "op": "same",
-          "text": "take"
+          "op": "del",
+          "text": "more"
         },
         {
-          "op": "same",
-          "text": "action"
+          "op": "del",
+          "text": "plastics"
+        },
+        {
+          "op": "del",
+          "text": "than"
+        },
+        {
+          "op": "del",
+          "text": "fish"
+        },
+        {
+          "op": "del",
+          "text": "by"
+        },
+        {
+          "op": "del",
+          "text": "weight"
         }
       ],
-      "faithful": true
+      "faithful": false
     },
     {
       "edgeId": "e2",
@@ -815,53 +1061,25 @@
           "id": "scope_widened",
           "source": "inferred",
           "value": "yes",
-          "probability": 0.9996646499681131,
+          "probability": 0.7772998616392552,
           "disputed": false
         },
         {
           "id": "attribution_shifted",
           "source": "inferred",
-          "value": "yes",
-          "probability": 0.9999999987498471,
+          "value": "no",
+          "probability": 0.8175744308736713,
           "disputed": false
         },
         {
           "id": "context_stripped",
           "source": "inferred",
           "value": "no",
-          "probability": 0.9999724634116136,
+          "probability": 0.9959298622157342,
           "disputed": false
         }
       ],
       "wordDiff": [
-        {
-          "op": "add",
-          "text": "log"
-        },
-        {
-          "op": "add",
-          "text": "insign"
-        },
-        {
-          "op": "add",
-          "text": "up"
-        },
-        {
-          "op": "add",
-          "text": "united"
-        },
-        {
-          "op": "add",
-          "text": "nations"
-        },
-        {
-          "op": "add",
-          "text": "on"
-        },
-        {
-          "op": "add",
-          "text": "x"
-        },
         {
           "op": "add",
           "text": "by"
@@ -883,72 +1101,52 @@
           "text": "be"
         },
         {
-          "op": "add",
+          "op": "del",
+          "text": "study"
+        },
+        {
+          "op": "del",
+          "text": "the"
+        },
+        {
+          "op": "del",
+          "text": "oceans"
+        },
+        {
+          "op": "del",
+          "text": "will"
+        },
+        {
+          "op": "del",
+          "text": "hold"
+        },
+        {
+          "op": "same",
           "text": "more"
-        },
-        {
-          "op": "del",
-          "text": "at"
-        },
-        {
-          "op": "del",
-          "text": "current"
-        },
-        {
-          "op": "del",
-          "text": "rates"
         },
         {
           "op": "same",
           "text": "plastic"
         },
         {
-          "op": "add",
+          "op": "same",
           "text": "than"
-        },
-        {
-          "op": "del",
-          "text": "is"
-        },
-        {
-          "op": "del",
-          "text": "expected"
-        },
-        {
-          "op": "del",
-          "text": "to"
-        },
-        {
-          "op": "del",
-          "text": "outweigh"
-        },
-        {
-          "op": "del",
-          "text": "all"
-        },
-        {
-          "op": "del",
-          "text": "the"
         },
         {
           "op": "same",
           "text": "fish"
         },
         {
-          "op": "same",
+          "op": "add",
           "text": "in"
         },
         {
-          "op": "same",
+          "op": "add",
           "text": "the"
         },
         {
           "op": "add",
           "text": "ocean"
-        },
-        {
-          "op": "del",
-          "text": "sea"
         },
         {
           "op": "del",
@@ -960,21 +1158,155 @@
         }
       ],
       "faithful": false
+    },
+    {
+      "edgeId": "e3",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "yes",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "scope_widened",
+          "source": "inferred",
+          "value": "no",
+          "probability": 0.9706877671705303,
+          "disputed": false
+        },
+        {
+          "id": "attribution_shifted",
+          "source": "inferred",
+          "value": "no",
+          "probability": 0.9999952149055052,
+          "disputed": false
+        },
+        {
+          "id": "context_stripped",
+          "source": "inferred",
+          "value": "yes",
+          "probability": 0.9999898673196354,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "same",
+          "text": "by"
+        },
+        {
+          "op": "same",
+          "text": "2050"
+        },
+        {
+          "op": "add",
+          "text": "oceans"
+        },
+        {
+          "op": "add",
+          "text": "will"
+        },
+        {
+          "op": "add",
+          "text": "have"
+        },
+        {
+          "op": "del",
+          "text": "there"
+        },
+        {
+          "op": "del",
+          "text": "could"
+        },
+        {
+          "op": "del",
+          "text": "be"
+        },
+        {
+          "op": "same",
+          "text": "more"
+        },
+        {
+          "op": "same",
+          "text": "plastic"
+        },
+        {
+          "op": "same",
+          "text": "than"
+        },
+        {
+          "op": "same",
+          "text": "fish"
+        },
+        {
+          "op": "add",
+          "text": "unless"
+        },
+        {
+          "op": "add",
+          "text": "we"
+        },
+        {
+          "op": "add",
+          "text": "take"
+        },
+        {
+          "op": "add",
+          "text": "action"
+        },
+        {
+          "op": "del",
+          "text": "in"
+        },
+        {
+          "op": "del",
+          "text": "the"
+        },
+        {
+          "op": "del",
+          "text": "ocean"
+        }
+      ],
+      "faithful": false
     }
   ],
   "blame": [],
   "roots": {
-    "pages": 6,
-    "clusters": 5,
+    "pages": 8,
+    "clusters": 6,
     "rootsLinked": 0,
-    "clustersUnlinked": 5,
+    "clustersUnlinked": 6,
     "studiesFound": null,
-    "independentRoots": 5,
-    "copies": 1
+    "independentRoots": 6,
+    "copies": 2
   },
-  "redHopEdgeId": "e2",
+  "redHopEdgeId": "e1",
   "earliest": {
     "nodeIds": [
+      "n5",
       "n7"
     ],
     "earlierWindowSearches": 2,
@@ -982,179 +1314,219 @@
   },
   "failure": null,
   "budget": {
-    "credits": 12,
-    "usd": 0.0007795,
-    "ms": 59631,
+    "credits": 18,
+    "usd": 0.0010397800000000001,
+    "ms": 102599,
     "capHit": null
   },
   "decision": {
     "state": "TRAIL_GOES_COLD",
     "row": 6,
     "reasons": [
-      "5 unread candidate parent(s)"
+      "2 unread candidate parent(s)"
     ],
     "counts": {
-      "pages": 6,
-      "clusters": 5,
-      "unreadParents": 5,
+      "pages": 8,
+      "clusters": 6,
+      "unreadParents": 2,
       "earlierWindowSearches": 2
     }
   },
   "searchLog": [
     {
-      "at": "2026-11-18T03:01:24.118Z",
+      "at": "2026-11-19T13:22:16.772Z",
       "step": "search",
       "query": "\"2050\" plastic",
-      "endDate": "2026-11-18",
+      "endDate": "2026-11-19",
       "startDate": null,
-      "results": 10,
-      "kept": 10,
+      "results": 7,
+      "kept": 7,
       "dropped": 0
     },
     {
-      "at": "2026-11-18T03:01:24.120Z",
+      "at": "2026-11-19T13:22:18.905Z",
       "step": "search",
       "query": "\"more plastic than fish in the ocean\" by 2050",
-      "endDate": "2026-11-18",
+      "endDate": "2026-11-19",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-18T03:01:25.841Z",
+      "at": "2026-11-19T13:22:20.175Z",
       "step": "search",
       "query": "Ellen MacArthur Foundation plastic fish ocean 2050",
-      "endDate": "2026-11-18",
+      "endDate": "2026-11-19",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-18T03:01:28.105Z",
+      "at": "2026-11-19T13:22:22.025Z",
       "step": "search",
-      "query": "study on plastic vs fish in ocean 2050",
-      "endDate": "2026-11-18",
+      "query": "plastic in ocean vs fish study 2050 projection",
+      "endDate": "2026-11-19",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-18T03:01:28.107Z",
+      "at": "2026-11-19T13:22:24.612Z",
       "step": "meta-search",
       "query": "\"2050\" plastic",
-      "endDate": "2026-11-18",
+      "endDate": "2026-11-19",
       "startDate": null,
       "results": 5,
       "kept": 2,
       "dropped": 3
     },
     {
-      "at": "2026-11-18T03:01:34.971Z",
+      "at": "2026-11-19T13:22:45.895Z",
       "step": "search",
       "query": "\"2050\" plastic",
-      "endDate": "2025-03-29",
+      "endDate": "2016-01-19",
+      "startDate": null,
+      "results": 8,
+      "kept": 8,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:22:47.107Z",
+      "step": "search",
+      "query": "\"more plastic than fish in the ocean by 2050\"",
+      "endDate": "2016-01-19",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-18T03:01:34.977Z",
+      "at": "2026-11-19T13:22:48.864Z",
+      "step": "search",
+      "query": "\"plastic than fish in the ocean by 2050\"",
+      "endDate": "2016-01-19",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:22:51.537Z",
+      "step": "search",
+      "query": "plastic in ocean fish 2050 Ellen MacArthur Foundation",
+      "endDate": "2016-01-19",
+      "startDate": null,
+      "results": 7,
+      "kept": 6,
+      "dropped": 1
+    },
+    {
+      "at": "2026-11-19T13:23:09.625Z",
       "step": "search",
       "query": "\"more plastic than fish in the ocean\" by 2050",
-      "endDate": "2025-03-29",
+      "endDate": "2016-01-19",
       "startDate": null,
-      "results": 10,
-      "kept": 9,
-      "dropped": 1
-    },
-    {
-      "at": "2026-11-18T03:01:36.047Z",
-      "step": "search",
-      "query": "plastic in ocean exceeds fish 2050 study",
-      "endDate": "2025-03-29",
-      "startDate": null,
-      "results": 10,
-      "kept": 9,
-      "dropped": 1
-    },
-    {
-      "at": "2026-11-18T03:01:38.283Z",
-      "step": "search",
-      "query": "plastic vs fish in ocean 2050 projection",
-      "endDate": "2025-03-29",
-      "startDate": null,
-      "results": 10,
-      "kept": 8,
+      "results": 8,
+      "kept": 6,
       "dropped": 2
     },
     {
-      "at": "2026-11-18T03:01:49.654Z",
+      "at": "2026-11-19T13:23:11.010Z",
       "step": "search",
-      "query": "\"2050\" plastic",
-      "endDate": "2012-08-21",
-      "startDate": null,
-      "results": 9,
-      "kept": 9,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-18T03:01:50.449Z",
-      "step": "search",
-      "query": "\"more plastic than fish in the ocean\" 2050",
-      "endDate": "2012-08-21",
-      "startDate": null,
-      "results": 0,
-      "kept": 0,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-18T03:01:51.254Z",
-      "step": "search",
-      "query": "\"plastic is expected to outweigh all the fish in the sea\" 2050",
-      "endDate": "2012-08-21",
-      "startDate": null,
-      "results": 1,
-      "kept": 1,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-18T03:01:53.527Z",
-      "step": "search",
-      "query": "plastic outweigh fish in ocean 2050 Biological Diversity",
-      "endDate": "2012-08-21",
+      "query": "\"There Will Be More Plastic Than Fish in the Ocean\" 2050",
+      "endDate": "2016-01-19",
       "startDate": null,
       "results": 10,
-      "kept": 10,
-      "dropped": 0
+      "kept": 9,
+      "dropped": 1
     },
     {
-      "at": "2026-11-18T03:02:08.482Z",
+      "at": "2026-11-19T13:23:12.352Z",
       "step": "search",
-      "query": "plastic vs fish in ocean 2050 study",
-      "endDate": "2012-08-21",
+      "query": "plastic in ocean vs fish 2050 report",
+      "endDate": "2016-01-19",
       "startDate": null,
       "results": 8,
       "kept": 7,
       "dropped": 1
     },
     {
-      "at": "2026-11-18T03:02:09.056Z",
+      "at": "2026-11-19T13:23:14.162Z",
       "step": "search",
-      "query": "plastic pollution fish biomass ocean 2050",
-      "endDate": "2012-08-21",
+      "query": "Ellen MacArthur Foundation plastic fish 2050",
+      "endDate": "2016-01-19",
       "startDate": null,
-      "results": 9,
-      "kept": 9,
+      "results": 6,
+      "kept": 4,
+      "dropped": 2
+    },
+    {
+      "at": "2026-11-19T13:23:26.685Z",
+      "step": "search",
+      "query": "\"2050\" plastic",
+      "endDate": "2010-06-14",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:23:28.756Z",
+      "step": "search",
+      "query": "\"2050\" plastic study",
+      "endDate": "2010-06-14",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:23:44.161Z",
+      "step": "dating",
+      "query": "https://www.snopes.com/articles/469277/fish-plastic-oceans-2050: the node has no span to look for in the capture; no date from the first capture",
+      "endDate": null,
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:23:44.373Z",
+      "step": "dating",
+      "query": "https://www.snopes.com/fact-check/sperm-whale-die-swallowing-64-pounds-plastic-debris: the node has no span to look for in the capture; no date from the first capture",
+      "endDate": null,
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:23:47.193Z",
+      "step": "dating",
+      "query": "https://allforblue.org/pdf/Module2_Lesson2.pdf: the capture is a file we cannot read and the archive holds more than one version of it; no date from the first capture",
+      "endDate": null,
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:23:48.666Z",
+      "step": "dating",
+      "query": "https://midlandsmosaic.wordpress.com: the first capture (2018-08-07) does not hold the claim's sentence; no date from the first capture",
+      "endDate": null,
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
       "dropped": 0
     }
   ],
   "usage": [
     {
-      "at": "2026-11-18T03:01:20.417Z",
+      "at": "2026-11-19T13:22:11.865Z",
       "traceId": "dev-10",
       "step": "tokenfactory",
       "service": "tokenfactory",
@@ -1165,60 +1537,28 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0.000032999999999999996,
-      "latencyMs": 1156,
+      "latencyMs": 829,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:01:21.575Z",
+      "at": "2026-11-19T13:22:12.697Z",
       "traceId": "dev-10",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 275,
-      "completionTokens": 125,
+      "completionTokens": 156,
       "cachedTokens": 240,
       "credits": 0,
-      "costUsd": 0.000065,
-      "latencyMs": 2530,
+      "costUsd": 0.0000743,
+      "latencyMs": 1707,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:01:24.118Z",
-      "traceId": "dev-10",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 0,
-      "status": "200",
-      "cacheHit": true
-    },
-    {
-      "at": "2026-11-18T03:01:24.120Z",
-      "traceId": "dev-10",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 0,
-      "status": "200",
-      "cacheHit": true
-    },
-    {
-      "at": "2026-11-18T03:01:25.841Z",
+      "at": "2026-11-19T13:22:16.771Z",
       "traceId": "dev-10",
       "step": "search",
       "service": "tavily",
@@ -1229,12 +1569,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1704,
+      "latencyMs": 2134,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:01:28.105Z",
+      "at": "2026-11-19T13:22:18.905Z",
       "traceId": "dev-10",
       "step": "search",
       "service": "tavily",
@@ -1245,12 +1585,44 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 2241,
+      "latencyMs": 2015,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:01:28.107Z",
+      "at": "2026-11-19T13:22:20.171Z",
+      "traceId": "dev-10",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1236,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:22:22.014Z",
+      "traceId": "dev-10",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1693,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:22:24.611Z",
       "traceId": "dev-10",
       "step": "meta-search",
       "service": "tavily",
@@ -1259,14 +1631,14 @@
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2405,
       "status": "200",
-      "cacheHit": true
+      "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:01:28.111Z",
+      "at": "2026-11-19T13:22:24.622Z",
       "traceId": "dev-10",
       "step": "meta-extract",
       "service": "tavily",
@@ -1282,7 +1654,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-18T03:01:28.124Z",
+      "at": "2026-11-19T13:22:26.398Z",
       "traceId": "dev-10",
       "step": "extract",
       "service": "tavily",
@@ -1291,94 +1663,46 @@
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 0,
-      "status": "200",
-      "cacheHit": true
-    },
-    {
-      "at": "2026-11-18T03:01:28.127Z",
-      "traceId": "dev-10",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 0,
-      "status": "200",
-      "cacheHit": true
-    },
-    {
-      "at": "2026-11-18T03:01:28.128Z",
-      "traceId": "dev-10",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 224,
-      "completionTokens": 7,
-      "cachedTokens": 160,
-      "credits": 0,
-      "costUsd": 0.0000245,
-      "latencyMs": 309,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1602,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:01:28.442Z",
-      "traceId": "dev-10",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 0,
-      "status": "200",
-      "cacheHit": true
-    },
-    {
-      "at": "2026-11-18T03:01:28.443Z",
-      "traceId": "dev-10",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 237,
-      "completionTokens": 7,
-      "cachedTokens": 160,
-      "credits": 0,
-      "costUsd": 0.0000258,
-      "latencyMs": 429,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T03:01:28.875Z",
+      "at": "2026-11-19T13:22:26.423Z",
       "traceId": "dev-10",
       "step": "embed",
       "service": "tokenfactory",
       "endpoint": "/embeddings",
       "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 162,
+      "promptTokens": 80,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.00000162,
-      "latencyMs": 2351,
+      "costUsd": 8e-7,
+      "latencyMs": 2033,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:01:31.234Z",
+      "at": "2026-11-19T13:22:28.553Z",
+      "traceId": "dev-10",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 217,
+      "completionTokens": 7,
+      "cachedTokens": 160,
+      "credits": 0,
+      "costUsd": 0.0000238,
+      "latencyMs": 2374,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:22:31.257Z",
       "traceId": "dev-10",
       "step": "dating",
       "service": "wayback",
@@ -1394,7 +1718,103 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-18T03:01:31.235Z",
+      "at": "2026-11-19T13:22:32.055Z",
+      "traceId": "dev-10",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "capture",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 797,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:22:32.078Z",
+      "traceId": "dev-10",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 213,
+      "completionTokens": 7,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.0000234,
+      "latencyMs": 953,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:22:33.182Z",
+      "traceId": "dev-10",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:22:34.553Z",
+      "traceId": "dev-10",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "capture",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1369,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:22:34.599Z",
+      "traceId": "dev-10",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 212,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.0000233,
+      "latencyMs": 604,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:22:36.345Z",
+      "traceId": "dev-10",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1096,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:22:36.475Z",
       "traceId": "dev-10",
       "step": "same_claim",
       "service": "tokenfactory",
@@ -1405,60 +1825,44 @@
       "cachedTokens": 176,
       "credits": 0,
       "costUsd": 0.0000234,
-      "latencyMs": 513,
+      "latencyMs": 637,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:01:31.757Z",
+      "at": "2026-11-19T13:22:41.147Z",
+      "traceId": "dev-10",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 4020,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:22:41.181Z",
       "traceId": "dev-10",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 327,
-      "completionTokens": 156,
-      "cachedTokens": 256,
+      "promptTokens": 322,
+      "completionTokens": 158,
+      "cachedTokens": 240,
       "credits": 0,
-      "costUsd": 0.0000795,
-      "latencyMs": 3206,
+      "costUsd": 0.0000796,
+      "latencyMs": 3073,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:01:34.970Z",
-      "traceId": "dev-10",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 0,
-      "status": "200",
-      "cacheHit": true
-    },
-    {
-      "at": "2026-11-18T03:01:34.977Z",
-      "traceId": "dev-10",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 0,
-      "status": "200",
-      "cacheHit": true
-    },
-    {
-      "at": "2026-11-18T03:01:36.047Z",
+      "at": "2026-11-19T13:22:45.887Z",
       "traceId": "dev-10",
       "step": "search",
       "service": "tavily",
@@ -1469,12 +1873,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1059,
+      "latencyMs": 1565,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:01:38.283Z",
+      "at": "2026-11-19T13:22:47.104Z",
       "traceId": "dev-10",
       "step": "search",
       "service": "tavily",
@@ -1485,12 +1889,44 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 2217,
+      "latencyMs": 1116,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:01:38.600Z",
+      "at": "2026-11-19T13:22:48.793Z",
+      "traceId": "dev-10",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1509,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:22:51.536Z",
+      "traceId": "dev-10",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2554,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:22:52.373Z",
       "traceId": "dev-10",
       "step": "extract",
       "service": "tavily",
@@ -1501,28 +1937,28 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 300,
+      "latencyMs": 738,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:01:38.601Z",
+      "at": "2026-11-19T13:22:52.480Z",
       "traceId": "dev-10",
-      "step": "embed",
+      "step": "same_claim",
       "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 227,
-      "completionTokens": 0,
-      "cachedTokens": 0,
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 246,
+      "completionTokens": 7,
+      "cachedTokens": 176,
       "credits": 0,
-      "costUsd": 0.00000227,
-      "latencyMs": 2875,
+      "costUsd": 0.000026700000000000002,
+      "latencyMs": 662,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:01:41.502Z",
+      "at": "2026-11-19T13:22:53.158Z",
       "traceId": "dev-10",
       "step": "dating",
       "service": "wayback",
@@ -1538,23 +1974,23 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-18T03:01:41.504Z",
+      "at": "2026-11-19T13:22:54.771Z",
       "traceId": "dev-10",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 256,
-      "completionTokens": 7,
-      "cachedTokens": 176,
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "capture",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.0000277,
-      "latencyMs": 455,
+      "costUsd": 0,
+      "latencyMs": 1612,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:01:41.973Z",
+      "at": "2026-11-19T13:22:54.802Z",
       "traceId": "dev-10",
       "step": "embed",
       "service": "tokenfactory",
@@ -1565,188 +2001,44 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 8.3e-7,
-      "latencyMs": 959,
+      "latencyMs": 7169,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:01:43.807Z",
-      "traceId": "dev-10",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 868,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T03:01:43.810Z",
-      "traceId": "dev-10",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 216,
-      "completionTokens": 7,
-      "cachedTokens": 176,
-      "credits": 0,
-      "costUsd": 0.0000237,
-      "latencyMs": 292,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T03:01:44.106Z",
-      "traceId": "dev-10",
-      "step": "tokenfactory",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 324,
-      "completionTokens": 160,
-      "cachedTokens": 272,
-      "credits": 0,
-      "costUsd": 0.0000804,
-      "latencyMs": 3234,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T03:01:49.653Z",
-      "traceId": "dev-10",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 2296,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T03:01:50.449Z",
-      "traceId": "dev-10",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 786,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T03:01:51.254Z",
-      "traceId": "dev-10",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 787,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T03:01:53.526Z",
-      "traceId": "dev-10",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 2253,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T03:01:56.673Z",
-      "traceId": "dev-10",
-      "step": "extract",
-      "service": "tavily",
-      "endpoint": "extract",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 3125,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T03:01:56.679Z",
+      "at": "2026-11-19T13:23:01.994Z",
       "traceId": "dev-10",
       "step": "embed",
       "service": "tokenfactory",
       "endpoint": "/embeddings",
       "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 23,
+      "promptTokens": 39,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 2.3e-7,
-      "latencyMs": 2964,
+      "costUsd": 3.9e-7,
+      "latencyMs": 3569,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:01:59.645Z",
-      "traceId": "dev-10",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 104,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.00000104,
-      "latencyMs": 5219,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T03:02:04.874Z",
+      "at": "2026-11-19T13:23:05.600Z",
       "traceId": "dev-10",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 324,
-      "completionTokens": 135,
+      "promptTokens": 322,
+      "completionTokens": 158,
       "cachedTokens": 320,
       "credits": 0,
-      "costUsd": 0.0000729,
-      "latencyMs": 2437,
+      "costUsd": 0.0000796,
+      "latencyMs": 2143,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:02:08.482Z",
+      "at": "2026-11-19T13:23:09.623Z",
       "traceId": "dev-10",
       "step": "search",
       "service": "tavily",
@@ -1757,12 +2049,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1111,
+      "latencyMs": 1774,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:02:09.056Z",
+      "at": "2026-11-19T13:23:11.009Z",
       "traceId": "dev-10",
       "step": "search",
       "service": "tavily",
@@ -1773,12 +2065,44 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 426,
+      "latencyMs": 1284,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:02:09.553Z",
+      "at": "2026-11-19T13:23:12.344Z",
+      "traceId": "dev-10",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1234,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:23:14.156Z",
+      "traceId": "dev-10",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1702,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:23:18.228Z",
       "traceId": "dev-10",
       "step": "extract",
       "service": "tavily",
@@ -1789,60 +2113,188 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 441,
+      "latencyMs": 3919,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:02:10.029Z",
-      "traceId": "dev-10",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 475,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T03:02:10.031Z",
+      "at": "2026-11-19T13:23:18.242Z",
       "traceId": "dev-10",
       "step": "same_claim",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 233,
+      "promptTokens": 225,
       "completionTokens": 7,
-      "cachedTokens": 176,
+      "cachedTokens": 160,
       "credits": 0,
-      "costUsd": 0.0000254,
-      "latencyMs": 375,
+      "costUsd": 0.000024599999999999998,
+      "latencyMs": 983,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:02:10.492Z",
+      "at": "2026-11-19T13:23:20.843Z",
+      "traceId": "dev-10",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1566,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:23:20.861Z",
+      "traceId": "dev-10",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 217,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.0000238,
+      "latencyMs": 446,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:23:21.388Z",
+      "traceId": "dev-10",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:23:21.397Z",
+      "traceId": "dev-10",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 329,
+      "completionTokens": 156,
+      "cachedTokens": 256,
+      "credits": 0,
+      "costUsd": 0.0000797,
+      "latencyMs": 3130,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:23:26.676Z",
+      "traceId": "dev-10",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1923,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:23:28.755Z",
+      "traceId": "dev-10",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1902,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:23:33.803Z",
+      "traceId": "dev-10",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 4897,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:23:34.057Z",
+      "traceId": "dev-10",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 229,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.000025,
+      "latencyMs": 1142,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:23:35.808Z",
+      "traceId": "dev-10",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 593,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:23:35.837Z",
       "traceId": "dev-10",
       "step": "embed",
       "service": "tokenfactory",
       "endpoint": "/embeddings",
       "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 211,
+      "promptTokens": 216,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.00000211,
-      "latencyMs": 1640,
+      "costUsd": 0.00000216,
+      "latencyMs": 3855,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:02:12.347Z",
+      "at": "2026-11-19T13:23:39.794Z",
       "traceId": "dev-10",
       "step": "dating",
       "service": "fetch",
@@ -1858,7 +2310,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-18T03:02:12.743Z",
+      "at": "2026-11-19T13:23:39.859Z",
       "traceId": "dev-10",
       "step": "dating",
       "service": "fetch",
@@ -1874,7 +2326,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-18T03:02:13.218Z",
+      "at": "2026-11-19T13:23:40.535Z",
       "traceId": "dev-10",
       "step": "dating",
       "service": "fetch",
@@ -1885,12 +2337,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 0,
+      "latencyMs": 673,
       "status": "200",
-      "cacheHit": true
+      "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:02:13.891Z",
+      "at": "2026-11-19T13:23:40.652Z",
       "traceId": "dev-10",
       "step": "dating",
       "service": "fetch",
@@ -1901,245 +2353,411 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 672,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T03:02:14.060Z",
-      "traceId": "dev-10",
-      "step": "dating",
-      "service": "fetch",
-      "endpoint": "page",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 169,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T03:02:15.605Z",
-      "traceId": "dev-10",
-      "step": "dating",
-      "service": "fetch",
-      "endpoint": "page",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 2388,
-      "status": "bad_response",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T03:02:15.916Z",
-      "traceId": "dev-10",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 0,
-      "status": "200",
-      "cacheHit": true
-    },
-    {
-      "at": "2026-11-18T03:02:16.225Z",
-      "traceId": "dev-10",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 0,
-      "status": "200",
-      "cacheHit": true
-    },
-    {
-      "at": "2026-11-18T03:02:16.542Z",
-      "traceId": "dev-10",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 0,
-      "status": "200",
-      "cacheHit": true
-    },
-    {
-      "at": "2026-11-18T03:02:16.545Z",
-      "traceId": "dev-10",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 0,
-      "status": "200",
-      "cacheHit": true
-    },
-    {
-      "at": "2026-11-18T03:02:16.551Z",
-      "traceId": "dev-10",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 0,
-      "status": "200",
-      "cacheHit": true
-    },
-    {
-      "at": "2026-11-18T03:02:16.552Z",
-      "traceId": "dev-10",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 0,
-      "status": "200",
-      "cacheHit": true
-    },
-    {
-      "at": "2026-11-18T03:02:16.562Z",
-      "traceId": "dev-10",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 0,
-      "status": "200",
-      "cacheHit": true
-    },
-    {
-      "at": "2026-11-18T03:02:16.569Z",
-      "traceId": "dev-10",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 0,
-      "status": "200",
-      "cacheHit": true
-    },
-    {
-      "at": "2026-11-18T03:02:16.729Z",
-      "traceId": "dev-10",
-      "step": "page_type",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 1514,
-      "completionTokens": 8,
-      "cachedTokens": 176,
-      "credits": 0,
-      "costUsd": 0.0001538,
-      "latencyMs": 894,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T03:02:17.666Z",
-      "traceId": "dev-10",
-      "step": "readouts",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 465,
-      "completionTokens": 23,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.0000534,
-      "latencyMs": 1129,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T03:02:18.807Z",
-      "traceId": "dev-10",
-      "step": "readouts",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 435,
-      "completionTokens": 23,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.0000504,
       "latencyMs": 790,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:02:19.601Z",
+      "at": "2026-11-19T13:23:42.498Z",
+      "traceId": "dev-10",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1844,
+      "status": "bad_response",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:23:42.533Z",
+      "traceId": "dev-10",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:23:42.735Z",
+      "traceId": "dev-10",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 201,
+      "status": "403",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:23:44.064Z",
+      "traceId": "dev-10",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 3529,
+      "status": "bad_response",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:23:44.147Z",
+      "traceId": "dev-10",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:23:44.353Z",
+      "traceId": "dev-10",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:23:44.395Z",
+      "traceId": "dev-10",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:23:44.441Z",
+      "traceId": "dev-10",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:23:44.463Z",
+      "traceId": "dev-10",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:23:44.486Z",
+      "traceId": "dev-10",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:23:44.534Z",
+      "traceId": "dev-10",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:23:44.620Z",
+      "traceId": "dev-10",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "capture",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:23:44.649Z",
+      "traceId": "dev-10",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:23:46.177Z",
+      "traceId": "dev-10",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "capture",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1524,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:23:47.183Z",
+      "traceId": "dev-10",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 998,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:23:47.206Z",
+      "traceId": "dev-10",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:23:48.655Z",
+      "traceId": "dev-10",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "capture",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1444,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:23:48.695Z",
+      "traceId": "dev-10",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:23:48.705Z",
+      "traceId": "dev-10",
+      "step": "page_type",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 969,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.000099,
+      "latencyMs": 902,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:23:49.714Z",
+      "traceId": "dev-10",
+      "step": "page_type",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 1749,
+      "completionTokens": 8,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.0001773,
+      "latencyMs": 435,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:23:50.218Z",
+      "traceId": "dev-10",
+      "step": "readouts",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 452,
+      "completionTokens": 23,
+      "cachedTokens": 368,
+      "credits": 0,
+      "costUsd": 0.0000521,
+      "latencyMs": 803,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:23:51.034Z",
+      "traceId": "dev-10",
+      "step": "readouts",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 421,
+      "completionTokens": 23,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.000049,
+      "latencyMs": 757,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:23:51.815Z",
+      "traceId": "dev-10",
+      "step": "readouts",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 425,
+      "completionTokens": 23,
+      "cachedTokens": 368,
+      "credits": 0,
+      "costUsd": 0.0000494,
+      "latencyMs": 1604,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:23:53.462Z",
       "traceId": "dev-10",
       "step": "boundary",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 307,
+      "promptTokens": 295,
       "completionTokens": 6,
       "cachedTokens": 144,
       "credits": 0,
-      "costUsd": 0.000032500000000000004,
-      "latencyMs": 440,
+      "costUsd": 0.0000313,
+      "latencyMs": 414,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:23:53.901Z",
+      "traceId": "dev-10",
+      "step": "boundary",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 355,
+      "completionTokens": 6,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.0000373,
+      "latencyMs": 540,
       "status": "200",
       "cacheHit": false
     }
   ],
   "scopeNote": "Web pages only; print and paywalled origins are out of scope. Earliest source we found, not proof of first use.",
-  "otherNumbers": [
-    {
-      "url": "https://x.com/UNBiodiversity/status/1891163128681111906",
-      "domain": "x.com",
-      "title": "UN Biodiversity on X: \"Nearly 40% of plastic comes from single-use packaging and by2050, there could be more plastic in the ocean than fish! But there's hope! Watch how some innovators are turning seaweed into biodegradable plastic alternatives. via Farm Netz\" / X",
-      "date": null,
-      "sentence": "Log inSign up UN Biodiversity on X: \"Nearly 40% of plastic comes from single-use packaging and by2050, there could be more plastic in the ocean than fish!",
-      "number": "40%",
-      "similarity": 0.752
-    }
-  ]
+  "otherNumbers": []
 }

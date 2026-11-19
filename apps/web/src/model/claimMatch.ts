@@ -109,9 +109,10 @@ export function findTrace(text: string, traces: Trace[]): Trace | null {
 // Why the box would not look: too short to be a claim. A claim with no number is a phrase claim (T53), so it is looked
 // up like any other and, when no recorded trace has it, says "Not traced yet".
 export function claimProblem(text: string): string | null {
-  const words = text.trim().split(/\s+/).filter(Boolean);
-  if (words.length === 0) return null;
-  if (words.length < MIN_WORDS) return "Paste the whole sentence the claim came in.";
+  if (!text.trim()) return null;
+  // Content words, as findTrace counts them, so a bare subject ("The Great Wall of China", 3) asks for the sentence
+  // rather than saying "Not traced yet" (XO on #235).
+  if (parse(text).content.length < MIN_WORDS) return "Paste the whole sentence the claim came in.";
   return null;
 }
 
