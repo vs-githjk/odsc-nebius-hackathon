@@ -133,3 +133,4 @@
 - 2026-11-18 21:05 #232 merged 1d7e775; #237 review: FIX M2 L1 (perms, Google Fonts, pins)
 - 2026-11-18 21:08 #236 review c32ebf1: FIX M origin hidden on tie, L recordedAt throw; posted
 - 2026-11-18 21:18 Rishit out of usage until 22:00; reviewing #237 fix round and #158 demo script
+- 2026-11-18 21:25 #237 merged (dispatch-only Pages workflow; not run; Pages switch-on waits for Vidyut)
