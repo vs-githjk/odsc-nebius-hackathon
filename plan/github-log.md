@@ -145,3 +145,5 @@
 - 2026-11-19 02:10 Live Vercel app assigned to Rishit (#1, spec posted); S7 back in (answer run in morning); backup hero framing LOCKED
 - 2026-11-19 02:20 Rishit sole focus: live app (guide + challenges, $2 cap); #236 to Anoop
 - 11-19 07:20 XO AM: merged #243, #244; closed #236; FIX #222 (strip-before-count false-earlier); judge 71/100; Anoop hero pin dev-11 + README; Rohan rematch urgent
+- 11-19 08:37 XO: E2 live rerun 4 merged #245 ($1.98, dev-10 ends WEF Jan 2016); Anoop hero -> dev-10, #158 version A
+- 11-19 08:44 XO: S7 live answer run merged #246 ($0.21); ledger $10.54/15; gallery waits on Rohan overlap check; held-out on Rohan
