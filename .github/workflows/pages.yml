@@ -1,0 +1,41 @@
+# Replay-only public build of the web app on GitHub Pages: committed traces only, no keys, no network calls
+# (apps/web/src/data/replayOnly.test.ts checks the app's code). Not switched on: it runs only when started by hand
+# from the Actions tab, after Vidyut approves and sets Settings > Pages > Source to "GitHub Actions".
+name: Pages (replay-only web app)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      # The same gates as CI, so a red main never ships.
+      - run: make verify
+      # No secrets are passed to this job; the build reads only the repo.
+      - run: npm run build --workspace apps/web
+        env:
+          PZ_PAGES_BASE: /${{ github.event.repository.name }}/
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: apps/web/dist
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
