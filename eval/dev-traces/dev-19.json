@@ -3,7 +3,7 @@
   "id": "dev-19",
   "mode": "LIVE",
   "synthetic": false,
-  "recordedAt": "2026-11-18T03:11:37.048Z",
+  "recordedAt": "2026-11-19T13:31:15.558Z",
   "claim": {
     "text": "Sam Altman says the RAM in your PC is only used about 5% of the time.",
     "atoms": {
@@ -32,8 +32,8 @@
       "domain": "politifact.com",
       "title": "Donald Trump said Chrysler is leaving Mexico. It isn’t – PolitiFact",
       "date": {
-        "kind": "existed_by",
-        "value": "2020-09-23",
+        "kind": "unconfirmed",
+        "value": null,
         "source": "wayback_first_capture",
         "firstCapture": "2020-09-23",
         "conflictingDate": false
@@ -48,11 +48,11 @@
       "candidateParents": [
         {
           "url": "https://www.usatoday.com/story/money/cars/2016/07/28/fiat-chrysler-ending-car-production-us/87649136",
-          "read": true
+          "read": false
         },
         {
           "url": "http://media.fcanorthamerica.com/newsrelease.do?id=335&mid=",
-          "read": false
+          "read": true
         }
       ],
       "pageType": null,
@@ -60,14 +60,14 @@
     },
     {
       "id": "n2",
-      "url": "https://www.factcheck.org/2021/09/republicans-inflate-cost-of-taliban-seized-u-s-military-equipment",
-      "domain": "factcheck.org",
-      "title": "Republicans Inflate Cost of Taliban-Seized U.S. Military Equipment - FactCheck.org",
+      "url": "https://politifact.com/factchecks/2014/feb/10/steve-stockman/john-cornyn-voted-against-leaderships-immigration",
+      "domain": "politifact.com",
+      "title": "John Cornyn voted against leadership’s immigration plan at committee level and on Senate floor in 2013 – PolitiFact",
       "date": {
-        "kind": "existed_by",
-        "value": "2021-09-03",
+        "kind": "unconfirmed",
+        "value": null,
         "source": "wayback_first_capture",
-        "firstCapture": "2021-09-03",
+        "firstCapture": "2026-08-12",
         "conflictingDate": false
       },
       "clusterId": "c-n2",
@@ -79,8 +79,12 @@
       "citesEarlier": true,
       "candidateParents": [
         {
-          "url": "https://www.nytimes.com/live/2021/08/23/world/taliban-afghanistan-biden-news",
-          "read": true
+          "url": "http://www.upi.com/Top_News/US/2013/06/20/Senate-rejects-Cornyns-border-security-trigger-amendment/UPI-68451371737915",
+          "read": false
+        },
+        {
+          "url": "http://www.whitehouse.gov/sites/default/files/rss_viewer/immigration_blueprint.pdf",
+          "read": false
         }
       ],
       "pageType": null,
@@ -112,19 +116,19 @@
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "no",
-        "probability": 0.9241418058454068,
+        "probability": 0.9770226272977974,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.07585817328602604
+            "p": 0.02297737270220252
           },
           {
             "optionId": "no",
-            "p": 0.9241418058454068
+            "p": 0.9770226272977974
           },
           {
             "optionId": "__other__",
-            "p": 2.0868567096599122e-8
+            "p": 0
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -169,7 +173,7 @@
       "end": 2616,
       "extractSha256": "1b113e34537a5baa0be77d38b2779e1e274984f2e89343f2a77e5e9c228e0a7c",
       "windowSha256": "3a70dd30096ff69c78e8177c03d3a8636df89686b08b52e33f4631c4ee75e9de",
-      "fetchedAt": "2026-11-18T03:12:04.551Z",
+      "fetchedAt": "2026-11-19T13:31:31.701Z",
       "waybackUrl": "https://web.archive.org/web/20181127221601/https://stackoverflow.com/questions/48750199/google-colaboratory-misleading-information-about-its-gpu-only-5-ram-available",
       "tier": "exact"
     }
@@ -188,14 +192,14 @@
   "redHopEdgeId": null,
   "earliest": {
     "nodeIds": [],
-    "earlierWindowSearches": 4,
+    "earlierWindowSearches": 3,
     "earlierFound": 0
   },
   "failure": null,
   "budget": {
-    "credits": 5,
-    "usd": 0.00012182,
-    "ms": 28120,
+    "credits": 10,
+    "usd": 0.00018941000000000002,
+    "ms": 31665,
     "capHit": null
   },
   "decision": {
@@ -203,70 +207,120 @@
     "row": 6,
     "reasons": [
       "no earliest page with a confirmed date, a primary page type, no earlier citation and no negated span",
-      "1 unread candidate parent(s)"
+      "3 unread candidate parent(s)"
     ],
     "counts": {
       "pages": 1,
       "clusters": 1,
-      "unreadParents": 1,
-      "earlierWindowSearches": 4
+      "unreadParents": 3,
+      "earlierWindowSearches": 3
     }
   },
   "searchLog": [
     {
-      "at": "2026-11-18T03:11:41.689Z",
+      "at": "2026-11-19T13:31:22.383Z",
       "step": "search",
       "query": "\"5%\" ram",
-      "endDate": "2026-11-18",
+      "endDate": "2026-11-19",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-18T03:11:43.766Z",
+      "at": "2026-11-19T13:31:23.596Z",
       "step": "search",
-      "query": "5% of PC RAM usage Sam Altman quote",
-      "endDate": "2026-11-18",
+      "query": "5% of PC RAM usage Sam Altman",
+      "endDate": "2026-11-19",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-18T03:11:45.417Z",
+      "at": "2026-11-19T13:31:25.042Z",
       "step": "search",
-      "query": "Sam Altman says PC RAM used 5% of time",
-      "endDate": "2026-11-18",
+      "query": "RAM in your PC used only 5% of the time",
+      "endDate": "2026-11-19",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-18T03:11:47.253Z",
+      "at": "2026-11-19T13:31:26.572Z",
       "step": "search",
-      "query": "Sam Altman RAM utilization 5% figure",
-      "endDate": "2026-11-18",
+      "query": "Sam Altman 5% PC RAM usage study",
+      "endDate": "2026-11-19",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-18T03:11:49.885Z",
+      "at": "2026-11-19T13:31:29.405Z",
       "step": "meta-search",
       "query": "\"5%\" ram",
-      "endDate": "2026-11-18",
+      "endDate": "2026-11-19",
       "startDate": null,
       "results": 5,
       "kept": 2,
       "dropped": 3
+    },
+    {
+      "at": "2026-11-19T13:31:36.902Z",
+      "step": "search",
+      "query": "Sam Altman PC RAM usage study",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:31:38.122Z",
+      "step": "search",
+      "query": "PC RAM utilization rate 5%",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:31:39.781Z",
+      "step": "search",
+      "query": "Sam Altman RAM usage 5% figure",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:31:42.636Z",
+      "step": "dating",
+      "query": "https://www.politifact.com/factchecks/2018/jan/18/donald-trump/trump-said-chrysler-leaving-mexico-it-isnt: the node has no span to look for in the capture; no date from the first capture",
+      "endDate": null,
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:31:45.318Z",
+      "step": "dating",
+      "query": "https://politifact.com/factchecks/2014/feb/10/steve-stockman/john-cornyn-voted-against-leaderships-immigration: the node has no span to look for in the capture; no date from the first capture",
+      "endDate": null,
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
     }
   ],
   "usage": [
     {
-      "at": "2026-11-18T03:11:37.049Z",
+      "at": "2026-11-19T13:31:15.560Z",
       "traceId": "dev-19",
       "step": "tokenfactory",
       "service": "tokenfactory",
@@ -274,31 +328,31 @@
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 168,
       "completionTokens": 48,
-      "cachedTokens": 128,
+      "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0.0000312,
-      "latencyMs": 995,
+      "latencyMs": 1951,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:11:38.052Z",
+      "at": "2026-11-19T13:31:17.514Z",
       "traceId": "dev-19",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 278,
-      "completionTokens": 109,
+      "completionTokens": 110,
       "cachedTokens": 240,
       "credits": 0,
-      "costUsd": 0.00006049999999999999,
-      "latencyMs": 1895,
+      "costUsd": 0.0000608,
+      "latencyMs": 3367,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:11:41.688Z",
+      "at": "2026-11-19T13:31:22.382Z",
       "traceId": "dev-19",
       "step": "search",
       "service": "tavily",
@@ -309,12 +363,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1677,
+      "latencyMs": 1463,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:11:43.764Z",
+      "at": "2026-11-19T13:31:23.595Z",
       "traceId": "dev-19",
       "step": "search",
       "service": "tavily",
@@ -325,12 +379,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1949,
+      "latencyMs": 1175,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:11:45.416Z",
+      "at": "2026-11-19T13:31:25.042Z",
       "traceId": "dev-19",
       "step": "search",
       "service": "tavily",
@@ -341,12 +395,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1606,
+      "latencyMs": 1420,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:11:47.253Z",
+      "at": "2026-11-19T13:31:26.572Z",
       "traceId": "dev-19",
       "step": "search",
       "service": "tavily",
@@ -357,12 +411,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1818,
+      "latencyMs": 1515,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:11:49.885Z",
+      "at": "2026-11-19T13:31:29.403Z",
       "traceId": "dev-19",
       "step": "meta-search",
       "service": "tavily",
@@ -373,12 +427,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 2616,
+      "latencyMs": 2811,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:11:49.896Z",
+      "at": "2026-11-19T13:31:29.589Z",
       "traceId": "dev-19",
       "step": "meta-extract",
       "service": "tavily",
@@ -389,12 +443,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 0,
+      "latencyMs": 146,
       "status": "200",
-      "cacheHit": true
+      "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:11:56.728Z",
+      "at": "2026-11-19T13:31:30.144Z",
       "traceId": "dev-19",
       "step": "extract",
       "service": "tavily",
@@ -403,62 +457,30 @@
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 6732,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 382,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:11:56.730Z",
+      "at": "2026-11-19T13:31:30.146Z",
       "traceId": "dev-19",
       "step": "embed",
       "service": "tokenfactory",
       "endpoint": "/embeddings",
       "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 216,
+      "promptTokens": 236,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.00000216,
-      "latencyMs": 1931,
+      "costUsd": 0.00000236,
+      "latencyMs": 820,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:11:58.677Z",
-      "traceId": "dev-19",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 136,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.0000013600000000000001,
-      "latencyMs": 2902,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T03:12:04.551Z",
-      "traceId": "dev-19",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 2967,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T03:12:04.552Z",
+      "at": "2026-11-19T13:31:30.985Z",
       "traceId": "dev-19",
       "step": "same_claim",
       "service": "tokenfactory",
@@ -469,12 +491,172 @@
       "cachedTokens": 160,
       "credits": 0,
       "costUsd": 0.0000266,
-      "latencyMs": 328,
+      "latencyMs": 706,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:12:05.165Z",
+      "at": "2026-11-19T13:31:31.701Z",
+      "traceId": "dev-19",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:31:31.715Z",
+      "traceId": "dev-19",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 74,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 7.4e-7,
+      "latencyMs": 424,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:31:32.141Z",
+      "traceId": "dev-19",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 278,
+      "completionTokens": 105,
+      "cachedTokens": 240,
+      "credits": 0,
+      "costUsd": 0.000059300000000000005,
+      "latencyMs": 3350,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:31:36.902Z",
+      "traceId": "dev-19",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1371,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:31:38.122Z",
+      "traceId": "dev-19",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1178,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:31:39.781Z",
+      "traceId": "dev-19",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1630,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:31:40.570Z",
+      "traceId": "dev-19",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 759,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:31:40.576Z",
+      "traceId": "dev-19",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 458,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00000458,
+      "latencyMs": 992,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:31:41.627Z",
+      "traceId": "dev-19",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 199,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00000199,
+      "latencyMs": 393,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:31:42.031Z",
+      "traceId": "dev-19",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 184,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00000184,
+      "latencyMs": 471,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:31:42.622Z",
       "traceId": "dev-19",
       "step": "dating",
       "service": "fetch",
@@ -485,12 +667,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 283,
+      "latencyMs": 113,
       "status": "403",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:12:05.167Z",
+      "at": "2026-11-19T13:31:42.635Z",
       "traceId": "dev-19",
       "step": "dating",
       "service": "wayback",
@@ -506,7 +688,23 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-18T03:12:05.168Z",
+      "at": "2026-11-19T13:31:45.296Z",
+      "traceId": "dev-19",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 2660,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:31:45.348Z",
       "traceId": "dev-19",
       "step": "dating",
       "service": "wayback",
@@ -522,20 +720,20 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-18T03:12:05.168Z",
+      "at": "2026-11-19T13:31:47.086Z",
       "traceId": "dev-19",
       "step": "dating",
       "service": "wayback",
-      "endpoint": "cdx",
+      "endpoint": "capture",
       "model": null,
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 0,
+      "latencyMs": 1736,
       "status": "200",
-      "cacheHit": true
+      "cacheHit": false
     }
   ],
   "scopeNote": "Web pages only; print and paywalled origins are out of scope. Earliest source we found, not proof of first use.",

@@ -3,7 +3,7 @@
   "id": "dev-07",
   "mode": "LIVE",
   "synthetic": false,
-  "recordedAt": "2026-11-18T02:59:08.919Z",
+  "recordedAt": "2026-11-19T13:20:30.573Z",
   "claim": {
     "text": "You lose 40 to 45 percent of your body heat through your head.",
     "atoms": {
@@ -31,14 +31,14 @@
   "nodes": [
     {
       "id": "n1",
-      "url": "https://www.factcheck.org/2016/11/trumps-tax-cut-claims",
-      "domain": "factcheck.org",
-      "title": "Trump's Tax Cut Claims - FactCheck.org",
+      "url": "http://api.politifact.com/factchecks/2011/dec/13/jon-huntsman/jon-huntsman-says-us-spends-more-all-othre-countri",
+      "domain": "api.politifact.com",
+      "title": "PolitiFact | Jon Huntsman says the U.S. spends more than all other countries combined on defense",
       "date": {
-        "kind": "existed_by",
-        "value": "2016-11-05",
+        "kind": "unconfirmed",
+        "value": null,
         "source": "wayback_first_capture",
-        "firstCapture": "2016-11-05",
+        "firstCapture": "2023-06-09",
         "conflictingDate": false
       },
       "clusterId": "c-n1",
@@ -54,14 +54,14 @@
     },
     {
       "id": "n2",
-      "url": "https://politifact.com/factchecks/2019/jan/29/howard-schultz/checking-howard-schultzs-claim-40-percent-american",
+      "url": "https://www.politifact.com/factchecks/2011/dec/13/jon-huntsman/jon-huntsman-says-us-spends-more-all-othre-countri",
       "domain": "politifact.com",
-      "title": "Checking Howard Schultz’s claim that 40 percent of Americans don’t have $400 in the bank – PolitiFact",
+      "title": "Jon Huntsman says the U.S. spends more than all other countries combined on defense – PolitiFact",
       "date": {
-        "kind": "existed_by",
-        "value": "2020-08-13",
+        "kind": "unconfirmed",
+        "value": null,
         "source": "wayback_first_capture",
-        "firstCapture": "2020-08-13",
+        "firstCapture": "2020-09-26",
         "conflictingDate": false
       },
       "clusterId": "c-n2",
@@ -74,251 +74,10 @@
       "candidateParents": [],
       "pageType": null,
       "foundViaMeta": null
-    },
-    {
-      "id": "n3",
-      "url": "https://www.livescience.com/34411-body-heat-loss-head.html",
-      "domain": "livescience.com",
-      "title": "Lose Half our Body Heat Through our Heads | Body Heat Loss | Live Science",
-      "date": {
-        "kind": "published",
-        "value": "2013-02-01",
-        "source": "metadata",
-        "firstCapture": "2013-07-03",
-        "conflictingDate": false
-      },
-      "clusterId": "c-n3",
-      "evidence": "observed",
-      "meta": false,
-      "read": true,
-      "versionOf": null,
-      "spanIds": [
-        "s1"
-      ],
-      "citesEarlier": false,
-      "candidateParents": [],
-      "pageType": {
-        "questionId": "page_type",
-        "optionId": "other",
-        "probability": 0.8017860560032731,
-        "top": [
-          {
-            "optionId": "study",
-            "p": 0
-          },
-          {
-            "optionId": "dataset",
-            "p": 0
-          },
-          {
-            "optionId": "report",
-            "p": 0.05125647076077435
-          },
-          {
-            "optionId": "speaker",
-            "p": 0
-          },
-          {
-            "optionId": "news",
-            "p": 0.006121712445835605
-          },
-          {
-            "optionId": "blog",
-            "p": 0.1393295330599553
-          },
-          {
-            "optionId": "social",
-            "p": 0.001205436652827853
-          },
-          {
-            "optionId": "other",
-            "p": 0.8017860560032731
-          },
-          {
-            "optionId": "__other__",
-            "p": 0.0003007910773338285
-          }
-        ],
-        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-        "threshold": null
-      },
-      "sameClaim": {
-        "questionId": "same_claim",
-        "optionId": "yes",
-        "probability": 0.9999898673833203,
-        "top": [
-          {
-            "optionId": "yes",
-            "p": 0.9999898673833203
-          },
-          {
-            "optionId": "no",
-            "p": 0.00001012998735708693
-          },
-          {
-            "optionId": "__other__",
-            "p": 2.629322648495247e-9
-          }
-        ],
-        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-        "threshold": null
-      },
-      "foundViaMeta": null,
-      "boundary": {
-        "questionId": "boundary",
-        "optionId": "print",
-        "probability": 0.9999429034267997,
-        "top": [
-          {
-            "optionId": "print",
-            "p": 0.9999429034267997
-          },
-          {
-            "optionId": "unsourced",
-            "p": 0.00004560756338734772
-          },
-          {
-            "optionId": "none",
-            "p": 0.000011478243081581806
-          },
-          {
-            "optionId": "__other__",
-            "p": 1.0766731395328577e-8
-          }
-        ],
-        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-        "threshold": null
-      },
-      "injection": null
-    },
-    {
-      "id": "n4",
-      "url": "https://www.onemedical.com/blog/healthy-living/body-heat",
-      "domain": "onemedical.com",
-      "title": "Quirky Questions: How much body heat do I really lose through my head? | One Medical",
-      "date": {
-        "kind": "existed_by",
-        "value": "2021-04-20",
-        "source": "wayback_first_capture",
-        "firstCapture": "2021-04-20",
-        "conflictingDate": false
-      },
-      "clusterId": "c-n4",
-      "evidence": "observed",
-      "meta": false,
-      "read": true,
-      "versionOf": null,
-      "spanIds": [
-        "s2"
-      ],
-      "citesEarlier": false,
-      "candidateParents": [],
-      "pageType": null,
-      "sameClaim": {
-        "questionId": "same_claim",
-        "optionId": "yes",
-        "probability": 0.9999989271984118,
-        "top": [
-          {
-            "optionId": "yes",
-            "p": 0.9999989271984118
-          },
-          {
-            "optionId": "no",
-            "p": 0.0000010677030061437284
-          },
-          {
-            "optionId": "__other__",
-            "p": 5.0985821120619335e-9
-          }
-        ],
-        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-        "threshold": null
-      },
-      "foundViaMeta": null,
-      "injection": null
-    },
-    {
-      "id": "n5",
-      "url": "https://www.livescience.com/5218-5-surprising-holiday-health-myths.html",
-      "domain": "livescience.com",
-      "title": "5 Surprising Holiday Health Myths | Live Science",
-      "date": {
-        "kind": "existed_by",
-        "value": "2012-07-03",
-        "source": "wayback_first_capture",
-        "firstCapture": "2012-07-03",
-        "conflictingDate": false
-      },
-      "clusterId": "c-n5",
-      "evidence": "observed",
-      "meta": true,
-      "read": true,
-      "versionOf": null,
-      "spanIds": [
-        "s3"
-      ],
-      "citesEarlier": false,
-      "candidateParents": [],
-      "pageType": null,
-      "sameClaim": {
-        "questionId": "same_claim",
-        "optionId": "yes",
-        "probability": 0.9995694429068462,
-        "top": [
-          {
-            "optionId": "yes",
-            "p": 0.9995694429068462
-          },
-          {
-            "optionId": "no",
-            "p": 0.0004305570931536088
-          },
-          {
-            "optionId": "__other__",
-            "p": 1.1102230246251565e-16
-          }
-        ],
-        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-        "threshold": null
-      },
-      "foundViaMeta": null,
-      "injection": null
     }
   ],
-  "edges": [
-    {
-      "id": "e1",
-      "parentId": "n3",
-      "childId": "n4",
-      "kind": "inferred",
-      "parentSpanId": "s1",
-      "childSpanId": "s2",
-      "linkHref": null
-    }
-  ],
+  "edges": [],
   "clusters": [
-    {
-      "id": "c-n5",
-      "nodeIds": [
-        "n5"
-      ],
-      "rule": "single"
-    },
-    {
-      "id": "c-n3",
-      "nodeIds": [
-        "n3"
-      ],
-      "rule": "single"
-    },
-    {
-      "id": "c-n4",
-      "nodeIds": [
-        "n4"
-      ],
-      "rule": "single"
-    },
     {
       "id": "c-n1",
       "nodeIds": [
@@ -334,464 +93,119 @@
       "rule": "single"
     }
   ],
-  "spans": [
-    {
-      "id": "s1",
-      "nodeId": "n3",
-      "text": "Army Field Manual used to claim \"40 to 45 percent of body heat\" is lost through the head, but it is simply not true, according to the British Medical Journal.",
-      "contextBefore": "rce on Google Subscribe to our newsletter How special is the human head compared with other body parts when it comes to losing or retaining body heat? As it turns out, not that special. Even the U.S. ",
-      "contextAfter": " This heat-loss myth probably came from experiments in the 1950s, when military researchers exposed subjects to frigid temperatures. While their bodies were bundled up, their heads were exposed - and ",
-      "start": 3170,
-      "end": 3328,
-      "extractSha256": "e9c7906b18c6fbc4060f56d3cdedd6da9b44ceafec8401a0cd84fa375c6b7c61",
-      "windowSha256": "a43dc6fb021e2d0c7ebefa9b92a2a255285a74e796336214441cc090db9bcf00",
-      "fetchedAt": "2026-11-18T02:59:24.198Z",
-      "waybackUrl": "https://web.archive.org/web/20130703051648/https://www.livescience.com/34411-body-heat-loss-head.html",
-      "tier": "exact"
-    },
-    {
-      "id": "s2",
-      "nodeId": "n4",
-      "text": "This idea was then perpetuated by a 1970s edition of a US Army survival field guide that recommended covering one's head in frigid temperatures because \"40 to 45 percent of body heat\" is lost through the head.",
-      "contextBefore": "atures while wearing arctic survival suits. However, the suits only covered the subjects from the neck down. Therefore, naturally, the majority of the heat loss occurred by way of the uncovered head. ",
-      "contextAfter": " Since heat loss from any body region is largely dependent upon surface area, you can see why this belief isn't logical, because your head comprises only about 10% of your body's total surface area. T",
-      "start": 895,
-      "end": 1104,
-      "extractSha256": "0038b773acfd12cb96ea7b5ee938375d386ea12fd31b4be077611e49a9995c74",
-      "windowSha256": "085dcf14331f766ce638b5be9b20ce28bc6608d94112fea0115f12c20c76f349",
-      "fetchedAt": "2026-11-18T02:59:25.223Z",
-      "waybackUrl": "https://web.archive.org/web/20210420164813/https://www.onemedical.com/blog/healthy-living/body-heat",
-      "tier": "exact"
-    },
-    {
-      "id": "s3",
-      "nodeId": "n5",
-      "text": "Army Field Manual claims \"40 to 45 percent of body heat\" is lost through the head, the researchers write in this week's article, but it is simply not true.",
-      "contextBefore": "o call the poison control center when any non-food plant is eaten, she said. Myth 4: You lose most of your body heat through your head. Your mother said it. Every hat salesman touts it. Even the U.S. ",
-      "contextAfter": " Body heat leaves from any skin surface in proportion to the area exposed, said Vreeman. As for people who claim a hat renders shorts acceptable in cold weather? \"Those people are being very, very foo",
-      "start": 5389,
-      "end": 5544,
-      "extractSha256": "3d27577e5813718890445f7e6ba8a665361732c0a85f741abc0e5600c01739fb",
-      "windowSha256": "102c04c3b360fef0f0dce20516b4b70ee02b4c1925fad1ade9a8aa94279ae139",
-      "fetchedAt": "2026-11-18T02:59:38.887Z",
-      "waybackUrl": "https://web.archive.org/web/20120703101752/https://www.livescience.com/5218-5-surprising-holiday-health-myths.html",
-      "tier": "exact"
-    }
-  ],
-  "hops": [
-    {
-      "edgeId": "e1",
-      "readouts": [
-        {
-          "id": "number_changed",
-          "source": "measured",
-          "value": "unsure",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "unit_changed",
-          "source": "measured",
-          "value": "unsure",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "hedge_dropped",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "comparison_added",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "scope_widened",
-          "source": "inferred",
-          "value": "no",
-          "probability": 0.6224593145180991,
-          "disputed": false
-        },
-        {
-          "id": "attribution_shifted",
-          "source": "inferred",
-          "value": "yes",
-          "probability": 0.9999997615965056,
-          "disputed": false
-        },
-        {
-          "id": "context_stripped",
-          "source": "inferred",
-          "value": "no",
-          "probability": 0.9933071486499646,
-          "disputed": false
-        }
-      ],
-      "wordDiff": [
-        {
-          "op": "add",
-          "text": "this"
-        },
-        {
-          "op": "add",
-          "text": "idea"
-        },
-        {
-          "op": "add",
-          "text": "was"
-        },
-        {
-          "op": "add",
-          "text": "then"
-        },
-        {
-          "op": "add",
-          "text": "perpetuated"
-        },
-        {
-          "op": "add",
-          "text": "by"
-        },
-        {
-          "op": "add",
-          "text": "a"
-        },
-        {
-          "op": "add",
-          "text": "1970s"
-        },
-        {
-          "op": "add",
-          "text": "edition"
-        },
-        {
-          "op": "add",
-          "text": "of"
-        },
-        {
-          "op": "add",
-          "text": "a"
-        },
-        {
-          "op": "add",
-          "text": "us"
-        },
-        {
-          "op": "same",
-          "text": "army"
-        },
-        {
-          "op": "add",
-          "text": "survival"
-        },
-        {
-          "op": "same",
-          "text": "field"
-        },
-        {
-          "op": "add",
-          "text": "guide"
-        },
-        {
-          "op": "add",
-          "text": "that"
-        },
-        {
-          "op": "add",
-          "text": "recommended"
-        },
-        {
-          "op": "add",
-          "text": "covering"
-        },
-        {
-          "op": "add",
-          "text": "one's"
-        },
-        {
-          "op": "add",
-          "text": "head"
-        },
-        {
-          "op": "add",
-          "text": "in"
-        },
-        {
-          "op": "add",
-          "text": "frigid"
-        },
-        {
-          "op": "add",
-          "text": "temperatures"
-        },
-        {
-          "op": "add",
-          "text": "because"
-        },
-        {
-          "op": "del",
-          "text": "manual"
-        },
-        {
-          "op": "del",
-          "text": "used"
-        },
-        {
-          "op": "del",
-          "text": "to"
-        },
-        {
-          "op": "del",
-          "text": "claim"
-        },
-        {
-          "op": "same",
-          "text": "40"
-        },
-        {
-          "op": "same",
-          "text": "to"
-        },
-        {
-          "op": "same",
-          "text": "45"
-        },
-        {
-          "op": "same",
-          "text": "percent"
-        },
-        {
-          "op": "same",
-          "text": "of"
-        },
-        {
-          "op": "same",
-          "text": "body"
-        },
-        {
-          "op": "same",
-          "text": "heat"
-        },
-        {
-          "op": "same",
-          "text": "is"
-        },
-        {
-          "op": "same",
-          "text": "lost"
-        },
-        {
-          "op": "same",
-          "text": "through"
-        },
-        {
-          "op": "same",
-          "text": "the"
-        },
-        {
-          "op": "same",
-          "text": "head"
-        },
-        {
-          "op": "del",
-          "text": "but"
-        },
-        {
-          "op": "del",
-          "text": "it"
-        },
-        {
-          "op": "del",
-          "text": "is"
-        },
-        {
-          "op": "del",
-          "text": "simply"
-        },
-        {
-          "op": "del",
-          "text": "not"
-        },
-        {
-          "op": "del",
-          "text": "true"
-        },
-        {
-          "op": "del",
-          "text": "according"
-        },
-        {
-          "op": "del",
-          "text": "to"
-        },
-        {
-          "op": "del",
-          "text": "the"
-        },
-        {
-          "op": "del",
-          "text": "british"
-        },
-        {
-          "op": "del",
-          "text": "medical"
-        },
-        {
-          "op": "del",
-          "text": "journal"
-        }
-      ],
-      "faithful": false
-    }
-  ],
+  "spans": [],
+  "hops": [],
   "blame": [],
   "roots": {
-    "pages": 2,
-    "clusters": 2,
+    "pages": 0,
+    "clusters": 0,
     "rootsLinked": 0,
-    "clustersUnlinked": 2,
+    "clustersUnlinked": 0,
     "studiesFound": null,
-    "independentRoots": 2,
+    "independentRoots": 0,
     "copies": 0
   },
-  "redHopEdgeId": "e1",
+  "redHopEdgeId": null,
   "earliest": {
-    "nodeIds": [
-      "n3"
-    ],
-    "earlierWindowSearches": 5,
+    "nodeIds": [],
+    "earlierWindowSearches": 4,
     "earlierFound": 0
   },
   "failure": null,
   "budget": {
-    "credits": 13,
-    "usd": 0.0005041099999999999,
-    "ms": 34372,
+    "credits": 5,
+    "usd": 0.00010889999999999999,
+    "ms": 22697,
     "capHit": null
   },
   "decision": {
-    "state": "TRAIL_GOES_COLD",
-    "row": 6,
+    "state": "NO_PAGES_FOUND",
+    "row": 3,
     "reasons": [
-      "no earliest page with a confirmed date, a primary page type, no earlier citation and no negated span"
+      "no pages besides meta pages"
     ],
     "counts": {
-      "pages": 2,
-      "clusters": 2,
+      "pages": 0,
+      "clusters": 0,
       "unreadParents": 0,
-      "earlierWindowSearches": 5
+      "earlierWindowSearches": 4
     }
   },
   "searchLog": [
     {
-      "at": "2026-11-18T02:59:15.948Z",
+      "at": "2026-11-19T13:20:37.102Z",
       "step": "search",
       "query": "\"40 to 45 percent\" head",
-      "endDate": "2026-11-18",
+      "endDate": "2026-11-19",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-18T02:59:17.715Z",
+      "at": "2026-11-19T13:20:40.223Z",
       "step": "search",
-      "query": "\"40 to 45 percent\" of body heat through head",
-      "endDate": "2026-11-18",
+      "query": "40 to 45 percent body heat loss through head",
+      "endDate": "2026-11-19",
       "startDate": null,
-      "results": 10,
-      "kept": 10,
+      "results": 7,
+      "kept": 7,
       "dropped": 0
     },
     {
-      "at": "2026-11-18T02:59:18.989Z",
+      "at": "2026-11-19T13:20:41.863Z",
       "step": "search",
-      "query": "\"lose 40 to 45 percent\" body heat through head",
-      "endDate": "2026-11-18",
+      "query": "40-45 percent heat loss head older wording",
+      "endDate": "2026-11-19",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-18T02:59:20.919Z",
+      "at": "2026-11-19T13:20:43.857Z",
       "step": "search",
-      "query": "\"40 to 45 percent\" heat loss head",
-      "endDate": "2026-11-18",
+      "query": "military study head heat loss 40 to 45 percent",
+      "endDate": "2026-11-19",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-18T02:59:22.961Z",
+      "at": "2026-11-19T13:20:47.026Z",
       "step": "meta-search",
       "query": "\"40 to 45 percent\" head",
-      "endDate": "2026-11-18",
+      "endDate": "2026-11-19",
       "startDate": null,
       "results": 5,
       "kept": 2,
       "dropped": 3
     },
     {
-      "at": "2026-11-18T02:59:29.626Z",
-      "step": "search",
-      "query": "\"40 to 45 percent\" head",
-      "endDate": "2013-01-31",
+      "at": "2026-11-19T13:20:52.840Z",
+      "step": "dating",
+      "query": "http://api.politifact.com/factchecks/2011/dec/13/jon-huntsman/jon-huntsman-says-us-spends-more-all-othre-countri: the node has no span to look for in the capture; no date from the first capture",
+      "endDate": null,
       "startDate": null,
-      "results": 10,
-      "kept": 10,
+      "results": 0,
+      "kept": 0,
       "dropped": 0
     },
     {
-      "at": "2026-11-18T02:59:31.342Z",
-      "step": "search",
-      "query": "\"40 to 45 percent of body heat\" lost through head",
-      "endDate": "2013-01-31",
+      "at": "2026-11-19T13:20:53.271Z",
+      "step": "dating",
+      "query": "https://www.politifact.com/factchecks/2011/dec/13/jon-huntsman/jon-huntsman-says-us-spends-more-all-othre-countri: the node has no span to look for in the capture; no date from the first capture",
+      "endDate": null,
       "startDate": null,
-      "results": 10,
-      "kept": 10,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-18T02:59:32.938Z",
-      "step": "search",
-      "query": "\"40 to 45 percent of body heat\" through head Army Field Manual",
-      "endDate": "2013-01-31",
-      "startDate": null,
-      "results": 9,
-      "kept": 9,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-18T02:59:35.695Z",
-      "step": "search",
-      "query": "Army Field Manual \"40 to 45 percent\" head heat loss",
-      "endDate": "2013-01-31",
-      "startDate": null,
-      "results": 8,
-      "kept": 8,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-18T02:59:37.870Z",
-      "step": "search",
-      "query": "\"40 to 45%\" British Medical Journal",
-      "endDate": "2013-01-31",
-      "startDate": null,
-      "results": 8,
-      "kept": 8,
+      "results": 0,
+      "kept": 0,
       "dropped": 0
     }
   ],
   "usage": [
     {
-      "at": "2026-11-18T02:59:08.921Z",
+      "at": "2026-11-19T13:20:30.575Z",
       "traceId": "dev-07",
       "step": "tokenfactory",
       "service": "tokenfactory",
@@ -802,28 +216,28 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0.000025199999999999996,
-      "latencyMs": 1042,
+      "latencyMs": 966,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:59:09.968Z",
+      "at": "2026-11-19T13:20:31.545Z",
       "traceId": "dev-07",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 276,
-      "completionTokens": 233,
-      "cachedTokens": 240,
+      "completionTokens": 187,
+      "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.00009749999999999998,
-      "latencyMs": 3919,
+      "costUsd": 0.0000837,
+      "latencyMs": 3689,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:59:15.948Z",
+      "at": "2026-11-19T13:20:37.101Z",
       "traceId": "dev-07",
       "step": "search",
       "service": "tavily",
@@ -834,12 +248,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 2035,
+      "latencyMs": 1843,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:59:17.715Z",
+      "at": "2026-11-19T13:20:40.223Z",
       "traceId": "dev-07",
       "step": "search",
       "service": "tavily",
@@ -850,12 +264,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1751,
+      "latencyMs": 3098,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:59:18.989Z",
+      "at": "2026-11-19T13:20:41.863Z",
       "traceId": "dev-07",
       "step": "search",
       "service": "tavily",
@@ -866,12 +280,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1244,
+      "latencyMs": 1615,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:59:20.919Z",
+      "at": "2026-11-19T13:20:43.856Z",
       "traceId": "dev-07",
       "step": "search",
       "service": "tavily",
@@ -882,12 +296,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1899,
+      "latencyMs": 1971,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:59:22.960Z",
+      "at": "2026-11-19T13:20:47.026Z",
       "traceId": "dev-07",
       "step": "meta-search",
       "service": "tavily",
@@ -898,12 +312,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1988,
+      "latencyMs": 3139,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:59:23.146Z",
+      "at": "2026-11-19T13:20:49.629Z",
       "traceId": "dev-07",
       "step": "meta-extract",
       "service": "tavily",
@@ -912,14 +326,14 @@
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 127,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 2581,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:59:23.482Z",
+      "at": "2026-11-19T13:20:52.260Z",
       "traceId": "dev-07",
       "step": "extract",
       "service": "tavily",
@@ -928,14 +342,14 @@
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 242,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 2607,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:59:24.198Z",
+      "at": "2026-11-19T13:20:52.840Z",
       "traceId": "dev-07",
       "step": "dating",
       "service": "wayback",
@@ -946,28 +360,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 707,
+      "latencyMs": 535,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:59:24.199Z",
-      "traceId": "dev-07",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 236,
-      "completionTokens": 7,
-      "cachedTokens": 160,
-      "credits": 0,
-      "costUsd": 0.000025699999999999998,
-      "latencyMs": 747,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T02:59:25.223Z",
+      "at": "2026-11-19T13:20:53.271Z",
       "traceId": "dev-07",
       "step": "dating",
       "service": "wayback",
@@ -978,343 +376,7 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 274,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T02:59:25.224Z",
-      "traceId": "dev-07",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 249,
-      "completionTokens": 7,
-      "cachedTokens": 176,
-      "credits": 0,
-      "costUsd": 0.000027000000000000002,
-      "latencyMs": 433,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T02:59:25.668Z",
-      "traceId": "dev-07",
-      "step": "tokenfactory",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 341,
-      "completionTokens": 164,
-      "cachedTokens": 240,
-      "credits": 0,
-      "costUsd": 0.00008329999999999999,
-      "latencyMs": 2531,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T02:59:29.626Z",
-      "traceId": "dev-07",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1405,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T02:59:31.342Z",
-      "traceId": "dev-07",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1698,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T02:59:32.938Z",
-      "traceId": "dev-07",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1586,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T02:59:35.694Z",
-      "traceId": "dev-07",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 2739,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T02:59:37.870Z",
-      "traceId": "dev-07",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 2151,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T02:59:38.246Z",
-      "traceId": "dev-07",
-      "step": "extract",
-      "service": "tavily",
-      "endpoint": "extract",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 364,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T02:59:38.887Z",
-      "traceId": "dev-07",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 502,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T02:59:38.888Z",
-      "traceId": "dev-07",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 236,
-      "completionTokens": 7,
-      "cachedTokens": 192,
-      "credits": 0,
-      "costUsd": 0.000025699999999999998,
-      "latencyMs": 544,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T02:59:39.433Z",
-      "traceId": "dev-07",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 91,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 9.1e-7,
-      "latencyMs": 1497,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T02:59:41.119Z",
-      "traceId": "dev-07",
-      "step": "dating",
-      "service": "fetch",
-      "endpoint": "page",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 187,
-      "status": "403",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T02:59:41.150Z",
-      "traceId": "dev-07",
-      "step": "dating",
-      "service": "fetch",
-      "endpoint": "page",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 218,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T02:59:41.439Z",
-      "traceId": "dev-07",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 287,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T02:59:41.802Z",
-      "traceId": "dev-07",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 362,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T02:59:41.803Z",
-      "traceId": "dev-07",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 0,
-      "status": "200",
-      "cacheHit": true
-    },
-    {
-      "at": "2026-11-18T02:59:41.805Z",
-      "traceId": "dev-07",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 0,
-      "status": "200",
-      "cacheHit": true
-    },
-    {
-      "at": "2026-11-18T02:59:41.805Z",
-      "traceId": "dev-07",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 0,
-      "status": "200",
-      "cacheHit": true
-    },
-    {
-      "at": "2026-11-18T02:59:41.806Z",
-      "traceId": "dev-07",
-      "step": "page_type",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 1252,
-      "completionTokens": 8,
-      "cachedTokens": 176,
-      "credits": 0,
-      "costUsd": 0.0001276,
-      "latencyMs": 538,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T02:59:42.346Z",
-      "traceId": "dev-07",
-      "step": "readouts",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 478,
-      "completionTokens": 23,
-      "cachedTokens": 368,
-      "credits": 0,
-      "costUsd": 0.000054699999999999995,
-      "latencyMs": 561,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T02:59:42.908Z",
-      "traceId": "dev-07",
-      "step": "boundary",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 347,
-      "completionTokens": 6,
-      "cachedTokens": 144,
-      "credits": 0,
-      "costUsd": 0.0000365,
-      "latencyMs": 382,
+      "latencyMs": 430,
       "status": "200",
       "cacheHit": false
     }

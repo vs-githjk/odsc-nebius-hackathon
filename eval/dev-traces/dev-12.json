@@ -3,7 +3,7 @@
   "id": "dev-12",
   "mode": "LIVE",
   "synthetic": false,
-  "recordedAt": "2026-11-18T03:03:46.313Z",
+  "recordedAt": "2026-11-19T13:25:26.493Z",
   "claim": {
     "text": "You eat a credit card's worth of plastic every week.",
     "atoms": {
@@ -32,7 +32,7 @@
         "firstCapture": "2022-11-22",
         "conflictingDate": false
       },
-      "clusterId": "c-n1",
+      "clusterId": "c-n3",
       "evidence": "observed",
       "meta": false,
       "read": true,
@@ -46,15 +46,15 @@
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "yes",
-        "probability": 0.9999999966017321,
+        "probability": 0.999999999683912,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.9999999966017321
+            "p": 0.999999999683912
           },
           {
             "optionId": "no",
-            "p": 3.3982678932437234e-9
+            "p": 3.1608815432426907e-10
           },
           {
             "optionId": "__other__",
@@ -93,15 +93,15 @@
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "yes",
-        "probability": 0.9999999999969011,
+        "probability": 0.999999999994891,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.9999999999969011
+            "p": 0.999999999994891
           },
           {
             "optionId": "no",
-            "p": 3.0988193034376107e-12
+            "p": 5.109089214691732e-12
           },
           {
             "optionId": "__other__",
@@ -116,6 +116,122 @@
     },
     {
       "id": "n3",
+      "url": "https://98kupd.com/the-brady-report-12-9-20",
+      "domain": "98kupd.com",
+      "title": "The Brady Report 12/9/20 – 98KUPD – Arizona's Rock Station",
+      "date": {
+        "kind": "published",
+        "value": "2020-12-09",
+        "source": "metadata",
+        "firstCapture": "2021-01-20",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n3",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s3"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": {
+        "questionId": "page_type",
+        "optionId": "news",
+        "probability": 0.9705592516423528,
+        "top": [
+          {
+            "optionId": "study",
+            "p": 0
+          },
+          {
+            "optionId": "dataset",
+            "p": 0
+          },
+          {
+            "optionId": "report",
+            "p": 0
+          },
+          {
+            "optionId": "speaker",
+            "p": 0
+          },
+          {
+            "optionId": "news",
+            "p": 0.9705592516423528
+          },
+          {
+            "optionId": "blog",
+            "p": 0.029308347425317155
+          },
+          {
+            "optionId": "social",
+            "p": 0.000012624358049817601
+          },
+          {
+            "optionId": "other",
+            "p": 0.0001197765742802757
+          },
+          {
+            "optionId": "__other__",
+            "p": 0
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9999999998082829,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9999999998082829
+          },
+          {
+            "optionId": "no",
+            "p": 1.9171715714489632e-10
+          },
+          {
+            "optionId": "__other__",
+            "p": 0
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "boundary": {
+        "questionId": "boundary",
+        "optionId": "print",
+        "probability": 0.9981551493377064,
+        "top": [
+          {
+            "optionId": "print",
+            "p": 0.9981551493377064
+          },
+          {
+            "optionId": "unsourced",
+            "p": 0.0010415029737817472
+          },
+          {
+            "optionId": "none",
+            "p": 0.0008033476885118635
+          },
+          {
+            "optionId": "__other__",
+            "p": 0
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "injection": null
+    },
+    {
+      "id": "n4",
       "url": "https://www.euronews.com/2022/04/20/your-weekly-wash-is-releasing-thousands-of-microplastics-into-the-sea",
       "domain": "euronews.com",
       "title": "Your weekly wash releases harmful microplastics into the sea - here's how to stop it | Euronews",
@@ -132,7 +248,7 @@
       "read": true,
       "versionOf": null,
       "spanIds": [
-        "s3"
+        "s4"
       ],
       "citesEarlier": false,
       "candidateParents": [],
@@ -162,7 +278,7 @@
       "injection": null
     },
     {
-      "id": "n4",
+      "id": "n5",
       "url": "https://www.euronews.com/green/2022/04/20/your-weekly-wash-is-releasing-thousands-of-microplastics-into-the-sea",
       "domain": "euronews.com",
       "title": "Your weekly wash releases harmful microplastics into the sea - here's how to stop it | Euronews",
@@ -179,93 +295,23 @@
       "read": true,
       "versionOf": null,
       "spanIds": [
-        "s4"
+        "s5"
       ],
       "citesEarlier": false,
       "candidateParents": [],
-      "pageType": {
-        "questionId": "page_type",
-        "optionId": "news",
-        "probability": 0.9993072781886866,
-        "top": [
-          {
-            "optionId": "study",
-            "p": 0
-          },
-          {
-            "optionId": "dataset",
-            "p": 0
-          },
-          {
-            "optionId": "report",
-            "p": 0.00020332734896292228
-          },
-          {
-            "optionId": "speaker",
-            "p": 0
-          },
-          {
-            "optionId": "news",
-            "p": 0.9993072781886866
-          },
-          {
-            "optionId": "blog",
-            "p": 0.00043044420638406076
-          },
-          {
-            "optionId": "social",
-            "p": 4.4477676994006456e-7
-          },
-          {
-            "optionId": "other",
-            "p": 0.00005825426081074303
-          },
-          {
-            "optionId": "__other__",
-            "p": 2.5121838576058764e-7
-          }
-        ],
-        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-        "threshold": null
-      },
+      "pageType": null,
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "yes",
-        "probability": 0.999999999987744,
+        "probability": 0.999999999979793,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.999999999987744
+            "p": 0.999999999979793
           },
           {
             "optionId": "no",
-            "p": 1.2256068587336317e-11
-          },
-          {
-            "optionId": "__other__",
-            "p": 0
-          }
-        ],
-        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-        "threshold": null
-      },
-      "foundViaMeta": null,
-      "boundary": {
-        "questionId": "boundary",
-        "optionId": "print",
-        "probability": 0.999997650265292,
-        "top": [
-          {
-            "optionId": "print",
-            "p": 0.999997650265292
-          },
-          {
-            "optionId": "unsourced",
-            "p": 0.0000014074911038072737
-          },
-          {
-            "optionId": "none",
-            "p": 9.422436041196671e-7
+            "p": 2.020683998027182e-11
           },
           {
             "optionId": "__other__",
@@ -275,59 +321,36 @@
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
         "threshold": null
       },
+      "foundViaMeta": null,
       "injection": null
     }
   ],
-  "edges": [
-    {
-      "id": "e1",
-      "parentId": "n4",
-      "childId": "n1",
-      "kind": "inferred",
-      "parentSpanId": "s4",
-      "childSpanId": "s1",
-      "linkHref": null
-    },
-    {
-      "id": "e2",
-      "parentId": "n1",
-      "childId": "n2",
-      "kind": "inferred",
-      "parentSpanId": "s1",
-      "childSpanId": "s2",
-      "linkHref": null
-    }
-  ],
+  "edges": [],
   "clusters": [
     {
       "id": "c-n3",
       "nodeIds": [
         "n3",
-        "n4",
-        "n2"
+        "n5",
+        "n1",
+        "n2",
+        "n4"
       ],
       "rule": "syndicated"
-    },
-    {
-      "id": "c-n1",
-      "nodeIds": [
-        "n1"
-      ],
-      "rule": "single"
     }
   ],
   "spans": [
     {
       "id": "s1",
       "nodeId": "n1",
-      "text": "Skip to Content SubscribeLog In Log InSubscribe * Nautilus Facebook * Nautilus X (formerly Twitter) * Nautilus TikTok * Nautilus YouTube * Nautilus Bluesky * Nautilus Instagram Subscribe to skip adsAdvertisement Health You Eat a Credit Card's Worth of Plastic Every Week.",
-      "contextBefore": "",
+      "text": "You Eat a Credit Card's Worth of Plastic Every Week.",
+      "contextBefore": "scribeLog In Log InSubscribe * Nautilus Facebook * Nautilus X (formerly Twitter) * Nautilus TikTok * Nautilus YouTube * Nautilus Bluesky * Nautilus Instagram Subscribe to skip adsAdvertisement Health ",
       "contextAfter": " What is our hidden consumption of microplastics doing to our health? KG By Katharine Gammon 11:08 PM CDT on May 18, 2022 Add Nautilus to Google *After this article was published, a reanalysis of the ",
-      "start": 0,
+      "start": 219,
       "end": 271,
       "extractSha256": "bfe9f194eb8ce544c916fa910afa67b43d91cc5f8eedd8f5031aa38e2447896e",
-      "windowSha256": "10794767558894ae37d0aaf3e76e1b968d3af92ed6b1f943a4a4daf9e79b3c36",
-      "fetchedAt": "2026-11-18T03:03:58.574Z",
+      "windowSha256": "b9c859d2e9a0518a60bfa6e04ccdbd9e204ab1f8e4b73890c2793d70712385ca",
+      "fetchedAt": "2026-11-19T13:25:34.501Z",
       "waybackUrl": "https://web.archive.org/web/20221122213859/https://nautil.us/you-eat-a-credits-card-worth-of-plastic-every-week-238481",
       "tier": "exact"
     },
@@ -341,22 +364,22 @@
       "end": 15823,
       "extractSha256": "943c0f5c7a99853dfea47f270a26d74ec9fb368f0e7f6ca5672f32b9061af12c",
       "windowSha256": "bd841b54cf0155f80a1e5a51f2b9436222e62881e9a2f8ffac8382ffeb41985c",
-      "fetchedAt": "2026-11-18T03:04:00.157Z",
+      "fetchedAt": "2026-11-19T13:25:35.219Z",
       "waybackUrl": "https://web.archive.org/web/20230102213421/https://www.honeybeesuite.com/hidden-microplastics-the-next-genuine-threat-to-honey-bees",
       "tier": "exact"
     },
     {
       "id": "s3",
       "nodeId": "n3",
-      "text": "You eat a credit card's worth of plastic every week, says a new study.",
-      "contextBefore": "d by the Fraunhofer research institute, Guppy Friend is one such device. Its tiny mesh keeps the fibres inside the bag allowing you to dispose of them properly once your clothing is clean. Read more. ",
-      "contextAfter": " French anti-PFAS campaigners awarded €1.2 million Earthshot Prize. Italian olive farmers turn to avocados - but is there enough water? Top stories. French anti-PFAS campaigners awarded €1.2 million E",
-      "start": 4186,
-      "end": 4256,
-      "extractSha256": "39d58c91cbff7b4a17b2b5623fbdf6ac27547f4928c9f85dd3762a7a57a4f06f",
-      "windowSha256": "7016b42d63a78cfdd66a769cc10016feaf21f149646d6c9bc89a9ef0c0861954",
-      "fetchedAt": "2026-11-18T03:04:10.872Z",
-      "waybackUrl": null,
+      "text": "You Eat a Credit Card's Worth of Plastic Every Week",
+      "contextBefore": "A Woman \"Can't Even Function\" After Her Grandma Accidentally Sends Her a Nude Photo Scientists Say You Have Six Doppelgangers Somewhere in the World ",
+      "contextAfter": " What's Your Favorite Winter Drink? Here Are the Top 10 Hobbies and Small Jobs Around the House We've Been Able to Do During Quarantine Six \"Only in 2020\" Dating Trends According to Tinder Powered by:",
+      "start": 149,
+      "end": 200,
+      "extractSha256": "74ecd31f671db35132865ea5c72baab4fc19d26184028a2db75475db16736870",
+      "windowSha256": "74ecd31f671db35132865ea5c72baab4fc19d26184028a2db75475db16736870",
+      "fetchedAt": "2026-11-19T13:25:39.551Z",
+      "waybackUrl": "https://web.archive.org/web/20210120203824/https://98kupd.com/the-brady-report-12-9-20",
       "tier": "exact"
     },
     {
@@ -369,454 +392,49 @@
       "end": 4256,
       "extractSha256": "39d58c91cbff7b4a17b2b5623fbdf6ac27547f4928c9f85dd3762a7a57a4f06f",
       "windowSha256": "7016b42d63a78cfdd66a769cc10016feaf21f149646d6c9bc89a9ef0c0861954",
-      "fetchedAt": "2026-11-18T03:04:12.706Z",
+      "fetchedAt": "2026-11-19T13:25:41.759Z",
+      "waybackUrl": null,
+      "tier": "exact"
+    },
+    {
+      "id": "s5",
+      "nodeId": "n5",
+      "text": "You eat a credit card's worth of plastic every week, says a new study.",
+      "contextBefore": "d by the Fraunhofer research institute, Guppy Friend is one such device. Its tiny mesh keeps the fibres inside the bag allowing you to dispose of them properly once your clothing is clean. Read more. ",
+      "contextAfter": " French anti-PFAS campaigners awarded €1.2 million Earthshot Prize. Italian olive farmers turn to avocados - but is there enough water? Top stories. French anti-PFAS campaigners awarded €1.2 million E",
+      "start": 4186,
+      "end": 4256,
+      "extractSha256": "39d58c91cbff7b4a17b2b5623fbdf6ac27547f4928c9f85dd3762a7a57a4f06f",
+      "windowSha256": "7016b42d63a78cfdd66a769cc10016feaf21f149646d6c9bc89a9ef0c0861954",
+      "fetchedAt": "2026-11-19T13:25:43.317Z",
       "waybackUrl": "https://web.archive.org/web/20220420063342/https://www.euronews.com/green/2022/04/20/your-weekly-wash-is-releasing-thousands-of-microplastics-into-the-sea",
       "tier": "exact"
     }
   ],
-  "hops": [
-    {
-      "edgeId": "e1",
-      "readouts": [
-        {
-          "id": "number_changed",
-          "source": "measured",
-          "value": "unsure",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "unit_changed",
-          "source": "measured",
-          "value": "unsure",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "hedge_dropped",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "comparison_added",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "scope_widened",
-          "source": "inferred",
-          "value": "no",
-          "probability": 0.9399133255595786,
-          "disputed": false
-        },
-        {
-          "id": "attribution_shifted",
-          "source": "inferred",
-          "value": "yes",
-          "probability": 0.9525741265483465,
-          "disputed": false
-        },
-        {
-          "id": "context_stripped",
-          "source": "inferred",
-          "value": "no",
-          "probability": 0.9859363735080056,
-          "disputed": false
-        }
-      ],
-      "wordDiff": [
-        {
-          "op": "add",
-          "text": "skip"
-        },
-        {
-          "op": "add",
-          "text": "to"
-        },
-        {
-          "op": "add",
-          "text": "content"
-        },
-        {
-          "op": "add",
-          "text": "subscribelog"
-        },
-        {
-          "op": "add",
-          "text": "in"
-        },
-        {
-          "op": "add",
-          "text": "log"
-        },
-        {
-          "op": "add",
-          "text": "insubscribe"
-        },
-        {
-          "op": "add",
-          "text": "nautilus"
-        },
-        {
-          "op": "add",
-          "text": "facebook"
-        },
-        {
-          "op": "add",
-          "text": "nautilus"
-        },
-        {
-          "op": "add",
-          "text": "x"
-        },
-        {
-          "op": "add",
-          "text": "formerly"
-        },
-        {
-          "op": "add",
-          "text": "twitter"
-        },
-        {
-          "op": "add",
-          "text": "nautilus"
-        },
-        {
-          "op": "add",
-          "text": "tiktok"
-        },
-        {
-          "op": "add",
-          "text": "nautilus"
-        },
-        {
-          "op": "add",
-          "text": "youtube"
-        },
-        {
-          "op": "add",
-          "text": "nautilus"
-        },
-        {
-          "op": "add",
-          "text": "bluesky"
-        },
-        {
-          "op": "add",
-          "text": "nautilus"
-        },
-        {
-          "op": "add",
-          "text": "instagram"
-        },
-        {
-          "op": "add",
-          "text": "subscribe"
-        },
-        {
-          "op": "add",
-          "text": "to"
-        },
-        {
-          "op": "add",
-          "text": "skip"
-        },
-        {
-          "op": "add",
-          "text": "adsadvertisement"
-        },
-        {
-          "op": "add",
-          "text": "health"
-        },
-        {
-          "op": "same",
-          "text": "you"
-        },
-        {
-          "op": "same",
-          "text": "eat"
-        },
-        {
-          "op": "same",
-          "text": "a"
-        },
-        {
-          "op": "same",
-          "text": "credit"
-        },
-        {
-          "op": "same",
-          "text": "card's"
-        },
-        {
-          "op": "same",
-          "text": "worth"
-        },
-        {
-          "op": "same",
-          "text": "of"
-        },
-        {
-          "op": "same",
-          "text": "plastic"
-        },
-        {
-          "op": "same",
-          "text": "every"
-        },
-        {
-          "op": "same",
-          "text": "week"
-        },
-        {
-          "op": "del",
-          "text": "says"
-        },
-        {
-          "op": "del",
-          "text": "a"
-        },
-        {
-          "op": "del",
-          "text": "new"
-        },
-        {
-          "op": "del",
-          "text": "study"
-        }
-      ],
-      "faithful": false
-    },
-    {
-      "edgeId": "e2",
-      "readouts": [
-        {
-          "id": "number_changed",
-          "source": "measured",
-          "value": "unsure",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "unit_changed",
-          "source": "measured",
-          "value": "unsure",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "hedge_dropped",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "comparison_added",
-          "source": "measured",
-          "value": "no",
-          "probability": null,
-          "disputed": false
-        },
-        {
-          "id": "scope_widened",
-          "source": "inferred",
-          "value": "no",
-          "probability": 0.9990889486280897,
-          "disputed": false
-        },
-        {
-          "id": "attribution_shifted",
-          "source": "inferred",
-          "value": "no",
-          "probability": 0.9947798743642986,
-          "disputed": false
-        },
-        {
-          "id": "context_stripped",
-          "source": "inferred",
-          "value": "no",
-          "probability": 0.9968273169199523,
-          "disputed": false
-        }
-      ],
-      "wordDiff": [
-        {
-          "op": "del",
-          "text": "skip"
-        },
-        {
-          "op": "del",
-          "text": "to"
-        },
-        {
-          "op": "del",
-          "text": "content"
-        },
-        {
-          "op": "del",
-          "text": "subscribelog"
-        },
-        {
-          "op": "del",
-          "text": "in"
-        },
-        {
-          "op": "del",
-          "text": "log"
-        },
-        {
-          "op": "del",
-          "text": "insubscribe"
-        },
-        {
-          "op": "del",
-          "text": "nautilus"
-        },
-        {
-          "op": "del",
-          "text": "facebook"
-        },
-        {
-          "op": "del",
-          "text": "nautilus"
-        },
-        {
-          "op": "del",
-          "text": "x"
-        },
-        {
-          "op": "del",
-          "text": "formerly"
-        },
-        {
-          "op": "del",
-          "text": "twitter"
-        },
-        {
-          "op": "del",
-          "text": "nautilus"
-        },
-        {
-          "op": "del",
-          "text": "tiktok"
-        },
-        {
-          "op": "del",
-          "text": "nautilus"
-        },
-        {
-          "op": "del",
-          "text": "youtube"
-        },
-        {
-          "op": "del",
-          "text": "nautilus"
-        },
-        {
-          "op": "del",
-          "text": "bluesky"
-        },
-        {
-          "op": "del",
-          "text": "nautilus"
-        },
-        {
-          "op": "del",
-          "text": "instagram"
-        },
-        {
-          "op": "del",
-          "text": "subscribe"
-        },
-        {
-          "op": "del",
-          "text": "to"
-        },
-        {
-          "op": "del",
-          "text": "skip"
-        },
-        {
-          "op": "del",
-          "text": "adsadvertisement"
-        },
-        {
-          "op": "del",
-          "text": "health"
-        },
-        {
-          "op": "same",
-          "text": "you"
-        },
-        {
-          "op": "same",
-          "text": "eat"
-        },
-        {
-          "op": "same",
-          "text": "a"
-        },
-        {
-          "op": "same",
-          "text": "credit"
-        },
-        {
-          "op": "same",
-          "text": "card's"
-        },
-        {
-          "op": "same",
-          "text": "worth"
-        },
-        {
-          "op": "same",
-          "text": "of"
-        },
-        {
-          "op": "same",
-          "text": "plastic"
-        },
-        {
-          "op": "same",
-          "text": "every"
-        },
-        {
-          "op": "same",
-          "text": "week"
-        }
-      ],
-      "faithful": false
-    }
-  ],
+  "hops": [],
   "blame": [],
   "roots": {
-    "pages": 4,
-    "clusters": 2,
+    "pages": 5,
+    "clusters": 1,
     "rootsLinked": 0,
-    "clustersUnlinked": 2,
+    "clustersUnlinked": 1,
     "studiesFound": null,
-    "independentRoots": 2,
-    "copies": 2
+    "independentRoots": 1,
+    "copies": 4
   },
-  "redHopEdgeId": "e1",
+  "redHopEdgeId": null,
   "earliest": {
     "nodeIds": [
-      "n4"
+      "n3"
     ],
     "earlierWindowSearches": 2,
     "earlierFound": 0
   },
   "failure": null,
   "budget": {
-    "credits": 9,
-    "usd": 0.0006372899999999999,
-    "ms": 41773,
+    "credits": 6,
+    "usd": 0.00041035999999999997,
+    "ms": 22012,
     "capHit": null
   },
   "decision": {
@@ -826,45 +444,45 @@
       "no earliest page with a confirmed date, a primary page type, no earlier citation and no negated span"
     ],
     "counts": {
-      "pages": 4,
-      "clusters": 2,
+      "pages": 5,
+      "clusters": 1,
       "unreadParents": 0,
       "earlierWindowSearches": 2
     }
   },
   "searchLog": [
     {
-      "at": "2026-11-18T03:03:53.035Z",
+      "at": "2026-11-19T13:25:31.483Z",
       "step": "search",
       "query": "\"You eat a credit card's worth of plastic every week\"",
-      "endDate": "2026-11-18",
+      "endDate": "2026-11-19",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-18T03:03:54.885Z",
+      "at": "2026-11-19T13:25:32.958Z",
       "step": "search",
       "query": "\"You eat a credit card's worth of plastic every week\" study",
-      "endDate": "2026-11-18",
+      "endDate": "2026-11-19",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-18T03:03:58.083Z",
+      "at": "2026-11-19T13:25:33.755Z",
       "step": "meta-search",
       "query": "\"You eat a credit card's worth of plastic every week\"",
-      "endDate": "2026-11-18",
+      "endDate": "2026-11-19",
       "startDate": null,
       "results": 0,
       "kept": 0,
       "dropped": 0
     },
     {
-      "at": "2026-11-18T03:04:04.369Z",
+      "at": "2026-11-19T13:25:37.493Z",
       "step": "search",
       "query": "\"You eat a credit card's worth of plastic every week\"",
       "endDate": "2022-05-18",
@@ -874,71 +492,71 @@
       "dropped": 3
     },
     {
-      "at": "2026-11-18T03:04:07.830Z",
-      "step": "search",
-      "query": "\"you eat a credit card's worth of plastic every week\" early source",
-      "endDate": "2022-05-18",
-      "startDate": null,
-      "results": 6,
-      "kept": 5,
-      "dropped": 1
-    },
-    {
-      "at": "2026-11-18T03:04:21.371Z",
-      "step": "search",
-      "query": "\"You eat a credit card's worth of plastic every week\"",
-      "endDate": "2020-03-22",
-      "startDate": null,
-      "results": 0,
-      "kept": 0,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-18T03:04:23.236Z",
+      "at": "2026-11-19T13:25:38.494Z",
       "step": "search",
       "query": "\"You eat a credit card's worth of plastic every week\" study",
-      "endDate": "2020-03-22",
+      "endDate": "2022-05-18",
       "startDate": null,
-      "results": 7,
-      "kept": 5,
+      "results": 9,
+      "kept": 6,
+      "dropped": 3
+    },
+    {
+      "at": "2026-11-19T13:25:41.111Z",
+      "step": "search",
+      "query": "\"You eat a credit card's worth of plastic every week\"",
+      "endDate": "2020-12-08",
+      "startDate": null,
+      "results": 10,
+      "kept": 8,
+      "dropped": 2
+    },
+    {
+      "at": "2026-11-19T13:25:41.115Z",
+      "step": "search",
+      "query": "\"You eat a credit card's worth of plastic every week\" study",
+      "endDate": "2020-12-08",
+      "startDate": null,
+      "results": 10,
+      "kept": 8,
       "dropped": 2
     }
   ],
   "usage": [
     {
-      "at": "2026-11-18T03:03:46.316Z",
+      "at": "2026-11-19T13:25:26.494Z",
       "traceId": "dev-12",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 144,
-      "completionTokens": 25,
+      "completionTokens": 52,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.000021899999999999997,
-      "latencyMs": 1760,
+      "costUsd": 0.000029999999999999997,
+      "latencyMs": 973,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:03:48.095Z",
+      "at": "2026-11-19T13:25:27.472Z",
       "traceId": "dev-12",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 270,
-      "completionTokens": 137,
+      "completionTokens": 149,
       "cachedTokens": 240,
       "credits": 0,
-      "costUsd": 0.0000681,
-      "latencyMs": 3178,
+      "costUsd": 0.0000717,
+      "latencyMs": 2103,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:03:53.034Z",
+      "at": "2026-11-19T13:25:31.483Z",
       "traceId": "dev-12",
       "step": "search",
       "service": "tavily",
@@ -949,12 +567,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1323,
+      "latencyMs": 1825,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:03:54.884Z",
+      "at": "2026-11-19T13:25:32.957Z",
       "traceId": "dev-12",
       "step": "search",
       "service": "tavily",
@@ -965,12 +583,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1392,
+      "latencyMs": 1445,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:03:58.082Z",
+      "at": "2026-11-19T13:25:33.754Z",
       "traceId": "dev-12",
       "step": "meta-search",
       "service": "tavily",
@@ -981,12 +599,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 3030,
+      "latencyMs": 782,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:03:58.445Z",
+      "at": "2026-11-19T13:25:33.794Z",
       "traceId": "dev-12",
       "step": "extract",
       "service": "tavily",
@@ -995,22 +613,6 @@
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 270,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T03:03:58.573Z",
-      "traceId": "dev-12",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
       "latencyMs": 0,
@@ -1018,39 +620,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-18T03:03:58.588Z",
-      "traceId": "dev-12",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 247,
-      "completionTokens": 7,
-      "cachedTokens": 160,
-      "credits": 0,
-      "costUsd": 0.000026799999999999998,
-      "latencyMs": 1280,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T03:04:00.156Z",
-      "traceId": "dev-12",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 0,
-      "status": "200",
-      "cacheHit": true
-    },
-    {
-      "at": "2026-11-18T03:04:00.159Z",
+      "at": "2026-11-19T13:25:33.855Z",
       "traceId": "dev-12",
       "step": "same_claim",
       "service": "tokenfactory",
@@ -1058,31 +628,79 @@
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 202,
       "completionTokens": 7,
-      "cachedTokens": 176,
+      "cachedTokens": 160,
       "credits": 0,
       "costUsd": 0.0000223,
-      "latencyMs": 743,
+      "latencyMs": 623,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:04:00.907Z",
+      "at": "2026-11-19T13:25:34.501Z",
+      "traceId": "dev-12",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:25:34.535Z",
+      "traceId": "dev-12",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 202,
+      "completionTokens": 7,
+      "cachedTokens": 160,
+      "credits": 0,
+      "costUsd": 0.0000223,
+      "latencyMs": 482,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:25:35.219Z",
+      "traceId": "dev-12",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:25:35.224Z",
       "traceId": "dev-12",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 352,
-      "completionTokens": 180,
+      "promptTokens": 307,
+      "completionTokens": 140,
       "cachedTokens": 256,
       "credits": 0,
-      "costUsd": 0.0000892,
-      "latencyMs": 3304,
+      "costUsd": 0.0000727,
+      "latencyMs": 2223,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:04:04.368Z",
+      "at": "2026-11-19T13:25:37.493Z",
       "traceId": "dev-12",
       "step": "search",
       "service": "tavily",
@@ -1098,7 +716,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-18T03:04:07.829Z",
+      "at": "2026-11-19T13:25:38.493Z",
       "traceId": "dev-12",
       "step": "search",
       "service": "tavily",
@@ -1109,12 +727,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 3199,
+      "latencyMs": 942,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:04:08.533Z",
+      "at": "2026-11-19T13:25:39.074Z",
       "traceId": "dev-12",
       "step": "extract",
       "service": "tavily",
@@ -1125,12 +743,28 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 255,
+      "latencyMs": 517,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:04:10.869Z",
+      "at": "2026-11-19T13:25:39.089Z",
+      "traceId": "dev-12",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 202,
+      "completionTokens": 7,
+      "cachedTokens": 160,
+      "credits": 0,
+      "costUsd": 0.0000223,
+      "latencyMs": 456,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:25:39.551Z",
       "traceId": "dev-12",
       "step": "dating",
       "service": "wayback",
@@ -1141,12 +775,108 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 2332,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:25:39.553Z",
+      "traceId": "dev-12",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 308,
+      "completionTokens": 103,
+      "cachedTokens": 272,
+      "credits": 0,
+      "costUsd": 0.0000617,
+      "latencyMs": 1535,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:04:10.873Z",
+      "at": "2026-11-19T13:25:41.110Z",
+      "traceId": "dev-12",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:25:41.114Z",
+      "traceId": "dev-12",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:25:41.330Z",
+      "traceId": "dev-12",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 169,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:25:41.438Z",
+      "traceId": "dev-12",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 207,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.000022800000000000002,
+      "latencyMs": 313,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:25:41.758Z",
+      "traceId": "dev-12",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:25:41.763Z",
       "traceId": "dev-12",
       "step": "same_claim",
       "service": "tokenfactory",
@@ -1157,12 +887,12 @@
       "cachedTokens": 192,
       "credits": 0,
       "costUsd": 0.0000228,
-      "latencyMs": 1367,
+      "latencyMs": 376,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:04:12.705Z",
+      "at": "2026-11-19T13:25:42.153Z",
       "traceId": "dev-12",
       "step": "dating",
       "service": "wayback",
@@ -1173,108 +903,44 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 460,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-18T03:04:12.708Z",
+      "at": "2026-11-19T13:25:43.316Z",
       "traceId": "dev-12",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 207,
-      "completionTokens": 7,
-      "cachedTokens": 160,
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "capture",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.0000228,
-      "latencyMs": 935,
+      "costUsd": 0,
+      "latencyMs": 1160,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:04:13.647Z",
-      "traceId": "dev-12",
-      "step": "tokenfactory",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 313,
-      "completionTokens": 224,
-      "cachedTokens": 272,
-      "credits": 0,
-      "costUsd": 0.00009849999999999998,
-      "latencyMs": 4148,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T03:04:21.371Z",
-      "traceId": "dev-12",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 3214,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T03:04:23.236Z",
-      "traceId": "dev-12",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1797,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T03:04:23.380Z",
-      "traceId": "dev-12",
-      "step": "extract",
-      "service": "tavily",
-      "endpoint": "extract",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 126,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T03:04:23.409Z",
+      "at": "2026-11-19T13:25:43.318Z",
       "traceId": "dev-12",
       "step": "embed",
       "service": "tokenfactory",
       "endpoint": "/embeddings",
       "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 89,
+      "promptTokens": 56,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 8.900000000000001e-7,
-      "latencyMs": 1925,
+      "costUsd": 5.6e-7,
+      "latencyMs": 1967,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:04:25.566Z",
+      "at": "2026-11-19T13:25:45.433Z",
       "traceId": "dev-12",
       "step": "dating",
       "service": "fetch",
@@ -1290,7 +956,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-18T03:04:25.824Z",
+      "at": "2026-11-19T13:25:45.452Z",
       "traceId": "dev-12",
       "step": "dating",
       "service": "fetch",
@@ -1301,12 +967,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 257,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-18T03:04:25.947Z",
+      "at": "2026-11-19T13:25:45.527Z",
       "traceId": "dev-12",
       "step": "dating",
       "service": "fetch",
@@ -1317,28 +983,92 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 380,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:25:45.588Z",
+      "traceId": "dev-12",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:25:45.945Z",
+      "traceId": "dev-12",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 512,
       "status": "403",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:04:26.008Z",
+      "at": "2026-11-19T13:25:45.956Z",
       "traceId": "dev-12",
       "step": "dating",
-      "service": "fetch",
-      "endpoint": "page",
+      "service": "wayback",
+      "endpoint": "cdx",
       "model": null,
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 183,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:25:45.977Z",
+      "traceId": "dev-12",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:25:47.619Z",
+      "traceId": "dev-12",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "capture",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1642,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:04:26.011Z",
+      "at": "2026-11-19T13:25:47.624Z",
       "traceId": "dev-12",
       "step": "dating",
       "service": "wayback",
@@ -1354,7 +1084,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-18T03:04:26.012Z",
+      "at": "2026-11-19T13:25:47.625Z",
       "traceId": "dev-12",
       "step": "dating",
       "service": "wayback",
@@ -1370,7 +1100,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-18T03:04:26.013Z",
+      "at": "2026-11-19T13:25:47.626Z",
       "traceId": "dev-12",
       "step": "dating",
       "service": "wayback",
@@ -1386,11 +1116,11 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-18T03:04:26.013Z",
+      "at": "2026-11-19T13:25:47.628Z",
       "traceId": "dev-12",
       "step": "dating",
       "service": "wayback",
-      "endpoint": "cdx",
+      "endpoint": "capture",
       "model": null,
       "promptTokens": 0,
       "completionTokens": 0,
@@ -1402,66 +1132,34 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-18T03:04:26.016Z",
+      "at": "2026-11-19T13:25:47.632Z",
       "traceId": "dev-12",
       "step": "page_type",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 1244,
+      "promptTokens": 287,
       "completionTokens": 8,
       "cachedTokens": 176,
       "credits": 0,
-      "costUsd": 0.0001268,
-      "latencyMs": 383,
+      "costUsd": 0.0000311,
+      "latencyMs": 470,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T03:04:26.400Z",
-      "traceId": "dev-12",
-      "step": "readouts",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 459,
-      "completionTokens": 23,
-      "cachedTokens": 368,
-      "credits": 0,
-      "costUsd": 0.000052799999999999996,
-      "latencyMs": 557,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T03:04:26.992Z",
-      "traceId": "dev-12",
-      "step": "readouts",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 454,
-      "completionTokens": 23,
-      "cachedTokens": 368,
-      "credits": 0,
-      "costUsd": 0.0000523,
-      "latencyMs": 545,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T03:04:27.541Z",
+      "at": "2026-11-19T13:25:48.105Z",
       "traceId": "dev-12",
       "step": "boundary",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 303,
+      "promptTokens": 283,
       "completionTokens": 6,
       "cachedTokens": 144,
       "credits": 0,
-      "costUsd": 0.0000321,
-      "latencyMs": 537,
+      "costUsd": 0.000030099999999999996,
+      "latencyMs": 381,
       "status": "200",
       "cacheHit": false
     }
