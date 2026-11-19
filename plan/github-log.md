@@ -132,3 +132,4 @@
 - 2026-11-18 19:55 Anoop pointed to #232 fixes; archive-date fix reassigned to Rishit (#1), Rohan silent 7h, urgent on #3
 - 2026-11-18 21:05 #232 merged 1d7e775; #237 review: FIX M2 L1 (perms, Google Fonts, pins)
 - 2026-11-18 21:08 #236 review c32ebf1: FIX M origin hidden on tie, L recordedAt throw; posted
+- 2026-11-18 21:18 Rishit out of usage until 22:00; reviewing #237 fix round and #158 demo script
