@@ -9,10 +9,15 @@ const explanations = {
 };
 export function HowItWorks() {
   return <main className="wrap section stack how-page">
-    <h1 className="k">How it works</h1>
+    <h1 tabIndex={-1} className="k">How it works</h1>
     <p>Patient Zero walks a claim back through time to the earliest page it can find. It searches, reads pages, checks dates and compares quoted wording. Each ending follows rules applied to the evidence.</p>
     <p>A live trace runs real searches and model calls. It usually costs a few cents and takes about 40 seconds, but can take nearly five minutes. Its result shows the recorded cost. Recorded traces open free.</p>
     <p>The earliest page we find is limited by what is available on the web. Missing citations, circular references, inaccessible pages and search limits can stop a trail cold.</p>
+    <section className="how-trace" aria-labelledby="trace-shows-heading">
+      <h2 id="trace-shows-heading" className="trace-section-title">What a trace shows</h2>
+      <p><strong>The ending</strong> explains where the trace stopped. <strong>Follow the wording</strong> lets you compare the pages. <strong>Copies and roots</strong> shows how the pages connect.</p>
+    </section>
+    <h2 className="trace-section-title">The six endings</h2>
     <dl className="endings">{Object.entries(explanations).map(([state, text]) => <div key={state}><dt><span className="ramp-dot" aria-hidden="true" /><strong>{ENDING_NAMES[state as keyof typeof ENDING_NAMES]}</strong></dt><dd>{text}</dd></div>)}</dl>
     <a className="btn" href="#/">Try a claim</a>
   </main>;

@@ -12,11 +12,12 @@ export function StopCard({ trace }: { trace: Trace }) {
     .sort((a, b) => (a.date.value ?? "9999").localeCompare(b.date.value ?? "9999"));
   return (
     <section className={`stop-card ${card.tone}`} aria-label="How this trace ended">
-      <h2 className="stop-title"><span className={tone ? "ramp-dot" : "ramp-dot empty"} style={{ ["--tone" as string]: tone ?? "var(--ink-3)" }} aria-hidden="true" />{card.title}</h2>
+      <h2 className="trace-section-title">The ending</h2>
+      <h3 className="stop-title"><span className={tone ? "ramp-dot" : "ramp-dot empty"} style={{ ["--tone" as string]: tone ?? "var(--ink-3)" }} aria-hidden="true" />{card.title}</h3>
       <p className="stop-sentence">{card.sentence}</p>
       <div className="stop-earliest"><span className="meta">Earliest page we found</span>
-        {earliest.length ? earliest.map(node => <p key={node.id}>
-          <strong>{node.date.value ? month(node.date.value, node.date.precision) : "Undated"}</strong>{" · "}
+        {earliest.length ? earliest.map(node => <p className="earliest-row" key={node.id}>
+          <strong>{node.date.value ? month(node.date.value, node.date.precision) : "Undated"}</strong>
           <a href={node.url} target="_blank" rel="noreferrer">{node.domain}</a>
         </p>) : <p>No dated page with the claim.</p>}
       </div>

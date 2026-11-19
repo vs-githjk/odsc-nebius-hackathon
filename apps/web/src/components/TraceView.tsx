@@ -8,6 +8,7 @@ import { ModeBadge } from "./ModeBadge.tsx";
 import { Scrubber, stopXs, xAt } from "./Scrubber.tsx";
 import { Sentence } from "./Sentence.tsx";
 import { StopCard } from "./StopCard.tsx";
+import { RecentTraces } from "./RecentTraces.tsx";
 import { TimeField } from "./TimeField.tsx";
 import { TraceGraph } from "./TraceGraph.tsx";
 import { ReplayAgain, ReplayRail, useReplay } from "./WalkReplay.tsx";
@@ -55,10 +56,10 @@ export function TraceView({ trace }: { trace: Trace }) {
       <div className="card stage">
         <div className="stage-head">
           <ModeBadge trace={trace} />
-          {trace.mode === "LIVE" && <span className="meta">Cost ${traceCost(trace).totalUsd.toFixed(3)} ({trace.budget.credits} Tavily credits)</span>}
+          <span className="meta trace-cost">{trace.mode === "LIVE" ? <>Cost ${traceCost(trace).totalUsd.toFixed(3)} ({trace.budget.credits} Tavily credits)</> : null}</span>
           <ReplayAgain replay={replay} />
         </div>
-        <h1 className="quote trace-claim">{trace.claim.text}</h1>
+        <h1 tabIndex={-1} className="quote trace-claim">{trace.claim.text}</h1>
         <StopCard trace={trace} />
         <section className="trace-timeline" aria-label="Timeline of pages">
           <h2 className="trace-section-title">Follow the wording</h2>
@@ -117,6 +118,7 @@ export function TraceView({ trace }: { trace: Trace }) {
           <TraceGraph trace={trace} activeSpanId={replay.frame ? null : hop?.spanId ?? null} x={x} landed={replay.frame?.nodeIds ?? null} />
         </section>
       </div>
+      <RecentTraces trace={trace} />
     </>
   );
 }

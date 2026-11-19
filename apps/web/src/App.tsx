@@ -2,6 +2,7 @@ import { useEffect, useState, type MouseEvent } from "react";
 import type { Trace } from "pz/schema";
 import { independenceLine } from "pz/headline";
 import { HowItWorks } from "./components/HowItWorks.tsx";
+import { BackToResults, RouteExperience } from "./components/RouteExperience.tsx";
 import { ThemeToggle } from "./components/ThemeToggle.tsx";
 import { challengeTraces } from "./model/live.ts";
 import { ClaimBox } from "./components/ClaimBox.tsx";
@@ -112,19 +113,18 @@ function Start({ focusKey, onMatch, onLive }: { focusKey: number; onMatch(id: st
   );
 }
 
-// matched: the claim box opened this trace for a pasted claim, so the page says it is a recording (or a sample), not a
-// fresh trace. A real trace's way back is plain "Back": the samples are not where it came from (#192 B).
+// matched: the claim box opened a recording or sample for a pasted claim, not a fresh trace.
 export function TraceRoute({ id, matched, all = traces }: { id: string; matched: boolean; all?: Trace[] }) {
   const trace = all.find((t) => t.id === id);
   return (
     <main className="wrap trace-page">
-      <a className="back" href="#/">{trace && !trace.synthetic ? "Back" : "Back to the samples"}</a>
+      <BackToResults />
       {trace && matched && (
         <p className="matched" role="status">
           {matchedNote(trace)}
         </p>
       )}
-      {trace ? <TraceView trace={trace} /> : <p className="error" role="alert">No trace called {id}.</p>}
+      {trace ? <TraceView key={trace.id} trace={trace} /> : <h1 className="error" role="alert">No trace called {id}.</h1>}
     </main>
   );
 }
@@ -149,6 +149,7 @@ export function App() {
   };
   return (
     <>
+      <RouteExperience routeKey={JSON.stringify(route)} />
       <nav className="nav" aria-label="Main">
         <div className="wrap">
           <a className="wordmark" href="#/">

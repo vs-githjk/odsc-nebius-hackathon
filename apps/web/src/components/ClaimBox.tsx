@@ -7,6 +7,7 @@ import { outcomeOf, submitsOnKey, type Outcome } from "../model/claimBox.ts";
 // focusKey changes when the nav's "Trace a claim" is pressed, and the box takes focus.
 export function ClaimBox({ traces, focusKey, onMatch, onLive }: { traces: Trace[]; focusKey: number; onMatch(id: string): void; onLive(trace: Trace): void }) {
   const input = useRef<HTMLTextAreaElement>(null);
+  const progressPanel = useRef<HTMLElement>(null);
   const [text, setText] = useState("");
   const [outcome, setOutcome] = useState<Outcome>({ kind: "idle" });
   const tries = useRef(0);
@@ -21,6 +22,9 @@ export function ClaimBox({ traces, focusKey, onMatch, onLive }: { traces: Trace[
   const [failureCode, setFailureCode] = useState("");
   const [elapsed, setElapsed] = useState(0);
   const isRunning = progress !== null;
+  useEffect(() => {
+    if (isRunning) progressPanel.current?.scrollIntoView({ block: "start", behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+  }, [isRunning]);
   useEffect(() => {
     if (!isRunning) return;
     const started = Date.now();
@@ -57,7 +61,7 @@ export function ClaimBox({ traces, focusKey, onMatch, onLive }: { traces: Trace[
   useEffect(() => {
     if (focusKey === 0) return;
     input.current?.focus();
-    input.current?.scrollIntoView({ block: "center", behavior: "smooth" });
+    input.current?.scrollIntoView({ block: "center", behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
   }, [focusKey]);
 
   const submit = (e?: FormEvent) => {
@@ -122,7 +126,7 @@ export function ClaimBox({ traces, focusKey, onMatch, onLive }: { traces: Trace[
           {traces[0] && <button className="btn secondary" type="button" onClick={() => onMatch(traces[0]!.id)}>Open a recorded trace</button>}
           {!traces[0] && <p className="meta">Try again later.</p>}
         </div>}
-        {progress && <section className="untraced live-progress" aria-label="Live trace progress">
+        {progress && <section ref={progressPanel} className="untraced live-progress" aria-label="Live trace progress">
           <div className="live-progress-head"><p className="untraced-title">Following the claim</p>
             <span className="meta live-clock" aria-live="off">{Math.floor(elapsed / 60)}:{String(elapsed % 60).padStart(2, "0")} elapsed</span></div>
           <ol className="live-stages">
