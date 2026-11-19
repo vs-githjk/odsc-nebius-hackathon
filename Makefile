@@ -7,6 +7,7 @@
 verify:
 	@start=$$(date +%s); \
 	npm run -s typecheck && \
+	npm run -s check:client-secrets && \
 	mkdir -p runs && npx vitest run --reporter=default --reporter=json --outputFile.json=runs/vitest.json && \
 	npm run -s pz -- verify fixtures/traces/*.json fixtures/failure/traces/*.json && \
 	if ls eval/dev-traces/dev-[0-9][0-9].json >/dev/null 2>&1; then npm run -s pz -- verify eval/dev-traces/dev-[0-9][0-9].json --historical eval/dev-traces/historical.json; fi && \

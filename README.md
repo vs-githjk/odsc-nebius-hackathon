@@ -195,3 +195,32 @@ Teammates and their agents: read [docs/AGENTS.md](docs/AGENTS.md) first.
 ## License
 
 MIT. See [LICENSE](LICENSE).
+
+## Deploy
+
+The live web app uses the root [Vercel functions](api/trace.ts) and [deployment configuration](vercel.json). The [Node Web handler](https://vercel.com/docs/functions/runtimes/node-js) streams a single NDJSON response. Use the repository root as the Vercel project root, framework preset Other, Node `24.x`, install command `npm ci`, build command `npm -w web run build`, and output directory `apps/web/dist`. Enable Fluid compute. The function duration is `300` seconds in `vercel.json`; the [server](packages/pz/src/live/service.ts) stops provider work at `285` seconds, leaving time to settle spend and finish the stream. Provider calls and temporary page, usage and HTTP cache files are server-only. No SDK or additional dependency is required.
+
+Vidyut sets the keys in Vercel. Set these server environment variables, never client-prefixed variables:
+
+| Variable | Purpose / default |
+| --- | --- |
+| `NEBIUS_API_KEY` | Token Factory key |
+| `TAVILY_API_KEY` | Tavily key |
+| `UPSTASH_REDIS_REST_URL` | Upstash Redis REST endpoint |
+| `UPSTASH_REDIS_REST_TOKEN` | Upstash REST token with read/write and EVAL access |
+| `LIVE_USD_CAP` | Shared dollar cap, default `2` |
+| `LIVE_TRACE_CREDITS` | Tavily credits per trace, default `40`, clamped to the rules credit cap |
+| `LIVE_TRACE_MODEL_USD` | Token Factory dollars per trace, default `0.05`, clamped to the rules model cap |
+| `LIVE_ENABLED` | Set `false` to disable live; enabled when omitted and all keys are configured |
+| `LIVE_PER_IP_PER_HOUR` | Default `2`, per IP in fixed hourly windows |
+| `LIVE_PER_DAY` | Default `30`, shared fixed UTC daily window |
+
+Missing Redis or provider configuration fails closed. Redis outages also pause live. [Admission](packages/pz/src/live/store.ts) atomically checks limits and reserves the complete per-trace allowance: `LIVE_TRACE_MODEL_USD + LIVE_TRACE_CREDITS * USD_PER_CREDIT`: by default `$0.05` for models plus `40` Tavily credits at `$0.008`, or `$0.37` total ([rules](packages/pz/rules/rules.json), [pricing](packages/pz/src/usage/pricing.ts)). The [runner](packages/pz/src/live/runtime.ts) enforces these per-trace limits before paid attempts; a budget stop returns a partial trace with a "Stopped at a limit" card. The remaining shared budget must cover that reservation, so live can pause before the counter reaches the nominal cap. Reservations and the spend counter have no TTL. Successful, failed and cancelled runs settle measured provider spend; an attempt with unknown usage retains its conservative upper bound. A hard process kill or failed settlement retains the outstanding reservation. Do not reset the counter while traces are running.
+
+The spend counter is `pz:spent_micros` (integer millionths of a dollar), including active reservations. The [status endpoint](api/status.ts) exposes only live availability, reason, cap and spent dollars. IP counters use hashed addresses. Identical normalized claims reuse a seven-day cached trace without charging or consuming a rate-limit slot; cache entries above `900000` bytes are skipped. Recorded browser matches always open free without submitting a live request. The result's cost is the cost of the original trace, including on a cache hit.
+
+For an immediate kill switch without redeployment, set Redis `pz:live_enabled` to `false` in the Upstash console (`SET pz:live_enabled false`). Both status and atomic admission check it on every request. Set it to `true` to resume, subject to the cap and the server environment switch. `LIVE_ENABLED=false` always wins. Vercel environment changes belong to a deployment, so changing the dashboard environment alone does not update an already running deployment; use the Redis override for an immediate pause. Neither switch cancels a trace already admitted.
+
+For local end-to-end use without a CLI install, run `npm -w web run build`, then `node --experimental-transform-types packages/pz/scripts/live-dev.ts` and open `http://127.0.0.1:3000`. Supply the server variables through your shell. The [local server](packages/pz/scripts/live-dev.ts) uses the same handlers and binds only to localhost. Alternatively, run `vercel dev` from the repository root with an already installed Vercel CLI and the server variables supplied through your shell or Vercel project. No local env file is required. `npm run dev -w web` alone remains a replay preview. No paid calls occur during builds or tests. Run `npm run check:client-secrets` to build and inspect both live and Pages clients; it is also part of `make verify`.
+
+GitHub Pages keeps the existing `PZ_PAGES_BASE` build. That build removes the live API calls entirely and needs no server. On other static hosts, an unreachable status endpoint silently leaves live off. Live results remain in the current browser session; refreshing their route does not retrieve them by ID.

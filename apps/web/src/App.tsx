@@ -1,6 +1,8 @@
 import { useEffect, useState, type MouseEvent } from "react";
 import type { Trace } from "pz/schema";
 import { independenceLine } from "pz/headline";
+import { HowItWorks } from "./components/HowItWorks.tsx";
+import { challengeTraces } from "./model/live.ts";
 import { ClaimBox } from "./components/ClaimBox.tsx";
 import { ModeBadge } from "./components/ModeBadge.tsx";
 import { TraceView } from "./components/TraceView.tsx";
@@ -39,12 +41,13 @@ function Hero() {
   );
 }
 
-function Start({ focusKey, onMatch }: { focusKey: number; onMatch(id: string): void }) {
+function Start({ focusKey, onMatch, onLive }: { focusKey: number; onMatch(id: string): void; onLive(trace: Trace): void }) {
   return (
     <main className="wrap section stack">
       <Hero />
       <p className="lead">Patient Zero walks a claim back through time to the earliest page it can find, and shows every step.</p>
-      <ClaimBox traces={traces} focusKey={focusKey} onMatch={onMatch} />
+      <ClaimBox traces={traces} focusKey={focusKey} onMatch={onMatch} onLive={onLive} />
+      <section aria-label="Try these"><h2>Try these</h2><p>Recorded traces, free to open.</p><ul>{challengeTraces(traces).map(t => <li key={t.id}><a href={`#/t/${encodeURIComponent(t.id)}`}>{t.claim.text}</a></li>)}</ul></section>
       <section aria-labelledby="samples-heading">
         <div className="samples-head">
           <h2 id="samples-heading">Traces</h2>
@@ -107,6 +110,8 @@ export function TraceRoute({ id, matched, all = traces }: { id: string; matched:
 
 export function App() {
   const route = useRoute();
+  const [liveTraces, setLiveTraces] = useState<Trace[]>([]);
+  const openLive = (trace: Trace) => { setLiveTraces(previous => [...previous, trace]); setMatchedId(null); window.location.hash = `#/t/${encodeURIComponent(trace.id)}`; };
   const [focusKey, setFocusKey] = useState(0);
   const [matchedId, setMatchedId] = useState<string | null>(null);
   // The note belongs to the arrival only: leaving the trace clears it.
@@ -129,15 +134,18 @@ export function App() {
             <span className="wordmark-ring" aria-hidden="true" />
             Patient Zero
           </a>
+          <div className="nav-links">
+          <a href="#/how">How it works</a>
           <a className="btn small" href="#/" onClick={traceAClaim}>
             Trace a claim
           </a>
+          </div>
         </div>
       </nav>
       {route.name === "trace" ? (
-        <TraceRoute id={route.id} matched={route.id === matchedId} />
-      ) : (
-        <Start focusKey={focusKey} onMatch={setMatchedId} />
+        <TraceRoute id={route.id} matched={route.id === matchedId} all={[...traces, ...liveTraces]} />
+      ) : route.name === "how" ? <HowItWorks /> : (
+        <Start focusKey={focusKey} onMatch={setMatchedId} onLive={openLive} />
       )}
     </>
   );

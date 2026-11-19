@@ -122,6 +122,9 @@ a {
 
 .nav .wrap {
   display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  padding-block: 8px;
   align-items: center;
   justify-content: space-between;
   min-height: 60px;
@@ -542,4 +545,11 @@ a {
   margin: 0 0 14px;
   color: var(--ink-2);
   font-size: 15px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
 }

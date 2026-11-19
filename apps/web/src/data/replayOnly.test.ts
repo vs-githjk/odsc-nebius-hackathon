@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 
 // The public build (GitHub Pages, .github/workflows/pages.yml) must be replay-only: it shows committed traces and
-// never calls Tavily, Token Factory or anything else, and holds no keys. These checks keep the app's own code that way.
+// never calls providers and holds no keys. check:client-secrets also builds Pages and checks that API URLs are absent.
 const src = fileURLToPath(new URL("../", import.meta.url));
 const files = readdirSync(src, { recursive: true, encoding: "utf8" })
   .filter((f) => /\.(ts|tsx)$/.test(f) && !/\.test\.tsx?$/.test(f))
@@ -15,9 +15,9 @@ describe("replay-only web app", () => {
     expect(files.length).toBeGreaterThan(10);
   });
 
-  it("makes no network calls of its own", () => {
-    const calls = /\bfetch\s*\(|XMLHttpRequest|new\s+WebSocket|EventSource|sendBeacon|navigator\.connection/;
-    expect(files.filter(({ text }) => calls.test(text)).map(({ f }) => f)).toEqual([]);
+  it("confines same-origin API calls to the live client module", () => {
+    const calls = /\btransport\s*\(|\bfetch\s*\(|XMLHttpRequest|new\s+WebSocket|EventSource|sendBeacon|navigator\.connection/;
+    expect(files.filter(({ text }) => calls.test(text)).map(({ f }) => f.replaceAll("\\", "/"))).toEqual(["model/live.ts"]);
   });
 
   it("reads no environment and no keys", () => {

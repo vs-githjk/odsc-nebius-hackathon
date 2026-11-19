@@ -1,5 +1,6 @@
 # <Project> shared board (every agent: read the GOALS and the last 40 lines first; post one line before you finish)
 
+- [07:49 PT] RishitRai live web app (draft): Vercel streaming api/trace and api/status, shared Redis $2 cap with $0.37 reservation, per-IP and daily limits, kill switch, cache first, LIVE badge and cost, How it works, Try these
 - [22:28 PT] rohanrastogi311 dev failure diagnostics: save runner-owned stage beside failure code; provider fields excluded; keyless regression tests | @vs-githjk review dev-failure-stage; no live calls
 Path for every lane, worktree and agent: <absolute path to main checkout>/plan/board.md (never a lane copy).
 Format, append only, newest at the bottom:

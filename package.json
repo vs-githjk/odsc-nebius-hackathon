@@ -16,7 +16,8 @@
     "schema": "node --import tsx packages/pz/scripts/export-schema.ts",
     "fixtures": "node --import tsx fixtures/src/build.ts",
     "replay-walk": "node --import tsx eval/replay-walk.ts",
-    "pz": "node --env-file-if-exists=.env --import tsx packages/pz/src/cli/pz.ts"
+    "pz": "node --env-file-if-exists=.env --import tsx packages/pz/src/cli/pz.ts",
+    "check:client-secrets": "node packages/pz/scripts/check-client-secrets.ts"
   },
   "devDependencies": {
     "@types/node": "24.19.2",
