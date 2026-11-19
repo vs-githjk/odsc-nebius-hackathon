@@ -509,3 +509,351 @@
     padding: 56px 0;
   }
 }
+
+/* Positioning hero: the line is a sentence, so it runs wider and a step smaller than a slogan. */
+.lp-title {
+  max-width: 20ch;
+  font-size: clamp(40px, 6vw, 84px);
+}
+
+.lp-title em {
+  display: block;
+  margin-top: 0.12em;
+}
+
+/* Chat answer vs trace. */
+.lp-vs {
+  max-width: 980px;
+  border: 1px solid var(--line-2);
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.lp-vs-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.lp-vs-row > span {
+  padding: 18px 22px;
+  border-top: 1px solid var(--line);
+}
+
+.lp-vs-row > span:first-child {
+  color: var(--ink-3);
+}
+
+.lp-vs-row > span:last-child {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  border-left: 1px solid var(--line);
+  background: color-mix(in srgb, var(--action) 6%, transparent);
+  font-weight: 600;
+}
+
+.lp-vs-row svg {
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+  fill: none;
+  stroke: var(--good);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.lp-vs-head > span {
+  border-top: 0;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.lp-vs-head > span:last-child {
+  color: var(--action);
+}
+
+.lp-vs-note {
+  margin-top: 12px;
+}
+
+/* Receipts. */
+.lp-receipts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 12px;
+}
+
+.lp-receipt {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(20px, 2.6vw, 30px);
+}
+
+.lp-receipt:nth-child(1),
+.lp-receipt:nth-child(4) {
+  grid-column: span 1;
+}
+
+.lp-receipt-head {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.lp-receipt-head h3 {
+  margin: 0;
+  font-size: clamp(20px, 1.8vw, 24px);
+  letter-spacing: -0.015em;
+}
+
+.lp-receipt-body {
+  flex: 1;
+}
+
+.lp-receipt-foot {
+  display: grid;
+  gap: 10px;
+  margin: 20px 0 0;
+  padding-top: 16px;
+  border-top: 1px dashed var(--line-2);
+  font-size: 14px;
+}
+
+.lp-receipt-foot div {
+  display: grid;
+  grid-template-columns: 130px minmax(0, 1fr);
+  gap: 12px;
+}
+
+.lp-receipt-foot dt {
+  color: var(--ink-3);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.lp-receipt-foot dd {
+  margin: 0;
+  color: var(--ink-2);
+}
+
+.lp-big {
+  margin: 0 0 14px;
+  color: var(--ink-2);
+  font-size: 16px;
+}
+
+.lp-big span {
+  display: block;
+  color: var(--ink);
+  font-size: clamp(44px, 4.6vw, 64px);
+  font-weight: 650;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+.lp-ending-claim {
+  color: var(--ink-2);
+  font: italic 400 17px / 1.35 var(--font-quote);
+}
+
+.lp-stop-how {
+  color: var(--ink-3);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Pages against roots. */
+.lp-roots {
+  margin: 0 0 18px;
+}
+
+.lp-roots-dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.lp-roots-dots i,
+.lp-legend i {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+}
+
+.lp-roots.big .lp-roots-dots i {
+  width: 34px;
+  height: 34px;
+}
+
+.lp-roots .lp-dot-root,
+.lp-legend .lp-dot-root {
+  background: var(--action);
+}
+
+.lp-roots .lp-dot-copy,
+.lp-legend .lp-dot-copy {
+  box-shadow: inset 0 0 0 2px var(--ink-3);
+}
+
+.lp-roots figcaption {
+  display: grid;
+  gap: 2px;
+}
+
+.lp-roots.big figcaption strong {
+  font-size: 22px;
+  letter-spacing: -0.01em;
+}
+
+.lp-legend {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+.lp-legend i {
+  width: 12px;
+  height: 12px;
+}
+
+.lp-legend .lp-dot-copy {
+  margin-left: 12px;
+}
+
+/* The checked answer. */
+.lp-answer-label {
+  margin: 0 0 8px;
+}
+
+.lp-answer-text {
+  margin: 0 0 14px;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg-2);
+  line-height: 1.6;
+}
+
+.lp-answer-text mark {
+  padding: 1px 2px;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--cold) 18%, transparent);
+  box-shadow: inset 0 -2px 0 var(--cold);
+  color: var(--ink);
+}
+
+.lp-answer-results {
+  display: grid;
+  gap: 6px;
+  margin: 0 0 12px;
+  padding: 0;
+  list-style: none;
+  font-size: 15px;
+}
+
+.lp-answer-results li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lp-cold-dot {
+  flex: 0 0 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--cold);
+}
+
+.lp-answer-sum {
+  margin: 0;
+}
+
+/* Cost. */
+.lp-cost {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 40px;
+}
+
+.lp-cli {
+  margin: 4px 0 12px;
+  padding: 14px 16px;
+  overflow-x: auto;
+  border-radius: 12px;
+  background: var(--tip-bg);
+  color: var(--tip-ink);
+  font: 500 14px/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+.lp-cli code::before {
+  content: "$ ";
+  opacity: 0.55;
+}
+
+@media (max-width: 1000px) {
+  .lp-receipts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .lp-vs-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .lp-vs-row > span:last-child {
+    border-left: 0;
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  .lp-vs-row > span:first-child {
+    padding-bottom: 8px;
+  }
+
+  .lp-vs-head > span:first-child {
+    display: none;
+  }
+
+  .lp-vs-head > span:last-child {
+    padding-top: 18px;
+  }
+
+  .lp-vs-row:not(.lp-vs-head) > span:first-child::before {
+    content: "Chat answer: ";
+    font-weight: 600;
+  }
+
+  .lp-receipt-foot div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2px;
+  }
+}
+
+/* An odd last receipt runs the full width instead of leaving a hole. */
+.lp-receipt:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 600px) {
+  .lp-vs-head {
+    display: none;
+  }
+
+  .lp-vs-row:nth-child(2) > span:first-child {
+    border-top: 0;
+  }
+}

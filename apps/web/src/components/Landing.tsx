@@ -1,13 +1,18 @@
+import type { ReactNode } from "react";
 import type { Trace } from "pz/schema";
+import { independence } from "pz/headline";
 import { ClaimBox } from "./ClaimBox.tsx";
 import shotLight from "../assets/trace-dev10-light.png";
 import shotDark from "../assets/trace-dev10-dark.png";
+import { S7, answerPieces } from "../model/answerCheck.ts";
 import { challengeTraces } from "../model/live.ts";
 import { sampleRow } from "../model/sampleRow.ts";
 import { scrubberStops, dateToX, heat } from "../model/scrubber.ts";
 import { stopCard } from "../model/stopCard.ts";
 
 const REPO = "https://github.com/vs-githjk/odsc-nebius-hackathon";
+const blob = (path: string) => `${REPO}/blob/main/${path}`;
+const traceHref = (t: Trace) => `#/t/${encodeURIComponent(t.id)}`;
 
 function domainOf(url: string): string {
   try { return new URL(url).hostname.replace(/^www\d?\./, ""); } catch { return url; }
@@ -21,53 +26,108 @@ function when(date: string | null, precision?: "day" | "month" | "year"): string
   return precision === "month" || !d ? `${month} ${y}` : `${month} ${Number(d)}, ${y}`;
 }
 
-// The worked example: the hero trace's own stops, newest first, then the card it ends on. Every line is read from the
-// recorded trace, so the page can't say more than the trace does.
-function WorkedExample({ trace }: { trace: Trace }) {
-  const stops = scrubberStops(trace);
-  const card = stopCard(trace);
-  const row = sampleRow(trace);
+// How a page's date was known, in words, from the trace's own date source.
+function dateSource(trace: Trace, url: string): string {
+  const node = trace.nodes.find((n) => n.url === url);
+  if (!node) return "";
+  if (node.date.source === "wayback_first_capture") return node.date.value ? "first archived by the Wayback Machine" : "date not confirmed";
+  if (node.date.source === "metadata") return "date from the page's own metadata";
+  return `date from ${String(node.date.source).replace(/_/g, " ")}`;
+}
+
+// A receipt: the claim we make, the real evidence, what it measures and where anyone can check it.
+function Receipt({ n, title, children, measures, check }: { n: string; title: string; children: ReactNode; measures: string; check: { label: string; href: string }[] }) {
   return (
-    <div className="lp-example card">
-      <p className="lp-eyebrow">A recorded trace</p>
-      <p className="lp-example-claim">{`“${trace.claim.text}”`}</p>
-      <ol className="lp-stops">
-        {stops.map((s, i) => (
-          <li key={`${s.spanId}-${i}`} style={{ ["--tone" as string]: s.date ? heat(dateToX(trace, s.date)) : "var(--ink-3)" }}>
-            <span className="lp-stop-dot" aria-hidden="true" />
-            <span className="lp-stop-when">{when(s.date, s.precision)}</span>
-            <span className="lp-stop-where">{domainOf(s.url)}</span>
-            <span className="lp-stop-text">{s.text.length > 160 ? `${s.text.slice(0, 157).trimEnd()}...` : s.text}</span>
-          </li>
-        ))}
-      </ol>
-      <div className={`lp-ending ${card.tone}`}>
-        <strong>{card.title}</strong>
-        <span>{card.sentence}</span>
-        <span className="meta">{card.count}</span>
-      </div>
-      <a className="btn" href={`#/t/${encodeURIComponent(trace.id)}`}>Open the full trace</a>
-      {row.earliestYear !== null && <span className="meta lp-example-note">Earliest page found: {row.earliestYear}. It is not called the origin while a page it cites is unread.</span>}
+    <article className="lp-receipt card">
+      <header className="lp-receipt-head">
+        <span className="lp-step-n">{n}</span>
+        <h3>{title}</h3>
+      </header>
+      <div className="lp-receipt-body">{children}</div>
+      <dl className="lp-receipt-foot">
+        <div><dt>What it measures</dt><dd>{measures}</dd></div>
+        <div><dt>Where to check</dt><dd>{check.map((c, i) => <span key={c.href}>{i > 0 && ", "}<a href={c.href}>{c.label}</a></span>)}</dd></div>
+      </dl>
+    </article>
+  );
+}
+
+// 1. The ending card, as the trace itself prints it.
+function ColdEnding({ trace }: { trace: Trace }) {
+  const card = stopCard(trace);
+  return (
+    <div className={`lp-ending ${card.tone}`}>
+      <span className="lp-ending-claim">{`“${trace.claim.text}”`}</span>
+      <strong>{card.title}</strong>
+      <span>{card.sentence}</span>
     </div>
   );
 }
 
-// A real capture of the trace view on the hero trace (light and dark), not mock art. Each theme shows its own.
-function LiveFigure({ trace }: { trace: Trace }) {
+// 2. Every stop on the way back: the date, how the date was known, the site and the exact sentence.
+function Stops({ trace }: { trace: Trace }) {
+  const stops = scrubberStops(trace);
   return (
-    <a className="lp-figure card" href={`#/t/${encodeURIComponent(trace.id)}`}>
-      <img className="lp-shot lp-shot-light" src={shotLight} width={729} height={425} alt="The trace view on the recorded plastic claim: the report's own sentence above a time axis from 2016 to 2024, one dot per page." />
-      <img className="lp-shot lp-shot-dark" src={shotDark} width={729} height={425} alt="" aria-hidden="true" />
-      <span className="meta lp-figure-cap">The trace view on the recorded plastic claim: one dot per page, the past on the left, links where one page cites another. Open it to scrub through time.</span>
-    </a>
+    <ol className="lp-stops">
+      {stops.map((s, i) => (
+        <li key={`${s.spanId}-${i}`} style={{ ["--tone" as string]: s.date ? heat(dateToX(trace, s.date)) : "var(--ink-3)" }}>
+          <span className="lp-stop-dot" aria-hidden="true" />
+          <span className="lp-stop-when">{when(s.date, s.precision)} <span className="lp-stop-how">{dateSource(trace, s.url)}</span></span>
+          <span className="lp-stop-where">{domainOf(s.url)}</span>
+          <span className="lp-stop-text">{s.text.length > 150 ? `${s.text.slice(0, 147).trimEnd()}...` : s.text}</span>
+        </li>
+      ))}
+    </ol>
   );
 }
 
+// 3. Pages against roots: one filled dot per separate root, one ring per copy.
+function RootDots({ trace, big }: { trace: Trace; big?: boolean }) {
+  const { pages, independentRoots, copies } = independence(trace);
+  return (
+    <figure className={big ? "lp-roots big" : "lp-roots"}>
+      <div className="lp-roots-dots" aria-hidden="true">
+        {Array.from({ length: independentRoots }, (_, i) => <i key={`r${i}`} className="lp-dot-root" />)}
+        {Array.from({ length: copies }, (_, i) => <i key={`c${i}`} className="lp-dot-copy" />)}
+      </div>
+      <figcaption>
+        <strong>{pages} {pages === 1 ? "page" : "pages"}, {independentRoots} {independentRoots === 1 ? "root" : "roots"}</strong>
+        <span className="meta">{`“${trace.claim.text}”`}</span>
+      </figcaption>
+    </figure>
+  );
+}
+
+// 4. The pasted answer with each statistic it checked marked, and how each ended.
+function AnswerCheck() {
+  return (
+    <div className="lp-answer">
+      <p className="lp-answer-label meta">Pasted answer (an example AI-style answer, not from a real chatbot)</p>
+      <p className="lp-answer-text">
+        {answerPieces(S7.answer, S7.claims).map((p, i) => p.claim
+          ? <mark key={i} title={p.claim.ending}>{p.text}</mark>
+          : <span key={i}>{p.text}</span>)}
+      </p>
+      <ul className="lp-answer-results">
+        {S7.claims.map((c) => <li key={c.start}><span className="lp-cold-dot" aria-hidden="true" />{c.ending}</li>)}
+      </ul>
+      <p className="lp-answer-sum"><strong>{S7.summary}</strong> <span className="meta">The claims are out there, but no page they came from could be confirmed, so none is named.</span></p>
+    </div>
+  );
+}
+
+const versus: [string, string][] = [
+  ["A confident sentence and a link or two", "The exact sentence on every page that states it"],
+  ["You open each link to see if it really says that", "Each page dated, and how the date was known"],
+  ["Ten sites repeating it look like ten confirmations", "Copies counted apart from separate roots"],
+  ["Something is always named as the source", "When the trail runs out, it says the trail goes cold"],
+];
+
 const steps = [
-  { n: "1", title: "Search back in time", body: "Tavily searches for the claim, then again in older and older date windows, and extracts each page it finds." },
-  { n: "2", title: "Read and date every page", body: "Code pulls the exact sentence from each page. Dates come from page metadata, the Wayback Machine and research registries, each labelled." },
-  { n: "3", title: "Compare copies to roots", body: "Nebius Token Factory models answer typed questions about each hop: did the number change, was a hedge dropped, is it the same claim." },
-  { n: "4", title: "Stop honestly", body: "A decision table in code picks the ending, never the model. When a page it cites can't be opened, it says the trail goes cold." },
+  { n: "1", title: "Search back in time", body: "Tavily searches for the claim, then again in older and older date windows, and extracts each page." },
+  { n: "2", title: "Read and date every page", body: "Code pulls the exact sentence. Dates come from page metadata, the Wayback Machine and research registries, each labelled." },
+  { n: "3", title: "Compare copies to roots", body: "Nebius Token Factory models answer typed questions on each hop: did the number change, was a hedge dropped, same claim?" },
+  { n: "4", title: "Stop honestly", body: "A decision table in code picks the ending, never the model. If a page it cites can't be opened, the trail goes cold." },
 ];
 
 const team = [
@@ -81,13 +141,14 @@ export function Landing({ traces, hero, focusKey, onMatch, onLive }: {
   traces: Trace[]; hero: Trace | null; focusKey: number; onMatch(id: string): void; onLive(trace: Trace): void;
 }) {
   const tries = challengeTraces(traces);
+  const copiesTrace = traces.find((t) => t.id === "dev-12" && !t.synthetic) ?? null;
   return (
     <main className="lp">
       <section className="lp-hero">
         <div className="wrap">
           <p className="lp-eyebrow">For viral stats with no source</p>
-          <h1 className="lp-title">Where did that number <em>start?</em></h1>
-          <p className="lead lp-lead">Paste a claim. Patient Zero walks it back through time to the earliest web page it can find, shows the exact sentence on every page, and stops honestly when the trail goes cold.</p>
+          <h1 className="lp-title">Perplexity finds you a source. <em>Patient Zero shows you whether to trust it.</em></h1>
+          <p className="lead lp-lead">Paste a claim or a whole AI answer. Patient Zero walks each number back through time to the earliest web page it can find, shows the exact sentence on every page, counts how many are only copies, and says so when the trail goes cold.</p>
           <div className="lp-claim card">
             <ClaimBox traces={traces} focusKey={focusKey} onMatch={onMatch} onLive={onLive} />
           </div>
@@ -95,27 +156,82 @@ export function Landing({ traces, hero, focusKey, onMatch, onLive }: {
         </div>
       </section>
 
-      {hero && (
-        <section className="lp-section" aria-labelledby="lp-problem">
-          <div className="wrap lp-split">
-            <div className="lp-copy">
-              <p className="lp-eyebrow">The problem</p>
-              <h2 id="lp-problem" className="lp-h2">Everyone repeats it. Nobody links it.</h2>
-              <p>A statistic goes viral, gets quoted by news sites, posts and AI answers, and the source falls off along the way. Checking it by hand means opening page after page, guessing which came first.</p>
-              <p>Here is one we traced. It found the report the line comes from, and it still ends cold, because a page that report cites could not be opened. That honest ending is the point: it won't call something the origin when it can't check.</p>
+      <section className="lp-section" aria-labelledby="lp-vs">
+        <div className="wrap">
+          <p className="lp-eyebrow">The difference</p>
+          <h2 id="lp-vs" className="lp-h2">A chat answer tells you. A trace shows you.</h2>
+          <div className="lp-vs" role="table" aria-label="A chat answer compared with a Patient Zero trace">
+            <div className="lp-vs-row lp-vs-head" role="row">
+              <span role="columnheader">What a chat answer leaves you with</span>
+              <span role="columnheader">What a Patient Zero trace gives you</span>
             </div>
-            <WorkedExample trace={hero} />
+            {versus.map(([a, b]) => (
+              <div className="lp-vs-row" role="row" key={a}>
+                <span role="cell">{a}</span>
+                <span role="cell"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>{b}</span>
+              </div>
+            ))}
           </div>
-        </section>
-      )}
+          <p className="meta lp-vs-note">The left column describes the shape of a typical chat answer. It is not a quote from any tool.</p>
+        </div>
+      </section>
 
-      <section className="lp-section lp-alt" aria-labelledby="lp-how">
+      <section className="lp-section lp-alt" aria-labelledby="lp-only">
+        <div className="wrap">
+          <p className="lp-eyebrow">Receipts, from recorded traces</p>
+          <h2 id="lp-only" className="lp-h2">Five things only a trace shows</h2>
+          <div className="lp-receipts">
+            {hero && (
+              <Receipt n="1" title="It names no wrong origin" measures="False origins: a page named as the origin that isn't. On our 20-claim tuning set, final live run: 0. Most traces stop short of the origin (target page cited on 4 of 10), and none yet ends on its true origin."
+                check={[{ label: "eval/dev-score.md", href: blob("eval/dev-score.md") }, { label: "open this trace", href: traceHref(hero) }]}>
+                <p className="lp-big"><span>0</span> false origins</p>
+                <ColdEnding trace={hero} />
+              </Receipt>
+            )}
+            {hero && (
+              <Receipt n="2" title="Every link is checkable" measures="Each stop is a real page with the sentence it holds, the date, and where that date came from."
+                check={[{ label: "open this trace", href: traceHref(hero) }]}>
+                <Stops trace={hero} />
+              </Receipt>
+            )}
+            {copiesTrace && (
+              <Receipt n="3" title="Copies are counted apart from roots" measures="Pages that copy another page are folded into that page's root. Ten repeats of one source count once."
+                check={[{ label: "open this trace", href: traceHref(copiesTrace) }, ...(hero ? [{ label: "and this one", href: traceHref(hero) }] : [])]}>
+                <RootDots trace={copiesTrace} big />
+                {hero && <RootDots trace={hero} />}
+                <p className="lp-legend meta"><i className="lp-dot-root" aria-hidden="true" /> separate root <i className="lp-dot-copy" aria-hidden="true" /> copy</p>
+              </Receipt>
+            )}
+            <Receipt n="4" title="It checks a chatbot's own answer" measures={`Paste a whole answer: each statistic in it is found and traced on its own. Recorded ${S7.recordedAt}.`}
+              check={[{ label: "fixtures/answers/s7-answer.json", href: blob("fixtures/answers/s7-answer.json") }]}>
+              <AnswerCheck />
+            </Receipt>
+            <Receipt n="5" title="It is cheap and repeatable" measures="Median time and cost over the 20 recorded traces. Both miss their targets (30 s, $0.02); search is almost all of the cost."
+              check={[{ label: "eval/perf.md", href: blob("eval/perf.md") }]}>
+              <div className="lp-cost">
+                <p className="lp-big"><span>44 s</span> median a trace</p>
+                <p className="lp-big"><span>$0.08</span> median a trace</p>
+              </div>
+              <pre className="lp-cli"><code>pz trace "By 2050 there will be more plastic than fish"</code></pre>
+              <p className="meta">Every trace is saved as JSON, replays free, and opens at its own link.</p>
+            </Receipt>
+          </div>
+        </div>
+      </section>
+
+      <section className="lp-section" aria-labelledby="lp-how">
         <div className="wrap">
           <p className="lp-eyebrow">How it works</p>
           <h2 id="lp-how" className="lp-h2">Four steps, and code decides the ending</h2>
-          {hero && <LiveFigure trace={hero} />}
+          {hero && (
+            <a className="lp-figure card" href={traceHref(hero)}>
+              <img className="lp-shot lp-shot-light" src={shotLight} width={729} height={425} alt="The trace view on the recorded plastic claim: the report's own sentence above a time axis from 2016 to 2024, one dot per page." />
+              <img className="lp-shot lp-shot-dark" src={shotDark} width={729} height={425} alt="" aria-hidden="true" />
+              <span className="meta lp-figure-cap">The trace view on the recorded plastic claim: one dot per page, the past on the left. Open it to scrub through time.</span>
+            </a>
+          )}
           <ol className="lp-steps">
-            {steps.map(s => (
+            {steps.map((s) => (
               <li key={s.n} className="card">
                 <span className="lp-step-n">{s.n}</span>
                 <h3>{s.title}</h3>
@@ -127,20 +243,6 @@ export function Landing({ traces, hero, focusKey, onMatch, onLive }: {
         </div>
       </section>
 
-      <section className="lp-section" aria-labelledby="lp-proof">
-        <div className="wrap">
-          <p className="lp-eyebrow">Measured, misses included</p>
-          <h2 id="lp-proof" className="lp-h2">What the recorded runs show</h2>
-          <dl className="lp-stats">
-            <div><dt>0</dt><dd>false origins on our 20-claim tuning set, final live run, Nov 19</dd></div>
-            <div><dt>4/10</dt><dd>traces that cite the source page we registered for the claim in advance</dd></div>
-            <div><dt>44 s</dt><dd>median time per trace (target 30 s, not met)</dd></div>
-            <div><dt>$0.08</dt><dd>median cost per trace, almost all search (target $0.02, not met)</dd></div>
-          </dl>
-          <p className="meta lp-proof-note">No recorded trace yet ends on its true origin: most misses never reach the origin page. Sources: <a href={`${REPO}/blob/main/eval/dev-score.md`}>eval/dev-score.md</a> and <a href={`${REPO}/blob/main/eval/perf.md`}>eval/perf.md</a>.</p>
-        </div>
-      </section>
-
       {tries.length > 0 && (
         <section className="lp-section lp-alt" aria-labelledby="lp-try">
           <div className="wrap">
@@ -149,9 +251,9 @@ export function Landing({ traces, hero, focusKey, onMatch, onLive }: {
               <a className="meta" href="#/traces">All recorded traces</a>
             </div>
             <ul className="lp-tries">
-              {tries.map(t => (
+              {tries.map((t) => (
                 <li key={t.id}>
-                  <a className="lp-try card" href={`#/t/${encodeURIComponent(t.id)}`}>
+                  <a className="lp-try card" href={traceHref(t)}>
                     <span className="sample-claim">{t.claim.text}</span>
                     <span className="meta">{(t.otherNumbers?.length ?? 0) > 0 ? "Another page gives a different number" : sampleRow(t).ending}</span>
                   </a>
@@ -172,7 +274,7 @@ export function Landing({ traces, hero, focusKey, onMatch, onLive }: {
           <div>
             <p className="lp-eyebrow">Team Says Who</p>
             <ul className="lp-team">
-              {team.map(m => <li key={m.gh}><a href={`https://github.com/${m.gh}`}>{m.name}</a></li>)}
+              {team.map((m) => <li key={m.gh}><a href={`https://github.com/${m.gh}`}>{m.name}</a></li>)}
             </ul>
             <a className="btn secondary" href={REPO}>Read the code on GitHub</a>
           </div>
