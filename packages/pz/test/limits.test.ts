@@ -10,6 +10,7 @@ import { LINK_ROUNDS_WITHOUT_PROGRESS, walkClaim, type SpikeClaim } from "../src
 import { atomHit, decideStopState, loadRules, phraseHit } from "../src/rules/index.ts";
 import { hasInjection, isNegated } from "../src/rules/negation.ts";
 import { createUsageLog } from "../src/usage/log.ts";
+import { dateNode } from "../src/engine/dating.ts";
 import { readdirSync, readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dateWords } from "../src/card/terminal.ts";
@@ -154,6 +155,26 @@ describe("docs/limits.md, open rows pinned as they behave today", () => {
     expect(sharedDecision.reasons).toEqual([`earliest page ${otherEarliest.id} presents the claim as already said ("often said")`]);
     // Still missed: a wording that is not on the list.
     expect(decideStopState(withSpan(`You may have read that ${own.charAt(0).toLowerCase()}${own.slice(1)}`), rules).state).toBe("ORIGIN_FOUND");
+  });
+
+  it("L19 a first archive capture dates a page only if it holds the claim's sentence; a capture that quotes it, or an unchanged file, still dates it", async () => {
+    const sample: Trace = JSON.parse(readFileSync(fileURLToPath(new URL("../../../fixtures/traces/sample-rich.json", import.meta.url)), "utf8"));
+    const node = sample.nodes[0]!;
+    const span = "Keepers found the penguins nap 14 times a day.";
+    const usage = {} as Trace["usage"][number];
+    const wayback = (kind: "html" | "binary", text: string, versions: "one" | "changed" = "one") => ({
+      firstCapture: async () => ({ data: { status: "found" as const, firstCapture: "2016-01-20", timestamp: "20160120000000" }, usage }),
+      captureBody: async () => ({ data: { kind, text }, usage }),
+      captureVersions: async () => ({ data: { versions }, usage }),
+    });
+    const dated = async (w: ReturnType<typeof wayback>) => (await dateNode(node, {}, w, [span])).node.date;
+    // Caught: the capture lacks the sentence.
+    expect(await dated(wayback("html", "<p>A page about zoo hours.</p>"))).toMatchObject({ kind: "unconfirmed", value: null });
+    // Missed: a capture that holds the sentence dates the page, though the sentence may have appeared on another page earlier.
+    expect(await dated(wayback("html", `<blockquote>${span}</blockquote> as reported elsewhere`))).toMatchObject({ kind: "existed_by", value: "2016-01-20" });
+    // Missed: a PDF is never read; one version in the archive is taken to be the file the walk read.
+    expect(await dated(wayback("binary", ""))).toMatchObject({ kind: "existed_by", value: "2016-01-20" });
+    expect(await dated(wayback("binary", "", "changed"))).toMatchObject({ kind: "unconfirmed", value: null });
   });
 
   it("L13 a negation in wording the list doesn't know is not caught by code", () => {
