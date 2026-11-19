@@ -24,10 +24,23 @@ function searchLine(s: Trace["searchLog"][number]): ReplayLine {
   return { kind: "search", text: `Searched for ${query}, ${when}: ${plural(s.results, "result", "results")}.` };
 }
 
+// What the page line says about the page, from what the trace recorded for it, never more (XO on #4): a page that
+// discusses the claim is kept off the path; otherwise the typed same_claim answer stored on the page, with its
+// confidence; with no stored answer, nothing is claimed about the page at all.
+export function pageVerdict(n: Trace["nodes"][number]): string | null {
+  if (n.meta) return "discusses the claim, kept off the path";
+  const a = n.sameClaim;
+  if (!a) return null;
+  const p = a.probability === null ? "" : `, ${a.probability.toFixed(2)}`;
+  if (a.optionId === "yes") return `states the claim (model: yes${p})`;
+  if (a.optionId === "no") return `a different claim (model: no${p})`;
+  return "not confirmed (model: unsure)";
+}
+
 function pageLine(n: Trace["nodes"][number]): ReplayLine {
   const when = n.date.value ? month(n.date.value) : "undated";
-  const what = n.meta ? "discusses the claim, kept off the path" : "states the claim";
-  return { kind: "page", nodeId: n.id, text: `Read ${n.domain}, ${when}: ${what}.` };
+  const what = pageVerdict(n);
+  return { kind: "page", nodeId: n.id, text: what ? `Read ${n.domain}, ${when}: ${what}.` : `Read ${n.domain}, ${when}.` };
 }
 
 // The walk as it was recorded: each search in the order it ran, and after it the pages it reached, in the order they
