@@ -28,13 +28,41 @@ const MAX_CAPTURE_CHARS = 3_000_000;
 const TEXTUAL = /html|xml|json|^text\//i;
 const StoredCapture = z.object({ kind: z.enum(["html", "text", "pdf", "binary"]), text: z.string() });
 
+export const MAX_CAPTURE_BYTES = 25 * 2 ** 20;
+
+// The body as bytes, or null when it is longer than `cap` (read in chunks and cancelled, never held whole).
+async function readCapped(res: Response, cap: number): Promise<Uint8Array | null> {
+  const declared = Number(res.headers.get("content-length"));
+  if (Number.isFinite(declared) && declared > cap) {
+    await res.body?.cancel();
+    return null;
+  }
+  if (!res.body) return new Uint8Array(0);
+  const reader = res.body.getReader();
+  const chunks: Uint8Array[] = [];
+  let total = 0;
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    total += value.length;
+    if (total > cap) {
+      await reader.cancel();
+      return null;
+    }
+    chunks.push(value);
+  }
+  return Buffer.concat(chunks);
+}
+
 // The stored body is JSON so a cache hit returns the same CaptureBody, and a binary file is never stored.
 function wrapCaptureBody(fetchImpl: typeof fetch): typeof fetch {
   return (async (input: string | URL | Request, init?: RequestInit) => {
     const res = await fetchImpl(input, init);
     if (!res.ok) return res;
     const contentType = res.headers.get("content-type");
-    const bytes = new Uint8Array(await res.arrayBuffer());
+    const bytes = await readCapped(res, MAX_CAPTURE_BYTES);
+    // Too large to read here: a plain file, never loaded whole.
+    if (!bytes) return new Response(JSON.stringify({ kind: "binary", text: "" }), { status: res.status, headers: { "content-type": "application/json" } });
     const head = Buffer.from(bytes.subarray(0, 2000)).toString("latin1");
     let stored: { kind: CaptureBody["kind"]; text: string };
     if (/^\s*%PDF-/.test(head)) {
@@ -68,7 +96,8 @@ export function createWayback(deps: ClientDeps & { timeoutMs?: number }) {
         retryTimeouts: true,
         retryStatuses: [403, 429],
         retryDelayMs: 1500,
-        init: { headers: { "user-agent": USER_AGENT } },
+        // A redirect to another timestamp is a different capture: it cannot be checked (the response is not ok).
+        init: { headers: { "user-agent": USER_AGENT }, redirect: "manual" },
         parse: (body) => ({ data: StoredCapture.parse(JSON.parse(body)), credits: 0 }),
       });
     },

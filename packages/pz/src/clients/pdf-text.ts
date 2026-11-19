@@ -6,6 +6,9 @@ import { inflateSync } from "node:zlib";
 // unreadable and falls back to "the archive holds one version of it".
 export const MIN_PDF_TEXT_CHARS = 500;
 const MAX_STREAMS = 4000;
+// Caps against a compression bomb: per stream, and in all for one file.
+export const MAX_STREAM_BYTES = 4 * 2 ** 20;
+export const MAX_INFLATED_BYTES = 32 * 2 ** 20;
 
 const ESCAPES: Record<string, string> = { n: " ", r: " ", t: " ", b: "", f: "", "(": "(", ")": ")", "\\": "\\" };
 function unescapePdf(s: string): string {
@@ -21,6 +24,7 @@ export function pdfText(bytes: Uint8Array): string {
   const bin = buf.toString("latin1");
   const parts: string[] = [];
   let streams = 0;
+  let inflated = 0;
   for (const m of bin.matchAll(/stream\r?\n/g)) {
     if (++streams > MAX_STREAMS) break;
     const start = m.index + m[0].length;
@@ -28,9 +32,13 @@ export function pdfText(bytes: Uint8Array): string {
     if (end < 0) continue;
     let content: string;
     try {
-      content = inflateSync(buf.subarray(start, end)).toString("latin1");
+      const out = inflateSync(buf.subarray(start, end), { maxOutputLength: MAX_STREAM_BYTES });
+      inflated += out.length;
+      if (inflated > MAX_INFLATED_BYTES) break;
+      content = out.toString("latin1");
     } catch {
-      content = bin.slice(start, end);
+      // Not deflated, or an output over the cap (a bomb): the raw bytes are read as they are, which yields no text.
+      content = end - start <= MAX_STREAM_BYTES ? bin.slice(start, end) : "";
     }
     if (!/\b(?:Tj|TJ)\b/.test(content)) continue;
     for (const op of content.matchAll(/\[((?:[^\]\\]|\\.)*)\]\s*TJ|\(((?:[^()\\]|\\.|\((?:[^()\\]|\\.)*\))*)\)\s*(?:Tj|'|")/gs)) {

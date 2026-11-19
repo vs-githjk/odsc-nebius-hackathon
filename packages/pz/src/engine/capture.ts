@@ -1,7 +1,8 @@
 import { ClientError } from "../clients/errors.ts";
 import type { CaptureBody, CaptureVersions, FirstCapture } from "../clients/wayback.ts";
 import type { Result } from "../clients/http.ts";
-import { normalise } from "../rules/index.ts";
+import { loadRules, normalise } from "../rules/index.ts";
+import { isNegated } from "../rules/negation.ts";
 
 // L19: a first archive capture dates a URL, not a sentence. A page may carry the date only if that capture holds the claim.
 export type CaptureChecker = {
@@ -15,7 +16,7 @@ const ENTITIES: Record<string, string> = { amp: "&", lt: "<", gt: ">", quot: "\"
 
 // The words of a page as the dating check compares them: tags gone (for markup), entities decoded, lower case, letters
 // and digits only. Plain text (a PDF's, a .txt) keeps its angle brackets.
-export function wordsOf(source: string, markup = true): string {
+export function wordsOf(source: string, markup = true, ligatures = false): string {
   const stripped = !markup ? source : source
     .replace(/<(script|style|noscript|template)\b[\s\S]*?<\/\1\s*>/gi, " ")
     .replace(/<!--[\s\S]*?-->/g, " ")
@@ -28,13 +29,29 @@ export function wordsOf(source: string, markup = true): string {
       }
       return ENTITIES[e.toLowerCase()] ?? " ";
     });
-  return ` ${normalise(stripped).toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim()} `;
+  // A PDF's ligature glyphs come out as control codes ("bene\u001fts"): those codes go, and on both sides the letter pairs
+  // fi, fl, ff, ffi, ffl go too, so "benefits" and the PDF's "bene ts" read the same.
+  const glyphs = ligatures ? stripped.replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/g, "") : stripped;
+  const words = normalise(glyphs).toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim();
+  return ` ${ligatures ? words.replace(/ffi|ffl|ff|fi|fl/g, "") : words} `;
 }
 
+// A match needs at least this many words: a short phrase can sit in any page.
+export const MIN_SPAN_WORDS = 6;
+let negations: string[] | null = null;
+
 // Whole-word containment of one span's words in the page's words, in order and next to each other. No fuzzy match.
-export function pageHoldsSpan(pageWords: string, span: string): boolean {
-  const words = wordsOf(span, false).trim();
-  return words.length > 0 && pageWords.includes(` ${words} `);
+// A place where the words follow a negation prefix ("it is a myth that ...") does not count.
+export function pageHoldsSpan(pageWords: string, span: string, ligatures = false): boolean {
+  const words = wordsOf(span, false, ligatures).trim();
+  if (words.split(" ").length < MIN_SPAN_WORDS) return false;
+  negations ??= loadRules().negationPrefixes;
+  const needle = ` ${words} `;
+  for (let at = pageWords.indexOf(needle); at >= 0; at = pageWords.indexOf(needle, at + 1)) {
+    const contextBefore = pageWords.slice(Math.max(0, at - 120), at).trim();
+    if (!isNegated({ contextBefore, text: words }, negations)) return true;
+  }
+  return false;
 }
 
 const reason = (err: ClientError) => `${err.code}${err.status ? ` ${err.status}` : ""}`;
@@ -54,21 +71,22 @@ export async function captureHoldsClaim(checker: CaptureChecker, url: string, ca
     return { holds: false, why: `capture ${capture.timestamp} could not be read (${reason(err)})`, usage };
   }
   if (body.kind !== "binary") {
-    const words = wordsOf(body.text, body.kind === "html");
-    if (spans.some((s) => pageHoldsSpan(words, s))) return { holds: true, why: "the first capture holds the claim's sentence", usage };
-    // Web pages stop here: a page that changes can say anything later. A PDF's text is read crudely (ligatures and
-    // some fonts come out wrong), so a PDF the sentence was not found in gets the file check below.
-    if (body.kind !== "pdf") return { holds: false, why: `the first capture (${capture.firstCapture}) does not hold the claim's sentence`, usage };
+    // A web page or a PDF whose text we can read is searched; not found means withheld. A page that changes can say
+    // anything later, and a PDF read crudely is tolerated for ligatures only, so there is no fallback for either.
+    const words = wordsOf(body.text, body.kind === "html", body.kind === "pdf");
+    return spans.some((s) => pageHoldsSpan(words, s, body.kind === "pdf"))
+      ? { holds: true, why: "the first capture holds the claim's sentence", usage }
+      : { holds: false, why: `the first capture (${capture.firstCapture}) does not hold the claim's sentence`, usage };
   }
-  // A file whose text we cannot search, or a PDF the sentence was not found in: the date stands only when the archive
-  // holds one version of the file, so the file the walk read is the file the first capture held.
-  const what = body.kind === "pdf" ? "the sentence was not found in the PDF's text and" : "the capture is a file we cannot read and";
+  // A file whose text we cannot read: the archive holding one version of it is an assumption, not proof, that it is the
+  // file the walk read (a file replaced on the server after its only capture would pass).
+  const what = "the capture is a file we cannot read and";
   if (!checker.captureVersions) return { holds: false, why: `${what} its versions cannot be compared`, usage };
   try {
     const got = await checker.captureVersions(url, { step });
     usage.push(got.usage);
     return got.data.versions === "one"
-      ? { holds: true, why: `${what} the archive holds one version only, so it is the file the walk read`, usage }
+      ? { holds: true, why: `${what} the archive holds one version only, assumed to be the file the walk read`, usage }
       : { holds: false, why: `${what} the archive holds more than one version of it`, usage };
   } catch (err) {
     if (!(err instanceof ClientError)) throw err;

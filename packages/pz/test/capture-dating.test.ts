@@ -6,7 +6,7 @@ import { describe, expect, it } from "vitest";
 import { createBudget } from "../src/clients/budget.ts";
 import { createFileCache } from "../src/clients/cache.ts";
 import { createTavily } from "../src/clients/tavily.ts";
-import { createWayback } from "../src/clients/wayback.ts";
+import { createWayback, MAX_CAPTURE_BYTES } from "../src/clients/wayback.ts";
 import { dateNode } from "../src/engine/dating.ts";
 import { pageHoldsSpan, wordsOf } from "../src/engine/capture.ts";
 import { walkClaim, type SpikeClaim } from "../src/engine/walk.ts";
@@ -110,8 +110,47 @@ describe("L19 a first archive capture dates the page only if it holds the claim"
     // Readable but without the sentence: only an unchanged file keeps the date.
     const other = archive({ [WEF]: { first: "2016-01-20", body: { type: "application/pdf", text: make(false) }, changed: true } });
     expect((await dateNode(node(WEF), {}, other.wayback, ["A sentence this report never says about whales and cheese."])).node.date).toMatchObject({ kind: "unconfirmed", value: null });
+    // Even a single archived version does not rescue a readable PDF that lacks the sentence (a file replaced after its capture).
     const unchanged = archive({ [WEF]: { first: "2016-01-20", body: { type: "application/pdf", text: make(false) } } });
-    expect((await dateNode(node(WEF), {}, unchanged.wayback, ["A sentence this report never says about whales and cheese."])).node.date).toMatchObject({ kind: "existed_by" });
+    expect((await dateNode(node(WEF), {}, unchanged.wayback, ["A sentence this report never says about whales and cheese."])).node.date).toMatchObject({ kind: "unconfirmed", value: null });
+    expect(unchanged.seen.some((u) => u.includes("collapse=digest"))).toBe(false);
+  });
+
+  it("5c. PDF ligature glyphs (control codes for fi and fl) do not hide a sentence with fish in it", async () => {
+    const filler = "Industry Agenda The New Plastics Economy Rethinking the future of plastics January 2016 all rights reserved. ".repeat(6);
+    const content = `BT /F1 10 Tf (${filler}) Tj [(At current rates plastic is expected to outweigh all the ) 20 (\x1fsh in the sea by 2050. The bene\x1fts are clear.)] TJ ET`;
+    const data = Buffer.from(content, "latin1");
+    const pdf = Buffer.concat([Buffer.from(`%PDF-1.4\n1 0 obj\n<< /Length ${data.length} >>\nstream\n`), data, Buffer.from("\nendstream\nendobj\n")]);
+    const a = archive({ [WEF]: { first: "2016-01-20", body: { type: "application/pdf", text: pdf }, changed: true } });
+    expect((await dateNode(node(WEF), {}, a.wayback, [SPAN])).node.date).toMatchObject({ kind: "existed_by", value: "2016-01-20" });
+    expect((await dateNode(node(WEF), {}, a.wayback, ["At current rates plastic is expected to outweigh all the whales in the sea by 2050."])).node.date).toMatchObject({ kind: "unconfirmed", value: null });
+  });
+
+  it("5d. a high-ratio stream hits the inflate cap and the file degrades to cannot-verify; an oversized response is never read", async () => {
+    const bomb = deflateSync(Buffer.alloc(6 * 2 ** 20, 0x20));
+    expect(bomb.length).toBeLessThan(20_000);
+    const pdf = Buffer.concat([Buffer.from(`%PDF-1.4\n1 0 obj\n<< /Length ${bomb.length} /Filter /FlateDecode >>\nstream\n`), bomb, Buffer.from("\nendstream\nendobj\n")]);
+    const a = archive({ [WEF]: { first: "2016-01-20", body: { type: "application/pdf", text: pdf }, changed: true } });
+    const got = await a.wayback.captureBody(WEF, "20160120000000");
+    expect(got.data).toEqual({ kind: "binary", text: "" });
+    expect((await dateNode(node(WEF), {}, a.wayback, [SPAN])).node.date).toMatchObject({ kind: "unconfirmed", value: null });
+    const big = archive({ [WEF]: { first: "2016-01-20", body: { type: "text/html", text: Buffer.alloc(MAX_CAPTURE_BYTES + 10, 0x61) } } });
+    expect((await big.wayback.captureBody(WEF, "20160120000000")).data).toEqual({ kind: "binary", text: "" });
+  });
+
+  it("5e. a redirect to another capture cannot be verified", async () => {
+    const a = archive({ [OCEAN]: { first: "2013-06-13", body: { status: 302 } } });
+    const out = await dateNode(node(OCEAN), {}, a.wayback, [SPAN]);
+    expect(out.node.date).toMatchObject({ kind: "unconfirmed", value: null });
+    expect(out.note).toContain("could not be read");
+  });
+
+  it("5f. a span of fewer than six words never matches, and a place after a negation does not count", () => {
+    expect(pageHoldsSpan(wordsOf("<p>Plastic outweighs fish by 2050.</p>"), "Plastic outweighs fish by 2050.")).toBe(false);
+    const sentence = "Plastic is expected to outweigh all the fish in the sea by 2050";
+    expect(pageHoldsSpan(wordsOf(`<p>It is a myth that ${sentence}.</p>`), sentence)).toBe(false);
+    expect(pageHoldsSpan(wordsOf(`<p>It is a myth that ${sentence}.</p><p>${sentence}.</p>`), sentence)).toBe(true);
+    expect(pageHoldsSpan(wordsOf(`<p>${sentence}.</p>`), sentence)).toBe(true);
   });
 
   it("6. a page dated by its own metadata or byline, on or before the capture, makes no capture request", async () => {
