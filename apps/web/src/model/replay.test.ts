@@ -42,12 +42,12 @@ describe("replayLines", () => {
     expect(replayLines(unasked).find((l) => l.nodeId === page.id)!.text).toMatch(/^Read [^:]+, [A-Z][a-z]+ \d{4}\.$/);
   });
 
-  it("dev-10: the WEF report's line says the model answered no, not that it states the claim", () => {
+  it("dev-10 (Nov 19 run): the WEF report's line says what same_claim recorded, here yes", () => {
     const dev10 = byId("dev-10");
     const wef = dev10.nodes.find((n) => n.domain === "www3.weforum.org")!;
-    expect(wef.sameClaim?.optionId).toBe("no");
+    expect(wef.sameClaim?.optionId).toBe("yes");
     const line = replayLines(dev10).find((l) => l.nodeId === wef.id)!.text;
-    expect(line).toMatch(/^Read www3\.weforum\.org, January 2016: a different claim \(model: no, (?:>0\.99|\d\.\d{2})\)\.$/);
+    expect(line).toMatch(/^Read www3\.weforum\.org, January 2016: states the claim \(model: yes, (?:>0\.99|\d\.\d{2})\)\.$/);
     for (const l of replayLines(dev10)) expect(lintText(l.text)).toEqual([]);
   });
 

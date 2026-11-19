@@ -3,7 +3,7 @@
   "id": "dev-02",
   "mode": "LIVE",
   "synthetic": false,
-  "recordedAt": "2026-11-18T02:55:51.155Z",
+  "recordedAt": "2026-11-19T13:14:05.160Z",
   "claim": {
     "text": "The average person swallows eight spiders a year while sleeping.",
     "atoms": {
@@ -30,8 +30,8 @@
       "domain": "snopes.com",
       "title": "Do People Swallow Eight Spiders Per Year? | Snopes.com",
       "date": {
-        "kind": "existed_by",
-        "value": "2021-12-05",
+        "kind": "unconfirmed",
+        "value": null,
         "source": "wayback_first_capture",
         "firstCapture": "2021-12-05",
         "conflictingDate": false
@@ -53,8 +53,8 @@
       "domain": "snopes.com",
       "title": "Lisa Birgit Holst | Snopes.com",
       "date": {
-        "kind": "existed_by",
-        "value": "2021-12-02",
+        "kind": "unconfirmed",
+        "value": null,
         "source": "wayback_first_capture",
         "firstCapture": "2021-12-02",
         "conflictingDate": false
@@ -95,30 +95,25 @@
       "spanIds": [
         "s1"
       ],
-      "citesEarlier": true,
-      "candidateParents": [
-        {
-          "url": "https://www.scientificamerican.com",
-          "read": true
-        }
-      ],
+      "citesEarlier": false,
+      "candidateParents": [],
       "pageType": null,
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "no",
-        "probability": 0.9999952149054424,
+        "probability": 0.9999545833430672,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.000004785094557475627
+            "p": 0.000045397851863537595
           },
           {
             "optionId": "no",
-            "p": 0.9999952149054424
+            "p": 0.9999545833430672
           },
           {
             "optionId": "__other__",
-            "p": 1.1102230246251565e-16
+            "p": 1.880506927953718e-8
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -153,19 +148,19 @@
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "no",
-        "probability": 0.9999869928759818,
+        "probability": 0.9999962733611047,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.000013007124018053476
+            "p": 0.0000037266388951977934
           },
           {
             "optionId": "no",
-            "p": 0.9999869928759818
+            "p": 0.9999962733611047
           },
           {
             "optionId": "__other__",
-            "p": 1.1102230246251565e-16
+            "p": 0
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -210,28 +205,28 @@
     {
       "id": "s1",
       "nodeId": "n3",
-      "text": "Scientific American SubscribeSign In Read the November Issue: Social Media Addiction April 15, 2014 2min read Add Us On GoogleAdd SciAm Do People Really Swallow 8 Spiders a Year While They Sleep?",
-      "contextBefore": "",
+      "text": "Do People Really Swallow 8 Spiders a Year While They Sleep?",
+      "contextBefore": "Scientific American SubscribeSign In Read the November Issue: Social Media Addiction April 15, 2014 2min read Add Us On GoogleAdd SciAm ",
       "contextAfter": " Should we worry about arachnids crawling into our mouths while we're in dreamland? By Annie Sneed Barn funnel weaver, Tegenaria domestica spider on human skin, this spider can often be found in human",
-      "start": 0,
+      "start": 136,
       "end": 195,
       "extractSha256": "1cf103720725491944ad1cac82f5073d03318604fa7f80be0402c3e14349fb35",
       "windowSha256": "8e6b41ddb64ae2f5a1cf52869ff297bdaf936fb7026f9be5b7120a2128aeabdf",
-      "fetchedAt": "2026-11-18T02:56:05.014Z",
+      "fetchedAt": "2026-11-19T13:14:20.465Z",
       "waybackUrl": "https://web.archive.org/web/20140614050227/https://www.scientificamerican.com/article/fact-or-fiction-people-swallow-8-spiders-a-year-while-they-sleep1",
       "tier": "exact"
     },
     {
       "id": "s2",
       "nodeId": "n4",
-      "text": "The average person is swallowed by eight spiders each year while sleeping. - Author: Welcome to Night Vale - Posted: 2015-11-09T18:49:00+00:00 - Reactions: 0 - Comment count: 215 - Shares: 2799 - Privacy: Public Comments. - Ari Zerner: \"Average person is swallowed by 8 spiders each year\" factoid actually just statistical error.",
-      "contextBefore": "Welcome to Night Vale on Facebook: \"The average person is swallowed by eight spiders each year while sleeping.\". ",
+      "text": "Ari Zerner: \"Average person is swallowed by 8 spiders each year\" factoid actually just statistical error.",
+      "contextBefore": "allowed by eight spiders each year while sleeping. - Author: Welcome to Night Vale - Posted: 2015-11-09T18:49:00+00:00 - Reactions: 0 - Comment count: 215 - Shares: 2799 - Privacy: Public Comments. - ",
       "contextAfter": " Average person is swallowed by 0 spiders per year. Spiders Georg, who lives in cave & is swallowed by over 10,000 each day, is an outlier and should not have been counted. - Andrea Logue Jaramillo: L",
-      "start": 113,
+      "start": 337,
       "end": 442,
       "extractSha256": "cbd692e1ef4056527a45fc7f8dd1843972a997a1372bf74ff24900d6b9d53b5a",
-      "windowSha256": "9e7c39b6b6a03a16a2599055e5a254574f0f1c902eba7dd2c53fdbdd98f1b861",
-      "fetchedAt": "2026-11-18T02:56:06.302Z",
+      "windowSha256": "bc95d9ee08232c9b0d58e94c4b7f94186a2172de04abb1c8569942fcaa8def0b",
+      "fetchedAt": "2026-11-19T13:14:21.120Z",
       "waybackUrl": null,
       "tier": "exact"
     }
@@ -255,9 +250,9 @@
   },
   "failure": null,
   "budget": {
-    "credits": 9,
-    "usd": 0.0002567700000000001,
-    "ms": 40944,
+    "credits": 10,
+    "usd": 0.00028565999999999997,
+    "ms": 34138,
     "capHit": null
   },
   "decision": {
@@ -276,89 +271,109 @@
   },
   "searchLog": [
     {
-      "at": "2026-11-18T02:55:57.351Z",
+      "at": "2026-11-19T13:14:11.479Z",
       "step": "search",
       "query": "\"eight\" spiders",
-      "endDate": "2026-11-18",
+      "endDate": "2026-11-19",
       "startDate": null,
-      "results": 10,
-      "kept": 10,
+      "results": 8,
+      "kept": 8,
       "dropped": 0
     },
     {
-      "at": "2026-11-18T02:55:58.879Z",
+      "at": "2026-11-19T13:14:13.511Z",
       "step": "search",
       "query": "\"eight spiders a year\" while sleeping average person",
-      "endDate": "2026-11-18",
+      "endDate": "2026-11-19",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-18T02:55:59.867Z",
+      "at": "2026-11-19T13:14:15.341Z",
       "step": "search",
       "query": "\"swallows eight spiders\" per year sleeping",
-      "endDate": "2026-11-18",
+      "endDate": "2026-11-19",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-18T02:56:03.077Z",
+      "at": "2026-11-19T13:14:16.610Z",
       "step": "search",
       "query": "\"average person swallows eight spiders\" sleeping",
-      "endDate": "2026-11-18",
+      "endDate": "2026-11-19",
       "startDate": null,
-      "results": 9,
-      "kept": 9,
+      "results": 10,
+      "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-18T02:56:04.762Z",
+      "at": "2026-11-19T13:14:18.015Z",
       "step": "meta-search",
       "query": "\"eight\" spiders",
-      "endDate": "2026-11-18",
+      "endDate": "2026-11-19",
       "startDate": null,
       "results": 5,
       "kept": 2,
       "dropped": 3
     },
     {
-      "at": "2026-11-18T02:56:14.443Z",
+      "at": "2026-11-19T13:14:26.144Z",
       "step": "search",
-      "query": "\"eight spiders a year\" while asleep human",
-      "endDate": "2026-11-18",
+      "query": "\"eight spiders a year\" \"swallows\" average person sleeping",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:14:29.339Z",
+      "step": "search",
+      "query": "\"swallows eight spiders\" \"while sleeping\" average person",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:14:30.846Z",
+      "step": "search",
+      "query": "spider ingestion rate \"average person\" while sleeping",
+      "endDate": "2026-11-19",
       "startDate": null,
       "results": 10,
       "kept": 9,
       "dropped": 1
     },
     {
-      "at": "2026-11-18T02:56:16.011Z",
-      "step": "search",
-      "query": "spider swallowing rate average person sleeping",
-      "endDate": "2026-11-18",
+      "at": "2026-11-19T13:14:39.295Z",
+      "step": "dating",
+      "query": "https://www.snopes.com/fact-check/swallow-spiders: the node has no span to look for in the capture; no date from the first capture",
+      "endDate": null,
       "startDate": null,
-      "results": 10,
-      "kept": 9,
-      "dropped": 1
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
     },
     {
-      "at": "2026-11-18T02:56:17.723Z",
-      "step": "search",
-      "query": "first publication of eight spiders per year claim",
-      "endDate": "2026-11-18",
+      "at": "2026-11-19T13:14:39.297Z",
+      "step": "dating",
+      "query": "https://www.snopes.com/lisa-birgit-holst: the node has no span to look for in the capture; no date from the first capture",
+      "endDate": null,
       "startDate": null,
-      "results": 10,
-      "kept": 9,
-      "dropped": 1
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
     }
   ],
   "usage": [
     {
-      "at": "2026-11-18T02:55:51.156Z",
+      "at": "2026-11-19T13:14:05.162Z",
       "traceId": "dev-02",
       "step": "tokenfactory",
       "service": "tokenfactory",
@@ -369,28 +384,28 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0.000030999999999999995,
-      "latencyMs": 1122,
+      "latencyMs": 1415,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:55:52.287Z",
+      "at": "2026-11-19T13:14:06.589Z",
       "traceId": "dev-02",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 270,
-      "completionTokens": 181,
+      "completionTokens": 257,
       "cachedTokens": 240,
       "credits": 0,
-      "costUsd": 0.0000813,
-      "latencyMs": 3296,
+      "costUsd": 0.00010409999999999998,
+      "latencyMs": 3286,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:55:57.348Z",
+      "at": "2026-11-19T13:14:11.478Z",
       "traceId": "dev-02",
       "step": "search",
       "service": "tavily",
@@ -401,12 +416,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1690,
+      "latencyMs": 1574,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:55:58.879Z",
+      "at": "2026-11-19T13:14:13.511Z",
       "traceId": "dev-02",
       "step": "search",
       "service": "tavily",
@@ -417,12 +432,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1439,
+      "latencyMs": 2012,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:55:59.866Z",
+      "at": "2026-11-19T13:14:15.340Z",
       "traceId": "dev-02",
       "step": "search",
       "service": "tavily",
@@ -433,12 +448,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 942,
+      "latencyMs": 1811,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:56:03.076Z",
+      "at": "2026-11-19T13:14:16.610Z",
       "traceId": "dev-02",
       "step": "search",
       "service": "tavily",
@@ -449,12 +464,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 3191,
+      "latencyMs": 1245,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:56:04.762Z",
+      "at": "2026-11-19T13:14:18.015Z",
       "traceId": "dev-02",
       "step": "meta-search",
       "service": "tavily",
@@ -465,12 +480,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1649,
+      "latencyMs": 1386,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:56:04.770Z",
+      "at": "2026-11-19T13:14:18.020Z",
       "traceId": "dev-02",
       "step": "meta-extract",
       "service": "tavily",
@@ -486,7 +501,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-18T02:56:04.992Z",
+      "at": "2026-11-19T13:14:19.760Z",
       "traceId": "dev-02",
       "step": "extract",
       "service": "tavily",
@@ -495,14 +510,30 @@
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 183,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1719,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:56:05.014Z",
+      "at": "2026-11-19T13:14:19.764Z",
+      "traceId": "dev-02",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 206,
+      "completionTokens": 7,
+      "cachedTokens": 160,
+      "credits": 0,
+      "costUsd": 0.0000227,
+      "latencyMs": 693,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:14:20.464Z",
       "traceId": "dev-02",
       "step": "dating",
       "service": "wayback",
@@ -518,23 +549,39 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-18T02:56:05.017Z",
+      "at": "2026-11-19T13:14:20.470Z",
       "traceId": "dev-02",
       "step": "same_claim",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 241,
+      "promptTokens": 216,
       "completionTokens": 7,
-      "cachedTokens": 160,
+      "cachedTokens": 176,
       "credits": 0,
-      "costUsd": 0.0000262,
-      "latencyMs": 659,
+      "costUsd": 0.0000237,
+      "latencyMs": 326,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:56:06.301Z",
+      "at": "2026-11-19T13:14:20.797Z",
+      "traceId": "dev-02",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 211,
+      "completionTokens": 7,
+      "cachedTokens": 160,
+      "credits": 0,
+      "costUsd": 0.000023199999999999998,
+      "latencyMs": 317,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:14:21.120Z",
       "traceId": "dev-02",
       "step": "dating",
       "service": "wayback",
@@ -545,60 +592,28 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 600,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-18T02:56:06.304Z",
-      "traceId": "dev-02",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 293,
-      "completionTokens": 7,
-      "cachedTokens": 160,
-      "credits": 0,
-      "costUsd": 0.0000314,
-      "latencyMs": 454,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T02:56:06.769Z",
-      "traceId": "dev-02",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 253,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.00000253,
-      "latencyMs": 2731,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T02:56:09.536Z",
+      "at": "2026-11-19T13:14:21.124Z",
       "traceId": "dev-02",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 270,
-      "completionTokens": 182,
-      "cachedTokens": 240,
+      "completionTokens": 175,
+      "cachedTokens": 256,
       "credits": 0,
-      "costUsd": 0.0000816,
-      "latencyMs": 3443,
+      "costUsd": 0.0000795,
+      "latencyMs": 3327,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:56:14.443Z",
+      "at": "2026-11-19T13:14:26.143Z",
       "traceId": "dev-02",
       "step": "search",
       "service": "tavily",
@@ -609,12 +624,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1442,
+      "latencyMs": 1670,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:56:16.011Z",
+      "at": "2026-11-19T13:14:29.339Z",
       "traceId": "dev-02",
       "step": "search",
       "service": "tavily",
@@ -625,12 +640,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1552,
+      "latencyMs": 3177,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:56:17.722Z",
+      "at": "2026-11-19T13:14:30.846Z",
       "traceId": "dev-02",
       "step": "search",
       "service": "tavily",
@@ -641,12 +656,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1695,
+      "latencyMs": 1484,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:56:22.500Z",
+      "at": "2026-11-19T13:14:35.291Z",
       "traceId": "dev-02",
       "step": "extract",
       "service": "tavily",
@@ -657,60 +672,44 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 4727,
+      "latencyMs": 4424,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:56:22.514Z",
+      "at": "2026-11-19T13:14:35.448Z",
       "traceId": "dev-02",
       "step": "embed",
       "service": "tokenfactory",
       "endpoint": "/embeddings",
       "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 29,
+      "promptTokens": 105,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 2.9000000000000003e-7,
-      "latencyMs": 4839,
+      "costUsd": 0.0000010500000000000001,
+      "latencyMs": 1236,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:56:27.462Z",
+      "at": "2026-11-19T13:14:36.687Z",
       "traceId": "dev-02",
       "step": "embed",
       "service": "tokenfactory",
       "endpoint": "/embeddings",
       "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 92,
+      "promptTokens": 41,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 9.2e-7,
-      "latencyMs": 1378,
+      "costUsd": 4.1e-7,
+      "latencyMs": 2555,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-18T02:56:28.841Z",
-      "traceId": "dev-02",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 153,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.00000153,
-      "latencyMs": 2213,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-18T02:56:31.075Z",
+      "at": "2026-11-19T13:14:39.274Z",
       "traceId": "dev-02",
       "step": "dating",
       "service": "fetch",
@@ -726,7 +725,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-18T02:56:32.089Z",
+      "at": "2026-11-19T13:14:39.290Z",
       "traceId": "dev-02",
       "step": "dating",
       "service": "fetch",
@@ -737,12 +736,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 1014,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-18T02:56:32.094Z",
+      "at": "2026-11-19T13:14:39.294Z",
       "traceId": "dev-02",
       "step": "dating",
       "service": "wayback",
@@ -758,7 +757,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-18T02:56:32.097Z",
+      "at": "2026-11-19T13:14:39.297Z",
       "traceId": "dev-02",
       "step": "dating",
       "service": "wayback",
@@ -774,7 +773,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-18T02:56:32.098Z",
+      "at": "2026-11-19T13:14:39.297Z",
       "traceId": "dev-02",
       "step": "dating",
       "service": "wayback",
@@ -790,7 +789,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-18T02:56:32.098Z",
+      "at": "2026-11-19T13:14:39.298Z",
       "traceId": "dev-02",
       "step": "dating",
       "service": "wayback",
