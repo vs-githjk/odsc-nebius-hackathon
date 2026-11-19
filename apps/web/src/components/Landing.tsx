@@ -1,5 +1,7 @@
 import type { Trace } from "pz/schema";
 import { ClaimBox } from "./ClaimBox.tsx";
+import shotLight from "../assets/trace-dev10-light.png";
+import shotDark from "../assets/trace-dev10-dark.png";
 import { challengeTraces } from "../model/live.ts";
 import { sampleRow } from "../model/sampleRow.ts";
 import { scrubberStops, dateToX, heat } from "../model/scrubber.ts";
@@ -47,6 +49,17 @@ function WorkedExample({ trace }: { trace: Trace }) {
       <a className="btn" href={`#/t/${encodeURIComponent(trace.id)}`}>Open the full trace</a>
       {row.earliestYear !== null && <span className="meta lp-example-note">Earliest page found: {row.earliestYear}. It is not called the origin while a page it cites is unread.</span>}
     </div>
+  );
+}
+
+// A real capture of the trace view on the hero trace (light and dark), not mock art. Each theme shows its own.
+function LiveFigure({ trace }: { trace: Trace }) {
+  return (
+    <a className="lp-figure card" href={`#/t/${encodeURIComponent(trace.id)}`}>
+      <img className="lp-shot lp-shot-light" src={shotLight} width={729} height={425} alt="The trace view on the recorded plastic claim: the report's own sentence above a time axis from 2016 to 2024, one dot per page." />
+      <img className="lp-shot lp-shot-dark" src={shotDark} width={729} height={425} alt="" aria-hidden="true" />
+      <span className="meta lp-figure-cap">The trace view on the recorded plastic claim: one dot per page, the past on the left, links where one page cites another. Open it to scrub through time.</span>
+    </a>
   );
 }
 
@@ -100,6 +113,7 @@ export function Landing({ traces, hero, focusKey, onMatch, onLive }: {
         <div className="wrap">
           <p className="lp-eyebrow">How it works</p>
           <h2 id="lp-how" className="lp-h2">Four steps, and code decides the ending</h2>
+          {hero && <LiveFigure trace={hero} />}
           <ol className="lp-steps">
             {steps.map(s => (
               <li key={s.n} className="card">
