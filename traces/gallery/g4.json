@@ -1,0 +1,2181 @@
+{
+  "schemaVersion": "1",
+  "id": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+  "mode": "LIVE",
+  "synthetic": false,
+  "recordedAt": "2026-11-19T17:33:24.006Z",
+  "claim": {
+    "text": "Spending 120 minutes a week in nature is good for your health.",
+    "atoms": {
+      "number": {
+        "raw": "120",
+        "canonical": "120"
+      },
+      "unit": "minutes a week",
+      "subjectLemma": "spending",
+      "population": "your health",
+      "time": null,
+      "hedge": null,
+      "namedSource": null,
+      "variants": [
+        "one hundred twenty"
+      ]
+    }
+  },
+  "viralSentence": "Spending 120 minutes a week in nature is good for your health.",
+  "nodes": [
+    {
+      "id": "n1",
+      "url": "https://research.monash.edu/en/publications/spending-at-least-120-minutes-a-week-in-nature-is-associated-with",
+      "domain": "research.monash.edu",
+      "title": "Spending at least 120 minutes a week in nature is associated with good health and wellbeing - Monash University",
+      "date": {
+        "kind": "existed_by",
+        "value": "2024-05-23",
+        "source": "wayback_first_capture",
+        "firstCapture": "2024-05-23",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n6",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s1"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9999999999969011,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9999999999969011
+          },
+          {
+            "optionId": "no",
+            "p": 3.0988202128526213e-12
+          },
+          {
+            "optionId": "__other__",
+            "p": 0
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    },
+    {
+      "id": "n2",
+      "url": "https://beyondgreenspace.net/2019/06/13/120-minutes-in-nature-the-5-a-day-equivalent",
+      "domain": "beyondgreenspace.net",
+      "title": "‘Threshold’ of 120 minutes in nature for health? | Beyond Greenspace",
+      "date": {
+        "kind": "published",
+        "value": "2019-06-13",
+        "source": "metadata",
+        "firstCapture": "2019-08-25",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n6",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s2"
+      ],
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "https://www.nature.com/articles/s41598-019-44097-3",
+          "read": true
+        }
+      ],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9999999999842628,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9999999999842628
+          },
+          {
+            "optionId": "no",
+            "p": 1.5737106628843625e-11
+          },
+          {
+            "optionId": "__other__",
+            "p": 1.1102230246251565e-16
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    },
+    {
+      "id": "n3",
+      "url": "https://ucrisportal.univie.ac.at/en/publications/spending-at-least-120-minutes-a-week-in-nature-is-associated-with",
+      "domain": "ucrisportal.univie.ac.at",
+      "title": "Spending at least 120 minutes a week in nature is associated with good health and wellbeing - University of Vienna",
+      "date": {
+        "kind": "published",
+        "value": "2019-06-13",
+        "source": "metadata",
+        "firstCapture": null,
+        "conflictingDate": false
+      },
+      "clusterId": "c-n6",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s3"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9999999999740539,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9999999999740539
+          },
+          {
+            "optionId": "no",
+            "p": 2.5946100436948994e-11
+          },
+          {
+            "optionId": "__other__",
+            "p": 0
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    },
+    {
+      "id": "n4",
+      "url": "https://www.ecehh.org/news/2hr-nature-dose",
+      "domain": "ecehh.org",
+      "title": "Two hour ‘nature dose’ boosts health and wellbeing - European Centre for Environment and Human Health | ECEHH",
+      "date": {
+        "kind": "published",
+        "value": "2019-06-13",
+        "source": "metadata",
+        "firstCapture": "2019-07-15",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n6",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s4"
+      ],
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "https://www.nature.com/articles/s41598-019-44097-3",
+          "read": true
+        }
+      ],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9999999907625502,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9999999907625502
+          },
+          {
+            "optionId": "no",
+            "p": 9.237449781166654e-9
+          },
+          {
+            "optionId": "__other__",
+            "p": 0
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    },
+    {
+      "id": "n5",
+      "url": "https://www.nature.com/articles/s41598-019-44097-3",
+      "domain": "nature.com",
+      "title": "Spending at least 120 minutes a week in nature is associated with good health and wellbeing | Scientific Reports",
+      "date": {
+        "kind": "published",
+        "value": "2019-06-13",
+        "source": "metadata",
+        "firstCapture": "2019-06-14",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n6",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s5"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9999999999975866,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9999999999975866
+          },
+          {
+            "optionId": "no",
+            "p": 2.4133635100757967e-12
+          },
+          {
+            "optionId": "__other__",
+            "p": 0
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    },
+    {
+      "id": "n6",
+      "url": "https://app.cochat.ai/papers/10.1016/j.ypmed.2016.08.023",
+      "domain": "app.cochat.ai",
+      "title": "Recreational physical activity in natural environments and implications for health: A population based cross-sectional study in England · CoChat",
+      "date": {
+        "kind": "unconfirmed",
+        "value": null,
+        "source": "wayback_first_capture",
+        "firstCapture": null,
+        "conflictingDate": false
+      },
+      "clusterId": "c-n6",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s6"
+      ],
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "https://app.cochat.ai/papers/10.1038/s41598-019-44097-3",
+          "read": true
+        }
+      ],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9999999999978701,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9999999999978701
+          },
+          {
+            "optionId": "no",
+            "p": 2.129785956809916e-12
+          },
+          {
+            "optionId": "__other__",
+            "p": 1.1102230246251565e-16
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    },
+    {
+      "id": "n7",
+      "url": "https://beyondgreenspace.net/published-papers",
+      "domain": "beyondgreenspace.net",
+      "title": "Published papers | Beyond Greenspace",
+      "date": {
+        "kind": "published",
+        "value": "2019-01-15",
+        "source": "metadata",
+        "firstCapture": "2019-08-25",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n6",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s7"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": {
+        "questionId": "page_type",
+        "optionId": "study",
+        "probability": 0.9999324660558903,
+        "top": [
+          {
+            "optionId": "study",
+            "p": 0.9999324660558903
+          },
+          {
+            "optionId": "dataset",
+            "p": 0.00006605203543605327
+          },
+          {
+            "optionId": "report",
+            "p": 0.000001370866260685438
+          },
+          {
+            "optionId": "speaker",
+            "p": 0
+          },
+          {
+            "optionId": "news",
+            "p": 0
+          },
+          {
+            "optionId": "blog",
+            "p": 0
+          },
+          {
+            "optionId": "social",
+            "p": 0
+          },
+          {
+            "optionId": "other",
+            "p": 7.733905596008743e-8
+          },
+          {
+            "optionId": "__other__",
+            "p": 3.37033569941525e-8
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9988304896553062,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9988304896553062
+          },
+          {
+            "optionId": "no",
+            "p": 0.001169510344693822
+          },
+          {
+            "optionId": "__other__",
+            "p": 0
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    },
+    {
+      "id": "n8",
+      "url": "https://app.cochat.ai/papers/10.1038/s41598-019-44097-3",
+      "domain": "app.cochat.ai",
+      "title": "Spending at least 120 minutes a week in nature is associated with good health and wellbeing – Citation check",
+      "date": {
+        "kind": "published",
+        "value": "2019-06-13",
+        "source": "metadata",
+        "firstCapture": null,
+        "conflictingDate": false
+      },
+      "clusterId": "c-n6",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s8"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9999999999934397,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9999999999934397
+          },
+          {
+            "optionId": "no",
+            "p": 6.5602025887345846e-12
+          },
+          {
+            "optionId": "__other__",
+            "p": 1.1102230246251565e-16
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "parentId": "n5",
+      "childId": "n2",
+      "kind": "explicit",
+      "parentSpanId": "s5",
+      "childSpanId": "s2",
+      "linkHref": "https://www.nature.com/articles/s41598-019-44097-3"
+    },
+    {
+      "id": "e2",
+      "parentId": "n5",
+      "childId": "n4",
+      "kind": "explicit",
+      "parentSpanId": "s5",
+      "childSpanId": "s4",
+      "linkHref": "https://www.nature.com/articles/s41598-019-44097-3"
+    },
+    {
+      "id": "e3",
+      "parentId": "n8",
+      "childId": "n6",
+      "kind": "explicit",
+      "parentSpanId": "s8",
+      "childSpanId": "s6",
+      "linkHref": "https://app.cochat.ai/papers/10.1038/s41598-019-44097-3"
+    }
+  ],
+  "clusters": [
+    {
+      "id": "c-n6",
+      "nodeIds": [
+        "n6",
+        "n7",
+        "n1",
+        "n2",
+        "n3",
+        "n4",
+        "n5",
+        "n8"
+      ],
+      "rule": "syndicated"
+    }
+  ],
+  "spans": [
+    {
+      "id": "s1",
+      "nodeId": "n1",
+      "text": "Spending at least 120 minutes a week in nature is associated with good health and wellbeing.",
+      "contextBefore": "Skip to main navigation Skip to search Monash University Home ",
+      "contextAfter": " * Mathew P. White * , Ian Alcock * , James Grellier * , Benedict W. Wheeler * , Terry Hartig * , Sara L. Warber * , Angie Bone * , Michael H. Depledge * , Lora E. Fleming Research output: Contributio",
+      "start": 62,
+      "end": 154,
+      "extractSha256": "b136735a626f112d38150bcedcdf5122deef5126d860cb38020506c1d7e4f0ca",
+      "windowSha256": "f28d01073471f45801fc71b692a0e8f5349b3bc9552fa80e80a079f1ce9d0c22",
+      "fetchedAt": "2026-11-19T17:33:40.514Z",
+      "waybackUrl": "https://web.archive.org/web/20240523072459/https://research.monash.edu/en/publications/spending-at-least-120-minutes-a-week-in-nature-is-associated-with",
+      "tier": "exact"
+    },
+    {
+      "id": "s2",
+      "nodeId": "n2",
+      "text": "Spending at least 120 minutes a week in nature is associated with good health and wellbeing.",
+      "contextBefore": "tudinal, and experimental studies are needed to test the associations*.* White, M.P., Alcock, I., Grellier, J., Wheeler, B.W., Hartig, T., Warber, S.L., Bone, A., Depledge, M.H., Fleming, L.E., 2019. ",
+      "contextAfter": " Scientific Reports 9, 7730. Share this: * Share on X (Opens in new window) X * Share on Facebook (Opens in new window) Facebook Like Loading... *Related*. Tags: Health and wellbeing, MENE, Natural En",
+      "start": 3972,
+      "end": 4064,
+      "extractSha256": "f3e8633c74680747e246dd1c9be4d4b777a9c31a85bf9deda86e6ec99a042478",
+      "windowSha256": "a75f39d3f8ce285217ca490085b7d1c464aba761c4c5b9b99bc86dc24d70cf12",
+      "fetchedAt": "2026-11-19T17:33:41.420Z",
+      "waybackUrl": "https://web.archive.org/web/20190825194541/https://beyondgreenspace.net/2019/06/13/120-minutes-in-nature-the-5-a-day-equivalent",
+      "tier": "exact"
+    },
+    {
+      "id": "s3",
+      "nodeId": "n3",
+      "text": "Spending at least 120 minutes a week in nature is associated with good health and wellbeing.",
+      "contextBefore": "Skip to main navigation Skip to search University of Vienna Home * u:cris Info Link opens in a new tab * + Deutsch + English ",
+      "contextAfter": " * M.P. White (Corresponding author) * , I. Alcock * , J. Grellier * , B.W. Wheeler * , Terry Hartig * , S.L. Warber * , A. Bone * , M.H. Depledge * , L.E. Fleming Publications: Contribution to journa",
+      "start": 125,
+      "end": 217,
+      "extractSha256": "c693eb8f6a3d7d3a469474ea3412d0093af9fd437b9611926318b71fb1e5b526",
+      "windowSha256": "990d26c009f3871a7a391aaa4ed1145f90580f738508d016ac13cc8d08b77540",
+      "fetchedAt": "2026-11-19T17:33:42.266Z",
+      "waybackUrl": null,
+      "tier": "exact"
+    },
+    {
+      "id": "s4",
+      "nodeId": "n4",
+      "text": "The full paper \"Spending at least 120 minutes a week in nature is associated with good health and wellbeing\" is published in the journal Scientific Reports and is available here nature.com/articles/s41598-019-44097-3",
+      "contextBefore": "rent findings offer valuable support to health practitioners in making recommendations about spending time in nature to promote basic health and wellbeing, similar to guidelines for weekly physical\". ",
+      "contextAfter": " More news. Blog 15yrs | Where next? In this final instalment of our anniversary blog, Centre director, Gesche Huebner, looks to the future of environment and health research. Blog 15yrs | Going globa",
+      "start": 2720,
+      "end": 2936,
+      "extractSha256": "c317a19fd319e4399255e91299551fe55db84b337388350106670661556fb25e",
+      "windowSha256": "01b37d3caa68b3f6bd13ec73fd03c3dd9887b7fec7d35d70d85b0a778474ffa1",
+      "fetchedAt": "2026-11-19T17:33:46.364Z",
+      "waybackUrl": "https://web.archive.org/web/20190715181250/https://www.ecehh.org/news/2hr-nature-dose",
+      "tier": "exact"
+    },
+    {
+      "id": "s5",
+      "nodeId": "n5",
+      "text": "Spending at least 120 minutes a week in nature is associated with good health and wellbeing.",
+      "contextBefore": " a more up to date browser (or turn off compatibility mode in Internet Explorer). In the meantime, to ensure continued support, we are displaying the site without styles and JavaScript. Advertisement ",
+      "contextAfter": " *Scientific Reports* volume 9, Article number: 7730 (2019) Cite this article 644k Accesses 1122 Citations 6797 Altmetric Metrics details Abstract. Spending time in natural environments can benefit he",
+      "start": 348,
+      "end": 440,
+      "extractSha256": "c488e2e36bdf304134fe7110b7ae58fafbbb242113743b80c3a257d7223f1089",
+      "windowSha256": "5ab514a3c89d0b81ef90da9049f6e58d5d5d147b4dd23d2d7e9efaaad0b11f49",
+      "fetchedAt": "2026-11-19T17:33:47.578Z",
+      "waybackUrl": "https://web.archive.org/web/20190614074906/https://www.nature.com/articles/s41598-019-44097-3",
+      "tier": "exact"
+    },
+    {
+      "id": "s6",
+      "nodeId": "n6",
+      "text": "Spending at least 120 minutes a week in nature is associated with good health and wellbeing",
+      "contextBefore": "study in England. White, M.P., Elliott, L.R., Taylor, T., Wheeler, B.W., Spencer, A., Bone, A., Depledge, M.H., Fleming, L.E.·2016·Preventive Medicine DOI 10.1016/j.ypmed.2016.08.023 Cited by (5). 1. ",
+      "contextAfter": " White, Mathew P., Alcock, Ian, Grellier, James et al. · 2019 · Scientific Reports 2. Environmental, health, wellbeing, social and equity effects of urban green space interventions: A meta-narrative e",
+      "start": 319,
+      "end": 410,
+      "extractSha256": "9e24c9cf8f13a8dbae31222547f45d4a94d5c9e3b1044c08901adc28a32ac3bb",
+      "windowSha256": "01ae829c370a075faac489fc54c61d5478f17dc6eaef58ebc540d8c7f2eca106",
+      "fetchedAt": "2026-11-19T17:33:58.632Z",
+      "waybackUrl": null,
+      "tier": "exact"
+    },
+    {
+      "id": "s7",
+      "nodeId": "n7",
+      "text": "Spending at least 120 minutes a week in nature is associated with good health and wellbeing (2019) MP White, J Grellier, BW Wheeler, T hartig ,SL Warber, A Bone, MH Depledge, LE Fleming.",
+      "contextBefore": "l, MP White, J May. Health & place, 58, 102160. Experiencing nature with sight impairment: Seeking freedom from ableism. (2019) S Bell. Environment and Planning E: Nature and Space, 2(2), pp.304-322. ",
+      "contextAfter": " Scientific Reports 9, 7730. Impact of a riverside accessibility intervention on use, physical activity, and wellbeing: A mixed methods pre-post evaluation (2019) C Vert, G Carrasco-Turigas, W Zijlema",
+      "start": 9675,
+      "end": 9861,
+      "extractSha256": "e5fa319a416a7b286ba1e7c500fcd679a062dbda24a9c58c07e5cea1f4a6241a",
+      "windowSha256": "b2669f5e2cf3ad5e8b29c0ae3a2952c0014009cb1b000d227f2fd6fe28d5d6f8",
+      "fetchedAt": "2026-11-19T17:34:00.418Z",
+      "waybackUrl": "https://web.archive.org/web/20190825202932/https://beyondgreenspace.net/published-papers",
+      "tier": "exact"
+    },
+    {
+      "id": "s8",
+      "nodeId": "n8",
+      "text": "Spending at least 120 minutes a week in nature is associated with good health and wellbeing.",
+      "contextBefore": "upport Guides Hub Tools Blog The DOI matches its Crossref record; 51 of the 51 references it cites were found in a registry or an index; 10 of the 35 sources its claims cite were checked for support. ",
+      "contextAfter": " Abstract. Study of weekly nature exposure and self-reported health and wellbeing in a nationally representative sample. Overview. CoChat Summary. TL;DR. Using a nationally representative sample of ad",
+      "start": 309,
+      "end": 401,
+      "extractSha256": "6c5a355ca46fa4d66e210ee6d0f272d188440b1109a852305a46f6a045a9902a",
+      "windowSha256": "e5d9f82a92856994a5fd99f50e98a2d280be1289fd0cae82cf811f42bba3ba4b",
+      "fetchedAt": "2026-11-19T17:34:16.200Z",
+      "waybackUrl": null,
+      "tier": "exact"
+    }
+  ],
+  "hops": [
+    {
+      "edgeId": "e1",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "scope_widened",
+          "source": "inferred",
+          "value": "no",
+          "probability": 0.9999999999821676,
+          "disputed": false
+        },
+        {
+          "id": "attribution_shifted",
+          "source": "inferred",
+          "value": "no",
+          "probability": 0.9999999966017321,
+          "disputed": false
+        },
+        {
+          "id": "context_stripped",
+          "source": "inferred",
+          "value": "no",
+          "probability": 0.9999999994094697,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "same",
+          "text": "spending"
+        },
+        {
+          "op": "same",
+          "text": "at"
+        },
+        {
+          "op": "same",
+          "text": "least"
+        },
+        {
+          "op": "same",
+          "text": "120"
+        },
+        {
+          "op": "same",
+          "text": "minutes"
+        },
+        {
+          "op": "same",
+          "text": "a"
+        },
+        {
+          "op": "same",
+          "text": "week"
+        },
+        {
+          "op": "same",
+          "text": "in"
+        },
+        {
+          "op": "same",
+          "text": "nature"
+        },
+        {
+          "op": "same",
+          "text": "is"
+        },
+        {
+          "op": "same",
+          "text": "associated"
+        },
+        {
+          "op": "same",
+          "text": "with"
+        },
+        {
+          "op": "same",
+          "text": "good"
+        },
+        {
+          "op": "same",
+          "text": "health"
+        },
+        {
+          "op": "same",
+          "text": "and"
+        },
+        {
+          "op": "same",
+          "text": "wellbeing"
+        }
+      ],
+      "faithful": true
+    },
+    {
+      "edgeId": "e2",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "scope_widened",
+          "source": "inferred",
+          "value": "no",
+          "probability": 0.9988304896970263,
+          "disputed": false
+        },
+        {
+          "id": "attribution_shifted",
+          "source": "inferred",
+          "value": "yes",
+          "probability": 0.9992903296952471,
+          "disputed": false
+        },
+        {
+          "id": "context_stripped",
+          "source": "inferred",
+          "value": "no",
+          "probability": 0.9997387615048359,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "full"
+        },
+        {
+          "op": "add",
+          "text": "paper"
+        },
+        {
+          "op": "same",
+          "text": "spending"
+        },
+        {
+          "op": "same",
+          "text": "at"
+        },
+        {
+          "op": "same",
+          "text": "least"
+        },
+        {
+          "op": "same",
+          "text": "120"
+        },
+        {
+          "op": "same",
+          "text": "minutes"
+        },
+        {
+          "op": "same",
+          "text": "a"
+        },
+        {
+          "op": "same",
+          "text": "week"
+        },
+        {
+          "op": "same",
+          "text": "in"
+        },
+        {
+          "op": "same",
+          "text": "nature"
+        },
+        {
+          "op": "same",
+          "text": "is"
+        },
+        {
+          "op": "same",
+          "text": "associated"
+        },
+        {
+          "op": "same",
+          "text": "with"
+        },
+        {
+          "op": "same",
+          "text": "good"
+        },
+        {
+          "op": "same",
+          "text": "health"
+        },
+        {
+          "op": "same",
+          "text": "and"
+        },
+        {
+          "op": "same",
+          "text": "wellbeing"
+        },
+        {
+          "op": "add",
+          "text": "is"
+        },
+        {
+          "op": "add",
+          "text": "published"
+        },
+        {
+          "op": "add",
+          "text": "in"
+        },
+        {
+          "op": "add",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "journal"
+        },
+        {
+          "op": "add",
+          "text": "scientific"
+        },
+        {
+          "op": "add",
+          "text": "reports"
+        },
+        {
+          "op": "add",
+          "text": "and"
+        },
+        {
+          "op": "add",
+          "text": "is"
+        },
+        {
+          "op": "add",
+          "text": "available"
+        },
+        {
+          "op": "add",
+          "text": "here"
+        },
+        {
+          "op": "add",
+          "text": "nature.com/articles/s41598-019-44097-3"
+        }
+      ],
+      "faithful": false
+    },
+    {
+      "edgeId": "e3",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "scope_widened",
+          "source": "inferred",
+          "value": "no",
+          "probability": 0.9999999999821676,
+          "disputed": false
+        },
+        {
+          "id": "attribution_shifted",
+          "source": "inferred",
+          "value": "no",
+          "probability": 0.9999999990263799,
+          "disputed": false
+        },
+        {
+          "id": "context_stripped",
+          "source": "inferred",
+          "value": "no",
+          "probability": 0.9999999992417439,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "same",
+          "text": "spending"
+        },
+        {
+          "op": "same",
+          "text": "at"
+        },
+        {
+          "op": "same",
+          "text": "least"
+        },
+        {
+          "op": "same",
+          "text": "120"
+        },
+        {
+          "op": "same",
+          "text": "minutes"
+        },
+        {
+          "op": "same",
+          "text": "a"
+        },
+        {
+          "op": "same",
+          "text": "week"
+        },
+        {
+          "op": "same",
+          "text": "in"
+        },
+        {
+          "op": "same",
+          "text": "nature"
+        },
+        {
+          "op": "same",
+          "text": "is"
+        },
+        {
+          "op": "same",
+          "text": "associated"
+        },
+        {
+          "op": "same",
+          "text": "with"
+        },
+        {
+          "op": "same",
+          "text": "good"
+        },
+        {
+          "op": "same",
+          "text": "health"
+        },
+        {
+          "op": "same",
+          "text": "and"
+        },
+        {
+          "op": "same",
+          "text": "wellbeing"
+        }
+      ],
+      "faithful": true
+    }
+  ],
+  "blame": [],
+  "roots": {
+    "pages": 8,
+    "clusters": 1,
+    "rootsLinked": 0,
+    "clustersUnlinked": 1,
+    "studiesFound": null,
+    "independentRoots": 1,
+    "copies": 7
+  },
+  "redHopEdgeId": "e2",
+  "earliest": {
+    "nodeIds": [
+      "n7"
+    ],
+    "earlierWindowSearches": 4,
+    "earlierFound": 0
+  },
+  "failure": null,
+  "budget": {
+    "credits": 16,
+    "usd": 0.00086752,
+    "ms": 67553,
+    "capHit": null
+  },
+  "decision": {
+    "state": "ORIGIN_FOUND",
+    "row": 5,
+    "reasons": [
+      "earliest page n7 is a study with a confirmed date"
+    ],
+    "counts": {
+      "pages": 8,
+      "clusters": 1,
+      "unreadParents": 0,
+      "earlierWindowSearches": 4
+    }
+  },
+  "searchLog": [
+    {
+      "at": "2026-11-19T17:33:31.830Z",
+      "step": "search",
+      "query": "\"120 minutes a week\" spending",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:33:32.768Z",
+      "step": "search",
+      "query": "120 minutes a week in nature health study",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:33:33.686Z",
+      "step": "search",
+      "query": "\"120 minutes a week in nature\" health benefit",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:33:35.056Z",
+      "step": "search",
+      "query": "120 minutes weekly nature exposure mental health",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:33:38.219Z",
+      "step": "meta-search",
+      "query": "\"120 minutes a week\" spending",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:33:50.670Z",
+      "step": "search",
+      "query": "\"120 minutes a week\" spending",
+      "endDate": "2019-05-31",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:33:53.279Z",
+      "step": "search",
+      "query": "\"Spending 120 minutes a week in nature\" health",
+      "endDate": "2019-05-31",
+      "startDate": null,
+      "results": 5,
+      "kept": 5,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:33:54.427Z",
+      "step": "search",
+      "query": "\"Spending at least 120 minutes a week in nature\" associated with good health",
+      "endDate": "2019-05-31",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:33:56.246Z",
+      "step": "search",
+      "query": "Monash University nature study 120 minutes health",
+      "endDate": "2019-05-31",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:34:04.407Z",
+      "step": "search",
+      "query": "\"120 minutes a week\" spending",
+      "endDate": "2015-12-31",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:34:06.193Z",
+      "step": "search",
+      "query": "120 minutes a week in nature health study",
+      "endDate": "2015-12-31",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:34:07.255Z",
+      "step": "search",
+      "query": "\"Spending at least 120 minutes a week in nature\" good health",
+      "endDate": "2015-12-31",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:34:08.432Z",
+      "step": "search",
+      "query": "120 minutes weekly nature exposure health publisher",
+      "endDate": "2015-12-31",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    }
+  ],
+  "usage": [
+    {
+      "at": "2026-11-19T17:33:24.012Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 165,
+      "completionTokens": 48,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.0000309,
+      "latencyMs": 1855,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:33:25.880Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 275,
+      "completionTokens": 227,
+      "cachedTokens": 240,
+      "credits": 0,
+      "costUsd": 0.0000956,
+      "latencyMs": 4708,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:33:31.829Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1190,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:33:32.767Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 807,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:33:33.685Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 891,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:33:35.056Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1331,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:33:38.218Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "meta-search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 3081,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:33:38.660Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 399,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:33:38.695Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 216,
+      "completionTokens": 7,
+      "cachedTokens": 160,
+      "credits": 0,
+      "costUsd": 0.0000237,
+      "latencyMs": 880,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:33:40.514Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 935,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:33:40.569Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 216,
+      "completionTokens": 7,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.0000237,
+      "latencyMs": 459,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:33:41.420Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 391,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:33:41.440Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 216,
+      "completionTokens": 7,
+      "cachedTokens": 208,
+      "credits": 0,
+      "costUsd": 0.000023699999999999997,
+      "latencyMs": 436,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:33:42.265Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 388,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:33:42.272Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 255,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.0000276,
+      "latencyMs": 347,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:33:46.348Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 3720,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:33:46.758Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 216,
+      "completionTokens": 7,
+      "cachedTokens": 208,
+      "credits": 0,
+      "costUsd": 0.000023699999999999997,
+      "latencyMs": 403,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:33:47.578Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 412,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:33:47.589Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 322,
+      "completionTokens": 124,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00006939999999999999,
+      "latencyMs": 2100,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:33:50.666Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 918,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:33:53.279Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2496,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:33:54.427Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1122,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:33:56.242Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1794,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:33:56.480Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 200,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:33:56.483Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 216,
+      "completionTokens": 7,
+      "cachedTokens": 208,
+      "credits": 0,
+      "costUsd": 0.000023699999999999997,
+      "latencyMs": 1467,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:33:58.627Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 676,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:33:59.455Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 251,
+      "completionTokens": 7,
+      "cachedTokens": 208,
+      "credits": 0,
+      "costUsd": 0.000027199999999999997,
+      "latencyMs": 672,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:00.417Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 289,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:00.422Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 322,
+      "completionTokens": 116,
+      "cachedTokens": 272,
+      "credits": 0,
+      "costUsd": 0.000067,
+      "latencyMs": 2626,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:04.407Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1327,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:06.193Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1761,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:07.255Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1031,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:08.431Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1099,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:10.022Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1546,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:10.047Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 54,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 5.4e-7,
+      "latencyMs": 2162,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:12.252Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 216,
+      "completionTokens": 7,
+      "cachedTokens": 208,
+      "credits": 0,
+      "costUsd": 0.000023699999999999997,
+      "latencyMs": 323,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:16.194Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 3612,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:16.204Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 30,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 3e-7,
+      "latencyMs": 1001,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:17.208Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 158,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.0000015800000000000001,
+      "latencyMs": 519,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:19.145Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1410,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:19.663Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1928,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:19.935Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 788,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:21.200Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1265,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:21.400Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 199,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:21.637Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 237,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:21.677Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 39,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:27.689Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 8026,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:27.719Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T17:34:28.569Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "capture",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 835,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:28.584Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T17:34:28.585Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T17:34:28.585Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T17:34:28.586Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T17:34:28.587Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T17:34:28.587Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T17:34:28.587Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T17:34:28.731Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "page_type",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 2504,
+      "completionTokens": 7,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.0002525,
+      "latencyMs": 685,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:29.437Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "readouts",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 427,
+      "completionTokens": 23,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.0000496,
+      "latencyMs": 579,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:30.022Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "readouts",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 466,
+      "completionTokens": 23,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.0000535,
+      "latencyMs": 1004,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:31.027Z",
+      "traceId": "41913efc-7a9d-4967-8cbc-3d864b00ffe8",
+      "step": "readouts",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 427,
+      "completionTokens": 23,
+      "cachedTokens": 416,
+      "credits": 0,
+      "costUsd": 0.00004959999999999999,
+      "latencyMs": 516,
+      "status": "200",
+      "cacheHit": false
+    }
+  ],
+  "scopeNote": "Web pages only; print and paywalled origins are out of scope. Earliest source we found, not proof of first use.",
+  "otherNumbers": []
+}

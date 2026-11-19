@@ -1,0 +1,749 @@
+{
+  "schemaVersion": "1",
+  "id": "c9c0da98-138a-46bf-9e13-13d769bf6fe3",
+  "mode": "LIVE",
+  "synthetic": false,
+  "recordedAt": "2026-11-19T17:34:32.321Z",
+  "claim": {
+    "text": "More than 80% of the ocean is unexplored.",
+    "atoms": {
+      "number": {
+        "raw": "80%",
+        "canonical": "80%"
+      },
+      "unit": null,
+      "subjectLemma": "ocean",
+      "population": "ocean",
+      "time": null,
+      "hedge": null,
+      "namedSource": null,
+      "variants": [
+        "eighty percent",
+        "80 percent",
+        "80 per cent"
+      ]
+    }
+  },
+  "viralSentence": "More than 80% of the ocean is unexplored.",
+  "nodes": [
+    {
+      "id": "n1",
+      "url": "https://www.snopes.com/collections/sea-creatures-collection",
+      "domain": "snopes.com",
+      "title": "13 fact checks featuring real sea creatures you have to see to believe | Snopes.com",
+      "date": {
+        "kind": "unconfirmed",
+        "value": null,
+        "source": "wayback_first_capture",
+        "firstCapture": "2025-05-17",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n1",
+      "evidence": "observed",
+      "meta": true,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [],
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "https://education.nationalgeographic.org/resource/ocean",
+          "read": false
+        }
+      ],
+      "pageType": null,
+      "foundViaMeta": null
+    },
+    {
+      "id": "n2",
+      "url": "https://www.factcheck.org/2019/09/amazon-doesnt-produce-20-of-earths-oxygen",
+      "domain": "factcheck.org",
+      "title": "Amazon Doesn’t Produce 20% of Earth’s Oxygen - FactCheck.org",
+      "date": {
+        "kind": "unconfirmed",
+        "value": null,
+        "source": "wayback_first_capture",
+        "firstCapture": "2019-09-05",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n2",
+      "evidence": "observed",
+      "meta": true,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [],
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "https://www.nature.com/articles/d41586-019-02537-0",
+          "read": false
+        },
+        {
+          "url": "https://www.nature.com/scitable/knowledge/library/terrestrial-primary-production-fuel-for-life-17567411",
+          "read": true
+        },
+        {
+          "url": "https://epic.awi.de/id/eprint/37516/1/CC_PrimaryProduction.pdf",
+          "read": true
+        },
+        {
+          "url": "http://scrippso2.ucsd.edu",
+          "read": true
+        }
+      ],
+      "pageType": null,
+      "foundViaMeta": null
+    },
+    {
+      "id": "n3",
+      "url": "https://ocean-expeditions.com/ocean-facts",
+      "domain": "ocean-expeditions.com",
+      "title": "Ocean Facts - Ocean Expeditions",
+      "date": {
+        "kind": "published",
+        "value": "2020-06-23",
+        "source": "metadata",
+        "firstCapture": null,
+        "conflictingDate": false
+      },
+      "clusterId": "c-n3",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s1"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "no",
+        "probability": 0.999999967758132,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 3.224186780678945e-8
+          },
+          {
+            "optionId": "no",
+            "p": 0.999999967758132
+          },
+          {
+            "optionId": "__other__",
+            "p": 1.1102230246251565e-16
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    }
+  ],
+  "edges": [],
+  "clusters": [
+    {
+      "id": "c-n3",
+      "nodeIds": [
+        "n3"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n1",
+      "nodeIds": [
+        "n1"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n2",
+      "nodeIds": [
+        "n2"
+      ],
+      "rule": "single"
+    }
+  ],
+  "spans": [
+    {
+      "id": "s1",
+      "nodeId": "n3",
+      "text": "80% of all life on earth is found under the ocean surface. (ocean98.org)",
+      "contextBefore": "aster in water than in air. For example, in 1960, scientists set off depth charges off the coast of Australia and 2-1/2 hours later the explosion was heard under the water in Bermuda. (ocean98.org) • ",
+      "contextAfter": " • The average depth of all oceans is about 2.3 miles. • The average temperature of all oceans is about 39 degrees F (3.8 degrees C). • The oceans provide the biggest source of wild or domestic protei",
+      "start": 3096,
+      "end": 3168,
+      "extractSha256": "6f7240e3cdf0a1e2856ec6c88748b95142797419d3aef4463b241d83d202e0f1",
+      "windowSha256": "139669dd2134bce3d2ffc8a537c648197ecf1b8cab48c64eb8e87e8768dccda6",
+      "fetchedAt": "2026-11-19T17:35:07.365Z",
+      "waybackUrl": "https://web.archive.org/web/20110218101047/https://ocean-expeditions.com/ocean-facts",
+      "tier": "exact"
+    }
+  ],
+  "hops": [],
+  "blame": [],
+  "roots": {
+    "pages": 1,
+    "clusters": 1,
+    "rootsLinked": 0,
+    "clustersUnlinked": 1,
+    "studiesFound": null,
+    "independentRoots": 1,
+    "copies": 0
+  },
+  "redHopEdgeId": null,
+  "earliest": {
+    "nodeIds": [],
+    "earlierWindowSearches": 4,
+    "earlierFound": 0
+  },
+  "failure": null,
+  "budget": {
+    "credits": 10,
+    "usd": 0.00020804,
+    "ms": 53803,
+    "capHit": null
+  },
+  "decision": {
+    "state": "TRAIL_GOES_COLD",
+    "row": 6,
+    "reasons": [
+      "no earliest page with a confirmed date, a primary page type, no earlier citation and no negated span",
+      "2 unread candidate parent(s)"
+    ],
+    "counts": {
+      "pages": 1,
+      "clusters": 1,
+      "unreadParents": 2,
+      "earlierWindowSearches": 4
+    }
+  },
+  "searchLog": [
+    {
+      "at": "2026-11-19T17:34:38.738Z",
+      "step": "search",
+      "query": "\"80%\" ocean",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:34:40.444Z",
+      "step": "search",
+      "query": "\"More than 80% of the ocean is unexplored\"",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:34:42.210Z",
+      "step": "search",
+      "query": "National Geographic 80% ocean unexplored",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:34:43.939Z",
+      "step": "search",
+      "query": "80% of ocean unexplored topic marine exploration",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:34:45.531Z",
+      "step": "meta-search",
+      "query": "\"80%\" ocean",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 5,
+      "kept": 2,
+      "dropped": 3
+    },
+    {
+      "at": "2026-11-19T17:34:53.927Z",
+      "step": "search",
+      "query": "\"eighty percent\" ocean",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:34:55.493Z",
+      "step": "search",
+      "query": "\"80 percent\" ocean",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:34:56.696Z",
+      "step": "search",
+      "query": "\"80 per cent\" ocean",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:35:21.244Z",
+      "step": "dating",
+      "query": "https://www.snopes.com/collections/sea-creatures-collection: the node has no span to look for in the capture; no date from the first capture",
+      "endDate": null,
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:35:25.878Z",
+      "step": "dating",
+      "query": "https://www.factcheck.org/2019/09/amazon-doesnt-produce-20-of-earths-oxygen: the node has no span to look for in the capture; no date from the first capture",
+      "endDate": null,
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:35:26.122Z",
+      "step": "dating",
+      "query": "https://ocean-expeditions.com/ocean-facts: capture 20110218101047 could not be read (network_error); no date from the first capture",
+      "endDate": null,
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    }
+  ],
+  "usage": [
+    {
+      "at": "2026-11-19T17:34:32.329Z",
+      "traceId": "c9c0da98-138a-46bf-9e13-13d769bf6fe3",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 162,
+      "completionTokens": 45,
+      "cachedTokens": 128,
+      "credits": 0,
+      "costUsd": 0.0000297,
+      "latencyMs": 1411,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:33.753Z",
+      "traceId": "c9c0da98-138a-46bf-9e13-13d769bf6fe3",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 272,
+      "completionTokens": 147,
+      "cachedTokens": 240,
+      "credits": 0,
+      "costUsd": 0.0000713,
+      "latencyMs": 2991,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:38.737Z",
+      "traceId": "c9c0da98-138a-46bf-9e13-13d769bf6fe3",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1933,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:40.443Z",
+      "traceId": "c9c0da98-138a-46bf-9e13-13d769bf6fe3",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1635,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:42.210Z",
+      "traceId": "c9c0da98-138a-46bf-9e13-13d769bf6fe3",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1714,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:43.939Z",
+      "traceId": "c9c0da98-138a-46bf-9e13-13d769bf6fe3",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1699,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:45.531Z",
+      "traceId": "c9c0da98-138a-46bf-9e13-13d769bf6fe3",
+      "step": "meta-search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1521,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:46.059Z",
+      "traceId": "c9c0da98-138a-46bf-9e13-13d769bf6fe3",
+      "step": "meta-extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 149,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:46.770Z",
+      "traceId": "c9c0da98-138a-46bf-9e13-13d769bf6fe3",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 571,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:46.811Z",
+      "traceId": "c9c0da98-138a-46bf-9e13-13d769bf6fe3",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 89,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 8.900000000000001e-7,
+      "latencyMs": 1071,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:47.903Z",
+      "traceId": "c9c0da98-138a-46bf-9e13-13d769bf6fe3",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 46,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 4.6e-7,
+      "latencyMs": 953,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:48.874Z",
+      "traceId": "c9c0da98-138a-46bf-9e13-13d769bf6fe3",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 144,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00000144,
+      "latencyMs": 610,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:49.487Z",
+      "traceId": "c9c0da98-138a-46bf-9e13-13d769bf6fe3",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 272,
+      "completionTokens": 147,
+      "cachedTokens": 271,
+      "credits": 0,
+      "costUsd": 0.0000713,
+      "latencyMs": 2844,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:53.926Z",
+      "traceId": "c9c0da98-138a-46bf-9e13-13d769bf6fe3",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1481,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:55.493Z",
+      "traceId": "c9c0da98-138a-46bf-9e13-13d769bf6fe3",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1430,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:56.696Z",
+      "traceId": "c9c0da98-138a-46bf-9e13-13d769bf6fe3",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1170,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:58.744Z",
+      "traceId": "c9c0da98-138a-46bf-9e13-13d769bf6fe3",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1996,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:34:58.757Z",
+      "traceId": "c9c0da98-138a-46bf-9e13-13d769bf6fe3",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 892,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.000008920000000000001,
+      "latencyMs": 7553,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:35:06.404Z",
+      "traceId": "c9c0da98-138a-46bf-9e13-13d769bf6fe3",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 215,
+      "completionTokens": 7,
+      "cachedTokens": 160,
+      "credits": 0,
+      "costUsd": 0.0000236,
+      "latencyMs": 364,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:35:07.363Z",
+      "traceId": "c9c0da98-138a-46bf-9e13-13d769bf6fe3",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 589,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:35:07.400Z",
+      "traceId": "c9c0da98-138a-46bf-9e13-13d769bf6fe3",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 43,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 4.3e-7,
+      "latencyMs": 6078,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:35:20.815Z",
+      "traceId": "c9c0da98-138a-46bf-9e13-13d769bf6fe3",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 7327,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:35:21.244Z",
+      "traceId": "c9c0da98-138a-46bf-9e13-13d769bf6fe3",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 423,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:35:25.878Z",
+      "traceId": "c9c0da98-138a-46bf-9e13-13d769bf6fe3",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 4633,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:35:25.878Z",
+      "traceId": "c9c0da98-138a-46bf-9e13-13d769bf6fe3",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    }
+  ],
+  "scopeNote": "Web pages only; print and paywalled origins are out of scope. Earliest source we found, not proof of first use.",
+  "otherNumbers": [
+    {
+      "url": "https://oceanexplorer.noaa.gov/ocean-fact/explored",
+      "domain": "oceanexplorer.noaa.gov",
+      "title": "How much of the ocean has been explored? - NOAA Ocean Exploration",
+      "date": "2013-10-21",
+      "sentence": "Since more than 90% of the ocean is deep ocean (i.e., deeper than 200 meters/656 feet), a very large majority of the ocean remains to be explored.",
+      "number": "90%",
+      "similarity": 0.827
+    }
+  ]
+}
