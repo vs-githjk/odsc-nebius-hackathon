@@ -138,10 +138,21 @@ describe("page fetching is public-only, logged and challenge-aware", () => {
     expect(await setup({ [url]: page(html(teaser, published)) }).found(url)).toEqual({ date: "2020-06-09", source: "byline" });
     const related = '<div class="related" itemscope itemtype="https://schema.org/NewsArticle">' + published + "</div>";
     expect(await setup({ [url]: page(html("<p>Posted June 9, 2020</p>", related)) }).found(url)).toBeNull();
-    expect(await setup({ [url]: page(html(related, published)) }).found(url)).toEqual({ date: "2020-06-09", source: "byline" });
+    expect(await setup({ [url]: page(html(related, published)) }).found(url)).toBeNull();
+    const old = '<time itemprop="datePublished" datetime="2009-03-01">Old</time>';
+    const article = '<article itemscope itemtype="https://schema.org/NewsArticle">' + published + '</article>';
+    const webPage = '<div itemscope itemtype="WebPage">' + published + '</div>';
+    expect(await setup({ [url]: page(html(article, '<ul class="related"><li><a>Old</a>' + old + '</li></ul>')) }).found(url)).toBeNull();
+    expect(await setup({ [url]: page(html(webPage, '<section>' + old + '</section>')) }).found(url)).toBeNull();
     expect(await setup({ [url]: page(html('<p>Posted June 9, 2020</p>', teaser)) }).found(url)).toBeNull();
     for (const hidden of ['<!-- ' + published + ' -->', '<script type="text/template">' + published + '</script>']) {
       expect(await setup({ [url]: page(html(hidden)) }).found(url)).toBeNull();
+    }
+    for (const tag of ["template", "textarea", "noscript"]) {
+      const hidden = `<${tag}>${old}</${tag}>`;
+      expect(await setup({ [url]: page(html(hidden)) }).found(url)).toBeNull();
+      expect(await setup({ [url]: page(html(hidden, published)) }).found(url))
+        .toEqual({ date: "2020-06-09", source: "byline" });
     }
     const decoy = '<time data-itemprop="datePublished" datetime="2009-03-01">March 1</time>';
     const withData = '<time itemprop="datePublished" data-datetime="2009-03-01" datetime="2020-06-09">June 9</time>';
