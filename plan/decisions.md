@@ -156,3 +156,7 @@ Format: [LOCKED|REJECTED|PREFERENCE] decision | why | "Vidyut's words" | date
 [REVERSED] S7 is not cut: record a `pz trace --answer` run in the morning live run (~$0.25) and film it in the terminal | "So you're saying there's no way for S7 that you can take a video of S7" | 2026-11-19
 [LOCKED] Backup hero framing accepted (version B, cold ending framed as the feature) | "Backup hero. Sure, that's fine." | 2026-11-19
 [LOCKED] The submission is a live app people can use and test, not a static page; the live Vercel app is Rishit's ONLY focus on Thu Nov 19; it includes a how-it-works guide and suggested challenge claims; global live spend cap $2 | "our hackathon project cannot be a static GitHub page... this is his only focus tomorrow... Spending cap absolutely works... Everything else is, yeah, fine" | 2026-11-19
+[LOCKED] Morning live run GO: final E2 + gallery 8 + one S7 answer-check + held-out, within the $15 ledger cap | judge: one Origin found worth 4-6 points | "Yeah, you can go on the morning live run." | 2026-11-19
+[LOCKED] Deploy approved: Vercel live app once Rishit's PR passes review (Vidyut pastes keys) | Pages already on | "GitHub is approved." | 2026-11-19
+[LOCKED] Demo script #158 version B approved (A only if dev-10 lands on WEF); storyboard approve still separate | "Script. We can check that out. Sure." | 2026-11-19
+[LOCKED] Submit: XO final judge Fri 08:00 ET, Vidyut presses Submit by 11:00 ET | "Yeah, that's fine. Go for it." | 2026-11-19
