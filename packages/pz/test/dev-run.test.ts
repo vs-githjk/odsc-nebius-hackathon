@@ -251,3 +251,50 @@ describe("T39 batch runner", () => {
     expect(existsSync(join(t.dir, "dev-01.json"))).toBe(false);
   });
 });
+
+
+describe("live dev failure diagnostics", () => {
+  it("persists the runner's failing stage without provider messages or forged stages", async () => {
+    for (const stage of ["setup", "intake", "fingerprint"] as const) {
+      const t = setup();
+      const report = vi.fn();
+      const transport = vi.fn<typeof fetch>();
+      const fail = () => { throw Object.assign(new Error("private response body"), {
+        code: "bad_response", stage: "private provider stage", reason: "private reason",
+      }); };
+      const same = (trace: Trace) => trace;
+      const result = await runLiveDevBatch([t.input], {
+        dir: t.dir, fetch: transport, report,
+        ledger: { check: vi.fn(), reserve: vi.fn(), settle: vi.fn() },
+        loadFactory: async () => {
+          if (stage === "setup") fail();
+          return () => ({
+            pipeline: {
+              intake: stage === "intake" ? fail : () => t.live,
+              fingerprint: fail, walk: same, spans: same, clusters: same, readouts: same, card: same,
+            },
+            wayback: { firstCapture: async () => { throw new Error("unexpected lookup"); } },
+          });
+        },
+      });
+      expect(result).toMatchObject({ failed: 1, recorded: 0 });
+      expect(JSON.parse(readFileSync(join(t.dir, "dev-01.error.json"), "utf8")))
+        .toEqual({ id: "dev-01", code: "bad_response", stage });
+      expect(JSON.parse(report.mock.calls.at(-1)![0]))
+        .toEqual({ id: "dev-01", status: "failed", code: "bad_response", stage });
+      expect(existsSync(join(t.dir, "dev-01.json"))).toBe(false);
+      expect(transport).not.toHaveBeenCalled();
+    }
+  });
+
+  it("does not trust a stage on an arbitrary batch-adapter error", async () => {
+    const t = setup();
+    await runDevBatch([t.input], {
+      dir: t.dir, mode: "LIVE", checkBudget: () => {}, report: () => {},
+      run: async () => { throw Object.assign(new Error("private response"), { code: "bad_response", stage: "intake" }); },
+    });
+    expect(JSON.parse(readFileSync(join(t.dir, "dev-01.error.json"), "utf8")))
+      .toEqual({ id: "dev-01", code: "bad_response" });
+  });
+
+});
