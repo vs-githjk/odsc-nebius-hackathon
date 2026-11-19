@@ -4,6 +4,8 @@ A viral statistic reaches a reporter with no source attached: "Americans check t
 
 Team **Says Who**, ODSC x Nebius Hackathon 2026. Built on **Nebius Token Factory** (typed questions, strict JSON schemas, first-token logprobs) and **Tavily** (search and extract), with the Wayback Machine for dates.
 
+**Try it live: [patient-0.vercel.app](https://patient-0.vercel.app)** (live traces share a small daily budget; recorded traces open free). Replay only, no keys: [GitHub Pages](https://vs-githjk.github.io/odsc-nebius-hackathon/).
+
 ![The trace view on a sample trace, 1440 px, light](docs/screenshots/ui-pass/rich-1440-light.png)
 
 *The trace view, shown on an invented sample claim. The app also opens every committed E2 dev trace the same way, labelled REPLAY with its recorded date ([#220](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/220)).*

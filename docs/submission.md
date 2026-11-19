@@ -68,7 +68,9 @@ https://github.com/vs-githjk/odsc-nebius-hackathon (public, MIT licence: [LICENS
 
 ## Deployment URL (optional)
 
-https://vs-githjk.github.io/odsc-nebius-hackathon/ (replay only: it opens the recorded traces with no keys, so it can't trace a new claim). [SLOT: the live web app URL, if #247 deploys]
+https://vs-githjk.github.io/odsc-nebius-hackathon/ (replay only: it opens the recorded traces with no keys, so it can't trace a new claim).
+
+Live app: https://patient-0.vercel.app (traces new claims live under a shared $1.50 cap and per-IP limits; recorded traces open free).
 
 ## Report URL (optional)
 
