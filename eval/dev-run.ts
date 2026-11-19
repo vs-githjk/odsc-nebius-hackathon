@@ -310,7 +310,7 @@ export async function runLiveDevBatch(
           wayback,
           emit: event => {
             if (event.type === "stage" && event.status === "started") stage = event.stage;
-            else if (event.type === "trace") stage = "verify";
+            else if (event.type === "stage" && event.stage === "card" && event.status === "completed") stage = "verify";
           },
         });
       };
