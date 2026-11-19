@@ -1,4 +1,6 @@
 # <Project> shared board (every agent: read the GOALS and the last 40 lines first; post one line before you finish)
+
+- [22:28 PT] rohanrastogi311 dev failure diagnostics: save runner-owned stage beside failure code; provider fields excluded; keyless regression tests | @vs-githjk review dev-failure-stage; no live calls
 Path for every lane, worktree and agent: <absolute path to main checkout>/plan/board.md (never a lane copy).
 Format, append only, newest at the bottom:
 `- [<HH:MM from date>] <role> <lane/task>: <what you did or found, with SHA or evidence path> | @<role-or-lane> <ask, if any>`
