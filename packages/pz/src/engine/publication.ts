@@ -277,7 +277,12 @@ export function createEvidence(deps: EvidenceDeps) {
     const host = u.hostname.toLowerCase();
     const pubmed = host === "pubmed.ncbi.nlm.nih.gov" ? /^\/(?:\w+\/)?(\d+)/.exec(u.pathname)?.[1] : undefined;
     const pmc = /(?:^|\.)ncbi\.nlm\.nih\.gov$/.test(host) ? /\/(?:pmc\/)?articles\/PMC(\d+)/i.exec(u.pathname)?.[1] : undefined;
-    const doi = /(?:^|\.)doi\.org$/.test(host) ? /^\/(10\.\d{4,9}\/.+)$/.exec(decodeURIComponent(u.pathname))?.[1] : undefined;
+    let path = u.pathname;
+    try { path = decodeURIComponent(path); } catch { /* malformed escape: keep the original path */ }
+    const doiPath = /(?:^|\.)doi\.org$/.test(host)
+      ? path.replace(/^\//, "")
+      : /^\/doi\/(?:abs\/|full\/|pdf\/|epdf\/)?(10\..+)$/i.exec(path)?.[1];
+    const doi = doiPath && /^10\.\d{4,9}\/[^\s?#]+$/i.test(doiPath) ? doiPath : undefined;
     const registry = (found: Dated | null, source: Evidence["source"]): Evidence | null => (found ? { date: found.date, ...(found.precision === "day" ? {} : { precision: found.precision }), source } : null);
     let found: Evidence | null = null;
     if (pubmed) found = registry(await ncbi("pubmed", pubmed), "registry_pubmed");
@@ -297,12 +302,12 @@ export function createEvidence(deps: EvidenceDeps) {
     if (fromRegistry) return fromRegistry;
     // Only explicitly marked publication datelines are evidence.
     const articleHtml = page.replace(/<!--[\s\S]*?(?:-->|$)/g, "")
-      .replace(/<(script|template|textarea|noscript|aside|nav|footer)\b[^>]*>[\s\S]*?(?:<\/\1\s*>|$)/gi, "");
+      .replace(/<(script|template|textarea|noscript)(?=[\s/>])(?:[^>"']|"[^"]*"|'[^']*')*>[\s\S]*?(?:<\/\1\s*>|$)/gi, "");
     // Count scoped dates too: dropping an article's scoped date before counting
     // could leave an unrelated unscoped teaser as the sole candidate.
-    const stack: { name: string; scoped: boolean }[] = [];
-    const datelines: { tag: string; scoped: boolean }[] = [];
-    for (const [tag] of articleHtml.matchAll(/<\/?[a-z][^>]*>/gi)) {
+    const stack: { name: string; blocked: boolean }[] = [];
+    const datelines: { tag: string; blocked: boolean }[] = [];
+    for (const [tag] of articleHtml.matchAll(/<\/?[a-z](?:[^>"']|"[^"]*"|'[^']*')*>/gi)) {
       const name = /^<\/?([a-z][a-z0-9:-]*)/i.exec(tag)?.[1]?.toLowerCase();
       if (!name) continue;
       if (tag.startsWith("</")) {
@@ -310,11 +315,14 @@ export function createEvidence(deps: EvidenceDeps) {
         if (index >= 0) stack.length = index;
         continue;
       }
-      const scoped = stack.some((entry) => entry.scoped) || /\sitemscope(?:\s|=|\/?>)/i.test(tag);
-      if (name === "time" && attr(tag, "itemprop")?.toLowerCase() === "datepublished") datelines.push({ tag, scoped });
-      if (!/\/\s*>$/.test(tag) && !/^(area|base|br|col|embed|hr|img|input|link|meta|param|source|track|wbr)$/.test(name)) stack.push({ name, scoped });
+      const blocked = stack.some((entry) => entry.blocked) || /\sitemscope(?:\s|=|\/?>)/i.test(tag)
+        || /^(aside|nav|footer)$/.test(name);
+      // Loose counting is conservative: an unquoted or multi-token property
+      // still makes the page ambiguous. Acceptance below stays strict.
+      if (name === "time" && /itemprop\s*=\s*["']?[^"'>]*\bdatepublished\b/i.test(tag)) datelines.push({ tag, blocked });
+      if (!/\/\s*>$/.test(tag) && !/^(area|base|br|col|embed|hr|img|input|link|meta|param|source|track|wbr)$/.test(name)) stack.push({ name, blocked });
     }
-    if (datelines.length !== 1 || datelines[0]!.scoped) return null;
+    if (datelines.length !== 1 || datelines[0]!.blocked || attr(datelines[0]!.tag, "itemprop")?.toLowerCase() !== "datepublished") return null;
     const datetime = attr(datelines[0]!.tag, "datetime");
     return datetime ? { date: clean(datetime), source: "byline" } : null;
   };
