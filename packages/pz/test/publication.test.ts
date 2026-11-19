@@ -121,6 +121,9 @@ describe("page fetching is public-only, logged and challenge-aware", () => {
     const direct = setup({ "https://api.crossref.org/works/10.1000%2Fabc.1": json(work) });
     expect(await direct.evidence("https://doi.org/10.1000/abc.1")).toBe("2012-04-02");
     expect(direct.usage.rows[0]).toMatchObject({ service: "crossref", endpoint: "works", credits: 0, costUsd: 0 });
+    const publisher = setup({ "https://api.crossref.org/works/10.1000%2Fabc.1": json(work) });
+    expect(await publisher.evidence("https://www.science.org/doi/full/10.1000/abc.1")).toBe("2012-04-02");
+    expect(publisher.urls).toEqual(["https://api.crossref.org/works/10.1000%2Fabc.1"]);
     const viaMeta = setup({ "https://journal.example/a": page(html('<meta name="citation_doi" content="10.1000/abc.1">')), "https://api.crossref.org/works/10.1000%2Fabc.1": json(work) });
     expect(await viaMeta.evidence("https://journal.example/a")).toBe("2012-04-02");
     expect(viaMeta.usage.rows.map((r) => r.service)).toEqual(["fetch", "crossref"]);
@@ -134,8 +137,8 @@ describe("page fetching is public-only, logged and challenge-aware", () => {
       .toEqual({ date: "2020-06-09", source: "byline" });
     expect(await setup({ [url]: page(html(unrelated)) }).found(url)).toBeNull();
     const teaser = '<aside itemscope><time itemprop="datePublished" datetime="2009-03-01">March 1</time></aside>';
-    // The sidebar is excluded, leaving the article's one valid dateline.
-    expect(await setup({ [url]: page(html(teaser, published)) }).found(url)).toEqual({ date: "2020-06-09", source: "byline" });
+    // Rendered sidebar dates count as ambiguity; they must not silently vanish.
+    expect(await setup({ [url]: page(html(teaser, published)) }).found(url)).toBeNull();
     const related = '<div class="related" itemscope itemtype="https://schema.org/NewsArticle">' + published + "</div>";
     expect(await setup({ [url]: page(html("<p>Posted June 9, 2020</p>", related)) }).found(url)).toBeNull();
     expect(await setup({ [url]: page(html(related, published)) }).found(url)).toBeNull();
@@ -156,7 +159,29 @@ describe("page fetching is public-only, logged and challenge-aware", () => {
     }
     const decoy = '<time data-itemprop="datePublished" datetime="2009-03-01">March 1</time>';
     const withData = '<time itemprop="datePublished" data-datetime="2009-03-01" datetime="2020-06-09">June 9</time>';
-    expect(await setup({ [url]: page(html(decoy, withData)) }).found(url))
+    expect(await setup({ [url]: page(html(decoy, withData)) }).found(url)).toBeNull();
+    expect(await setup({ [url]: page(html(withData)) }).found(url))
+      .toEqual({ date: "2020-06-09", source: "byline" });
+  });
+
+  it("counts rendered, loosely marked and quoted-tag dates before accepting a dateline", async () => {
+    const url = "https://news.example/a";
+    const real = '<time itemprop="datePublished" datetime="2020-06-09">June 9</time>';
+    const old = '<time itemprop="datePublished" datetime="2009-03-01">Old</time>';
+    for (const candidate of [
+      '<article><footer>' + real + '</footer></article><div class="related">' + old + '</div>',
+      '<nav class="breadcrumb">' + real + '</nav>' + old,
+      '<nav-menu>' + real + '</nav-menu>' + old,
+      '<aside><aside>' + real + '</aside>' + old + '</aside>',
+      '<time itemprop=datePublished datetime="2020-06-09">June 9</time>' + old,
+      '<time itemprop="datePublished dateCreated" datetime="2020-06-09">June 9</time>' + old,
+      '<article title="a > b" itemscope>' + real + '</article>' + old,
+    ]) expect(await setup({ [url]: page(html(candidate)) }).found(url)).toBeNull();
+    for (const region of ["aside", "nav", "footer"]) {
+      expect(await setup({ [url]: page(html(`<${region}>${old}</${region}>`)) }).found(url)).toBeNull();
+    }
+    // A custom-element name is not a nav region, and a quoted > is not a tag end.
+    expect(await setup({ [url]: page(html('<nav-menu title="a > b">' + real + '</nav-menu>')) }).found(url))
       .toEqual({ date: "2020-06-09", source: "byline" });
   });
 
