@@ -16,6 +16,31 @@ function setup() {
 }
 
 describe("T39 batch runner", () => {
+  it("persists safe validation reasons without recording an invalid trace", async () => {
+    for (const reason of ["schema", "provenance", "claim_mismatch"]) {
+      const t = setup();
+      const invalid = reason === "schema" ? {} : reason === "provenance" ? t.fixture
+        : { ...t.live, claim: { ...t.live.claim, text: "A different claim." } };
+      const result = await runDevBatch([t.input], {
+        dir: t.dir, mode: "LIVE", checkBudget: () => {}, report: () => {}, run: async () => invalid,
+      });
+      expect(result).toMatchObject({ failed: 1, recorded: 0 });
+      expect(existsSync(join(t.dir, "dev-01.json"))).toBe(false);
+      expect(JSON.parse(readFileSync(join(t.dir, "dev-01.error.json"), "utf8")))
+        .toEqual({ id: "dev-01", code: "trace_failed", reason });
+    }
+  });
+
+  it("never persists an arbitrary provider reason or response", async () => {
+    const t = setup();
+    await runDevBatch([t.input], {
+      dir: t.dir, mode: "LIVE", checkBudget: () => {}, report: () => {},
+      run: async () => { throw Object.assign(new Error("private provider response"), { code: "bad_response", reason: "private payload" }); },
+    });
+    expect(JSON.parse(readFileSync(join(t.dir, "dev-01.error.json"), "utf8")))
+      .toEqual({ id: "dev-01", code: "bad_response" });
+  });
+
   it("preflights one claim before invoking an adapter", async () => {
     const t = setup(), run = vi.fn();
     const checkBudget = vi.fn(() => { throw new Error("cap"); });

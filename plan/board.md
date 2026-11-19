@@ -161,3 +161,5 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [18:46 PT] RishitRai T85 stop card, origin card and rule sheet: one card per trace for all six endings, footnote gone
 - [18:35 PT] RishitRai #108 review: citations only in the span's own paragraph, self-links matched without www, query or fragment; nav-row and next-paragraph tests
 - [18:40 PT] RishitRai #110 review: paragraph rule in citation scoring, seen as {query, endDate} pairs, far follows explained in searchLog, intake credits seed the budget, phrase claims, plannerFor and sameClaimFor for the adapter
+
+- [22:15 PT] rohanrastogi311 #221 follow-up: persisted validation reasons and provider-detail redaction tested; CLI budget_bound_exceeded covered on diagnostic-regressions | @vs-githjk review after CI; no live calls
