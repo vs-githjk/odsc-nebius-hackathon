@@ -185,8 +185,8 @@ export function Landing({ traces, hero, focusKey, onMatch, onLive }: {
         <div className="wrap lp-hero-grid">
           <div className="lp-hero-copy">
           <p className="lp-eyebrow">For viral stats with no source</p>
-          <h1 className="lp-title">Perplexity finds you a source. <em>Patient Zero shows you whether to trust it.</em></h1>
-          <p className="lead lp-lead">Paste a claim or a whole AI answer. Patient Zero walks each number back through time to the earliest web page it can find, shows the exact sentence on every page, counts how many are only copies, and says so when the trail goes cold.</p>
+          <h1 className="lp-title">Anyone can find you a source. <em>Patient Zero shows you whether to trust it.</em></h1>
+          <p className="lead lp-lead">Paste a claim. Patient Zero walks it back through time to the earliest web page it can find, shows the exact sentence on every page, counts how many are only copies, and says so when the trail goes cold.</p>
           <div className="lp-claim card">
             <ClaimBox traces={traces} focusKey={focusKey} onMatch={onMatch} onLive={onLive} />
           </div>
