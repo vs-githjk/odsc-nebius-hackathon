@@ -13,7 +13,7 @@ Earliest No page to show.
 
 Roots    No pages read.
 
-Cost     3 credits, $0.00, 0 s
+Cost     $0.02 (3 Tavily credits, $0.00 model), 0 s
          Tavily 3 calls
 
 Synthetic: an invented claim, and a Tavily response written for this test, not

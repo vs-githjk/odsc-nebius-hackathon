@@ -18,7 +18,7 @@ Earliest Harbor Zoo annual report 2019
 Roots    5 pages read, in 4 groups of copies. Traced to 1 root we could link
          (0 clusters unlinked).
 
-Cost     42 credits, $0.12, 61 s
+Cost     $0.34 (42 Tavily credits, $0.00 model), 61 s
 
 Synthetic: an invented claim on invented pages.
 Raw trace: add --json (make replay ARGS=--json).
