@@ -1,0 +1,877 @@
+{
+  "schemaVersion": "1",
+  "id": "75a5cce8-824f-4265-a241-1163988a5100",
+  "mode": "LIVE",
+  "synthetic": false,
+  "recordedAt": "2026-11-19T17:32:31.569Z",
+  "claim": {
+    "text": "90% of the world's data was created in the last two years.",
+    "atoms": {
+      "number": {
+        "raw": "90%",
+        "canonical": "90%"
+      },
+      "unit": null,
+      "subjectLemma": "data",
+      "population": "the world's data",
+      "time": "the last two years",
+      "hedge": null,
+      "namedSource": null,
+      "variants": [
+        "ninety percent",
+        "90 percent",
+        "90 per cent"
+      ]
+    }
+  },
+  "viralSentence": "90% of the world's data was created in the last two years.",
+  "nodes": [
+    {
+      "id": "n1",
+      "url": "https://www.factcheck.org/2024/10/crime-stats-still-show-a-decline-since-2020",
+      "domain": "factcheck.org",
+      "title": "Crime Stats Still Show a Decline Since 2020 - FactCheck.org",
+      "date": {
+        "kind": "unconfirmed",
+        "value": null,
+        "source": "wayback_first_capture",
+        "firstCapture": "2024-10-27",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n1",
+      "evidence": "observed",
+      "meta": true,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [],
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "https://perma.cc/M78Q-4VYN",
+          "read": false
+        },
+        {
+          "url": "https://perma.cc/UHW5-Y4KR",
+          "read": false
+        },
+        {
+          "url": "https://perma.cc/8JDA-FUBA",
+          "read": false
+        },
+        {
+          "url": "https://www.ahdatalytics.com/dashboards/ytd-murder-comparison",
+          "read": true
+        }
+      ],
+      "pageType": null,
+      "foundViaMeta": null
+    },
+    {
+      "id": "n2",
+      "url": "https://fullfact.org/online/miscarriage-deaths-vaccines",
+      "domain": "fullfact.org",
+      "title": "Miscarriage does not occur in 90% of vaccinated pregnant women – Full Fact",
+      "date": {
+        "kind": "unconfirmed",
+        "value": null,
+        "source": "wayback_first_capture",
+        "firstCapture": "2021-11-24",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n2",
+      "evidence": "observed",
+      "meta": true,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "foundViaMeta": null
+    },
+    {
+      "id": "n3",
+      "url": "https://www.sciencedaily.com/releases/2013/05/130522085217.htm",
+      "domain": "sciencedaily.com",
+      "title": "Big Data, for better or worse: 90% of world's data generated over last two years | ScienceDaily",
+      "date": {
+        "kind": "unconfirmed",
+        "value": null,
+        "source": "wayback_first_capture",
+        "firstCapture": "2013-09-03",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n3",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s1"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9999999999771028,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9999999999771028
+          },
+          {
+            "optionId": "no",
+            "p": 2.289735156400869e-11
+          },
+          {
+            "optionId": "__other__",
+            "p": 0
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    },
+    {
+      "id": "n4",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/9199619",
+      "domain": "pubmed.ncbi.nlm.nih.gov",
+      "title": "Interinstitutional comparison of frozen section turnaround time. A College of American Pathologists Q-Probes study of 32868 frozen sections in 700 hospitals.",
+      "date": {
+        "kind": "published",
+        "value": "1997-06-30",
+        "source": "registry_pubmed",
+        "firstCapture": "2020-07-17",
+        "conflictingDate": false,
+        "precision": "month"
+      },
+      "clusterId": "c-n4",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s2"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "no",
+        "probability": 0.9999999956365373,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 4.3634626558907686e-9
+          },
+          {
+            "optionId": "no",
+            "p": 0.9999999956365373
+          },
+          {
+            "optionId": "__other__",
+            "p": 0
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    }
+  ],
+  "edges": [],
+  "clusters": [
+    {
+      "id": "c-n4",
+      "nodeIds": [
+        "n4"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n3",
+      "nodeIds": [
+        "n3"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n1",
+      "nodeIds": [
+        "n1"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n2",
+      "nodeIds": [
+        "n2"
+      ],
+      "rule": "single"
+    }
+  ],
+  "spans": [
+    {
+      "id": "s1",
+      "nodeId": "n3",
+      "text": "Big Data, for better or worse: 90% of world's data generated over last two years.",
+      "contextBefore": "-- Your source for the latest research news Follow: *Facebook* *X/Twitter* Subscribe: *RSS Feeds* *Newsletter* New! Sign up for our free email newsletter. Science News from research organizations --- ",
+      "contextAfter": " Date: : May 22, 2013 Source: : SINTEF Summary: : A full 90 percent of all the data in the world has been generated over the last two years. Internet-based companies are awash with data that can be gr",
+      "start": 201,
+      "end": 282,
+      "extractSha256": "81fd80ec49c458ed699afc3708bcaca421b9f5bc8a228cc56cdd2c94776421da",
+      "windowSha256": "878d9fd67668e44ee1b599d1339fa1810c9f67ac66bb063ad67e23fec8c751a3",
+      "fetchedAt": "2026-11-19T17:32:47.311Z",
+      "waybackUrl": "https://web.archive.org/web/20130903030900/https://www.sciencedaily.com/releases/2013/05/130522085217.htm",
+      "tier": "exact"
+    },
+    {
+      "id": "s2",
+      "nodeId": "n4",
+      "text": "The data suggest that 90% of FS block turnaround times can be performed within 20 minutes, measured from the time that pathologists receive FS specimens to the time that pathologists return FS diagnoses to surgeons.",
+      "contextBefore": "sections within 20 minutes. The institutional 90% completion times were shorter for hospitals containing 300 or fewer occupied beds than for those containing more than 300 occupied beds. Conclusions. ",
+      "contextAfter": " MeSH Terms. - Australia - Cytodiagnosis / standards, statistics & numerical data - Europe - Frozen Sections / standards, statistics & numerical data* - Hong Kong - Hospitals, Private / statistics & n",
+      "start": 2266,
+      "end": 2481,
+      "extractSha256": "e9d495cbe824de6a73029292e2b194a471775b2bfaaf5a8f4dfa14c0ebfc0ed2",
+      "windowSha256": "1d5ae1e34c5a06d008821cba682cb1c2dfe66786371149e4ab2497f7261bfea6",
+      "fetchedAt": "2026-11-19T17:33:02.789Z",
+      "waybackUrl": "https://web.archive.org/web/20200717112456/https://pubmed.ncbi.nlm.nih.gov/9199619",
+      "tier": "exact"
+    }
+  ],
+  "hops": [],
+  "blame": [],
+  "roots": {
+    "pages": 2,
+    "clusters": 2,
+    "rootsLinked": 0,
+    "clustersUnlinked": 2,
+    "studiesFound": null,
+    "independentRoots": 2,
+    "copies": 0
+  },
+  "redHopEdgeId": null,
+  "earliest": {
+    "nodeIds": [],
+    "earlierWindowSearches": 4,
+    "earlierFound": 0
+  },
+  "failure": null,
+  "budget": {
+    "credits": 11,
+    "usd": 0.00024158,
+    "ms": 50375,
+    "capHit": null
+  },
+  "decision": {
+    "state": "TRAIL_GOES_COLD",
+    "row": 6,
+    "reasons": [
+      "no earliest page with a confirmed date, a primary page type, no earlier citation and no negated span",
+      "3 unread candidate parent(s)"
+    ],
+    "counts": {
+      "pages": 2,
+      "clusters": 2,
+      "unreadParents": 3,
+      "earlierWindowSearches": 4
+    }
+  },
+  "searchLog": [
+    {
+      "at": "2026-11-19T17:32:35.624Z",
+      "step": "search",
+      "query": "\"90%\" data",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:32:38.658Z",
+      "step": "search",
+      "query": "90% of the world's data created in last two years",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:32:40.400Z",
+      "step": "search",
+      "query": "90 percent of global data generated in past two years",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:32:43.601Z",
+      "step": "search",
+      "query": "IDC report 90 percent of world data created two years",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:32:45.165Z",
+      "step": "meta-search",
+      "query": "\"90%\" data",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 5,
+      "kept": 2,
+      "dropped": 3
+    },
+    {
+      "at": "2026-11-19T17:32:51.646Z",
+      "step": "search",
+      "query": "\"90%\" data",
+      "endDate": "2013-05-21",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:32:53.318Z",
+      "step": "search",
+      "query": "\"90% of the world's data was created in the last two years\"",
+      "endDate": "2013-05-21",
+      "startDate": null,
+      "results": 2,
+      "kept": 2,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:32:55.079Z",
+      "step": "search",
+      "query": "\"90% of world's data generated over last two years\"",
+      "endDate": "2013-05-21",
+      "startDate": null,
+      "results": 1,
+      "kept": 1,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:32:57.178Z",
+      "step": "search",
+      "query": "90% of world's data created in last two years IBM study",
+      "endDate": "2013-05-21",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:33:16.684Z",
+      "step": "dating",
+      "query": "https://www.factcheck.org/2024/10/crime-stats-still-show-a-decline-since-2020: the node has no span to look for in the capture; no date from the first capture",
+      "endDate": null,
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:33:17.098Z",
+      "step": "dating",
+      "query": "https://fullfact.org/online/miscarriage-deaths-vaccines: the node has no span to look for in the capture; no date from the first capture",
+      "endDate": null,
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:33:21.939Z",
+      "step": "dating",
+      "query": "https://www.sciencedaily.com/releases/2013/05/130522085217.htm: capture 20130903030900 could not be read (network_error); no date from the first capture",
+      "endDate": null,
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    }
+  ],
+  "usage": [
+    {
+      "at": "2026-11-19T17:32:31.575Z",
+      "traceId": "75a5cce8-824f-4265-a241-1163988a5100",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 164,
+      "completionTokens": 51,
+      "cachedTokens": 128,
+      "credits": 0,
+      "costUsd": 0.0000317,
+      "latencyMs": 1308,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:32:32.891Z",
+      "traceId": "75a5cce8-824f-4265-a241-1163988a5100",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 274,
+      "completionTokens": 123,
+      "cachedTokens": 240,
+      "credits": 0,
+      "costUsd": 0.00006429999999999999,
+      "latencyMs": 1896,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:32:35.623Z",
+      "traceId": "75a5cce8-824f-4265-a241-1163988a5100",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 779,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:32:38.656Z",
+      "traceId": "75a5cce8-824f-4265-a241-1163988a5100",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2901,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:32:40.399Z",
+      "traceId": "75a5cce8-824f-4265-a241-1163988a5100",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1608,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:32:43.600Z",
+      "traceId": "75a5cce8-824f-4265-a241-1163988a5100",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 3020,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:32:45.165Z",
+      "traceId": "75a5cce8-824f-4265-a241-1163988a5100",
+      "step": "meta-search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1352,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:32:45.317Z",
+      "traceId": "75a5cce8-824f-4265-a241-1163988a5100",
+      "step": "meta-extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 108,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:32:45.863Z",
+      "traceId": "75a5cce8-824f-4265-a241-1163988a5100",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 507,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:32:45.901Z",
+      "traceId": "75a5cce8-824f-4265-a241-1163988a5100",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 216,
+      "completionTokens": 7,
+      "cachedTokens": 160,
+      "credits": 0,
+      "costUsd": 0.0000237,
+      "latencyMs": 603,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:32:47.311Z",
+      "traceId": "75a5cce8-824f-4265-a241-1163988a5100",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 801,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:32:47.323Z",
+      "traceId": "75a5cce8-824f-4265-a241-1163988a5100",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 322,
+      "completionTokens": 157,
+      "cachedTokens": 256,
+      "credits": 0,
+      "costUsd": 0.0000793,
+      "latencyMs": 3044,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:32:51.645Z",
+      "traceId": "75a5cce8-824f-4265-a241-1163988a5100",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1238,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:32:53.317Z",
+      "traceId": "75a5cce8-824f-4265-a241-1163988a5100",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1595,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:32:55.079Z",
+      "traceId": "75a5cce8-824f-4265-a241-1163988a5100",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1732,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:32:57.177Z",
+      "traceId": "75a5cce8-824f-4265-a241-1163988a5100",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2069,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:32:58.488Z",
+      "traceId": "75a5cce8-824f-4265-a241-1163988a5100",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1289,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:32:58.490Z",
+      "traceId": "75a5cce8-824f-4265-a241-1163988a5100",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 238,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.000025900000000000003,
+      "latencyMs": 808,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:33:02.779Z",
+      "traceId": "75a5cce8-824f-4265-a241-1163988a5100",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 3478,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:33:02.797Z",
+      "traceId": "75a5cce8-824f-4265-a241-1163988a5100",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 71,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 7.1e-7,
+      "latencyMs": 2102,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:33:08.422Z",
+      "traceId": "75a5cce8-824f-4265-a241-1163988a5100",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 140,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.0000014,
+      "latencyMs": 4076,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:33:12.529Z",
+      "traceId": "75a5cce8-824f-4265-a241-1163988a5100",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 1389,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00001389,
+      "latencyMs": 2327,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:33:14.904Z",
+      "traceId": "75a5cce8-824f-4265-a241-1163988a5100",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 68,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 6.800000000000001e-7,
+      "latencyMs": 514,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:33:15.709Z",
+      "traceId": "75a5cce8-824f-4265-a241-1163988a5100",
+      "step": "dating",
+      "service": "ncbi",
+      "endpoint": "esummary",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 278,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:33:15.731Z",
+      "traceId": "75a5cce8-824f-4265-a241-1163988a5100",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 301,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:33:16.678Z",
+      "traceId": "75a5cce8-824f-4265-a241-1163988a5100",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 939,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:33:17.098Z",
+      "traceId": "75a5cce8-824f-4265-a241-1163988a5100",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 412,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:33:17.128Z",
+      "traceId": "75a5cce8-824f-4265-a241-1163988a5100",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T17:33:21.940Z",
+      "traceId": "75a5cce8-824f-4265-a241-1163988a5100",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    }
+  ],
+  "scopeNote": "Web pages only; print and paywalled origins are out of scope. Earliest source we found, not proof of first use.",
+  "otherNumbers": []
+}
