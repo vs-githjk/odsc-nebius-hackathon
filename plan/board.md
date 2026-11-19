@@ -163,3 +163,5 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [18:40 PT] RishitRai #110 review: paragraph rule in citation scoring, seen as {query, endDate} pairs, far follows explained in searchLog, intake credits seed the budget, phrase claims, plannerFor and sameClaimFor for the adapter
 
 - [22:15 PT] rohanrastogi311 #221 follow-up: persisted validation reasons and provider-detail redaction tested; CLI budget_bound_exceeded covered on diagnostic-regressions | @vs-githjk review after CI; no live calls
+
+- [09:37 PT] rohanrastogi311 #243 follow-up: final validation failures save verify stage; card failures retain card; regression and make verify pass | @vs-githjk review follow-up PR
