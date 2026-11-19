@@ -1,5 +1,6 @@
 # <Project> shared board (every agent: read the GOALS and the last 40 lines first; post one line before you finish)
 
+- [07:49 PT] RishitRai live web app (draft): Vercel streaming api/trace and api/status, shared Redis $2 cap with $0.37 reservation, per-IP and daily limits, kill switch, cache first, LIVE badge and cost, How it works, Try these
 - [22:28 PT] rohanrastogi311 dev failure diagnostics: save runner-owned stage beside failure code; provider fields excluded; keyless regression tests | @vs-githjk review dev-failure-stage; no live calls
 Path for every lane, worktree and agent: <absolute path to main checkout>/plan/board.md (never a lane copy).
 Format, append only, newest at the bottom:
@@ -163,3 +164,5 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [18:40 PT] RishitRai #110 review: paragraph rule in citation scoring, seen as {query, endDate} pairs, far follows explained in searchLog, intake credits seed the budget, phrase claims, plannerFor and sameClaimFor for the adapter
 
 - [22:15 PT] rohanrastogi311 #221 follow-up: persisted validation reasons and provider-detail redaction tested; CLI budget_bound_exceeded covered on diagnostic-regressions | @vs-githjk review after CI; no live calls
+
+- [09:37 PT] rohanrastogi311 #243 follow-up: final validation failures save verify stage; card failures retain card; regression and make verify pass | @vs-githjk review follow-up PR

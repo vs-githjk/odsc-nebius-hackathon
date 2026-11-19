@@ -38,14 +38,14 @@ A reporter or fact-checker with one number and a deadline. Today they paste the 
 
 - **`make verify`**, with no API keys, re-opens every committed trace, re-finds each sentence by its offsets and hashes, and recomputes the ending ([packages/pz/src/verify/checks.ts](../packages/pz/src/verify/checks.ts)). It runs in CI on every push.
 - **Held-out set:** 10 claims, kept private, with their hash committed before most engine stages were built (the decision table, number rules and clients came first) ([eval/heldout.sha256](../eval/heldout.sha256)). Run once, on a frozen engine. Result: [SLOT: held-out origin hits X of 10, and every miss, from #125].
-- **Dev sets:** E2 has 20 claims and is the only set anything is tuned on. E3 has 40 claims and is only checked ([eval/dev-sets.md](../eval/dev-sets.md)). Latest E2 row, Nov 18, as scored in [eval/dev-score.md](../eval/dev-score.md): false origins 0, target cited 3/10, earliest 1 Pass, 0 Partial, 9 Fail, cold stops 8/9, 18 of 19 claims scored (1 more scored apart as out of scope), 224 Tavily credits. It is a partial rerun: dev-03 and dev-04 were re-recorded after [#225](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/225), and the other claims keep their traces from the run before. That run, started Nov 17 21:55 ET, gave false origins 1, target cited 3/10, earliest 1 / 0 / 9 and cold stops 7/9; its false origin was dev-04, a 2002 paper that quotes the eight-glasses advice to question it, which #225 now blocks. Earlier runs on the same claims are rows in the same file. E3: [SLOT: the E3 dev score].
+- **Dev sets:** E2 has 20 claims and is the only set anything is tuned on. E3 has 40 claims and is only checked ([eval/dev-sets.md](../eval/dev-sets.md)). Latest E2 row, the final live run on Nov 19 after the archive-date fix ([#238](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/238)), as scored in [eval/dev-score.md](../eval/dev-score.md): false origins 0, target cited 4/10, earliest 2 Pass, 0 Partial, 8 Fail, cold stops 6/9, 18 of 19 claims scored (1 more scored apart as out of scope), 234 Tavily credits. The hero claim (dev-10) now ranks the World Economic Forum report of January 2016 earliest, quoting its own sentence. The run before (Nov 18, run 3 plus 2 re-records after [#225](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/225)) gave false origins 0, target cited 3/10, earliest 1 / 0 / 9 and cold stops 8/9. Earlier runs on the same claims are rows in the same file.
 - **E3 check:** not run live. E3 was kept as a check-only set, and the live budget went to the final E2 run, the gallery and the S7 answer check, so there is no E3 score to report.
 - **Planted traps:**
   - 0 wrong origins on 10 planted traces ([traps/README.md](../traps/README.md));
   - 0 of 24 fake-origin pages written to fool the model ([traps/README.md](../traps/README.md), [#156](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/156));
   - through the real walk and dating with no network: of 12 cases that test a trap that could end on a wrong origin, 3 end on one, and all 3 are a known gap. A negation in new wording passes code, so only the typed same-claim answer can stop it. The other 9 give 0 (95% upper bound 28.3%). 4 more cases test nothing for now, because their source ends cold before any trap is planted ([#173](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/173)).
   - These are planted by us. They are not an accuracy number.
-- **Gallery:** 8 famous viral statistics, with their true origins researched by hand and committed before any trace ran ([eval/gallery/answers.md](../eval/gallery/answers.md)). Result: [SLOT: hits, partials and misses from #159].
+- **Gallery:** 8 famous viral statistics, with their true origins researched by hand and committed before any trace ran ([eval/gallery/answers.md](../eval/gallery/answers.md)). Result, graded against those answers ([docs/gallery.md](gallery.md)): 2 HIT, 1 PARTIAL, 4 MISS and 1 not graded (a tool failure at intake) out of 8. On the 4 claims with a findable origin: 0 HIT, 1 PARTIAL, 3 MISS, and one miss (G4) is a false origin, a list page whose metadata date predates the paper it lists.
 - **Rematch** against ChatGPT, Claude and Perplexity on 10 drawn E3 claims, graded blind ([#171](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/171)). Result: [SLOT: per-tool totals from #160, losses included].
 
 ### The first-week spike, told straight
@@ -56,11 +56,11 @@ A first walker with fixed rules and no model lost to all three consumer tools on
 
 - It reads web pages only. Print-only, paywalled and never-archived origins are out of reach, and the trail goes cold there.
 - "Earliest source we found" is not "first use".
-- Every known failure is listed with an example you can run, the rule that should catch it and whether it is caught today, in `docs/limits.md` (in review, [#172](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/172)). Among them: a fake early date in a page's own metadata is trusted, and the number used as a count passes the number rules.
+- Every known failure is listed with an example you can run, the rule that should catch it and whether it is caught today, in [docs/limits.md](limits.md). Among them: a fake early date in a page's own metadata is trusted, and the number used as a count passes the number rules.
 
 ### Cost and speed
 
-Median 42 s and $0.08 a trace on the 20 E2 recordings (Tavily $0.08 at 10.5 credits, Token Factory $0.0006), against targets of 30 s and $0.02: both not met ([eval/perf.md](../eval/perf.md)).
+Median 44 s and $0.08 a trace on the 20 E2 recordings (Tavily $0.08 at 10 credits, Token Factory $0.0005), against targets of 30 s and $0.02: both not met ([eval/perf.md](../eval/perf.md)).
 
 ## Project URL
 

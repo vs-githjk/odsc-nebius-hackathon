@@ -142,6 +142,14 @@ describe("judge card polish (XO on #235)", () => {
     expect(card).toMatch(/Also earliest, same date: dailynews\.example\./);
   });
 
+  it("on a tie with no origin shows a primary page (dev-10: the WEF report) before a news repeat", () => {
+    const t = Trace.parse(JSON.parse(readFileSync(new URL("../../../eval/dev-traces/dev-10.json", import.meta.url), "utf8")));
+    const card = renderCard(t);
+    const earliest = card.slice(card.indexOf("Earliest"), card.indexOf("Roots"));
+    expect(earliest).toContain("www3.weforum.org");
+    expect(earliest).toMatch(/Also earliest, same date: environmentaljusticetv\.wordpress\.com\./);
+  });
+
   it("drops the recorded day instead of throwing when recordedAt is not a date (XO on #236)", () => {
     const t = { ...load("sample-origin"), mode: "REPLAY" as const, synthetic: false, recordedAt: "not a date" };
     let card = "";

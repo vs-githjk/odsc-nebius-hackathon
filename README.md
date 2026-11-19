@@ -11,10 +11,10 @@ Team **Says Who**, ODSC x Nebius Hackathon 2026. Built on **Nebius Token Factory
 
 ## Where it stands
 
-Honest status as of Nov 18, 2026:
+Honest status as of Nov 19, 2026:
 
 - **Runs live end to end:** `pz trace "<claim>"` searches with Tavily, reads and dates the pages, asks Token Factory the typed questions, decides the ending in code and prints a card (`engine/pipeline.ts`, [#191](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/191)). With no keys, every command here replays committed traces instead.
-- **Live dev runs (E2, Nov 17 to 18):** recorded in [eval/dev-traces/](eval/dev-traces/) and scored in [eval/dev-score.md](eval/dev-score.md). The first run, rescored after answer-key corrections, gave 0 false origins (+1 unverified), target cited 4/10 and earliest page Pass / Partial / Fail 1 / 0 / 8. The second, the first with the walk fixes from [#192](https://github.com/vs-githjk/odsc-nebius-hackathon/issues/192), dropped to 1 false origin, target cited 2/10 and earliest 0 / 0 / 10. Four fixes for what it showed went in that evening, and the third run gave 1 false origin, target cited 3/10, earliest 1 / 0 / 9 and correct cold stops 7/9. Its false origin was dev-04 (eight glasses of water): a 2002 paper that quotes the advice in order to question it. After [#225](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/225), which stops a page from being the origin when its span presents the claim as already said (a cue list in rules.json), dev-03 and dev-04 were re-recorded on Nov 18 and the other claims kept (run 3 plus 2 re-records): **0 false origins, and 8 of 9 cold claims end cold, correctly**, on E2, the set we tune on ([#225](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/225) was written for dev-04's miss); E3 and the held-out set have not run yet. It also gives target cited 3/10 and earliest 1 / 0 / 9. When Patient Zero can't back an origin, it says the trail goes cold instead of naming one. The weak part is finding and dating the origin itself: no recorded trace ends on its true origin yet, not even the claims that have one on the web. On 7 of 10 the walk never reaches the origin page; where it does, dating can still rank a later page first (a first archive capture dates a page's URL, not the sentence on it; see [docs/limits.md](docs/limits.md)).
+- **Live dev runs (E2, Nov 17 to 19):** recorded in [eval/dev-traces/](eval/dev-traces/) and scored in [eval/dev-score.md](eval/dev-score.md). The first run, rescored after answer-key corrections, gave 0 false origins (+1 unverified), target cited 4/10 and earliest page Pass / Partial / Fail 1 / 0 / 8. The second, the first with the walk fixes from [#192](https://github.com/vs-githjk/odsc-nebius-hackathon/issues/192), dropped to 1 false origin, target cited 2/10 and earliest 0 / 0 / 10. Four fixes for what it showed went in that evening, and the third run gave 1 false origin, target cited 3/10, earliest 1 / 0 / 9 and correct cold stops 7/9. Its false origin was dev-04 (eight glasses of water): a 2002 paper that quotes the advice in order to question it. After [#225](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/225), which stops a page from being the origin when its span presents the claim as already said (a cue list in rules.json), dev-03 and dev-04 were re-recorded on Nov 18 and the other claims kept (run 3 plus 2 re-records), giving 0 false origins and 8 of 9 cold stops. The final run, on Nov 19 after the archive-date fix ([#238](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/238)), gives **0 false origins**, target cited 4/10, earliest page right on 2 (dev-09, and dev-10 on the WEF report) and correct cold stops 6/9, on E2, the set we tune on ([#225](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/225) was written for dev-04's miss); E3 and the held-out set have not run yet. Two cold claims (dev-07, dev-08) now end with no pages found instead of cold. When Patient Zero can't back an origin, it says the trail goes cold instead of naming one. The weak part is finding and dating the origin itself: no recorded trace ends on its origin yet, not even the claims that have one on the web. On 6 of 10 the walk never reaches the origin page; where it does, dating can still rank a later page first (a first archive capture dates a page's URL, not the sentence on it; see [docs/limits.md](docs/limits.md)).
 - **Not yet measured:** the held-out run. The first-week spike, which lost, is under [Evaluation](#evaluation).
 
 ## Try it in two minutes, no API keys
@@ -94,7 +94,27 @@ The model answers narrow typed questions. Code reads the trace and picks the end
 
 ## A trace, walked step by step
 
-*Lands with the hero trace once it ends on its origin.* It will show one real claim from paste to stop state: each search and its date window, each page kept or dropped and why, each hop's readouts, and every Token Factory and Tavily call with its tokens, credits, cost and latency. Until then, any recorded run can be walked the same way: `make replay TRACE=eval/dev-traces/dev-11.json` prints its card, and the app replays its walk step by step.
+One real claim from paste to stop state: dev-10, "By 2050 there will be more plastic than fish in the ocean.", recorded live on Nov 19 ([eval/dev-traces/dev-10.json](eval/dev-traces/dev-10.json)). `make replay TRACE=eval/dev-traces/dev-10.json` prints its card with no keys, and the app replays the walk step by step.
+
+1. **Fingerprint.** Code reads the claim's number from "By 2050" (a forecast year is kept as the number only after "by"); Token Factory copies the subject ("plastic"), the population ("in the ocean") and the time ("by 2050"), and code keeps only words found in the claim.
+2. **Walk, window 1 (up to the day of the run).** Four searches: two built by code (`"2050" plastic`, `"more plastic than fish in the ocean" by 2050`) and two planned by the model and checked by code (one names the Ellen MacArthur Foundation). A fact-check search finds Snopes, which is read as a map: its citations are followed, and it is never a candidate origin.
+3. **Reading and dating.** Each page with a sentence that carries the claim's atoms gets a typed `same_claim` question. The earliest pages land on January 20, 2016: a blog post (dated by its own metadata) and the World Economic Forum's report "The New Plastics Economy" (dated by its first archive capture, which holds the sentence: since #238 a capture that lacks the claim never dates a page). On the report the model said yes to `same_claim`, and its page type is report.
+4. **Walk, windows 2 and 3.** Searches before 2016-01-19, then before 2010-06-14, look for anything older. Nothing older states the claim.
+5. **Stop state.** Code, not the model, decides: the report is a primary source with a confirmed date and a confident yes, but two pages the trace cites could not be opened, so rule 6 holds and it ends **The trail goes cold** ("A page it cites could not be opened"). It found the report and still does not call it the origin while a cited page is unread.
+6. **Card.** The earliest page shown is the report, quoting its own sentence: "In a business-as-usual scenario, the ocean is expected to contain 1 tonne of plastic for every 3 tonnes of fish by 2025, and by 2050, more plastics than fish (by weight)."
+
+What it cost, from the trace's own usage rows (cache hits excluded):
+
+| Service | Calls | Tavily credits | Cost | Summed latency |
+|---|---|---|---|---|
+| Tavily search | 15 | 15 | $0.12 | 26 s |
+| Tavily extract | 4 | 3 | $0.024 | 11 s |
+| Token Factory chat (`Qwen/Qwen3-30B-A3B-Instruct-2507`): fingerprint, queries, same_claim, page type, readouts, boundary | 20 | | $0.0010 | 24 s |
+| Token Factory embeddings (`Qwen/Qwen3-Embedding-8B`) | 4 | | under $0.0001 | 17 s |
+| Wayback (CDX and captures) and page fetches | 15 | | $0 | 22 s |
+
+Total: $0.15 (18 Tavily credits, $0.0010 model), 103 s of wall time, as the card's Cost line says.
+<!-- numbers ok: 15, 0.12, 26, 4, 3, 0.024, 11, 20, 0.0010, 24, 0.0001, 17, 22, 0.15, 18, 103, 1, 6, 30 (summed from eval/dev-traces/dev-10.json usage rows; reproduce with the command below) -->
 
 The per-call table is generated from the trace file's own usage rows, so every figure can be checked against the file:
 
@@ -119,7 +139,7 @@ These two are labelled synthetic: the claim is the invented Harbor Zoo one, and 
 
 | Set | Claims | Use | Result |
 |---|---|---|---|
-| E2 dev ([eval/dev-claims.json](eval/dev-claims.json)) | 20: 11 with a web origin, 9 that go cold | Rules, cutoffs and prompts are tuned here only | Latest row in [eval/dev-score.md](eval/dev-score.md), run 3 plus 2 re-records (Nov 18): false origins 0, target cited 3/10, earliest 1 Pass, 0 Partial, 9 Fail, cold stops 8/9, 18 of 19 scored (1 out of scope). Every earlier run is a row in the same file. |
+| E2 dev ([eval/dev-claims.json](eval/dev-claims.json)) | 20: 11 with a web origin, 9 that go cold | Rules, cutoffs and prompts are tuned here only | Latest row in [eval/dev-score.md](eval/dev-score.md), the final live run (Nov 19): false origins 0, target cited 4/10, earliest 2 Pass, 0 Partial, 8 Fail, cold stops 6/9, 18 of 19 scored (1 out of scope). Every earlier run is a row in the same file. |
 | E3 check ([eval/dev-claims-e3.json](eval/dev-claims-e3.json)) | 40: 18 with a web origin, 22 that go cold | Check only, nothing tuned on it | not run live yet |
 | Held-out | 10, private; its hash was committed on Nov 8, before most stages were built (the decision table, number rules and clients came first) ([eval/heldout.sha256](eval/heldout.sha256)) | Run once, on a frozen engine | pending |
 
@@ -195,3 +215,32 @@ Teammates and their agents: read [docs/AGENTS.md](docs/AGENTS.md) first.
 ## License
 
 MIT. See [LICENSE](LICENSE).
+
+## Deploy
+
+The live web app uses the root [Vercel functions](api/trace.ts) and [deployment configuration](vercel.json). The [Node Web handler](https://vercel.com/docs/functions/runtimes/node-js) streams a single NDJSON response. Use the repository root as the Vercel project root, framework preset Other, Node `24.x`, install command `npm ci`, build command `npm -w web run build`, and output directory `apps/web/dist`. Enable Fluid compute. The function duration is `300` seconds in `vercel.json`; the [server](packages/pz/src/live/service.ts) stops provider work at `285` seconds, leaving time to settle spend and finish the stream. Provider calls and temporary page, usage and HTTP cache files are server-only. No SDK or additional dependency is required.
+
+Vidyut sets the keys in Vercel. Set these server environment variables, never client-prefixed variables:
+
+| Variable | Purpose / default |
+| --- | --- |
+| `NEBIUS_API_KEY` | Token Factory key |
+| `TAVILY_API_KEY` | Tavily key |
+| `UPSTASH_REDIS_REST_URL` | Upstash Redis REST endpoint |
+| `UPSTASH_REDIS_REST_TOKEN` | Upstash REST token with read/write and EVAL access |
+| `LIVE_USD_CAP` | Shared dollar cap, default `2` |
+| `LIVE_TRACE_CREDITS` | Tavily credits per trace, default `40`, clamped to the rules credit cap |
+| `LIVE_TRACE_MODEL_USD` | Token Factory dollars per trace, default `0.05`, clamped to the rules model cap |
+| `LIVE_ENABLED` | Set `false`, `0`, `off` or `no` (any case) to disable live; enabled when omitted and all keys are configured |
+| `LIVE_PER_IP_PER_HOUR` | Default `2`, per IP in fixed hourly windows |
+| `LIVE_PER_DAY` | Default `30`, shared fixed UTC daily window |
+
+Missing Redis or provider configuration fails closed. Redis outages also pause live. [Admission](packages/pz/src/live/store.ts) atomically checks limits and reserves the complete per-trace allowance: `LIVE_TRACE_MODEL_USD + LIVE_TRACE_CREDITS * USD_PER_CREDIT`: by default `$0.05` for models plus `40` Tavily credits at `$0.008`, or `$0.37` total ([rules](packages/pz/rules/rules.json), [pricing](packages/pz/src/usage/pricing.ts)). The [runner](packages/pz/src/live/runtime.ts) enforces these per-trace limits before paid attempts; a budget stop returns a partial trace with a "Stopped at a limit" card. The remaining shared budget must cover that reservation, so live can pause before the counter reaches the nominal cap. Reservations and the spend counter have no TTL. Successful, failed and cancelled runs settle measured provider spend; an attempt with unknown usage retains its conservative upper bound. A hard process kill or failed settlement retains the outstanding reservation. Do not reset the counter while traces are running.
+
+The spend counter is `pz:spent_micros` (integer millionths of a dollar), including active reservations. The [status endpoint](api/status.ts) exposes only live availability, reason, cap and spent dollars. IP counters use hashed addresses. Identical normalized claims reuse a seven-day cached trace without charging or consuming a rate-limit slot; cache entries above `900000` bytes are skipped. Recorded browser matches always open free without submitting a live request. The result's cost is the cost of the original trace, including on a cache hit.
+
+For an immediate kill switch without redeployment, set Redis `pz:live_enabled` to `false` in the Upstash console (`SET pz:live_enabled false`). Both status and atomic admission check it on every request. Set it to `true` to resume, subject to the cap and the server environment switch. `LIVE_ENABLED=false` always wins. Vercel environment changes belong to a deployment, so changing the dashboard environment alone does not update an already running deployment; use the Redis override for an immediate pause. Neither switch cancels a trace already admitted.
+
+For local end-to-end use without a CLI install, run `npm -w web run build`, then `node --experimental-transform-types packages/pz/scripts/live-dev.ts` and open `http://127.0.0.1:3000`. Supply the server variables through your shell. The [local server](packages/pz/scripts/live-dev.ts) uses the same handlers and binds only to localhost. Alternatively, run `vercel dev` from the repository root with an already installed Vercel CLI and the server variables supplied through your shell or Vercel project. No local env file is required. `npm run dev -w web` alone remains a replay preview. No paid calls occur during builds or tests. Run `npm run check:client-secrets` to build and inspect both live and Pages clients; it is also part of `make verify`.
+
+GitHub Pages keeps the existing `PZ_PAGES_BASE` build. That build removes the live API calls entirely and needs no server. On other static hosts, an unreachable status endpoint silently leaves live off. Live results remain in the current browser session; refreshing their route does not retrieve them by ID.

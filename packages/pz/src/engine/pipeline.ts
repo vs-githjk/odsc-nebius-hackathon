@@ -325,12 +325,15 @@ export function createPipeline(options: {
   traceId?: string;
   pagesDir?: string;
   usagePath?: string;
+  logUsage?: (row: UsageRow) => void;
+  record?: boolean;
+  clock?: () => Date;
 } & ({ tavilySender: TavilySender; tavilyFetch?: never } | { tavilySender?: never; tavilyFetch: typeof fetch })) {
   const traceId = options.traceId ?? randomUUID();
   return buildPipeline({
-    chat: createTokenFactoryClient({ traceId, apiKey: options.nebiusKey, fetch: options.tokenFactoryFetch }),
-    embed: createTokenFactoryClient({ traceId, apiKey: options.nebiusKey, fetch: options.embeddingFetch }),
+    chat: createTokenFactoryClient({ traceId, apiKey: options.nebiusKey, fetch: options.tokenFactoryFetch, logUsage: options.logUsage, sleep: options.sleep }),
+    embed: createTokenFactoryClient({ traceId, apiKey: options.nebiusKey, fetch: options.embeddingFetch, logUsage: options.logUsage, sleep: options.sleep }),
     tavily: (deps) => createTavily({ ...deps, apiKey: options.tavilyKey, fetch: options.tavilyFetch }, options.tavilySender),
-    archiveFetch: options.archiveFetch, pageFetch: options.pageFetch, resolveHost: options.resolveHost, sleep: options.sleep, cache: options.cache, traceId, pagesDir: options.pagesDir, usagePath: options.usagePath,
+    archiveFetch: options.archiveFetch, pageFetch: options.pageFetch, resolveHost: options.resolveHost, sleep: options.sleep, cache: options.cache, traceId, pagesDir: options.pagesDir, usagePath: options.usagePath, record: options.record, clock: options.clock,
   });
 }

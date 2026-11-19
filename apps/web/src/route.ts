@@ -1,6 +1,7 @@
-export type Route = { name: "start" } | { name: "trace"; id: string };
+export type Route = { name: "start" } | { name: "how" } | { name: "trace"; id: string };
 
 export function parseRoute(hash: string): Route {
+  if (hash === "#/how") return { name: "how" };
   const match = /^#\/t\/([^/]+)$/.exec(hash);
   if (!match?.[1]) return { name: "start" };
   try {
