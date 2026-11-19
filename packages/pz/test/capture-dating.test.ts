@@ -1,4 +1,5 @@
 import { mkdtempSync, readFileSync } from "node:fs";
+import { deflateSync } from "node:zlib";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { describe, expect, it } from "vitest";
@@ -22,7 +23,7 @@ const OCEAN = "http://www.biologicaldiversity.org/campaigns/ocean_plastics/";
 const WEF = "https://www3.weforum.org/docs/WEF_The_New_Plastics_Economy.pdf";
 const html = (body: string) => `<!doctype html><html><head><title>t</title><script>var x = "outweigh all the fish in the sea by 2050";</script></head><body>${body}</body></html>`;
 
-type Archive = { first: string | null; body?: { type: string; text: string } | { status: number } | "timeout"; changed?: boolean };
+type Archive = { first: string | null; body?: { type: string; text: string | Buffer } | { status: number } | "timeout"; changed?: boolean };
 function archive(table: Record<string, Archive>) {
   const seen: string[] = [];
   const fetchImpl = (async (input: string | URL | Request) => {
@@ -34,7 +35,7 @@ function archive(table: Record<string, Archive>) {
       const body = entry?.body;
       if (body === "timeout") throw Object.assign(new Error("timed out"), { name: "TimeoutError" });
       if (!body || "status" in body) return new Response("gone", { status: body && "status" in body ? body.status : 404 });
-      return new Response(body.text, { headers: { "content-type": body.type } });
+      return new Response(typeof body.text === "string" ? body.text : new Uint8Array(body.text), { headers: { "content-type": body.type } });
     }
     const target = new URL(url).searchParams.get("url")!;
     const entry = table[target];
@@ -91,6 +92,26 @@ describe("L19 a first archive capture dates the page only if it holds the claim"
     const out = await dateNode(node(WEF), {}, changed.wayback, [SPAN]);
     expect(out.node.date).toMatchObject({ kind: "unconfirmed", value: null, firstCapture: "2016-01-20" });
     expect(out.note).toContain("more than one version");
+  });
+
+  it("5b. a PDF whose text we can read is searched like a page: it holds the sentence even if the file changed later (dev-10 WEF report)", async () => {
+    const filler = "Industry Agenda The New Plastics Economy Rethinking the future of plastics January 2016 all rights reserved. ".repeat(6);
+    const content = `BT /F1 10 Tf (${filler}) Tj [(At current ) -320 (rates plastic is expected to outweigh all the ) 20 (fish in the sea by 2050.)] TJ ET`;
+    const make = (compress: boolean) => {
+      const data = compress ? deflateSync(Buffer.from(content, "latin1")) : Buffer.from(content, "latin1");
+      return Buffer.concat([Buffer.from(`%PDF-1.4\n1 0 obj\n<< /Length ${data.length}${compress ? " /Filter /FlateDecode" : ""} >>\nstream\n`), data, Buffer.from("\nendstream\nendobj\n%%EOF")]);
+    };
+    for (const compress of [false, true]) {
+      const a = archive({ [WEF]: { first: "2016-01-20", body: { type: "application/pdf", text: make(compress) }, changed: true } });
+      const out = await dateNode(node(WEF), {}, a.wayback, [SPAN]);
+      expect(out.node.date).toMatchObject({ kind: "existed_by", value: "2016-01-20" });
+      expect(a.seen.some((u) => u.includes("collapse=digest"))).toBe(false);
+    }
+    // Readable but without the sentence: only an unchanged file keeps the date.
+    const other = archive({ [WEF]: { first: "2016-01-20", body: { type: "application/pdf", text: make(false) }, changed: true } });
+    expect((await dateNode(node(WEF), {}, other.wayback, ["A sentence this report never says about whales and cheese."])).node.date).toMatchObject({ kind: "unconfirmed", value: null });
+    const unchanged = archive({ [WEF]: { first: "2016-01-20", body: { type: "application/pdf", text: make(false) } } });
+    expect((await dateNode(node(WEF), {}, unchanged.wayback, ["A sentence this report never says about whales and cheese."])).node.date).toMatchObject({ kind: "existed_by" });
   });
 
   it("6. a page dated by its own metadata or byline, on or before the capture, makes no capture request", async () => {

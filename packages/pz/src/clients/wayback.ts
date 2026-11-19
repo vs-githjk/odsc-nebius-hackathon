@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { ClientError, USER_AGENT, send, type ClientDeps } from "./http.ts";
+import { MIN_PDF_TEXT_CHARS, pdfText } from "./pdf-text.ts";
 
 const CDX_URL = "https://web.archive.org/cdx/search/cdx";
 export const WAYBACK_TIMEOUT_MS = 20_000;
@@ -20,12 +21,12 @@ function parseCdx(body: string): FirstCapture {
 }
 
 // What a capture held, as far as the dating check can read it. "binary" (a PDF, an image, a zip) has no text here.
-export type CaptureBody = { kind: "html" | "text" | "binary"; text: string };
+export type CaptureBody = { kind: "html" | "text" | "pdf" | "binary"; text: string };
 // Whether the archive holds more than one distinct file for a url (counted only up to two).
 export type CaptureVersions = { versions: "one" | "changed" };
 const MAX_CAPTURE_CHARS = 3_000_000;
 const TEXTUAL = /html|xml|json|^text\//i;
-const StoredCapture = z.object({ kind: z.enum(["html", "text", "binary"]), text: z.string() });
+const StoredCapture = z.object({ kind: z.enum(["html", "text", "pdf", "binary"]), text: z.string() });
 
 // The stored body is JSON so a cache hit returns the same CaptureBody, and a binary file is never stored.
 function wrapCaptureBody(fetchImpl: typeof fetch): typeof fetch {
@@ -33,13 +34,20 @@ function wrapCaptureBody(fetchImpl: typeof fetch): typeof fetch {
     const res = await fetchImpl(input, init);
     if (!res.ok) return res;
     const contentType = res.headers.get("content-type");
-    const raw = await res.text();
-    const head = raw.slice(0, 2000);
-    const sniffed = /^\s*%PDF-/.test(head) || /[\u0000�]/.test(head.slice(0, 500));
-    const kind: CaptureBody["kind"] = sniffed ? "binary"
-      : contentType && !TEXTUAL.test(contentType) ? "binary"
-      : /html|xml/i.test(contentType ?? "") || /<(?:html|body|head|!doctype)/i.test(head) ? "html" : "text";
-    const body = JSON.stringify({ kind, text: kind === "binary" ? "" : raw.slice(0, MAX_CAPTURE_CHARS) });
+    const bytes = new Uint8Array(await res.arrayBuffer());
+    const head = Buffer.from(bytes.subarray(0, 2000)).toString("latin1");
+    let stored: { kind: CaptureBody["kind"]; text: string };
+    if (/^\s*%PDF-/.test(head)) {
+      // A PDF is read for its text; one that gives too little (fonts we cannot decode) is a plain file.
+      const text = pdfText(bytes);
+      stored = text.length >= MIN_PDF_TEXT_CHARS ? { kind: "pdf", text: text.slice(0, MAX_CAPTURE_CHARS) } : { kind: "binary", text: "" };
+    } else if (head.slice(0, 500).includes("\u0000") || (contentType && !TEXTUAL.test(contentType))) {
+      stored = { kind: "binary", text: "" };
+    } else {
+      const text = Buffer.from(bytes).toString("utf8").slice(0, MAX_CAPTURE_CHARS);
+      stored = { kind: /html|xml/i.test(contentType ?? "") || /<(?:html|body|head|!doctype)/i.test(head) ? "html" : "text", text };
+    }
+    const body = JSON.stringify(stored);
     return new Response(body, { status: res.status, headers: { "content-type": "application/json" } });
   }) as typeof fetch;
 }

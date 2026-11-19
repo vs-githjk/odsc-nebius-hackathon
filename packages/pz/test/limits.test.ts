@@ -172,7 +172,7 @@ describe("docs/limits.md, open rows pinned as they behave today", () => {
     expect(await dated(wayback("html", "<p>A page about zoo hours.</p>"))).toMatchObject({ kind: "unconfirmed", value: null });
     // Missed: a capture that holds the sentence dates the page, though the sentence may have appeared on another page earlier.
     expect(await dated(wayback("html", `<blockquote>${span}</blockquote> as reported elsewhere`))).toMatchObject({ kind: "existed_by", value: "2016-01-20" });
-    // Missed: a PDF is never read; one version in the archive is taken to be the file the walk read.
+    // Missed: a file whose text cannot be read keeps its date if the archive holds one version, taken to be the file the walk read.
     expect(await dated(wayback("binary", ""))).toMatchObject({ kind: "existed_by", value: "2016-01-20" });
     expect(await dated(wayback("binary", "", "changed"))).toMatchObject({ kind: "unconfirmed", value: null });
   });
