@@ -120,4 +120,33 @@ describe("judge card polish (XO on #235)", () => {
     expect(card).not.toContain("Absurd: CEO says");
     expect(card).toMatch(/Also earliest, same date: fortune\.example\./);
   });
+
+  it("on ORIGIN_FOUND shows the page decide picked in full, even when a tied news page is listed first (XO on #236)", () => {
+    const base = load("sample-origin");
+    expect(base.decision.state).toBe("ORIGIN_FOUND");
+    const keeper = base.nodes.find((n) => n.id === base.earliest.nodeIds[0])!;
+    const span = base.spans.find((s) => s.nodeId === keeper.id)!;
+    const news = {
+      ...keeper, id: "tied-news", url: "https://dailynews.example/naps", domain: "dailynews.example", title: "Penguins nap a lot",
+      spanIds: ["s-news"], pageType: { ...keeper.pageType!, optionId: "news" },
+    };
+    const t: Trace = {
+      ...base, nodes: [news, ...base.nodes],
+      spans: [{ ...span, id: "s-news", nodeId: "tied-news", text: "Reporters were told the penguins nap 14 times a day at the zoo." }, ...base.spans],
+      earliest: { ...base.earliest, nodeIds: ["tied-news", ...base.earliest.nodeIds] },
+    };
+    const card = renderCard(t);
+    expect(card).toContain(keeper.url);
+    expect(card).toContain(span.text.slice(0, 40));
+    expect(card).not.toContain("Reporters were told");
+    expect(card).toMatch(/Also earliest, same date: dailynews\.example\./);
+  });
+
+  it("drops the recorded day instead of throwing when recordedAt is not a date (XO on #236)", () => {
+    const t = { ...load("sample-origin"), mode: "REPLAY" as const, synthetic: false, recordedAt: "not a date" };
+    let card = "";
+    expect(() => { card = renderCard(t); }).not.toThrow();
+    expect(card).not.toContain("recorded ");
+    expect(card.split("\n")[0]).toMatch(/^Patient Zero {2}REPLAY /);
+  });
 });

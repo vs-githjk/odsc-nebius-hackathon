@@ -2,6 +2,7 @@ import { traceCost } from "../usage/cost.ts";
 import { datePhrase, type Node, type Trace } from "../schema/index.ts";
 import { menuLike } from "../engine/walk.ts";
 import { independenceLine } from "./headline.ts";
+import { loadRules, originPick } from "../rules/index.ts";
 
 // T77: one readable screen for `pz trace` and `make replay`, built only from the trace's own fields.
 // The raw trace stays one flag away (--json). Nothing here calls a model or the network.
@@ -124,7 +125,9 @@ export function renderCard(trace: Trace, { color = false }: { color?: boolean } 
 
   const badge = trace.mode === "SAMPLE" ? s.tone(trace.mode, "warn") : s.tone(trace.mode, trace.mode === "LIVE" ? "good" : "info");
   // A replay says when its recording was made (XO on #235): the card is not today's search.
-  const note = trace.mode === "REPLAY" ? `${MODE_NOTE.REPLAY}, recorded ${recordedDay.format(new Date(trace.recordedAt))} ET` : MODE_NOTE[trace.mode];
+  // An unparseable recordedAt (the schema only says string) drops the clause rather than throwing (XO on #236).
+  const recorded = Number.isNaN(Date.parse(trace.recordedAt)) ? "" : `, recorded ${recordedDay.format(new Date(trace.recordedAt))} ET`;
+  const note = trace.mode === "REPLAY" ? `${MODE_NOTE.REPLAY}${recorded}` : MODE_NOTE[trace.mode];
   out.push(`${s.bold("Patient Zero")}  ${badge} ${s.dim(note)}`);
   out.push("");
   // T94: the independence count leads the card.
@@ -145,7 +148,10 @@ export function renderCard(trace: Trace, { color = false }: { color?: boolean } 
   // are named on one line (XO on #235: dev-11's Fortune nav row). CONFLICTING shows every earliest page, because the
   // disagreement between them is the point.
   const spanOf = (n: Node) => trace.spans.find((sp) => sp.nodeId === n.id)?.text ?? "";
-  const ordered = [...all].sort((a, b) => Number(menuLike(spanOf(a))) - Number(menuLike(spanOf(b))));
+  // On ORIGIN_FOUND the page decide picked comes first (XO on #236: a tied news page listed first must not push the
+  // origin into "Also earliest"), then pages whose sentence is not menu text.
+  const origin = trace.decision.state === "ORIGIN_FOUND" ? originPick(trace, loadRules())?.node.id : undefined;
+  const ordered = [...all].sort((a, b) => Number(b.id === origin) - Number(a.id === origin) || Number(menuLike(spanOf(a))) - Number(menuLike(spanOf(b))));
   const earliest = trace.decision.state === "CONFLICTING" ? all : ordered.slice(0, 1);
   const sameDate = trace.decision.state === "CONFLICTING" ? [] : ordered.slice(1);
   out.push("");
