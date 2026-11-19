@@ -9,6 +9,7 @@ import { createTavily } from "../src/clients/tavily.ts";
 import { createWayback, MAX_CAPTURE_BYTES } from "../src/clients/wayback.ts";
 import { dateNode } from "../src/engine/dating.ts";
 import { pageHoldsSpan, wordsOf } from "../src/engine/capture.ts";
+import { pdfText } from "../src/clients/pdf-text.ts";
 import { walkClaim, type SpikeClaim } from "../src/engine/walk.ts";
 import { loadRules } from "../src/rules/index.ts";
 import { Trace } from "../src/schema/trace.ts";
@@ -23,7 +24,7 @@ const OCEAN = "http://www.biologicaldiversity.org/campaigns/ocean_plastics/";
 const WEF = "https://www3.weforum.org/docs/WEF_The_New_Plastics_Economy.pdf";
 const html = (body: string) => `<!doctype html><html><head><title>t</title><script>var x = "outweigh all the fish in the sea by 2050";</script></head><body>${body}</body></html>`;
 
-type Archive = { first: string | null; body?: { type: string; text: string | Buffer } | { status: number } | "timeout"; changed?: boolean };
+type Archive = { first: string | null; body?: { type: string; text: string | Buffer } | { status: number; location?: string } | "timeout"; changed?: boolean };
 function archive(table: Record<string, Archive>) {
   const seen: string[] = [];
   const fetchImpl = (async (input: string | URL | Request) => {
@@ -34,7 +35,7 @@ function archive(table: Record<string, Archive>) {
       const entry = table[capture[2]!];
       const body = entry?.body;
       if (body === "timeout") throw Object.assign(new Error("timed out"), { name: "TimeoutError" });
-      if (!body || "status" in body) return new Response("gone", { status: body && "status" in body ? body.status : 404 });
+      if (!body || "status" in body) return new Response("gone", { status: body && "status" in body ? body.status : 404, ...(body && "location" in body && body.location ? { headers: { location: body.location } } : {}) });
       return new Response(typeof body.text === "string" ? body.text : new Uint8Array(body.text), { headers: { "content-type": body.type } });
     }
     const target = new URL(url).searchParams.get("url")!;
@@ -143,6 +144,49 @@ describe("L19 a first archive capture dates the page only if it holds the claim"
     const out = await dateNode(node(OCEAN), {}, a.wayback, [SPAN]);
     expect(out.node.date).toMatchObject({ kind: "unconfirmed", value: null });
     expect(out.note).toContain("could not be read");
+  });
+
+  it("5g. a redirect to the same capture's canonical spelling is followed; one to another timestamp withholds", async () => {
+    const bare = "https://market.biz/signal-statistics";
+    const signal = "It is reported that Signal has approximately 100 million monthly active users globally.";
+    const page = { type: "text/html", text: `<p>${signal}</p>` };
+    const same = archive({
+      [bare]: { first: "2025-09-06", body: { status: 302, location: `/web/20250906000000id_/${bare}/` } },
+      [`${bare}/`]: { first: "2025-09-06", body: page },
+    });
+    expect((await dateNode(node(bare), {}, same.wayback, [signal])).node.date).toMatchObject({ kind: "existed_by", value: "2025-09-06" });
+    const other = archive({
+      [bare]: { first: "2025-09-06", body: { status: 302, location: `https://web.archive.org/web/20260101000000id_/${bare}/` } },
+      [`${bare}/`]: { first: "2025-09-06", body: page },
+    });
+    const out = await dateNode(node(bare), {}, other.wayback, [signal]);
+    expect(out.node.date).toMatchObject({ kind: "unconfirmed", value: null });
+    expect(out.note).toContain("could not be read");
+    // A loop of same-capture redirects stops after two hops.
+    const loop = archive({ [bare]: { first: "2025-09-06", body: { status: 302, location: `/web/20250906000000id_/${bare}` } } });
+    expect((await dateNode(node(bare), {}, loop.wayback, [signal])).node.date).toMatchObject({ kind: "unconfirmed", value: null });
+    expect(loop.seen.filter((u) => u.includes("id_/")).length).toBe(3);
+  });
+
+  it("5h. hostile PDFs are read in bounded time: a wall of brackets, and thousands of stream keywords with no end", () => {
+    const started = performance.now();
+    const brackets = deflateSync(Buffer.from("BT (x) Tj " + "[".repeat(3.5 * 2 ** 20) + "] ET"));
+    const wall = Buffer.concat([Buffer.from(`%PDF-1.4\n1 0 obj\n<< /Length ${brackets.length} /Filter /FlateDecode >>\nstream\n`), brackets, Buffer.from("\nendstream\n")]);
+    expect(brackets.length).toBeLessThan(10_000);
+    expect(pdfText(wall)).toContain("x");
+    expect(pdfText(Buffer.from("%PDF-1.4\n" + "stream\n".repeat(200_000)))).toBe("");
+    expect(pdfText(Buffer.from("%PDF-1.4\n" + "(".repeat(2_000_000)))).toBe("");
+    expect(performance.now() - started).toBeLessThan(5000);
+  });
+
+  it("5i. ligature folding applies only inside words that held a control code: fiat is not flat", () => {
+    const plain = wordsOf("The flat rate of tax applies now. Also the fish swim.", false, true);
+    expect(pageHoldsSpan(plain, "The fiat rate of tax applies now", true)).toBe(false);
+    expect(pageHoldsSpan(plain, "The flat rate of tax applies now", true)).toBe(true);
+    const coded = wordsOf("The \u001fat rate of tax applies now.", false, true);
+    expect(pageHoldsSpan(coded, "The flat rate of tax applies now", true)).toBe(true);
+    expect(pageHoldsSpan(coded, "The fiat rate of tax applies now", true)).toBe(true);
+    expect(pageHoldsSpan(coded, "The cat rate of tax applies now", true)).toBe(false);
   });
 
   it("5f. a span of fewer than six words never matches, and a place after a negation does not count", () => {

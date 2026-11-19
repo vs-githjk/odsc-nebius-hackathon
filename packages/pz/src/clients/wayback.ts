@@ -54,10 +54,35 @@ async function readCapped(res: Response, cap: number): Promise<Uint8Array | null
   return Buffer.concat(chunks);
 }
 
+const CAPTURE_TIMESTAMP = /^https?:\/\/web\.archive\.org\/web\/(\d+)id_\//;
+const MAX_HOPS = 2;
+
+// The archive answers an id_ request with a redirect to the same capture when the url is not in its own spelling
+// (a trailing slash, www). That redirect is followed, by hand, at most twice. A redirect to any other timestamp (or
+// host) is a different capture: the 3xx response is returned as it is, and the caller cannot verify.
+async function followSameCapture(fetchImpl: typeof fetch, url: string, init?: RequestInit): Promise<Response> {
+  const wanted = CAPTURE_TIMESTAMP.exec(url)?.[1];
+  let current = url;
+  for (let hop = 0; ; hop++) {
+    const res = await fetchImpl(current, init);
+    if (res.status < 300 || res.status > 399 || hop === MAX_HOPS) return res;
+    const location = res.headers.get("location");
+    let target: string;
+    try {
+      target = new URL(location ?? "", current).toString();
+    } catch {
+      return res;
+    }
+    if (!location || !wanted || CAPTURE_TIMESTAMP.exec(target)?.[1] !== wanted) return res;
+    await res.body?.cancel();
+    current = target;
+  }
+}
+
 // The stored body is JSON so a cache hit returns the same CaptureBody, and a binary file is never stored.
 function wrapCaptureBody(fetchImpl: typeof fetch): typeof fetch {
   return (async (input: string | URL | Request, init?: RequestInit) => {
-    const res = await fetchImpl(input, init);
+    const res = await followSameCapture(fetchImpl, String(input), init);
     if (!res.ok) return res;
     const contentType = res.headers.get("content-type");
     const bytes = await readCapped(res, MAX_CAPTURE_BYTES);

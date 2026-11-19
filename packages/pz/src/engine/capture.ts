@@ -29,12 +29,16 @@ export function wordsOf(source: string, markup = true, ligatures = false): strin
       }
       return ENTITIES[e.toLowerCase()] ?? " ";
     });
-  // A PDF's ligature glyphs come out as control codes ("bene\u001fts"): those codes go, and on both sides the letter pairs
-  // fi, fl, ff, ffi, ffl go too, so "benefits" and the PDF's "bene ts" read the same.
-  const glyphs = ligatures ? stripped.replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/g, "") : stripped;
-  const words = normalise(glyphs).toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim();
-  return ` ${ligatures ? words.replace(/ffi|ffl|ff|fi|fl/g, "") : words} `;
+  // A PDF's ligature glyphs come out as control codes ("bene\u001fts"). In a word that holds such a code, the code goes and
+  // the letter pairs fi, fl, ff, ffi, ffl go with it; every other word is left as it is. pageHoldsSpan compares a span's
+  // words in both forms, so "benefits" meets the PDF's "benets" while "fiat" never meets a plain "flat".
+  const glyphs = ligatures ? stripped.replace(/\S*[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]\S*/g, (token) => foldLigatures(token.replace(CONTROL, "").toLowerCase())) : stripped;
+  return ` ${normalise(glyphs).toLowerCase().replace(/[^\p{L}\p{N}]+/gu, " ").trim()} `;
 }
+
+const CONTROL = /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/g;
+const foldLigatures = (word: string) => word.replace(/ffi|ffl|ff|fi|fl/g, "");
+const escapeRe = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 // A match needs at least this many words: a short phrase can sit in any page.
 export const MIN_SPAN_WORDS = 6;
@@ -43,12 +47,17 @@ let negations: string[] | null = null;
 // Whole-word containment of one span's words in the page's words, in order and next to each other. No fuzzy match.
 // A place where the words follow a negation prefix ("it is a myth that ...") does not count.
 export function pageHoldsSpan(pageWords: string, span: string, ligatures = false): boolean {
-  const words = wordsOf(span, false, ligatures).trim();
-  if (words.split(" ").length < MIN_SPAN_WORDS) return false;
+  const words = wordsOf(span, false).trim();
+  const list = words.split(" ");
+  if (list.length < MIN_SPAN_WORDS) return false;
   negations ??= loadRules().negationPrefixes;
-  const needle = ` ${words} `;
-  for (let at = pageWords.indexOf(needle); at >= 0; at = pageWords.indexOf(needle, at + 1)) {
-    const contextBefore = pageWords.slice(Math.max(0, at - 120), at).trim();
+  const pattern = list.map((w) => {
+    const folded = ligatures ? foldLigatures(w) : w;
+    return folded === w || folded === "" ? escapeRe(w) : `(?:${escapeRe(w)}|${escapeRe(folded)})`;
+  }).join(" ");
+  const needle = new RegExp(`(?<= )${pattern}(?= )`, "g");
+  for (const m of pageWords.matchAll(needle)) {
+    const contextBefore = pageWords.slice(Math.max(0, m.index - 120), m.index).trim();
     if (!isNegated({ contextBefore, text: words }, negations)) return true;
   }
   return false;
