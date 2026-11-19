@@ -152,3 +152,6 @@ Format: [LOCKED|REJECTED|PREFERENCE] decision | why | "Vidyut's words" | date
 [LOCKED] Rematch (#160) blind grading goes to Anoop | Rohan collects the chats, so he can't grade blind | "The rematch blind, give it to Anoop" | 2026-11-19
 [LOCKED] Video after the morning run; Vidyut records the voiceover and approves the storyboard (master-creator) | "Video, we'll do it afterwards. I'll do the voiceover and storyboard" | 2026-11-19
 [PREFERENCE] Demo script: take XO's recommended framing on the two open items (cut S7; if dev-10 does not land on WEF, version B framed as "it stops and says so instead of making something up") | "I want the best framing though, so yeah" | 2026-11-19
+[LOCKED] Build a live web app on Vercel: a small server with rate limits and a hard spend cap; Rishit owns making it deploy-ready; XO and Vidyut do the deploy; the Pages replay site stays as the fallback | "we should absolutely do a website... deploy it on Vercel... absolutely put rate limits... Rishit... dedicatedly" | 2026-11-19
+[REVERSED] S7 is not cut: record a `pz trace --answer` run in the morning live run (~$0.25) and film it in the terminal | "So you're saying there's no way for S7 that you can take a video of S7" | 2026-11-19
+[LOCKED] Backup hero framing accepted (version B, cold ending framed as the feature) | "Backup hero. Sure, that's fine." | 2026-11-19
