@@ -148,7 +148,7 @@ It was the fastest (12 to 47 s) and lost on every claim. The grading was not ful
 | Tavily `extract` | reading the pages a search returns | live in every dev run since Nov 17 |
 | Wayback CDX | first capture of each page, capping its date | live: every dev trace's usage rows include its Wayback lookups |
 
-Every call writes a usage row: model, tokens, cached tokens, Tavily credits, dollars, latency, status and cache hit ([packages/pz/src/schema/usage.ts](packages/pz/src/schema/usage.ts)). The usage report across the dev runs is T58 ([#116](https://github.com/vs-githjk/odsc-nebius-hackathon/issues/116)), not written yet; every figure it will use is already a usage row in [eval/dev-traces/](eval/dev-traces/).
+Every call writes a usage row: model, tokens, cached tokens, Tavily credits, dollars, latency, status and cache hit ([packages/pz/src/schema/usage.ts](packages/pz/src/schema/usage.ts)). The usage report across the dev runs is T58 ([#116](https://github.com/vs-githjk/odsc-nebius-hackathon/issues/116)), not written yet; every figure it will use is already a usage row in [eval/dev-traces/](eval/dev-traces/). Median speed and cost per trace, from those rows: [eval/perf.md](eval/perf.md).
 
 ## Limits
 
