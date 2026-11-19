@@ -59,7 +59,7 @@ A first walker with fixed rules and no model lost to all three consumer tools on
 
 ### Cost and speed
 
-[SLOT: median cost and time per trace from the dev run usage rows (#165, #116), with Tavily included]
+Median 42 s and $0.08 a trace on the 20 E2 recordings (Tavily $0.08 at 10.5 credits, Token Factory $0.0006), against targets of 30 s and $0.02: both not met ([eval/perf.md](../eval/perf.md)).
 
 ## Project URL
 

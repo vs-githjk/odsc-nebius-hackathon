@@ -37,5 +37,7 @@ describe("#165 cost and time per trace", () => {
     expect(md).toContain("| dev-06 | ");
     expect(md).toContain("| dev-11 | ");
     expect(rows[0]!.calls.tavily).toBeGreaterThan(0);
+    expect(report(rows, "eval/dev-traces", ["dev-11"])).toMatch(/Includes dev-11, scored apart as out of scope .* Without it, the median is \d+ s and \$\d/);
+    expect(report(rows, "eval/dev-traces")).not.toContain("scored apart");
   });
 });

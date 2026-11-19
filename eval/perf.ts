@@ -31,7 +31,7 @@ export function median(xs: number[]): number {
 const usd = (n: number) => (n > 0 && n < 0.01 ? `$${n.toFixed(4)}` : `$${n.toFixed(2)}`);
 const sec = (n: number) => `${Math.round(n)}`;
 
-export function report(rows: PerfRow[], source: string): string {
+export function report(rows: PerfRow[], source: string, outOfScope: string[] = []): string {
   const med = {
     seconds: median(rows.map((r) => r.seconds)), usd: median(rows.map((r) => r.totalUsd)),
     tavily: median(rows.map((r) => r.tavilyUsd)), model: median(rows.map((r) => r.modelUsd)), credits: median(rows.map((r) => r.credits)),
@@ -49,6 +49,12 @@ export function report(rows: PerfRow[], source: string): string {
     `- **Median time: ${sec(med.seconds)} s** (${met(med.seconds < TARGET.seconds)}).`,
     `- **Median cost: ${usd(med.usd)}** (${met(med.usd < TARGET.usd)}): Tavily ${usd(med.tavily)} (${med.credits} credits), Token Factory ${usd(med.model)}.`,
     `- ${rows.length} traces. Tavily is almost all of the cost.`,
+    ...(() => {
+      const apart = rows.filter((r) => outOfScope.includes(r.id));
+      if (!apart.length) return [];
+      const kept = rows.filter((r) => !outOfScope.includes(r.id));
+      return [`- Includes ${apart.map((r) => r.id).join(", ")}, scored apart as out of scope in eval/dev-claims.json. Without ${apart.length === 1 ? "it" : "them"}, the median is ${sec(median(kept.map((r) => r.seconds)))} s and ${usd(median(kept.map((r) => r.totalUsd)))}.`];
+    })(),
     "",
     "## Where the time goes",
     "",
@@ -74,6 +80,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const dir = "eval/dev-traces";
   const rows = readdirSync(dir).filter((f) => /^dev-\d{2}\.json$/.test(f)).sort()
     .map((f) => perfRow(Trace.parse(JSON.parse(readFileSync(join(dir, f), "utf8")))));
-  writeFileSync("eval/perf.md", report(rows, dir));
-  console.log(report(rows, dir).split("\n").slice(6, 9).join("\n"));
+  const outOfScope = (JSON.parse(readFileSync("eval/dev-claims.json", "utf8")) as { id: string; outOfScope?: string }[]).filter((c) => c.outOfScope).map((c) => c.id);
+  writeFileSync("eval/perf.md", report(rows, dir, outOfScope));
+  console.log(report(rows, dir, outOfScope).split("\n").slice(6, 10).join("\n"));
 }
