@@ -159,7 +159,7 @@ const versus: [string, string][] = [
 
 const steps = [
   { n: "1", title: "Search back in time", body: "Tavily searches for the claim, then again in older and older date windows, and extracts each page." },
-  { n: "2", title: "Read and date every page", body: "Code pulls the exact sentence. Dates come from page metadata, the Wayback Machine and research registries, each labelled." },
+  { n: "2", title: "Read and date every page", body: "Code pulls the exact sentence. Dates come from registries, page metadata, the Wayback Machine, and a marked date in the article only when nothing on the page contradicts it, each labelled." },
   { n: "3", title: "Compare copies to roots", body: "Nebius Token Factory models answer typed questions on each hop: did the number change, was a hedge dropped, same claim?" },
   { n: "4", title: "Stop honestly", body: "A decision table in code picks the ending, never the model. If a page it cites can't be opened, the trail goes cold." },
 ];

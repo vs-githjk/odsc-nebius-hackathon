@@ -73,7 +73,7 @@ export function HowItWorks({ hero }: { hero: Trace | null }) {
               Tavily searches for the claim, then again in older and older date windows, and extracts each page it finds.
             </Step>
             <Step n="2" title="Read and date every page" example={ex.date}>
-              Code pulls the exact sentence that states the claim. Dates come from page metadata, the Wayback Machine and research registries, and each one says where it came from.
+              Code pulls the exact sentence that states the claim. Dates come from research registries, page metadata, the Wayback Machine, and a marked publication date in the article, only when nothing on the page contradicts it. Each date says where it came from.
             </Step>
             <Step n="3" title="Compare copies to roots" example={ex.roots}>
               Nebius Token Factory models answer typed questions about each hop under strict JSON schemas: did the number change, was a hedge dropped, is it the same claim? Pages that copy another are folded into its root.
