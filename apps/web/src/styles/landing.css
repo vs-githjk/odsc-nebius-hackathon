@@ -1,36 +1,79 @@
-/* The landing page (#/) and the site footer. Colours, type and spacing come from tokens.css only. */
+/* The landing page (#/) and the site footer. Colours, type and spacing come from tokens.css only.
+   Editorial, not app chrome: hairline rules instead of cards, plain numerals instead of badges, sentence case labels.
+   The two signature moves are the serif quotes and the time ramp on the walk back. */
 .lp {
   overflow-x: clip;
 }
 
-.lp-eyebrow {
-  margin: 0 0 12px;
-  color: var(--action);
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+/* Section rhythm: each section after the hero opens on a hairline rule. */
+.lp-section {
+  padding-bottom: clamp(56px, 9vw, 112px);
 }
 
+.lp-section > .wrap::before {
+  content: "";
+  display: block;
+  height: 1px;
+  margin-bottom: clamp(40px, 6vw, 72px);
+  background: var(--line-2);
+}
+
+.lp-h2 {
+  max-width: 22ch;
+  margin: 0 0 16px;
+  font-size: clamp(32px, 4.2vw, 54px);
+  font-weight: 650;
+  line-height: 1.04;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.lp-h3 {
+  margin: 0 0 12px;
+  font-size: 20px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+.lp-intro {
+  max-width: 60ch;
+  margin: 0 0 clamp(28px, 4vw, 48px);
+  color: var(--ink-2);
+  font-size: clamp(17px, 1.4vw, 20px);
+}
+
+/* Hero. */
 .lp-hero {
-  position: relative;
-  padding: clamp(56px, 12vh, 140px) 0 clamp(48px, 8vh, 96px);
-  background:
-    radial-gradient(60% 50% at 85% 0%, color-mix(in srgb, var(--cold) 16%, transparent), transparent 70%),
-    radial-gradient(45% 40% at 5% 10%, color-mix(in srgb, var(--hot) 10%, transparent), transparent 70%);
+  padding: clamp(48px, 10vh, 120px) 0 clamp(48px, 8vh, 96px);
+}
+
+.lp-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 48px;
+  align-items: start;
+}
+
+@media (min-width: 1100px) {
+  .lp-hero-grid {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 72px;
+  }
 }
 
 .lp-title {
-  max-width: 14ch;
+  max-width: 15ch;
   margin: 0;
-  font-size: clamp(44px, 7.4vw, 104px);
+  font-size: clamp(42px, 6.2vw, 80px);
   font-weight: 650;
-  line-height: 0.98;
+  line-height: 1;
   letter-spacing: -0.045em;
   text-wrap: balance;
 }
 
 .lp-title em {
+  display: block;
+  margin-top: 0.08em;
   font-family: var(--font-quote);
   font-weight: 400;
   letter-spacing: -0.02em;
@@ -38,69 +81,343 @@
 }
 
 .lp-lead {
-  max-width: 58ch;
+  max-width: 54ch;
   margin-top: 24px;
 }
 
 .lp-claim {
-  max-width: 780px;
-  margin-top: 36px;
-  padding: 20px;
-  box-shadow: var(--shadow);
+  max-width: 720px;
+  margin-top: 32px;
+  padding-top: 20px;
+  border-top: 2px solid var(--ink);
 }
 
-.lp-hero-ramp {
-  max-width: 780px;
-  margin-top: 28px;
-  opacity: 0.85;
+/* The hero's product shot: a ruled sidebar, not a floating card. */
+.lp-hero-trace {
+  display: grid;
+  gap: 16px;
+  padding-top: 16px;
+  border-top: 2px solid var(--ink);
+  color: var(--ink);
+  text-decoration: none;
 }
 
-.lp-section {
-  padding: clamp(56px, 10vh, 120px) 0;
-  border-top: 1px solid var(--line);
+.lp-hero-trace:hover .lp-ht-claim,
+.lp-hero-trace:focus-visible .lp-ht-claim {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
 }
 
-.lp-alt {
-  background: var(--bg-2);
+.lp-hero-trace:focus-visible {
+  outline: 2px solid var(--action);
+  outline-offset: 6px;
 }
 
-.lp-h2 {
-  max-width: 22ch;
-  margin: 0 0 20px;
-  font-size: clamp(30px, 3.6vw, 48px);
-  font-weight: 650;
-  line-height: 1.06;
-  letter-spacing: -0.03em;
+.lp-ht-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 4px 12px;
+  align-items: baseline;
+  color: var(--ink-2);
+  font-size: 14px;
+}
+
+.lp-ht-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.lp-ht-live i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--hot);
+}
+
+.lp-ht-claim {
+  font: italic 400 clamp(22px, 2vw, 28px) / 1.2 var(--font-quote);
   text-wrap: balance;
 }
 
-.lp-copy p:not(.lp-eyebrow) {
-  max-width: 52ch;
+.lp-ht-stops {
+  position: relative;
+  display: grid;
+  gap: 14px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* The time ramp, newest at the top, oldest at the bottom. */
+.lp-ht-stops::before {
+  content: "";
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  left: 5px;
+  width: 2px;
+  background: linear-gradient(var(--hot), var(--warm), var(--cold), var(--deep));
+  transform-origin: top;
+}
+
+.lp-ht-stops li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 12px auto minmax(0, 1fr);
+  gap: 2px 12px;
+  align-items: baseline;
+}
+
+.lp-ht-dot {
+  grid-row: 1 / span 2;
+  align-self: start;
+  width: 12px;
+  height: 12px;
+  margin-top: 4px;
+  border-radius: 50%;
+  background: var(--tone);
+  box-shadow: 0 0 0 3px var(--bg);
+}
+
+.lp-ht-when {
+  font-size: 15px;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.lp-ht-where {
+  color: var(--ink-3);
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lp-ht-text {
+  grid-column: 2 / -1;
+  color: var(--ink-2);
+  font: italic 400 16px / 1.35 var(--font-quote);
+}
+
+.lp-ht-end {
+  display: grid;
+  gap: 12px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line-2);
+}
+
+.lp-ht-verdict {
+  display: grid;
+  gap: 2px;
+  padding-left: 14px;
+  border-left: 3px solid var(--cold);
+  font-size: 15px;
   color: var(--ink-2);
 }
 
-.lp-split {
+.lp-ht-verdict strong {
+  color: var(--ink);
+  font-size: 18px;
+}
+
+.lp-ht-roots {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  color: var(--ink-2);
+  font-size: 15px;
+}
+
+.lp-ht-roots strong {
+  color: var(--ink);
+}
+
+.lp-ht-roots .lp-roots-dots {
+  margin: 0;
+}
+
+.lp-ht-roots .lp-roots-dots i {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+
+.lp-ht-roots .lp-dot-root {
+  background: var(--action);
+}
+
+.lp-ht-roots .lp-dot-copy {
+  box-shadow: inset 0 0 0 2px var(--ink-3);
+}
+
+/* The walk back: each stop lands in turn, newest first, then the ending. */
+@media (prefers-reduced-motion: no-preference) {
+  .lp-ht-stops::before {
+    animation: lp-grow 1600ms 300ms ease-out both;
+  }
+
+  .lp-ht-stops li,
+  .lp-ht-end {
+    animation: lp-land 480ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: calc(400ms + var(--i) * 380ms);
+  }
+
+  .lp-ht-live i {
+    animation: lp-blink 1.6s ease-in-out infinite;
+  }
+}
+
+@keyframes lp-grow {
+  from { transform: scaleY(0); }
+}
+
+@keyframes lp-land {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+
+@keyframes lp-blink {
+  50% { opacity: 0.35; }
+}
+
+/* The difference: a plain ruled comparison, no ticks. */
+.lp-vs {
+  max-width: 980px;
+  margin-top: clamp(24px, 3vw, 40px);
+}
+
+.lp-vs-row {
   display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
-  gap: clamp(28px, 5vw, 72px);
-  align-items: start;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 32px;
+  padding: 16px 0;
+  border-top: 1px solid var(--line-2);
+  font-size: clamp(17px, 1.4vw, 19px);
 }
 
-/* The worked example card. */
-.lp-example {
-  padding: clamp(20px, 3vw, 32px);
-  box-shadow: var(--shadow);
+.lp-vs-row > span:first-child {
+  color: var(--ink-3);
 }
 
-.lp-example-claim {
-  margin: 0 0 20px;
-  font: italic 400 clamp(22px, 2.2vw, 28px) / 1.2 var(--font-quote);
+.lp-vs-head {
+  padding: 0 0 10px;
+  border-top: 0;
+  font-size: 15px;
+  font-weight: 650;
+}
+
+.lp-vs-head > span:first-child {
+  color: var(--ink-2);
+}
+
+.lp-vs-note {
+  margin: 16px 0 0;
+}
+
+/* Receipts: a ledger, claim on the left and its evidence on the right. */
+.lp-receipts {
+  display: grid;
+}
+
+.lp-receipt {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+  padding: clamp(28px, 4vw, 48px) 0;
+  border-top: 1px solid var(--line-2);
+}
+
+.lp-receipt:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+@media (min-width: 900px) {
+  .lp-receipt {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: 56px;
+  }
+}
+
+.lp-receipt-text h3 {
+  margin: 0 0 12px;
+  font-size: clamp(22px, 2.2vw, 28px);
+  font-weight: 650;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
   text-wrap: balance;
 }
 
+.lp-receipt-n {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--ink-3);
+  font: italic 400 20px / 1 var(--font-quote);
+  letter-spacing: 0;
+}
+
+.lp-receipt-text p {
+  max-width: 48ch;
+  margin: 0 0 10px;
+  color: var(--ink-2);
+  font-size: 16px;
+}
+
+.lp-receipt-check {
+  font-size: 15px;
+}
+
+.lp-receipt-body {
+  min-width: 0;
+}
+
+.lp-big {
+  margin: 0 0 16px;
+  color: var(--ink-2);
+  font-size: 16px;
+}
+
+.lp-big span {
+  display: block;
+  color: var(--ink);
+  font-size: clamp(48px, 5vw, 72px);
+  font-weight: 650;
+  line-height: 1;
+  letter-spacing: -0.045em;
+  font-variant-numeric: tabular-nums;
+}
+
+.lp-ending {
+  display: grid;
+  gap: 4px;
+  padding-left: 16px;
+  border-left: 3px solid var(--cold);
+  color: var(--ink-2);
+}
+
+.lp-ending strong {
+  color: var(--ink);
+  font-size: 18px;
+}
+
+.lp-ending-claim {
+  color: var(--ink-2);
+  font: italic 400 18px / 1.35 var(--font-quote);
+}
+
+/* Every stop on the way back. */
 .lp-stops {
   position: relative;
-  margin: 0 0 20px;
+  margin: 0;
   padding: 0;
   list-style: none;
 }
@@ -108,9 +425,9 @@
 .lp-stops li {
   position: relative;
   display: grid;
-  grid-template-columns: 18px minmax(0, 1fr);
-  gap: 2px 12px;
-  padding-bottom: 16px;
+  grid-template-columns: 14px minmax(0, 1fr);
+  gap: 2px 14px;
+  padding-bottom: 18px;
 }
 
 .lp-stops li::before {
@@ -118,9 +435,13 @@
   position: absolute;
   top: 16px;
   bottom: 0;
-  left: 6px;
+  left: 5px;
   width: 2px;
   background: var(--line-2);
+}
+
+.lp-stops li:last-child {
+  padding-bottom: 0;
 }
 
 .lp-stops li:last-child::before {
@@ -128,19 +449,25 @@
 }
 
 .lp-stop-dot {
+  z-index: 1;
   grid-row: 1 / span 3;
-  width: 14px;
-  height: 14px;
-  margin-top: 4px;
+  width: 12px;
+  height: 12px;
+  margin-top: 5px;
   border-radius: 50%;
   background: var(--tone);
-  box-shadow: 0 0 0 4px var(--surface);
-  z-index: 1;
+  box-shadow: 0 0 0 3px var(--bg);
 }
 
 .lp-stop-when {
   font-weight: 650;
   font-variant-numeric: tabular-nums;
+}
+
+.lp-stop-how {
+  color: var(--ink-3);
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .lp-stop-where {
@@ -151,530 +478,13 @@
 
 .lp-stop-text {
   color: var(--ink-2);
-  font: italic 400 16px / 1.4 var(--font-quote);
+  font: italic 400 17px / 1.4 var(--font-quote);
   overflow-wrap: anywhere;
-}
-
-.lp-ending {
-  display: grid;
-  gap: 4px;
-  margin-bottom: 20px;
-  padding: 14px 16px;
-  border: 1px solid var(--line-2);
-  border-left: 4px solid var(--cold);
-  border-radius: 12px;
-  background: var(--bg-2);
-}
-
-.lp-example .btn {
-  margin-right: 12px;
-}
-
-.lp-example-note {
-  display: block;
-  margin-top: 12px;
-}
-
-/* How it works. */
-.lp-steps {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 16px;
-  margin: 12px 0 24px;
-  padding: 0;
-  list-style: none;
-}
-
-.lp-steps li {
-  padding: 24px;
-}
-
-.lp-step-n {
-  display: inline-grid;
-  place-items: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 999px;
-  background: var(--ink);
-  color: var(--bg);
-  font-weight: 700;
-}
-
-.lp-steps h3 {
-  margin: 16px 0 8px;
-  font-size: 19px;
-  letter-spacing: -0.01em;
-}
-
-.lp-steps p {
-  margin: 0;
-  color: var(--ink-2);
-  font-size: 16px;
-}
-
-.lp-more {
-  font-weight: 600;
-}
-
-/* Proof. */
-.lp-stats {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 0;
-  margin: 12px 0 20px;
-  border-top: 1px solid var(--line-2);
-}
-
-.lp-stats > div {
-  padding: 24px 20px 24px 0;
-  border-bottom: 1px solid var(--line-2);
-}
-
-.lp-stats dt {
-  font-size: clamp(40px, 5vw, 64px);
-  font-weight: 650;
-  line-height: 1;
-  letter-spacing: -0.04em;
-  font-variant-numeric: tabular-nums;
-}
-
-.lp-stats dd {
-  max-width: 26ch;
-  margin: 10px 0 0;
-  color: var(--ink-2);
-  font-size: 15px;
-}
-
-.lp-proof-note {
-  max-width: 70ch;
-}
-
-/* Try these: a 2 by 2 grid, so four cards never leave an orphan. */
-.lp-tries {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 16px;
-  margin: 20px 0 0;
-  padding: 0;
-  list-style: none;
-}
-
-.lp-try {
-  display: grid;
-  gap: 10px;
-  height: 100%;
-  padding: 22px;
-  color: var(--ink);
-  text-decoration: none;
-  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
-}
-
-.lp-try:hover,
-.lp-try:focus-visible {
-  border-color: var(--action);
-  box-shadow: var(--shadow);
-  transform: translateY(-2px);
-}
-
-.lp-try:focus-visible {
-  outline: 2px solid var(--action);
-  outline-offset: 3px;
-}
-
-/* Built with and team. */
-.lp-built {
-  display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-  gap: clamp(28px, 5vw, 72px);
-}
-
-.lp-built p:not(.lp-eyebrow) {
-  max-width: 52ch;
-  color: var(--ink-2);
-}
-
-.lp-team {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 0 0 24px;
-  padding: 0;
-  list-style: none;
-}
-
-.lp-team a {
-  display: inline-block;
-  padding: 8px 16px;
-  border: 1px solid var(--line-2);
-  border-radius: 999px;
-  color: var(--ink);
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.lp-team a:hover {
-  border-color: var(--action);
-  color: var(--action);
-}
-
-/* Footer, on every page. */
-.lp-footer {
-  border-top: 1px solid var(--line);
-  padding: 32px 0 40px;
-}
-
-.lp-footer .wrap {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px 24px;
-}
-
-.lp-footer-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.lp-footer-links a {
-  color: var(--ink-2);
-  font-size: 15px;
-  text-decoration: none;
-}
-
-.lp-footer-links a:hover {
-  color: var(--action);
-}
-
-@media (max-width: 1000px) {
-  .lp-split,
-  .lp-built {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .lp-steps,
-  .lp-stats {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 600px) {
-  .lp-claim {
-    padding: 14px;
-  }
-
-  .lp-steps,
-  .lp-stats {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .lp-eyebrow {
-    font-size: 14px;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .lp-try {
-    transition: none;
-  }
-
-  .lp-try:hover,
-  .lp-try:focus-visible {
-    transform: none;
-  }
-}
-
-/* Nav links: quiet text links, one row on a phone. */
-.nav-links > a:not(.btn) {
-  color: var(--ink-2);
-  font-size: 15px;
-  font-weight: 500;
-  text-decoration: none;
-}
-
-.nav-links > a:not(.btn):hover {
-  color: var(--ink);
-}
-
-@media (max-width: 600px) {
-  .nav .wrap {
-    flex-wrap: nowrap;
-  }
-
-  .nav-links {
-    flex-wrap: nowrap;
-    gap: 12px;
-  }
-
-  .nav-links .btn.small {
-    min-height: 36px;
-    padding: 0 12px;
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 420px) {
-  .wordmark {
-    font-size: 0;
-    gap: 0;
-  }
-}
-
-/* The live trace graph in How it works. */
-.lp-figure {
-  display: block;
-  margin: 8px 0 28px;
-  padding: clamp(16px, 2.4vw, 28px);
-  color: inherit;
-  text-decoration: none;
-  box-shadow: var(--shadow);
-  transition: border-color 160ms ease;
-}
-
-.lp-figure:hover,
-.lp-figure:focus-visible {
-  border-color: var(--action);
-}
-
-.lp-figure:focus-visible {
-  outline: 2px solid var(--action);
-  outline-offset: 3px;
-}
-
-.lp-figure {
-  max-width: 820px;
-}
-
-.lp-shot {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-}
-
-.lp-shot-dark {
-  display: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .lp-shot-light { display: none; }
-  :root:not([data-theme="light"]) .lp-shot-dark { display: block; }
-}
-
-:root[data-theme="dark"] .lp-shot-light { display: none; }
-:root[data-theme="dark"] .lp-shot-dark { display: block; }
-
-.lp-figure-cap {
-  display: block;
-  margin-top: 12px;
-}
-
-/* Entrance: the hero settles in once, on load. */
-@media (prefers-reduced-motion: no-preference) {
-  .lp-hero-copy > * {
-    animation: lp-rise 600ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
-  }
-
-  .lp-hero-copy > :nth-child(2) { animation-delay: 60ms; }
-  .lp-hero-copy > :nth-child(3) { animation-delay: 120ms; }
-  .lp-hero-copy > :nth-child(4) { animation-delay: 180ms; }
-  .lp-hero-copy > :nth-child(5) { animation-delay: 240ms; }
-}
-
-@keyframes lp-rise {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-}
-
-/* The worked example on a phone: tighter rhythm, the button full width. */
-@media (max-width: 600px) {
-  .lp-example .btn {
-    width: 100%;
-    justify-content: center;
-    margin-right: 0;
-  }
-
-  .lp-stops li {
-    padding-bottom: 14px;
-  }
-
-  .lp-stop-text {
-    font-size: 15px;
-  }
-
-  .lp-section {
-    padding: 56px 0;
-  }
-}
-
-/* Positioning hero: the line is a sentence, so it runs wider and a step smaller than a slogan. */
-.lp-title {
-  max-width: 20ch;
-  font-size: clamp(40px, 6vw, 84px);
-}
-
-.lp-title em {
-  display: block;
-  margin-top: 0.12em;
-}
-
-/* Chat answer vs trace. */
-.lp-vs {
-  max-width: 980px;
-  border: 1px solid var(--line-2);
-  border-radius: 20px;
-  overflow: hidden;
-  background: var(--surface);
-}
-
-.lp-vs-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-}
-
-.lp-vs-row > span {
-  padding: 18px 22px;
-  border-top: 1px solid var(--line);
-}
-
-.lp-vs-row > span:first-child {
-  color: var(--ink-3);
-}
-
-.lp-vs-row > span:last-child {
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
-  border-left: 1px solid var(--line);
-  background: color-mix(in srgb, var(--action) 6%, transparent);
-  font-weight: 600;
-}
-
-.lp-vs-row svg {
-  flex: 0 0 20px;
-  width: 20px;
-  height: 20px;
-  margin-top: 2px;
-  fill: none;
-  stroke: var(--good);
-  stroke-width: 2.4;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.lp-vs-head > span {
-  border-top: 0;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.lp-vs-head > span:last-child {
-  color: var(--action);
-}
-
-.lp-vs-note {
-  margin-top: 12px;
-}
-
-/* Receipts. */
-.lp-receipts {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
-  margin-top: 12px;
-}
-
-.lp-receipt {
-  display: flex;
-  flex-direction: column;
-  padding: clamp(20px, 2.6vw, 30px);
-}
-
-.lp-receipt:nth-child(1),
-.lp-receipt:nth-child(4) {
-  grid-column: span 1;
-}
-
-.lp-receipt-head {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 18px;
-}
-
-.lp-receipt-head h3 {
-  margin: 0;
-  font-size: clamp(20px, 1.8vw, 24px);
-  letter-spacing: -0.015em;
-}
-
-.lp-receipt-body {
-  flex: 1;
-}
-
-.lp-receipt-foot {
-  display: grid;
-  gap: 10px;
-  margin: 20px 0 0;
-  padding-top: 16px;
-  border-top: 1px dashed var(--line-2);
-  font-size: 14px;
-}
-
-.lp-receipt-foot div {
-  display: grid;
-  grid-template-columns: 130px minmax(0, 1fr);
-  gap: 12px;
-}
-
-.lp-receipt-foot dt {
-  color: var(--ink-3);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.lp-receipt-foot dd {
-  margin: 0;
-  color: var(--ink-2);
-}
-
-.lp-big {
-  margin: 0 0 14px;
-  color: var(--ink-2);
-  font-size: 16px;
-}
-
-.lp-big span {
-  display: block;
-  color: var(--ink);
-  font-size: clamp(44px, 4.6vw, 64px);
-  font-weight: 650;
-  line-height: 1;
-  letter-spacing: -0.04em;
-  font-variant-numeric: tabular-nums;
-}
-
-.lp-ending-claim {
-  color: var(--ink-2);
-  font: italic 400 17px / 1.35 var(--font-quote);
-}
-
-.lp-stop-how {
-  color: var(--ink-3);
-  font-size: 13px;
-  font-weight: 500;
 }
 
 /* Pages against roots. */
 .lp-roots {
-  margin: 0 0 18px;
+  margin: 0 0 24px;
 }
 
 .lp-roots-dots {
@@ -693,8 +503,8 @@
 }
 
 .lp-roots.big .lp-roots-dots i {
-  width: 34px;
-  height: 34px;
+  width: 32px;
+  height: 32px;
 }
 
 .lp-roots .lp-dot-root,
@@ -733,24 +543,21 @@
   margin-left: 12px;
 }
 
-/* The checked answer. */
+/* The checked answer: set like a pulled quote, statistics underlined. */
 .lp-answer-label {
-  margin: 0 0 8px;
+  margin: 0 0 10px;
 }
 
 .lp-answer-text {
-  margin: 0 0 14px;
-  padding: 16px 18px;
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  background: var(--bg-2);
-  line-height: 1.6;
+  margin: 0 0 16px;
+  padding-left: 16px;
+  border-left: 1px solid var(--line-2);
+  font: 400 18px / 1.6 var(--font-quote);
 }
 
 .lp-answer-text mark {
-  padding: 1px 2px;
-  border-radius: 4px;
-  background: color-mix(in srgb, var(--cold) 18%, transparent);
+  padding: 0 1px;
+  background: color-mix(in srgb, var(--cold) 14%, transparent);
   box-shadow: inset 0 -2px 0 var(--cold);
   color: var(--ink);
 }
@@ -771,8 +578,8 @@
 }
 
 .lp-cold-dot {
-  flex: 0 0 10px;
-  height: 10px;
+  flex: 0 0 9px;
+  height: 9px;
   border-radius: 50%;
   background: var(--cold);
 }
@@ -785,14 +592,14 @@
 .lp-cost {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px 40px;
+  gap: 8px 48px;
 }
 
 .lp-cli {
   margin: 4px 0 12px;
   padding: 14px 16px;
   overflow-x: auto;
-  border-radius: 12px;
+  border-radius: 4px;
   background: var(--tip-bg);
   color: var(--tip-ink);
   font: 500 14px/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
@@ -803,308 +610,226 @@
   opacity: 0.55;
 }
 
-@media (max-width: 1000px) {
-  .lp-receipts {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .lp-vs-row {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .lp-vs-row > span:last-child {
-    border-left: 0;
-    border-top: 0;
-    padding-top: 0;
-  }
-
-  .lp-vs-row > span:first-child {
-    padding-bottom: 8px;
-  }
-
-  .lp-vs-head > span:first-child {
-    display: none;
-  }
-
-  .lp-vs-head > span:last-child {
-    padding-top: 18px;
-  }
-
-  .lp-vs-row:not(.lp-vs-head) > span:first-child::before {
-    content: "Chat answer: ";
-    font-weight: 600;
-  }
-
-  .lp-receipt-foot div {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 2px;
-  }
-}
-
-/* An odd last receipt runs the full width instead of leaving a hole. */
-.lp-receipt:last-child:nth-child(odd) {
-  grid-column: 1 / -1;
-}
-
-@media (max-width: 600px) {
-  .lp-vs-head {
-    display: none;
-  }
-
-  .lp-vs-row:nth-child(2) > span:first-child {
-    border-top: 0;
-  }
-}
-
-
-/* Hero: copy on the left, the product on the right. */
-.lp-hero-grid {
+/* How it works: four columns of text on a rule, plain numerals. */
+.lp-steps {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: 40px;
-  align-items: center;
-}
-
-@media (min-width: 1100px) {
-  .lp-hero-grid {
-    grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
-    gap: 56px;
-  }
-
-  .lp-hero-grid .lp-title {
-    font-size: clamp(44px, 4.6vw, 72px);
-  }
-}
-
-.lp-hero-trace {
-  display: grid;
-  gap: 14px;
-  padding: clamp(18px, 2.2vw, 28px);
-  color: var(--ink);
-  text-decoration: none;
-  box-shadow: var(--shadow);
-  transition: border-color 160ms ease, transform 160ms ease;
-}
-
-.lp-hero-trace:hover,
-.lp-hero-trace:focus-visible {
-  border-color: var(--action);
-}
-
-.lp-hero-trace:focus-visible {
-  outline: 2px solid var(--action);
-  outline-offset: 3px;
-}
-
-.lp-ht-head {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 4px 12px;
-  align-items: center;
-}
-
-.lp-ht-live {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--ink-2);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.lp-ht-live i {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--hot);
-}
-
-.lp-ht-claim {
-  font: italic 400 clamp(20px, 1.8vw, 24px) / 1.25 var(--font-quote);
-  text-wrap: balance;
-}
-
-.lp-ht-stops {
-  position: relative;
-  display: grid;
-  gap: 12px;
-  margin: 0;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px;
+  margin: clamp(24px, 3vw, 40px) 0 28px;
   padding: 0;
   list-style: none;
 }
 
-.lp-ht-stops::before {
-  content: "";
-  position: absolute;
-  top: 8px;
-  bottom: 8px;
-  left: 6px;
-  width: 2px;
-  background: linear-gradient(var(--hot), var(--warm), var(--cold), var(--deep));
-  opacity: 0.45;
-  transform-origin: top;
+.lp-steps li {
+  padding-top: 16px;
+  border-top: 2px solid var(--ink);
 }
 
-.lp-ht-stops li {
-  position: relative;
-  display: grid;
-  grid-template-columns: 14px auto minmax(0, 1fr);
-  gap: 2px 12px;
+.lp-steps h3 {
+  margin: 0 0 8px;
+  font-size: 19px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+.lp-step-n {
+  margin-right: 8px;
+  color: var(--ink-3);
+  font: italic 400 19px / 1 var(--font-quote);
+}
+
+.lp-steps p {
+  margin: 0;
+  color: var(--ink-2);
+  font-size: 16px;
+}
+
+.lp-more {
+  font-weight: 600;
+}
+
+/* Try these: a ruled list of claims. */
+.samples-head {
   align-items: baseline;
 }
 
-.lp-ht-dot {
-  grid-row: 1 / span 2;
-  align-self: start;
-  width: 14px;
-  height: 14px;
-  margin-top: 3px;
-  border-radius: 50%;
-  background: var(--tone);
-  box-shadow: 0 0 0 4px var(--surface);
-}
-
-.lp-ht-when {
+.samples-head .lp-h2 {
+  margin: 0;
+  font-size: clamp(32px, 4.2vw, 54px);
   font-weight: 650;
-  font-size: 15px;
-  font-variant-numeric: tabular-nums;
-  white-space: nowrap;
+  letter-spacing: -0.035em;
 }
 
-.lp-ht-where {
-  color: var(--ink-3);
-  font-size: 13px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.lp-tries {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 48px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
 }
 
-.lp-ht-text {
-  grid-column: 2 / -1;
+.lp-try {
+  display: grid;
+  gap: 6px;
+  height: 100%;
+  padding: 20px 0;
+  border-top: 1px solid var(--line-2);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.lp-try .sample-claim {
+  font: italic 400 21px / 1.3 var(--font-quote);
+}
+
+.lp-try:hover .sample-claim,
+.lp-try:focus-visible .sample-claim {
+  color: var(--action);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+/* Built with and the team. */
+.lp-built {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 48px;
+}
+
+.lp-built > div > p {
+  max-width: 56ch;
   color: var(--ink-2);
-  font: italic 400 15px / 1.35 var(--font-quote);
 }
 
-.lp-ht-end {
-  display: grid;
-  gap: 12px;
-  padding-top: 14px;
-  border-top: 1px dashed var(--line-2);
+.lp-section > .lp-built::before {
+  grid-column: 1 / -1;
+  margin-bottom: 0;
 }
 
-.lp-ht-verdict {
-  display: grid;
-  gap: 2px;
-  padding: 10px 14px;
-  border-left: 4px solid var(--cold);
-  border-radius: 10px;
-  background: var(--bg-2);
-  font-size: 15px;
-}
-
-.lp-ht-verdict strong {
-  font-size: 17px;
-}
-
-.lp-ht-roots {
+.lp-team {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: 8px 14px;
-  font-size: 15px;
-  color: var(--ink-2);
+  gap: 8px 20px;
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
 }
 
-.lp-ht-roots strong {
+.lp-team a {
+  font-weight: 600;
+}
+
+/* Footer. */
+.lp-footer {
+  padding: 32px 0 48px;
+  border-top: 1px solid var(--line-2);
+}
+
+.lp-footer .wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lp-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+}
+
+.lp-footer-links a {
+  color: var(--ink-2);
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.lp-footer-links a:hover {
+  color: var(--action);
+}
+
+/* Nav links: quiet text links, one row on a phone. */
+.nav-links > a:not(.btn) {
+  color: var(--ink-2);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.nav-links > a:not(.btn):hover {
   color: var(--ink);
 }
 
-.lp-ht-roots .lp-roots-dots {
-  margin: 0;
-}
-
-.lp-ht-roots .lp-roots-dots i {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-}
-
-.lp-ht-roots .lp-dot-root {
-  background: var(--action);
-}
-
-.lp-ht-roots .lp-dot-copy {
-  box-shadow: inset 0 0 0 2px var(--ink-3);
-}
-
-/* The walk back: each stop lands in turn, newest first, then the ending. */
-@media (prefers-reduced-motion: no-preference) {
-  .lp-ht-stops::before {
-    animation: lp-grow 1600ms 300ms ease-out both;
+@media (max-width: 1000px) {
+  .lp-built {
+    grid-template-columns: minmax(0, 1fr);
   }
 
-  .lp-ht-stops li,
-  .lp-ht-end {
-    animation: lp-land 480ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
-    animation-delay: calc(400ms + var(--i) * 380ms);
+  .lp-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
-
-  .lp-ht-stops li .lp-ht-dot {
-    animation: lp-pulse 700ms ease-out both;
-    animation-delay: calc(400ms + var(--i) * 380ms);
-  }
-
-  .lp-ht-live i {
-    animation: lp-blink 1.6s ease-in-out infinite;
-  }
-}
-
-@keyframes lp-grow {
-  from { transform: scaleY(0); }
-}
-
-@keyframes lp-land {
-  from {
-    opacity: 0;
-    transform: translateX(-8px);
-  }
-}
-
-@keyframes lp-pulse {
-  0% { box-shadow: 0 0 0 4px var(--surface), 0 0 0 4px color-mix(in srgb, var(--tone) 50%, transparent); }
-  100% { box-shadow: 0 0 0 4px var(--surface), 0 0 0 14px transparent; }
-}
-
-@keyframes lp-blink {
-  50% { opacity: 0.35; }
 }
 
 @media (max-width: 600px) {
+  .nav .wrap {
+    flex-wrap: nowrap;
+  }
+
+  .nav-links {
+    flex-wrap: nowrap;
+    gap: 12px;
+  }
+
+  .nav-links .btn.small {
+    min-height: 36px;
+    padding: 0 12px;
+    font-size: 14px;
+  }
+
+  .lp-steps,
   .lp-tries {
     grid-template-columns: minmax(0, 1fr);
   }
 
+  .lp-vs-head {
+    display: none;
+  }
+
+  .lp-vs-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 6px;
+  }
+
+  .lp-vs-row:nth-child(2) {
+    border-top: 0;
+  }
+
+  .lp-vs-row > span:first-child::before {
+    content: "Chat answer: ";
+    font-weight: 600;
+  }
+
+  .lp-vs-row > span:last-child::before {
+    content: "Trace: ";
+    font-weight: 600;
+  }
+
   .lp-ht-stops li {
-    grid-template-columns: 14px minmax(0, 1fr);
+    grid-template-columns: 12px minmax(0, 1fr);
   }
 
-  .lp-ht-where {
-    grid-column: 2;
-  }
-
+  .lp-ht-where,
   .lp-ht-text {
     grid-column: 2;
   }
 }
 
-.samples-head .lp-h2 {
-  margin: 0;
-  font-size: clamp(30px, 3.6vw, 48px);
-  font-weight: 650;
+@media (max-width: 420px) {
+  .wordmark {
+    font-size: 0;
+    gap: 0;
+  }
 }
