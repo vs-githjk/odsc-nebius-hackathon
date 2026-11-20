@@ -211,3 +211,4 @@
 - 00:47 ET: S7 guard reassigned to Anoop (#307); Rishit to video captures (#259); Rohan status check (#250)
 - 01:32 ET: merged #316 (Anoop, earliest-dated-page guard; XO replay of 41 traces: S7 cold, dev-09/10 ORIGIN_FOUND, 0 false), #317 (traces counts recorded-only), #315 (Rishit gallery re-shoot); all SUCCESS. 10:00 S7 checkpoint resolved.
 - 01:45 ET: merged #318 (Anoop: held-out readout, README/submission slots, S7 in limits), all SUCCESS; numbers checked against #250
+- 07:58 ET: judge morning 81.5 (+5), plan/judge-morning.md; fixes dispatched: Rishit H2/M3/M4/L7 (#259), Rohan M5/M6 (#250), Anoop copy sweep (#257), all due 12:00
