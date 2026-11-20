@@ -9,8 +9,8 @@ describe("live client", () => {
     expect(liveStageLabel("walk", "walk", 0)).toBe("Searching");
     expect(liveStageLabel("walk", "walk", 2)).toBe("Searching and reading pages");
     expect(liveStageLabel("walk", "spans", 2)).toBe("Searching");
-    expect(liveStageLabel("spans", "walk", 2)).toBe("Reading pages");
-    expect(liveStageLabel("spans", "spans", 2)).toBe("Reading pages");
+    expect(liveStageLabel("spans", "walk", 2)).toBe("Matching sentences across pages");
+    expect(liveStageLabel("spans", "spans", 2)).toBe("Matching sentences across pages");
   });
   it("reads page counts, ignores future events and filters non-host data", async () => {
     const updates: LiveProgress[] = [];
