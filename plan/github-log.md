@@ -210,3 +210,4 @@
 - 00:05 ET: Rishit found a false origin under #310 rules on S7 claim 0 (Greenpeace whale-art page); XO replayed all 41 traces in the repo, only case; earliest-dated-page guard simulated (fixes S7, keeps dev-09/10); briefed on #307, due Fri 10:00
 - 00:47 ET: S7 guard reassigned to Anoop (#307); Rishit to video captures (#259); Rohan status check (#250)
 - 01:32 ET: merged #316 (Anoop, earliest-dated-page guard; XO replay of 41 traces: S7 cold, dev-09/10 ORIGIN_FOUND, 0 false), #317 (traces counts recorded-only), #315 (Rishit gallery re-shoot); all SUCCESS. 10:00 S7 checkpoint resolved.
+- 01:45 ET: merged #318 (Anoop: held-out readout, README/submission slots, S7 in limits), all SUCCESS; numbers checked against #250
