@@ -1,4 +1,15 @@
 /* App surfaces share the existing light and dark theme palette. */
+.paused-live, .stop-unread { min-width: 0; color: var(--ink); overflow-wrap: anywhere; font-size: 16px; }
+.paused-live h3, .stop-unread h3 { margin: 20px 0 8px; font-size: 16px; font-weight: 600; }
+.paused-live .btn { display: inline-flex; align-items: center; min-height: 44px; max-width: 100%; white-space: normal; }
+.paused-choices .sample { grid-template-columns: minmax(0, 1fr); gap: 4px; padding: 12px 0; }
+.paused-choices .sample-claim { font-size: 19px; }
+.paused-reason { grid-column: 1; color: var(--ink-2); font-size: 14px; }
+.paused-live a:focus-visible, .stop-unread a:focus-visible { outline: 2px solid var(--action); outline-offset: 4px; }
+.stop-unread ul { list-style: none; margin: 0; padding: 0; }
+.stop-unread li { display: flex; flex-wrap: wrap; align-items: center; gap: 0 12px; border-bottom: 1px solid var(--line-2); }
+.stop-unread a { display: inline-flex; align-items: center; min-height: 44px; max-width: 100%; font-size: 15px; }
+.stop-unread li span { color: var(--ink-2); font-size: 14px; }
 [tabindex="-1"]:focus { outline: none; }
 main :focus-visible { outline: 2px solid var(--action); outline-offset: 4px; }
 main h1 { scroll-margin-top: 120px; }

@@ -1,7 +1,7 @@
 import { readFileSync, readdirSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { Trace } from "pz/schema";
-import { challengeTraces, liveAction, liveAvailability, liveMode, liveStageLabel, liveStatus, streamTrace, type LiveProgress } from "./live.ts";
+import { challengeTraces, pausedMessage, liveAction, liveAvailability, liveMode, liveStageLabel, liveStatus, streamTrace, type LiveProgress } from "./live.ts";
 const recorded = Trace.parse(JSON.parse(readFileSync("eval/dev-traces/dev-13.json", "utf8")));
 describe("live client", () => {
   it("names reading during the active walk without renaming the later spans stage", () => {
@@ -73,6 +73,17 @@ describe("live client", () => {
 });
 
 describe("liveMode: paused is said only when a live server says so", () => {
+  it.each(["cap", "disabled", "not_configured"])("keeps the paused status reason %s for the claim note", async reason => {
+    const status = await liveAvailability(async () => Response.json({ live: false, reason }));
+    expect(status).toEqual({ mode: "paused", reason });
+    expect(pausedMessage(status.mode, status.reason)).toBe(reason === "cap"
+      ? "Live tracing is paused: this demo's budget for live searches is used up. Every recorded trace still opens free."
+      : "Live tracing is paused for now. Every recorded trace still opens free.");
+  });
+  it("says nothing about live when the server is absent or live is available", () => {
+    expect(pausedMessage("absent", "cap")).toBeNull();
+    expect(pausedMessage("live")).toBeNull();
+  });
   it("live, paused for any reason, or absent when there is no live server (the Pages site)", async () => {
     expect(await liveMode(async () => Response.json({ live: true }))).toBe("live");
     expect(await liveMode(async () => Response.json({ live: false, reason: "cap" }))).toBe("paused");

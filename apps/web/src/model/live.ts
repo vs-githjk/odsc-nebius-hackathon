@@ -9,6 +9,12 @@ export function liveStageLabel(stage: string, active: string | null, pages: numb
 // "live": the server runs live traces. "paused": a live server is there but says no (cap, kill switch, not configured), so
 // the page says live tracing is paused. "absent": no live server at all (the replay-only Pages site), so nothing is said.
 export type LiveMode = "live" | "paused" | "absent";
+export function pausedMessage(mode: LiveMode, reason?: string): string | null {
+  if (mode !== "paused") return null;
+  return reason === "cap"
+    ? "Live tracing is paused: this demo's budget for live searches is used up. Every recorded trace still opens free."
+    : "Live tracing is paused for now. Every recorded trace still opens free.";
+}
 export async function liveAvailability(transport: typeof fetch = fetch): Promise<{ mode: LiveMode; reason?: string }> {
   if (typeof __PZ_REPLAY_ONLY__ !== "undefined" && __PZ_REPLAY_ONLY__) return { mode: "absent" };
   try { const response = await transport("/api/status", { cache: "no-store", signal: AbortSignal.timeout(5000) });
