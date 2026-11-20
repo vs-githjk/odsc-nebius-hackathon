@@ -200,3 +200,4 @@
 - 2026-11-19 23:45 ET: merged #304 (overclaims), #305 (Where it stands 4 lines).
 - 2026-11-20 00:00 ET: merged #306 (Try these labels), #308 (paused live fallback, unread pages named). Rohan: attempt C Wayback on #307.
 - 2026-11-20 00:15 ET: #309 origin experiment A verified (dev-09, dev-10 ORIGIN_FOUND, 0 false, G4 fixed). XO requested narrower unread exemption (only off-topic meta) + copy updates in same PR. Video ending decision to Vidyut.
+- 2026-11-20 00:30 ET: merged #310 (origin experiment finished; dev-09, dev-10 ORIGIN_FOUND, 0 false). Closed #309. Rishit on script/storyboard new ending.
