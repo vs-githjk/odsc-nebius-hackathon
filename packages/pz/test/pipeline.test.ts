@@ -328,7 +328,7 @@ describe("fact-check meta maps through the full pipeline (T49)", () => {
 describe("publication evidence in dating (#79)", () => {
   it("passes a page's byline evidence into the walk result's pages", async () => {
     const claim = zoo(unique());
-    const page = { ...pagesFor(claim)[0]!, html: '<html><body><time itemprop="datePublished" datetime="2010-06-09">June 9</time></body></html>' };
+    const page = { ...pagesFor(claim)[0]!, html: '<html><body><article><time itemprop="datePublished" datetime="2010-06-09">June 9</time></article></body></html>' };
     const net = stub({ pages: [page] });
     const dir = mkdtempSync(join(tmpdir(), "pz-byline-"));
     const { pipeline } = buildPipeline({

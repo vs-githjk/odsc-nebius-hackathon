@@ -66,6 +66,8 @@ describe("registry dates", () => {
 
 describe("page fetching is public-only, logged and challenge-aware", () => {
   const html = (...tags: string[]) => `<html><head>${tags.join("")}</head><body>Article text</body></html>`;
+  // A byline is only read inside the page's <article> or <main> (#222), so dateline cases put it there.
+  const inArticle = (...parts: string[]) => `<html><head></head><body><article>${parts.join("")}</article></body></html>`;
   const cache = () => { const m = new Map(); return { get: (k: string) => m.get(k) ?? null, set: (k: string, v: unknown) => { m.set(k, v); } } as never; };
   const publicHost = async () => ["93.184.216.34"];
   function setup(routes: Record<string, () => Response>, resolve: (host: string) => Promise<string[]> = publicHost) {
@@ -136,8 +138,10 @@ describe("page fetching is public-only, logged and challenge-aware", () => {
     const url = "https://news.example/a";
     const unrelated = '<time datetime="1990-01-01">1990</time>';
     const published = '<time itemprop="datePublished" datetime="2020-06-09">June 9</time>';
-    expect(await setup({ [url]: page(html(unrelated, published)) }).found(url))
+    expect(await setup({ [url]: page(inArticle(unrelated, published)) }).found(url))
       .toEqual({ date: "2020-06-09", source: "byline" });
+    // Outside <article> or <main> it is not read at all.
+    expect(await setup({ [url]: page(html(unrelated, published)) }).found(url)).toBeNull();
     expect(await setup({ [url]: page(html(unrelated)) }).found(url)).toBeNull();
     const teaser = '<aside itemscope><time itemprop="datePublished" datetime="2009-03-01">March 1</time></aside>';
     // Rendered sidebar dates count as ambiguity; they must not silently vanish.
@@ -156,14 +160,14 @@ describe("page fetching is public-only, logged and challenge-aware", () => {
     }
     for (const tag of ["template", "textarea", "noscript"]) {
       const hidden = `<${tag}>${old}</${tag}>`;
-      expect(await setup({ [url]: page(html(hidden)) }).found(url)).toBeNull();
-      expect(await setup({ [url]: page(html(hidden, published)) }).found(url))
-        .toEqual({ date: "2020-06-09", source: "byline" });
+      expect(await setup({ [url]: page(inArticle(hidden)) }).found(url)).toBeNull();
+      // A second datePublished, even one that never renders, makes the page ambiguous (#222): no date.
+      expect(await setup({ [url]: page(inArticle(hidden, published)) }).found(url)).toBeNull();
     }
     const decoy = '<time data-itemprop="datePublished" datetime="2009-03-01">March 1</time>';
     const withData = '<time itemprop="datePublished" data-datetime="2009-03-01" datetime="2020-06-09">June 9</time>';
     expect(await setup({ [url]: page(html(decoy, withData)) }).found(url)).toBeNull();
-    expect(await setup({ [url]: page(html(withData)) }).found(url))
+    expect(await setup({ [url]: page(inArticle(withData)) }).found(url))
       .toEqual({ date: "2020-06-09", source: "byline" });
   });
 
@@ -185,7 +189,7 @@ describe("page fetching is public-only, logged and challenge-aware", () => {
       expect(await setup({ [url]: page(html(`<${region}>${old}</${region}>`)) }).found(url)).toBeNull();
     }
     // A custom-element name is not a nav region, and a quoted > is not a tag end.
-    expect(await setup({ [url]: page(html('<nav-menu title="a > b">' + real + '</nav-menu>')) }).found(url))
+    expect(await setup({ [url]: page(inArticle('<nav-menu title="a > b">' + real + '</nav-menu>')) }).found(url))
       .toEqual({ date: "2020-06-09", source: "byline" });
   });
 
