@@ -205,3 +205,4 @@
 - 2026-11-20 00:55 ET: cap $2.50 live confirmed (status capUsd 2.5, spent $0.23). Vidyut recording voiceover tonight from ~/Desktop/patient-zero-video/voiceover.html (S8 uses pre-held-out line).
 - 2026-11-20 00:00 ET: Rohan held-out DONE on 8a33448 (post-#310): 8/10 traced, 0 false origins, target 0/6, earliest 0/0/5, cold 2/4, $0.86. Asked for result-only commit + README/submission slots. S8 voice line to re-record.
 - 23:49 ET: Rishit batch 3 posted on #259 (tap nit, origin-found copy sweep, gallery re-shoot, raw video captures)
+- 23:57 ET: merged #313 (Rishit, set-aside tap targets on phones), all checks SUCCESS
