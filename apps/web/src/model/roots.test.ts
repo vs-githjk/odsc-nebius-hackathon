@@ -28,7 +28,7 @@ describe("root receipts", () => {
   it("keeps stored date precision and real archive links", () => {
     const node = dev.nodes.find(n => n.date.source === "wayback_first_capture" && n.date.value && dev.spans.some(s => s.nodeId === n.id && s.waybackUrl))!;
     const receipt = pageReceipt(dev, node);
-    expect(receipt.evidence.label).toContain("First Wayback capture");
+    expect(receipt.evidence.label).toContain("first Wayback Machine capture");
     expect(receipt.evidence.url).toBe(dev.spans.find(s => s.nodeId === node.id && s.waybackUrl)!.waybackUrl);
     expect(pageReceipt(dev, { ...node, date: { ...node.date, precision: "year" } }).date).toBe(node.date.value!.slice(0, 4));
   });

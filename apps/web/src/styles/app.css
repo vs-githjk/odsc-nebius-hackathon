@@ -87,3 +87,14 @@ body { isolation: isolate; }
    use hairlines rather than a second rounded box. */
 .claim-note .untraced { padding: 16px 0 4px; border: 0; border-top: 1px solid var(--line-2); border-radius: 0; background: none; box-shadow: none; }
 .claim-note .live-failure { padding-left: 14px; border-left: 2px solid var(--line-2); border-top: 0; }
+
+/* The merged earliest-pages list in The ending: one row per page, date and host on one line, the proof under it. */
+.trace-page .stop-earliest { margin-top: 20px; padding-left: 0; border-left: 0; }
+.trace-page .stop-earliest .earliest-row { display: block; min-height: 0; }
+.trace-page .stop-earliest .earliest-row a { display: inline; min-height: 0; padding: 0; }
+.trace-page .stop-earliest .earliest-line a { display: inline-flex; min-height: 44px; align-items: center; }
+.trace-page .stop-earliest h3 { margin: 0 0 4px; font-weight: 500; }
+.trace-page .earliest-row { padding: 12px 0; border-top: 1px solid var(--line-2); }
+.trace-page .earliest-row p { margin: 0; }
+.trace-page .earliest-line { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; overflow-wrap: anywhere; }
+.trace-page .earliest-proof { margin-top: 4px !important; color: var(--ink-2); font-size: 14px; overflow-wrap: anywhere; }

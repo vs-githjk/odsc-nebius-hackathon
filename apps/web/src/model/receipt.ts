@@ -20,10 +20,11 @@ export function dateEvidence(node: Node, span?: Span, short = false): { label: s
   const caveat = date.conflictingDate ? " Date evidence conflicts." : "";
   if (short) {
     const labels: Record<Node["date"]["source"], string> = {
-      metadata: "Page metadata", byline: "Byline", wayback_first_capture: "First Wayback capture (existed by)",
-      tavily: "Search result", registry_pubmed: "PubMed registry", registry_pmc: "PubMed Central registry", registry_crossref: "Crossref registry",
+      metadata: "Dated by the page's own metadata", byline: "Dated by the page's byline",
+      wayback_first_capture: "Online by this date: first Wayback Machine capture",
+      tavily: "Date from the search result", registry_pubmed: "Dated by PubMed", registry_pmc: "Dated by PubMed Central", registry_crossref: "Dated by Crossref",
     };
-    return { label: `${date.kind === "unconfirmed" ? "Unconfirmed: " : ""}${labels[date.source]}${caveat}`, url };
+    return { label: `${labels[date.source]}${date.kind === "unconfirmed" ? " (unconfirmed)" : ""}${caveat}`, url };
   }
   return { label: `${qualifier} ${sources[date.source]}, ${datePhrase(date.value, date.precision)}.${archive ? " Archived by this date; publication date is not established." : ""}${caveat}`, url };
 }

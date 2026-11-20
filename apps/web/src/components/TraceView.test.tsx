@@ -22,7 +22,7 @@ describe("TraceView", () => {
     expect(positions.every(position => position >= 0)).toBe(true);
     expect(positions).toEqual([...positions].sort((a, b) => a - b));
     expect(html.match(/aria-label="How this trace ended"/g)).toHaveLength(1);
-    expect(html).toContain("Earliest page we found");
+    expect(html).toMatch(/Earliest pages? we found/);
     expect(html).toContain('class="ramp-dot"');
   });
 
