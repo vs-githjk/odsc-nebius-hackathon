@@ -152,7 +152,7 @@ export function App() {
       {route.name === "trace" ? (
         <TraceRoute id={route.id} matched={route.id === matchedId} all={[...traces, ...liveTraces]} />
       ) : route.name === "answer" ? (route.n === null ? <AnswerPage /> : <AnswerTrace n={route.n} />
-      ) : route.name === "how" ? <HowItWorks /> : route.name === "traces" ? <TracesPage /> : (
+      ) : route.name === "how" ? <HowItWorks hero={hero} /> : route.name === "traces" ? <TracesPage /> : (
         <Landing traces={traces} hero={hero} focusKey={focusKey} onMatch={setMatchedId} onLive={openLive} />
       )}
       <Footer />
