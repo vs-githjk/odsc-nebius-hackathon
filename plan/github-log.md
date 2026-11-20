@@ -189,3 +189,4 @@
 - 2026-11-19 22:05 ET: merged #295 (Rishit storyboard, 11 shots, 15 stills, 2:15); fix S4a duplicate, zoom S10. Awaiting Vidyut approve.
 - 2026-11-19 22:15 ET: merged #294 (Rohan T73 MCP stdio tools). Rohan continuing #224 on own branch (Hoover Dam boundary).
 - 2026-11-19 22:25 ET: asked Rohan whether the Nebius key came via dev.nebius.com/builders credits.
+- 2026-11-19 22:35 ET: merged #296 (Rohan: #224 continuation, subject contract). Closed #224.
