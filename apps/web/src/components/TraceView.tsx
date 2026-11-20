@@ -5,7 +5,7 @@ import { redStop } from "../model/hop.ts";
 import { dateEvidence, possibleVariants, whatChanged } from "../model/receipt.ts";
 import { scrubberStops, stopNote } from "../model/scrubber.ts";
 import { independence, independenceLine } from "pz/headline";
-import { ModeBadge } from "./ModeBadge.tsx";
+import { badgeFor } from "./badge.ts";
 import { Scrubber, stopXs, xAt } from "./Scrubber.tsx";
 import { Sentence } from "./Sentence.tsx";
 import { StopCard } from "./StopCard.tsx";
@@ -29,6 +29,16 @@ function useReducedMotion(): boolean {
 
 const monthYear = new Intl.DateTimeFormat("en-US", { month: "long", year: "numeric", timeZone: "UTC" });
 const when = (date: string | null, precision?: "day" | "month" | "year") => (date ? (precision === "year" ? date.slice(0, 4) : monthYear.format(new Date(date))) : "Undated");
+
+const recordedOn = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" });
+export function traceMeta(trace: Trace): string {
+  const { label } = badgeFor(trace);
+  if (label === "SAMPLE") return "Example data: an invented claim on invented pages.";
+  const when = recordedOn.format(new Date(trace.recordedAt));
+  const usd = trace.usage.length > 0 ? `$${traceCost(trace).totalUsd.toFixed(3)}` : null;
+  if (label === "LIVE") return `Live trace, ${when}${usd ? ` · cost ${usd} (${trace.budget.credits} Tavily credits)` : ""}`;
+  return `Replayed from the recorded run of ${when}${usd ? ` · run cost ${usd}` : ""}`;
+}
 
 export function TraceView({ trace }: { trace: Trace }) {
   const stops = useMemo(() => scrubberStops(trace), [trace]);
@@ -62,12 +72,11 @@ export function TraceView({ trace }: { trace: Trace }) {
       <TimeField x={x} />
       <div className="card stage">
         <div className="stage-head">
-          <ModeBadge trace={trace} />
           <ReplayAgain replay={replay} />
-          {(trace.mode === "LIVE" || (trace.mode === "REPLAY" && trace.usage.length > 0)) &&
-            <span className="meta trace-cost">{trace.mode === "LIVE" ? <>Cost ${traceCost(trace).totalUsd.toFixed(3)} ({trace.budget.credits} Tavily credits)</> : <>Recorded run cost ${traceCost(trace).totalUsd.toFixed(3)}</>}</span>}
         </div>
         <h1 tabIndex={-1} className="quote trace-claim">{trace.claim.text}</h1>
+        {/* One quiet line instead of a badge and a cost row above the title (#259 item 3). */}
+        <p className="meta trace-meta" data-mode={badgeFor(trace).label}>{traceMeta(trace)}</p>
         <StopCard trace={trace} />
         <button type="button" className="roots-summary" onClick={() => { const section = document.getElementById("copies-and-roots"); section?.scrollIntoView({ behavior: "instant", block: "start" }); section?.focus({ preventScroll: true }); }}>
           <span>{independenceLine(trace)}</span>

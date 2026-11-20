@@ -98,3 +98,11 @@ body { isolation: isolate; }
 .trace-page .earliest-row p { margin: 0; }
 .trace-page .earliest-line { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; overflow-wrap: anywhere; }
 .trace-page .earliest-proof { margin-top: 4px !important; color: var(--ink-2); font-size: 14px; overflow-wrap: anywhere; }
+
+/* #259 item 3: the replay control alone on the head row, the mode and cost as one quiet line under the claim, and the
+   verdict as a section heading the same size as the other two. */
+.trace-page .stage-head { justify-content: flex-end; min-height: 0; }
+.trace-page .trace-meta { margin: 12px 0 0; color: var(--ink-2); font-size: 15px; }
+.trace-page .stage .stop-title { font-size: 26px; font-weight: 600; letter-spacing: -0.015em; }
+@media (max-width: 600px) { .trace-page .stage .stop-title { font-size: 22px; } }
+@media (min-width: 601px) { .trace-page .stage-head { position: absolute; top: 0; right: 0; } }

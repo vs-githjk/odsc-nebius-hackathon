@@ -82,17 +82,17 @@ describe("TraceView", () => {
       expect(html.match(/class="root-dot"/g) ?? []).toHaveLength(counts.independentRoots);
       expect(html.match(/class="root-dot hollow"/g) ?? []).toHaveLength(counts.copies);
       expect(html.includes("No origin is named on purpose")).toBe(trace.decision.state !== "ORIGIN_FOUND");
-      if (trace.mode === "REPLAY" && trace.usage.length) expect(html).toContain(`Recorded run cost $${traceCost(trace).totalUsd.toFixed(3)}`);
-      else expect(html).not.toContain("Recorded run cost");
+      if (trace.mode === "REPLAY" && trace.usage.length) expect(html).toContain(`run cost $${traceCost(trace).totalUsd.toFixed(3)}`);
+      else expect(html).not.toContain("run cost");
     }
   });
 
   it("omits cost for recordings without usage and retains live credits", () => {
     const trace = traces.find(t => t.id === "dev-10")!;
-    expect(renderToStaticMarkup(<TraceView trace={{ ...trace, usage: [] }} />)).not.toContain("Recorded run cost");
+    expect(renderToStaticMarkup(<TraceView trace={{ ...trace, usage: [] }} />)).not.toContain("run cost");
     const live = renderToStaticMarkup(<TraceView trace={{ ...trace, mode: "LIVE" }} />);
-    expect(live).toContain(`Cost $${traceCost(trace).totalUsd.toFixed(3)} (${trace.budget.credits} Tavily credits)`);
-    expect(live).not.toContain("Recorded run cost");
+    expect(live).toContain(`cost $${traceCost(trace).totalUsd.toFixed(3)} (${trace.budget.credits} Tavily credits)`);
+    expect(live).not.toContain("run cost");
   });
 
   it("draws the band as swarms of copies, one dot per page, with the active cluster named by its site", () => {
