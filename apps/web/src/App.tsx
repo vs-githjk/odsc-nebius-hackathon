@@ -2,6 +2,7 @@ import { useEffect, useState, type MouseEvent } from "react";
 import type { Trace } from "pz/schema";
 import { HowItWorks } from "./components/HowItWorks.tsx";
 import { TracesPage } from "./components/TracesPage.tsx";
+import { NotFound, shownAddress } from "./components/NotFound.tsx";
 import { AnswerPage, AnswerTrace } from "./components/AnswerPage.tsx";
 import { Footer, Landing } from "./components/Landing.tsx";
 import { BackToResults, RouteExperience } from "./components/RouteExperience.tsx";
@@ -29,15 +30,22 @@ const hero = heroTrace(traces);
 // matched: the claim box opened a recording or sample for a pasted claim, not a fresh trace.
 export function TraceRoute({ id, matched, all = traces }: { id: string; matched: boolean; all?: Trace[] }) {
   const trace = all.find((t) => t.id === id);
+  if (!trace) {
+    return (
+      <NotFound title="No trace at this address" back={{ label: "Search the recorded traces", href: "#/traces" }}>
+        <p>There is no recorded trace called <code>{shownAddress(id)}</code>. The link may be old or mistyped.</p>
+      </NotFound>
+    );
+  }
   return (
     <main className="wrap trace-page">
       <BackToResults />
-      {trace && matched && (
+      {matched && (
         <p className="matched" role="status">
           {matchedNote(trace)}
         </p>
       )}
-      {trace ? <TraceView key={trace.id} trace={trace} /> : <h1 className="error" role="alert">No trace called {id}.</h1>}
+      <TraceView key={trace.id} trace={trace} />
     </main>
   );
 }
@@ -82,6 +90,10 @@ export function App() {
       {route.name === "trace" ? (
         <TraceRoute id={route.id} matched={route.id === matchedId} all={[...traces, ...liveTraces]} />
       ) : route.name === "answer" ? (route.n === null ? <AnswerPage /> : <AnswerTrace n={route.n} />
+      ) : route.name === "notFound" ? (
+        <NotFound title="Nothing at this address">
+          <p>Patient Zero has no page at <code>{shownAddress(route.hash)}</code>.</p>
+        </NotFound>
       ) : route.name === "how" ? <HowItWorks hero={hero} /> : route.name === "traces" ? <TracesPage traces={traces} errors={errors} /> : (
         <Landing traces={traces} hero={hero} focusKey={focusKey} onMatch={setMatchedId} onLive={openLive} />
       )}
