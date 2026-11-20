@@ -42,7 +42,8 @@ describe("MCP stdio tools", () => {
     await dispatch(message("initialize"));
     const invalid = await dispatch(message("tools/call", { name: "pz_trace", arguments: { pipeline: "private.ts" } }));
     expect(invalid).toMatchObject({ result: { isError: true } }); expect(run).not.toHaveBeenCalled();
-    const failed = await dispatch(message("tools/call", { name: "pz_trace", arguments: { claim: "claim" } }));
+    const failed = await dispatch(message("tools/call", { name: "pz_trace", arguments: { claim: "--pipeline=private.ts" } }));
+    expect(run.mock.calls[0]![0]).toEqual(["--json", "--", "--pipeline=private.ts"]);
     expect(JSON.stringify(failed)).not.toContain("private-provider-secret");
   });
   it("refuses LIVE without keys before any provider request", async () => {
