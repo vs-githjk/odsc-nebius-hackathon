@@ -13,11 +13,11 @@ const REPO = "https://github.com/vs-githjk/odsc-nebius-hackathon";
 const blob = (path: string) => `${REPO}/blob/main/${path}`;
 const traceHref = (t: Trace) => `#/t/${encodeURIComponent(t.id)}`;
 
-function domainOf(url: string): string {
+export function domainOf(url: string): string {
   try { return new URL(url).hostname.replace(/^www\d?\./, ""); } catch { return url; }
 }
 
-function when(date: string | null, precision?: "day" | "month" | "year"): string {
+export function when(date: string | null, precision?: "day" | "month" | "year"): string {
   if (!date) return "undated";
   const [y, m, d] = date.split("-");
   if (precision === "year" || !m) return y!;
@@ -26,7 +26,7 @@ function when(date: string | null, precision?: "day" | "month" | "year"): string
 }
 
 // How a page's date was known, in words, from the trace's own date source.
-function dateSource(trace: Trace, url: string): string {
+export function dateSource(trace: Trace, url: string): string {
   const node = trace.nodes.find((n) => n.url === url);
   if (!node) return "";
   if (node.date.source === "wayback_first_capture") return node.date.value ? "first archived by the Wayback Machine" : "date not confirmed";
