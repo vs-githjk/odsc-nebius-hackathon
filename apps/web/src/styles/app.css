@@ -117,3 +117,11 @@ body { isolation: isolate; }
 
 /* #259: an inferred link does not make a page a copy, so a root's possible source is muted, not a fact. */
 .root-relation.inferred { color: var(--ink-2); font-style: italic; }
+
+/* Copy link sits beside Replay the walk and looks the same: a quiet text control, 44 px tall. */
+.copy-link { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 10px; border: 0; border-radius: 10px; background: transparent; color: var(--ink-2); font: 500 14px var(--font-ui); cursor: pointer; }
+.copy-link:hover { background: var(--bg-2); color: var(--ink); }
+.copy-link:focus-visible { outline: 2px solid var(--action); outline-offset: 2px; }
+.copy-link svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.trace-page .stage-head { gap: 4px; }
+.trace-page .stage-head .replay-again { margin-right: 0; }
