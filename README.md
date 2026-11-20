@@ -6,6 +6,8 @@
 
 Demo video (2 to 3 min): [SLOT: link]
 
+Team: Vidyut ([@vs-githjk](https://github.com/vs-githjk)), Rohan ([@rohanrastogi311](https://github.com/rohanrastogi311)), Anoop ([@AnoopIbrampur](https://github.com/AnoopIbrampur)), Rishit ([@RishitRai](https://github.com/RishitRai)).
+
 **What makes it different**
 - The exact sentence on every page, each dated with how the date was proven, and a link you can open.
 - Copies are counted apart from independent roots, so ten repeats of one source count once.
@@ -24,7 +26,7 @@ Demo video (2 to 3 min): [SLOT: link]
 *The landing, and a real recorded trace ([dev-10](eval/dev-traces/dev-10.json)): found back to January 2016, it ends with the trail going cold because a page it cites could not be opened, so no origin is named.*
 <!-- numbers ok: 1440 (screenshot width in the file names) -->
 
-Built by team **Says Who** for the ODSC x Nebius Hackathon 2026: Vidyut ([@vs-githjk](https://github.com/vs-githjk)), Rohan ([@rohanrastogi311](https://github.com/rohanrastogi311)), Anoop ([@AnoopIbrampur](https://github.com/AnoopIbrampur)) and Rishit ([@RishitRai](https://github.com/RishitRai)), on **Nebius Token Factory** (typed questions, strict JSON schemas, first-token logprobs) and **Tavily** (search and extract), with the Wayback Machine for dates.
+Team **Says Who**, ODSC x Nebius Hackathon 2026. Built on **Nebius Token Factory** (typed questions, strict JSON schemas, first-token logprobs) and **Tavily** (search and extract), with the Wayback Machine for dates.
 
 ## Where it stands
 
