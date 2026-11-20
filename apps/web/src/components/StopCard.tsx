@@ -13,8 +13,8 @@ export function StopCard({ trace }: { trace: Trace }) {
     .sort((a, b) => (a.date.value ?? "9999").localeCompare(b.date.value ?? "9999"));
   return (
     <section className={`stop-card ${card.tone}`} aria-label="How this trace ended">
-      <h2 className="trace-section-title">The ending</h2>
-      <h3 className="stop-title"><span className={tone ? "ramp-dot" : "ramp-dot empty"} style={{ ["--tone" as string]: tone ?? "var(--ink-3)" }} aria-hidden="true" />{card.title}</h3>
+      {/* The verdict is the section heading itself, at the same level and size as the other sections (#259 item 3). */}
+      <h2 className="trace-section-title stop-title"><span className="visually-hidden">The ending: </span><span className={tone ? "ramp-dot" : "ramp-dot empty"} style={{ ["--tone" as string]: tone ?? "var(--ink-3)" }} aria-hidden="true" />{card.title}</h2>
       <p className="stop-sentence">{card.sentence}</p>
       {trace.decision.state !== "ORIGIN_FOUND" && <p className="stop-restraint">No origin is named on purpose: the evidence does not meet the origin rules.</p>}
       {/* One list: each earliest page with its date, how that date is proven and what could not be checked (#259). */}

@@ -35,5 +35,5 @@ export function BackToResults() {
     const hash = target();
     navigation.restore = hash;
     window.location.hash = hash;
-  }}>Back to results</a>;
+  }}><svg className="back-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6" /></svg>Back to results</a>;
 }

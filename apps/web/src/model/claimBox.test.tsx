@@ -62,6 +62,6 @@ describe("the matched note", () => {
     expect(renderToStaticMarkup(<TraceRoute id="sample-rich" matched={false} all={traces} />)).not.toContain("Matched a");
     const live = renderToStaticMarkup(<TraceRoute id="live-x" matched all={[real]} />);
     expect(live).toContain("Matched a recorded trace, recorded November 17, 2026.");
-    expect(live).toContain('class="back" href="#/">Back to results</a>');
+    expect(live).toMatch(/class="back" href="#\/">.*Back to results<\/a>/);
   });
 });
