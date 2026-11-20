@@ -214,3 +214,4 @@
 - 07:58 ET: judge morning 81.5 (+5), plan/judge-morning.md; fixes dispatched: Rishit H2/M3/M4/L7 (#259), Rohan M5/M6 (#250), Anoop copy sweep (#257), all due 12:00
 - 09:47 ET: merged #319 (S7 same-claim note) and #320 (origin named, listed first, re-decision disclosed), all SUCCESS
 - 10:48 ET: merged #321 (phone gallery shot), all SUCCESS
+- 11:40 ET: merged #322 (XO: make judge leads with dev-10; CLI names unread page; online-by wording), all SUCCESS
