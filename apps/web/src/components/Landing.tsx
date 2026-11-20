@@ -85,7 +85,7 @@ function HeroTrace({ trace }: { trace: Trace }) {
   const { pages, independentRoots, copies } = independence(trace);
   const years = stops.map((s) => s.date?.slice(0, 4)).filter(Boolean);
   return (
-    <a className="lp-hero-trace" href={traceHref(trace)} aria-label={`Open the recorded trace: ${trace.claim.text}`}>
+    <a className="lp-hero-trace" href={traceHref(trace)}>
       <span className="lp-ht-head">
         <span className="lp-ht-live"><i aria-hidden="true" />A recorded trace, replayed</span>
         {years.length > 1 && <span className="meta">{years[0]} back to {years[years.length - 1]}</span>}
