@@ -4,6 +4,7 @@ import { type AnswerCheck, answerSegments, readAnswerCheck } from "../model/answ
 import { stopCard } from "../model/stopCard.ts";
 import { TraceView } from "./TraceView.tsx";
 import { when } from "./Landing.tsx";
+import { NotFound } from "./NotFound.tsx";
 
 const FILE = "fixtures/answers/s7-answer.json";
 const BLOB = `https://github.com/vs-githjk/odsc-nebius-hackathon/blob/main/${FILE}`;
@@ -99,6 +100,13 @@ export function AnswerPage() {
 export function AnswerTrace({ n }: { n: number }) {
   const check = useAnswerCheck();
   const stat = check && check !== "failed" ? check.stats.find((s) => s.n === n) : undefined;
+  if (check && check !== "failed" && !stat) {
+    return (
+      <NotFound title="No statistic at this address" back={{ label: "Back to the answer", href: "#/answer" }}>
+        <p>The recorded answer has {check.stats.length} statistics, so there is no statistic {n}.</p>
+      </NotFound>
+    );
+  }
   return (
     <main className="wrap trace-page">
       <a className="back" href="#/answer">Back to the answer</a>
@@ -109,7 +117,7 @@ export function AnswerTrace({ n }: { n: number }) {
             <TraceView key={n} trace={stat.trace} />
           </>
         )
-        : <h1 className="error" role="alert">The answer has no statistic {n}.</h1>}
+        : null}
     </main>
   );
 }

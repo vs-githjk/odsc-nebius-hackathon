@@ -1197,3 +1197,30 @@
   color: var(--ink);
   font-weight: 600;
 }
+
+/* Not found (#257 item 9). */
+.nf-detail p {
+  margin: 0;
+}
+
+.nf-detail code {
+  padding: 0 4px;
+  border-radius: 4px;
+  background: var(--bg-2);
+  font-size: 0.85em;
+  overflow-wrap: anywhere;
+}
+
+.nf-ways {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  margin: 32px 0 0;
+  padding-top: 24px;
+  border-top: 2px solid var(--ink);
+}
+
+.not-found .lp-hero {
+  min-height: 60vh;
+}
