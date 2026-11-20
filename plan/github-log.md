@@ -165,3 +165,4 @@
 - 2026-11-19 19:50 ET: merged #267 (Anoop: README top with new landing + real dev-10 trace, light/dark). #266 waiting on conflict fix.
 - 2026-11-19 19:55 ET: merged #268 (Anoop: favicon, meta, share card).
 - 2026-11-19 20:00 ET: merged #266 (AI answer page), #269 (traces list). Anoop 6/9 done.
+- 2026-11-19 20:15 ET: merged #269 (traces list), #270 (a11y: Lighthouse 100 all pages light/dark, docs/accessibility.md). Anoop 7/9.
