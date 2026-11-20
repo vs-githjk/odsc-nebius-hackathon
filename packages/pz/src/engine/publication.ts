@@ -11,14 +11,6 @@ import type { UsageLog } from "../usage/log.ts";
 
 const NAMES = ["citation_publication_date", "citation_date", "article:published_time", "datepublished", "dc.date", "dc.date.issued"];
 
-const attr = (tag: string, name: string) => {
-  // Consume whole values so attribute-like text inside a quoted value cannot become evidence.
-  for (const m of tag.matchAll(/\s([^\s"'<>/=]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|[^\s"'=<>`]+))?/g)) {
-    if (m[1]!.toLowerCase() === name.toLowerCase()) return m[2] ?? m[3] ?? null;
-  }
-  return null;
-};
-
 // Scholarly sites write 2004/06/15; that is the same calendar day as 2004-06-15, so only the separator changes. A
 // partial date (2004/06) stays partial and dating.ts leaves it unconfirmed.
 const clean = (value: string) => {
@@ -50,12 +42,20 @@ function jsonLdDates(html: string): string[] {
 
 // The first publication date the page declares about itself, in this order: citation_publication_date, citation_date,
 // article:published_time (also as itemprop datePublished), JSON-LD datePublished, DC.date. Nothing is chosen by age.
+//
+// A meta tag inside a teaser block (related, more, popular, latest, recommend, teaser, sidebar, widget) or inside nav,
+// aside, header or footer belongs to another document and does not count, nor does one inside hidden content, a comment
+// or a script. And a page holding more than one datePublished (meta, time, RDFa, anything) is ambiguous, so its
+// datePublished is not read at all (XO's probe on #285, case 11).
 export function publicationDate(html: string): string | null {
-  const metas = [...html.matchAll(/<meta\b[^>]*>/gi)].map((m) => m[0]);
+  const scan = scanPage(html);
+  const datePublished = scan.marked.filter((m) => /datepublished/.test(`${m.attrs.get("itemprop") ?? ""} ${m.attrs.get("property") ?? ""} ${m.attrs.get("name") ?? ""}`.toLowerCase())).length;
   const byName = new Map<string, string>();
-  for (const tag of metas) {
-    const key = (attr(tag, "name") ?? attr(tag, "property") ?? attr(tag, "itemprop"))?.toLowerCase();
-    const content = attr(tag, "content");
+  for (const { attrs, ctx } of scan.metas) {
+    if (ctx.zone || ctx.hidden) continue;
+    const key = (attrs.get("name") ?? attrs.get("property") ?? attrs.get("itemprop"))?.toLowerCase();
+    const content = attrs.get("content");
+    if (key === "datepublished" && datePublished > 1) continue;
     if (key && content && NAMES.includes(key) && !byName.has(key)) byName.set(key, content);
   }
   for (const name of NAMES.slice(0, 3)) if (byName.has(name)) return clean(byName.get(name)!);
@@ -361,7 +361,8 @@ const END_TAG = /<\/([a-zA-Z][a-zA-Z0-9:-]*)[^>]*>/y;
 const BLOCK_NAMES = /related|more|popular|latest|recommend|teaser|sidebar|widget|trending|similar|also|next|promo|card|recirc|feed|carousel|comment/;
 const MARKED_CLASS = /(?:^|[\s_-])(?:published|pubdate|entry-date|post-date|date-published|publish-date|article-date|dateline)(?:$|[\s_-])/;
 
-type Ctx = { name: string; hidden: boolean; blocked: boolean; article: boolean; list: boolean };
+// zone: inside a teaser block or nav, aside, header or footer (blocked is zone plus any itemscope).
+type Ctx = { name: string; hidden: boolean; blocked: boolean; zone: boolean; article: boolean; list: boolean };
 
 function attrsOf(source: string): Map<string, string> {
   const out = new Map<string, string>();
@@ -403,10 +404,18 @@ function datesInValue(value: string): string[] {
   return out.filter((x): x is string => x !== null);
 }
 
-export function bylineDate(html: string, url = "", skip?: BylineGuard): string | null {
-  const on = (guard: BylineGuard) => guard !== skip;
+type Marked = { name: string; attrs: Map<string, string>; ctx: Ctx; raw: string; at: number };
+type Scan = {
+  marked: Marked[]; metas: { attrs: Map<string, string>; ctx: Ctx }[]; times: string[]; attrDates: string[];
+  jsonLdDates: string[]; rawDates: string[]; text: string; hiddenMention: boolean; articles: number;
+};
+
+// One pass over a page's HTML: every tag with where it sits (hidden, in a teaser zone, in an itemscope, in the article,
+// in a list), skipping comments and the inside of raw-text blocks. Shared by publicationDate and bylineDate.
+export function scanPage(html: string): Scan {
   const stack: Ctx[] = [];
-  const marked: { name: string; attrs: Map<string, string>; ctx: Ctx; raw: string; at: number }[] = [];
+  const marked: Marked[] = [];
+  const metas: { attrs: Map<string, string>; ctx: Ctx }[] = [];
   let articleChars = 0;
   const times: string[] = [];
   const attrDates: string[] = [];
@@ -415,7 +424,7 @@ export function bylineDate(html: string, url = "", skip?: BylineGuard): string |
   let text = "";
   let hiddenMention = false;
   let articles = 0;
-  const top = (): Ctx => stack[stack.length - 1] ?? { name: "", hidden: false, blocked: false, article: false, list: false };
+  const top = (): Ctx => stack[stack.length - 1] ?? { name: "", hidden: false, blocked: false, zone: false, article: false, list: false };
 
   let i = 0;
   while (i < html.length) {
@@ -464,10 +473,12 @@ export function bylineDate(html: string, url = "", skip?: BylineGuard): string |
       hidden: parent.hidden || name === "template" || attrs.has("hidden") || attrs.get("aria-hidden") === "true"
         || /display:none|visibility:hidden/.test(style) || (name === "input" && attrs.get("type")?.toLowerCase() === "hidden"),
       blocked: parent.blocked || BLOCK_TAGS.has(name) || attrs.has("itemscope") || BLOCK_NAMES.test(classId),
+      zone: parent.zone || BLOCK_TAGS.has(name) || BLOCK_NAMES.test(classId),
       article: parent.article || name === "article" || name === "main",
       list: parent.list || LIST_TAGS.has(name),
     };
     if (name === "article" && !ctx.hidden) articles++;
+    if (name === "meta") metas.push({ attrs, ctx });
     // Count every element that marks itself as a publication date, whatever its tag or context.
     const props = `${attrs.get("itemprop") ?? ""} ${attrs.get("property") ?? ""} ${attrs.get("name") ?? ""}`.toLowerCase();
     const cls = (attrs.get("class") ?? "").toLowerCase();
@@ -490,7 +501,12 @@ export function bylineDate(html: string, url = "", skip?: BylineGuard): string |
     }
     if (!VOID.has(name) && !/\/\s*>$/.test(raw)) stack.push(ctx);
   }
+  return { marked, metas, times, attrDates, jsonLdDates, rawDates, text, hiddenMention, articles };
+}
 
+export function bylineDate(html: string, url = "", skip?: BylineGuard): string | null {
+  const on = (guard: BylineGuard) => guard !== skip;
+  const { marked, times, attrDates, jsonLdDates, rawDates, text, hiddenMention, articles } = scanPage(html);
   if (on("single") && marked.length !== 1) return null;
   const candidate = marked[0];
   if (!candidate) return null;
