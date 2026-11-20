@@ -1,4 +1,5 @@
 import type { Trace } from "pz/schema";
+import { pickedOrigin } from "./origin.ts";
 
 const CAPS: Record<NonNullable<Trace["budget"]["capHit"]>, string> = {
   credits: "credit cap",
@@ -21,7 +22,9 @@ export function endingSentence(trace: Trace): string {
     case "CONFLICTING":
       return "The earliest pages give different numbers.";
     case "ORIGIN_FOUND":
-      return "The earliest page is a primary source with a confirmed date.";
+      return pickedOrigin(trace)?.node.date.source === "wayback_first_capture"
+        ? "The earliest page is a primary source, online by this date."
+        : "The earliest page is a primary source with a confirmed date.";
     case "TRAIL_GOES_COLD": {
       const reasons = trace.decision.reasons;
       // #307: a page dated earlier than the would-be origin was not ruled out, so no origin is named.

@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { traceCost } from "../../../../packages/pz/src/usage/cost.ts";
 import type { Trace } from "pz/schema";
 import { closeDetails } from "../model/traceKeyboard.ts";
+import { redecidedNote } from "../model/redecided.ts";
 import { redStop } from "../model/hop.ts";
 import { dateEvidence, possibleVariants, whatChanged } from "../model/receipt.ts";
 import { scrubberStops, stopNote } from "../model/scrubber.ts";
@@ -80,6 +81,7 @@ export function TraceView({ trace }: { trace: Trace }) {
         <h1 tabIndex={-1} className="quote trace-claim">{trace.claim.text}</h1>
         {/* One quiet line instead of a badge and a cost row above the title (#259 item 3). */}
         <p className="meta trace-meta" data-mode={badgeFor(trace).label}>{traceMeta(trace)}</p>
+        {redecidedNote(trace) && <p className="trace-redecided">{redecidedNote(trace)}</p>}
         <StopCard trace={trace} />
         <button type="button" className="roots-summary" onClick={() => { const section = document.getElementById("copies-and-roots"); section?.scrollIntoView({ behavior: "instant", block: "start" }); section?.focus({ preventScroll: true }); }}>
           <span>{independenceLine(trace)}</span>

@@ -169,6 +169,11 @@ body { isolation: isolate; }
   .trace-page .stop-title.live-arrival { animation: none; }
 }
 
+/* Origin identity and replay provenance wrap naturally in both themes, without adding motion. */
+.stop-origin-detail { max-width: 65ch; margin: 8px 0 16px; color: var(--ink); font-size: 18px; line-height: 1.5; overflow-wrap: anywhere; }
+.trace-redecided { max-width: 75ch; margin: 8px 0 0; color: var(--ink-2); font-size: 14px; line-height: 1.5; overflow-wrap: anywhere; }
+@media (max-width: 600px) { .stop-origin-detail { font-size: 16px; } }
+
 /* #311: under Origin found, unread pages the decision set aside are shown, muted, as transparency rather than doubt. */
 .stop-unread.set-aside { margin-top: 16px; padding-left: 12px; border-left: 2px solid var(--line-2); color: var(--ink-2); font-size: 14px; }
 .stop-unread.set-aside p { margin: 0; overflow-wrap: anywhere; }

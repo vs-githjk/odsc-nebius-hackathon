@@ -8,6 +8,14 @@ const { traces } = loadTraces();
 const rich = traces.find(t => t.id === "sample-rich")!;
 
 describe("date evidence", () => {
+  it("uses short capture and registry labels for the recorded origins", () => {
+    const captured = traces.find(t => t.id === "dev-10")!;
+    const node = captured.nodes.find(n => n.id === "n7")!;
+    const span = captured.spans.find(s => s.nodeId === node.id)!;
+    expect(dateEvidence(node, span, true)).toEqual({ label: "Online by this date: first Wayback Machine capture", url: span.waybackUrl });
+    const published = traces.find(t => t.id === "dev-09")!.nodes.find(n => n.id === "n3")!;
+    expect(dateEvidence(published, undefined, true)).toEqual({ label: "Dated by Crossref", url: null });
+  });
   it("labels the stored source and respects partial date precision", () => {
     const node = rich.nodes[0]!;
     expect(dateEvidence({ ...node, date: { ...node.date, value: "2020-12-31", source: "metadata", precision: "year", kind: "published" } }).label).toBe("Dated by the page's own metadata, 2020.");
