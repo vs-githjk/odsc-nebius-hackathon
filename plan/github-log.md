@@ -193,3 +193,4 @@
 - 2026-11-19 22:45 ET: merged #297 (Anoop README: criteria map, team+video line, Safety, links).
 - 2026-11-19 22:55 ET: merged #300 (How it works polish), #299 (Rishit live-run/trace polish, keyboard, dark). #298 conflicting.
 - 2026-11-19 23:05 ET: merged #298 (README first screen), #301 (landing receipt date).
+- 2026-11-19 23:15 ET: merged #302 (Rishit progress de-dup). Launching evening judge rerun.
