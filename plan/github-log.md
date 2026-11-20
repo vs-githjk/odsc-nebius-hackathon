@@ -195,3 +195,4 @@
 - 2026-11-19 23:05 ET: merged #298 (README first screen), #301 (landing receipt date).
 - 2026-11-19 23:15 ET: merged #302 (Rishit progress de-dup). Launching evening judge rerun.
 - 2026-11-19 23:20 ET: merged #303 (storyboard S4a/S10 fixes); storyboard final per Vidyut's conditional approve.
+- 2026-11-19 23:25 ET: #303 merged while judge-check macOS had a flaky FAILURE (verify 63 s > 60 s budget); XO error, merging before checking all states. Rohan asked to relax budget on hosted runners.
