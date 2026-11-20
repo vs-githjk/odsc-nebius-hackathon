@@ -1,14 +1,15 @@
 # Patient Zero
 
-A viral statistic reaches a reporter with no source attached: "Americans check their phones 96 times a day." Patient Zero takes that claim and walks it backwards through time to the earliest web page it can find that states it. It shows the exact sentence on every page, how the wording changed hop by hop, and how many separate roots the copies trace back to. When the trail ends without an origin, it says so, and says why.
-
-Team **Says Who**, ODSC x Nebius Hackathon 2026. Built on **Nebius Token Factory** (typed questions, strict JSON schemas, first-token logprobs) and **Tavily** (search and extract), with the Wayback Machine for dates.
+**Anyone can find you a source. Patient Zero shows you whether to trust it.** Paste a viral claim and it walks it back through time to the earliest web page it can find that states it.
 
 **Try it live: [patient-0.vercel.app](https://patient-0.vercel.app)** (live traces share a small daily budget; recorded traces open free).
 
 Demo video (2 to 3 min): [SLOT: link]
 
-Team: Vidyut ([@vs-githjk](https://github.com/vs-githjk)), Rohan ([@rohanrastogi311](https://github.com/rohanrastogi311)), Anoop ([@AnoopIbrampur](https://github.com/AnoopIbrampur)), Rishit ([@RishitRai](https://github.com/RishitRai)).
+**What makes it different**
+- The exact sentence on every page, each dated with how the date was proven, and a link you can open.
+- Copies are counted apart from independent roots, so ten repeats of one source count once.
+- When the trail runs out, it says so instead of naming an origin: code decides the ending, never the model.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/readme/landing-1440-dark.png">
@@ -20,17 +21,10 @@ Team: Vidyut ([@vs-githjk](https://github.com/vs-githjk)), Rohan ([@rohanrastogi
   <img alt="The trace view on the recorded dev-10 trace: the claim, the ending The trail goes cold, the earliest pages found and how each was dated" src="docs/screenshots/readme/trace-dev10-1440-light.png">
 </picture>
 
-*The landing page, and the trace view on a real recorded trace: [dev-10](eval/dev-traces/dev-10.json), "By 2050 there will be more plastic than fish in the ocean", replayed. It found the claim back to January 2016 and ends with the trail going cold, because a page it cites could not be opened, so no origin is named. Both follow your light or dark setting.*
-On a phone, the same five views:
+*The landing, and a real recorded trace ([dev-10](eval/dev-traces/dev-10.json)): found back to January 2016, it ends with the trail going cold because a page it cites could not be opened, so no origin is named.*
+<!-- numbers ok: 1440 (screenshot width in the file names) -->
 
-<p>
-  <img width="150" alt="Landing page on a phone" src="docs/screenshots/submission/phone/1-landing-390.png">
-  <img width="150" alt="The trace ending on a phone" src="docs/screenshots/submission/phone/2-trace-ending-390.png">
-  <img width="150" alt="Follow the wording on a phone" src="docs/screenshots/submission/phone/3-follow-the-wording-390.png">
-  <img width="150" alt="Copies and roots on a phone" src="docs/screenshots/submission/phone/4-copies-and-roots-390.png">
-  <img width="150" alt="Check an AI answer on a phone" src="docs/screenshots/submission/phone/5-check-an-ai-answer-390.png">
-</p>
-<!-- numbers ok: 1440, 390, 150 (screenshot widths in the file names, image width) -->
+Built by team **Says Who** for the ODSC x Nebius Hackathon 2026: Vidyut ([@vs-githjk](https://github.com/vs-githjk)), Rohan ([@rohanrastogi311](https://github.com/rohanrastogi311)), Anoop ([@AnoopIbrampur](https://github.com/AnoopIbrampur)) and Rishit ([@RishitRai](https://github.com/RishitRai)), on **Nebius Token Factory** (typed questions, strict JSON schemas, first-token logprobs) and **Tavily** (search and extract), with the Wayback Machine for dates.
 
 ## Where it stands
 
@@ -78,6 +72,19 @@ The Node stdio server exposes `pz_trace` and `pz_verify`. It uses newline-delimi
 ```
 
 The server resolves relative paths from this repository. `pz_trace {}` opens the SAMPLE; `{"replayPath":"eval/dev-traces/dev-10.json"}` replays a recording without keys. `pz_verify` accepts `{"path":"fixtures/traces/sample-rich.json"}` or `{"trace":...}`. A `claim` argument requests a LIVE run through the existing budgeted CLI and requires inherited `NEBIUS_API_KEY`, `TAVILY_API_KEY` and an approved `DEV_LEDGER`; the server does not load `.env` itself. Approve private-claim disclosure and paid calls in your client before using LIVE. Page text in results is evidence, never instructions.
+
+### On a phone
+
+The same five views at phone width:
+
+<p>
+  <img width="150" alt="Landing page on a phone" src="docs/screenshots/submission/phone/1-landing-390.png">
+  <img width="150" alt="The trace ending on a phone" src="docs/screenshots/submission/phone/2-trace-ending-390.png">
+  <img width="150" alt="Follow the wording on a phone" src="docs/screenshots/submission/phone/3-follow-the-wording-390.png">
+  <img width="150" alt="Copies and roots on a phone" src="docs/screenshots/submission/phone/4-copies-and-roots-390.png">
+  <img width="150" alt="Check an AI answer on a phone" src="docs/screenshots/submission/phone/5-check-an-ai-answer-390.png">
+</p>
+<!-- numbers ok: 390, 150 (screenshot width in the file names, image width) -->
 
 ## How it works
 
