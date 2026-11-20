@@ -103,7 +103,12 @@ export function AnswerTrace({ n }: { n: number }) {
     <main className="wrap trace-page">
       <a className="back" href="#/answer">Back to the answer</a>
       {check === null || check === "failed" ? <Loading check={check} />
-        : stat ? <TraceView key={n} trace={stat.trace} />
+        : stat ? (
+          <>
+            <p className="matched" role="status">Statistic {stat.n} of {check.stats.length} in the recorded answer: <strong>{stat.number}</strong>. This trace follows that number.</p>
+            <TraceView key={n} trace={stat.trace} />
+          </>
+        )
         : <h1 className="error" role="alert">The answer has no statistic {n}.</h1>}
     </main>
   );
