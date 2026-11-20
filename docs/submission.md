@@ -98,5 +98,4 @@ The README's eval section, once the slots above are filled: [README.md](../READM
 
 ## Video link
 
-[SLOT: the demo video, about 2:15, script in docs/demo-script.md (#158)]
-<!-- numbers ok: 2, 15 (the planned video length, 2:15, from the demo script in #158) -->
+[Patient Zero demo on YouTube](https://youtu.be/VFKoXNjVgNU), unlisted. Script in [docs/demo-script.md](demo-script.md).
