@@ -159,3 +159,4 @@
 - 2026-11-19 17:55 ET: reviewed #262 (Rishit app inside draft): FIX x8 (focus ring, cut-off background, copies-vs-roots weak, replay empty state, why-checkable strip, emoji chain, samples, live-run screenshots).
 - 2026-11-19 18:35 ET: #262 pushed 3 commits for XO fixes 1-5 + value-first receipts; follow-up list of 4 small items.
 - 2026-11-19 19:00 ET: merged #260 (Anoop landing). Opened #263 (generic headline, no competitor names; no whole-answer overclaim). Anoop given 9-item list on #257 (de-AI-accent pass, How it works, AI answer replay page, README hero, share card, traces list, a11y, Devpost gallery, 404). Rishit told to merge main + same rules.
+- 2026-11-19 19:20 ET: merged #262 (Rishit app inside). Next list for Rishit on #259 (open on finished state, dedupe, meta line, real live run, 390 pass).
