@@ -196,3 +196,4 @@ Format: [LOCKED|REJECTED|PREFERENCE] decision | why | "Vidyut's words" | date
 - [PREFERENCE] Submission doc: review together with Vidyut later; XO does not merge the submission-final PR until then | "We'll work through it together later. We don't need to do that now." | Fri Nov 20 11:45 ET
 - [LOCKED] Keep competitor names in README week-1 spike table (factual eval record) | "I agree with the recommendation... That's fine." | Fri Nov 20 11:47 ET
 - [LOCKED] No submission-doc agent; the form is 8 fields, filled with XO | "We don't need a submission agent doing anything right now." | Fri Nov 20 11:47 ET
+- [LOCKED] Submit now without the live-run clip; repo frozen | team said no need | Fri Nov 20 12:57 ET
