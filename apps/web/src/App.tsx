@@ -2,6 +2,7 @@ import { useEffect, useState, type MouseEvent } from "react";
 import type { Trace } from "pz/schema";
 import { HowItWorks } from "./components/HowItWorks.tsx";
 import { TracesPage } from "./components/TracesPage.tsx";
+import { AnswerPage, AnswerTrace } from "./components/AnswerPage.tsx";
 import { Footer, Landing } from "./components/Landing.tsx";
 import { BackToResults, RouteExperience } from "./components/RouteExperience.tsx";
 import { ThemeToggle } from "./components/ThemeToggle.tsx";
@@ -80,6 +81,7 @@ export function App() {
       </nav>
       {route.name === "trace" ? (
         <TraceRoute id={route.id} matched={route.id === matchedId} all={[...traces, ...liveTraces]} />
+      ) : route.name === "answer" ? (route.n === null ? <AnswerPage /> : <AnswerTrace n={route.n} />
       ) : route.name === "how" ? <HowItWorks hero={hero} /> : route.name === "traces" ? <TracesPage traces={traces} errors={errors} /> : (
         <Landing traces={traces} hero={hero} focusKey={focusKey} onMatch={setMatchedId} onLive={openLive} />
       )}
