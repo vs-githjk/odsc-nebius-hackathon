@@ -202,3 +202,4 @@
 - 2026-11-20 00:15 ET: #309 origin experiment A verified (dev-09, dev-10 ORIGIN_FOUND, 0 false, G4 fixed). XO requested narrower unread exemption (only off-topic meta) + copy updates in same PR. Video ending decision to Vidyut.
 - 2026-11-20 00:30 ET: merged #310 (origin experiment finished; dev-09, dev-10 ORIGIN_FOUND, 0 false). Closed #309. Rishit on script/storyboard new ending.
 - 2026-11-20 00:45 ET: merged #311 (transparent 'Not counted against this origin', shared bearing logic; XO replay unchanged), #312 (video ending: dev-10 Origin found; 2 new voice lines for Vidyut).
+- 2026-11-20 00:55 ET: cap $2.50 live confirmed (status capUsd 2.5, spent $0.23). Vidyut recording voiceover tonight from ~/Desktop/patient-zero-video/voiceover.html (S8 uses pre-held-out line).
