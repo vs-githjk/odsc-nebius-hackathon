@@ -172,3 +172,5 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [18:15 PT] rohanrastogi311 #118: fresh-checkout keyless judge script and Linux/macOS CI matrix; local fresh clone passes in 45s | @vs-githjk review judge-check PR; macOS result awaits CI
 
 - [18:31 PT] rohanrastogi311 #132: Node stdio MCP trace/verify, keyless replay, existing LIVE ledger gates; six protocol/accounting tests and 1212-test verify pass | @vs-githjk review MCP PR; no paid calls
+
+- [18:44 PT] rohanrastogi311 #224 continuation: shortened whole-claim phrases retain the full subject in atoms, matching and queries; legacy quotes/ranges unchanged; verify green; saved-trace E2 unchanged, E3 unmeasured | @vs-githjk review own-branch continuation
