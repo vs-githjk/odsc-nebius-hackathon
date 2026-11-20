@@ -1,7 +1,7 @@
 {
   "mode": "hackathon",
   "name": "Patient Zero (team Says Who), ODSC x Nebius Hackathon 2026",
-  "stage": "H5-plan",
+  "stage": "submitted",
   "deadline": "2026-11-20 (Friday; exact time and timezone UNVERIFIED)",
   "approvals": {
     "gate1": {
@@ -17,7 +17,10 @@
       "at": "Thu Nov 19 22:20 EST 2026",
       "quote": "Storyboard approve as long as it's the strongest version available"
     },
-    "submit": null,
+    "submit": {
+      "at": "Fri Nov 20 2026 ET",
+      "quote": "i submitted it its fine"
+    },
     "script": {
       "at": "Thu Nov 19 21:35 EST 2026",
       "quote": "Approve the script."

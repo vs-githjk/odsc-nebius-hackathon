@@ -197,3 +197,4 @@ Format: [LOCKED|REJECTED|PREFERENCE] decision | why | "Vidyut's words" | date
 - [LOCKED] Keep competitor names in README week-1 spike table (factual eval record) | "I agree with the recommendation... That's fine." | Fri Nov 20 11:47 ET
 - [LOCKED] No submission-doc agent; the form is 8 fields, filled with XO | "We don't need a submission agent doing anything right now." | Fri Nov 20 11:47 ET
 - [LOCKED] Submit now without the live-run clip; repo frozen | team said no need | Fri Nov 20 12:57 ET
+- [LOCKED] Submitted by Vidyut | "i submitted it its fine" | Fri Nov 20 13:00 ET

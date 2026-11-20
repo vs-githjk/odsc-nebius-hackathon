@@ -194,3 +194,9 @@ Next, in order (when Vidyut says "go"):
 - Rishit: raw video captures (S1 to S11), then #315 (gallery). Rohan: held-out result file and the README/submission slots (#250); his status was asked at 00:47. If he's off, the slots go to Anoop.
 - Only the watcher runs overnight. Merge only when everything is SUCCESS. 08:00 judge pass; 10:00 engine cutoff; 14:00 freeze; 18:00 submit.
 - 01:40 ET: **S7 resolved.** #316 guard merged (XO replay of 41 traces: 0 false origins, dev-09/10 still Origin found). The 10:00 rollback decision is no longer needed. #315 and #317 merged too. Open: Rohan's #250 slots (no reply at 01:40; Anoop is backup), Rishit's video captures and the phone re-shoot.
+
+## Fri Nov 20 13:00 ET: SUBMITTED
+- Vidyut submitted the form (repo, video https://youtu.be/VFKoXNjVgNU, live app https://patient-0.vercel.app, README link). The repo is frozen: no merges to main.
+- Final judge estimate: 81.5 measured this morning; about 83.5 to 84 with the video and the fixes that merged after (#319 to #324).
+- Live app: cap $2.50, spent $0.23; kill switch is Redis pz:live_enabled false. Keep it up through judging.
+- Next: a retro (playbook lessons) when Vidyut wants one.
