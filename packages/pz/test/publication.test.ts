@@ -24,6 +24,9 @@ describe("publicationDate reads only what the page declares about itself", () =>
   it("ignores broken JSON-LD and meta tags with no content", () => {
     expect(publicationDate(head('<script type="application/ld+json">{oops</script>', '<meta name="citation_date">'))).toBeNull();
   });
+  it("does not read publication attributes embedded in another attribute's value", () => {
+    expect(publicationDate(head('<meta title=" name=\'citation_date\' content=\'1990-01-01\' ">'))).toBeNull();
+  });
   it("hands #79's dating the value unchanged: a partial date stays unconfirmed, a later date is capped by the capture", () => {
     const capture = { status: "found" as const, firstCapture: "2020-06-24", timestamp: "20200624000000" };
     expect(dateEvidence({ metadata: publicationDate(head('<meta name="citation_publication_date" content="2004/06/15">')) }, capture))
@@ -63,6 +66,8 @@ describe("registry dates", () => {
 
 describe("page fetching is public-only, logged and challenge-aware", () => {
   const html = (...tags: string[]) => `<html><head>${tags.join("")}</head><body>Article text</body></html>`;
+  // A byline is only read inside the page's <article> or <main> (#222), so dateline cases put it there.
+  const inArticle = (...parts: string[]) => `<html><head></head><body><article>${parts.join("")}</article></body></html>`;
   const cache = () => { const m = new Map(); return { get: (k: string) => m.get(k) ?? null, set: (k: string, v: unknown) => { m.set(k, v); } } as never; };
   const publicHost = async () => ["93.184.216.34"];
   function setup(routes: Record<string, () => Response>, resolve: (host: string) => Promise<string[]> = publicHost) {
@@ -127,6 +132,65 @@ describe("page fetching is public-only, logged and challenge-aware", () => {
     const viaMeta = setup({ "https://journal.example/a": page(html('<meta name="citation_doi" content="10.1000/abc.1">')), "https://api.crossref.org/works/10.1000%2Fabc.1": json(work) });
     expect(await viaMeta.evidence("https://journal.example/a")).toBe("2012-04-02");
     expect(viaMeta.usage.rows.map((r) => r.service)).toEqual(["fetch", "crossref"]);
+  });
+
+  it("uses only a publication-marked time element as a dateline fallback", async () => {
+    const url = "https://news.example/a";
+    const unrelated = '<time datetime="1990-01-01">1990</time>';
+    const published = '<time itemprop="datePublished" datetime="2020-06-09">June 9</time>';
+    expect(await setup({ [url]: page(inArticle(unrelated, published)) }).found(url))
+      .toEqual({ date: "2020-06-09", source: "byline" });
+    // Outside <article> or <main> it is not read at all.
+    expect(await setup({ [url]: page(html(unrelated, published)) }).found(url)).toBeNull();
+    expect(await setup({ [url]: page(html(unrelated)) }).found(url)).toBeNull();
+    const teaser = '<aside itemscope><time itemprop="datePublished" datetime="2009-03-01">March 1</time></aside>';
+    // Rendered sidebar dates count as ambiguity; they must not silently vanish.
+    expect(await setup({ [url]: page(html(teaser, published)) }).found(url)).toBeNull();
+    const related = '<div class="related" itemscope itemtype="https://schema.org/NewsArticle">' + published + "</div>";
+    expect(await setup({ [url]: page(html("<p>Posted June 9, 2020</p>", related)) }).found(url)).toBeNull();
+    expect(await setup({ [url]: page(html(related, published)) }).found(url)).toBeNull();
+    const old = '<time itemprop="datePublished" datetime="2009-03-01">Old</time>';
+    const article = '<article itemscope itemtype="https://schema.org/NewsArticle">' + published + '</article>';
+    const webPage = '<div itemscope itemtype="WebPage">' + published + '</div>';
+    expect(await setup({ [url]: page(html(article, '<ul class="related"><li><a>Old</a>' + old + '</li></ul>')) }).found(url)).toBeNull();
+    expect(await setup({ [url]: page(html(webPage, '<section>' + old + '</section>')) }).found(url)).toBeNull();
+    expect(await setup({ [url]: page(html('<p>Posted June 9, 2020</p>', teaser)) }).found(url)).toBeNull();
+    for (const hidden of ['<!-- ' + published + ' -->', '<script type="text/template">' + published + '</script>']) {
+      expect(await setup({ [url]: page(html(hidden)) }).found(url)).toBeNull();
+    }
+    for (const tag of ["template", "textarea", "noscript"]) {
+      const hidden = `<${tag}>${old}</${tag}>`;
+      expect(await setup({ [url]: page(inArticle(hidden)) }).found(url)).toBeNull();
+      // A second datePublished, even one that never renders, makes the page ambiguous (#222): no date.
+      expect(await setup({ [url]: page(inArticle(hidden, published)) }).found(url)).toBeNull();
+    }
+    const decoy = '<time data-itemprop="datePublished" datetime="2009-03-01">March 1</time>';
+    const withData = '<time itemprop="datePublished" data-datetime="2009-03-01" datetime="2020-06-09">June 9</time>';
+    expect(await setup({ [url]: page(html(decoy, withData)) }).found(url)).toBeNull();
+    expect(await setup({ [url]: page(inArticle(withData)) }).found(url))
+      .toEqual({ date: "2020-06-09", source: "byline" });
+  });
+
+  it("counts rendered, loosely marked and quoted-tag dates before accepting a dateline", async () => {
+    const url = "https://news.example/a";
+    const real = '<time itemprop="datePublished" datetime="2020-06-09">June 9</time>';
+    const old = '<time itemprop="datePublished" datetime="2009-03-01">Old</time>';
+    expect(await setup({ [url]: page(html('<time title=" itemprop=\'datePublished\' datetime=\'2009-03-01\' ">Teaser</time>')) }).found(url)).toBeNull();
+    for (const candidate of [
+      '<article><footer>' + real + '</footer></article><div class="related">' + old + '</div>',
+      '<nav class="breadcrumb">' + real + '</nav>' + old,
+      '<nav-menu>' + real + '</nav-menu>' + old,
+      '<aside><aside>' + real + '</aside>' + old + '</aside>',
+      '<time itemprop=datePublished datetime="2020-06-09">June 9</time>' + old,
+      '<time itemprop="datePublished dateCreated" datetime="2020-06-09">June 9</time>' + old,
+      '<article title="a > b" itemscope>' + real + '</article>' + old,
+    ]) expect(await setup({ [url]: page(html(candidate)) }).found(url)).toBeNull();
+    for (const region of ["aside", "nav", "footer"]) {
+      expect(await setup({ [url]: page(html(`<${region}>${old}</${region}>`)) }).found(url)).toBeNull();
+    }
+    // A custom-element name is not a nav region, and a quoted > is not a tag end.
+    expect(await setup({ [url]: page(inArticle('<nav-menu title="a > b">' + real + '</nav-menu>')) }).found(url))
+      .toEqual({ date: "2020-06-09", source: "byline" });
   });
 
   it("reads a page's own meta tags and logs the page GET as a fetch row", async () => {

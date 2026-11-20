@@ -326,6 +326,25 @@ describe("fact-check meta maps through the full pipeline (T49)", () => {
 });
 
 describe("publication evidence in dating (#79)", () => {
+  it("passes a page's byline evidence into the walk result's pages", async () => {
+    const claim = zoo(unique());
+    const page = { ...pagesFor(claim)[0]!, html: '<html><body><article><time itemprop="datePublished" datetime="2010-06-09">June 9</time></article></body></html>' };
+    const net = stub({ pages: [page] });
+    const dir = mkdtempSync(join(tmpdir(), "pz-byline-"));
+    const { pipeline } = buildPipeline({
+      chat: createTokenFactoryClient({ apiKey: "k", fetch: net.fetch, logUsage: () => {} }),
+      embed: createTokenFactoryClient({ apiKey: "k", fetch: net.fetch, logUsage: () => {} }),
+      tavily: deps => createTavily({ ...deps, apiKey: "k", fetch: net.fetch }),
+      archiveFetch: net.fetch, pageFetch: net.fetch, resolveHost: async () => ["93.184.216.34"],
+      pagesDir: join(dir, "pages"), usagePath: join(dir, "usage.jsonl"), cache: { get: () => null, set: () => {} },
+    });
+    const context = { input: claim, pages: [] };
+    const trace = await pipeline.fingerprint(await pipeline.intake(context), context);
+    expect(await pipeline.walk(trace, context)).toMatchObject({
+      pages: expect.arrayContaining([{ url: page.url, text: "", byline: "2010-06-09" }]),
+    });
+  });
+
   const meta = (date: string) => `<html><head><meta name="citation_publication_date" content="${date}"></head><body>x</body></html>`;
   it("dates a page by its own metadata, capped by the archive capture, through the full pipeline", async () => {
     const claim = zoo(unique());

@@ -11,8 +11,13 @@ import type { UsageLog } from "../usage/log.ts";
 
 const NAMES = ["citation_publication_date", "citation_date", "article:published_time", "datepublished", "dc.date", "dc.date.issued"];
 
-const attr = (tag: string, name: string) =>
-  new RegExp(`\\b${name}\\s*=\\s*(?:"([^"]*)"|'([^']*)')`, "i").exec(tag)?.slice(1).find((v) => v !== undefined) ?? null;
+const attr = (tag: string, name: string) => {
+  // Consume whole values so attribute-like text inside a quoted value cannot become evidence.
+  for (const m of tag.matchAll(/\s([^\s"'<>/=]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|[^\s"'=<>`]+))?/g)) {
+    if (m[1]!.toLowerCase() === name.toLowerCase()) return m[2] ?? m[3] ?? null;
+  }
+  return null;
+};
 
 // Scholarly sites write 2004/06/15; that is the same calendar day as 2004-06-15, so only the separator changes. A
 // partial date (2004/06) stays partial and dating.ts leaves it unconfirmed.
@@ -231,7 +236,7 @@ export function crossrefDated(json: unknown): Dated | null {
 
 // `budgetMs` caps the time all lookups of one dating pass may take together: once it is spent, no new request starts and
 // each request's timeout is cut to what is left, so a slow pass cannot eat the time dating and page_type still need.
-export type Evidence = { date: string; precision?: Precision; source: "metadata" | "registry_pubmed" | "registry_pmc" | "registry_crossref" };
+export type Evidence = { date: string; precision?: Precision; source: "metadata" | "byline" | "registry_pubmed" | "registry_pmc" | "registry_crossref" };
 export type EvidenceDeps = { fetch: typeof fetch; cache: Cache; usage: UsageLog; traceId: string; resolve?: Resolver; budgetMs?: number };
 
 // Where a page's own publication date can be found, in this order, stopping at the first date:
@@ -298,6 +303,218 @@ export function createEvidence(deps: EvidenceDeps) {
     if (own) return { date: own, source: "metadata" };
     const cited = /<meta\b[^>]*name\s*=\s*["']citation_doi["'][^>]*content\s*=\s*["'](10\.[^"']+)["']/i.exec(page)?.[1]
       ?? /<meta\b[^>]*content\s*=\s*["'](10\.[^"']+)["'][^>]*name\s*=\s*["']citation_doi["']/i.exec(page)?.[1];
-    return cited ? registry(await crossref(cited), "registry_crossref") : null;
+    const fromRegistry = cited ? registry(await crossref(cited), "registry_crossref") : null;
+    if (fromRegistry) return fromRegistry;
+    // Only an explicitly marked publication dateline that nothing on the page contradicts (bylineDate).
+    const byline = bylineDate(page, url);
+    return byline ? { date: byline, source: "byline" } : null;
   };
+}
+
+// ---------------------------------------------------------------------------------------------------------------------
+// The byline fallback (#222). A page with no meta, JSON-LD or registry date may still mark its own dateline in the body:
+// <time itemprop="datePublished" datetime="2020-06-09">. The danger is a teaser: a related-article card carrying an
+// OLDER datePublished, which would backdate the page. A missed date is fine; a false earlier date is the worst error we
+// can make, so this reads the page conservatively and gives a date only when all of the guards below hold:
+//
+//   single           exactly one element on the whole page (rendered or not) is marked as a publication date
+//   no-hidden-mention no comment, script, style or other raw-text block mentions datePublished
+//   time-only        that element is a <time>
+//   strict-itemprop  its itemprop is exactly "datePublished" (one token, nothing else claims it)
+//   full-date        its datetime is a full calendar day
+//   rendered         it is not inside template, [hidden], aria-hidden or display:none content
+//   unblocked        it is not inside aside, nav, header, footer, svg, math, details, any itemscope, or a block whose
+//                    class or id looks like related, more, popular, latest, recommend, teaser, sidebar or widget
+//   in-article       it is inside <article> or <main>
+//   not-in-list      it is not inside a list, table, link, figure or quotation (where teasers and citations live)
+//   single-article   the page has at most one <article> (several means a listing of cards)
+//   near-top         it comes within the first 400 characters of the article's text, where a byline sits; teasers
+//                    come after the body
+//   later-time       no other <time datetime> anywhere on the page is later
+//   later-attr       no attribute value anywhere (meta content and descriptions, alt, aria-label, title, data-*,
+//                    links) holds a later date, in ISO form or in words
+//   later-raw        no script, noscript, style, xmp or other raw-text block holds a later date (inline JSON, a
+//                    noscript copy of the byline)
+//   later-text       no date in the page's text is later ("Posted June 9 2020", "Updated 2021", 09/06/2020)
+//   later-jsonld     no JSON-LD date is later
+//   later-url        the page's own URL carries no later date (/2020/06/09/)
+//
+// The later-* guards close what markup alone cannot (XO on #222): a lone teaser beside a page whose own date is plain
+// text. If the page's real date appears anywhere on it, a teaser older than that date is refused.
+// `skip` turns one guard off; it exists only for the mutation test, which checks every guard is load-bearing.
+export type BylineGuard =
+  | "single" | "no-hidden-mention" | "time-only" | "strict-itemprop" | "full-date" | "rendered" | "unblocked"
+  | "in-article" | "not-in-list" | "single-article" | "near-top" | "later-time" | "later-attr" | "later-raw" | "later-text" | "later-jsonld" | "later-url";
+export const BYLINE_GUARDS: BylineGuard[] = [
+  "single", "no-hidden-mention", "time-only", "strict-itemprop", "full-date", "rendered", "unblocked",
+  "in-article", "not-in-list", "single-article", "near-top", "later-time", "later-attr", "later-raw", "later-text", "later-jsonld", "later-url",
+];
+
+const RAW_TEXT = new Set(["script", "style", "textarea", "title", "xmp", "iframe", "noembed", "noframes", "noscript", "plaintext"]);
+const VOID = new Set(["area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"]);
+const BLOCK_TAGS = new Set(["aside", "nav", "header", "footer", "svg", "math", "details", "dialog", "object"]);
+const LIST_TAGS = new Set(["ul", "ol", "li", "dl", "dt", "dd", "menu", "table", "tr", "td", "th", "figure", "figcaption", "blockquote", "q", "cite", "a", "button", "label", "select", "option", "marquee", "h2", "h3", "h4", "h5", "h6"]);
+const NEAR_TOP_CHARS = 400;
+// Sticky, so a tag is read whole wherever it starts, however long its attributes are.
+const START_TAG = /<([a-zA-Z][a-zA-Z0-9:-]*)((?:[^>"']|"[^"]*"|'[^']*')*)>/y;
+const END_TAG = /<\/([a-zA-Z][a-zA-Z0-9:-]*)[^>]*>/y;
+const BLOCK_NAMES = /related|more|popular|latest|recommend|teaser|sidebar|widget|trending|similar|also|next|promo|card|recirc|feed|carousel|comment/;
+const MARKED_CLASS = /(?:^|[\s_-])(?:published|pubdate|entry-date|post-date|date-published|publish-date|article-date|dateline)(?:$|[\s_-])/;
+
+type Ctx = { name: string; hidden: boolean; blocked: boolean; article: boolean; list: boolean };
+
+function attrsOf(source: string): Map<string, string> {
+  const out = new Map<string, string>();
+  for (const m of source.matchAll(/([^\s"'<>/=]+)(?:\s*=\s*(?:"([^"]*)"|'([^']*)'|([^\s"'=<>`]+)))?/g)) {
+    const name = m[1]!.toLowerCase();
+    if (!out.has(name)) out.set(name, m[2] ?? m[3] ?? m[4] ?? "");
+  }
+  return out;
+}
+
+const decode = (text: string) => text.replace(/&nbsp;|&#160;|&#xa0;/gi, " ").replace(/&amp;/gi, "&").replace(/&#0*44;/g, ",");
+
+const MONTH = "jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|june?|july?|aug(?:ust)?|sep(?:t(?:ember)?)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?";
+const monthIndex = (word: string) => MONTHS.indexOf(word.slice(0, 3).toLowerCase()) + 1;
+const ymd = (y: number, m: number, d: number) => (y >= 1900 && y <= 2100 && m >= 1 && m <= 12 && d >= 1 && d <= 31 ? `${y}-${pad(m)}-${pad(d)}` : null);
+
+// Every date written in a piece of text, each as the earliest calendar day it could mean (so "June 2020" is 2020-06-01
+// and 09/06/2020 is the earlier of its two readings). A date only vetoes when even that earliest reading is later.
+export function datesIn(text: string): string[] {
+  const t = decode(text);
+  const out: (string | null)[] = [];
+  for (const m of t.matchAll(/\b((?:19|20)\d{2})[-/.](\d{1,2})[-/.](\d{1,2})\b/g)) out.push(ymd(+m[1]!, +m[2]!, +m[3]!));
+  for (const m of t.matchAll(new RegExp(String.raw`\b(${MONTH})\.?\s+(\d{1,2})(?:st|nd|rd|th)?,?\s+((?:19|20)\d{2})\b`, "gi"))) out.push(ymd(+m[3]!, monthIndex(m[1]!), +m[2]!));
+  for (const m of t.matchAll(new RegExp(String.raw`\b(\d{1,2})(?:st|nd|rd|th)?\s+(?:of\s+)?(${MONTH})\.?,?\s+((?:19|20)\d{2})\b`, "gi"))) out.push(ymd(+m[3]!, monthIndex(m[2]!), +m[1]!));
+  for (const m of t.matchAll(new RegExp(String.raw`\b(${MONTH})\.?,?\s+((?:19|20)\d{2})\b`, "gi"))) out.push(ymd(+m[2]!, monthIndex(m[1]!), 1));
+  for (const m of t.matchAll(/\b(\d{1,2})[/.](\d{1,2})[/.]((?:19|20)\d{2})\b/g)) {
+    const readings = [ymd(+m[3]!, +m[1]!, +m[2]!), ymd(+m[3]!, +m[2]!, +m[1]!)].filter((x): x is string => x !== null).sort();
+    out.push(readings[0] ?? null);
+  }
+  for (const m of t.matchAll(/\b(?:posted|published|updated|modified|written|dated|revised|first\s+appeared)\b[^0-9<]{0,24}?((?:19|20)\d{2})\b/gi)) out.push(ymd(+m[1]!, 1, 1));
+  return out.filter((x): x is string => x !== null);
+}
+
+// ISO-style dates inside an attribute value or a URL: 2020-06-09, 2020/06/09 and a /2020/06/ path (its first day).
+function datesInValue(value: string): string[] {
+  const out: (string | null)[] = [];
+  for (const m of value.matchAll(/((?:19|20)\d{2})[-/.](\d{1,2})[-/.](\d{1,2})(?!\d)/g)) out.push(ymd(+m[1]!, +m[2]!, +m[3]!));
+  for (const m of value.matchAll(/\/((?:19|20)\d{2})\/(\d{1,2})(?:\/|$)/g)) out.push(ymd(+m[1]!, +m[2]!, 1));
+  return out.filter((x): x is string => x !== null);
+}
+
+export function bylineDate(html: string, url = "", skip?: BylineGuard): string | null {
+  const on = (guard: BylineGuard) => guard !== skip;
+  const stack: Ctx[] = [];
+  const marked: { name: string; attrs: Map<string, string>; ctx: Ctx; raw: string; at: number }[] = [];
+  let articleChars = 0;
+  const times: string[] = [];
+  const attrDates: string[] = [];
+  const jsonLdDates: string[] = [];
+  const rawDates: string[] = [];
+  let text = "";
+  let hiddenMention = false;
+  let articles = 0;
+  const top = (): Ctx => stack[stack.length - 1] ?? { name: "", hidden: false, blocked: false, article: false, list: false };
+
+  let i = 0;
+  while (i < html.length) {
+    const lt = html.indexOf("<", i);
+    if (lt < 0) { text += html.slice(i); break; }
+    const chunk = html.slice(i, lt);
+    text += chunk + " ";
+    if (top().article && !top().hidden) articleChars += decode(chunk).replace(/\s+/g, " ").trim().length;
+    if (html.startsWith("<!--", lt)) {
+      const close = html.indexOf("-->", lt + 4);
+      const body = html.slice(lt, close < 0 ? html.length : close + 3);
+      if (/datepublished/i.test(body)) hiddenMention = true;
+      i = lt + body.length;
+      continue;
+    }
+    START_TAG.lastIndex = lt;
+    const start = START_TAG.exec(html);
+    END_TAG.lastIndex = lt;
+    const end = start ? null : END_TAG.exec(html);
+    if (!start && !end) {
+      // <! and <? bogus comments run to the next >; a lone < is text.
+      if (/^<[!?/]/.test(html.slice(lt, lt + 2))) {
+        const close = html.indexOf(">", lt);
+        const body = html.slice(lt, close < 0 ? html.length : close + 1);
+        if (/datepublished/i.test(body)) hiddenMention = true;
+        i = lt + body.length;
+      } else { text += "<"; i = lt + 1; }
+      continue;
+    }
+    if (end) {
+      const name = end[1]!.toLowerCase();
+      const index = stack.map((c) => c.name).lastIndexOf(name);
+      if (index >= 0) stack.length = index;
+      i = lt + end[0].length;
+      continue;
+    }
+    const name = start![1]!.toLowerCase();
+    const raw = start![0];
+    const attrs = attrsOf(start![2]!);
+    i = lt + raw.length;
+    const parent = top();
+    const classId = `${attrs.get("class") ?? ""} ${attrs.get("id") ?? ""}`.toLowerCase();
+    const style = (attrs.get("style") ?? "").toLowerCase().replace(/\s+/g, "");
+    const ctx: Ctx = {
+      name,
+      hidden: parent.hidden || name === "template" || attrs.has("hidden") || attrs.get("aria-hidden") === "true"
+        || /display:none|visibility:hidden/.test(style) || (name === "input" && attrs.get("type")?.toLowerCase() === "hidden"),
+      blocked: parent.blocked || BLOCK_TAGS.has(name) || attrs.has("itemscope") || BLOCK_NAMES.test(classId),
+      article: parent.article || name === "article" || name === "main",
+      list: parent.list || LIST_TAGS.has(name),
+    };
+    if (name === "article" && !ctx.hidden) articles++;
+    // Count every element that marks itself as a publication date, whatever its tag or context.
+    const props = `${attrs.get("itemprop") ?? ""} ${attrs.get("property") ?? ""} ${attrs.get("name") ?? ""}`.toLowerCase();
+    const cls = (attrs.get("class") ?? "").toLowerCase();
+    if (/datepublished/.test(props) || attrs.has("pubdate") || MARKED_CLASS.test(cls)) marked.push({ name, attrs, ctx, raw, at: articleChars });
+    for (const [key, value] of attrs) {
+      if (key === "datetime" && name === "time") times.push(...datesInValue(value));
+      else attrDates.push(...datesInValue(value), ...datesIn(value));
+    }
+    if (RAW_TEXT.has(name)) {
+      const closeAt = name === "plaintext" ? -1 : html.slice(i).search(new RegExp(`</${name}(?=[\\s/>])`, "i"));
+      const body = closeAt < 0 ? html.slice(i) : html.slice(i, i + closeAt);
+      if (/datepublished/i.test(body)) hiddenMention = true;
+      if (name === "script" && /application\/ld\+json/i.test(attrs.get("type") ?? "")) jsonLdDates.push(...datesInValue(body));
+      else rawDates.push(...datesInValue(body), ...datesIn(body));
+      if (name === "title" || name === "textarea") text += ` ${body} `;
+      if (closeAt < 0) { i = html.length; continue; }
+      const closeTag = /^<\/[^>]*>/.exec(html.slice(i + closeAt))?.[0] ?? "";
+      i = i + closeAt + closeTag.length;
+      continue;
+    }
+    if (!VOID.has(name) && !/\/\s*>$/.test(raw)) stack.push(ctx);
+  }
+
+  if (on("single") && marked.length !== 1) return null;
+  const candidate = marked[0];
+  if (!candidate) return null;
+  if (on("no-hidden-mention") && hiddenMention) return null;
+  if (on("time-only") && candidate.name !== "time") return null;
+  if (on("strict-itemprop") && (candidate.attrs.get("itemprop")?.toLowerCase() !== "datepublished" || candidate.attrs.has("property")
+    || candidate.attrs.has("pubdate") || MARKED_CLASS.test((candidate.attrs.get("class") ?? "").toLowerCase()))) return null;
+  const datetime = clean(candidate.attrs.get("datetime") ?? "");
+  const day = /^(\d{4})-(\d{2})-(\d{2})(?:$|[T\s])/.exec(datetime);
+  if (on("full-date") && !day) return null;
+  const date = day ? `${day[1]}-${day[2]}-${day[3]}` : datetime.slice(0, 10);
+  if (!date) return null;
+  if (on("rendered") && candidate.ctx.hidden) return null;
+  if (on("unblocked") && candidate.ctx.blocked) return null;
+  if (on("in-article") && !candidate.ctx.article) return null;
+  if (on("not-in-list") && candidate.ctx.list) return null;
+  if (on("single-article") && articles > 1) return null;
+  if (on("near-top") && candidate.at > NEAR_TOP_CHARS) return null;
+  const later = (dates: string[]) => dates.some((d) => d > date);
+  if (on("later-time") && later(times)) return null;
+  if (on("later-attr") && later(attrDates)) return null;
+  if (on("later-raw") && later(rawDates)) return null;
+  if (on("later-text") && later(datesIn(text))) return null;
+  if (on("later-jsonld") && later(jsonLdDates)) return null;
+  if (on("later-url") && later(datesInValue(url))) return null;
+  return datetime;
 }
