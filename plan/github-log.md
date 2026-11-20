@@ -179,3 +179,4 @@
 - 2026-11-19 21:30 ET: merged #281 (nav no-wrap at 360), #282 (Lighthouse 100/100/100 desktop, 99/100/100 phone; robots.txt). Rishit to do live run in his own browser.
 - 2026-11-19 21:10 ET: Rohan back (doing issue clearance); redirected: held-out first (his own approval), then video captures, then clearance capped 30 min. Merged #283 (Copy link). Rishit next batch posted.
 - 2026-11-19 21:15 ET: merged #284 (Rohan issue audit doc). Rishit real live run on prod: honey claim, 100 s, $0.169, works end to end; live spend ~$0.23 of $1.50.
+- 2026-11-19 21:40 ET: merged #285 (publication datelines final round, continues #222; XO probe 49 pages, 0 false-earlier from new path), #286 (submission CLI note). Closed #222 as superseded. Follow-up: meta itemprop teaser in div.related via older metadata path (pre-existing).
