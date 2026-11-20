@@ -173,3 +173,9 @@ body { isolation: isolate; }
 .stop-unread.set-aside { margin-top: 16px; padding-left: 12px; border-left: 2px solid var(--line-2); color: var(--ink-2); font-size: 14px; }
 .stop-unread.set-aside p { margin: 0; overflow-wrap: anywhere; }
 .stop-unread.set-aside strong { color: var(--ink); font-weight: 600; }
+/* Phones: the set-aside note's links stay inline, so its lines sit at normal spacing, while vertical padding with an equal
+   negative margin keeps each tap target at least 44 px tall (inline padding does not move the line box). */
+@media (max-width: 600px) {
+  .stop-unread.set-aside p { line-height: 1.6; }
+  .stop-unread.set-aside a { display: inline; min-height: 0; padding: 12px 0; margin: -12px 0; }
+}
