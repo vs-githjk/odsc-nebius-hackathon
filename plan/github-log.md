@@ -162,3 +162,4 @@
 - 2026-11-19 19:20 ET: merged #262 (Rishit app inside). Next list for Rishit on #259 (open on finished state, dedupe, meta line, real live run, 390 pass).
 - 2026-11-19 19:35 ET: merged #264 (Anoop: AI accents removed from landing).
 - 2026-11-19 19:45 ET: merged #265 (Anoop: How it works redesign).
+- 2026-11-19 19:50 ET: merged #267 (Anoop: README top with new landing + real dev-10 trace, light/dark). #266 waiting on conflict fix.
