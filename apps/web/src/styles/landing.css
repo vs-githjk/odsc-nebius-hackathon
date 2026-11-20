@@ -832,6 +832,35 @@
     font-size: 0;
     gap: 0;
   }
+
+  /* One row, nothing wrapping, down to a 360 px phone (#257 batch 2, item 7). */
+  .nav .wrap {
+    gap: 8px;
+  }
+
+  .nav-links {
+    gap: 8px;
+  }
+
+  .nav-links > a,
+  .nav-links .btn.small {
+    white-space: nowrap;
+  }
+
+  .nav-links > a:not(.btn) {
+    font-size: 14px;
+  }
+
+  .nav-links .btn.small {
+    padding: 0 10px;
+  }
+}
+
+/* Below 360 px the row cannot hold every link: Traces stays in the footer and on the landing. */
+@media (max-width: 359px) {
+  .nav-links > a[href="#/traces"] {
+    display: none;
+  }
 }
 
 /* How it works (#/how): the same editorial system as the landing. */
