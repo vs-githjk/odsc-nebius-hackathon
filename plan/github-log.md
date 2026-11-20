@@ -208,3 +208,4 @@
 - 23:57 ET: merged #313 (Rishit, set-aside tap targets on phones), all checks SUCCESS
 - 00:05 ET: merged #314 (Rishit, og.png shows Origin found), all SUCCESS
 - 00:05 ET: Rishit found a false origin under #310 rules on S7 claim 0 (Greenpeace whale-art page); XO replayed all 41 traces in the repo, only case; earliest-dated-page guard simulated (fixes S7, keeps dev-09/10); briefed on #307, due Fri 10:00
+- 00:47 ET: S7 guard reassigned to Anoop (#307); Rishit to video captures (#259); Rohan status check (#250)
