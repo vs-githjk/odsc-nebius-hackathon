@@ -19,3 +19,4 @@
 - 2026-10-29: Network outage (ENOTFOUND) killed the final-design fix round mid-run and dropped all artifact watches; resumed after.
 - 2026-10-31 conductor defect: XO watch loop was never started after GATE 2 (playbook line 167), so reviewed PRs sat waiting and Vidyut was asked to approve a routine merge. Fix: rule for the loop to start the moment setup and GATE 2 are both done.
 - 2026-10-31 Oct 31 note: watch runs only in the main session (Vidyut: session stays on). Cloud routine XO watch created for a test, then disabled on his word; it can only be deleted at claude.ai/code/routines.
+- Nov 19: XO merged two PRs (#258, #303) with a failing check because the merge loop only waited for non-pending, not all-SUCCESS, and the repo has no required checks. Rule now: merge only when every check state is SUCCESS; consider turning on branch protection with required checks after freeze.
