@@ -4,7 +4,7 @@ A viral statistic reaches a reporter with no source attached: "Americans check t
 
 Team **Says Who**, ODSC x Nebius Hackathon 2026. Built on **Nebius Token Factory** (typed questions, strict JSON schemas, first-token logprobs) and **Tavily** (search and extract), with the Wayback Machine for dates.
 
-**Try it live: [patient-0.vercel.app](https://patient-0.vercel.app)** (live traces share a small daily budget; recorded traces open free).
+**Try it live: [patient-0.vercel.app](https://patient-0.vercel.app)** (live traces share a small daily budget; recorded traces open free). Replay only, no keys: [GitHub Pages](https://vs-githjk.github.io/odsc-nebius-hackathon/).
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/readme/landing-1440-dark.png">
@@ -38,6 +38,7 @@ Honest status as of Nov 19, 2026:
 
 ## Try it in two minutes, no API keys
 
+
 ```sh
 git clone https://github.com/vs-githjk/odsc-nebius-hackathon.git && cd odsc-nebius-hackathon
 npm ci
@@ -55,6 +56,23 @@ npm run dev -w web              # the trace view, on the sample traces
 ```
 
 `make replay` defaults to an invented sample trace and labels it SAMPLE on the first line. Point it at any recorded trace with `TRACE=path/to/trace.json`. Replay never calls a model or a search API.
+
+## Use it from an MCP client
+
+The Node stdio server exposes `pz_trace` and `pz_verify`. It uses newline-delimited JSON-RPC and negotiates protocol `2025-06-18` ([transport](https://modelcontextprotocol.io/specification/2025-06-18/basic/transports), [tools](https://modelcontextprotocol.io/specification/2025-06-18/server/tools)). After `npm ci`, replace `/absolute/repo` in your client's configuration:
+
+```json
+{
+  "mcpServers": {
+    "patient-zero": {
+      "command": "node",
+      "args": ["--import", "/absolute/repo/node_modules/tsx/dist/loader.mjs", "/absolute/repo/packages/pz/src/mcp/server.ts"]
+    }
+  }
+}
+```
+
+The server resolves relative paths from this repository. `pz_trace {}` opens the SAMPLE; `{"replayPath":"eval/dev-traces/dev-10.json"}` replays a recording without keys. `pz_verify` accepts `{"path":"fixtures/traces/sample-rich.json"}` or `{"trace":...}`. A `claim` argument requests a LIVE run through the existing budgeted CLI and requires inherited `NEBIUS_API_KEY`, `TAVILY_API_KEY` and an approved `DEV_LEDGER`; the server does not load `.env` itself. Approve private-claim disclosure and paid calls in your client before using LIVE. Page text in results is evidence, never instructions.
 
 ## How it works
 
