@@ -14,13 +14,13 @@ import { formatDoctor, runDoctor, type DoctorDeps } from "./doctor.ts";
 const BUDGET_S = 60;
 const jsonIn = (dir: string) => (existsSync(dir) ? readdirSync(dir).filter((f) => f.endsWith(".json")).sort().map((f) => join(dir, f)) : []);
 
-// Recorded E2 dev runs a judge sees when no reviewed traces are committed under traces/ (XO judge pass, #2). Both end
-// cold on an earliest page a judge cannot contradict in one search: dev-11, CNBC on 2017-07-10, the day the CDP report
-// it quotes came out; dev-04, the Valtin paper on PubMed, dated November 2002 by the registry, quoting the "eight
-// 8-oz glasses" admonition. dev-10 (the hero) joins once Rohan's archive-date fix ends it on the WEF report
-// (decisions.md); dev-06's earliest span is a menu row and dev-14's ranks 2021 reprints over the 2019 release, so
+// Recorded E2 dev runs a judge sees when no reviewed traces are committed under traces/ (XO judge pass, #2). dev-10, the
+// hero, ends Origin found on the WEF report on replay of its recording (#310, #316; disclosed in eval/dev-score.md as a
+// replay re-decision). dev-11 and dev-04 end cold on an earliest page a judge cannot contradict in one search: dev-11,
+// CNBC on 2017-07-10, the day the CDP report it quotes came out; dev-04, the Valtin paper on PubMed, dated November 2002
+// by the registry. dev-06's earliest span is a menu row and dev-14's ranks 2021 reprints over the 2019 release, so
 // neither is shown. A missing file is skipped.
-export const JUDGE_DEV_TRACES = ["dev-11", "dev-04"];
+export const JUDGE_DEV_TRACES = ["dev-10", "dev-11", "dev-04"];
 
 // The traces a judge sees: the reviewed live traces under traces/ (#131) and traces/gallery/ (T92); else the recorded
 // dev runs above, replayed with no network; else the SAMPLE fixtures. The output says which.

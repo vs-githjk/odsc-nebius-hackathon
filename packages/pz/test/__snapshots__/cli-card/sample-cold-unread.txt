@@ -6,7 +6,8 @@ Claim    Harbor Zoo penguins nap 14 times a day, twice as often as the zoo's
          seals
 
 Ending   Trail goes cold
-         A page it cites could not be opened.
+         A page it cites could not be opened: harborzoo.example (cited by
+         harborzoo.example).
          Decision table row 6 of 6.
 
 Earliest Harbor Zoo annual report 2019

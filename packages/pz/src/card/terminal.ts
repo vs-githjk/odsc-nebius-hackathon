@@ -53,15 +53,27 @@ export function endingSentence(trace: Trace): string {
       return "No page stated the claim, apart from pages discussing it as a claim.";
     case "CONFLICTING":
       return "The earliest pages give different numbers.";
-    case "ORIGIN_FOUND":
-      return "The earliest page is a primary source with a confirmed date.";
+    case "ORIGIN_FOUND": {
+      // Same wording as the web (#320): a date known only from the first archive capture is "online by", not confirmed.
+      const id = trace.decision.reasons[0]?.match(/^earliest page (\S+) is /)?.[1];
+      const origin = trace.nodes.find((n) => n.id === id);
+      return origin?.date.source === "wayback_first_capture"
+        ? "The earliest page is a primary source, online by this date."
+        : "The earliest page is a primary source with a confirmed date.";
+    }
     case "TRAIL_GOES_COLD": {
       // T37: a boundary code found comes first, worded from the reason code wrote, never from a model.
       const boundary = trace.decision.reasons[0]?.match(/^boundary (print|unsourced|circular):/)?.[1];
       if (boundary === "print") return "The trail ends at a print source the earliest page credits. There is no web copy to open.";
       if (boundary === "unsourced") return "The earliest page is one anyone can edit, and it gives no source for the claim.";
       if (boundary === "circular") return "The earliest pages only cite each other or later copies, so there is nothing earlier to follow.";
-      if (trace.nodes.some((n) => n.candidateParents.some((p) => !p.read))) return "A page it cites could not be opened.";
+      // Name the page, as the web does (#308): the first unread page and the page that cites it.
+      const citer = trace.nodes.find((n) => n.candidateParents.some((p) => !p.read));
+      if (citer) {
+        const host = (u: string) => { try { return new URL(u).hostname; } catch { return u; } };
+        const unread = citer.candidateParents.find((p) => !p.read)!;
+        return `A page it cites could not be opened: ${host(unread.url)} (cited by ${host(citer.url)}).`;
+      }
       // 2 is rules.json earlierWindowSearches: fewer empty earlier searches than that is a stop before looking far enough.
       if (trace.earliest.earlierWindowSearches < 2) return "It stopped before searching further back.";
       return "No earlier page and no primary source turned up.";
