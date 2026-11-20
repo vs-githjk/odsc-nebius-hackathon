@@ -53,6 +53,7 @@ export const codePlanner: QueryPlanner = async ({ claim, atoms }) => ({
 });
 
 export type WalkDeps = {
+  onPageRead?: (url: string) => void;
   // T35's planner (plannerFor); the code-only planner when absent.
   planQueries?: QueryPlanner;
   // T36's same_claim question (sameClaimFor); its typed answer is stored on each page read. Absent means not asked,
@@ -373,6 +374,7 @@ export async function walkClaim(claim: SpikeClaim, deps: WalkDeps): Promise<{ tr
 
   async function readPage(url: string, title: string, raw: string, apiDate: string | null): Promise<boolean> {
     const { text, links, breaks, lines } = toPlain(raw);
+    if (text.trim()) deps.onPageRead?.(url);
     const all = sentences(text, [...breaks, ...lines]);
     const states = (s: string) => s.length <= MAX_SENTENCE_CHARS && !menuLike(s) && (atoms.number
       ? s.toLowerCase().includes(lemma) && atomHit(s, atoms, rules.weakNumberMinSigDigits) && assertsNumber(s, atoms, rules.negationPrefixes)

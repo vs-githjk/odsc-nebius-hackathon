@@ -886,3 +886,90 @@
     flex-basis: 100%;
   }
 }
+/* Pass 1: verdict, evidence timeline, then copies and roots. Theme values stay in tokens.css. */
+.trace-claim { margin: 22px 0 0; max-width: 32ch; font-size: clamp(28px, 3vw, 42px); overflow-wrap: anywhere; }
+.stage .stop-card { margin-top: 22px; padding: 20px 0 0; border: 0; border-top: 1px solid var(--line-2); border-radius: 0; }
+.stage .stop-title { display: flex; align-items: center; gap: 10px; color: var(--ink); font-size: clamp(22px, 2.2vw, 28px); }
+.stop-title .ramp-dot { flex: 0 0 10px; }
+.stop-sentence { max-width: 72ch; }
+.stop-earliest { margin-top: 16px; padding-left: 14px; border-left: 2px solid var(--cold); overflow-wrap: anywhere; }
+.stop-earliest p { margin: 2px 0; }
+.stop-earliest a { display: inline-flex; align-items: center; min-height: 44px; }
+.trace-timeline, .trace-roots { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--line-2); min-width: 0; }
+.trace-section-title { margin: 0; font-size: 18px; font-weight: 600; }
+.trace-timeline > .meta { margin: 4px 0 0; }
+.trace-timeline .sentence { margin-top: 22px; max-width: 62ch; overflow-wrap: anywhere; }
+.trace-timeline .hop-detail { border-left: 2px solid var(--cool); padding-left: 16px; }
+.trace-timeline .hop-note a { display: inline-flex; align-items: center; min-height: 44px; }
+.trace-roots .counter { margin-top: 8px; }
+.stage .replay-again, .stage .replay-skip { min-height: 44px; }
+.stage .chip { font-size: 14px; }
+.stage, .stage-head > *, .hop-detail, .hop-page, .readouts { min-width: 0; overflow-wrap: anywhere; }
+.claim-box .live-progress { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; padding: 20px; }
+.live-progress-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 8px 16px; }
+.live-clock { font-variant-numeric: tabular-nums; }
+.live-stages { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 24px; list-style: none; margin: 0; padding: 0; }
+.live-stages li { display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 14px; color: var(--ink-3); }
+.live-stages .active { color: var(--ink); font-weight: 600; }
+.live-stages .done { color: var(--ink-2); }
+.stage-marker { display: grid; place-items: center; flex: 0 0 18px; height: 18px; border: 1px solid var(--line-2); border-radius: 50%; font-size: 14px; }
+.active .stage-marker { border: 5px solid var(--cold); }
+.done .stage-marker { color: var(--good); border-color: transparent; }
+.live-pages { color: var(--ink-2); }
+.live-hosts { display: flex; flex-wrap: wrap; gap: 4px 16px; list-style: none; padding: 0; margin: 6px 0 0; font-size: 14px; overflow-wrap: anywhere; }
+.claim-box .live-progress .btn { grid-column: 1; grid-row: auto; justify-self: start; margin: 0; }
+.claim-box .live-ending { margin-top: 12px; color: var(--ink-2); border-left: 3px solid var(--cool); }
+.claim-box .live-ending.failed { border-left-color: var(--caution); }
+@media (max-width: 600px) {
+  .stage .trace-claim { font-size: 28px; }
+  .stage .stop-card { padding-top: 16px; margin-top: 18px; }
+  .trace-timeline, .trace-roots { margin-top: 22px; padding-top: 20px; }
+  .live-stages { grid-template-columns: minmax(0, 1fr); }
+  .claim-box .live-progress { padding: 16px; }
+  .stage .ticks, .stage .pill, .stage .band-legend, .stage .swarm-label, .stage .readout-tag { font-size: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stage .replay-lines { scroll-behavior: auto; }
+}
+.scrub-steps { display: none; }
+/* Evidence receipts share the page's theme tokens and do not animate. */
+.stage-head { justify-content: flex-start; gap: 8px; }
+.stage-head .chip { flex-wrap: wrap; white-space: normal; }
+.stage-head .replay-again { margin: 0 0 0 auto; padding-inline: 8px; }
+.stage .stop-sentence { margin-block: 16px 8px; font-size: 20px; font-weight: 600; color: var(--ink); }
+.stop-restraint { margin: 0; color: var(--ink-2); font-size: 16px; }
+.roots-summary { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; width: 100%; margin-top: 24px; padding: 16px; text-align: left; border: 1px solid var(--line-2); border-radius: 12px; background: var(--bg-2); color: var(--ink); font: 500 16px/1.5 var(--font-ui); cursor: pointer; }
+.roots-summary:hover { border-color: var(--action); }
+.root-dots { display: flex; flex-wrap: wrap; gap: 4px; }
+.root-dot { width: 8px; height: 8px; border: 1px solid var(--ink-2); border-radius: 50%; background: var(--ink-2); }
+.root-dot.hollow { background: transparent; }
+.trace-roots { scroll-margin-top: 120px; }
+.roots-explanation { max-width: 72ch; color: var(--ink-2); }
+.evidence-receipt { margin-top: 24px; padding: 24px; border: 1px solid var(--line-2); border-radius: 12px; background: var(--surface); }
+.receipt-heading { margin: 0; }
+.evidence-receipt .sentence { margin-top: 8px; }
+.trace-timeline .evidence-receipt .hop-detail { padding: 0; border: 0; margin-top: 24px; }
+.receipt-rows { margin: 16px 0 0; }
+.receipt-rows > div { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 16px; padding-block: 16px; border-top: 1px solid var(--line); }
+.receipt-rows dt { color: var(--ink-3); font: 500 14px/1.5 var(--font-ui); }
+.receipt-rows dd { margin: 0; font-size: 16px; color: var(--ink); }
+.receipt-rows p { margin: 0; }
+.receipt-rows p + p { margin-top: 8px; }
+.receipt-variants { margin-top: 16px; overflow-wrap: anywhere; }
+.receipt-variants summary { cursor: pointer; padding-block: 8px; }
+.receipt-variants li + li { margin-top: 16px; }
+.receipt-variants p { margin-top: 8px; }
+@media (max-width: 600px) {
+  .stage-head .chip { max-width: 168px; }
+  .evidence-receipt { padding: 16px; }
+  .receipt-rows > div { grid-template-columns: 80px minmax(0, 1fr); gap: 8px; }
+  .roots-summary { padding: 16px; }
+}
+@media (max-width: 600px) {
+  /* The selected date is in the hop detail. Dense absolute tick labels cannot fit a phone. */
+  .trace-timeline .ticks { display: none; }
+  .scrub-steps { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .scrub-steps .btn { padding: 0 12px; font-size: 14px; }
+  .scrub-steps .btn:disabled { color: var(--ink-3); cursor: default; }
+  .stop-earliest a { max-width: 100%; overflow-wrap: anywhere; display: inline-block; padding-block: 10px; }
+}

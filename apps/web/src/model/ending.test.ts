@@ -5,6 +5,19 @@ import { endingSentence } from "./ending.ts";
 const { traces } = loadTraces();
 
 describe("endingSentence", () => {
+  it("translates recorded cold-stop reasons without claiming a primary source was absent", () => {
+    const cold = traces.find(t => t.decision.state === "TRAIL_GOES_COLD")!;
+    const withoutUnread = { ...cold, nodes: cold.nodes.map(n => ({ ...n, candidateParents: [] })) };
+    const cases = [
+      ["boundary print: the earliest page credits a print source, with no web copy to open", "The earliest page credits a print source, with no web copy to open."],
+      ["boundary circular: the earliest pages only cite each other or later pages", "The earliest pages only cite each other or later pages."],
+      ["earliest page n1 presents the claim as already said", "The earliest page presents the claim as something already said."],
+      ["same_claim not asked", "The earliest page could not be confirmed as stating the same claim."],
+    ];
+    for (const [reason, expected] of cases) expect(endingSentence({ ...withoutUnread, decision: { ...cold.decision, reasons: [reason!] } })).toBe(expected);
+    const hero = traces.find(t => t.id === "dev-10")!;
+    expect(endingSentence(hero)).toBe("A page it cites could not be opened.");
+  });
   it("gives every sample one plain sentence, all different, so two samples that end the same way still read apart", () => {
     const samples = traces.filter((t) => t.synthetic);
     const sentences = samples.map(endingSentence);

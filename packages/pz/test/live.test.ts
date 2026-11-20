@@ -6,6 +6,7 @@ import { ADMIT, SETTLE, hash, memoryStore, micros, redisStore } from "../src/liv
 import { liveBudget } from "../src/live/budget.ts";
 import { loadRules } from "../src/rules/index.ts";
 import { pipelineRunner } from "../src/live/runtime.ts";
+import { runTrace, type Pipeline, type RunEvent, type Wayback } from "../src/engine/run.ts";
 const fixture = Trace.parse(JSON.parse(readFileSync("fixtures/traces/sample-no-pages.json", "utf8")));
 const env = { NEBIUS_API_KEY: "test-model-secret", TAVILY_API_KEY: "test-search-secret" };
 const request = (claim: unknown = "A claim with 9 widgets.", ip = "192.0.2.1") => new Request("https://local/api/trace", { method: "POST", headers: { "Content-Type": "application/json", "x-forwarded-for": `${ip}, 192.0.2.2` }, body: JSON.stringify({ claim }) });
@@ -19,6 +20,40 @@ function setup(overrides: Record<string, string | undefined> = {}, runner?: Runn
 }
 const events = async (response: Response) => (await response.text()).trim().split("\n").map(line => JSON.parse(line));
 describe("live service", () => {
+  it("emits unique page reads only when opted in, without changing the trace", async () => {
+    const same = (trace: Trace) => trace;
+    const pipeline: Pipeline = { intake: () => structuredClone(fixture), fingerprint: same,
+      walk: (trace, context) => {
+        for (const url of ["https://a.example/p?secret=1", "https://a.example/p?secret=1", "https://b.example/", "https://c.example/", "https://d.example/"])
+          context.onPageRead?.(url);
+        return trace;
+      }, spans: same, clusters: same, readouts: same, card: same };
+    const wayback: Wayback = { firstCapture: async () => ({ data: { status: "none" }, usage: {
+      at: fixture.recordedAt, traceId: fixture.id, step: "dating", service: "wayback", endpoint: "cdx", model: null,
+      promptTokens: 0, completionTokens: 0, cachedTokens: 0, credits: 0, costUsd: 0, latencyMs: 0, cacheHit: true, status: "200",
+    } }) };
+    const ordinary: RunEvent[] = [], live: RunEvent[] = [];
+    const before = await runTrace("claim", pipeline, { wayback, emit: event => ordinary.push(event) });
+    const after = await runTrace("claim", pipeline, { wayback, liveProgress: true, emit: event => live.push(event) });
+    expect(after).toEqual(before);
+    expect(ordinary.some(event => event.type === "progress")).toBe(false);
+    const updates = live.filter(event => event.type === "progress");
+    expect(updates).toHaveLength(4);
+    expect(updates.at(-1)).toMatchObject({ pages: 4, hosts: ["b.example", "c.example", "d.example"] });
+    expect(JSON.stringify(updates)).not.toContain("secret");
+    expect(live.map(event => event.sequence)).toEqual(live.map((_event, i) => i));
+  });
+  it("streams only counts and recent hostnames, with secret redaction still applied", async () => {
+    const { service } = setup({}, async (_claim, _signal, emit) => {
+      emit({ sequence: 1, type: "progress", pages: 4, hosts: ["old.example", "test-model-secret.example", "https://private.example/?key=secret", "last.example"] });
+      return fixture;
+    });
+    const lines = await events(await service.trace(request()));
+    expect(lines[0]).toEqual({ sequence: 1, type: "progress", pages: 4, hosts: ["[redacted].example", "last.example"] });
+    expect(lines.at(-1).type).toBe("trace");
+    expect(JSON.stringify(lines[0])).not.toContain("key=");
+    expect(JSON.stringify(lines[0])).not.toContain("test-model-secret");
+  });
   it("reserves 0.37 by default and admits 15 sequential traces under 2 dollars", async () => {
     expect(RESERVATION).toBe(0.37);
     const { service, store } = setup({}, async (_c, _s, _e, charge) => { charge(0.11); return fixture; });

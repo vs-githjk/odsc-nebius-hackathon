@@ -55,13 +55,13 @@ describe("the matched note", () => {
     expect(matchedNote(real)).toBe("Matched a recorded trace, recorded November 17, 2026.");
   });
 
-  it("shows on arrival from the claim box only, and a real trace's way back is plain 'Back'", async () => {
+  it("shows on arrival from the claim box only, with a clear way back to results", async () => {
     const { TraceRoute } = await import("../App.tsx");
     const real: Trace = { ...rich, id: "live-x", synthetic: false, mode: "LIVE", recordedAt: "2026-11-17T23:05:00Z" };
     expect(renderToStaticMarkup(<TraceRoute id="sample-rich" matched all={traces} />)).toContain("Matched a sample trace");
     expect(renderToStaticMarkup(<TraceRoute id="sample-rich" matched={false} all={traces} />)).not.toContain("Matched a");
     const live = renderToStaticMarkup(<TraceRoute id="live-x" matched all={[real]} />);
     expect(live).toContain("Matched a recorded trace, recorded November 17, 2026.");
-    expect(live).toContain('class="back" href="#/">Back</a>');
+    expect(live).toContain('class="back" href="#/">Back to results</a>');
   });
 });

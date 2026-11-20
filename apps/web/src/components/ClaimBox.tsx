@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
-import { liveAction, liveMode, PAUSED, streamTrace, type LiveMode } from "../model/live.ts";
+import { liveAction, liveAvailability, LIVE_ENDINGS, LiveError, STAGE_LABELS, streamTrace, type LiveMode } from "../model/live.ts";
 import type { Trace } from "pz/schema";
 import { outcomeOf, submitsOnKey, type Outcome } from "../model/claimBox.ts";
 
@@ -7,6 +7,7 @@ import { outcomeOf, submitsOnKey, type Outcome } from "../model/claimBox.ts";
 // focusKey changes when the nav's "Trace a claim" is pressed, and the box takes focus.
 export function ClaimBox({ traces, focusKey, onMatch, onLive }: { traces: Trace[]; focusKey: number; onMatch(id: string): void; onLive(trace: Trace): void }) {
   const input = useRef<HTMLTextAreaElement>(null);
+  const progressPanel = useRef<HTMLElement>(null);
   const [text, setText] = useState("");
   const [outcome, setOutcome] = useState<Outcome>({ kind: "idle" });
   const tries = useRef(0);
@@ -14,8 +15,16 @@ export function ClaimBox({ traces, focusKey, onMatch, onLive }: { traces: Trace[
   const live = mode === "live";
   const [progress, setProgress] = useState<string | null>(null);
   const [failure, setFailure] = useState("");
+  const [pages, setPages] = useState(0);
+  const [hosts, setHosts] = useState<string[]>([]);
+  const [done, setDone] = useState<string[]>([]);
+  const [reason, setReason] = useState<string>();
+  const [failureCode, setFailureCode] = useState("");
   const [elapsed, setElapsed] = useState(0);
   const isRunning = progress !== null;
+  useEffect(() => {
+    if (isRunning) progressPanel.current?.scrollIntoView({ block: "start", behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+  }, [isRunning]);
   useEffect(() => {
     if (!isRunning) return;
     const started = Date.now();
@@ -26,7 +35,7 @@ export function ClaimBox({ traces, focusKey, onMatch, onLive }: { traces: Trace[
   const running = useRef<AbortController | null>(null);
   useEffect(() => {
     let active = true;
-    const refresh = () => { void liveMode().then(value => { if (active) setMode(value); }); };
+    const refresh = () => { void liveAvailability().then(value => { if (active) { setMode(value.mode); setReason(value.reason); } }); };
     refresh();
     const timer = setInterval(refresh, 30000);
     return () => { active = false; clearInterval(timer); running.current?.abort(); };
@@ -35,17 +44,24 @@ export function ClaimBox({ traces, focusKey, onMatch, onLive }: { traces: Trace[
     if (running.current || liveAction(text, traces, live) !== "live") return;
     if (text.length > 400) { setFailure("Enter a claim of 1 to 400 characters."); return; }
     const controller = new AbortController(); running.current = controller;
-    setProgress("Starting"); setFailure("");
-    try { const trace = await streamTrace(text.trim(), controller.signal, setProgress);
+    setProgress("intake"); setFailure(""); setPages(0); setHosts([]); setDone([]);
+    try { const trace = await streamTrace(text.trim(), controller.signal, event => {
+      if (controller.signal.aborted) return;
+      if (event.type === "progress") { setPages(event.pages); setHosts(event.hosts); }
+      else { setProgress(event.stage); if (event.status === "completed") setDone(previous => [...new Set([...previous, event.stage])]); }
+    });
       if (!controller.signal.aborted) onLive(trace);
-    } catch (error) { if (!controller.signal.aborted) setFailure(error instanceof Error && ["Too many traces. Try again later.", "The trace reached its time limit.", "Live tracing is unavailable. Try a recorded trace."].includes(error.message) ? error.message : "The trace could not finish."); }
-    finally { if (running.current === controller) { running.current = null; setProgress(null); void liveMode().then(setMode); } }
+    } catch (error) { if (!controller.signal.aborted) {
+      const code = error instanceof LiveError ? error.code : "trace_failed";
+      setFailureCode(code); setFailure(LIVE_ENDINGS[code] ?? LIVE_ENDINGS.trace_failed!);
+    } }
+    finally { if (running.current === controller) { running.current = null; setProgress(null); void liveAvailability().then(value => { setMode(value.mode); setReason(value.reason); }); } }
   };
 
   useEffect(() => {
     if (focusKey === 0) return;
     input.current?.focus();
-    input.current?.scrollIntoView({ block: "center", behavior: "smooth" });
+    input.current?.scrollIntoView({ block: "center", behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
   }, [focusKey]);
 
   const submit = (e?: FormEvent) => {
@@ -94,7 +110,7 @@ export function ClaimBox({ traces, focusKey, onMatch, onLive }: { traces: Trace[
             {outcome.text}
           </p>
         )}
-        {outcome.kind === "untraced" && (
+        {outcome.kind === "untraced" && !isRunning && !failure && (
           <div key={outcome.try} className="untraced">
             <p className="untraced-title">Not traced yet</p>
             {live ? <>
@@ -105,13 +121,29 @@ export function ClaimBox({ traces, focusKey, onMatch, onLive }: { traces: Trace[
             )}
           </div>
         )}
-        {mode === "paused" && <p className="paused-note meta"><span className="status-dot" aria-hidden="true" />{PAUSED}</p>}
-        {progress && <div className="untraced live-progress">
-          <div className="live-stage" role="status"><span className="progress-indicator" aria-hidden="true" /><p className="untraced-title">{progress}</p></div>
-          <span className="meta live-elapsed" aria-live="off">{elapsed} seconds elapsed</span>
-          <button className="btn secondary" type="button" onClick={() => { running.current?.abort(); setProgress(null); }}>Cancel trace</button>
+        {mode === "paused" && !isRunning && !failure && <div className="untraced live-ending">
+          <p>{reason === "cap" ? LIVE_ENDINGS.cap : LIVE_ENDINGS.disabled}</p>
+          {traces[0] && <button className="btn secondary" type="button" onClick={() => onMatch(traces[0]!.id)}>Open a recorded trace</button>}
+          {!traces[0] && <p className="meta">Try again later.</p>}
         </div>}
-        {failure && <p className="untraced live-failure" role="alert">{failure}</p>}
+        {progress && <section ref={progressPanel} className="untraced live-progress" aria-label="Live trace progress">
+          <div className="live-progress-head"><p className="untraced-title">Following the claim</p>
+            <span className="meta live-clock" aria-live="off">{Math.floor(elapsed / 60)}:{String(elapsed % 60).padStart(2, "0")} elapsed</span></div>
+          <ol className="live-stages">
+            {Object.entries(STAGE_LABELS).map(([stage, label]) => <li key={stage} className={done.includes(stage) ? "done" : stage === progress ? "active" : "future"} aria-current={stage === progress && !done.includes(stage) ? "step" : undefined}>
+              <span className="stage-marker" aria-hidden="true">{done.includes(stage) ? "✓" : ""}</span>{label}
+            </li>)}
+          </ol>
+          <div className="live-pages" role="status"><p><b>{pages}</b> {pages === 1 ? "page" : "pages"} read</p>
+            <ul className="live-hosts">{hosts.map((host, i) => <li key={i}>{host}</li>)}</ul>
+          </div>
+          <button className="btn secondary" type="button" onClick={() => { running.current?.abort(); setProgress(null); }}>Cancel trace</button>
+        </section>}
+        {failure && <div className={"untraced live-ending " + (failureCode === "trace_failed" ? "failed" : "")} role="status">
+          <p>{failure}</p>
+          {traces[0] && <button className="btn secondary" type="button" onClick={() => onMatch(traces[0]!.id)}>Open a recorded trace</button>}
+          {!traces[0] && <p className="meta">Try again later.</p>}
+        </div>}
       </div>
     </form>
   );
