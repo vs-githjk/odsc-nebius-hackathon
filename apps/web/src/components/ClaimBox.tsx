@@ -3,6 +3,9 @@ import { liveAction, liveAvailability, LIVE_ENDINGS, LiveError, STAGE_LABELS, st
 import type { Trace } from "pz/schema";
 import { outcomeOf, submitsOnKey, type Outcome } from "../model/claimBox.ts";
 
+// The live web app. The replay-only Pages site points here for live traces.
+const LIVE_HOST = "patient-0.vercel.app";
+
 // The claim box. A claim that matches a recorded trace opens it; anything else gets a calm answer, never a guess.
 // focusKey changes when the nav's "Trace a claim" is pressed, and the box takes focus.
 export function ClaimBox({ traces, focusKey, onMatch, onLive }: { traces: Trace[]; focusKey: number; onMatch(id: string): void; onLive(trace: Trace): void }) {
@@ -117,7 +120,10 @@ export function ClaimBox({ traces, focusKey, onMatch, onLive }: { traces: Trace[
               <p className="meta live-cost">Runs real searches and costs a few cents. Usually about 40 seconds, sometimes nearly five minutes.</p>
               <button className="btn" type="button" disabled={progress !== null} onClick={() => void startLive()}>Trace it live</button>
             </> : mode === "paused" ? null : (
-              <p>No recorded trace has this claim yet. Every recorded trace is listed below.</p>
+              <p>
+                No recorded trace has this claim yet. <a href="#/traces">See every recorded trace</a>.
+                {typeof window !== "undefined" && window.location?.hostname !== LIVE_HOST && <> Live traces run at <a href={`https://${LIVE_HOST}`}>{LIVE_HOST}</a>.</>}
+              </p>
             )}
           </div>
         )}
