@@ -13,11 +13,11 @@ const REPO = "https://github.com/vs-githjk/odsc-nebius-hackathon";
 const blob = (path: string) => `${REPO}/blob/main/${path}`;
 const traceHref = (t: Trace) => `#/t/${encodeURIComponent(t.id)}`;
 
-function domainOf(url: string): string {
+export function domainOf(url: string): string {
   try { return new URL(url).hostname.replace(/^www\d?\./, ""); } catch { return url; }
 }
 
-function when(date: string | null, precision?: "day" | "month" | "year"): string {
+export function when(date: string | null, precision?: "day" | "month" | "year"): string {
   if (!date) return "undated";
   const [y, m, d] = date.split("-");
   if (precision === "year" || !m) return y!;
@@ -26,7 +26,7 @@ function when(date: string | null, precision?: "day" | "month" | "year"): string
 }
 
 // How a page's date was known, in words, from the trace's own date source.
-function dateSource(trace: Trace, url: string): string {
+export function dateSource(trace: Trace, url: string): string {
   const node = trace.nodes.find((n) => n.url === url);
   if (!node) return "";
   if (node.date.source === "wayback_first_capture") return node.date.value ? "first archived by the Wayback Machine" : "date not confirmed";
@@ -237,7 +237,7 @@ export function Landing({ traces, hero, focusKey, onMatch, onLive }: {
               </Receipt>
             )}
             <Receipt n="4" title="It checks an AI answer, one statistic at a time" measures={`Each statistic in the answer is found and traced on its own. This run was recorded on ${S7.recordedAt} and replays here; checking a whole answer live works from the command line only.`}
-              check={[{ label: "fixtures/answers/s7-answer.json", href: blob("fixtures/answers/s7-answer.json") }]}>
+              check={[{ label: "open the answer and its traces", href: "#/answer" }, { label: "fixtures/answers/s7-answer.json", href: blob("fixtures/answers/s7-answer.json") }]}>
               <AnswerCheck />
             </Receipt>
             <Receipt n="5" title="It is cheap and repeatable" measures="Median time and cost over the 20 recorded traces. Both miss their targets (30 s, $0.02); search is almost all of the cost."
@@ -316,6 +316,7 @@ export function Footer() {
         <span className="meta">ODSC x Nebius Hackathon 2026, team Says Who.</span>
         <nav className="lp-footer-links" aria-label="Footer">
           <a href="#/how">How it works</a>
+          <a href="#/answer">Check an AI answer</a>
           <a href="#/traces">Recorded traces</a>
           <a href={REPO}>GitHub</a>
         </nav>
