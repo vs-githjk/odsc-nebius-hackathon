@@ -1,0 +1,386 @@
+{
+  "schemaVersion": "1",
+  "id": "dev-07",
+  "mode": "LIVE",
+  "synthetic": false,
+  "recordedAt": "2026-11-19T13:20:30.573Z",
+  "claim": {
+    "text": "You lose 40 to 45 percent of your body heat through your head.",
+    "atoms": {
+      "number": null,
+      "unit": "percent",
+      "subjectLemma": "head",
+      "population": null,
+      "time": null,
+      "hedge": null,
+      "namedSource": null,
+      "variants": [
+        "40 to 45%",
+        "40 to 45 per cent",
+        "40-45%",
+        "40-45 percent",
+        "40-45 per cent",
+        "40–45%",
+        "40–45 percent",
+        "40–45 per cent"
+      ],
+      "phrase": "40 to 45 percent"
+    }
+  },
+  "viralSentence": "You lose 40 to 45 percent of your body heat through your head.",
+  "nodes": [
+    {
+      "id": "n1",
+      "url": "http://api.politifact.com/factchecks/2011/dec/13/jon-huntsman/jon-huntsman-says-us-spends-more-all-othre-countri",
+      "domain": "api.politifact.com",
+      "title": "PolitiFact | Jon Huntsman says the U.S. spends more than all other countries combined on defense",
+      "date": {
+        "kind": "unconfirmed",
+        "value": null,
+        "source": "wayback_first_capture",
+        "firstCapture": "2023-06-09",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n1",
+      "evidence": "observed",
+      "meta": true,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "foundViaMeta": null
+    },
+    {
+      "id": "n2",
+      "url": "https://www.politifact.com/factchecks/2011/dec/13/jon-huntsman/jon-huntsman-says-us-spends-more-all-othre-countri",
+      "domain": "politifact.com",
+      "title": "Jon Huntsman says the U.S. spends more than all other countries combined on defense – PolitiFact",
+      "date": {
+        "kind": "unconfirmed",
+        "value": null,
+        "source": "wayback_first_capture",
+        "firstCapture": "2020-09-26",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n2",
+      "evidence": "observed",
+      "meta": true,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "foundViaMeta": null
+    }
+  ],
+  "edges": [],
+  "clusters": [
+    {
+      "id": "c-n1",
+      "nodeIds": [
+        "n1"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n2",
+      "nodeIds": [
+        "n2"
+      ],
+      "rule": "single"
+    }
+  ],
+  "spans": [],
+  "hops": [],
+  "blame": [],
+  "roots": {
+    "pages": 0,
+    "clusters": 0,
+    "rootsLinked": 0,
+    "clustersUnlinked": 0,
+    "studiesFound": null,
+    "independentRoots": 0,
+    "copies": 0
+  },
+  "redHopEdgeId": null,
+  "earliest": {
+    "nodeIds": [],
+    "earlierWindowSearches": 4,
+    "earlierFound": 0
+  },
+  "failure": null,
+  "budget": {
+    "credits": 5,
+    "usd": 0.00010889999999999999,
+    "ms": 22697,
+    "capHit": null
+  },
+  "decision": {
+    "state": "NO_PAGES_FOUND",
+    "row": 3,
+    "reasons": [
+      "no pages besides meta pages"
+    ],
+    "counts": {
+      "pages": 0,
+      "clusters": 0,
+      "unreadParents": 0,
+      "earlierWindowSearches": 4
+    }
+  },
+  "searchLog": [
+    {
+      "at": "2026-11-19T13:20:37.102Z",
+      "step": "search",
+      "query": "\"40 to 45 percent\" head",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:20:40.223Z",
+      "step": "search",
+      "query": "40 to 45 percent body heat loss through head",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 7,
+      "kept": 7,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:20:41.863Z",
+      "step": "search",
+      "query": "40-45 percent heat loss head older wording",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:20:43.857Z",
+      "step": "search",
+      "query": "military study head heat loss 40 to 45 percent",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:20:47.026Z",
+      "step": "meta-search",
+      "query": "\"40 to 45 percent\" head",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 5,
+      "kept": 2,
+      "dropped": 3
+    },
+    {
+      "at": "2026-11-19T13:20:52.840Z",
+      "step": "dating",
+      "query": "http://api.politifact.com/factchecks/2011/dec/13/jon-huntsman/jon-huntsman-says-us-spends-more-all-othre-countri: the node has no span to look for in the capture; no date from the first capture",
+      "endDate": null,
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:20:53.271Z",
+      "step": "dating",
+      "query": "https://www.politifact.com/factchecks/2011/dec/13/jon-huntsman/jon-huntsman-says-us-spends-more-all-othre-countri: the node has no span to look for in the capture; no date from the first capture",
+      "endDate": null,
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    }
+  ],
+  "usage": [
+    {
+      "at": "2026-11-19T13:20:30.575Z",
+      "traceId": "dev-07",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 150,
+      "completionTokens": 34,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.000025199999999999996,
+      "latencyMs": 966,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:20:31.545Z",
+      "traceId": "dev-07",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 276,
+      "completionTokens": 187,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.0000837,
+      "latencyMs": 3689,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:20:37.101Z",
+      "traceId": "dev-07",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1843,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:20:40.223Z",
+      "traceId": "dev-07",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 3098,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:20:41.863Z",
+      "traceId": "dev-07",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1615,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:20:43.856Z",
+      "traceId": "dev-07",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1971,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:20:47.026Z",
+      "traceId": "dev-07",
+      "step": "meta-search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 3139,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:20:49.629Z",
+      "traceId": "dev-07",
+      "step": "meta-extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 2581,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:20:52.260Z",
+      "traceId": "dev-07",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 2607,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:20:52.840Z",
+      "traceId": "dev-07",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 535,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:20:53.271Z",
+      "traceId": "dev-07",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 430,
+      "status": "200",
+      "cacheHit": false
+    }
+  ],
+  "scopeNote": "Web pages only; print and paywalled origins are out of scope. Earliest source we found, not proof of first use.",
+  "otherNumbers": []
+}

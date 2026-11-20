@@ -3,7 +3,7 @@
   "id": "dev-05",
   "mode": "LIVE",
   "synthetic": false,
-  "recordedAt": "2026-11-17T23:07:03.643Z",
+  "recordedAt": "2026-11-19T13:16:07.962Z",
   "claim": {
     "text": "It takes 21 days to form a habit.",
     "atoms": {
@@ -30,8 +30,8 @@
       "domain": "politifact.com",
       "title": "Jon Husted says under his plan Ohio would be among most aggressive on early voting time frame – PolitiFact",
       "date": {
-        "kind": "existed_by",
-        "value": "2020-10-06",
+        "kind": "unconfirmed",
+        "value": null,
         "source": "wayback_first_capture",
         "firstCapture": "2020-10-06",
         "conflictingDate": false
@@ -53,8 +53,8 @@
       "domain": "politifact.com",
       "title": "Apocalypse no. Fear-mongering Facebook post provides no evidence for claims. – PolitiFact",
       "date": {
-        "kind": "existed_by",
-        "value": "2023-10-02",
+        "kind": "unconfirmed",
+        "value": null,
         "source": "wayback_first_capture",
         "firstCapture": "2023-10-02",
         "conflictingDate": false
@@ -69,7 +69,7 @@
       "candidateParents": [
         {
           "url": "https://www.facebook.com/watch/?v=849949939650776",
-          "read": false
+          "read": true
         },
         {
           "url": "https://www.facebook.com/help/1952307158131536?helpref=related",
@@ -81,19 +81,19 @@
     },
     {
       "id": "n3",
-      "url": "https://blogs.ucl.ac.uk/bsh/2012/06/29/busting-the-21-days-habit-formation-myth",
-      "domain": "blogs.ucl.ac.uk",
-      "title": "Busting the 21 days habit formation myth | UCL ‘Health Chatter’: Research Department of Behavioural Science and Health Blog",
+      "url": "https://www.psychologytoday.com/us/blog/the-happiness-project/200910/stop-expecting-change-your-habit-in-21-days",
+      "domain": "psychologytoday.com",
+      "title": "Stop Expecting to Change Your Habit in 21 Days | Psychology Today",
       "date": {
-        "kind": "existed_by",
-        "value": "2017-04-12",
-        "source": "wayback_first_capture",
-        "firstCapture": "2017-04-12",
+        "kind": "published",
+        "value": "2009-10-21",
+        "source": "metadata",
+        "firstCapture": null,
         "conflictingDate": false
       },
       "clusterId": "c-n3",
       "evidence": "observed",
-      "meta": true,
+      "meta": false,
       "read": true,
       "versionOf": null,
       "spanIds": [
@@ -104,20 +104,20 @@
       "pageType": null,
       "sameClaim": {
         "questionId": "same_claim",
-        "optionId": "no",
-        "probability": 0.9998766053788102,
+        "optionId": "yes",
+        "probability": 0.8175744310314634,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.0001233946211897509
+            "p": 0.8175744310314634
           },
           {
             "optionId": "no",
-            "p": 0.9998766053788102
+            "p": 0.1824255028273993
           },
           {
             "optionId": "__other__",
-            "p": 1.1102230246251565e-16
+            "p": 6.614113723379944e-8
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -128,19 +128,19 @@
     },
     {
       "id": "n4",
-      "url": "https://jamesclear.com/new-habit",
-      "domain": "jamesclear.com",
-      "title": "How Long Does it Take to Form a Habit? Backed by Science.",
+      "url": "https://blogs.ucl.ac.uk/bsh/2012/06/29/busting-the-21-days-habit-formation-myth",
+      "domain": "blogs.ucl.ac.uk",
+      "title": "Busting the 21 days habit formation myth | UCL ‘Health Chatter’: Research Department of Behavioural Science and Health Blog",
       "date": {
-        "kind": "published",
-        "value": "2014-03-06",
-        "source": "metadata",
-        "firstCapture": "2014-07-01",
+        "kind": "unconfirmed",
+        "value": null,
+        "source": "wayback_first_capture",
+        "firstCapture": "2017-04-12",
         "conflictingDate": false
       },
       "clusterId": "c-n4",
       "evidence": "observed",
-      "meta": false,
+      "meta": true,
       "read": true,
       "versionOf": null,
       "spanIds": [
@@ -152,15 +152,15 @@
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "yes",
-        "probability": 0.9999999992417439,
+        "probability": 0.9999999979388463,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.9999999992417439
+            "p": 0.9999999979388463
           },
           {
             "optionId": "no",
-            "p": 7.582560736033845e-10
+            "p": 2.0611536846301405e-9
           },
           {
             "optionId": "__other__",
@@ -175,14 +175,14 @@
     },
     {
       "id": "n5",
-      "url": "https://www.violinist.com/discussion/archive/10591",
-      "domain": "violinist.com",
-      "title": "How to motivate young students to practice",
+      "url": "https://www.doi.gov/sites/default/files/uploads/daily_activities_to_help_change_habits.pdf",
+      "domain": "doi.gov",
+      "title": "Daily Activities to Help Change Habits",
       "date": {
         "kind": "existed_by",
-        "value": "2021-05-18",
+        "value": "2024-09-27",
         "source": "wayback_first_capture",
-        "firstCapture": "2021-05-18",
+        "firstCapture": "2024-09-27",
         "conflictingDate": false
       },
       "clusterId": "c-n5",
@@ -198,16 +198,16 @@
       "pageType": null,
       "sameClaim": {
         "questionId": "same_claim",
-        "optionId": "yes",
-        "probability": 0.9999999973534262,
+        "optionId": "no",
+        "probability": 0.9999869928741844,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.9999999973534262
+            "p": 0.00001300712581556289
           },
           {
             "optionId": "no",
-            "p": 2.6465737725140657e-9
+            "p": 0.9999869928741844
           },
           {
             "optionId": "__other__",
@@ -222,14 +222,14 @@
     },
     {
       "id": "n6",
-      "url": "https://www.refocuser.com/2009/06/15-ways-to-get-a-new-habit-to-stick-forever",
-      "domain": "refocuser.com",
-      "title": "15 Ways To Get a New Habit To Stick Forever | Refocuser",
+      "url": "https://www.appleseeds.org/thoughtfulness.htm",
+      "domain": "appleseeds.org",
+      "title": "\"The Gift of Thoughtfulness\" by Bob Burg",
       "date": {
-        "kind": "published",
-        "value": "2009-06-04",
-        "source": "metadata",
-        "firstCapture": "2009-06-11",
+        "kind": "existed_by",
+        "value": "2001-12-16",
+        "source": "wayback_first_capture",
+        "firstCapture": "2001-12-16",
         "conflictingDate": false
       },
       "clusterId": "c-n6",
@@ -245,7 +245,7 @@
       "pageType": {
         "questionId": "page_type",
         "optionId": "blog",
-        "probability": 0.9999999964845627,
+        "probability": 0.9999955834048365,
         "top": [
           {
             "optionId": "study",
@@ -257,11 +257,11 @@
           },
           {
             "optionId": "report",
-            "p": 6.224144600388478e-11
+            "p": 2.510989562319239e-8
           },
           {
             "optionId": "speaker",
-            "p": 0
+            "p": 0.0000037266353801758005
           },
           {
             "optionId": "news",
@@ -269,19 +269,19 @@
           },
           {
             "optionId": "blog",
-            "p": 0.9999999964845627
+            "p": 0.9999955834048365
           },
           {
             "optionId": "social",
-            "p": 5.492788331081467e-11
+            "p": 1.7257762053380485e-8
           },
           {
             "optionId": "other",
-            "p": 3.3982678071999478e-9
+            "p": 6.475921258150977e-7
           },
           {
             "optionId": "__other__",
-            "p": 2.220446049250313e-16
+            "p": 0
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -290,19 +290,19 @@
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "yes",
-        "probability": 0.999999999979793,
+        "probability": 0.9999999999094393,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.999999999979793
+            "p": 0.9999999999094393
           },
           {
             "optionId": "no",
-            "p": 2.020684527111642e-11
+            "p": 9.05607975894436e-11
           },
           {
             "optionId": "__other__",
-            "p": 1.1102230246251565e-16
+            "p": 0
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -312,23 +312,23 @@
       "boundary": {
         "questionId": "boundary",
         "optionId": "print",
-        "probability": 0.9999464259214765,
+        "probability": 0.9999975449559269,
         "top": [
           {
             "optionId": "print",
-            "p": 0.9999464259214765
+            "p": 0.9999975449559269
           },
           {
             "optionId": "unsourced",
-            "p": 0.000040567476230380604
+            "p": 4.603143190978912e-7
           },
           {
             "optionId": "none",
-            "p": 0.000013006602292939972
+            "p": 0.000001994729754095681
           },
           {
             "optionId": "__other__",
-            "p": 1.1102230246251565e-16
+            "p": 0
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -338,14 +338,14 @@
     },
     {
       "id": "n7",
-      "url": "https://www.doi.gov/sites/default/files/uploads/daily_activities_to_help_change_habits.pdf",
-      "domain": "doi.gov",
-      "title": "Daily Activities to Help Change Habits",
+      "url": "https://www.violinist.com/blog/laurie/20063/4647",
+      "domain": "violinist.com",
+      "title": "Creating the Practice Habit",
       "date": {
         "kind": "existed_by",
-        "value": "2024-09-27",
+        "value": "2006-03-14",
         "source": "wayback_first_capture",
-        "firstCapture": "2024-09-27",
+        "firstCapture": "2006-03-14",
         "conflictingDate": false
       },
       "clusterId": "c-n7",
@@ -361,67 +361,20 @@
       "pageType": null,
       "sameClaim": {
         "questionId": "same_claim",
-        "optionId": "no",
-        "probability": 0.9999724634821293,
+        "optionId": "yes",
+        "probability": 0.9999999999942106,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.00002753569208972434
+            "p": 0.9999999999942106
           },
           {
             "optionId": "no",
-            "p": 0.9999724634821293
+            "p": 5.789357472082367e-12
           },
           {
             "optionId": "__other__",
-            "p": 8.257809991363274e-10
-          }
-        ],
-        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-        "threshold": null
-      },
-      "foundViaMeta": null,
-      "injection": null
-    },
-    {
-      "id": "n8",
-      "url": "https://www.amazon.in/The-Book-21-Day-Habit/dp/0842335811",
-      "domain": "amazon.in",
-      "title": "The Book: 21 Day Habit : Amazon.in: Books",
-      "date": {
-        "kind": "unconfirmed",
-        "value": null,
-        "source": "wayback_first_capture",
-        "firstCapture": null,
-        "conflictingDate": false
-      },
-      "clusterId": "c-n8",
-      "evidence": "observed",
-      "meta": false,
-      "read": true,
-      "versionOf": null,
-      "spanIds": [
-        "s6"
-      ],
-      "citesEarlier": false,
-      "candidateParents": [],
-      "pageType": null,
-      "sameClaim": {
-        "questionId": "same_claim",
-        "optionId": "no",
-        "probability": 0.9999898673166349,
-        "top": [
-          {
-            "optionId": "yes",
-            "p": 0.00001012998765937854
-          },
-          {
-            "optionId": "no",
-            "p": 0.9999898673166349
-          },
-          {
-            "optionId": "__other__",
-            "p": 2.695705769717449e-9
+            "p": 0
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -435,37 +388,23 @@
     {
       "id": "e1",
       "parentId": "n6",
-      "childId": "n4",
+      "childId": "n7",
       "kind": "inferred",
       "parentSpanId": "s4",
-      "childSpanId": "s2",
+      "childSpanId": "s5",
       "linkHref": null
     },
     {
       "id": "e2",
-      "parentId": "n4",
-      "childId": "n5",
+      "parentId": "n7",
+      "childId": "n3",
       "kind": "inferred",
-      "parentSpanId": "s2",
-      "childSpanId": "s3",
+      "parentSpanId": "s5",
+      "childSpanId": "s1",
       "linkHref": null
     }
   ],
   "clusters": [
-    {
-      "id": "c-n8",
-      "nodeIds": [
-        "n8"
-      ],
-      "rule": "single"
-    },
-    {
-      "id": "c-n7",
-      "nodeIds": [
-        "n7"
-      ],
-      "rule": "single"
-    },
     {
       "id": "c-n5",
       "nodeIds": [
@@ -477,6 +416,13 @@
       "id": "c-n6",
       "nodeIds": [
         "n6"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n7",
+      "nodeIds": [
+        "n7"
       ],
       "rule": "single"
     },
@@ -513,62 +459,34 @@
     {
       "id": "s1",
       "nodeId": "n3",
-      "text": "Close 'Health Chatter': Research Department of Behavioural Science and Health Blog Home Busting the 21 days habit formation myth.",
-      "contextBefore": "",
-      "contextAfter": " By Ben D Gardner, on 29 June 2012 Have you ever made a New Year's resolution? If so, you may have been assured - usually by a well-meaning supporter of your attempted transformation - that you only h",
-      "start": 0,
-      "end": 129,
-      "extractSha256": "bfde622e0d601e8582c415ac9c82da252bee542378f3261b4df6220419b518b1",
-      "windowSha256": "c4bcad4c5d3e243d002dc1dad2b9b912b0d71150f260ef8aa60db0ae9b0fb223",
-      "fetchedAt": "2026-11-17T23:07:20.363Z",
-      "waybackUrl": "https://web.archive.org/web/20170412022747/https://blogs.ucl.ac.uk/bsh/2012/06/29/busting-the-21-days-habit-formation-myth",
+      "text": "Second, at least for me, 21 days isn't *nearly* long enough to form a good habit.",
+      "contextBefore": "d habit, two repetitions is probably enough. Order a doughnut with your coffee on Monday morning and Tuesday morning, and you'll probably find it very hard to resist ordering a doughnut on Wednesday. ",
+      "contextAfter": " For my happiness project, I tried for many weeks to get in the habit of keeping a food journal, and I failed and gave up, and then tried again, and I never could get in the habit. Flossing is a chall",
+      "start": 572,
+      "end": 653,
+      "extractSha256": "77e656b143472eca05e6312bcfbb628a34d9b65d2611c8e1ac0cf33e413d3aff",
+      "windowSha256": "716131e26802ac85e7fa3db315ffd474203e742840a8098904078159a5a5ad7c",
+      "fetchedAt": "2026-11-19T13:16:29.370Z",
+      "waybackUrl": null,
       "tier": "exact"
     },
     {
       "id": "s2",
       "nodeId": "n4",
-      "text": "These experiences prompted Maltz to think about his own adjustment period to changes and new behaviors, and he noticed that it also took himself about 21 days to form a new habit.",
-      "contextBefore": "ing their new face. Similarly, when a patient had an arm or a leg amputated, Maxwell Maltz noticed that the patient would sense a phantom limb for about 21 days before adjusting to the new situation. ",
-      "contextAfter": " Maltz wrote about these experiences and said, \"These, and many other commonly observed phenomena tend to show that it requires a minimum of about 21 days for an old mental image to dissolve and a new",
-      "start": 632,
-      "end": 811,
-      "extractSha256": "1bc1d94a47614984a8639c4107b55fa80153010ffad97db404902939de84550a",
-      "windowSha256": "e2a78b3389d8dc09b620cc4b8c49d380f58f298819d1382b265add3ead34ad4a",
-      "fetchedAt": "2026-11-17T23:07:21.331Z",
-      "waybackUrl": "https://web.archive.org/web/20140701085137/https://jamesclear.com/new-habit",
+      "text": "[...] surgeon theorist) tells us that it takes 21 days to form a new habit.Other theorists tell us that this is a myth and that it actually takes much [...]",
+      "contextBefore": "sing Minnesota wrote on 10 December 2018: I'm glad to see the research behind it. * 22 Adult day center wrote on 8 January 2019: Thanks for the post. * 23 21 - Arete Academy wrote on 22 January 2019: ",
+      "contextAfter": " * 24 Assisted living wrote on 7 March 2021: Great to come accross here, the article is worth reading and suits for Assisted living * 25 Mac wrote on 20 April 2021: It's a nice article for Independent",
+      "start": 11020,
+      "end": 11176,
+      "extractSha256": "bfde622e0d601e8582c415ac9c82da252bee542378f3261b4df6220419b518b1",
+      "windowSha256": "8d1be91269219012ceaced5fa5e80379d40414d9a1d26a063bb8611b6b57e2ea",
+      "fetchedAt": "2026-11-19T13:16:35.113Z",
+      "waybackUrl": "https://web.archive.org/web/20170412022747/https://blogs.ucl.ac.uk/bsh/2012/06/29/busting-the-21-days-habit-formation-myth",
       "tier": "exact"
     },
     {
       "id": "s3",
       "nodeId": "n5",
-      "text": "Laurie Niles January 29, 2007 at 08:46 PM · I give this lecture to parents, and it worked very well when given to me by a piano teacher in regards to practicing with my son, then 5: It takes 21 days to form a habit, so you must form a habit with your child.",
-      "contextBefore": " that he can hear the improvement he gets with practice. Scheduling a time to practice every day and working it into the daily routine is good. Any other suggestions? Thanks in advance. Replies (72). ",
-      "contextAfter": " They must be 21 days in a row; if you miss a day, you have to start over. Once you have formed the \"practice habit\", your child will stop fighting with you about it, because it will be a habit. It is",
-      "start": 1603,
-      "end": 1860,
-      "extractSha256": "65c922fbc796677c7200b4e0128b40345e5bb31be9fe88466849d0e64ebf86a2",
-      "windowSha256": "2efbd6f7544b71c50fc1d2bccc4a128bb4e8c9be97de16fc253a2df4cb01f3a3",
-      "fetchedAt": "2026-11-17T23:07:31.466Z",
-      "waybackUrl": "https://web.archive.org/web/20210518141027/https://www.violinist.com/discussion/archive/10591",
-      "tier": "exact"
-    },
-    {
-      "id": "s4",
-      "nodeId": "n6",
-      "text": "Studies have shown that lasting habit change can occur in as little as 21 days (and in some cases fewer).",
-      "contextBefore": "ou won't always be as motivated to change as you are at that moment. People who have a support system almost always find it easier to make things happen. 14. Start off doing it every day for 21 days. ",
-      "contextAfter": " In order to get the most of it, even if your habit isn't something you ultimately will do daily, start off doing it every single day for 21 days. It should be much easier afterwards. 15. Write it dow",
-      "start": 8478,
-      "end": 8583,
-      "extractSha256": "d17dc80721fb399fd8b812b733ade2819bf60f106b9c61a1ac23eb62f58ca9f1",
-      "windowSha256": "9129eccd467b5ebebd02c1aac6b6f5725a091ccc8e758df592de71747a9f5e88",
-      "fetchedAt": "2026-11-17T23:07:34.304Z",
-      "waybackUrl": "https://web.archive.org/web/20090611150651/https://www.refocuser.com/2009/06/15-ways-to-get-a-new-habit-to-stick-forever",
-      "tier": "exact"
-    },
-    {
-      "id": "s5",
-      "nodeId": "n7",
       "text": "It Takes 21 Days to Break a Bad Habit To begin with, choose one unhealthy habit you wish to eliminate or change.",
       "contextBefore": "fect our health. We cling to them because we see them as rewards. But your habits determine your health. Below is a strategy and focus on daily activities to help you change and eliminate bad habits. ",
       "contextAfter": " Or, choose a healthy habit you want to adopt as part of your behavior. If it is a habit to eliminate, you may wish to go \"cold turkey\" or have a gradual tapering off. Caution: If it is a drug or chem",
@@ -576,22 +494,36 @@
       "end": 964,
       "extractSha256": "3412e0953951743b09c08290836e12c7e18405b8909cd0a5b2840e98edb48757",
       "windowSha256": "ae14b342b5a3aabb768eb609638f6a5dc5c91ab97bfe76a317fc5a42bb84fb23",
-      "fetchedAt": "2026-11-17T23:07:53.447Z",
+      "fetchedAt": "2026-11-19T13:16:46.655Z",
       "waybackUrl": "https://web.archive.org/web/20240927035924/https://www.doi.gov/sites/default/files/uploads/daily_activities_to_help_change_habits.pdf",
       "tier": "exact"
     },
     {
-      "id": "s6",
-      "nodeId": "n8",
-      "text": "OK The Book: 21 Day Habit.",
-      "contextBefore": "available for Colour: * VIDEOS * 360° VIEW * IMAGES --- Follow the author. Get new release updates & improved recommendations Tyndale Follow Something went wrong. Please try your request again later. ",
-      "contextAfter": " Format: Paperback 4.1 *4.1 out of 5 stars* (4) Sorry, there was a problem loading this page.Try again. --- Returns Policy Secure transaction Return Policy. --- Tap on the category links below for the",
-      "start": 1262,
-      "end": 1288,
-      "extractSha256": "66dfd59251a2e71152ac47eedfecaae892950c2b13634557773a26b35b7a0b4c",
-      "windowSha256": "856fa75517b4cf25dfb61821f88feb11b3f6f8def93e0feb5e02b0995ce8d000",
-      "fetchedAt": "2026-11-17T23:08:02.910Z",
-      "waybackUrl": null,
+      "id": "s4",
+      "nodeId": "n6",
+      "text": "Do this for 21 days, as that's how long it takes to form a new habit (actually, we don't \"form\" new habits as much as \"replace\" old, ineffective ones).",
+      "contextBefore": "k. > > > > Thoughtfulness is a habit; internalized, it becomes a way of life, a part of our being. But it does take practice. Where do we start? Our daily life. Here are some good practice exercises. ",
+      "contextAfter": " > > > > Thoughtful people don't wait, they \"create\" opportunities to make life brighter and more enjoyable for those around them. But, how? Simple things. Holding the door open for anyone near you, r",
+      "start": 618,
+      "end": 769,
+      "extractSha256": "0f7ae98de372e60b540c3654e2cb566e76c4859f945bd24bc0c30a8475609e64",
+      "windowSha256": "b78772c4138fc2e736239d28bdef51faeb102476c6d395b37bb0de3f03bd89ee",
+      "fetchedAt": "2026-11-19T13:16:50.948Z",
+      "waybackUrl": "https://web.archive.org/web/20011216225645/https://www.appleseeds.org/thoughtfulness.htm",
+      "tier": "exact"
+    },
+    {
+      "id": "s5",
+      "nodeId": "n7",
+      "text": "Here is what to tell parents, to tell students, maybe to tell yourself: It takes 21 days to form a habit.",
+      "contextBefore": " days, and many others have long streaks going, too. So I wanted to share the secret once again, which I discovered when confronting my own practicing woes with my 5-year-old son: The 21-Day Program. ",
+      "contextAfter": " You must practice 21 days in a row; if you skip a day, you must start again from one. For the first 21 days, it is possible that you will meet with resistance. Just work through that, and keep doing ",
+      "start": 605,
+      "end": 710,
+      "extractSha256": "18f0ee95e85670fcc21a9bd344f64677f45d34138c123c317298dc6aeb6c1ec3",
+      "windowSha256": "0e1432b5036a551d38a991f2a804329f20fe67789e0e824df8b469ccc4801a80",
+      "fetchedAt": "2026-11-19T13:16:59.840Z",
+      "waybackUrl": "https://web.archive.org/web/20060314163338/https://www.violinist.com/blog/laurie/20063/4647",
       "tier": "exact"
     }
   ],
@@ -630,41 +562,37 @@
         {
           "id": "scope_widened",
           "source": "inferred",
-          "value": "no",
-          "probability": 0.9914224772357153,
+          "value": "yes",
+          "probability": 0.9999785429161974,
           "disputed": false
         },
         {
           "id": "attribution_shifted",
           "source": "inferred",
           "value": "yes",
-          "probability": 0.999999855501979,
+          "probability": 0.8807970469046399,
           "disputed": false
         },
         {
           "id": "context_stripped",
           "source": "inferred",
-          "value": "no",
-          "probability": 0.8175744308782122,
+          "value": "yes",
+          "probability": 0.9990889486413056,
           "disputed": false
         }
       ],
       "wordDiff": [
         {
           "op": "add",
-          "text": "these"
+          "text": "here"
         },
         {
           "op": "add",
-          "text": "experiences"
+          "text": "is"
         },
         {
           "op": "add",
-          "text": "prompted"
-        },
-        {
-          "op": "add",
-          "text": "maltz"
+          "text": "what"
         },
         {
           "op": "add",
@@ -672,27 +600,11 @@
         },
         {
           "op": "add",
-          "text": "think"
+          "text": "tell"
         },
         {
           "op": "add",
-          "text": "about"
-        },
-        {
-          "op": "add",
-          "text": "his"
-        },
-        {
-          "op": "add",
-          "text": "own"
-        },
-        {
-          "op": "add",
-          "text": "adjustment"
-        },
-        {
-          "op": "add",
-          "text": "period"
+          "text": "parents"
         },
         {
           "op": "add",
@@ -700,47 +612,27 @@
         },
         {
           "op": "add",
-          "text": "changes"
+          "text": "tell"
         },
         {
           "op": "add",
-          "text": "and"
+          "text": "students"
         },
         {
           "op": "add",
-          "text": "new"
+          "text": "maybe"
         },
         {
           "op": "add",
-          "text": "behaviors"
+          "text": "to"
         },
         {
           "op": "add",
-          "text": "and"
+          "text": "tell"
         },
         {
           "op": "add",
-          "text": "he"
-        },
-        {
-          "op": "add",
-          "text": "noticed"
-        },
-        {
-          "op": "del",
-          "text": "studies"
-        },
-        {
-          "op": "del",
-          "text": "have"
-        },
-        {
-          "op": "del",
-          "text": "shown"
-        },
-        {
-          "op": "same",
-          "text": "that"
+          "text": "yourself"
         },
         {
           "op": "add",
@@ -748,55 +640,19 @@
         },
         {
           "op": "add",
-          "text": "also"
-        },
-        {
-          "op": "add",
-          "text": "took"
-        },
-        {
-          "op": "add",
-          "text": "himself"
-        },
-        {
-          "op": "add",
-          "text": "about"
+          "text": "takes"
         },
         {
           "op": "del",
-          "text": "lasting"
+          "text": "do"
         },
         {
           "op": "del",
-          "text": "habit"
+          "text": "this"
         },
         {
           "op": "del",
-          "text": "change"
-        },
-        {
-          "op": "del",
-          "text": "can"
-        },
-        {
-          "op": "del",
-          "text": "occur"
-        },
-        {
-          "op": "del",
-          "text": "in"
-        },
-        {
-          "op": "del",
-          "text": "as"
-        },
-        {
-          "op": "del",
-          "text": "little"
-        },
-        {
-          "op": "del",
-          "text": "as"
+          "text": "for"
         },
         {
           "op": "same",
@@ -807,44 +663,100 @@
           "text": "days"
         },
         {
-          "op": "add",
+          "op": "del",
+          "text": "as"
+        },
+        {
+          "op": "del",
+          "text": "that's"
+        },
+        {
+          "op": "del",
+          "text": "how"
+        },
+        {
+          "op": "del",
+          "text": "long"
+        },
+        {
+          "op": "del",
+          "text": "it"
+        },
+        {
+          "op": "del",
+          "text": "takes"
+        },
+        {
+          "op": "same",
           "text": "to"
         },
         {
-          "op": "add",
+          "op": "same",
           "text": "form"
         },
         {
-          "op": "add",
+          "op": "same",
           "text": "a"
         },
         {
-          "op": "add",
+          "op": "del",
           "text": "new"
         },
         {
-          "op": "add",
+          "op": "same",
           "text": "habit"
         },
         {
           "op": "del",
-          "text": "and"
+          "text": "actually"
         },
         {
           "op": "del",
-          "text": "in"
+          "text": "we"
         },
         {
           "op": "del",
-          "text": "some"
+          "text": "don't"
         },
         {
           "op": "del",
-          "text": "cases"
+          "text": "form"
         },
         {
           "op": "del",
-          "text": "fewer"
+          "text": "new"
+        },
+        {
+          "op": "del",
+          "text": "habits"
+        },
+        {
+          "op": "del",
+          "text": "as"
+        },
+        {
+          "op": "del",
+          "text": "much"
+        },
+        {
+          "op": "del",
+          "text": "as"
+        },
+        {
+          "op": "del",
+          "text": "replace"
+        },
+        {
+          "op": "del",
+          "text": "old"
+        },
+        {
+          "op": "del",
+          "text": "ineffective"
+        },
+        {
+          "op": "del",
+          "text": "ones"
         }
       ],
       "faithful": false
@@ -869,7 +781,7 @@
         {
           "id": "hedge_dropped",
           "source": "measured",
-          "value": "yes",
+          "value": "no",
           "probability": null,
           "disputed": false
         },
@@ -884,44 +796,28 @@
           "id": "scope_widened",
           "source": "inferred",
           "value": "no",
-          "probability": 0.49999999908976683,
+          "probability": 0.9914224772599953,
           "disputed": false
         },
         {
           "id": "attribution_shifted",
           "source": "inferred",
-          "value": "yes",
-          "probability": 0.9999999943972036,
+          "value": "no",
+          "probability": 0.9999251421694197,
           "disputed": false
         },
         {
           "id": "context_stripped",
           "source": "inferred",
-          "value": "no",
-          "probability": 0.7772998604562432,
+          "value": "yes",
+          "probability": 0.9947798743649621,
           "disputed": false
         }
       ],
       "wordDiff": [
         {
           "op": "add",
-          "text": "laurie"
-        },
-        {
-          "op": "add",
-          "text": "niles"
-        },
-        {
-          "op": "add",
-          "text": "january"
-        },
-        {
-          "op": "add",
-          "text": "29"
-        },
-        {
-          "op": "add",
-          "text": "2007"
+          "text": "second"
         },
         {
           "op": "add",
@@ -929,219 +825,75 @@
         },
         {
           "op": "add",
-          "text": "08:46"
+          "text": "least"
         },
         {
           "op": "add",
-          "text": "pm"
-        },
-        {
-          "op": "add",
-          "text": "i"
-        },
-        {
-          "op": "add",
-          "text": "give"
-        },
-        {
-          "op": "add",
-          "text": "this"
-        },
-        {
-          "op": "add",
-          "text": "lecture"
-        },
-        {
-          "op": "add",
-          "text": "to"
-        },
-        {
-          "op": "add",
-          "text": "parents"
-        },
-        {
-          "op": "add",
-          "text": "and"
-        },
-        {
-          "op": "add",
-          "text": "it"
-        },
-        {
-          "op": "add",
-          "text": "worked"
-        },
-        {
-          "op": "add",
-          "text": "very"
-        },
-        {
-          "op": "add",
-          "text": "well"
-        },
-        {
-          "op": "add",
-          "text": "when"
-        },
-        {
-          "op": "add",
-          "text": "given"
-        },
-        {
-          "op": "del",
-          "text": "these"
-        },
-        {
-          "op": "del",
-          "text": "experiences"
-        },
-        {
-          "op": "del",
-          "text": "prompted"
-        },
-        {
-          "op": "del",
-          "text": "maltz"
-        },
-        {
-          "op": "same",
-          "text": "to"
+          "text": "for"
         },
         {
           "op": "add",
           "text": "me"
         },
         {
-          "op": "add",
-          "text": "by"
-        },
-        {
-          "op": "add",
-          "text": "a"
-        },
-        {
-          "op": "add",
-          "text": "piano"
-        },
-        {
-          "op": "add",
-          "text": "teacher"
-        },
-        {
-          "op": "add",
-          "text": "in"
-        },
-        {
-          "op": "add",
-          "text": "regards"
+          "op": "del",
+          "text": "here"
         },
         {
           "op": "del",
-          "text": "think"
+          "text": "is"
         },
         {
           "op": "del",
-          "text": "about"
+          "text": "what"
         },
         {
           "op": "del",
-          "text": "his"
-        },
-        {
-          "op": "del",
-          "text": "own"
-        },
-        {
-          "op": "del",
-          "text": "adjustment"
-        },
-        {
-          "op": "del",
-          "text": "period"
-        },
-        {
-          "op": "same",
           "text": "to"
         },
         {
-          "op": "add",
-          "text": "practicing"
-        },
-        {
-          "op": "add",
-          "text": "with"
-        },
-        {
-          "op": "add",
-          "text": "my"
-        },
-        {
-          "op": "add",
-          "text": "son"
-        },
-        {
-          "op": "add",
-          "text": "then"
-        },
-        {
-          "op": "add",
-          "text": "5"
+          "op": "del",
+          "text": "tell"
         },
         {
           "op": "del",
-          "text": "changes"
+          "text": "parents"
         },
         {
           "op": "del",
-          "text": "and"
+          "text": "to"
         },
         {
           "op": "del",
-          "text": "new"
+          "text": "tell"
         },
         {
           "op": "del",
-          "text": "behaviors"
+          "text": "students"
         },
         {
           "op": "del",
-          "text": "and"
+          "text": "maybe"
         },
         {
           "op": "del",
-          "text": "he"
+          "text": "to"
         },
         {
           "op": "del",
-          "text": "noticed"
+          "text": "tell"
         },
         {
           "op": "del",
-          "text": "that"
+          "text": "yourself"
         },
         {
-          "op": "same",
+          "op": "del",
           "text": "it"
         },
         {
-          "op": "add",
+          "op": "del",
           "text": "takes"
-        },
-        {
-          "op": "del",
-          "text": "also"
-        },
-        {
-          "op": "del",
-          "text": "took"
-        },
-        {
-          "op": "del",
-          "text": "himself"
-        },
-        {
-          "op": "del",
-          "text": "about"
         },
         {
           "op": "same",
@@ -1152,6 +904,22 @@
           "text": "days"
         },
         {
+          "op": "add",
+          "text": "isn't"
+        },
+        {
+          "op": "add",
+          "text": "nearly"
+        },
+        {
+          "op": "add",
+          "text": "long"
+        },
+        {
+          "op": "add",
+          "text": "enough"
+        },
+        {
           "op": "same",
           "text": "to"
         },
@@ -1165,47 +933,11 @@
         },
         {
           "op": "add",
-          "text": "habit"
-        },
-        {
-          "op": "add",
-          "text": "so"
-        },
-        {
-          "op": "add",
-          "text": "you"
-        },
-        {
-          "op": "add",
-          "text": "must"
-        },
-        {
-          "op": "add",
-          "text": "form"
-        },
-        {
-          "op": "add",
-          "text": "a"
-        },
-        {
-          "op": "del",
-          "text": "new"
+          "text": "good"
         },
         {
           "op": "same",
           "text": "habit"
-        },
-        {
-          "op": "add",
-          "text": "with"
-        },
-        {
-          "op": "add",
-          "text": "your"
-        },
-        {
-          "op": "add",
-          "text": "child"
         }
       ],
       "faithful": false
@@ -1213,12 +945,12 @@
   ],
   "blame": [],
   "roots": {
-    "pages": 5,
-    "clusters": 5,
+    "pages": 4,
+    "clusters": 4,
     "rootsLinked": 0,
-    "clustersUnlinked": 5,
+    "clustersUnlinked": 4,
     "studiesFound": null,
-    "independentRoots": 5,
+    "independentRoots": 4,
     "copies": 0
   },
   "redHopEdgeId": "e1",
@@ -1231,160 +963,179 @@
   },
   "failure": null,
   "budget": {
-    "credits": 16,
-    "usd": 0.00075699,
-    "ms": 72945,
+    "credits": 14,
+    "usd": 0.0006151,
+    "ms": 88721,
     "capHit": null
   },
   "decision": {
     "state": "TRAIL_GOES_COLD",
     "row": 6,
     "reasons": [
-      "no earliest page with a confirmed date, a primary page type, no earlier citation and no negated span",
-      "1 unread candidate parent(s)"
+      "no earliest page with a confirmed date, a primary page type, no earlier citation and no negated span"
     ],
     "counts": {
-      "pages": 5,
-      "clusters": 5,
-      "unreadParents": 1,
+      "pages": 4,
+      "clusters": 4,
+      "unreadParents": 0,
       "earlierWindowSearches": 4
     }
   },
   "searchLog": [
     {
-      "at": "2026-11-17T23:07:08.903Z",
+      "at": "2026-11-19T13:16:18.272Z",
       "step": "search",
       "query": "\"21 days\" habit",
-      "endDate": "2026-11-17",
+      "endDate": "2026-11-19",
       "startDate": null,
-      "results": 10,
-      "kept": 10,
+      "results": 9,
+      "kept": 9,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:07:10.125Z",
+      "at": "2026-11-19T13:16:19.812Z",
       "step": "search",
       "query": "21 days to form a habit variant",
-      "endDate": "2026-11-17",
+      "endDate": "2026-11-19",
       "startDate": null,
-      "results": 10,
-      "kept": 10,
+      "results": 8,
+      "kept": 8,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:07:11.881Z",
+      "at": "2026-11-19T13:16:21.451Z",
       "step": "search",
       "query": "habit formation takes 21 days older wording",
-      "endDate": "2026-11-17",
+      "endDate": "2026-11-19",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:07:13.350Z",
+      "at": "2026-11-19T13:16:23.078Z",
       "step": "search",
       "query": "21 days habit formation Dr. Maxwell Maltz publisher",
-      "endDate": "2026-11-17",
+      "endDate": "2026-11-19",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:07:14.824Z",
+      "at": "2026-11-19T13:16:25.252Z",
       "step": "meta-search",
       "query": "\"21 days\" habit",
-      "endDate": "2026-11-17",
+      "endDate": "2026-11-19",
       "startDate": null,
       "results": 5,
       "kept": 2,
       "dropped": 3
     },
     {
-      "at": "2026-11-17T23:07:25.190Z",
+      "at": "2026-11-19T13:16:42.542Z",
       "step": "search",
       "query": "\"21 days\" habit",
-      "endDate": "2014-03-05",
-      "startDate": null,
-      "results": 10,
-      "kept": 8,
-      "dropped": 2
-    },
-    {
-      "at": "2026-11-17T23:07:26.283Z",
-      "step": "search",
-      "query": "\"21 days to form a habit\" earliest origin",
-      "endDate": "2014-03-05",
+      "endDate": "2009-10-20",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:07:27.385Z",
+      "at": "2026-11-19T13:16:44.258Z",
       "step": "search",
-      "query": "\"21 days\" habit formation Maltz original",
-      "endDate": "2014-03-05",
-      "startDate": null,
-      "results": 10,
-      "kept": 8,
-      "dropped": 2
-    },
-    {
-      "at": "2026-11-17T23:07:29.200Z",
-      "step": "search",
-      "query": "21-day habit formation research paper",
-      "endDate": "2014-03-05",
-      "startDate": null,
-      "results": 10,
-      "kept": 8,
-      "dropped": 2
-    },
-    {
-      "at": "2026-11-17T23:07:38.918Z",
-      "step": "search",
-      "query": "\"21 days\" habit",
-      "endDate": "2007-01-28",
+      "query": "\"21 days\" habit study",
+      "endDate": "2009-10-20",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:07:40.900Z",
+      "at": "2026-11-19T13:17:08.140Z",
       "step": "search",
-      "query": "21 days to form a habit piano teacher 2007",
-      "endDate": "2007-01-28",
+      "query": "\"21 days\" habit",
+      "endDate": "2001-12-15",
+      "startDate": null,
+      "results": 8,
+      "kept": 7,
+      "dropped": 1
+    },
+    {
+      "at": "2026-11-19T13:17:09.691Z",
+      "step": "search",
+      "query": "\"21 days to form a habit\" earliest source",
+      "endDate": "2001-12-15",
+      "startDate": null,
+      "results": 1,
+      "kept": 1,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:17:10.982Z",
+      "step": "search",
+      "query": "\"Do this for 21 days\" habit formation origin",
+      "endDate": "2001-12-15",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:17:12.556Z",
+      "step": "search",
+      "query": "21 days habit formation study psychology",
+      "endDate": "2001-12-15",
       "startDate": null,
       "results": 8,
       "kept": 8,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:07:42.037Z",
-      "step": "search",
-      "query": "\"21 days to form a habit\" parent lecture 2007",
-      "endDate": "2007-01-28",
+      "at": "2026-11-19T13:17:24.897Z",
+      "step": "dating",
+      "query": "https://politifact.com/factchecks/2011/may/02/jon-husted/jon-husted-says-under-his-plan-ohio-would-be-among: the node has no span to look for in the capture; no date from the first capture",
+      "endDate": null,
       "startDate": null,
-      "results": 3,
-      "kept": 3,
+      "results": 0,
+      "kept": 0,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:07:45.337Z",
-      "step": "search",
-      "query": "Laurie Niles 21 days habit formation 2007",
-      "endDate": "2007-01-28",
+      "at": "2026-11-19T13:17:24.919Z",
+      "step": "dating",
+      "query": "https://politifact.com/factchecks/2023/sep/29/facebook-posts/apocalypse-no-fear-mongering-facebook-post-provide: the node has no span to look for in the capture; no date from the first capture",
+      "endDate": null,
       "startDate": null,
-      "results": 8,
-      "kept": 8,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:17:26.812Z",
+      "step": "dating",
+      "query": "wayback unavailable for https://www.psychologytoday.com/us/blog/the-happiness-project/200910/stop-expecting-change-your-habit-in-21-days: http_error 403; date from the page's own evidence only",
+      "endDate": null,
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:17:27.853Z",
+      "step": "dating",
+      "query": "https://blogs.ucl.ac.uk/bsh/2012/06/29/busting-the-21-days-habit-formation-myth: the first capture (2017-04-12) does not hold the claim's sentence; no date from the first capture",
+      "endDate": null,
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
       "dropped": 0
     }
   ],
   "usage": [
     {
-      "at": "2026-11-17T23:07:03.644Z",
+      "at": "2026-11-19T13:16:07.965Z",
       "traceId": "dev-05",
       "step": "tokenfactory",
       "service": "tokenfactory",
@@ -1395,28 +1146,28 @@
       "cachedTokens": 128,
       "credits": 0,
       "costUsd": 0.0000297,
-      "latencyMs": 1310,
+      "latencyMs": 2440,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:07:04.961Z",
+      "at": "2026-11-19T13:16:10.411Z",
       "traceId": "dev-05",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 269,
-      "completionTokens": 136,
+      "completionTokens": 137,
       "cachedTokens": 240,
       "credits": 0,
-      "costUsd": 0.00006769999999999999,
-      "latencyMs": 2752,
+      "costUsd": 0.000068,
+      "latencyMs": 5818,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:07:08.902Z",
+      "at": "2026-11-19T13:16:18.271Z",
       "traceId": "dev-05",
       "step": "search",
       "service": "tavily",
@@ -1427,12 +1178,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1165,
+      "latencyMs": 2012,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:07:10.124Z",
+      "at": "2026-11-19T13:16:19.812Z",
       "traceId": "dev-05",
       "step": "search",
       "service": "tavily",
@@ -1443,12 +1194,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1197,
+      "latencyMs": 1510,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:07:11.880Z",
+      "at": "2026-11-19T13:16:21.451Z",
       "traceId": "dev-05",
       "step": "search",
       "service": "tavily",
@@ -1459,12 +1210,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1733,
+      "latencyMs": 1616,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:07:13.349Z",
+      "at": "2026-11-19T13:16:23.078Z",
       "traceId": "dev-05",
       "step": "search",
       "service": "tavily",
@@ -1475,12 +1226,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1445,
+      "latencyMs": 1485,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:07:14.824Z",
+      "at": "2026-11-19T13:16:25.251Z",
       "traceId": "dev-05",
       "step": "meta-search",
       "service": "tavily",
@@ -1491,12 +1242,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1450,
+      "latencyMs": 2150,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:07:15.020Z",
+      "at": "2026-11-19T13:16:25.320Z",
       "traceId": "dev-05",
       "step": "meta-extract",
       "service": "tavily",
@@ -1507,12 +1258,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 171,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:07:19.494Z",
+      "at": "2026-11-19T13:16:25.682Z",
       "traceId": "dev-05",
       "step": "extract",
       "service": "tavily",
@@ -1523,252 +1274,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 4406,
+      "latencyMs": 272,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:07:20.362Z",
-      "traceId": "dev-05",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 821,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:07:20.372Z",
-      "traceId": "dev-05",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 216,
-      "completionTokens": 7,
-      "cachedTokens": 160,
-      "credits": 0,
-      "costUsd": 0.0000237,
-      "latencyMs": 624,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:07:21.330Z",
-      "traceId": "dev-05",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 303,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:07:21.341Z",
-      "traceId": "dev-05",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 227,
-      "completionTokens": 7,
-      "cachedTokens": 160,
-      "credits": 0,
-      "costUsd": 0.0000248,
-      "latencyMs": 281,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:07:21.628Z",
-      "traceId": "dev-05",
-      "step": "tokenfactory",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 333,
-      "completionTokens": 146,
-      "cachedTokens": 256,
-      "credits": 0,
-      "costUsd": 0.0000771,
-      "latencyMs": 2464,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:07:25.189Z",
-      "traceId": "dev-05",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1082,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:07:26.282Z",
-      "traceId": "dev-05",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1063,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:07:27.384Z",
-      "traceId": "dev-05",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1078,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:07:29.199Z",
-      "traceId": "dev-05",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1793,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:07:29.459Z",
-      "traceId": "dev-05",
-      "step": "extract",
-      "service": "tavily",
-      "endpoint": "extract",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 237,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:07:29.465Z",
-      "traceId": "dev-05",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 33,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 3.3e-7,
-      "latencyMs": 1368,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:07:31.462Z",
-      "traceId": "dev-05",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 534,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:07:31.467Z",
-      "traceId": "dev-05",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 266,
-      "completionTokens": 7,
-      "cachedTokens": 176,
-      "credits": 0,
-      "costUsd": 0.000028700000000000003,
-      "latencyMs": 1107,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:07:32.585Z",
-      "traceId": "dev-05",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 16,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 1.6e-7,
-      "latencyMs": 1302,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:07:34.304Z",
-      "traceId": "dev-05",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 391,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:07:34.311Z",
+      "at": "2026-11-19T13:16:25.691Z",
       "traceId": "dev-05",
       "step": "same_claim",
       "service": "tokenfactory",
@@ -1776,303 +1287,15 @@
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 214,
       "completionTokens": 7,
-      "cachedTokens": 176,
+      "cachedTokens": 160,
       "credits": 0,
-      "costUsd": 0.000023500000000000002,
-      "latencyMs": 438,
+      "costUsd": 0.0000235,
+      "latencyMs": 1772,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:07:34.753Z",
-      "traceId": "dev-05",
-      "step": "tokenfactory",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 372,
-      "completionTokens": 165,
-      "cachedTokens": 240,
-      "credits": 0,
-      "costUsd": 0.00008669999999999999,
-      "latencyMs": 2422,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:07:38.917Z",
-      "traceId": "dev-05",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1706,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:07:40.899Z",
-      "traceId": "dev-05",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1956,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:07:42.037Z",
-      "traceId": "dev-05",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1117,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:07:45.337Z",
-      "traceId": "dev-05",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 3287,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:07:52.850Z",
-      "traceId": "dev-05",
-      "step": "extract",
-      "service": "tavily",
-      "endpoint": "extract",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 7501,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:07:53.447Z",
-      "traceId": "dev-05",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 596,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:07:53.447Z",
-      "traceId": "dev-05",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 215,
-      "completionTokens": 7,
-      "cachedTokens": 176,
-      "credits": 0,
-      "costUsd": 0.0000236,
-      "latencyMs": 591,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:07:54.058Z",
-      "traceId": "dev-05",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 100,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.000001,
-      "latencyMs": 7183,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:08:02.910Z",
-      "traceId": "dev-05",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 1627,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:08:02.913Z",
-      "traceId": "dev-05",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 199,
-      "completionTokens": 7,
-      "cachedTokens": 176,
-      "credits": 0,
-      "costUsd": 0.000022000000000000003,
-      "latencyMs": 861,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:08:03.777Z",
-      "traceId": "dev-05",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 180,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.0000018000000000000001,
-      "latencyMs": 3922,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:08:07.872Z",
-      "traceId": "dev-05",
-      "step": "dating",
-      "service": "fetch",
-      "endpoint": "page",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 168,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:08:08.037Z",
-      "traceId": "dev-05",
-      "step": "dating",
-      "service": "fetch",
-      "endpoint": "page",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 333,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:08:08.520Z",
-      "traceId": "dev-05",
-      "step": "dating",
-      "service": "fetch",
-      "endpoint": "page",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 482,
-      "status": "bad_response",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:08:08.784Z",
-      "traceId": "dev-05",
-      "step": "dating",
-      "service": "fetch",
-      "endpoint": "page",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 911,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:08:10.069Z",
-      "traceId": "dev-05",
-      "step": "dating",
-      "service": "fetch",
-      "endpoint": "page",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 1549,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:08:12.369Z",
-      "traceId": "dev-05",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 2298,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:08:12.684Z",
+      "at": "2026-11-19T13:16:27.778Z",
       "traceId": "dev-05",
       "step": "dating",
       "service": "wayback",
@@ -2084,11 +1307,59 @@
       "credits": 0,
       "costUsd": 0,
       "latencyMs": 314,
+      "status": "403",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:16:29.370Z",
+      "traceId": "dev-05",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 89,
+      "status": "403",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:16:29.448Z",
+      "traceId": "dev-05",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 485,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00000485,
+      "latencyMs": 2377,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:08:12.686Z",
+      "at": "2026-11-19T13:16:31.913Z",
+      "traceId": "dev-05",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 226,
+      "completionTokens": 7,
+      "cachedTokens": 160,
+      "credits": 0,
+      "costUsd": 0.0000247,
+      "latencyMs": 3172,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:16:35.113Z",
       "traceId": "dev-05",
       "step": "dating",
       "service": "wayback",
@@ -2104,7 +1375,87 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:08:12.686Z",
+      "at": "2026-11-19T13:16:35.120Z",
+      "traceId": "dev-05",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 320,
+      "completionTokens": 162,
+      "cachedTokens": 240,
+      "credits": 0,
+      "costUsd": 0.0000806,
+      "latencyMs": 6220,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:16:42.542Z",
+      "traceId": "dev-05",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1161,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:16:44.257Z",
+      "traceId": "dev-05",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1674,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:16:44.522Z",
+      "traceId": "dev-05",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 221,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:16:44.525Z",
+      "traceId": "dev-05",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 215,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.0000236,
+      "latencyMs": 2055,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:16:46.654Z",
       "traceId": "dev-05",
       "step": "dating",
       "service": "wayback",
@@ -2120,7 +1471,311 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:08:12.686Z",
+      "at": "2026-11-19T13:16:46.658Z",
+      "traceId": "dev-05",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 236,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.0000257,
+      "latencyMs": 1892,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:16:50.339Z",
+      "traceId": "dev-05",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1785,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:16:50.948Z",
+      "traceId": "dev-05",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "capture",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 608,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:16:50.957Z",
+      "traceId": "dev-05",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 216,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.0000237,
+      "latencyMs": 2730,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:16:59.840Z",
+      "traceId": "dev-05",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 6150,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:16:59.859Z",
+      "traceId": "dev-05",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 41,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 4.1e-7,
+      "latencyMs": 734,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:17:00.597Z",
+      "traceId": "dev-05",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 337,
+      "completionTokens": 146,
+      "cachedTokens": 256,
+      "credits": 0,
+      "costUsd": 0.0000775,
+      "latencyMs": 5667,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:17:08.140Z",
+      "traceId": "dev-05",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1849,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:17:09.691Z",
+      "traceId": "dev-05",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1473,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:17:10.982Z",
+      "traceId": "dev-05",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1267,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:17:12.555Z",
+      "traceId": "dev-05",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1534,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:17:12.824Z",
+      "traceId": "dev-05",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 230,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:17:12.831Z",
+      "traceId": "dev-05",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 70,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 7e-7,
+      "latencyMs": 1949,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:17:14.862Z",
+      "traceId": "dev-05",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 210,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.0000021000000000000002,
+      "latencyMs": 1171,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:17:16.036Z",
+      "traceId": "dev-05",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 124,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00000124,
+      "latencyMs": 8056,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:17:24.238Z",
+      "traceId": "dev-05",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 134,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:17:24.494Z",
+      "traceId": "dev-05",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 254,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:17:24.727Z",
+      "traceId": "dev-05",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 622,
+      "status": "bad_response",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:17:24.871Z",
+      "traceId": "dev-05",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 376,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:17:24.896Z",
       "traceId": "dev-05",
       "step": "dating",
       "service": "wayback",
@@ -2136,7 +1791,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:08:12.688Z",
+      "at": "2026-11-19T13:17:24.919Z",
       "traceId": "dev-05",
       "step": "dating",
       "service": "wayback",
@@ -2152,7 +1807,23 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:08:12.688Z",
+      "at": "2026-11-19T13:17:26.812Z",
+      "traceId": "dev-05",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "http_error 403",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:17:26.813Z",
       "traceId": "dev-05",
       "step": "dating",
       "service": "wayback",
@@ -2168,7 +1839,23 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:08:12.689Z",
+      "at": "2026-11-19T13:17:27.843Z",
+      "traceId": "dev-05",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "capture",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1030,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:17:27.855Z",
       "traceId": "dev-05",
       "step": "dating",
       "service": "wayback",
@@ -2184,66 +1871,146 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:08:12.700Z",
+      "at": "2026-11-19T13:17:29.018Z",
+      "traceId": "dev-05",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "capture",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1162,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:17:29.022Z",
+      "traceId": "dev-05",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:17:29.039Z",
+      "traceId": "dev-05",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "capture",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:17:29.049Z",
+      "traceId": "dev-05",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:17:30.031Z",
+      "traceId": "dev-05",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "capture",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 981,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:17:30.064Z",
       "traceId": "dev-05",
       "step": "page_type",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 2015,
+      "promptTokens": 849,
       "completionTokens": 8,
-      "cachedTokens": 0,
+      "cachedTokens": 176,
       "credits": 0,
-      "costUsd": 0.0002039,
-      "latencyMs": 649,
+      "costUsd": 0.00008730000000000001,
+      "latencyMs": 1744,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:08:13.362Z",
+      "at": "2026-11-19T13:17:31.831Z",
       "traceId": "dev-05",
       "step": "readouts",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 446,
+      "promptTokens": 457,
       "completionTokens": 23,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.0000515,
-      "latencyMs": 1708,
+      "costUsd": 0.0000526,
+      "latencyMs": 3100,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:08:15.078Z",
+      "at": "2026-11-19T13:17:34.935Z",
       "traceId": "dev-05",
       "step": "readouts",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 500,
+      "promptTokens": 437,
       "completionTokens": 23,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.000056899999999999994,
-      "latencyMs": 1071,
+      "costUsd": 0.0000506,
+      "latencyMs": 1207,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:08:16.156Z",
+      "at": "2026-11-19T13:17:36.147Z",
       "traceId": "dev-05",
       "step": "boundary",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 321,
+      "promptTokens": 365,
       "completionTokens": 6,
-      "cachedTokens": 0,
+      "cachedTokens": 144,
       "credits": 0,
-      "costUsd": 0.000033900000000000004,
-      "latencyMs": 431,
+      "costUsd": 0.0000383,
+      "latencyMs": 535,
       "status": "200",
       "cacheHit": false
     }

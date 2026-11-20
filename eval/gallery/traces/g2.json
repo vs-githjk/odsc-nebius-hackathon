@@ -1,0 +1,1273 @@
+{
+  "schemaVersion": "1",
+  "id": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+  "mode": "LIVE",
+  "synthetic": false,
+  "recordedAt": "2026-11-19T17:30:29.351Z",
+  "claim": {
+    "text": "AI could add $15.7 trillion to the global economy by 2030.",
+    "atoms": {
+      "number": {
+        "raw": "15.7",
+        "canonical": "15.7"
+      },
+      "unit": "$15.7 trillion",
+      "subjectLemma": "ai",
+      "population": "global economy",
+      "time": "by 2030",
+      "hedge": null,
+      "namedSource": null,
+      "variants": []
+    }
+  },
+  "viralSentence": "AI could add $15.7 trillion to the global economy by 2030.",
+  "nodes": [
+    {
+      "id": "n1",
+      "url": "https://www.factcheck.org/2023/07/bidens-numbers-july-2023-update",
+      "domain": "factcheck.org",
+      "title": "Biden's Numbers, July 2023 Update - FactCheck.org",
+      "date": {
+        "kind": "unconfirmed",
+        "value": null,
+        "source": "wayback_first_capture",
+        "firstCapture": "2023-07-27",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n1",
+      "evidence": "observed",
+      "meta": true,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [],
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "https://data.bls.gov/timeseries/CUSR0000SA0?",
+          "read": true
+        },
+        {
+          "url": "https://data.bls.gov/timeseries/CES0000000001",
+          "read": true
+        },
+        {
+          "url": "https://data.bls.gov/timeseries/CES9093161101",
+          "read": true
+        },
+        {
+          "url": "https://data.bls.gov/timeseries/LNS14000000",
+          "read": true
+        }
+      ],
+      "pageType": null,
+      "foundViaMeta": null
+    },
+    {
+      "id": "n2",
+      "url": "https://www.factcheck.org/2012/11/facing-facts-on-fiscal-cliff",
+      "domain": "factcheck.org",
+      "title": "Facing Facts on Fiscal Cliff - FactCheck.org",
+      "date": {
+        "kind": "unconfirmed",
+        "value": null,
+        "source": "wayback_first_capture",
+        "firstCapture": "2012-12-03",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n2",
+      "evidence": "observed",
+      "meta": true,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [],
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "http://www.nytimes.com/2012/04/01/magazine/obama-vs-boehner-who-killed-the-debt-deal.html?pagewanted=all&_r=0",
+          "read": false
+        },
+        {
+          "url": "http://www.taxpolicycenter.org/briefing-book/background/bush-tax-cuts/index.cfm",
+          "read": false
+        },
+        {
+          "url": "http://www.cnn.com/2011/11/21/politics/super-committee/index.html",
+          "read": true
+        },
+        {
+          "url": "http://www.cbo.gov/sites/default/files/cbofiles/attachments/2012_09_MBR.pdf",
+          "read": false
+        }
+      ],
+      "pageType": null,
+      "foundViaMeta": null
+    },
+    {
+      "id": "n3",
+      "url": "https://www.industryweek.com/technology-and-iiot/article/22021234/ai-could-add-15-trillion-to-global-economy-by-2030",
+      "domain": "industryweek.com",
+      "title": "AI Could Add $15 Trillion to Global Economy by 2030 | IndustryWeek",
+      "date": {
+        "kind": "unconfirmed",
+        "value": null,
+        "source": "wayback_first_capture",
+        "firstCapture": "2020-10-27",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n3",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s1"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9999999999991123,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9999999999991123
+          },
+          {
+            "optionId": "no",
+            "p": 8.87826943000406e-13
+          },
+          {
+            "optionId": "__other__",
+            "p": 0
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    },
+    {
+      "id": "n4",
+      "url": "https://www.ciodive.com/news/whats-the-global-value-of-ai-157-trillion-by-2030-pwc-says/446552",
+      "domain": "ciodive.com",
+      "title": "What's the global value of AI? $15.7 trillion by 2030, PwC says | CIO Dive",
+      "date": {
+        "kind": "unconfirmed",
+        "value": null,
+        "source": "wayback_first_capture",
+        "firstCapture": "2017-07-10",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n4",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s2"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.99999999999886,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.99999999999886
+          },
+          {
+            "optionId": "no",
+            "p": 1.1399921607894892e-12
+          },
+          {
+            "optionId": "__other__",
+            "p": 0
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    },
+    {
+      "id": "n5",
+      "url": "https://www.mdpi.com/2071-1050/14/4/1979",
+      "domain": "mdpi.com",
+      "title": "A Review and Categorization of Artificial Intelligence-Based Opportunities in Wildlife, Ocean and Land Conservation",
+      "date": {
+        "kind": "unconfirmed",
+        "value": null,
+        "source": "wayback_first_capture",
+        "firstCapture": "2022-02-11",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n5",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s3"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9996646499462829,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9996646499462829
+          },
+          {
+            "optionId": "no",
+            "p": 0.0003353500537171356
+          },
+          {
+            "optionId": "__other__",
+            "p": 0
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    }
+  ],
+  "edges": [],
+  "clusters": [
+    {
+      "id": "c-n5",
+      "nodeIds": [
+        "n5"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n3",
+      "nodeIds": [
+        "n3"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n4",
+      "nodeIds": [
+        "n4"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n1",
+      "nodeIds": [
+        "n1"
+      ],
+      "rule": "single"
+    },
+    {
+      "id": "c-n2",
+      "nodeIds": [
+        "n2"
+      ],
+      "rule": "single"
+    }
+  ],
+  "spans": [
+    {
+      "id": "s1",
+      "nodeId": "n3",
+      "text": "AI will contribute as much as $15.7 *trillion* to the world economy by 2030, according to a PwC report released Wednesday.",
+      "contextBefore": "bots and automation could unleash on the world economy as traditional roles disappear, researchers are finding that new technologies will help fuel global growth as productivity and consumption soar. ",
+      "contextAfter": " That's more than the current combined output of China and India. Gains would be split between $6.6 trillion from increased productivity as businesses automate processes and augment their labor forces",
+      "start": 1108,
+      "end": 1230,
+      "extractSha256": "ca66034be8fed50f87715d9e4518d621cd5ffbb9d3b52d0002178bc1a4546019",
+      "windowSha256": "9eae8b1e4afe5e9a5005a47504354ef6434c726bee512c7a0c59c2d09ae5fe26",
+      "fetchedAt": "2026-11-19T17:30:45.440Z",
+      "waybackUrl": "https://web.archive.org/web/20201027032815/https://www.industryweek.com/technology-and-iiot/article/22021234/ai-could-add-15-trillion-to-global-economy-by-2030",
+      "tier": "exact"
+    },
+    {
+      "id": "s2",
+      "nodeId": "n4",
+      "text": "By those projections, AI will inject $15.7 trillion into the global economy.",
+      "contextBefore": "Dive Brief: - Global GDP will be 14% higher in 2030 because of artificial intelligence, according to research from PwC. ",
+      "contextAfter": " - Productivity improvements are expected to account for about 50% of those gains. PwC projects that AI could hold as high, if not higher, value for \"enhancing and augmenting\" the enterprise than auto",
+      "start": 120,
+      "end": 196,
+      "extractSha256": "bf769dd899dc1659982275a9d94698bd30daf737b01522b3c8f4e85deec98150",
+      "windowSha256": "ff45afbc38c832fd49e77525fe0313c99f39ca53f1774450889b91500078bbcd",
+      "fetchedAt": "2026-11-19T17:30:46.257Z",
+      "waybackUrl": "https://web.archive.org/web/20170710133549/https://www.ciodive.com/news/whats-the-global-value-of-ai-157-trillion-by-2030-pwc-says/446552",
+      "tier": "exact"
+    },
+    {
+      "id": "s3",
+      "nodeId": "n5",
+      "text": "As evidence of the unprecedented speed and scale of AI technologies in the economy, estimates suggest that AI could increase global GDP by nearly USD 16 trillion by 2030 \\[31].",
+      "contextBefore": "a of Fourth Industrial Revolution (4IR) technologies, or Industry 4.0, which includes AI, blockchain, Internet of Things, 5G and drones, could accelerate progress towards over two-third of SDGs \\[5]. ",
+      "contextAfter": " That said, inequalities abound. Economic and environmental gains of tackling environmental challenges with AI technologies would predominantly be captured by Europe, East Asia and North America due t",
+      "start": 19189,
+      "end": 19365,
+      "extractSha256": "3b761a5b1fc301eb056a64180394c4c8ffa5214cc1235d45485c46b0f6cf3ce1",
+      "windowSha256": "f863342ce4fd9ae758decc9074f0ac3db4b377da3e3d7df8e83f6f126bedd9d0",
+      "fetchedAt": "2026-11-19T17:30:58.307Z",
+      "waybackUrl": "https://web.archive.org/web/20220211025538/https://www.mdpi.com/2071-1050/14/4/1979",
+      "tier": "exact"
+    }
+  ],
+  "hops": [],
+  "blame": [],
+  "roots": {
+    "pages": 3,
+    "clusters": 3,
+    "rootsLinked": 0,
+    "clustersUnlinked": 3,
+    "studiesFound": null,
+    "independentRoots": 3,
+    "copies": 0
+  },
+  "redHopEdgeId": null,
+  "earliest": {
+    "nodeIds": [],
+    "earlierWindowSearches": 4,
+    "earlierFound": 0
+  },
+  "failure": null,
+  "budget": {
+    "credits": 15,
+    "usd": 0.00045238999999999994,
+    "ms": 121274,
+    "capHit": null
+  },
+  "decision": {
+    "state": "TRAIL_GOES_COLD",
+    "row": 6,
+    "reasons": [
+      "no earliest page with a confirmed date, a primary page type, no earlier citation and no negated span",
+      "3 unread candidate parent(s)"
+    ],
+    "counts": {
+      "pages": 3,
+      "clusters": 3,
+      "unreadParents": 3,
+      "earlierWindowSearches": 4
+    }
+  },
+  "searchLog": [
+    {
+      "at": "2026-11-19T17:30:37.583Z",
+      "step": "search",
+      "query": "\"15.7\" ai",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:30:38.722Z",
+      "step": "search",
+      "query": "\"$15.7 trillion\" AI global economy 2030",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:30:40.500Z",
+      "step": "search",
+      "query": "\"AI could add\" $15.7 trillion global economy by 2030",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:30:41.744Z",
+      "step": "search",
+      "query": "AI economic impact $15.7 trillion 2030",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:30:42.874Z",
+      "step": "meta-search",
+      "query": "\"15.7\" ai",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 5,
+      "kept": 2,
+      "dropped": 3
+    },
+    {
+      "at": "2026-11-19T17:30:51.421Z",
+      "step": "search",
+      "query": "\"15.7\" ai",
+      "endDate": "2017-06-28",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:30:54.026Z",
+      "step": "search",
+      "query": "\"$15.7 trillion\" AI global economy 2030",
+      "endDate": "2017-06-28",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:30:54.837Z",
+      "step": "search",
+      "query": "\"$15.7 trillion\" AI world economy 2030",
+      "endDate": "2017-06-28",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:30:56.423Z",
+      "step": "search",
+      "query": "PwC report AI $15.7 trillion economy 2030",
+      "endDate": "2017-06-28",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:32:11.383Z",
+      "step": "search",
+      "query": "\"15.7\" ai",
+      "endDate": "1979-04-13",
+      "startDate": null,
+      "results": 1,
+      "kept": 1,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:32:12.952Z",
+      "step": "search",
+      "query": "\"$15.7 trillion\" AI global economy 2030",
+      "endDate": "1979-04-13",
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:32:15.919Z",
+      "step": "search",
+      "query": "\"nearly USD 16 trillion\" AI global GDP 2030",
+      "endDate": "1979-04-13",
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:32:17.530Z",
+      "step": "search",
+      "query": "AI economic impact $16 trillion McKinsey 2030",
+      "endDate": "1979-04-13",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:32:25.631Z",
+      "step": "dating",
+      "query": "https://www.factcheck.org/2023/07/bidens-numbers-july-2023-update: the node has no span to look for in the capture; no date from the first capture",
+      "endDate": null,
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:32:26.335Z",
+      "step": "dating",
+      "query": "https://www.factcheck.org/2012/11/facing-facts-on-fiscal-cliff: the node has no span to look for in the capture; no date from the first capture",
+      "endDate": null,
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:32:28.261Z",
+      "step": "dating",
+      "query": "https://www.industryweek.com/technology-and-iiot/article/22021234/ai-could-add-15-trillion-to-global-economy-by-2030: the first capture (2020-10-27) does not hold the claim's sentence; no date from the first capture",
+      "endDate": null,
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:32:28.948Z",
+      "step": "dating",
+      "query": "https://www.ciodive.com/news/whats-the-global-value-of-ai-157-trillion-by-2030-pwc-says/446552: capture 20170710133549 could not be read (network_error); no date from the first capture",
+      "endDate": null,
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T17:32:30.624Z",
+      "step": "dating",
+      "query": "https://www.mdpi.com/2071-1050/14/4/1979: the first capture (2022-02-11) does not hold the claim's sentence; no date from the first capture",
+      "endDate": null,
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    }
+  ],
+  "usage": [
+    {
+      "at": "2026-11-19T17:30:29.356Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 168,
+      "completionTokens": 55,
+      "cachedTokens": 128,
+      "credits": 0,
+      "costUsd": 0.000033299999999999996,
+      "latencyMs": 1805,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:30:31.178Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 278,
+      "completionTokens": 204,
+      "cachedTokens": 240,
+      "credits": 0,
+      "costUsd": 0.000089,
+      "latencyMs": 5344,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:30:37.582Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1003,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:30:38.722Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1118,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:30:40.499Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1754,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:30:41.744Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1211,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:30:42.874Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "meta-search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1108,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:30:43.014Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "meta-extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 102,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:30:43.493Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 106,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:30:43.510Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 234,
+      "completionTokens": 7,
+      "cachedTokens": 160,
+      "credits": 0,
+      "costUsd": 0.0000255,
+      "latencyMs": 733,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:30:45.440Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1195,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:30:45.451Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 216,
+      "completionTokens": 7,
+      "cachedTokens": 160,
+      "credits": 0,
+      "costUsd": 0.0000237,
+      "latencyMs": 472,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:30:46.256Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 332,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:30:46.257Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 339,
+      "completionTokens": 174,
+      "cachedTokens": 240,
+      "credits": 0,
+      "costUsd": 0.00008609999999999999,
+      "latencyMs": 3682,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:30:51.421Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1414,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:30:54.025Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2531,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:30:54.836Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 772,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:30:56.421Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1549,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:30:57.072Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 566,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:30:57.118Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 241,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.0000262,
+      "latencyMs": 617,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:30:58.305Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 568,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:31:45.275Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 2109,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00002109,
+      "latencyMs": 5323,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:31:50.623Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 2557,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00002557,
+      "latencyMs": 4340,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:31:55.033Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 2047,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00002047,
+      "latencyMs": 3618,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:31:58.724Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 1054,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00001054,
+      "latencyMs": 3419,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:32:02.160Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 26,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 2.6e-7,
+      "latencyMs": 3179,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:32:05.379Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 344,
+      "completionTokens": 166,
+      "cachedTokens": 272,
+      "credits": 0,
+      "costUsd": 0.00008419999999999999,
+      "latencyMs": 3007,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:32:11.382Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2011,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:32:12.951Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1466,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:32:15.918Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2260,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:32:17.527Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1398,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:32:19.316Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1563,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:32:19.324Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 39,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 3.9e-7,
+      "latencyMs": 1274,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:32:20.687Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 509,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00000509,
+      "latencyMs": 758,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:32:21.461Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 98,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 9.8e-7,
+      "latencyMs": 2264,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:32:24.229Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 482,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:32:24.336Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 106,
+      "status": "403",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:32:25.005Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1258,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:32:25.627Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 610,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:32:26.322Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 691,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:32:26.376Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T17:32:28.254Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "capture",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1870,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T17:32:28.265Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T17:32:28.949Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T17:32:30.620Z",
+      "traceId": "c5a304a9-22e0-4881-a139-b5adfee1b27f",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "capture",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1671,
+      "status": "200",
+      "cacheHit": false
+    }
+  ],
+  "scopeNote": "Web pages only; print and paywalled origins are out of scope. Earliest source we found, not proof of first use.",
+  "otherNumbers": []
+}

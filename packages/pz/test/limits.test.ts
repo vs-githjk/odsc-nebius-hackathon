@@ -10,6 +10,7 @@ import { LINK_ROUNDS_WITHOUT_PROGRESS, walkClaim, type SpikeClaim } from "../src
 import { atomHit, decideStopState, loadRules, phraseHit } from "../src/rules/index.ts";
 import { hasInjection, isNegated } from "../src/rules/negation.ts";
 import { createUsageLog } from "../src/usage/log.ts";
+import { dateNode } from "../src/engine/dating.ts";
 import { readdirSync, readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dateWords } from "../src/card/terminal.ts";
@@ -35,6 +36,9 @@ function walk(pages: Page[], cdx: "ok" | "down" = "ok") {
       const page = pages.find((p) => p.url === new URL(url).searchParams.get("url"));
       return new Response(JSON.stringify(page?.capture ? [["timestamp", "original"], [`${page.capture.replace(/-/g, "")}000000`, page.url]] : [["timestamp", "original"]]));
     }
+    // L19: the first capture is read; here every capture holds what the page says.
+    const capture = /^https:\/\/web\.archive\.org\/web\/\d+id_\/(.+)$/.exec(url);
+    if (capture) return new Response(pages.find((p) => p.url === capture[1])?.text ?? "", { headers: { "content-type": "text/html" } });
     const body = JSON.parse(String(init?.body));
     if (url.endsWith("/search")) {
       const results = pages.filter((p) => !body.end_date || (p.date !== null && p.date <= body.end_date))
@@ -120,6 +124,57 @@ describe("docs/limits.md, open rows pinned as they behave today", () => {
       const d = decideStopState({ ...sample, budget: { ...sample.budget, capHit } }, rules);
       expect([d.state, d.reasons]).toEqual(["PARTIAL", [`cap hit: ${capHit}`]]);
     }
+  });
+
+  it("L17 a number before a listed unit of measure is not the count; unlisted units still pass", () => {
+    const water = { number: { raw: "eight", canonical: "8" }, unit: null, subjectLemma: "glass", population: null, time: null, hedge: null, namedSource: null, variants: [] } as SpikeClaim["atoms"];
+    const hit = (s: string) => atomHit(s, water, rules.weakNumberMinSigDigits, rules.weakNumberMaxCommas);
+    expect(hit("Drink six 8 oz glasses of water a day.")).toBe(false);
+    expect(hit("Drink eight glasses of water a day.")).toBe(true);
+    // Still missed: units off the list.
+    expect(hit("Carry six 8 pound glass jars a day.")).toBe(true);
+    expect(hit("Fill two 8 gallon glass drums a day.")).toBe(true);
+  });
+
+  it("L18 a page that presents the claim as already said is never the origin; other wordings still pass", () => {
+    const sample: Trace = JSON.parse(readFileSync(fileURLToPath(new URL("../../../fixtures/traces/sample-origin.json", import.meta.url)), "utf8"));
+    const withSpan = (text: string) => ({ ...sample, spans: sample.spans.map((s) => (s.nodeId === "keeper-log" ? { ...s, text } : s)) });
+    const own = sample.spans.find((s) => s.nodeId === "keeper-log")!.text;
+    const blocked = decideStopState(withSpan(`The seemingly ubiquitous admonition says it: ${own}`), rules);
+    expect(blocked.state).not.toBe("ORIGIN_FOUND");
+    expect(blocked.reasons.some((r) => /presents the claim as already said/.test(r))).toBe(true);
+    // The other way: a cue on another page that shares the earliest slot ends the trail cold, though keeper-log is the origin.
+    const otherEarliest = sample.nodes.find((n) => n.id !== "keeper-log" && sample.spans.some((x) => x.nodeId === n.id))!;
+    const shared = {
+      ...sample,
+      earliest: { ...sample.earliest, nodeIds: [...sample.earliest.nodeIds, otherEarliest.id] },
+      spans: sample.spans.map((x) => (x.nodeId === otherEarliest.id ? { ...x, text: `It is often said that ${x.text}` } : x)),
+    };
+    const sharedDecision = decideStopState(shared, rules);
+    expect(sharedDecision.state).not.toBe("ORIGIN_FOUND");
+    expect(sharedDecision.reasons).toEqual([`earliest page ${otherEarliest.id} presents the claim as already said ("often said")`]);
+    // Still missed: a wording that is not on the list.
+    expect(decideStopState(withSpan(`You may have read that ${own.charAt(0).toLowerCase()}${own.slice(1)}`), rules).state).toBe("ORIGIN_FOUND");
+  });
+
+  it("L19 a first archive capture dates a page only if it holds the claim's sentence; a capture that quotes it, or an unchanged file, still dates it", async () => {
+    const sample: Trace = JSON.parse(readFileSync(fileURLToPath(new URL("../../../fixtures/traces/sample-rich.json", import.meta.url)), "utf8"));
+    const node = sample.nodes[0]!;
+    const span = "Keepers found the penguins nap 14 times a day.";
+    const usage = {} as Trace["usage"][number];
+    const wayback = (kind: "html" | "binary", text: string, versions: "one" | "changed" = "one") => ({
+      firstCapture: async () => ({ data: { status: "found" as const, firstCapture: "2016-01-20", timestamp: "20160120000000" }, usage }),
+      captureBody: async () => ({ data: { kind, text }, usage }),
+      captureVersions: async () => ({ data: { versions }, usage }),
+    });
+    const dated = async (w: ReturnType<typeof wayback>) => (await dateNode(node, {}, w, [span])).node.date;
+    // Caught: the capture lacks the sentence.
+    expect(await dated(wayback("html", "<p>A page about zoo hours.</p>"))).toMatchObject({ kind: "unconfirmed", value: null });
+    // Missed: a capture that holds the sentence dates the page, though the sentence may have appeared on another page earlier.
+    expect(await dated(wayback("html", `<blockquote>${span}</blockquote> as reported elsewhere`))).toMatchObject({ kind: "existed_by", value: "2016-01-20" });
+    // Missed: a file whose text cannot be read keeps its date if the archive holds one version, taken to be the file the walk read.
+    expect(await dated(wayback("binary", ""))).toMatchObject({ kind: "existed_by", value: "2016-01-20" });
+    expect(await dated(wayback("binary", "", "changed"))).toMatchObject({ kind: "unconfirmed", value: null });
   });
 
   it("L13 a negation in wording the list doesn't know is not caught by code", () => {

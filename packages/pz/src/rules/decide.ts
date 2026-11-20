@@ -3,7 +3,7 @@ import { BOUNDARY_REASONS, findBoundary } from "./boundary.ts";
 import { hasInjection, isInjected, isNegated } from "./negation.ts";
 import { normalise } from "./normalise.ts";
 import { claimHit } from "./claim-hit.ts";
-import { citesInWords } from "./written-citation.ts";
+import { citesInWords, presentsAsPrior } from "./written-citation.ts";
 import { atomHit, parseNumbers, sameNumber } from "./numbers.ts";
 import type { Rules } from "./rules.ts";
 
@@ -15,7 +15,7 @@ function confident(answer: TypedAnswer | null, rules: Rules): answer is TypedAns
 
 // T36: a same_claim "yes" counts only with a known confidence that clears the threshold. Absent, null ("no_model"),
 // "no", "unsure" and a "yes" whose confidence could not be read all block an origin.
-function confidentYes(answer: TypedAnswer | null | undefined, rules: Rules): boolean {
+export function confidentYes(answer: TypedAnswer | null | undefined, rules: Rules): boolean {
   return !!answer && answer.optionId === "yes" && answer.probability !== null && confident(answer, rules);
 }
 
@@ -108,6 +108,10 @@ export function decideStopState(trace: Trace, rules: Rules): Decision {
     ...pages.filter((n) => trace.earliest.nodeIds.includes(n.id)).flatMap((n) => {
       const year = citesInWords(trace, n, rules);
       return year === null ? [] : [`earliest page ${n.id} cites an earlier source in words (${year})`];
+    }),
+    ...pages.filter((n) => trace.earliest.nodeIds.includes(n.id)).flatMap((n) => {
+      const cue = presentsAsPrior(trace, n, rules);
+      return cue === null ? [] : [`earliest page ${n.id} presents the claim as already said ("${cue}")`];
     }),
     unreadParents > 0 && `${unreadParents} unread candidate parent(s)`,
     trace.earliest.earlierWindowSearches < rules.earlierWindowSearches && `fewer than ${rules.earlierWindowSearches} earlier-window searches`,

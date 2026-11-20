@@ -3,7 +3,7 @@
   "id": "dev-16",
   "mode": "LIVE",
   "synthetic": false,
-  "recordedAt": "2026-11-17T23:21:45.095Z",
+  "recordedAt": "2026-11-19T13:27:35.943Z",
   "claim": {
     "text": "AI could replace 300 million jobs.",
     "atoms": {
@@ -26,14 +26,14 @@
   "nodes": [
     {
       "id": "n1",
-      "url": "https://politifact.com/factchecks/2012/jan/17/mitt-romney/mitt-romney-tweets-more-americans-have-lost-their",
-      "domain": "politifact.com",
-      "title": "Mitt Romney tweets that “more Americans have lost their jobs under Barack Obama than any president in modern history” – PolitiFact",
+      "url": "https://www.factcheck.org/2011/10/obamas-solyndra-problem",
+      "domain": "factcheck.org",
+      "title": "Obama's Solyndra Problem - FactCheck.org",
       "date": {
-        "kind": "existed_by",
-        "value": "2026-08-11",
+        "kind": "unconfirmed",
+        "value": null,
         "source": "wayback_first_capture",
-        "firstCapture": "2026-08-11",
+        "firstCapture": "2011-10-10",
         "conflictingDate": false
       },
       "clusterId": "c-n1",
@@ -45,15 +45,15 @@
       "citesEarlier": true,
       "candidateParents": [
         {
-          "url": "https://twitter.com",
+          "url": "https://lpo.energy.gov/?page_id=45",
           "read": false
         },
         {
-          "url": "http://data.bls.gov/cgi-bin/surveymost?ce",
-          "read": true
+          "url": "http://www.solyndra.com/2009/09/megawatt-solar",
+          "read": false
         },
         {
-          "url": "http://www.census.gov/popest/data/historical/index.html",
+          "url": "http://www.solyndra.com/2011/09/solyndra-suspends-operations-to-evaluate-reorganization-options",
           "read": false
         }
       ],
@@ -62,14 +62,14 @@
     },
     {
       "id": "n2",
-      "url": "https://politifact.com/factchecks/2012/oct/25/let-freedom-ring/claims-gm-used-bailout-money-boost-china-operation",
-      "domain": "politifact.com",
-      "title": "Ad claims GM used bailout money to boost China operations – PolitiFact",
+      "url": "https://fullfact.org/crime/can-300-million-pay-10000-police-officers",
+      "domain": "fullfact.org",
+      "title": "Can £300 million pay for 10,000 police officers? – Full Fact",
       "date": {
-        "kind": "existed_by",
-        "value": "2020-07-02",
+        "kind": "unconfirmed",
+        "value": null,
         "source": "wayback_first_capture",
-        "firstCapture": "2020-07-02",
+        "firstCapture": "2017-07-13",
         "conflictingDate": false
       },
       "clusterId": "c-n2",
@@ -81,19 +81,15 @@
       "citesEarlier": true,
       "candidateParents": [
         {
-          "url": "http://www.ihs.com/products/global-insight/industry-economic-report.aspx?id=1065932307",
+          "url": "https://www.itv.com/hub/good-morning-britain/2a3211a2006",
           "read": false
         },
         {
-          "url": "http://www.detroitnews.com/article/20121013/AUTO0103/210130337/GM-s-Whitacre-blocked-plan-exit-RenCen",
-          "read": false
+          "url": "https://www.gov.uk/government/uploads/system/uploads/attachment_data/file/508147/PU1912_Policy_Costings_FINAL3.pdf",
+          "read": true
         },
         {
-          "url": "http://www.huffingtonpost.ca/2012/06/01/gm-plant-closure_n_1562417.html",
-          "read": false
-        },
-        {
-          "url": "http://cybercemetery.unt.edu/archive/cop/20110401233806/http://cop.senate.gov/reports/library/report-011311-cop.cfm",
+          "url": "https://www.theguardian.com/politics/2017/may/02/beneath-diane-abbott-police-funding-gaffes-labour-numbers-make-sense",
           "read": false
         }
       ],
@@ -126,15 +122,15 @@
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "yes",
-        "probability": 0.9999999998837177,
+        "probability": 0.9999999998506905,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.9999999998837177
+            "p": 0.9999999998506905
           },
           {
             "optionId": "no",
-            "p": 1.1628237890695253e-10
+            "p": 1.4930949898639676e-10
           },
           {
             "optionId": "__other__",
@@ -172,7 +168,7 @@
       "pageType": {
         "questionId": "page_type",
         "optionId": "news",
-        "probability": 0.9997387719694844,
+        "probability": 0.9996646425263692,
         "top": [
           {
             "optionId": "study",
@@ -184,7 +180,7 @@
           },
           {
             "optionId": "report",
-            "p": 0.0002611902975925828
+            "p": 0.0003353500240760335
           },
           {
             "optionId": "speaker",
@@ -192,11 +188,11 @@
           },
           {
             "optionId": "news",
-            "p": 0.9997387719694844
+            "p": 0.9996646425263692
           },
           {
             "optionId": "blog",
-            "p": 4.362322199706539e-9
+            "p": 6.346669031603418e-9
           },
           {
             "optionId": "social",
@@ -204,11 +200,11 @@
           },
           {
             "optionId": "other",
-            "p": 1.6048086530378187e-9
+            "p": 1.1028857053965439e-9
           },
           {
             "optionId": "__other__",
-            "p": 3.17657923298853e-8
+            "p": 0
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -217,15 +213,15 @@
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "yes",
-        "probability": 0.9999999994094697,
+        "probability": 0.9999999973534264,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.9999999994094697
+            "p": 0.9999999973534264
           },
           {
             "optionId": "no",
-            "p": 5.90530429031676e-10
+            "p": 2.646573712051379e-9
           },
           {
             "optionId": "__other__",
@@ -239,34 +235,142 @@
       "boundary": {
         "questionId": "boundary",
         "optionId": "print",
-        "probability": 0.9999982018124728,
+        "probability": 0.9999980926550052,
         "top": [
           {
             "optionId": "print",
-            "p": 0.9999982018124728
+            "p": 0.9999980926550052
           },
           {
             "optionId": "unsourced",
-            "p": 3.7844591227092456e-8
+            "p": 1.3567082109140175e-7
           },
           {
             "optionId": "none",
-            "p": 0.0000017603429359539549
+            "p": 0.00000176058912379089
           },
           {
             "optionId": "__other__",
-            "p": 0
+            "p": 1.1085049878012398e-8
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
         "threshold": null
       },
       "injection": null
+    },
+    {
+      "id": "n5",
+      "url": "https://obrag.org/2011/08/study-finds-sempra-cross-border-project-could-cost-15000-u-s-green-jobs-and-300-million-in-lost-taxes-sempra-calls-report-pure-fiction-lls-study-%E2%80%9Cbiased%E2%80%9D",
+      "domain": "obrag.org",
+      "title": "Study finds Sempra cross-border project could cost 15,000 U.S. green jobs and $300 million in lost taxes; Sempra calls report “pure fiction”. – OB Rag",
+      "date": {
+        "kind": "published",
+        "value": "2011-08-02",
+        "source": "metadata",
+        "firstCapture": "2019-09-16",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n5",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s3"
+      ],
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "https://obrag.org/2011/08/study-finds-sempra-cross-border-project-could-cost-15000-u-s-green-jobs-and-300-million-in-lost-taxes-sempra-calls-report-pure-fiction-lls-study-%e2%80%9cbiased%e2%80%9d",
+          "read": true
+        }
+      ],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "no",
+        "probability": 0.9999991655407715,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 8.315279459763953e-7
+          },
+          {
+            "optionId": "no",
+            "p": 0.9999991655407715
+          },
+          {
+            "optionId": "__other__",
+            "p": 2.931282550022729e-9
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    },
+    {
+      "id": "n6",
+      "url": "https://obrag.org/2011/08/study-finds-sempra-cross-border-project-could-cost-15000-u-s-green-jobs-and-300-million-in-lost-taxes-sempra-calls-report-pure-fiction-lls-study-%e2%80%9cbiased%e2%80%9d",
+      "domain": "obrag.org",
+      "title": "Study finds Sempra cross-border project could cost 15,000 U.S. green jobs and $300 million in lost taxes; Sempra calls report “pure fiction”. – OB Rag",
+      "date": {
+        "kind": "published",
+        "value": "2011-08-02",
+        "source": "metadata",
+        "firstCapture": "2019-09-16",
+        "conflictingDate": false
+      },
+      "clusterId": "c-n5",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s4"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "no",
+        "probability": 0.9999991655407715,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 8.315279459763953e-7
+          },
+          {
+            "optionId": "no",
+            "p": 0.9999991655407715
+          },
+          {
+            "optionId": "__other__",
+            "p": 2.931282550022729e-9
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
     }
   ],
   "edges": [
     {
       "id": "e1",
+      "parentId": "n6",
+      "childId": "n5",
+      "kind": "explicit",
+      "parentSpanId": "s4",
+      "childSpanId": "s3",
+      "linkHref": "https://obrag.org/2011/08/study-finds-sempra-cross-border-project-could-cost-15000-u-s-green-jobs-and-300-million-in-lost-taxes-sempra-calls-report-pure-fiction-lls-study-%e2%80%9cbiased%e2%80%9d"
+    },
+    {
+      "id": "e2",
       "parentId": "n4",
       "childId": "n3",
       "kind": "inferred",
@@ -276,6 +380,14 @@
     }
   ],
   "clusters": [
+    {
+      "id": "c-n5",
+      "nodeIds": [
+        "n5",
+        "n6"
+      ],
+      "rule": "syndicated"
+    },
     {
       "id": "c-n3",
       "nodeIds": [
@@ -309,14 +421,14 @@
     {
       "id": "s1",
       "nodeId": "n3",
-      "text": "Extrapolating our estimates globally suggests that generative AI could expose the equivalent of 300mn full-time jobs to automation. * The good news is that worker displacement from automation has historically been offset by creation of new jobs, and the emergence of new occupations following technological innovations accounts for the vast majority of long-run employment growth.",
+      "text": "Extrapolating our estimates globally suggests that generative AI could expose the equivalent of 300mn full-time jobs to automation.",
       "contextBefore": "tasks in both the US and Europe, we find that roughly two-thirds of current jobs are exposed to some degree of AI automation, and that generative AI could substitute up to one-fourth of current work. ",
-      "contextAfter": " The combination of significant labor cost savings, new job creation, and higher productivity for non-displaced workers raises the possibility of a productivity boom that raises economic growth substa",
+      "contextAfter": " * The good news is that worker displacement from automation has historically been offset by creation of new jobs, and the emergence of new occupations following technological innovations accounts for",
       "start": 1864,
-      "end": 2244,
+      "end": 1995,
       "extractSha256": "617a8bd1793b08880c0910099b03c41072def67f8bfee37c6dfc16c91a5d09c3",
-      "windowSha256": "cdfc5bee2efe6597c42d00a3d313c0116d373a468f7435960b882884363bbcf1",
-      "fetchedAt": "2026-11-17T23:22:09.829Z",
+      "windowSha256": "6cdc43c5e5f8ee09f3aa79bc07f214330be11dd64c37ae3d51401b08a3a9f05e",
+      "fetchedAt": "2026-11-19T13:27:50.995Z",
       "waybackUrl": "https://web.archive.org/web/20230519184608/https://www.gspublishing.com/content/research/en/reports/2023/03/27/d64e052b-0f6e-45d7-967b-d7be35fabd16.html",
       "tier": "exact"
     },
@@ -330,14 +442,187 @@
       "end": 57,
       "extractSha256": "cc873de4283633cbb7596cb4aa814d9e1e48b7fe4de168ff4554b93d4356d2da",
       "windowSha256": "0dd6422446875668e35114981035da05d9462e5c229e4e5de8bf02a87e98b200",
-      "fetchedAt": "2026-11-17T23:22:10.990Z",
+      "fetchedAt": "2026-11-19T13:27:51.448Z",
       "waybackUrl": "https://web.archive.org/web/20230328164108/https://www.bbc.com/news/technology-65102150",
+      "tier": "exact"
+    },
+    {
+      "id": "s3",
+      "nodeId": "n5",
+      "text": "Study finds Sempra cross-border project could cost 15,000 U.S. green jobs and $300 million in lost taxes; Sempra calls report \"pure fiction\"..",
+      "contextBefore": "Skip to content OB Rag Serving OB, the Peninsula and San Diego Beaches Posted in Economy, Energy, Environment, San Diego ",
+      "contextAfter": " Source August 2, 2011 4 Comments on Study finds Sempra cross-border project could cost 15,000 U.S. green jobs and $300 million in lost taxes; Sempra calls report \"pure fiction\". 0 Likes 769 Views Bor",
+      "start": 121,
+      "end": 263,
+      "extractSha256": "7ddaf5df3f66f694235b94a75ffc23eb7ee7359af714f62ad22dadd57b4ed8e2",
+      "windowSha256": "a72d5d191662e4003c6aaee2a504720352f884da5feb51affcfcc24c87ef7038",
+      "fetchedAt": "2026-11-19T13:28:03.147Z",
+      "waybackUrl": "https://web.archive.org/web/20190916001939/https://obrag.org/2011/08/study-finds-sempra-cross-border-project-could-cost-15000-u-s-green-jobs-and-300-million-in-lost-taxes-sempra-calls-report-pure-fiction-lls-study-%E2%80%9Cbiased%E2%80%9D",
+      "tier": "exact"
+    },
+    {
+      "id": "s4",
+      "nodeId": "n6",
+      "text": "Study finds Sempra cross-border project could cost 15,000 U.S. green jobs and $300 million in lost taxes; Sempra calls report \"pure fiction\"..",
+      "contextBefore": "OB Rag Serving OB, the Peninsula and San Diego Beaches ",
+      "contextAfter": " *By Miriam Rafferty / East County Magazine / August 1, 2011* Sempra Energy has asked the U.S. Department of Energy for a presidential permit to construct a cross-border transmission line called *Ener",
+      "start": 55,
+      "end": 197,
+      "extractSha256": "984af934440ec038a44848af6d4d8846f8e44893bfa7d1f5368354c38e52182a",
+      "windowSha256": "7c3a4bcd9a954c8a7f9e0cd0d62a3d7ed6e53b2a874f9866810af81e8d42a088",
+      "fetchedAt": "2026-11-19T13:28:14.968Z",
+      "waybackUrl": "https://web.archive.org/web/20190916001939/https://obrag.org/2011/08/study-finds-sempra-cross-border-project-could-cost-15000-u-s-green-jobs-and-300-million-in-lost-taxes-sempra-calls-report-pure-fiction-lls-study-%e2%80%9cbiased%e2%80%9d",
       "tier": "exact"
     }
   ],
   "hops": [
     {
       "edgeId": "e1",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "scope_widened",
+          "source": "inferred",
+          "value": "no",
+          "probability": 0.9999999999740539,
+          "disputed": false
+        },
+        {
+          "id": "attribution_shifted",
+          "source": "inferred",
+          "value": "no",
+          "probability": 0.9999999973534264,
+          "disputed": false
+        },
+        {
+          "id": "context_stripped",
+          "source": "inferred",
+          "value": "no",
+          "probability": 0.9999999995400946,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "same",
+          "text": "study"
+        },
+        {
+          "op": "same",
+          "text": "finds"
+        },
+        {
+          "op": "same",
+          "text": "sempra"
+        },
+        {
+          "op": "same",
+          "text": "cross-border"
+        },
+        {
+          "op": "same",
+          "text": "project"
+        },
+        {
+          "op": "same",
+          "text": "could"
+        },
+        {
+          "op": "same",
+          "text": "cost"
+        },
+        {
+          "op": "same",
+          "text": "15,000"
+        },
+        {
+          "op": "same",
+          "text": "u.s"
+        },
+        {
+          "op": "same",
+          "text": "green"
+        },
+        {
+          "op": "same",
+          "text": "jobs"
+        },
+        {
+          "op": "same",
+          "text": "and"
+        },
+        {
+          "op": "same",
+          "text": "300"
+        },
+        {
+          "op": "same",
+          "text": "million"
+        },
+        {
+          "op": "same",
+          "text": "in"
+        },
+        {
+          "op": "same",
+          "text": "lost"
+        },
+        {
+          "op": "same",
+          "text": "taxes"
+        },
+        {
+          "op": "same",
+          "text": "sempra"
+        },
+        {
+          "op": "same",
+          "text": "calls"
+        },
+        {
+          "op": "same",
+          "text": "report"
+        },
+        {
+          "op": "same",
+          "text": "pure"
+        },
+        {
+          "op": "same",
+          "text": "fiction"
+        }
+      ],
+      "faithful": true
+    },
+    {
+      "edgeId": "e2",
       "readouts": [
         {
           "id": "number_changed",
@@ -371,21 +656,21 @@
           "id": "scope_widened",
           "source": "inferred",
           "value": "yes",
-          "probability": 0.9999251422018969,
+          "probability": 0.999941708727462,
           "disputed": false
         },
         {
           "id": "attribution_shifted",
           "source": "inferred",
           "value": "no",
-          "probability": 0.999447174672408,
+          "probability": 0.9626730730494294,
           "disputed": false
         },
         {
           "id": "context_stripped",
           "source": "inferred",
           "value": "no",
-          "probability": 0.9997387615049536,
+          "probability": 0.9890130583547561,
           "disputed": false
         }
       ],
@@ -455,86 +740,6 @@
           "text": "full-time"
         },
         {
-          "op": "add",
-          "text": "jobs"
-        },
-        {
-          "op": "add",
-          "text": "to"
-        },
-        {
-          "op": "add",
-          "text": "automation"
-        },
-        {
-          "op": "add",
-          "text": "the"
-        },
-        {
-          "op": "add",
-          "text": "good"
-        },
-        {
-          "op": "add",
-          "text": "news"
-        },
-        {
-          "op": "add",
-          "text": "is"
-        },
-        {
-          "op": "add",
-          "text": "that"
-        },
-        {
-          "op": "add",
-          "text": "worker"
-        },
-        {
-          "op": "add",
-          "text": "displacement"
-        },
-        {
-          "op": "add",
-          "text": "from"
-        },
-        {
-          "op": "add",
-          "text": "automation"
-        },
-        {
-          "op": "add",
-          "text": "has"
-        },
-        {
-          "op": "add",
-          "text": "historically"
-        },
-        {
-          "op": "add",
-          "text": "been"
-        },
-        {
-          "op": "add",
-          "text": "offset"
-        },
-        {
-          "op": "add",
-          "text": "by"
-        },
-        {
-          "op": "add",
-          "text": "creation"
-        },
-        {
-          "op": "add",
-          "text": "of"
-        },
-        {
-          "op": "add",
-          "text": "new"
-        },
-        {
           "op": "del",
           "text": "300"
         },
@@ -548,75 +753,11 @@
         },
         {
           "op": "add",
-          "text": "and"
+          "text": "to"
         },
         {
           "op": "add",
-          "text": "the"
-        },
-        {
-          "op": "add",
-          "text": "emergence"
-        },
-        {
-          "op": "add",
-          "text": "of"
-        },
-        {
-          "op": "add",
-          "text": "new"
-        },
-        {
-          "op": "add",
-          "text": "occupations"
-        },
-        {
-          "op": "add",
-          "text": "following"
-        },
-        {
-          "op": "add",
-          "text": "technological"
-        },
-        {
-          "op": "add",
-          "text": "innovations"
-        },
-        {
-          "op": "add",
-          "text": "accounts"
-        },
-        {
-          "op": "add",
-          "text": "for"
-        },
-        {
-          "op": "add",
-          "text": "the"
-        },
-        {
-          "op": "add",
-          "text": "vast"
-        },
-        {
-          "op": "add",
-          "text": "majority"
-        },
-        {
-          "op": "add",
-          "text": "of"
-        },
-        {
-          "op": "add",
-          "text": "long-run"
-        },
-        {
-          "op": "add",
-          "text": "employment"
-        },
-        {
-          "op": "add",
-          "text": "growth"
+          "text": "automation"
         },
         {
           "op": "del",
@@ -628,27 +769,27 @@
   ],
   "blame": [],
   "roots": {
-    "pages": 2,
-    "clusters": 2,
+    "pages": 4,
+    "clusters": 3,
     "rootsLinked": 0,
-    "clustersUnlinked": 2,
+    "clustersUnlinked": 3,
     "studiesFound": null,
-    "independentRoots": 2,
-    "copies": 0
+    "independentRoots": 3,
+    "copies": 1
   },
-  "redHopEdgeId": "e1",
+  "redHopEdgeId": "e2",
   "earliest": {
     "nodeIds": [
       "n4"
     ],
-    "earlierWindowSearches": 2,
+    "earlierWindowSearches": 3,
     "earlierFound": 0
   },
   "failure": null,
   "budget": {
-    "credits": 13,
-    "usd": 0.0004931600000000001,
-    "ms": 115912,
+    "credits": 14,
+    "usd": 0.00065509,
+    "ms": 45039,
     "capHit": null
   },
   "decision": {
@@ -656,68 +797,68 @@
     "row": 6,
     "reasons": [
       "no earliest page with a confirmed date, a primary page type, no earlier citation and no negated span",
-      "6 unread candidate parent(s)"
+      "5 unread candidate parent(s)"
     ],
     "counts": {
-      "pages": 2,
-      "clusters": 2,
-      "unreadParents": 6,
-      "earlierWindowSearches": 2
+      "pages": 4,
+      "clusters": 3,
+      "unreadParents": 5,
+      "earlierWindowSearches": 3
     }
   },
   "searchLog": [
     {
-      "at": "2026-11-17T23:22:02.954Z",
+      "at": "2026-11-19T13:27:42.194Z",
       "step": "search",
       "query": "\"300 million\" jobs",
-      "endDate": "2026-11-17",
+      "endDate": "2026-11-19",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:22:04.073Z",
+      "at": "2026-11-19T13:27:44.041Z",
       "step": "search",
       "query": "300 million jobs replaced by AI",
-      "endDate": "2026-11-17",
+      "endDate": "2026-11-19",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:22:05.278Z",
+      "at": "2026-11-19T13:27:45.702Z",
       "step": "search",
       "query": "AI replacing 300 million jobs",
-      "endDate": "2026-11-17",
+      "endDate": "2026-11-19",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:22:06.625Z",
+      "at": "2026-11-19T13:27:47.982Z",
       "step": "search",
       "query": "300 million jobs lost to AI automation",
-      "endDate": "2026-11-17",
+      "endDate": "2026-11-19",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:22:08.384Z",
+      "at": "2026-11-19T13:27:49.284Z",
       "step": "meta-search",
       "query": "\"300 million\" jobs",
-      "endDate": "2026-11-17",
+      "endDate": "2026-11-19",
       "startDate": null,
       "results": 5,
       "kept": 2,
       "dropped": 3
     },
     {
-      "at": "2026-11-17T23:22:24.820Z",
+      "at": "2026-11-19T13:27:54.406Z",
       "step": "search",
       "query": "\"300 million\" jobs",
       "endDate": "2023-03-25",
@@ -727,9 +868,9 @@
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:22:25.798Z",
+      "at": "2026-11-19T13:27:55.856Z",
       "step": "search",
-      "query": "\"300 million jobs\" replaced by AI",
+      "query": "\"300 million jobs\" AI automation exposure",
       "endDate": "2023-03-25",
       "startDate": null,
       "results": 10,
@@ -737,19 +878,29 @@
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:22:28.976Z",
+      "at": "2026-11-19T13:27:57.928Z",
       "step": "search",
-      "query": "\"300mn full-time jobs\" exposed to automation",
+      "query": "\"300mn full-time jobs\" generative AI automation",
       "endDate": "2023-03-25",
       "startDate": null,
-      "results": 3,
-      "kept": 3,
+      "results": 2,
+      "kept": 2,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:22:30.650Z",
+      "at": "2026-11-19T13:28:00.025Z",
       "step": "search",
-      "query": "GSPublishing 300 million jobs AI automation",
+      "query": "GSPublishing 300 million jobs AI replacement study",
+      "endDate": "2023-03-25",
+      "startDate": null,
+      "results": 7,
+      "kept": 7,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:28:07.751Z",
+      "step": "search",
+      "query": "300 million jobs AI replacement Gartner report",
       "endDate": "2023-03-25",
       "startDate": null,
       "results": 9,
@@ -757,9 +908,29 @@
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:23:05.537Z",
-      "step": "model",
-      "query": "query planner failed (network_error): code-only queries used for this window",
+      "at": "2026-11-19T13:28:09.312Z",
+      "step": "search",
+      "query": "AI automation impact 300 million jobs study",
+      "endDate": "2023-03-25",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:28:10.584Z",
+      "step": "search",
+      "query": "300 million jobs at risk from AI automation",
+      "endDate": "2023-03-25",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:28:16.975Z",
+      "step": "dating",
+      "query": "https://www.factcheck.org/2011/10/obamas-solyndra-problem: the node has no span to look for in the capture; no date from the first capture",
       "endDate": null,
       "startDate": null,
       "results": 0,
@@ -767,29 +938,19 @@
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:23:08.159Z",
-      "step": "search",
-      "query": "\"three hundred\" job",
-      "endDate": "2023-03-25",
+      "at": "2026-11-19T13:28:17.721Z",
+      "step": "dating",
+      "query": "https://fullfact.org/crime/can-300-million-pay-10000-police-officers: the node has no span to look for in the capture; no date from the first capture",
+      "endDate": null,
       "startDate": null,
-      "results": 10,
-      "kept": 10,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T23:23:09.481Z",
-      "step": "search",
-      "query": "\"three hundred\" job study",
-      "endDate": "2023-03-25",
-      "startDate": null,
-      "results": 10,
-      "kept": 10,
+      "results": 0,
+      "kept": 0,
       "dropped": 0
     }
   ],
   "usage": [
     {
-      "at": "2026-11-17T23:21:45.096Z",
+      "at": "2026-11-19T13:27:35.944Z",
       "traceId": "dev-16",
       "step": "tokenfactory",
       "service": "tokenfactory",
@@ -797,31 +958,31 @@
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 158,
       "completionTokens": 45,
-      "cachedTokens": 0,
+      "cachedTokens": 128,
       "credits": 0,
       "costUsd": 0.000029299999999999997,
-      "latencyMs": 10703,
+      "latencyMs": 1235,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:21:55.805Z",
+      "at": "2026-11-19T13:27:37.219Z",
       "traceId": "dev-16",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 268,
-      "completionTokens": 214,
-      "cachedTokens": 0,
+      "completionTokens": 165,
+      "cachedTokens": 240,
       "credits": 0,
-      "costUsd": 0.000091,
-      "latencyMs": 5958,
+      "costUsd": 0.0000763,
+      "latencyMs": 2907,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:22:02.953Z",
+      "at": "2026-11-19T13:27:42.194Z",
       "traceId": "dev-16",
       "step": "search",
       "service": "tavily",
@@ -832,12 +993,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1166,
+      "latencyMs": 2037,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:22:04.073Z",
+      "at": "2026-11-19T13:27:44.041Z",
       "traceId": "dev-16",
       "step": "search",
       "service": "tavily",
@@ -848,12 +1009,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1091,
+      "latencyMs": 1785,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:22:05.278Z",
+      "at": "2026-11-19T13:27:45.701Z",
       "traceId": "dev-16",
       "step": "search",
       "service": "tavily",
@@ -864,12 +1025,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1183,
+      "latencyMs": 1603,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:22:06.624Z",
+      "at": "2026-11-19T13:27:47.981Z",
       "traceId": "dev-16",
       "step": "search",
       "service": "tavily",
@@ -880,12 +1041,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1328,
+      "latencyMs": 2169,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:22:08.383Z",
+      "at": "2026-11-19T13:27:49.282Z",
       "traceId": "dev-16",
       "step": "meta-search",
       "service": "tavily",
@@ -896,12 +1057,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1732,
+      "latencyMs": 1230,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:22:08.519Z",
+      "at": "2026-11-19T13:27:49.538Z",
       "traceId": "dev-16",
       "step": "meta-extract",
       "service": "tavily",
@@ -910,14 +1071,14 @@
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 104,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 197,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:22:09.287Z",
+      "at": "2026-11-19T13:27:50.340Z",
       "traceId": "dev-16",
       "step": "extract",
       "service": "tavily",
@@ -926,46 +1087,30 @@
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 680,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:22:09.829Z",
-      "traceId": "dev-16",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 524,
+      "latencyMs": 710,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:22:09.831Z",
+      "at": "2026-11-19T13:27:50.396Z",
       "traceId": "dev-16",
       "step": "same_claim",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 256,
+      "promptTokens": 216,
       "completionTokens": 7,
-      "cachedTokens": 0,
+      "cachedTokens": 160,
       "credits": 0,
-      "costUsd": 0.0000277,
-      "latencyMs": 502,
+      "costUsd": 0.0000237,
+      "latencyMs": 594,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:22:10.990Z",
+      "at": "2026-11-19T13:27:50.995Z",
       "traceId": "dev-16",
       "step": "dating",
       "service": "wayback",
@@ -976,12 +1121,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 642,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:22:10.991Z",
+      "at": "2026-11-19T13:27:51.003Z",
       "traceId": "dev-16",
       "step": "same_claim",
       "service": "tokenfactory",
@@ -989,31 +1134,63 @@
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 202,
       "completionTokens": 7,
-      "cachedTokens": 0,
+      "cachedTokens": 176,
       "credits": 0,
       "costUsd": 0.0000223,
-      "latencyMs": 392,
+      "latencyMs": 375,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:22:11.384Z",
+      "at": "2026-11-19T13:27:51.446Z",
+      "traceId": "dev-16",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:27:51.451Z",
       "traceId": "dev-16",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 363,
-      "completionTokens": 146,
+      "promptTokens": 323,
+      "completionTokens": 148,
       "cachedTokens": 256,
       "credits": 0,
-      "costUsd": 0.0000801,
-      "latencyMs": 12269,
+      "costUsd": 0.0000767,
+      "latencyMs": 2936,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:22:24.819Z",
+      "at": "2026-11-19T13:27:54.406Z",
+      "traceId": "dev-16",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:27:55.855Z",
       "traceId": "dev-16",
       "step": "search",
       "service": "tavily",
@@ -1024,12 +1201,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1149,
+      "latencyMs": 1420,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:22:25.797Z",
+      "at": "2026-11-19T13:27:57.927Z",
       "traceId": "dev-16",
       "step": "search",
       "service": "tavily",
@@ -1040,12 +1217,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 951,
+      "latencyMs": 2036,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:22:28.976Z",
+      "at": "2026-11-19T13:28:00.024Z",
       "traceId": "dev-16",
       "step": "search",
       "service": "tavily",
@@ -1056,28 +1233,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 3150,
+      "latencyMs": 2064,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:22:30.649Z",
-      "traceId": "dev-16",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1648,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:22:31.816Z",
+      "at": "2026-11-19T13:28:00.800Z",
       "traceId": "dev-16",
       "step": "extract",
       "service": "tavily",
@@ -1086,62 +1247,110 @@
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 748,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:28:00.852Z",
+      "traceId": "dev-16",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 167,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00000167,
+      "latencyMs": 910,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:28:01.780Z",
+      "traceId": "dev-16",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 231,
+      "completionTokens": 7,
+      "cachedTokens": 176,
+      "credits": 0,
+      "costUsd": 0.0000252,
+      "latencyMs": 374,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:28:02.156Z",
+      "traceId": "dev-16",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 238,
+      "completionTokens": 7,
+      "cachedTokens": 160,
+      "credits": 0,
+      "costUsd": 0.0000259,
+      "latencyMs": 474,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:28:03.146Z",
+      "traceId": "dev-16",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 1146,
+      "latencyMs": 515,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:22:31.838Z",
+      "at": "2026-11-19T13:28:03.183Z",
       "traceId": "dev-16",
       "step": "embed",
       "service": "tokenfactory",
       "endpoint": "/embeddings",
       "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 132,
+      "promptTokens": 121,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.00000132,
-      "latencyMs": 2008,
+      "costUsd": 0.00000121,
+      "latencyMs": 497,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:22:33.866Z",
-      "traceId": "dev-16",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 399,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.00000399,
-      "latencyMs": 1649,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:22:35.519Z",
+      "at": "2026-11-19T13:28:03.686Z",
       "traceId": "dev-16",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
+      "promptTokens": 323,
+      "completionTokens": 144,
+      "cachedTokens": 320,
       "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 30006,
-      "status": "network_error",
+      "costUsd": 0.00007549999999999999,
+      "latencyMs": 2179,
+      "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:23:08.157Z",
+      "at": "2026-11-19T13:28:07.751Z",
       "traceId": "dev-16",
       "step": "search",
       "service": "tavily",
@@ -1152,12 +1361,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 2602,
+      "latencyMs": 1814,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:23:09.480Z",
+      "at": "2026-11-19T13:28:09.312Z",
       "traceId": "dev-16",
       "step": "search",
       "service": "tavily",
@@ -1168,12 +1377,28 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1299,
+      "latencyMs": 1539,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:23:11.098Z",
+      "at": "2026-11-19T13:28:10.583Z",
+      "traceId": "dev-16",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1246,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:28:12.253Z",
       "traceId": "dev-16",
       "step": "extract",
       "service": "tavily",
@@ -1184,108 +1409,92 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1593,
+      "latencyMs": 1629,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:23:11.106Z",
+      "at": "2026-11-19T13:28:12.288Z",
       "traceId": "dev-16",
       "step": "embed",
       "service": "tokenfactory",
       "endpoint": "/embeddings",
       "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 227,
+      "promptTokens": 157,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.00000227,
-      "latencyMs": 1237,
+      "costUsd": 0.00000157,
+      "latencyMs": 683,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:23:12.362Z",
+      "at": "2026-11-19T13:28:12.989Z",
       "traceId": "dev-16",
-      "step": "embed",
+      "step": "same_claim",
       "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 1586,
-      "completionTokens": 0,
-      "cachedTokens": 0,
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 231,
+      "completionTokens": 7,
+      "cachedTokens": 176,
       "credits": 0,
-      "costUsd": 0.00001586,
-      "latencyMs": 8219,
+      "costUsd": 0.0000252,
+      "latencyMs": 318,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:23:20.600Z",
+      "at": "2026-11-19T13:28:13.309Z",
       "traceId": "dev-16",
-      "step": "embed",
+      "step": "same_claim",
       "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 1682,
-      "completionTokens": 0,
-      "cachedTokens": 0,
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 238,
+      "completionTokens": 7,
+      "cachedTokens": 176,
       "credits": 0,
-      "costUsd": 0.00001682,
-      "latencyMs": 1024,
+      "costUsd": 0.000025900000000000003,
+      "latencyMs": 336,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:23:21.644Z",
+      "at": "2026-11-19T13:28:14.254Z",
       "traceId": "dev-16",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 311,
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.00000311,
-      "latencyMs": 480,
+      "costUsd": 0,
+      "latencyMs": 605,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:23:22.149Z",
+      "at": "2026-11-19T13:28:14.967Z",
       "traceId": "dev-16",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 294,
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "capture",
+      "model": null,
+      "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.0000029400000000000002,
-      "latencyMs": 441,
+      "costUsd": 0,
+      "latencyMs": 713,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:23:22.595Z",
-      "traceId": "dev-16",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 131,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.00000131,
-      "latencyMs": 3742,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:23:26.339Z",
+      "at": "2026-11-19T13:28:14.970Z",
       "traceId": "dev-16",
       "step": "embed",
       "service": "tokenfactory",
@@ -1296,12 +1505,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 8.4e-7,
-      "latencyMs": 327,
+      "latencyMs": 506,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:23:26.834Z",
+      "at": "2026-11-19T13:28:15.758Z",
       "traceId": "dev-16",
       "step": "dating",
       "service": "fetch",
@@ -1312,12 +1521,28 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 160,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:28:16.021Z",
+      "traceId": "dev-16",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 494,
       "status": "network_error",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:23:27.067Z",
+      "at": "2026-11-19T13:28:16.809Z",
       "traceId": "dev-16",
       "step": "dating",
       "service": "fetch",
@@ -1328,44 +1553,28 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 392,
+      "latencyMs": 787,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:23:27.760Z",
+      "at": "2026-11-19T13:28:16.971Z",
       "traceId": "dev-16",
       "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
+      "service": "fetch",
+      "endpoint": "page",
       "model": null,
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 691,
+      "latencyMs": 1211,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:23:28.078Z",
-      "traceId": "dev-16",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 318,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:23:28.078Z",
+      "at": "2026-11-19T13:28:16.975Z",
       "traceId": "dev-16",
       "step": "dating",
       "service": "wayback",
@@ -1381,7 +1590,23 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:23:28.079Z",
+      "at": "2026-11-19T13:28:17.720Z",
+      "traceId": "dev-16",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 745,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:28:17.722Z",
       "traceId": "dev-16",
       "step": "dating",
       "service": "wayback",
@@ -1397,39 +1622,119 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:23:28.083Z",
+      "at": "2026-11-19T13:28:18.615Z",
+      "traceId": "dev-16",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "capture",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 893,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:28:18.619Z",
+      "traceId": "dev-16",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:28:18.620Z",
+      "traceId": "dev-16",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:28:18.621Z",
+      "traceId": "dev-16",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:28:18.624Z",
       "traceId": "dev-16",
       "step": "page_type",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 1120,
-      "completionTokens": 8,
-      "cachedTokens": 0,
+      "completionTokens": 7,
+      "cachedTokens": 176,
       "credits": 0,
-      "costUsd": 0.0001144,
-      "latencyMs": 937,
+      "costUsd": 0.00011409999999999998,
+      "latencyMs": 464,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:23:29.080Z",
+      "at": "2026-11-19T13:28:19.103Z",
       "traceId": "dev-16",
       "step": "readouts",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 467,
+      "promptTokens": 469,
       "completionTokens": 23,
-      "cachedTokens": 0,
+      "cachedTokens": 368,
       "credits": 0,
-      "costUsd": 0.000053599999999999995,
-      "latencyMs": 11425,
+      "costUsd": 0.0000538,
+      "latencyMs": 671,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:23:40.515Z",
+      "at": "2026-11-19T13:28:19.813Z",
+      "traceId": "dev-16",
+      "step": "readouts",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 427,
+      "completionTokens": 23,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.0000496,
+      "latencyMs": 680,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:28:20.501Z",
       "traceId": "dev-16",
       "step": "boundary",
       "service": "tokenfactory",
@@ -1437,14 +1742,24 @@
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 245,
       "completionTokens": 6,
-      "cachedTokens": 0,
+      "cachedTokens": 144,
       "credits": 0,
       "costUsd": 0.0000263,
-      "latencyMs": 502,
+      "latencyMs": 480,
       "status": "200",
       "cacheHit": false
     }
   ],
   "scopeNote": "Web pages only; print and paywalled origins are out of scope. Earliest source we found, not proof of first use.",
-  "otherNumbers": []
+  "otherNumbers": [
+    {
+      "url": "https://www.horsesforsources.com/gartner_fail_automation-ai_080418",
+      "domain": "horsesforsources.com",
+      "title": "Gartner fails spectacularly with its 180 degree flip on the impact of AI Automation on jobs - Horses for Sources | No Boundaries",
+      "date": "2018-04-08",
+      "sentence": "1.AI and machine learning will destroy hundreds of millions of jobs",
+      "number": "1",
+      "similarity": 0.797
+    }
+  ]
 }

@@ -34,7 +34,7 @@ describe("T77 readable CLI card", () => {
     const card = renderCard(t);
     for (const part of [t.claim.text.slice(0, 40), "Trail goes cold", "It stopped before searching further back.", "Decision table row 6 of 6",
       "Harbor Zoo annual report 2019", "page says published 2019-12-15", t.spans.find((s) => s.nodeId === "zoo-report")!.text.slice(0, 30),
-      "https://harborzoo.example/annual-report-2019", "5 pages read, in 4 groups", "42 credits, $0.12, 61 s", "SAMPLE"])
+      "https://harborzoo.example/annual-report-2019", "5 pages read, in 4 groups", "$0.34 (42 Tavily credits, $0.00 model), 61 s", "SAMPLE"])
       expect(card.replace(/\n {9}/g, " "), part).toContain(part);
   });
 
@@ -54,7 +54,8 @@ describe("T77 readable CLI card", () => {
       { ...row, service: "tokenfactory", cacheHit: false }, { ...row, service: "tokenfactory", cacheHit: false },
       { ...row, service: "tavily", cacheHit: false }, { ...row, service: "tavily", cacheHit: true }] };
     const card = renderCard(live);
-    expect(card).toContain("REPLAY replayed from a recording, no network calls");
+    // A replay says when its recording was made (XO on #235).
+    expect(card).toMatch(/REPLAY replayed from a recording, no network calls, recorded [A-Z][a-z]{2} \d{1,2}, \d{4}/);
     expect(card).toContain("Token Factory 2 calls, Tavily 1 call");
     expect(renderCard(t)).toContain("SAMPLE an invented example, not a real search");
   });
@@ -95,5 +96,65 @@ describe("T77 readable CLI card", () => {
     expect(endingSentence({ ...cold, earliest: { ...cold.earliest, earlierWindowSearches: 2 } })).toBe("No earlier page and no primary source turned up.");
     expect(endingSentence(load("sample-cold-unread"))).toBe("A page it cites could not be opened.");
     for (const name of names) expect(renderCard(load(name))).not.toContain(load(name).decision.reasons[0] ?? "\u0000");
+  });
+});
+
+describe("judge card polish (XO on #235)", () => {
+  it("says the recorded day in US Eastern time, so a late-evening ET run is not shown as the next day", () => {
+    const t = { ...load("sample-origin"), mode: "REPLAY" as const, synthetic: false, recordedAt: "2026-11-18T03:02:00Z" };
+    expect(renderCard(t)).toContain("recorded Nov 17, 2026 ET");
+  });
+
+  it("shows one earliest page in full, preferring a sentence over page furniture, and names the others on one line", () => {
+    const base = load("sample-origin");
+    const keeper = base.nodes.find((n) => n.id === base.earliest.nodeIds[0])!;
+    const span = base.spans.find((s) => s.nodeId === keeper.id)!;
+    const nav = { ...keeper, id: "nav", url: "https://fortune.example/nav", domain: "fortune.example", spanIds: ["s-nav"] };
+    const t: Trace = {
+      ...base, nodes: [nav, ...base.nodes],
+      spans: [{ ...span, id: "s-nav", nodeId: "nav", text: "Home | News | Absurd: CEO says | Markets | 14 times a day" }, ...base.spans],
+      earliest: { ...base.earliest, nodeIds: ["nav", ...base.earliest.nodeIds] },
+    };
+    const card = renderCard(t);
+    expect(card).toContain(span.text.slice(0, 40));
+    expect(card).not.toContain("Absurd: CEO says");
+    expect(card).toMatch(/Also earliest, same date: fortune\.example\./);
+  });
+
+  it("on ORIGIN_FOUND shows the page decide picked in full, even when a tied news page is listed first (XO on #236)", () => {
+    const base = load("sample-origin");
+    expect(base.decision.state).toBe("ORIGIN_FOUND");
+    const keeper = base.nodes.find((n) => n.id === base.earliest.nodeIds[0])!;
+    const span = base.spans.find((s) => s.nodeId === keeper.id)!;
+    const news = {
+      ...keeper, id: "tied-news", url: "https://dailynews.example/naps", domain: "dailynews.example", title: "Penguins nap a lot",
+      spanIds: ["s-news"], pageType: { ...keeper.pageType!, optionId: "news" },
+    };
+    const t: Trace = {
+      ...base, nodes: [news, ...base.nodes],
+      spans: [{ ...span, id: "s-news", nodeId: "tied-news", text: "Reporters were told the penguins nap 14 times a day at the zoo." }, ...base.spans],
+      earliest: { ...base.earliest, nodeIds: ["tied-news", ...base.earliest.nodeIds] },
+    };
+    const card = renderCard(t);
+    expect(card).toContain(keeper.url);
+    expect(card).toContain(span.text.slice(0, 40));
+    expect(card).not.toContain("Reporters were told");
+    expect(card).toMatch(/Also earliest, same date: dailynews\.example\./);
+  });
+
+  it("on a tie with no origin shows a primary page (dev-10: the WEF report) before a news repeat", () => {
+    const t = Trace.parse(JSON.parse(readFileSync(new URL("../../../eval/dev-traces/dev-10.json", import.meta.url), "utf8")));
+    const card = renderCard(t);
+    const earliest = card.slice(card.indexOf("Earliest"), card.indexOf("Roots"));
+    expect(earliest).toContain("www3.weforum.org");
+    expect(earliest).toMatch(/Also earliest, same date: environmentaljusticetv\.wordpress\.com\./);
+  });
+
+  it("drops the recorded day instead of throwing when recordedAt is not a date (XO on #236)", () => {
+    const t = { ...load("sample-origin"), mode: "REPLAY" as const, synthetic: false, recordedAt: "not a date" };
+    let card = "";
+    expect(() => { card = renderCard(t); }).not.toThrow();
+    expect(card).not.toContain("recorded ");
+    expect(card.split("\n")[0]).toMatch(/^Patient Zero {2}REPLAY /);
   });
 });

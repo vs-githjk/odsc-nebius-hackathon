@@ -3,7 +3,7 @@
   "id": "dev-17",
   "mode": "LIVE",
   "synthetic": false,
-  "recordedAt": "2026-11-17T23:23:41.038Z",
+  "recordedAt": "2026-11-19T13:28:20.999Z",
   "claim": {
     "text": "ChatGPT reached 100 million users in two months, the fastest-growing app in history.",
     "atoms": {
@@ -28,14 +28,14 @@
   "nodes": [
     {
       "id": "n1",
-      "url": "https://politifact.com/article/2020/oct/19/how-facebook-tiktok-are-addressing-misinformation",
-      "domain": "politifact.com",
-      "title": "How Facebook, TikTok are addressing misinformation before Election Day – PolitiFact",
+      "url": "https://fullfact.org/immigration/suella-braverman-100-million-claim",
+      "domain": "fullfact.org",
+      "title": "Who are the 100 million displaced people Suella Braverman said could qualify for UK protection? – Full Fact",
       "date": {
-        "kind": "existed_by",
-        "value": "2026-08-12",
+        "kind": "unconfirmed",
+        "value": null,
         "source": "wayback_first_capture",
-        "firstCapture": "2026-08-12",
+        "firstCapture": "2023-03-11",
         "conflictingDate": false
       },
       "clusterId": "c-n1",
@@ -47,20 +47,20 @@
       "citesEarlier": true,
       "candidateParents": [
         {
-          "url": "https://www.latimes.com/business/story/2019-07-26/twitter-reports-surprisingly-strong-user-growth-and-revenue",
+          "url": "https://bills.parliament.uk/bills/3429",
+          "read": false
+        },
+        {
+          "url": "https://twitter.com/GMB/status/1633387389702877185?s=20",
           "read": true
         },
         {
-          "url": "https://www.cnbc.com/2020/08/24/tiktok-reveals-us-global-user-growth-numbers-for-first-time.html",
-          "read": true
+          "url": "https://www.unhcr.org/refugee-statistics/insights/explainers/100-million-forcibly-displaced.html",
+          "read": false
         },
         {
-          "url": "https://www.theverge.com/2020/7/30/21348308/facebook-earnings-q2-2020-pandemic-revenue-usage-growth",
-          "read": true
-        },
-        {
-          "url": "https://www.statista.com/statistics/408971/number-of-us-facebook-users",
-          "read": true
+          "url": "https://hansard.parliament.uk/Commons/2023-03-08/debates/A182F3E8-6CA8-4FBC-B10E-8045D9374E73/Engagements",
+          "read": false
         }
       ],
       "pageType": null,
@@ -68,14 +68,14 @@
     },
     {
       "id": "n2",
-      "url": "https://www.snopes.com/fact-check/zello-work-without-internet",
-      "domain": "snopes.com",
-      "title": "Does the Zello Phone App Work Without the Internet? | Snopes.com",
+      "url": "http://www.politifact.com/truth-o-meter/promises/biden-promise-tracker/promise/1571/100-million-covid-19-vaccine-shots-50-million-peop/article/2793",
+      "domain": "politifact.com",
+      "title": "58 days in, Biden reaches milestone of 100 million shots within his first 100 days – PolitiFact",
       "date": {
-        "kind": "existed_by",
-        "value": "2021-11-27",
+        "kind": "unconfirmed",
+        "value": null,
         "source": "wayback_first_capture",
-        "firstCapture": "2021-11-27",
+        "firstCapture": "2026-03-12",
         "conflictingDate": false
       },
       "clusterId": "c-n2",
@@ -84,30 +84,21 @@
       "read": true,
       "versionOf": null,
       "spanIds": [],
-      "citesEarlier": true,
-      "candidateParents": [
-        {
-          "url": "https://support.zello.com/hc/en-us/articles/230747807-Can-I-use-Zello-without-Internet-",
-          "read": false
-        },
-        {
-          "url": "https://twitter.com/Zello/status/905306082574204928",
-          "read": true
-        }
-      ],
+      "citesEarlier": false,
+      "candidateParents": [],
       "pageType": null,
       "foundViaMeta": null
     },
     {
       "id": "n3",
-      "url": "https://www.cnbc.com/2020/08/24/tiktok-reveals-us-global-user-growth-numbers-for-first-time.html",
-      "domain": "cnbc.com",
-      "title": "TikTok reveals U.S., global user growth numbers for first time",
+      "url": "https://en.wikipedia.org/wiki/List_of_most_popular_social_platforms",
+      "domain": "en.wikipedia.org",
+      "title": "List of most popular social platforms - Wikipedia",
       "date": {
-        "kind": "existed_by",
-        "value": "2020-08-24",
-        "source": "wayback_first_capture",
-        "firstCapture": "2020-08-24",
+        "kind": "published",
+        "value": "2020-10-22",
+        "source": "metadata",
+        "firstCapture": "2026-01-11",
         "conflictingDate": false
       },
       "clusterId": "c-n3",
@@ -118,91 +109,56 @@
       "spanIds": [
         "s1"
       ],
-      "citesEarlier": false,
-      "candidateParents": [],
-      "pageType": {
-        "questionId": "page_type",
-        "optionId": "news",
-        "probability": 0.9999782448031045,
+      "citesEarlier": true,
+      "candidateParents": [
+        {
+          "url": "https://en.wikipedia.org/wiki/Social_media",
+          "read": true
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Active_users",
+          "read": true
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Social_networking_service",
+          "read": true
+        }
+      ],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "no",
+        "probability": 0.9999938011709927,
         "top": [
           {
-            "optionId": "study",
-            "p": 0
+            "optionId": "yes",
+            "p": 0.0000061441773845791136
           },
           {
-            "optionId": "dataset",
-            "p": 0
-          },
-          {
-            "optionId": "report",
-            "p": 0.0000214449379142098
-          },
-          {
-            "optionId": "speaker",
-            "p": 0
-          },
-          {
-            "optionId": "news",
-            "p": 0.9999782448031045
-          },
-          {
-            "optionId": "blog",
-            "p": 3.058956105722552e-7
-          },
-          {
-            "optionId": "social",
-            "p": 0
-          },
-          {
-            "optionId": "other",
-            "p": 4.36337070217138e-9
+            "optionId": "no",
+            "p": 0.9999938011709927
           },
           {
             "optionId": "__other__",
-            "p": 0
+            "p": 5.465162278284197e-8
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
         "threshold": null
       },
-      "foundViaMeta": "https://politifact.com/article/2020/oct/19/how-facebook-tiktok-are-addressing-misinformation",
-      "boundary": {
-        "questionId": "boundary",
-        "optionId": "unsourced",
-        "probability": 0.8820884213826982,
-        "top": [
-          {
-            "optionId": "print",
-            "p": 0.10532901203083642
-          },
-          {
-            "optionId": "unsourced",
-            "p": 0.8820884213826982
-          },
-          {
-            "optionId": "none",
-            "p": 0.012581746956614
-          },
-          {
-            "optionId": "__other__",
-            "p": 8.196298514340228e-7
-          }
-        ],
-        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-        "threshold": null
-      },
+      "foundViaMeta": null,
       "injection": null
     },
     {
       "id": "n4",
-      "url": "https://en.wikipedia.org/wiki/List_of_most_popular_social_platforms",
-      "domain": "en.wikipedia.org",
-      "title": "List of most popular social platforms - Wikipedia",
+      "url": "https://www.businessinsider.com/chatgpt-may-be-fastest-growing-app-in-history-ubs-study-2023-2",
+      "domain": "businessinsider.com",
+      "title": "ChatGPT May Be Fastest Growing App in History, UBS Report Says - Business Insider",
       "date": {
         "kind": "published",
-        "value": "2020-10-22",
+        "value": "2023-02-02",
         "source": "metadata",
-        "firstCapture": "2026-01-11",
+        "firstCapture": "2023-02-02",
         "conflictingDate": false
       },
       "clusterId": "c-n4",
@@ -215,41 +171,110 @@
       ],
       "citesEarlier": false,
       "candidateParents": [],
-      "pageType": null,
-      "sameClaim": {
-        "questionId": "same_claim",
-        "optionId": "no",
-        "probability": 0.999983298569494,
+      "pageType": {
+        "questionId": "page_type",
+        "optionId": "news",
+        "probability": 0.9999938075040194,
         "top": [
           {
-            "optionId": "yes",
-            "p": 0.00001670143050579169
+            "optionId": "study",
+            "p": 0
           },
           {
-            "optionId": "no",
-            "p": 0.999983298569494
+            "optionId": "dataset",
+            "p": 0
+          },
+          {
+            "optionId": "report",
+            "p": 0.000006144177195963701
+          },
+          {
+            "optionId": "speaker",
+            "p": 0
+          },
+          {
+            "optionId": "news",
+            "p": 0.9999938075040194
+          },
+          {
+            "optionId": "blog",
+            "p": 7.194091865283758e-9
+          },
+          {
+            "optionId": "social",
+            "p": 0
+          },
+          {
+            "optionId": "other",
+            "p": 5.905270208620189e-10
           },
           {
             "optionId": "__other__",
-            "p": 2.220446049250313e-16
+            "p": 4.053416569060886e-8
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9999999999934397,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9999999999934397
+          },
+          {
+            "optionId": "no",
+            "p": 6.560201547331172e-12
+          },
+          {
+            "optionId": "__other__",
+            "p": 1.1102230246251565e-16
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
         "threshold": null
       },
       "foundViaMeta": null,
+      "boundary": {
+        "questionId": "boundary",
+        "optionId": "print",
+        "probability": 0.9999997570991074,
+        "top": [
+          {
+            "optionId": "print",
+            "p": 0.9999997570991074
+          },
+          {
+            "optionId": "unsourced",
+            "p": 7.916318039696082e-8
+          },
+          {
+            "optionId": "none",
+            "p": 1.637377123103198e-7
+          },
+          {
+            "optionId": "__other__",
+            "p": 0
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
       "injection": null
     },
     {
       "id": "n5",
-      "url": "https://mashable.com/article/chatgpt-fastest-growing",
-      "domain": "mashable.com",
-      "title": "ChatGPT is the fastest growing app of all time | Mashable",
+      "url": "https://en.wikipedia.org/wiki/Social_media",
+      "domain": "en.wikipedia.org",
+      "title": "Social media - Wikipedia",
       "date": {
-        "kind": "published",
-        "value": "2023-02-02",
-        "source": "metadata",
-        "firstCapture": "2023-02-02",
+        "kind": "unconfirmed",
+        "value": null,
+        "source": "wayback_first_capture",
+        "firstCapture": "2005-12-15",
         "conflictingDate": false
       },
       "clusterId": "c-n5",
@@ -265,16 +290,16 @@
       "pageType": null,
       "sameClaim": {
         "questionId": "same_claim",
-        "optionId": "yes",
-        "probability": 0.999999999782756,
+        "optionId": "no",
+        "probability": 0.9999999748900084,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.999999999782756
+            "p": 2.51099916807878e-8
           },
           {
             "optionId": "no",
-            "p": 2.172440050075422e-10
+            "p": 0.9999999748900084
           },
           {
             "optionId": "__other__",
@@ -289,14 +314,14 @@
     },
     {
       "id": "n6",
-      "url": "https://www.cnet.com/culture/facebook-hits-100-million-users",
-      "domain": "cnet.com",
-      "title": "Facebook hits 100 million users - CNET",
+      "url": "https://fii-institute.org/wp-content/uploads/2024/01/AI-Impact-Report-2024.pdf",
+      "domain": "fii-institute.org",
+      "title": "AND WHAT YOU NEED TO KNOW TO HELP SHAPE AI'S FUTURE",
       "date": {
-        "kind": "published",
-        "value": "2008-08-26",
-        "source": "metadata",
-        "firstCapture": "2023-01-31",
+        "kind": "unconfirmed",
+        "value": null,
+        "source": "wayback_first_capture",
+        "firstCapture": "2024-02-05",
         "conflictingDate": false
       },
       "clusterId": "c-n6",
@@ -313,19 +338,19 @@
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "no",
-        "probability": 0.9999998807916125,
+        "probability": 0.9996646499601237,
         "top": [
           {
             "optionId": "yes",
-            "p": 1.1253517887980963e-7
+            "p": 0.00033535003987632527
           },
           {
             "optionId": "no",
-            "p": 0.9999998807916125
+            "p": 0.9996646499601237
           },
           {
             "optionId": "__other__",
-            "p": 6.6732086523302314e-9
+            "p": 0
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -336,14 +361,14 @@
     },
     {
       "id": "n7",
-      "url": "https://en.wikipedia.org/wiki/Social_media",
-      "domain": "en.wikipedia.org",
-      "title": "Social media - Wikipedia",
+      "url": "https://pulse.microsoft.com/en/transform-en/na/fa2-the-leaders-guide-to-creating-business-impact-with-ai",
+      "domain": "pulse.microsoft.com",
+      "title": "The Leader’s Guide to Creating Business Impact with AI – Microsoft Pulse",
       "date": {
         "kind": "existed_by",
-        "value": "2005-12-15",
+        "value": "2024-03-03",
         "source": "wayback_first_capture",
-        "firstCapture": "2005-12-15",
+        "firstCapture": "2024-03-03",
         "conflictingDate": false
       },
       "clusterId": "c-n7",
@@ -359,16 +384,16 @@
       "pageType": null,
       "sameClaim": {
         "questionId": "same_claim",
-        "optionId": "no",
-        "probability": 0.9999999881388794,
+        "optionId": "yes",
+        "probability": 0.9999999468421473,
         "top": [
           {
             "optionId": "yes",
-            "p": 1.1861120528787827e-8
+            "p": 0.9999999468421473
           },
           {
             "optionId": "no",
-            "p": 0.9999999881388794
+            "p": 5.315785254284835e-8
           },
           {
             "optionId": "__other__",
@@ -383,14 +408,14 @@
     },
     {
       "id": "n8",
-      "url": "https://achievements.ai/field/computing",
-      "domain": "achievements.ai",
-      "title": "Computing and software — AI milestones | AI Achievements",
+      "url": "https://news.microsoft.com/source/2001/05/14/msn-hotmail-tops-100-million-user-milestone",
+      "domain": "news.microsoft.com",
+      "title": "MSN Hotmail Tops 100 Million User Milestone - Source",
       "date": {
-        "kind": "unconfirmed",
-        "value": null,
-        "source": "wayback_first_capture",
-        "firstCapture": null,
+        "kind": "published",
+        "value": "2001-05-14",
+        "source": "metadata",
+        "firstCapture": "2025-08-19",
         "conflictingDate": false
       },
       "clusterId": "c-n8",
@@ -406,20 +431,20 @@
       "pageType": null,
       "sameClaim": {
         "questionId": "same_claim",
-        "optionId": "yes",
-        "probability": 0.9980732473777479,
+        "optionId": "no",
+        "probability": 0.9999997615822612,
         "top": [
           {
             "optionId": "yes",
-            "p": 0.9980732473777479
+            "p": 1.8553914565226003e-7
           },
           {
             "optionId": "no",
-            "p": 0.0019267342622656368
+            "p": 0.9999997615822612
           },
           {
             "optionId": "__other__",
-            "p": 1.8359986420080077e-8
+            "p": 5.287859317082422e-8
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -430,14 +455,14 @@
     },
     {
       "id": "n9",
-      "url": "https://www.businessinsider.com/snapchats-monthly-active-users-may-be-nearing-200-million-2014-12",
-      "domain": "businessinsider.com",
-      "title": "Snapchat's Monthly Active Users May Be Nearing 200 Million - Business Insider",
+      "url": "https://www.cnet.com/culture/facebook-hits-100-million-users",
+      "domain": "cnet.com",
+      "title": "Facebook hits 100 million users - CNET",
       "date": {
         "kind": "published",
-        "value": "2015-01-03",
+        "value": "2008-08-26",
         "source": "metadata",
-        "firstCapture": "2015-01-05",
+        "firstCapture": "2023-01-31",
         "conflictingDate": false
       },
       "clusterId": "c-n9",
@@ -454,19 +479,66 @@
       "sameClaim": {
         "questionId": "same_claim",
         "optionId": "no",
-        "probability": 0.9999999677581318,
+        "probability": 0.9999999468421489,
         "top": [
           {
             "optionId": "yes",
-            "p": 3.224186792897992e-8
+            "p": 5.315785101827541e-8
           },
           {
             "optionId": "no",
-            "p": 0.9999999677581318
+            "p": 0.9999999468421489
           },
           {
             "optionId": "__other__",
-            "p": 2.220446049250313e-16
+            "p": 1.1102230246251565e-16
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    },
+    {
+      "id": "n10",
+      "url": "https://market.biz/signal-statistics",
+      "domain": "market.biz",
+      "title": "Signal Statistics by Communication Tools and Facts (2026)",
+      "date": {
+        "kind": "existed_by",
+        "value": "2025-09-06",
+        "source": "wayback_first_capture",
+        "firstCapture": "2025-09-06",
+        "conflictingDate": true
+      },
+      "clusterId": "c-n10",
+      "evidence": "observed",
+      "meta": false,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s8"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "no",
+        "probability": 0.9999991655396413,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 8.315279632371528e-7
+          },
+          {
+            "optionId": "no",
+            "p": 0.9999991655396413
+          },
+          {
+            "optionId": "__other__",
+            "p": 2.9323954375826133e-9
           }
         ],
         "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
@@ -479,11 +551,20 @@
   "edges": [
     {
       "id": "e1",
-      "parentId": "n3",
-      "childId": "n5",
+      "parentId": "n5",
+      "childId": "n3",
+      "kind": "explicit",
+      "parentSpanId": "s3",
+      "childSpanId": "s1",
+      "linkHref": "https://en.wikipedia.org/wiki/Social_media"
+    },
+    {
+      "id": "e2",
+      "parentId": "n4",
+      "childId": "n7",
       "kind": "inferred",
-      "parentSpanId": "s1",
-      "childSpanId": "s3",
+      "parentSpanId": "s2",
+      "childSpanId": "s5",
       "linkHref": null
     }
   ],
@@ -492,13 +573,6 @@
       "id": "c-n8",
       "nodeIds": [
         "n8"
-      ],
-      "rule": "single"
-    },
-    {
-      "id": "c-n7",
-      "nodeIds": [
-        "n7"
       ],
       "rule": "single"
     },
@@ -517,6 +591,13 @@
       "rule": "single"
     },
     {
+      "id": "c-n7",
+      "nodeIds": [
+        "n7"
+      ],
+      "rule": "single"
+    },
+    {
       "id": "c-n3",
       "nodeIds": [
         "n3"
@@ -531,9 +612,9 @@
       "rule": "single"
     },
     {
-      "id": "c-n5",
+      "id": "c-n10",
       "nodeIds": [
-        "n5"
+        "n10"
       ],
       "rule": "single"
     },
@@ -550,68 +631,47 @@
         "n2"
       ],
       "rule": "single"
+    },
+    {
+      "id": "c-n5",
+      "nodeIds": [
+        "n5"
+      ],
+      "rule": "single"
     }
   ],
   "spans": [
     {
       "id": "s1",
       "nodeId": "n3",
-      "text": "More than 100 million Americans are monthly active users today, the company said earlier this month.",
-      "contextBefore": "year later, that figure had more than doubled to about 27 million. By June 2020, months into pandemic quarantines, TikTok's total number of U.S. month active users had soared to more than 91 million. ",
-      "contextAfter": " The company also revealed it has more than 50 million daily U.S. users. Here's the breakdown of TikTok's U.S. user growth: Globally, TikTok has experienced similar surges in users. The company said i",
-      "start": 560,
-      "end": 660,
-      "extractSha256": "6070efaf8b5dace2f9b4a559c29edfdef93d6e9f3c0595d3a127cb8a83939bee",
-      "windowSha256": "66b0e2de5e94cdc6a6ef03f5b544b5d1604565c5259054d1cc31200b10fcb5f5",
-      "fetchedAt": "2026-11-17T23:23:59.929Z",
-      "waybackUrl": "https://web.archive.org/web/20200824223447/https://www.cnbc.com/2020/08/24/tiktok-reveals-us-global-user-growth-numbers-for-first-time.html",
+      "text": "This is a list of social platforms with at least 100 million monthly active users.[[a]](#cite_note-a-1) The list includes social networks, as well as online forums, photo and video sharing platforms, messaging and VoIP apps.",
+      "contextBefore": " apps with usage numbers and other metrics | | | --- | | This article needs to be updated. Please help update this article to reflect recent events or newly available information. *(February 2026)* | ",
+      "contextAfter": " List. [edit] | Name | Company | Country[[b]](#cite_note-b-2) | Launched | Monthly active users | Other metrics | | --- | --- | --- | --- | --- | --- | | Facebook | Meta Platforms | United States | 20",
+      "start": 901,
+      "end": 1125,
+      "extractSha256": "e86d93d35f4f7b8fe4ff08594d74b55db7dc2bce630c44d1d6571d5c602ae506",
+      "windowSha256": "4c710f311e8db9c1b201ec8e7dea7dd65973ca87aca7d715bfac0da6cb5ba60f",
+      "fetchedAt": "2026-11-19T13:28:37.304Z",
+      "waybackUrl": "https://web.archive.org/web/20260111001811/https://en.wikipedia.org/wiki/List_of_most_popular_social_platforms",
       "tier": "exact"
     },
     {
       "id": "s2",
       "nodeId": "n4",
-      "text": "Please help update this article to reflect recent events or newly available information. *(February 2026)* | This is a list of social platforms with at least 100 million monthly active users.[[a]](#cite_note-a-1) The list includes social networks, as well as online forums, photo and video sharing platforms, messaging and VoIP apps.",
-      "contextBefore": "ble version In other projects * Wikidata item Appearance From Wikipedia, the free encyclopedia Popular social apps with usage numbers and other metrics | | | --- | | This article needs to be updated. ",
-      "contextAfter": " List. [edit] | Name | Company | Country[[b]](#cite_note-b-2) | Launched | Monthly active users | Other metrics | | --- | --- | --- | --- | --- | --- | | Facebook | Meta Platforms | United States | 20",
-      "start": 792,
-      "end": 1125,
-      "extractSha256": "e86d93d35f4f7b8fe4ff08594d74b55db7dc2bce630c44d1d6571d5c602ae506",
-      "windowSha256": "2a40c4ecc5bebb8c88c087acb963c9b12b4258581c15ab27e106f51259f98983",
-      "fetchedAt": "2026-11-17T23:24:33.121Z",
-      "waybackUrl": "https://web.archive.org/web/20260111001811/https://en.wikipedia.org/wiki/List_of_most_popular_social_platforms",
+      "text": "ChatGPT may have become the fastest-growing app in history after it was estimated to have reached 100 million monthly active users, or MAUs, by the end of January, a report by Swiss banking giant UBS said.",
+      "contextBefore": "",
+      "contextAfter": " The OpenAI-owned chatbot has surpassed 100 million MAUs just over two months after its launch - comfortably beating the growth speeds of major apps like TikTok and Instagram, according to the UBS not",
+      "start": 0,
+      "end": 205,
+      "extractSha256": "c7c0456201f13e5c4ab8fd94d6070c86322897643dec7938a72ee94d015a3ece",
+      "windowSha256": "390f688740b85987fb52038e69e7fc54bf018af1ee1c2995ad9e2ee94c20c9bf",
+      "fetchedAt": "2026-11-19T13:28:37.650Z",
+      "waybackUrl": "https://web.archive.org/web/20230202114738/https://www.businessinsider.com/chatgpt-may-be-fastest-growing-app-in-history-ubs-study-2023-2",
       "tier": "exact"
     },
     {
       "id": "s3",
       "nodeId": "n5",
-      "text": "100 million users in two months.",
-      "contextBefore": "Home > Tech ChatGPT is the fastest growing app of all time. ",
-      "contextAfter": " By Stan Schroeder Stan Schroeder Senior Editor Stan is a Senior Editor at Mashable, where he has worked since 2007. He's got more battery-powered gadgets and band t-shirts than you. He writes about t",
-      "start": 60,
-      "end": 92,
-      "extractSha256": "00dc722bbe5aaee9687c8cde044795abf599517ecdb29f764282bc9d8f2e2285",
-      "windowSha256": "e124d0274d4fb12dba721405888cc66d265af4e43f003e895b3542d0d3ff4261",
-      "fetchedAt": "2026-11-17T23:24:33.957Z",
-      "waybackUrl": "https://web.archive.org/web/20230202113213/https://mashable.com/article/chatgpt-fastest-growing",
-      "tier": "exact"
-    },
-    {
-      "id": "s4",
-      "nodeId": "n6",
-      "text": "Facebook hits 100 million users.",
-      "contextBefore": " Your Guide To a Better Future Our expert, award-winning staff selects the products we cover and rigorously researches and tests our top picks. If you buy through our links, we may earn a commission. ",
-      "contextAfter": " Fewer than five years after then-college student Mark Zuckerberg created the site in his dorm room, the social network has 100 million active users, most of which are now outside the U.S. Caroline Mc",
-      "start": 281,
-      "end": 313,
-      "extractSha256": "4d81ee35e042c4167c9c7521f4e8a1f549b0315b9810ffaa4427333f5df76c86",
-      "windowSha256": "1249c5bd99bfa8a24454177cc1ddd4479a828e7b320605635e44d3fd42d65167",
-      "fetchedAt": "2026-11-17T23:24:55.399Z",
-      "waybackUrl": "https://web.archive.org/web/20230131015032/https://www.cnet.com/culture/facebook-hits-100-million-users",
-      "tier": "exact"
-    },
-    {
-      "id": "s5",
-      "nodeId": "n7",
       "text": "Popular social media platforms with over 100 million registered users include X, Facebook, WeChat, ShareChat, Instagram, Pinterest, QZone, Weibo, VK, Tumblr, Baidu Tieba, Threads, and LinkedIn.",
       "contextBefore": "arn.[[8]](#cite_note-Schurgin-2011-8) They may be used to promote people, companies, products, and ideas.[[8]](#cite_note-Schurgin-2011-8) Social media can be used to consume, publish, or share news. ",
       "contextAfter": " Depending on the interpretation, other popular platforms that are sometimes referred to as social media services include YouTube, Letterboxd, QQ, Telegram, WhatsApp, Signal, LINE, Snapchat, Viber, Re",
@@ -619,42 +679,357 @@
       "end": 6436,
       "extractSha256": "6d912de57a58d74bd8ef7767f0780a4dd8772ba7bd98392995e486f8f5114978",
       "windowSha256": "418809fc9fc44f445208fa5b2490e0a79a0121a50a997f07a6e21526380eb7ea",
-      "fetchedAt": "2026-11-17T23:25:14.202Z",
-      "waybackUrl": "https://web.archive.org/web/20051215000000/https://en.wikipedia.org/wiki/Social_media",
+      "fetchedAt": "2026-11-19T13:29:01.026Z",
+      "waybackUrl": null,
+      "tier": "exact"
+    },
+    {
+      "id": "s4",
+      "nodeId": "n6",
+      "text": "\"It's completely untransparent how Bing daily active users: 100 MILLION Google daily active users: 1 BILLION ∏ I M P A C T R E P O R T 2 0 2 4 11 [AI-powered search] is going to work, which might have major implications if the language model misfires, hallucinates or spreads misinformation,\" says Aleksandra Urman, a computational social scientist at the University of Zurich in Switzerland.",
+      "contextBefore": "nswers to questions AI doesn't actually know the answer to, coupled with users' belief that the results they see on search engines are verified and verifiable facts, could cause issues in the future. ",
+      "contextAfter": " THE WHOLE TRUTH \"Search engine companies, and Google in particular, spent years to build and cement users' trust that the search engine will give them the 'best' and most accurate result possible, us",
+      "start": 11343,
+      "end": 11735,
+      "extractSha256": "bc1346a137c2e5f9e839437f439dc3c4a7dfef2a7b2ca1767e79f61aafe8c203",
+      "windowSha256": "fd02915fb58291871a06103bd28c833bd074c60304b143efc707b0c6b3a21b65",
+      "fetchedAt": "2026-11-19T13:29:02.693Z",
+      "waybackUrl": "https://web.archive.org/web/20240205055727/https://fii-institute.org/wp-content/uploads/2024/01/AI-Impact-Report-2024.pdf",
+      "tier": "exact"
+    },
+    {
+      "id": "s5",
+      "nodeId": "n7",
+      "text": "One year ago, ChatGPT launched and became the fastest growing consumer app in history, with 100 million monthly active users exploring the power of artificial intelligence (AI).",
+      "contextBefore": "ance Manufacturing Retail Education Government Transform Innovation The Leader's Guide to Creating Business Impact with AI. Joacim Damgard President, Microsoft Western Europe Read Time, 6 min. 6 min. ",
+      "contextAfter": " This enthusiasm pushed AI into the mainstream of conversation in Europe, and also generated optimism in how we can apply AI to help us solve some of our most pressing economic, demographic, and socie",
+      "start": 497,
+      "end": 674,
+      "extractSha256": "47e3930895f43d1413030e4478c701d4cb16ff0a3a5cc0fa4413c38bd7cb983e",
+      "windowSha256": "c6a27d52d628e753562794b43e9afd093e9db2dd31aaa61c8d1532bec35548c3",
+      "fetchedAt": "2026-11-19T13:29:18.974Z",
+      "waybackUrl": "https://web.archive.org/web/20240303092306/https://pulse.microsoft.com/en/transform-en/na/fa2-the-leaders-guide-to-creating-business-impact-with-ai",
       "tier": "exact"
     },
     {
       "id": "s6",
       "nodeId": "n8",
-      "text": "It reached one million users within five days, and analysts at UBS estimated roughly 100 million monthly users by January 2023, a pace that had taken TikTok nine months and Instagram about two and a half years.",
-      "contextBefore": "stems and networks 1 Search and retrieval 9 14 milestones. OpenAI launches ChatGPT as a free research preview. OpenAI released ChatGPT on 30 November 2022 as a free research preview built on GPT-3.5. ",
-      "contextAfter": " GitHub Copilot becomes generally available as a paid product. GitHub made Copilot generally available on 21 June 2022 at ten dollars a month, free to verified students and to maintainers of popular o",
-      "start": 327,
-      "end": 537,
-      "extractSha256": "d965da01fc9601219cf7df55e47404c1d539e165a99f3c756e90cfacfbf86dd4",
-      "windowSha256": "b3a93ee32b3aa50598eb29186ef0b4172909365cda9333a5a4e371a9ee39e203",
-      "fetchedAt": "2026-11-17T23:25:21.413Z",
-      "waybackUrl": null,
+      "text": "The MSN Hotmail® service, the world's largest Web-based e-mail service, now has over 100 million users worldwide, and more than half are choosing it as their primary e-mail source.",
+      "contextBefore": "over 230 million unique users, today announced that record numbers of consumers are using MSN communication services, making it a leading worldwide provider of communications technologies on the Web. ",
+      "contextAfter": " In addition, the latest data released by Jupiter Media Metrix Inc. show that MSN Messenger Service grew to more than 31.9 million unique users worldwide during the month of March, 1 strengthening its",
+      "start": 1393,
+      "end": 1573,
+      "extractSha256": "f85cfe4c8b9d438b578f8767d047777fce19c374c1638f4e1f23a948b7f6453d",
+      "windowSha256": "f28081bc2f1eb33a68a0763e22be9eb57f95fc12e86646b1cc0f411ebd7e19bc",
+      "fetchedAt": "2026-11-19T13:29:33.897Z",
+      "waybackUrl": "https://web.archive.org/web/20250819201759/https://news.microsoft.com/source/2001/05/14/msn-hotmail-tops-100-million-user-milestone",
       "tier": "exact"
     },
     {
       "id": "s7",
       "nodeId": "n9",
-      "text": "It's been reported that Snapchat has more than 100 million users.",
-      "contextBefore": "Snapchat is only a few years old, but you wouldn't know it from the app's massive number of users. ",
-      "contextAfter": " But that number may actually be closer to 200 million (or beyond), if you read between the lines of what's been written and stated by the company's executives. The company compares its size and scale",
-      "start": 99,
-      "end": 164,
-      "extractSha256": "fc0df5a2a75b528fd718e7cdd9e6681fb8dea55772682c097558e9d805847e03",
-      "windowSha256": "097208efc4e8190c75e69f127b9a0adfc0e82d61b03129fcc00d106f20e8d574",
-      "fetchedAt": "2026-11-17T23:25:22.359Z",
-      "waybackUrl": "https://web.archive.org/web/20150105171025/https://www.businessinsider.com/snapchats-monthly-active-users-may-be-nearing-200-million-2014-12",
+      "text": "Facebook hits 100 million users.",
+      "contextBefore": " Your Guide To a Better Future Our expert, award-winning staff selects the products we cover and rigorously researches and tests our top picks. If you buy through our links, we may earn a commission. ",
+      "contextAfter": " Fewer than five years after then-college student Mark Zuckerberg created the site in his dorm room, the social network has 100 million active users, most of which are now outside the U.S. Caroline Mc",
+      "start": 281,
+      "end": 313,
+      "extractSha256": "4d81ee35e042c4167c9c7521f4e8a1f549b0315b9810ffaa4427333f5df76c86",
+      "windowSha256": "1249c5bd99bfa8a24454177cc1ddd4479a828e7b320605635e44d3fd42d65167",
+      "fetchedAt": "2026-11-19T13:29:34.532Z",
+      "waybackUrl": "https://web.archive.org/web/20230131015032/https://www.cnet.com/culture/facebook-hits-100-million-users",
+      "tier": "exact"
+    },
+    {
+      "id": "s8",
+      "nodeId": "n10",
+      "text": "It is reported that Signal has approximately 100 million monthly active users globally.",
+      "contextBefore": "tionality while maintaining its primary advantage of privacy. Currently, Signal is recognized as a widely used messaging application, regarded as one of the most secure communication tools available. ",
+      "contextAfter": " Although it remains relatively small in comparison to messaging services with extensive user bases, such as WhatsApp, which has over 3 billion monthly active users, Signal has demonstrated some recen",
+      "start": 494,
+      "end": 581,
+      "extractSha256": "fc780092b7e8782e7207eab29a719e5b65a5f6c33dfd01c53fb6bf7306d8c2db",
+      "windowSha256": "435217da55f309e34a27df46996494dec53f0ae313ced29d5450b96bca0fc2ce",
+      "fetchedAt": "2026-11-19T13:29:57.823Z",
+      "waybackUrl": "https://web.archive.org/web/20250906234035/https://market.biz/signal-statistics",
       "tier": "exact"
     }
   ],
   "hops": [
     {
       "edgeId": "e1",
+      "readouts": [
+        {
+          "id": "number_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "unit_changed",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "hedge_dropped",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "comparison_added",
+          "source": "measured",
+          "value": "no",
+          "probability": null,
+          "disputed": false
+        },
+        {
+          "id": "scope_widened",
+          "source": "inferred",
+          "value": "yes",
+          "probability": 0.9999645963111244,
+          "disputed": false
+        },
+        {
+          "id": "attribution_shifted",
+          "source": "inferred",
+          "value": "no",
+          "probability": 0.9525741264806029,
+          "disputed": false
+        },
+        {
+          "id": "context_stripped",
+          "source": "inferred",
+          "value": "yes",
+          "probability": 0.7772998612311827,
+          "disputed": false
+        }
+      ],
+      "wordDiff": [
+        {
+          "op": "add",
+          "text": "this"
+        },
+        {
+          "op": "add",
+          "text": "is"
+        },
+        {
+          "op": "add",
+          "text": "a"
+        },
+        {
+          "op": "add",
+          "text": "list"
+        },
+        {
+          "op": "add",
+          "text": "of"
+        },
+        {
+          "op": "del",
+          "text": "popular"
+        },
+        {
+          "op": "same",
+          "text": "social"
+        },
+        {
+          "op": "del",
+          "text": "media"
+        },
+        {
+          "op": "same",
+          "text": "platforms"
+        },
+        {
+          "op": "same",
+          "text": "with"
+        },
+        {
+          "op": "add",
+          "text": "at"
+        },
+        {
+          "op": "add",
+          "text": "least"
+        },
+        {
+          "op": "del",
+          "text": "over"
+        },
+        {
+          "op": "same",
+          "text": "100"
+        },
+        {
+          "op": "same",
+          "text": "million"
+        },
+        {
+          "op": "add",
+          "text": "monthly"
+        },
+        {
+          "op": "add",
+          "text": "active"
+        },
+        {
+          "op": "add",
+          "text": "users.[[a]](#cite_note-a-1"
+        },
+        {
+          "op": "add",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "list"
+        },
+        {
+          "op": "add",
+          "text": "includes"
+        },
+        {
+          "op": "add",
+          "text": "social"
+        },
+        {
+          "op": "add",
+          "text": "networks"
+        },
+        {
+          "op": "add",
+          "text": "as"
+        },
+        {
+          "op": "add",
+          "text": "well"
+        },
+        {
+          "op": "add",
+          "text": "as"
+        },
+        {
+          "op": "add",
+          "text": "online"
+        },
+        {
+          "op": "add",
+          "text": "forums"
+        },
+        {
+          "op": "add",
+          "text": "photo"
+        },
+        {
+          "op": "add",
+          "text": "and"
+        },
+        {
+          "op": "add",
+          "text": "video"
+        },
+        {
+          "op": "add",
+          "text": "sharing"
+        },
+        {
+          "op": "add",
+          "text": "platforms"
+        },
+        {
+          "op": "add",
+          "text": "messaging"
+        },
+        {
+          "op": "del",
+          "text": "registered"
+        },
+        {
+          "op": "del",
+          "text": "users"
+        },
+        {
+          "op": "del",
+          "text": "include"
+        },
+        {
+          "op": "del",
+          "text": "x"
+        },
+        {
+          "op": "del",
+          "text": "facebook"
+        },
+        {
+          "op": "del",
+          "text": "wechat"
+        },
+        {
+          "op": "del",
+          "text": "sharechat"
+        },
+        {
+          "op": "del",
+          "text": "instagram"
+        },
+        {
+          "op": "del",
+          "text": "pinterest"
+        },
+        {
+          "op": "del",
+          "text": "qzone"
+        },
+        {
+          "op": "del",
+          "text": "weibo"
+        },
+        {
+          "op": "del",
+          "text": "vk"
+        },
+        {
+          "op": "del",
+          "text": "tumblr"
+        },
+        {
+          "op": "del",
+          "text": "baidu"
+        },
+        {
+          "op": "del",
+          "text": "tieba"
+        },
+        {
+          "op": "del",
+          "text": "threads"
+        },
+        {
+          "op": "same",
+          "text": "and"
+        },
+        {
+          "op": "add",
+          "text": "voip"
+        },
+        {
+          "op": "add",
+          "text": "apps"
+        },
+        {
+          "op": "del",
+          "text": "linkedin"
+        }
+      ],
+      "faithful": false
+    },
+    {
+      "edgeId": "e2",
       "readouts": [
         {
           "id": "number_changed",
@@ -688,32 +1063,128 @@
           "id": "scope_widened",
           "source": "inferred",
           "value": "yes",
-          "probability": 0.9820137891655643,
+          "probability": 0.9859363735967631,
           "disputed": false
         },
         {
           "id": "attribution_shifted",
           "source": "inferred",
-          "value": "no",
-          "probability": 0.6791786916691545,
+          "value": "yes",
+          "probability": 0.7772998613100363,
           "disputed": false
         },
         {
           "id": "context_stripped",
           "source": "inferred",
-          "value": "yes",
-          "probability": 0.9995694429073831,
+          "value": "no",
+          "probability": 0.9914224772047916,
           "disputed": false
         }
       ],
       "wordDiff": [
         {
-          "op": "del",
-          "text": "more"
+          "op": "add",
+          "text": "one"
+        },
+        {
+          "op": "add",
+          "text": "year"
+        },
+        {
+          "op": "add",
+          "text": "ago"
+        },
+        {
+          "op": "same",
+          "text": "chatgpt"
+        },
+        {
+          "op": "add",
+          "text": "launched"
+        },
+        {
+          "op": "add",
+          "text": "and"
+        },
+        {
+          "op": "add",
+          "text": "became"
         },
         {
           "op": "del",
-          "text": "than"
+          "text": "may"
+        },
+        {
+          "op": "del",
+          "text": "have"
+        },
+        {
+          "op": "del",
+          "text": "become"
+        },
+        {
+          "op": "same",
+          "text": "the"
+        },
+        {
+          "op": "add",
+          "text": "fastest"
+        },
+        {
+          "op": "add",
+          "text": "growing"
+        },
+        {
+          "op": "add",
+          "text": "consumer"
+        },
+        {
+          "op": "del",
+          "text": "fastest-growing"
+        },
+        {
+          "op": "same",
+          "text": "app"
+        },
+        {
+          "op": "same",
+          "text": "in"
+        },
+        {
+          "op": "same",
+          "text": "history"
+        },
+        {
+          "op": "add",
+          "text": "with"
+        },
+        {
+          "op": "del",
+          "text": "after"
+        },
+        {
+          "op": "del",
+          "text": "it"
+        },
+        {
+          "op": "del",
+          "text": "was"
+        },
+        {
+          "op": "del",
+          "text": "estimated"
+        },
+        {
+          "op": "del",
+          "text": "to"
+        },
+        {
+          "op": "del",
+          "text": "have"
+        },
+        {
+          "op": "del",
+          "text": "reached"
         },
         {
           "op": "same",
@@ -724,19 +1195,11 @@
           "text": "million"
         },
         {
-          "op": "del",
-          "text": "americans"
-        },
-        {
-          "op": "del",
-          "text": "are"
-        },
-        {
-          "op": "del",
+          "op": "same",
           "text": "monthly"
         },
         {
-          "op": "del",
+          "op": "same",
           "text": "active"
         },
         {
@@ -745,43 +1208,83 @@
         },
         {
           "op": "add",
-          "text": "in"
-        },
-        {
-          "op": "add",
-          "text": "two"
-        },
-        {
-          "op": "add",
-          "text": "months"
+          "text": "exploring"
         },
         {
           "op": "del",
-          "text": "today"
+          "text": "or"
         },
         {
           "op": "del",
+          "text": "maus"
+        },
+        {
+          "op": "del",
+          "text": "by"
+        },
+        {
+          "op": "same",
           "text": "the"
         },
         {
+          "op": "add",
+          "text": "power"
+        },
+        {
           "op": "del",
-          "text": "company"
+          "text": "end"
+        },
+        {
+          "op": "same",
+          "text": "of"
+        },
+        {
+          "op": "add",
+          "text": "artificial"
+        },
+        {
+          "op": "add",
+          "text": "intelligence"
+        },
+        {
+          "op": "add",
+          "text": "ai"
+        },
+        {
+          "op": "del",
+          "text": "january"
+        },
+        {
+          "op": "del",
+          "text": "a"
+        },
+        {
+          "op": "del",
+          "text": "report"
+        },
+        {
+          "op": "del",
+          "text": "by"
+        },
+        {
+          "op": "del",
+          "text": "swiss"
+        },
+        {
+          "op": "del",
+          "text": "banking"
+        },
+        {
+          "op": "del",
+          "text": "giant"
+        },
+        {
+          "op": "del",
+          "text": "ubs"
         },
         {
           "op": "del",
           "text": "said"
-        },
-        {
-          "op": "del",
-          "text": "earlier"
-        },
-        {
-          "op": "del",
-          "text": "this"
-        },
-        {
-          "op": "del",
-          "text": "month"
         }
       ],
       "faithful": false
@@ -789,27 +1292,27 @@
   ],
   "blame": [],
   "roots": {
-    "pages": 7,
-    "clusters": 7,
-    "rootsLinked": 0,
-    "clustersUnlinked": 7,
+    "pages": 8,
+    "clusters": 8,
+    "rootsLinked": 1,
+    "clustersUnlinked": 6,
     "studiesFound": null,
     "independentRoots": 7,
-    "copies": 0
+    "copies": 1
   },
   "redHopEdgeId": "e1",
   "earliest": {
     "nodeIds": [
-      "n3"
+      "n4"
     ],
-    "earlierWindowSearches": 4,
+    "earlierWindowSearches": 3,
     "earlierFound": 0
   },
   "failure": null,
   "budget": {
-    "credits": 26,
-    "usd": 0.00079568,
-    "ms": 152704,
+    "credits": 25,
+    "usd": 0.0010116099999999998,
+    "ms": 123415,
     "capHit": null
   },
   "decision": {
@@ -817,160 +1320,230 @@
     "row": 6,
     "reasons": [
       "no earliest page with a confirmed date, a primary page type, no earlier citation and no negated span",
-      "1 unread candidate parent(s)"
+      "3 unread candidate parent(s)"
     ],
     "counts": {
-      "pages": 7,
-      "clusters": 7,
-      "unreadParents": 1,
-      "earlierWindowSearches": 4
+      "pages": 8,
+      "clusters": 8,
+      "unreadParents": 3,
+      "earlierWindowSearches": 3
     }
   },
   "searchLog": [
     {
-      "at": "2026-11-17T23:23:51.804Z",
+      "at": "2026-11-19T13:28:28.359Z",
       "step": "search",
       "query": "\"100 million\" users",
-      "endDate": "2026-11-17",
+      "endDate": "2026-11-19",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:23:52.882Z",
+      "at": "2026-11-19T13:28:30.071Z",
       "step": "search",
       "query": "\"100 million users\" in two months ChatGPT fastest-growing app",
-      "endDate": "2026-11-17",
+      "endDate": "2026-11-19",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:23:54.294Z",
+      "at": "2026-11-19T13:28:31.121Z",
       "step": "search",
-      "query": "\"reached 100 million users\" ChatGPT two months fastest-growing app",
-      "endDate": "2026-11-17",
+      "query": "\"reached 100 million users\" ChatGPT two months fastest app",
+      "endDate": "2026-11-19",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:23:55.374Z",
+      "at": "2026-11-19T13:28:32.944Z",
       "step": "search",
-      "query": "\"100 million users\" ChatGPT two months app growth record",
-      "endDate": "2026-11-17",
+      "query": "\"100 million users\" ChatGPT two months growth record",
+      "endDate": "2026-11-19",
       "startDate": null,
       "results": 10,
       "kept": 10,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:23:56.693Z",
+      "at": "2026-11-19T13:28:34.935Z",
       "step": "meta-search",
       "query": "\"100 million\" users",
-      "endDate": "2026-11-17",
+      "endDate": "2026-11-19",
       "startDate": null,
       "results": 5,
       "kept": 2,
       "dropped": 3
     },
     {
-      "at": "2026-11-17T23:24:29.941Z",
-      "step": "model",
-      "query": "same_claim on https://www.cnbc.com/2020/08/24/tiktok-reveals-us-global-user-growth-numbers-for-first-time.html failed (network_error): no answer stored, so this page cannot be the origin",
-      "endDate": null,
-      "startDate": null,
-      "results": 0,
-      "kept": 0,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T23:24:45.529Z",
+      "at": "2026-11-19T13:28:41.812Z",
       "step": "search",
       "query": "\"100 million\" users",
-      "endDate": "2020-08-23",
-      "startDate": null,
-      "results": 9,
-      "kept": 9,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T23:24:46.722Z",
-      "step": "search",
-      "query": "\"100 million users in two months\" fastest-growing app",
-      "endDate": "2020-08-23",
-      "startDate": null,
-      "results": 9,
-      "kept": 9,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T23:24:47.843Z",
-      "step": "search",
-      "query": "\"more than 100 million Americans\" monthly active users",
-      "endDate": "2020-08-23",
-      "startDate": null,
-      "results": 10,
-      "kept": 10,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T23:24:48.978Z",
-      "step": "search",
-      "query": "ChatGPT 100 million users company announcement",
-      "endDate": "2020-08-23",
-      "startDate": null,
-      "results": 9,
-      "kept": 9,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T23:25:02.754Z",
-      "step": "search",
-      "query": "100 million users two months fastest-growing app",
-      "endDate": "2020-08-23",
-      "startDate": null,
-      "results": 9,
-      "kept": 9,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T23:25:04.377Z",
-      "step": "search",
-      "query": "\"More than 100 million Americans are monthly active users\" app growth",
-      "endDate": "2020-08-23",
-      "startDate": null,
-      "results": 8,
-      "kept": 8,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T23:25:05.911Z",
-      "step": "search",
-      "query": "ChatGPT 100 million users fastest app growth company",
-      "endDate": "2020-08-23",
-      "startDate": null,
-      "results": 7,
-      "kept": 7,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T23:25:07.186Z",
-      "step": "search",
-      "query": "ChatGPT 100 million users two months study",
-      "endDate": "2020-08-23",
+      "endDate": "2023-02-01",
       "startDate": null,
       "results": 9,
       "kept": 8,
       "dropped": 1
     },
     {
-      "at": "2026-11-17T23:25:15.411Z",
+      "at": "2026-11-19T13:28:43.555Z",
+      "step": "search",
+      "query": "ChatGPT 100 million users fastest-growing app history",
+      "endDate": "2023-02-01",
+      "startDate": null,
+      "results": 7,
+      "kept": 7,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:28:45.101Z",
+      "step": "search",
+      "query": "ChatGPT reached 100 million monthly active users by end of January",
+      "endDate": "2023-02-01",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:28:46.818Z",
+      "step": "search",
+      "query": "UBS report ChatGPT 100 million MAUs fastest app growth",
+      "endDate": "2023-02-01",
+      "startDate": null,
+      "results": 8,
+      "kept": 8,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:28:48.124Z",
+      "step": "search",
+      "query": "\"one hundred\" Swiss",
+      "endDate": "2023-02-01",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:29:06.700Z",
+      "step": "search",
+      "query": "ChatGPT 100 million users fastest-growing app",
+      "endDate": "2023-02-01",
+      "startDate": null,
+      "results": 6,
+      "kept": 6,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:29:08.320Z",
+      "step": "search",
+      "query": "ChatGPT reached 100 million monthly active users",
+      "endDate": "2023-02-01",
+      "startDate": null,
+      "results": 8,
+      "kept": 8,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:29:09.736Z",
+      "step": "search",
+      "query": "UBS report ChatGPT 100 million MAUs",
+      "endDate": "2023-02-01",
+      "startDate": null,
+      "results": 8,
+      "kept": 7,
+      "dropped": 1
+    },
+    {
+      "at": "2026-11-19T13:29:10.869Z",
+      "step": "search",
+      "query": "ChatGPT 100 million users study",
+      "endDate": "2023-02-01",
+      "startDate": null,
+      "results": 8,
+      "kept": 8,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:29:22.926Z",
+      "step": "search",
+      "query": "\"100 million\" users",
+      "endDate": "2020-02-14",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:29:24.981Z",
+      "step": "search",
+      "query": "\"100 million users\" in two months fastest-growing app",
+      "endDate": "2020-02-14",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:29:26.696Z",
+      "step": "search",
+      "query": "\"100 million monthly active users\" fastest growing consumer app",
+      "endDate": "2020-02-14",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:29:28.794Z",
+      "step": "search",
+      "query": "ChatGPT 100 million users Microsoft report",
+      "endDate": "2020-02-14",
+      "startDate": null,
+      "results": 9,
+      "kept": 8,
+      "dropped": 1
+    },
+    {
+      "at": "2026-11-19T13:29:41.335Z",
+      "step": "search",
+      "query": "ChatGPT 100 million users Microsoft Pulse report",
+      "endDate": "2020-02-14",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:29:43.601Z",
+      "step": "search",
+      "query": "ChatGPT fastest-growing app study AI user growth",
+      "endDate": "2020-02-14",
+      "startDate": null,
+      "results": 7,
+      "kept": 7,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:29:45.413Z",
+      "step": "search",
+      "query": "ChatGPT 100 million users artificial intelligence adoption",
+      "endDate": "2020-02-14",
+      "startDate": null,
+      "results": 8,
+      "kept": 8,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:29:57.824Z",
       "step": "follow",
-      "query": "https://en.wikipedia.org/wiki/Social_media cited by https://en.wikipedia.org/wiki/List_of_most_popular_social_platforms, not beside its span: no link-verified edge",
+      "query": "https://market.biz/signal-statistics cited by https://en.wikipedia.org/wiki/List_of_most_popular_social_platforms, not beside its span: no link-verified edge",
       "endDate": null,
       "startDate": null,
       "results": 1,
@@ -978,89 +1551,49 @@
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:25:27.625Z",
-      "step": "search",
-      "query": "\"100 million\" users",
-      "endDate": "1999-12-14",
-      "startDate": null,
-      "results": 9,
-      "kept": 9,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T23:25:28.918Z",
-      "step": "search",
-      "query": "ChatGPT 100 million users two months fastest-growing app",
-      "endDate": "1999-12-14",
-      "startDate": null,
-      "results": 9,
-      "kept": 9,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T23:25:30.500Z",
-      "step": "search",
-      "query": "ChatGPT reached 100 million users by January 2023",
-      "endDate": "1999-12-14",
-      "startDate": null,
-      "results": 9,
-      "kept": 9,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T23:25:31.801Z",
-      "step": "search",
-      "query": "UBS ChatGPT 100 million monthly users January 2023",
-      "endDate": "1999-12-14",
-      "startDate": null,
-      "results": 10,
-      "kept": 10,
-      "dropped": 0
-    },
-    {
-      "at": "2026-11-17T23:25:49.101Z",
-      "step": "search",
-      "query": "\"100 million users in two months\" fastest-growing app",
-      "endDate": "1999-12-14",
+      "at": "2026-11-19T13:30:12.406Z",
+      "step": "dating",
+      "query": "https://fullfact.org/immigration/suella-braverman-100-million-claim: the node has no span to look for in the capture; no date from the first capture",
+      "endDate": null,
       "startDate": null,
       "results": 0,
       "kept": 0,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:25:50.285Z",
-      "step": "search",
-      "query": "\"100 million monthly users by January 2023\" ChatGPT growth",
-      "endDate": "1999-12-14",
+      "at": "2026-11-19T13:30:12.430Z",
+      "step": "dating",
+      "query": "http://www.politifact.com/truth-o-meter/promises/biden-promise-tracker/promise/1571/100-million-covid-19-vaccine-shots-50-million-peop/article/2793: the node has no span to look for in the capture; no date from the first capture",
+      "endDate": null,
       "startDate": null,
       "results": 0,
       "kept": 0,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:25:51.743Z",
-      "step": "search",
-      "query": "UBS estimate 100 million ChatGPT users January 2023",
-      "endDate": "1999-12-14",
+      "at": "2026-11-19T13:30:12.455Z",
+      "step": "dating",
+      "query": "https://en.wikipedia.org/wiki/Social_media: the first capture (2005-12-15) does not hold the claim's sentence; no date from the first capture",
+      "endDate": null,
       "startDate": null,
-      "results": 10,
-      "kept": 10,
+      "results": 0,
+      "kept": 0,
       "dropped": 0
     },
     {
-      "at": "2026-11-17T23:25:52.967Z",
-      "step": "search",
-      "query": "ChatGPT user growth study 100 million in two months",
-      "endDate": "1999-12-14",
+      "at": "2026-11-19T13:30:19.858Z",
+      "step": "dating",
+      "query": "https://fii-institute.org/wp-content/uploads/2024/01/AI-Impact-Report-2024.pdf: the first capture (2024-02-05) does not hold the claim's sentence; no date from the first capture",
+      "endDate": null,
       "startDate": null,
-      "results": 7,
-      "kept": 6,
-      "dropped": 1
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
     }
   ],
   "usage": [
     {
-      "at": "2026-11-17T23:23:41.038Z",
+      "at": "2026-11-19T13:28:21.000Z",
       "traceId": "dev-17",
       "step": "tokenfactory",
       "service": "tokenfactory",
@@ -1068,31 +1601,31 @@
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 169,
       "completionTokens": 48,
-      "cachedTokens": 0,
+      "cachedTokens": 128,
       "credits": 0,
-      "costUsd": 0.0000313,
-      "latencyMs": 1196,
+      "costUsd": 0.000031299999999999995,
+      "latencyMs": 1033,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:23:42.244Z",
+      "at": "2026-11-19T13:28:22.041Z",
       "traceId": "dev-17",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 279,
-      "completionTokens": 230,
+      "completionTokens": 309,
       "cachedTokens": 240,
       "credits": 0,
-      "costUsd": 0.0000969,
-      "latencyMs": 8241,
+      "costUsd": 0.00012059999999999999,
+      "latencyMs": 4842,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:23:51.804Z",
+      "at": "2026-11-19T13:28:28.359Z",
       "traceId": "dev-17",
       "step": "search",
       "service": "tavily",
@@ -1103,12 +1636,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1303,
+      "latencyMs": 1439,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:23:52.881Z",
+      "at": "2026-11-19T13:28:30.071Z",
       "traceId": "dev-17",
       "step": "search",
       "service": "tavily",
@@ -1119,12 +1652,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1050,
+      "latencyMs": 1672,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:23:54.294Z",
+      "at": "2026-11-19T13:28:31.120Z",
       "traceId": "dev-17",
       "step": "search",
       "service": "tavily",
@@ -1135,12 +1668,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1394,
+      "latencyMs": 1004,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:23:55.374Z",
+      "at": "2026-11-19T13:28:32.943Z",
       "traceId": "dev-17",
       "step": "search",
       "service": "tavily",
@@ -1151,12 +1684,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1064,
+      "latencyMs": 1783,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:23:56.693Z",
+      "at": "2026-11-19T13:28:34.934Z",
       "traceId": "dev-17",
       "step": "meta-search",
       "service": "tavily",
@@ -1167,12 +1700,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1304,
+      "latencyMs": 1968,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:23:56.909Z",
+      "at": "2026-11-19T13:28:35.029Z",
       "traceId": "dev-17",
       "step": "meta-extract",
       "service": "tavily",
@@ -1183,12 +1716,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 199,
+      "latencyMs": 68,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:23:57.107Z",
+      "at": "2026-11-19T13:28:36.186Z",
       "traceId": "dev-17",
       "step": "extract",
       "service": "tavily",
@@ -1199,252 +1732,44 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 100,
+      "latencyMs": 1133,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:23:57.111Z",
-      "traceId": "dev-17",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 64,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 6.4e-7,
-      "latencyMs": 2237,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:23:59.929Z",
-      "traceId": "dev-17",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 575,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:23:59.930Z",
+      "at": "2026-11-19T13:28:36.352Z",
       "traceId": "dev-17",
       "step": "same_claim",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 30007,
-      "status": "network_error",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:24:29.959Z",
-      "traceId": "dev-17",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 22,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 2.2e-7,
-      "latencyMs": 2443,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:24:33.120Z",
-      "traceId": "dev-17",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 656,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:24:33.142Z",
-      "traceId": "dev-17",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 275,
+      "promptTokens": 252,
       "completionTokens": 7,
-      "cachedTokens": 0,
+      "cachedTokens": 160,
       "credits": 0,
-      "costUsd": 0.000029599999999999998,
-      "latencyMs": 544,
+      "costUsd": 0.0000273,
+      "latencyMs": 558,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:24:33.957Z",
-      "traceId": "dev-17",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 256,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:24:33.958Z",
+      "at": "2026-11-19T13:28:36.919Z",
       "traceId": "dev-17",
       "step": "same_claim",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 208,
+      "promptTokens": 230,
       "completionTokens": 7,
-      "cachedTokens": 0,
+      "cachedTokens": 160,
       "credits": 0,
-      "costUsd": 0.000022899999999999998,
-      "latencyMs": 3556,
+      "costUsd": 0.0000251,
+      "latencyMs": 379,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:24:37.517Z",
-      "traceId": "dev-17",
-      "step": "tokenfactory",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 325,
-      "completionTokens": 152,
-      "cachedTokens": 272,
-      "credits": 0,
-      "costUsd": 0.0000781,
-      "latencyMs": 6853,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:24:45.528Z",
-      "traceId": "dev-17",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1130,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:24:46.722Z",
-      "traceId": "dev-17",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1167,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:24:47.843Z",
-      "traceId": "dev-17",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1105,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:24:48.977Z",
-      "traceId": "dev-17",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1118,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:24:50.205Z",
-      "traceId": "dev-17",
-      "step": "extract",
-      "service": "tavily",
-      "endpoint": "extract",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1198,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:24:50.207Z",
-      "traceId": "dev-17",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 69,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 6.900000000000001e-7,
-      "latencyMs": 3680,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:24:55.399Z",
+      "at": "2026-11-19T13:28:37.303Z",
       "traceId": "dev-17",
       "step": "dating",
       "service": "wayback",
@@ -1455,156 +1780,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 1510,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:24:55.400Z",
-      "traceId": "dev-17",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 208,
-      "completionTokens": 7,
-      "cachedTokens": 192,
-      "credits": 0,
-      "costUsd": 0.000022899999999999998,
-      "latencyMs": 450,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:24:55.852Z",
-      "traceId": "dev-17",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 44,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 4.4e-7,
-      "latencyMs": 2480,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:24:58.333Z",
-      "traceId": "dev-17",
-      "step": "tokenfactory",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 325,
-      "completionTokens": 122,
-      "cachedTokens": 320,
-      "credits": 0,
-      "costUsd": 0.0000691,
-      "latencyMs": 3247,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:25:02.753Z",
-      "traceId": "dev-17",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1158,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:25:04.376Z",
-      "traceId": "dev-17",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1596,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:25:05.911Z",
-      "traceId": "dev-17",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1513,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:25:07.186Z",
-      "traceId": "dev-17",
-      "step": "search",
-      "service": "tavily",
-      "endpoint": "search",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1251,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:25:07.472Z",
-      "traceId": "dev-17",
-      "step": "extract",
-      "service": "tavily",
-      "endpoint": "extract",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 269,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:25:14.202Z",
-      "traceId": "dev-17",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 529,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:25:14.203Z",
+      "at": "2026-11-19T13:28:37.344Z",
       "traceId": "dev-17",
       "step": "same_claim",
       "service": "tokenfactory",
@@ -1615,44 +1796,12 @@
       "cachedTokens": 192,
       "credits": 0,
       "costUsd": 0.000026799999999999998,
-      "latencyMs": 1175,
+      "latencyMs": 300,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:25:15.581Z",
-      "traceId": "dev-17",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 1490,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.0000149,
-      "latencyMs": 1647,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:25:19.380Z",
-      "traceId": "dev-17",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 1676,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.00001676,
-      "latencyMs": 989,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:25:21.412Z",
+      "at": "2026-11-19T13:28:37.649Z",
       "traceId": "dev-17",
       "step": "dating",
       "service": "wayback",
@@ -1663,76 +1812,28 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 912,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:25:21.415Z",
-      "traceId": "dev-17",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 248,
-      "completionTokens": 7,
-      "cachedTokens": 192,
-      "credits": 0,
-      "costUsd": 0.0000269,
-      "latencyMs": 425,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:25:22.359Z",
-      "traceId": "dev-17",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 501,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:25:22.360Z",
-      "traceId": "dev-17",
-      "step": "same_claim",
-      "service": "tokenfactory",
-      "endpoint": "/chat/completions",
-      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 215,
-      "completionTokens": 7,
-      "cachedTokens": 192,
-      "credits": 0,
-      "costUsd": 0.0000236,
-      "latencyMs": 567,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:25:22.935Z",
+      "at": "2026-11-19T13:28:37.664Z",
       "traceId": "dev-17",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 353,
-      "completionTokens": 138,
-      "cachedTokens": 0,
+      "completionTokens": 133,
+      "cachedTokens": 272,
       "credits": 0,
-      "costUsd": 0.0000767,
-      "latencyMs": 3670,
+      "costUsd": 0.0000752,
+      "latencyMs": 2270,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:25:27.624Z",
+      "at": "2026-11-19T13:28:41.811Z",
       "traceId": "dev-17",
       "step": "search",
       "service": "tavily",
@@ -1743,12 +1844,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1000,
+      "latencyMs": 1835,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:25:28.917Z",
+      "at": "2026-11-19T13:28:43.554Z",
       "traceId": "dev-17",
       "step": "search",
       "service": "tavily",
@@ -1759,12 +1860,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1265,
+      "latencyMs": 1716,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:25:30.499Z",
+      "at": "2026-11-19T13:28:45.101Z",
       "traceId": "dev-17",
       "step": "search",
       "service": "tavily",
@@ -1775,12 +1876,28 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1566,
+      "latencyMs": 1524,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:25:31.801Z",
+      "at": "2026-11-19T13:28:46.818Z",
+      "traceId": "dev-17",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1675,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:28:48.124Z",
       "traceId": "dev-17",
       "step": "search",
       "service": "tavily",
@@ -1796,7 +1913,7 @@
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:25:33.156Z",
+      "at": "2026-11-19T13:28:48.802Z",
       "traceId": "dev-17",
       "step": "extract",
       "service": "tavily",
@@ -1805,94 +1922,126 @@
       "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
-      "credits": 1,
-      "costUsd": 0.008,
-      "latencyMs": 1335,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 657,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:25:33.577Z",
+      "at": "2026-11-19T13:28:59.441Z",
+      "traceId": "dev-17",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 247,
+      "completionTokens": 7,
+      "cachedTokens": 192,
+      "credits": 0,
+      "costUsd": 0.000026799999999999998,
+      "latencyMs": 485,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:28:59.934Z",
+      "traceId": "dev-17",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:29:01.026Z",
+      "traceId": "dev-17",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "capture",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1091,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:29:01.313Z",
       "traceId": "dev-17",
       "step": "embed",
       "service": "tokenfactory",
       "endpoint": "/embeddings",
       "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 1592,
+      "promptTokens": 1344,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.00001592,
-      "latencyMs": 1217,
+      "costUsd": 0.00001344,
+      "latencyMs": 930,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:25:34.938Z",
+      "at": "2026-11-19T13:29:02.301Z",
       "traceId": "dev-17",
-      "step": "embed",
+      "step": "same_claim",
       "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 105,
-      "completionTokens": 0,
-      "cachedTokens": 0,
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 301,
+      "completionTokens": 7,
+      "cachedTokens": 192,
       "credits": 0,
-      "costUsd": 0.0000010500000000000001,
-      "latencyMs": 423,
+      "costUsd": 0.0000322,
+      "latencyMs": 387,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:25:35.419Z",
+      "at": "2026-11-19T13:29:02.692Z",
       "traceId": "dev-17",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 234,
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.00000234,
-      "latencyMs": 370,
+      "costUsd": 0,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:25:35.993Z",
-      "traceId": "dev-17",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 81,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 8.1e-7,
-      "latencyMs": 244,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:25:36.238Z",
+      "at": "2026-11-19T13:29:02.699Z",
       "traceId": "dev-17",
       "step": "tokenfactory",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
       "promptTokens": 353,
-      "completionTokens": 168,
-      "cachedTokens": 272,
+      "completionTokens": 120,
+      "cachedTokens": 352,
       "credits": 0,
-      "costUsd": 0.0000857,
-      "latencyMs": 11716,
+      "costUsd": 0.0000713,
+      "latencyMs": 2118,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:25:49.100Z",
+      "at": "2026-11-19T13:29:06.700Z",
       "traceId": "dev-17",
       "step": "search",
       "service": "tavily",
@@ -1903,12 +2052,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1124,
+      "latencyMs": 1860,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:25:50.285Z",
+      "at": "2026-11-19T13:29:08.318Z",
       "traceId": "dev-17",
       "step": "search",
       "service": "tavily",
@@ -1919,12 +2068,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1167,
+      "latencyMs": 1598,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:25:51.743Z",
+      "at": "2026-11-19T13:29:09.736Z",
       "traceId": "dev-17",
       "step": "search",
       "service": "tavily",
@@ -1935,12 +2084,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1437,
+      "latencyMs": 1380,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:25:52.967Z",
+      "at": "2026-11-19T13:29:10.869Z",
       "traceId": "dev-17",
       "step": "search",
       "service": "tavily",
@@ -1951,12 +2100,12 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 1209,
+      "latencyMs": 1112,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:25:55.485Z",
+      "at": "2026-11-19T13:29:11.123Z",
       "traceId": "dev-17",
       "step": "extract",
       "service": "tavily",
@@ -1967,44 +2116,476 @@
       "cachedTokens": 0,
       "credits": 1,
       "costUsd": 0.008,
-      "latencyMs": 2492,
+      "latencyMs": 223,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:25:55.491Z",
+      "at": "2026-11-19T13:29:14.530Z",
       "traceId": "dev-17",
       "step": "embed",
       "service": "tokenfactory",
       "endpoint": "/embeddings",
       "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 68,
+      "promptTokens": 2082,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 6.800000000000001e-7,
-      "latencyMs": 1040,
+      "costUsd": 0.00002082,
+      "latencyMs": 1367,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:25:56.534Z",
+      "at": "2026-11-19T13:29:16.677Z",
       "traceId": "dev-17",
       "step": "embed",
       "service": "tokenfactory",
       "endpoint": "/embeddings",
       "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 179,
+      "promptTokens": 1379,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 0.00000179,
-      "latencyMs": 436,
+      "costUsd": 0.00001379,
+      "latencyMs": 939,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:25:57.013Z",
+      "at": "2026-11-19T13:29:17.635Z",
+      "traceId": "dev-17",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 74,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 7.4e-7,
+      "latencyMs": 340,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:29:18.086Z",
+      "traceId": "dev-17",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 236,
+      "completionTokens": 7,
+      "cachedTokens": 192,
+      "credits": 0,
+      "costUsd": 0.000025699999999999998,
+      "latencyMs": 330,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:29:18.974Z",
+      "traceId": "dev-17",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 554,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:29:18.995Z",
+      "traceId": "dev-17",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 340,
+      "completionTokens": 149,
+      "cachedTokens": 240,
+      "credits": 0,
+      "costUsd": 0.00007869999999999999,
+      "latencyMs": 2392,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:29:22.925Z",
+      "traceId": "dev-17",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1471,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:29:24.980Z",
+      "traceId": "dev-17",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2033,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:29:26.696Z",
+      "traceId": "dev-17",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1691,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:29:28.779Z",
+      "traceId": "dev-17",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2056,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:29:29.197Z",
+      "traceId": "dev-17",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 250,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:29:29.525Z",
+      "traceId": "dev-17",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 148,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.00000148,
+      "latencyMs": 839,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:29:32.347Z",
+      "traceId": "dev-17",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 596,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.0000059600000000000005,
+      "latencyMs": 717,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:29:33.088Z",
+      "traceId": "dev-17",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 242,
+      "completionTokens": 7,
+      "cachedTokens": 192,
+      "credits": 0,
+      "costUsd": 0.0000263,
+      "latencyMs": 471,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:29:33.561Z",
+      "traceId": "dev-17",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 212,
+      "completionTokens": 7,
+      "cachedTokens": 192,
+      "credits": 0,
+      "costUsd": 0.0000233,
+      "latencyMs": 331,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:29:33.897Z",
+      "traceId": "dev-17",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:29:33.913Z",
+      "traceId": "dev-17",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 208,
+      "completionTokens": 7,
+      "cachedTokens": 192,
+      "credits": 0,
+      "costUsd": 0.000022899999999999998,
+      "latencyMs": 298,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:29:34.211Z",
+      "traceId": "dev-17",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 241,
+      "completionTokens": 7,
+      "cachedTokens": 192,
+      "credits": 0,
+      "costUsd": 0.0000262,
+      "latencyMs": 316,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:29:34.531Z",
+      "traceId": "dev-17",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:29:34.534Z",
+      "traceId": "dev-17",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 340,
+      "completionTokens": 151,
+      "cachedTokens": 336,
+      "credits": 0,
+      "costUsd": 0.0000793,
+      "latencyMs": 4109,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:29:41.335Z",
+      "traceId": "dev-17",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2608,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:29:43.601Z",
+      "traceId": "dev-17",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2226,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:29:45.413Z",
+      "traceId": "dev-17",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1790,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:29:45.734Z",
+      "traceId": "dev-17",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 294,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:29:45.749Z",
+      "traceId": "dev-17",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 39,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 3.9e-7,
+      "latencyMs": 1907,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:29:47.664Z",
+      "traceId": "dev-17",
+      "step": "embed",
+      "service": "tokenfactory",
+      "endpoint": "/embeddings",
+      "model": "Qwen/Qwen3-Embedding-8B",
+      "promptTokens": 147,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.0000014700000000000001,
+      "latencyMs": 7886,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:29:55.572Z",
+      "traceId": "dev-17",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 216,
+      "completionTokens": 7,
+      "cachedTokens": 192,
+      "credits": 0,
+      "costUsd": 0.0000237,
+      "latencyMs": 491,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:29:56.069Z",
+      "traceId": "dev-17",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:29:57.820Z",
+      "traceId": "dev-17",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "capture",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1751,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:29:57.949Z",
       "traceId": "dev-17",
       "step": "embed",
       "service": "tokenfactory",
@@ -2015,44 +2596,28 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 3.2e-7,
-      "latencyMs": 6515,
+      "latencyMs": 353,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:26:03.538Z",
+      "at": "2026-11-19T13:29:58.304Z",
       "traceId": "dev-17",
       "step": "embed",
       "service": "tokenfactory",
       "endpoint": "/embeddings",
       "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 67,
+      "promptTokens": 360,
       "completionTokens": 0,
       "cachedTokens": 0,
       "credits": 0,
-      "costUsd": 6.7e-7,
-      "latencyMs": 364,
+      "costUsd": 0.0000036000000000000003,
+      "latencyMs": 557,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:26:03.903Z",
-      "traceId": "dev-17",
-      "step": "embed",
-      "service": "tokenfactory",
-      "endpoint": "/embeddings",
-      "model": "Qwen/Qwen3-Embedding-8B",
-      "promptTokens": 235,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0.00000235,
-      "latencyMs": 591,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:26:04.635Z",
+      "at": "2026-11-19T13:29:58.889Z",
       "traceId": "dev-17",
       "step": "dating",
       "service": "fetch",
@@ -2063,12 +2628,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 134,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:26:05.674Z",
+      "at": "2026-11-19T13:29:58.912Z",
       "traceId": "dev-17",
       "step": "dating",
       "service": "fetch",
@@ -2079,12 +2644,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 1038,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:26:05.711Z",
+      "at": "2026-11-19T13:29:58.942Z",
       "traceId": "dev-17",
       "step": "dating",
       "service": "fetch",
@@ -2095,12 +2660,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 1209,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:26:05.887Z",
+      "at": "2026-11-19T13:30:01.134Z",
       "traceId": "dev-17",
       "step": "dating",
       "service": "fetch",
@@ -2111,12 +2676,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 175,
+      "latencyMs": 2188,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:26:06.568Z",
+      "at": "2026-11-19T13:30:01.152Z",
       "traceId": "dev-17",
       "step": "dating",
       "service": "fetch",
@@ -2127,12 +2692,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 893,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:26:06.711Z",
+      "at": "2026-11-19T13:30:01.168Z",
       "traceId": "dev-17",
       "step": "dating",
       "service": "fetch",
@@ -2143,12 +2708,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 143,
+      "latencyMs": 0,
       "status": "200",
-      "cacheHit": false
+      "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:26:07.293Z",
+      "at": "2026-11-19T13:30:01.181Z",
       "traceId": "dev-17",
       "step": "dating",
       "service": "fetch",
@@ -2159,12 +2724,28 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 1402,
+      "latencyMs": 0,
       "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:30:06.748Z",
+      "traceId": "dev-17",
+      "step": "dating",
+      "service": "fetch",
+      "endpoint": "page",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 7806,
+      "status": "bad_response",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:26:11.116Z",
+      "at": "2026-11-19T13:30:12.406Z",
       "traceId": "dev-17",
       "step": "dating",
       "service": "wayback",
@@ -2175,28 +2756,12 @@
       "cachedTokens": 0,
       "credits": 0,
       "costUsd": 0,
-      "latencyMs": 3822,
+      "latencyMs": 5652,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:26:11.467Z",
-      "traceId": "dev-17",
-      "step": "dating",
-      "service": "wayback",
-      "endpoint": "cdx",
-      "model": null,
-      "promptTokens": 0,
-      "completionTokens": 0,
-      "cachedTokens": 0,
-      "credits": 0,
-      "costUsd": 0,
-      "latencyMs": 350,
-      "status": "200",
-      "cacheHit": false
-    },
-    {
-      "at": "2026-11-17T23:26:11.468Z",
+      "at": "2026-11-19T13:30:12.429Z",
       "traceId": "dev-17",
       "step": "dating",
       "service": "wayback",
@@ -2212,7 +2777,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:26:11.470Z",
+      "at": "2026-11-19T13:30:12.450Z",
       "traceId": "dev-17",
       "step": "dating",
       "service": "wayback",
@@ -2228,7 +2793,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:26:11.471Z",
+      "at": "2026-11-19T13:30:12.452Z",
       "traceId": "dev-17",
       "step": "dating",
       "service": "wayback",
@@ -2244,7 +2809,7 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:26:11.471Z",
+      "at": "2026-11-19T13:30:12.453Z",
       "traceId": "dev-17",
       "step": "dating",
       "service": "wayback",
@@ -2260,7 +2825,23 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:26:11.473Z",
+      "at": "2026-11-19T13:30:12.454Z",
+      "traceId": "dev-17",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "capture",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:30:12.480Z",
       "traceId": "dev-17",
       "step": "dating",
       "service": "wayback",
@@ -2276,7 +2857,23 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:26:11.474Z",
+      "at": "2026-11-19T13:30:19.854Z",
+      "traceId": "dev-17",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "capture",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 7374,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:30:19.858Z",
       "traceId": "dev-17",
       "step": "dating",
       "service": "wayback",
@@ -2292,7 +2889,23 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:26:11.475Z",
+      "at": "2026-11-19T13:30:21.129Z",
+      "traceId": "dev-17",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "capture",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 1270,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:30:21.132Z",
       "traceId": "dev-17",
       "step": "dating",
       "service": "wayback",
@@ -2308,50 +2921,114 @@
       "cacheHit": true
     },
     {
-      "at": "2026-11-17T23:26:11.479Z",
+      "at": "2026-11-19T13:30:21.133Z",
+      "traceId": "dev-17",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:30:21.133Z",
+      "traceId": "dev-17",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:30:21.136Z",
+      "traceId": "dev-17",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "capture",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    },
+    {
+      "at": "2026-11-19T13:30:21.141Z",
       "traceId": "dev-17",
       "step": "page_type",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 599,
-      "completionTokens": 7,
-      "cachedTokens": 0,
+      "promptTokens": 607,
+      "completionTokens": 8,
+      "cachedTokens": 176,
       "credits": 0,
-      "costUsd": 0.000062,
-      "latencyMs": 728,
+      "costUsd": 0.0000631,
+      "latencyMs": 948,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:26:12.224Z",
+      "at": "2026-11-19T13:30:22.114Z",
       "traceId": "dev-17",
       "step": "readouts",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 415,
+      "promptTokens": 486,
       "completionTokens": 23,
-      "cachedTokens": 0,
+      "cachedTokens": 368,
       "credits": 0,
-      "costUsd": 0.0000484,
-      "latencyMs": 752,
+      "costUsd": 0.0000555,
+      "latencyMs": 859,
       "status": "200",
       "cacheHit": false
     },
     {
-      "at": "2026-11-17T23:26:12.977Z",
+      "at": "2026-11-19T13:30:22.976Z",
+      "traceId": "dev-17",
+      "step": "readouts",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 470,
+      "completionTokens": 23,
+      "cachedTokens": 368,
+      "credits": 0,
+      "costUsd": 0.000053899999999999996,
+      "latencyMs": 874,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:30:23.855Z",
       "traceId": "dev-17",
       "step": "boundary",
       "service": "tokenfactory",
       "endpoint": "/chat/completions",
       "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
-      "promptTokens": 331,
-      "completionTokens": 7,
-      "cachedTokens": 0,
+      "promptTokens": 326,
+      "completionTokens": 6,
+      "cachedTokens": 144,
       "credits": 0,
-      "costUsd": 0.000035199999999999995,
-      "latencyMs": 765,
+      "costUsd": 0.0000344,
+      "latencyMs": 558,
       "status": "200",
       "cacheHit": false
     }

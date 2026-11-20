@@ -1,5 +1,8 @@
+import { traceCost } from "../usage/cost.ts";
 import { datePhrase, type Node, type Trace } from "../schema/index.ts";
+import { menuLike } from "../engine/walk.ts";
 import { independenceLine } from "./headline.ts";
+import { loadRules, originPick } from "../rules/index.ts";
 
 // T77: one readable screen for `pz trace` and `make replay`, built only from the trace's own fields.
 // The raw trace stays one flag away (--json). Nothing here calls a model or the network.
@@ -19,6 +22,9 @@ const STATE_WORDS: Record<Trace["decision"]["state"], string> = {
 const CAPS: Record<NonNullable<Trace["budget"]["capHit"]>, string> = {
   credits: "credit cap", usd: "spending cap", ms: "time limit", depth: "step limit", frontier: "page limit",
 };
+
+// The team records on US Eastern time; a 22:02 ET run is "Nov 17 ET", not the UTC day after (XO on #235).
+const recordedDay = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric", year: "numeric", timeZone: "America/New_York" });
 
 const MODE_NOTE: Record<Trace["mode"], string> = {
   LIVE: "recorded from live calls",
@@ -118,7 +124,11 @@ export function renderCard(trace: Trace, { color = false }: { color?: boolean } 
   const more = (text: string, style: (x: string) => string = (x) => x) => wrap(text, LABEL).forEach((l) => out.push(pad + style(l)));
 
   const badge = trace.mode === "SAMPLE" ? s.tone(trace.mode, "warn") : s.tone(trace.mode, trace.mode === "LIVE" ? "good" : "info");
-  out.push(`${s.bold("Patient Zero")}  ${badge} ${s.dim(MODE_NOTE[trace.mode])}`);
+  // A replay says when its recording was made (XO on #235): the card is not today's search.
+  // An unparseable recordedAt (the schema only says string) drops the clause rather than throwing (XO on #236).
+  const recorded = Number.isNaN(Date.parse(trace.recordedAt)) ? "" : `, recorded ${recordedDay.format(new Date(trace.recordedAt))} ET`;
+  const note = trace.mode === "REPLAY" ? `${MODE_NOTE.REPLAY}${recorded}` : MODE_NOTE[trace.mode];
+  out.push(`${s.bold("Patient Zero")}  ${badge} ${s.dim(note)}`);
   out.push("");
   // T94: the independence count leads the card.
   for (const l of wrap(independenceLine(trace), 0)) out.push(s.bold(l));
@@ -133,7 +143,22 @@ export function renderCard(trace: Trace, { color = false }: { color?: boolean } 
     more(`${SERVICES[f.service as keyof typeof SERVICES] ?? f.service} ${f.endpoint} returned ${f.status}. Kept: ${f.kept}.`);
   }
 
-  const earliest = trace.earliest.nodeIds.map((id) => trace.nodes.find((n) => n.id === id)).filter((n): n is Node => !!n);
+  const all = trace.earliest.nodeIds.map((id) => trace.nodes.find((n) => n.id === id)).filter((n): n is Node => !!n);
+  // One earliest page in full, preferring one whose sentence is not menu or page furniture; the others on the same date
+  // are named on one line (XO on #235: dev-11's Fortune nav row). CONFLICTING shows every earliest page, because the
+  // disagreement between them is the point.
+  const spanOf = (n: Node) => trace.spans.find((sp) => sp.nodeId === n.id)?.text ?? "";
+  // On ORIGIN_FOUND the page decide picked comes first (XO on #236: a tied news page listed first must not push the
+  // origin into "Also earliest"), then pages whose sentence is not menu text.
+  const rules = loadRules();
+  const origin = trace.decision.state === "ORIGIN_FOUND" ? originPick(trace, rules)?.node.id : undefined;
+  // On a tie with no origin, a primary page (study, dataset, report, the speaker's own words) leads a news repeat:
+  // dev-10's WEF report and a blog post share 2016-01-20, and the card should show the report, as the app does.
+  const primary = (n: Node) => Number(!!n.pageType && rules.primaryPageTypes.includes(n.pageType.optionId));
+  const ordered = [...all].sort((a, b) => Number(b.id === origin) - Number(a.id === origin)
+    || Number(menuLike(spanOf(a))) - Number(menuLike(spanOf(b))) || primary(b) - primary(a));
+  const earliest = trace.decision.state === "CONFLICTING" ? all : ordered.slice(0, 1);
+  const sameDate = trace.decision.state === "CONFLICTING" ? [] : ordered.slice(1);
   out.push("");
   if (!earliest.length) field("Earliest", "No page to show.");
   earliest.forEach((node, i) => {
@@ -147,6 +172,7 @@ export function renderCard(trace: Trace, { color = false }: { color?: boolean } 
     more(node.url, s.dim);
     if (i < earliest.length - 1) out.push("");
   });
+  if (sameDate.length) more(`Also earliest, same date: ${sameDate.map((n) => n.domain).join(", ")}.`, s.dim);
 
   out.push("");
   const r = trace.roots;
@@ -169,7 +195,9 @@ export function renderCard(trace: Trace, { color = false }: { color?: boolean } 
   }
 
   out.push("");
-  field("Cost", `${plural(trace.budget.credits, "credit")}, ${money(trace.budget.usd)}, ${Math.round(trace.budget.ms / 1000)} s`);
+  // #165: the total includes Tavily (credits at the list price) as well as Token Factory, from the usage rows.
+  const cost = traceCost(trace);
+  field("Cost", `${money(cost.totalUsd)} (${plural(cost.credits, "Tavily credit")}, ${money(cost.modelUsd)} model), ${Math.round(cost.seconds)} s`);
   const calls = new Map<string, number>();
   for (const u of trace.usage) if (!u.cacheHit) calls.set(SERVICES[u.service], (calls.get(SERVICES[u.service]) ?? 0) + 1);
   if (calls.size) more([...calls].map(([name, n]) => `${name} ${plural(n, "call")}`).join(", "), s.dim);

@@ -1,13 +1,16 @@
 .PHONY: verify replay live dev-score dev-run replay-walk judge doctor
 
-# Re-checks everything with no API keys: typecheck, tests, every committed trace, the trap set,
+# Re-checks everything with no API keys: typecheck, tests, every committed trace (fixtures, the recorded E2 dev runs in
+# eval/dev-traces and the spike traces), the trap set,
 # the copy lint, the number lint (every number in README.md and llms.txt backed by a linked file), the leakage test
 # and the claims table.
 verify:
 	@start=$$(date +%s); \
 	npm run -s typecheck && \
+	npm run -s check:client-secrets && \
 	mkdir -p runs && npx vitest run --reporter=default --reporter=json --outputFile.json=runs/vitest.json && \
 	npm run -s pz -- verify fixtures/traces/*.json fixtures/failure/traces/*.json && \
+	if ls eval/dev-traces/dev-[0-9][0-9].json >/dev/null 2>&1; then npm run -s pz -- verify eval/dev-traces/dev-[0-9][0-9].json --historical eval/dev-traces/historical.json; fi && \
 	if ls spike/traces/*.json >/dev/null 2>&1; then npm run -s pz -- verify spike/traces/*.json --historical spike/historical-traces.json; fi && \
 	npm run -s pz -- traps && \
 	node --import tsx packages/pz/src/cli/lint-copy.ts && \
@@ -37,19 +40,24 @@ TRACE ?= fixtures/traces/sample-rich.json
 replay:
 	@node --import tsx packages/pz/src/cli/pz.ts trace --replay-of "$(TRACE)" $(ARGS)
 
+# One live trace of a claim: real Tavily and Token Factory calls, so it needs the keys in .env and DEV_LEDGER (the
+# spending ledger; pz trace stops before any request when it is missing or over budget).
+# make live CLAIM="Only 9% of all plastic ever made has been recycled."  ARGS=--json for the raw trace.
+# For runs at no cost, use make replay or make judge.
 live:
-	@echo "not built yet"
-	@exit 1
+	@if [ -z "$(CLAIM)" ]; then echo 'usage: make live CLAIM="<the claim, as you saw it>"'; exit 1; fi
+	@node $(ENV_FILE) --import tsx packages/pz/src/cli/pz.ts trace "$(CLAIM)" $(ARGS)
 
 # Grades eval/dev-traces/ against the E2 dev claims and appends a dated row to eval/dev-score.md (T33).
 dev-score:
 	@node --import tsx eval/dev-score.ts
 
 # Reruns the whole pipeline for a dev set from a recording (PZ_RECORD_DIR on a live run), at $0, into runs/replay-walk/.
-# Prints the replay score, last night's committed score and "misses N". See eval/README.md.
+# Prints the replay score, last night's committed score, "misses N" and a per-claim miss table. PZ_REPLAY_CLAIMS=dev-02,dev-05
+# replays only those claims, labelled as a subset (for example the ones recorded in one run). See eval/README.md.
 SET ?= E2
 replay-walk:
-	@node --import tsx eval/replay-walk.ts --set $(SET) $(ARGS)
+	@node --import tsx eval/replay-walk.ts --set $(SET) $(if $(PZ_REPLAY_CLAIMS),--claims $(PZ_REPLAY_CLAIMS)) $(ARGS)
 
 export DEV_REPLAY_DIR DEV_PIPELINE DEV_LEDGER
 dev-run:

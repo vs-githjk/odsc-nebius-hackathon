@@ -89,6 +89,14 @@ export async function send<T>(deps: ClientDeps, req: ClientRequest<T>): Promise<
 
   const key = cacheKey(req.cacheInput);
   const cached = deps.cache.get(key);
+  if (cached?.failure) {
+    // A recorded failure: the replay fails exactly as the live run did, at no cost.
+    const f = cached.failure;
+    row({ credits: 0, latencyMs: 0, status: f.code === "http_error" ? String(f.status) : f.timedOut ? "timeout" : f.code, cacheHit: true });
+    throw new ClientError(f.code, `${req.service} ${req.endpoint}: recorded ${f.code === "http_error" ? `HTTP ${f.status}` : f.timedOut ? "time out" : f.code}`, {
+      ...(f.status === undefined ? {} : { status: f.status }), ...(f.timedOut ? { timedOut: true } : {}),
+    });
+  }
   if (cached) {
     const { data } = req.parse(cached.body);
     return { data, usage: row({ credits: 0, latencyMs: 0, status: "200", cacheHit: true }) };
@@ -109,6 +117,7 @@ export async function send<T>(deps: ClientDeps, req: ClientRequest<T>): Promise<
       const timedOut = err instanceof Error && (err.name === "TimeoutError" || err.name === "AbortError");
       row({ credits: 0, latencyMs: latency(), status: timedOut ? "timeout" : "network_error", cacheHit: false });
       if (timedOut && req.retryTimeouts && !last) continue;
+      deps.cache.recordFailure?.(key, { code: "network_error", ...(timedOut ? { timedOut: true } : {}) });
       throw new ClientError("network_error", `${req.service} ${req.endpoint}: ${timedOut ? "timed out" : "network error"}`, {
         timedOut,
       });
@@ -119,6 +128,7 @@ export async function send<T>(deps: ClientDeps, req: ClientRequest<T>): Promise<
         if (req.retryDelayMs) await (deps.sleep ?? ((ms) => new Promise<void>((resolve) => setTimeout(resolve, ms))))(req.retryDelayMs);
         continue;
       }
+      deps.cache.recordFailure?.(key, { code: "http_error", status: response.status });
       throw new ClientError("http_error", `${req.service} ${req.endpoint}: HTTP ${response.status}`, {
         status: response.status,
       });
@@ -128,6 +138,7 @@ export async function send<T>(deps: ClientDeps, req: ClientRequest<T>): Promise<
       parsed = req.parse(body);
     } catch {
       row({ credits: 0, latencyMs: latency(), status: "bad_response", cacheHit: false });
+      deps.cache.recordFailure?.(key, { code: "bad_response" });
       throw new ClientError("bad_response", `${req.service} ${req.endpoint}: unexpected response body`);
     }
     if (reservation !== undefined) deps.tavilyAttempts!.settle(reservation, parsed.credits);

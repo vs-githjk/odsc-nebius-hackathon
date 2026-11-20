@@ -16,6 +16,31 @@ function setup() {
 }
 
 describe("T39 batch runner", () => {
+  it("persists safe validation reasons without recording an invalid trace", async () => {
+    for (const reason of ["schema", "provenance", "claim_mismatch"]) {
+      const t = setup();
+      const invalid = reason === "schema" ? {} : reason === "provenance" ? t.fixture
+        : { ...t.live, claim: { ...t.live.claim, text: "A different claim." } };
+      const result = await runDevBatch([t.input], {
+        dir: t.dir, mode: "LIVE", checkBudget: () => {}, report: () => {}, run: async () => invalid,
+      });
+      expect(result).toMatchObject({ failed: 1, recorded: 0 });
+      expect(existsSync(join(t.dir, "dev-01.json"))).toBe(false);
+      expect(JSON.parse(readFileSync(join(t.dir, "dev-01.error.json"), "utf8")))
+        .toEqual({ id: "dev-01", code: "trace_failed", reason });
+    }
+  });
+
+  it("never persists an arbitrary provider reason or response", async () => {
+    const t = setup();
+    await runDevBatch([t.input], {
+      dir: t.dir, mode: "LIVE", checkBudget: () => {}, report: () => {},
+      run: async () => { throw Object.assign(new Error("private provider response"), { code: "bad_response", reason: "private payload" }); },
+    });
+    expect(JSON.parse(readFileSync(join(t.dir, "dev-01.error.json"), "utf8")))
+      .toEqual({ id: "dev-01", code: "bad_response" });
+  });
+
   it("preflights one claim before invoking an adapter", async () => {
     const t = setup(), run = vi.fn();
     const checkBudget = vi.fn(() => { throw new Error("cap"); });
@@ -225,4 +250,81 @@ describe("T39 batch runner", () => {
     })).toMatchObject({ failed: 1 });
     expect(existsSync(join(t.dir, "dev-01.json"))).toBe(false);
   });
+});
+
+
+describe("live dev failure diagnostics", () => {
+  it("distinguishes a card failure from final trace verification", async () => {
+    for (const stage of ["card", "verify"] as const) {
+      const t = setup();
+      const same = (trace: Trace) => trace;
+      const result = await runLiveDevBatch([t.input], {
+        dir: t.dir, fetch: vi.fn<typeof fetch>(), report: () => {},
+        ledger: { check: vi.fn(), reserve: vi.fn(), settle: vi.fn() },
+        loadFactory: async () => () => ({
+          pipeline: {
+            intake: () => t.live, fingerprint: same, walk: same, spans: same,
+            clusters: same, readouts: same,
+            card: trace => {
+              if (stage === "card") throw new Error("private card response");
+              return { ...trace, spans: trace.spans.map(span => ({ ...span, windowSha256: "0".repeat(64) })) };
+            },
+          },
+          wayback: { firstCapture: async url => {
+            const firstCapture = t.live.nodes.find(node => node.url === url)?.date.firstCapture;
+            return { data: firstCapture ? { status: "found", firstCapture,
+              timestamp: firstCapture.replaceAll("-", "") + "000000" } : { status: "none" },
+              usage: { at: t.live.recordedAt, traceId: t.live.id, service: "wayback", step: "dating", endpoint: "firstCapture", model: null, promptTokens: 0, completionTokens: 0, cachedTokens: 0, credits: 0, costUsd: 0, latencyMs: 0, status: "200", cacheHit: false } };
+          } },
+        }),
+      });
+      expect(result).toMatchObject({ failed: 1, recorded: 0 });
+      expect(JSON.parse(readFileSync(join(t.dir, "dev-01.error.json"), "utf8")))
+        .toEqual({ id: "dev-01", code: "trace_failed", stage });
+    }
+  });
+
+  it("persists the runner's failing stage without provider messages or forged stages", async () => {
+    for (const stage of ["setup", "intake", "fingerprint"] as const) {
+      const t = setup();
+      const report = vi.fn();
+      const transport = vi.fn<typeof fetch>();
+      const fail = () => { throw Object.assign(new Error("private response body"), {
+        code: "bad_response", stage: "private provider stage", reason: "private reason",
+      }); };
+      const same = (trace: Trace) => trace;
+      const result = await runLiveDevBatch([t.input], {
+        dir: t.dir, fetch: transport, report,
+        ledger: { check: vi.fn(), reserve: vi.fn(), settle: vi.fn() },
+        loadFactory: async () => {
+          if (stage === "setup") fail();
+          return () => ({
+            pipeline: {
+              intake: stage === "intake" ? fail : () => t.live,
+              fingerprint: fail, walk: same, spans: same, clusters: same, readouts: same, card: same,
+            },
+            wayback: { firstCapture: async () => { throw new Error("unexpected lookup"); } },
+          });
+        },
+      });
+      expect(result).toMatchObject({ failed: 1, recorded: 0 });
+      expect(JSON.parse(readFileSync(join(t.dir, "dev-01.error.json"), "utf8")))
+        .toEqual({ id: "dev-01", code: "bad_response", stage });
+      expect(JSON.parse(report.mock.calls.at(-1)![0]))
+        .toEqual({ id: "dev-01", status: "failed", code: "bad_response", stage });
+      expect(existsSync(join(t.dir, "dev-01.json"))).toBe(false);
+      expect(transport).not.toHaveBeenCalled();
+    }
+  });
+
+  it("does not trust a stage on an arbitrary batch-adapter error", async () => {
+    const t = setup();
+    await runDevBatch([t.input], {
+      dir: t.dir, mode: "LIVE", checkBudget: () => {}, report: () => {},
+      run: async () => { throw Object.assign(new Error("private response"), { code: "bad_response", stage: "intake" }); },
+    });
+    expect(JSON.parse(readFileSync(join(t.dir, "dev-01.error.json"), "utf8")))
+      .toEqual({ id: "dev-01", code: "bad_response" });
+  });
+
 });

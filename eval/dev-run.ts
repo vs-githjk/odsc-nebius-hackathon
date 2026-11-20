@@ -13,7 +13,7 @@ import { qwenChatFetch } from "./record-dev.ts";
 import { createTokenFactoryClient } from "../packages/pz/src/clients/tokenfactory.ts";
 import { createTavily } from "../packages/pz/src/clients/tavily.ts";
 import { send, type ClientDeps, type ClientRequest } from "../packages/pz/src/clients/http.ts";
-import { runTrace, type Pipeline, type Wayback } from "../packages/pz/src/engine/run.ts";
+import { runTrace, type Pipeline, type Stage, type Wayback } from "../packages/pz/src/engine/run.ts";
 import { loadRules } from "../packages/pz/src/rules/index.ts";
 import { Trace } from "../packages/pz/src/schema/index.ts";
 import { traceCommand } from "../packages/pz/src/cli/trace.ts";
@@ -35,6 +35,20 @@ export function parseDevSet(rows: unknown, set: "E2" | "E3"): Input[] {
 }
 
 const errorCodes = new Set(["budget_exceeded", "budget_bound_exceeded", "claim_timeout", "not_configured", "http_error", "network_error", "bad_response", "trace_failed"]);
+
+class InvalidDevTrace extends Error {
+  constructor(readonly reason: string) {
+    super("Invalid dev trace");
+  }
+}
+
+// Only this runner can attach a stage to a saved failure. Provider-supplied
+// messages and arbitrary `stage` properties must never enter the error file.
+class DevRunFailure extends Error {
+  constructor(readonly code: string, readonly stage: Stage | "setup" | "verify") {
+    super("Dev run failed");
+  }
+}
 
 function codeOf(error: unknown): string {
   if (error && typeof error === "object" && "code" in error &&
@@ -68,11 +82,15 @@ export async function runDevBatch(
   if (new Set(inputs.map(input => input.id)).size !== inputs.length) throw new Error("Duplicate dev claim id");
   const rules = loadRules();
   function verified(value: unknown, input: Input, acceptLive = false): Trace {
-    const trace = Trace.parse(value);
-    if (trace.synthetic || (trace.mode !== opts.mode && !(acceptLive && trace.mode === "LIVE")) || trace.id !== input.id ||
-        trace.claim.text !== input.text || verifyTrace(trace, { rules }).failures.length) {
-      throw new Error("Invalid dev trace");
+    const parsed = Trace.safeParse(value);
+    if (!parsed.success) throw new InvalidDevTrace("schema");
+    const trace = parsed.data;
+    if (trace.synthetic || (trace.mode !== opts.mode && !(acceptLive && trace.mode === "LIVE"))) {
+      throw new InvalidDevTrace("provenance");
     }
+    if (trace.id !== input.id || trace.claim.text !== input.text) throw new InvalidDevTrace("claim_mismatch");
+    const failures = verifyTrace(trace, { rules }).failures;
+    if (failures.length) throw new InvalidDevTrace([...new Set(failures.map(failure => failure.check))].join(", "));
     return trace;
   }
   function existing(input: Input): Trace | undefined {
@@ -115,8 +133,10 @@ export async function runDevBatch(
       recorded++;
     } catch (error) {
       const code = codeOf(error);
-      save(errorPath, { id: input.id, code });
-      opts.report(JSON.stringify({ id: input.id, status: "failed", code }));
+      const reason = error instanceof InvalidDevTrace ? error.reason : undefined;
+      const stage = error instanceof DevRunFailure ? error.stage : undefined;
+      save(errorPath, { id: input.id, code, reason, stage });
+      opts.report(JSON.stringify({ id: input.id, status: "failed", code, stage }));
       failed++;
       if (code === "budget_exceeded" || code === "budget_bound_exceeded") break;
     }
@@ -278,6 +298,7 @@ export async function runLiveDevBatch(
         stop = () => reject(timeout());
         signal.addEventListener("abort", stop, { once: true });
       });
+      let stage: Stage | "setup" | "verify" = "setup";
       const execute = async () => {
         createPipeline ??= await opts.loadFactory();
         checkTime();
@@ -285,9 +306,16 @@ export async function runLiveDevBatch(
           caps, signal, chatClient, embeddingClient, pageFetch: fetch, createTavily: deps => createTavily(deps, sendTavily),
         });
         checkTime();
-        return runTrace(input.text, { ...pipeline, clusters: pipeline.clusters ?? devClusterStep(embeddingClient, loadRules()) }, { wayback });
+        return runTrace(input.text, { ...pipeline, clusters: pipeline.clusters ?? devClusterStep(embeddingClient, loadRules()) }, {
+          wayback,
+          emit: event => {
+            if (event.type === "stage" && event.status === "started") stage = event.stage;
+            else if (event.type === "stage" && event.stage === "card" && event.status === "completed") stage = "verify";
+          },
+        });
       };
       const trace = await Promise.race([execute(), deadline])
+        .catch(error => { throw new DevRunFailure(codeOf(error), stage); })
         .finally(() => signal.removeEventListener("abort", stop));
       checkTime();
       if (trace.budget.usd > caps.usd || trace.budget.credits > caps.credits) {
@@ -337,7 +365,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
         });
         console.log(JSON.stringify(result));
         if (result.failed || result.unattempted) process.exitCode = 1;
-        else if (!rehearsal) execFileSync(process.execPath, ["--import", "tsx", "eval/dev-score.ts", "--set", spec.set], { stdio: "inherit" });
+        if (!rehearsal) execFileSync(process.execPath, ["--import", "tsx", "eval/dev-score.ts", "--set", spec.set], { stdio: "inherit" });
       }
     }
   } catch (error) {

@@ -1,0 +1,314 @@
+{
+  "schemaVersion": "1",
+  "id": "dev-08",
+  "mode": "LIVE",
+  "synthetic": false,
+  "recordedAt": "2026-11-19T13:20:53.283Z",
+  "claim": {
+    "text": "The Great Wall of China is the only man-made structure visible from space.",
+    "atoms": {
+      "number": null,
+      "unit": null,
+      "subjectLemma": "wall",
+      "population": null,
+      "time": null,
+      "hedge": null,
+      "namedSource": null,
+      "variants": [],
+      "phrase": "The Great Wall of China is the only man-made structure visible from space"
+    }
+  },
+  "viralSentence": "The Great Wall of China is the only man-made structure visible from space.",
+  "nodes": [
+    {
+      "id": "n1",
+      "url": "https://www.facebook.com/RecordedRealityHQ/posts/the-ancient-wall-visible-from-spacefor-decades-it-has-been-repeated-as-establish/122116868187275342",
+      "domain": "facebook.com",
+      "title": "4.9K views · 37 reactions | The Ancient Wall Visible From Space\n\nFor decades, it has been repeated as established fact: the Great Wall of China is the only man-made structure visible from space with the naked eye. The claim is physically impossible. At the altitude of the International Space Station — 408 kilometers — the wall's width of 4 to 8 meters falls far below the angular resolution limit of the human eye, which requires an object roughly 10 kilometers wide to be discernible at that distance. In 2003, Chinese astronaut Yang Liwei specifically looked for it and confirmed he could not see it. NASA has reached the same conclusion.\n\nThe wall spans 21,196 kilometers, required over two thousand years of construction across multiple dynasties, and remains one of the most significant engineering achievements in recorded human history. It never needed the myth.\n\n#greatwall  #spacemyth #ancientengineering | Recorded Reality",
+      "date": {
+        "kind": "unconfirmed",
+        "value": null,
+        "source": "wayback_first_capture",
+        "firstCapture": null,
+        "conflictingDate": false
+      },
+      "clusterId": "c1",
+      "evidence": "observed",
+      "meta": true,
+      "read": true,
+      "versionOf": null,
+      "spanIds": [
+        "s1"
+      ],
+      "citesEarlier": false,
+      "candidateParents": [],
+      "pageType": null,
+      "sameClaim": {
+        "questionId": "same_claim",
+        "optionId": "yes",
+        "probability": 0.9999999881388798,
+        "top": [
+          {
+            "optionId": "yes",
+            "p": 0.9999999881388798
+          },
+          {
+            "optionId": "no",
+            "p": 1.1861120215266485e-8
+          },
+          {
+            "optionId": "__other__",
+            "p": 0
+          }
+        ],
+        "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+        "threshold": null
+      },
+      "foundViaMeta": null,
+      "injection": null
+    }
+  ],
+  "edges": [],
+  "clusters": [
+    {
+      "id": "c1",
+      "nodeIds": [
+        "n1"
+      ],
+      "rule": "single"
+    }
+  ],
+  "spans": [
+    {
+      "id": "s1",
+      "nodeId": "n1",
+      "text": "The Ancient Wall Visible From Space For decades, it has been repeated as established fact: the Great Wall of China is the only man-made structure visible from space with the naked eye.",
+      "contextBefore": "Log In Log In Forgot Account? Video. Home Live Reels Explore More Home Live Reels Explore Sorry, we're having trouble playing this video. Learn more ",
+      "contextAfter": " The claim is physically impossible. At the altitude of the International Space Station - 408 kilometers - the wall's width of 4 to 8 meters falls far below the angular resolution limit of the human e",
+      "start": 149,
+      "end": 333,
+      "extractSha256": "64fc1a21de5ea4dce01f5c9a6efa133aab906337f1bfcb9da1c5c0a9278148ee",
+      "windowSha256": "4040128ac11a294fcfbc1658ef5d0a3c4e597d42bfa13c83544959a941d703c4",
+      "fetchedAt": "2026-11-19T13:21:09.945Z",
+      "waybackUrl": null,
+      "tier": "exact"
+    }
+  ],
+  "hops": [],
+  "blame": [],
+  "roots": {
+    "pages": 0,
+    "clusters": 0,
+    "rootsLinked": 0,
+    "clustersUnlinked": 0,
+    "studiesFound": null,
+    "independentRoots": 0,
+    "copies": 0
+  },
+  "redHopEdgeId": null,
+  "earliest": {
+    "nodeIds": [],
+    "earlierWindowSearches": 2,
+    "earlierFound": 0
+  },
+  "failure": null,
+  "budget": {
+    "credits": 4,
+    "usd": 0.0001201,
+    "ms": 16762,
+    "capHit": null
+  },
+  "decision": {
+    "state": "NO_PAGES_FOUND",
+    "row": 3,
+    "reasons": [
+      "no pages besides meta pages"
+    ],
+    "counts": {
+      "pages": 0,
+      "clusters": 0,
+      "unreadParents": 0,
+      "earlierWindowSearches": 2
+    }
+  },
+  "searchLog": [
+    {
+      "at": "2026-11-19T13:20:59.107Z",
+      "step": "search",
+      "query": "\"The Great Wall of China is the only man-made structure visible from space\"",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 9,
+      "kept": 9,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:21:00.829Z",
+      "step": "search",
+      "query": "\"The Great Wall of China is the only man-made structure visible from space\" study",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 10,
+      "kept": 10,
+      "dropped": 0
+    },
+    {
+      "at": "2026-11-19T13:21:03.920Z",
+      "step": "meta-search",
+      "query": "\"The Great Wall of China is the only man-made structure visible from space\"",
+      "endDate": "2026-11-19",
+      "startDate": null,
+      "results": 0,
+      "kept": 0,
+      "dropped": 0
+    }
+  ],
+  "usage": [
+    {
+      "at": "2026-11-19T13:20:53.284Z",
+      "traceId": "dev-08",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 147,
+      "completionTokens": 33,
+      "cachedTokens": 112,
+      "credits": 0,
+      "costUsd": 0.0000246,
+      "latencyMs": 1559,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:20:54.846Z",
+      "traceId": "dev-08",
+      "step": "tokenfactory",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 273,
+      "completionTokens": 144,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0.0000705,
+      "latencyMs": 2156,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:20:59.107Z",
+      "traceId": "dev-08",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 2080,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:21:00.829Z",
+      "traceId": "dev-08",
+      "step": "search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 1706,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:21:03.920Z",
+      "traceId": "dev-08",
+      "step": "meta-search",
+      "service": "tavily",
+      "endpoint": "search",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 3071,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:21:08.066Z",
+      "traceId": "dev-08",
+      "step": "extract",
+      "service": "tavily",
+      "endpoint": "extract",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 1,
+      "costUsd": 0.008,
+      "latencyMs": 4101,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:21:08.106Z",
+      "traceId": "dev-08",
+      "step": "same_claim",
+      "service": "tokenfactory",
+      "endpoint": "/chat/completions",
+      "model": "Qwen/Qwen3-30B-A3B-Instruct-2507",
+      "promptTokens": 229,
+      "completionTokens": 7,
+      "cachedTokens": 160,
+      "credits": 0,
+      "costUsd": 0.000025,
+      "latencyMs": 934,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:21:09.943Z",
+      "traceId": "dev-08",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 882,
+      "status": "200",
+      "cacheHit": false
+    },
+    {
+      "at": "2026-11-19T13:21:10.024Z",
+      "traceId": "dev-08",
+      "step": "dating",
+      "service": "wayback",
+      "endpoint": "cdx",
+      "model": null,
+      "promptTokens": 0,
+      "completionTokens": 0,
+      "cachedTokens": 0,
+      "credits": 0,
+      "costUsd": 0,
+      "latencyMs": 0,
+      "status": "200",
+      "cacheHit": true
+    }
+  ],
+  "scopeNote": "Web pages only; print and paywalled origins are out of scope. Earliest source we found, not proof of first use.",
+  "otherNumbers": []
+}

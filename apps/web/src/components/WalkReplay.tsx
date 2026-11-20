@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import type { Trace } from "pz/schema";
-import { afterTick, autoplays, lineMs, railHead, replayFrame, replayLines, startPhase, type ReplayLine } from "../model/replay.ts";
+import { afterTick, lineMs, railHead, replayFrame, replayLines, startPhase, type ReplayLine } from "../model/replay.ts";
 
 export type Replay = {
   phase: "lines" | "walk" | "done";
@@ -31,7 +31,7 @@ const markSeen = (id: string) => {
 };
 
 // The recorded walk, played back once per trace per visit: the log lines appear one by one and each page lands on the
-// band, then the handle walks from today to the earliest stop. Skip jumps to the end. Reduced motion never autoplays.
+// band, then the handle walks from today to the earliest stop. Skip jumps to the end. It runs only when the visitor asks.
 // The first render is always the finished trace, so a page without scripts, or a test, shows everything.
 export function useReplay(trace: Trace, stopCount: number, reducedMotion: boolean, walkTo: (position: number) => void, settle: (i: number) => void): Replay {
   const lines = useMemo(() => replayLines(trace), [trace]);
@@ -61,11 +61,10 @@ export function useReplay(trace: Trace, stopCount: number, reducedMotion: boolea
   }, [walkTo, reducedMotion, finish]);
 
   useLayoutEffect(() => {
-    if (autoplays(seen(trace.id), reducedMotion)) start();
-    else {
-      setShown(lines.length);
-      setPhase("done");
-    }
+    // A trace opens on its finished state, so every section has its data at first sight (#259 review).
+    // The walk replays only when the visitor asks ("Replay the walk").
+    setShown(lines.length);
+    setPhase("done");
     return () => cancelAnimationFrame(raf.current);
     // Once per trace: a change of trace starts its own replay.
   }, [trace.id]);

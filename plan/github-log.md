@@ -104,3 +104,74 @@
 - 2026-11-17 20:25 ET: no new heads. Rohan: open PR, dev-07/08 bad_response, dev-11 no pages (#3). Anoop: loadTraces live traces (#4). Rishit nudged (#1).
 - 2026-11-17 20:55 ET: XO merged #216 a30dee8 (dev-04 false origin), #217 fd89247 (dev-10 lone year), #218 c4f3e14 (dev-11 code queries); live rehearsal dev-10 and dev-11 both cite target ($0.45, $8.70 left).
 - 2026-11-17 21:00 ET: XO merged #219 f3f2065 (dev-07/08 phrase subject head word). Tonight's XO fixes: #216, #217, #218, #219.
+- 2026-11-17 22:35 ET: merged #220, #221, #223, #212, #210, #209; live run 3 scored (1 (+0), 3/10, 1/0/9, 7/9) merged #227; #225 prior-use cue in review; #224 held (subject check). Tavily key at 800/1000.
+- 22:23 ET: #225 merged (prior-use cue). Rescored run 3 traces on main: see #164.
+- 22:28 ET: repo public (Vidyut), CI rerun on #184, #226, #222; reviews running. Tavily key swap: Rishit sends key to Vidyut privately.
+- 22:40 ET: #226 merged 82d34ee; #222 FIX (byline <time> scope); #184 FIX (than/over); new Tavily key OK; Anoop tasks on #4.
+- 22:58 ET: #184 claim box PASS and merged. XO coding window closed 23:00; orchestration only.
+- 23:06 ET: #228 PASS merged. Rishit next: phrase claims in the claim box.
+- 2026-11-18 08:26 #222 re-review 257c9fd: FIX [M] teaser-only time confirms false date, [L] comments/scripts; posted
+- 2026-11-18 11:57 #230 review 80f672f: FIX [M] stale #225 line, [L] run time; posted
+- 2026-11-18 11:59 #229 review a64bc77: FIX [M] L18 scope understated, [L] contextBefore; posted
+- 2026-11-18 12:09 dev-04 live re-record (Vidyut go), $0.30, ledger $8.35/15; #231 merged cb77a08
+- 2026-11-18 12:15 #222 f378860 CI red (own test); tagged Rohan. Rishit pinged on #1 (13h quiet). Anoop next items on #4
+- 2026-11-18 12:30 #229 merged 4093ac8, #230 merged 30a1956 (856/856, verify ok)
+- 2026-11-18 12:40 #222 f378860 checked: CI red is stale expectation at test:137; [M] div-itemscope teaser still confirms; posted
+- 2026-11-18 18:05 #233 (Rishit) to review; replay on ca430cc: 31 misses, posted on #164
+- 2026-11-18 18:03 #233 review 21310a1: FIX [M] page spans false-match phrase inputs, [L] hint text, [L] dead tsx test; posted
+- 2026-11-18 18:12 plan to submission posted on #2, pinged #1 #3 #4; Anoop owns Pages deploy prep
+- 2026-11-18 18:20 judge 66/100; fixes posted on #2 (Rohan dating+L19, Rishit make judge real traces, Anoop README/submission)
+- 2026-11-18 18:20 reviewing #232 #233 #234 #235; urgent pings to Rohan (#3) and Anoop (#4); hero = dev-10 LOCKED
+- 2026-11-18 18:25 #232 review 5d3512e: FIX [M] README:17 #225 overclaim, [L] label; refresh list posted
+- 2026-11-18 18:28 #234 review e19bbf6: FIX [M] subset labels, [L] empty ids, [L] CLAIMS env; posted
+- 2026-11-18 18:35 #233 merged (re-review PASS, 882/882)
+- 2026-11-18 18:40 #235 review a1befe0: FIX [H] dev-10 false 2013 date on judge card, [M] dev-01 silent rewrite, [M] dev-14; posted. Wayback evidence to Rohan #3
+- 2026-11-18 18:45 #234 merged (re-review PASS, 886/886)
+- 2026-11-18 18:55 #235 merged 81fca96 (887/887); polish to Rishit #1, README note to Anoop #232
+- 2026-11-18 19:48 #232 review ea990c8: FIX M3 L4 copy edits (reach not dating, tuning-set caveat); posted
+- 2026-11-18 19:55 Anoop pointed to #232 fixes; archive-date fix reassigned to Rishit (#1), Rohan silent 7h, urgent on #3
+- 2026-11-18 21:05 #232 merged 1d7e775; #237 review: FIX M2 L1 (perms, Google Fonts, pins)
+- 2026-11-18 21:08 #236 review c32ebf1: FIX M origin hidden on tie, L recordedAt throw; posted
+- 2026-11-18 21:18 Rishit out of usage until 22:00; reviewing #237 fix round and #158 demo script
+- 2026-11-18 21:25 #237 merged (dispatch-only Pages workflow; not run; Pages switch-on waits for Vidyut)
+- 2026-11-18 21:35 #158 demo walk: FIX H3 M3 L2 to Anoop; rail label item to Rishit
+- 2026-11-18 23:45 Anoop tonight: #158 fixes, replay.ts:29 rail wording (moved from Rishit), SLOT list
+- 2026-11-18 23:55 #238 merged d69962b (910/910); HANDOFF updated
+- 2026-11-19 00:10 #239 review d368cad: FIX M null-p yes, L 1.00; posted
+- 2026-11-19 00:15 #240 merged (perf.md, all numbers confirmed); follow-ups to Anoop #4
+- 2026-11-19 00:18 #158 re-walk f6bf372: 6/11 pass; FIX S4B S5B (CNBC not in app), S9 SAMPLE, S3 timing; 2 Vidyut decisions flagged
+- 2026-11-19 00:50 #239 merged e71286d, #241 merged 64f7be0; #158 fixes checked, awaits Vidyut; closed for the night
+- 2026-11-19 01:50 Pages ON (run 44472819452, site 200); #242 merged 5519f1d; #222 FIX M1 L1 posted; Rohan: rematch chats + gallery grading; grader moved to Anoop/Rishit
+- 2026-11-19 02:10 Live Vercel app assigned to Rishit (#1, spec posted); S7 back in (answer run in morning); backup hero framing LOCKED
+- 2026-11-19 02:20 Rishit sole focus: live app (guide + challenges, $2 cap); #236 to Anoop
+- 11-19 07:20 XO AM: merged #243, #244; closed #236; FIX #222 (strip-before-count false-earlier); judge 71/100; Anoop hero pin dev-11 + README; Rohan rematch urgent
+- 11-19 08:37 XO: E2 live rerun 4 merged #245 ($1.98, dev-10 ends WEF Jan 2016); Anoop hero -> dev-10, #158 version A
+- 11-19 08:44 XO: S7 live answer run merged #246 ($0.21); ledger $10.54/15; gallery waits on Rohan overlap check; held-out on Rohan
+- 12:49 XO: #247 FIX (C vercel .ts imports), #222 FIX round 3 (recommend hold), gallery #252 merged (G4 false origin, G6 failed), #249 merged, Anoop: 2 doc fixes + gallery grading
+- 13:15 XO: merged #251 (CI green; local timeouts from machine load), #158 (script v A); reviewing #247 round 2, #253, #254, #255; #250 held-out running on Rohan's machine; #222 final round
+- 13:26 XO: merged #253, #254 (gallery 2H/1P/4M confirmed); #255 FIX (rebase, E3 slot)
+- 13:28 XO: merged #247 live app (PASS r2); deploy next with Vidyut
+- 2026-11-19 16:01 ET: merged #255 (Anoop, submission slots: public repo, Pages URL, E3 not run live) aa496ec. #222 no push since final-round brief (due 16:30). #250 blocked: Rohan's agent auto-review refused to send held-out text to Nebius without his approval; no spend, no score.
+- 2026-11-19 16:35 ET: merged #256 (XO, light/dark toggle). Vercel live at patient-0.vercel.app: status ok, smoke trace $0.056 settled in Upstash, cache replay free. Landing page issue to Anoop (Vidyut's call). #250 unblock note to Rohan.
+- 2026-11-19 17:05 ET: #258 (live link) merged with a failing numbers-lint check (XO error: merge ran before checks); fixed by #261, main green again. Repo homepage now patient-0.vercel.app.
+- 2026-11-19 17:15 ET: value-first front-end brief posted on #257 and #259 (Vidyut's call).
+- 2026-11-19 17:20 ET: Anoop pushed #260 value-first pass (24a80b8) + shared quote helper. Nudged Rishit (#259 ack, 21:00 draft), Rohan (#222 cutoff 21:00, #250 go-or-skip by 21:00).
+- 2026-11-19 17:55 ET: reviewed #262 (Rishit app inside draft): FIX x8 (focus ring, cut-off background, copies-vs-roots weak, replay empty state, why-checkable strip, emoji chain, samples, live-run screenshots).
+- 2026-11-19 18:35 ET: #262 pushed 3 commits for XO fixes 1-5 + value-first receipts; follow-up list of 4 small items.
+- 2026-11-19 19:00 ET: merged #260 (Anoop landing). Opened #263 (generic headline, no competitor names; no whole-answer overclaim). Anoop given 9-item list on #257 (de-AI-accent pass, How it works, AI answer replay page, README hero, share card, traces list, a11y, Devpost gallery, 404). Rishit told to merge main + same rules.
+- 2026-11-19 19:20 ET: merged #262 (Rishit app inside). Next list for Rishit on #259 (open on finished state, dedupe, meta line, real live run, 390 pass).
+- 2026-11-19 19:35 ET: merged #264 (Anoop: AI accents removed from landing).
+- 2026-11-19 19:45 ET: merged #265 (Anoop: How it works redesign).
+- 2026-11-19 19:50 ET: merged #267 (Anoop: README top with new landing + real dev-10 trace, light/dark). #266 waiting on conflict fix.
+- 2026-11-19 19:55 ET: merged #268 (Anoop: favicon, meta, share card).
+- 2026-11-19 20:00 ET: merged #266 (AI answer page), #269 (traces list). Anoop 6/9 done.
+- 2026-11-19 20:15 ET: merged #269 (traces list), #270 (a11y: Lighthouse 100 all pages light/dark, docs/accessibility.md). Anoop 7/9.
+- 2026-11-19 20:30 ET: merged #271 (fade 120ms), #272 (Devpost gallery x5). Anoop 8/9.
+- 2026-11-19 20:40 ET: merged #273 (not-found pages). Anoop 9/9 done.
+- 2026-11-19 20:45 ET: Anoop batch 2 posted on #257 (demo script on new UI, Pages base check, submission copy, Lighthouse perf, video raw captures, gallery re-shoot, nav 390).
+- 2026-11-19 20:50 ET: merged #274 (phone gallery + README phone row).
+- 2026-11-19 20:50 ET: merged #275 (Rishit: open finished, one earliest list). Next list for Rishit; Anoop cleared to re-shoot gallery 2/4.
+- 2026-11-19 20:55 ET: merged #278 (gallery 2/4 re-shoot), #277 (demo script A on new UI; 9 lines marked re-approve, awaiting Vidyut). #276 Rishit conflicting, asked to merge main.
+- 2026-11-19 21:00 ET: merged #279 (Pages base check, untraced note fix). 21:00 cutoff passed: Rohan silent since 13:41; #222 and held-out out of submission unless Vidyut says otherwise.
+- 2026-11-19 21:05 ET: Vidyut lifted Rohan cutoff; held-out + #222 due 01:30 ET. Anoop told to keep slots open.
+- 2026-11-19 21:15 ET: reassigned #222 to Anoop; Rohan on return: held-out then Anoop batch 2 items 4,5,7.

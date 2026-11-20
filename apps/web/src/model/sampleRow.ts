@@ -16,7 +16,9 @@ const RAMP_YEARS = 12;
 
 export type SampleRow = {
   id: string;
-  wording: string; // the claim as the newest page we found words it, else the claim as asked
+  // A recorded trace: the claim as asked (each is its own claim, and a live page span can be a menu or a page section,
+  // #192 B). A sample: the claim as its newest page words it, since every sample shares one claim.
+  wording: string;
   ending: string;
   earliestYear: number | null;
   tone: string | null; // the ramp colour for how far back the trace reached; null when no page was dated
@@ -33,7 +35,7 @@ export function sampleRow(trace: Trace): SampleRow {
   const yearsBack = earliest ? (Date.parse(trace.recordedAt) - Date.parse(earliest)) / (365.25 * 864e5) : null;
   return {
     id: trace.id,
-    wording: scrubberStops(trace)[0]?.text ?? trace.claim.text,
+    wording: trace.synthetic ? (scrubberStops(trace)[0]?.text ?? trace.claim.text) : trace.claim.text,
     ending: ENDING_NAMES[trace.decision.state],
     earliestYear: earliest ? Number(earliest.slice(0, 4)) : null,
     tone: yearsBack === null ? null : heat(1 - Math.min(1, Math.max(0, yearsBack / RAMP_YEARS))),
@@ -52,4 +54,16 @@ export function sampleRows(traces: Trace[]): SampleRow[] {
 // The facts under a row's wording, in order: the ending, how far back it reached, how many pages.
 export function rowFacts(row: SampleRow): string[] {
   return [row.ending, row.earliestYear === null ? "No dated page" : `Back to ${row.earliestYear}`, row.pages === 1 ? "1 page" : `${row.pages} pages`];
+}
+
+// The start page's hero is pinned, not picked by page count (decision 146; XO on #4, Nov 19): dev-10, which since the
+// Nov 19 live run ends on the WEF "New Plastics Economy" report of January 2016. The auto-pick had led with dev-17,
+// whose card dated a 2023 sentence to 2019. If the pinned trace isn't loaded, the real trace with the most to show
+// leads instead. Samples are invented, so they never lead; with no real trace the page asks its question.
+export const HERO_ID = "dev-10";
+export function heroTrace(traces: Trace[]): Trace | null {
+  const pinned = traces.find((t) => t.id === HERO_ID && !t.synthetic);
+  if (pinned) return pinned;
+  const id = sampleRows(traces.filter((t) => !t.synthetic))[0]?.id;
+  return traces.find((t) => t.id === id) ?? null;
 }

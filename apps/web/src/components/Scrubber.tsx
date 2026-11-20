@@ -149,6 +149,10 @@ export function Scrubber({ trace, stops, position, reducedMotion, red, onMove, o
           </span>
         ))}
       </div>
+      <div className="scrub-steps">
+        <button type="button" className="btn secondary" disabled={index === last} onClick={() => onSettle(Math.min(last, index + 1))}>Earlier page</button>
+        <button type="button" className="btn secondary" disabled={index === 0} onClick={() => onSettle(Math.max(0, index - 1))}>Newer page</button>
+      </div>
     </div>
   );
 }

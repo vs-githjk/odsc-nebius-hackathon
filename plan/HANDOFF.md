@@ -3,6 +3,12 @@
 Last updated: Tue Nov 17 2026 01:20 ET, by the main session (conductor / XO).
 To resume in a new Claude Code chat opened in this folder, Vidyut says: **"I'm back, continue the master playbook"**. The new session reads this file, `plan/state.json` and `plan/decisions.md`, says where we are in three lines, and carries on.
 
+## End of Nov 17 (22:35 ET)
+Third live E2 run (21:55, after #216 to #219): false origins 1, target cited 3/10, earliest 1/0/9, cold stops 7/9 (#227). #225 (283cabe) then blocks pages that present the claim as already said; rescored, false origins 0 (+1 unverified), cold 6/9 because dev-01's recorded reasons gain a line.
+Merged tonight: #216 to #221, #223, #225, #227, Rishit's #212, #210, #209. Held: #224 (dev-08 phrase; needs a typed trimmed flag or shorter model runs, see the PR).
+Spend: $8.05 of $15. **Tavily key near its 1000-credit limit (alert at 800, about 970 used after run 3): Vidyut raises it on the dashboard before any further live run.**
+Open: Rohan (#3) dev-10 earliest dating, dev-03 bad_response, #221 tests. Rishit (#1) #184 claim box, 400 vs 600 char cap, replay-walk on run 3's recording.
+
 ## After the Nov 17 live run (21:00 ET)
 Live E2 rerun at 18:02 on 5cb6fd8: false origins 1, target cited 2/10, earliest 0/0/10, cold stops 6/9 (#215; #164). $2.08; ledger $6.30 spent, $8.70 left after a $0.45 two-claim rehearsal.
 XO fixed the four regressions it found, all merged with review: #216 (dev-04 '6 8 oz glasses' false origin), #217 (dev-10 lone forecast year), #218 (dev-11 code-only queries), #219 (dev-07/08 several-word phrase subject). Rehearsal: dev-10 and dev-11 both cite their target again.
@@ -148,3 +154,22 @@ Next, in order (when Vidyut says "go"):
 - Push plan updates to the private repo as part of the approved GitHub setup; nothing public, no deploys, no spending beyond what is approved.
 
 - Nov 7: main has T1 to T10 (minus T11), T13, T14, T18, T19, T26, E1 hash, E2. Open: #50 T11 and #62 T15 (Rishit fixes), T20 publish (Rohan), #38 and #52 after grading. New: #64 T21 and #65 T22 (Anoop), #66 T23 and #67 T24 (Rishit), #68 T25 (Rohan). T28 and T29 unassigned, Vidyut's call. Held-out run Nov 13 needs T29.
+
+## End of Nov 18 (23:55 ET)
+- Merged tonight: #229 #230 #231 #232 #233 #234 #235 #237 #238. Judge pass 18:06: 66/100 (fixes since: README refresh #232, make judge real traces #235, archive-date L19 #238).
+- #238 (XO, Vidyut's go): a first Wayback capture dates a page only if it holds the claim. Real captures: dev-10 ocean_plastics 2013 withheld, dev-17 pulse 2019 withheld, WEF PDF 2016-01-20 kept. Committed traces not re-dated; walk-record replay misses the new capture fetches.
+- Open: #236 Rishit (origin hidden on tie, recordedAt throw); #158 Anoop (script fixes, A/B hero shots); Anoop replay.ts:29 rail wording; #222 Rohan (red, publication.test.ts:137), Rohan silent since Nov 18 03:12.
+- Spend: $8.35 of $15. Hero LOCKED dev-10 if it ends on WEF, else a cold trace with checked dates.
+- Morning (Vidyut decides, in order): final live E2 run (~$2) to see #238's effect, Pages switch-on (#237 merged, dispatch-only), #158 script approval, submit timing. Morning report at 07:13.
+- Morning, also for Vidyut (from #158 re-walk 00:12): (a) demo script cuts S7 against his Nov 16 'nothing gets cut'; (b) version B ends cold against 'hero claim has to end ORIGIN_FOUND'. Rematch hand chats (#160, Anoop, no spend) and gallery 8 claims (#159, ~$0.70 live) await his yes/no. #240 merged (median 42 s, $0.08/trace; targets missed).
+- 00:50 Nov 19 close: #239 and #241 merged (915/915). #158 fixes in (S4/S5 B follow the app, S9 SAMPLE allowed and labelled, 'Needs Vidyut's OK' section at top); left open for Vidyut's 'approve'. Open: #236 Rishit, #222 Rohan. Night over; morning report 07:13.
+- 02:20 Nov 19 update (supersedes the morning decisions above): Pages is ON (https://vs-githjk.github.io/odsc-nebius-hackathon/). Live Vercel app LOCKED, Rishit's only focus Thu (spec #1: server fn, keys server-side, $2 global cap, rate limits, kill switch, How it works, Try these; PR by 16:00 ET; XO+Vidyut deploy, Vidyut sets keys). Morning live run (needs Vidyut's go): final E2 + gallery 8 (#159) + one `pz trace --answer` run for S7 + held-out run; then Rohan grades gallery, Anoop grades rematch blind (XO blinds raw/ first). Video: master-creator after the run; Vidyut does voiceover and storyboard approval. Backup hero framing LOCKED; S7 back in. Rohan: #222 fix round + rematch chats tonight. Anoop: #236 fixes.
+- 07:30 Nov 19 morning pass: merged #243 (Rohan) and #244 (Anoop, supersedes #236, closed). #222 FIX again (strip-before-count false-earlier; 14:00 ET cutoff recommended). Judge 71/100 (target 80); full report plan/morning-report.md. Assigned: Anoop hero pin dev-11 (sampleRow.ts:61 picks dev-17, breaks decision 146) + README walkthrough + stale submission lines; Rohan #222 then rematch chats (blocking Anoop grading); Rishit live Vercel app only. Waiting on Vidyut: morning live run go (~$3-3.50 of $6.65), Vercel deploy go after review, #158 version B approve, submit Fri ~11:00 ET. No crons running.
+- 08:50 Nov 19: Vidyut holding storyboard and Vercel prep for a few hours; XO reviews PRs as they land. Waiting on Rohan (gallery overlap, held-out run, #222, rematch), Anoop (hero pin dev-10, README, #158 version A), Rishit (live app PR 16:00 ET).
+
+## Nov 19, 17:15 ET
+- Live at https://patient-0.vercel.app (Vercel, Upstash, cap $1.50, Node 24). Smoke trace $0.056 settled. Every merge to main redeploys.
+- Merged since noon: #255, #256 (theme toggle), #258 + #261 (live link; main green).
+- UI is the team focus until freeze: Anoop landing page #257, Rishit app inside #259, both briefed on the value-first positioning ("Perplexity finds you a source. Patient Zero shows you whether to trust it."). Drafts 21:00 ET, finals 23:30 ET. XO reviews each push.
+- Open: #222 (Rohan final round, was due 16:30), #250 held-out (Rohan must approve sending to Nebius in his own session), rematch #248 (proposed: grade chatbots on confident wrong origins; Vidyut not yet answered).
+- Vidyut checks back later with "update".

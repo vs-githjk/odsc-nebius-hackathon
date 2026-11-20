@@ -52,8 +52,10 @@ const hostOf = (url: string) => urlKey(url).split("/")[0]!;
 // - Cold correct: a cold claim ends TRAIL_GOES_COLD. A cold claim that ends anywhere else is not correct.
 export function scoreClaim(claim: DevClaim, trace: Trace | null): ClaimScore {
   const base = { id: claim.id, expected: claim.expected, falseOrigin: false, targetCited: null, earliest: null, coldCorrect: null, credits: 0, seconds: 0 };
-  if (!trace) return { ...base, status: claim.outOfScope ? "out of scope" : "no trace", mode: null, state: null, ...(claim.outOfScope ? { reason: claim.outOfScope } : {}) };
-  const run = { mode: trace.mode, state: trace.decision.state, credits: trace.budget.credits, seconds: Math.round(trace.budget.ms / 1000) };
+  const run = trace ? { mode: trace.mode, state: trace.decision.state, credits: trace.budget.credits, seconds: Math.round(trace.budget.ms / 1000) } : { mode: null, state: null };
+  // Out of scope is decided first (XO on #192): such a claim is scored apart whatever its trace, even a bad or unverified one.
+  if (claim.outOfScope) return { ...base, ...run, status: "out of scope", reason: claim.outOfScope };
+  if (!trace) return { ...base, ...run, status: "no trace" };
   if (trace.id !== claim.id) return { ...base, ...run, status: "bad trace", reason: `trace id ${trace.id}` };
   if (trace.claim.text !== claim.text.trim()) return { ...base, ...run, status: "bad trace", reason: "trace does not match claim" };
   const failures = verifyTrace(trace, { rules: loadRules() }).failures;
@@ -63,7 +65,6 @@ export function scoreClaim(claim: DevClaim, trace: Trace | null): ClaimScore {
   const targets = new Set(claim.tracedOrigin ? [claim.tracedOrigin, ...(claim.originAliases ?? [])].map(urlKey) : []);
   const target = targets.size > 0;
   const pass = earliest.some((n) => targets.has(urlKey(n.url)));
-  if (claim.outOfScope) return { ...base, ...run, status: "out of scope", reason: claim.outOfScope };
   const scored = { ...base, ...run, status: "scored" as const, falseOrigin: trace.decision.state === "ORIGIN_FOUND" && (claim.expected === "cold" || !pass) };
   if (claim.expected === "cold") return { ...scored, coldCorrect: trace.decision.state === "TRAIL_GOES_COLD" };
   return {

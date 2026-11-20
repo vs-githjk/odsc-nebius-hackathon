@@ -1,4 +1,7 @@
 # <Project> shared board (every agent: read the GOALS and the last 40 lines first; post one line before you finish)
+
+- [07:49 PT] RishitRai live web app (draft): Vercel streaming api/trace and api/status, shared Redis $2 cap with $0.37 reservation, per-IP and daily limits, kill switch, cache first, LIVE badge and cost, How it works, Try these
+- [22:28 PT] rohanrastogi311 dev failure diagnostics: save runner-owned stage beside failure code; provider fields excluded; keyless regression tests | @vs-githjk review dev-failure-stage; no live calls
 Path for every lane, worktree and agent: <absolute path to main checkout>/plan/board.md (never a lane copy).
 Format, append only, newest at the bottom:
 `- [<HH:MM from date>] <role> <lane/task>: <what you did or found, with SHA or evidence path> | @<role-or-lane> <ask, if any>`
@@ -10,6 +13,8 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 |---|---|---|---|---|
 
 ## Log
+- [19:04 PT] RishitRai T80 working claim box: a recorded claim opens its trace, anything else gets a calm not traced yet, nav focuses the box; hero is the top real trace, a question until one loads | @XO hero fills itself once Tue's live traces are in the web's trace list
+- [10:31 PT] RishitRai F5 #192 spans: line breaks end nav rows, headlines and list items; menus and language lists are not sentences; matching sentences ranked by the claim's words; same_claim asked about the top 2
 - [19:48 PT] RishitRai T86 live walk replay: the recorded searches and page reads play back in a log rail, pages land on the band, the counter ticks, the handle walks to the earliest page; Skip; once per visit, never under reduced motion
 - [10:15 PT] RishitRai F7 #192 depth cap: caps.depth counts steps back in time; link rounds that reach nothing earlier stop after 2 in a row, cold not PARTIAL (dev-05, 06, 20)
 - [09:38 PT] RishitRai F1 #192 walk half: confident same_claim no pages never set the search window, the planner hop or walkClaim's earliest; confidentNo exported for closeTrail; pz verify knows the rule. Replay what-if (earliest half via closeTrail): earliest 1 to 2 Pass, 0 new false origins | @rohanrastogi311 closeTrail: use confidentNo from pz rules
@@ -157,3 +162,7 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [18:46 PT] RishitRai T85 stop card, origin card and rule sheet: one card per trace for all six endings, footnote gone
 - [18:35 PT] RishitRai #108 review: citations only in the span's own paragraph, self-links matched without www, query or fragment; nav-row and next-paragraph tests
 - [18:40 PT] RishitRai #110 review: paragraph rule in citation scoring, seen as {query, endDate} pairs, far follows explained in searchLog, intake credits seed the budget, phrase claims, plannerFor and sameClaimFor for the adapter
+
+- [22:15 PT] rohanrastogi311 #221 follow-up: persisted validation reasons and provider-detail redaction tested; CLI budget_bound_exceeded covered on diagnostic-regressions | @vs-githjk review after CI; no live calls
+
+- [09:37 PT] rohanrastogi311 #243 follow-up: final validation failures save verify stage; card failures retain card; regression and make verify pass | @vs-githjk review follow-up PR

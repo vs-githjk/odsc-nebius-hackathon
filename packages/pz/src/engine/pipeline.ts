@@ -19,7 +19,7 @@ import { withBoundaries } from "./boundary.ts";
 import { claimNumber, fingerprint } from "./fingerprint.ts";
 import { fingerprintPhrase } from "./phrase.ts";
 import { measuredReadouts, hopFor, redHop, wordDiff, words } from "./readouts.ts";
-import type { PageInput, Pipeline } from "./run.ts";
+import type { Context, PageInput, Pipeline } from "./run.ts";
 import { spansStep } from "./spans.ts";
 import { createEmbedder } from "./similar.ts";
 import { createEvidence, type Resolver } from "./publication.ts";
@@ -180,13 +180,14 @@ export function buildPipeline(parts: PipelineParts): { pipeline: Pipeline; wayba
     },
   });
 
-  const walkStage = walkStep((trace) => {
+  const walkStage = walkStep((trace, context: Context) => {
       // A fresh budget for each walk: walkStep spends the credits the earlier stages already used onto it, once.
       // Sharing a budget with an earlier stage would count those credits twice.
       const budget = createBudget(rules.caps.credits);
       return {
         tavily: parts.tavily({ ...base, budget }),
         wayback, usage, budget, rules,
+        ...(context.onPageRead ? { onPageRead: context.onPageRead } : {}),
         planQueries: plannerFor(chatClient, rules),
         askSameClaim: sameClaimFor(walkChat("same_claim"), rules),
         embed: createEmbedder(walkEmbed, { traceId: id }),
@@ -327,12 +328,15 @@ export function createPipeline(options: {
   traceId?: string;
   pagesDir?: string;
   usagePath?: string;
+  logUsage?: (row: UsageRow) => void;
+  record?: boolean;
+  clock?: () => Date;
 } & ({ tavilySender: TavilySender; tavilyFetch?: never } | { tavilySender?: never; tavilyFetch: typeof fetch })) {
   const traceId = options.traceId ?? randomUUID();
   return buildPipeline({
-    chat: createTokenFactoryClient({ traceId, apiKey: options.nebiusKey, fetch: options.tokenFactoryFetch }),
-    embed: createTokenFactoryClient({ traceId, apiKey: options.nebiusKey, fetch: options.embeddingFetch }),
+    chat: createTokenFactoryClient({ traceId, apiKey: options.nebiusKey, fetch: options.tokenFactoryFetch, logUsage: options.logUsage, sleep: options.sleep }),
+    embed: createTokenFactoryClient({ traceId, apiKey: options.nebiusKey, fetch: options.embeddingFetch, logUsage: options.logUsage, sleep: options.sleep }),
     tavily: (deps) => createTavily({ ...deps, apiKey: options.tavilyKey, fetch: options.tavilyFetch }, options.tavilySender),
-    archiveFetch: options.archiveFetch, pageFetch: options.pageFetch, resolveHost: options.resolveHost, sleep: options.sleep, cache: options.cache, traceId, pagesDir: options.pagesDir, usagePath: options.usagePath,
+    archiveFetch: options.archiveFetch, pageFetch: options.pageFetch, resolveHost: options.resolveHost, sleep: options.sleep, cache: options.cache, traceId, pagesDir: options.pagesDir, usagePath: options.usagePath, record: options.record, clock: options.clock,
   });
 }

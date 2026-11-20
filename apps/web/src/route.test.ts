@@ -9,8 +9,22 @@ describe("parseRoute", () => {
     expect(parseRoute("#/t/a%20b")).toEqual({ name: "trace", id: "a b" });
   });
 
-  it("a malformed escape falls back to the start route instead of throwing", () => {
+  it("reads the answer check page and one statistic's trace", () => {
+    expect(parseRoute("#/answer")).toEqual({ name: "answer", n: null });
+    expect(parseRoute("#/answer/2")).toEqual({ name: "answer", n: 2 });
+    expect(parseRoute("#/answer/0")).toEqual({ name: "notFound", hash: "#/answer/0" });
+    expect(parseRoute("#/answer/x")).toEqual({ name: "notFound", hash: "#/answer/x" });
+  });
+
+  it("a malformed escape is a not-found page instead of throwing", () => {
     expect(() => parseRoute("#/t/%E0")).not.toThrow();
-    expect(parseRoute("#/t/%E0")).toEqual({ name: "start" });
+    expect(parseRoute("#/t/%E0")).toEqual({ name: "notFound", hash: "#/t/%E0" });
+  });
+
+  it("an unknown address is a not-found page, not the start page", () => {
+    expect(parseRoute("#")).toEqual({ name: "start" });
+    expect(parseRoute("#/nope")).toEqual({ name: "notFound", hash: "#/nope" });
+    expect(parseRoute("#/t/")).toEqual({ name: "notFound", hash: "#/t/" });
+    expect(parseRoute("#/how/extra")).toEqual({ name: "notFound", hash: "#/how/extra" });
   });
 });
