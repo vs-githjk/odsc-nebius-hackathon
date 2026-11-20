@@ -6,10 +6,18 @@ Team **Says Who**, ODSC x Nebius Hackathon 2026. Built on **Nebius Token Factory
 
 **Try it live: [patient-0.vercel.app](https://patient-0.vercel.app)** (live traces share a small daily budget; recorded traces open free). Replay only, no keys: [GitHub Pages](https://vs-githjk.github.io/odsc-nebius-hackathon/).
 
-![The trace view on a sample trace, 1440 px, light](docs/screenshots/ui-pass/rich-1440-light.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/readme/landing-1440-dark.png">
+  <img alt="The Patient Zero landing page: the headline, the claim box, and a recorded trace walking back from 2025 to 2016 and ending with the trail going cold" src="docs/screenshots/readme/landing-1440-light.png">
+</picture>
 
-*The trace view, shown on an invented sample claim. The app also opens every committed E2 dev trace the same way, labelled REPLAY with its recorded date ([#220](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/220)).*
-<!-- numbers ok: 1440 (screenshot width in the file name) -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/readme/trace-dev10-1440-dark.png">
+  <img alt="The trace view on the recorded dev-10 trace: the claim, the ending The trail goes cold, the earliest pages found and how each was dated" src="docs/screenshots/readme/trace-dev10-1440-light.png">
+</picture>
+
+*The landing page, and the trace view on a real recorded trace: [dev-10](eval/dev-traces/dev-10.json), "By 2050 there will be more plastic than fish in the ocean", replayed. It found the claim back to January 2016 and ends with the trail going cold, because a page it cites could not be opened, so no origin is named. Both follow your light or dark setting.*
+<!-- numbers ok: 1440 (screenshot width in the file names) -->
 
 ## Where it stands
 
