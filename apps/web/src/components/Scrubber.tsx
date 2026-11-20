@@ -1,4 +1,5 @@
 import { useRef, type KeyboardEvent, type PointerEvent } from "react";
+import { scrubberKey } from "../model/traceKeyboard.ts";
 import type { Trace } from "pz/schema";
 import { dateToX, type Stop } from "../model/scrubber.ts";
 
@@ -90,10 +91,10 @@ export function Scrubber({ trace, stops, position, reducedMotion, red, onMove, o
   };
   // Left is the past: ArrowLeft steps one hop older, ArrowRight one hop newer.
   const key = (e: KeyboardEvent) => {
-    const next = { ArrowLeft: index + 1, ArrowDown: index + 1, ArrowRight: index - 1, ArrowUp: index - 1, Home: last, End: 0 }[e.key];
-    if (next === undefined) return;
+    const next = scrubberKey(e.key, index, last);
+    if (next === null) return;
     e.preventDefault();
-    onSettle(Math.min(last, Math.max(0, next)));
+    onSettle(next);
   };
 
   const ticks = tickLabels(trace, stops, xs, index);

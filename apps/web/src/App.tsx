@@ -10,6 +10,7 @@ import { ThemeToggle } from "./components/ThemeToggle.tsx";
 import { TraceView } from "./components/TraceView.tsx";
 import { loadTraces } from "./data/loadTraces.ts";
 import { isPlainClick, matchedNote } from "./model/claimBox.ts";
+import { navigation } from "./model/navigation.ts";
 import { heroTrace } from "./model/sampleRow.ts";
 import { parseRoute, type Route } from "./route.ts";
 
@@ -53,7 +54,12 @@ export function TraceRoute({ id, matched, all = traces }: { id: string; matched:
 export function App() {
   const route = useRoute();
   const [liveTraces, setLiveTraces] = useState<Trace[]>([]);
-  const openLive = (trace: Trace) => { setLiveTraces(previous => [...previous, trace]); setMatchedId(null); window.location.hash = `#/t/${encodeURIComponent(trace.id)}`; };
+  const openLive = (trace: Trace) => {
+    setLiveTraces(previous => [...previous, trace]);
+    setMatchedId(null);
+    navigation.liveArrival = `#/t/${encodeURIComponent(trace.id)}`;
+    window.location.hash = navigation.liveArrival;
+  };
   const [focusKey, setFocusKey] = useState(0);
   const [matchedId, setMatchedId] = useState<string | null>(null);
   // The note belongs to the arrival only: leaving the trace clears it.

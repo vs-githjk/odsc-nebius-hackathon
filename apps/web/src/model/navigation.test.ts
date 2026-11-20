@@ -13,6 +13,13 @@ describe("route experience", () => {
     expect(state.restore).toBe("");
     expect(arrive("#/t/two", state)).toBe(0);
   });
+  it.each(["#/", "#/t/live"])("a fresh live result from %s discards a pending restoration", (current) => {
+    const state = { current, scroll: 900, positions: new Map([["#/t/live", 900]]), origins: new Map<string, string>(), restore: "#/t/live" };
+    expect(arrive("#/t/live", state, true)).toBe(0);
+    expect(state.restore).toBe("");
+    expect(state.scroll).toBe(0);
+    expect(arrive("#/t/live", state)).toBeNull();
+  });
   it("returns to the previous hash including future list routes and trace routes", () => {
     for (const previous of ["#/", "#/traces", "#/how", "#/t/one"]) {
       expect(backTarget(previous, "#/t/two")).toBe(previous);

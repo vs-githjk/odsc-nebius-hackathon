@@ -5,7 +5,12 @@ import { isPlainClick } from "../model/claimBox.ts";
 export function RouteExperience({ routeKey }: { routeKey: string }) {
   useLayoutEffect(() => {
     const hash = window.location.hash || "#/";
-    const top = arrive(hash);
+    const fresh = navigation.liveArrival === hash;
+    const top = arrive(hash, navigation, fresh);
+    if (fresh) navigation.liveArrival = "";
+    const verdict = fresh ? document.querySelector(".stop-title") : null;
+    if (verdict) verdict.classList.add("live-arrival");
+    const highlightTimer = verdict ? window.setTimeout(() => verdict.classList.remove("live-arrival"), 1200) : undefined;
     if (top !== null) {
       focusHeading(document);
       window.scrollTo({ top, behavior: "instant" });
@@ -19,7 +24,7 @@ export function RouteExperience({ routeKey }: { routeKey: string }) {
     const save = () => { navigation.scroll = window.scrollY; };
     save();
     window.addEventListener("scroll", save, { passive: true });
-    return () => window.removeEventListener("scroll", save);
+    return () => { window.removeEventListener("scroll", save); window.clearTimeout(highlightTimer); verdict?.classList.remove("live-arrival"); };
   }, [routeKey]);
   return null;
 }

@@ -15,14 +15,15 @@ export const navigation = {
   positions: new Map<string, number>(),
   origins: new Map<string, string>(),
   restore: "",
+  liveArrival: "",
 };
 
-export function arrive(hash: string, state = navigation): number | null {
-  if (state.current === hash) return null;
+export function arrive(hash: string, state: Pick<typeof navigation, "current" | "scroll" | "positions" | "origins" | "restore"> = navigation, fresh = false): number | null {
+  if (state.current === hash && !fresh) return null;
   state.positions.set(state.current, state.scroll);
   state.origins.set(hash, backTarget(state.current, hash));
   state.current = hash;
-  const top = state.restore === hash ? state.positions.get(hash) ?? 0 : 0;
+  const top = !fresh && state.restore === hash ? state.positions.get(hash) ?? 0 : 0;
   state.restore = "";
   state.scroll = top;
   return top;
