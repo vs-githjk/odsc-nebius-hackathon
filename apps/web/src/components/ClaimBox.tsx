@@ -1,10 +1,30 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
-import { liveAction, liveAvailability, liveStageLabel, LIVE_ENDINGS, LiveError, STAGE_LABELS, streamTrace, type LiveMode } from "../model/live.ts";
+import { challengeTraces, pausedMessage, liveAction, liveAvailability, liveStageLabel, LIVE_ENDINGS, LiveError, STAGE_LABELS, streamTrace, type LiveMode } from "../model/live.ts";
+import { sampleRow } from "../model/sampleRow.ts";
 import type { Trace } from "pz/schema";
 import { outcomeOf, submitsOnKey, type Outcome } from "../model/claimBox.ts";
 
 // The live web app. The replay-only Pages site points here for live traces.
 const LIVE_HOST = "patient-0.vercel.app";
+
+export function PausedLiveNote({ mode, reason, traces }: { mode: LiveMode; reason?: string; traces: Trace[] }) {
+  const message = pausedMessage(mode, reason);
+  if (!message) return null;
+  const choices = challengeTraces(traces).slice(0, 3);
+  return <div className="untraced paused-live">
+    <p>{message}</p>
+    <a className="btn" href="#/traces">Open a recorded trace</a>
+    {choices.length > 0 && <>
+      <h3>Try these</h3>
+      <ul className="samples paused-choices">{choices.map(trace => <li key={trace.id}>
+        <a className="sample" href={`#/t/${encodeURIComponent(trace.id)}`}>
+          <span className="sample-claim">{trace.claim.text}</span>
+          <span className="paused-reason">{(trace.otherNumbers?.length ?? 0) > 0 ? "Another page gives a different number" : sampleRow(trace).ending}</span>
+        </a>
+      </li>)}</ul>
+    </>}
+  </div>;
+}
 
 // The claim box. A claim that matches a recorded trace opens it; anything else gets a calm answer, never a guess.
 // focusKey changes when the nav's "Trace a claim" is pressed, and the box takes focus.
@@ -62,7 +82,9 @@ export function ClaimBox({ traces, focusKey, onMatch, onLive }: { traces: Trace[
       if (!controller.signal.aborted) onLive(trace);
     } catch (error) { if (!controller.signal.aborted) {
       const code = error instanceof LiveError ? error.code : "trace_failed";
-      setFailureCode(code); setFailure(LIVE_ENDINGS[code] ?? LIVE_ENDINGS.trace_failed!);
+      if (["cap", "disabled", "not_configured"].includes(code)) {
+        setMode("paused"); setReason(code); setFailure("");
+      } else { setFailureCode(code); setFailure(LIVE_ENDINGS[code] ?? LIVE_ENDINGS.trace_failed!); }
     } }
     finally { if (running.current === controller) { running.current = null; setProgress(null); void liveAvailability().then(value => { setMode(value.mode); setReason(value.reason); }); } }
   };
@@ -113,19 +135,19 @@ export function ClaimBox({ traces, focusKey, onMatch, onLive }: { traces: Trace[
         </button>
       </div>
       <div id="claim-note" className="claim-note" aria-live="polite">
-        {outcome.kind === "idle" && <p className="meta">Paste the claim as you saw it, the whole sentence. Recorded traces open straight away.</p>}
+        {outcome.kind === "idle" && mode !== "paused" && <p className="meta">Paste the claim as you saw it, the whole sentence. Recorded traces open straight away.</p>}
         {outcome.kind === "problem" && (
           <p key={outcome.try} className="claim-problem">
             {outcome.text}
           </p>
         )}
-        {outcome.kind === "untraced" && !isRunning && !failure && (
+        {outcome.kind === "untraced" && mode !== "paused" && !isRunning && !failure && (
           <div key={outcome.try} className="untraced">
             <p className="untraced-title">Not traced yet</p>
             {live ? <>
               <p className="meta live-cost">Runs real searches and costs a few cents. Usually about 40 seconds, sometimes nearly five minutes.</p>
               <button className="btn" type="button" disabled={progress !== null} onClick={() => void startLive()}>Trace it live</button>
-            </> : mode === "paused" ? null : (
+            </> : (
               <p>
                 No recorded trace has this claim yet. <a href="#/traces">See every recorded trace</a>.
                 {typeof window !== "undefined" && window.location?.hostname !== LIVE_HOST && <> Live traces run at <a href={`https://${LIVE_HOST}`}>{LIVE_HOST}</a>.</>}
@@ -133,11 +155,7 @@ export function ClaimBox({ traces, focusKey, onMatch, onLive }: { traces: Trace[
             )}
           </div>
         )}
-        {mode === "paused" && !isRunning && !failure && <div className="untraced live-ending">
-          <p>{reason === "cap" ? LIVE_ENDINGS.cap : LIVE_ENDINGS.disabled}</p>
-          {traces[0] && <button className="btn secondary" type="button" onClick={() => onMatch(traces[0]!.id)}>Open a recorded trace</button>}
-          {!traces[0] && <p className="meta">Try again later.</p>}
-        </div>}
+        {!isRunning && <PausedLiveNote mode={mode} reason={reason} traces={traces} />}
         {progress && <section ref={progressPanel} className="untraced live-progress" aria-label="Live trace progress">
           <div className="live-progress-head"><p className="untraced-title">Following the claim</p>
             <span className="meta live-clock" aria-live="off">{Math.floor(elapsed / 60)}:{String(elapsed % 60).padStart(2, "0")} elapsed</span></div>
@@ -151,7 +169,7 @@ export function ClaimBox({ traces, focusKey, onMatch, onLive }: { traces: Trace[
           </div>
           <button className="btn secondary" type="button" onClick={() => { running.current?.abort(); setProgress(null); }}>Cancel trace</button>
         </section>}
-        {failure && <div className={"untraced live-ending " + (failureCode === "trace_failed" ? "failed" : "")} role="status">
+        {failure && mode !== "paused" && <div className={"untraced live-ending " + (failureCode === "trace_failed" ? "failed" : "")} role="status">
           <p>{failure}</p>
           {traces[0] && <button className="btn secondary" type="button" onClick={() => onMatch(traces[0]!.id)}>Open a recorded trace</button>}
           {!traces[0] && <p className="meta">Try again later.</p>}

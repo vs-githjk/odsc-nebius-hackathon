@@ -4,7 +4,7 @@ import { independence } from "pz/headline";
 import { ClaimBox } from "./ClaimBox.tsx";
 import { S7, answerPieces } from "../model/answerCheck.ts";
 import { challengeTraces } from "../model/live.ts";
-import { sampleRow } from "../model/sampleRow.ts";
+import { rowFacts, sampleRow } from "../model/sampleRow.ts";
 import { scrubberStops, dateToX, heat } from "../model/scrubber.ts";
 import { stopCard } from "../model/stopCard.ts";
 import { previewQuote } from "../model/quote.ts";
@@ -281,7 +281,7 @@ export function Landing({ traces, hero, focusKey, onMatch, onLive }: {
                 <li key={t.id}>
                   <a className="lp-try" href={traceHref(t)}>
                     <span className="sample-claim">{t.claim.text}</span>
-                    <span className="meta">{(t.otherNumbers?.length ?? 0) > 0 ? "Another page gives a different number" : sampleRow(t).ending}</span>
+                    <span className="meta">{rowFacts(sampleRow(t)).slice(0, 2).join(" · ")}</span>
                   </a>
                 </li>
               ))}
