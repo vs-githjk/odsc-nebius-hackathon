@@ -116,8 +116,16 @@ describe("ORIGIN_FOUND blockers", () => {
   it("[C16] an unread candidate parent cited by the origin itself blocks it", () => {
     cold(trace({ nodes: [node("study", { candidateParents: [{ url: "https://old.example", read: false }] })] }));
   });
-  it("[#307] an unread parent cited by a page not connected to the origin, and not a fact-check about the claim, does not block it", () => {
-    expect(decideStopState(trace({ nodes: [node("study"), node("news", { candidateParents: [{ url: "https://old.example", read: false }] })] }), rules).state).toBe("ORIGIN_FOUND");
+  it("[#307] an unread parent cited by a non-meta page off the origin's path still blocks it (it may point at the real, earlier origin)", () => {
+    cold(trace({ nodes: [node("study"), node("news", { pageType: answer("news"), clusterId: "c-news", candidateParents: [{ url: "https://old.example", read: false }] })] }));
+  });
+  it("[#307] an unread parent cited only by an off-topic fact-check page does not block it", () => {
+    const factCheck = node("checker", { url: "https://checker.example/fact-check/sperm-whale-stomach-plastic-philippines", meta: true, pageType: answer("news"), clusterId: "c-checker", candidateParents: [{ url: "https://old.example", read: false }] });
+    expect(decideStopState(trace({ nodes: [node("study"), node("news", { pageType: answer("news"), clusterId: "c-news" }), factCheck] }), rules).state).toBe("ORIGIN_FOUND");
+  });
+  it("[#307] an unread parent cited by a fact-check about this claim still blocks it", () => {
+    const factCheck = node("checker", { url: "https://checker.example/fact-check/do-penguins-nap-14-times-a-day", meta: true, pageType: answer("news"), clusterId: "c-checker", candidateParents: [{ url: "https://old.example", read: false }] });
+    cold(trace({ nodes: [node("study"), node("news", { pageType: answer("news"), clusterId: "c-news" }), factCheck] }));
   });
   it("[C16] an unsure page type blocks it", () => {
     cold(trace({ nodes: [node("study", { pageType: answer("unsure") })] }));

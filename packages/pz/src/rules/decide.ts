@@ -142,7 +142,7 @@ export function decideStopState(trace: Trace, rules: Rules): Decision {
       if (path.has(e.parentId) !== path.has(e.childId)) { path.add(e.parentId); path.add(e.childId); grew = true; }
     }
   }
-  const bearing = trace.nodes.filter((n) => path.has(n.id) || (n.meta && !offTopicMeta(n.url, { ...trace.claim.atoms, text: trace.claim.text })));
+  const bearing = trace.nodes.filter((n) => !n.meta || path.has(n.id) || !offTopicMeta(n.url, { ...trace.claim.atoms, text: trace.claim.text }));
   const unreadBlocking = bearing.reduce((sum, n) => sum + n.candidateParents.filter((p) => !p.read).length, 0);
   // The gate's reasons appear only when the gate is what blocks: some earliest page passes every other check.
   const notAsked = candidates.filter((n) => !n.sameClaim).length;
