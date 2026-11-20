@@ -12,7 +12,7 @@ export function Roots({ trace }: { trace: Trace }) {
     <p className="roots-measure"><span><b>{counts.pages}</b> {counts.pages === 1 ? "page" : "pages"},</span>{" "}<span><b>{counts.independentRoots}</b> independent {counts.independentRoots === 1 ? "root" : "roots"},</span>{" "}<span><b>{counts.copies}</b> {counts.copies === 1 ? "copy" : "copies"}</span></p>
     <ul className="root-rows">{rows.map(row => <li key={row.node.id}>
       <div className="root-page"><PageReceipt page={row} /></div>
-      {row.inferred.map(text => <p className="root-relation" key={text}>{text}</p>)}
+      {row.inferred.map(text => <p className="root-relation inferred" key={text}>{text}</p>)}
       {row.copies.length > 0 && <ul className="root-copies">{row.copies.map(copy => <li key={copy.node.id}><p className="root-relation">{copy.relation}</p><div className="root-page"><PageReceipt page={copy} /></div></li>)}</ul>}
     </li>)}</ul>
     {unrooted.length > 0 && <div><p>Linked pages with no independent root</p>{unrooted.map(page => <div className="root-page" key={page.node.id}><PageReceipt page={page} /></div>)}</div>}

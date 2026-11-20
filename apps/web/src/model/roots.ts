@@ -36,7 +36,7 @@ export function rootRows(trace: Trace) {
   const relation = (node: Node, root: Node) => {
     const edge = trace.edges.find(e => e.childId === node.id && byId.has(e.parentId) && e.kind === "explicit")
       ?? trace.edges.find(e => e.childId === node.id && byId.has(e.parentId));
-    if (edge) return `${edge.kind === "explicit" ? "Links to" : "Source inferred by date, no link:"} ${new URL(byId.get(edge.parentId)!.url).host}`;
+    if (edge) return `${edge.kind === "explicit" ? "Links to" : "Possible source (inferred by date, not verified):"} ${new URL(byId.get(edge.parentId)!.url).host}`;
     const rule = trace.clusters.find(c => c.id === node.clusterId)?.rule;
     const label = rule === "versions" ? "Version of" : rule === "same_byline" ? "Shares a byline with" : rule === "near_duplicate" ? "Similar wording to" : "Copies wording from";
     return `${label} ${new URL(root.url).host}`;

@@ -106,3 +106,14 @@ body { isolation: isolate; }
 .trace-page .stage .stop-title { font-size: 26px; font-weight: 600; letter-spacing: -0.015em; }
 @media (max-width: 600px) { .trace-page .stage .stop-title { font-size: 22px; } }
 @media (min-width: 601px) { .trace-page .stage-head { position: absolute; top: 0; right: 0; } }
+
+/* Back to results as a quiet text button (XO on #259): chevron, ink-2, no underline or chrome, darker on hover. */
+.trace-page .back { gap: 6px; min-height: 44px; padding: 0 8px 0 0; color: var(--ink-2); font-size: 15px; font-weight: 500; text-decoration: none; border-radius: 8px; }
+.trace-page .back:hover { color: var(--ink); }
+.trace-page .back:focus-visible { outline: 2px solid var(--action); outline-offset: 2px; }
+.back-chevron { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform 150ms ease; }
+.trace-page .back:hover .back-chevron { transform: translateX(-2px); }
+@media (prefers-reduced-motion: reduce) { .back-chevron { transition: none; } }
+
+/* #259: an inferred link does not make a page a copy, so a root's possible source is muted, not a fact. */
+.root-relation.inferred { color: var(--ink-2); font-style: italic; }
