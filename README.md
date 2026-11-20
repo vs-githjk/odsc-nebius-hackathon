@@ -4,7 +4,7 @@ A viral statistic reaches a reporter with no source attached: "Americans check t
 
 Team **Says Who**, ODSC x Nebius Hackathon 2026. Built on **Nebius Token Factory** (typed questions, strict JSON schemas, first-token logprobs) and **Tavily** (search and extract), with the Wayback Machine for dates.
 
-**Try it live: [patient-0.vercel.app](https://patient-0.vercel.app)** (live traces share a small daily budget; recorded traces open free). Replay only, no keys: [GitHub Pages](https://vs-githjk.github.io/odsc-nebius-hackathon/).
+**Try it live: [patient-0.vercel.app](https://patient-0.vercel.app)** (live traces share a small daily budget; recorded traces open free).
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/readme/landing-1440-dark.png">
@@ -38,6 +38,7 @@ Honest status as of Nov 19, 2026:
 
 ## Try it in two minutes, no API keys
 
+For the complete fresh-checkout judge path, run `bash scripts/judge-check.sh`. It installs dependencies, verifies the project, runs the judge summary and independently checks the replay output with provider keys empty. CI runs it on Linux and macOS; see [the workflow](.github/workflows/judge-check.yml).
 
 ```sh
 git clone https://github.com/vs-githjk/odsc-nebius-hackathon.git && cd odsc-nebius-hackathon

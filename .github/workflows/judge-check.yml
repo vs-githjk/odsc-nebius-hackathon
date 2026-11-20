@@ -1,0 +1,24 @@
+name: Clean-clone judge check
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  judge-check:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      # Fetch the exact event SHA, including a PR's merge SHA, rather than whatever main becomes later.
+      - name: Check the fresh checkout without keys
+        env:
+          JUDGE_REPO: ${{ github.server_url }}/${{ github.repository }}.git
+          JUDGE_SHA: ${{ github.sha }}
+        run: bash scripts/judge-check.sh "$JUDGE_REPO" "$JUDGE_SHA"
