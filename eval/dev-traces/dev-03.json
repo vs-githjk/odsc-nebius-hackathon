@@ -353,6 +353,7 @@
     "state": "TRAIL_GOES_COLD",
     "row": 6,
     "reasons": [
+      "no earliest page with a confirmed date, a primary page type, no earlier citation and no negated span",
       "1 unread candidate parent(s)"
     ],
     "counts": {

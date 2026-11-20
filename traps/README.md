@@ -32,7 +32,7 @@ Each case also lists the `pz verify` checks its planted problem must fire (`expe
 
 The typed answers come from a stub that calls the planted page (the source's earliest page) a study and says "same claim" with 0.97 confidence everywhere. Only code can stop a planted origin. A test checks that without its mutation each source ends ORIGIN_FOUND on the planted page, so the case is something code has to catch. Since #110 the dry run no longer does (see below), and `pz traps` runs each source once unmutated to find this out. It prints:
 
-`pipeline: wrong origins 3 of 12 cases that could end on one; 3 are the known gap (paraphrased negation, docs/limits.md), and the other 9 give 0 (95% upper bound 28.3%). 4 more test nothing, because their source ends without an origin before any mutation (dry-run: TRAIL_GOES_COLD, 1 unread candidate parent(s)). Failure paths end as expected in 12 of 12; planted dates are capped in 3 of 3.`
+`pipeline: wrong origins 3 of 12 cases that could end on one; 3 are the known gap (paraphrased negation, docs/limits.md), and the other 9 give 0 (95% upper bound 28.3%). 4 more test nothing, because their source ends without an origin before any mutation (dry-run: TRAIL_GOES_COLD, no earliest page with a confirmed date, a primary page type, no earlier citation and no negated span; 1 unread candidate parent(s)). Failure paths end as expected in 12 of 12; planted dates are capped in 3 of 3.`
 
 12 cases can end on a wrong origin, and all 12 are counted. The 4 dry-run cases would make 16, but they end cold before any trap is planted, so they test nothing yet. The failure-path cases read no page or stop before any origin rule, and the dating cases check the date cap, so each group gets its own count.
 

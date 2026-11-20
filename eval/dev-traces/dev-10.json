@@ -1320,10 +1320,10 @@
     "capHit": null
   },
   "decision": {
-    "state": "TRAIL_GOES_COLD",
-    "row": 6,
+    "state": "ORIGIN_FOUND",
+    "row": 5,
     "reasons": [
-      "2 unread candidate parent(s)"
+      "earliest page n7 is a report with a confirmed date"
     ],
     "counts": {
       "pages": 8,

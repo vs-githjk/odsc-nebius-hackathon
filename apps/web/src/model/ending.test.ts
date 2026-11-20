@@ -15,8 +15,10 @@ describe("endingSentence", () => {
       ["same_claim not asked", "The earliest page could not be confirmed as stating the same claim."],
     ];
     for (const [reason, expected] of cases) expect(endingSentence({ ...withoutUnread, decision: { ...cold.decision, reasons: [reason!] } })).toBe(expected);
-    const hero = traces.find(t => t.id === "dev-10")!;
-    expect(endingSentence(hero)).toBe("A page it cites could not be opened.");
+    // dev-06 stays cold because an on-topic fact-check cites pages it could not open (#307).
+    const unread = traces.find(t => t.id === "dev-06")!;
+    expect(unread.decision.state).toBe("TRAIL_GOES_COLD");
+    expect(endingSentence(unread)).toBe("A page it cites could not be opened.");
   });
   it("gives every sample one plain sentence, all different, so two samples that end the same way still read apart", () => {
     const samples = traces.filter((t) => t.synthetic);

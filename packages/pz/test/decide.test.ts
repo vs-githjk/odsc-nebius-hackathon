@@ -113,8 +113,11 @@ describe("rules wiring", () => {
 
 describe("ORIGIN_FOUND blockers", () => {
   const cold = (t: Trace) => expect(state(t).state).toBe("TRAIL_GOES_COLD");
-  it("[C16] an unread candidate parent blocks it", () => {
-    cold(trace({ nodes: [node("study"), node("news", { candidateParents: [{ url: "https://old.example", read: false }] })] }));
+  it("[C16] an unread candidate parent cited by the origin itself blocks it", () => {
+    cold(trace({ nodes: [node("study", { candidateParents: [{ url: "https://old.example", read: false }] })] }));
+  });
+  it("[#307] an unread parent cited by a page not connected to the origin, and not a fact-check about the claim, does not block it", () => {
+    expect(decideStopState(trace({ nodes: [node("study"), node("news", { candidateParents: [{ url: "https://old.example", read: false }] })] }), rules).state).toBe("ORIGIN_FOUND");
   });
   it("[C16] an unsure page type blocks it", () => {
     cold(trace({ nodes: [node("study", { pageType: answer("unsure") })] }));
