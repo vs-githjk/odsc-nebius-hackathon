@@ -17,7 +17,27 @@ Says Who
 
 ### In two sentences
 
-Patient Zero takes a viral statistic, a quote or a whole AI answer, and walks each claim backwards through time to the earliest web page it can find that states it, quoting the exact sentence on every page. It shows how the wording changed along the way and how many independent roots the copies trace back to. When the trail ends without an origin, it says so and says why: code decides that from the trace, never the model.
+**Anyone can find you a source. Patient Zero shows you whether to trust it.** It takes a viral statistic, a quote or a whole AI answer, and walks each claim backwards through time to the earliest web page it can find that states it, quoting the exact sentence on every page. It shows how the wording changed along the way and how many independent roots the copies trace back to. When the trail ends without an origin, it says so and says why: code decides that from the trace, never the model.
+
+### What you can open
+
+Everything here opens free in the live app at https://patient-0.vercel.app, replayed from committed recordings:
+
+- **The landing** (`#/`): the headline, the claim box, and the recorded trace of [dev-10](../eval/dev-traces/dev-10.json) ("By 2050 there will be more plastic than fish in the ocean") walking back from 2025 to 2016, page by page.
+- **A trace** (`#/t/dev-10`): the ending first, then Follow the wording (the exact sentence on each page and what changed from the page before, on a time ramp), then Copies and roots. "Replay the walk" plays the recorded searches and page reads.
+- **Check an AI answer** (`#/answer`): a recorded answer check ([fixtures/answers/s7-answer.json](../fixtures/answers/s7-answer.json)). Each statistic in the answer is underlined and opens its own trace. The answer was written for the demo; it is not a reply from any AI tool. On the web this page is a replay: checking a new answer live runs from the command line (`pz trace --answer`).
+- **Recorded traces** (`#/traces`): every recorded run, searchable and filtered by ending, with the invented SAMPLE examples kept under their own heading.
+- **How it works** (`#/how`): the four steps, each with what it did on a recorded trace, and the six endings.
+
+### Gallery captions
+
+The five gallery images are in [docs/screenshots/submission/](screenshots/submission/README.md), with a phone set of the same five views.
+
+1. "Anyone can find you a source. Patient Zero shows you whether to trust it." The landing page, with a recorded trace walking a viral claim back from 2025 to 2016 and ending with the trail going cold.
+2. The ending comes first. The trail goes cold because a page it cites could not be opened, so no origin is named. The earliest pages found, and how each date was proven.
+3. Follow the wording: the exact sentence on each page, with what changed from the page before, on a time ramp from 2016 to 2025.
+4. Copies and roots: 8 pages, 6 independent roots, 2 copies, each root with its date and how it was dated, and its copies nested under it.
+5. Check an AI answer: each statistic in an answer traced on its own. A recorded example, written for this demo. 3 statistics: 3 went cold.
 
 ### Who it is for
 
@@ -68,9 +88,9 @@ https://github.com/vs-githjk/odsc-nebius-hackathon (public, MIT licence: [LICENS
 
 ## Deployment URL (optional)
 
-https://vs-githjk.github.io/odsc-nebius-hackathon/ (replay only: it opens the recorded traces with no keys, so it can't trace a new claim).
+https://patient-0.vercel.app (the live app: it traces new claims live under a small shared dollar cap and per-IP limits, and every recorded trace opens free).
 
-Live app: https://patient-0.vercel.app (traces new claims live under a small shared dollar cap and per-IP limits; recorded traces open free).
+Replay only, no keys: https://vs-githjk.github.io/odsc-nebius-hackathon/ (it opens the recorded traces but can't trace a new claim).
 
 ## Report URL (optional)
 
