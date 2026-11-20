@@ -9,7 +9,8 @@ import { month, stopCard } from "../model/stopCard.ts";
 // one, and the rule that decided, which opens the full rule sheet.
 export function StopCard({ trace }: { trace: Trace }) {
   const card = stopCard(trace);
-  const unread = unreadParents(trace);
+  // An origin was found, so no unread page bore on it (decide.ts): listing them under "Origin found" would read as a doubt.
+  const unread = trace.decision.state === "ORIGIN_FOUND" ? [] : unreadParents(trace);
   const tone = sampleRow(trace).tone;
   const earliest = trace.nodes.filter(node => trace.earliest.nodeIds.includes(node.id))
     .sort((a, b) => (a.date.value ?? "9999").localeCompare(b.date.value ?? "9999"));
