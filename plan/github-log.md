@@ -164,3 +164,4 @@
 - 2026-11-19 19:45 ET: merged #265 (Anoop: How it works redesign).
 - 2026-11-19 19:50 ET: merged #267 (Anoop: README top with new landing + real dev-10 trace, light/dark). #266 waiting on conflict fix.
 - 2026-11-19 19:55 ET: merged #268 (Anoop: favicon, meta, share card).
+- 2026-11-19 20:00 ET: merged #266 (AI answer page), #269 (traces list). Anoop 6/9 done.
