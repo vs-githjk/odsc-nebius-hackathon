@@ -199,3 +199,4 @@
 - 2026-11-19 23:35 ET: judge-evening 76.5/100 (+5.5). Fixes posted: Anoop (daily->lifetime wording, scope no-wrong-origin, Where it stands, Try these labels), Rishit (paused live state, name the unopened page). Live cap decision to Vidyut.
 - 2026-11-19 23:45 ET: merged #304 (overclaims), #305 (Where it stands 4 lines).
 - 2026-11-20 00:00 ET: merged #306 (Try these labels), #308 (paused live fallback, unread pages named). Rohan: attempt C Wayback on #307.
+- 2026-11-20 00:15 ET: #309 origin experiment A verified (dev-09, dev-10 ORIGIN_FOUND, 0 false, G4 fixed). XO requested narrower unread exemption (only off-topic meta) + copy updates in same PR. Video ending decision to Vidyut.
