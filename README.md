@@ -2,7 +2,7 @@
 
 **Anyone can find you a source. Patient Zero shows you whether to trust it.** Paste a viral claim and it walks it back through time to the earliest web page it can find that states it.
 
-**Try it live: [patient-0.vercel.app](https://patient-0.vercel.app)** (live traces share a small daily budget; recorded traces open free).
+**Try it live: [patient-0.vercel.app](https://patient-0.vercel.app)** (live traces share a small shared budget; recorded traces open free).
 
 Demo video (2 to 3 min): [SLOT: link]
 
