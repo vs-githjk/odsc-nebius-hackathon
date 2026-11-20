@@ -190,3 +190,4 @@
 - 2026-11-19 22:15 ET: merged #294 (Rohan T73 MCP stdio tools). Rohan continuing #224 on own branch (Hoover Dam boundary).
 - 2026-11-19 22:25 ET: asked Rohan whether the Nebius key came via dev.nebius.com/builders credits.
 - 2026-11-19 22:35 ET: merged #296 (Rohan: #224 continuation, subject contract). Closed #224.
+- 2026-11-19 22:45 ET: merged #297 (Anoop README: criteria map, team+video line, Safety, links).
