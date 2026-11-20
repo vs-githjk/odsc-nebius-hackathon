@@ -35,7 +35,12 @@ function Rows({ rows, traces }: { rows: SampleRow[]; traces: Trace[] }) {
 export function TracesPage({ traces, errors }: { traces: Trace[]; errors: LoadError[] }) {
   const [query, setQuery] = useState("");
   const [ending, setEnding] = useState<string | null>(null);
-  const counts = endingCounts(sampleRows(traces));
+  // The counts are recorded runs only, so an invented example never inflates an ending (XO on #307). Every ending that
+  // any trace has stays a filter, so the examples can still be found by their ending.
+  const recorded = traces.filter((t) => !t.synthetic);
+  const recordedCounts = new Map(endingCounts(sampleRows(recorded)).map((c) => [c.ending, c.count]));
+  const counts = endingCounts(sampleRows(traces)).map((c) => ({ ending: c.ending, count: recordedCounts.get(c.ending) ?? 0 }))
+    .sort((a, b) => b.count - a.count || a.ending.localeCompare(b.ending));
   const list = traceList(traces, { ending, query });
   const shown = list.recorded.length + list.examples.length;
   const filtered = ending !== null || query.trim() !== "";
@@ -60,7 +65,7 @@ export function TracesPage({ traces, errors }: { traces: Trace[]; errors: LoadEr
               <legend>Ending</legend>
               <label className={ending === null ? "on" : undefined}>
                 <input type="radio" name="tl-ending" checked={ending === null} onChange={() => setEnding(null)} />
-                All <span className="tl-count">{traces.length}</span>
+                All <span className="tl-count">{recorded.length}</span>
               </label>
               {counts.map((c) => (
                 <label key={c.ending} className={ending === c.ending ? "on" : undefined}>
@@ -71,7 +76,7 @@ export function TracesPage({ traces, errors }: { traces: Trace[]; errors: LoadEr
             </fieldset>
           </div>
           <p className="meta tl-status" role="status">
-            {filtered ? <>{shown} of {traces.length} traces match. <button type="button" className="tl-clear" onClick={clear}>Show all</button></> : `${traces.length} traces.`}
+            {filtered ? <>{shown} of {traces.length} traces match. <button type="button" className="tl-clear" onClick={clear}>Show all</button></> : `${recorded.length} recorded runs and ${traces.length - recorded.length} examples. Counts are recorded runs only.`}
           </p>
 
           {shown === 0 && <p className="tl-empty">No trace matches. Try another word, or <button type="button" className="tl-clear" onClick={clear}>show all traces</button>.</p>}
