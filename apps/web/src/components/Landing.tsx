@@ -236,7 +236,7 @@ export function Landing({ traces, hero, focusKey, onMatch, onLive }: {
                 <p className="lp-legend meta"><i className="lp-dot-root" aria-hidden="true" /> separate root <i className="lp-dot-copy" aria-hidden="true" /> copy</p>
               </Receipt>
             )}
-            <Receipt n="4" title="It checks an AI answer, one statistic at a time" measures={`Each statistic in the answer is found and traced on its own. This run was recorded on ${S7.recordedAt} and replays here; checking a whole answer live works from the command line only.`}
+            <Receipt n="4" title="It checks an AI answer, one statistic at a time" measures={`Each statistic in the answer is found and traced on its own. This run was recorded on ${when(S7.recordedAt, "day")} and replays here; checking a whole answer live works from the command line only.`}
               check={[{ label: "open the answer and its traces", href: "#/answer" }, { label: "fixtures/answers/s7-answer.json", href: blob("fixtures/answers/s7-answer.json") }]}>
               <AnswerCheck />
             </Receipt>
