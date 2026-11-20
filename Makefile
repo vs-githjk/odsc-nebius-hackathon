@@ -1,4 +1,7 @@
-.PHONY: verify replay live dev-score dev-run replay-walk judge doctor
+.PHONY: verify replay live dev-score dev-run replay-walk judge doctor usage-report
+
+usage-report:
+	@node --import tsx packages/pz/scripts/usage-report.ts
 
 # Re-checks everything with no API keys: typecheck, tests, every committed trace (fixtures, the recorded E2 dev runs in
 # eval/dev-traces and the spike traces), the trap set,
