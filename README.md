@@ -17,7 +17,16 @@ Team **Says Who**, ODSC x Nebius Hackathon 2026. Built on **Nebius Token Factory
 </picture>
 
 *The landing page, and the trace view on a real recorded trace: [dev-10](eval/dev-traces/dev-10.json), "By 2050 there will be more plastic than fish in the ocean", replayed. It found the claim back to January 2016 and ends with the trail going cold, because a page it cites could not be opened, so no origin is named. Both follow your light or dark setting.*
-<!-- numbers ok: 1440 (screenshot width in the file names) -->
+On a phone, the same five views:
+
+<p>
+  <img width="150" alt="Landing page on a phone" src="docs/screenshots/submission/phone/1-landing-390.png">
+  <img width="150" alt="The trace ending on a phone" src="docs/screenshots/submission/phone/2-trace-ending-390.png">
+  <img width="150" alt="Follow the wording on a phone" src="docs/screenshots/submission/phone/3-follow-the-wording-390.png">
+  <img width="150" alt="Copies and roots on a phone" src="docs/screenshots/submission/phone/4-copies-and-roots-390.png">
+  <img width="150" alt="Check an AI answer on a phone" src="docs/screenshots/submission/phone/5-check-an-ai-answer-390.png">
+</p>
+<!-- numbers ok: 1440, 390, 150 (screenshot widths in the file names, image width) -->
 
 ## Where it stands
 
