@@ -216,9 +216,9 @@ export function Landing({ traces, hero, focusKey, onMatch, onLive }: {
           <p className="lp-intro">Each one is taken from a trace recorded in this repo, with the file or page you can open to check it.</p>
           <div className="lp-receipts">
             {hero && (
-              <Receipt n="1" title="It names no wrong origin" measures="False origins: a page named as the origin that isn't. On our 20-claim tuning set, final live run: 0. Most traces stop short of the origin (target page cited on 4 of 10), and none yet ends on its true origin."
-                check={[{ label: "eval/dev-score.md", href: blob("eval/dev-score.md") }, { label: "open this trace", href: traceHref(hero) }]}>
-                <p className="lp-big"><span>0</span> false origins</p>
+              <Receipt n="1" title="0 wrong origins on our 20-claim tuning set" measures="False origins: a page named as the origin that isn't. On our 20-claim tuning set, final live run: 0. Most traces stop short of the origin (target page cited on 4 of 10), and none yet ends on its true origin. Outside that set it is not perfect: on our 8-claim gallery run it named one false origin (G4), a list page whose metadata date predates the paper it lists."
+                check={[{ label: "eval/dev-score.md", href: blob("eval/dev-score.md") }, { label: "docs/gallery.md (G4)", href: blob("docs/gallery.md") }, { label: "open this trace", href: traceHref(hero) }]}>
+                <p className="lp-big"><span>0</span> false origins on the tuning set</p>
                 <ColdEnding trace={hero} />
               </Receipt>
             )}
