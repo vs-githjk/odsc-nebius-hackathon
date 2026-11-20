@@ -33,7 +33,7 @@ Team **Says Who**, ODSC x Nebius Hackathon 2026. Built on **Nebius Token Factory
 - **Runs live end to end:** `pz trace "<claim>"` searches with Tavily, reads and dates pages, asks Token Factory typed questions and decides the ending in code ([#191](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/191)); with no keys every command replays committed traces.
 - **On our 20-claim tuning set (E2), final live run on Nov 19:** 0 false origins, target page cited on 4/10, earliest page right on 2, correct cold stops 6/9 ([eval/dev-score.md](eval/dev-score.md), which also holds every earlier run).
 - **The replay re-decision finds the expected origins:** [dev-10](eval/dev-traces/dev-10.json) ends on the World Economic Forum report and [dev-09](eval/dev-traces/dev-09.json) on the Science Advances paper. This used the recorded evidence, with no new live calls ([eval/dev-score.md](eval/dev-score.md)). Reaching and dating origins remains a weakness: the gallery live run named a false origin, G4, which no longer passes the origin rules on replay ([docs/gallery.md](docs/gallery.md), [docs/limits.md](docs/limits.md)).
-- **Not yet measured:** the held-out set. The first-week spike, which lost, is under [Evaluation](#evaluation).
+- **Held-out, run once on Nov 19:** 0 false origins on ten claims it never saw, but it cited none of the 6 targets, and 2 of 10 traces failed ([eval/heldout-readout.md](eval/heldout-readout.md)). The first-week spike, which lost, is under [Evaluation](#evaluation).
 
 ## Try it in two minutes, no API keys
 
@@ -204,7 +204,7 @@ These two are labelled synthetic: the claim is the invented Harbor Zoo one, and 
 |---|---|---|---|
 | E2 dev ([eval/dev-claims.json](eval/dev-claims.json)) | 20: 11 with a web origin, 9 that go cold | Rules, cutoffs and prompts are tuned here only | Latest row in [eval/dev-score.md](eval/dev-score.md), the final live run (Nov 19): false origins 0, target cited 4/10, earliest 2 Pass, 0 Partial, 8 Fail, cold stops 6/9, 18 of 19 scored (1 out of scope). Every earlier run is a row in the same file. |
 | E3 check ([eval/dev-claims-e3.json](eval/dev-claims-e3.json)) | 40: 18 with a web origin, 22 that go cold | Check only, nothing tuned on it | not run live yet |
-| Held-out | 10, private; its hash was committed on Nov 8, before most stages were built (the decision table, number rules and clients came first) ([eval/heldout.sha256](eval/heldout.sha256)) | Run once, on a frozen engine | pending |
+| Held-out | 10, private; its hash was committed on Nov 8, before most stages were built (the decision table, number rules and clients came first) ([eval/heldout.sha256](eval/heldout.sha256)) | Run once, on a frozen engine | Run once on Nov 19 ([eval/heldout-readout.md](eval/heldout-readout.md)): 8 of 10 traced (2 failed), false origins 0, target cited 0/6, earliest 0 Pass, 0 Partial, 5 Fail, cold stops 2/4. No false origin on unseen claims; it found none of the targets. |
 
 `make dev-score` grades a set of traces the way the spike was graded ([eval/dev-score.ts](eval/dev-score.ts)).
 
@@ -240,6 +240,7 @@ Every call writes a usage row: model, tokens, cached tokens, Tavily credits, dol
 - Web pages only. Print-only and paywalled origins are out of scope; the trail goes cold there and says so.
 - "Earliest source we found" is not "first use". Pages that were never indexed or archived cannot be found.
 - Claims need a number, a range or a distinctive phrase to match on.
+- A false origin the gate caught: after the #310 origin rule, a replay of every recorded trace found that the S7 answer check's plastic claim would name a Greenpeace photo archive page, because the WEF report in the same trace had been judged not the same claim. The earliest-dated-page guard ([#316](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/316)) now refuses an origin when an earlier page on the trail was not ruled out, and the replay test over every recorded trace keeps it that way ([packages/pz/test/origin-experiment.test.ts](packages/pz/test/origin-experiment.test.ts)).
 - One model answers every typed question. A second model family on same claim was built, measured on E2 and rejected: it lost 23 of 60 true matches and removed no false ones, so it stays off ([#178](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/178), [eval/same-claim/second-model.ts](eval/same-claim/second-model.ts)).
 
 <!-- numbers ok: 23, 60 (XO's live E2 measure of the second model on Nov 16, logged in plan/decisions.md) -->
