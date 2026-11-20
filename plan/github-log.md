@@ -183,3 +183,4 @@
 - 2026-11-19 21:50 ET: merged #290 (metadata-path veto; XO probe clean), #289 (Rohan T58 usage report), #288 (script replay line, re-approve), #287 (gallery final 2/4).
 - 2026-11-19 21:55 ET: merged #291 (byline docs). Anoop next: judge-path walk, README skim.
 - 2026-11-19 21:40 ET: Vidyut decisions logged (script approved; rematch dropped; no Pages redeploy; Rishit storyboard Fri AM; #224 to Rohan else close at 02:15). Merged #293.
+- 2026-11-19 21:45 ET: merged #292 (Rohan T60: fresh keyless checkout on Linux+macOS CI, judge-check.sh).
