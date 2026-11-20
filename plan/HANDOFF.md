@@ -187,3 +187,9 @@ Next, in order (when Vidyut says "go"):
 - Voiceover recorded: ~/Desktop/patient-zero-video/PatientzeroVO.m4a (+ PatientzeroVO.json whisper words). Next: cut per shot S1 to S11, capture screens per docs/storyboard/README.md, assemble with master-creator (demo-video skill), Vidyut approves the cut.
 - Open: Rohan held-out (#250, needs his own typed approval), Wayback fallback C (#307), macOS judge-check 60 s flake fix; Vidyut walks the submit form Friday; morning judge pass Fri ~08:00 ET.
 - Merged tonight: #255 to #312 (landing, How it works, answer page, traces list, a11y, share card, README template items, byline dating #285/#290, phrase subject #296, MCP #294, fresh-clone CI #292, usage report #289, live polish, storyboard).
+
+## Fri Nov 20, 00:50 ET (Vidyut asleep)
+- Merged since 23:45: #313 (phone tap targets on the set-aside note), #314 (og.png shows Origin found).
+- **S7 false origin** (Rishit): under the #310 rules, s7-answer claim 0 picks the Greenpeace whale-art page. It is the only bad case across all 41 recorded traces. Fix: an earliest-dated non-meta page guard, which only demotes. Assigned to Anoop on #307, due **10:00 ET**. If it isn't merged by then, Vidyut decides on rolling back #309/#310 (which changes the video ending).
+- Rishit: raw video captures (S1 to S11), then #315 (gallery). Rohan: held-out result file and the README/submission slots (#250); his status was asked at 00:47. If he's off, the slots go to Anoop.
+- Only the watcher runs overnight. Merge only when everything is SUCCESS. 08:00 judge pass; 10:00 engine cutoff; 14:00 freeze; 18:00 submit.
