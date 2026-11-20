@@ -53,7 +53,7 @@ export function createMcpSession(env = process.env, run = traceCommand) {
       }
       const args = TraceArgs.parse(call.data.arguments ?? {});
       const lines: string[] = [], errors: string[] = [];
-      const command = args.claim ? ["--json", args.claim] : ["--json", "--replay-of", args.replayPath ?? "fixtures/traces/sample-rich.json"];
+      const command = args.claim ? ["--json", "--", args.claim] : ["--json", "--replay-of", args.replayPath ?? "fixtures/traces/sample-rich.json"];
       const code = await run(command, { write: line => lines.push(line), error: line => errors.push(line), color: false }, env);
       if (code) {
         const known = new Set(["not_configured", "http_error", "network_error", "bad_response", "budget_exceeded", "budget_bound_exceeded", "trace_failed"]);
