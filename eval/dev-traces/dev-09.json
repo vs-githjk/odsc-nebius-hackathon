@@ -561,10 +561,10 @@
     "capHit": null
   },
   "decision": {
-    "state": "TRAIL_GOES_COLD",
-    "row": 6,
+    "state": "ORIGIN_FOUND",
+    "row": 5,
     "reasons": [
-      "1 unread candidate parent(s)"
+      "earliest page n3 is a study with a confirmed date"
     ],
     "counts": {
       "pages": 2,

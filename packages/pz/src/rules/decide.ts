@@ -53,10 +53,50 @@ function conflicting(trace: Trace, pages: Node[], rules: Rules): boolean {
   return agrees && differs;
 }
 
+// The origin experiment, attempt A (#307). Two code-only refinements, each measured by replaying every recorded trace
+// against the answer key (src/eval/origin-replay.ts): 0 false origins is the gate.
+//
+// 1. A primary page must be typed confidently, and its address must look like a document: a dated article path
+//    (/2017/07/10/...) is a news or blog post, and a list page (/publications, /published-papers) lists other works.
+//    The model typed a CNBC article and a Scientific American column as "report"; G4's false origin was a list page.
+export const PRIMARY_MIN_PROBABILITY = 0.9;
+const DATED_PATH = /\/(?:19|20)\d{2}\/\d{1,2}\/(?:\d{1,2}\/)?/;
+const LIST_PAGES = new Set(["publications", "published-papers", "papers", "articles", "news", "blog", "archive", "archives", "category",
+  "categories", "tag", "tags", "search", "press", "press-releases", "media", "resources", "library", "index", "home", "list"]);
+export function primaryUrl(url: string): boolean {
+  let path: string;
+  try { path = new URL(url).pathname.toLowerCase(); } catch { return false; }
+  if (DATED_PATH.test(path)) return false;
+  const last = path.replace(/\/+$/, "").split("/").at(-1) ?? "";
+  return !LIST_PAGES.has(last);
+}
+
+// 2. An unread cited page blocks an origin only when it bears on this claim: cited by the candidate origin, by a page
+//    connected to it by an edge, or by a fact-check about this claim. A fact-check page about something else (dev-10's
+//    Snopes piece on a sperm whale) says nothing about where this claim began. A fact-check is judged by its address:
+//    on-topic if it carries the claim's number as a whole token or two of the claim's words; too few words to judge
+//    counts as on-topic, so its unread citations still block.
+const STOP = new Set(["that", "there", "their", "they", "this", "with", "will", "would", "more", "than", "have", "from", "only", "just",
+  "ever", "been", "into", "about", "your", "what", "when", "which", "need", "stay"]);
+const words = (text: string) => text.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+export function offTopicMeta(url: string, claim: { number: { canonical: string } | null; subjectLemma: string; text: string }): boolean {
+  let path: string;
+  try { path = new URL(url).pathname; } catch { return false; }
+  const tokens = words(path);
+  const alpha = tokens.filter((t) => /[a-z]/.test(t) && t.length >= 3);
+  if (alpha.length < 3) return false;
+  const number = claim.number?.canonical.replace(/[^0-9.]/g, "");
+  if (number && tokens.includes(number)) return false;
+  const claimWords = [...new Set(words(claim.text).filter((w) => w.length >= 4 && /[a-z]/.test(w) && !STOP.has(w)))];
+  const hits = claimWords.filter((c) => alpha.some((t) => t === c || (t.length >= 4 && (t.startsWith(c) || c.startsWith(t)))));
+  return hits.length < 2;
+}
+
 // Row 5's page checks, in one place so the stop card quotes the very page decide picked (XO on #180).
 function originChecks(trace: Trace, pages: Node[], rules: Rules) {
   const eligible = pages.filter((n) =>
     trace.earliest.nodeIds.includes(n.id) && confident(n.pageType, rules) && rules.primaryPageTypes.includes(n.pageType.optionId)
+    && (n.pageType.probability ?? 0) >= PRIMARY_MIN_PROBABILITY && primaryUrl(n.url)
     && n.date.kind !== "unconfirmed" && !n.citesEarlier && citesInWords(trace, n, rules) === null
     && !trace.spans.some((s) => s.nodeId === n.id && isNegated(s, rules.negationPrefixes)));
   // T50: a page with an instruction aimed at a model anywhere on it (the walker quotes it on the node) or in or around
@@ -93,6 +133,17 @@ export function decideStopState(trace: Trace, rules: Rules): Decision {
   if (conflicting(trace, pages, rules)) return decide("CONFLICTING", 4, ["earliest cluster gives different numbers beyond every transform"]);
 
   const { eligible, candidates, origin } = originChecks(trace, pages, rules);
+  // #307: which unread parents bear on this claim (see offTopicMeta). The origin's path is every page joined to it by
+  // edges, in either direction.
+  const path = new Set<string>(origin ? [origin.id] : []);
+  for (let grew = true; grew;) {
+    grew = false;
+    for (const e of trace.edges) {
+      if (path.has(e.parentId) !== path.has(e.childId)) { path.add(e.parentId); path.add(e.childId); grew = true; }
+    }
+  }
+  const bearing = trace.nodes.filter((n) => !n.meta || path.has(n.id) || !offTopicMeta(n.url, { ...trace.claim.atoms, text: trace.claim.text }));
+  const unreadBlocking = bearing.reduce((sum, n) => sum + n.candidateParents.filter((p) => !p.read).length, 0);
   // The gate's reasons appear only when the gate is what blocks: some earliest page passes every other check.
   const notAsked = candidates.filter((n) => !n.sameClaim).length;
   // T79: pages the first model says yes on that the second model does not.
@@ -117,7 +168,10 @@ export function decideStopState(trace: Trace, rules: Rules): Decision {
     trace.earliest.earlierWindowSearches < rules.earlierWindowSearches && `fewer than ${rules.earlierWindowSearches} earlier-window searches`,
     trace.earliest.earlierFound > 0 && "earlier-window searches found earlier pages",
   ].filter((b): b is string => typeof b === "string");
-  if (blockers.length === 0) return decide("ORIGIN_FOUND", 5, [`earliest page ${origin!.id} is a ${origin!.pageType!.optionId} with a confirmed date`]);
+  // The unread line is always reported, but it blocks only when an unread parent bears on this claim (#307).
+  const unreadLine = `${unreadParents} unread candidate parent(s)`;
+  const blocking = blockers.filter((b) => b !== unreadLine || unreadBlocking > 0);
+  if (blocking.length === 0) return decide("ORIGIN_FOUND", 5, [`earliest page ${origin!.id} is a ${origin!.pageType!.optionId} with a confirmed date`]);
   // T37: where the trail ends, when code can say so, goes first among the reasons.
   const boundary = findBoundary(trace, rules);
   return decide("TRAIL_GOES_COLD", 6, boundary ? [BOUNDARY_REASONS[boundary], ...blockers] : blockers);

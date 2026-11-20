@@ -15,15 +15,15 @@ Team: Vidyut ([@vs-githjk](https://github.com/vs-githjk)), Rohan ([@rohanrastogi
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/readme/landing-1440-dark.png">
-  <img alt="The Patient Zero landing page: the headline, the claim box, and a recorded trace walking back from 2025 to 2016 and ending with the trail going cold" src="docs/screenshots/readme/landing-1440-light.png">
+  <img alt="The Patient Zero landing page: the headline, the claim box, and a recorded trace walking back from 2025 to 2016. Origin found: the WEF report, January 2016" src="docs/screenshots/readme/landing-1440-light.png">
 </picture>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/readme/trace-dev10-1440-dark.png">
-  <img alt="The trace view on the recorded dev-10 trace: the claim, the ending The trail goes cold, the earliest pages found and how each was dated" src="docs/screenshots/readme/trace-dev10-1440-light.png">
+  <img alt="The trace view on the recorded dev-10 trace: the claim, the ending Origin found, the earliest pages found and how each was dated" src="docs/screenshots/readme/trace-dev10-1440-light.png">
 </picture>
 
-*The landing, and a real recorded trace ([dev-10](eval/dev-traces/dev-10.json)): found back to January 2016, it ends with the trail going cold because a page it cites could not be opened, so no origin is named.*
+*The landing, and a real recorded trace ([dev-10](eval/dev-traces/dev-10.json)): Origin found: the WEF report, January 2016. "The New Plastics Economy" is the earliest primary source found, dated by its first Wayback Machine capture: archived by January 20, 2016; publication date not established.*
 <!-- numbers ok: 1440 (screenshot width in the file names) -->
 
 Team **Says Who**, ODSC x Nebius Hackathon 2026. Built on **Nebius Token Factory** (typed questions, strict JSON schemas, first-token logprobs) and **Tavily** (search and extract), with the Wayback Machine for dates.
@@ -32,7 +32,7 @@ Team **Says Who**, ODSC x Nebius Hackathon 2026. Built on **Nebius Token Factory
 
 - **Runs live end to end:** `pz trace "<claim>"` searches with Tavily, reads and dates pages, asks Token Factory typed questions and decides the ending in code ([#191](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/191)); with no keys every command replays committed traces.
 - **On our 20-claim tuning set (E2), final live run on Nov 19:** 0 false origins, target page cited on 4/10, earliest page right on 2, correct cold stops 6/9 ([eval/dev-score.md](eval/dev-score.md), which also holds every earlier run).
-- **The weak part is reaching and dating the origin itself:** no recorded trace ends on its true origin yet, and the gallery run named one false origin, G4 ([docs/gallery.md](docs/gallery.md), [docs/limits.md](docs/limits.md)).
+- **The replay re-decision finds the expected origins:** [dev-10](eval/dev-traces/dev-10.json) ends on the World Economic Forum report and [dev-09](eval/dev-traces/dev-09.json) on the Science Advances paper. This used the recorded evidence, with no new live calls ([eval/dev-score.md](eval/dev-score.md)). Reaching and dating origins remains a weakness: the gallery live run named a false origin, G4, which no longer passes the origin rules on replay ([docs/gallery.md](docs/gallery.md), [docs/limits.md](docs/limits.md)).
 - **Not yet measured:** the held-out set. The first-week spike, which lost, is under [Evaluation](#evaluation).
 
 ## Try it in two minutes, no API keys
@@ -161,8 +161,10 @@ One real claim from paste to stop state: dev-10, "By 2050 there will be more pla
 2. **Walk, window 1 (up to the day of the run).** Four searches: two built by code (`"2050" plastic`, `"more plastic than fish in the ocean" by 2050`) and two planned by the model and checked by code (one names the Ellen MacArthur Foundation). A fact-check search finds Snopes, which is read as a map: its citations are followed, and it is never a candidate origin.
 3. **Reading and dating.** Each page with a sentence that carries the claim's atoms gets a typed `same_claim` question. The earliest pages land on January 20, 2016: a blog post (dated by its own metadata) and the World Economic Forum's report "The New Plastics Economy" (dated by its first archive capture, which holds the sentence: since #238 a capture that lacks the claim never dates a page). On the report the model said yes to `same_claim`, and its page type is report.
 4. **Walk, windows 2 and 3.** Searches before 2016-01-19, then before 2010-06-14, look for anything older. Nothing older states the claim.
-5. **Stop state.** Code, not the model, decides: the report is a primary source with a confirmed date and a confident yes, but two pages the trace cites could not be opened, so rule 6 holds and it ends **The trail goes cold** ("A page it cites could not be opened"). It found the report and still does not call it the origin while a cited page is unread.
-6. **Card.** The earliest page shown is the report, quoting its own sentence: "In a business-as-usual scenario, the ocean is expected to contain 1 tonne of plastic for every 3 tonnes of fish by 2025, and by 2050, more plastics than fish (by weight)."
+5. **Stop state.** Code, not the model, decides: rule 5 holds and it ends **Origin found**. Its recorded reason: the earliest page is a report with a confirmed date. The unread citations elsewhere in the trace do not block this origin under the refined rules ([eval/dev-score.md](eval/dev-score.md)).
+6. **Card.** Origin found: the WEF report, January 2016. The earliest primary source found is "The New Plastics Economy", quoting its own sentence: "In a business-as-usual scenario, the ocean is expected to contain 1 tonne of plastic for every 3 tonnes of fish by 2025, and by 2050, more plastics than fish (by weight)." Its date comes from the first Wayback Machine capture: archived by January 20, 2016; publication date not established. This is not proof of first use.
+
+For an honest cold stop, open [dev-02](eval/dev-traces/dev-02.json): "The average person swallows eight spiders a year while sleeping." It ends **The trail goes cold**: "A page it cites could not be opened." No origin is named.
 
 What it cost, from the trace's own usage rows (cache hits excluded):
 
@@ -229,7 +231,7 @@ It was the fastest (12 to 47 s) and lost on every claim. The grading was not ful
 | Tavily `extract` | reading the pages a search returns | live in every dev run since Nov 17 |
 | Wayback CDX | first capture of each page, capping its date | live: every dev trace's usage rows include its Wayback lookups |
 
-**How links survive into the trace.** Every page a Tavily search returns is saved with its URL; Tavily `extract` gives the text the spans are cut from, and each span keeps its character offsets and a hash so `pz verify` can find it again. The Wayback capture URL that dated a page is kept on the page's date, and the trace view links both the page and the capture ("Open the page", "Open the capture"). A cited page that could not be opened is kept too, marked unread, which is why such a trace ends cold.
+**How links survive into the trace.** Every page a Tavily search returns is saved with its URL; Tavily `extract` gives the text the spans are cut from, and each span keeps its character offsets and a hash so `pz verify` can find it again. The Wayback capture URL that dated a page is kept on the page's date, and the trace view links both the page and the capture ("Open the page", "Open the capture"). A cited page that could not be opened is kept too, marked unread. If that page is needed to establish the origin, the trace ends cold.
 
 Every call writes a usage row: model, tokens, cached tokens, Tavily credits, dollars, latency, status and cache hit ([packages/pz/src/schema/usage.ts](packages/pz/src/schema/usage.ts)). The [recorded usage report](docs/usage-report.md) groups the current saved dev traces by service, model, endpoint and stage, with per-trace totals and cache hits. Rebuild it with `make usage-report`. It describes the saved traces, not the team billing ledger or every historical run. Median speed and cost per trace, from those rows: [eval/perf.md](eval/perf.md).
 

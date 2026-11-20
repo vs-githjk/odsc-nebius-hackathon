@@ -4,9 +4,9 @@ Five images at 1440 x 960 (3:2), taken with Playwright from the app on main, Nov
 recorded trace (dev-10 and the recorded S7 answer check), replayed. Suggested captions:
 
 1. **1-landing.png:** "Anyone can find you a source. Patient Zero shows you whether to trust it." The landing page,
-   with a recorded trace walking a viral claim back from 2025 to 2016 and ending with the trail going cold.
-2. **2-trace-ending.png:** The ending comes first. The trail goes cold because a page it cites could not be opened, so
-   no origin is named. The earliest pages found, and how each date was proven.
+   with a recorded trace walking a viral claim back from 2025 to 2016. Origin found: the WEF report, January 2016.
+2. **2-trace-ending.png:** The ending comes first: Origin found. The earliest primary source found is the WEF report
+   "The New Plastics Economy", dated by its first Wayback Machine capture: archived by January 20, 2016; publication date not established.
 3. **3-follow-the-wording.png:** Follow the wording: the exact sentence on each page, with what changed from the page
    before, on a time ramp from 2016 to 2025. Shown in dark mode.
 4. **4-copies-and-roots.png:** Copies and roots: 8 pages, 6 independent roots, 2 copies. Each root with its date and
