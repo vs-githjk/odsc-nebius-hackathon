@@ -194,3 +194,4 @@
 - 2026-11-19 22:55 ET: merged #300 (How it works polish), #299 (Rishit live-run/trace polish, keyboard, dark). #298 conflicting.
 - 2026-11-19 23:05 ET: merged #298 (README first screen), #301 (landing receipt date).
 - 2026-11-19 23:15 ET: merged #302 (Rishit progress de-dup). Launching evening judge rerun.
+- 2026-11-19 23:20 ET: merged #303 (storyboard S4a/S10 fixes); storyboard final per Vidyut's conditional approve.
