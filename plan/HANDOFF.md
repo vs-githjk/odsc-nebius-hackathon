@@ -180,3 +180,10 @@ Next, in order (when Vidyut says "go"):
 - #222 shipped as #285 (Anoop) + #290 metadata veto; XO probe 49 pages clean.
 - Script approved; storyboard approved (Rishit fixing S4a duplicate, S10 zoom). Voiceover Rohan or Vidyut, Fri AM.
 - Open: held-out (#250, Rohan must type approval himself; Vidyut sent him the message), #224 (Rohan continuing), Anoop README template gaps (criteria map, video/team line, safety, required services). Vidyut reviews the submit form Fri.
+
+## Nov 19, 23:45 ET (for the next chat)
+- Freeze **Fri 14:00 ET**, submit by **18:00 ET**, deadline 23:59 ET. Live app https://patient-0.vercel.app, cap $2.50 (spent ~$0.23).
+- Origin experiment merged (#310, #311): dev-10 is ORIGIN_FOUND on the WEF report, dev-09 on Science Advances, 0 false origins (XO independent replay script: scratchpad xo-replay.mts). The video ends on Origin found (#312); Vidyut approved the new voice lines.
+- Voiceover recorded: ~/Desktop/patient-zero-video/PatientzeroVO.m4a (+ PatientzeroVO.json whisper words). Next: cut per shot S1 to S11, capture screens per docs/storyboard/README.md, assemble with master-creator (demo-video skill), Vidyut approves the cut.
+- Open: Rohan held-out (#250, needs his own typed approval), Wayback fallback C (#307), macOS judge-check 60 s flake fix; Vidyut walks the submit form Friday; morning judge pass Fri ~08:00 ET.
+- Merged tonight: #255 to #312 (landing, How it works, answer page, traces list, a11y, share card, README template items, byline dating #285/#290, phrase subject #296, MCP #294, fresh-clone CI #292, usage report #289, live polish, storyboard).
