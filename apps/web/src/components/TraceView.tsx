@@ -6,6 +6,7 @@ import { dateEvidence, possibleVariants, whatChanged } from "../model/receipt.ts
 import { scrubberStops, stopNote } from "../model/scrubber.ts";
 import { independence, independenceLine } from "pz/headline";
 import { badgeFor } from "./badge.ts";
+import { CopyLink } from "./CopyLink.tsx";
 import { Scrubber, stopXs, xAt } from "./Scrubber.tsx";
 import { Sentence } from "./Sentence.tsx";
 import { StopCard } from "./StopCard.tsx";
@@ -73,6 +74,7 @@ export function TraceView({ trace }: { trace: Trace }) {
       <div className="card stage">
         <div className="stage-head">
           <ReplayAgain replay={replay} />
+          <CopyLink />
         </div>
         <h1 tabIndex={-1} className="quote trace-claim">{trace.claim.text}</h1>
         {/* One quiet line instead of a badge and a cost row above the title (#259 item 3). */}
