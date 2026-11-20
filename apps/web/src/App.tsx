@@ -1,15 +1,14 @@
 import { useEffect, useState, type MouseEvent } from "react";
 import type { Trace } from "pz/schema";
 import { HowItWorks } from "./components/HowItWorks.tsx";
+import { TracesPage } from "./components/TracesPage.tsx";
 import { Footer, Landing } from "./components/Landing.tsx";
 import { BackToResults, RouteExperience } from "./components/RouteExperience.tsx";
 import { ThemeToggle } from "./components/ThemeToggle.tsx";
-import { challengeTraces } from "./model/live.ts";
-import { ModeBadge } from "./components/ModeBadge.tsx";
 import { TraceView } from "./components/TraceView.tsx";
 import { loadTraces } from "./data/loadTraces.ts";
 import { isPlainClick, matchedNote } from "./model/claimBox.ts";
-import { heroTrace, rowFacts, sampleRow, sampleRows } from "./model/sampleRow.ts";
+import { heroTrace } from "./model/sampleRow.ts";
 import { parseRoute, type Route } from "./route.ts";
 
 const { traces, errors } = loadTraces();
@@ -25,75 +24,6 @@ function useRoute(): Route {
 }
 
 const hero = heroTrace(traces);
-
-function TracesPage() {
-  return (
-    <main className="wrap section stack">
-      <h1 className="k">Recorded traces</h1>
-      <p className="lead">Every trace here opens free, replayed from its recording. <a href="#/">Trace a new claim</a>.</p>
-      <section aria-labelledby="challenges-heading">
-        <div className="samples-head">
-          <h2 id="challenges-heading">Try these</h2>
-          <span className="meta">Recorded traces, free to open.</span>
-        </div>
-        <ul className="samples challenges">
-          {challengeTraces(traces).map(t => {
-            const row = sampleRow(t);
-            const reason = (t.otherNumbers?.length ?? 0) > 0
-              ? "Another page gives a different number"
-              : row.ending;
-            return <li key={t.id}>
-              <a className="sample" href={`#/t/${encodeURIComponent(t.id)}`}>
-                <span className="sample-claim">{t.claim.text}</span>
-                <span className="sample-facts">{reason}</span>
-                <svg className="sample-go" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg>
-              </a>
-            </li>;
-          })}
-        </ul>
-      </section>
-      <section aria-labelledby="samples-heading">
-        <div className="samples-head">
-          <h2 id="samples-heading">Traces</h2>
-          <span className="meta">
-            {traces.every((t) => t.synthetic)
-              ? "Example data: an invented claim on invented pages."
-              : "REPLAY rows are recorded live runs on our dev claims, replayed from the recording. SAMPLE rows are invented claims on invented pages."}
-          </span>
-        </div>
-        <ul className="samples">
-          {/* Real recordings first, then the samples, each ordered by what it has to show. */}
-          {[...sampleRows(traces.filter((t) => !t.synthetic)), ...sampleRows(traces.filter((t) => t.synthetic))].map((row) => {
-            const [ending, reach, pages] = rowFacts(row);
-            const trace = traces.find((t) => t.id === row.id)!;
-            return (
-              <li key={row.id}>
-                <a className="sample" href={`#/t/${encodeURIComponent(row.id)}`}>
-                  <span className="sample-claim">{row.wording}</span>
-                  <span className="sample-facts">
-                    <span className="sample-ending">
-                      <i className={row.tone ? "ramp-dot" : "ramp-dot empty"} style={row.tone ? { ["--tone" as string]: row.tone } : undefined} aria-hidden="true" />
-                      {ending}
-                    </span>
-                    <span>{reach}</span>
-                    <span>{pages}</span>
-                    <ModeBadge trace={trace} />
-                  </span>
-                  <svg className="sample-go" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M9 6l6 6-6 6" />
-                  </svg>
-                </a>
-              </li>
-            );
-          })}
-        </ul>
-      </section>
-      {errors.map((e) => (
-        <p key={e.file} className="error" role="alert">{e.message}</p>
-      ))}
-    </main>
-  );
-}
 
 // matched: the claim box opened a recording or sample for a pasted claim, not a fresh trace.
 export function TraceRoute({ id, matched, all = traces }: { id: string; matched: boolean; all?: Trace[] }) {
@@ -150,7 +80,7 @@ export function App() {
       </nav>
       {route.name === "trace" ? (
         <TraceRoute id={route.id} matched={route.id === matchedId} all={[...traces, ...liveTraces]} />
-      ) : route.name === "how" ? <HowItWorks hero={hero} /> : route.name === "traces" ? <TracesPage /> : (
+      ) : route.name === "how" ? <HowItWorks hero={hero} /> : route.name === "traces" ? <TracesPage traces={traces} errors={errors} /> : (
         <Landing traces={traces} hero={hero} focusKey={focusKey} onMatch={setMatchedId} onLive={openLive} />
       )}
       <Footer />

@@ -954,3 +954,143 @@
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+/* Recorded traces (#/traces). */
+.tl-controls {
+  display: grid;
+  gap: 20px;
+  margin-bottom: 16px;
+}
+
+.tl-search {
+  display: grid;
+  gap: 6px;
+  max-width: 560px;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.tl-endings {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.tl-endings legend {
+  margin-bottom: 6px;
+  padding: 0;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.tl-endings label {
+  position: relative;
+  padding: 6px 0;
+  color: var(--ink-2);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+}
+
+.tl-endings label.on {
+  color: var(--ink);
+  font-weight: 600;
+  border-bottom-color: var(--ink);
+}
+
+.tl-endings label:hover {
+  color: var(--ink);
+}
+
+.tl-endings input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tl-endings label:focus-within {
+  outline: 2px solid var(--action);
+  outline-offset: 2px;
+}
+
+.tl-count {
+  color: var(--ink-3);
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+
+.tl-status {
+  margin: 0 0 8px;
+}
+
+.tl-clear {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--action);
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.tl-empty {
+  padding: 24px 0;
+  border-top: 1px solid var(--line-2);
+  color: var(--ink-2);
+}
+
+.tl-group {
+  margin-top: clamp(32px, 4vw, 48px);
+}
+
+.tl-group > .meta {
+  max-width: 70ch;
+  margin: 0 0 12px;
+}
+
+.tl-rows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid var(--line-2);
+}
+
+.tl-row {
+  display: grid;
+  gap: 6px;
+  padding: 16px 0;
+  border-top: 1px solid var(--line-2);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.tl-claim {
+  font: italic 400 20px / 1.3 var(--font-quote);
+}
+
+.tl-row:hover .tl-claim,
+.tl-row:focus-visible .tl-claim {
+  color: var(--action);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.tl-facts {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 16px;
+  color: var(--ink-2);
+  font-size: 14px;
+}
+
+.tl-ending {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ink);
+  font-weight: 600;
+}
