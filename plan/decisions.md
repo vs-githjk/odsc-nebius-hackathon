@@ -186,3 +186,5 @@ Format: [LOCKED|REJECTED|PREFERENCE] decision | why | "Vidyut's words" | date
 [REJECTED] Bright Data or Apify scraping in the product before submission | rubric weights Tavily; new keys, cost and deploy risk before freeze | XO recommendation accepted | 2026-11-19
 [LOCKED] Video ending: the new ending. dev-10 closes on "Origin found: WEF report, January 2016"; the honest cold ending stays as a second example (S6, dev-02) | stronger for Sourced (30%) | "The video ending, yeah, obviously the new ending. Agree with you" | 2026-11-20
 [LOCKED] #309 finishing (narrow unread exemption, test, site copy) handed to Rishit while Anoop is out of usage; Rishit also updates script and storyboard to the new ending after merge; Vidyut and XO make the video Friday morning | "pass it on to Rishit" | 2026-11-20
+[LOCKED] Live cap raised to $2.50 (Vidyut set it in Vercel and redeployed) | headroom for judging | "I set the 2.5 cap universal and I redeployed it" | 2026-11-20
+[LOCKED] New-ending voice lines (S5, S11) approved | "I approve the new voice lines" | 2026-11-20
