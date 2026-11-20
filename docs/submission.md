@@ -66,7 +66,7 @@ A reporter or fact-checker with one number and a deadline. Today they paste the 
   - through the real walk and dating with no network: of 12 cases that test a trap that could end on a wrong origin, 3 end on one, and all 3 are a known gap. A negation in new wording passes code, so only the typed same-claim answer can stop it. The other 9 give 0 (95% upper bound 28.3%). 4 more cases test nothing for now, because their source ends cold before any trap is planted ([#173](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/173)).
   - These are planted by us. They are not an accuracy number.
 - **Gallery:** 8 famous viral statistics, with their true origins researched by hand and committed before any trace ran ([eval/gallery/answers.md](../eval/gallery/answers.md)). Result, graded against those answers ([docs/gallery.md](gallery.md)): 2 HIT, 1 PARTIAL, 4 MISS and 1 not graded (a tool failure at intake) out of 8. On the 4 claims with a findable origin: 0 HIT, 1 PARTIAL, 3 MISS, and one miss (G4) is a false origin, a list page whose metadata date predates the paper it lists.
-- **Rematch** against ChatGPT, Claude and Perplexity on 10 drawn E3 claims, graded blind ([#171](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/171)). Result: [SLOT: per-tool totals from #160, losses included].
+- **Rematch** against ChatGPT, Claude and Perplexity on 10 drawn E3 claims, graded blind ([#171](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/171)). Not completed: only one partial transcript was collected, so there is no rematch result and we claim none.
 
 ### The first-week spike, told straight
 
@@ -90,7 +90,6 @@ https://github.com/vs-githjk/odsc-nebius-hackathon (public, MIT licence: [LICENS
 
 https://patient-0.vercel.app (the live app: it traces new claims live under a small shared dollar cap and per-IP limits, and every recorded trace opens free).
 
-Replay only, no keys: https://vs-githjk.github.io/odsc-nebius-hackathon/ (it opens the recorded traces but can't trace a new claim).
 
 ## Report URL (optional)
 

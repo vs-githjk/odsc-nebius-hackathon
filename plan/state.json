@@ -14,7 +14,11 @@
   },
   "gate3": null,
   "storyboard": null,
-  "submit": null
+  "submit": null,
+  "script": {
+   "at": "Thu Nov 19 21:35 EST 2026",
+   "quote": "Approve the script."
+  }
  },
  "branch": "build/<slug>",
  "design_direction": {
