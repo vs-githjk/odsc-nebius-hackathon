@@ -50,7 +50,7 @@ function examples(trace: Trace | null) {
       ? <>{label} the earliest page, {domainOf(oldest.url)}, is dated {when(oldest.date, oldest.precision)}: {dateSource(trace, oldest.url)}.</>
       : null,
     roots: <>{label} {pages} pages, {independentRoots} separate roots, {copies} copies.</>,
-    end: <>{label} {card.title.toLowerCase()}. {card.sentence}</>,
+    end: <>{label} it ends with “{card.title}”. {card.sentence}</>,
   };
 }
 

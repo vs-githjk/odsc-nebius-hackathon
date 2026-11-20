@@ -982,6 +982,15 @@
   .hw-endings {
     grid-template-columns: minmax(0, 1fr);
   }
+
+  /* Stacked, the heading sits right above its text, not a desktop column gap away. */
+  .hw-limits {
+    gap: 8px;
+  }
+
+  .hw-limits .lp-h2 {
+    margin-bottom: 0;
+  }
 }
 
 /* Check an AI answer (#/answer). */
