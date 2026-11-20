@@ -1,9 +1,6 @@
 import type { Trace } from "pz/schema";
 import { independenceLine } from "pz/headline";
-import rulesJson from "../../../../packages/pz/rules/rules.json";
-// decide.ts takes the rules as a plain object, so the browser can run its origin pick (rules.ts itself reads a file).
-import { originPick } from "../../../../packages/pz/src/rules/decide.ts";
-import type { Rules } from "../../../../packages/pz/src/rules/rules.ts";
+import { originName, pickedOrigin } from "./origin.ts";
 import { endingSentence } from "./ending.ts";
 
 // The six rows of the stop-state table (decide.ts), in plain words for the rule sheet. Checked in order; the first
@@ -39,9 +36,8 @@ const TONES: Record<Trace["decision"]["state"], "found" | "cold" | "caution"> = 
   TRAIL_GOES_COLD: "cold",
 };
 
-const rules = rulesJson as unknown as Rules;
-
 const monthYear = new Intl.DateTimeFormat("en-US", { month: "long", year: "numeric", timeZone: "UTC" });
+const fullDate = new Intl.DateTimeFormat("en-US", { month: "long", day: "numeric", year: "numeric", timeZone: "UTC" });
 // A year-only registry date reads "2020", never a month it does not know.
 export const month = (iso: string, precision?: "day" | "month" | "year") => (precision === "year" ? iso.slice(0, 4) : monthYear.format(new Date(iso)));
 const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`;
@@ -54,7 +50,7 @@ export type StopCard = {
   ruleRow: Trace["decision"]["row"];
   rules: { row: Trace["decision"]["row"]; text: string; decided: boolean }[];
   tone: "found" | "cold" | "caution";
-  origin: { domain: string; when: string; quote: string; url: string } | null;
+  origin: { nodeId: string; detail: string; domain: string; when: string; quote: string; url: string } | null;
 };
 
 // The one card a trace ends on: what happened, what was searched, and the rule that decided, all from stored data.
@@ -77,8 +73,14 @@ export function stopCard(trace: Trace): StopCard {
   let origin: StopCard["origin"] = null;
   if (trace.decision.state === "ORIGIN_FOUND") {
     // The page row 5 picked and the span on it that states the claim, never just the first earliest page (XO on #180).
-    const pick = originPick(trace, rules);
-    if (pick) origin = { domain: pick.node.domain, when: pick.node.date.value ? month(pick.node.date.value, pick.node.date.precision) : "Undated", quote: pick.span.text, url: pick.node.url };
+    const pick = pickedOrigin(trace);
+    if (pick) {
+      const { node, span } = pick;
+      const host = new URL(node.url).hostname;
+      const date = node.date.value ? `${node.date.source === "wayback_first_capture" ? "online by" : "dated"} ${node.date.precision === "month" || node.date.precision === "year" ? month(node.date.value, node.date.precision) : fullDate.format(new Date(node.date.value))}` : "Undated";
+      const name = originName(node.title, host);
+      origin = { nodeId: node.id, detail: `${name}${name === host ? "" : `, ${host}`}, ${date}`, domain: host, when: node.date.value ? month(node.date.value, node.date.precision) : "Undated", quote: span.text, url: node.url };
+    }
   }
 
   return {

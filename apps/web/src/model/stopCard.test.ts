@@ -6,11 +6,33 @@ import type { Rules } from "../../../../packages/pz/src/rules/rules.ts";
 import { loadTraces } from "../data/loadTraces.ts";
 import { lintText } from "../../../../packages/pz/src/cli/lint-copy.ts";
 import { RULES, stopCard } from "./stopCard.ts";
+import { originName } from "./origin.ts";
 
 const { traces } = loadTraces();
 const byId = (id: string) => traces.find((t) => t.id === id)!;
 
 describe("stopCard", () => {
+  it("names the recorded origin honestly and distinguishes capture from publication", () => {
+    expect(stopCard(byId("dev-10")).origin).toMatchObject({
+      nodeId: "n7", detail: '"The New Plastics Economy Rethinking the future of plastics", www3.weforum.org, online by January 20, 2016',
+    });
+    expect(stopCard(byId("dev-09")).origin).toMatchObject({
+      nodeId: "n3", detail: '"Production, use, and fate of all plastics ever made", www.science.org, dated July 7, 2017',
+    });
+    expect(stopCard(byId("dev-10")).sentence).toBe("The earliest page is a primary source, online by this date.");
+    expect(stopCard(byId("dev-09")).sentence).toBe("The earliest page is a primary source with a confirmed date.");
+    expect(originName("Access denied", "source.example")).toBe("source.example");
+    expect(originName("report.pdf", "source.example")).toBe("source.example");
+    expect(originName("", "source.example")).toBe("source.example");
+  });
+
+  it("keeps the origin date's month and year precision", () => {
+    const base = byId("dev-09");
+    for (const precision of ["month", "year"] as const) {
+      const trace = { ...base, nodes: base.nodes.map(node => node.id === "n3" ? { ...node, date: { ...node.date, precision } } : node) };
+      expect(stopCard(trace).origin?.detail).toContain(precision === "month" ? "dated July 2017" : "dated 2017");
+    }
+  });
   it("[C16] each of the six endings gives its title and the rule row from the stored decision", () => {
     const titles = Object.fromEntries(traces.map((t) => [t.decision.state, stopCard(t).title]));
     expect(titles).toEqual({
@@ -40,7 +62,7 @@ describe("stopCard", () => {
 
   it("an origin gets the origin page itself: its site, its month and its own words", () => {
     const card = stopCard(byId("sample-origin"));
-    expect(card.origin).toEqual({ domain: "harborzoo.example", when: "April 2019", quote: expect.stringContaining("14") , url: expect.stringContaining("harborzoo.example") });
+    expect(card.origin).toMatchObject({ domain: "harborzoo.example", when: "April 2019", quote: expect.stringContaining("14") , url: expect.stringContaining("harborzoo.example") });
     expect(stopCard(byId("sample-rich")).origin).toBeNull();
   });
 
@@ -67,7 +89,7 @@ describe("stopCard", () => {
   it("no card string carries a banned phrase, a dash, an id or a code", () => {
     for (const t of traces) {
       const card = stopCard(t);
-      const strings = [card.title, card.count, card.sentence, card.searched, ...card.rules.map((r) => r.text)];
+      const strings = [card.title, card.count, card.sentence, card.searched, ...(card.origin ? [card.origin.detail] : []), ...card.rules.map((r) => r.text)];
       for (const s of strings) {
         expect(lintText(s)).toEqual([]);
         expect(s).not.toMatch(/_|row \d/);

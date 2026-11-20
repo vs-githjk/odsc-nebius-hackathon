@@ -16,11 +16,13 @@ export function StopCard({ trace }: { trace: Trace }) {
   const setAside = found ? unreadSplit(trace).setAside : [];
   const tone = sampleRow(trace).tone;
   const earliest = trace.nodes.filter(node => trace.earliest.nodeIds.includes(node.id))
-    .sort((a, b) => (a.date.value ?? "9999").localeCompare(b.date.value ?? "9999"));
+    .sort((a, b) => Number(b.id === card.origin?.nodeId) - Number(a.id === card.origin?.nodeId)
+      || (a.date.value ?? "9999").localeCompare(b.date.value ?? "9999"));
   return (
     <section className={`stop-card ${card.tone}`} aria-label="How this trace ended">
       {/* The verdict is the section heading itself, at the same level and size as the other sections (#259 item 3). */}
-      <h2 className="trace-section-title stop-title"><span className="visually-hidden">The ending: </span><span className={tone ? "ramp-dot" : "ramp-dot empty"} style={{ ["--tone" as string]: tone ?? "var(--ink-3)" }} aria-hidden="true" />{card.title}</h2>
+      <h2 className="trace-section-title stop-title"><span className="visually-hidden">The ending: </span><span className={tone ? "ramp-dot" : "ramp-dot empty"} style={{ ["--tone" as string]: tone ?? "var(--ink-3)" }} aria-hidden="true" />{card.title}{card.origin ? ":" : ""}</h2>
+      {card.origin && <p className="stop-origin-detail">{card.origin.detail}</p>}
       <p className="stop-sentence">{card.sentence}</p>
       {trace.decision.state !== "ORIGIN_FOUND" && <p className="stop-restraint">No origin is named on purpose: the evidence does not meet the origin rules.</p>}
       {unread.length > 0 && <section className="stop-unread" aria-label="Pages it cites that could not be opened">

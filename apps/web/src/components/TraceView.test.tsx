@@ -7,6 +7,7 @@ import { TraceView } from "./TraceView.tsx";
 import { independence, independenceLine } from "pz/headline";
 import { traceCost } from "../../../../packages/pz/src/usage/cost.ts";
 import { cleanQuote } from "../model/quoteClean.ts";
+import { redecidedNote } from "../model/redecided.ts";
 
 beforeAll(() => {
   // No DOM in these tests: give the reduced-motion hook a stand-in.
@@ -15,6 +16,21 @@ beforeAll(() => {
 
 describe("TraceView", () => {
   const { traces } = loadTraces();
+  it("places the reviewed re-decision note directly below replay metadata only for the two recordings", () => {
+    const note = "Ending re-decided on Nov 20 from this recording by the refined origin rule (#316); the live run ended cold.";
+    for (const trace of traces) {
+      const html = renderToStaticMarkup(<TraceView trace={trace} />);
+      const reviewed = ["dev-09", "dev-10"].includes(trace.id);
+      expect(html.includes(note)).toBe(reviewed);
+      if (reviewed) {
+        expect(html).toContain(`</p><p class="trace-redecided">${note}</p>`);
+        expect(html.indexOf('class="trace-redecided"')).toBeGreaterThan(html.indexOf('class="meta trace-meta"'));
+        expect(html.indexOf('class="trace-redecided"')).toBeLessThan(html.indexOf('aria-label="How this trace ended"'));
+        expect(redecidedNote({ ...trace, mode: "LIVE" })).toBeNull();
+        expect(redecidedNote({ ...trace, synthetic: true })).toBeNull();
+      }
+    }
+  });
 
   it("puts the claim and verdict before the timeline, then copies and roots", () => {
     const html = renderToStaticMarkup(<TraceView trace={traces.find(t => t.id === "sample-rich")!} />);
