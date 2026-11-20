@@ -186,3 +186,4 @@
 - 2026-11-19 21:45 ET: merged #292 (Rohan T60: fresh keyless checkout on Linux+macOS CI, judge-check.sh).
 - 2026-11-19 21:50 ET: Rohan opened #294 (T73 MCP, safe scope, conflicting); redirected again to held-out, #224, video captures.
 - 2026-11-19 22:00 ET: organisers' email: deadline Fri 11:59 PM EST confirmed; template optional; README gaps vs template (criteria map, video/team line, safety, required services) assigned to Anoop.
+- 2026-11-19 22:05 ET: merged #295 (Rishit storyboard, 11 shots, 15 stills, 2:15); fix S4a duplicate, zoom S10. Awaiting Vidyut approve.
