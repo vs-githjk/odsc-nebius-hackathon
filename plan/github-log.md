@@ -188,3 +188,4 @@
 - 2026-11-19 22:00 ET: organisers' email: deadline Fri 11:59 PM EST confirmed; template optional; README gaps vs template (criteria map, video/team line, safety, required services) assigned to Anoop.
 - 2026-11-19 22:05 ET: merged #295 (Rishit storyboard, 11 shots, 15 stills, 2:15); fix S4a duplicate, zoom S10. Awaiting Vidyut approve.
 - 2026-11-19 22:15 ET: merged #294 (Rohan T73 MCP stdio tools). Rohan continuing #224 on own branch (Hoover Dam boundary).
+- 2026-11-19 22:25 ET: asked Rohan whether the Nebius key came via dev.nebius.com/builders credits.
