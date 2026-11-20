@@ -6,6 +6,7 @@ import { badgeFor } from "./badge.ts";
 import { TraceView } from "./TraceView.tsx";
 import { independence, independenceLine } from "pz/headline";
 import { traceCost } from "../../../../packages/pz/src/usage/cost.ts";
+import { cleanQuote } from "../model/quoteClean.ts";
 
 beforeAll(() => {
   // No DOM in these tests: give the reduced-motion hook a stand-in.
@@ -31,7 +32,8 @@ describe("TraceView", () => {
       const first = scrubberStops(trace)[0];
       if (first) {
         expect(html).toContain('role="slider"');
-        for (const word of first.text.split(" ").slice(0, 3)) expect(html).toContain(word.replace(/&/g, "&amp;").replace(/'/g, "&#x27;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;"));
+        // The page shows the quote after the display cleaners (menu text, leading emoji); the trace keeps the raw words.
+        for (const word of cleanQuote(first.text, trace.claim.text).split(" ").slice(0, 3)) expect(html).toContain(word.replace(/&/g, "&amp;").replace(/'/g, "&#x27;").replace(/"/g, "&quot;").replace(/</g, "&lt;").replace(/>/g, "&gt;"));
       } else {
         expect(html).toContain("No page with the claim");
       }
