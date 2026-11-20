@@ -11,7 +11,9 @@ export function RouteExperience({ routeKey }: { routeKey: string }) {
       window.scrollTo({ top, behavior: "instant" });
       const main = document.querySelector("main");
       if (main && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        main.animate([{ opacity: 0, transform: "translateY(4px)" }, { opacity: 1, transform: "translateY(0)" }], { duration: 180 });
+        // Short, and from 0.6 rather than 0: a background tab can hold an animation at its first frame until the tab
+        // is shown, and a page should never sit there pale (XO on #257).
+        main.animate([{ opacity: 0.6, transform: "translateY(2px)" }, { opacity: 1, transform: "translateY(0)" }], { duration: 120 });
       }
     }
     const save = () => { navigation.scroll = window.scrollY; };
