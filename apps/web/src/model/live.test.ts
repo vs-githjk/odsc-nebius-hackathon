@@ -1,9 +1,17 @@
 import { readFileSync, readdirSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { Trace } from "pz/schema";
-import { challengeTraces, liveAction, liveAvailability, liveMode, liveStatus, streamTrace, type LiveProgress } from "./live.ts";
+import { challengeTraces, liveAction, liveAvailability, liveMode, liveStageLabel, liveStatus, streamTrace, type LiveProgress } from "./live.ts";
 const recorded = Trace.parse(JSON.parse(readFileSync("eval/dev-traces/dev-13.json", "utf8")));
 describe("live client", () => {
+  it("names reading during the active walk without renaming the later spans stage", () => {
+    expect(liveStageLabel("intake", "intake", 0)).toBe("Starting");
+    expect(liveStageLabel("walk", "walk", 0)).toBe("Searching");
+    expect(liveStageLabel("walk", "walk", 2)).toBe("Searching and reading pages");
+    expect(liveStageLabel("walk", "spans", 2)).toBe("Searching");
+    expect(liveStageLabel("spans", "walk", 2)).toBe("Reading pages");
+    expect(liveStageLabel("spans", "spans", 2)).toBe("Reading pages");
+  });
   it("reads page counts, ignores future events and filters non-host data", async () => {
     const updates: LiveProgress[] = [];
     const lines = [{ type: "future", payload: "ignored" }, { type: "stage", stage: "future", status: "started" },

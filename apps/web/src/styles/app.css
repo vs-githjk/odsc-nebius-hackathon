@@ -125,3 +125,35 @@ body { isolation: isolate; }
 .copy-link svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .trace-page .stage-head { gap: 4px; }
 .trace-page .stage-head .replay-again { margin-right: 0; }
+
+/* Live arrival and trace controls use the same palette in both themes. */
+/* The heading receives arrival focus, but is not in the keyboard tab order. */
+.trace-page .trace-claim:focus { outline: none; }
+.trace-page .stop-title.live-arrival { animation: verdict-arrival 1.2s ease-out; }
+@keyframes verdict-arrival {
+  from { background-color: var(--sel); }
+  to { background-color: transparent; }
+}
+.trace-page .meta, .trace-page .receipt-rows dt, .trace-page .hop-when,
+.trace-page .ticks, .trace-page .readouts-head, .trace-page .band-legend,
+.trace-page .swarm.later .swarm-label, .trace-page .replay-sub,
+.trace-page .foot-note { color: var(--ink-2); }
+.trace-page .handle { box-shadow: 0 0 0 1px var(--ink-3), 0 4px 14px var(--line-2); }
+.trace-page .swarm-label { background: var(--surface); }
+.trace-page .foot-note { font-size: 14px; }
+.trace-page .scrub { --rail-pad: 24px; }
+.trace-page .scrub-steps { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; margin-top: 12px; }
+.trace-page .scrub-steps .btn:disabled { background: var(--bg-2); color: var(--ink-2); cursor: default; }
+.trace-page .root-page a, .trace-page .receipt-rows a,
+.trace-page .receipt-variants a, .trace-page .stop-earliest .earliest-proof a,
+.trace-page .root-relation a, .trace-page .check-row a,
+.trace-page .origin-quote a { display: inline-flex; align-items: center; min-height: 44px; max-width: 100%; overflow-wrap: anywhere; }
+.trace-page summary { min-height: 44px; }
+.trace-page .readout { flex-wrap: wrap; }
+.trace-page .band-legend span { white-space: normal; }
+.trace-page .readout.changed .readout-tag { color: var(--ink); }
+.trace-page .red-label, .trace-page .red-tag { color: var(--ink-2); }
+.trace-page .btn.small { min-height: 44px; }
+@media (prefers-reduced-motion: reduce) {
+  .trace-page .stop-title.live-arrival { animation: none; }
+}

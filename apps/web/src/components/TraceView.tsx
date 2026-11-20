@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { traceCost } from "../../../../packages/pz/src/usage/cost.ts";
 import type { Trace } from "pz/schema";
+import { closeDetails } from "../model/traceKeyboard.ts";
 import { redStop } from "../model/hop.ts";
 import { dateEvidence, possibleVariants, whatChanged } from "../model/receipt.ts";
 import { scrubberStops, stopNote } from "../model/scrubber.ts";
@@ -71,7 +72,7 @@ export function TraceView({ trace }: { trace: Trace }) {
   return (
     <>
       <TimeField x={x} />
-      <div className="card stage">
+      <div className="card stage" onKeyDown={closeDetails}>
         <div className="stage-head">
           <ReplayAgain replay={replay} />
           <CopyLink />

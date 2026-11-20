@@ -3,6 +3,9 @@ import { outcomeOf } from "./claimBox.ts";
 declare const __PZ_REPLAY_ONLY__: boolean;
 export const PAUSED = "Live tracing is paused. Here are recorded traces.";
 export const STAGE_LABELS: Record<string, string> = { intake: "Starting", fingerprint: "Understanding the claim", walk: "Searching", spans: "Reading pages", dating: "Dating pages", clusters: "Grouping pages", readouts: "Comparing wording", card: "Deciding" };
+export function liveStageLabel(stage: string, active: string | null, pages: number): string {
+  return stage === "walk" && active === "walk" && pages > 0 ? "Searching and reading pages" : STAGE_LABELS[stage] ?? stage;
+}
 // "live": the server runs live traces. "paused": a live server is there but says no (cap, kill switch, not configured), so
 // the page says live tracing is paused. "absent": no live server at all (the replay-only Pages site), so nothing is said.
 export type LiveMode = "live" | "paused" | "absent";

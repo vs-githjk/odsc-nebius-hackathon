@@ -26,6 +26,15 @@ describe("TraceView", () => {
     expect(html).toContain('class="ramp-dot"');
   });
 
+  it("keeps the trace controls in document tab order without positive tab indexes", () => {
+    const html = renderToStaticMarkup(<TraceView trace={traces.find(t => t.id === "sample-rich")!} />);
+    const positions = ['class="replay-again"', 'class="copy-link"', 'class="earliest-line"', '<summary>How this was decided', 'role="slider"', '>Earlier page</button>', '>Newer page</button>', 'class="receipt-rows"', 'class="root-rows"', '<summary>Show the graph'].map(marker => html.indexOf(marker));
+    expect(positions.every(position => position >= 0)).toBe(true);
+    expect(positions).toEqual([...positions].sort((a, b) => a - b));
+    expect(html).not.toMatch(/tabindex="[1-9]/);
+    expect(html).toContain('tabindex="-1" class="quote trace-claim"');
+  });
+
   it("[C25] renders every fixture, starting on the newest stop's own words", () => {
     for (const trace of traces) {
       const html = renderToStaticMarkup(<TraceView trace={trace} />);

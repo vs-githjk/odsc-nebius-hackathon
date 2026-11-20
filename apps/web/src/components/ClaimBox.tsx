@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type FormEvent } from "react";
-import { liveAction, liveAvailability, LIVE_ENDINGS, LiveError, STAGE_LABELS, streamTrace, type LiveMode } from "../model/live.ts";
+import { liveAction, liveAvailability, liveStageLabel, LIVE_ENDINGS, LiveError, STAGE_LABELS, streamTrace, type LiveMode } from "../model/live.ts";
 import type { Trace } from "pz/schema";
 import { outcomeOf, submitsOnKey, type Outcome } from "../model/claimBox.ts";
 
@@ -26,7 +26,13 @@ export function ClaimBox({ traces, focusKey, onMatch, onLive }: { traces: Trace[
   const [elapsed, setElapsed] = useState(0);
   const isRunning = progress !== null;
   useEffect(() => {
-    if (isRunning) progressPanel.current?.scrollIntoView({ block: "start", behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+    if (!isRunning || !progressPanel.current) return;
+    const panel = progressPanel.current;
+    const row = panel.closest("form")?.querySelector(".claim-row");
+    const navHeight = document.querySelector(".nav")?.getBoundingClientRect().height ?? 0;
+    const controlsHeight = row ? panel.getBoundingClientRect().top - row.getBoundingClientRect().top : 0;
+    panel.style.scrollMarginTop = `${navHeight + controlsHeight + 16}px`;
+    panel.scrollIntoView({ block: "start", behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
   }, [isRunning]);
   useEffect(() => {
     if (!isRunning) return;
@@ -47,7 +53,7 @@ export function ClaimBox({ traces, focusKey, onMatch, onLive }: { traces: Trace[
     if (running.current || liveAction(text, traces, live) !== "live") return;
     if (text.length > 400) { setFailure("Enter a claim of 1 to 400 characters."); return; }
     const controller = new AbortController(); running.current = controller;
-    setProgress("intake"); setFailure(""); setPages(0); setHosts([]); setDone([]);
+    setElapsed(0); setProgress("intake"); setFailure(""); setPages(0); setHosts([]); setDone([]);
     try { const trace = await streamTrace(text.trim(), controller.signal, event => {
       if (controller.signal.aborted) return;
       if (event.type === "progress") { setPages(event.pages); setHosts(event.hosts); }
@@ -136,8 +142,8 @@ export function ClaimBox({ traces, focusKey, onMatch, onLive }: { traces: Trace[
           <div className="live-progress-head"><p className="untraced-title">Following the claim</p>
             <span className="meta live-clock" aria-live="off">{Math.floor(elapsed / 60)}:{String(elapsed % 60).padStart(2, "0")} elapsed</span></div>
           <ol className="live-stages">
-            {Object.entries(STAGE_LABELS).map(([stage, label]) => <li key={stage} className={done.includes(stage) ? "done" : stage === progress ? "active" : "future"} aria-current={stage === progress && !done.includes(stage) ? "step" : undefined}>
-              <span className="stage-marker" aria-hidden="true">{done.includes(stage) ? "✓" : ""}</span>{label}
+            {Object.keys(STAGE_LABELS).map(stage => <li key={stage} className={done.includes(stage) ? "done" : stage === progress ? "active" : "future"} aria-current={stage === progress && !done.includes(stage) ? "step" : undefined}>
+              <span className="stage-marker" aria-hidden="true">{done.includes(stage) ? "✓" : ""}</span>{liveStageLabel(stage, progress, pages)}
             </li>)}
           </ol>
           <div className="live-pages" role="status"><p><b>{pages}</b> {pages === 1 ? "page" : "pages"} read</p>
