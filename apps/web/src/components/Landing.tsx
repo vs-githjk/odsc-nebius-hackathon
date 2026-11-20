@@ -37,16 +37,13 @@ function dateSource(trace: Trace, url: string): string {
 // A receipt: the claim we make, the real evidence, what it measures and where anyone can check it.
 function Receipt({ n, title, children, measures, check }: { n: string; title: string; children: ReactNode; measures: string; check: { label: string; href: string }[] }) {
   return (
-    <article className="lp-receipt card">
-      <header className="lp-receipt-head">
-        <span className="lp-step-n">{n}</span>
-        <h3>{title}</h3>
-      </header>
+    <article className="lp-receipt">
+      <div className="lp-receipt-text">
+        <h3><span className="lp-receipt-n">{n}</span>{title}</h3>
+        <p>{measures}</p>
+        <p className="lp-receipt-check">Check it: {check.map((c, i) => <span key={c.href}>{i > 0 && ", "}<a href={c.href}>{c.label}</a></span>)}</p>
+      </div>
       <div className="lp-receipt-body">{children}</div>
-      <dl className="lp-receipt-foot">
-        <div><dt>What it measures</dt><dd>{measures}</dd></div>
-        <div><dt>Where to check</dt><dd>{check.map((c, i) => <span key={c.href}>{i > 0 && ", "}<a href={c.href}>{c.label}</a></span>)}</dd></div>
-      </dl>
     </article>
   );
 }
@@ -88,9 +85,9 @@ function HeroTrace({ trace }: { trace: Trace }) {
   const { pages, independentRoots, copies } = independence(trace);
   const years = stops.map((s) => s.date?.slice(0, 4)).filter(Boolean);
   return (
-    <a className="lp-hero-trace card" href={traceHref(trace)} aria-label={`Open the recorded trace: ${trace.claim.text}`}>
+    <a className="lp-hero-trace" href={traceHref(trace)} aria-label={`Open the recorded trace: ${trace.claim.text}`}>
       <span className="lp-ht-head">
-        <span className="lp-ht-live"><i aria-hidden="true" />Recorded trace, replayed</span>
+        <span className="lp-ht-live"><i aria-hidden="true" />A recorded trace, replayed</span>
         {years.length > 1 && <span className="meta">{years[0]} back to {years[years.length - 1]}</span>}
       </span>
       <span className="lp-ht-claim">{`“${trace.claim.text}”`}</span>
@@ -139,7 +136,7 @@ function RootDots({ trace, big }: { trace: Trace; big?: boolean }) {
 function AnswerCheck() {
   return (
     <div className="lp-answer">
-      <p className="lp-answer-label meta">Pasted answer (an example AI-style answer, not from a real chatbot)</p>
+      <p className="lp-answer-label meta">An example answer, written for this demo. It is not a reply from any AI tool.</p>
       <p className="lp-answer-text">
         {answerPieces(S7.answer, S7.claims).map((p, i) => p.claim
           ? <mark key={i} title={p.claim.ending}>{p.text}</mark>
@@ -184,13 +181,11 @@ export function Landing({ traces, hero, focusKey, onMatch, onLive }: {
       <section className="lp-hero">
         <div className="wrap lp-hero-grid">
           <div className="lp-hero-copy">
-          <p className="lp-eyebrow">For viral stats with no source</p>
           <h1 className="lp-title">Anyone can find you a source. <em>Patient Zero shows you whether to trust it.</em></h1>
           <p className="lead lp-lead">Paste a claim. Patient Zero walks it back through time to the earliest web page it can find, shows the exact sentence on every page, counts how many are only copies, and says so when the trail goes cold.</p>
-          <div className="lp-claim card">
+          <div className="lp-claim">
             <ClaimBox traces={traces} focusKey={focusKey} onMatch={onMatch} onLive={onLive} />
           </div>
-          <div className="lp-hero-ramp ramp" aria-hidden="true" />
           </div>
           {hero && <HeroTrace trace={hero} />}
         </div>
@@ -198,17 +193,16 @@ export function Landing({ traces, hero, focusKey, onMatch, onLive }: {
 
       <section className="lp-section" aria-labelledby="lp-vs">
         <div className="wrap">
-          <p className="lp-eyebrow">The difference</p>
           <h2 id="lp-vs" className="lp-h2">A chat answer tells you. A trace shows you.</h2>
           <div className="lp-vs" role="table" aria-label="A chat answer compared with a Patient Zero trace">
             <div className="lp-vs-row lp-vs-head" role="row">
-              <span role="columnheader">What a chat answer leaves you with</span>
-              <span role="columnheader">What a Patient Zero trace gives you</span>
+              <span role="columnheader">A chat answer</span>
+              <span role="columnheader">A Patient Zero trace</span>
             </div>
             {versus.map(([a, b]) => (
               <div className="lp-vs-row" role="row" key={a}>
                 <span role="cell">{a}</span>
-                <span role="cell"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>{b}</span>
+                <span role="cell">{b}</span>
               </div>
             ))}
           </div>
@@ -216,10 +210,10 @@ export function Landing({ traces, hero, focusKey, onMatch, onLive }: {
         </div>
       </section>
 
-      <section className="lp-section lp-alt" aria-labelledby="lp-only">
+      <section className="lp-section" aria-labelledby="lp-only">
         <div className="wrap">
-          <p className="lp-eyebrow">Receipts, from recorded traces</p>
           <h2 id="lp-only" className="lp-h2">Five things only a trace shows</h2>
+          <p className="lp-intro">Each one is taken from a trace recorded in this repo, with the file or page you can open to check it.</p>
           <div className="lp-receipts">
             {hero && (
               <Receipt n="1" title="It names no wrong origin" measures="False origins: a page named as the origin that isn't. On our 20-claim tuning set, final live run: 0. Most traces stop short of the origin (target page cited on 4 of 10), and none yet ends on its true origin."
@@ -242,7 +236,7 @@ export function Landing({ traces, hero, focusKey, onMatch, onLive }: {
                 <p className="lp-legend meta"><i className="lp-dot-root" aria-hidden="true" /> separate root <i className="lp-dot-copy" aria-hidden="true" /> copy</p>
               </Receipt>
             )}
-            <Receipt n="4" title="It checks a chatbot's own answer" measures={`Paste a whole answer: each statistic in it is found and traced on its own. Recorded ${S7.recordedAt}.`}
+            <Receipt n="4" title="It checks an AI answer, one statistic at a time" measures={`Each statistic in the answer is found and traced on its own. This run was recorded on ${S7.recordedAt} and replays here; checking a whole answer live works from the command line only.`}
               check={[{ label: "fixtures/answers/s7-answer.json", href: blob("fixtures/answers/s7-answer.json") }]}>
               <AnswerCheck />
             </Receipt>
@@ -261,13 +255,11 @@ export function Landing({ traces, hero, focusKey, onMatch, onLive }: {
 
       <section className="lp-section" aria-labelledby="lp-how">
         <div className="wrap">
-          <p className="lp-eyebrow">How it works</p>
           <h2 id="lp-how" className="lp-h2">Four steps, and code decides the ending</h2>
           <ol className="lp-steps">
             {steps.map((s) => (
-              <li key={s.n} className="card">
-                <span className="lp-step-n">{s.n}</span>
-                <h3>{s.title}</h3>
+              <li key={s.n}>
+                <h3><span className="lp-step-n">{s.n}</span>{s.title}</h3>
                 <p>{s.body}</p>
               </li>
             ))}
@@ -277,7 +269,7 @@ export function Landing({ traces, hero, focusKey, onMatch, onLive }: {
       </section>
 
       {tries.length > 0 && (
-        <section className="lp-section lp-alt" aria-labelledby="lp-try">
+        <section className="lp-section" aria-labelledby="lp-try">
           <div className="wrap">
             <div className="samples-head">
               <h2 id="lp-try" className="lp-h2">Try these</h2>
@@ -286,7 +278,7 @@ export function Landing({ traces, hero, focusKey, onMatch, onLive }: {
             <ul className="lp-tries">
               {tries.map((t) => (
                 <li key={t.id}>
-                  <a className="lp-try card" href={traceHref(t)}>
+                  <a className="lp-try" href={traceHref(t)}>
                     <span className="sample-claim">{t.claim.text}</span>
                     <span className="meta">{(t.otherNumbers?.length ?? 0) > 0 ? "Another page gives a different number" : sampleRow(t).ending}</span>
                   </a>
@@ -300,12 +292,11 @@ export function Landing({ traces, hero, focusKey, onMatch, onLive }: {
       <section className="lp-section" aria-labelledby="lp-built">
         <div className="wrap lp-built">
           <div>
-            <p className="lp-eyebrow">Built with</p>
-            <h2 id="lp-built" className="lp-h2">Nebius Token Factory and Tavily</h2>
+            <h2 id="lp-built" className="lp-h2">Built on Nebius Token Factory and Tavily</h2>
             <p>Token Factory open models answer typed questions under strict JSON schemas. Tavily does the search and page extraction. The Wayback Machine helps date pages.</p>
           </div>
           <div>
-            <p className="lp-eyebrow">Team Says Who</p>
+            <h3 className="lp-h3">Team Says Who</h3>
             <ul className="lp-team">
               {team.map((m) => <li key={m.gh}><a href={`https://github.com/${m.gh}`}>{m.name}</a></li>)}
             </ul>
