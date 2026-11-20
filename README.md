@@ -38,6 +38,8 @@ Honest status as of Nov 19, 2026:
 
 ## Try it in two minutes, no API keys
 
+For the complete fresh-checkout judge path, run `bash scripts/judge-check.sh`. It installs dependencies, verifies the project, runs the judge summary and independently checks the replay output with provider keys empty. CI runs it on Linux and macOS; see [the workflow](.github/workflows/judge-check.yml).
+
 ```sh
 git clone https://github.com/vs-githjk/odsc-nebius-hackathon.git && cd odsc-nebius-hackathon
 npm ci
@@ -80,7 +82,7 @@ flowchart LR
 | plan queries | Proposes searches; code keeps only queries tied to the claim and rejects search operators | same model | built |
 | walk | Searches date windows further and further back, reads pages, keeps sentences that state the claim | Tavily `search`, `extract` | built, including ranked citation following and searches for named sources ([#110](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/110)) |
 | spans | Every edge between two pages rests on two verbatim sentences, one on each page | code | built, with link-verified edges ([#108](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/108)) |
-| dating | Dates each page from a scholarly registry, its own metadata, or a marked publication date in the article (only when nothing on the page contradicts it), capped by its first Wayback capture | Wayback CDX | built |
+| dating | Dates each page from its own metadata or byline, capped by its first Wayback capture | Wayback CDX | built |
 | clusters | Groups copies (versions, syndication, same byline, near duplicates) and counts roots | code, `Qwen/Qwen3-Embedding-8B` for reworded copies | built; the walk passes embeddings into clustering when it is given an embedder ([#170](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/170)), and the live pipeline ([#191](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/191)) supplies one |
 | readouts | Per hop: number, unit, hedge and comparison changes measured by code; scope, attribution and context asked as typed yes/no questions | same model, logprobs | built |
 | same claim | A page counts as stating the claim only if code finds the claim's number (or phrase) in the sentence **and** a typed question answers yes with known confidence | same model, logprobs | built |
@@ -90,10 +92,6 @@ flowchart LR
 
 Every trace counts the pages it found, how many independent roots they trace back to, and how many are copies: "Found on 23 pages: 3 independent roots, 1 origin. 20 are copies." An independent root is a group of copies with no verified link to an earlier page; every other page is a copy. Code counts it from the trace's own links, and `pz verify` recounts it ([#167](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/167)). An unlinked group counts as its own root, so the count can run high when a copy does not cite its source.
 <!-- numbers ok: 23, 3, 1, 20 (an example sentence, not a result) -->
-
-### How a page gets its date
-
-In this order, stopping at the first that answers: a scholarly registry for pages it knows (PubMed, PubMed Central, Crossref for a DOI); the page's own meta tags and JSON-LD; and last, **a marked publication date in the article, only when nothing on the page contradicts it**. That last one is read from a single strictly marked `<time itemprop="datePublished">` near the top of the article, outside related, sidebar and other teaser blocks, lists and links, and it is refused if any other date anywhere on the page (another time, an attribute, the text, inline data, JSON-LD or the URL) is later. So an older related-article card can never backdate the page ([#285](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/285)). Whatever date is found is capped by the page's first Wayback capture, and a page with no date it trusts is dated by that capture. A missed date is fine; a false earlier date is the error the rules are built to avoid. The rules and their adversarial tests are in [publication.ts](packages/pz/src/engine/publication.ts) and [byline.test.ts](packages/pz/test/byline.test.ts).
 
 ### Code decides how a trace ends
 
