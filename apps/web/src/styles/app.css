@@ -82,3 +82,8 @@ body { isolation: isolate; }
   .trace-page .trace-timeline, .trace-page .trace-roots { margin-top: 36px; padding-top: 22px; }
   .trace-page .recent-traces { padding: 20px 0 0; }
 }
+
+/* The claim box's own panels (not traced yet, live progress, end states) sit inside the landing's hero card, so they
+   use hairlines rather than a second rounded box. */
+.claim-note .untraced { padding: 16px 0 4px; border: 0; border-top: 1px solid var(--line-2); border-radius: 0; background: none; box-shadow: none; }
+.claim-note .live-failure { padding-left: 14px; border-left: 2px solid var(--line-2); border-top: 0; }
