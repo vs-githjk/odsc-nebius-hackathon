@@ -161,3 +161,4 @@
 - 2026-11-19 19:00 ET: merged #260 (Anoop landing). Opened #263 (generic headline, no competitor names; no whole-answer overclaim). Anoop given 9-item list on #257 (de-AI-accent pass, How it works, AI answer replay page, README hero, share card, traces list, a11y, Devpost gallery, 404). Rishit told to merge main + same rules.
 - 2026-11-19 19:20 ET: merged #262 (Rishit app inside). Next list for Rishit on #259 (open on finished state, dedupe, meta line, real live run, 390 pass).
 - 2026-11-19 19:35 ET: merged #264 (Anoop: AI accents removed from landing).
+- 2026-11-19 19:45 ET: merged #265 (Anoop: How it works redesign).
