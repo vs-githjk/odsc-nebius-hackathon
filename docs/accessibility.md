@@ -19,7 +19,7 @@ emulation. Dark runs launch Chrome with `--blink-settings=preferredColorScheme=0
 | One statistic's trace `#/answer/1` | 100 | 100 | 100 | 100 |
 
 Color contrast passes on every page in both themes. The one note Lighthouse raised, on the landing's recorded trace
-link (its accessible name did not start with its visible text), is fixed in this PR: the link no longer overrides its
+link (its `aria-label` did not contain the text shown on it), is fixed in this PR: the link no longer overrides its
 name with an `aria-label`, so screen readers read what is on screen. A re-run of the landing then shows no failing
 audit.
 
