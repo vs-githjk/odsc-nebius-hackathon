@@ -41,3 +41,11 @@ describe("endingSentence", () => {
     expect(endingSentence({ ...partial, budget: { ...partial.budget, capHit: "ms" } })).toBe("The search hit its time limit before it finished.");
   });
 });
+
+describe("the earliest-dated-page guard's reason (#307)", () => {
+  it("reads as a plain sentence, ahead of the unread-page sentence", () => {
+    const cold = traces.find((t) => t.id === "dev-06")!;
+    const demoted = { ...cold, decision: { ...cold.decision, reasons: ["An earlier page on the trail was not ruled out: https://earlier.example/page"] } };
+    expect(endingSentence(demoted)).toBe("An earlier page on the trail was not ruled out, so no origin is named.");
+  });
+});

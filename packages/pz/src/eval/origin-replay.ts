@@ -49,6 +49,36 @@ export function recordedTraces(): { id: string; trace: Trace }[] {
   return files.map((f) => ({ id: f.split("/").at(-1)!.replace(/\.json$/, ""), trace: Trace.parse(JSON.parse(readFileSync(f, "utf8"))) }));
 }
 
+// Every recorded trace in the repo, for the wider gate (#307, XO's 05:04 brief): the 27 above plus the invented
+// samples, the failure fixtures, the first-week spike and the three traces inside the S7 answer check. A trace with no
+// answer key is judged by its kind: an invented sample is SAMPLE (not scored), and a real trace with no key is "cold"
+// unless its claim matches a keyed dev claim. The S7 answer's claim 0 is dev-10's claim, and claims 1 and 2 are
+// dev-11's, so they use those keys.
+export function allRecordedTraces(): { id: string; trace: Trace }[] {
+  const dir = (d: string, re: RegExp) => readdirSync(join(ROOT, d)).filter((f) => re.test(f)).map((f) => ({ id: `${d.split("/").at(-2) ?? d}/${f.replace(/\.json$/, "")}`, file: join(ROOT, d, f) }));
+  const parsed = (list: { id: string; file: string }[]) => list.flatMap(({ id, file }) => {
+    const r = Trace.safeParse(JSON.parse(readFileSync(file, "utf8")));
+    return r.success ? [{ id, trace: r.data }] : [];
+  });
+  const answer = JSON.parse(readFileSync(join(ROOT, "fixtures/answers/s7-answer.json"), "utf8")) as { claims: { trace?: unknown }[] };
+  const s7 = answer.claims.flatMap((c, i) => {
+    const r = Trace.safeParse(c.trace);
+    return r.success ? [{ id: `s7-claim-${i}`, trace: r.data }] : [];
+  });
+  return [
+    ...recordedTraces(),
+    ...parsed(dir("fixtures/traces", /\.json$/)),
+    ...parsed(dir("fixtures/failure/traces", /\.json$/)),
+    ...parsed(dir("spike/traces", /\.json$/)),
+    ...s7,
+  ];
+}
+
+export function wideKey(): Record<string, Expected> {
+  const key = answerKey();
+  return { ...key, "s7-claim-0": key["dev-10"]!, "s7-claim-1": key["dev-11"]!, "s7-claim-2": key["dev-11"]! };
+}
+
 export type Verdict = "correct origin" | "false origin" | "no origin";
 export type Row = { id: string; oldState: string; newState: string; picked: string | null; expected: string; verdict: Verdict };
 
@@ -61,12 +91,14 @@ export function judge(picked: string | null, expected: Expected | undefined): Ve
   return expected.hosts.some((h) => host === h || host.endsWith(`.${h}`)) ? "correct origin" : "false origin";
 }
 
-export function replay(rules: Rules): Row[] {
-  const key = answerKey();
-  return recordedTraces().map(({ id, trace }) => {
+export function replay(rules: Rules, { wide = false } = {}): Row[] {
+  const key = wide ? wideKey() : answerKey();
+  return (wide ? allRecordedTraces() : recordedTraces()).map(({ id, trace }) => {
     const decision = decideStopState(trace, rules);
     const pick = decision.state === "ORIGIN_FOUND" ? originPick(trace, rules)?.node.url ?? null : null;
-    const expected = key[id];
+    // An invented sample is not scored; a real trace with no key of its own is held to "cold".
+    const expected: Expected | undefined = trace.synthetic ? undefined : key[id] ?? { kind: "cold" };
+    if (trace.synthetic) return { id, oldState: trace.decision.state, newState: decision.state, picked: pick, expected: "SAMPLE (not scored)", verdict: "no origin" as Verdict };
     const label = !expected ? "?" : expected.kind === "cold" ? "cold" : expected.kind === "origin" ? expected.urls[0]! : expected.hosts.join(" or ");
     return { id, oldState: trace.decision.state, newState: decision.state, picked: pick, expected: label, verdict: judge(pick, expected) };
   });

@@ -86,7 +86,9 @@ describe("pz verify", () => {
   it("[C16] fails when a page outside the earliest clusters is older", () => {
     const t = origin();
     t.nodes[2]!.date.value = "2018-01-01";
-    expect(checks(t)).toEqual(["earliest"]);
+    // Since #307 the older page also demotes the stored origin (the earliest-dated-page guard), so the stop state
+    // fails too.
+    expect(checks(t)).toEqual(["earliest", "stop_state"]);
   });
 
   it("[C20] passes weakNumberMaxCommas from rules.json into the atom check", () => {

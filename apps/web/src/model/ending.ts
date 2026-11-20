@@ -24,6 +24,8 @@ export function endingSentence(trace: Trace): string {
       return "The earliest page is a primary source with a confirmed date.";
     case "TRAIL_GOES_COLD": {
       const reasons = trace.decision.reasons;
+      // #307: a page dated earlier than the would-be origin was not ruled out, so no origin is named.
+      if (reasons.some(r => r.startsWith("An earlier page on the trail was not ruled out"))) return "An earlier page on the trail was not ruled out, so no origin is named.";
       if (reasons.some(r => r.startsWith("boundary print:"))) return "The earliest page credits a print source, with no web copy to open.";
       if (reasons.some(r => r.startsWith("boundary unsourced:"))) return "The earliest page is editable and gives no source for the claim.";
       if (reasons.some(r => r.startsWith("boundary circular:"))) return "The earliest pages only cite each other or later pages.";
