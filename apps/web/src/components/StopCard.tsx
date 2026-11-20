@@ -1,5 +1,4 @@
 import type { Trace } from "pz/schema";
-import { PageReceipt } from "./Roots.tsx";
 import { pageReceipt, uncheckedParents } from "../model/roots.ts";
 import { cleanQuote } from "../model/quoteClean.ts";
 import { sampleRow } from "../model/sampleRow.ts";
@@ -18,19 +17,21 @@ export function StopCard({ trace }: { trace: Trace }) {
       <h3 className="stop-title"><span className={tone ? "ramp-dot" : "ramp-dot empty"} style={{ ["--tone" as string]: tone ?? "var(--ink-3)" }} aria-hidden="true" />{card.title}</h3>
       <p className="stop-sentence">{card.sentence}</p>
       {trace.decision.state !== "ORIGIN_FOUND" && <p className="stop-restraint">No origin is named on purpose: the evidence does not meet the origin rules.</p>}
-      <div className="stop-earliest"><span className="meta">Earliest page we found</span>
-        {earliest.length ? earliest.map(node => <p className="earliest-row" key={node.id}>
-          <strong>{node.date.value ? month(node.date.value, node.date.precision) : "Undated"}</strong>
-          <a href={node.url} target="_blank" rel="noreferrer">{node.domain}</a>
-        </p>) : <p>No dated page with the claim.</p>}
-      </div>
-      {earliest.length > 0 && <section className="check-strip" aria-label="Why you can check this">
-        <h3>Why you can check this</h3>
-        {earliest.map(node => <div className="check-row" key={node.id}>
-          <div className="root-page"><PageReceipt page={pageReceipt(trace, node)} /></div>
-          {uncheckedParents(node).map(parent => <p key={parent.url}>Not checked: cited page <a href={parent.url} target="_blank" rel="noreferrer">{parent.host}</a> could not be opened.</p>)}
-        </div>)}
-      </section>}
+      {/* One list: each earliest page with its date, how that date is proven and what could not be checked (#259). */}
+      <section className="stop-earliest" aria-label="Earliest pages we found, and why you can check them">
+        <h3 className="meta">{earliest.length > 1 ? "Earliest pages we found" : "Earliest page we found"}</h3>
+        {earliest.length ? earliest.map(node => {
+          const proof = pageReceipt(trace, node).evidence;
+          return <div className="earliest-row" key={node.id}>
+            <p className="earliest-line">
+              <strong>{node.date.value ? month(node.date.value, node.date.precision) : "Undated"}</strong>
+              <a href={node.url} target="_blank" rel="noreferrer">{node.domain}</a>
+            </p>
+            {node.date.value && <p className="earliest-proof">{proof.url ? <a href={proof.url} target="_blank" rel="noreferrer">{proof.label}</a> : proof.label}</p>}
+            {uncheckedParents(node).map(parent => <p className="earliest-proof" key={parent.url}>Not checked: it cites <a href={parent.url} target="_blank" rel="noreferrer">{parent.host}</a>, which could not be opened.</p>)}
+          </div>;
+        }) : <p>No dated page with the claim.</p>}
+      </section>
       {card.origin && (
         <blockquote className="origin-quote" cite={card.origin.url}>
           <p className="quote">{cleanQuote(card.origin.quote, trace.claim.text)}</p>
