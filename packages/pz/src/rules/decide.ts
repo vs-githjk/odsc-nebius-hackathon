@@ -117,6 +117,20 @@ export function originPick(trace: Trace, rules: Rules): { node: Node; span: Trac
   return origin && originSpan ? { node: origin, span: originSpan } : null;
 }
 
+// #307: the pages whose unread citations bear on this claim, so can block an origin (see offTopicMeta). Every non-meta
+// page bears; a meta page bears when it is on the origin's path (joined to it by edges, in either direction) or is a
+// fact-check about this claim. Only an off-topic fact-check off that path is set aside. The web app shows the same split.
+export function bearingNodes(trace: Trace, originId: string | null): Node[] {
+  const path = new Set<string>(originId ? [originId] : []);
+  for (let grew = true; grew;) {
+    grew = false;
+    for (const e of trace.edges) {
+      if (path.has(e.parentId) !== path.has(e.childId)) { path.add(e.parentId); path.add(e.childId); grew = true; }
+    }
+  }
+  return trace.nodes.filter((n) => !n.meta || path.has(n.id) || !offTopicMeta(n.url, { ...trace.claim.atoms, text: trace.claim.text }));
+}
+
 // Rows are checked in order; the first row that holds wins. Pure: reads only the trace and the rules.
 export function decideStopState(trace: Trace, rules: Rules): Decision {
   const pages = trace.nodes.filter((n) => !n.meta);
@@ -133,16 +147,7 @@ export function decideStopState(trace: Trace, rules: Rules): Decision {
   if (conflicting(trace, pages, rules)) return decide("CONFLICTING", 4, ["earliest cluster gives different numbers beyond every transform"]);
 
   const { eligible, candidates, origin } = originChecks(trace, pages, rules);
-  // #307: which unread parents bear on this claim (see offTopicMeta). The origin's path is every page joined to it by
-  // edges, in either direction.
-  const path = new Set<string>(origin ? [origin.id] : []);
-  for (let grew = true; grew;) {
-    grew = false;
-    for (const e of trace.edges) {
-      if (path.has(e.parentId) !== path.has(e.childId)) { path.add(e.parentId); path.add(e.childId); grew = true; }
-    }
-  }
-  const bearing = trace.nodes.filter((n) => !n.meta || path.has(n.id) || !offTopicMeta(n.url, { ...trace.claim.atoms, text: trace.claim.text }));
+  const bearing = bearingNodes(trace, origin?.id ?? null);
   const unreadBlocking = bearing.reduce((sum, n) => sum + n.candidateParents.filter((p) => !p.read).length, 0);
   // The gate's reasons appear only when the gate is what blocks: some earliest page passes every other check.
   const notAsked = candidates.filter((n) => !n.sameClaim).length;

@@ -21,9 +21,15 @@ describe("StopCard unread citations", () => {
     expect(html.match(/cited by www.snopes.com/g)).toHaveLength(2);
     expect(html).not.toContain("Not checked:");
   });
-  it("omits the section under Origin found: no unread page bore on the origin", () => {
+  it("under Origin found, shows the set-aside pages muted, with the reason, instead of hiding them", () => {
     expect(recorded.decision.state).toBe("ORIGIN_FOUND");
-    expect(renderToStaticMarkup(<StopCard trace={recorded} />)).not.toContain("Pages it cites that could not be opened");
+    const html = renderToStaticMarkup(<StopCard trace={recorded} />);
+    expect(html).not.toContain("Pages it cites that could not be opened");
+    expect(html).toContain("Not counted against this origin:");
+    expect(html).toContain("cited only by an off-topic fact-check that could not be opened");
+    expect(html).toContain(">media.greenpeace.org</a>");
+    expect(html).toContain(">cavite.gov.ph</a>");
+    expect(html).toContain("(cited by www.snopes.com)");
   });
   it("omits the section when there are no unread citations", () => {
     expect(renderToStaticMarkup(<StopCard trace={{ ...trace, nodes: [] }} />)).not.toContain("Pages it cites that could not be opened");
