@@ -16,7 +16,7 @@ export const RULES: { row: Trace["decision"]["row"]; text: string }[] = [
   {
     row: 5,
     text:
-      "The earliest page is a primary source with a confirmed date. Its words carry the claim, and the model said with confidence that it states the same claim (and a second model agreed, when one is set). It cites nothing earlier, does not deny the claim and holds no instructions aimed at a model. No page in the trace cites a page that could not be read, and at least two searches further back found nothing older.",
+      "The earliest page is a primary source with a confirmed date, typed with confidence and at a document address (not a dated article or a list page). Its words carry the claim, and the model said with confidence that it states the same claim (and a second model agreed, when one is set). It cites nothing earlier, does not deny the claim and holds no instructions aimed at a model. No page cites a page that could not be read, except a fact-check about a different claim, and at least two searches further back found nothing older.",
   },
   { row: 6, text: "None of the rows above held, so the trace stops without naming an origin." },
 ];

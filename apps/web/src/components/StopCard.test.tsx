@@ -5,7 +5,9 @@ import { Trace } from "pz/schema";
 import { unreadParents } from "../model/unread.ts";
 import { StopCard } from "./StopCard.tsx";
 
-const trace = Trace.parse(JSON.parse(readFileSync("eval/dev-traces/dev-10.json", "utf8")));
+const recorded = Trace.parse(JSON.parse(readFileSync("eval/dev-traces/dev-10.json", "utf8")));
+// dev-10 now ends Origin found (#310); the same evidence read as a cold ending exercises the unread list.
+const trace: Trace = { ...recorded, decision: { ...recorded.decision, state: "TRAIL_GOES_COLD", row: 6 } };
 
 describe("StopCard unread citations", () => {
   it("names every unread page directly below the ending sentence", () => {
@@ -18,6 +20,16 @@ describe("StopCard unread citations", () => {
     }
     expect(html.match(/cited by www.snopes.com/g)).toHaveLength(2);
     expect(html).not.toContain("Not checked:");
+  });
+  it("under Origin found, shows the set-aside pages muted, with the reason, instead of hiding them", () => {
+    expect(recorded.decision.state).toBe("ORIGIN_FOUND");
+    const html = renderToStaticMarkup(<StopCard trace={recorded} />);
+    expect(html).not.toContain("Pages it cites that could not be opened");
+    expect(html).toContain("Not counted against this origin:");
+    expect(html).toContain("cited only by an off-topic fact-check that could not be opened");
+    expect(html).toContain(">media.greenpeace.org</a>");
+    expect(html).toContain(">cavite.gov.ph</a>");
+    expect(html).toContain("(cited by www.snopes.com)");
   });
   it("omits the section when there are no unread citations", () => {
     expect(renderToStaticMarkup(<StopCard trace={{ ...trace, nodes: [] }} />)).not.toContain("Pages it cites that could not be opened");

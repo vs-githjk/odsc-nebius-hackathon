@@ -1,6 +1,6 @@
 import type { Trace } from "pz/schema";
 import { pageReceipt } from "../model/roots.ts";
-import { unreadParents } from "../model/unread.ts";
+import { unreadParents, unreadSplit } from "../model/unread.ts";
 import { cleanQuote } from "../model/quoteClean.ts";
 import { sampleRow } from "../model/sampleRow.ts";
 import { month, stopCard } from "../model/stopCard.ts";
@@ -9,7 +9,11 @@ import { month, stopCard } from "../model/stopCard.ts";
 // one, and the rule that decided, which opens the full rule sheet.
 export function StopCard({ trace }: { trace: Trace }) {
   const card = stopCard(trace);
-  const unread = unreadParents(trace);
+  const found = trace.decision.state === "ORIGIN_FOUND";
+  // Cold endings list every unread cited page. Under Origin found, the pages the decision set aside are still shown,
+  // muted and with the reason, never hidden (#311): the split is decide.ts's own (bearingNodes).
+  const unread = found ? [] : unreadParents(trace);
+  const setAside = found ? unreadSplit(trace).setAside : [];
   const tone = sampleRow(trace).tone;
   const earliest = trace.nodes.filter(node => trace.earliest.nodeIds.includes(node.id))
     .sort((a, b) => (a.date.value ?? "9999").localeCompare(b.date.value ?? "9999"));
@@ -48,6 +52,9 @@ export function StopCard({ trace }: { trace: Trace }) {
           </footer>
         </blockquote>
       )}
+      {setAside.length > 0 && <section className="stop-unread set-aside" aria-label="Not counted against this origin">
+        <p><strong>Not counted against this origin:</strong> {setAside.length === 1 ? "a page" : "pages"} cited only by an off-topic fact-check that could not be opened: {setAside.map((parent, i) => <span key={parent.url}>{i > 0 && ", "}<a href={parent.url} target="_blank" rel="noreferrer">{parent.host}</a></span>)} (cited by {[...new Set(setAside.flatMap(parent => parent.citedBy))].join(", ")})</p>
+      </section>}
       <p className="stop-searched">{card.searched}</p>
       <details className="rule-sheet">
         <summary>How this was decided</summary>

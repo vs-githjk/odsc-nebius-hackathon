@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { Trace } from "pz/schema";
-import { unreadParents } from "./unread.ts";
+import { unreadParents, unreadSplit } from "./unread.ts";
 
 const trace = Trace.parse(JSON.parse(readFileSync("eval/dev-traces/dev-10.json", "utf8")));
 
@@ -28,5 +28,21 @@ describe("unreadParents", () => {
   it("omits read parents and handles an empty trace", () => {
     expect(unreadParents({ ...trace, nodes: [] })).toEqual([]);
     expect(unreadParents({ ...trace, nodes: trace.nodes.map(node => ({ ...node, candidateParents: node.candidateParents.map(parent => ({ ...parent, read: true })) })) })).toEqual([]);
+  });
+});
+
+describe("unreadSplit (the decision's own bearingNodes)", () => {
+  it("sets aside both dev-10 citations under Origin found: they come from an off-topic fact-check", () => {
+    expect(trace.decision.state).toBe("ORIGIN_FOUND");
+    const { counted, setAside } = unreadSplit(trace);
+    expect(counted).toEqual([]);
+    expect(setAside.map(p => p.host).sort()).toEqual(["cavite.gov.ph", "media.greenpeace.org"]);
+    expect(setAside.every(p => p.citedBy.includes("www.snopes.com"))).toBe(true);
+  });
+  it("counts an unread citation from a non-meta page", () => {
+    const nodes = trace.nodes;
+    const page = nodes.find(n => !n.meta)!;
+    const withUnread = { ...trace, nodes: nodes.map(n => n.id === page.id ? { ...n, candidateParents: [...n.candidateParents, { url: "https://older.example/report", read: false }] } : n) };
+    expect(unreadSplit(withUnread).counted.map(p => p.url)).toContain("https://older.example/report");
   });
 });
