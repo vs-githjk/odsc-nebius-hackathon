@@ -201,3 +201,4 @@
 - 2026-11-20 00:00 ET: merged #306 (Try these labels), #308 (paused live fallback, unread pages named). Rohan: attempt C Wayback on #307.
 - 2026-11-20 00:15 ET: #309 origin experiment A verified (dev-09, dev-10 ORIGIN_FOUND, 0 false, G4 fixed). XO requested narrower unread exemption (only off-topic meta) + copy updates in same PR. Video ending decision to Vidyut.
 - 2026-11-20 00:30 ET: merged #310 (origin experiment finished; dev-09, dev-10 ORIGIN_FOUND, 0 false). Closed #309. Rishit on script/storyboard new ending.
+- 2026-11-20 00:45 ET: merged #311 (transparent 'Not counted against this origin', shared bearing logic; XO replay unchanged), #312 (video ending: dev-10 Origin found; 2 new voice lines for Vidyut).
