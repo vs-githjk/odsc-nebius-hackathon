@@ -94,7 +94,7 @@ describe("T77 readable CLI card", () => {
     expect([money(0.12), money(0.0042), money(0)]).toEqual(["$0.12", "$0.0042", "$0.00"]);
     const cold = load("sample-rich");
     expect(endingSentence({ ...cold, earliest: { ...cold.earliest, earlierWindowSearches: 2 } })).toBe("No earlier page and no primary source turned up.");
-    expect(endingSentence(load("sample-cold-unread"))).toBe("A page it cites could not be opened.");
+    expect(endingSentence(load("sample-cold-unread"))).toBe("A page it cites could not be opened: harborzoo.example (cited by harborzoo.example).");
     for (const name of names) expect(renderCard(load(name))).not.toContain(load(name).decision.reasons[0] ?? "\u0000");
   });
 });

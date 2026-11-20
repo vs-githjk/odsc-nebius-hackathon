@@ -110,7 +110,7 @@ describe("T95 make judge", () => {
     cpSync(join(root, "eval/dev-traces/dev-04.json"), join(dir, "eval/dev-traces/dev-04.json"));
     expect(judgeTraces(dir)).toEqual({ paths: [join(dir, "eval/dev-traces/dev-04.json")], sample: false, source: "dev" });
     // dev-10 waits for the archive-date fix (XO on #235): it is not shown even when its file is there.
-    expect(JUDGE_DEV_TRACES).not.toContain("dev-10");
+    expect(JUDGE_DEV_TRACES[0]).toBe("dev-10");
     const empty = mkdtempSync(join(tmpdir(), "pz-judge-"));
     mkdirSync(join(empty, "fixtures/traces"), { recursive: true });
     cpSync(join(root, "fixtures/traces/sample-rich.json"), join(empty, "fixtures/traces/sample-rich.json"));
