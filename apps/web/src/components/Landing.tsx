@@ -237,7 +237,7 @@ export function Landing({ traces, hero, focusKey, onMatch, onLive }: {
               </Receipt>
             )}
             <Receipt n="4" title="It checks an AI answer, one statistic at a time" measures={`Each statistic in the answer is found and traced on its own. This run was recorded on ${S7.recordedAt} and replays here; checking a whole answer live works from the command line only.`}
-              check={[{ label: "fixtures/answers/s7-answer.json", href: blob("fixtures/answers/s7-answer.json") }]}>
+              check={[{ label: "open the answer and its traces", href: "#/answer" }, { label: "fixtures/answers/s7-answer.json", href: blob("fixtures/answers/s7-answer.json") }]}>
               <AnswerCheck />
             </Receipt>
             <Receipt n="5" title="It is cheap and repeatable" measures="Median time and cost over the 20 recorded traces. Both miss their targets (30 s, $0.02); search is almost all of the cost."
@@ -316,6 +316,7 @@ export function Footer() {
         <span className="meta">ODSC x Nebius Hackathon 2026, team Says Who.</span>
         <nav className="lp-footer-links" aria-label="Footer">
           <a href="#/how">How it works</a>
+          <a href="#/answer">Check an AI answer</a>
           <a href="#/traces">Recorded traces</a>
           <a href={REPO}>GitHub</a>
         </nav>

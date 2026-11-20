@@ -9,6 +9,13 @@ describe("parseRoute", () => {
     expect(parseRoute("#/t/a%20b")).toEqual({ name: "trace", id: "a b" });
   });
 
+  it("reads the answer check page and one statistic's trace", () => {
+    expect(parseRoute("#/answer")).toEqual({ name: "answer", n: null });
+    expect(parseRoute("#/answer/2")).toEqual({ name: "answer", n: 2 });
+    expect(parseRoute("#/answer/0")).toEqual({ name: "start" });
+    expect(parseRoute("#/answer/x")).toEqual({ name: "start" });
+  });
+
   it("a malformed escape falls back to the start route instead of throwing", () => {
     expect(() => parseRoute("#/t/%E0")).not.toThrow();
     expect(parseRoute("#/t/%E0")).toEqual({ name: "start" });
