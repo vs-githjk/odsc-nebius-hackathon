@@ -6,6 +6,10 @@ Team **Says Who**, ODSC x Nebius Hackathon 2026. Built on **Nebius Token Factory
 
 **Try it live: [patient-0.vercel.app](https://patient-0.vercel.app)** (live traces share a small daily budget; recorded traces open free).
 
+Demo video (2 to 3 min): [SLOT: link]
+
+Team: Vidyut ([@vs-githjk](https://github.com/vs-githjk)), Rohan ([@rohanrastogi311](https://github.com/rohanrastogi311)), Anoop ([@AnoopIbrampur](https://github.com/AnoopIbrampur)), Rishit ([@RishitRai](https://github.com/RishitRai)).
+
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/readme/landing-1440-dark.png">
   <img alt="The Patient Zero landing page: the headline, the claim box, and a recorded trace walking back from 2025 to 2016 and ending with the trail going cold" src="docs/screenshots/readme/landing-1440-light.png">
@@ -134,6 +138,13 @@ The model answers narrow typed questions. Code reads the trace and picks the end
 - **Page text is data.** Claims and pages go to the model inside a `source_text` field, and every prompt says so. Tests plant instructions inside claims and sentences and check they stay data. A planted trap set checks the counters for false certainty ([traps/README.md](traps/README.md)).
 - **The card cannot overclaim.** The card's one sentence is dropped if it uses a number, name, quote or date not in the spans, or says "origin" on a trace that did not end `ORIGIN_FOUND` ([packages/pz/src/card/index.ts](packages/pz/src/card/index.ts)).
 
+### Safety
+
+- **Web page text is untrusted evidence.** Page and claim text reach the model only inside a `source_text` field, kept apart from the instructions, and every prompt says it is data to judge, never instructions to follow ([packages/pz/src/typed/ask.ts](packages/pz/src/typed/ask.ts)). Tests plant instructions inside claims and pages and check they stay data, and the adversarial traps plant fake origins written to fool the model ([packages/pz/src/traps/adversarial.ts](packages/pz/src/traps/adversarial.ts)).
+- **The model answers typed questions only.** Every call is a narrow question with a strict JSON schema ([packages/pz/src/schema/questions.ts](packages/pz/src/schema/questions.ts)); there is no free-text answer for the engine to act on.
+- **Code, not the model, decides the ending.** The decision table reads the trace and picks the stop state ([packages/pz/src/rules/decide.ts](packages/pz/src/rules/decide.ts)), and the card drops any sentence that says more than the spans ([packages/pz/src/card/index.ts](packages/pz/src/card/index.ts)).
+- **Fetching is public-only.** Page fetches refuse private, loopback and link-local hosts at every redirect, and are capped in size and time ([packages/pz/src/engine/publication.ts](packages/pz/src/engine/publication.ts)). Keys never reach the browser: the live app calls them from a server function.
+
 ## A trace, walked step by step
 
 One real claim from paste to stop state: dev-10, "By 2050 there will be more plastic than fish in the ocean.", recorded live on Nov 19 ([eval/dev-traces/dev-10.json](eval/dev-traces/dev-10.json)). `make replay TRACE=eval/dev-traces/dev-10.json` prints its card with no keys, and the app replays the walk step by step.
@@ -210,6 +221,8 @@ It was the fastest (12 to 47 s) and lost on every claim. The grading was not ful
 | Tavily `extract` | reading the pages a search returns | live in every dev run since Nov 17 |
 | Wayback CDX | first capture of each page, capping its date | live: every dev trace's usage rows include its Wayback lookups |
 
+**How links survive into the trace.** Every page a Tavily search returns is saved with its URL; Tavily `extract` gives the text the spans are cut from, and each span keeps its character offsets and a hash so `pz verify` can find it again. The Wayback capture URL that dated a page is kept on the page's date, and the trace view links both the page and the capture ("Open the page", "Open the capture"). A cited page that could not be opened is kept too, marked unread, which is why such a trace ends cold.
+
 Every call writes a usage row: model, tokens, cached tokens, Tavily credits, dollars, latency, status and cache hit ([packages/pz/src/schema/usage.ts](packages/pz/src/schema/usage.ts)). The [recorded usage report](docs/usage-report.md) groups the current saved dev traces by service, model, endpoint and stage, with per-trace totals and cache hits. Rebuild it with `make usage-report`. It describes the saved traces, not the team billing ledger or every historical run. Median speed and cost per trace, from those rows: [eval/perf.md](eval/perf.md).
 
 ## Limits
@@ -253,6 +266,19 @@ Start at [llms.txt](llms.txt). The working notes live in `plan/` while the build
 - The claims list in `plan/plan.md` ("Claims we will make") is what `make verify` prints, one row per claim.
 
 Teammates and their agents: read [docs/AGENTS.md](docs/AGENTS.md) first.
+
+## Judging criteria map
+
+The weights are the official ones from the hackathon brief ([the organisers' template README](https://github.com/odsc2015/nebius-research-agent-hackaton-template)). Each row points to where to check it here, in the live app and in the demo video ([docs/demo-script.md](docs/demo-script.md)).
+
+| Criterion | Weight | In this README | In the live app | In the demo video |
+|---|---|---|---|---|
+| Sourced and verifiable answers | 30% | [Why each step can be checked](#why-each-step-can-be-checked), [How a page gets its date](#how-a-page-gets-its-date), [Evaluation](#evaluation) | a trace: the exact sentence on every page, each date with how it was proven, "Open the page" and "Open the capture" | S4 and S5 (0:40 to 1:04): the sentence on each page, then the WEF report opened |
+| Works end to end | 25% | [Try it in two minutes](#try-it-in-two-minutes-no-api-keys), [Where it stands](#where-it-stands), [When it fails](#when-it-fails) | the claim box on the landing traces a new claim live; recorded traces open free | S2 and S3 (0:12 to 0:40), S9 (1:45 to 1:55) |
+| Usefulness | 20% | the opening of this README, [Limits](#limits) | Check an AI answer (`#/answer`), Recorded traces (`#/traces`) | S1 (0:00 to 0:12), S7 (1:16 to 1:30) |
+| Agent design | 15% | [How it works](#how-it-works), [Code decides how a trace ends](#code-decides-how-a-trace-ends), [Safety](#safety) | How it works (`#/how`), "How this was decided" on every trace | S6 (1:04 to 1:16), S10 (1:55 to 2:05) |
+| Use of Token Factory and Tavily | 10% | [Token Factory and Tavily](#token-factory-and-tavily) | "Replay the walk" on a trace shows each search and page read | S3 (0:20 to 0:40), S11 (2:05 to 2:15) |
+<!-- numbers ok: 30, 25, 20, 15, 10 (the official judging weights, from the organisers' template README) -->
 
 ## License
 
