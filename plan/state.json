@@ -1,39 +1,43 @@
 {
- "mode": "hackathon",
- "name": "Patient Zero (team Says Who), ODSC x Nebius Hackathon 2026",
- "stage": "H5-plan",
- "deadline": "2026-11-20 (Friday; exact time and timezone UNVERIFIED)",
- "approvals": {
-  "gate1": {
-   "at": "Thu Oct 29 2026 ~01:05 PDT",
-   "quote": "yes patient zero im open to exploring more anobt this"
+  "mode": "hackathon",
+  "name": "Patient Zero (team Says Who), ODSC x Nebius Hackathon 2026",
+  "stage": "H5-plan",
+  "deadline": "2026-11-20 (Friday; exact time and timezone UNVERIFIED)",
+  "approvals": {
+    "gate1": {
+      "at": "Thu Oct 29 2026 ~01:05 PDT",
+      "quote": "yes patient zero im open to exploring more anobt this"
+    },
+    "gate2": {
+      "at": "Thu Oct 29 2026 ~05:05 PDT",
+      "quote": "Yes, I approve the plan"
+    },
+    "gate3": null,
+    "storyboard": {
+      "at": "Thu Nov 19 22:20 EST 2026",
+      "quote": "Storyboard approve as long as it's the strongest version available"
+    },
+    "submit": null,
+    "script": {
+      "at": "Thu Nov 19 21:35 EST 2026",
+      "quote": "Approve the script."
+    },
+    "video": {
+      "at": "Fri Nov 20 11:35 ET",
+      "quote": "Approve the version. This music was quite good."
+    }
   },
-  "gate2": {
-   "at": "Thu Oct 29 2026 ~05:05 PDT",
-   "quote": "Yes, I approve the plan"
+  "branch": "build/<slug>",
+  "design_direction": {
+    "at": "Thu Oct 29 2026 ~05:00 PDT",
+    "quote": "Yeah, I completely agree. Time machine plus rewind, but somewhat lighter, more vibrant color",
+    "artifacts": [
+      "https://claude.ai/artifact/G7RBqenpKwmzZLdwj7Bj5z",
+      "https://claude.ai/artifact/WMmPQfiHeLxfSXNzxMLUaZ"
+    ]
   },
-  "gate3": null,
-  "storyboard": {
-   "at": "Thu Nov 19 22:20 EST 2026",
-   "quote": "Storyboard approve as long as it's the strongest version available"
-  },
-  "submit": null,
-  "script": {
-   "at": "Thu Nov 19 21:35 EST 2026",
-   "quote": "Approve the script."
-  }
- },
- "branch": "build/<slug>",
- "design_direction": {
-  "at": "Thu Oct 29 2026 ~05:00 PDT",
-  "quote": "Yeah, I completely agree. Time machine plus rewind, but somewhat lighter, more vibrant color",
-  "artifacts": [
-   "https://claude.ai/artifact/G7RBqenpKwmzZLdwj7Bj5z",
-   "https://claude.ai/artifact/WMmPQfiHeLxfSXNzxMLUaZ"
-  ]
- },
- "success_metric": "Win the ODSC x Nebius Hackathon: a strong, sourced research agent submitted before Nov 20 2026",
- "runs": [],
- "autopilot": [],
- "decision_desk": "https://claude.ai/artifact/9DkDuMHZrn3BySunuMGsjH"
+  "success_metric": "Win the ODSC x Nebius Hackathon: a strong, sourced research agent submitted before Nov 20 2026",
+  "runs": [],
+  "autopilot": [],
+  "decision_desk": "https://claude.ai/artifact/9DkDuMHZrn3BySunuMGsjH"
 }

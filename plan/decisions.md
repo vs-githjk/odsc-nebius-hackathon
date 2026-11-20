@@ -192,3 +192,4 @@ Format: [LOCKED|REJECTED|PREFERENCE] decision | why | "Vidyut's words" | date
 - [LOCKED] Voiceover take 2 (Patient0vo2.m4a, all 11 lines, S11 original wording) approved for the video | "I think should be good to go for the recording" | Fri Nov 20 10:54 ET
 - [LOCKED] If Anoop/Rohan don't deliver judge fixes by 12:00, XO does them | "if they don't deliver, you can do it at 12, sure" | Fri Nov 20 10:54 ET
 - [PREFERENCE] Video v2 liked; add background music; approve if strongest version | "if this is the strongest version we can have, then I approve it. Like this looks good." | Fri Nov 20 11:25 ET
+- [LOCKED] Demo video v3 approved (music: Documentary Calm, Pixabay) | "Approve the version. This music was quite good." | Fri Nov 20 11:34 ET
