@@ -179,3 +179,13 @@ body { isolation: isolate; }
   .stop-unread.set-aside p { line-height: 1.6; }
   .stop-unread.set-aside a { display: inline; min-height: 0; padding: 12px 0; margin: -12px 0; }
 }
+
+/* The answer check's plastic card: one line explaining why the same claim ends differently in the dev-10 trace (#259). */
+.same-claim-note { margin: 8px 0 0; max-width: 62ch; color: var(--ink-2); font-size: 14px; line-height: 1.5; }
+.same-claim-note a { display: inline-block; padding: 12px 0; margin: -12px 0; }
+.lp-answer-results li.same-claim-row { display: block; }
+.lp-answer-results .same-claim-note { margin: 0 0 6px 17px; }
+.an-stats li { display: flex; flex-direction: column; }
+.an-stats li > a { height: auto; flex: 1 1 auto; }
+.an-stats .same-claim-note { margin-top: 12px; }
+.an-stats .same-claim-note a { display: inline-block; height: auto; padding: 12px 0; margin: -12px 0; border-top: 0; color: var(--action); text-decoration: underline; }

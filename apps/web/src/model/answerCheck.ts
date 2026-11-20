@@ -28,3 +28,14 @@ export function answerPieces(answer: string, claims: CheckedClaim[]): Piece[] {
   if (at < answer.length) out.push({ text: answer.slice(at), claim: null });
   return out;
 }
+
+// The plastic statistic is the same claim as the recorded dev-10 trace, which now ends Origin found, while this run of it
+// stops cold. Both are true: this run also read the WEF report (same sentence), but its same-claim model answered "no"
+// (0.73), so the report was not accepted (fixtures/answers/s7-answer.json, claim 0, node n6). One line says so where both
+// endings are on screen (#259, 08:00 judge pass).
+export const PLASTIC_CLAIM_START = 64;
+export const DEV10_HREF = "#/t/dev-10";
+export function sameClaimNote(where: "landing" | "page"): string {
+  const lead = where === "landing" ? "Same claim as the trace above, a different run" : "Same claim as the recorded plastic trace, a different run";
+  return `${lead}: this one also read the WEF report, but its model judged the report's sentence not to state the same claim, so it stops cold. Each run is judged on its own evidence.`;
+}

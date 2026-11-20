@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import type { Trace } from "pz/schema";
 import { independence } from "pz/headline";
 import { ClaimBox } from "./ClaimBox.tsx";
-import { S7, answerPieces } from "../model/answerCheck.ts";
+import { DEV10_HREF, PLASTIC_CLAIM_START, S7, answerPieces, sameClaimNote } from "../model/answerCheck.ts";
 import { challengeTraces } from "../model/live.ts";
 import { rowFacts, sampleRow } from "../model/sampleRow.ts";
 import { scrubberStops, dateToX, heat } from "../model/scrubber.ts";
@@ -143,7 +143,10 @@ function AnswerCheck() {
           : <span key={i}>{p.text}</span>)}
       </p>
       <ul className="lp-answer-results">
-        {S7.claims.map((c) => <li key={c.start}><span className="lp-cold-dot" aria-hidden="true" />{c.ending}</li>)}
+        {S7.claims.flatMap((c) => [
+          <li key={c.start}><span className="lp-cold-dot" aria-hidden="true" />{c.ending}</li>,
+          ...(c.start === PLASTIC_CLAIM_START ? [<li key={`${c.start}-note`} className="same-claim-row"><p className="same-claim-note meta">{sameClaimNote("landing")} <a href={DEV10_HREF}>Open that trace</a></p></li>] : []),
+        ])}
       </ul>
       <p className="lp-answer-sum"><strong>{S7.summary}</strong> <span className="meta">The claims are out there, but no page they came from could be confirmed, so none is named.</span></p>
     </div>

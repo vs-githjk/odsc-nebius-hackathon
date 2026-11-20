@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { DEV10_HREF, sameClaimNote } from "../model/answerCheck.ts";
 import { independence } from "pz/headline";
 import { type AnswerCheck, answerSegments, readAnswerCheck } from "../model/answerStats.ts";
 import { stopCard } from "../model/stopCard.ts";
@@ -71,6 +72,7 @@ export function AnswerPage() {
                         <span className="an-ending"><strong>{card.title}</strong> {card.sentence}</span>
                         <span className="meta">{pages} {pages === 1 ? "page" : "pages"}, {independentRoots} {independentRoots === 1 ? "root" : "roots"}. Open its trace</span>
                       </a>
+                      {s.number === "2050" && <p className="same-claim-note meta">{sameClaimNote("page")} <a href={DEV10_HREF}>Open the recorded plastic trace</a></p>}
                     </li>
                   );
                 })}

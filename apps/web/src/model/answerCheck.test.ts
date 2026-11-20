@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
-import { S7, answerPieces } from "./answerCheck.ts";
+import { DEV10_HREF, PLASTIC_CLAIM_START, S7, answerPieces, sameClaimNote } from "./answerCheck.ts";
 
 const fixture = JSON.parse(readFileSync(fileURLToPath(new URL("../../../../fixtures/answers/s7-answer.json", import.meta.url)), "utf8"));
 
@@ -23,5 +23,18 @@ describe("the landing page's answer check matches the S7 recording", () => {
     const pieces = answerPieces(S7.answer, S7.claims);
     expect(pieces.map((p) => p.text).join("")).toBe(S7.answer);
     expect(pieces.filter((p) => p.claim)).toHaveLength(2);
+  });
+});
+
+describe("same-claim note on the plastic statistic", () => {
+  it("is true of the recording: the run read the WEF report but its model said no, and it ends cold", () => {
+    const claim = fixture.claims.find((c: { start: number }) => c.start === PLASTIC_CLAIM_START);
+    const trace = claim.trace ?? claim;
+    expect(trace.decision.state).toBe("TRAIL_GOES_COLD");
+    const wef = trace.nodes.find((n: { url: string }) => n.url.includes("weforum.org"));
+    expect(wef.read).toBe(true);
+    expect(wef.sameClaim.optionId).toBe("no");
+    expect(sameClaimNote("landing")).toContain("also read the WEF report");
+    expect(DEV10_HREF).toBe("#/t/dev-10");
   });
 });
