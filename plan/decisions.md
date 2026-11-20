@@ -193,3 +193,4 @@ Format: [LOCKED|REJECTED|PREFERENCE] decision | why | "Vidyut's words" | date
 - [LOCKED] If Anoop/Rohan don't deliver judge fixes by 12:00, XO does them | "if they don't deliver, you can do it at 12, sure" | Fri Nov 20 10:54 ET
 - [PREFERENCE] Video v2 liked; add background music; approve if strongest version | "if this is the strongest version we can have, then I approve it. Like this looks good." | Fri Nov 20 11:25 ET
 - [LOCKED] Demo video v3 approved (music: Documentary Calm, Pixabay) | "Approve the version. This music was quite good." | Fri Nov 20 11:34 ET
+- [PREFERENCE] Submission doc: review together with Vidyut later; XO does not merge the submission-final PR until then | "We'll work through it together later. We don't need to do that now." | Fri Nov 20 11:45 ET
