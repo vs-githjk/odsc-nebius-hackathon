@@ -60,6 +60,7 @@ function conflicting(trace: Trace, pages: Node[], rules: Rules): boolean {
 //    (/2017/07/10/...) is a news or blog post, and a list page (/publications, /published-papers) lists other works.
 //    The model typed a CNBC article and a Scientific American column as "report"; G4's false origin was a list page.
 export const PRIMARY_MIN_PROBABILITY = 0.9;
+export const EARLIER_NOT_RULED_OUT = "An earlier page on the trail was not ruled out";
 const DATED_PATH = /\/(?:19|20)\d{2}\/\d{1,2}\/(?:\d{1,2}\/)?/;
 const LIST_PAGES = new Set(["publications", "published-papers", "papers", "articles", "news", "blog", "archive", "archives", "category",
   "categories", "tag", "tags", "search", "press", "press-releases", "media", "resources", "library", "index", "home", "list"]);
@@ -176,8 +177,14 @@ export function decideStopState(trace: Trace, rules: Rules): Decision {
   // The unread line is always reported, but it blocks only when an unread parent bears on this claim (#307).
   const unreadLine = `${unreadParents} unread candidate parent(s)`;
   const blocking = blockers.filter((b) => b !== unreadLine || unreadBlocking > 0);
-  if (blocking.length === 0) return decide("ORIGIN_FOUND", 5, [`earliest page ${origin!.id} is a ${origin!.pageType!.optionId} with a confirmed date`]);
+  // #307 (XO's 05:04 brief): an origin must be the earliest-dated page on the trail. If any other non-meta page carries
+  // an earlier date, whatever its same_claim answer, it was not ruled out, so no origin is named. This only demotes.
+  const earlier = blocking.length === 0 && origin?.date.value
+    ? pages.find((n) => n.id !== origin.id && n.date.value !== null && n.date.value.slice(0, 10) < origin.date.value!.slice(0, 10))
+    : undefined;
+  if (blocking.length === 0 && !earlier) return decide("ORIGIN_FOUND", 5, [`earliest page ${origin!.id} is a ${origin!.pageType!.optionId} with a confirmed date`]);
+  const reasons = earlier ? [...blockers, `${EARLIER_NOT_RULED_OUT}: ${earlier.url}`] : blockers;
   // T37: where the trail ends, when code can say so, goes first among the reasons.
   const boundary = findBoundary(trace, rules);
-  return decide("TRAIL_GOES_COLD", 6, boundary ? [BOUNDARY_REASONS[boundary], ...blockers] : blockers);
+  return decide("TRAIL_GOES_COLD", 6, boundary ? [BOUNDARY_REASONS[boundary], ...reasons] : reasons);
 }

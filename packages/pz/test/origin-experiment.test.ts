@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { loadRules } from "../src/rules/rules.ts";
-import { replay, judge, bare } from "../src/eval/origin-replay.ts";
+import { replay, judge, bare, recordedTraces } from "../src/eval/origin-replay.ts";
+import { decideStopState } from "../src/rules/decide.ts";
 import { offTopicMeta, primaryUrl } from "../src/rules/decide.ts";
 
 // The origin experiment, attempt A (#307). The gate: replaying the decision over every recorded trace (20 E2 dev
@@ -69,5 +70,43 @@ describe("the replay judge", () => {
     expect(judge("https://x.org/a", { kind: "cold" })).toBe("false origin");
     expect(judge("https://beyondgreenspace.net/published-papers", { kind: "origin-hosts", hosts: ["nature.com", "ecehh.org"] })).toBe("false origin");
     expect(judge(null, { kind: "cold" })).toBe("no origin");
+  });
+});
+
+// #307, XO's 05:04 brief: an origin must be the earliest-dated non-meta page in the trace. Under the #310 rules the
+// S7 answer check's plastic claim named a Greenpeace whale-art page because the WEF report (2016) in the same trace
+// was judged same_claim "no"; an earlier page that was not ruled out now demotes the pick.
+describe("the wider gate: every recorded trace in the repo", () => {
+  const rows = replay(rules, { wide: true });
+  it("covers the dev traces, the gallery, the samples, the failure fixtures, the spike and the S7 answer check", () => {
+    expect(rows.length).toBeGreaterThanOrEqual(41);
+    expect(rows.map((r) => r.id)).toEqual(expect.arrayContaining(["dev-10", "g4", "s7-claim-0", "s7-claim-1", "s7-claim-2"]));
+  });
+  it("names no false origin anywhere, and the S7 plastic claim is not an origin", () => {
+    expect(rows.filter((r) => r.verdict === "false origin").map((r) => `${r.id} ${r.picked}`)).toEqual([]);
+    expect(rows.find((r) => r.id === "s7-claim-0")?.newState).not.toBe("ORIGIN_FOUND");
+  });
+  it("keeps dev-09 and dev-10 on their expected origins", () => {
+    for (const id of ["dev-09", "dev-10"]) expect(rows.find((r) => r.id === id)?.verdict, id).toBe("correct origin");
+  });
+});
+
+describe("the earliest-dated-page guard", () => {
+  const dev10 = recordedTraces().find((t) => t.id === "dev-10")!.trace;
+  const earlier = (date: string, meta = false) => ({
+    ...dev10, nodes: [...dev10.nodes, { ...dev10.nodes.find((n) => n.id === "n6")!, id: "n99", url: "https://earlier.example/page", meta, date: { ...dev10.nodes.find((n) => n.id === "n6")!.date, value: date } }],
+  });
+  it("demotes an origin when another page on the trail has an earlier date, whatever it said on same_claim", () => {
+    const d = decideStopState(earlier("2015-03-01"), rules);
+    expect(d.state).toBe("TRAIL_GOES_COLD");
+    expect(d.reasons).toContain("An earlier page on the trail was not ruled out: https://earlier.example/page");
+  });
+  it("ignores meta pages, and pages dated the same day or later", () => {
+    expect(decideStopState(earlier("2015-03-01", true), rules).state).toBe("ORIGIN_FOUND");
+    expect(decideStopState(earlier("2016-01-20"), rules).state).toBe("ORIGIN_FOUND");
+    expect(decideStopState(earlier("2018-01-01"), rules).state).toBe("ORIGIN_FOUND");
+  });
+  it("leaves dev-10 itself an origin", () => {
+    expect(decideStopState(dev10, rules).state).toBe("ORIGIN_FOUND");
   });
 });
