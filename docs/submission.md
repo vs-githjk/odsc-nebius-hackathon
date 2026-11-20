@@ -17,7 +17,7 @@ Says Who
 
 ### In two sentences
 
-**Anyone can find you a source. Patient Zero shows you whether to trust it.** It takes a viral statistic, a quote or a whole AI answer, and walks each claim backwards through time to the earliest web page it can find that states it, quoting the exact sentence on every page. It shows how the wording changed along the way and how many independent roots the copies trace back to. When the trail ends without an origin, it says so and says why: code decides that from the trace, never the model.
+**Anyone can find you a source. Patient Zero shows you whether to trust it.** It takes a viral statistic, a quote or a whole AI answer (command line), and walks each claim backwards through time to the earliest web page it can find that states it, quoting the exact sentence on every page. It shows how the wording changed along the way and how many independent roots the copies trace back to. When the trail ends without an origin, it says so and says why: code decides that from the trace, never the model.
 
 ### What you can open
 
