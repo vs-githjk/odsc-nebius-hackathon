@@ -13,7 +13,10 @@
    "quote": "Yes, I approve the plan"
   },
   "gate3": null,
-  "storyboard": null,
+  "storyboard": {
+   "at": "Thu Nov 19 22:20 EST 2026",
+   "quote": "Storyboard approve as long as it's the strongest version available"
+  },
   "submit": null,
   "script": {
    "at": "Thu Nov 19 21:35 EST 2026",

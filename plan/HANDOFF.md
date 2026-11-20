@@ -173,3 +173,10 @@ Next, in order (when Vidyut says "go"):
 - UI is the team focus until freeze: Anoop landing page #257, Rishit app inside #259, both briefed on the value-first positioning ("Perplexity finds you a source. Patient Zero shows you whether to trust it."). Drafts 21:00 ET, finals 23:30 ET. XO reviews each push.
 - Open: #222 (Rohan final round, was due 16:30), #250 held-out (Rohan must approve sending to Nebius in his own session), rematch #248 (proposed: grade chatbots on confident wrong origins; Vidyut not yet answered).
 - Vidyut checks back later with "update".
+
+## Nov 19, 22:20 ET
+- Freeze moved to **Fri 14:00 ET**, submit by **18:00 ET** (Vidyut). Deadline Fri 23:59 ET (organiser email).
+- Live: https://patient-0.vercel.app (cap $1.50, ~$0.23 spent). Landing, How it works, AI-answer page, traces list, not-found, share card, Lighthouse 100 a11y, gallery 1440+390 all merged.
+- #222 shipped as #285 (Anoop) + #290 metadata veto; XO probe 49 pages clean.
+- Script approved; storyboard approved (Rishit fixing S4a duplicate, S10 zoom). Voiceover Rohan or Vidyut, Fri AM.
+- Open: held-out (#250, Rohan must type approval himself; Vidyut sent him the message), #224 (Rohan continuing), Anoop README template gaps (criteria map, video/team line, safety, required services). Vidyut reviews the submit form Fri.

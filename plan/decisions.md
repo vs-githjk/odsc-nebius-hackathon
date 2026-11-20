@@ -177,3 +177,5 @@ Format: [LOCKED|REJECTED|PREFERENCE] decision | why | "Vidyut's words" | date
 [LOCKED] No GitHub Pages redeploy; the live Vercel app is the demo link | "what's the point? We have an actual website now." | 2026-11-19
 [LOCKED] Demo video: Rishit drafts the storyboard Friday morning (Vidyut approves it); voiceover by Rohan or Vidyut | "make Rishit do the storyboard, and Rohan or I will do the voiceover" | 2026-11-19
 [LOCKED] #224 phrase claims: hand to a teammate before freeze, otherwise close unmerged | "give it to somebody... otherwise close it" | 2026-11-19
+[LOCKED] Code freeze moved to Fri Nov 20 14:00 ET; submit by 18:00 ET (deadline 23:59 ET). Supersedes Thu 23:59 PT freeze and Fri 11:00 submit | the 02:59 freeze was internal, not a hackathon rule | "I agree with your recommendation about the freeze" | 2026-11-19
+[LOCKED] Storyboard approved, on condition it is the strongest version (S4a re-capture and S10 zoom included) | "Storyboard approve as long as it's the strongest version available" | 2026-11-19
