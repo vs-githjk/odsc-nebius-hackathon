@@ -170,3 +170,4 @@
 - 2026-11-19 20:40 ET: merged #273 (not-found pages). Anoop 9/9 done.
 - 2026-11-19 20:45 ET: Anoop batch 2 posted on #257 (demo script on new UI, Pages base check, submission copy, Lighthouse perf, video raw captures, gallery re-shoot, nav 390).
 - 2026-11-19 20:50 ET: merged #274 (phone gallery + README phone row).
+- 2026-11-19 20:50 ET: merged #275 (Rishit: open finished, one earliest list). Next list for Rishit; Anoop cleared to re-shoot gallery 2/4.
