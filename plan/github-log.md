@@ -166,3 +166,4 @@
 - 2026-11-19 19:55 ET: merged #268 (Anoop: favicon, meta, share card).
 - 2026-11-19 20:00 ET: merged #266 (AI answer page), #269 (traces list). Anoop 6/9 done.
 - 2026-11-19 20:15 ET: merged #269 (traces list), #270 (a11y: Lighthouse 100 all pages light/dark, docs/accessibility.md). Anoop 7/9.
+- 2026-11-19 20:30 ET: merged #271 (fade 120ms), #272 (Devpost gallery x5). Anoop 8/9.
