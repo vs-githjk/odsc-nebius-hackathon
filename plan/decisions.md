@@ -188,3 +188,4 @@ Format: [LOCKED|REJECTED|PREFERENCE] decision | why | "Vidyut's words" | date
 [LOCKED] #309 finishing (narrow unread exemption, test, site copy) handed to Rishit while Anoop is out of usage; Rishit also updates script and storyboard to the new ending after merge; Vidyut and XO make the video Friday morning | "pass it on to Rishit" | 2026-11-20
 [LOCKED] Live cap raised to $2.50 (Vidyut set it in Vercel and redeployed) | headroom for judging | "I set the 2.5 cap universal and I redeployed it" | 2026-11-20
 [LOCKED] New-ending voice lines (S5, S11) approved | "I approve the new voice lines" | 2026-11-20
+- [PREFERENCE] S7 false origin: Rishit's earliest-dated-page guard due Fri 10:00 ET; decide at 10:00 whether to roll back the #309/#310 origin rule if the guard is not merged | protects 0 false origins | "Yeah, so we'll see at 10 a.m. then." | Fri Nov 20 00:07 ET
