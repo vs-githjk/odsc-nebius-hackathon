@@ -15,9 +15,12 @@ export const Atoms = z.object({
   subjectLemma: z.string(), population: z.string().nullable(), time: z.string().nullable(),
   hedge: z.string().nullable(), namedSource: z.string().nullable(), variants: z.array(z.string()),
   phrase: z.string().min(1).nullable().optional(),
+  // A shortened whole-claim run must retain its full copied subject; legacy quote atoms omit this.
+  phraseSubject: z.string().min(1).optional(),
   // #192 F5: a two-number claim's other number ("100 companies ... 71%"). A veto only: see numbers.ts atomHit.
   alsoNumber: z.object({ raw: z.string(), canonical: z.string() }).strict().nullable().optional(),
-}).strict().refine((a) => a.number !== null || !!a.phrase, { message: "atoms need a number or a phrase" });
+}).strict().refine((a) => a.number !== null || !!a.phrase, { message: "atoms need a number or a phrase" })
+  .refine((a) => a.phraseSubject === undefined || (a.number === null && !!a.phrase), { message: "phraseSubject needs a phrase claim" });
 export type Atoms = z.infer<typeof Atoms>;
 export const Span = z.object({
   id: z.string(), nodeId: z.string(), text: z.string(), contextBefore: z.string().max(200), contextAfter: z.string().max(200),

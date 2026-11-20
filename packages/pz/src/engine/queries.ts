@@ -78,7 +78,7 @@ export function whyRejected(query: string, input: { claim: string; atoms: Atoms;
     const known = [...numbersIn(input.claim), ...numbersIn(input.hop?.span ?? "")];
     if (numbersIn(q).some((n) => !known.some((k) => k.value === n.value))) return "number_not_in_sources";
     const carries = [input.atoms.phrase ?? "", ...input.atoms.variants, input.atoms.namedSource ?? ""].some((p) => !!p && hasPhrase(q, p));
-    return carries ? null : "no_atom";
+    return carries && (!input.atoms.phraseSubject || hasPhrase(q, input.atoms.phraseSubject)) ? null : "no_atom";
   }
   const claimNumbers = numbersIn(input.atoms.number.raw);
   const known = [...numbersIn(input.claim), ...numbersIn(input.hop?.span ?? "")];
@@ -110,6 +110,7 @@ export function whyRejected(query: string, input: { claim: string; atoms: Atoms;
 export function codeQuery(claim: string, atoms: Atoms): string {
   // A phrase claim (T53) searches for the phrase itself, quoted, as the claim writes it; a range adds the subject word.
   if (!atoms.number) {
+    if (atoms.phraseSubject) return `"${normalise(atoms.phrase!)}" "${normalise(atoms.phraseSubject)}"`;
     if (!isRange(atoms)) return `"${normalise(atoms.phrase!)}"`;
     const subject = words(claim).find((w) => lemma(w) === atoms.subjectLemma) ?? atoms.subjectLemma;
     return `"${normalise(atoms.phrase!)}" ${subject}`;

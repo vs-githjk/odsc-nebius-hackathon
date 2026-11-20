@@ -105,6 +105,10 @@
                 }
               ]
             },
+            "phraseSubject": {
+              "type": "string",
+              "minLength": 1
+            },
             "alsoNumber": {
               "anyOf": [
                 {

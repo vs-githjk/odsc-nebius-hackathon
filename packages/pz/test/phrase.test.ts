@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import { describe, expect, it, vi } from "vitest";
 import { TokenFactoryError, type ChatInput } from "../src/clients/tokenfactory.ts";
 import { fingerprint } from "../src/engine/fingerprint.ts";
-import { claimRange, fingerprintPhrase, headWord, PHRASE_PROMPT, rangeForms } from "../src/engine/phrase.ts";
+import { afterSubject, claimRange, fingerprintPhrase, headWord, PHRASE_PROMPT, rangeForms } from "../src/engine/phrase.ts";
 import { codeQuery, whyRejected } from "../src/engine/queries.ts";
 import { queriesFor } from "../src/engine/walk.ts";
 import { claimHit, loadRules, phraseHit } from "../src/rules/index.ts";
@@ -73,6 +73,25 @@ describe("T53 fingerprintPhrase on the four E2 claims fingerprint() stops at no_
     expect(headWord("of the")).toBeNull();
     expect(headWord("plastic")).toBe("plastic");
     expect(headWord("heat through your head")).toBe("heat");
+  });
+
+  it("a run that is the whole claim keeps the words after the subject and its verb (dev-08, Nov 17 live run)", async () => {
+    const wall = await fingerprintPhrase(dev["dev-08"]!, { client: clientFor(reply(["The Great Wall of China is the only man-made structure visible from space"], "Great Wall of China")) });
+    expect(wall.atoms!.phrase).toBe("the only man-made structure visible from space");
+    expect(wall.atoms).toMatchObject({ phraseSubject: "Great Wall of China" });
+    expect(claimHit("The Great Wall of China is the only man-made structure visible from space.", wall.atoms!, rules)).toBe(true);
+    expect(claimHit("The Hoover Dam is the only man-made structure visible from space.", wall.atoms!, rules)).toBe(false);
+    expect(claimHit("The Berlin Wall is the only man-made structure visible from space.", wall.atoms!, rules)).toBe(false);
+    expect(claimHit("The Great Wall of Chinaland is the only man-made structure visible from space.", wall.atoms!, rules)).toBe(false);
+    const query = codeQuery(dev["dev-08"]!, wall.atoms!);
+    expect(query).toContain('"Great Wall of China"');
+    const input = { claim: dev["dev-08"]!, atoms: wall.atoms!, hop: null };
+    expect(whyRejected(query, input)).toBeNull();
+    expect(whyRejected('"the only man-made structure visible from space"', input)).toBe("no_atom");
+    expect(afterSubject("Insanity is doing the same thing", "doing the same thing", "Insanity")).toBe("doing the same thing");
+    expect(afterSubject("Cats are cute.", "Cats are cute.", "Cats")).toBe("Cats are cute.");
+    expect(afterSubject("Catsup is served with many meals.", "Catsup is served with many meals.", "Cats")).toBe("Catsup is served with many meals.");
+    expect(afterSubject("Cats eat food around the house.", "Cats eat food around the house.", "Cats")).toBe("Cats eat food around the house.");
   });
 
   it("stops with a named reason: has_number (no call), no_phrase, no_subject, no_model; other errors are not hidden", async () => {
