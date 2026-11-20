@@ -206,3 +206,5 @@
 - 2026-11-20 00:00 ET: Rohan held-out DONE on 8a33448 (post-#310): 8/10 traced, 0 false origins, target 0/6, earliest 0/0/5, cold 2/4, $0.86. Asked for result-only commit + README/submission slots. S8 voice line to re-record.
 - 23:49 ET: Rishit batch 3 posted on #259 (tap nit, origin-found copy sweep, gallery re-shoot, raw video captures)
 - 23:57 ET: merged #313 (Rishit, set-aside tap targets on phones), all checks SUCCESS
+- 00:05 ET: merged #314 (Rishit, og.png shows Origin found), all SUCCESS
+- 00:05 ET: Rishit found a false origin under #310 rules on S7 claim 0 (Greenpeace whale-art page); XO replayed all 41 traces in the repo, only case; earliest-dated-page guard simulated (fixes S7, keeps dev-09/10); briefed on #307, due Fri 10:00
