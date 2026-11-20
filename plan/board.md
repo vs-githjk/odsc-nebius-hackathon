@@ -168,3 +168,5 @@ Decisions live only in plan/decisions.md and plan/rulings.md. The board is for c
 - [09:37 PT] rohanrastogi311 #243 follow-up: final validation failures save verify stage; card failures retain card; regression and make verify pass | @vs-githjk review follow-up PR
 
 - [18:05 PT] rohanrastogi311 #116: cross-run recorded usage report, cache exclusions, per-stage/model/endpoint and per-trace tables, README link; 1040 tests and make verify pass | @vs-githjk review usage-report PR
+
+- [18:15 PT] rohanrastogi311 #118: fresh-checkout keyless judge script and Linux/macOS CI matrix; local fresh clone passes in 45s | @vs-githjk review judge-check PR; macOS result awaits CI
