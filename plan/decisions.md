@@ -189,3 +189,5 @@ Format: [LOCKED|REJECTED|PREFERENCE] decision | why | "Vidyut's words" | date
 [LOCKED] Live cap raised to $2.50 (Vidyut set it in Vercel and redeployed) | headroom for judging | "I set the 2.5 cap universal and I redeployed it" | 2026-11-20
 [LOCKED] New-ending voice lines (S5, S11) approved | "I approve the new voice lines" | 2026-11-20
 - [PREFERENCE] S7 false origin: Rishit's earliest-dated-page guard due Fri 10:00 ET; decide at 10:00 whether to roll back the #309/#310 origin rule if the guard is not merged | protects 0 false origins | "Yeah, so we'll see at 10 a.m. then." | Fri Nov 20 00:07 ET
+- [LOCKED] Voiceover take 2 (Patient0vo2.m4a, all 11 lines, S11 original wording) approved for the video | "I think should be good to go for the recording" | Fri Nov 20 10:54 ET
+- [LOCKED] If Anoop/Rohan don't deliver judge fixes by 12:00, XO does them | "if they don't deliver, you can do it at 12, sure" | Fri Nov 20 10:54 ET
