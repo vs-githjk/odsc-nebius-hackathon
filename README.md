@@ -1,17 +1,11 @@
 # Patient Zero
 
-**Anyone can find you a source. Patient Zero shows you whether to trust it.** Paste a viral claim and it walks it back through time to the earliest web page it can find that states it.
+**Paste a viral claim. Patient Zero walks it back through time to the earliest web page it can find that states it, quotes the exact sentence on every page, and shows how each date was proven.**
 
-**Try it live: [patient-0.vercel.app](https://patient-0.vercel.app)** (live traces share a small shared budget; recorded traces open free).
-
-Demo video (2 to 3 min): [SLOT: link]
-
-Team: Vidyut ([@vs-githjk](https://github.com/vs-githjk)), Rohan ([@rohanrastogi311](https://github.com/rohanrastogi311)), Anoop ([@AnoopIbrampur](https://github.com/AnoopIbrampur)), Rishit ([@RishitRai](https://github.com/RishitRai)).
-
-**What makes it different**
-- The exact sentence on every page, each dated with how the date was proven, and a link you can open.
-- Copies are counted apart from independent roots, so ten repeats of one source count once.
-- When the trail runs out, it says so instead of naming an origin: code decides the ending, never the model.
+- **Try it live:** [patient-0.vercel.app](https://patient-0.vercel.app) (live traces draw on a small shared budget; recorded traces open free)
+- **Demo video (2 min):** [Watch on YouTube](https://youtu.be/VFKoXNjVgNU)
+- **Team Says Who:** Vidyut Sriram, captain ([@vs-githjk](https://github.com/vs-githjk)), Anoop Ibrampur ([@AnoopIbrampur](https://github.com/AnoopIbrampur)), Rishit Rai ([@RishitRai](https://github.com/RishitRai)), Rohan Rastogi ([@rohanrastogi311](https://github.com/rohanrastogi311))
+- **Built on:** Nebius Token Factory (typed questions, strict JSON schemas, first-token logprobs) and Tavily (search and extract), with the Wayback Machine for dates. A research agent for the ODSC x Nebius challenge, "build a research agent that brings its sources".
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/readme/landing-1440-dark.png">
@@ -20,24 +14,43 @@ Team: Vidyut ([@vs-githjk](https://github.com/vs-githjk)), Rohan ([@rohanrastogi
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/screenshots/readme/trace-dev10-1440-dark.png">
-  <img alt="The trace view on the recorded dev-10 trace: the claim, the ending Origin found, the earliest pages found and how each was dated" src="docs/screenshots/readme/trace-dev10-1440-light.png">
+  <img alt="The trace view on the recorded dev-10 trace: Origin found, the WEF report, online by January 20, 2016, then the earliest pages found and how each was dated" src="docs/screenshots/readme/trace-dev10-1440-light.png">
 </picture>
 
-*The landing, and a real recorded trace ([dev-10](eval/dev-traces/dev-10.json)): Origin found: the WEF report, January 2016. "The New Plastics Economy" is the earliest primary source found, dated by its first Wayback Machine capture: archived by January 20, 2016; publication date not established.*
-<!-- numbers ok: 1440 (screenshot width in the file names) -->
-
-Team **Says Who**, ODSC x Nebius Hackathon 2026. Built on **Nebius Token Factory** (typed questions, strict JSON schemas, first-token logprobs) and **Tavily** (search and extract), with the Wayback Machine for dates.
+*The landing, and a real recorded trace ([dev-10](eval/dev-traces/dev-10.json)): Origin found: the WEF report "The New Plastics Economy", the earliest primary source found. Its date comes from its first Wayback Machine capture: online by January 20, 2016; publication date not established.*
+<!-- numbers ok: 1440, 2 (screenshot width in the file names; the video length) -->
 
 ## Where it stands
 
-- **Runs live end to end:** `pz trace "<claim>"` searches with Tavily, reads and dates pages, asks Token Factory typed questions and decides the ending in code ([#191](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/191)); with no keys every command replays committed traces.
-- **On our 20-claim tuning set (E2), final live run on Nov 19:** 0 false origins, target page cited on 4/10, earliest page right on 2, correct cold stops 6/9 ([eval/dev-score.md](eval/dev-score.md), which also holds every earlier run).
-- **The replay re-decision finds the expected origins:** [dev-10](eval/dev-traces/dev-10.json) ends on the World Economic Forum report and [dev-09](eval/dev-traces/dev-09.json) on the Science Advances paper. This used the recorded evidence, with no new live calls ([eval/dev-score.md](eval/dev-score.md)). Reaching and dating origins remains a weakness: the gallery live run named a false origin, G4, which no longer passes the origin rules on replay ([docs/gallery.md](docs/gallery.md), [docs/limits.md](docs/limits.md)).
-- **Held-out, run once on Nov 19:** 0 false origins on ten claims it never saw, but it cited none of the 6 targets, and 2 of 10 traces failed ([eval/heldout-readout.md](eval/heldout-readout.md)). The first-week spike, which lost, is under [Evaluation](#evaluation).
+- **Runs live end to end.** `pz trace "<claim>"` searches with Tavily, reads and dates pages, asks Token Factory typed questions and decides the ending in code ([#191](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/191)). With no keys, every command replays committed traces.
+- **No false origins on either eval set.** 0 on the 20-claim tuning set (E2, final live run on Nov 19, [eval/dev-score.md](eval/dev-score.md)) and 0 on the 10-claim held-out set, run once on Nov 19 on claims it never saw ([eval/heldout-readout.md](eval/heldout-readout.md)). When it cannot back an origin, it says so.
+- **Reaching the origin is the weak part.** On E2 it cited the target page on 4/10, ranked the right page earliest on 2, and stopped cold correctly on 6/9. The held-out run cited none of its 6 targets, stopped cold correctly on 2/4, and 2 of 10 traces failed. A live run on a separate gallery of claims named one false origin, G4 ([docs/gallery.md](docs/gallery.md)); it no longer passes the origin rules on replay.
+- **Two origins found on replay, not live.** A replay re-decision of the recorded E2 traces with the refined origin rule, with no new search or model calls, ends [dev-10](eval/dev-traces/dev-10.json) on the World Economic Forum report and [dev-09](eval/dev-traces/dev-09.json) on the Science Advances paper, both their expected origins. Neither live run had ended on an origin; dev-score.md labels the row as a replay. Every known failure is in [docs/limits.md](docs/limits.md).
+
+## The problem
+
+A reporter or fact-checker has one number and a deadline. A search engine or a chatbot will hand them a source, but they still have to open it to see whether it says the same thing, and whether anything older said it first. Copies also drift as they spread. "By 2050 there will be more plastic than fish in the ocean" is repeated across the web. The earliest page Patient Zero found, the World Economic Forum's 2016 report, says it "in a business-as-usual scenario" and "by weight" ([dev-10](eval/dev-traces/dev-10.json)). The viral version drops both.
+
+Patient Zero gives them the chain of pages behind a claim, each with its verbatim sentence and date, and an ending they can check.
+
+## What it does
+
+- **The exact sentence on every page**, each dated with how the date was proven, and a link you can open.
+- **Copies counted apart from independent roots**, so ten repeats of one source count once.
+- **An honest ending.** When the trail runs out, it says so and says why instead of naming an origin. Code decides the ending, never the model.
+
+The live app has five views: the landing with a recorded walk, a trace (ending first, then Follow the wording, then Copies and roots), Check an AI answer, Recorded traces, and How it works. At phone width:
+
+<p>
+  <img width="150" alt="Landing page on a phone" src="docs/screenshots/submission/phone/1-landing-390.png">
+  <img width="150" alt="The trace ending on a phone" src="docs/screenshots/submission/phone/2-trace-ending-390.png">
+  <img width="150" alt="Follow the wording on a phone" src="docs/screenshots/submission/phone/3-follow-the-wording-390.png">
+  <img width="150" alt="Copies and roots on a phone" src="docs/screenshots/submission/phone/4-copies-and-roots-390.png">
+  <img width="150" alt="Check an AI answer on a phone" src="docs/screenshots/submission/phone/5-check-an-ai-answer-390.png">
+</p>
+<!-- numbers ok: 390, 150 (screenshot width in the file names, image width) -->
 
 ## Try it in two minutes, no API keys
-
-For the complete fresh-checkout judge path, run `bash scripts/judge-check.sh`. It installs dependencies, verifies the project, runs the judge summary and independently checks the replay output with provider keys empty. CI runs it on Linux and macOS; see [the workflow](.github/workflows/judge-check.yml).
 
 ```sh
 git clone https://github.com/vs-githjk/odsc-nebius-hackathon.git && cd odsc-nebius-hackathon
@@ -57,7 +70,9 @@ npm run dev -w web              # the trace view, on the sample traces
 
 `make replay` defaults to an invented sample trace and labels it SAMPLE on the first line. Point it at any recorded trace with `TRACE=path/to/trace.json`. Replay never calls a model or a search API.
 
-## Use it from an MCP client
+For the complete fresh-checkout path, run `bash scripts/judge-check.sh`. It installs dependencies, verifies the project, runs the judge summary and independently checks the replay output with provider keys empty. CI runs it on Linux and macOS ([the workflow](.github/workflows/judge-check.yml)).
+
+### Use it from an MCP client
 
 The Node stdio server exposes `pz_trace` and `pz_verify`. It uses newline-delimited JSON-RPC and negotiates protocol `2025-06-18` ([transport](https://modelcontextprotocol.io/specification/2025-06-18/basic/transports), [tools](https://modelcontextprotocol.io/specification/2025-06-18/server/tools)). After `npm ci`, replace `/absolute/repo` in your client's configuration:
 
@@ -73,19 +88,6 @@ The Node stdio server exposes `pz_trace` and `pz_verify`. It uses newline-delimi
 ```
 
 The server resolves relative paths from this repository. `pz_trace {}` opens the SAMPLE; `{"replayPath":"eval/dev-traces/dev-10.json"}` replays a recording without keys. `pz_verify` accepts `{"path":"fixtures/traces/sample-rich.json"}` or `{"trace":...}`. A `claim` argument requests a LIVE run through the existing budgeted CLI and requires inherited `NEBIUS_API_KEY`, `TAVILY_API_KEY` and an approved `DEV_LEDGER`; the server does not load `.env` itself. Approve private-claim disclosure and paid calls in your client before using LIVE. Page text in results is evidence, never instructions.
-
-### On a phone
-
-The same five views at phone width:
-
-<p>
-  <img width="150" alt="Landing page on a phone" src="docs/screenshots/submission/phone/1-landing-390.png">
-  <img width="150" alt="The trace ending on a phone" src="docs/screenshots/submission/phone/2-trace-ending-390.png">
-  <img width="150" alt="Follow the wording on a phone" src="docs/screenshots/submission/phone/3-follow-the-wording-390.png">
-  <img width="150" alt="Copies and roots on a phone" src="docs/screenshots/submission/phone/4-copies-and-roots-390.png">
-  <img width="150" alt="Check an AI answer on a phone" src="docs/screenshots/submission/phone/5-check-an-ai-answer-390.png">
-</p>
-<!-- numbers ok: 390, 150 (screenshot width in the file names, image width) -->
 
 ## How it works
 
@@ -112,10 +114,12 @@ flowchart LR
 | walk | Searches date windows further and further back, reads pages, keeps sentences that state the claim | Tavily `search`, `extract` | built, including ranked citation following and searches for named sources ([#110](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/110)) |
 | spans | Every edge between two pages rests on two verbatim sentences, one on each page | code | built, with link-verified edges ([#108](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/108)) |
 | dating | Dates each page from a scholarly registry, its own metadata, or a marked publication date in the article (only when nothing on the page contradicts it), capped by its first Wayback capture | Wayback CDX | built |
-| clusters | Groups copies (versions, syndication, same byline, near duplicates) and counts roots | code, `Qwen/Qwen3-Embedding-8B` for reworded copies | built; the walk passes embeddings into clustering when it is given an embedder ([#170](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/170)), and the live pipeline ([#191](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/191)) supplies one |
+| clusters | Groups copies (versions, syndication, same byline, near duplicates) and counts roots | code, `Qwen/Qwen3-Embedding-8B` for reworded copies | built; the live pipeline ([#191](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/191)) passes embeddings into clustering ([#170](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/170)) |
 | readouts | Per hop: number, unit, hedge and comparison changes measured by code; scope, attribution and context asked as typed yes/no questions | same model, logprobs | built |
 | same claim | A page counts as stating the claim only if code finds the claim's number (or phrase) in the sentence **and** a typed question answers yes with known confidence | same model, logprobs | built |
 | stop state | Code picks one of six endings from the trace; the model never does | none | built |
+
+**Trade-offs.** Every trace runs under hard caps on Tavily credits, dollars, time, steps back and pages per round (row 2 of the endings table below), so a long trail ends PARTIAL rather than running up cost. A missed date is accepted to avoid a false earlier one. Median speed and cost per trace are in [eval/perf.md](eval/perf.md).
 
 ### How many roots, not just how many pages
 
@@ -124,7 +128,9 @@ Every trace counts the pages it found, how many independent roots they trace bac
 
 ### How a page gets its date
 
-In this order, stopping at the first that answers: a scholarly registry for pages it knows (PubMed, PubMed Central, Crossref for a DOI); the page's own meta tags and JSON-LD; and last, **a marked publication date in the article, only when nothing on the page contradicts it**. That last one is read from a single strictly marked `<time itemprop="datePublished">` near the top of the article, outside related, sidebar and other teaser blocks, lists and links, and it is refused if any other date anywhere on the page (another time, an attribute, the text, inline data, JSON-LD or the URL) is later. So an older related-article card can never backdate the page ([#285](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/285)). Whatever date is found is capped by the page's first Wayback capture, and a page with no date it trusts is dated by that capture. A missed date is fine; a false earlier date is the error the rules are built to avoid. The rules and their adversarial tests are in [publication.ts](packages/pz/src/engine/publication.ts) and [byline.test.ts](packages/pz/test/byline.test.ts).
+In this order, stopping at the first that answers: a scholarly registry for pages it knows (PubMed, PubMed Central, Crossref for a DOI); the page's own meta tags and JSON-LD; and last, **a marked publication date in the article, only when nothing on the page contradicts it**. That last one is read from a single strictly marked `<time itemprop="datePublished">` near the top of the article, outside related, sidebar and teaser blocks, lists and links, and it is refused if any other date anywhere on the page (another time, an attribute, the text, inline data, JSON-LD or the URL) is later. So an older related-article card can never backdate the page ([#285](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/285)).
+
+Whatever date is found is capped by the page's first Wayback capture, and a page with no date it trusts is dated by that capture, shown as "online by" that date. A capture dates a page only if it holds the claim's sentence ([docs/limits.md](docs/limits.md), L19, lists the exceptions). A missed date is fine; a false earlier date is the error the rules are built to avoid. The rules and their adversarial tests are in [publication.ts](packages/pz/src/engine/publication.ts), [capture.ts](packages/pz/src/engine/capture.ts) and [byline.test.ts](packages/pz/test/byline.test.ts).
 
 ### Code decides how a trace ends
 
@@ -133,25 +139,25 @@ The model answers narrow typed questions. Code reads the trace and picks the end
 | Row | Ending | When |
 |---|---|---|
 | 1 | `TOOL_FAILED` | A search or fetch failed. This says nothing about the claim. |
-| 2 | `PARTIAL` | A cap was hit: 150 Tavily credits, $0.50, 5 minutes, 8 hops or 5 pages per round. |
+| 2 | `PARTIAL` | A cap was hit: 150 Tavily credits, $0.50, 5 minutes, 8 steps back or 5 pages per round. |
 | 3 | `NO_PAGES_FOUND` | No page states the claim, apart from pages discussing it as a claim. |
 | 4 | `CONFLICTING` | The earliest pages give different numbers for the same thing. |
-| 5 | `ORIGIN_FOUND` | The earliest page is a primary source (study, dataset, report or the speaker's own words) with a confirmed date, cites nothing earlier, is not negated, and states the same claim; no page it cites is left unread, and two searches further back found nothing earlier. |
+| 5 | `ORIGIN_FOUND` | The earliest page is a primary source (study, dataset, report or the speaker's own words) with a confirmed date, or online by that date when its first Wayback capture holds the claim. It is typed with confidence and sits at a document address (not a dated article or a list page), cites nothing earlier, does not deny the claim, and states the same claim. No page cites a page that could not be read, except a fact-check about a different claim; every page on the trail dated earlier has been ruled out; and two searches further back found nothing older. |
 | 6 | `TRAIL_GOES_COLD` | Anything else. The card says which check failed. |
 
 ### Why each step can be checked
 
 - **Two verbatim spans per edge.** `pz verify` re-opens each saved page, re-finds every sentence at its offsets and hashes, and recomputes the stop state ([packages/pz/src/verify/checks.ts](packages/pz/src/verify/checks.ts)). `make verify` runs it on every committed trace.
-- **Typed questions, not free text.** Every model call uses a strict JSON schema. Confidence comes from the first-token logprobs of the answer, and "unsure" never makes an origin. The cutoff below which a "yes" stops counting is not set yet (`confidenceThreshold` is null in rules.json; limits L6), so today any "yes" with a known probability counts ([packages/pz/src/typed/](packages/pz/src/typed/ask.ts)).
-- **Page text is data.** Claims and pages go to the model inside a `source_text` field, and every prompt says so. Tests plant instructions inside claims and sentences and check they stay data. A planted trap set checks the counters for false certainty ([traps/README.md](traps/README.md)).
+- **Confidence from logprobs.** Every typed answer carries a confidence from the first-token logprobs, and "unsure" never makes an origin. The cutoff below which a "yes" stops counting is not set yet (`confidenceThreshold` is null in rules.json; limits L6), so today any "yes" with a known probability counts ([packages/pz/src/typed/](packages/pz/src/typed/ask.ts)).
 - **The card cannot overclaim.** The card's one sentence is dropped if it uses a number, name, quote or date not in the spans, or says "origin" on a trace that did not end `ORIGIN_FOUND` ([packages/pz/src/card/index.ts](packages/pz/src/card/index.ts)).
+- **A planted trap set** checks the counters for false certainty ([traps/README.md](traps/README.md)).
 
 ### Safety
 
 - **Web page text is untrusted evidence.** Page and claim text reach the model only inside a `source_text` field, kept apart from the instructions, and every prompt says it is data to judge, never instructions to follow ([packages/pz/src/typed/ask.ts](packages/pz/src/typed/ask.ts)). Tests plant instructions inside claims and pages and check they stay data, and the adversarial traps plant fake origins written to fool the model ([packages/pz/src/traps/adversarial.ts](packages/pz/src/traps/adversarial.ts)).
 - **The model answers typed questions only.** Every call is a narrow question with a strict JSON schema ([packages/pz/src/schema/questions.ts](packages/pz/src/schema/questions.ts)); there is no free-text answer for the engine to act on.
-- **Code, not the model, decides the ending.** The decision table reads the trace and picks the stop state ([packages/pz/src/rules/decide.ts](packages/pz/src/rules/decide.ts)), and the card drops any sentence that says more than the spans ([packages/pz/src/card/index.ts](packages/pz/src/card/index.ts)).
-- **Fetching is public-only.** Page fetches refuse private, loopback and link-local hosts at every redirect, and are capped in size and time ([packages/pz/src/engine/publication.ts](packages/pz/src/engine/publication.ts)). Keys never reach the browser: the live app calls them from a server function.
+- **Code, not the model, decides the ending.** The decision table reads the trace and picks the stop state ([packages/pz/src/rules/decide.ts](packages/pz/src/rules/decide.ts)), and the card drops any sentence that says more than the spans.
+- **Fetching is public-only.** Page fetches refuse private, loopback and link-local hosts at every redirect, and are capped in size and time ([packages/pz/src/engine/publication.ts](packages/pz/src/engine/publication.ts)). Keys never reach the browser: the live app calls the services from a server function.
 
 ## A trace, walked step by step
 
@@ -159,10 +165,10 @@ One real claim from paste to stop state: dev-10, "By 2050 there will be more pla
 
 1. **Fingerprint.** Code reads the claim's number from "By 2050" (a forecast year is kept as the number only after "by"); Token Factory copies the subject ("plastic"), the population ("in the ocean") and the time ("by 2050"), and code keeps only words found in the claim.
 2. **Walk, window 1 (up to the day of the run).** Four searches: two built by code (`"2050" plastic`, `"more plastic than fish in the ocean" by 2050`) and two planned by the model and checked by code (one names the Ellen MacArthur Foundation). A fact-check search finds Snopes, which is read as a map: its citations are followed, and it is never a candidate origin.
-3. **Reading and dating.** Each page with a sentence that carries the claim's atoms gets a typed `same_claim` question. The earliest pages land on January 20, 2016: a blog post (dated by its own metadata) and the World Economic Forum's report "The New Plastics Economy" (dated by its first archive capture, which holds the sentence: since #238 a capture that lacks the claim never dates a page). On the report the model said yes to `same_claim`, and its page type is report.
+3. **Reading and dating.** Each page with a sentence that carries the claim's atoms gets a typed `same_claim` question. The earliest pages land on January 20, 2016: a blog post (dated by its own metadata) and the World Economic Forum's report "The New Plastics Economy" (dated by its first archive capture, which holds the sentence). On the report the model said yes to `same_claim`, and its page type is report.
 4. **Walk, windows 2 and 3.** Searches before 2016-01-19, then before 2010-06-14, look for anything older. Nothing older states the claim.
-5. **Stop state.** Code, not the model, decides: rule 5 holds and it ends **Origin found**. Its recorded reason: the earliest page is a report with a confirmed date. The unread citations elsewhere in the trace do not block this origin under the refined rules ([eval/dev-score.md](eval/dev-score.md)).
-6. **Card.** Origin found: the WEF report, January 2016. The earliest primary source found is "The New Plastics Economy", quoting its own sentence: "In a business-as-usual scenario, the ocean is expected to contain 1 tonne of plastic for every 3 tonnes of fish by 2025, and by 2050, more plastics than fish (by weight)." Its date comes from the first Wayback Machine capture: archived by January 20, 2016; publication date not established. This is not proof of first use.
+5. **Stop state.** Code, not the model, decides. The live run ended cold. Re-decided from the same recording with the refined origin rule (no new calls), the unread citations elsewhere in the trace, such as a fact-check about a different claim, no longer block it: rule 5 holds and it ends **Origin found** on the report, online by its first capture date ([eval/dev-score.md](eval/dev-score.md)).
+6. **Card.** Origin found: the WEF report, January 2016. The earliest primary source found is "The New Plastics Economy", quoting its own sentence: "In a business-as-usual scenario, the ocean is expected to contain 1 tonne of plastic for every 3 tonnes of fish by 2025, and by 2050, more plastics than fish (by weight)." Its date comes from the first Wayback Machine capture: online by January 20, 2016; publication date not established. This is not proof of first use.
 
 For an honest cold stop, open [dev-02](eval/dev-traces/dev-02.json): "The average person swallows eight spiders a year while sleeping." It ends **The trail goes cold**: "A page it cites could not be opened." No origin is named.
 
@@ -202,7 +208,7 @@ These two are labelled synthetic: the claim is the invented Harbor Zoo one, and 
 
 | Set | Claims | Use | Result |
 |---|---|---|---|
-| E2 dev ([eval/dev-claims.json](eval/dev-claims.json)) | 20: 11 with a web origin, 9 that go cold | Rules, cutoffs and prompts are tuned here only | Latest row in [eval/dev-score.md](eval/dev-score.md), the final live run (Nov 19): false origins 0, target cited 4/10, earliest 2 Pass, 0 Partial, 8 Fail, cold stops 6/9, 18 of 19 scored (1 out of scope). Every earlier run is a row in the same file. |
+| E2 dev ([eval/dev-claims.json](eval/dev-claims.json)) | 20: 11 with a web origin, 9 that go cold | Rules, cutoffs and prompts are tuned here only | Final live run (Nov 19), latest live row in [eval/dev-score.md](eval/dev-score.md): false origins 0, target cited 4/10, earliest 2 Pass, 0 Partial, 8 Fail, cold stops 6/9, 18 of 19 scored (1 out of scope). The replay re-decision after it, labelled as such, ends dev-09 and dev-10 Origin found with false origins still 0. Every earlier run is a row in the same file. |
 | E3 check ([eval/dev-claims-e3.json](eval/dev-claims-e3.json)) | 40: 18 with a web origin, 22 that go cold | Check only, nothing tuned on it | not run live yet |
 | Held-out | 10, private; its hash was committed on Nov 8, before most stages were built (the decision table, number rules and clients came first) ([eval/heldout.sha256](eval/heldout.sha256)) | Run once, on a frozen engine | Run once on Nov 19 ([eval/heldout-readout.md](eval/heldout-readout.md)): 8 of 10 traced (2 failed), false origins 0, target cited 0/6, earliest 0 Pass, 0 Partial, 5 Fail, cold stops 2/4. No false origin on unseen claims; it found none of the targets. |
 
@@ -219,7 +225,7 @@ In week 0 a first walker with fixed rules and no model ran on six claims, graded
 | Claude | 4/4 | 2/2 | 5/6 |
 | Ours (spike) | 1/4 | 0/2 | 0/6 |
 
-It was the fastest (12 to 47 s) and lost on every claim. The grading was not fully blind: six claims, graded once, by one agent-assisted grader. The post-mortem ([eval/spike-postmortem.md](eval/spike-postmortem.md)) found two main causes. False matches on a common number became the "earliest" page on four claims, and exact-number searches never reached two targets. The engine above was built against those causes: the same-claim check, weak-number clause rules, model-planned queries, and citation following ([#110](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/110)). The dev score will say whether it worked.
+It was the fastest (12 to 47 s) and lost on every claim. The grading was not fully blind: six claims, graded once, by one agent-assisted grader. The post-mortem ([eval/spike-postmortem.md](eval/spike-postmortem.md)) found two main causes. False matches on a common number became the "earliest" page on four claims, and exact-number searches never reached two targets. The engine above was built against those causes: the same-claim check, weak-number clause rules, model-planned queries, and citation following ([#110](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/110)). The results above show where that stands: no false origins, and origins still rarely reached.
 
 ## Token Factory and Tavily
 
@@ -233,18 +239,18 @@ It was the fastest (12 to 47 s) and lost on every claim. The grading was not ful
 
 **How links survive into the trace.** Every page a Tavily search returns is saved with its URL; Tavily `extract` gives the text the spans are cut from, and each span keeps its character offsets and a hash so `pz verify` can find it again. The Wayback capture URL that dated a page is kept on the page's date, and the trace view links both the page and the capture ("Open the page", "Open the capture"). A cited page that could not be opened is kept too, marked unread. If that page is needed to establish the origin, the trace ends cold.
 
-Every call writes a usage row: model, tokens, cached tokens, Tavily credits, dollars, latency, status and cache hit ([packages/pz/src/schema/usage.ts](packages/pz/src/schema/usage.ts)). The [recorded usage report](docs/usage-report.md) groups the current saved dev traces by service, model, endpoint and stage, with per-trace totals and cache hits. Rebuild it with `make usage-report`. It describes the saved traces, not the team billing ledger or every historical run. Median speed and cost per trace, from those rows: [eval/perf.md](eval/perf.md).
+Every call writes a usage row: model, tokens, cached tokens, Tavily credits, dollars, latency, status and cache hit ([packages/pz/src/schema/usage.ts](packages/pz/src/schema/usage.ts)). The [recorded usage report](docs/usage-report.md) groups the current saved dev traces by service, model, endpoint and stage, with per-trace totals and cache hits. Rebuild it with `make usage-report`. It describes the saved traces, not the team billing ledger or every historical run.
 
 ## Limits
 
 - Web pages only. Print-only and paywalled origins are out of scope; the trail goes cold there and says so.
 - "Earliest source we found" is not "first use". Pages that were never indexed or archived cannot be found.
 - Claims need a number, a range or a distinctive phrase to match on.
-- A false origin the gate caught: after the #310 origin rule, a replay of every recorded trace found that the S7 answer check's plastic claim would name a Greenpeace photo archive page, because the WEF report in the same trace had been judged not the same claim. The earliest-dated-page guard ([#316](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/316)) now refuses an origin when an earlier page on the trail was not ruled out, and the replay test over every recorded trace keeps it that way ([packages/pz/test/origin-experiment.test.ts](packages/pz/test/origin-experiment.test.ts)).
+- A false origin the gate caught: after the #310 origin rule, a replay of every recorded trace found that the plastic claim in the recorded AI-answer check would name a Greenpeace photo archive page, because the WEF report in the same trace had been judged not the same claim. The earliest-dated-page guard ([#316](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/316)) now refuses an origin when an earlier page on the trail was not ruled out, and a replay test over every recorded trace keeps it that way ([packages/pz/test/origin-experiment.test.ts](packages/pz/test/origin-experiment.test.ts)).
 - One model answers every typed question. A second model family on same claim was built, measured on E2 and rejected: it lost 23 of 60 true matches and removed no false ones, so it stays off ([#178](https://github.com/vs-githjk/odsc-nebius-hackathon/pull/178), [eval/same-claim/second-model.ts](eval/same-claim/second-model.ts)).
+- Every known failure, with an example you can run, the rule that should catch it, whether it is caught today and who owns it: [docs/limits.md](docs/limits.md), "Where Patient Zero is wrong".
 
 <!-- numbers ok: 23, 60 (XO's live E2 measure of the second model on Nov 16, logged in plan/decisions.md) -->
-- Every known failure, with an example you can run, the rule that should catch it, whether it is caught today and who owns it: [docs/limits.md](docs/limits.md), "Where Patient Zero is wrong".
 
 ## Setup for live runs
 
@@ -269,7 +275,7 @@ Every call writes a usage row: model, tokens, cached tokens, Tavily credits, dol
 
 ## For agents reading this repo
 
-Start at [llms.txt](llms.txt). The working notes live in `plan/` while the build runs; `plan/README.md` says what every file there holds.
+Start at [llms.txt](llms.txt). The working notes live in `plan/`; `plan/README.md` says what every file there holds.
 
 - Decisions live in `plan/decisions.md` (Vidyut's, with his words and dates).
 - Rulings made during the build live in `plan/progress.md`.
@@ -280,16 +286,16 @@ Teammates and their agents: read [docs/AGENTS.md](docs/AGENTS.md) first.
 
 ## Judging criteria map
 
-The weights are the official ones from the hackathon brief ([the organisers' template README](https://github.com/odsc2015/nebius-research-agent-hackaton-template)). Each row points to where to check it here, in the live app and in the demo video ([docs/demo-script.md](docs/demo-script.md)).
+The weights are the official ones from the organisers' [template README](https://github.com/odsc2015/nebius-research-agent-hackaton-template). Each row points to where to check it here, in the live app and in the [demo video](https://youtu.be/VFKoXNjVgNU) (its shots follow [docs/demo-script.md](docs/demo-script.md)).
 
 | Criterion | Weight | In this README | In the live app | In the demo video |
 |---|---|---|---|---|
-| Sourced and verifiable answers | 30% | [Why each step can be checked](#why-each-step-can-be-checked), [How a page gets its date](#how-a-page-gets-its-date), [Evaluation](#evaluation) | a trace: the exact sentence on every page, each date with how it was proven, "Open the page" and "Open the capture" | S4 and S5 (0:40 to 1:04): the sentence on each page, then the WEF report opened |
-| Works end to end | 25% | [Try it in two minutes](#try-it-in-two-minutes-no-api-keys), [Where it stands](#where-it-stands), [When it fails](#when-it-fails) | the claim box on the landing traces a new claim live; recorded traces open free | S2 and S3 (0:12 to 0:40), S9 (1:45 to 1:55) |
-| Usefulness | 20% | the opening of this README, [Limits](#limits) | Check an AI answer (`#/answer`), Recorded traces (`#/traces`) | S1 (0:00 to 0:12), S7 (1:16 to 1:30) |
-| Agent design | 15% | [How it works](#how-it-works), [Code decides how a trace ends](#code-decides-how-a-trace-ends), [Safety](#safety) | How it works (`#/how`), "How this was decided" on every trace | S6 (1:04 to 1:16), S10 (1:55 to 2:05) |
-| Use of Token Factory and Tavily | 10% | [Token Factory and Tavily](#token-factory-and-tavily) | "Replay the walk" on a trace shows each search and page read | S3 (0:20 to 0:40), S11 (2:05 to 2:15) |
-<!-- numbers ok: 30, 25, 20, 15, 10 (the official judging weights, from the organisers' template README) -->
+| Sourced and verifiable answers | 30% | [Why each step can be checked](#why-each-step-can-be-checked), [How a page gets its date](#how-a-page-gets-its-date), [Evaluation](#evaluation) | a trace: the exact sentence on every page, each date with how it was proven, "Open the page" and "Open the capture" | 0:27 to 0:44: the sentence on each page, then the WEF report opened |
+| Works end to end | 25% | [Try it in two minutes](#try-it-in-two-minutes-no-api-keys), [Where it stands](#where-it-stands), [When it fails](#when-it-fails) | the claim box on the landing traces a new claim live; recorded traces open free | 0:09 to 0:27, then 1:14 to 1:23 (`make verify`, a forced tool failure) |
+| Usefulness | 20% | [The problem](#the-problem), [What it does](#what-it-does), [Limits](#limits) | Check an AI answer (`#/answer`), Recorded traces (`#/traces`) | 0:00 to 0:09, then 0:53 to 1:05 (a whole AI answer) |
+| Agent design | 15% | [How it works](#how-it-works), [Code decides how a trace ends](#code-decides-how-a-trace-ends), [Safety](#safety) | How it works (`#/how`), "How this was decided" on every trace | 0:44 to 0:53 (a trail that goes cold), then 1:23 to 1:32 (who decides) |
+| Use of Token Factory and Tavily | 10% | [Token Factory and Tavily](#token-factory-and-tavily) | "Replay the walk" on a trace shows each search and page read | 0:17 to 0:27 (the walk), then 1:32 to 1:44 |
+<!-- numbers ok: 30, 25, 20, 15, 10 (the official judging weights, from the organisers' template README); 0, 9, 17, 27, 44, 53, 1, 5, 14, 23, 32 (timecodes measured on the final video render) -->
 
 ## License
 
@@ -299,7 +305,7 @@ MIT. See [LICENSE](LICENSE).
 
 The live web app uses the root [Vercel functions](api/trace.ts) and [deployment configuration](vercel.json). The [Node Web handler](https://vercel.com/docs/functions/runtimes/node-js) streams a single NDJSON response. Use the repository root as the Vercel project root, framework preset Other, Node `24.x`, install command `npm ci`, build command `npm -w web run build`, and output directory `apps/web/dist`. Enable Fluid compute. The function duration is `300` seconds in `vercel.json`; the [server](packages/pz/src/live/service.ts) stops provider work at `285` seconds, leaving time to settle spend and finish the stream. Provider calls and temporary page, usage and HTTP cache files are server-only. No SDK or additional dependency is required.
 
-Vidyut sets the keys in Vercel. Set these server environment variables, never client-prefixed variables:
+Set the keys in Vercel as server environment variables, never client-prefixed variables:
 
 | Variable | Purpose / default |
 | --- | --- |
