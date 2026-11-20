@@ -79,7 +79,7 @@ export function HowItWorks({ hero }: { hero: Trace | null }) {
               Nebius Token Factory models answer typed questions about each hop under strict JSON schemas: did the number change, was a hedge dropped, is it the same claim? Pages that copy another are folded into its root.
             </Step>
             <Step n="4" title="Stop honestly" example={ex.end}>
-              A decision table in code picks one of six endings. The model never names an origin. If a page it cites can't be opened, the trail goes cold.
+              A decision table in code picks one of six endings. The model never names an origin. If a cited page needed to establish the origin can't be opened, the trail goes cold.
             </Step>
           </ol>
           {hero && <a className="lp-more" href={`#/t/${encodeURIComponent(hero.id)}`}>{`Open that trace: “${hero.claim.text}”`}</a>}

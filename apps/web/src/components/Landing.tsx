@@ -161,7 +161,7 @@ const steps = [
   { n: "1", title: "Search back in time", body: "Tavily searches for the claim, then again in older and older date windows, and extracts each page." },
   { n: "2", title: "Read and date every page", body: "Code pulls the exact sentence. Dates come from registries, page metadata, the Wayback Machine, and a marked date in the article only when nothing on the page contradicts it, each labelled." },
   { n: "3", title: "Compare copies to roots", body: "Nebius Token Factory models answer typed questions on each hop: did the number change, was a hedge dropped, same claim?" },
-  { n: "4", title: "Stop honestly", body: "A decision table in code picks the ending, never the model. If a page it cites can't be opened, the trail goes cold." },
+  { n: "4", title: "Stop honestly", body: "A decision table in code picks the ending, never the model. If a cited page needed to establish the origin can't be opened, the trail goes cold." },
 ];
 
 const team = [
@@ -176,6 +176,7 @@ export function Landing({ traces, hero, focusKey, onMatch, onLive }: {
 }) {
   const tries = challengeTraces(traces);
   const copiesTrace = traces.find((t) => t.id === "dev-12" && !t.synthetic) ?? null;
+  const coldTrace = traces.find((t) => t.id === "dev-02" && !t.synthetic) ?? null;
   return (
     <main className="lp">
       <section className="lp-hero">
@@ -215,11 +216,11 @@ export function Landing({ traces, hero, focusKey, onMatch, onLive }: {
           <h2 id="lp-only" className="lp-h2">Five things only a trace shows</h2>
           <p className="lp-intro">Each one is taken from a trace recorded in this repo, with the file or page you can open to check it.</p>
           <div className="lp-receipts">
-            {hero && (
-              <Receipt n="1" title="0 wrong origins on our 20-claim tuning set" measures="False origins: a page named as the origin that isn't. On our 20-claim tuning set, final live run: 0. Most traces stop short of the origin (target page cited on 4 of 10), and none yet ends on its true origin. Outside that set it is not perfect: on our 8-claim gallery run it named one false origin (G4), a list page whose metadata date predates the paper it lists."
-                check={[{ label: "eval/dev-score.md", href: blob("eval/dev-score.md") }, { label: "docs/gallery.md (G4)", href: blob("docs/gallery.md") }, { label: "open this trace", href: traceHref(hero) }]}>
+            {coldTrace && (
+              <Receipt n="1" title="0 wrong origins on our 20-claim tuning set" measures="False origins: a page named as the origin that isn't. On our 20-claim tuning set, final live run: 0. The replay re-decision now ends on the expected origins for the plastic versus fish claim and the plastic recycling claim. The spiders claim below still stops cold. The gallery live run named one false origin (G4), a list page whose metadata date predates the paper it lists; that page no longer passes the origin rules on replay."
+                check={[{ label: "eval/dev-score.md", href: blob("eval/dev-score.md") }, { label: "docs/gallery.md (G4)", href: blob("docs/gallery.md") }, { label: "open this trace", href: traceHref(coldTrace) }]}>
                 <p className="lp-big"><span>0</span> false origins on the tuning set</p>
-                <ColdEnding trace={hero} />
+                <ColdEnding trace={coldTrace} />
               </Receipt>
             )}
             {hero && (
