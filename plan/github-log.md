@@ -168,3 +168,7 @@
 - 2026-11-19 20:15 ET: merged #269 (traces list), #270 (a11y: Lighthouse 100 all pages light/dark, docs/accessibility.md). Anoop 7/9.
 - 2026-11-19 20:30 ET: merged #271 (fade 120ms), #272 (Devpost gallery x5). Anoop 8/9.
 - 2026-11-19 20:40 ET: merged #273 (not-found pages). Anoop 9/9 done.
+- 2026-11-19 20:45 ET: Anoop batch 2 posted on #257 (demo script on new UI, Pages base check, submission copy, Lighthouse perf, video raw captures, gallery re-shoot, nav 390).
+- 2026-11-19 20:50 ET: merged #274 (phone gallery + README phone row).
+- 2026-11-19 20:50 ET: merged #275 (Rishit: open finished, one earliest list). Next list for Rishit; Anoop cleared to re-shoot gallery 2/4.
+- 2026-11-19 20:55 ET: merged #278 (gallery 2/4 re-shoot), #277 (demo script A on new UI; 9 lines marked re-approve, awaiting Vidyut). #276 Rishit conflicting, asked to merge main.

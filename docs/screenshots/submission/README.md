@@ -13,3 +13,9 @@ recorded trace (dev-10 and the recorded S7 answer check), replayed. Suggested ca
    how it was dated, and its copies nested under it.
 5. **5-check-an-ai-answer.png:** Check an AI answer: each statistic in an answer traced on its own. A recorded example,
    written for this demo, not a reply from any AI tool. 3 statistics: 3 went cold.
+
+## Phone set
+
+The same five views at 390 x 844, in `phone/`: `1-landing-390.png`, `2-trace-ending-390.png`,
+`3-follow-the-wording-390.png`, `4-copies-and-roots-390.png` and `5-check-an-ai-answer-390.png`. The README shows them as
+its phone row.
