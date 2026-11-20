@@ -177,3 +177,4 @@
 - 2026-11-19 21:15 ET: reassigned #222 to Anoop; Rohan on return: held-out then Anoop batch 2 items 4,5,7.
 - 2026-11-19 21:20 ET: merged #276 (Rishit meta line/headings/back button), #280 (Anoop submission copy).
 - 2026-11-19 21:30 ET: merged #281 (nav no-wrap at 360), #282 (Lighthouse 100/100/100 desktop, 99/100/100 phone; robots.txt). Rishit to do live run in his own browser.
+- 2026-11-19 21:10 ET: Rohan back (doing issue clearance); redirected: held-out first (his own approval), then video captures, then clearance capped 30 min. Merged #283 (Copy link). Rishit next batch posted.
