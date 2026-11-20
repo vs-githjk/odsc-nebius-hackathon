@@ -29,3 +29,10 @@ describe("display quote cleanup", () => {
     expect(words).toEqual(before);
   });
 });
+
+describe("cleanQuote with the shared display rule", () => {
+  it("strips the X menu and then the leading warning emoji", () => {
+    expect(cleanQuote("Log inSign up United Nations on X: ⚠️By 2050, oceans will have more plastic than fish", "By 2050 there will be more plastic than fish in the ocean."))
+      .toBe("By 2050, oceans will have more plastic than fish");
+  });
+});

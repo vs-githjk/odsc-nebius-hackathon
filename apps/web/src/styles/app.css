@@ -58,3 +58,27 @@ body { isolation: isolate; }
   .root-page .page-proof { flex-basis: 100%; }
   .root-copies { margin-left: 4px; padding-left: 12px; }
 }
+
+/* Editorial pass on the trace page (#262 review: strip the AI accents). The result reads as a page, not a stack of
+   cards: no lifted card, no glow blobs, hairlines instead of boxes, real section hierarchy. The serif quotes and the
+   time ramp (scrubber, dots) stay as the signature. Scoped to .trace-page so the landing keeps its own look. */
+.trace-page .time-blob { display: none; }
+.trace-page .card.stage { background: none; border: 0; border-radius: 0; box-shadow: none; padding: 8px 0 0; }
+.trace-page .trace-claim { font-size: clamp(34px, 4.4vw, 56px); line-height: 1.12; letter-spacing: -0.01em; max-width: 22ch; }
+.trace-page .trace-section-title { font-size: 26px; font-weight: 600; letter-spacing: -0.015em; line-height: 1.2; }
+.trace-page .stage .stop-card { margin-top: 36px; padding: 28px 0 0; border: 0; border-top: 1px solid var(--line); border-radius: 0; background: none; }
+.trace-page .stage-head .chip { white-space: nowrap; }
+.trace-page .trace-timeline, .trace-page .trace-roots { margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--line); }
+.trace-page .roots-summary { padding: 14px 0; border: 0; border-top: 1px solid var(--line-2); border-bottom: 1px solid var(--line-2); border-radius: 0; background: none; }
+.trace-page .roots-summary:hover { border-color: var(--line-2); color: var(--action); }
+.trace-page .evidence-receipt { padding: 0; border: 0; border-radius: 0; background: none; }
+.trace-page .stage .pill { border: 0; border-radius: 0; padding: 0; background: none; color: var(--ink-2); }
+.trace-page .readout { border-radius: 4px; }
+.trace-page .recent-traces { padding: 24px 0 0; border: 0; border-top: 1px solid var(--line); border-radius: 0; background: none; }
+@media (max-width: 600px) {
+  .trace-page .trace-claim { font-size: 30px; }
+  .trace-page .stage .stop-card { padding: 22px 0 0; }
+  .trace-page .trace-section-title { font-size: 22px; }
+  .trace-page .trace-timeline, .trace-page .trace-roots { margin-top: 36px; padding-top: 22px; }
+  .trace-page .recent-traces { padding: 20px 0 0; }
+}

@@ -1,11 +1,10 @@
 import { useEffect, useState, type MouseEvent } from "react";
 import type { Trace } from "pz/schema";
-import { independenceLine } from "pz/headline";
 import { HowItWorks } from "./components/HowItWorks.tsx";
+import { Footer, Landing } from "./components/Landing.tsx";
 import { BackToResults, RouteExperience } from "./components/RouteExperience.tsx";
 import { ThemeToggle } from "./components/ThemeToggle.tsx";
 import { challengeTraces } from "./model/live.ts";
-import { ClaimBox } from "./components/ClaimBox.tsx";
 import { ModeBadge } from "./components/ModeBadge.tsx";
 import { TraceView } from "./components/TraceView.tsx";
 import { loadTraces } from "./data/loadTraces.ts";
@@ -27,28 +26,11 @@ function useRoute(): Route {
 
 const hero = heroTrace(traces);
 
-// The hero is a real recorded trace when there is one: its claim, its count and how far back it went. The invented
-// samples never lead; they sit under Samples.
-function Hero() {
-  if (!hero) return <h1 className="hero-quote">Where did this number start?</h1>;
-  const row = sampleRow(hero);
-  return (
-    <a className="hero" href={`#/t/${encodeURIComponent(hero.id)}`}>
-      <h1 className="hero-quote">{`“${hero.claim.text}”`}</h1>
-      <p className="hero-count">
-        {independenceLine(hero)}
-        {row.earliestYear !== null && ` Back to ${row.earliestYear}.`} <span className="hero-open">See the trace</span>
-      </p>
-    </a>
-  );
-}
-
-function Start({ focusKey, onMatch, onLive }: { focusKey: number; onMatch(id: string): void; onLive(trace: Trace): void }) {
+function TracesPage() {
   return (
     <main className="wrap section stack">
-      <Hero />
-      <p className="lead">Patient Zero walks a claim back through time to the earliest page it can find, and shows every step.</p>
-      <ClaimBox traces={traces} focusKey={focusKey} onMatch={onMatch} onLive={onLive} />
+      <h1 className="k">Recorded traces</h1>
+      <p className="lead">Every trace here opens free, replayed from its recording. <a href="#/">Trace a new claim</a>.</p>
       <section aria-labelledby="challenges-heading">
         <div className="samples-head">
           <h2 id="challenges-heading">Try these</h2>
@@ -158,6 +140,7 @@ export function App() {
           </a>
           <div className="nav-links">
           <a href="#/how">How it works</a>
+          <a href="#/traces">Traces</a>
           <ThemeToggle />
           <a className="btn small" href="#/" onClick={traceAClaim}>
             Trace a claim
@@ -167,9 +150,10 @@ export function App() {
       </nav>
       {route.name === "trace" ? (
         <TraceRoute id={route.id} matched={route.id === matchedId} all={[...traces, ...liveTraces]} />
-      ) : route.name === "how" ? <HowItWorks /> : (
-        <Start focusKey={focusKey} onMatch={setMatchedId} onLive={openLive} />
+      ) : route.name === "how" ? <HowItWorks /> : route.name === "traces" ? <TracesPage /> : (
+        <Landing traces={traces} hero={hero} focusKey={focusKey} onMatch={setMatchedId} onLive={openLive} />
       )}
+      <Footer />
     </>
   );
 }
